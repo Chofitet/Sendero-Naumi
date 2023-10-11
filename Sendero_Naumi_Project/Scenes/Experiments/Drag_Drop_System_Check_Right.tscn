@@ -1,0 +1,145 @@
+[gd_scene load_steps=8 format=3 uid="uid://g62x51t6jngw"]
+
+[ext_resource type="Script" path="res://Scenes/Experiments/Spot.gd" id="1_joyvs"]
+[ext_resource type="Script" path="res://Scenes/Experiments/Drag_Drop_Controller.gd" id="1_q2w6k"]
+[ext_resource type="Script" path="res://Scenes/Experiments/Drag_Drop_System_Check_Right.gd" id="1_wnqyo"]
+[ext_resource type="Texture2D" uid="uid://s2snqxtygqpw" path="res://Sprites/inventory.png" id="2_fxf1t"]
+[ext_resource type="Texture2D" uid="uid://bgy7tv3s2j7ng" path="res://icon.svg" id="3_87cyo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j3xew"]
+size = Vector2(128, 127)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ltpmd"]
+size = Vector2(130, 128)
+
+[node name="DraggeableObject_Spot_Check_Right" type="Node2D"]
+script = ExtResource("1_q2w6k")
+
+[node name="Object" type="Sprite2D" parent="."]
+position = Vector2(145, 1062)
+texture = ExtResource("3_87cyo")
+script = ExtResource("1_wnqyo")
+object_name = "hueso"
+
+[node name="Area2D" type="Area2D" parent="Object"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Object/Area2D"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_j3xew")
+
+[node name="Button" type="Button" parent="Object"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -64.0
+offset_top = -64.0
+offset_right = -64.0
+offset_bottom = -64.0
+grow_horizontal = 2
+grow_vertical = 2
+action_mode = 0
+flat = true
+
+[node name="Object2" type="Sprite2D" parent="."]
+position = Vector2(151, 681)
+texture = ExtResource("3_87cyo")
+script = ExtResource("1_wnqyo")
+object_name = "CRANEO"
+
+[node name="Area2D" type="Area2D" parent="Object2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Object2/Area2D"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_j3xew")
+
+[node name="Button" type="Button" parent="Object2"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -64.0
+offset_top = -64.0
+offset_right = -64.0
+offset_bottom = -64.0
+grow_horizontal = 2
+grow_vertical = 2
+action_mode = 0
+flat = true
+
+[node name="Object3" type="Sprite2D" parent="."]
+position = Vector2(160, 300)
+texture = ExtResource("3_87cyo")
+script = ExtResource("1_wnqyo")
+object_name = "TIBIA"
+
+[node name="Area2D" type="Area2D" parent="Object3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Object3/Area2D"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_j3xew")
+
+[node name="Button" type="Button" parent="Object3"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -64.0
+offset_top = -64.0
+offset_right = -64.0
+offset_bottom = -64.0
+grow_horizontal = 2
+grow_vertical = 2
+action_mode = 0
+flat = true
+
+[node name="Spots" type="Node2D" parent="."]
+
+[node name="Spot" type="Area2D" parent="Spots"]
+z_index = -1
+position = Vector2(515, 1057)
+input_pickable = false
+script = ExtResource("1_joyvs")
+spot_name = "hueso"
+
+[node name="spot" type="CollisionShape2D" parent="Spots/Spot"]
+shape = SubResource("RectangleShape2D_ltpmd")
+
+[node name="SpriteSpot" type="Sprite2D" parent="Spots/Spot"]
+scale = Vector2(1.45313, 1.45313)
+texture = ExtResource("2_fxf1t")
+
+[node name="Spot2" type="Area2D" parent="Spots"]
+z_index = -1
+position = Vector2(520, 657)
+input_pickable = false
+script = ExtResource("1_joyvs")
+spot_name = "CRANEO"
+
+[node name="spot" type="CollisionShape2D" parent="Spots/Spot2"]
+shape = SubResource("RectangleShape2D_ltpmd")
+
+[node name="SpriteSpot" type="Sprite2D" parent="Spots/Spot2"]
+scale = Vector2(1.45313, 1.45313)
+texture = ExtResource("2_fxf1t")
+
+[node name="Spot3" type="Area2D" parent="Spots"]
+z_index = -1
+position = Vector2(513, 295)
+input_pickable = false
+script = ExtResource("1_joyvs")
+spot_name = "TIBIA"
+
+[node name="spot" type="CollisionShape2D" parent="Spots/Spot3"]
+shape = SubResource("RectangleShape2D_ltpmd")
+
+[node name="SpriteSpot" type="Sprite2D" parent="Spots/Spot3"]
+scale = Vector2(1.45313, 1.45313)
+texture = ExtResource("2_fxf1t")
+
+[connection signal="pressed" from="Object/Button" to="Object" method="_on_button_pressed"]
+[connection signal="pressed" from="Object2/Button" to="Object2" method="_on_button_pressed"]
+[connection signal="pressed" from="Object3/Button" to="Object3" method="_on_button_pressed"]
+[connection signal="area_entered" from="Spots/Spot" to="Spots/Spot" method="_on_area_entered"]
+[connection signal="area_exited" from="Spots/Spot" to="Spots/Spot" method="_on_area_exited"]
+[connection signal="area_entered" from="Spots/Spot2" to="Spots/Spot2" method="_on_area_entered"]
+[connection signal="area_exited" from="Spots/Spot2" to="Spots/Spot2" method="_on_area_exited"]
+[connection signal="area_entered" from="Spots/Spot3" to="Spots/Spot3" method="_on_area_entered"]
+[connection signal="area_exited" from="Spots/Spot3" to="Spots/Spot3" method="_on_area_exited"]

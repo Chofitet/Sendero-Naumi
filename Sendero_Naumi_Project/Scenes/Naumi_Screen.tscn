@@ -1,0 +1,63 @@
+[gd_scene load_steps=4 format=3 uid="uid://chjfb4dxiy0js"]
+
+[ext_resource type="Script" path="res://_Scripts/Naumi_Controller.gd" id="2_sc70w"]
+[ext_resource type="PackedScene" uid="uid://djhg7jvxtexyl" path="res://Scenes/UI_Scenes/btn_Change_Scene.tscn" id="3_wtndr"]
+[ext_resource type="Texture2D" uid="uid://bti0bepplnx11" path="res://Sprites/UI/map.png" id="4_swcpy"]
+
+[node name="Naumi_Screen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.603922, 0.788235, 1, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="CenterContainer"]
+layout_mode = 2
+script = ExtResource("2_sc70w")
+
+[node name="ButtonChangeScene" parent="." instance=ExtResource("3_wtndr")]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 0.0
+offset_left = -142.0
+offset_top = 22.0
+offset_right = -24.0
+offset_bottom = 136.0
+grow_horizontal = 0
+grow_vertical = 1
+text = ""
+flat = true
+NextScene = "Map_Screen"
+
+[node name="TextureRect" type="TextureRect" parent="ButtonChangeScene"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_swcpy")
+expand_mode = 1
+
+[connection signal="tree_entered" from="CenterContainer/TextureRect" to="CenterContainer/TextureRect" method="_on_tree_entered"]

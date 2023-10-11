@@ -1,0 +1,53 @@
+[gd_scene load_steps=6 format=3 uid="uid://b1msbksth5f7w"]
+
+[ext_resource type="Script" path="res://Scenes/Experiments/Drag_Dop_Object.gd" id="1_0sxb7"]
+[ext_resource type="Texture2D" uid="uid://bgy7tv3s2j7ng" path="res://icon.svg" id="2_gud84"]
+[ext_resource type="Texture2D" uid="uid://s2snqxtygqpw" path="res://Sprites/inventory.png" id="2_vws5j"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ltpmd"]
+size = Vector2(130, 128)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j3xew"]
+size = Vector2(128, 127)
+
+[node name="DraggeableObject_Spot" type="Node2D"]
+script = ExtResource("1_0sxb7")
+
+[node name="Spot" type="Area2D" parent="."]
+z_index = -1
+position = Vector2(515, 1057)
+input_pickable = false
+
+[node name="spot" type="CollisionShape2D" parent="Spot"]
+shape = SubResource("RectangleShape2D_ltpmd")
+
+[node name="SpriteSpot" type="Sprite2D" parent="Spot"]
+scale = Vector2(1.45313, 1.45313)
+texture = ExtResource("2_vws5j")
+
+[node name="Object" type="Sprite2D" parent="."]
+position = Vector2(145, 1062)
+texture = ExtResource("2_gud84")
+
+[node name="Button" type="Button" parent="Object"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -64.0
+offset_top = -64.0
+offset_right = -64.0
+offset_bottom = -64.0
+grow_horizontal = 2
+grow_vertical = 2
+action_mode = 0
+flat = true
+
+[node name="Area2D" type="Area2D" parent="Object"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Object/Area2D"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_j3xew")
+
+[connection signal="area_entered" from="Spot" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Spot" to="." method="_on_area_2d_area_exited"]
+[connection signal="pressed" from="Object/Button" to="." method="_on_button_pressed"]

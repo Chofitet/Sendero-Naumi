@@ -1,0 +1,8 @@
+#
+# Please do not edit anything in this script
+#
+# Just use the editor to change everything you want
+#
+extends Node
+
+var scenes: Dictionary = {"Drag_Drop_System_Check_Right":{"sections":[],"settings":{"All":{"subsection":"","visibility":true}},"value":"res://Scenes/Experiments/Drag_Drop_System_Check_Right.tscn"},"MainMenu":{"sections":[],"settings":{"All":{"subsection":"","visibility":true}},"value":"res://Scenes/MainMenu.tscn"},"Map_Screen":{"sections":[],"settings":{"All":{"subsection":"","visibility":true}},"value":"res://Scenes/Map_Screen.tscn"},"MiniGame_1":{"sections":[],"settings":{"All":{"subsection":"","visibility":true}},"value":"res://Scenes/MiniGame_1.tscn"},"MiniGame_2":{"sections":[],"settings":{"All":{"subsection":"","visibility":true}},"value":"res://Scenes/MiniGame_2.tscn"},"MiniGame_3":{"sections":[],"settings":{"All":{"subsection":"","visibility":true}},"value":"res://Scenes/MiniGame_3.tscn"},"Naumi_Screen":{"sections":[],"settings":{"All":{"subsection":"","visibility":true}},"value":"res://Scenes/Naumi_Screen.tscn"},"_ignore_list":["res://addons"],"_sections":["Character","Menu"],"btn_Change_Scene":{"sections":[],"settings":{"All":{"subsection":"","visibility":true}},"value":"res://Scenes/UI_Scenes/btn_Change_Scene.tscn"},"btn_mini_game":{"sections":[],"settings":{"All":{"subsection":"","visibility":true}},"value":"res://Scenes/UI_Scenes/btn_mini_game.tscn"},"draggeable_object_spot":{"sections":[],"settings":{"All":{"subsection":"","visibility":true}},"value":"res://Scenes/Experiments/draggeable_object_spot.tscn"},"prueba":{"sections":[],"settings":{"All":{"subsection":"","visibility":true}},"value":"res://Scenes/prueba.tscn"}}

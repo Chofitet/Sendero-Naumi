@@ -1,0 +1,100 @@
+[gd_scene load_steps=6 format=3 uid="uid://dqp5pf5e13jgq"]
+
+[ext_resource type="Script" path="res://_Scripts/MiniGame.gd" id="1_l4elq"]
+[ext_resource type="Texture2D" uid="uid://ewj5ip8ptbkk" path="res://Sprites/minigames/rock.png" id="2_v523y"]
+[ext_resource type="PackedScene" uid="uid://djhg7jvxtexyl" path="res://Scenes/UI_Scenes/btn_Change_Scene.tscn" id="3_rq5u7"]
+
+[sub_resource type="FontFile" id="FontFile_tn3ca"]
+cache/0/40/0/ascent = 0.0
+cache/0/40/0/descent = 0.0
+cache/0/40/0/underline_position = 0.0
+cache/0/40/0/underline_thickness = 0.0
+cache/0/40/0/scale = 1.0
+cache/0/40/0/kerning_overrides/40/0 = Vector2(0, 0)
+cache/0/40/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/16/0/kerning_overrides/40/0 = Vector2(0, 0)
+cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
+
+[sub_resource type="LabelSettings" id="LabelSettings_w5hye"]
+font = SubResource("FontFile_tn3ca")
+font_size = 40
+
+[node name="MiniGame_3" type="Node2D"]
+script = ExtResource("1_l4elq")
+isEndOfZone = true
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 720.0
+offset_bottom = 1284.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.502
+anchor_right = 0.502
+offset_left = -298.44
+offset_top = 63.0
+offset_right = 298.56
+offset_bottom = 455.0
+theme_override_constants/separation = 147
+alignment = 1
+
+[node name="Consigna" type="Label" parent="Control/VBoxContainer"]
+layout_mode = 2
+text = "¿Qué tipo de piedra es esta?"
+label_settings = SubResource("LabelSettings_w5hye")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Control/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_v523y")
+
+[node name="GridContainer" type="GridContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -328.0
+offset_top = -447.0
+offset_right = 341.0
+offset_bottom = -64.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/h_separation = 22
+theme_override_constants/v_separation = 22
+columns = 2
+
+[node name="Button2" type="Button" parent="Control/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.89
+
+[node name="Button3" type="Button" parent="Control/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.89
+
+[node name="Button4" type="Button" parent="Control/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.89
+
+[node name="ButtonChangeScene" parent="Control/GridContainer" instance=ExtResource("3_rq5u7")]
+layout_mode = 2
+text = "Rigth answere"
+NextScene = "Naumi_Screen"
+
+[connection signal="tree_exiting" from="." to="." method="_on_tree_exiting"]
