@@ -1,11 +1,14 @@
-[gd_scene load_steps=9 format=3 uid="uid://dsxxf6ulvqkwu"]
+[gd_scene load_steps=12 format=3 uid="uid://dsxxf6ulvqkwu"]
 
 [ext_resource type="Script" path="res://_Scripts/MiniGame.gd" id="1_fik5d"]
 [ext_resource type="PackedScene" uid="uid://djhg7jvxtexyl" path="res://Scenes/UI_Scenes/btn_Change_Scene.tscn" id="1_rks7k"]
 [ext_resource type="Script" path="res://Scenes/Experiments/Drag_Dop_Object.gd" id="3_r8l37"]
 [ext_resource type="Texture2D" uid="uid://s2snqxtygqpw" path="res://Sprites/inventory.png" id="4_41uet"]
+[ext_resource type="Script" path="res://Scenes/Experiments/Drag_Drop_Controller.gd" id="4_q04lp"]
 [ext_resource type="Texture2D" uid="uid://bgy7tv3s2j7ng" path="res://icon.svg" id="5_8m3yr"]
 [ext_resource type="PackedScene" uid="uid://cae1kil6euae5" path="res://Scenes/UI_Scenes/map_button.tscn" id="6_j3nql"]
+[ext_resource type="PackedScene" uid="uid://biluutecl1cej" path="res://Scenes/Experiments/skip_sceen.tscn" id="8_07efw"]
+[ext_resource type="PackedScene" uid="uid://jxmmmwp7xar3" path="res://Scenes/UI_Scenes/is_correct_label.tscn" id="9_ashix"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ltpmd"]
 size = Vector2(130, 128)
@@ -16,160 +19,7 @@ size = Vector2(128, 127)
 [node name="MiniGame_1" type="Node2D"]
 script = ExtResource("1_fik5d")
 
-[node name="DraggeableObject_Spot" type="Node2D" parent="."]
-script = ExtResource("3_r8l37")
-
-[node name="Spot" type="Area2D" parent="DraggeableObject_Spot"]
-z_index = -1
-position = Vector2(533, 817)
-input_pickable = false
-
-[node name="spot" type="CollisionShape2D" parent="DraggeableObject_Spot/Spot"]
-shape = SubResource("RectangleShape2D_ltpmd")
-
-[node name="SpriteSpot" type="Sprite2D" parent="DraggeableObject_Spot/Spot"]
-scale = Vector2(1.45313, 1.45313)
-texture = ExtResource("4_41uet")
-
-[node name="Object" type="Sprite2D" parent="DraggeableObject_Spot"]
-position = Vector2(145, 1062)
-texture = ExtResource("5_8m3yr")
-
-[node name="Button" type="Button" parent="DraggeableObject_Spot/Object"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -64.0
-offset_top = -64.0
-offset_right = -64.0
-offset_bottom = -64.0
-grow_horizontal = 2
-grow_vertical = 2
-action_mode = 0
-flat = true
-
-[node name="Area2D" type="Area2D" parent="DraggeableObject_Spot/Object"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DraggeableObject_Spot/Object/Area2D"]
-position = Vector2(0, -0.5)
-shape = SubResource("RectangleShape2D_j3xew")
-
-[node name="DraggeableObject_Spot2" type="Node2D" parent="."]
-position = Vector2(2, -265)
-script = ExtResource("3_r8l37")
-
-[node name="Spot" type="Area2D" parent="DraggeableObject_Spot2"]
-z_index = -1
-position = Vector2(531, 833)
-input_pickable = false
-
-[node name="spot" type="CollisionShape2D" parent="DraggeableObject_Spot2/Spot"]
-shape = SubResource("RectangleShape2D_ltpmd")
-
-[node name="SpriteSpot" type="Sprite2D" parent="DraggeableObject_Spot2/Spot"]
-scale = Vector2(1.45313, 1.45313)
-texture = ExtResource("4_41uet")
-
-[node name="Object" type="Sprite2D" parent="DraggeableObject_Spot2"]
-position = Vector2(145, 1062)
-texture = ExtResource("5_8m3yr")
-
-[node name="Button" type="Button" parent="DraggeableObject_Spot2/Object"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -64.0
-offset_top = -64.0
-offset_right = -64.0
-offset_bottom = -64.0
-grow_horizontal = 2
-grow_vertical = 2
-action_mode = 0
-flat = true
-
-[node name="Area2D" type="Area2D" parent="DraggeableObject_Spot2/Object"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DraggeableObject_Spot2/Object/Area2D"]
-position = Vector2(0, -0.5)
-shape = SubResource("RectangleShape2D_j3xew")
-
-[node name="DraggeableObject_Spot3" type="Node2D" parent="."]
-position = Vector2(-2, -516)
-script = ExtResource("3_r8l37")
-
-[node name="Spot" type="Area2D" parent="DraggeableObject_Spot3"]
-z_index = -1
-position = Vector2(533, 824)
-input_pickable = false
-
-[node name="spot" type="CollisionShape2D" parent="DraggeableObject_Spot3/Spot"]
-shape = SubResource("RectangleShape2D_ltpmd")
-
-[node name="SpriteSpot" type="Sprite2D" parent="DraggeableObject_Spot3/Spot"]
-scale = Vector2(1.45313, 1.45313)
-texture = ExtResource("4_41uet")
-
-[node name="Object" type="Sprite2D" parent="DraggeableObject_Spot3"]
-position = Vector2(145, 1062)
-texture = ExtResource("5_8m3yr")
-
-[node name="Button" type="Button" parent="DraggeableObject_Spot3/Object"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -64.0
-offset_top = -64.0
-offset_right = -64.0
-offset_bottom = -64.0
-grow_horizontal = 2
-grow_vertical = 2
-action_mode = 0
-flat = true
-
-[node name="Area2D" type="Area2D" parent="DraggeableObject_Spot3/Object"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DraggeableObject_Spot3/Object/Area2D"]
-position = Vector2(0, -0.5)
-shape = SubResource("RectangleShape2D_j3xew")
-
-[node name="DraggeableObject_Spot4" type="Node2D" parent="."]
-position = Vector2(2, -763)
-script = ExtResource("3_r8l37")
-
-[node name="Spot" type="Area2D" parent="DraggeableObject_Spot4"]
-z_index = -1
-position = Vector2(517, 1820)
-input_pickable = false
-
-[node name="spot" type="CollisionShape2D" parent="DraggeableObject_Spot4/Spot"]
-shape = SubResource("RectangleShape2D_ltpmd")
-
-[node name="SpriteSpot" type="Sprite2D" parent="DraggeableObject_Spot4/Spot"]
-scale = Vector2(1.45313, 1.45313)
-texture = ExtResource("4_41uet")
-
-[node name="Object" type="Sprite2D" parent="DraggeableObject_Spot4"]
-position = Vector2(145, 1062)
-texture = ExtResource("5_8m3yr")
-
-[node name="Button" type="Button" parent="DraggeableObject_Spot4/Object"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -64.0
-offset_top = -64.0
-offset_right = -64.0
-offset_bottom = -64.0
-grow_horizontal = 2
-grow_vertical = 2
-action_mode = 0
-flat = true
-
-[node name="Area2D" type="Area2D" parent="DraggeableObject_Spot4/Object"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DraggeableObject_Spot4/Object/Area2D"]
-position = Vector2(0, -0.5)
-shape = SubResource("RectangleShape2D_j3xew")
+[node name="Map_Button" parent="." instance=ExtResource("6_j3nql")]
 
 [node name="ButtonChangeScene" parent="." instance=ExtResource("1_rks7k")]
 visible = false
@@ -186,18 +36,187 @@ grow_horizontal = 1
 grow_vertical = 1
 NextScene = "Map_Screen"
 
-[node name="Map_Button" parent="." instance=ExtResource("6_j3nql")]
+[node name="DraggeableSystem" type="Node2D" parent="."]
+position = Vector2(0, -68)
+script = ExtResource("4_q04lp")
+
+[node name="DraggeableObject_Spot" type="Node2D" parent="DraggeableSystem"]
+position = Vector2(6, 102)
+script = ExtResource("3_r8l37")
+
+[node name="Spot" type="Area2D" parent="DraggeableSystem/DraggeableObject_Spot"]
+z_index = -1
+position = Vector2(533, 817)
+input_pickable = false
+
+[node name="spot" type="CollisionShape2D" parent="DraggeableSystem/DraggeableObject_Spot/Spot"]
+shape = SubResource("RectangleShape2D_ltpmd")
+
+[node name="SpriteSpot" type="Sprite2D" parent="DraggeableSystem/DraggeableObject_Spot/Spot"]
+scale = Vector2(1.45313, 1.45313)
+texture = ExtResource("4_41uet")
+
+[node name="Object" type="Sprite2D" parent="DraggeableSystem/DraggeableObject_Spot"]
+position = Vector2(145, 1062)
+texture = ExtResource("5_8m3yr")
+
+[node name="Button" type="Button" parent="DraggeableSystem/DraggeableObject_Spot/Object"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -64.0
+offset_top = -64.0
+offset_right = -64.0
+offset_bottom = -64.0
+grow_horizontal = 2
+grow_vertical = 2
+action_mode = 0
+flat = true
+
+[node name="Area2D" type="Area2D" parent="DraggeableSystem/DraggeableObject_Spot/Object"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DraggeableSystem/DraggeableObject_Spot/Object/Area2D"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_j3xew")
+
+[node name="DraggeableObject_Spot2" type="Node2D" parent="DraggeableSystem"]
+position = Vector2(8, -126)
+script = ExtResource("3_r8l37")
+
+[node name="Spot" type="Area2D" parent="DraggeableSystem/DraggeableObject_Spot2"]
+z_index = -1
+position = Vector2(531, 833)
+input_pickable = false
+
+[node name="spot" type="CollisionShape2D" parent="DraggeableSystem/DraggeableObject_Spot2/Spot"]
+shape = SubResource("RectangleShape2D_ltpmd")
+
+[node name="SpriteSpot" type="Sprite2D" parent="DraggeableSystem/DraggeableObject_Spot2/Spot"]
+scale = Vector2(1.45313, 1.45313)
+texture = ExtResource("4_41uet")
+
+[node name="Object" type="Sprite2D" parent="DraggeableSystem/DraggeableObject_Spot2"]
+position = Vector2(145, 1062)
+texture = ExtResource("5_8m3yr")
+
+[node name="Button" type="Button" parent="DraggeableSystem/DraggeableObject_Spot2/Object"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -64.0
+offset_top = -64.0
+offset_right = -64.0
+offset_bottom = -64.0
+grow_horizontal = 2
+grow_vertical = 2
+action_mode = 0
+flat = true
+
+[node name="Area2D" type="Area2D" parent="DraggeableSystem/DraggeableObject_Spot2/Object"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DraggeableSystem/DraggeableObject_Spot2/Object/Area2D"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_j3xew")
+
+[node name="DraggeableObject_Spot3" type="Node2D" parent="DraggeableSystem"]
+position = Vector2(4, -320)
+script = ExtResource("3_r8l37")
+
+[node name="Spot" type="Area2D" parent="DraggeableSystem/DraggeableObject_Spot3"]
+z_index = -1
+position = Vector2(533, 824)
+input_pickable = false
+
+[node name="spot" type="CollisionShape2D" parent="DraggeableSystem/DraggeableObject_Spot3/Spot"]
+shape = SubResource("RectangleShape2D_ltpmd")
+
+[node name="SpriteSpot" type="Sprite2D" parent="DraggeableSystem/DraggeableObject_Spot3/Spot"]
+scale = Vector2(1.45313, 1.45313)
+texture = ExtResource("4_41uet")
+
+[node name="Object" type="Sprite2D" parent="DraggeableSystem/DraggeableObject_Spot3"]
+position = Vector2(145, 1062)
+texture = ExtResource("5_8m3yr")
+
+[node name="Button" type="Button" parent="DraggeableSystem/DraggeableObject_Spot3/Object"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -64.0
+offset_top = -64.0
+offset_right = -64.0
+offset_bottom = -64.0
+grow_horizontal = 2
+grow_vertical = 2
+action_mode = 0
+flat = true
+
+[node name="Area2D" type="Area2D" parent="DraggeableSystem/DraggeableObject_Spot3/Object"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DraggeableSystem/DraggeableObject_Spot3/Object/Area2D"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_j3xew")
+
+[node name="DraggeableObject_Spot4" type="Node2D" parent="DraggeableSystem"]
+position = Vector2(8, -557)
+script = ExtResource("3_r8l37")
+
+[node name="Spot" type="Area2D" parent="DraggeableSystem/DraggeableObject_Spot4"]
+z_index = -1
+position = Vector2(517, 1696)
+input_pickable = false
+
+[node name="spot" type="CollisionShape2D" parent="DraggeableSystem/DraggeableObject_Spot4/Spot"]
+shape = SubResource("RectangleShape2D_ltpmd")
+
+[node name="SpriteSpot" type="Sprite2D" parent="DraggeableSystem/DraggeableObject_Spot4/Spot"]
+scale = Vector2(1.45313, 1.45313)
+texture = ExtResource("4_41uet")
+
+[node name="Object" type="Sprite2D" parent="DraggeableSystem/DraggeableObject_Spot4"]
+position = Vector2(145, 1062)
+texture = ExtResource("5_8m3yr")
+
+[node name="Button" type="Button" parent="DraggeableSystem/DraggeableObject_Spot4/Object"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -64.0
+offset_top = -64.0
+offset_right = -64.0
+offset_bottom = -64.0
+grow_horizontal = 2
+grow_vertical = 2
+action_mode = 0
+flat = true
+
+[node name="Area2D" type="Area2D" parent="DraggeableSystem/DraggeableObject_Spot4/Object"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DraggeableSystem/DraggeableObject_Spot4/Object/Area2D"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_j3xew")
+
+[node name="SkipSceen" parent="." instance=ExtResource("8_07efw")]
+wait_time = 3.0
+NextScene = "Map_Screen"
+fade_time = 0.5
+smoothness = 0.1
+
+[node name="isCorrectLabel" parent="." instance=ExtResource("9_ashix")]
 
 [connection signal="tree_exiting" from="." to="." method="_on_tree_exiting"]
-[connection signal="area_entered" from="DraggeableObject_Spot/Spot" to="DraggeableObject_Spot" method="_on_area_2d_area_entered" flags=18]
-[connection signal="area_exited" from="DraggeableObject_Spot/Spot" to="DraggeableObject_Spot" method="_on_area_2d_area_exited" flags=18]
-[connection signal="pressed" from="DraggeableObject_Spot/Object/Button" to="DraggeableObject_Spot" method="_on_button_pressed" flags=18]
-[connection signal="area_entered" from="DraggeableObject_Spot2/Spot" to="DraggeableObject_Spot2" method="_on_area_2d_area_entered" flags=18]
-[connection signal="area_exited" from="DraggeableObject_Spot2/Spot" to="DraggeableObject_Spot2" method="_on_area_2d_area_exited" flags=18]
-[connection signal="pressed" from="DraggeableObject_Spot2/Object/Button" to="DraggeableObject_Spot2" method="_on_button_pressed" flags=18]
-[connection signal="area_entered" from="DraggeableObject_Spot3/Spot" to="DraggeableObject_Spot3" method="_on_area_2d_area_entered" flags=18]
-[connection signal="area_exited" from="DraggeableObject_Spot3/Spot" to="DraggeableObject_Spot3" method="_on_area_2d_area_exited" flags=18]
-[connection signal="pressed" from="DraggeableObject_Spot3/Object/Button" to="DraggeableObject_Spot3" method="_on_button_pressed" flags=18]
-[connection signal="area_entered" from="DraggeableObject_Spot4/Spot" to="DraggeableObject_Spot4" method="_on_area_2d_area_entered" flags=18]
-[connection signal="area_exited" from="DraggeableObject_Spot4/Spot" to="DraggeableObject_Spot4" method="_on_area_2d_area_exited" flags=18]
-[connection signal="pressed" from="DraggeableObject_Spot4/Object/Button" to="DraggeableObject_Spot4" method="_on_button_pressed" flags=18]
+[connection signal="isCorrect" from="DraggeableSystem" to="." method="_on_draggeable_system_is_correct"]
+[connection signal="isCorrect" from="DraggeableSystem" to="SkipSceen" method="_on_draggeable_system_is_correct"]
+[connection signal="isCorrect" from="DraggeableSystem" to="isCorrectLabel" method="_on_draggeable_system_is_correct"]
+[connection signal="area_entered" from="DraggeableSystem/DraggeableObject_Spot/Spot" to="DraggeableSystem/DraggeableObject_Spot" method="_on_area_2d_area_entered" flags=18]
+[connection signal="area_exited" from="DraggeableSystem/DraggeableObject_Spot/Spot" to="DraggeableSystem/DraggeableObject_Spot" method="_on_area_2d_area_exited" flags=18]
+[connection signal="pressed" from="DraggeableSystem/DraggeableObject_Spot/Object/Button" to="DraggeableSystem/DraggeableObject_Spot" method="_on_button_pressed" flags=18]
+[connection signal="area_entered" from="DraggeableSystem/DraggeableObject_Spot2/Spot" to="DraggeableSystem/DraggeableObject_Spot2" method="_on_area_2d_area_entered" flags=18]
+[connection signal="area_exited" from="DraggeableSystem/DraggeableObject_Spot2/Spot" to="DraggeableSystem/DraggeableObject_Spot2" method="_on_area_2d_area_exited" flags=18]
+[connection signal="pressed" from="DraggeableSystem/DraggeableObject_Spot2/Object/Button" to="DraggeableSystem/DraggeableObject_Spot2" method="_on_button_pressed" flags=18]
+[connection signal="area_entered" from="DraggeableSystem/DraggeableObject_Spot3/Spot" to="DraggeableSystem/DraggeableObject_Spot3" method="_on_area_2d_area_entered" flags=18]
+[connection signal="area_exited" from="DraggeableSystem/DraggeableObject_Spot3/Spot" to="DraggeableSystem/DraggeableObject_Spot3" method="_on_area_2d_area_exited" flags=18]
+[connection signal="pressed" from="DraggeableSystem/DraggeableObject_Spot3/Object/Button" to="DraggeableSystem/DraggeableObject_Spot3" method="_on_button_pressed" flags=18]
+[connection signal="area_entered" from="DraggeableSystem/DraggeableObject_Spot4/Spot" to="DraggeableSystem/DraggeableObject_Spot4" method="_on_area_2d_area_entered" flags=18]
+[connection signal="area_exited" from="DraggeableSystem/DraggeableObject_Spot4/Spot" to="DraggeableSystem/DraggeableObject_Spot4" method="_on_area_2d_area_exited" flags=18]
+[connection signal="pressed" from="DraggeableSystem/DraggeableObject_Spot4/Object/Button" to="DraggeableSystem/DraggeableObject_Spot4" method="_on_button_pressed" flags=18]

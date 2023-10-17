@@ -8,13 +8,14 @@ func _ready():
 		NextScene = "Naumi_Screen"
 
 func UnlockNextMinigame():
-	get_tree().change_scene_to_file("res://Scenes/" + NextScene + ".tscn")
 	PlayerVariables.IncreaseMinigameStage()
 
-func _on_tree_exiting():
+
+func GameComplete():
 	if isEndOfZone :
 		PlayerVariables.IncreaseNaumiLevel()
 	UnlockNextMinigame()
 
 
-
+func _on_draggeable_system_is_correct():
+	GameComplete()

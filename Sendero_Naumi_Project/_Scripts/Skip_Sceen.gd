@@ -29,3 +29,7 @@ func _on_timeout():
 func _on_tree_entered():
 	if isAutomatic :
 		StartTimer()
+
+
+func _on_draggeable_system_is_correct():
+	StartTimer()

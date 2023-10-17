@@ -4,6 +4,7 @@ var pick_up = false
 var Sprite 
 var is_in_spot = false
 var initial_spot
+var isInPosition
 
 func _ready():
 	Sprite = get_node("Object")
@@ -22,12 +23,14 @@ func _on_button_pressed():
 	pick_up = false
 	if (is_in_spot):
 		Sprite.position = get_node("Spot").position
-	else: Sprite.position = initial_spot
+		isInPosition = true
+	else: 
+		Sprite.position = initial_spot
+		isInPosition = false
+	get_parent().check_if_all_true()
 
 func _on_area_2d_area_entered(area):
 	is_in_spot = true
-	print("collision_enter")
 
 func _on_area_2d_area_exited(area):
 	is_in_spot = false
-	print("collision_exit")

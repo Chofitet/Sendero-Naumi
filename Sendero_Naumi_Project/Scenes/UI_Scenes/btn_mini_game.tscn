@@ -8,10 +8,10 @@ script/source = "extends Sprite2D
 @export var LevelNumber : int
 
 func _on_tree_entered():
+	get_node(\"ButtonChangeScene\").disabled = true
 	if PlayerVariables.MinigameStage == LevelNumber:
-		visible = true
+		get_node(\"ButtonChangeScene\").disabled = false
 	elif PlayerVariables.MinigameStage > LevelNumber:
-		visible = true
 		texture = load(\"res://Sprites/argentina_Flag.png\")
 		get_node(\"ButtonChangeScene\").disabled = true
 "

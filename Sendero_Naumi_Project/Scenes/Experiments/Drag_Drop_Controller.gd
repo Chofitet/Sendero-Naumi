@@ -1,8 +1,12 @@
 extends Node2D
 var spots
 signal isCorrect
+@export var conteiner : String 
 func _ready():
-	spots = get_node("Spots")
+	spots = self
+	if conteiner != "" :
+		spots = get_node(conteiner)
+	
 
 func check_if_all_true():
 	var i = 0
