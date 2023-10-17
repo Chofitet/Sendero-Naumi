@@ -1,0 +1,72 @@
+[gd_scene load_steps=3 format=3 uid="uid://b3s1qayrfgkj6"]
+
+[ext_resource type="PackedScene" uid="uid://djhg7jvxtexyl" path="res://Scenes/UI_Scenes/btn_Change_Scene.tscn" id="1_fdojn"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_o461v"]
+font_size = 60
+font_color = Color(0.00392157, 0, 0, 1)
+
+[node name="InMuseum" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.619608, 0.956863, 0.996078, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 80
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/separation = 600
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "¿Estas en el museo?"
+label_settings = SubResource("LabelSettings_o461v")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/margin_left = 80
+theme_override_constants/margin_right = 80
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_constants/separation = 60
+
+[node name="ButtonChangeScene" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" instance=ExtResource("1_fdojn")]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "SI"
+NextScene = "AdventureBegins"
+
+[node name="ButtonChangeScene2" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" instance=ExtResource("1_fdojn")]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "NO"
+NextScene = "NotInMuseum"

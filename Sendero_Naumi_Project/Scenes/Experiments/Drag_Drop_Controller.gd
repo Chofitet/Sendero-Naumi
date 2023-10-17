@@ -15,4 +15,5 @@ func check_if_all_true():
 			i += 1
 	
 	if (i == spots.get_child_count()):
+		
 		isCorrect.emit()

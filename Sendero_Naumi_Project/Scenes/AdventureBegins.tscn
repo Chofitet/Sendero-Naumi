@@ -1,0 +1,50 @@
+[gd_scene load_steps=2 format=3 uid="uid://o12fb1rdrhqt"]
+
+[ext_resource type="PackedScene" uid="uid://biluutecl1cej" path="res://Scenes/Experiments/skip_sceen.tscn" id="1_o0fg5"]
+
+[node name="AdventureBegins" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.678431, 0.913725, 0.956863, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/CenterContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 80
+text = "COMENZEMOS LA AVENTURA"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="SkipSceen" parent="." instance=ExtResource("1_o0fg5")]
+wait_time = 3.0
+isAutomatic = true
+NextScene = "Map_Screen"
+texture = "paws_pattern"

@@ -1,12 +1,28 @@
-[gd_scene load_steps=5 format=3 uid="uid://bgccn1b62jxul"]
+[gd_scene load_steps=15 format=3 uid="uid://bgccn1b62jxul"]
 
 [ext_resource type="Script" path="res://_Scripts/MiniGame.gd" id="1_xj0lt"]
 [ext_resource type="Script" path="res://Scenes/CheckComplete.gd" id="2_d0e50"]
 [ext_resource type="PackedScene" uid="uid://djhg7jvxtexyl" path="res://Scenes/UI_Scenes/btn_Change_Scene.tscn" id="2_dhgtb"]
-[ext_resource type="PackedScene" uid="uid://g62x51t6jngw" path="res://Scenes/Experiments/Drag_Drop_System_Check_Right.tscn" id="3_jnqyl"]
+[ext_resource type="Texture2D" uid="uid://bd8laou7vtqrh" path="res://Sprites/mamut_puzzle.png" id="4_3avh8"]
+[ext_resource type="Script" path="res://Scenes/Experiments/Drag_Drop_Controller.gd" id="5_68h26"]
+[ext_resource type="Texture2D" uid="uid://bbgv23y87ix4v" path="res://Sprites/Hueso3.png" id="6_flve7"]
+[ext_resource type="Script" path="res://Scenes/Experiments/Drag_Drop_System_Check_Right.gd" id="7_tkcvl"]
+[ext_resource type="Texture2D" uid="uid://bntbjuv4otxvl" path="res://Sprites/hueso2.png" id="8_gaq7f"]
+[ext_resource type="Script" path="res://Scenes/Experiments/Spot.gd" id="8_ggg02"]
+[ext_resource type="Texture2D" uid="uid://s2snqxtygqpw" path="res://Sprites/inventory.png" id="9_2k8q2"]
+[ext_resource type="Texture2D" uid="uid://paa7vt7ew1n3" path="res://Sprites/Hueso1.png" id="9_5k8cr"]
+[ext_resource type="PackedScene" uid="uid://cae1kil6euae5" path="res://Scenes/UI_Scenes/map_button.tscn" id="12_0ig7r"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j3xew"]
+size = Vector2(132.848, 85.7434)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ltpmd"]
+size = Vector2(96, 86)
 
 [node name="MiniGame_1" type="Node2D"]
 script = ExtResource("1_xj0lt")
+
+[node name="Map_Button" parent="." instance=ExtResource("12_0ig7r")]
 
 [node name="LevelComplete" type="Node2D" parent="."]
 script = ExtResource("2_d0e50")
@@ -14,8 +30,154 @@ script = ExtResource("2_d0e50")
 [node name="Control" type="Control" parent="LevelComplete"]
 layout_mode = 3
 anchors_preset = 0
+offset_top = 125.0
 offset_right = 726.0
-offset_bottom = 1275.0
+offset_bottom = 1289.0
+
+[node name="CenterContainer" type="CenterContainer" parent="LevelComplete/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="DraggeableObject_Spot_Check_Right" type="Node2D" parent="LevelComplete/Control/CenterContainer"]
+position = Vector2(19.1119, 260)
+scale = Vector2(1, 1)
+script = ExtResource("5_68h26")
+
+[node name="Object" type="Sprite2D" parent="LevelComplete/Control/CenterContainer/DraggeableObject_Spot_Check_Right"]
+position = Vector2(584.999, 688.998)
+scale = Vector2(0.887322, 0.857141)
+texture = ExtResource("6_flve7")
+script = ExtResource("7_tkcvl")
+object_name = "colmillo"
+
+[node name="Area2D" type="Area2D" parent="LevelComplete/Control/CenterContainer/DraggeableObject_Spot_Check_Right/Object"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelComplete/Control/CenterContainer/DraggeableObject_Spot_Check_Right/Object/Area2D"]
+position = Vector2(0, -0.5)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_j3xew")
+
+[node name="Button" type="Button" parent="LevelComplete/Control/CenterContainer/DraggeableObject_Spot_Check_Right/Object"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -71.0002
+offset_top = -47.8333
+offset_right = -71.0002
+offset_bottom = -47.8333
+grow_horizontal = 2
+grow_vertical = 2
+action_mode = 0
+flat = true
+
+[node name="Object2" type="Sprite2D" parent="LevelComplete/Control/CenterContainer/DraggeableObject_Spot_Check_Right"]
+position = Vector2(357.999, 679.998)
+scale = Vector2(0.948451, 1.01449)
+texture = ExtResource("8_gaq7f")
+script = ExtResource("7_tkcvl")
+object_name = "CRANEO"
+
+[node name="Area2D" type="Area2D" parent="LevelComplete/Control/CenterContainer/DraggeableObject_Spot_Check_Right/Object2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelComplete/Control/CenterContainer/DraggeableObject_Spot_Check_Right/Object2/Area2D"]
+position = Vector2(0, -0.5)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_j3xew")
+
+[node name="Button" type="Button" parent="LevelComplete/Control/CenterContainer/DraggeableObject_Spot_Check_Right/Object2"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -66.4239
+offset_top = -42.3859
+offset_right = -66.4239
+offset_bottom = -42.3859
+grow_horizontal = 2
+grow_vertical = 2
+action_mode = 0
+flat = true
+
+[node name="Object3" type="Sprite2D" parent="LevelComplete/Control/CenterContainer/DraggeableObject_Spot_Check_Right"]
+position = Vector2(128.999, 674.998)
+scale = Vector2(0.826921, 0.925529)
+texture = ExtResource("9_5k8cr")
+script = ExtResource("7_tkcvl")
+object_name = "TIBIA"
+
+[node name="Area2D" type="Area2D" parent="LevelComplete/Control/CenterContainer/DraggeableObject_Spot_Check_Right/Object3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelComplete/Control/CenterContainer/DraggeableObject_Spot_Check_Right/Object3/Area2D"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_j3xew")
+
+[node name="Button" type="Button" parent="LevelComplete/Control/CenterContainer/DraggeableObject_Spot_Check_Right/Object3"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -50.7907
+offset_top = -94.0001
+offset_right = -50.7907
+offset_bottom = -94.0001
+grow_horizontal = 2
+grow_vertical = 2
+action_mode = 0
+flat = true
+
+[node name="Spots" type="Node2D" parent="LevelComplete/Control/CenterContainer/DraggeableObject_Spot_Check_Right"]
+
+[node name="Spot" type="Area2D" parent="LevelComplete/Control/CenterContainer/DraggeableObject_Spot_Check_Right/Spots"]
+modulate = Color(1, 1, 1, 0.223529)
+z_index = -1
+position = Vector2(374, 216)
+input_pickable = false
+script = ExtResource("8_ggg02")
+spot_name = "TIBIA"
+
+[node name="spot" type="CollisionShape2D" parent="LevelComplete/Control/CenterContainer/DraggeableObject_Spot_Check_Right/Spots/Spot"]
+shape = SubResource("RectangleShape2D_ltpmd")
+
+[node name="SpriteSpot" type="Sprite2D" parent="LevelComplete/Control/CenterContainer/DraggeableObject_Spot_Check_Right/Spots/Spot"]
+texture = ExtResource("9_2k8q2")
+
+[node name="Spot2" type="Area2D" parent="LevelComplete/Control/CenterContainer/DraggeableObject_Spot_Check_Right/Spots"]
+modulate = Color(1, 1, 1, 0.223529)
+z_index = -1
+position = Vector2(654, 408)
+input_pickable = false
+script = ExtResource("8_ggg02")
+spot_name = "colmillo"
+
+[node name="spot" type="CollisionShape2D" parent="LevelComplete/Control/CenterContainer/DraggeableObject_Spot_Check_Right/Spots/Spot2"]
+shape = SubResource("RectangleShape2D_ltpmd")
+
+[node name="SpriteSpot" type="Sprite2D" parent="LevelComplete/Control/CenterContainer/DraggeableObject_Spot_Check_Right/Spots/Spot2"]
+scale = Vector2(0.954522, 0.718763)
+texture = ExtResource("9_2k8q2")
+
+[node name="Spot3" type="Area2D" parent="LevelComplete/Control/CenterContainer/DraggeableObject_Spot_Check_Right/Spots"]
+modulate = Color(1, 1, 1, 0.223529)
+z_index = -1
+position = Vector2(444, 58.9999)
+input_pickable = false
+script = ExtResource("8_ggg02")
+spot_name = "CRANEO"
+
+[node name="spot" type="CollisionShape2D" parent="LevelComplete/Control/CenterContainer/DraggeableObject_Spot_Check_Right/Spots/Spot3"]
+shape = SubResource("RectangleShape2D_ltpmd")
+
+[node name="SpriteSpot" type="Sprite2D" parent="LevelComplete/Control/CenterContainer/DraggeableObject_Spot_Check_Right/Spots/Spot3"]
+scale = Vector2(0.969697, 1.01563)
+texture = ExtResource("9_2k8q2")
+
+[node name="puzzle_mamut" type="Sprite2D" parent="LevelComplete/Control/CenterContainer"]
+z_index = -2
+position = Vector2(369.112, 470)
+scale = Vector2(0.926923, 0.926924)
+texture = ExtResource("4_3avh8")
 
 [node name="ButtonChangeScene" parent="LevelComplete/Control" instance=ExtResource("2_dhgtb")]
 visible = false
@@ -28,7 +190,14 @@ text = "Game Complete"
 NextScene = "Map_Screen"
 texture = "Splashed_dirt"
 
-[node name="DraggeableObject_Spot_Check_Right" parent="LevelComplete" instance=ExtResource("3_jnqyl")]
-
 [connection signal="tree_exiting" from="." to="." method="_on_tree_exiting"]
-[connection signal="isCorrect" from="LevelComplete/DraggeableObject_Spot_Check_Right" to="LevelComplete" method="_on_draggeable_object_spot_check_right_is_correct"]
+[connection signal="isCorrect" from="LevelComplete/Control/CenterContainer/DraggeableObject_Spot_Check_Right" to="LevelComplete" method="_on_draggeable_object_spot_check_right_is_correct"]
+[connection signal="pressed" from="LevelComplete/Control/CenterContainer/DraggeableObject_Spot_Check_Right/Object/Button" to="LevelComplete/Control/CenterContainer/DraggeableObject_Spot_Check_Right/Object" method="_on_button_pressed" flags=18]
+[connection signal="pressed" from="LevelComplete/Control/CenterContainer/DraggeableObject_Spot_Check_Right/Object2/Button" to="LevelComplete/Control/CenterContainer/DraggeableObject_Spot_Check_Right/Object2" method="_on_button_pressed" flags=18]
+[connection signal="pressed" from="LevelComplete/Control/CenterContainer/DraggeableObject_Spot_Check_Right/Object3/Button" to="LevelComplete/Control/CenterContainer/DraggeableObject_Spot_Check_Right/Object3" method="_on_button_pressed" flags=18]
+[connection signal="area_entered" from="LevelComplete/Control/CenterContainer/DraggeableObject_Spot_Check_Right/Spots/Spot" to="LevelComplete/Control/CenterContainer/DraggeableObject_Spot_Check_Right/Spots/Spot" method="_on_area_entered" flags=18]
+[connection signal="area_exited" from="LevelComplete/Control/CenterContainer/DraggeableObject_Spot_Check_Right/Spots/Spot" to="LevelComplete/Control/CenterContainer/DraggeableObject_Spot_Check_Right/Spots/Spot" method="_on_area_exited" flags=18]
+[connection signal="area_entered" from="LevelComplete/Control/CenterContainer/DraggeableObject_Spot_Check_Right/Spots/Spot2" to="LevelComplete/Control/CenterContainer/DraggeableObject_Spot_Check_Right/Spots/Spot2" method="_on_area_entered" flags=18]
+[connection signal="area_exited" from="LevelComplete/Control/CenterContainer/DraggeableObject_Spot_Check_Right/Spots/Spot2" to="LevelComplete/Control/CenterContainer/DraggeableObject_Spot_Check_Right/Spots/Spot2" method="_on_area_exited" flags=18]
+[connection signal="area_entered" from="LevelComplete/Control/CenterContainer/DraggeableObject_Spot_Check_Right/Spots/Spot3" to="LevelComplete/Control/CenterContainer/DraggeableObject_Spot_Check_Right/Spots/Spot3" method="_on_area_entered" flags=18]
+[connection signal="area_exited" from="LevelComplete/Control/CenterContainer/DraggeableObject_Spot_Check_Right/Spots/Spot3" to="LevelComplete/Control/CenterContainer/DraggeableObject_Spot_Check_Right/Spots/Spot3" method="_on_area_exited" flags=18]
