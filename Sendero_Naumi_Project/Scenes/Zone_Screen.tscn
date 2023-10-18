@@ -1,0 +1,87 @@
+[gd_scene load_steps=4 format=3 uid="uid://dtp8qyr0epcqy"]
+
+[ext_resource type="Texture2D" uid="uid://doeqcc5pbkg0p" path="res://Sprites/RockBones.png" id="1_x5m1o"]
+[ext_resource type="PackedScene" uid="uid://bc062m81xnnpx" path="res://Scenes/UI_Scenes/btn_mini_game.tscn" id="3_i61xt"]
+[ext_resource type="PackedScene" uid="uid://djhg7jvxtexyl" path="res://Scenes/UI_Scenes/btn_Change_Scene.tscn" id="4_7wkvw"]
+
+[node name="Zone_Screen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -360.0
+offset_top = -290.0
+offset_right = 360.0
+offset_bottom = 290.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_x5m1o")
+expand_mode = 1
+
+[node name="In_Zone" type="Node2D" parent="TextureRect"]
+position = Vector2(360, 321.08)
+scale = Vector2(1.88435, 1.88435)
+
+[node name="btn_MiniGame1" parent="TextureRect/In_Zone" instance=ExtResource("3_i61xt")]
+position = Vector2(-105.607, 9.51001)
+
+[node name="ButtonChangeScene" parent="TextureRect/In_Zone/btn_MiniGame1" index="0"]
+NextScene = "MiniGame_1"
+fade_time = 1.0
+texture = "paws_pattern"
+is_inverted = true
+color = Color(0.462745, 0.815686, 0.619608, 1)
+
+[node name="btn_MiniGame2" parent="TextureRect/In_Zone" instance=ExtResource("3_i61xt")]
+position = Vector2(-14.3285, -35.5986)
+LevelNumber = 2
+
+[node name="ButtonChangeScene" parent="TextureRect/In_Zone/btn_MiniGame2" index="0"]
+NextScene = "MiniGame_2"
+fade_time = 1.0
+texture = "paws_pattern"
+is_inverted = true
+color = Color(0.462745, 0.815686, 0.619608, 1)
+
+[node name="btn_MiniGame3" parent="TextureRect/In_Zone" instance=ExtResource("3_i61xt")]
+position = Vector2(84.3793, -41.4363)
+LevelNumber = 3
+
+[node name="ButtonChangeScene" parent="TextureRect/In_Zone/btn_MiniGame3" index="0"]
+NextScene = "MiniGame_3"
+fade_time = 1.0
+texture = "paws_pattern"
+is_inverted = true
+color = Color(0.462745, 0.815686, 0.619608, 1)
+
+[node name="ButtonChangeScene" parent="." instance=ExtResource("4_7wkvw")]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -337.0
+offset_top = -140.0
+offset_right = -33.0
+offset_bottom = -43.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 45
+text = "BACK"
+NextScene = "Map_Screen"
+
+[connection signal="tree_entered" from="TextureRect/In_Zone/btn_MiniGame1" to="TextureRect/In_Zone/btn_MiniGame1" method="_on_tree_entered" flags=18]
+[connection signal="tree_entered" from="TextureRect/In_Zone/btn_MiniGame2" to="TextureRect/In_Zone/btn_MiniGame2" method="_on_tree_entered" flags=18]
+[connection signal="tree_entered" from="TextureRect/In_Zone/btn_MiniGame3" to="TextureRect/In_Zone/btn_MiniGame3" method="_on_tree_entered" flags=18]
+
+[editable path="TextureRect/In_Zone/btn_MiniGame1"]
+[editable path="TextureRect/In_Zone/btn_MiniGame2"]
+[editable path="TextureRect/In_Zone/btn_MiniGame3"]
