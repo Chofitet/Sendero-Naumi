@@ -1,0 +1,97 @@
+[gd_scene load_steps=7 format=3 uid="uid://64xstt2k74wh"]
+
+[ext_resource type="Texture2D" uid="uid://co7pox44vqa08" path="res://Sprites/Naumi/Naumi_0.png" id="1_ey2pk"]
+[ext_resource type="Script" path="res://_Scripts/Naumi_Level_Up.gd" id="2_1kawq"]
+[ext_resource type="PackedScene" uid="uid://djhg7jvxtexyl" path="res://Scenes/UI_Scenes/btn_Change_Scene.tscn" id="3_bksph"]
+
+[sub_resource type="Animation" id="Animation_sdm5y"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_hw44x"]
+resource_name = "to_level_up"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6, 0.8, 1, 1.2, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.349066, 0.0, 0.349066, 0.0, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2i43d"]
+_data = {
+"RESET": SubResource("Animation_sdm5y"),
+"to_level_up": SubResource("Animation_hw44x")
+}
+
+[node name="Naumi_Level_Up" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.65098, 0.784314, 1, 1)
+
+[node name="Naumi" type="Sprite2D" parent="."]
+position = Vector2(361, 696)
+scale = Vector2(1.62393, 1.62393)
+texture = ExtResource("1_ey2pk")
+script = ExtResource("2_1kawq")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Naumi"]
+libraries = {
+"": SubResource("AnimationLibrary_2i43d")
+}
+
+[node name="Button" type="Button" parent="Naumi"]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.524
+anchor_right = 0.5
+anchor_bottom = 0.524
+offset_left = -132.5
+offset_top = -152.504
+offset_right = 19.5
+offset_bottom = 0.496002
+flat = true
+
+[node name="ButtonChangeContinue" parent="Naumi" instance=ExtResource("3_bksph")]
+visible = false
+offset_left = -179.811
+offset_top = 6.7157
+offset_right = 65.1895
+offset_bottom = 88.7158
+theme_override_font_sizes/font_size = 40
+text = "CONTINUAR"
+NextScene = "Map_Screen"
+
+[connection signal="tree_entered" from="Naumi" to="Naumi" method="_on_tree_entered"]
+[connection signal="tree_exited" from="Naumi" to="Naumi" method="_on_tree_exited"]
+[connection signal="pressed" from="Naumi/Button" to="Naumi" method="_on_button_pressed"]

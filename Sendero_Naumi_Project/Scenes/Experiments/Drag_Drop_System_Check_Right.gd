@@ -25,7 +25,8 @@ func _on_button_pressed():
 		ref_spot.set_deferred("disabled", false)
 	await  mouse_realese
 	pick_up = false
-	get_parent().check_if_all_true()
+	if object_name != "":
+		get_parent().check_if_all_true()
 	if (!is_in_spot):
 		position = initial_spot
 		ref_spot == null

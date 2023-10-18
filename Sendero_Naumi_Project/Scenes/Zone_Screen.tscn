@@ -12,6 +12,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.65098, 0.784314, 1, 1)
+
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 8
@@ -34,6 +43,7 @@ scale = Vector2(1.88435, 1.88435)
 
 [node name="btn_MiniGame1" parent="TextureRect/In_Zone" instance=ExtResource("3_i61xt")]
 position = Vector2(-105.607, 9.51001)
+scale = Vector2(0.128527, 0.112954)
 
 [node name="ButtonChangeScene" parent="TextureRect/In_Zone/btn_MiniGame1" index="0"]
 NextScene = "MiniGame_1"
@@ -44,6 +54,7 @@ color = Color(0.462745, 0.815686, 0.619608, 1)
 
 [node name="btn_MiniGame2" parent="TextureRect/In_Zone" instance=ExtResource("3_i61xt")]
 position = Vector2(-14.3285, -35.5986)
+scale = Vector2(0.134745, 0.118419)
 LevelNumber = 2
 
 [node name="ButtonChangeScene" parent="TextureRect/In_Zone/btn_MiniGame2" index="0"]
@@ -55,6 +66,7 @@ color = Color(0.462745, 0.815686, 0.619608, 1)
 
 [node name="btn_MiniGame3" parent="TextureRect/In_Zone" instance=ExtResource("3_i61xt")]
 position = Vector2(84.3793, -41.4363)
+scale = Vector2(0.13889, 0.122062)
 LevelNumber = 3
 
 [node name="ButtonChangeScene" parent="TextureRect/In_Zone/btn_MiniGame3" index="0"]
@@ -66,16 +78,20 @@ color = Color(0.462745, 0.815686, 0.619608, 1)
 
 [node name="ButtonChangeScene" parent="." instance=ExtResource("4_7wkvw")]
 layout_mode = 1
-anchors_preset = 3
+anchors_preset = 1
 anchor_left = 1.0
+anchor_top = 0.0
 anchor_right = 1.0
-offset_left = -337.0
-offset_top = -140.0
-offset_right = -33.0
-offset_bottom = -43.0
+anchor_bottom = 0.0
+offset_left = -260.0
+offset_top = 31.0
+offset_right = -39.0
+offset_bottom = 105.0
 grow_horizontal = 0
-theme_override_font_sizes/font_size = 45
-text = "BACK"
+grow_vertical = 1
+theme_override_font_sizes/font_size = 30
+text = "VOLVER
+"
 NextScene = "Map_Screen"
 
 [connection signal="tree_entered" from="TextureRect/In_Zone/btn_MiniGame1" to="TextureRect/In_Zone/btn_MiniGame1" method="_on_tree_entered" flags=18]

@@ -1,0 +1,208 @@
+[gd_scene load_steps=8 format=3 uid="uid://ci72iamxonb4g"]
+
+[ext_resource type="Texture2D" uid="uid://doeqcc5pbkg0p" path="res://Sprites/RockBones.png" id="1_1hm5a"]
+[ext_resource type="Texture2D" uid="uid://bpcc2ljyhkxfl" path="res://Sprites/argentina_Flag.png" id="3_sjx8j"]
+[ext_resource type="PackedScene" uid="uid://biluutecl1cej" path="res://Scenes/Experiments/skip_sceen.tscn" id="4_gdnyt"]
+[ext_resource type="Script" path="res://_Scripts/Animation_in_Load.gd" id="4_sg2gq"]
+
+[sub_resource type="Animation" id="Animation_iylmp"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(407, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-1013, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:scale:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0.582031, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:scale:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0.582031, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_7g5p1"]
+resource_name = "flag_zone_complete"
+length = 1.2
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(294.035, -0.25, 0, 0.25, 0, 294.035, -0.25, 0, 0.25, 0, 294.035, -0.25, 0, 0.25, 0, 294.035, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.6, 1, 1.2)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(-1001, -0.25, 0, 0.25, 0, 62.425, -0.25, 0, 0.25, 0, 82.4, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.6, 1)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:scale:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0.582031, -0.25, 0, 0.25, 0, 0.582, -0.25, 0, 0.25, 0, 0.582031, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0.4, 0.6, 1)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:scale:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0.582031, -0.25, 0, 0.25, 0, 0.535, -0.25, 0, 0.25, 0, 0.582031, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0.4, 0.6, 1)
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2),
+"transitions": PackedFloat32Array(1, 2.07053, 0.466517, 2.92817, 0.466517, 2.07053, 1),
+"update": 0,
+"values": [0.0, -0.0872665, 0.0, 0.0872665, 0.0, -0.0872665, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_g6w1k"]
+_data = {
+"RESET": SubResource("Animation_iylmp"),
+"flag_zone_complete": SubResource("Animation_7g5p1")
+}
+
+[node name="Zone_Complete_Screen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.65098, 0.784314, 1, 1)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.526
+anchor_top = 0.796
+anchor_right = 0.526
+anchor_bottom = 0.796
+offset_left = -265.72
+offset_top = -208.88
+offset_right = 266.28
+offset_bottom = 209.12
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_1hm5a")
+expand_mode = 1
+
+[node name="flag" type="Sprite2D" parent="TextureRect"]
+position = Vector2(407, -1013)
+scale = Vector2(0.582031, 0.582031)
+texture = ExtResource("3_sjx8j")
+offset = Vector2(193.37, -137.36)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="TextureRect/flag"]
+libraries = {
+"": SubResource("AnimationLibrary_g6w1k")
+}
+script = ExtResource("4_sg2gq")
+animation = "flag_zone_complete"
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.253
+offset_left = 50.0
+offset_top = 85.0
+offset_right = -54.0
+offset_bottom = -74.84
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 40
+text = "ZONA COMPLETADA YEEEEYY"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SkipSceen" parent="." instance=ExtResource("4_gdnyt")]
+wait_time = 3.0
+isAutomatic = true
+NextScene = "Naumi_Level_Up"
+fade_time = 0.5
+smoothness = 0.1
+
+[connection signal="tree_entered" from="TextureRect" to="TextureRect" method="_on_tree_entered"]
