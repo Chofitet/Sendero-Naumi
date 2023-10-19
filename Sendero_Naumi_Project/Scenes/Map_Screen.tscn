@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://ck4m8k46bmha1"]
 
+[ext_resource type="Texture2D" uid="uid://baltqstwsejom" path="res://Sprites/UI/mapa_concepts.png" id="1_03k8s"]
 [ext_resource type="Script" path="res://Scenes/Zone.gd" id="2_4co6y"]
-[ext_resource type="Texture2D" uid="uid://doeqcc5pbkg0p" path="res://Sprites/RockBones.png" id="3_kw0m4"]
 [ext_resource type="Texture2D" uid="uid://bpcc2ljyhkxfl" path="res://Sprites/argentina_Flag.png" id="3_w0b1s"]
 [ext_resource type="PackedScene" uid="uid://djhg7jvxtexyl" path="res://Scenes/UI_Scenes/btn_Change_Scene.tscn" id="7_1v7i5"]
 [ext_resource type="Texture2D" uid="uid://co7pox44vqa08" path="res://Sprites/Naumi/Naumi_0.png" id="8_ssef4"]
@@ -23,6 +23,22 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.65098, 0.784314, 1, 1)
 
+[node name="TextureRect2" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -364.0
+offset_top = -593.0
+offset_right = 364.0
+offset_bottom = 594.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_03k8s")
+expand_mode = 1
+
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = -1
@@ -30,16 +46,24 @@ anchor_left = 0.526
 anchor_top = 0.796
 anchor_right = 0.526
 anchor_bottom = 0.796
-offset_left = -265.72
-offset_top = -208.88
-offset_right = 266.28
+offset_left = -213.72
+offset_top = -151.88
+offset_right = 173.28
 offset_bottom = 209.12
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("3_kw0m4")
 expand_mode = 1
 script = ExtResource("2_4co6y")
 NumOfMinigame = 3
+
+[node name="ColorRect" type="ColorRect" parent="TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.117647)
 
 [node name="ButtonChangeScene2" parent="TextureRect" instance=ExtResource("7_1v7i5")]
 layout_mode = 1
@@ -84,10 +108,10 @@ anchor_left = 1.0
 anchor_top = 0.0
 anchor_right = 1.0
 anchor_bottom = 0.0
-offset_left = -203.0
-offset_top = 60.0
-offset_right = -75.0
-offset_bottom = 183.0
+offset_left = -114.0
+offset_top = 21.0
+offset_right = -27.0
+offset_bottom = 126.0
 grow_horizontal = 0
 grow_vertical = 1
 text = ""
@@ -102,5 +126,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("8_ssef4")
+expand_mode = 1
 
 [connection signal="tree_entered" from="TextureRect" to="TextureRect" method="_on_tree_entered"]
