@@ -1,10 +1,21 @@
-[gd_scene load_steps=6 format=3 uid="uid://ck4m8k46bmha1"]
+[gd_scene load_steps=17 format=3 uid="uid://ck4m8k46bmha1"]
 
-[ext_resource type="Texture2D" uid="uid://baltqstwsejom" path="res://Sprites/UI/mapa_concepts.png" id="1_03k8s"]
 [ext_resource type="Script" path="res://Scenes/Zone.gd" id="2_4co6y"]
+[ext_resource type="Texture2D" uid="uid://cafdhxwxotpe1" path="res://Sprites/Mapa/Zona_Mega_Fauna.png" id="2_7ltgs"]
 [ext_resource type="Texture2D" uid="uid://bpcc2ljyhkxfl" path="res://Sprites/argentina_Flag.png" id="3_w0b1s"]
+[ext_resource type="Texture2D" uid="uid://5vmxiusl81kl" path="res://Sprites/Mapa/Zona_Ambientes-01.png" id="5_4u4yr"]
+[ext_resource type="Script" path="res://_Scripts/StateMachine/Button_Change_State.gd" id="5_oybyc"]
+[ext_resource type="Texture2D" uid="uid://b8l8dyc7iuoku" path="res://Sprites/Mapa/Zona_Cuaternario-01.png" id="6_psvtq"]
 [ext_resource type="PackedScene" uid="uid://djhg7jvxtexyl" path="res://Scenes/UI_Scenes/btn_Change_Scene.tscn" id="7_1v7i5"]
+[ext_resource type="Texture2D" uid="uid://x0euxbypaq7j" path="res://Sprites/Mapa/Zona_Eras_Geológicas-01.png" id="7_l8fvs"]
 [ext_resource type="Texture2D" uid="uid://co7pox44vqa08" path="res://Sprites/Naumi/Naumi_0.png" id="8_ssef4"]
+[ext_resource type="Texture2D" uid="uid://bunqkch0tqcer" path="res://Sprites/Mapa/Zona_Astronomía-01.png" id="8_u1kyq"]
+[ext_resource type="Texture2D" uid="uid://ccrd1kp53k515" path="res://Sprites/Mapa/Zona_Construcción_Museo-01.png" id="9_lq42s"]
+[ext_resource type="Texture2D" uid="uid://bg1ihgwaac85p" path="res://Sprites/Mapa/Zona_Geología-01.png" id="10_pt8a1"]
+[ext_resource type="Script" path="res://_Scripts/StateMachine/State_Machine.gd" id="12_2rk75"]
+[ext_resource type="Script" path="res://_Scripts/StateMachine/NoZone.gd" id="13_tgu8h"]
+[ext_resource type="Script" path="res://_Scripts/StateMachine/MegafaunaZone.gd" id="15_y7a6y"]
+[ext_resource type="Script" path="res://_Scripts/AstronomiaZone.gd" id="16_gw1a5"]
 
 [node name="Map_Screen" type="Control"]
 layout_mode = 3
@@ -36,36 +47,46 @@ offset_right = 364.0
 offset_bottom = 594.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_03k8s")
 expand_mode = 1
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="Piso1" type="Control" parent="."]
+layout_mode = 1
+anchor_top = 0.722
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -0.160095
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Zona1" type="TextureRect" parent="Piso1"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.526
-anchor_top = 0.796
-anchor_right = 0.526
-anchor_bottom = 0.796
-offset_left = -213.72
-offset_top = -151.88
-offset_right = 173.28
-offset_bottom = 209.12
+anchor_left = 0.506
+anchor_top = 0.5
+anchor_right = 0.506
+anchor_bottom = 0.5
+offset_left = -192.32
+offset_top = -155.0
+offset_right = 192.68
+offset_bottom = 152.0
 grow_horizontal = 2
-grow_vertical = 2
+grow_vertical = 0
 expand_mode = 1
 script = ExtResource("2_4co6y")
 NumOfMinigame = 3
 
-[node name="ColorRect" type="ColorRect" parent="TextureRect"]
+[node name="TextureRect" type="TextureRect" parent="Piso1/Zona1"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 0.117647)
+texture = ExtResource("2_7ltgs")
+expand_mode = 1
 
-[node name="ButtonChangeScene2" parent="TextureRect" instance=ExtResource("7_1v7i5")]
+[node name="ButtonChangeScene2" parent="Piso1/Zona1" instance=ExtResource("7_1v7i5")]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_left = 0.0
@@ -80,7 +101,7 @@ text = ""
 flat = true
 NextScene = "Zone_Screen"
 
-[node name="CompleteState" type="ColorRect" parent="TextureRect"]
+[node name="CompleteState" type="ColorRect" parent="Piso1/Zona1"]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -90,7 +111,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(1, 1, 1, 0)
 
-[node name="TextureRect" type="TextureRect" parent="TextureRect/CompleteState"]
+[node name="TextureRect" type="TextureRect" parent="Piso1/Zona1/CompleteState"]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -101,6 +122,212 @@ grow_horizontal = 0
 texture = ExtResource("3_w0b1s")
 expand_mode = 1
 
+[node name="Button_Change_State" type="Button" parent="Piso1/Zona1" node_paths=PackedStringArray("state_to_change", "state_machine")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+script = ExtResource("5_oybyc")
+state_to_change = NodePath("../../../StateMachine/MegafaunaZone")
+state_machine = NodePath("../../../StateMachine")
+
+[node name="Piso2" type="Control" parent="."]
+layout_mode = 1
+anchor_top = 0.405
+anchor_right = 1.0
+anchor_bottom = 0.736
+offset_top = 0.599976
+offset_bottom = -0.0800781
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Zona_Paleontología" type="TextureRect" parent="Piso2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.389
+anchor_top = 0.5
+anchor_right = 0.389
+anchor_bottom = 0.5
+offset_left = -297.08
+offset_top = -130.56
+offset_right = 105.92
+offset_bottom = 192.44
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+script = ExtResource("2_4co6y")
+NumOfMinigame = 3
+
+[node name="TextureRect" type="TextureRect" parent="Piso2/Zona_Paleontología"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_lq42s")
+expand_mode = 1
+
+[node name="Zona_Eras_Geológicas" type="TextureRect" parent="Piso2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.628
+anchor_top = 0.5
+anchor_right = 0.628
+anchor_bottom = 0.5
+offset_left = -161.16
+offset_top = -186.56
+offset_right = 369.84
+offset_bottom = 238.44
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+script = ExtResource("2_4co6y")
+NumOfMinigame = 3
+
+[node name="TextureRect" type="TextureRect" parent="Piso2/Zona_Eras_Geológicas"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("10_pt8a1")
+expand_mode = 1
+
+[node name="Zona_Ambientes" type="TextureRect" parent="Piso2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.525
+anchor_top = 0.439
+anchor_right = 0.525
+anchor_bottom = 0.439
+offset_left = -234.0
+offset_top = -290.697
+offset_right = 234.0
+offset_bottom = 82.303
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+script = ExtResource("2_4co6y")
+NumOfMinigame = 3
+
+[node name="TextureRect" type="TextureRect" parent="Piso2/Zona_Ambientes"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_u1kyq")
+expand_mode = 1
+
+[node name="Button_Change_State" type="Button" parent="Piso2/Zona_Ambientes" node_paths=PackedStringArray("state_to_change", "state_machine")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.124
+anchor_top = 0.346
+anchor_right = 0.833
+anchor_bottom = 0.716
+offset_left = -0.0320053
+offset_top = -0.0579987
+offset_right = 0.155945
+offset_bottom = -0.0679932
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+script = ExtResource("5_oybyc")
+state_to_change = NodePath("../../../StateMachine/AstronomiaZone")
+state_machine = NodePath("../../../StateMachine")
+
+[node name="Piso3" type="Control" parent="."]
+layout_mode = 1
+anchor_right = 1.0
+anchor_bottom = 0.387
+offset_bottom = -0.360046
+grow_horizontal = 2
+
+[node name="Zona_Ambientes" type="TextureRect" parent="Piso3"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.515
+anchor_top = 0.5
+anchor_right = 0.515
+anchor_bottom = 0.5
+offset_left = -210.8
+offset_top = -255.5
+offset_right = 211.2
+offset_bottom = 81.5
+grow_horizontal = 2
+expand_mode = 1
+script = ExtResource("2_4co6y")
+NumOfMinigame = 3
+
+[node name="TextureRect" type="TextureRect" parent="Piso3/Zona_Ambientes"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_4u4yr")
+expand_mode = 1
+
+[node name="Zona_Cuaternario" type="TextureRect" parent="Piso3"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.366
+anchor_top = 0.5
+anchor_right = 0.366
+anchor_bottom = 0.5
+offset_left = -337.52
+offset_top = -95.5
+offset_right = 119.48
+offset_bottom = 269.5
+grow_horizontal = 2
+expand_mode = 1
+script = ExtResource("2_4co6y")
+NumOfMinigame = 3
+
+[node name="TextureRect" type="TextureRect" parent="Piso3/Zona_Cuaternario"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_psvtq")
+expand_mode = 1
+
+[node name="Zona_Eras_Geológicas" type="TextureRect" parent="Piso3"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.661
+anchor_top = 0.5
+anchor_right = 0.661
+anchor_bottom = 0.5
+offset_left = -153.92
+offset_top = -93.5
+offset_right = 316.08
+offset_bottom = 281.5
+grow_horizontal = 2
+expand_mode = 1
+script = ExtResource("2_4co6y")
+NumOfMinigame = 3
+
+[node name="TextureRect" type="TextureRect" parent="Piso3/Zona_Eras_Geológicas"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_l8fvs")
+expand_mode = 1
+
 [node name="ButtonChangeScene" parent="." instance=ExtResource("7_1v7i5")]
 layout_mode = 1
 anchors_preset = 1
@@ -108,15 +335,15 @@ anchor_left = 1.0
 anchor_top = 0.0
 anchor_right = 1.0
 anchor_bottom = 0.0
-offset_left = -114.0
-offset_top = 21.0
-offset_right = -27.0
-offset_bottom = 126.0
+offset_left = -140.0
+offset_top = 15.0
+offset_right = -19.0
+offset_bottom = 161.0
 grow_horizontal = 0
 grow_vertical = 1
 text = ""
 flat = true
-NextScene = "Naumi_Screen"
+NextScene = "Minigame_Default"
 
 [node name="TextureRect" type="TextureRect" parent="ButtonChangeScene"]
 layout_mode = 1
@@ -128,4 +355,41 @@ grow_vertical = 2
 texture = ExtResource("8_ssef4")
 expand_mode = 1
 
-[connection signal="tree_entered" from="TextureRect" to="TextureRect" method="_on_tree_entered"]
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("12_2rk75")
+initial_state = NodePath("NoZone")
+
+[node name="NoZone" type="Node" parent="StateMachine"]
+script = ExtResource("13_tgu8h")
+Minigames = [NodePath("../../minigame1")]
+
+[node name="MegafaunaZone" type="Node" parent="StateMachine" node_paths=PackedStringArray("label")]
+script = ExtResource("15_y7a6y")
+label = NodePath("../../Label")
+Minigames = [NodePath("../../minigame1"), NodePath("../../minigame2")]
+
+[node name="AstronomiaZone" type="Node" parent="StateMachine" node_paths=PackedStringArray("label")]
+script = ExtResource("16_gw1a5")
+label = NodePath("../../Label")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_right = 252.0
+offset_bottom = 74.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "State"
+
+[node name="minigame2" type="Node" parent="."]
+
+[node name="minigame1" type="Node" parent="."]
+
+[connection signal="tree_entered" from="Piso1/Zona1" to="Piso1/Zona1" method="_on_tree_entered"]
+[connection signal="pressed" from="Piso1/Zona1/Button_Change_State" to="Piso1/Zona1/Button_Change_State" method="_on_pressed"]
+[connection signal="tree_entered" from="Piso2/Zona_Paleontología" to="Piso2/Zona_Paleontología" method="_on_tree_entered"]
+[connection signal="tree_entered" from="Piso2/Zona_Eras_Geológicas" to="Piso2/Zona_Eras_Geológicas" method="_on_tree_entered"]
+[connection signal="tree_entered" from="Piso2/Zona_Ambientes" to="Piso2/Zona_Ambientes" method="_on_tree_entered"]
+[connection signal="pressed" from="Piso2/Zona_Ambientes/Button_Change_State" to="Piso2/Zona_Ambientes/Button_Change_State" method="_on_pressed"]
+[connection signal="tree_entered" from="Piso3/Zona_Ambientes" to="Piso3/Zona_Ambientes" method="_on_tree_entered"]
+[connection signal="tree_entered" from="Piso3/Zona_Cuaternario" to="Piso3/Zona_Cuaternario" method="_on_tree_entered"]
+[connection signal="tree_entered" from="Piso3/Zona_Eras_Geológicas" to="Piso3/Zona_Eras_Geológicas" method="_on_tree_entered"]

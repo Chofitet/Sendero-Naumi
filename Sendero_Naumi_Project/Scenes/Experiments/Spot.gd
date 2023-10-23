@@ -15,4 +15,6 @@ func _on_area_entered(area):
 func _on_area_exited(area):
 	var object_ref = area.get_parent()
 	object_ref.is_in_spot = false
+	if object_ref.pick_up == true :
+		isInPosition = false
 
