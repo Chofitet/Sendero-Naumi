@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dsxxf6ulvqkwu"]
+[gd_scene load_steps=18 format=3 uid="uid://dsxxf6ulvqkwu"]
 
 [ext_resource type="Script" path="res://_Scripts/MiniGame.gd" id="1_fik5d"]
 [ext_resource type="PackedScene" uid="uid://djhg7jvxtexyl" path="res://Scenes/UI_Scenes/btn_Change_Scene.tscn" id="1_rks7k"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://bu33jxijmsnqp" path="res://Sprites/minigame1/coyote.png" id="11_31fge"]
 [ext_resource type="Texture2D" uid="uid://b1tmrskrh7b1o" path="res://Sprites/minigame1/Ardillas.png" id="12_pw3he"]
 [ext_resource type="Texture2D" uid="uid://ccy0f6b423h20" path="res://Sprites/minigame1/mapache.png" id="14_itoog"]
+[ext_resource type="Script" path="res://_Scripts/Minigame_Save_Controller.gd" id="15_ctx0n"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ltpmd"]
 size = Vector2(130, 128)
@@ -213,6 +214,9 @@ vertical_alignment = 1
 
 [node name="isCorrectLabel" parent="." instance=ExtResource("9_ashix")]
 
+[node name="minigame1" type="Node" parent="."]
+script = ExtResource("15_ctx0n")
+
 [connection signal="tree_exiting" from="." to="." method="_on_tree_exiting"]
 [connection signal="isCorrect" from="DraggeableSystem" to="." method="_on_draggeable_system_is_correct"]
 [connection signal="isCorrect" from="DraggeableSystem" to="SkipSceen" method="_on_draggeable_system_is_correct"]
@@ -226,3 +230,4 @@ vertical_alignment = 1
 [connection signal="area_entered" from="DraggeableSystem/DraggeableObject_Spot3/Spot" to="DraggeableSystem/DraggeableObject_Spot3" method="_on_area_2d_area_entered" flags=18]
 [connection signal="area_exited" from="DraggeableSystem/DraggeableObject_Spot3/Spot" to="DraggeableSystem/DraggeableObject_Spot3" method="_on_area_2d_area_exited" flags=18]
 [connection signal="pressed" from="DraggeableSystem/DraggeableObject_Spot3/Object/Button" to="DraggeableSystem/DraggeableObject_Spot3" method="_on_button_pressed" flags=18]
+[connection signal="timeout" from="SkipSceen" to="minigame1" method="Set_Complete"]

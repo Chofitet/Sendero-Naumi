@@ -60,38 +60,38 @@ grow_vertical = 0
 size_flags_vertical = 8
 text = "Back"
 
-[node name="btn_MiniGame1" parent="In_Zone" instance=ExtResource("4_byq3y")]
+[node name="minigame1" parent="In_Zone" instance=ExtResource("4_byq3y")]
 position = Vector2(-69, 38)
 scale = Vector2(0.0788154, 0.069266)
 
-[node name="ButtonChangeScene" parent="In_Zone/btn_MiniGame1" index="0"]
+[node name="ButtonChangeScene" parent="In_Zone/minigame1" index="0"]
 NextScene = "MiniGame_1"
 fade_time = 1.0
 texture = "paws_pattern"
 is_inverted = true
 color = Color(0.462745, 0.815686, 0.619608, 1)
 
-[node name="btn_MiniGame2" parent="In_Zone" instance=ExtResource("4_byq3y")]
+[node name="minigame2" parent="In_Zone" instance=ExtResource("4_byq3y")]
 position = Vector2(-19, -9)
 scale = Vector2(0.0990948, 0.0870883)
 LevelNumber = 2
 
-[node name="ButtonChangeScene" parent="In_Zone/btn_MiniGame2" index="0"]
+[node name="ButtonChangeScene" parent="In_Zone/minigame2" index="0"]
 NextScene = "MiniGame_2"
 fade_time = 1.0
 texture = "paws_pattern"
 is_inverted = true
 color = Color(0.462745, 0.815686, 0.619608, 1)
 
-[node name="AnimationPlayer" parent="In_Zone/btn_MiniGame2" index="1"]
+[node name="AnimationPlayer" parent="In_Zone/minigame2" index="1"]
 playback_process_mode = 2
 
-[node name="btn_MiniGame3" parent="In_Zone" instance=ExtResource("4_byq3y")]
+[node name="minigame3" parent="In_Zone" instance=ExtResource("4_byq3y")]
 position = Vector2(44.0471, -23.3506)
 scale = Vector2(0.0912409, 0.080186)
 LevelNumber = 3
 
-[node name="ButtonChangeScene" parent="In_Zone/btn_MiniGame3" index="0"]
+[node name="ButtonChangeScene" parent="In_Zone/minigame3" index="0"]
 NextScene = "MiniGame_3"
 fade_time = 1.0
 texture = "paws_pattern"
@@ -102,10 +102,10 @@ color = Color(0.462745, 0.815686, 0.619608, 1)
 [connection signal="pressed" from="btnZone" to="." method="_on_btn_zone_pressed"]
 [connection signal="pressed" from="btnZone" to="In_Zone" method="_on_btn_zone_pressed"]
 [connection signal="pressed" from="In_Zone/btnBack" to="In_Zone" method="_on_btn_back_pressed"]
-[connection signal="tree_entered" from="In_Zone/btn_MiniGame1" to="In_Zone/btn_MiniGame1" method="_on_tree_entered"]
-[connection signal="tree_entered" from="In_Zone/btn_MiniGame2" to="In_Zone/btn_MiniGame2" method="_on_tree_entered"]
-[connection signal="tree_entered" from="In_Zone/btn_MiniGame3" to="In_Zone/btn_MiniGame3" method="_on_tree_entered"]
+[connection signal="tree_entered" from="In_Zone/minigame1" to="In_Zone/minigame1" method="_on_tree_entered"]
+[connection signal="tree_entered" from="In_Zone/minigame2" to="In_Zone/minigame2" method="_on_tree_entered"]
+[connection signal="tree_entered" from="In_Zone/minigame3" to="In_Zone/minigame3" method="_on_tree_entered"]
 
-[editable path="In_Zone/btn_MiniGame1"]
-[editable path="In_Zone/btn_MiniGame2"]
-[editable path="In_Zone/btn_MiniGame3"]
+[editable path="In_Zone/minigame1"]
+[editable path="In_Zone/minigame2"]
+[editable path="In_Zone/minigame3"]

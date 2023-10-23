@@ -13,9 +13,11 @@ func _ready():
 		if child is State:
 			states[child.name.to_lower()] = child
 			child.Transitioned.connect(On_Child_Transition)
-	if initial_state:
-		initial_state.Enter()
-		current_state = initial_state
+	for s in states.keys():
+		if s == PlayerVariables.lastState.to_lower():
+			states[s].Enter()
+			current_state = states[s]
+	
 
 func _process(delta):
 	if current_state:

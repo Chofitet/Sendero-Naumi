@@ -7,12 +7,19 @@
 script/source = "extends Sprite2D
 @export var LevelNumber : int
 
-func _on_tree_entered():
+var save_file_path = \"user://\"
+var save_file_name = \"MiniGameResource.tres\"
+var minigameResourseFile = MiniGameResource.new()
+func load_file():
+	minigameResourseFile  = ResourceLoader.load(save_file_path  + save_file_name)
+
+func OnZone():
+	load_file()
 	get_node(\"ButtonChangeScene\").disabled = true
-	if PlayerVariables.MinigameStage == LevelNumber:
+	if !minigameResourseFile.StateMinigames[self.name]:
 		get_node(\"ButtonChangeScene\").disabled = false
 		get_node(\"AnimationPlayer\").play(\"Scale-bounce\")
-	elif PlayerVariables.MinigameStage > LevelNumber:
+	elif minigameResourseFile.StateMinigames[self.name]:
 		texture = load(\"res://Sprites/argentina_Flag.png\")
 		get_node(\"ButtonChangeScene\").disabled = true
 "

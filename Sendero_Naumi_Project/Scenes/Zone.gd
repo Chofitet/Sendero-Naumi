@@ -1,17 +1,21 @@
 extends TextureRect
-var completeZone 
-@export var NumOfMinigame : int
+class_name  Zone
 
-#func _on_btn_zone_pressed():
-	#if !completeZone:
-	#	get_node("../Camera2D").zoom_in(position - get_node("../Camera2D").position)
-	#	get_node("In_Zone").visible = true;
+var save_file_path = "user://"
+var save_file_name = "ZoneResource.tres"
+var ZoneResourseFile = ZoneResource.new()
 
+func load_file():
+		ZoneResourseFile  = ResourceLoader.load(save_file_path  + save_file_name)
 
-func ZoneComplete():
-	get_node("CompleteState").visible = true
+func in_Zone():
+	get_node("ZoomingZone").visible = true
 
+func back_zone():
+	get_node("ZoomingZone").visible = false
 
-func _on_tree_entered():
-	if NumOfMinigame < PlayerVariables.MinigameStage :
-		ZoneComplete()
+func Set_Complete():
+	load_file()
+	for z in ZoneResourseFile.StateZones.keys():
+		if ZoneResourseFile.StateZones[self.name] == true:
+			get_node("CompleteState").visible = true

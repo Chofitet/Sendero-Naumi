@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://dqp5pf5e13jgq"]
+[gd_scene load_steps=9 format=3 uid="uid://dqp5pf5e13jgq"]
 
 [ext_resource type="Script" path="res://_Scripts/MiniGame.gd" id="1_l4elq"]
 [ext_resource type="Texture2D" uid="uid://ci6cxlnsy21yc" path="res://Sprites/Quartz.png" id="3_bwtu2"]
 [ext_resource type="PackedScene" uid="uid://cae1kil6euae5" path="res://Scenes/UI_Scenes/map_button.tscn" id="4_0r68r"]
 [ext_resource type="PackedScene" uid="uid://jxmmmwp7xar3" path="res://Scenes/UI_Scenes/is_correct_label.tscn" id="4_tntrt"]
 [ext_resource type="PackedScene" uid="uid://biluutecl1cej" path="res://Scenes/Experiments/skip_sceen.tscn" id="5_kbahk"]
+[ext_resource type="Script" path="res://_Scripts/Minigame_Save_Controller.gd" id="6_7n66w"]
 
 [sub_resource type="FontFile" id="FontFile_tn3ca"]
 cache/0/40/0/ascent = 0.0
@@ -118,7 +119,11 @@ NextScene = "Moraleja_Screen_3"
 fade_time = 0.5
 smoothness = 0.1
 
+[node name="minigame3" type="Node" parent="."]
+script = ExtResource("6_7n66w")
+
 [connection signal="tree_exiting" from="." to="." method="_on_tree_exiting"]
 [connection signal="pressed" from="Control/GridContainer/RightButton" to="." method="_on_draggeable_system_is_correct"]
 [connection signal="pressed" from="Control/GridContainer/RightButton" to="Control/isCorrectLabel" method="_on_draggeable_system_is_correct"]
 [connection signal="pressed" from="Control/GridContainer/RightButton" to="SkipSceen" method="_on_draggeable_system_is_correct"]
+[connection signal="timeout" from="SkipSceen" to="minigame3" method="Set_Complete"]

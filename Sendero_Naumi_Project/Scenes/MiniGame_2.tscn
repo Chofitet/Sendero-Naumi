@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://bgccn1b62jxul"]
+[gd_scene load_steps=23 format=3 uid="uid://bgccn1b62jxul"]
 
 [ext_resource type="Script" path="res://_Scripts/MiniGame.gd" id="1_xj0lt"]
 [ext_resource type="PackedScene" uid="uid://djhg7jvxtexyl" path="res://Scenes/UI_Scenes/btn_Change_Scene.tscn" id="2_dhgtb"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://biluutecl1cej" path="res://Scenes/Experiments/skip_sceen.tscn" id="13_teeuo"]
 [ext_resource type="PackedScene" uid="uid://jxmmmwp7xar3" path="res://Scenes/UI_Scenes/is_correct_label.tscn" id="14_8ctyl"]
 [ext_resource type="Texture2D" uid="uid://coqt0dbklh4v7" path="res://Sprites/minigame2/Coolest_Hat.png" id="14_u6y4s"]
+[ext_resource type="Script" path="res://_Scripts/Minigame_Save_Controller.gd" id="15_q1rqn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fb7do"]
 size = Vector2(112.699, 74.6667)
@@ -246,6 +247,9 @@ smoothness = 0.1
 
 [node name="isCorrectLabel" parent="." instance=ExtResource("14_8ctyl")]
 
+[node name="minigame2" type="Node" parent="."]
+script = ExtResource("15_q1rqn")
+
 [connection signal="tree_exiting" from="." to="." method="_on_tree_exiting"]
 [connection signal="isCorrect" from="Control/CenterContainer/DraggeableObject_Spot_Check_Right" to="." method="_on_draggeable_system_is_correct"]
 [connection signal="isCorrect" from="Control/CenterContainer/DraggeableObject_Spot_Check_Right" to="SkipSceen" method="_on_draggeable_system_is_correct"]
@@ -260,3 +264,4 @@ smoothness = 0.1
 [connection signal="area_entered" from="Control/CenterContainer/DraggeableObject_Spot_Check_Right/Spots/Spot3" to="Control/CenterContainer/DraggeableObject_Spot_Check_Right/Spots/Spot3" method="_on_area_entered" flags=18]
 [connection signal="area_exited" from="Control/CenterContainer/DraggeableObject_Spot_Check_Right/Spots/Spot3" to="Control/CenterContainer/DraggeableObject_Spot_Check_Right/Spots/Spot3" method="_on_area_exited" flags=18]
 [connection signal="pressed" from="Control/CenterContainer/DraggeableObject_Spot_Check_Right2/Object4/Button" to="Control/CenterContainer/DraggeableObject_Spot_Check_Right2/Object4" method="_on_button_pressed" flags=18]
+[connection signal="timeout" from="SkipSceen" to="minigame2" method="Set_Complete"]
