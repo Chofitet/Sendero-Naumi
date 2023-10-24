@@ -6,4 +6,7 @@ class_name ZoneResource
 func Set_State_Zone(string):
 	StateZones[string] = true
 
+func RestartZones():
+	for key in StateZones.keys():
+		StateZones[key] = false
 

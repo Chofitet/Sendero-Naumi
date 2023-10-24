@@ -1,5 +1,4 @@
 extends TextureRect
-class_name  Zone
 
 var save_file_path = "user://"
 var save_file_name = "ZoneResource.tres"
@@ -8,10 +7,15 @@ var ZoneResourseFile = ZoneResource.new()
 func load_file():
 		ZoneResourseFile  = ResourceLoader.load(save_file_path  + save_file_name)
 
-func in_Zone():
-	get_node("ZoomingZone").visible = true
+func  _ready():
+	Set_Complete()
 
-func back_zone():
+func in_Zone():
+	if PlayerVariables.lastState == self.name:
+		get_node("ZoomingZone").visible = true
+	ShowMiniGamesButtons()
+
+func back_Zone():
 	get_node("ZoomingZone").visible = false
 
 func Set_Complete():
@@ -19,3 +23,7 @@ func Set_Complete():
 	for z in ZoneResourseFile.StateZones.keys():
 		if ZoneResourseFile.StateZones[self.name] == true:
 			get_node("CompleteState").visible = true
+
+func ShowMiniGamesButtons():
+	for b in get_node("ZoomingZone").get_children():
+		b.OnZone()

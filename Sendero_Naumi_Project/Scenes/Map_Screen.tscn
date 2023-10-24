@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://ck4m8k46bmha1"]
+[gd_scene load_steps=19 format=3 uid="uid://ck4m8k46bmha1"]
 
 [ext_resource type="Script" path="res://Scenes/Zone.gd" id="2_4co6y"]
 [ext_resource type="Texture2D" uid="uid://cafdhxwxotpe1" path="res://Sprites/Mapa/Zona_Mega_Fauna.png" id="2_7ltgs"]
@@ -17,6 +17,7 @@
 [ext_resource type="Script" path="res://_Scripts/StateMachine/NoZone.gd" id="13_tgu8h"]
 [ext_resource type="Script" path="res://_Scripts/StateMachine/MegafaunaZone.gd" id="15_y7a6y"]
 [ext_resource type="Script" path="res://_Scripts/AstronomiaZone.gd" id="16_gw1a5"]
+[ext_resource type="Script" path="res://_Scripts/StateMachine/ZoneCompleteEvent.gd" id="18_phrii"]
 
 [node name="Map_Screen" type="Control"]
 layout_mode = 3
@@ -74,7 +75,6 @@ offset_bottom = 192.44
 grow_horizontal = 2
 grow_vertical = 2
 expand_mode = 1
-script = ExtResource("2_4co6y")
 
 [node name="TextureRect" type="TextureRect" parent="Piso2/Zona_Paleontología"]
 layout_mode = 1
@@ -100,7 +100,6 @@ offset_bottom = 238.44
 grow_horizontal = 2
 grow_vertical = 2
 expand_mode = 1
-script = ExtResource("2_4co6y")
 
 [node name="TextureRect" type="TextureRect" parent="Piso2/Zona_Eras_Geológicas"]
 layout_mode = 1
@@ -112,7 +111,7 @@ grow_vertical = 2
 texture = ExtResource("10_pt8a1")
 expand_mode = 1
 
-[node name="Zona_Ambientes" type="TextureRect" parent="Piso2"]
+[node name="AstronomiaZone" type="TextureRect" parent="Piso2"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.525
@@ -128,7 +127,7 @@ grow_vertical = 2
 expand_mode = 1
 script = ExtResource("2_4co6y")
 
-[node name="TextureRect" type="TextureRect" parent="Piso2/Zona_Ambientes"]
+[node name="TextureRect" type="TextureRect" parent="Piso2/AstronomiaZone"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -138,7 +137,7 @@ grow_vertical = 2
 texture = ExtResource("8_u1kyq")
 expand_mode = 1
 
-[node name="Button_Change_State" type="Button" parent="Piso2/Zona_Ambientes" node_paths=PackedStringArray("state_to_change", "state_machine")]
+[node name="Button_Change_State" type="Button" parent="Piso2/AstronomiaZone" node_paths=PackedStringArray("state_to_change", "state_machine")]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.124
@@ -155,6 +154,77 @@ flat = true
 script = ExtResource("5_oybyc")
 state_to_change = NodePath("../../../StateMachine/AstronomiaZone")
 state_machine = NodePath("../../../StateMachine")
+
+[node name="ZoomingZone" type="TextureRect" parent="Piso2/AstronomiaZone"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -360.0
+offset_top = -289.5
+offset_right = 360.0
+offset_bottom = 290.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_u1kyq")
+expand_mode = 1
+
+[node name="minigame1" parent="Piso2/AstronomiaZone/ZoomingZone" instance=ExtResource("6_wq3mc")]
+position = Vector2(160.999, 339)
+scale = Vector2(0.24219, 0.212845)
+
+[node name="ButtonChangeScene" parent="Piso2/AstronomiaZone/ZoomingZone/minigame1" index="0"]
+NextScene = "MiniGame_1"
+fade_time = 1.0
+texture = "paws_pattern"
+is_inverted = true
+color = Color(0.462745, 0.815686, 0.619608, 1)
+
+[node name="minigame2" parent="Piso2/AstronomiaZone/ZoomingZone" instance=ExtResource("6_wq3mc")]
+position = Vector2(333, 254)
+scale = Vector2(0.253907, 0.223143)
+
+[node name="ButtonChangeScene" parent="Piso2/AstronomiaZone/ZoomingZone/minigame2" index="0"]
+NextScene = "MiniGame_2"
+fade_time = 1.0
+texture = "paws_pattern"
+is_inverted = true
+color = Color(0.462745, 0.815686, 0.619608, 1)
+
+[node name="minigame3" parent="Piso2/AstronomiaZone/ZoomingZone" instance=ExtResource("6_wq3mc")]
+position = Vector2(519, 242.999)
+scale = Vector2(0.261717, 0.230008)
+
+[node name="ButtonChangeScene" parent="Piso2/AstronomiaZone/ZoomingZone/minigame3" index="0"]
+NextScene = "MiniGame_3"
+fade_time = 1.0
+texture = "paws_pattern"
+is_inverted = true
+color = Color(0.462745, 0.815686, 0.619608, 1)
+
+[node name="CompleteState" type="ColorRect" parent="Piso2/AstronomiaZone"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)
+
+[node name="TextureRect" type="TextureRect" parent="Piso2/AstronomiaZone/CompleteState"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -196.0
+offset_bottom = 204.0
+grow_horizontal = 0
+texture = ExtResource("3_w0b1s")
+expand_mode = 1
 
 [node name="Piso3" type="Control" parent="."]
 layout_mode = 1
@@ -176,7 +246,6 @@ offset_right = 211.2
 offset_bottom = 81.5
 grow_horizontal = 2
 expand_mode = 1
-script = ExtResource("2_4co6y")
 
 [node name="TextureRect" type="TextureRect" parent="Piso3/Zona_Ambientes"]
 layout_mode = 1
@@ -201,7 +270,6 @@ offset_right = 119.48
 offset_bottom = 269.5
 grow_horizontal = 2
 expand_mode = 1
-script = ExtResource("2_4co6y")
 
 [node name="TextureRect" type="TextureRect" parent="Piso3/Zona_Cuaternario"]
 layout_mode = 1
@@ -226,7 +294,6 @@ offset_right = 316.08
 offset_bottom = 281.5
 grow_horizontal = 2
 expand_mode = 1
-script = ExtResource("2_4co6y")
 
 [node name="TextureRect" type="TextureRect" parent="Piso3/Zona_Eras_Geológicas"]
 layout_mode = 1
@@ -339,39 +406,33 @@ grow_vertical = 2
 texture = ExtResource("2_7ltgs")
 expand_mode = 1
 
-[node name="In_Zone" type="Node2D" parent="Piso1/MegafaunaZone/ZoomingZone"]
-position = Vector2(360, 321.08)
-scale = Vector2(1.88435, 1.88435)
+[node name="minigame1" parent="Piso1/MegafaunaZone/ZoomingZone" instance=ExtResource("6_wq3mc")]
+position = Vector2(160.999, 339)
+scale = Vector2(0.24219, 0.212845)
 
-[node name="minigame1" parent="Piso1/MegafaunaZone/ZoomingZone/In_Zone" instance=ExtResource("6_wq3mc")]
-position = Vector2(-105.607, 9.51001)
-scale = Vector2(0.128527, 0.112954)
-
-[node name="ButtonChangeScene" parent="Piso1/MegafaunaZone/ZoomingZone/In_Zone/minigame1" index="0"]
+[node name="ButtonChangeScene" parent="Piso1/MegafaunaZone/ZoomingZone/minigame1" index="0"]
 NextScene = "MiniGame_1"
 fade_time = 1.0
 texture = "paws_pattern"
 is_inverted = true
 color = Color(0.462745, 0.815686, 0.619608, 1)
 
-[node name="minigame2" parent="Piso1/MegafaunaZone/ZoomingZone/In_Zone" instance=ExtResource("6_wq3mc")]
-position = Vector2(-14.3285, -35.5986)
-scale = Vector2(0.134745, 0.118419)
-LevelNumber = 2
+[node name="minigame2" parent="Piso1/MegafaunaZone/ZoomingZone" instance=ExtResource("6_wq3mc")]
+position = Vector2(333, 254)
+scale = Vector2(0.253907, 0.223143)
 
-[node name="ButtonChangeScene" parent="Piso1/MegafaunaZone/ZoomingZone/In_Zone/minigame2" index="0"]
+[node name="ButtonChangeScene" parent="Piso1/MegafaunaZone/ZoomingZone/minigame2" index="0"]
 NextScene = "MiniGame_2"
 fade_time = 1.0
 texture = "paws_pattern"
 is_inverted = true
 color = Color(0.462745, 0.815686, 0.619608, 1)
 
-[node name="minigame3" parent="Piso1/MegafaunaZone/ZoomingZone/In_Zone" instance=ExtResource("6_wq3mc")]
-position = Vector2(84.3793, -41.4363)
-scale = Vector2(0.13889, 0.122062)
-LevelNumber = 3
+[node name="minigame3" parent="Piso1/MegafaunaZone/ZoomingZone" instance=ExtResource("6_wq3mc")]
+position = Vector2(519, 242.999)
+scale = Vector2(0.261717, 0.230008)
 
-[node name="ButtonChangeScene" parent="Piso1/MegafaunaZone/ZoomingZone/In_Zone/minigame3" index="0"]
+[node name="ButtonChangeScene" parent="Piso1/MegafaunaZone/ZoomingZone/minigame3" index="0"]
 NextScene = "MiniGame_3"
 fade_time = 1.0
 texture = "paws_pattern"
@@ -393,7 +454,7 @@ grow_horizontal = 0
 grow_vertical = 1
 text = ""
 flat = true
-NextScene = "Minigame_Default"
+NextScene = "Naumi_Screen"
 
 [node name="TextureRect" type="TextureRect" parent="ButtonChangeScene"]
 layout_mode = 1
@@ -409,18 +470,58 @@ expand_mode = 1
 script = ExtResource("12_2rk75")
 initial_state = NodePath("NoZone")
 
+[node name="AstronomiaZone" type="Node" parent="StateMachine"]
+script = ExtResource("16_gw1a5")
+Minigames = [NodePath("../../Piso2/AstronomiaZone/ZoomingZone/minigame1"), NodePath("../../Piso2/AstronomiaZone/ZoomingZone/minigame2"), NodePath("../../Piso2/AstronomiaZone/ZoomingZone/minigame3")]
+
 [node name="NoZone" type="Node" parent="StateMachine"]
 script = ExtResource("13_tgu8h")
 
-[node name="MegafaunaZone" type="Node" parent="StateMachine" node_paths=PackedStringArray("label")]
-script = ExtResource("15_y7a6y")
-label = NodePath("../../Label")
-Minigames = [NodePath("../../Piso1/MegafaunaZone/ZoomingZone/In_Zone/minigame1"), NodePath("../../Piso1/MegafaunaZone/ZoomingZone/In_Zone/minigame2"), NodePath("../../Piso1/MegafaunaZone/ZoomingZone/In_Zone/minigame3")]
-NextScene = "Naumi_Level_Up"
+[node name="Button" type="Button" parent="StateMachine/NoZone"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 27.0
+offset_top = -108.0
+offset_right = 247.0
+offset_bottom = -24.0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 40
+text = "Restart"
 
-[node name="AstronomiaZone" type="Node" parent="StateMachine" node_paths=PackedStringArray("label")]
-script = ExtResource("16_gw1a5")
-label = NodePath("../../Label")
+[node name="MegafaunaZone" type="Node" parent="StateMachine"]
+script = ExtResource("15_y7a6y")
+Minigames = [NodePath("../../Piso1/MegafaunaZone/ZoomingZone/minigame1"), NodePath("../../Piso1/MegafaunaZone/ZoomingZone/minigame2"), NodePath("../../Piso1/MegafaunaZone/ZoomingZone/minigame3")]
+
+[node name="ZoneCompleteEvent" type="Node" parent="StateMachine"]
+script = ExtResource("18_phrii")
+
+[node name="ColorRect2" type="ColorRect" parent="StateMachine/ZoneCompleteEvent"]
+visible = false
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -310.0
+offset_top = 102.0
+offset_right = 322.0
+offset_bottom = 266.0
+grow_horizontal = 2
+
+[node name="Label" type="Label" parent="StateMachine/ZoneCompleteEvent/ColorRect2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "ZoneComplete"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Timer" type="Timer" parent="StateMachine/ZoneCompleteEvent"]
+wait_time = 3.0
 
 [node name="ButtonBack" type="Button" parent="StateMachine" node_paths=PackedStringArray("state_to_change", "state_machine")]
 anchors_preset = 3
@@ -440,34 +541,25 @@ script = ExtResource("5_oybyc")
 state_to_change = NodePath("../NoZone")
 state_machine = NodePath("..")
 
-[node name="Label" type="Label" parent="."]
-layout_mode = 0
-offset_right = 252.0
-offset_bottom = 74.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 40
-text = "State"
-
-[connection signal="tree_entered" from="Piso2/Zona_Paleontología" to="Piso2/Zona_Paleontología" method="_on_tree_entered"]
-[connection signal="tree_entered" from="Piso2/Zona_Eras_Geológicas" to="Piso2/Zona_Eras_Geológicas" method="_on_tree_entered"]
-[connection signal="tree_entered" from="Piso2/Zona_Ambientes" to="Piso2/Zona_Ambientes" method="_on_tree_entered"]
-[connection signal="pressed" from="Piso2/Zona_Ambientes/Button_Change_State" to="Piso2/Zona_Ambientes/Button_Change_State" method="_on_pressed"]
-[connection signal="tree_entered" from="Piso3/Zona_Ambientes" to="Piso3/Zona_Ambientes" method="_on_tree_entered"]
-[connection signal="tree_entered" from="Piso3/Zona_Cuaternario" to="Piso3/Zona_Cuaternario" method="_on_tree_entered"]
-[connection signal="tree_entered" from="Piso3/Zona_Eras_Geológicas" to="Piso3/Zona_Eras_Geológicas" method="_on_tree_entered"]
-[connection signal="tree_entered" from="Piso1/MegafaunaZone" to="Piso1/MegafaunaZone" method="Set_Complete"]
+[connection signal="pressed" from="Piso2/AstronomiaZone/Button_Change_State" to="Piso2/AstronomiaZone/Button_Change_State" method="_on_pressed"]
+[connection signal="tree_entered" from="Piso2/AstronomiaZone/ZoomingZone/minigame1" to="Piso2/AstronomiaZone/ZoomingZone/minigame1" method="_on_tree_entered" flags=18]
+[connection signal="tree_entered" from="Piso2/AstronomiaZone/ZoomingZone/minigame2" to="Piso2/AstronomiaZone/ZoomingZone/minigame2" method="_on_tree_entered" flags=18]
+[connection signal="tree_entered" from="Piso2/AstronomiaZone/ZoomingZone/minigame3" to="Piso2/AstronomiaZone/ZoomingZone/minigame3" method="_on_tree_entered" flags=18]
 [connection signal="pressed" from="Piso1/MegafaunaZone/Button_Change_State" to="Piso1/MegafaunaZone/Button_Change_State" method="_on_pressed"]
-[connection signal="tree_entered" from="Piso1/MegafaunaZone/ZoomingZone/In_Zone/minigame1" to="Piso1/MegafaunaZone/ZoomingZone/In_Zone/minigame1" method="_on_tree_entered" flags=18]
-[connection signal="tree_entered" from="Piso1/MegafaunaZone/ZoomingZone/In_Zone/minigame2" to="Piso1/MegafaunaZone/ZoomingZone/In_Zone/minigame2" method="_on_tree_entered" flags=18]
-[connection signal="tree_entered" from="Piso1/MegafaunaZone/ZoomingZone/In_Zone/minigame3" to="Piso1/MegafaunaZone/ZoomingZone/In_Zone/minigame3" method="_on_tree_entered" flags=18]
-[connection signal="backZone" from="StateMachine/MegafaunaZone" to="Piso1/MegafaunaZone" method="back_zone"]
+[connection signal="tree_entered" from="Piso1/MegafaunaZone/ZoomingZone/minigame1" to="Piso1/MegafaunaZone/ZoomingZone/minigame1" method="_on_tree_entered" flags=18]
+[connection signal="tree_entered" from="Piso1/MegafaunaZone/ZoomingZone/minigame2" to="Piso1/MegafaunaZone/ZoomingZone/minigame2" method="_on_tree_entered" flags=18]
+[connection signal="tree_entered" from="Piso1/MegafaunaZone/ZoomingZone/minigame3" to="Piso1/MegafaunaZone/ZoomingZone/minigame3" method="_on_tree_entered" flags=18]
+[connection signal="backZone" from="StateMachine/AstronomiaZone" to="Piso2/AstronomiaZone" method="back_Zone"]
+[connection signal="inZone" from="StateMachine/AstronomiaZone" to="Piso2/AstronomiaZone" method="in_Zone"]
+[connection signal="pressed" from="StateMachine/NoZone/Button" to="StateMachine/NoZone" method="_on_button_pressed"]
+[connection signal="backZone" from="StateMachine/MegafaunaZone" to="Piso1/MegafaunaZone" method="back_Zone"]
 [connection signal="inZone" from="StateMachine/MegafaunaZone" to="Piso1/MegafaunaZone" method="in_Zone"]
-[connection signal="inZone" from="StateMachine/MegafaunaZone" to="Piso1/MegafaunaZone/ZoomingZone/In_Zone/minigame1" method="OnZone"]
-[connection signal="inZone" from="StateMachine/MegafaunaZone" to="Piso1/MegafaunaZone/ZoomingZone/In_Zone/minigame2" method="OnZone"]
-[connection signal="inZone" from="StateMachine/MegafaunaZone" to="Piso1/MegafaunaZone/ZoomingZone/In_Zone/minigame3" method="OnZone"]
-[connection signal="tree_entered" from="StateMachine/MegafaunaZone" to="StateMachine/MegafaunaZone" method="CheckAllTrue"]
+[connection signal="timeout" from="StateMachine/ZoneCompleteEvent/Timer" to="StateMachine/ZoneCompleteEvent" method="_on_timer_timeout"]
 [connection signal="pressed" from="StateMachine/ButtonBack" to="StateMachine/ButtonBack" method="_on_pressed"]
 
-[editable path="Piso1/MegafaunaZone/ZoomingZone/In_Zone/minigame1"]
-[editable path="Piso1/MegafaunaZone/ZoomingZone/In_Zone/minigame2"]
-[editable path="Piso1/MegafaunaZone/ZoomingZone/In_Zone/minigame3"]
+[editable path="Piso2/AstronomiaZone/ZoomingZone/minigame1"]
+[editable path="Piso2/AstronomiaZone/ZoomingZone/minigame2"]
+[editable path="Piso2/AstronomiaZone/ZoomingZone/minigame3"]
+[editable path="Piso1/MegafaunaZone/ZoomingZone/minigame1"]
+[editable path="Piso1/MegafaunaZone/ZoomingZone/minigame2"]
+[editable path="Piso1/MegafaunaZone/ZoomingZone/minigame3"]
