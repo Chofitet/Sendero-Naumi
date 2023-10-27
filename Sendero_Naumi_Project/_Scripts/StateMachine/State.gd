@@ -56,6 +56,10 @@ func CheckAllTrue(Minigames):
 func RestartAll():
 	minigameResourseFile.RestartMinigames()
 	Zoneresource.RestartZones()
+	var InstanceR = InstanceResource.new()
+	InstanceR. RestartIntances()
 	save()
 	ResourceSaver.save(Zoneresource,save_file_path + "ZoneResource.tres")
+	ResourceSaver.save(InstanceR, save_file_path + "InstanceResource.tres")
 	get_tree().change_scene_to_file("res://Scenes/Map_Screen.tscn")
+	

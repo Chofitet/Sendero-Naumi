@@ -18,9 +18,9 @@ func Exit():
 	Content.visible = false
 
 func SetConsigna():
-	var numConsigna = GetInstanceOfMinigame()
-	var textConsigna = Consignas[int(numConsigna)]
+	var textConsigna = Consignas[GetFixedIndex(Consignas)]
 	get_node("Contenido/LblConsigna").set_deferred("text", textConsigna) 
 
 func TimeOut():
 	get_node("Contenido/Button").visible = true
+

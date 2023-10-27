@@ -4,6 +4,7 @@ class_name Moraleja
 @export var Moralejas := []
 
 var Content 
+var EndOfGame
 
 func _ready():
 	Content = get_node("Contenido")
@@ -17,11 +18,17 @@ func Enter():
 func Exit():
 	Content.visible = false
 	get_node("Contenido/Timer").stop()
+	get_node("Contenido/Button").visible = false
 
 func SetMoraleja():
-	var numMoraleja = GetInstanceOfMinigame()
-	var textMoraleja = Moralejas[int(numMoraleja)]
+	var textMoraleja = Moralejas[GetFixedIndex(Moralejas)]
 	get_node("Contenido/LblMoraleja").set_deferred("text", textMoraleja) 
  
 func TimeOut():
-	get_node("Contenido/Button").visible = true
+	if !EndOfGame:
+		get_node("Contenido/Button").visible = true
+	else :
+		get_node("Contenido/ButtonChangeScene").visible = true
+
+func isEndOfGame():
+	EndOfGame = true

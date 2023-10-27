@@ -411,18 +411,18 @@ position = Vector2(160.999, 339)
 scale = Vector2(0.24219, 0.212845)
 
 [node name="ButtonChangeScene" parent="Piso1/MegafaunaZone/ZoomingZone/minigame1" index="0"]
-NextScene = "MiniGame_1"
+NextScene = "Minigame_Default"
 fade_time = 1.0
 texture = "paws_pattern"
 is_inverted = true
 color = Color(0.462745, 0.815686, 0.619608, 1)
 
-[node name="minigame2" parent="Piso1/MegafaunaZone/ZoomingZone" instance=ExtResource("6_wq3mc")]
+[node name="RockFighters" parent="Piso1/MegafaunaZone/ZoomingZone" instance=ExtResource("6_wq3mc")]
 position = Vector2(333, 254)
 scale = Vector2(0.253907, 0.223143)
 
-[node name="ButtonChangeScene" parent="Piso1/MegafaunaZone/ZoomingZone/minigame2" index="0"]
-NextScene = "MiniGame_2"
+[node name="ButtonChangeScene" parent="Piso1/MegafaunaZone/ZoomingZone/RockFighters" index="0"]
+NextScene = "RockFighters"
 fade_time = 1.0
 texture = "paws_pattern"
 is_inverted = true
@@ -433,7 +433,7 @@ position = Vector2(519, 242.999)
 scale = Vector2(0.261717, 0.230008)
 
 [node name="ButtonChangeScene" parent="Piso1/MegafaunaZone/ZoomingZone/minigame3" index="0"]
-NextScene = "MiniGame_3"
+NextScene = "shake_Button"
 fade_time = 1.0
 texture = "paws_pattern"
 is_inverted = true
@@ -491,7 +491,7 @@ text = "Restart"
 
 [node name="MegafaunaZone" type="Node" parent="StateMachine"]
 script = ExtResource("15_y7a6y")
-Minigames = [NodePath("../../Piso1/MegafaunaZone/ZoomingZone/minigame1"), NodePath("../../Piso1/MegafaunaZone/ZoomingZone/minigame2"), NodePath("../../Piso1/MegafaunaZone/ZoomingZone/minigame3")]
+Minigames = [NodePath("../../Piso1/MegafaunaZone/ZoomingZone/minigame1"), NodePath("../../Piso1/MegafaunaZone/ZoomingZone/RockFighters"), NodePath("../../Piso1/MegafaunaZone/ZoomingZone/minigame3")]
 
 [node name="ZoneCompleteEvent" type="Node" parent="StateMachine"]
 script = ExtResource("18_phrii")
@@ -547,7 +547,7 @@ state_machine = NodePath("..")
 [connection signal="tree_entered" from="Piso2/AstronomiaZone/ZoomingZone/minigame3" to="Piso2/AstronomiaZone/ZoomingZone/minigame3" method="_on_tree_entered" flags=18]
 [connection signal="pressed" from="Piso1/MegafaunaZone/Button_Change_State" to="Piso1/MegafaunaZone/Button_Change_State" method="_on_pressed"]
 [connection signal="tree_entered" from="Piso1/MegafaunaZone/ZoomingZone/minigame1" to="Piso1/MegafaunaZone/ZoomingZone/minigame1" method="_on_tree_entered" flags=18]
-[connection signal="tree_entered" from="Piso1/MegafaunaZone/ZoomingZone/minigame2" to="Piso1/MegafaunaZone/ZoomingZone/minigame2" method="_on_tree_entered" flags=18]
+[connection signal="tree_entered" from="Piso1/MegafaunaZone/ZoomingZone/RockFighters" to="Piso1/MegafaunaZone/ZoomingZone/RockFighters" method="_on_tree_entered" flags=18]
 [connection signal="tree_entered" from="Piso1/MegafaunaZone/ZoomingZone/minigame3" to="Piso1/MegafaunaZone/ZoomingZone/minigame3" method="_on_tree_entered" flags=18]
 [connection signal="backZone" from="StateMachine/AstronomiaZone" to="Piso2/AstronomiaZone" method="back_Zone"]
 [connection signal="inZone" from="StateMachine/AstronomiaZone" to="Piso2/AstronomiaZone" method="in_Zone"]
@@ -561,5 +561,5 @@ state_machine = NodePath("..")
 [editable path="Piso2/AstronomiaZone/ZoomingZone/minigame2"]
 [editable path="Piso2/AstronomiaZone/ZoomingZone/minigame3"]
 [editable path="Piso1/MegafaunaZone/ZoomingZone/minigame1"]
-[editable path="Piso1/MegafaunaZone/ZoomingZone/minigame2"]
+[editable path="Piso1/MegafaunaZone/ZoomingZone/RockFighters"]
 [editable path="Piso1/MegafaunaZone/ZoomingZone/minigame3"]
