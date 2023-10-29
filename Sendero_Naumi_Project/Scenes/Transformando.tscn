@@ -1,0 +1,653 @@
+[gd_scene load_steps=26 format=3 uid="uid://cndqno434rnuu"]
+
+[ext_resource type="Script" path="res://_Scripts/Minigame_Save_Controller.gd" id="1_aaeor"]
+[ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/StateMachineMinigames.gd" id="2_0bmn1"]
+[ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/ConsignaState.gd" id="3_ty3eh"]
+[ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/Button_Change_StateMinigame.gd" id="4_xoarn"]
+[ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/JuegoState.gd" id="5_twmif"]
+[ext_resource type="Script" path="res://Scenes/ProgressPathWithTap.gd" id="6_441gf"]
+[ext_resource type="PackedScene" uid="uid://c3rhohefo8uq4" path="res://Scenes/Experiments/PhysicsRock.tscn" id="6_ywrk8"]
+[ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/MoralejaState.gd" id="7_dooyb"]
+[ext_resource type="Script" path="res://_Scripts/LavaLineProgress.gd" id="8_r4ind"]
+[ext_resource type="Texture2D" uid="uid://dj1s2ha8t7qe6" path="res://Sprites/ZonaGeología/lavaframes.png" id="8_rq7xm"]
+[ext_resource type="PackedScene" uid="uid://djhg7jvxtexyl" path="res://Scenes/UI_Scenes/btn_Change_Scene.tscn" id="8_xv13d"]
+[ext_resource type="Texture2D" uid="uid://1p1748y1c8sn" path="res://Sprites/ZonaGeología/TransformandoFondo.png" id="9_3hpp3"]
+[ext_resource type="Texture2D" uid="uid://ci6cxlnsy21yc" path="res://Sprites/Quartz.png" id="10_0x42y"]
+[ext_resource type="Texture2D" uid="uid://drrio0noaq2fi" path="res://Sprites/ZonaGeología/piedra-PhotoRoom.png-PhotoRoom.png" id="11_d535g"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_wq84y"]
+friction = 100.0
+rough = true
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3xqfj"]
+size = Vector2(271.644, 59)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_b0cb7"]
+height = 36.0815
+
+[sub_resource type="Gradient" id="Gradient_nbhv7"]
+colors = PackedColorArray(0.824219, 0, 0, 1, 0.832031, 0, 0, 1)
+
+[sub_resource type="Curve2D" id="Curve2D_t0d0g"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 430, 1065, -59.9323, 25.4712, 59.9323, -25.4712, 610, 1028, 0, 0, 0, 0, 654, 852, 80.0904, 26.6968, -80.0904, -26.6968, 556, 765, 44.7171, 14.6832, -44.7171, -14.6832, 366, 719, 0, 0, 0, 0, 304, 691)
+}
+point_count = 6
+
+[sub_resource type="Animation" id="Animation_mll3o"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_6mea2"]
+resource_name = "lava"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_54qsn"]
+_data = {
+"RESET": SubResource("Animation_mll3o"),
+"lava": SubResource("Animation_6mea2")
+}
+
+[sub_resource type="Animation" id="Animation_ecm4u"]
+resource_name = "Transformation"
+length = 5.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2, 2.1, 2.2, 2.3, 2.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.174533, 0.0, 0.174533, 0.0, -0.261799, 0.0, 0.261799, 0.0, -0.349066, 0.0, 0.349066, 0.0, -0.349066, 0.0, 0.349066, 0.0, -0.349066, 0.0, 0.349066, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("11_d535g"), ExtResource("10_0x42y")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.9, 2.2, 2.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0.305765, 0.305764), Vector2(0.305765, 0.305764), Vector2(0.066, 0.066), Vector2(0.208, 0.207999)]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Button")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(5.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_on_pressed"
+}]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../rockInstances/PhysicsRock")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(2.4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"SetGravity"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_i5ta5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.174533]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("11_d535g")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.305765, 0.305764)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xtkek"]
+_data = {
+"RESET": SubResource("Animation_i5ta5"),
+"Transformation": SubResource("Animation_ecm4u")
+}
+
+[node name="Transformando" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Transformando" type="Node" parent="."]
+script = ExtResource("1_aaeor")
+
+[node name="Control" type="Control" parent="Transformando"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="ColorRect" parent="Transformando/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.72549, 1, 1, 1)
+
+[node name="StateMachine" type="Node" parent="Transformando" node_paths=PackedStringArray("initial_state")]
+script = ExtResource("2_0bmn1")
+initial_state = NodePath("Consigna")
+
+[node name="Consigna" type="Node" parent="Transformando/StateMachine"]
+script = ExtResource("3_ty3eh")
+Consignas = ["Transformá las piedras hasta formar sus cuatro estados"]
+
+[node name="Contenido" type="Control" parent="Transformando/StateMachine/Consigna"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LblConsigna" type="Label" parent="Transformando/StateMachine/Consigna/Contenido"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -270.0
+offset_top = -444.0
+offset_right = 294.0
+offset_bottom = 445.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "Consigna genérica Consigna genérica Consigna genérica"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Button" type="Button" parent="Transformando/StateMachine/Consigna/Contenido" node_paths=PackedStringArray("state_to_change", "state_machine")]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -201.0
+offset_top = -197.0
+offset_right = 202.0
+offset_bottom = -67.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Siguiente
+"
+script = ExtResource("4_xoarn")
+state_to_change = NodePath("../../../Juego")
+state_machine = NodePath("../../..")
+
+[node name="Timer" type="Timer" parent="Transformando/StateMachine/Consigna/Contenido"]
+wait_time = 3.0
+
+[node name="Juego" type="Node" parent="Transformando/StateMachine" node_paths=PackedStringArray("NextState", "StateMachine")]
+script = ExtResource("5_twmif")
+NextState = NodePath(".")
+StateMachine = NodePath("..")
+InstanciasMinijuego = [NodePath("Contenido/Instancia1")]
+
+[node name="Contenido" type="Control" parent="Transformando/StateMachine/Juego"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Instancia1" type="Control" parent="Transformando/StateMachine/Juego/Contenido"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="Transformando/StateMachine/Juego/Contenido/Instancia1"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -360.0
+offset_top = -640.0
+offset_right = 360.0
+offset_bottom = 640.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -316.0
+offset_top = 312.0
+offset_right = 82.0
+offset_bottom = 497.0
+color = Color(0.824219, 0, 0, 1)
+
+[node name="rockInstances" type="Node2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control"]
+
+[node name="PhysicsRock" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/rockInstances" node_paths=PackedStringArray("instanceParent") instance=ExtResource("6_ywrk8")]
+position = Vector2(411, 156)
+collision_layer = 1
+mass = 100.0
+physics_material_override = SubResource("PhysicsMaterial_wq84y")
+gravity_scale = 0.0
+instanceParent = NodePath("..")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control" groups=["BreakingTrigger"]]
+position = Vector2(438, 277)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/StaticBody2D" groups=["BreakingTrigger"]]
+position = Vector2(47, 8)
+shape = SubResource("RectangleShape2D_3xqfj")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control"]
+position = Vector2(286, 346)
+rotation = -0.528835
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/StaticBody2D2"]
+position = Vector2(307.709, 16.5018)
+rotation = 0.329867
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_3xqfj")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/StaticBody2D2"]
+position = Vector2(-169.441, 89.7762)
+rotation = -0.66148
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_3xqfj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/StaticBody2D2"]
+position = Vector2(57.8532, -8.33405)
+rotation = -0.132645
+shape = SubResource("RectangleShape2D_3xqfj")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/StaticBody2D2"]
+position = Vector2(-295.123, 92.7755)
+rotation = 0.329867
+shape = SubResource("RectangleShape2D_3xqfj")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/StaticBody2D2"]
+position = Vector2(-314.204, -88.6323)
+rotation = 2.09963
+shape = SubResource("RectangleShape2D_3xqfj")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/StaticBody2D2" groups=["BreakingSmallTrigger"]]
+position = Vector2(-44.6158, -16.8056)
+rotation = 1.41546
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/StaticBody2D2/StaticBody2D"]
+shape = SubResource("CapsuleShape2D_b0cb7")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/StaticBody2D2/StaticBody2D"]
+position = Vector2(-0.431068, 18.9951)
+shape = SubResource("CapsuleShape2D_b0cb7")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/StaticBody2D2/StaticBody2D"]
+position = Vector2(0.49913, -21.9943)
+shape = SubResource("CapsuleShape2D_b0cb7")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/StaticBody2D2/StaticBody2D"]
+position = Vector2(0.952881, -41.9892)
+shape = SubResource("CapsuleShape2D_b0cb7")
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/StaticBody2D2/StaticBody2D"]
+position = Vector2(1.38394, -60.9843)
+shape = SubResource("CapsuleShape2D_b0cb7")
+
+[node name="CollisionShape2D9" type="CollisionShape2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/StaticBody2D2/StaticBody2D"]
+position = Vector2(1.13095, -86.8258)
+shape = SubResource("CapsuleShape2D_b0cb7")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/StaticBody2D2" groups=["BreakingSmallTrigger"]]
+position = Vector2(-59.3083, -100.675)
+rotation = 1.41546
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/StaticBody2D2/StaticBody2D2"]
+shape = SubResource("CapsuleShape2D_b0cb7")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/StaticBody2D2/StaticBody2D2"]
+position = Vector2(-0.431068, 18.9951)
+shape = SubResource("CapsuleShape2D_b0cb7")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/StaticBody2D2/StaticBody2D2"]
+position = Vector2(0.49913, -21.9943)
+shape = SubResource("CapsuleShape2D_b0cb7")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/StaticBody2D2/StaticBody2D2"]
+position = Vector2(0.952881, -41.9892)
+shape = SubResource("CapsuleShape2D_b0cb7")
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/StaticBody2D2/StaticBody2D2"]
+position = Vector2(1.38394, -60.9843)
+shape = SubResource("CapsuleShape2D_b0cb7")
+
+[node name="Button" type="Button" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control" node_paths=PackedStringArray("state_to_change", "state_machine")]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -161.0
+offset_top = -165.0
+offset_right = 161.0
+offset_bottom = -52.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Complete"
+script = ExtResource("4_xoarn")
+state_to_change = NodePath("../../../../../Moraleja")
+state_machine = NodePath("../../../../..")
+isEndOfGame = true
+
+[node name="LavaLine" type="Line2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control" node_paths=PackedStringArray("Lava")]
+width = 94.925
+gradient = SubResource("Gradient_nbhv7")
+script = ExtResource("8_r4ind")
+Lava = NodePath("../Path2D/PathFollow2D/Lava")
+
+[node name="Path2D" type="Path2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control"]
+position = Vector2(0, -3)
+curve = SubResource("Curve2D_t0d0g")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Path2D" node_paths=PackedStringArray("buttonTap", "TransformationEvent")]
+position = Vector2(430, 1065)
+rotation = -0.202732
+script = ExtResource("6_441gf")
+speed = 0.1
+buttonTap = NodePath("../../TapButton")
+TransformationEvent = NodePath("../../Plutónica/AnimationPlayer")
+
+[node name="Lava" type="Sprite2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Path2D/PathFollow2D"]
+texture_filter = 1
+rotation = 1.5865
+scale = Vector2(0.105, 0.105)
+texture = ExtResource("8_rq7xm")
+hframes = 5
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Path2D/PathFollow2D/Lava"]
+reset_on_save = false
+libraries = {
+"": SubResource("AnimationLibrary_54qsn")
+}
+
+[node name="TextureRect" type="TextureRect" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control"]
+z_index = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -360.0
+offset_top = -640.0
+offset_right = 360.0
+offset_bottom = 640.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_3hpp3")
+
+[node name="TapButton" type="Button" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.326
+anchor_top = 0.824
+anchor_right = 0.326
+anchor_bottom = 0.824
+offset_left = -162.72
+offset_top = -70.7201
+offset_right = 163.28
+offset_bottom = 70.2802
+
+[node name="Plutónica" type="Sprite2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control"]
+position = Vector2(253, 607)
+rotation = -0.174533
+scale = Vector2(0.305765, 0.305764)
+texture = ExtResource("11_d535g")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Plutónica"]
+libraries = {
+"": SubResource("AnimationLibrary_xtkek")
+}
+
+[node name="Instancia2" type="Control" parent="Transformando/StateMachine/Juego/Contenido"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Transformando/StateMachine/Juego/Contenido/Instancia2"]
+layout_mode = 0
+offset_right = 598.0
+offset_bottom = 177.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Instancia 1"
+
+[node name="Button" type="Button" parent="Transformando/StateMachine/Juego/Contenido/Instancia2" node_paths=PackedStringArray("state_to_change", "state_machine")]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -161.0
+offset_top = -165.0
+offset_right = 161.0
+offset_bottom = -52.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Complete"
+script = ExtResource("4_xoarn")
+state_to_change = NodePath("../../../../Moraleja")
+state_machine = NodePath("../../../..")
+isEndOfGame = true
+
+[node name="Instancia3" type="Control" parent="Transformando/StateMachine/Juego/Contenido"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Transformando/StateMachine/Juego/Contenido/Instancia3"]
+layout_mode = 0
+offset_right = 598.0
+offset_bottom = 177.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Instancia 1"
+
+[node name="Button" type="Button" parent="Transformando/StateMachine/Juego/Contenido/Instancia3" node_paths=PackedStringArray("state_to_change", "state_machine")]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -161.0
+offset_top = -165.0
+offset_right = 161.0
+offset_bottom = -52.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Complete"
+script = ExtResource("4_xoarn")
+state_to_change = NodePath("../../../../Moraleja")
+state_machine = NodePath("../../../..")
+isEndOfGame = true
+
+[node name="Moraleja" type="Node" parent="Transformando/StateMachine"]
+script = ExtResource("7_dooyb")
+Moralejas = [null, "Así se forman las piedras metamórficas", "Así se forman las piedras plutónicas"]
+
+[node name="Contenido" type="Control" parent="Transformando/StateMachine/Moraleja"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LblMoraleja" type="Label" parent="Transformando/StateMachine/Moraleja/Contenido"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -270.0
+offset_top = -444.0
+offset_right = 294.0
+offset_bottom = 445.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "Consigna genérica Consigna genérica Consigna genérica"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Button" type="Button" parent="Transformando/StateMachine/Moraleja/Contenido" node_paths=PackedStringArray("state_to_change", "state_machine")]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -201.0
+offset_top = -197.0
+offset_right = 202.0
+offset_bottom = -67.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "que?
+"
+script = ExtResource("4_xoarn")
+state_to_change = NodePath("../../../Juego")
+state_machine = NodePath("../../..")
+
+[node name="Timer" type="Timer" parent="Transformando/StateMachine/Moraleja/Contenido"]
+wait_time = 3.0
+one_shot = true
+
+[node name="ButtonChangeScene" parent="Transformando/StateMachine/Moraleja/Contenido" instance=ExtResource("8_xv13d")]
+visible = false
+layout_mode = 1
+offset_left = -197.0
+offset_top = -201.0
+offset_right = 207.0
+offset_bottom = -66.0
+text = "Continue"
+NextScene = "Map_Screen"
+
+[connection signal="pressed" from="Transformando/StateMachine/Consigna/Contenido/Button" to="Transformando/StateMachine/Consigna/Contenido/Button" method="_on_pressed" flags=18]
+[connection signal="timeout" from="Transformando/StateMachine/Consigna/Contenido/Timer" to="Transformando/StateMachine/Consigna" method="TimeOut" flags=18]
+[connection signal="EndOfGame" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Button" to="Transformando" method="Set_Complete" flags=18]
+[connection signal="EndOfGame" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Button" to="Transformando/StateMachine/Moraleja" method="isEndOfGame" flags=18]
+[connection signal="pressed" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Button" to="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Button" method="_on_pressed" flags=18]
+[connection signal="Earthquake" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Path2D/PathFollow2D" to="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/rockInstances/PhysicsRock" method="SetGravity"]
+[connection signal="button_down" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton" to="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/LavaLine" method="_on_tap_button_down"]
+[connection signal="button_down" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton" to="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Path2D/PathFollow2D" method="_on_tap_button_down"]
+[connection signal="button_up" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton" to="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/LavaLine" method="_on_tap_button_up"]
+[connection signal="button_up" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton" to="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Path2D/PathFollow2D" method="_on_tap_button_up"]
+[connection signal="EndOfGame" from="Transformando/StateMachine/Juego/Contenido/Instancia2/Button" to="Transformando" method="Set_Complete" flags=18]
+[connection signal="EndOfGame" from="Transformando/StateMachine/Juego/Contenido/Instancia2/Button" to="Transformando/StateMachine/Moraleja" method="isEndOfGame" flags=18]
+[connection signal="pressed" from="Transformando/StateMachine/Juego/Contenido/Instancia2/Button" to="Transformando/StateMachine/Juego/Contenido/Instancia2/Button" method="_on_pressed" flags=18]
+[connection signal="EndOfGame" from="Transformando/StateMachine/Juego/Contenido/Instancia3/Button" to="Transformando" method="Set_Complete" flags=18]
+[connection signal="EndOfGame" from="Transformando/StateMachine/Juego/Contenido/Instancia3/Button" to="Transformando/StateMachine/Moraleja" method="isEndOfGame" flags=18]
+[connection signal="pressed" from="Transformando/StateMachine/Juego/Contenido/Instancia3/Button" to="Transformando/StateMachine/Juego/Contenido/Instancia3/Button" method="_on_pressed" flags=18]
+[connection signal="pressed" from="Transformando/StateMachine/Moraleja/Contenido/Button" to="Transformando/StateMachine/Moraleja/Contenido/Button" method="_on_pressed" flags=18]
+[connection signal="timeout" from="Transformando/StateMachine/Moraleja/Contenido/Timer" to="Transformando/StateMachine/Moraleja" method="TimeOut" flags=18]

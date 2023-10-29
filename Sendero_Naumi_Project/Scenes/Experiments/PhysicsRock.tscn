@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://c3rhohefo8uq4"]
+
+[ext_resource type="Script" path="res://_Scripts/PhysicsRockBreaking.gd" id="1_istwi"]
+[ext_resource type="Texture2D" uid="uid://drrio0noaq2fi" path="res://Sprites/ZonaGeología/piedra-PhotoRoom.png-PhotoRoom.png" id="1_n7xen"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0sl2r"]
+radius = 47.0106
+
+[node name="PhysicsRock" type="RigidBody2D"]
+collision_layer = 2
+script = ExtResource("1_istwi")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_0sl2r")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.330827, 0.330827)
+texture = ExtResource("1_n7xen")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_0sl2r")

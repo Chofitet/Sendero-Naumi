@@ -49,7 +49,7 @@ func _ready() -> void:
 			var center = Vector2((t[0].x + t[1].x + t[2].x)/3.0,(t[0].y + t[1].y + t[2].y)/3.0)
 
 			var shard = SHARD.instantiate()
-			shard.position = t.position
+			shard.position = Vector2(0,0)
 			shard.hide()
 			shards.append(shard)
 
@@ -59,7 +59,7 @@ func _ready() -> void:
 			shard.get_node("Polygon2D").position = -center
 
 			#shrink polygon so that the collision shapes don't overlapp
-			var shrunk_triangles = Geometry2D.triangulate_delaunay(t)
+			var shrunk_triangles = Geometry2D.offset_polygon(t, -2)
 			if shrunk_triangles.size() > 0:
 				pass
 				#shard.get_node("CollisionPolygon2D").polygon = shrunk_triangles[0]

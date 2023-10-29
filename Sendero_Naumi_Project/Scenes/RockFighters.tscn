@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/Button_Change_StateMinigame.gd" id="4_0gq0b"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/JuegoState.gd" id="5_ks8gw"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/MoralejaState.gd" id="6_43bfo"]
-[ext_resource type="Texture2D" uid="uid://d3puoigdiufce" path="res://Sprites/minigame1/Piedras/Quartz2.png" id="6_88dos"]
+[ext_resource type="Texture2D" uid="uid://ci6cxlnsy21yc" path="res://Sprites/Quartz.png" id="6_hnplu"]
 [ext_resource type="PackedScene" uid="uid://djhg7jvxtexyl" path="res://Scenes/UI_Scenes/btn_Change_Scene.tscn" id="7_itn4t"]
 [ext_resource type="Script" path="res://_Scripts/MinG_RockFigther/RockSpriteContoller.gd" id="7_sfnul"]
 [ext_resource type="PackedScene" uid="uid://byauyjvexvbuc" path="res://Scenes/Experiments/ShardEmitter.tscn" id="8_urdon"]
@@ -218,7 +218,7 @@ text = "FLUORITA"
 [node name="Fluorita" type="Sprite2D" parent="RockFighters/StateMachine/Juego/Contenido/Instancia1/Fluorita"]
 position = Vector2(167, 177)
 scale = Vector2(0.568, 0.568)
-texture = ExtResource("6_88dos")
+texture = ExtResource("6_hnplu")
 script = ExtResource("7_sfnul")
 
 [node name="Timer" type="Timer" parent="RockFighters/StateMachine/Juego/Contenido/Instancia1/Fluorita/Fluorita" node_paths=PackedStringArray("state_to_change", "state_machine")]
@@ -230,9 +230,6 @@ state_machine = NodePath("../../../../../..")
 
 [node name="ShardEmitter" parent="RockFighters/StateMachine/Juego/Contenido/Instancia1/Fluorita/Fluorita" instance=ExtResource("8_urdon")]
 position = Vector2(5.28168, 36.9719)
-nbr_of_shards = 100
-threshhold = 20.0
-display_triangles = true
 
 [node name="Cuarzo" type="Control" parent="RockFighters/StateMachine/Juego/Contenido/Instancia1"]
 layout_mode = 1
@@ -265,7 +262,7 @@ text = "CUARZO"
 [node name="Cuarzo2" type="Sprite2D" parent="RockFighters/StateMachine/Juego/Contenido/Instancia1/Cuarzo"]
 position = Vector2(185, 155)
 scale = Vector2(0.568, 0.568)
-texture = ExtResource("6_88dos")
+texture = ExtResource("6_hnplu")
 
 [node name="Moraleja" type="Node" parent="RockFighters/StateMachine"]
 script = ExtResource("6_43bfo")
