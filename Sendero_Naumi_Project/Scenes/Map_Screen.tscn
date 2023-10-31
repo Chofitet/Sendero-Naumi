@@ -155,56 +155,6 @@ script = ExtResource("5_oybyc")
 state_to_change = NodePath("../../../StateMachine/AstronomiaZone")
 state_machine = NodePath("../../../StateMachine")
 
-[node name="ZoomingZone" type="TextureRect" parent="Piso2/AstronomiaZone"]
-visible = false
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -360.0
-offset_top = -289.5
-offset_right = 360.0
-offset_bottom = 290.5
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("8_u1kyq")
-expand_mode = 1
-
-[node name="minigame1" parent="Piso2/AstronomiaZone/ZoomingZone" instance=ExtResource("6_wq3mc")]
-position = Vector2(160.999, 339)
-scale = Vector2(0.24219, 0.212845)
-
-[node name="ButtonChangeScene" parent="Piso2/AstronomiaZone/ZoomingZone/minigame1" index="0"]
-NextScene = "MiniGame_1"
-fade_time = 1.0
-texture = "paws_pattern"
-is_inverted = true
-color = Color(0.462745, 0.815686, 0.619608, 1)
-
-[node name="minigame2" parent="Piso2/AstronomiaZone/ZoomingZone" instance=ExtResource("6_wq3mc")]
-position = Vector2(333, 254)
-scale = Vector2(0.253907, 0.223143)
-
-[node name="ButtonChangeScene" parent="Piso2/AstronomiaZone/ZoomingZone/minigame2" index="0"]
-NextScene = "MiniGame_2"
-fade_time = 1.0
-texture = "paws_pattern"
-is_inverted = true
-color = Color(0.462745, 0.815686, 0.619608, 1)
-
-[node name="minigame3" parent="Piso2/AstronomiaZone/ZoomingZone" instance=ExtResource("6_wq3mc")]
-position = Vector2(519, 242.999)
-scale = Vector2(0.261717, 0.230008)
-
-[node name="ButtonChangeScene" parent="Piso2/AstronomiaZone/ZoomingZone/minigame3" index="0"]
-NextScene = "MiniGame_3"
-fade_time = 1.0
-texture = "paws_pattern"
-is_inverted = true
-color = Color(0.462745, 0.815686, 0.619608, 1)
-
 [node name="CompleteState" type="ColorRect" parent="Piso2/AstronomiaZone"]
 visible = false
 layout_mode = 1
@@ -225,6 +175,87 @@ offset_bottom = 204.0
 grow_horizontal = 0
 texture = ExtResource("3_w0b1s")
 expand_mode = 1
+
+[node name="ZoomingZone" type="SubViewportContainer" parent="Piso2/AstronomiaZone"]
+visible = false
+z_index = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -3.036
+anchor_top = -3.04
+anchor_right = 4.036
+anchor_bottom = 4.04
+offset_left = -0.151733
+offset_top = -0.0799561
+offset_right = 0.151733
+offset_bottom = 0.0799561
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="Piso2/AstronomiaZone/ZoomingZone"]
+handle_input_locally = false
+canvas_item_default_texture_filter = 0
+size = Vector2i(3310, 2641)
+render_target_update_mode = 0
+
+[node name="ColorRect" type="ColorRect" parent="Piso2/AstronomiaZone/ZoomingZone/SubViewport"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+color = Color(0.65098, 0.784314, 1, 1)
+
+[node name="ZoomingZone" type="TextureRect" parent="Piso2/AstronomiaZone/ZoomingZone/SubViewport"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -360.0
+offset_top = -290.0
+offset_right = 360.0
+offset_bottom = 290.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+texture = ExtResource("8_u1kyq")
+expand_mode = 1
+
+[node name="minigame1" parent="Piso2/AstronomiaZone/ZoomingZone/SubViewport/ZoomingZone" instance=ExtResource("6_wq3mc")]
+position = Vector2(160.999, 339)
+scale = Vector2(0.24219, 0.212845)
+
+[node name="ButtonChangeScene" parent="Piso2/AstronomiaZone/ZoomingZone/SubViewport/ZoomingZone/minigame1" index="0"]
+NextScene = "MiniGame_1"
+fade_time = 1.0
+texture = "paws_pattern"
+is_inverted = true
+color = Color(0.462745, 0.815686, 0.619608, 1)
+
+[node name="minigame2" parent="Piso2/AstronomiaZone/ZoomingZone/SubViewport/ZoomingZone" instance=ExtResource("6_wq3mc")]
+position = Vector2(333, 254)
+scale = Vector2(0.253907, 0.223143)
+
+[node name="ButtonChangeScene" parent="Piso2/AstronomiaZone/ZoomingZone/SubViewport/ZoomingZone/minigame2" index="0"]
+NextScene = "MiniGame_2"
+fade_time = 1.0
+texture = "paws_pattern"
+is_inverted = true
+color = Color(0.462745, 0.815686, 0.619608, 1)
+
+[node name="minigame3" parent="Piso2/AstronomiaZone/ZoomingZone/SubViewport/ZoomingZone" instance=ExtResource("6_wq3mc")]
+position = Vector2(519, 242.999)
+scale = Vector2(0.261717, 0.230008)
+
+[node name="ButtonChangeScene" parent="Piso2/AstronomiaZone/ZoomingZone/SubViewport/ZoomingZone/minigame3" index="0"]
+NextScene = "MiniGame_3"
+fade_time = 1.0
+texture = "paws_pattern"
+is_inverted = true
+color = Color(0.462745, 0.815686, 0.619608, 1)
 
 [node name="Piso3" type="Control" parent="."]
 layout_mode = 1
@@ -389,93 +420,97 @@ grow_horizontal = 0
 texture = ExtResource("3_w0b1s")
 expand_mode = 1
 
-[node name="ZoomingZone" type="TextureRect" parent="Piso1/MegafaunaZone"]
+[node name="ZoomingZone" type="SubViewportContainer" parent="Piso1/MegafaunaZone"]
 visible = false
 layout_mode = 1
 anchors_preset = -1
+anchor_left = -2.977
+anchor_top = -4.893
+anchor_right = 3.969
+anchor_bottom = 2.945
+offset_left = 0.145142
+offset_top = 0.151001
+offset_right = -0.0651855
+offset_bottom = -0.115051
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="Piso1/MegafaunaZone/ZoomingZone"]
+handle_input_locally = false
+canvas_item_default_texture_filter = 0
+size = Vector2i(2674, 2406)
+render_target_update_mode = 0
+
+[node name="ColorRect" type="ColorRect" parent="Piso1/MegafaunaZone/ZoomingZone/SubViewport"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+color = Color(0.65098, 0.784314, 1, 1)
+
+[node name="ZoomingZone" type="TextureRect" parent="Piso1/MegafaunaZone/ZoomingZone/SubViewport"]
+anchors_preset = 8
 anchor_left = 0.5
-anchor_top = -0.935
+anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = -0.935
-offset_left = -365.5
-offset_top = -289.955
-offset_right = 354.5
-offset_bottom = 290.045
+anchor_bottom = 0.5
+offset_left = -360.0
+offset_top = -290.0
+offset_right = 360.0
+offset_bottom = 290.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_7ltgs")
 expand_mode = 1
 
-[node name="minigame1" parent="Piso1/MegafaunaZone/ZoomingZone" instance=ExtResource("6_wq3mc")]
+[node name="minigame1" parent="Piso1/MegafaunaZone/ZoomingZone/SubViewport/ZoomingZone" instance=ExtResource("6_wq3mc")]
 position = Vector2(160.999, 339)
 scale = Vector2(0.24219, 0.212845)
 
-[node name="ButtonChangeScene" parent="Piso1/MegafaunaZone/ZoomingZone/minigame1" index="0"]
+[node name="ButtonChangeScene" parent="Piso1/MegafaunaZone/ZoomingZone/SubViewport/ZoomingZone/minigame1" index="0"]
 NextScene = "Minigame_Default"
 fade_time = 1.0
 texture = "paws_pattern"
 is_inverted = true
 color = Color(0.462745, 0.815686, 0.619608, 1)
 
-[node name="RockFighters" parent="Piso1/MegafaunaZone/ZoomingZone" instance=ExtResource("6_wq3mc")]
+[node name="RockFighters" parent="Piso1/MegafaunaZone/ZoomingZone/SubViewport/ZoomingZone" instance=ExtResource("6_wq3mc")]
 position = Vector2(333, 254)
 scale = Vector2(0.253907, 0.223143)
 
-[node name="ButtonChangeScene" parent="Piso1/MegafaunaZone/ZoomingZone/RockFighters" index="0"]
+[node name="ButtonChangeScene" parent="Piso1/MegafaunaZone/ZoomingZone/SubViewport/ZoomingZone/RockFighters" index="0"]
 NextScene = "RockFighters"
 fade_time = 1.0
 texture = "paws_pattern"
 is_inverted = true
 color = Color(0.462745, 0.815686, 0.619608, 1)
 
-[node name="Transformando" parent="Piso1/MegafaunaZone/ZoomingZone" instance=ExtResource("6_wq3mc")]
+[node name="Transformando" parent="Piso1/MegafaunaZone/ZoomingZone/SubViewport/ZoomingZone" instance=ExtResource("6_wq3mc")]
 position = Vector2(519, 242.999)
 scale = Vector2(0.261717, 0.230008)
 
-[node name="ButtonChangeScene" parent="Piso1/MegafaunaZone/ZoomingZone/Transformando" index="0"]
+[node name="ButtonChangeScene" parent="Piso1/MegafaunaZone/ZoomingZone/SubViewport/ZoomingZone/Transformando" index="0"]
 NextScene = "Transformando"
 fade_time = 1.0
 texture = "paws_pattern"
 is_inverted = true
 color = Color(0.462745, 0.815686, 0.619608, 1)
 
-[node name="ButtonChangeScene" parent="." instance=ExtResource("7_1v7i5")]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_top = 0.0
-anchor_right = 1.0
-anchor_bottom = 0.0
-offset_left = -140.0
-offset_top = 15.0
-offset_right = -19.0
-offset_bottom = 161.0
-grow_horizontal = 0
-grow_vertical = 1
-text = ""
-flat = true
-NextScene = "Naumi_Screen"
-
-[node name="TextureRect" type="TextureRect" parent="ButtonChangeScene"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("8_ssef4")
-expand_mode = 1
-
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("12_2rk75")
 initial_state = NodePath("NoZone")
 
-[node name="AstronomiaZone" type="Node" parent="StateMachine"]
+[node name="AstronomiaZone" type="Node" parent="StateMachine" node_paths=PackedStringArray("ButtonBack")]
 script = ExtResource("16_gw1a5")
-Minigames = [NodePath("../../Piso2/AstronomiaZone/ZoomingZone/minigame1"), NodePath("../../Piso2/AstronomiaZone/ZoomingZone/minigame2"), NodePath("../../Piso2/AstronomiaZone/ZoomingZone/minigame3")]
+Minigames = [NodePath("../../Piso2/AstronomiaZone/ZoomingZone/SubViewport/ZoomingZone/minigame1"), NodePath("../../Piso2/AstronomiaZone/ZoomingZone/SubViewport/ZoomingZone/minigame2"), NodePath("../../Piso2/AstronomiaZone/ZoomingZone/SubViewport/ZoomingZone/minigame3")]
+ButtonBack = NodePath("../../SubViewportContainer/SubViewport/ButtonBack")
 
-[node name="NoZone" type="Node" parent="StateMachine"]
+[node name="NoZone" type="Node" parent="StateMachine" node_paths=PackedStringArray("ButtonBack")]
 script = ExtResource("13_tgu8h")
+ButtonBack = NodePath("../../SubViewportContainer/SubViewport/ButtonBack")
 
 [node name="Button" type="Button" parent="StateMachine/NoZone"]
 anchors_preset = 2
@@ -489,12 +524,14 @@ grow_vertical = 0
 theme_override_font_sizes/font_size = 40
 text = "Restart"
 
-[node name="MegafaunaZone" type="Node" parent="StateMachine"]
+[node name="MegafaunaZone" type="Node" parent="StateMachine" node_paths=PackedStringArray("ButtonBack")]
 script = ExtResource("15_y7a6y")
-Minigames = [NodePath("../../Piso1/MegafaunaZone/ZoomingZone/minigame1"), NodePath("../../Piso1/MegafaunaZone/ZoomingZone/RockFighters"), NodePath("../../Piso1/MegafaunaZone/ZoomingZone/Transformando")]
+Minigames = [NodePath("../../Piso1/MegafaunaZone/ZoomingZone/SubViewport/ZoomingZone/minigame1"), NodePath("../../Piso1/MegafaunaZone/ZoomingZone/SubViewport/ZoomingZone/RockFighters"), NodePath("../../Piso1/MegafaunaZone/ZoomingZone/SubViewport/ZoomingZone/Transformando")]
+ButtonBack = NodePath("../../SubViewportContainer/SubViewport/ButtonBack")
 
-[node name="ZoneCompleteEvent" type="Node" parent="StateMachine"]
+[node name="ZoneCompleteEvent" type="Node" parent="StateMachine" node_paths=PackedStringArray("ButtonBack")]
 script = ExtResource("18_phrii")
+ButtonBack = NodePath("../../SubViewportContainer/SubViewport/ButtonBack")
 
 [node name="ColorRect2" type="ColorRect" parent="StateMachine/ZoneCompleteEvent"]
 visible = false
@@ -523,43 +560,108 @@ vertical_alignment = 1
 [node name="Timer" type="Timer" parent="StateMachine/ZoneCompleteEvent"]
 wait_time = 3.0
 
-[node name="ButtonBack" type="Button" parent="StateMachine" node_paths=PackedStringArray("state_to_change", "state_machine")]
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+z_index = 3
+layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -241.0
-offset_top = -112.0
-offset_right = -22.0
+offset_left = -252.0
+offset_top = -118.0
+offset_right = -18.0
 offset_bottom = -28.0
 grow_horizontal = 0
 grow_vertical = 0
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(234, 90)
+render_target_update_mode = 4
+
+[node name="ButtonBack" type="Button" parent="SubViewportContainer/SubViewport" node_paths=PackedStringArray("state_to_change", "state_machine")]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -109.5
+offset_top = -42.0
+offset_right = 109.5
+offset_bottom = 42.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_font_sizes/font_size = 30
 text = "Back"
 script = ExtResource("5_oybyc")
-state_to_change = NodePath("../NoZone")
-state_machine = NodePath("..")
+state_to_change = NodePath("../../../StateMachine/NoZone")
+state_machine = NodePath("../../../StateMachine")
+
+[node name="SubViewportContainer2" type="SubViewportContainer" parent="."]
+z_index = 3
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -156.0
+offset_bottom = 176.0
+grow_horizontal = 0
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer2"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(156, 176)
+render_target_update_mode = 4
+
+[node name="ButtonChangeScene" parent="SubViewportContainer2/SubViewport" instance=ExtResource("7_1v7i5")]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 0.0
+offset_left = -140.0
+offset_top = 15.0
+offset_right = -19.0
+offset_bottom = 161.0
+grow_horizontal = 0
+grow_vertical = 1
+text = ""
+flat = true
+NextScene = "Naumi_Screen"
+
+[node name="TextureRect" type="TextureRect" parent="SubViewportContainer2/SubViewport/ButtonChangeScene"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_ssef4")
+expand_mode = 1
 
 [connection signal="pressed" from="Piso2/AstronomiaZone/Button_Change_State" to="Piso2/AstronomiaZone/Button_Change_State" method="_on_pressed"]
-[connection signal="tree_entered" from="Piso2/AstronomiaZone/ZoomingZone/minigame1" to="Piso2/AstronomiaZone/ZoomingZone/minigame1" method="_on_tree_entered" flags=18]
-[connection signal="tree_entered" from="Piso2/AstronomiaZone/ZoomingZone/minigame2" to="Piso2/AstronomiaZone/ZoomingZone/minigame2" method="_on_tree_entered" flags=18]
-[connection signal="tree_entered" from="Piso2/AstronomiaZone/ZoomingZone/minigame3" to="Piso2/AstronomiaZone/ZoomingZone/minigame3" method="_on_tree_entered" flags=18]
+[connection signal="tree_entered" from="Piso2/AstronomiaZone/ZoomingZone/SubViewport/ZoomingZone/minigame1" to="Piso2/AstronomiaZone/ZoomingZone/SubViewport/ZoomingZone/minigame1" method="_on_tree_entered" flags=18]
+[connection signal="tree_entered" from="Piso2/AstronomiaZone/ZoomingZone/SubViewport/ZoomingZone/minigame2" to="Piso2/AstronomiaZone/ZoomingZone/SubViewport/ZoomingZone/minigame2" method="_on_tree_entered" flags=18]
+[connection signal="tree_entered" from="Piso2/AstronomiaZone/ZoomingZone/SubViewport/ZoomingZone/minigame3" to="Piso2/AstronomiaZone/ZoomingZone/SubViewport/ZoomingZone/minigame3" method="_on_tree_entered" flags=18]
 [connection signal="pressed" from="Piso1/MegafaunaZone/Button_Change_State" to="Piso1/MegafaunaZone/Button_Change_State" method="_on_pressed"]
-[connection signal="tree_entered" from="Piso1/MegafaunaZone/ZoomingZone/minigame1" to="Piso1/MegafaunaZone/ZoomingZone/minigame1" method="_on_tree_entered" flags=18]
-[connection signal="tree_entered" from="Piso1/MegafaunaZone/ZoomingZone/RockFighters" to="Piso1/MegafaunaZone/ZoomingZone/RockFighters" method="_on_tree_entered" flags=18]
-[connection signal="tree_entered" from="Piso1/MegafaunaZone/ZoomingZone/Transformando" to="Piso1/MegafaunaZone/ZoomingZone/Transformando" method="_on_tree_entered" flags=18]
+[connection signal="tree_entered" from="Piso1/MegafaunaZone/ZoomingZone/SubViewport/ZoomingZone/minigame1" to="Piso1/MegafaunaZone/ZoomingZone/SubViewport/ZoomingZone/minigame1" method="_on_tree_entered" flags=18]
+[connection signal="tree_entered" from="Piso1/MegafaunaZone/ZoomingZone/SubViewport/ZoomingZone/RockFighters" to="Piso1/MegafaunaZone/ZoomingZone/SubViewport/ZoomingZone/RockFighters" method="_on_tree_entered" flags=18]
+[connection signal="tree_entered" from="Piso1/MegafaunaZone/ZoomingZone/SubViewport/ZoomingZone/Transformando" to="Piso1/MegafaunaZone/ZoomingZone/SubViewport/ZoomingZone/Transformando" method="_on_tree_entered" flags=18]
 [connection signal="backZone" from="StateMachine/AstronomiaZone" to="Piso2/AstronomiaZone" method="back_Zone"]
 [connection signal="inZone" from="StateMachine/AstronomiaZone" to="Piso2/AstronomiaZone" method="in_Zone"]
 [connection signal="pressed" from="StateMachine/NoZone/Button" to="StateMachine/NoZone" method="_on_button_pressed"]
 [connection signal="backZone" from="StateMachine/MegafaunaZone" to="Piso1/MegafaunaZone" method="back_Zone"]
 [connection signal="inZone" from="StateMachine/MegafaunaZone" to="Piso1/MegafaunaZone" method="in_Zone"]
 [connection signal="timeout" from="StateMachine/ZoneCompleteEvent/Timer" to="StateMachine/ZoneCompleteEvent" method="_on_timer_timeout"]
-[connection signal="pressed" from="StateMachine/ButtonBack" to="StateMachine/ButtonBack" method="_on_pressed"]
+[connection signal="pressed" from="SubViewportContainer/SubViewport/ButtonBack" to="SubViewportContainer/SubViewport/ButtonBack" method="_on_pressed"]
 
-[editable path="Piso2/AstronomiaZone/ZoomingZone/minigame1"]
-[editable path="Piso2/AstronomiaZone/ZoomingZone/minigame2"]
-[editable path="Piso2/AstronomiaZone/ZoomingZone/minigame3"]
-[editable path="Piso1/MegafaunaZone/ZoomingZone/minigame1"]
-[editable path="Piso1/MegafaunaZone/ZoomingZone/RockFighters"]
-[editable path="Piso1/MegafaunaZone/ZoomingZone/Transformando"]
+[editable path="Piso2/AstronomiaZone/ZoomingZone/SubViewport/ZoomingZone/minigame1"]
+[editable path="Piso2/AstronomiaZone/ZoomingZone/SubViewport/ZoomingZone/minigame2"]
+[editable path="Piso2/AstronomiaZone/ZoomingZone/SubViewport/ZoomingZone/minigame3"]
+[editable path="Piso1/MegafaunaZone/ZoomingZone/SubViewport/ZoomingZone/minigame1"]
+[editable path="Piso1/MegafaunaZone/ZoomingZone/SubViewport/ZoomingZone/RockFighters"]
+[editable path="Piso1/MegafaunaZone/ZoomingZone/SubViewport/ZoomingZone/Transformando"]

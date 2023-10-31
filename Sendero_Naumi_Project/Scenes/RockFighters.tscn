@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://lv8sdofmjhf3"]
+[gd_scene load_steps=15 format=3 uid="uid://lv8sdofmjhf3"]
 
 [ext_resource type="Script" path="res://_Scripts/Minigame_Save_Controller.gd" id="1_f0fiw"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/StateMachineMinigames.gd" id="2_12384"]
@@ -6,7 +6,8 @@
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/Button_Change_StateMinigame.gd" id="4_0gq0b"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/JuegoState.gd" id="5_ks8gw"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/MoralejaState.gd" id="6_43bfo"]
-[ext_resource type="Texture2D" uid="uid://ci6cxlnsy21yc" path="res://Sprites/Quartz.png" id="6_hnplu"]
+[ext_resource type="Texture2D" uid="uid://b7poe0ethot51" path="res://Sprites/ZonaGeología/Piedras/flurita_dureza.png" id="6_dnyaq"]
+[ext_resource type="Texture2D" uid="uid://b5qoetxgjuq1s" path="res://Sprites/ZonaGeología/Piedras/cuarzo_dureza.png" id="6_pa2as"]
 [ext_resource type="PackedScene" uid="uid://djhg7jvxtexyl" path="res://Scenes/UI_Scenes/btn_Change_Scene.tscn" id="7_itn4t"]
 [ext_resource type="Script" path="res://_Scripts/MinG_RockFigther/RockSpriteContoller.gd" id="7_sfnul"]
 [ext_resource type="PackedScene" uid="uid://byauyjvexvbuc" path="res://Scenes/Experiments/ShardEmitter.tscn" id="8_urdon"]
@@ -217,8 +218,8 @@ text = "FLUORITA"
 
 [node name="Fluorita" type="Sprite2D" parent="RockFighters/StateMachine/Juego/Contenido/Instancia1/Fluorita"]
 position = Vector2(167, 177)
-scale = Vector2(0.568, 0.568)
-texture = ExtResource("6_hnplu")
+scale = Vector2(0.638783, 0.638783)
+texture = ExtResource("6_dnyaq")
 script = ExtResource("7_sfnul")
 
 [node name="Timer" type="Timer" parent="RockFighters/StateMachine/Juego/Contenido/Instancia1/Fluorita/Fluorita" node_paths=PackedStringArray("state_to_change", "state_machine")]
@@ -230,6 +231,7 @@ state_machine = NodePath("../../../../../..")
 
 [node name="ShardEmitter" parent="RockFighters/StateMachine/Juego/Contenido/Instancia1/Fluorita/Fluorita" instance=ExtResource("8_urdon")]
 position = Vector2(5.28168, 36.9719)
+nbr_of_shards = 3
 
 [node name="Cuarzo" type="Control" parent="RockFighters/StateMachine/Juego/Contenido/Instancia1"]
 layout_mode = 1
@@ -262,7 +264,7 @@ text = "CUARZO"
 [node name="Cuarzo2" type="Sprite2D" parent="RockFighters/StateMachine/Juego/Contenido/Instancia1/Cuarzo"]
 position = Vector2(185, 155)
 scale = Vector2(0.568, 0.568)
-texture = ExtResource("6_hnplu")
+texture = ExtResource("6_pa2as")
 
 [node name="Moraleja" type="Node" parent="RockFighters/StateMachine"]
 script = ExtResource("6_43bfo")

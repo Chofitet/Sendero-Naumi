@@ -23,5 +23,5 @@ func SpawnOnDeath(instancia):
 	#get_tree().current_scene.call_deferred("add_child", breakingInstance)
 	queue_free()
 
-func SetGravity():
-	gravity_scale = 0.2
+func SetFreeze():
+	freeze = false

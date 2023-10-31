@@ -10,14 +10,9 @@ func _physics_process(delta):
 		add_point(relative_position)
 		var ArrayPoints = get_points( )
 		i = ArrayPoints.size()
-	else:
-		if i > 0:
-			remove_point(i)
-			i -= 1
 
 
-func _on_tap_button_down():
+func ActivateLava():
 	isDrawing = true
 
-func _on_tap_button_up():
-	isDrawing = false
+

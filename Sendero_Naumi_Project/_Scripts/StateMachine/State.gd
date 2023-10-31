@@ -63,3 +63,6 @@ func RestartAll():
 	ResourceSaver.save(InstanceR, save_file_path + "InstanceResource.tres")
 	get_tree().change_scene_to_file("res://Scenes/Map_Screen.tscn")
 	
+
+func ChangeButtonBackVisibility(x, button):
+	button.visible = x

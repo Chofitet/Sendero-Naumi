@@ -25,5 +25,5 @@ func Set_Complete():
 			get_node("CompleteState").visible = true
 
 func ShowMiniGamesButtons():
-	for b in get_node("ZoomingZone").get_children():
+	for b in get_node("ZoomingZone/SubViewport/ZoomingZone").get_children():
 		b.OnZone()

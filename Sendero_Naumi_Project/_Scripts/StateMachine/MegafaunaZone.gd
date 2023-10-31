@@ -1,12 +1,12 @@
 extends State
 class_name MegafaunaZone
 @export var Minigames := []
-
+@export var ButtonBack : Button 
 
 func Enter():
 	PlayerVariables.SaveLastState(self.name)
 	inZone.emit()
-	get_parent().get_node("ButtonBack").visible = true
+	ChangeButtonBackVisibility(true, ButtonBack)
 
 func Exit():
 	backZone.emit()

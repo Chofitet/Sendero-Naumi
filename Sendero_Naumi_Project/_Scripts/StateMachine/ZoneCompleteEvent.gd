@@ -1,8 +1,9 @@
 extends State
 class_name ZoneCompleteEvent
+@export var ButtonBack : Button
 
 func Enter():
-	get_parent().get_node("ButtonBack").visible = false
+	ChangeButtonBackVisibility(false, ButtonBack)
 	get_node("ColorRect2").visible = true
 	get_node("Timer").start()
 
