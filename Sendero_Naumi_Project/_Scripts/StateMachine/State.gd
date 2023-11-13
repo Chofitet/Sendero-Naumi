@@ -8,7 +8,6 @@ var ActualState
 
 signal inZone
 signal backZone
-
 signal Transitioned
 
 func _ready():
@@ -16,24 +15,13 @@ func _ready():
 	if minigameResourseFile.StateMinigames["ToLevelNaumi"]:
 		get_tree().change_scene_to_file("res://Scenes/Naumi_Level_Up.tscn")
 
-func Enter():
-	pass
-
-func Exit():
-	pass
-
-func Update(_detla : float):
-	pass
-
-func Physics_Update(_detla : float):
-	pass
-
 func load_file():
 	minigameResourseFile  = ResourceLoader.load(save_file_path  + save_file_name)
 
 func save():
 	ResourceSaver.save(minigameResourseFile,save_file_path+save_file_name)
 
+#Setea la bool is_Complete en true para una zona cuando todos sus minijuegos fueron completados
 func CheckAllTrue(Minigames):
 	load_file()
 	var i = 0
@@ -53,6 +41,7 @@ func CheckAllTrue(Minigames):
 				save()
 				get_tree().change_scene_to_file("res://Scenes/Naumi_Level_Up.tscn")
 
+#Reinicia todos las Zonas y Minijuegos
 func RestartAll():
 	minigameResourseFile.RestartMinigames()
 	Zoneresource.RestartZones()
@@ -65,4 +54,18 @@ func RestartAll():
 	
 
 func ChangeButtonBackVisibility(x, button):
+	if (button == null): return
 	button.visible = x
+
+
+func Enter():
+	pass
+
+func Exit():
+	pass
+
+func Update(_detla : float):
+	pass
+
+func Physics_Update(_detla : float):
+	pass

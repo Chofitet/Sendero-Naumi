@@ -1,7 +1,7 @@
 extends State
 class_name AstronomiaZone
 @export var Minigames := []
-@export var ButtonBack : Button
+@export var ButtonBack : SubViewportContainer
 
 func Enter():
 	PlayerVariables.SaveLastState(self.name)

@@ -11,12 +11,14 @@ func  _ready():
 	Set_Complete()
 
 func in_Zone():
-	if PlayerVariables.lastState == self.name:
-		get_node("ZoomingZone").visible = true
-	ShowMiniGamesButtons()
+	#if PlayerVariables.lastState == self.name:
+		#get_node("ZoomingZone").visible = true
+	#ShowMiniGamesButtons()
+	pass
 
 func back_Zone():
-	get_node("ZoomingZone").visible = false
+	pass
+	#get_node("ZoomingZone").visible = false
 
 func Set_Complete():
 	load_file()

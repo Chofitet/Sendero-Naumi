@@ -2,6 +2,7 @@ extends Button
 var NumOfTap = 3
 signal Earthquake
 signal BeforeEarthquake
+signal SmallEarthquake
 var timer 
 
 func _ready():
@@ -12,6 +13,7 @@ func _ready():
 func Tap():
 	NumOfTap -= 1
 	Input.vibrate_handheld(100)
+	if (NumOfTap != 0): SmallEarthquake.emit()
 	if (NumOfTap == 0):
 		Input.vibrate_handheld(300)
 		NumOfTap = 3

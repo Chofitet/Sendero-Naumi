@@ -49,24 +49,25 @@ func _ready() -> void:
 			var center = Vector2((t[0].x + t[1].x + t[2].x)/3.0,(t[0].y + t[1].y + t[2].y)/3.0)
 
 			var shard = SHARD.instantiate()
-			shard.position = Vector2(0,0)
+			get_parent().set_deferred("add_child",shard)
+			shard.position = -center
 			shard.hide()
 			shards.append(shard)
-
-			#setup polygons & collision shapes
-			shard.get_node("Polygon2D").texture = texture
-			shard.get_node("Polygon2D").polygon = t
-			shard.get_node("Polygon2D").position = -center
 
 			#shrink polygon so that the collision shapes don't overlapp
 			var shrunk_triangles = Geometry2D.offset_polygon(t, -2)
 			if shrunk_triangles.size() > 0:
-				pass
-				#shard.get_node("CollisionPolygon2D").polygon = shrunk_triangles[0]
+				shard.get_node("CollisionPolygon2D").polygon = shrunk_triangles[0]
 			else:
 				shard.get_node("CollisionPolygon2D").polygon = t
+				pass
 			shard.get_node("CollisionPolygon2D").position = -center
-
+		
+		#setup polygons & collision shapes
+			shard.get_node("Polygon2D").texture = texture
+			shard.get_node("Polygon2D").polygon = t
+			shard.get_node("Polygon2D").position = -center
+	
 		queue_redraw()
 		call_deferred("add_shards")
 
@@ -82,6 +83,7 @@ func shatter() -> void:
 	for s in shards:
 		var direction = Vector2.UP.rotated(randf_range(0, 2*PI))
 		var impulse = randf_range(min_impulse, max_impulse)
+		s.freeze = false
 		s.apply_central_impulse(direction * impulse)
 		s.get_node("CollisionPolygon2D").disabled = false
 		s.show()

@@ -13,3 +13,5 @@ func IncreaseMinigameStage():
 
 func SaveLastState(state):
 	lastState = state
+
+

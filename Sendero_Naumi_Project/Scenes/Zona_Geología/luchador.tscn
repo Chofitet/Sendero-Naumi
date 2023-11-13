@@ -1,0 +1,606 @@
+[gd_scene load_steps=16 format=3 uid="uid://ceomolwls37bm"]
+
+[ext_resource type="Script" path="res://_Scripts/MinG_RockFigther/RockSpriteController.gd" id="1_v4d8g"]
+[ext_resource type="Texture2D" uid="uid://dconeno5qr3px" path="res://Sprites/ZonaGeología/peleador1-marco.png" id="2_s1aee"]
+[ext_resource type="Texture2D" uid="uid://c6qavsooil6af" path="res://Sprites/ZonaGeología/golpe_tira .png" id="3_3mlqg"]
+[ext_resource type="Texture2D" uid="uid://b5qoetxgjuq1s" path="res://Sprites/ZonaGeología/Piedras/cuarzo_dureza.png" id="4_sel67"]
+[ext_resource type="PackedScene" uid="uid://byauyjvexvbuc" path="res://Scenes/Experiments/ShardEmitter.tscn" id="5_mntq2"]
+[ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/Timer_State_Minigame.gd" id="6_6rj2r"]
+
+[sub_resource type="Animation" id="Animation_asrmn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../BrazoDer:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [16]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../PiernaIzq:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [30]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../PiernaDer:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [44]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Piedra:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(167, 177)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../Piedra:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.253073]
+}
+
+[sub_resource type="Animation" id="Animation_6y1ib"]
+resource_name = "Rock_Block"
+length = 2.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.5, 1.6, 1.7, 2, 2.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 0, 1, 0, 8, 9, 10, 11, 12, 11]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../BrazoDer:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.5, 1.6, 1.7, 2, 2.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [14, 15, 14, 15, 14, 22, 23, 24, 25, 26, 25]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../PiernaIzq:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.5, 1.6, 1.7, 2, 2.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [28, 29, 28, 29, 28, 36, 37, 38, 39, 40, 39]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../PiernaDer:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.5, 1.6, 1.7, 2, 2.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [42, 43, 42, 43, 42, 50, 51, 52, 53, 54, 53]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Piedra:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.5, 1.6, 1.7, 2, 2.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(163.342, 169.537), Vector2(163.342, 157.237), Vector2(163.342, 169.537), Vector2(163.342, 157.237), Vector2(163.342, 169.537), Vector2(165.815, 149.325), Vector2(158.725, 168.775), Vector2(158.725, 168.775), Vector2(163.342, 169.537), Vector2(165.826, 170.04), Vector2(163.342, 169.537)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../Piedra:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8, 1, 1.6, 1.7, 2, 2.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0.0, 0.0, 0.0, 0.253073, 0.253073, 0.169297, 0.197222, 0.169297]
+}
+
+[sub_resource type="Animation" id="Animation_82n62"]
+resource_name = "Rock_Idle"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../BrazoDer:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [14, 15]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../PiernaIzq:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [28, 29]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../PiernaDer:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [42, 43]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Piedra:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2(167, 177), Vector2(167, 169.17)]
+}
+
+[sub_resource type="Animation" id="Animation_t7te4"]
+resource_name = "Rock_Punch"
+length = 2.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.1, 1.9, 2, 2.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 0, 1, 0, 2, 3, 4, 5, 6]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../BrazoDer:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.1, 1.9, 2, 2.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [14, 15, 14, 15, 14, 16, 17, 18, 19, 20]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../PiernaIzq:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.1, 1.9, 2, 2.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [28, 29, 28, 29, 28, 30, 31, 32, 33, 34]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../PiernaDer:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.1, 1.9, 2, 2.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [42, 43, 42, 43, 42, 44, 45, 46, 47, 48]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Piedra:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.1, 1.9, 2, 2.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(166.522, 173.238), Vector2(166.522, 161.853), Vector2(166.522, 173.238), Vector2(166.522, 161.853), Vector2(166.522, 173.238), Vector2(217.2, 142.985), Vector2(238.34, 190.625), Vector2(198.487, 169.707), Vector2(162.125, 176.437), Vector2(162.813, 177.321)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../Piedra:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8, 1, 1.1, 1.9, 2, 2.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0.0593412, 0.0593412, 0.0593412, 0.336849, 0.0, 0.404916, -0.118682, -0.0506145]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bkw8r"]
+_data = {
+"RESET": SubResource("Animation_asrmn"),
+"Rock_Block": SubResource("Animation_6y1ib"),
+"Rock_Idle": SubResource("Animation_82n62"),
+"Rock_Punch": SubResource("Animation_t7te4")
+}
+
+[sub_resource type="Animation" id="Animation_171wr"]
+resource_name = "EnterScene"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 1, 1.1, 1.2),
+"transitions": PackedFloat32Array(1, 1, 2.29739, 1, 1),
+"update": 0,
+"values": [Vector2(800, 0), Vector2(800, 0), Vector2(0, 0), Vector2(22.735, 0), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TextureRect2:size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.9, 1, 1.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(366, 553), Vector2(366, 553), Vector2(469.11, 553), Vector2(340, 553), Vector2(366, 553)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Parts:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.4, 1, 1.2),
+"transitions": PackedFloat32Array(1, 1, 2.29, 1),
+"update": 0,
+"values": [Vector2(800, 190), Vector2(800, 190), Vector2(12.676, 190), Vector2(19.845, 190)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Parts:skew")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.4, 1, 1.1, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.1309, 0.0, -0.0959931, 0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("button:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(1.2),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_6je2i"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TextureRect2:size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(322, 553)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Parts:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(800, 190)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Parts:skew")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.0959931]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("button:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_jkuln"]
+resource_name = "ExitScene"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.7),
+"transitions": PackedFloat32Array(1, 2.14355, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 0), Vector2(800, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("button:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_oly2m"]
+_data = {
+"EnterScene": SubResource("Animation_171wr"),
+"ExitScene": SubResource("Animation_jkuln"),
+"RESET": SubResource("Animation_6je2i")
+}
+
+[node name="PiedraLuchador2" type="Control"]
+layout_mode = 3
+anchor_left = 0.514
+anchor_top = 0.527
+anchor_right = 0.514
+anchor_bottom = 0.527
+offset_left = -8.07999
+offset_top = -387.27
+offset_right = 344.92
+offset_bottom = 428.73
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(-1, 1)
+script = ExtResource("1_v4d8g")
+isWinner = true
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+modulate = Color(0.619608, 0.870588, 0.862745, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -31.0
+offset_bottom = -263.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_s1aee")
+expand_mode = 1
+
+[node name="Name" type="Label" parent="TextureRect2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.091
+anchor_right = 0.5
+anchor_bottom = 0.091
+offset_left = 159.0
+offset_top = -33.323
+offset_right = 476.0
+offset_bottom = 27.677
+scale = Vector2(-1, 1)
+theme_override_font_sizes/font_size = 40
+text = "Sr. Cuarzo IV"
+horizontal_alignment = 1
+
+[node name="button" type="Button" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 151.5
+offset_top = -128.0
+offset_right = 470.5
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(-1, 1)
+text = "CUARZO"
+
+[node name="Parts" type="Node2D" parent="."]
+position = Vector2(800, 190)
+skew = -0.0959931
+
+[node name="BrazoDer" type="Sprite2D" parent="Parts"]
+position = Vector2(160, 158)
+scale = Vector2(0.719844, 0.719844)
+texture = ExtResource("3_3mlqg")
+hframes = 14
+vframes = 5
+frame = 14
+
+[node name="PiernaDer" type="Sprite2D" parent="Parts"]
+position = Vector2(172, 114)
+scale = Vector2(0.81323, 0.81323)
+texture = ExtResource("3_3mlqg")
+hframes = 14
+vframes = 5
+frame = 42
+
+[node name="Piedra" type="Sprite2D" parent="Parts"]
+position = Vector2(163.342, 169.537)
+scale = Vector2(0.638783, 0.638783)
+texture = ExtResource("4_sel67")
+
+[node name="ShardEmitter" parent="Parts/Piedra" instance=ExtResource("5_mntq2")]
+threshhold = 50.0
+
+[node name="PiernaIzq" type="Sprite2D" parent="Parts"]
+position = Vector2(159, 120)
+scale = Vector2(0.81323, 0.81323)
+texture = ExtResource("3_3mlqg")
+hframes = 14
+vframes = 5
+frame = 28
+
+[node name="BrazoIzq" type="Sprite2D" parent="Parts"]
+position = Vector2(170, 142)
+scale = Vector2(0.708171, 0.708171)
+texture = ExtResource("3_3mlqg")
+hframes = 14
+vframes = 5
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.6
+one_shot = true
+
+[node name="TimePassInstance" type="Timer" parent="." node_paths=PackedStringArray("state_to_change", "state_machine")]
+wait_time = 4.0
+script = ExtResource("6_6rj2r")
+state_to_change = NodePath("")
+state_machine = NodePath("")
+
+[node name="AnimPiedra" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Parts/BrazoIzq")
+libraries = {
+"": SubResource("AnimationLibrary_bkw8r")
+}
+
+[node name="GUIA" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(167, 140)
+scale = Vector2(0.712062, 0.700389)
+texture = ExtResource("3_3mlqg")
+hframes = 14
+vframes = 5
+frame = 63
+
+[node name="AnimUI" type="AnimationPlayer" parent="."]
+autoplay = "EnterScene"
+libraries = {
+"": SubResource("AnimationLibrary_oly2m")
+}
+
+[connection signal="timeout" from="TimePassInstance" to="TimePassInstance" method="_on_timeout"]

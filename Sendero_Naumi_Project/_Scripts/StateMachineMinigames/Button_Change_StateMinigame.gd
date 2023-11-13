@@ -6,8 +6,9 @@ extends Button
 signal EndOfGame
 
 func _on_pressed():
-	state_machine.Trigger_On_Child_Transition(state_to_change.name)
+	
 	if isEndOfGame:
 		self.visible = false
 		EndOfGame.emit()
+	state_machine.Trigger_On_Child_Transition(state_to_change.name)
 

@@ -1,6 +1,6 @@
 extends State
 class_name NoZone
-@export var ButtonBack : Button
+@export var ButtonBack : SubViewportContainer
 
 func Enter():
 	PlayerVariables.lastState = self.name

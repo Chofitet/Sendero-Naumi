@@ -1,6 +1,6 @@
 extends State
 class_name ZoneCompleteEvent
-@export var ButtonBack : Button
+@export var ButtonBack : SubViewportContainer
 
 func Enter():
 	ChangeButtonBackVisibility(false, ButtonBack)

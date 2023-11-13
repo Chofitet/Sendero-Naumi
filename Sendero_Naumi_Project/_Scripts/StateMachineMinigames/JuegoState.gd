@@ -11,7 +11,7 @@ var once = false
 func _ready():
 	Content = get_node("Contenido")
 	Content.visible = false
-
+	
 func Enter():
 	Content.visible = true
 	SetGameInstance(true)
@@ -21,6 +21,7 @@ func Exit():
 	SetGameInstance(false)
 	IncruseInstanceOfMinigame()
 
+#Muestra la instancia de minijuegos correspondiente segun lo guardado en los saves del jugador
 func SetGameInstance(setBool):
 	var numGame = GetInstanceOfMinigame()
 	get_node(InstanciasMinijuego[numGame]).visible = setBool
