@@ -12,4 +12,5 @@ func Exit():
 	backZone.emit()
 
 func _ready():
-	CheckAllTrue(Minigames)
+	pass
+	#CheckAllTrue(Minigames)

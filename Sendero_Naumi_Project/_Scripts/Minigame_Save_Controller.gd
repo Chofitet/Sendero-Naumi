@@ -20,4 +20,3 @@ func Set_Complete():
 	load_file()
 	minigameResourseFile.Set_State_Minigame(self.name)
 	save()
-
