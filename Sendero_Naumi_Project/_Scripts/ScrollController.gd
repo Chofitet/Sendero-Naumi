@@ -1,5 +1,6 @@
 extends ScrollContainer
 
+@export var limit : float
 @export var anchors := []
 var i = 0
 var pressedPos : Vector2
@@ -15,13 +16,12 @@ func _ready():
 	timer.timeout.connect(calculateGesture)
 	set_deferred("scroll_vertical",next_anchor)
 	var y = get_node(anchors[i]).global_position.y 
-	next_anchor = get_viewport_rect().size.y*3 - (get_viewport_rect().size.y/2)
+	next_anchor = abs(get_viewport_rect().size.y*getAnchorInBackScreen() - (get_viewport_rect().size.y/2))
 	set_deferred("scroll_vertical",next_anchor)
 	stopHold.connect(HoldingClick)
 
 func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("TouchScreen"):
-		if PlayerVariables.lastState == "GeologiaZone": i = 1
 		pressedPos = event.position
 		timer.start()
 		holdClick = true
@@ -41,6 +41,7 @@ func calculateGesture() -> void:
 	inGesture = false
 	if holdClick: return
 	var d := releasePos - pressedPos
+	if (abs(d.y) < limit) : return
 	if abs(d.x) > abs(d.y):
 		if d.x < 0:
 			print("left")
@@ -90,3 +91,13 @@ func find_closest_node():
 		elif closest_node.name == "Piso3":
 			i = 2
 	return closest_node
+
+func getAnchorInBackScreen() -> int:
+	var LastScreen = PlayerVariables.lastState
+	if LastScreen == "MegafaunaZone":
+		i = 0
+		return 3
+	if LastScreen == "GeologiaZone":
+		i = 1
+		return 2
+	return 3

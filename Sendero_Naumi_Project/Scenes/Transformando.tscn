@@ -1,4 +1,4 @@
-[gd_scene load_steps=77 format=3 uid="uid://cndqno434rnuu"]
+[gd_scene load_steps=83 format=3 uid="uid://cndqno434rnuu"]
 
 [ext_resource type="Script" path="res://_Scripts/Minigame_Save_Controller.gd" id="1_aaeor"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/StateMachineMinigames.gd" id="2_0bmn1"]
@@ -41,6 +41,7 @@
 [ext_resource type="Texture2D" uid="uid://dvg4ws5o3pr7p" path="res://Sprites/ZonaGeología/Piedras/preplutonica - transformaciones.png" id="31_4ma1n"]
 [ext_resource type="Texture2D" uid="uid://0lu4k8jagkum" path="res://Sprites/ZonaGeología/Piedras/volcanica - transformaciones.png" id="32_bldxx"]
 [ext_resource type="Texture2D" uid="uid://b4xnthtnr2j0u" path="res://Sprites/ZonaGeología/Piedras/prevolcanica - transformaciones.png" id="33_t4nqu"]
+[ext_resource type="Texture2D" uid="uid://blvtoxf6sl7ty" path="res://Sprites/glow.png" id="39_ryerp"]
 
 [sub_resource type="Animation" id="Animation_e0s7o"]
 resource_name = "Earthquake"
@@ -112,7 +113,7 @@ modifications/0 = SubResource("SkeletonModification2DTwoBoneIK_mbmh3")
 
 [sub_resource type="Animation" id="Animation_c6llx"]
 resource_name = "Lava_fall"
-length = 12.5
+length = 13.6
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -120,7 +121,7 @@ tracks/0/path = NodePath("PathFollow2D:progress_ratio")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(3, 4.6, 5.8, 9.3, 9.9),
+"times": PackedFloat32Array(5, 6.6, 7.8, 11.3, 11.9),
 "transitions": PackedFloat32Array(1, 1, 0.757858, 1, 1),
 "update": 0,
 "values": [0.0, 0.3972, 0.589818, 0.85, 0.87]
@@ -132,7 +133,7 @@ tracks/1/path = NodePath("PathFollow2D/Node2D/Lava snake/Targets/punta:position"
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(3, 3.3, 3.9, 4.5, 5, 5.4, 5.8, 6.3, 7.4, 7.8, 7.9, 8.1, 9.3, 9.9),
+"times": PackedFloat32Array(5, 5.3, 5.9, 6.5, 7, 7.4, 7.8, 8.3, 9.4, 9.8, 9.9, 10.1, 11.3, 11.9),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
 "values": [Vector2(0.513062, -11.2644), Vector2(-50.9352, 27.2551), Vector2(-50.5394, 30.2564), Vector2(-14.1891, -18.3407), Vector2(-18.0676, -25.135), Vector2(-16.6169, -45.0754), Vector2(-34.3125, -65.5672), Vector2(-13.5067, -66.8607), Vector2(-20.9609, -39.3316), Vector2(-31.6098, -19.1912), Vector2(-31.8692, -19.0813), Vector2(-35.9861, -14.0377), Vector2(-51.1422, -12.5705), Vector2(-54.9209, -13.2973)]
@@ -144,7 +145,7 @@ tracks/2/path = NodePath("PathFollow2D/Node2D/Lava snake/Skeleton2D/Bone1/Bone2:
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(9.3),
+"times": PackedFloat32Array(11.3),
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(0.999843, 0.999843)]
@@ -156,7 +157,7 @@ tracks/3/path = NodePath("PathFollow2D/Node2D/Lava snake/Skeleton2D/Bone1:rotati
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(4.5, 5.4, 6.3, 7.4, 8, 9.3, 9.9),
+"times": PackedFloat32Array(6.5, 7.4, 8.3, 9.4, 10, 11.3, 11.9),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 0,
 "values": [0.0, 0.0, -0.0750492, -0.0837758, 0.0, 0.0, -0.413643]
@@ -168,7 +169,7 @@ tracks/4/path = NodePath("PathFollow2D/Node2D/Lava snake/Skeleton2D/Bone1/ColorR
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(3, 6.3, 7.3, 7.9, 8, 8.1, 8.2, 9.4, 9.5, 9.6, 9.7, 9.8, 9.9),
+"times": PackedFloat32Array(5, 8.3, 9.3, 9.9, 10, 10.1, 10.2, 11.4, 11.5, 11.6, 11.7, 11.8, 11.9),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [Vector2(42, 39), Vector2(71, 39), Vector2(50, 39), Vector2(65, 39), Vector2(68, 39), Vector2(68, 39), Vector2(59, 39), Vector2(49, 39), Vector2(46, 39), Vector2(43, 38), Vector2(41, 38), Vector2(39, 38), Vector2(31, 39)]
@@ -180,7 +181,7 @@ tracks/5/path = NodePath("PathFollow2D/Node2D/Lava snake:modulate")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(3, 4.4, 4.5, 9.9, 11.6),
+"times": PackedFloat32Array(5, 6.4, 6.5, 11.9, 13.6),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
@@ -192,7 +193,7 @@ tracks/6/path = NodePath("../Bloqueo4")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(6),
+"times": PackedFloat32Array(8),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [true],
@@ -206,7 +207,7 @@ tracks/7/path = NodePath("../Preplutonica:self_modulate")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(3, 9.9, 11.6),
+"times": PackedFloat32Array(5, 11.9, 13.6),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Color(2.00392, 1, 1, 0), Color(2.00392, 1, 1, 0), Color(2.00392, 1, 1, 1)]
@@ -476,10 +477,22 @@ point_count = 8
 
 [sub_resource type="Animation" id="Animation_mll3o"]
 length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.20936, 0.16316)]
+}
 
 [sub_resource type="Animation" id="Animation_6mea2"]
 resource_name = "lava"
-length = 0.6
+length = 2.4
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -488,16 +501,32 @@ tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.2, 1.5, 1.8, 2.1, 2.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [0, 1, 2]
+"values": [0, 1, 2, 0, 1, 2, 0, 1, 2]
+}
+
+[sub_resource type="Animation" id="Animation_cftm6"]
+resource_name = "move_lava"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.20936, 0.16316), Vector2(0.209, 0.023)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_54qsn"]
 _data = {
 "RESET": SubResource("Animation_mll3o"),
-"lava": SubResource("Animation_6mea2")
+"lava": SubResource("Animation_6mea2"),
+"move_lava": SubResource("Animation_cftm6")
 }
 
 [sub_resource type="Curve2D" id="Curve2D_80j20"]
@@ -579,7 +608,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 0)]
+"values": [Color(0.332881, 0.332881, 0.332881, 0)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -603,7 +632,7 @@ tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 1)]
+"values": [Color(0.607843, 0.607843, 0.607843, 1)]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
@@ -617,6 +646,18 @@ tracks/6/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("MetamorficaTrans:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_ic8kr"]
 resource_name = "rock_Transformation"
@@ -628,7 +669,7 @@ tracks/0/path = NodePath(".:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 2, 4, 4.1, 4.2),
+"times": PackedFloat32Array(0, 2, 4, 4.2, 4.4),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
 "values": [Vector2(0.2, 0.2), Vector2(1, 1), Vector2(1, 1), Vector2(1e-05, 1e-05), Vector2(1, 1)]
@@ -652,7 +693,7 @@ tracks/2/path = NodePath("MetamorficaTrans:texture")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0.7, 4.1),
+"times": PackedFloat32Array(0.7, 4.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [null, ExtResource("21_13nxm")]
@@ -664,7 +705,7 @@ tracks/3/path = NodePath("PiedraHeat:self_modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 2, 4, 4.1),
+"times": PackedFloat32Array(0, 2, 4, 4.2),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 0.54902, 0.584314), Color(1, 1, 1, 0)]
@@ -676,7 +717,7 @@ tracks/4/path = NodePath("MetamorficasPopUp:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 4, 4.1),
+"times": PackedFloat32Array(0, 4.3, 4.4),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [false, false, true]
@@ -700,10 +741,22 @@ tracks/6/path = NodePath("PiedraHeat1:visible")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0, 4.1),
+"times": PackedFloat32Array(0, 4.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("MetamorficaTrans:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 4.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_aa5q8"]
@@ -767,6 +820,18 @@ tracks/3/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("sedimentariaTrans:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_ty3yj"]
 resource_name = "rockTransformation"
@@ -815,6 +880,18 @@ tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0, 4.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("sedimentariaTrans:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 3.9),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
@@ -947,6 +1024,52 @@ _data = {
 "rockTransformation": SubResource("Animation_oygt2")
 }
 
+[sub_resource type="Environment" id="Environment_ctema"]
+background_mode = 3
+glow_enabled = true
+glow_intensity = 2.91
+glow_blend_mode = 1
+glow_hdr_threshold = 0.9
+glow_hdr_scale = 1.0
+
+[sub_resource type="Animation" id="Animation_eqhd1"]
+resource_name = "Blink"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:environment:glow_strength")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [1.0, 1.3, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_7abbi"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:environment:glow_strength")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bjgs0"]
+_data = {
+"Blink": SubResource("Animation_eqhd1"),
+"RESET": SubResource("Animation_7abbi")
+}
+
 [node name="Transformando" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -974,7 +1097,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.72549, 1, 1, 1)
+color = Color(0.8, 0.8, 0.8, 1)
 
 [node name="StateMachine" type="Node" parent="Transformando" node_paths=PackedStringArray("initial_state")]
 script = ExtResource("2_0bmn1")
@@ -1055,6 +1178,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = 20.0
+offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(360, 640)
@@ -1107,20 +1232,8 @@ grow_vertical = 2
 texture = ExtResource("7_jame5")
 expand_mode = 1
 
-[node name="ColorRect" type="ColorRect" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -556.0
-offset_top = 537.0
-offset_right = 315.0
-offset_bottom = 976.0
-color = Color(0.824219, 0, 0, 1)
-
 [node name="ColorRect2" type="ColorRect" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control"]
+self_modulate = Color(0.901961, 1, 1, 1)
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -1128,11 +1241,12 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -554.0
-offset_top = 397.0
+offset_top = 327.0
 offset_bottom = 836.0
-color = Color(0.824219, 0, 0, 1)
+color = Color(0.835938, 0, 0, 1)
 
 [node name="ColorRect4" type="ColorRect" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control"]
+self_modulate = Color(0.901961, 1, 1, 1)
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -1143,7 +1257,21 @@ offset_left = -98.0
 offset_top = 467.0
 offset_right = 48.0
 offset_bottom = 558.0
-color = Color(0.824219, 0, 0, 1)
+color = Color(0.835938, 0, 0, 1)
+
+[node name="ColorRect" type="ColorRect" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control"]
+self_modulate = Color(0.901961, 1, 1, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -556.0
+offset_top = 537.0
+offset_right = 315.0
+offset_bottom = 976.0
+color = Color(0.835938, 0, 0, 1)
 
 [node name="TextureRect" type="TextureRect" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control"]
 z_index = 1
@@ -1397,6 +1525,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="LavaLine" type="Line2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Tramo2" node_paths=PackedStringArray("Lava")]
+self_modulate = Color(0.901961, 1, 1, 1)
 width = 220.0
 gradient = ExtResource("9_uoni7")
 script = ExtResource("8_r4ind")
@@ -1415,6 +1544,7 @@ speed = 0.1
 
 [node name="Lava" type="Sprite2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Tramo2/Path2D/PathFollow2D"]
 visible = false
+self_modulate = Color(0.9, 1, 1, 1)
 texture_filter = 1
 position = Vector2(0.110297, -7.02302)
 rotation = 1.5708
@@ -1440,7 +1570,7 @@ offset_left = -24.64
 offset_top = -12.48
 offset_right = 25.36
 offset_bottom = 12.52
-color = Color(0.339844, 0.308594, 0.335938, 1)
+color = Color(0.341176, 0.309804, 0.337255, 1)
 
 [node name="Tramo6" type="Control" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control"]
 z_index = -1
@@ -1452,6 +1582,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="LavaLine" type="Line2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Tramo6" node_paths=PackedStringArray("Lava")]
+self_modulate = Color(0.901961, 1, 1, 1)
 width = 40.0
 gradient = ExtResource("9_uoni7")
 script = ExtResource("8_r4ind")
@@ -1469,6 +1600,7 @@ speed = 0.2
 
 [node name="Lava" type="Sprite2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Tramo6/Path2D/PathFollow2D"]
 visible = false
+self_modulate = Color(0.9, 1, 1, 1)
 texture_filter = 1
 position = Vector2(-2.72894, -7.02303)
 rotation = 1.5708
@@ -1492,6 +1624,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="LavaLine" type="Line2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Tramo5" node_paths=PackedStringArray("Lava")]
+self_modulate = Color(0.901961, 1, 1, 1)
 width = 80.0
 gradient = ExtResource("9_uoni7")
 script = ExtResource("8_r4ind")
@@ -1510,6 +1643,7 @@ speed = 0.4
 
 [node name="Lava" type="Sprite2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Tramo5/Path2D/PathFollow2D"]
 visible = false
+self_modulate = Color(0.901961, 1, 1, 1)
 texture_filter = 1
 rotation = 1.5708
 scale = Vector2(0.0977978, 0.0762165)
@@ -1532,6 +1666,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="LavaLine" type="Line2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Tramo4" node_paths=PackedStringArray("Lava")]
+self_modulate = Color(0.901961, 1, 1, 1)
 width = 220.0
 gradient = ExtResource("9_uoni7")
 script = ExtResource("8_r4ind")
@@ -1548,6 +1683,7 @@ speed = 0.2
 
 [node name="Lava" type="Sprite2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Tramo4/Path2D/PathFollow2D"]
 visible = false
+self_modulate = Color(0.9, 1, 1, 1)
 texture_filter = 1
 position = Vector2(-2.72894, -7.02303)
 rotation = 1.5708
@@ -1575,6 +1711,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="LavaLine" type="Line2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Tramo1" node_paths=PackedStringArray("Lava")]
+self_modulate = Color(0.901961, 1, 1, 1)
 width = 180.0
 gradient = ExtResource("9_uoni7")
 script = ExtResource("8_r4ind")
@@ -1592,6 +1729,7 @@ script = ExtResource("6_441gf")
 speed = 0.2
 
 [node name="Lava" type="Sprite2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Tramo1/Path2D/PathFollow2D"]
+self_modulate = Color(0.901961, 1, 1, 1)
 texture_filter = 1
 position = Vector2(0.110297, -7.02302)
 rotation = 1.5865
@@ -1606,10 +1744,12 @@ libraries = {
 }
 
 [node name="Lava2" type="Sprite2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control"]
+self_modulate = Color(0.9, 1, 1, 1)
 texture_filter = 1
-position = Vector2(156, 1008)
+position = Vector2(-39, 966)
 scale = Vector2(0.20936, 0.16316)
 texture = ExtResource("8_rq7xm")
+offset = Vector2(0, 250)
 hframes = 5
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Lava2"]
@@ -1618,26 +1758,16 @@ reset_on_save = false
 libraries = {
 "": SubResource("AnimationLibrary_54qsn")
 }
-
-[node name="Lava4" type="Sprite2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control"]
-texture_filter = 1
-position = Vector2(-33, 1008)
-scale = Vector2(0.20936, 0.16316)
-texture = ExtResource("8_rq7xm")
-hframes = 5
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Lava4"]
-autoplay = "lava"
-reset_on_save = false
-libraries = {
-"": SubResource("AnimationLibrary_54qsn")
-}
+script = ExtResource("28_glfmw")
+animation = "move_lava"
 
 [node name="Lava3" type="Sprite2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control"]
+self_modulate = Color(0.901961, 1, 1, 1)
 texture_filter = 1
-position = Vector2(346, 1008)
+position = Vector2(148, 966)
 scale = Vector2(0.20936, 0.16316)
 texture = ExtResource("8_rq7xm")
+offset = Vector2(0, 250)
 hframes = 5
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Lava3"]
@@ -1646,6 +1776,26 @@ reset_on_save = false
 libraries = {
 "": SubResource("AnimationLibrary_54qsn")
 }
+script = ExtResource("28_glfmw")
+animation = "move_lava"
+
+[node name="Lava4" type="Sprite2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control"]
+self_modulate = Color(0.9, 1, 1, 1)
+texture_filter = 1
+position = Vector2(339, 966)
+scale = Vector2(0.20936, 0.16316)
+texture = ExtResource("8_rq7xm")
+offset = Vector2(0, 250)
+hframes = 5
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Lava4"]
+autoplay = "lava"
+reset_on_save = false
+libraries = {
+"": SubResource("AnimationLibrary_54qsn")
+}
+script = ExtResource("28_glfmw")
+animation = "move_lava"
 
 [node name="LavaDropSpawner" type="Node2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control"]
 position = Vector2(215, 366)
@@ -1679,6 +1829,13 @@ script = ExtResource("11_6i15p")
 wait_time = 1.6
 one_shot = true
 
+[node name="Glow" type="Sprite2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton1"]
+modulate = Color(1, 0, 0, 1)
+z_index = 1
+position = Vector2(274, 175)
+scale = Vector2(2.195, 1.46333)
+texture = ExtResource("39_ryerp")
+
 [node name="Bloqueo2" type="Sprite2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control"]
 position = Vector2(654, 865)
 scale = Vector2(0.631579, 0.631579)
@@ -1704,6 +1861,13 @@ script = ExtResource("11_6i15p")
 wait_time = 1.6
 one_shot = true
 
+[node name="Glow2" type="Sprite2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton2"]
+modulate = Color(1, 0, 0, 1)
+z_index = 1
+position = Vector2(81.0001, 73.0001)
+scale = Vector2(0.613333, 0.53081)
+texture = ExtResource("39_ryerp")
+
 [node name="Bloqueo3" type="Sprite2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control"]
 position = Vector2(119, 708)
 scale = Vector2(0.60241, 0.60241)
@@ -1728,6 +1892,13 @@ script = ExtResource("11_6i15p")
 [node name="Timer" type="Timer" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton3"]
 wait_time = 1.6
 one_shot = true
+
+[node name="Glow3" type="Sprite2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton3"]
+modulate = Color(1, 0, 0, 1)
+z_index = 1
+position = Vector2(82.0001, 50.0001)
+scale = Vector2(0.593333, 0.513501)
+texture = ExtResource("39_ryerp")
 
 [node name="Bloqueo4" type="Sprite2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control"]
 visible = false
@@ -1760,6 +1931,13 @@ script = ExtResource("11_6i15p")
 [node name="Timer" type="Timer" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton4"]
 wait_time = 1.6
 one_shot = true
+
+[node name="Glow4" type="Sprite2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton4"]
+modulate = Color(1, 0, 0, 1)
+z_index = 1
+position = Vector2(79.9999, 57)
+scale = Vector2(0.593333, 0.513501)
+texture = ExtResource("39_ryerp")
 
 [node name="rockInstances" type="Node2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control"]
 position = Vector2(592, 515)
@@ -2145,14 +2323,46 @@ position = Vector2(-18.116, -10.2378)
 rotation = -1.61454
 shape = SubResource("RectangleShape2D_7ls2j")
 
-[node name="metamorficaSpot" type="Sprite2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control"]
+[node name="metamorficaSpot" type="TextureRect" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control"]
 visible = false
+clip_children = 2
 z_index = 1
-position = Vector2(400, 818)
-scale = Vector2(0.152381, 0.152381)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.556
+anchor_top = 0.639
+anchor_right = 0.556
+anchor_bottom = 0.639
+offset_left = -44.32
+offset_top = -41.92
+offset_right = 44.68
+offset_bottom = 42.08
+texture = ExtResource("21_13nxm")
+expand_mode = 1
+
+[node name="ColorRect" type="ColorRect" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/metamorficaSpot"]
+self_modulate = Color(0.8, 0.8, 0.8, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -45.5
+offset_top = -40.0
+offset_right = 45.5
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="metamorficaSpot2" type="Sprite2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/metamorficaSpot"]
+z_index = 1
+position = Vector2(45, 42)
+scale = Vector2(0.170787, 0.170786)
 texture = ExtResource("21_13nxm")
 
 [node name="Metamorfica" type="Sprite2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control" node_paths=PackedStringArray("overlay")]
+self_modulate = Color(0.607843, 0.607843, 0.607843, 1)
 clip_children = 2
 z_index = 1
 position = Vector2(400, 818)
@@ -2174,15 +2384,37 @@ scale = Vector2(1.02919, 1.02919)
 texture = ExtResource("20_f4tn4")
 
 [node name="PiedraHeat" type="Sprite2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Metamorfica"]
-self_modulate = Color(1, 1, 1, 0)
+self_modulate = Color(0.332881, 0.332881, 0.332881, 0)
 z_index = 1
 position = Vector2(0, -1)
 texture = ExtResource("20_f4tn4")
 
 [node name="MetamorficaTrans" type="Sprite2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Metamorfica"]
+visible = false
+clip_children = 2
 z_index = 1
 position = Vector2(-5, -17)
 scale = Vector2(1.20899, 1.20899)
+
+[node name="ColorRect" type="ColorRect" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Metamorfica/MetamorficaTrans"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -483.332
+offset_top = -469.814
+offset_right = -4.33247
+offset_bottom = 9.1861
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.8, 0.8, 0.8, 1)
+
+[node name="MetamorficaTrans" type="Sprite2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Metamorfica/MetamorficaTrans"]
+z_index = 1
+position = Vector2(0, -2.48138)
+scale = Vector2(0.925977, 0.92565)
+texture = ExtResource("21_13nxm")
 
 [node name="MetamorficasPopUp" type="Control" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Metamorfica"]
 visible = false
@@ -2246,8 +2478,13 @@ text = "Continuar"
 
 [node name="sedimentariaSpot" type="Sprite2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control"]
 visible = false
-position = Vector2(591, 514)
-scale = Vector2(0.238095, 0.238095)
+self_modulate = Color(100, 100, 100, 1)
+position = Vector2(591, 516)
+scale = Vector2(0.162443, 0.166667)
+texture = ExtResource("21_tqyrq")
+
+[node name="sedimentariaSpot2" type="Sprite2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/sedimentariaSpot"]
+scale = Vector2(0.932729, 0.909091)
 texture = ExtResource("21_tqyrq")
 
 [node name="Sedimentaria" type="Sprite2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control" node_paths=PackedStringArray("overlay")]
@@ -2277,7 +2514,20 @@ libraries = {
 }
 
 [node name="sedimentariaTrans" type="Sprite2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Sedimentaria"]
+visible = false
+clip_children = 2
 scale = Vector2(0.319048, 0.319048)
+
+[node name="ColorRect" type="ColorRect" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Sedimentaria/sedimentariaTrans"]
+offset_left = -312.0
+offset_top = -329.0
+offset_right = 351.0
+offset_bottom = 368.0
+color = Color(0.8, 0.8, 0.8, 1)
+
+[node name="sedimentariaTrans" type="Sprite2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Sedimentaria/sedimentariaTrans"]
+scale = Vector2(0.942838, 0.907462)
+texture = ExtResource("21_tqyrq")
 
 [node name="SedimentariasPopUp" type="Control" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Sedimentaria"]
 visible = false
@@ -2349,9 +2599,32 @@ polygon = PackedVector2Array(205, 352, 241, 373, 254, 430, 265, 486, 281, 527, 3
 
 [node name="plutonicaSpot" type="Sprite2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control"]
 visible = false
+clip_children = 2
 z_index = 1
-position = Vector2(463, 610)
-scale = Vector2(0.152381, 0.152381)
+position = Vector2(463, 610.5)
+scale = Vector2(0.168434, 0.170483)
+texture = ExtResource("30_4817p")
+
+[node name="ColorRect5" type="ColorRect" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/plutonicaSpot"]
+self_modulate = Color(0.8, 0.8, 0.8, 1)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -668.5
+offset_top = -491.5
+offset_right = 20.5
+offset_bottom = 125.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+
+[node name="plutonicaSpot2" type="Sprite2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/plutonicaSpot"]
+clip_children = 2
+z_index = 1
+position = Vector2(0, -2.93286)
+scale = Vector2(0.90642, 0.895524)
 texture = ExtResource("30_4817p")
 
 [node name="Preplutonica" type="Sprite2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control" node_paths=PackedStringArray("overlay")]
@@ -2370,7 +2643,24 @@ libraries = {
 
 [node name="PlutonicaTrans" type="Sprite2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Preplutonica"]
 visible = false
+clip_children = 2
 scale = Vector2(1.0687, 1.0687)
+texture = ExtResource("30_4817p")
+
+[node name="ColorRect" type="ColorRect" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Preplutonica/PlutonicaTrans"]
+anchors_preset = -1
+anchor_left = 0.531
+anchor_top = 0.551
+anchor_right = 0.531
+anchor_bottom = 0.551
+offset_left = -688.371
+offset_top = -564.543
+offset_right = 48.629
+offset_bottom = 172.457
+color = Color(0.8, 0.8, 0.8, 1)
+
+[node name="PlutonicaTrans" type="Sprite2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Preplutonica/PlutonicaTrans"]
+scale = Vector2(0.912443, 0.912443)
 texture = ExtResource("30_4817p")
 
 [node name="PlutónicasPopUp" type="Control" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Preplutonica"]
@@ -2445,8 +2735,26 @@ libraries = {
 
 [node name="PlutonicaTrans" type="Sprite2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Volcanica"]
 visible = false
+clip_children = 2
 rotation = -0.0158186
-scale = Vector2(1.16624, 1.16624)
+scale = Vector2(1.16624, 1.20509)
+texture = ExtResource("32_bldxx")
+
+[node name="ColorRect" type="ColorRect" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Volcanica/PlutonicaTrans"]
+anchors_preset = -1
+anchor_left = 0.536
+anchor_top = 0.553
+anchor_right = 0.536
+anchor_bottom = 0.553
+offset_left = -622.624
+offset_top = -433.375
+offset_right = 65.376
+offset_bottom = 42.625
+color = Color(0.8, 0.8, 0.8, 1)
+
+[node name="PlutonicaTrans" type="Sprite2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Volcanica/PlutonicaTrans"]
+rotation = -0.0158186
+scale = Vector2(0.935989, 0.914276)
 texture = ExtResource("32_bldxx")
 
 [node name="PlutónicasPopUp" type="Control" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Volcanica"]
@@ -2606,24 +2914,39 @@ NextScene = "Map_Screen"
 fade_time = 0.2
 smoothness = 0.1
 
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Transformando/StateMachine"]
+environment = SubResource("Environment_ctema")
+
+[node name="WordAnimEnviroment" type="AnimationPlayer" parent="Transformando/StateMachine/WorldEnvironment"]
+autoplay = "Blink"
+libraries = {
+"": SubResource("AnimationLibrary_bjgs0")
+}
+script = ExtResource("28_glfmw")
+
 [connection signal="pressed" from="Transformando/StateMachine/Consigna/Contenido/Button" to="Transformando/StateMachine/Consigna/Contenido/Button" method="_on_pressed" flags=18]
 [connection signal="timeout" from="Transformando/StateMachine/Consigna/Contenido/Timer" to="Transformando/StateMachine/Consigna" method="TimeOut" flags=18]
 [connection signal="animation_finished" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Lava_Fall/AnimationPlayer" to="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Preplutonica" method="TranstaleToCenterScreen"]
 [connection signal="animation_finished" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/LavaFallVolcanica/AnimationPlayer" to="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Volcanica" method="TranstaleToCenterScreen"]
 [connection signal="CompletePath" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Tramo2/Path2D/PathFollow2D" to="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Metamorfica" method="TranstaleToCenterScreen"]
+[connection signal="CompletePath" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Tramo2/Path2D/PathFollow2D" to="Transformando/StateMachine/WorldEnvironment/WordAnimEnviroment" method="Play"]
 [connection signal="CompletePath" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Tramo5/Path2D/PathFollow2D" to="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/LavaFallVolcanica/AnimationPlayer" method="Play"]
+[connection signal="CompletePath" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Tramo5/Path2D/PathFollow2D" to="Transformando/StateMachine/WorldEnvironment/WordAnimEnviroment" method="Play"]
 [connection signal="CompletePath" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Tramo4/Path2D/PathFollow2D" to="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Lava_Fall/AnimationPlayer" method="Play"]
 [connection signal="CompletePath" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Tramo4/Path2D/PathFollow2D" to="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Tramo6/LavaLine" method="ActivateLava"]
 [connection signal="CompletePath" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Tramo4/Path2D/PathFollow2D" to="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Tramo6/Path2D/PathFollow2D" method="ActivateLava"]
+[connection signal="CompletePath" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Tramo4/Path2D/PathFollow2D" to="Transformando/StateMachine/WorldEnvironment/WordAnimEnviroment" method="Play"]
 [connection signal="CompletePath" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Tramo1/Path2D/PathFollow2D" to="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton2" method="SetTrueVisibility"]
+[connection signal="CompletePath" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Tramo1/Path2D/PathFollow2D" to="Transformando/StateMachine/WorldEnvironment/WordAnimEnviroment" method="Play"]
 [connection signal="BeforeEarthquake" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton1" to="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/EarthquakeAnim" method="OnEarthquake"]
 [connection signal="BeforeEarthquake" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton1" to="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Sedimentaria" method="StartFall"]
+[connection signal="BeforeEarthquake" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton1" to="Transformando/StateMachine/WorldEnvironment/WordAnimEnviroment" method="Stop"]
 [connection signal="Earthquake" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton1" to="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/rockInstances" method="UnfrezeeAll"]
-[connection signal="Earthquake" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton1" to="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Bloqueo" method="Setvisivility" binds= [false]]
 [connection signal="SmallEarthquake" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton1" to="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/EarthquakeAnim" method="OnSmallEarthquake"]
 [connection signal="BeforeEarthquake" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton2" to="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/EarthquakeAnim" method="OnEarthquake"]
 [connection signal="BeforeEarthquake" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton2" to="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/rockInstances" method="Freeze"]
 [connection signal="BeforeEarthquake" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton2" to="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/rockInstances2" method="Freeze"]
+[connection signal="BeforeEarthquake" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton2" to="Transformando/StateMachine/WorldEnvironment/WordAnimEnviroment" method="Stop"]
 [connection signal="Earthquake" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton2" to="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Tramo2/LavaLine" method="ActivateLava"]
 [connection signal="Earthquake" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton2" to="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Tramo2/Path2D/PathFollow2D" method="ActivateLava"]
 [connection signal="Earthquake" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton2" to="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Tramo1/Path2D/PathFollow2D" method="DisableLava"]
@@ -2631,12 +2954,14 @@ smoothness = 0.1
 [connection signal="Earthquake" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton2" to="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Bloqueo2" method="Setvisivility" binds= [false]]
 [connection signal="SmallEarthquake" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton2" to="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/EarthquakeAnim" method="OnSmallEarthquake"]
 [connection signal="BeforeEarthquake" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton3" to="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/EarthquakeAnim" method="OnEarthquake"]
+[connection signal="BeforeEarthquake" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton3" to="Transformando/StateMachine/WorldEnvironment/WordAnimEnviroment" method="Stop"]
 [connection signal="Earthquake" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton3" to="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Tramo2/Path2D/PathFollow2D" method="DisableLava"]
 [connection signal="Earthquake" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton3" to="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Tramo4/LavaLine" method="ActivateLava"]
 [connection signal="Earthquake" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton3" to="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Tramo4/Path2D/PathFollow2D" method="ActivateLava"]
 [connection signal="Earthquake" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton3" to="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Bloqueo3" method="Setvisivility" binds= [false]]
 [connection signal="SmallEarthquake" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton3" to="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/EarthquakeAnim" method="OnSmallEarthquake"]
 [connection signal="BeforeEarthquake" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton4" to="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/EarthquakeAnim" method="OnEarthquake"]
+[connection signal="BeforeEarthquake" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton4" to="Transformando/StateMachine/WorldEnvironment/WordAnimEnviroment" method="Stop"]
 [connection signal="Earthquake" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton4" to="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Tramo5/LavaLine" method="ActivateLava"]
 [connection signal="Earthquake" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton4" to="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Tramo5/Path2D/PathFollow2D" method="ActivateLava"]
 [connection signal="Earthquake" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton4" to="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Tramo4/Path2D/PathFollow2D" method="DisableLava"]
@@ -2653,6 +2978,10 @@ smoothness = 0.1
 [connection signal="button_up" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Sedimentaria/SedimentariasPopUp/ColorRect/Button" to="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Sedimentaria" method="buttonpress"]
 [connection signal="pressed" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Sedimentaria/SedimentariasPopUp/ColorRect/Button" to="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Tramo1/LavaLine" method="ActivateLava"]
 [connection signal="pressed" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Sedimentaria/SedimentariasPopUp/ColorRect/Button" to="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Tramo1/Path2D/PathFollow2D" method="ActivateLava"]
+[connection signal="pressed" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Sedimentaria/SedimentariasPopUp/ColorRect/Button" to="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Lava2/AnimationPlayer" method="Play"]
+[connection signal="pressed" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Sedimentaria/SedimentariasPopUp/ColorRect/Button" to="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Lava3/AnimationPlayer" method="Play"]
+[connection signal="pressed" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Sedimentaria/SedimentariasPopUp/ColorRect/Button" to="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Lava4/AnimationPlayer" method="Play"]
+[connection signal="pressed" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Sedimentaria/SedimentariasPopUp/ColorRect/Button" to="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Bloqueo" method="Setvisivility" binds= [false]]
 [connection signal="pressed" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Preplutonica/PlutónicasPopUp/ColorRect/Button" to="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton4" method="SetTrueVisibility"]
 [connection signal="pressed" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Preplutonica/PlutónicasPopUp/ColorRect/Button" to="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Preplutonica" method="buttonpress"]
 [connection signal="EndOfGame" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Volcanica/PlutónicasPopUp/ColorRect/Button" to="Transformando" method="Set_Complete" flags=18]

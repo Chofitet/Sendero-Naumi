@@ -1,18 +1,18 @@
 extends Sprite2D
 var heat1
-var i = 1
+var i = 0.6
 var e = 0
 var heateffect
 @export var overlay : ColorRect
 func _ready():
 	heateffect = get_node("PiedraHeat1")
-	heateffect.self_modulate = Color(1,0.85,0.64,0)
+	heateffect.self_modulate = Color(0.6,0.6,0.6,0)
 
 func _physics_process(delta):
 	if heat1:
 		i -= delta * 0.08
 		i = clamp(i,0,1)
-		self_modulate = Color(1, i, i, 1)
+		self_modulate = Color(0.6, i, i, 1)
 		if i <= 0.5:
 			e += delta * 0.08
 			e = clamp(e,0,1)

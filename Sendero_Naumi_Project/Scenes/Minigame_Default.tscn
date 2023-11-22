@@ -138,6 +138,8 @@ isEndOfGame = true
 [node name="Moraleja" type="Node" parent="StateMachine"]
 script = ExtResource("6_6vnen")
 Moralejas = [null, "Y esto es una moraleja"]
+Instancias = [NodePath("Contenido/Instancia1")]
+buttons = [NodePath("Contenido/Instancia1/Button")]
 
 [node name="Contenido" type="Control" parent="StateMachine/Moraleja"]
 layout_mode = 3
@@ -147,7 +149,17 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="LblMoraleja" type="Label" parent="StateMachine/Moraleja/Contenido"]
+[node name="Conteiner" type="Control" parent="StateMachine/Moraleja/Contenido"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LblMoraleja" type="Label" parent="StateMachine/Moraleja/Contenido/Conteiner"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -167,7 +179,29 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="Button" type="Button" parent="StateMachine/Moraleja/Contenido" node_paths=PackedStringArray("state_to_change", "state_machine")]
+[node name="Timer" type="Timer" parent="StateMachine/Moraleja/Contenido"]
+wait_time = 3.0
+one_shot = true
+
+[node name="ButtonChangeScene" parent="StateMachine/Moraleja/Contenido" instance=ExtResource("7_s8n6b")]
+visible = false
+layout_mode = 1
+offset_left = -197.0
+offset_top = -201.0
+offset_right = 207.0
+offset_bottom = -66.0
+text = "Continue"
+NextScene = "Map_Screen"
+
+[node name="Instancia1" type="Control" parent="StateMachine/Moraleja/Contenido"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="StateMachine/Moraleja/Contenido/Instancia1" node_paths=PackedStringArray("state_to_change", "state_machine")]
 visible = false
 layout_mode = 1
 anchors_preset = 7
@@ -184,27 +218,13 @@ grow_vertical = 0
 text = "que?
 "
 script = ExtResource("4_ikyur")
-state_to_change = NodePath("../../../Juego")
-state_machine = NodePath("../../..")
-
-[node name="Timer" type="Timer" parent="StateMachine/Moraleja/Contenido"]
-wait_time = 3.0
-one_shot = true
-
-[node name="ButtonChangeScene" parent="StateMachine/Moraleja/Contenido" instance=ExtResource("7_s8n6b")]
-visible = false
-layout_mode = 1
-offset_left = -197.0
-offset_top = -201.0
-offset_right = 207.0
-offset_bottom = -66.0
-text = "Continue"
-NextScene = "Map_Screen"
+state_to_change = NodePath("../../../../Juego")
+state_machine = NodePath("../../../..")
 
 [connection signal="pressed" from="StateMachine/Consigna/Contenido/Button" to="StateMachine/Consigna/Contenido/Button" method="_on_pressed"]
 [connection signal="timeout" from="StateMachine/Consigna/Contenido/Timer" to="StateMachine/Consigna" method="TimeOut"]
 [connection signal="EndOfGame" from="StateMachine/Juego/Contenido/Instancia1/Button" to="." method="Set_Complete"]
 [connection signal="EndOfGame" from="StateMachine/Juego/Contenido/Instancia1/Button" to="StateMachine/Moraleja" method="isEndOfGame"]
 [connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia1/Button" to="StateMachine/Juego/Contenido/Instancia1/Button" method="_on_pressed"]
-[connection signal="pressed" from="StateMachine/Moraleja/Contenido/Button" to="StateMachine/Moraleja/Contenido/Button" method="_on_pressed"]
 [connection signal="timeout" from="StateMachine/Moraleja/Contenido/Timer" to="StateMachine/Moraleja" method="TimeOut"]
+[connection signal="pressed" from="StateMachine/Moraleja/Contenido/Instancia1/Button" to="StateMachine/Moraleja/Contenido/Instancia1/Button" method="_on_pressed"]

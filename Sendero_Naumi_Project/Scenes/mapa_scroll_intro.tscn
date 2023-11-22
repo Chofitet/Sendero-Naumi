@@ -1,0 +1,379 @@
+[gd_scene load_steps=13 format=3 uid="uid://buth5gc88nt3j"]
+
+[ext_resource type="Texture2D" uid="uid://nuybqhitpej1" path="res://Sprites/Mapa/fondo_mapa.png" id="1_wa0ye"]
+[ext_resource type="Script" path="res://_Scripts/Auto_Scroll_Intro_Map.gd" id="2_n60vv"]
+[ext_resource type="Script" path="res://_Scripts/AdjustSeparationWithScreenSize.gd" id="3_kwtrh"]
+[ext_resource type="Script" path="res://_Scripts/AdjustMarginWithScreenSize.gd" id="4_4e1by"]
+[ext_resource type="Texture2D" uid="uid://cscyymtnwxau6" path="res://Sprites/UI/titulo_concepts.png" id="5_pglwp"]
+[ext_resource type="Texture2D" uid="uid://gn0tmol3agtp" path="res://Sprites/Mapa/ciencias_mapa.png" id="6_sqkww"]
+[ext_resource type="Texture2D" uid="uid://3sby7wb2uo0e" path="res://Sprites/Mapa/ambiente_mapa.png" id="7_6t5sw"]
+[ext_resource type="Script" path="res://_Scripts/StateMachine/Button_Change_State.gd" id="8_rb8q7"]
+[ext_resource type="Texture2D" uid="uid://bpcc2ljyhkxfl" path="res://Sprites/argentina_Flag.png" id="9_a3k84"]
+[ext_resource type="Texture2D" uid="uid://l00ov7i7v281" path="res://Sprites/Mapa/eras_geologicas_mapa.png" id="10_c3fc7"]
+[ext_resource type="Texture2D" uid="uid://05mdqsdsbuqm" path="res://Sprites/Mapa/geologia_mapa.png" id="11_tirda"]
+[ext_resource type="Texture2D" uid="uid://lvhlr8303o1m" path="res://Sprites/Mapa/megafauna_mapa.png" id="12_4oixe"]
+
+[node name="Mapa_Scroll_Intro" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_wa0ye")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_n60vv")
+scrollDuration = 3.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_constants/separation = 1280
+script = ExtResource("3_kwtrh")
+
+[node name="Titulo" type="MarginContainer" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 640
+script = ExtResource("4_4e1by")
+
+[node name="Control" type="Control" parent="ScrollContainer/VBoxContainer/Titulo"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="TextureRect" type="TextureRect" parent="ScrollContainer/VBoxContainer/Titulo/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -331.0
+offset_top = -140.5
+offset_right = 331.0
+offset_bottom = 140.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_pglwp")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Piso3" type="MarginContainer" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/margin_top = 640
+script = ExtResource("4_4e1by")
+margin = "margin_top"
+
+[node name="Piso3" type="Control" parent="ScrollContainer/VBoxContainer/Piso3"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_neighbor_bottom = NodePath("../../Piso2")
+mouse_filter = 1
+
+[node name="Zona_Cuaterario" type="TextureRect" parent="ScrollContainer/VBoxContainer/Piso3/Piso3"]
+layout_mode = 1
+anchors_preset = -1
+offset_left = -338.0
+offset_top = -42.0
+offset_right = 651.0
+offset_bottom = 1755.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.35, 0.35)
+expand_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="ScrollContainer/VBoxContainer/Piso3/Piso3/Zona_Cuaterario"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = -0.034
+anchor_right = 1.046
+anchor_bottom = 1.0
+offset_top = 61.093
+offset_right = -45.4939
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_sqkww")
+
+[node name="Ambientes" type="TextureRect" parent="ScrollContainer/VBoxContainer/Piso3/Piso3"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.29
+anchor_top = 0.205
+anchor_right = 0.29
+anchor_bottom = 0.205
+offset_left = -339.0
+offset_top = -656.0
+offset_right = 720.0
+offset_bottom = 1160.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.33, 0.33)
+expand_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="ScrollContainer/VBoxContainer/Piso3/Piso3/Ambientes"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = -0.029
+anchor_right = 1.0
+anchor_bottom = 1.029
+offset_top = 52.664
+offset_bottom = -52.662
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_6t5sw")
+
+[node name="Button_Change_State" type="Button" parent="ScrollContainer/VBoxContainer/Piso3/Piso3/Ambientes/TextureRect" node_paths=PackedStringArray("state_to_change", "state_machine")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+flat = true
+script = ExtResource("8_rb8q7")
+state_to_change = NodePath("")
+state_machine = NodePath("")
+
+[node name="CompleteState" type="ColorRect" parent="ScrollContainer/VBoxContainer/Piso3/Piso3/Ambientes"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)
+
+[node name="TextureRect" type="TextureRect" parent="ScrollContainer/VBoxContainer/Piso3/Piso3/Ambientes/CompleteState"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -196.0
+offset_bottom = 204.0
+grow_horizontal = 0
+texture = ExtResource("9_a3k84")
+expand_mode = 1
+
+[node name="Eras_Geologicas" type="TextureRect" parent="ScrollContainer/VBoxContainer/Piso3/Piso3"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.586
+anchor_top = 0.5
+anchor_right = 0.586
+anchor_bottom = 0.5
+offset_left = 20.0001
+offset_top = -283.0
+offset_right = 1073.0
+offset_bottom = 1447.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.33, 0.33)
+expand_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="ScrollContainer/VBoxContainer/Piso3/Piso3/Eras_Geologicas"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = -0.055
+anchor_right = 1.013
+anchor_bottom = 1.055
+offset_left = 6.10352e-05
+offset_top = 95.15
+offset_right = -13.689
+offset_bottom = -95.1501
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("10_c3fc7")
+
+[node name="Button_Change_State" type="Button" parent="ScrollContainer/VBoxContainer/Piso3/Piso3/Eras_Geologicas/TextureRect" node_paths=PackedStringArray("state_to_change", "state_machine")]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.112
+anchor_top = 0.1
+anchor_right = 0.888
+anchor_bottom = 0.9
+offset_left = 0.0399933
+offset_right = -0.0401001
+offset_bottom = -0.00012207
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+flat = true
+script = ExtResource("8_rb8q7")
+state_to_change = NodePath("")
+state_machine = NodePath("")
+
+[node name="CompleteState" type="ColorRect" parent="ScrollContainer/VBoxContainer/Piso3/Piso3/Eras_Geologicas"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)
+
+[node name="TextureRect" type="TextureRect" parent="ScrollContainer/VBoxContainer/Piso3/Piso3/Eras_Geologicas/CompleteState"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -398.0
+offset_bottom = 421.0
+grow_horizontal = 0
+texture = ExtResource("9_a3k84")
+expand_mode = 1
+
+[node name="Piso2" type="Control" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+focus_neighbor_top = NodePath("../Piso3/Piso3")
+focus_neighbor_bottom = NodePath("../Piso1/Piso1")
+mouse_filter = 1
+
+[node name="Zona_Paleontología" type="TextureRect" parent="ScrollContainer/VBoxContainer/Piso2"]
+layout_mode = 1
+anchors_preset = -1
+offset_left = -338.0
+offset_top = -42.0
+offset_right = 651.0
+offset_bottom = 1755.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.35, 0.35)
+expand_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="ScrollContainer/VBoxContainer/Piso2/Zona_Paleontología"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = -0.034
+anchor_right = 1.046
+anchor_bottom = 1.0
+offset_top = 61.093
+offset_right = -45.4939
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_sqkww")
+
+[node name="AstronomiaZone" type="TextureRect" parent="ScrollContainer/VBoxContainer/Piso2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.29
+anchor_top = 0.205
+anchor_right = 0.29
+anchor_bottom = 0.205
+offset_left = -339.0
+offset_top = -640.0
+offset_right = 720.0
+offset_bottom = 1176.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.33, 0.33)
+expand_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="ScrollContainer/VBoxContainer/Piso2/AstronomiaZone"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = -0.029
+anchor_right = 1.0
+anchor_bottom = 1.029
+offset_top = 52.664
+offset_bottom = -52.662
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("10_c3fc7")
+
+[node name="GeologiaZone" type="TextureRect" parent="ScrollContainer/VBoxContainer/Piso2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.586
+anchor_top = 0.5
+anchor_right = 0.586
+anchor_bottom = 0.5
+offset_left = 20.0001
+offset_top = -283.0
+offset_right = 1073.0
+offset_bottom = 1447.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.33, 0.33)
+expand_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="ScrollContainer/VBoxContainer/Piso2/GeologiaZone"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.493
+anchor_top = -0.626
+anchor_right = 1.013
+anchor_bottom = 1.597
+offset_left = 519.129
+offset_top = 1082.98
+offset_right = -13.689
+offset_bottom = -1032.81
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("11_tirda")
+
+[node name="Piso1" type="MarginContainer" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_constants/margin_bottom = 640
+script = ExtResource("4_4e1by")
+margin = "margin_bottom"
+
+[node name="Piso1" type="Control" parent="ScrollContainer/VBoxContainer/Piso1"]
+layout_mode = 2
+size_flags_horizontal = 4
+focus_neighbor_bottom = NodePath("../../Piso2")
+mouse_filter = 1
+
+[node name="MegafaunaZone" type="TextureRect" parent="ScrollContainer/VBoxContainer/Piso1/Piso1"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.586
+anchor_top = 0.5
+anchor_right = 0.586
+anchor_bottom = 0.5
+offset_left = -245.0
+offset_top = -415.0
+offset_right = 1296.0
+offset_bottom = 2117.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.33, 0.33)
+expand_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="ScrollContainer/VBoxContainer/Piso1/Piso1/MegafaunaZone"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.019
+anchor_right = 1.0
+anchor_bottom = 1.001
+offset_left = 20.0071
+offset_bottom = -1.7301
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("12_4oixe")
+
+[connection signal="pressed" from="ScrollContainer/VBoxContainer/Piso3/Piso3/Ambientes/TextureRect/Button_Change_State" to="ScrollContainer/VBoxContainer/Piso3/Piso3/Ambientes/TextureRect/Button_Change_State" method="_on_pressed"]
+[connection signal="pressed" from="ScrollContainer/VBoxContainer/Piso3/Piso3/Eras_Geologicas/TextureRect/Button_Change_State" to="ScrollContainer/VBoxContainer/Piso3/Piso3/Eras_Geologicas/TextureRect/Button_Change_State" method="_on_pressed"]

@@ -18,6 +18,7 @@ func _physics_process(delta):
 		if !once:
 			get_parent().get_parent().get_node("LavaLine").isDrawing= false
 			CompletePath.emit()
+			
 			once = true
 
 func ActivateLava():

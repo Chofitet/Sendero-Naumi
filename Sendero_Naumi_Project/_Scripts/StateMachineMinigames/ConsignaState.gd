@@ -16,6 +16,7 @@ func Enter():
 func Exit():
 	get_node("Contenido/Timer").stop()
 	Content.visible = false
+	Transitioned.emit()
 
 func SetConsigna():
 	var textConsigna = Consignas[GetFixedIndex(Consignas)]

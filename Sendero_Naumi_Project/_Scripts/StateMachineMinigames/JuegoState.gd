@@ -15,6 +15,7 @@ func _ready():
 func Enter():
 	Content.visible = true
 	SetGameInstance(true)
+	Transitioned.emit()
 
 func Exit():
 	Content.visible = false
