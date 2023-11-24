@@ -27,3 +27,13 @@ func _ready():
 		load_file(instanceResource,save_file_name_Instances)
 	else: 
 		save(instanceResource,save_file_name_Instances)
+	
+	CheckFirsPlayTime()
+
+func CheckFirsPlayTime():
+	
+	minigameResourceFile = ResourceLoader.load("user://" + "MiniGameResource.tres")
+	
+	if minigameResourceFile.StateMinigames["noFirstTimePlay"]:
+		get_node("SkipSceen").NextScene = "Map_Screen"
+		var f = get_node("SkipSceen").NextScene

@@ -4,7 +4,8 @@ class_name MiniGameResource
 @export var StateMinigames = {"ToLevelNaumi" : false, 
 "RockFighters" : false,
 "Transformando": false,
-"Busqueda": false}
+"Busqueda": false,
+"noFirstTimePlay" : false}
 
 func Set_State_Minigame(string):
 	StateMinigames[string] = true

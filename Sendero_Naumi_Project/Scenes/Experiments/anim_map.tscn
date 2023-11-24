@@ -1,0 +1,186 @@
+[gd_scene load_steps=13 format=3 uid="uid://btnejcy6d18fh"]
+
+[ext_resource type="Texture2D" uid="uid://bom2snkxot1ji" path="res://Sprites/Intro/loop-caida-tira.png" id="1_eiayq"]
+[ext_resource type="Script" path="res://_Scripts/EmittSubSignal.gd" id="1_sygnw"]
+[ext_resource type="StyleBox" uid="uid://b3tjes2hcm3wx" path="res://Resources/UI_Resources/StyleBoxTrasparent.tres" id="2_m1nqe"]
+[ext_resource type="Script" path="res://_Scripts/PlayAnimation.gd" id="3_d0b5b"]
+
+[sub_resource type="Animation" id="Animation_j440g"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("pivot/pivotScale/Map:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_pfx0t"]
+resource_name = "map_anim"
+length = 2.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("pivot/pivotScale/Map:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 7, 8, 9, 10, 11, 12]
+}
+
+[sub_resource type="Animation" id="Animation_xpeqd"]
+resource_name = "map_arrive"
+length = 1.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("pivot/pivotScale/Map:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [14, 15, 16, 17, 18, 19, 20]
+}
+
+[sub_resource type="Animation" id="Animation_fcjmd"]
+resource_name = "map_up"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("pivot/pivotScale/Map:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [21, 22, 23, 24, 25]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_j1m0l"]
+_data = {
+"RESET": SubResource("Animation_j440g"),
+"map_anim": SubResource("Animation_pfx0t"),
+"map_arrive": SubResource("Animation_xpeqd"),
+"map_up": SubResource("Animation_fcjmd")
+}
+
+[sub_resource type="Animation" id="Animation_vriif"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("pivot:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -2250)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("pivot/pivotScale:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_n4iw8"]
+resource_name = "map_move"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("pivot:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2.4, 3.5, 4.8, 6, 7.2),
+"transitions": PackedFloat32Array(-1.3, -1.29, -1.3, -1.3, -1.3, -1.3, -1.3),
+"update": 0,
+"values": [Vector2(0, -2250), Vector2(0, -1952.92), Vector2(0, -1500), Vector2(0, -1125), Vector2(0, -750), Vector2(0, -375), Vector2(0, 0)]
+}
+tracks/1/type = "animation"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimationSprite")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": PackedStringArray("map_anim", "map_anim", "map_anim", "map_arrive"),
+"times": PackedFloat32Array(0, 2.4, 4.8, 7.2)
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("pivot/pivotScale:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1, 2.4, 3.5, 4.8, 6, 7, 7.3, 7.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 0.15932, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.1, 1.1), Vector2(1.2, 1.2), Vector2(1.3, 1.3), Vector2(1.4, 1.4), Vector2(1.5, 1.5), Vector2(1.6, 1.6), Vector2(1.6, 1.6), Vector2(2.4, 2.4)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tpdcg"]
+_data = {
+"RESET": SubResource("Animation_vriif"),
+"map_move": SubResource("Animation_n4iw8")
+}
+
+[node name="AnimMap" type="Node2D"]
+script = ExtResource("1_sygnw")
+
+[node name="pivot" type="Node2D" parent="."]
+position = Vector2(0, -2250)
+
+[node name="pivotScale" type="Node2D" parent="pivot"]
+position = Vector2(0, -375)
+
+[node name="Map" type="Sprite2D" parent="pivot/pivotScale"]
+position = Vector2(0, 375)
+texture = ExtResource("1_eiayq")
+offset = Vector2(0, -375)
+hframes = 7
+vframes = 4
+
+[node name="Button" type="Button" parent="pivot"]
+offset_left = -399.0
+offset_top = -213.0
+offset_right = 396.0
+offset_bottom = 335.0
+theme_override_styles/focus = ExtResource("2_m1nqe")
+flat = true
+
+[node name="AnimationSprite" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_j1m0l")
+}
+script = ExtResource("3_d0b5b")
+animation = "map_up"
+
+[node name="AnimationMove" type="AnimationPlayer" parent="."]
+autoplay = "map_move"
+libraries = {
+"": SubResource("AnimationLibrary_tpdcg")
+}
+
+[connection signal="pressed" from="pivot/Button" to="AnimationSprite" method="Play"]

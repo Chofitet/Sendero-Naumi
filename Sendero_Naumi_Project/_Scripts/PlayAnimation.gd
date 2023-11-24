@@ -4,5 +4,8 @@ extends AnimationPlayer
 func Play():
 	play(animation)
 
+func  PlayAnim(anim):
+	play(anim)
+
 func Stop():
 	stop()

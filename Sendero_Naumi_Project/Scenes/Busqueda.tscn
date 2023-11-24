@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://ca6b1xkwwj7rp"]
+[gd_scene load_steps=41 format=3 uid="uid://ca6b1xkwwj7rp"]
 
 [ext_resource type="Script" path="res://_Scripts/Minigame_Save_Controller.gd" id="1_kdw84"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/StateMachineMinigames.gd" id="2_cs2gm"]
@@ -20,6 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://chqivoetkgkoj" path="res://Sprites/UI/circulo.png" id="15_hkj6o"]
 [ext_resource type="PackedScene" uid="uid://cm1dba1i3cs2k" path="res://Scenes/Experiments/particles_confetti.tscn" id="16_m1kom"]
 [ext_resource type="Script" path="res://_Scripts/PlayAnimation.gd" id="16_r2ac3"]
+[ext_resource type="StyleBox" uid="uid://b3tjes2hcm3wx" path="res://Resources/UI_Resources/StyleBoxTrasparent.tres" id="18_5rso6"]
 [ext_resource type="Script" path="res://_Scripts/ChangeScene.gd" id="18_f74bc"]
 
 [sub_resource type="Animation" id="Animation_daumw"]
@@ -1183,6 +1184,7 @@ grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 40
+theme_override_styles/focus = ExtResource("18_5rso6")
 text = "SULFATOS"
 flat = true
 
@@ -1269,6 +1271,7 @@ pivot_offset = Vector2(202, 0)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 40
+theme_override_styles/focus = ExtResource("18_5rso6")
 text = "SILICATOS"
 flat = true
 
@@ -1496,11 +1499,11 @@ smoothness = 0.1
 [connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia1/Button" to="StateMachine/Juego/Contenido/Instancia1/Button" method="_on_pressed"]
 [connection signal="timeout" from="StateMachine/Juego/Contenido/Instancia1/Consigna/Timer" to="StateMachine/Juego/Contenido/Instancia1/NubeController/AnimationPlayer" method="Play"]
 [connection signal="timeout" from="StateMachine/Juego/Contenido/Instancia1/Consigna/Timer" to="StateMachine/Juego/Contenido/Instancia1/NubeController2/AnimationPlayer" method="Play"]
-[connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia1/NubeController/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia1/Tribunas/Piedra_Busqueda" method="SetNextAnimBool" binds= [false]]
 [connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia1/NubeController/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia1/Tribunas/Piedra_Busqueda" method="SetScale" binds= [false]]
+[connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia1/NubeController/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia1/Tribunas/Piedra_Busqueda" method="SetNextAnimBool" binds= [false]]
 [connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia1/NubeController/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia1/NubeController" method="Setvisivility" binds= [false]]
-[connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia1/NubeController2/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia1/Tribunas/Piedra_Busqueda" method="SetNextAnimBool" binds= [true]]
 [connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia1/NubeController2/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia1/Tribunas/Piedra_Busqueda" method="SetScale" binds= [true]]
+[connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia1/NubeController2/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia1/Tribunas/Piedra_Busqueda" method="SetNextAnimBool" binds= [true]]
 [connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia1/Moraleja/Button" to="StateMachine/Juego/Contenido/Instancia1/Moraleja/Button" method="_on_pressed"]
 [connection signal="timeout" from="StateMachine/Moraleja/Contenido/Timer" to="StateMachine/Moraleja" method="TimeOut"]
 [connection signal="pressed" from="StateMachine/Moraleja/Contenido/Instancia1/Button" to="StateMachine/Moraleja/Contenido/Instancia1/Button" method="_on_pressed"]
