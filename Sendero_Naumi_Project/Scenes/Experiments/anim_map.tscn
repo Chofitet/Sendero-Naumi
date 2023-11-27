@@ -19,6 +19,18 @@ tracks/0/keys = {
 "update": 1,
 "values": [0]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("pivot/Button:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_pfx0t"]
 resource_name = "map_anim"
@@ -33,12 +45,13 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.2),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [0, 1, 2, 3, 4, 5, 7, 8, 9, 10, 11, 12]
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
 }
 
 [sub_resource type="Animation" id="Animation_xpeqd"]
 resource_name = "map_arrive"
-length = 1.4
+length = 2.6
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -46,10 +59,22 @@ tracks/0/path = NodePath("pivot/pivotScale/Map:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.2, 2.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [14, 15, 16, 17, 18, 19, 20]
+"values": [12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 20]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("pivot/Button:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(2.4),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_fcjmd"]
@@ -64,7 +89,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
-"values": [21, 22, 23, 24, 25]
+"values": [24, 25, 26, 27, 28]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_j1m0l"]
@@ -104,7 +129,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_n4iw8"]
 resource_name = "map_move"
-length = 10.0
+length = 9.7
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -134,10 +159,10 @@ tracks/2/path = NodePath("pivot/pivotScale:scale")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 1, 2.4, 3.5, 4.8, 6, 7, 7.3, 7.8),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 0.15932, 1),
-"update": 0,
-"values": [Vector2(1, 1), Vector2(1.1, 1.1), Vector2(1.2, 1.2), Vector2(1.3, 1.3), Vector2(1.4, 1.4), Vector2(1.5, 1.5), Vector2(1.6, 1.6), Vector2(1.6, 1.6), Vector2(2.4, 2.4)]
+"times": PackedFloat32Array(0.4, 1.6, 2.8, 4, 5.2, 6.4, 7, 7.3, 7.6, 7.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 0.15932, 1, 1),
+"update": 1,
+"values": [Vector2(1, 1), Vector2(1.1, 1.1), Vector2(1.2, 1.2), Vector2(1.3, 1.3), Vector2(1.4, 1.4), Vector2(1.5, 1.5), Vector2(1.6, 1.6), Vector2(1.6, 1.6), Vector2(2, 2), Vector2(2.4, 2.4)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_tpdcg"]
@@ -159,10 +184,11 @@ position = Vector2(0, -375)
 position = Vector2(0, 375)
 texture = ExtResource("1_eiayq")
 offset = Vector2(0, -375)
-hframes = 7
-vframes = 4
+hframes = 6
+vframes = 5
 
 [node name="Button" type="Button" parent="pivot"]
+visible = false
 offset_left = -399.0
 offset_top = -213.0
 offset_right = 396.0
@@ -178,7 +204,6 @@ script = ExtResource("3_d0b5b")
 animation = "map_up"
 
 [node name="AnimationMove" type="AnimationPlayer" parent="."]
-autoplay = "map_move"
 libraries = {
 "": SubResource("AnimationLibrary_tpdcg")
 }

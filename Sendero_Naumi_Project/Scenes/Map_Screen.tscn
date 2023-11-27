@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://ck4m8k46bmha1"]
+[gd_scene load_steps=24 format=3 uid="uid://ck4m8k46bmha1"]
 
 [ext_resource type="Script" path="res://_Scripts/AdjustSeparationWithScreenSize.gd" id="2_1v6rf"]
 [ext_resource type="Script" path="res://Scenes/Zone.gd" id="2_4co6y"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://3sby7wb2uo0e" path="res://Sprites/Mapa/ambiente_mapa.png" id="6_rl10m"]
 [ext_resource type="PackedScene" uid="uid://bc062m81xnnpx" path="res://Scenes/UI_Scenes/btn_mini_game.tscn" id="6_wq3mc"]
 [ext_resource type="PackedScene" uid="uid://djhg7jvxtexyl" path="res://Scenes/UI_Scenes/btn_Change_Scene.tscn" id="7_1v7i5"]
+[ext_resource type="StyleBox" uid="uid://b3tjes2hcm3wx" path="res://Resources/UI_Resources/StyleBoxTrasparent.tres" id="7_7sb65"]
 [ext_resource type="Texture2D" uid="uid://l00ov7i7v281" path="res://Sprites/Mapa/eras_geologicas_mapa.png" id="7_ej8rg"]
 [ext_resource type="Texture2D" uid="uid://co7pox44vqa08" path="res://Sprites/Naumi/Naumi_0.png" id="8_ssef4"]
 [ext_resource type="Script" path="res://_Scripts/AdjustMarginWithScreenSize.gd" id="11_6dn11"]
@@ -21,6 +22,7 @@
 [ext_resource type="Script" path="res://_Scripts/AstronomiaZone.gd" id="16_gw1a5"]
 [ext_resource type="Script" path="res://_Scripts/StateMachine/ZoneCompleteEvent.gd" id="18_phrii"]
 [ext_resource type="Texture2D" uid="uid://nuybqhitpej1" path="res://Sprites/Mapa/fondo_mapa.png" id="21_ti06q"]
+[ext_resource type="Theme" uid="uid://bokxu7jbpku04" path="res://Themes/Back_UI.tres" id="23_wkxyp"]
 
 [node name="Map_Screen" type="Control"]
 z_index = 1
@@ -155,6 +157,7 @@ grow_vertical = 2
 texture = ExtResource("6_rl10m")
 
 [node name="Button_Change_State" type="Button" parent="ScrollContainer/VBoxContainer/Piso3/Piso3/Ambientes/TextureRect" node_paths=PackedStringArray("state_to_change", "state_machine")]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -162,6 +165,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
+theme_override_styles/focus = ExtResource("7_7sb65")
 flat = true
 script = ExtResource("5_oybyc")
 state_to_change = NodePath("../../../../../../../StateMachine/AstronomiaZone")
@@ -232,6 +236,7 @@ offset_bottom = -0.00012207
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
+theme_override_styles/focus = ExtResource("7_7sb65")
 flat = true
 script = ExtResource("5_oybyc")
 state_to_change = NodePath("../../../../../../../StateMachine/GeologiaZone")
@@ -318,6 +323,7 @@ grow_vertical = 2
 texture = ExtResource("7_ej8rg")
 
 [node name="Button_Change_State" type="Button" parent="ScrollContainer/VBoxContainer/Piso2/AstronomiaZone/TextureRect" node_paths=PackedStringArray("state_to_change", "state_machine")]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -325,6 +331,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
+theme_override_styles/focus = ExtResource("7_7sb65")
 flat = true
 script = ExtResource("5_oybyc")
 state_to_change = NodePath("../../../../../../StateMachine/AstronomiaZone")
@@ -396,6 +403,7 @@ offset_bottom = -0.00012207
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
+theme_override_styles/focus = ExtResource("7_7sb65")
 flat = true
 script = ExtResource("5_oybyc")
 state_to_change = NodePath("../../../../../../StateMachine/GeologiaZone")
@@ -477,6 +485,7 @@ offset_bottom = -0.00012207
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
+theme_override_styles/focus = ExtResource("7_7sb65")
 flat = true
 script = ExtResource("5_oybyc")
 state_to_change = NodePath("../../../../../../../StateMachine/MegafaunaZone")
@@ -577,7 +586,7 @@ size_flags_vertical = 4
 texture = ExtResource("4_jbstj")
 
 [node name="RockFighters" parent="StateMachine/GeologiaZone/ZoomingZone/SubViewport/ZoomingZone" instance=ExtResource("6_wq3mc")]
-position = Vector2(206.044, 396.42)
+position = Vector2(234.099, 117.23)
 scale = Vector2(0.405, 0.355)
 
 [node name="ButtonChangeScene" parent="StateMachine/GeologiaZone/ZoomingZone/SubViewport/ZoomingZone/RockFighters" index="0"]
@@ -588,7 +597,7 @@ is_inverted = true
 color = Color(0.560784, 0.321569, 0.211765, 1)
 
 [node name="Transformando" parent="StateMachine/GeologiaZone/ZoomingZone/SubViewport/ZoomingZone" instance=ExtResource("6_wq3mc")]
-position = Vector2(471.12, 1216.97)
+position = Vector2(471.12, 1214.74)
 scale = Vector2(0.419, 0.368)
 
 [node name="ButtonChangeScene" parent="StateMachine/GeologiaZone/ZoomingZone/SubViewport/ZoomingZone/Transformando" index="0"]
@@ -599,7 +608,7 @@ is_inverted = true
 color = Color(0.560784, 0.321569, 0.211765, 1)
 
 [node name="Busqueda" parent="StateMachine/GeologiaZone/ZoomingZone/SubViewport/ZoomingZone" instance=ExtResource("6_wq3mc")]
-position = Vector2(621.67, -120.955)
+position = Vector2(621.67, -58.245)
 
 [node name="ButtonChangeScene" parent="StateMachine/GeologiaZone/ZoomingZone/SubViewport/ZoomingZone/Busqueda" index="0"]
 NextScene = "Busqueda"
@@ -608,9 +617,10 @@ texture = "dirt"
 is_inverted = true
 color = Color(0.560784, 0.321569, 0.211765, 1)
 
-[node name="NoZone" type="Node" parent="StateMachine" node_paths=PackedStringArray("ButtonBack")]
+[node name="NoZone" type="Node" parent="StateMachine" node_paths=PackedStringArray("ButtonBack", "ButtonNaumi")]
 script = ExtResource("13_tgu8h")
 ButtonBack = NodePath("../../SubViewportContainer")
+ButtonNaumi = NodePath("../ButtonNaumi")
 
 [node name="Button" type="Button" parent="StateMachine/NoZone"]
 z_index = 1
@@ -661,20 +671,21 @@ vertical_alignment = 1
 [node name="Timer" type="Timer" parent="StateMachine/ZoneCompleteEvent"]
 wait_time = 3.0
 
-[node name="TextureRect" type="TextureRect" parent="StateMachine"]
+[node name="ButtonNaumi" type="TextureRect" parent="StateMachine"]
+visible = false
 z_index = 2
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -127.0
-offset_top = 26.0
-offset_right = -31.0
-offset_bottom = 160.0
+offset_left = -117.0
+offset_top = 18.0
+offset_right = -39.0
+offset_bottom = 126.0
 grow_horizontal = 0
 texture = ExtResource("8_ssef4")
 expand_mode = 1
 
-[node name="ButtonChangeScene" parent="StateMachine/TextureRect" instance=ExtResource("7_1v7i5")]
+[node name="ButtonChangeScene" parent="StateMachine/ButtonNaumi" instance=ExtResource("7_1v7i5")]
 z_index = 3
 layout_mode = 1
 anchors_preset = 15
@@ -692,21 +703,18 @@ NextScene = "Naumi_Screen"
 
 [node name="ButtonBack" type="Button" parent="StateMachine" node_paths=PackedStringArray("state_to_change", "state_machine")]
 z_index = 2
-anchors_preset = 3
+anchors_preset = 1
 anchor_left = 1.0
-anchor_top = 1.0
 anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -240.805
-offset_top = -105.055
-offset_right = -21.8055
-offset_bottom = -21.0551
+offset_left = -122.0
+offset_top = 27.0
+offset_right = -32.0
+offset_bottom = 111.0
 grow_horizontal = 0
-grow_vertical = 0
 size_flags_horizontal = 8
 size_flags_vertical = 8
+theme = ExtResource("23_wkxyp")
 theme_override_font_sizes/font_size = 30
-text = "Back"
 script = ExtResource("5_oybyc")
 state_to_change = NodePath("../NoZone")
 state_machine = NodePath("..")

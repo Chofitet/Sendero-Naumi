@@ -1,12 +1,16 @@
-[gd_scene load_steps=16 format=3 uid="uid://b00ok4g2p2vql"]
+[gd_scene load_steps=23 format=3 uid="uid://b00ok4g2p2vql"]
 
 [ext_resource type="Texture2D" uid="uid://bom2snkxot1ji" path="res://Sprites/Intro/loop-caida-tira.png" id="1_rx1cn"]
+[ext_resource type="Texture2D" uid="uid://hf5y4ic16cqj" path="res://Sprites/Intro/intro - background.jpg" id="1_xm8pn"]
+[ext_resource type="Texture2D" uid="uid://jd6systmhxf1" path="res://Sprites/Intro/intro - suelo.png" id="2_2edvn"]
 [ext_resource type="Script" path="res://_Scripts/Map_fall_sprite.gd" id="2_bkqej"]
 [ext_resource type="PackedScene" uid="uid://biluutecl1cej" path="res://Scenes/Experiments/skip_sceen.tscn" id="3_wlutv"]
 [ext_resource type="StyleBox" uid="uid://b3tjes2hcm3wx" path="res://Resources/UI_Resources/StyleBoxTrasparent.tres" id="3_x6oit"]
 [ext_resource type="Texture2D" uid="uid://cjjoaemhep814" path="res://Sprites/mapa-detalle.png" id="4_q3m1c"]
 [ext_resource type="Script" path="res://_Scripts/PlayAnimation.gd" id="5_3difv"]
 [ext_resource type="PackedScene" uid="uid://btnejcy6d18fh" path="res://Scenes/Experiments/anim_map.tscn" id="7_aobht"]
+[ext_resource type="Texture2D" uid="uid://chqivoetkgkoj" path="res://Sprites/UI/circulo.png" id="10_fkwv8"]
+[ext_resource type="Texture2D" uid="uid://dhx6ness36h5f" path="res://Sprites/logoChicoCirculo.png" id="11_88s5v"]
 
 [sub_resource type="Animation" id="Animation_fleps"]
 length = 0.001
@@ -261,6 +265,57 @@ _data = {
 "map_enter": SubResource("Animation_e8t3g")
 }
 
+[sub_resource type="Animation" id="Animation_eyv2g"]
+resource_name = "Fade_out_logo"
+length = 3.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.6, 3.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../AnimMap")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(3.4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"StartAnim"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_7m1eg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_edlyj"]
+_data = {
+"Fade_out_logo": SubResource("Animation_eyv2g"),
+"RESET": SubResource("Animation_7m1eg")
+}
+
 [node name="Mapa_Fall_Intro" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -268,6 +323,38 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.387
+anchor_right = 0.5
+anchor_bottom = 0.387
+offset_left = -451.0
+offset_top = -802.36
+offset_right = 451.0
+offset_bottom = 801.64
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_xm8pn")
+expand_mode = 1
+
+[node name="ColorRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.501
+anchor_top = 0.654
+anchor_right = 0.501
+anchor_bottom = 0.654
+offset_left = -585.72
+offset_top = -552.12
+offset_right = 584.28
+offset_bottom = 602.88
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("2_2edvn")
+expand_mode = 1
 
 [node name="Map_fall_sprite" type="Sprite2D" parent="."]
 visible = false
@@ -312,14 +399,12 @@ color = Color(0.0859375, 0.0898438, 0.144531, 1)
 
 [node name="mapArriveSpot" type="Control" parent="."]
 layout_mode = 1
-anchor_left = 0.482
-anchor_top = 0.689
-anchor_right = 0.482
-anchor_bottom = 0.689
-offset_left = -0.0400085
-offset_top = 0.0799561
-offset_right = -0.0400085
-offset_bottom = 0.0799561
+anchor_left = 0.5
+anchor_top = 0.67
+anchor_right = 0.5
+anchor_bottom = 0.67
+offset_top = -0.600037
+offset_bottom = -0.600037
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -328,7 +413,7 @@ scale = Vector2(0.35, 0.35)
 
 [node name="Mapa" type="Sprite2D" parent="mapArriveSpot"]
 visible = false
-position = Vector2(2, -239)
+position = Vector2(-18, -283)
 scale = Vector2(0.258547, 0.258547)
 texture = ExtResource("4_q3m1c")
 
@@ -338,6 +423,40 @@ libraries = {
 }
 script = ExtResource("5_3difv")
 animation = "map_enter"
+
+[node name="LOGO" type="Sprite2D" parent="mapArriveSpot"]
+position = Vector2(17, -607)
+scale = Vector2(0.37, 0.37)
+texture = ExtResource("10_fkwv8")
+
+[node name="LOGO" type="Sprite2D" parent="mapArriveSpot/LOGO"]
+clip_children = 2
+scale = Vector2(0.954545, 0.954545)
+texture = ExtResource("10_fkwv8")
+
+[node name="LogoChicoCirculo" type="Sprite2D" parent="mapArriveSpot/LOGO/LOGO"]
+scale = Vector2(0.622881, 0.622881)
+texture = ExtResource("11_88s5v")
+
+[node name="Label" type="Label" parent="mapArriveSpot/LOGO"]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.185
+anchor_right = 0.5
+anchor_bottom = 1.185
+offset_left = -854.054
+offset_top = -609.325
+offset_right = -100.054
+offset_bottom = -401.325
+theme_override_colors/font_color = Color(0.0351563, 0.09375, 0.09375, 1)
+theme_override_font_sizes/font_size = 150
+text = "PRESENTA"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="mapArriveSpot/LOGO"]
+autoplay = "Fade_out_logo"
+libraries = {
+"": SubResource("AnimationLibrary_edlyj")
+}
 
 [connection signal="pressed" from="Map_fall_sprite/Button" to="Map_fall_sprite/AnimationPlayer" method="Play"]
 [connection signal="trigger" from="mapArriveSpot/AnimMap" to="mapArriveSpot/Mapa/AnimationPlayer" method="Play"]

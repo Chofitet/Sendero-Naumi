@@ -6,3 +6,6 @@ func _ready():
 
 func isPressed():
 	trigger.emit()
+
+func StartAnim():
+	get_node("AnimationMove").play("map_move")

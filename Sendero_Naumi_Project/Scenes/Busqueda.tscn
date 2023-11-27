@@ -1,6 +1,7 @@
-[gd_scene load_steps=41 format=3 uid="uid://ca6b1xkwwj7rp"]
+[gd_scene load_steps=46 format=3 uid="uid://ca6b1xkwwj7rp"]
 
 [ext_resource type="Script" path="res://_Scripts/Minigame_Save_Controller.gd" id="1_kdw84"]
+[ext_resource type="Texture2D" uid="uid://dbv6rcnmmb8db" path="res://Sprites/ZonaGeología/fondo_geografia.png" id="2_5bgsq"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/StateMachineMinigames.gd" id="2_cs2gm"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/ConsignaState.gd" id="3_6yx8d"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/Button_Change_StateMinigame.gd" id="4_b64ug"]
@@ -13,15 +14,19 @@
 [ext_resource type="Texture2D" uid="uid://cm685ijc4nuf6" path="res://Sprites/ZonaGeología/tribuna_busqueda.png" id="8_b68wy"]
 [ext_resource type="Texture2D" uid="uid://dxtycvon1bw4p" path="res://Sprites/ZonaGeología/Piedras/zoisita - busqueda.png" id="8_pk5s7"]
 [ext_resource type="PackedScene" uid="uid://cnxkgvr1r0dny" path="res://Scenes/Zona_Geología/rock_hincha.tscn" id="10_co8hb"]
+[ext_resource type="Texture2D" uid="uid://csvxv5nlnof3f" path="res://Sprites/ZonaGeología/confeti.png" id="11_8eo6w"]
 [ext_resource type="Script" path="res://_Scripts/MinG_Busqueda/ConsignaUIAnim.gd" id="12_yw0ne"]
 [ext_resource type="Texture2D" uid="uid://dhxyesghnscff" path="res://Sprites/ZonaGeología/titulo-marco.png" id="13_8kfd5"]
 [ext_resource type="Texture2D" uid="uid://cncanwfoqtd2x" path="res://Sprites/ZonaGeología/anim_busqueda_tira.png" id="14_0snmx"]
+[ext_resource type="Texture2D" uid="uid://5bjovkq3aou5" path="res://Sprites/ZonaGeología/Piedras/halita - busqueda.png" id="14_0vo7a"]
 [ext_resource type="Texture2D" uid="uid://3t43mkpa2wdg" path="res://Sprites/ZonaGeología/cloud.png" id="14_aqi0e"]
 [ext_resource type="Texture2D" uid="uid://chqivoetkgkoj" path="res://Sprites/UI/circulo.png" id="15_hkj6o"]
 [ext_resource type="PackedScene" uid="uid://cm1dba1i3cs2k" path="res://Scenes/Experiments/particles_confetti.tscn" id="16_m1kom"]
 [ext_resource type="Script" path="res://_Scripts/PlayAnimation.gd" id="16_r2ac3"]
 [ext_resource type="StyleBox" uid="uid://b3tjes2hcm3wx" path="res://Resources/UI_Resources/StyleBoxTrasparent.tres" id="18_5rso6"]
 [ext_resource type="Script" path="res://_Scripts/ChangeScene.gd" id="18_f74bc"]
+[ext_resource type="Texture2D" uid="uid://dx08onlcntyty" path="res://Sprites/ZonaGeología/Piedras/espato - busqueda.png" id="22_g0ol6"]
+[ext_resource type="Theme" uid="uid://bokxu7jbpku04" path="res://Themes/Back_UI.tres" id="23_fcebh"]
 
 [sub_resource type="Animation" id="Animation_daumw"]
 length = 0.001
@@ -139,6 +144,18 @@ tracks/2/keys = {
 "args": [],
 "method": &"JumpAnim"
 }]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Piedra/Piedra:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0.0]
 }
 
 [sub_resource type="Animation" id="Animation_8cd4u"]
@@ -330,7 +347,7 @@ tracks/3/keys = {
 
 [sub_resource type="Animation" id="Animation_rnmqx"]
 resource_name = "rock_lose_2"
-length = 0.6
+length = 1.2
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -339,10 +356,10 @@ tracks/0/path = NodePath("Piedra/AnimPiedra:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.4),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.6, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [56, 57]
+"values": [56, 57, 56, 57]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -351,10 +368,10 @@ tracks/1/path = NodePath("Piedra/Piedra:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.4),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.6, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [0.0, 0.0349066]
+"values": [0.0, 0.0349066, 0.0, 0.0698132]
 }
 
 [sub_resource type="Animation" id="Animation_m3yjg"]
@@ -370,7 +387,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [70, 71, 72, 73, 74, 76]
+"values": [70, 71, 72, 73, 74, 75]
 }
 tracks/1/type = "method"
 tracks/1/imported = false
@@ -809,6 +826,16 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.72549, 1, 1, 1)
 
+[node name="TextureRect" type="TextureRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_5bgsq")
+stretch_mode = 1
+
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("2_cs2gm")
 initial_state = NodePath("Juego")
@@ -869,11 +896,40 @@ state_machine = NodePath("../../..")
 [node name="Timer" type="Timer" parent="StateMachine/Consigna/Contenido"]
 wait_time = 3.0
 
+[node name="TextureRect" type="TextureRect" parent="StateMachine/Consigna/Contenido"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_n8j0s")
+stretch_mode = 1
+
+[node name="Control" type="Control" parent="StateMachine/Consigna/Contenido"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="piso" type="Sprite2D" parent="StateMachine/Consigna/Contenido/Control"]
+position = Vector2(-733, 468.75)
+scale = Vector2(0.824451, 0.79362)
+texture = ExtResource("7_p8l5p")
+
+[node name="Sprite2D" type="Sprite2D" parent="StateMachine/Consigna/Contenido/Control"]
+scale = Vector2(0.954082, 0.954082)
+texture = ExtResource("8_b68wy")
+
 [node name="Juego" type="Node" parent="StateMachine" node_paths=PackedStringArray("NextState", "StateMachine")]
 script = ExtResource("5_kwitp")
 NextState = NodePath(".")
 StateMachine = NodePath("..")
-InstanciasMinijuego = [NodePath("Contenido/Instancia1")]
+InstanciasMinijuego = [NodePath("Contenido/Instancia1"), NodePath("Contenido/Instancia2"), NodePath("Contenido/Instancia3")]
 
 [node name="Contenido" type="Control" parent="StateMachine/Juego"]
 layout_mode = 3
@@ -884,6 +940,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Instancia1" type="Control" parent="StateMachine/Juego/Contenido"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1001,13 +1058,131 @@ offset_bottom = 3.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="confeti" type="Node2D" parent="StateMachine/Juego/Contenido/Instancia1/Tribunas/BackgroundPivot/TribunaRigth"]
+position = Vector2(628, -61.9999)
+
+[node name="Confeti" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia1/Tribunas/BackgroundPivot/TribunaRigth/confeti"]
+self_modulate = Color(0, 1, 1, 1)
+position = Vector2(-212, -17)
+rotation = 1.49131
+skew = -0.109956
+texture = ExtResource("11_8eo6w")
+
+[node name="Confeti2" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia1/Tribunas/BackgroundPivot/TribunaRigth/confeti"]
+position = Vector2(-89, -10)
+rotation = 0.587114
+skew = 0.254818
+texture = ExtResource("11_8eo6w")
+
+[node name="Confeti3" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia1/Tribunas/BackgroundPivot/TribunaRigth/confeti"]
+position = Vector2(184, 12)
+rotation = -1.5252
+texture = ExtResource("11_8eo6w")
+
+[node name="Confeti12" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia1/Tribunas/BackgroundPivot/TribunaRigth/confeti"]
+self_modulate = Color(0, 1, 1, 1)
+position = Vector2(-149, -8)
+rotation = -1.45248
+texture = ExtResource("11_8eo6w")
+
+[node name="Confeti13" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia1/Tribunas/BackgroundPivot/TribunaRigth/confeti"]
+position = Vector2(7, -3)
+rotation = -1.31265
+scale = Vector2(1, 0.794018)
+texture = ExtResource("11_8eo6w")
+
+[node name="Confeti11" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia1/Tribunas/BackgroundPivot/TribunaRigth/confeti"]
+self_modulate = Color(0, 1, 1, 1)
+position = Vector2(257, 211)
+rotation = -1.59362
+skew = -0.18326
+texture = ExtResource("11_8eo6w")
+
+[node name="Confeti16" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia1/Tribunas/BackgroundPivot/TribunaRigth/confeti"]
+position = Vector2(272, 243)
+rotation = -2.14045
+scale = Vector2(1.20536, 1)
+skew = -0.18326
+texture = ExtResource("11_8eo6w")
+
+[node name="Confeti4" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia1/Tribunas/BackgroundPivot/TribunaRigth/confeti"]
+position = Vector2(212, -128)
+rotation = -1.43227
+scale = Vector2(0.736747, 0.953089)
+skew = -0.226893
+texture = ExtResource("11_8eo6w")
+
+[node name="Confeti9" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia1/Tribunas/BackgroundPivot/TribunaRigth/confeti"]
+self_modulate = Color(0, 1, 1, 1)
+position = Vector2(476, -118)
+rotation = -1.1163
+scale = Vector2(0.736747, 0.953089)
+skew = -0.226893
+texture = ExtResource("11_8eo6w")
+
+[node name="Confeti10" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia1/Tribunas/BackgroundPivot/TribunaRigth/confeti"]
+position = Vector2(512, 38)
+rotation = -1.20179
+scale = Vector2(0.736747, 0.953089)
+skew = -0.226893
+texture = ExtResource("11_8eo6w")
+
+[node name="Confeti5" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia1/Tribunas/BackgroundPivot/TribunaRigth/confeti"]
+self_modulate = Color(0, 1, 1, 1)
+position = Vector2(-124, -146)
+rotation = -1.43227
+scale = Vector2(0.736747, 0.953089)
+skew = -0.226893
+texture = ExtResource("11_8eo6w")
+
+[node name="Confeti6" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia1/Tribunas/BackgroundPivot/TribunaRigth/confeti"]
+position = Vector2(-210, 134)
+rotation = -1.43227
+scale = Vector2(0.736747, 0.953089)
+skew = -0.226893
+texture = ExtResource("11_8eo6w")
+
+[node name="Confeti14" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia1/Tribunas/BackgroundPivot/TribunaRigth/confeti"]
+self_modulate = Color(0, 1, 1, 1)
+position = Vector2(-174, 163)
+rotation = -0.867429
+scale = Vector2(0.736747, 0.953089)
+skew = -0.0802851
+texture = ExtResource("11_8eo6w")
+
+[node name="Confeti15" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia1/Tribunas/BackgroundPivot/TribunaRigth/confeti"]
+position = Vector2(-253, 151)
+rotation = -2.33611
+scale = Vector2(0.736747, 0.953089)
+skew = -0.0802851
+texture = ExtResource("11_8eo6w")
+
+[node name="Confeti7" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia1/Tribunas/BackgroundPivot/TribunaRigth/confeti"]
+self_modulate = Color(0, 1, 1, 1)
+position = Vector2(174, 217)
+rotation = -0.953042
+scale = Vector2(0.736747, 0.953089)
+skew = -0.226893
+texture = ExtResource("11_8eo6w")
+
+[node name="Confeti8" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia1/Tribunas/BackgroundPivot/TribunaRigth/confeti"]
+self_modulate = Color(0, 1, 1, 1)
+position = Vector2(96, 8)
+rotation = -2.18267
+scale = Vector2(0.736747, 0.953089)
+skew = -0.226893
+texture = ExtResource("11_8eo6w")
+
 [node name="Rock" parent="StateMachine/Juego/Contenido/Instancia1/Tribunas/BackgroundPivot/TribunaRigth" instance=ExtResource("10_co8hb")]
+_texture = ExtResource("8_pk5s7")
 
 [node name="Rock2" parent="StateMachine/Juego/Contenido/Instancia1/Tribunas/BackgroundPivot/TribunaRigth" instance=ExtResource("10_co8hb")]
 position = Vector2(763, 122)
+_texture = ExtResource("8_pk5s7")
 
 [node name="Rock3" parent="StateMachine/Juego/Contenido/Instancia1/Tribunas/BackgroundPivot/TribunaRigth" instance=ExtResource("10_co8hb")]
 position = Vector2(400, 290)
+_texture = ExtResource("8_pk5s7")
 
 [node name="TribunaLeft" type="Control" parent="StateMachine/Juego/Contenido/Instancia1/Tribunas/BackgroundPivot"]
 visible = false
@@ -1023,13 +1198,131 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(-1, 1)
 
+[node name="confeti" type="Node2D" parent="StateMachine/Juego/Contenido/Instancia1/Tribunas/BackgroundPivot/TribunaLeft"]
+position = Vector2(628, -61.9999)
+
+[node name="Confeti" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia1/Tribunas/BackgroundPivot/TribunaLeft/confeti"]
+self_modulate = Color(0, 1, 1, 1)
+position = Vector2(-212, -17)
+rotation = 1.49131
+skew = -0.109956
+texture = ExtResource("11_8eo6w")
+
+[node name="Confeti2" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia1/Tribunas/BackgroundPivot/TribunaLeft/confeti"]
+position = Vector2(-89, -10)
+rotation = 0.587114
+skew = 0.254818
+texture = ExtResource("11_8eo6w")
+
+[node name="Confeti3" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia1/Tribunas/BackgroundPivot/TribunaLeft/confeti"]
+position = Vector2(184, 12)
+rotation = -1.5252
+texture = ExtResource("11_8eo6w")
+
+[node name="Confeti12" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia1/Tribunas/BackgroundPivot/TribunaLeft/confeti"]
+self_modulate = Color(0, 1, 1, 1)
+position = Vector2(-149, -8)
+rotation = -1.45248
+texture = ExtResource("11_8eo6w")
+
+[node name="Confeti13" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia1/Tribunas/BackgroundPivot/TribunaLeft/confeti"]
+position = Vector2(7, -3)
+rotation = -1.31265
+scale = Vector2(1, 0.794018)
+texture = ExtResource("11_8eo6w")
+
+[node name="Confeti11" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia1/Tribunas/BackgroundPivot/TribunaLeft/confeti"]
+self_modulate = Color(0, 1, 1, 1)
+position = Vector2(257, 211)
+rotation = -1.59362
+skew = -0.18326
+texture = ExtResource("11_8eo6w")
+
+[node name="Confeti16" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia1/Tribunas/BackgroundPivot/TribunaLeft/confeti"]
+position = Vector2(272, 243)
+rotation = -2.14045
+scale = Vector2(1.20536, 1)
+skew = -0.18326
+texture = ExtResource("11_8eo6w")
+
+[node name="Confeti4" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia1/Tribunas/BackgroundPivot/TribunaLeft/confeti"]
+position = Vector2(212, -128)
+rotation = -1.43227
+scale = Vector2(0.736747, 0.953089)
+skew = -0.226893
+texture = ExtResource("11_8eo6w")
+
+[node name="Confeti9" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia1/Tribunas/BackgroundPivot/TribunaLeft/confeti"]
+self_modulate = Color(0, 1, 1, 1)
+position = Vector2(476, -118)
+rotation = -1.1163
+scale = Vector2(0.736747, 0.953089)
+skew = -0.226893
+texture = ExtResource("11_8eo6w")
+
+[node name="Confeti10" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia1/Tribunas/BackgroundPivot/TribunaLeft/confeti"]
+position = Vector2(512, 38)
+rotation = -1.20179
+scale = Vector2(0.736747, 0.953089)
+skew = -0.226893
+texture = ExtResource("11_8eo6w")
+
+[node name="Confeti5" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia1/Tribunas/BackgroundPivot/TribunaLeft/confeti"]
+self_modulate = Color(0, 1, 1, 1)
+position = Vector2(-124, -146)
+rotation = -1.43227
+scale = Vector2(0.736747, 0.953089)
+skew = -0.226893
+texture = ExtResource("11_8eo6w")
+
+[node name="Confeti6" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia1/Tribunas/BackgroundPivot/TribunaLeft/confeti"]
+position = Vector2(-210, 134)
+rotation = -1.43227
+scale = Vector2(0.736747, 0.953089)
+skew = -0.226893
+texture = ExtResource("11_8eo6w")
+
+[node name="Confeti14" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia1/Tribunas/BackgroundPivot/TribunaLeft/confeti"]
+self_modulate = Color(0, 1, 1, 1)
+position = Vector2(-174, 163)
+rotation = -0.867429
+scale = Vector2(0.736747, 0.953089)
+skew = -0.0802851
+texture = ExtResource("11_8eo6w")
+
+[node name="Confeti15" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia1/Tribunas/BackgroundPivot/TribunaLeft/confeti"]
+position = Vector2(347.285, 230.457)
+rotation = -2.33611
+scale = Vector2(0.736747, 0.953089)
+skew = -0.0802851
+texture = ExtResource("11_8eo6w")
+
+[node name="Confeti7" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia1/Tribunas/BackgroundPivot/TribunaLeft/confeti"]
+self_modulate = Color(0, 1, 1, 1)
+position = Vector2(174, 217)
+rotation = -0.953042
+scale = Vector2(0.736747, 0.953089)
+skew = -0.226893
+texture = ExtResource("11_8eo6w")
+
+[node name="Confeti8" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia1/Tribunas/BackgroundPivot/TribunaLeft/confeti"]
+self_modulate = Color(0, 1, 1, 1)
+position = Vector2(96, 8)
+rotation = -2.18267
+scale = Vector2(0.736747, 0.953089)
+skew = -0.226893
+texture = ExtResource("11_8eo6w")
+
 [node name="Rock" parent="StateMachine/Juego/Contenido/Instancia1/Tribunas/BackgroundPivot/TribunaLeft" instance=ExtResource("10_co8hb")]
+_texture = ExtResource("8_pk5s7")
 
 [node name="Rock2" parent="StateMachine/Juego/Contenido/Instancia1/Tribunas/BackgroundPivot/TribunaLeft" instance=ExtResource("10_co8hb")]
 position = Vector2(763, 122)
+_texture = ExtResource("8_pk5s7")
 
 [node name="Rock3" parent="StateMachine/Juego/Contenido/Instancia1/Tribunas/BackgroundPivot/TribunaLeft" instance=ExtResource("10_co8hb")]
 position = Vector2(400, 290)
+_texture = ExtResource("8_pk5s7")
 
 [node name="Piedra_Busqueda" type="Control" parent="StateMachine/Juego/Contenido/Instancia1/Tribunas" node_paths=PackedStringArray("backgroundpivot", "particle1", "particle2")]
 layout_mode = 1
@@ -1047,8 +1340,8 @@ grow_vertical = 2
 pivot_offset = Vector2(250, 300)
 script = ExtResource("7_148tg")
 backgroundpivot = NodePath("../BackgroundPivot")
-particle1 = NodePath("../../Particula/CPUParticles2D")
-particle2 = NodePath("../../Particula/CPUParticles2D2")
+particle1 = NodePath("../../../Particula/CPUParticles2D")
+particle2 = NodePath("../../../Particula/CPUParticles2D2")
 SetVisibility = [NodePath("../../NubeController"), NodePath("../../Consigna"), NodePath("../../NubeController2")]
 
 [node name="LoopLookAnim" type="Timer" parent="StateMachine/Juego/Contenido/Instancia1/Tribunas/Piedra_Busqueda"]
@@ -1119,27 +1412,7 @@ vertical_alignment = 1
 
 [node name="Timer" type="Timer" parent="StateMachine/Juego/Contenido/Instancia1/Consigna"]
 wait_time = 2.0
-
-[node name="Particula" type="Control" parent="StateMachine/Juego/Contenido/Instancia1"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="CPUParticles2D" parent="StateMachine/Juego/Contenido/Instancia1/Particula" instance=ExtResource("16_m1kom")]
-z_index = 1
-position = Vector2(4, -596)
-emitting = false
-
-[node name="CPUParticles2D2" parent="StateMachine/Juego/Contenido/Instancia1/Particula" instance=ExtResource("16_m1kom")]
-z_index = 1
-position = Vector2(4, -596)
-emitting = false
-color = Color(1, 1, 1, 1)
+one_shot = true
 
 [node name="NubeController" type="Control" parent="StateMachine/Juego/Contenido/Instancia1"]
 layout_mode = 1
@@ -1389,6 +1662,1474 @@ script = ExtResource("4_b64ug")
 state_to_change = NodePath("../../../..")
 state_machine = NodePath("../../../../..")
 
+[node name="Instancia2" type="Control" parent="StateMachine/Juego/Contenido"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="StateMachine/Juego/Contenido/Instancia2" node_paths=PackedStringArray("state_to_change", "state_machine")]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -161.0
+offset_top = -165.0
+offset_right = 161.0
+offset_bottom = -52.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Complete"
+script = ExtResource("4_b64ug")
+state_to_change = NodePath("../../../../Moraleja")
+state_machine = NodePath("../../../..")
+isEndOfGame = true
+
+[node name="Tribunas" type="Control" parent="StateMachine/Juego/Contenido/Instancia2"]
+layout_mode = 1
+anchor_left = 0.5
+anchor_top = 0.491
+anchor_right = 0.5
+anchor_bottom = 0.491
+offset_top = 0.519958
+offset_bottom = 0.519958
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Mask" type="TextureRect" parent="StateMachine/Juego/Contenido/Instancia2/Tribunas"]
+clip_children = 2
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.43
+anchor_top = -0.48
+anchor_right = 0.43
+anchor_bottom = -0.48
+offset_left = -1065.0
+offset_top = -1348.0
+offset_right = 1069.0
+offset_bottom = 786.0
+grow_horizontal = 2
+texture = ExtResource("15_hkj6o")
+expand_mode = 1
+
+[node name="BackgroundPivot" type="Control" parent="StateMachine/Juego/Contenido/Instancia2/Tribunas"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background2" type="TextureRect" parent="StateMachine/Juego/Contenido/Instancia2/Tribunas/BackgroundPivot"]
+layout_mode = 0
+offset_left = -1093.0
+offset_top = -1182.0
+offset_right = 1078.0
+offset_bottom = 177.0
+texture = ExtResource("7_n8j0s")
+stretch_mode = 1
+
+[node name="Floor" type="TextureRect" parent="StateMachine/Juego/Contenido/Instancia2/Tribunas/BackgroundPivot"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1095.0
+offset_top = 61.0001
+offset_right = 1092.0
+offset_bottom = 1378.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(1667, 996)
+texture = ExtResource("7_p8l5p")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Tribuna" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia2/Tribunas/BackgroundPivot"]
+position = Vector2(650.08, 87)
+scale = Vector2(0.871684, 0.980867)
+texture = ExtResource("8_b68wy")
+
+[node name="Tribuna2" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia2/Tribunas/BackgroundPivot"]
+position = Vector2(-648, 87)
+rotation = 3.14159
+scale = Vector2(0.872, -0.981)
+texture = ExtResource("8_b68wy")
+
+[node name="TribunaRigth" type="Control" parent="StateMachine/Juego/Contenido/Instancia2/Tribunas/BackgroundPivot"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 18.0
+offset_top = 3.0
+offset_right = 18.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="confeti" type="Node2D" parent="StateMachine/Juego/Contenido/Instancia2/Tribunas/BackgroundPivot/TribunaRigth"]
+position = Vector2(628, -61.9999)
+
+[node name="Confeti" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia2/Tribunas/BackgroundPivot/TribunaRigth/confeti"]
+self_modulate = Color(0, 1, 1, 1)
+position = Vector2(-212, -17)
+rotation = 1.49131
+skew = -0.109956
+texture = ExtResource("11_8eo6w")
+
+[node name="Confeti2" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia2/Tribunas/BackgroundPivot/TribunaRigth/confeti"]
+position = Vector2(-89, -10)
+rotation = 0.587114
+skew = 0.254818
+texture = ExtResource("11_8eo6w")
+
+[node name="Confeti3" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia2/Tribunas/BackgroundPivot/TribunaRigth/confeti"]
+position = Vector2(184, 12)
+rotation = -1.5252
+texture = ExtResource("11_8eo6w")
+
+[node name="Confeti12" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia2/Tribunas/BackgroundPivot/TribunaRigth/confeti"]
+self_modulate = Color(0, 1, 1, 1)
+position = Vector2(-149, -8)
+rotation = -1.45248
+texture = ExtResource("11_8eo6w")
+
+[node name="Confeti13" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia2/Tribunas/BackgroundPivot/TribunaRigth/confeti"]
+position = Vector2(7, -3)
+rotation = -1.31265
+scale = Vector2(1, 0.794018)
+texture = ExtResource("11_8eo6w")
+
+[node name="Confeti11" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia2/Tribunas/BackgroundPivot/TribunaRigth/confeti"]
+self_modulate = Color(0, 1, 1, 1)
+position = Vector2(257, 211)
+rotation = -1.59362
+skew = -0.18326
+texture = ExtResource("11_8eo6w")
+
+[node name="Confeti16" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia2/Tribunas/BackgroundPivot/TribunaRigth/confeti"]
+position = Vector2(272, 243)
+rotation = -2.14045
+scale = Vector2(1.20536, 1)
+skew = -0.18326
+texture = ExtResource("11_8eo6w")
+
+[node name="Confeti4" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia2/Tribunas/BackgroundPivot/TribunaRigth/confeti"]
+position = Vector2(212, -128)
+rotation = -1.43227
+scale = Vector2(0.736747, 0.953089)
+skew = -0.226893
+texture = ExtResource("11_8eo6w")
+
+[node name="Confeti9" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia2/Tribunas/BackgroundPivot/TribunaRigth/confeti"]
+self_modulate = Color(0, 1, 1, 1)
+position = Vector2(476, -118)
+rotation = -1.1163
+scale = Vector2(0.736747, 0.953089)
+skew = -0.226893
+texture = ExtResource("11_8eo6w")
+
+[node name="Confeti10" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia2/Tribunas/BackgroundPivot/TribunaRigth/confeti"]
+position = Vector2(512, 38)
+rotation = -1.20179
+scale = Vector2(0.736747, 0.953089)
+skew = -0.226893
+texture = ExtResource("11_8eo6w")
+
+[node name="Confeti5" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia2/Tribunas/BackgroundPivot/TribunaRigth/confeti"]
+self_modulate = Color(0, 1, 1, 1)
+position = Vector2(-124, -146)
+rotation = -1.43227
+scale = Vector2(0.736747, 0.953089)
+skew = -0.226893
+texture = ExtResource("11_8eo6w")
+
+[node name="Confeti6" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia2/Tribunas/BackgroundPivot/TribunaRigth/confeti"]
+position = Vector2(-210, 134)
+rotation = -1.43227
+scale = Vector2(0.736747, 0.953089)
+skew = -0.226893
+texture = ExtResource("11_8eo6w")
+
+[node name="Confeti14" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia2/Tribunas/BackgroundPivot/TribunaRigth/confeti"]
+self_modulate = Color(0, 1, 1, 1)
+position = Vector2(-174, 163)
+rotation = -0.867429
+scale = Vector2(0.736747, 0.953089)
+skew = -0.0802851
+texture = ExtResource("11_8eo6w")
+
+[node name="Confeti15" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia2/Tribunas/BackgroundPivot/TribunaRigth/confeti"]
+position = Vector2(-253, 151)
+rotation = -2.33611
+scale = Vector2(0.736747, 0.953089)
+skew = -0.0802851
+texture = ExtResource("11_8eo6w")
+
+[node name="Confeti7" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia2/Tribunas/BackgroundPivot/TribunaRigth/confeti"]
+self_modulate = Color(0, 1, 1, 1)
+position = Vector2(174, 217)
+rotation = -0.953042
+scale = Vector2(0.736747, 0.953089)
+skew = -0.226893
+texture = ExtResource("11_8eo6w")
+
+[node name="Confeti8" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia2/Tribunas/BackgroundPivot/TribunaRigth/confeti"]
+self_modulate = Color(0, 1, 1, 1)
+position = Vector2(96, 8)
+rotation = -2.18267
+scale = Vector2(0.736747, 0.953089)
+skew = -0.226893
+texture = ExtResource("11_8eo6w")
+
+[node name="Rock" parent="StateMachine/Juego/Contenido/Instancia2/Tribunas/BackgroundPivot/TribunaRigth" instance=ExtResource("10_co8hb")]
+_texture = ExtResource("14_0vo7a")
+
+[node name="Rock2" parent="StateMachine/Juego/Contenido/Instancia2/Tribunas/BackgroundPivot/TribunaRigth" instance=ExtResource("10_co8hb")]
+position = Vector2(763, 122)
+_texture = ExtResource("14_0vo7a")
+
+[node name="Rock3" parent="StateMachine/Juego/Contenido/Instancia2/Tribunas/BackgroundPivot/TribunaRigth" instance=ExtResource("10_co8hb")]
+position = Vector2(400, 290)
+_texture = ExtResource("14_0vo7a")
+
+[node name="TribunaLeft" type="Control" parent="StateMachine/Juego/Contenido/Instancia2/Tribunas/BackgroundPivot"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 23.0
+offset_right = 23.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(-1, 1)
+
+[node name="confeti" type="Node2D" parent="StateMachine/Juego/Contenido/Instancia2/Tribunas/BackgroundPivot/TribunaLeft"]
+position = Vector2(628, -61.9999)
+
+[node name="Confeti" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia2/Tribunas/BackgroundPivot/TribunaLeft/confeti"]
+self_modulate = Color(0, 1, 1, 1)
+position = Vector2(-212, -17)
+rotation = 1.49131
+skew = -0.109956
+texture = ExtResource("11_8eo6w")
+
+[node name="Confeti2" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia2/Tribunas/BackgroundPivot/TribunaLeft/confeti"]
+position = Vector2(-89, -10)
+rotation = 0.587114
+skew = 0.254818
+texture = ExtResource("11_8eo6w")
+
+[node name="Confeti3" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia2/Tribunas/BackgroundPivot/TribunaLeft/confeti"]
+position = Vector2(184, 12)
+rotation = -1.5252
+texture = ExtResource("11_8eo6w")
+
+[node name="Confeti12" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia2/Tribunas/BackgroundPivot/TribunaLeft/confeti"]
+self_modulate = Color(0, 1, 1, 1)
+position = Vector2(-149, -8)
+rotation = -1.45248
+texture = ExtResource("11_8eo6w")
+
+[node name="Confeti13" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia2/Tribunas/BackgroundPivot/TribunaLeft/confeti"]
+position = Vector2(7, -3)
+rotation = -1.31265
+scale = Vector2(1, 0.794018)
+texture = ExtResource("11_8eo6w")
+
+[node name="Confeti11" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia2/Tribunas/BackgroundPivot/TribunaLeft/confeti"]
+self_modulate = Color(0, 1, 1, 1)
+position = Vector2(257, 211)
+rotation = -1.59362
+skew = -0.18326
+texture = ExtResource("11_8eo6w")
+
+[node name="Confeti16" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia2/Tribunas/BackgroundPivot/TribunaLeft/confeti"]
+position = Vector2(272, 243)
+rotation = -2.14045
+scale = Vector2(1.20536, 1)
+skew = -0.18326
+texture = ExtResource("11_8eo6w")
+
+[node name="Confeti4" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia2/Tribunas/BackgroundPivot/TribunaLeft/confeti"]
+position = Vector2(212, -128)
+rotation = -1.43227
+scale = Vector2(0.736747, 0.953089)
+skew = -0.226893
+texture = ExtResource("11_8eo6w")
+
+[node name="Confeti9" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia2/Tribunas/BackgroundPivot/TribunaLeft/confeti"]
+self_modulate = Color(0, 1, 1, 1)
+position = Vector2(476, -118)
+rotation = -1.1163
+scale = Vector2(0.736747, 0.953089)
+skew = -0.226893
+texture = ExtResource("11_8eo6w")
+
+[node name="Confeti10" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia2/Tribunas/BackgroundPivot/TribunaLeft/confeti"]
+position = Vector2(512, 38)
+rotation = -1.20179
+scale = Vector2(0.736747, 0.953089)
+skew = -0.226893
+texture = ExtResource("11_8eo6w")
+
+[node name="Confeti5" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia2/Tribunas/BackgroundPivot/TribunaLeft/confeti"]
+self_modulate = Color(0, 1, 1, 1)
+position = Vector2(-124, -146)
+rotation = -1.43227
+scale = Vector2(0.736747, 0.953089)
+skew = -0.226893
+texture = ExtResource("11_8eo6w")
+
+[node name="Confeti6" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia2/Tribunas/BackgroundPivot/TribunaLeft/confeti"]
+position = Vector2(-210, 134)
+rotation = -1.43227
+scale = Vector2(0.736747, 0.953089)
+skew = -0.226893
+texture = ExtResource("11_8eo6w")
+
+[node name="Confeti14" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia2/Tribunas/BackgroundPivot/TribunaLeft/confeti"]
+self_modulate = Color(0, 1, 1, 1)
+position = Vector2(-174, 163)
+rotation = -0.867429
+scale = Vector2(0.736747, 0.953089)
+skew = -0.0802851
+texture = ExtResource("11_8eo6w")
+
+[node name="Confeti15" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia2/Tribunas/BackgroundPivot/TribunaLeft/confeti"]
+position = Vector2(347.285, 230.457)
+rotation = -2.33611
+scale = Vector2(0.736747, 0.953089)
+skew = -0.0802851
+texture = ExtResource("11_8eo6w")
+
+[node name="Confeti7" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia2/Tribunas/BackgroundPivot/TribunaLeft/confeti"]
+self_modulate = Color(0, 1, 1, 1)
+position = Vector2(174, 217)
+rotation = -0.953042
+scale = Vector2(0.736747, 0.953089)
+skew = -0.226893
+texture = ExtResource("11_8eo6w")
+
+[node name="Confeti8" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia2/Tribunas/BackgroundPivot/TribunaLeft/confeti"]
+self_modulate = Color(0, 1, 1, 1)
+position = Vector2(96, 8)
+rotation = -2.18267
+scale = Vector2(0.736747, 0.953089)
+skew = -0.226893
+texture = ExtResource("11_8eo6w")
+
+[node name="Rock" parent="StateMachine/Juego/Contenido/Instancia2/Tribunas/BackgroundPivot/TribunaLeft" instance=ExtResource("10_co8hb")]
+_texture = ExtResource("14_0vo7a")
+
+[node name="Rock2" parent="StateMachine/Juego/Contenido/Instancia2/Tribunas/BackgroundPivot/TribunaLeft" instance=ExtResource("10_co8hb")]
+position = Vector2(763, 122)
+_texture = ExtResource("14_0vo7a")
+
+[node name="Rock3" parent="StateMachine/Juego/Contenido/Instancia2/Tribunas/BackgroundPivot/TribunaLeft" instance=ExtResource("10_co8hb")]
+position = Vector2(400, 290)
+_texture = ExtResource("14_0vo7a")
+
+[node name="Piedra_Busqueda" type="Control" parent="StateMachine/Juego/Contenido/Instancia2/Tribunas" node_paths=PackedStringArray("backgroundpivot", "particle1", "particle2")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -300.0
+offset_right = 250.0
+offset_bottom = 300.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(250, 300)
+script = ExtResource("7_148tg")
+backgroundpivot = NodePath("../BackgroundPivot")
+particle1 = NodePath("../../../Particula/CPUParticles2D")
+particle2 = NodePath("../../../Particula/CPUParticles2D2")
+SetVisibility = [NodePath("../../NubeController"), NodePath("../../Consigna"), NodePath("../../NubeController2")]
+
+[node name="LoopLookAnim" type="Timer" parent="StateMachine/Juego/Contenido/Instancia2/Tribunas/Piedra_Busqueda"]
+wait_time = 6.0
+
+[node name="Piedra" type="Node2D" parent="StateMachine/Juego/Contenido/Instancia2/Tribunas/Piedra_Busqueda"]
+z_index = 1
+position = Vector2(250, 542)
+scale = Vector2(0.8, 0.8)
+
+[node name="Piedra" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia2/Tribunas/Piedra_Busqueda/Piedra"]
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("14_0vo7a")
+
+[node name="AnimPiedra" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia2/Tribunas/Piedra_Busqueda/Piedra"]
+scale = Vector2(0.52, 0.52)
+texture = ExtResource("14_0snmx")
+hframes = 14
+vframes = 6
+
+[node name="AnimController" type="AnimationPlayer" parent="StateMachine/Juego/Contenido/Instancia2/Tribunas/Piedra_Busqueda"]
+speed_scale = 0.7
+libraries = {
+"": SubResource("AnimationLibrary_iymj1")
+}
+
+[node name="AnimBackground" type="AnimationPlayer" parent="StateMachine/Juego/Contenido/Instancia2"]
+root_node = NodePath("../Tribunas/Piedra_Busqueda")
+speed_scale = 0.7
+libraries = {
+"": SubResource("AnimationLibrary_oxev3")
+}
+
+[node name="Consigna" type="Control" parent="StateMachine/Juego/Contenido/Instancia2"]
+visible = false
+layout_mode = 1
+anchor_left = 0.494
+anchor_top = 0.181
+anchor_right = 0.494
+anchor_bottom = 0.181
+offset_left = -355.68
+offset_top = 0.319992
+offset_right = 356.32
+offset_bottom = 215.32
+pivot_offset = Vector2(356, 0)
+script = ExtResource("12_yw0ne")
+
+[node name="Sprite2D" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia2/Consigna"]
+position = Vector2(362, 104)
+scale = Vector2(0.628625, 0.5)
+texture = ExtResource("13_8kfd5")
+
+[node name="Label" type="Label" parent="StateMachine/Juego/Contenido/Instancia2/Consigna/Sprite2D"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -469.0
+offset_top = -112.0
+offset_right = -584.0
+offset_bottom = -197.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 50
+text = "¿A que tribuna debe ir la zolita?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Timer" type="Timer" parent="StateMachine/Juego/Contenido/Instancia2/Consigna"]
+wait_time = 2.0
+one_shot = true
+
+[node name="NubeController" type="Control" parent="StateMachine/Juego/Contenido/Instancia2"]
+layout_mode = 1
+anchor_left = 0.5
+anchor_top = 0.418
+anchor_right = 0.5
+anchor_bottom = 0.418
+offset_left = -3.0
+offset_top = -263.04
+offset_right = 358.0
+offset_bottom = 262.96
+
+[node name="nube" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia2/NubeController"]
+position = Vector2(182, 188)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("14_aqi0e")
+
+[node name="nube" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia2/NubeController/nube"]
+clip_children = 2
+position = Vector2(0.833313, 0.833374)
+scale = Vector2(0.947222, 0.936111)
+texture = ExtResource("14_aqi0e")
+
+[node name="ColorRect" type="ColorRect" parent="StateMachine/Juego/Contenido/Instancia2/NubeController/nube/nube"]
+offset_left = -306.0
+offset_top = -306.0
+offset_right = 345.0
+offset_bottom = 345.0
+
+[node name="ButtonGanador" type="Button" parent="StateMachine/Juego/Contenido/Instancia2/NubeController/nube"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -502.0
+offset_top = -498.0
+offset_right = -97.0
+offset_bottom = -101.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+theme_override_styles/focus = ExtResource("18_5rso6")
+text = "OXIDOS"
+flat = true
+
+[node name="nubeC1" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia2/NubeController"]
+self_modulate = Color(0, 0, 0, 1)
+position = Vector2(286, 377)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("15_hkj6o")
+
+[node name="nubeC1" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia2/NubeController/nubeC1"]
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("15_hkj6o")
+
+[node name="nubeC2" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia2/NubeController"]
+self_modulate = Color(0, 0, 0, 1)
+position = Vector2(271, 474)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("15_hkj6o")
+
+[node name="nubeC1" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia2/NubeController/nubeC2"]
+scale = Vector2(0.92, 0.92)
+texture = ExtResource("15_hkj6o")
+
+[node name="nubeC3" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia2/NubeController"]
+self_modulate = Color(0, 0, 0, 1)
+position = Vector2(218, 526)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("15_hkj6o")
+
+[node name="nubeC1" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia2/NubeController/nubeC3"]
+scale = Vector2(0.850001, 0.850001)
+texture = ExtResource("15_hkj6o")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="StateMachine/Juego/Contenido/Instancia2/NubeController"]
+libraries = {
+"": SubResource("AnimationLibrary_gy327")
+}
+script = ExtResource("16_r2ac3")
+animation = "Nube_Appears"
+
+[node name="NubeController2" type="Control" parent="StateMachine/Juego/Contenido/Instancia2"]
+layout_mode = 1
+anchor_left = 0.496
+anchor_top = 0.418
+anchor_right = 0.496
+anchor_bottom = 0.418
+offset_left = -0.120026
+offset_top = -263.04
+offset_right = 360.88
+offset_bottom = 262.96
+scale = Vector2(-1, 1)
+
+[node name="nube" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia2/NubeController2"]
+position = Vector2(182, 188)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("14_aqi0e")
+
+[node name="nube" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia2/NubeController2/nube"]
+clip_children = 2
+position = Vector2(0.833313, 0.833435)
+scale = Vector2(0.947222, 0.936111)
+texture = ExtResource("14_aqi0e")
+
+[node name="ColorRect" type="ColorRect" parent="StateMachine/Juego/Contenido/Instancia2/NubeController2/nube/nube"]
+offset_left = -306.0
+offset_top = -306.0
+offset_right = 345.0
+offset_bottom = 345.0
+
+[node name="ButtonGanador" type="Button" parent="StateMachine/Juego/Contenido/Instancia2/NubeController2/nube"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -502.0
+offset_top = -492.0
+offset_right = -97.0
+offset_bottom = -109.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(-1, 1)
+pivot_offset = Vector2(202, 0)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+theme_override_styles/focus = ExtResource("18_5rso6")
+text = "SILICATOS"
+flat = true
+
+[node name="nubeC1" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia2/NubeController2"]
+self_modulate = Color(0, 0, 0, 1)
+position = Vector2(264, 382)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("15_hkj6o")
+
+[node name="nubeC1" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia2/NubeController2/nubeC1"]
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("15_hkj6o")
+
+[node name="nubeC2" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia2/NubeController2"]
+self_modulate = Color(0, 0, 0, 1)
+position = Vector2(247, 479)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("15_hkj6o")
+
+[node name="nubeC1" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia2/NubeController2/nubeC2"]
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("15_hkj6o")
+
+[node name="nubeC3" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia2/NubeController2"]
+self_modulate = Color(0, 0, 0, 1)
+position = Vector2(205, 525)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("15_hkj6o")
+
+[node name="nubeC1" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia2/NubeController2/nubeC3"]
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("15_hkj6o")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="StateMachine/Juego/Contenido/Instancia2/NubeController2"]
+libraries = {
+"": SubResource("AnimationLibrary_gy327")
+}
+script = ExtResource("16_r2ac3")
+animation = "Nube_Appears"
+
+[node name="correcto" type="TextureRect" parent="StateMachine/Juego/Contenido/Instancia2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.503
+anchor_top = 0.483
+anchor_right = 0.503
+anchor_bottom = 0.483
+offset_left = -342.16
+offset_top = -68.24
+offset_right = 341.84
+offset_bottom = 67.76
+grow_horizontal = 2
+scale = Vector2(1e-05, 1e-05)
+pivot_offset = Vector2(342, 68)
+texture = ExtResource("13_8kfd5")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="StateMachine/Juego/Contenido/Instancia2/correcto"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 50
+text = "CORRECTO"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Moraleja" type="ColorRect" parent="StateMachine/Juego/Contenido/Instancia2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 17.0
+offset_top = -553.0
+offset_right = -22.0
+offset_bottom = -19.0
+scale = Vector2(1e-05, 1e-05)
+pivot_offset = Vector2(340, 217)
+color = Color(0.533333, 0.733333, 0.384314, 1)
+
+[node name="Label" type="Label" parent="StateMachine/Juego/Contenido/Instancia2/Moraleja"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.677
+offset_left = -1.0
+offset_top = -1.00006
+offset_right = -1.0
+offset_bottom = -0.978088
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 50
+text = "Esto es una moraleja"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="StateMachine/Juego/Contenido/Instancia2/Moraleja" node_paths=PackedStringArray("state_to_change", "state_machine")]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -201.5
+offset_top = -122.0
+offset_right = 201.5
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Continuar"
+script = ExtResource("4_b64ug")
+state_to_change = NodePath("../../../..")
+state_machine = NodePath("../../../../..")
+
+[node name="Instancia3" type="Control" parent="StateMachine/Juego/Contenido"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="StateMachine/Juego/Contenido/Instancia3" node_paths=PackedStringArray("state_to_change", "state_machine")]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -161.0
+offset_top = -165.0
+offset_right = 161.0
+offset_bottom = -52.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Complete"
+script = ExtResource("4_b64ug")
+state_to_change = NodePath("../../../../Moraleja")
+state_machine = NodePath("../../../..")
+isEndOfGame = true
+
+[node name="Tribunas" type="Control" parent="StateMachine/Juego/Contenido/Instancia3"]
+layout_mode = 1
+anchor_left = 0.5
+anchor_top = 0.491
+anchor_right = 0.5
+anchor_bottom = 0.491
+offset_top = 0.519958
+offset_bottom = 0.519958
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Mask" type="TextureRect" parent="StateMachine/Juego/Contenido/Instancia3/Tribunas"]
+clip_children = 2
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.43
+anchor_top = -0.48
+anchor_right = 0.43
+anchor_bottom = -0.48
+offset_left = -1065.0
+offset_top = -1348.0
+offset_right = 1069.0
+offset_bottom = 786.0
+grow_horizontal = 2
+texture = ExtResource("15_hkj6o")
+expand_mode = 1
+
+[node name="BackgroundPivot" type="Control" parent="StateMachine/Juego/Contenido/Instancia3/Tribunas"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background2" type="TextureRect" parent="StateMachine/Juego/Contenido/Instancia3/Tribunas/BackgroundPivot"]
+layout_mode = 0
+offset_left = -1093.0
+offset_top = -1182.0
+offset_right = 1078.0
+offset_bottom = 177.0
+texture = ExtResource("7_n8j0s")
+stretch_mode = 1
+
+[node name="Floor" type="TextureRect" parent="StateMachine/Juego/Contenido/Instancia3/Tribunas/BackgroundPivot"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1095.0
+offset_top = 61.0001
+offset_right = 1092.0
+offset_bottom = 1378.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(1667, 996)
+texture = ExtResource("7_p8l5p")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Tribuna" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia3/Tribunas/BackgroundPivot"]
+position = Vector2(650.08, 87)
+scale = Vector2(0.871684, 0.980867)
+texture = ExtResource("8_b68wy")
+
+[node name="Tribuna2" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia3/Tribunas/BackgroundPivot"]
+position = Vector2(-648, 87)
+rotation = 3.14159
+scale = Vector2(0.872, -0.981)
+texture = ExtResource("8_b68wy")
+
+[node name="TribunaRigth" type="Control" parent="StateMachine/Juego/Contenido/Instancia3/Tribunas/BackgroundPivot"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 18.0
+offset_top = 3.0
+offset_right = 18.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="confeti" type="Node2D" parent="StateMachine/Juego/Contenido/Instancia3/Tribunas/BackgroundPivot/TribunaRigth"]
+position = Vector2(628, -61.9999)
+
+[node name="Confeti" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia3/Tribunas/BackgroundPivot/TribunaRigth/confeti"]
+self_modulate = Color(0, 1, 1, 1)
+position = Vector2(-212, -17)
+rotation = 1.49131
+skew = -0.109956
+texture = ExtResource("11_8eo6w")
+
+[node name="Confeti2" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia3/Tribunas/BackgroundPivot/TribunaRigth/confeti"]
+position = Vector2(-89, -10)
+rotation = 0.587114
+skew = 0.254818
+texture = ExtResource("11_8eo6w")
+
+[node name="Confeti3" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia3/Tribunas/BackgroundPivot/TribunaRigth/confeti"]
+position = Vector2(184, 12)
+rotation = -1.5252
+texture = ExtResource("11_8eo6w")
+
+[node name="Confeti12" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia3/Tribunas/BackgroundPivot/TribunaRigth/confeti"]
+self_modulate = Color(0, 1, 1, 1)
+position = Vector2(-149, -8)
+rotation = -1.45248
+texture = ExtResource("11_8eo6w")
+
+[node name="Confeti13" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia3/Tribunas/BackgroundPivot/TribunaRigth/confeti"]
+position = Vector2(7, -3)
+rotation = -1.31265
+scale = Vector2(1, 0.794018)
+texture = ExtResource("11_8eo6w")
+
+[node name="Confeti11" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia3/Tribunas/BackgroundPivot/TribunaRigth/confeti"]
+self_modulate = Color(0, 1, 1, 1)
+position = Vector2(257, 211)
+rotation = -1.59362
+skew = -0.18326
+texture = ExtResource("11_8eo6w")
+
+[node name="Confeti16" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia3/Tribunas/BackgroundPivot/TribunaRigth/confeti"]
+position = Vector2(272, 243)
+rotation = -2.14045
+scale = Vector2(1.20536, 1)
+skew = -0.18326
+texture = ExtResource("11_8eo6w")
+
+[node name="Confeti4" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia3/Tribunas/BackgroundPivot/TribunaRigth/confeti"]
+position = Vector2(212, -128)
+rotation = -1.43227
+scale = Vector2(0.736747, 0.953089)
+skew = -0.226893
+texture = ExtResource("11_8eo6w")
+
+[node name="Confeti9" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia3/Tribunas/BackgroundPivot/TribunaRigth/confeti"]
+self_modulate = Color(0, 1, 1, 1)
+position = Vector2(476, -118)
+rotation = -1.1163
+scale = Vector2(0.736747, 0.953089)
+skew = -0.226893
+texture = ExtResource("11_8eo6w")
+
+[node name="Confeti10" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia3/Tribunas/BackgroundPivot/TribunaRigth/confeti"]
+position = Vector2(512, 38)
+rotation = -1.20179
+scale = Vector2(0.736747, 0.953089)
+skew = -0.226893
+texture = ExtResource("11_8eo6w")
+
+[node name="Confeti5" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia3/Tribunas/BackgroundPivot/TribunaRigth/confeti"]
+self_modulate = Color(0, 1, 1, 1)
+position = Vector2(-124, -146)
+rotation = -1.43227
+scale = Vector2(0.736747, 0.953089)
+skew = -0.226893
+texture = ExtResource("11_8eo6w")
+
+[node name="Confeti6" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia3/Tribunas/BackgroundPivot/TribunaRigth/confeti"]
+position = Vector2(-210, 134)
+rotation = -1.43227
+scale = Vector2(0.736747, 0.953089)
+skew = -0.226893
+texture = ExtResource("11_8eo6w")
+
+[node name="Confeti14" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia3/Tribunas/BackgroundPivot/TribunaRigth/confeti"]
+self_modulate = Color(0, 1, 1, 1)
+position = Vector2(-174, 163)
+rotation = -0.867429
+scale = Vector2(0.736747, 0.953089)
+skew = -0.0802851
+texture = ExtResource("11_8eo6w")
+
+[node name="Confeti15" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia3/Tribunas/BackgroundPivot/TribunaRigth/confeti"]
+position = Vector2(-253, 151)
+rotation = -2.33611
+scale = Vector2(0.736747, 0.953089)
+skew = -0.0802851
+texture = ExtResource("11_8eo6w")
+
+[node name="Confeti7" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia3/Tribunas/BackgroundPivot/TribunaRigth/confeti"]
+self_modulate = Color(0, 1, 1, 1)
+position = Vector2(174, 217)
+rotation = -0.953042
+scale = Vector2(0.736747, 0.953089)
+skew = -0.226893
+texture = ExtResource("11_8eo6w")
+
+[node name="Confeti8" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia3/Tribunas/BackgroundPivot/TribunaRigth/confeti"]
+self_modulate = Color(0, 1, 1, 1)
+position = Vector2(96, 8)
+rotation = -2.18267
+scale = Vector2(0.736747, 0.953089)
+skew = -0.226893
+texture = ExtResource("11_8eo6w")
+
+[node name="Rock" parent="StateMachine/Juego/Contenido/Instancia3/Tribunas/BackgroundPivot/TribunaRigth" instance=ExtResource("10_co8hb")]
+_texture = ExtResource("22_g0ol6")
+
+[node name="Rock2" parent="StateMachine/Juego/Contenido/Instancia3/Tribunas/BackgroundPivot/TribunaRigth" instance=ExtResource("10_co8hb")]
+position = Vector2(763, 122)
+_texture = ExtResource("22_g0ol6")
+
+[node name="Rock3" parent="StateMachine/Juego/Contenido/Instancia3/Tribunas/BackgroundPivot/TribunaRigth" instance=ExtResource("10_co8hb")]
+position = Vector2(400, 290)
+_texture = ExtResource("22_g0ol6")
+
+[node name="TribunaLeft" type="Control" parent="StateMachine/Juego/Contenido/Instancia3/Tribunas/BackgroundPivot"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 23.0
+offset_right = 23.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(-1, 1)
+
+[node name="confeti" type="Node2D" parent="StateMachine/Juego/Contenido/Instancia3/Tribunas/BackgroundPivot/TribunaLeft"]
+position = Vector2(628, -61.9999)
+
+[node name="Confeti" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia3/Tribunas/BackgroundPivot/TribunaLeft/confeti"]
+self_modulate = Color(0, 1, 1, 1)
+position = Vector2(-212, -17)
+rotation = 1.49131
+skew = -0.109956
+texture = ExtResource("11_8eo6w")
+
+[node name="Confeti2" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia3/Tribunas/BackgroundPivot/TribunaLeft/confeti"]
+position = Vector2(-89, -10)
+rotation = 0.587114
+skew = 0.254818
+texture = ExtResource("11_8eo6w")
+
+[node name="Confeti3" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia3/Tribunas/BackgroundPivot/TribunaLeft/confeti"]
+position = Vector2(184, 12)
+rotation = -1.5252
+texture = ExtResource("11_8eo6w")
+
+[node name="Confeti12" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia3/Tribunas/BackgroundPivot/TribunaLeft/confeti"]
+self_modulate = Color(0, 1, 1, 1)
+position = Vector2(-149, -8)
+rotation = -1.45248
+texture = ExtResource("11_8eo6w")
+
+[node name="Confeti13" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia3/Tribunas/BackgroundPivot/TribunaLeft/confeti"]
+position = Vector2(7, -3)
+rotation = -1.31265
+scale = Vector2(1, 0.794018)
+texture = ExtResource("11_8eo6w")
+
+[node name="Confeti11" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia3/Tribunas/BackgroundPivot/TribunaLeft/confeti"]
+self_modulate = Color(0, 1, 1, 1)
+position = Vector2(257, 211)
+rotation = -1.59362
+skew = -0.18326
+texture = ExtResource("11_8eo6w")
+
+[node name="Confeti16" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia3/Tribunas/BackgroundPivot/TribunaLeft/confeti"]
+position = Vector2(272, 243)
+rotation = -2.14045
+scale = Vector2(1.20536, 1)
+skew = -0.18326
+texture = ExtResource("11_8eo6w")
+
+[node name="Confeti4" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia3/Tribunas/BackgroundPivot/TribunaLeft/confeti"]
+position = Vector2(212, -128)
+rotation = -1.43227
+scale = Vector2(0.736747, 0.953089)
+skew = -0.226893
+texture = ExtResource("11_8eo6w")
+
+[node name="Confeti9" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia3/Tribunas/BackgroundPivot/TribunaLeft/confeti"]
+self_modulate = Color(0, 1, 1, 1)
+position = Vector2(476, -118)
+rotation = -1.1163
+scale = Vector2(0.736747, 0.953089)
+skew = -0.226893
+texture = ExtResource("11_8eo6w")
+
+[node name="Confeti10" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia3/Tribunas/BackgroundPivot/TribunaLeft/confeti"]
+position = Vector2(512, 38)
+rotation = -1.20179
+scale = Vector2(0.736747, 0.953089)
+skew = -0.226893
+texture = ExtResource("11_8eo6w")
+
+[node name="Confeti5" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia3/Tribunas/BackgroundPivot/TribunaLeft/confeti"]
+self_modulate = Color(0, 1, 1, 1)
+position = Vector2(-124, -146)
+rotation = -1.43227
+scale = Vector2(0.736747, 0.953089)
+skew = -0.226893
+texture = ExtResource("11_8eo6w")
+
+[node name="Confeti6" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia3/Tribunas/BackgroundPivot/TribunaLeft/confeti"]
+position = Vector2(-210, 134)
+rotation = -1.43227
+scale = Vector2(0.736747, 0.953089)
+skew = -0.226893
+texture = ExtResource("11_8eo6w")
+
+[node name="Confeti14" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia3/Tribunas/BackgroundPivot/TribunaLeft/confeti"]
+self_modulate = Color(0, 1, 1, 1)
+position = Vector2(-174, 163)
+rotation = -0.867429
+scale = Vector2(0.736747, 0.953089)
+skew = -0.0802851
+texture = ExtResource("11_8eo6w")
+
+[node name="Confeti15" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia3/Tribunas/BackgroundPivot/TribunaLeft/confeti"]
+position = Vector2(347.285, 230.457)
+rotation = -2.33611
+scale = Vector2(0.736747, 0.953089)
+skew = -0.0802851
+texture = ExtResource("11_8eo6w")
+
+[node name="Confeti7" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia3/Tribunas/BackgroundPivot/TribunaLeft/confeti"]
+self_modulate = Color(0, 1, 1, 1)
+position = Vector2(174, 217)
+rotation = -0.953042
+scale = Vector2(0.736747, 0.953089)
+skew = -0.226893
+texture = ExtResource("11_8eo6w")
+
+[node name="Confeti8" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia3/Tribunas/BackgroundPivot/TribunaLeft/confeti"]
+self_modulate = Color(0, 1, 1, 1)
+position = Vector2(96, 8)
+rotation = -2.18267
+scale = Vector2(0.736747, 0.953089)
+skew = -0.226893
+texture = ExtResource("11_8eo6w")
+
+[node name="Rock" parent="StateMachine/Juego/Contenido/Instancia3/Tribunas/BackgroundPivot/TribunaLeft" instance=ExtResource("10_co8hb")]
+_texture = ExtResource("22_g0ol6")
+
+[node name="Rock2" parent="StateMachine/Juego/Contenido/Instancia3/Tribunas/BackgroundPivot/TribunaLeft" instance=ExtResource("10_co8hb")]
+position = Vector2(763, 122)
+_texture = ExtResource("22_g0ol6")
+
+[node name="Rock3" parent="StateMachine/Juego/Contenido/Instancia3/Tribunas/BackgroundPivot/TribunaLeft" instance=ExtResource("10_co8hb")]
+position = Vector2(400, 290)
+_texture = ExtResource("22_g0ol6")
+
+[node name="Piedra_Busqueda" type="Control" parent="StateMachine/Juego/Contenido/Instancia3/Tribunas" node_paths=PackedStringArray("backgroundpivot", "particle1", "particle2")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -300.0
+offset_right = 250.0
+offset_bottom = 300.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(250, 300)
+script = ExtResource("7_148tg")
+backgroundpivot = NodePath("../BackgroundPivot")
+particle1 = NodePath("../../../Particula/CPUParticles2D")
+particle2 = NodePath("../../../Particula/CPUParticles2D2")
+SetVisibility = [NodePath("../../NubeController"), NodePath("../../Consigna"), NodePath("../../NubeController2")]
+
+[node name="LoopLookAnim" type="Timer" parent="StateMachine/Juego/Contenido/Instancia3/Tribunas/Piedra_Busqueda"]
+wait_time = 6.0
+
+[node name="Piedra" type="Node2D" parent="StateMachine/Juego/Contenido/Instancia3/Tribunas/Piedra_Busqueda"]
+z_index = 1
+position = Vector2(250, 542)
+scale = Vector2(0.8, 0.8)
+
+[node name="Piedra" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia3/Tribunas/Piedra_Busqueda/Piedra"]
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("22_g0ol6")
+
+[node name="AnimPiedra" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia3/Tribunas/Piedra_Busqueda/Piedra"]
+scale = Vector2(0.52, 0.52)
+texture = ExtResource("14_0snmx")
+hframes = 14
+vframes = 6
+
+[node name="AnimController" type="AnimationPlayer" parent="StateMachine/Juego/Contenido/Instancia3/Tribunas/Piedra_Busqueda"]
+speed_scale = 0.7
+libraries = {
+"": SubResource("AnimationLibrary_iymj1")
+}
+
+[node name="AnimBackground" type="AnimationPlayer" parent="StateMachine/Juego/Contenido/Instancia3"]
+root_node = NodePath("../Tribunas/Piedra_Busqueda")
+speed_scale = 0.7
+libraries = {
+"": SubResource("AnimationLibrary_oxev3")
+}
+
+[node name="Consigna" type="Control" parent="StateMachine/Juego/Contenido/Instancia3"]
+visible = false
+layout_mode = 1
+anchor_left = 0.494
+anchor_top = 0.181
+anchor_right = 0.494
+anchor_bottom = 0.181
+offset_left = -355.68
+offset_top = 0.319992
+offset_right = 356.32
+offset_bottom = 215.32
+pivot_offset = Vector2(356, 0)
+script = ExtResource("12_yw0ne")
+
+[node name="Sprite2D" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia3/Consigna"]
+position = Vector2(362, 104)
+scale = Vector2(0.628625, 0.5)
+texture = ExtResource("13_8kfd5")
+
+[node name="Label" type="Label" parent="StateMachine/Juego/Contenido/Instancia3/Consigna/Sprite2D"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -469.0
+offset_top = -112.0
+offset_right = -584.0
+offset_bottom = -197.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 50
+text = "¿A que tribuna debe ir la zolita?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Timer" type="Timer" parent="StateMachine/Juego/Contenido/Instancia3/Consigna"]
+wait_time = 2.0
+one_shot = true
+
+[node name="NubeController" type="Control" parent="StateMachine/Juego/Contenido/Instancia3"]
+layout_mode = 1
+anchor_left = 0.5
+anchor_top = 0.418
+anchor_right = 0.5
+anchor_bottom = 0.418
+offset_left = -3.0
+offset_top = -263.04
+offset_right = 358.0
+offset_bottom = 262.96
+
+[node name="nube" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia3/NubeController"]
+position = Vector2(182, 188)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("14_aqi0e")
+
+[node name="nube" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia3/NubeController/nube"]
+clip_children = 2
+position = Vector2(0.833313, 0.833374)
+scale = Vector2(0.947222, 0.936111)
+texture = ExtResource("14_aqi0e")
+
+[node name="ColorRect" type="ColorRect" parent="StateMachine/Juego/Contenido/Instancia3/NubeController/nube/nube"]
+offset_left = -306.0
+offset_top = -306.0
+offset_right = 345.0
+offset_bottom = 345.0
+
+[node name="ButtonGanador" type="Button" parent="StateMachine/Juego/Contenido/Instancia3/NubeController/nube"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -502.0
+offset_top = -498.0
+offset_right = -97.0
+offset_bottom = -101.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+theme_override_styles/focus = ExtResource("18_5rso6")
+text = "SULFUROS"
+flat = true
+
+[node name="nubeC1" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia3/NubeController"]
+self_modulate = Color(0, 0, 0, 1)
+position = Vector2(286, 377)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("15_hkj6o")
+
+[node name="nubeC1" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia3/NubeController/nubeC1"]
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("15_hkj6o")
+
+[node name="nubeC2" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia3/NubeController"]
+self_modulate = Color(0, 0, 0, 1)
+position = Vector2(271, 474)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("15_hkj6o")
+
+[node name="nubeC1" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia3/NubeController/nubeC2"]
+scale = Vector2(0.92, 0.92)
+texture = ExtResource("15_hkj6o")
+
+[node name="nubeC3" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia3/NubeController"]
+self_modulate = Color(0, 0, 0, 1)
+position = Vector2(218, 526)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("15_hkj6o")
+
+[node name="nubeC1" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia3/NubeController/nubeC3"]
+scale = Vector2(0.850001, 0.850001)
+texture = ExtResource("15_hkj6o")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="StateMachine/Juego/Contenido/Instancia3/NubeController"]
+libraries = {
+"": SubResource("AnimationLibrary_gy327")
+}
+script = ExtResource("16_r2ac3")
+animation = "Nube_Appears"
+
+[node name="NubeController2" type="Control" parent="StateMachine/Juego/Contenido/Instancia3"]
+layout_mode = 1
+anchor_left = 0.496
+anchor_top = 0.418
+anchor_right = 0.496
+anchor_bottom = 0.418
+offset_left = -0.120026
+offset_top = -263.04
+offset_right = 360.88
+offset_bottom = 262.96
+scale = Vector2(-1, 1)
+
+[node name="nube" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia3/NubeController2"]
+position = Vector2(182, 188)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("14_aqi0e")
+
+[node name="nube" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia3/NubeController2/nube"]
+clip_children = 2
+position = Vector2(0.833313, 0.833435)
+scale = Vector2(0.947222, 0.936111)
+texture = ExtResource("14_aqi0e")
+
+[node name="ColorRect" type="ColorRect" parent="StateMachine/Juego/Contenido/Instancia3/NubeController2/nube/nube"]
+offset_left = -306.0
+offset_top = -306.0
+offset_right = 345.0
+offset_bottom = 345.0
+
+[node name="ButtonGanador" type="Button" parent="StateMachine/Juego/Contenido/Instancia3/NubeController2/nube"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -502.0
+offset_top = -492.0
+offset_right = -97.0
+offset_bottom = -109.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(-1, 1)
+pivot_offset = Vector2(202, 0)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+theme_override_styles/focus = ExtResource("18_5rso6")
+text = "NITRATOS"
+flat = true
+
+[node name="nubeC1" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia3/NubeController2"]
+self_modulate = Color(0, 0, 0, 1)
+position = Vector2(264, 382)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("15_hkj6o")
+
+[node name="nubeC1" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia3/NubeController2/nubeC1"]
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("15_hkj6o")
+
+[node name="nubeC2" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia3/NubeController2"]
+self_modulate = Color(0, 0, 0, 1)
+position = Vector2(247, 479)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("15_hkj6o")
+
+[node name="nubeC1" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia3/NubeController2/nubeC2"]
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("15_hkj6o")
+
+[node name="nubeC3" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia3/NubeController2"]
+self_modulate = Color(0, 0, 0, 1)
+position = Vector2(205, 525)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("15_hkj6o")
+
+[node name="nubeC1" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia3/NubeController2/nubeC3"]
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("15_hkj6o")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="StateMachine/Juego/Contenido/Instancia3/NubeController2"]
+libraries = {
+"": SubResource("AnimationLibrary_gy327")
+}
+script = ExtResource("16_r2ac3")
+animation = "Nube_Appears"
+
+[node name="correcto" type="TextureRect" parent="StateMachine/Juego/Contenido/Instancia3"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.503
+anchor_top = 0.483
+anchor_right = 0.503
+anchor_bottom = 0.483
+offset_left = -342.16
+offset_top = -68.24
+offset_right = 341.84
+offset_bottom = 67.76
+grow_horizontal = 2
+scale = Vector2(1e-05, 1e-05)
+pivot_offset = Vector2(342, 68)
+texture = ExtResource("13_8kfd5")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="StateMachine/Juego/Contenido/Instancia3/correcto"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 50
+text = "CORRECTO"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Moraleja" type="ColorRect" parent="StateMachine/Juego/Contenido/Instancia3"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 17.0
+offset_top = -553.0
+offset_right = -22.0
+offset_bottom = -19.0
+scale = Vector2(1e-05, 1e-05)
+pivot_offset = Vector2(340, 217)
+color = Color(0.533333, 0.733333, 0.384314, 1)
+
+[node name="Label" type="Label" parent="StateMachine/Juego/Contenido/Instancia3/Moraleja"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.677
+offset_left = -1.0
+offset_top = -1.00006
+offset_right = -1.0
+offset_bottom = -0.978088
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 50
+text = "Esto es una moraleja"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="StateMachine/Juego/Contenido/Instancia3/Moraleja" node_paths=PackedStringArray("state_to_change", "state_machine")]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -201.5
+offset_top = -122.0
+offset_right = 201.5
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Continuar"
+script = ExtResource("4_b64ug")
+state_to_change = NodePath("../../../../../Moraleja")
+state_machine = NodePath("../../../../..")
+isEndOfGame = true
+
+[node name="Particula" type="Control" parent="StateMachine/Juego/Contenido"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CPUParticles2D" parent="StateMachine/Juego/Contenido/Particula" instance=ExtResource("16_m1kom")]
+z_index = 1
+position = Vector2(4, -596)
+emitting = false
+
+[node name="CPUParticles2D2" parent="StateMachine/Juego/Contenido/Particula" instance=ExtResource("16_m1kom")]
+z_index = 1
+position = Vector2(4, -596)
+emitting = false
+color = Color(1, 1, 1, 1)
+
 [node name="Moraleja" type="Node" parent="StateMachine"]
 script = ExtResource("6_w0jtl")
 Moralejas = [null, "Y esto es una moraleja"]
@@ -1415,6 +3156,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="LblMoraleja" type="Label" parent="StateMachine/Moraleja/Contenido/Conteiner"]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1480,12 +3222,12 @@ state_machine = NodePath("../../../..")
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -204.0
-offset_top = 16.0
-offset_right = -17.0
-offset_bottom = 108.0
+offset_left = -109.0
+offset_top = 15.0
+offset_right = -19.0
+offset_bottom = 99.0
 grow_horizontal = 0
-text = "volver"
+theme = ExtResource("23_fcebh")
 script = ExtResource("18_f74bc")
 NextScene = "Map_Screen"
 fade_time = 0.2
@@ -1494,17 +3236,54 @@ smoothness = 0.1
 [connection signal="pressed" from="StateMachine/Consigna/Contenido/Button" to="StateMachine/Consigna/Contenido/Button" method="_on_pressed"]
 [connection signal="timeout" from="StateMachine/Consigna/Contenido/Timer" to="StateMachine/Consigna" method="TimeOut"]
 [connection signal="Transitioned" from="StateMachine/Juego" to="StateMachine/Juego/Contenido/Instancia1/Consigna" method="StartTimer"]
+[connection signal="Transitioned" from="StateMachine/Juego" to="StateMachine/Juego/Contenido/Instancia2/Consigna" method="StartTimer"]
+[connection signal="Transitioned" from="StateMachine/Juego" to="StateMachine/Juego/Contenido/Instancia2/NubeController/AnimationPlayer" method="Reset"]
+[connection signal="Transitioned" from="StateMachine/Juego" to="StateMachine/Juego/Contenido/Instancia2/NubeController2/AnimationPlayer" method="Reset"]
+[connection signal="Transitioned" from="StateMachine/Juego" to="StateMachine/Juego/Contenido/Instancia3/Consigna" method="StartTimer"]
+[connection signal="Transitioned" from="StateMachine/Juego" to="StateMachine/Juego/Contenido/Instancia3/NubeController/AnimationPlayer" method="Reset"]
+[connection signal="Transitioned" from="StateMachine/Juego" to="StateMachine/Juego/Contenido/Instancia3/NubeController2/AnimationPlayer" method="Reset"]
 [connection signal="EndOfGame" from="StateMachine/Juego/Contenido/Instancia1/Button" to="." method="Set_Complete"]
 [connection signal="EndOfGame" from="StateMachine/Juego/Contenido/Instancia1/Button" to="StateMachine/Moraleja" method="isEndOfGame"]
 [connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia1/Button" to="StateMachine/Juego/Contenido/Instancia1/Button" method="_on_pressed"]
 [connection signal="timeout" from="StateMachine/Juego/Contenido/Instancia1/Consigna/Timer" to="StateMachine/Juego/Contenido/Instancia1/NubeController/AnimationPlayer" method="Play"]
 [connection signal="timeout" from="StateMachine/Juego/Contenido/Instancia1/Consigna/Timer" to="StateMachine/Juego/Contenido/Instancia1/NubeController2/AnimationPlayer" method="Play"]
+[connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia1/NubeController/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia1/NubeController/AnimationPlayer" method="Reset"]
 [connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia1/NubeController/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia1/Tribunas/Piedra_Busqueda" method="SetScale" binds= [false]]
 [connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia1/NubeController/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia1/Tribunas/Piedra_Busqueda" method="SetNextAnimBool" binds= [false]]
 [connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia1/NubeController/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia1/NubeController" method="Setvisivility" binds= [false]]
+[connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia1/NubeController2/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia1/NubeController2/AnimationPlayer" method="Reset"]
 [connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia1/NubeController2/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia1/Tribunas/Piedra_Busqueda" method="SetScale" binds= [true]]
 [connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia1/NubeController2/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia1/Tribunas/Piedra_Busqueda" method="SetNextAnimBool" binds= [true]]
+[connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia1/Moraleja/Button" to="StateMachine/Juego/Contenido/Instancia1/Tribunas/Piedra_Busqueda" method="resetAllAnimation"]
 [connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia1/Moraleja/Button" to="StateMachine/Juego/Contenido/Instancia1/Moraleja/Button" method="_on_pressed"]
+[connection signal="EndOfGame" from="StateMachine/Juego/Contenido/Instancia2/Button" to="." method="Set_Complete"]
+[connection signal="EndOfGame" from="StateMachine/Juego/Contenido/Instancia2/Button" to="StateMachine/Moraleja" method="isEndOfGame"]
+[connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia2/Button" to="StateMachine/Juego/Contenido/Instancia2/Button" method="_on_pressed"]
+[connection signal="timeout" from="StateMachine/Juego/Contenido/Instancia2/Consigna/Timer" to="StateMachine/Juego/Contenido/Instancia2/NubeController/AnimationPlayer" method="Play"]
+[connection signal="timeout" from="StateMachine/Juego/Contenido/Instancia2/Consigna/Timer" to="StateMachine/Juego/Contenido/Instancia2/NubeController2/AnimationPlayer" method="Play"]
+[connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia2/NubeController/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia2/NubeController" method="Setvisivility"]
+[connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia2/NubeController/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia2/NubeController/AnimationPlayer" method="Reset"]
+[connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia2/NubeController/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia2/Tribunas/Piedra_Busqueda" method="SetScale" binds= [false]]
+[connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia2/NubeController/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia2/Tribunas/Piedra_Busqueda" method="SetNextAnimBool" binds= [false]]
+[connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia2/NubeController2/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia3/NubeController/AnimationPlayer" method="Reset"]
+[connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia2/NubeController2/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia2/Tribunas/Piedra_Busqueda" method="SetScale" binds= [true]]
+[connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia2/NubeController2/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia2/Tribunas/Piedra_Busqueda" method="SetNextAnimBool" binds= [true]]
+[connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia2/Moraleja/Button" to="StateMachine/Juego/Contenido/Instancia2/Tribunas/Piedra_Busqueda" method="resetAllAnimation"]
+[connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia2/Moraleja/Button" to="StateMachine/Juego/Contenido/Instancia2/Moraleja/Button" method="_on_pressed"]
+[connection signal="EndOfGame" from="StateMachine/Juego/Contenido/Instancia3/Button" to="." method="Set_Complete"]
+[connection signal="EndOfGame" from="StateMachine/Juego/Contenido/Instancia3/Button" to="StateMachine/Moraleja" method="isEndOfGame"]
+[connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia3/Button" to="StateMachine/Juego/Contenido/Instancia3/Button" method="_on_pressed"]
+[connection signal="timeout" from="StateMachine/Juego/Contenido/Instancia3/Consigna/Timer" to="StateMachine/Juego/Contenido/Instancia3/NubeController/AnimationPlayer" method="Play"]
+[connection signal="timeout" from="StateMachine/Juego/Contenido/Instancia3/Consigna/Timer" to="StateMachine/Juego/Contenido/Instancia3/NubeController2/AnimationPlayer" method="Play"]
+[connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia3/NubeController/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia3/NubeController" method="Setvisivility"]
+[connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia3/NubeController/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia3/Tribunas/Piedra_Busqueda" method="SetScale" binds= [false]]
+[connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia3/NubeController/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia3/Tribunas/Piedra_Busqueda" method="SetNextAnimBool" binds= [false]]
+[connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia3/NubeController2/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia3/Tribunas/Piedra_Busqueda" method="SetScale" binds= [true]]
+[connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia3/NubeController2/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia3/Tribunas/Piedra_Busqueda" method="SetNextAnimBool" binds= [true]]
+[connection signal="EndOfGame" from="StateMachine/Juego/Contenido/Instancia3/Moraleja/Button" to="StateMachine/btnVolver" method="_on_pressed"]
+[connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia3/Moraleja/Button" to="." method="Set_Complete"]
+[connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia3/Moraleja/Button" to="StateMachine/Juego/Contenido/Instancia3/Tribunas/Piedra_Busqueda" method="resetAllAnimation"]
+[connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia3/Moraleja/Button" to="StateMachine/Juego/Contenido/Instancia3/Moraleja/Button" method="_on_pressed"]
 [connection signal="timeout" from="StateMachine/Moraleja/Contenido/Timer" to="StateMachine/Moraleja" method="TimeOut"]
 [connection signal="pressed" from="StateMachine/Moraleja/Contenido/Instancia1/Button" to="StateMachine/Moraleja/Contenido/Instancia1/Button" method="_on_pressed"]
 [connection signal="pressed" from="StateMachine/btnVolver" to="StateMachine/btnVolver" method="_on_pressed"]

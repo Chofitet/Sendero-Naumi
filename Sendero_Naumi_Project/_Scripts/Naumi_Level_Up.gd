@@ -22,7 +22,6 @@ func _ready():
 	for z in zoneResource.StateZones.keys():
 		if zoneResource.StateZones[z]:
 			currentState += 1
-	position = get_viewport_rect().size/2
 	texture = NaumiStates[currentState - 1]
 	get_node("ButtonChangeContinue").visible = false
 	get_node("AnimationPlayer").play("to_level_up")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=84 format=3 uid="uid://cndqno434rnuu"]
+[gd_scene load_steps=85 format=3 uid="uid://cndqno434rnuu"]
 
 [ext_resource type="Script" path="res://_Scripts/Minigame_Save_Controller.gd" id="1_aaeor"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/StateMachineMinigames.gd" id="2_0bmn1"]
@@ -43,6 +43,7 @@
 [ext_resource type="Texture2D" uid="uid://0lu4k8jagkum" path="res://Sprites/ZonaGeología/Piedras/volcanica - transformaciones.png" id="32_bldxx"]
 [ext_resource type="Texture2D" uid="uid://b4xnthtnr2j0u" path="res://Sprites/ZonaGeología/Piedras/prevolcanica - transformaciones.png" id="33_t4nqu"]
 [ext_resource type="Texture2D" uid="uid://blvtoxf6sl7ty" path="res://Sprites/glow.png" id="39_ryerp"]
+[ext_resource type="Theme" uid="uid://bokxu7jbpku04" path="res://Themes/Back_UI.tres" id="43_ewbtb"]
 
 [sub_resource type="Animation" id="Animation_e0s7o"]
 resource_name = "Earthquake"
@@ -1186,6 +1187,7 @@ grow_vertical = 2
 pivot_offset = Vector2(360, 640)
 
 [node name="Overlay" type="ColorRect" parent="Transformando/StateMachine/Juego/Contenido/Instancia1"]
+visible = false
 z_index = 2
 layout_mode = 1
 anchors_preset = -1
@@ -1330,7 +1332,6 @@ scale = Vector2(0.999843, 0.999843)
 skew = -0.00134373
 rest = Transform2D(1, 0, 0, 1, 32, 0)
 editor_settings/show_bone_gizmo = false
-metadata/_local_pose_override_enabled_ = true
 
 [node name="Bone3" type="Bone2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Lava_Fall/PathFollow2D/Node2D/Lava snake/Skeleton2D/Bone1/Bone2"]
 position = Vector2(28.2843, -0.121915)
@@ -1338,7 +1339,6 @@ rotation = -0.00147328
 scale = Vector2(0.999829, 0.999829)
 rest = Transform2D(1, 0, 0, 1, 32, 0)
 editor_settings/show_bone_gizmo = false
-metadata/_local_pose_override_enabled_ = true
 
 [node name="ColorRect" type="ColorRect" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Lava_Fall/PathFollow2D/Node2D/Lava snake/Skeleton2D/Bone1/Bone2/Bone3"]
 offset_left = 5.0
@@ -1443,7 +1443,6 @@ scale = Vector2(0.999843, 0.999843)
 skew = -0.00134373
 rest = Transform2D(1, 0, 0, 1, 32, 0)
 editor_settings/show_bone_gizmo = false
-metadata/_local_pose_override_enabled_ = true
 
 [node name="Bone3" type="Bone2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/LavaFallVolcanica/PathFollow2D/Node2D/Lava snake/Skeleton2D/Bone1/Bone2"]
 position = Vector2(28.2843, -0.121915)
@@ -1451,7 +1450,6 @@ rotation = -0.00283668
 scale = Vector2(0.999829, 0.999829)
 rest = Transform2D(1, 0, 0, 1, 32, 0)
 editor_settings/show_bone_gizmo = false
-metadata/_local_pose_override_enabled_ = true
 
 [node name="ColorRect" type="ColorRect" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/LavaFallVolcanica/PathFollow2D/Node2D/Lava snake/Skeleton2D/Bone1/Bone2/Bone3"]
 offset_left = 5.0
@@ -2449,24 +2447,37 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -250.0
+offset_left = -318.0
 offset_top = -200.0
-offset_right = 250.0
-offset_bottom = 200.0
+offset_right = 318.0
+offset_bottom = 322.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.592157, 0.823529, 0.690196, 1)
 
 [node name="Label" type="Label" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Metamorfica/MetamorficasPopUp/ColorRect"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = -1
+anchor_left = 0.094
+anchor_top = 0.061
+anchor_right = 0.906
+anchor_bottom = 0.789
+offset_left = 0.215996
+offset_top = 0.157997
+offset_right = -0.216003
+offset_bottom = 1.14197
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 30
-text = "Las piedras metamórficas se crean con presión y calor"
+theme_override_font_sizes/font_size = 20
+text = "CUANDO UNA ROCA RECIBE
+UNA GRAN FUENTE DE CALOR O PRESION,
+SIN SER DESTRUIDA O DERRETIRSE POR COMPLETO,
+COMIENZA A CAMBIAR QUIMICAMENTE,
+MODIFICANDO SU FORMA Y SUS COLORES.
+
+AL RESULTADO DE ESA TRANSFORMASION ES 
+UNA ROCA METAMORFICA"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
@@ -2560,24 +2571,40 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -250.0
-offset_top = -200.0
-offset_right = 250.0
-offset_bottom = 200.0
+offset_left = -284.0
+offset_top = -199.5
+offset_right = 285.0
+offset_bottom = 336.5
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.592157, 0.823529, 0.690196, 1)
 
 [node name="Label" type="Label" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Sedimentaria/SedimentariasPopUp/ColorRect"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = -1
+anchor_left = 0.084
+anchor_top = 0.052
+anchor_right = 0.928
+anchor_bottom = 0.806
+offset_left = 0.203995
+offset_top = 0.128
+offset_right = -0.0320435
+offset_bottom = -0.0160217
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 30
-text = "Las piedras sedimentaria se crean de la unión de ppedazos más chicos de otras piedras"
+theme_override_font_sizes/font_size = 20
+text = "CUANDO UNA ROCA SE ROMPE, 
+A ESOS PEDAZOS SE LOS LLAMA SEDIMENTOS.
+
+BAJO MUCHA PRESION 
+ESOS SEDIMENTOS PUEDEN UNIRSE A OTROS, INCLUSO A HUESOS!
+
+PERO ESA UNION PUEDE TARDAR HASTA 
+UN MILLON DE AÑOS EN LOGRARSE!
+
+EL RESULTADO DE ESE PROCESO ES 
+UNA ROCA SEDIMENTARIA "
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
@@ -2693,22 +2720,39 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -250.0
-offset_right = 250.0
-offset_bottom = 400.0
+offset_left = -313.0
+offset_right = 313.0
+offset_bottom = 643.0
 grow_horizontal = 2
 color = Color(0.592157, 0.823529, 0.690196, 1)
 
 [node name="Label" type="Label" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Preplutonica/PlutónicasPopUp/ColorRect"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = -1
+anchor_left = 0.051
+anchor_top = 0.036
+anchor_right = 0.949
+anchor_bottom = 0.83
+offset_left = 0.0739975
+offset_top = -0.148001
+offset_right = -0.0740356
+offset_bottom = 0.309998
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 30
-text = "Para fromar priedras plutónicas, primero hay que calentarlas y luego enfriarlas con agua"
+theme_override_font_sizes/font_size = 20
+text = "EL MAGMA ES ROCA FUNDIDA
+QUE SE ENCUENTRA DEBAJO DE LA SUPERFICIE TERRESTRE.
+
+PUEDE TENER UNA TEMPERATURA DE ENTRE 
+850 A 1200 GRADOS!
+
+PERO TAMBIEN PUEDE ENFRIARSE. 
+ESTO LO HACE MUUY LENTAMENTE.
+
+CUANDO EL MAGMA SE ENFRÍA Y SE SOLIDIFICA,
+SE CONVIERTE EN
+UNA ROCA IGNEA PLUTÓNICA"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
@@ -2787,22 +2831,38 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -250.0
-offset_right = 250.0
-offset_bottom = 400.0
+offset_left = -317.0
+offset_right = 316.0
+offset_bottom = 644.0
 grow_horizontal = 2
 color = Color(0.592157, 0.823529, 0.690196, 1)
 
 [node name="Label" type="Label" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Volcanica/PlutónicasPopUp/ColorRect"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = -1
+anchor_left = 0.065
+anchor_top = 0.061
+anchor_right = 0.935
+anchor_bottom = 0.832
+offset_left = -0.145004
+offset_top = -0.284004
+offset_right = 0.144958
+offset_bottom = 0.192017
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 30
-text = "Para fromar priedras plutónicas, primero hay que calentarlas y luego enfriarlas con agua"
+theme_override_font_sizes/font_size = 20
+text = "CUANDO EL MAGMA ROMPE LA SUPERCIE TERRESTRE
+PASA A SER LLAMADO LAVA.
+
+TIENE UNA TEMPERATURA SIMILAR AL MAGMA.
+
+PERO SE ENFRIA MUCHO MAS RAPIDO
+AL ESTAR FUERA DE LA TIERRA.
+
+CUANDO LA LAVA SE ENFRÍA Y SOLIDIFICA,
+SE CONVIERTE EN 
+UNA ROCA IGNEA VOLCANICA"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
@@ -2913,12 +2973,14 @@ autowrap_mode = 2
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -204.0
-offset_top = 16.0
-offset_right = -17.0
-offset_bottom = 108.0
+offset_left = -105.0
+offset_top = 14.0
+offset_right = -15.0
+offset_bottom = 98.0
 grow_horizontal = 0
-text = "volver"
+theme = ExtResource("43_ewbtb")
+text = "
+"
 script = ExtResource("20_4nrde")
 NextScene = "Map_Screen"
 fade_time = 0.2

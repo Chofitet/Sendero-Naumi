@@ -1,8 +1,10 @@
-[gd_scene load_steps=34 format=3 uid="uid://buth5gc88nt3j"]
+[gd_scene load_steps=36 format=3 uid="uid://buth5gc88nt3j"]
 
 [ext_resource type="Texture2D" uid="uid://cjjoaemhep814" path="res://Sprites/mapa-detalle.png" id="1_kw7ma"]
+[ext_resource type="Texture2D" uid="uid://hf5y4ic16cqj" path="res://Sprites/Intro/intro - background.jpg" id="1_un13t"]
 [ext_resource type="Texture2D" uid="uid://nuybqhitpej1" path="res://Sprites/Mapa/fondo_mapa.png" id="1_wa0ye"]
 [ext_resource type="Script" path="res://_Scripts/Auto_Scroll_Intro_Map.gd" id="2_n60vv"]
+[ext_resource type="Texture2D" uid="uid://jd6systmhxf1" path="res://Sprites/Intro/intro - suelo.png" id="2_uf5dd"]
 [ext_resource type="Script" path="res://_Scripts/AdjustMarginWithScreenSize.gd" id="4_4e1by"]
 [ext_resource type="Texture2D" uid="uid://chqivoetkgkoj" path="res://Sprites/UI/circulo.png" id="5_8y8kv"]
 [ext_resource type="Texture2D" uid="uid://cscyymtnwxau6" path="res://Sprites/UI/titulo_concepts.png" id="5_pglwp"]
@@ -406,6 +408,38 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="TextureRect" type="TextureRect" parent="Naumi_Intro"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.387
+anchor_right = 0.5
+anchor_bottom = 0.387
+offset_left = -451.0
+offset_top = -802.36
+offset_right = 451.0
+offset_bottom = 801.64
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_un13t")
+expand_mode = 1
+
+[node name="ColorRect" type="TextureRect" parent="Naumi_Intro"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.501
+anchor_top = 0.654
+anchor_right = 0.501
+anchor_bottom = 0.654
+offset_left = -585.72
+offset_top = -552.12
+offset_right = 584.28
+offset_bottom = 602.88
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("2_uf5dd")
+expand_mode = 1
+
 [node name="SaveFirstPlay" type="Node" parent="Naumi_Intro"]
 script = ExtResource("18_6lysc")
 
@@ -477,15 +511,15 @@ NextScene = "AdventureBegins"
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
-anchor_top = 0.856
+anchor_top = 0.626
 anchor_right = 0.5
-anchor_bottom = 0.856
+anchor_bottom = 0.626
 offset_left = -130.0
-offset_top = -562.68
+offset_top = -181.28
 offset_right = 130.0
-offset_bottom = -200.68
+offset_bottom = 180.72
 grow_horizontal = 2
-grow_vertical = 0
+grow_vertical = 2
 texture = ExtResource("20_ndgvp")
 expand_mode = 1
 stretch_mode = 4
@@ -495,8 +529,6 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 720.0
-offset_bottom = 1280.0
 grow_horizontal = 2
 grow_vertical = 2
 

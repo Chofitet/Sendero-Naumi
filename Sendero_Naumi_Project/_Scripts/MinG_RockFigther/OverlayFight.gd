@@ -16,7 +16,7 @@ func Anim():
 	else: Sizeoffset=0
 	timer.start()
 	var tween = get_tree().create_tween()
-	tween.tween_property(self,"position", Vector2(position.x,get_viewport_rect().size.y/2 - Sizeoffset + y), 0.5 )
+	tween.tween_property(self,"position", Vector2(position.x,get_viewport_rect().size.y/2 + get_viewport_rect().size.y/20 - Sizeoffset + y), 0.5 )
 
 func AnimBack():
 	var tween = get_tree().create_tween()

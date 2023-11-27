@@ -1,8 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://64xstt2k74wh"]
+[gd_scene load_steps=10 format=3 uid="uid://64xstt2k74wh"]
 
 [ext_resource type="Texture2D" uid="uid://co7pox44vqa08" path="res://Sprites/Naumi/Naumi_0.png" id="1_ey2pk"]
+[ext_resource type="Texture2D" uid="uid://hf5y4ic16cqj" path="res://Sprites/Intro/intro - background.jpg" id="1_xkuy1"]
 [ext_resource type="Script" path="res://_Scripts/Naumi_Level_Up.gd" id="2_1kawq"]
+[ext_resource type="Texture2D" uid="uid://jd6systmhxf1" path="res://Sprites/Intro/intro - suelo.png" id="2_vkn0r"]
 [ext_resource type="PackedScene" uid="uid://djhg7jvxtexyl" path="res://Scenes/UI_Scenes/btn_Change_Scene.tscn" id="3_bksph"]
+[ext_resource type="StyleBox" uid="uid://b3tjes2hcm3wx" path="res://Resources/UI_Resources/StyleBoxTrasparent.tres" id="5_c4d84"]
 
 [sub_resource type="Animation" id="Animation_sdm5y"]
 length = 0.001
@@ -50,27 +53,61 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.387
+anchor_right = 0.5
+anchor_bottom = 0.387
+offset_left = -451.0
+offset_top = -802.36
+offset_right = 451.0
+offset_bottom = 801.64
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.65098, 0.784314, 1, 1)
+texture = ExtResource("1_xkuy1")
+expand_mode = 1
 
-[node name="Naumi" type="Sprite2D" parent="."]
-position = Vector2(361, 696)
-scale = Vector2(1.02427, 1.02427)
+[node name="ColorRect2" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.501
+anchor_top = 0.654
+anchor_right = 0.501
+anchor_bottom = 0.654
+offset_left = -585.72
+offset_top = -552.12
+offset_right = 584.28
+offset_bottom = 602.88
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("2_vkn0r")
+expand_mode = 1
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 1
+anchor_left = 0.5
+anchor_top = 0.624
+anchor_right = 0.5
+anchor_bottom = 0.624
+offset_left = 1.0
+offset_top = 0.279968
+offset_right = 1.0
+offset_bottom = 0.279968
+
+[node name="Naumi" type="Sprite2D" parent="Control"]
+position = Vector2(-4, -30.9999)
+scale = Vector2(0.738, 0.738)
 texture = ExtResource("1_ey2pk")
 script = ExtResource("2_1kawq")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Naumi"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Control/Naumi"]
 libraries = {
 "": SubResource("AnimationLibrary_2i43d")
 }
 
-[node name="Button" type="Button" parent="Naumi"]
+[node name="Button" type="Button" parent="Control/Naumi"]
 anchors_preset = -1
 anchor_left = 0.5
 anchor_top = 0.524
@@ -80,24 +117,23 @@ offset_left = -432.0
 offset_top = -594.776
 offset_right = 19.0
 offset_bottom = 0.223999
+theme_override_styles/focus = ExtResource("5_c4d84")
 flat = true
 
-[node name="ButtonChangeContinue" parent="Naumi" instance=ExtResource("3_bksph")]
-visible = false
-anchors_preset = 15
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 1.0
-offset_left = -114.537
-offset_top = 174.269
-offset_right = 13.4636
-offset_bottom = 110.269
+[node name="ButtonChangeContinue" parent="Control/Naumi" instance=ExtResource("3_bksph")]
+anchors_preset = -1
+anchor_top = 0.683
+anchor_bottom = 0.683
+offset_left = -469.602
+offset_top = 67.3076
+offset_right = 70.3976
+offset_bottom = 209.308
 grow_vertical = 2
 theme_override_font_sizes/font_size = 40
 text = "CONTINUAR"
 NextScene = "Map_Screen"
 metadata/_edit_use_anchors_ = true
 
-[connection signal="tree_entered" from="Naumi" to="Naumi" method="_on_tree_entered"]
-[connection signal="tree_exited" from="Naumi" to="Naumi" method="_on_tree_exited"]
-[connection signal="pressed" from="Naumi/Button" to="Naumi" method="_on_button_pressed"]
+[connection signal="tree_entered" from="Control/Naumi" to="Control/Naumi" method="_on_tree_entered"]
+[connection signal="tree_exited" from="Control/Naumi" to="Control/Naumi" method="_on_tree_exited"]
+[connection signal="pressed" from="Control/Naumi/Button" to="Control/Naumi" method="_on_button_pressed"]

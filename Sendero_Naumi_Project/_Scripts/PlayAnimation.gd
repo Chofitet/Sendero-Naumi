@@ -9,3 +9,6 @@ func  PlayAnim(anim):
 
 func Stop():
 	stop()
+
+func Reset():
+	play("RESET")

@@ -67,6 +67,8 @@ func SetScale(x):
 	isFlip = x
 
 func LoopWinn():
+	particle1.visible = true
+	particle2.visible = true
 	particle1.emitting = true
 	particle2.emitting = true
 	anim.play("rock_winner_2")
@@ -83,7 +85,6 @@ func moveToMask():
 	
 
 func AnimBackground():
-	var n = get_parent().get_parent().get_node("AnimBackground").name
 	get_parent().get_parent().get_node("AnimBackground").play(animFlip)
 
 func StopFlipAnim():
@@ -97,3 +98,11 @@ func MaskAnim():
 func checkWinnerCondition():
 	if !isWinner:
 		moveToMask()
+
+func resetAllAnimation():
+	particle1.visible = false
+	particle2.visible = false
+	particle1.emitting = false
+	particle2.emitting = false
+	anim.play("RESET")
+	get_parent().get_parent().get_node("AnimBackground").play("RESET")
