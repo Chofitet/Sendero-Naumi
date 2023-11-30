@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://chjfb4dxiy0js"]
+[gd_scene load_steps=14 format=3 uid="uid://chjfb4dxiy0js"]
 
 [ext_resource type="Texture2D" uid="uid://co7pox44vqa08" path="res://Sprites/Naumi/Naumi_0.png" id="1_m5bgf"]
 [ext_resource type="Texture2D" uid="uid://hf5y4ic16cqj" path="res://Sprites/Intro/intro - background.jpg" id="1_xw6ny"]
@@ -7,6 +7,70 @@
 [ext_resource type="Theme" uid="uid://bokxu7jbpku04" path="res://Themes/Back_UI.tres" id="4_cl8cf"]
 [ext_resource type="Texture2D" uid="uid://bti0bepplnx11" path="res://Sprites/UI/map.png" id="4_swcpy"]
 [ext_resource type="Script" path="res://Sprites/NaumiPrueba.gd" id="5_67c3k"]
+[ext_resource type="Texture2D" uid="uid://dnpt3mo8vtigw" path="res://Sprites/Naumi/ZZZ - idle.png" id="5_pr1k1"]
+[ext_resource type="Script" path="res://_Scripts/PlayAnimation.gd" id="6_6dqrl"]
+[ext_resource type="StyleBox" uid="uid://b3tjes2hcm3wx" path="res://Resources/UI_Resources/StyleBoxTrasparent.tres" id="7_cvpqp"]
+
+[sub_resource type="Animation" id="Animation_2bcfk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_y0cb1"]
+resource_name = "zzz"
+length = 1.9
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_q3luw"]
+_data = {
+"RESET": SubResource("Animation_2bcfk"),
+"zzz": SubResource("Animation_y0cb1")
+}
 
 [node name="Naumi_Screen" type="Control"]
 layout_mode = 3
@@ -73,6 +137,30 @@ scale = Vector2(0.737864, 0.737864)
 texture = ExtResource("1_m5bgf")
 script = ExtResource("5_67c3k")
 
+[node name="ZZZ" type="Sprite2D" parent="Control"]
+visible = false
+position = Vector2(83, -250)
+scale = Vector2(0.866142, 0.866142)
+texture = ExtResource("5_pr1k1")
+hframes = 19
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Control/ZZZ"]
+speed_scale = 0.7
+libraries = {
+"": SubResource("AnimationLibrary_q3luw")
+}
+script = ExtResource("6_6dqrl")
+animation = "zzz"
+
+[node name="Button" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = -156.0
+offset_top = -240.0
+offset_right = 164.0
+offset_bottom = 248.0
+theme_override_styles/focus = ExtResource("7_cvpqp")
+flat = true
+
 [node name="ButtonChangeScene" parent="." instance=ExtResource("3_wtndr")]
 layout_mode = 1
 anchors_preset = 1
@@ -80,10 +168,10 @@ anchor_left = 1.0
 anchor_top = 0.0
 anchor_right = 1.0
 anchor_bottom = 0.0
-offset_left = -109.0
-offset_top = 18.0
-offset_right = -19.0
-offset_bottom = 102.0
+offset_left = -121.0
+offset_top = 25.0
+offset_right = -31.0
+offset_bottom = 115.0
 grow_horizontal = 0
 grow_vertical = 1
 theme = ExtResource("4_cl8cf")
@@ -103,3 +191,4 @@ expand_mode = 1
 
 [connection signal="tree_entered" from="Control/Naumi" to="Control/Naumi" method="_on_tree_entered"]
 [connection signal="tree_exited" from="Control/Naumi" to="Control/Naumi" method="_on_tree_exited"]
+[connection signal="pressed" from="Control/Button" to="Control/ZZZ/AnimationPlayer" method="Play"]

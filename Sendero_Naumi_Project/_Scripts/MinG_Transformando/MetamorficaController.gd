@@ -4,9 +4,11 @@ var i = 0.6
 var e = 0
 var heateffect
 @export var overlay : ColorRect
+var anim
 func _ready():
 	heateffect = get_node("PiedraHeat1")
 	heateffect.self_modulate = Color(0.6,0.6,0.6,0)
+	anim = get_node("AnimCalor/AnimationPlayer")
 
 func _physics_process(delta):
 	if heat1:
@@ -20,15 +22,22 @@ func _physics_process(delta):
 
 func Heat1():
 	heat1 = true
+	anim.play("anim_calor1")
 	z_index = 2
 
 func TranstaleToCenterScreen():
 	overlay.visible = true
 	var tween = get_tree().create_tween()
 	get_node("AnimationPlayer").play("rockTransformation")
-	tween.tween_property(self,"position",get_viewport_rect().size/2 + Vector2(0,-300),2).set_ease(Tween.EASE_OUT)
+	tween.tween_property(self,"position",get_viewport_rect().size/2 + Vector2(0,-get_viewport_rect().size.y/4),2).set_ease(Tween.EASE_OUT)
+	await get_tree().create_timer(4.4).timeout
+	get_node("Anim/AnimationPlayer").play("anim_despertar")
+	
 
 func buttonpress():
 	overlay.visible = false
 	get_parent().get_node("metamorficaSpot").visible = true
 	queue_free()
+
+func AnimLoop():
+	anim.play("anim_calor2")

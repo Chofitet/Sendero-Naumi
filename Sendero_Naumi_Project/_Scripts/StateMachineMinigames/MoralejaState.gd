@@ -34,8 +34,9 @@ func SetMoraleja():
 	get_node("Contenido/Conteiner/LblMoraleja").set_deferred("text", textMoraleja) 
  
 func TimeOut():
-	for b in buttons:
-		get_node(b).visible = true
+	pass
+	#for b in buttons:
+		#get_node(b).visible = true
 
 func isEndOfGame():
 	EndOfGame = true

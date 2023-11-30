@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cfh60c3rkhyh"]
+[gd_scene load_steps=9 format=3 uid="uid://cfh60c3rkhyh"]
 
 [ext_resource type="Script" path="res://_Scripts/Minigame_Save_Controller.gd" id="1_47fcp"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/StateMachineMinigames.gd" id="2_ad0ja"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/JuegoState.gd" id="5_34f88"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/MoralejaState.gd" id="6_6vnen"]
 [ext_resource type="PackedScene" uid="uid://djhg7jvxtexyl" path="res://Scenes/UI_Scenes/btn_Change_Scene.tscn" id="7_s8n6b"]
+[ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/FinState.gd" id="8_evu6q"]
 
 [node name="minigame1" type="Node"]
 script = ExtResource("1_47fcp")
@@ -220,6 +221,27 @@ text = "que?
 script = ExtResource("4_ikyur")
 state_to_change = NodePath("../../../../Juego")
 state_machine = NodePath("../../../..")
+
+[node name="Fin" type="Node" parent="StateMachine"]
+script = ExtResource("8_evu6q")
+
+[node name="Contenido" type="Control" parent="StateMachine/Fin"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ButtonChangeScene" parent="StateMachine/Fin/Contenido" instance=ExtResource("7_s8n6b")]
+layout_mode = 1
+offset_left = -197.0
+offset_top = -186.0
+offset_right = 207.0
+offset_bottom = -51.0
+text = "Continue"
+NextScene = "Map_Screen"
 
 [connection signal="pressed" from="StateMachine/Consigna/Contenido/Button" to="StateMachine/Consigna/Contenido/Button" method="_on_pressed"]
 [connection signal="timeout" from="StateMachine/Consigna/Contenido/Timer" to="StateMachine/Consigna" method="TimeOut"]

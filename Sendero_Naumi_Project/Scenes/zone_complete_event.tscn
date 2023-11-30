@@ -1,0 +1,164 @@
+[gd_scene load_steps=11 format=3 uid="uid://dqyb2b0ey8ckp"]
+
+[ext_resource type="Texture2D" uid="uid://nuybqhitpej1" path="res://Sprites/Mapa/fondo_mapa.png" id="1_tohrf"]
+[ext_resource type="Texture2D" uid="uid://05mdqsdsbuqm" path="res://Sprites/Mapa/geologia_mapa.png" id="2_4r0kt"]
+[ext_resource type="Script" path="res://_Scripts/ZoneCompleteEvent.gd" id="3_f0n8u"]
+[ext_resource type="Theme" uid="uid://bhum72inirq1q" path="res://Themes/Generic_UI.tres" id="4_da2c4"]
+[ext_resource type="LabelSettings" uid="uid://b7f8w8wf071ek" path="res://Themes/Geología/LabelSettings_Busqueda.tres" id="5_n317a"]
+[ext_resource type="Theme" uid="uid://bokxu7jbpku04" path="res://Themes/Back_UI.tres" id="6_rb203"]
+[ext_resource type="Script" path="res://_Scripts/ChangeScene.gd" id="7_g1gi8"]
+
+[sub_resource type="Animation" id="Animation_asulk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.5, 0.5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../btnVolver:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_201g2"]
+resource_name = "zone_complete"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.5, 0.9, 1.1),
+"transitions": PackedFloat32Array(1, 0.277393, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(0.6, 0.6), Vector2(0.5, 0.5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../btnVolver:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tmldh"]
+_data = {
+"RESET": SubResource("Animation_asulk"),
+"zone_complete": SubResource("Animation_201g2")
+}
+
+[node name="Zone_Complete_Event" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_tohrf")
+stretch_mode = 1
+
+[node name="Zone" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.577
+anchor_right = 0.5
+anchor_bottom = 0.577
+offset_left = -305.5
+offset_top = -540.56
+offset_right = 305.5
+offset_bottom = 541.44
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("2_4r0kt")
+expand_mode = 1
+stretch_mode = 4
+script = ExtResource("3_f0n8u")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Zone"]
+autoplay = "zone_complete"
+libraries = {
+"": SubResource("AnimationLibrary_tmldh")
+}
+
+[node name="Panel" type="Panel" parent="Zone"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -545.0
+offset_top = -154.0
+offset_right = 545.0
+offset_bottom = 154.0
+grow_horizontal = 2
+scale = Vector2(0.5, 0.5)
+pivot_offset = Vector2(545, 154)
+theme = ExtResource("4_da2c4")
+
+[node name="Label" type="Label" parent="Zone/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.072
+anchor_top = 0.188
+anchor_right = 0.928
+anchor_bottom = 0.812
+offset_left = -0.480003
+offset_top = 0.0959969
+offset_right = 0.47998
+offset_bottom = -0.0960083
+grow_horizontal = 2
+grow_vertical = 2
+text = "Zona Completada"
+label_settings = ExtResource("5_n317a")
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="btnVolver" type="Button" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -119.0
+offset_top = 25.0
+offset_right = -29.0
+offset_bottom = 115.0
+grow_horizontal = 0
+theme = ExtResource("6_rb203")
+script = ExtResource("7_g1gi8")
+NextScene = "Map_Screen"
+fade_time = 0.2
+smoothness = 0.1
+
+[connection signal="pressed" from="btnVolver" to="btnVolver" method="_on_pressed"]

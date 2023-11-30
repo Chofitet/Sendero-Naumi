@@ -9,7 +9,7 @@ signal fight
 
 func _ready():
 	timer = get_node("Timer")
-	get_node("TextureRect2/button").pressed.connect(Fight)
+	get_node("TextureRect2/BigButton").pressed.connect(Fight)
 	timer.timeout.connect(finishAnim)
 	shardEmitter = get_node("Parts/Piedra/ShardEmitter")
 	anim = get_node("AnimPiedra")

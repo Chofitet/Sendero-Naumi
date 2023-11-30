@@ -26,22 +26,35 @@ func ScrollScreen():
 func _process(delta):
 	if position.y <= (-view_port_size_y + (view_port_size_y/4)) && !once1:
 		once1 = true
-		ControlLabel("¡HOLA!
-		ESTO ES SENDERO NAUMI. 
-		UN LUGAR PARA APRENDER EXPLORANDO Y DIVERTIRSE.")
-	if  position.y <= (-view_port_size_y - 2000) && !once2:
+		ControlLabel("[center]VAYA...
+		¡PARECE QUE HAS ENCONTRADO ALGO ESPECIAL![/center]", false,5.5)
+	if  position.y <= (-view_port_size_y - 1200) && !once2:
 		once2 = true
-		ControlLabel("COMO VERAS
-		HAY MUCHO POR EXPLORAR")
-	if position.y <= (-view_port_size_y - 3500) && !once3:
+		ControlLabel("[center]ESTO ES [b]SENDERO NAUMI[/b]
+		UNA NUEVA FORMA DE RECORRER EL MUSEO[/center]",false,7.5)
+	if position.y <= (-view_port_size_y - 3200) && !once3:
 		once3 = true
-		ControlLabel("CUANDO ENCUENTRES ALGUNO DE ESTOS LUGARES EN EL MUSEO APRETALO EN EL MAPA PARA EMPEZAR A JUGAR")
+		ControlLabel("[center]CUANDO ENCUENTRES
+		ALGUNO DE ESTOS LUGARES EN EL MUSEO
+		APRETALO EN EL MAPA PARA EMPEZAR A JUGAR[/center]",true,9.5)
 		
 	
-func ControlLabel(txt):
+func ControlLabel(txt,adjust,time):
 	var control = get_parent().get_node("LabelControl")
 	control.visible = true
-	control.get_node("Label").text = txt
-
+	control.get_node("Panel/RichTextLabel").text = txt
+	if adjust:
+		control.get_node("Panel/RichTextLabel").position.y = 69
+		control.get_node("Panel/RichTextLabel").size.y = 120
+	await  get_tree().create_timer(time).timeout
+	control.visible = false
+	if time == 9.5:
+		await  get_tree().create_timer(0.5).timeout
+		control.visible = true
+		control.get_node("Panel/RichTextLabel").text = "[center]COMO VERÁS
+		HAY MUCHO POR EXPLORAR[/center]"
+		control.get_node("Panel/RichTextLabel").position.y = 87
+		control.get_node("Panel/RichTextLabel").size.y = 76
+	
 func ScrollStop():
 	stopscroll.emit()

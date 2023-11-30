@@ -23,7 +23,8 @@ func _ready():
 #Setea qué botones de minijuegos deben aparecer dependiendo de la zona
 func ShowMiniGamesButtons():
 	for b in get_node("ZoomingZone/SubViewport/ZoomingZone").get_children():
-		b.OnZone()
+		if b.has_method("OnZone"):
+			b.OnZone()
 
 #Muestra la zona en vista zoom
 func ZoomingZone():

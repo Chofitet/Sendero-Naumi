@@ -7,8 +7,10 @@ func TranstaleToCenterScreen(animation):
 	var tween = get_tree().create_tween()
 	get_node("AnimationPlayer").play("rockTransformation")
 	var tween2 = get_tree().create_tween()
-	tween.tween_property(self,"position",get_viewport_rect().size/2 + Vector2(0,-300),2).set_ease(Tween.EASE_OUT)
+	tween.tween_property(self,"position",get_viewport_rect().size/2 + Vector2(0,-get_viewport_rect().size.y/4),2).set_ease(Tween.EASE_OUT)
 	tween2.tween_property(self,"rotation",0,2)
+	await get_tree().create_timer(4.4).timeout
+	get_node("Anim/AnimationPlayer").play("anim_despertar")
 
 func buttonpress():
 	overlay.visible = false

@@ -23,5 +23,6 @@ func SetConsigna():
 	get_node("Contenido/LblConsigna").set_deferred("text", textConsigna) 
 
 func TimeOut():
-	get_node("Contenido/Button").visible = true
+	pass
+	#get_node("Contenido/Button").visible = true
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://ca6b1xkwwj7rp"]
+[gd_scene load_steps=55 format=3 uid="uid://ca6b1xkwwj7rp"]
 
 [ext_resource type="Script" path="res://_Scripts/Minigame_Save_Controller.gd" id="1_kdw84"]
 [ext_resource type="Texture2D" uid="uid://dbv6rcnmmb8db" path="res://Sprites/ZonaGeología/fondo_geografia.png" id="2_5bgsq"]
@@ -11,9 +11,13 @@
 [ext_resource type="PackedScene" uid="uid://djhg7jvxtexyl" path="res://Scenes/UI_Scenes/btn_Change_Scene.tscn" id="7_gssyk"]
 [ext_resource type="Texture2D" uid="uid://dkqbjrxk8kwrx" path="res://Sprites/ZonaGeología/tile - busqueda.jpg" id="7_n8j0s"]
 [ext_resource type="Texture2D" uid="uid://c00mjaml7ck2l" path="res://Sprites/ZonaGeología/fondo - busqueda.jpg" id="7_p8l5p"]
+[ext_resource type="Texture2D" uid="uid://dkh7p82yxjwko" path="res://Sprites/ZonaGeología/tribuna izq.png" id="7_qjprk"]
+[ext_resource type="Texture2D" uid="uid://5pnpx04ibymh" path="res://Sprites/ZonaGeología/tribuna der.png" id="8_2bttr"]
 [ext_resource type="Texture2D" uid="uid://cm685ijc4nuf6" path="res://Sprites/ZonaGeología/tribuna_busqueda.png" id="8_b68wy"]
 [ext_resource type="Texture2D" uid="uid://dxtycvon1bw4p" path="res://Sprites/ZonaGeología/Piedras/zoisita - busqueda.png" id="8_pk5s7"]
+[ext_resource type="Texture2D" uid="uid://b361wdltmdg4w" path="res://Sprites/ZonaGeología/tipito.png" id="9_gg2w1"]
 [ext_resource type="PackedScene" uid="uid://cnxkgvr1r0dny" path="res://Scenes/Zona_Geología/rock_hincha.tscn" id="10_co8hb"]
+[ext_resource type="LabelSettings" uid="uid://bd2jj8jlh3vp2" path="res://Themes/Geología/LabelSetting_Generic.tres" id="10_gmxwp"]
 [ext_resource type="Texture2D" uid="uid://csvxv5nlnof3f" path="res://Sprites/ZonaGeología/confeti.png" id="11_8eo6w"]
 [ext_resource type="Script" path="res://_Scripts/MinG_Busqueda/ConsignaUIAnim.gd" id="12_yw0ne"]
 [ext_resource type="Texture2D" uid="uid://dhxyesghnscff" path="res://Sprites/ZonaGeología/titulo-marco.png" id="13_8kfd5"]
@@ -25,8 +29,13 @@
 [ext_resource type="Script" path="res://_Scripts/PlayAnimation.gd" id="16_r2ac3"]
 [ext_resource type="StyleBox" uid="uid://b3tjes2hcm3wx" path="res://Resources/UI_Resources/StyleBoxTrasparent.tres" id="18_5rso6"]
 [ext_resource type="Script" path="res://_Scripts/ChangeScene.gd" id="18_f74bc"]
+[ext_resource type="Theme" uid="uid://bhum72inirq1q" path="res://Themes/Generic_UI.tres" id="21_teo4q"]
+[ext_resource type="LabelSettings" uid="uid://b7f8w8wf071ek" path="res://Themes/Geología/LabelSettings_Busqueda.tres" id="22_3rqpf"]
 [ext_resource type="Texture2D" uid="uid://dx08onlcntyty" path="res://Sprites/ZonaGeología/Piedras/espato - busqueda.png" id="22_g0ol6"]
 [ext_resource type="Theme" uid="uid://bokxu7jbpku04" path="res://Themes/Back_UI.tres" id="23_fcebh"]
+[ext_resource type="Texture2D" uid="uid://o8vll30cj0bd" path="res://Sprites/ZonaGeología/angel.png" id="34_gpi08"]
+[ext_resource type="Script" path="res://Scenes/GenericPanelController.gd" id="35_msa5i"]
+[ext_resource type="Texture2D" uid="uid://bhkwtowjwwbee" path="res://Sprites/ZonaGeología/hacedor de angel.png" id="35_r4a56"]
 
 [sub_resource type="Animation" id="Animation_daumw"]
 length = 0.001
@@ -93,13 +102,13 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("../../correcto/Label:text")
+tracks/5/path = NodePath("../../Moraleja/correcto/Label:text")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
+"update": 0,
 "values": ["CORRECTO"]
 }
 
@@ -335,13 +344,13 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("../../correcto/Label:text")
+tracks/3/path = NodePath("../../Moraleja/correcto/Label:text")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0, 0.1),
 "transitions": PackedFloat32Array(1, 1),
-"update": 1,
+"update": 0,
 "values": ["CORRECTO", "INCORRECTO"]
 }
 
@@ -571,26 +580,26 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("../../correcto:scale")
+tracks/2/path = NodePath("../../Moraleja:scale")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.6, 0.8, 0.9),
 "transitions": PackedFloat32Array(1, 1, 2.2, 1),
 "update": 0,
-"values": [Vector2(1e-05, 1e-05), Vector2(1e-05, 1e-05), Vector2(1.2, 1.2), Vector2(1, 1)]
+"values": [Vector2(1e-05, 1e-05), Vector2(0, 0), Vector2(1.2, 1.2), Vector2(1, 1)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("../../Moraleja:scale")
+tracks/3/path = NodePath("../../Moraleja/correcto:scale")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0, 0.9, 1.1, 1.2),
-"transitions": PackedFloat32Array(1, 1, 2.2, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(1e-05, 1e-05), Vector2(0, 0), Vector2(1.2, 1.2), Vector2(1, 1)]
+"values": [Vector2(1.03576e-05, 1.03576e-05), Vector2(1.03576e-05, 1.03576e-05), Vector2(1.2, 1.2), Vector2(1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_242if"]
@@ -667,26 +676,26 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("../../correcto:scale")
+tracks/3/path = NodePath("../../Moraleja:scale")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(1e-05, 1e-05)]
+"values": [Vector2(0, 0)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("../../Moraleja:scale")
+tracks/4/path = NodePath("../../Moraleja/correcto:scale")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, 0)]
+"values": [Vector2(1.03576e-05, 1.03576e-05)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_oxev3"]
@@ -838,7 +847,7 @@ stretch_mode = 1
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("2_cs2gm")
-initial_state = NodePath("Juego")
+initial_state = NodePath("Consigna")
 
 [node name="Consigna" type="Node" parent="StateMachine"]
 script = ExtResource("3_6yx8d")
@@ -873,28 +882,8 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="Button" type="Button" parent="StateMachine/Consigna/Contenido" node_paths=PackedStringArray("state_to_change", "state_machine")]
-visible = false
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -201.0
-offset_top = -197.0
-offset_right = 202.0
-offset_bottom = -67.0
-grow_horizontal = 2
-grow_vertical = 0
-text = "Siguiente
-"
-script = ExtResource("4_b64ug")
-state_to_change = NodePath("../../../Juego")
-state_machine = NodePath("../../..")
-
 [node name="Timer" type="Timer" parent="StateMachine/Consigna/Contenido"]
-wait_time = 3.0
+wait_time = 0.001
 
 [node name="TextureRect" type="TextureRect" parent="StateMachine/Consigna/Contenido"]
 layout_mode = 1
@@ -906,24 +895,103 @@ grow_vertical = 2
 texture = ExtResource("7_n8j0s")
 stretch_mode = 1
 
+[node name="Button" type="Control" parent="StateMachine/Consigna/Contenido"]
+anchors_preset = 0
+
 [node name="Control" type="Control" parent="StateMachine/Consigna/Contenido"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(1.385, 1.385)
+
+[node name="ColorRect" type="ColorRect" parent="StateMachine/Consigna/Contenido/Control"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
+offset_left = -495.5
+offset_top = -117.69
+offset_right = 495.5
+offset_bottom = 67.3105
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="piso" type="Sprite2D" parent="StateMachine/Consigna/Contenido/Control"]
-position = Vector2(-733, 468.75)
-scale = Vector2(0.824451, 0.79362)
-texture = ExtResource("7_p8l5p")
+color = Color(0.5625, 0.449219, 0.328125, 1)
 
 [node name="Sprite2D" type="Sprite2D" parent="StateMachine/Consigna/Contenido/Control"]
-scale = Vector2(0.954082, 0.954082)
-texture = ExtResource("8_b68wy")
+position = Vector2(-303.249, -268.115)
+scale = Vector2(0.599692, 0.599692)
+texture = ExtResource("7_qjprk")
+
+[node name="Sprite2D2" type="Sprite2D" parent="StateMachine/Consigna/Contenido/Control"]
+position = Vector2(293.141, -247.176)
+scale = Vector2(0.624451, 0.624451)
+texture = ExtResource("8_2bttr")
+
+[node name="Sprite2D3" type="Sprite2D" parent="StateMachine/Consigna/Contenido/Control"]
+position = Vector2(0.722015, -179.783)
+scale = Vector2(0.67459, 0.67459)
+texture = ExtResource("9_gg2w1")
+
+[node name="Panel" type="Panel" parent="StateMachine/Consigna/Contenido"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.235
+anchor_right = 0.508
+anchor_bottom = 0.235
+offset_left = -323.0
+offset_top = -196.8
+offset_right = 323.0
+offset_bottom = 197.2
+theme = ExtResource("21_teo4q")
+script = ExtResource("35_msa5i")
+
+[node name="Label" type="Label" parent="StateMachine/Consigna/Contenido/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.144
+anchor_top = 0.143
+anchor_right = 0.858
+anchor_bottom = 0.857
+offset_left = -0.0240021
+offset_top = 0.211998
+offset_right = -0.268005
+offset_bottom = -0.212036
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 0
+text = "ALGUNAS ROCAS LLEGARON TARDE A LA CANCHA HOY
+
+AYUDALAS A ENCONTRAR A SU FAMILIA EN LAS TRIBUNAS"
+label_settings = ExtResource("10_gmxwp")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Button" type="Button" parent="StateMachine/Consigna/Contenido/Panel" node_paths=PackedStringArray("state_to_change", "state_machine")]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -45.0
+offset_top = -90.0
+offset_right = 45.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "
+"
+script = ExtResource("4_b64ug")
+state_to_change = NodePath("../../../../Juego")
+state_machine = NodePath("../../../..")
 
 [node name="Juego" type="Node" parent="StateMachine" node_paths=PackedStringArray("NextState", "StateMachine")]
 script = ExtResource("5_kwitp")
@@ -1406,12 +1474,12 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 1
 theme_override_font_sizes/font_size = 50
-text = "¿A que tribuna debe ir la zolita?"
+text = "¿A CUÁL TRIBUNA DEBE IR LA ZOISITA?"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Timer" type="Timer" parent="StateMachine/Juego/Contenido/Instancia1/Consigna"]
-wait_time = 2.0
+wait_time = 4.5
 one_shot = true
 
 [node name="NubeController" type="Control" parent="StateMachine/Juego/Contenido/Instancia1"]
@@ -1585,82 +1653,117 @@ libraries = {
 script = ExtResource("16_r2ac3")
 animation = "Nube_Appears"
 
-[node name="correcto" type="TextureRect" parent="StateMachine/Juego/Contenido/Instancia1"]
+[node name="Moraleja" type="ColorRect" parent="StateMachine/Juego/Contenido/Instancia1"]
+self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.503
-anchor_top = 0.483
-anchor_right = 0.503
-anchor_bottom = 0.483
-offset_left = -342.16
-offset_top = -68.24
-offset_right = 341.84
-offset_bottom = 67.76
-grow_horizontal = 2
+anchor_left = 0.497
+anchor_top = 0.5
+anchor_right = 0.497
+anchor_bottom = 0.5
+offset_left = -340.84
+offset_top = 87.0
+offset_right = 340.16
+offset_bottom = 621.0
 scale = Vector2(1e-05, 1e-05)
-pivot_offset = Vector2(342, 68)
+pivot_offset = Vector2(340, 217)
+color = Color(0.533333, 0.733333, 0.384314, 1)
+
+[node name="Panel" type="Panel" parent="StateMachine/Juego/Contenido/Instancia1/Moraleja"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = -0.324
+anchor_right = 1.001
+anchor_bottom = 1.0
+offset_top = 0.0160065
+offset_right = 0.31897
+offset_bottom = 28.0
+theme = ExtResource("21_teo4q")
+script = ExtResource("35_msa5i")
+
+[node name="Button" type="Button" parent="StateMachine/Juego/Contenido/Instancia1/Moraleja/Panel" node_paths=PackedStringArray("state_to_change", "state_machine")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.912
+anchor_right = 0.5
+anchor_bottom = 0.912
+offset_left = -42.0
+offset_top = -29.432
+offset_right = 40.0
+offset_bottom = 52.568
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("21_teo4q")
+script = ExtResource("4_b64ug")
+state_to_change = NodePath("../../../../..")
+state_machine = NodePath("../../../../../..")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="StateMachine/Juego/Contenido/Instancia1/Moraleja/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.084
+anchor_top = 0.203
+anchor_right = 0.916
+anchor_bottom = 0.935
+offset_left = -0.288006
+offset_top = -1.33301
+offset_right = 0.287964
+offset_bottom = 0.214966
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_colors/font_selected_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 22
+theme_override_font_sizes/bold_font_size = 22
+bbcode_enabled = true
+text = "[center][b]LA ZOISITA PERTENECE AL GRUPO DE LOS SILICATOS[/b]
+
+ÉSTE ES EL GRUPO DE MINERALES DE
+ MÁS IMPORTANCIA GEOLÓGICA
+ AL SER [b]PETROGÉNICOS[/b],
+LOS MINERALES QUE FORMAN A LAS ROCAS
+
+[b]CONSTITUYEN EL 95% DE LA CORTEZA TERRESTRE[/b],
+Y FORMAN PARTE DE LA MAYORÍA DE LAS ROCAS, ARENAS Y ARCILLAS
+
+TODOS LOS SILICATOS ESTÁN COMPUESTOS POR
+[b]SILICIO Y OXÍGENO[/b]
+ACOMPAÑADOS AVECES POR 
+ALUMINIO, HIERO, MAGNECIO O CALCIO [/center]"
+
+[node name="correcto" type="TextureRect" parent="StateMachine/Juego/Contenido/Instancia1/Moraleja"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = -0.124
+anchor_right = 0.5
+anchor_bottom = -0.124
+offset_left = -251.5
+offset_top = -49.784
+offset_right = 251.5
+offset_bottom = 50.216
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.03576e-05, 1.03576e-05)
+pivot_offset = Vector2(251, 50)
 texture = ExtResource("13_8kfd5")
 expand_mode = 1
 
-[node name="Label" type="Label" parent="StateMachine/Juego/Contenido/Instancia1/correcto"]
+[node name="Label" type="Label" parent="StateMachine/Juego/Contenido/Instancia1/Moraleja/correcto"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 50
 text = "CORRECTO"
+label_settings = ExtResource("22_3rqpf")
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="Moraleja" type="ColorRect" parent="StateMachine/Juego/Contenido/Instancia1"]
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 17.0
-offset_top = -553.0
-offset_right = -22.0
-offset_bottom = -19.0
-scale = Vector2(1e-05, 1e-05)
-pivot_offset = Vector2(340, 217)
-color = Color(0.533333, 0.733333, 0.384314, 1)
-
-[node name="Label" type="Label" parent="StateMachine/Juego/Contenido/Instancia1/Moraleja"]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 0.677
-offset_left = -1.0
-offset_top = -1.00006
-offset_right = -1.0
-offset_bottom = -0.978088
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 50
-text = "Esto es una moraleja"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Button" type="Button" parent="StateMachine/Juego/Contenido/Instancia1/Moraleja" node_paths=PackedStringArray("state_to_change", "state_machine")]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -201.5
-offset_top = -122.0
-offset_right = 201.5
-offset_bottom = -40.0
-grow_horizontal = 2
-grow_vertical = 0
-text = "Continuar"
-script = ExtResource("4_b64ug")
-state_to_change = NodePath("../../../..")
-state_machine = NodePath("../../../../..")
 
 [node name="Instancia2" type="Control" parent="StateMachine/Juego/Contenido"]
 visible = false
@@ -2129,12 +2232,12 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 1
 theme_override_font_sizes/font_size = 50
-text = "¿A que tribuna debe ir la zolita?"
+text = "¿A CUÁL TRIBUNA DEBE IR LA HALITA?"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Timer" type="Timer" parent="StateMachine/Juego/Contenido/Instancia2/Consigna"]
-wait_time = 2.0
+wait_time = 4.5
 one_shot = true
 
 [node name="NubeController" type="Control" parent="StateMachine/Juego/Contenido/Instancia2"]
@@ -2268,7 +2371,7 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 40
 theme_override_styles/focus = ExtResource("18_5rso6")
-text = "SILICATOS"
+text = "HALOGENURO"
 flat = true
 
 [node name="nubeC1" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia2/NubeController2"]
@@ -2308,24 +2411,104 @@ libraries = {
 script = ExtResource("16_r2ac3")
 animation = "Nube_Appears"
 
-[node name="correcto" type="TextureRect" parent="StateMachine/Juego/Contenido/Instancia2"]
+[node name="Moraleja" type="ColorRect" parent="StateMachine/Juego/Contenido/Instancia2"]
+self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.503
-anchor_top = 0.483
-anchor_right = 0.503
-anchor_bottom = 0.483
-offset_left = -342.16
-offset_top = -68.24
-offset_right = 341.84
-offset_bottom = 67.76
-grow_horizontal = 2
+anchor_left = 0.496
+anchor_top = 0.5
+anchor_right = 0.496
+anchor_bottom = 0.5
+offset_left = -340.12
+offset_top = 87.0
+offset_right = 340.88
+offset_bottom = 621.0
 scale = Vector2(1e-05, 1e-05)
+pivot_offset = Vector2(340, 217)
+color = Color(0.533333, 0.733333, 0.384314, 1)
+
+[node name="Panel" type="Panel" parent="StateMachine/Juego/Contenido/Instancia2/Moraleja"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = -0.324
+anchor_right = 1.0
+anchor_bottom = 1.067
+offset_top = 0.0160065
+offset_right = 1.0
+offset_bottom = 0.221985
+theme = ExtResource("21_teo4q")
+script = ExtResource("35_msa5i")
+
+[node name="Button" type="Button" parent="StateMachine/Juego/Contenido/Instancia2/Moraleja/Panel" node_paths=PackedStringArray("state_to_change", "state_machine")]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -45.5
+offset_top = -94.0
+offset_right = 44.5
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("21_teo4q")
+script = ExtResource("4_b64ug")
+state_to_change = NodePath("../../../../..")
+state_machine = NodePath("../../../../../..")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="StateMachine/Juego/Contenido/Instancia2/Moraleja/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.065
+anchor_top = 0.158
+anchor_right = 0.935
+anchor_bottom = 0.883
+offset_left = -0.330002
+offset_top = -0.182007
+offset_right = 0.329956
+offset_bottom = 0.292969
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_colors/font_selected_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 22
+theme_override_font_sizes/bold_font_size = 22
+bbcode_enabled = true
+text = " [center][b]LAS HALITAS PERTENCEN AL GRUPO DE LOS HALOGENUROS[/b]
+
+ESTOS SON FORMADOS POR LA UNIÓN DE
+[b]METALES CON HALÓGENOS[/b],
+COMO FLUOR, CLORO, BROMO Y YODO
+
+NO TIENEN ASPECTO METÁLICO.
+POSEEN POCA DUREZA
+Y MUCHOS SON SOLUBLES EN AGUA
+
+[b]LA MAYORÍA SON INCOLOROS[/b]
+PERO CUANDO TIENEN COLOR
+ES POR CAUSAS ACCIDENTALES O IMPUREZAS
+SALVO LOS QUE TIENEN ALGUN CATIÓN
+ COMO EL COBRE  [/center]
+"
+
+[node name="correcto" type="TextureRect" parent="StateMachine/Juego/Contenido/Instancia2/Moraleja"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = -0.133
+anchor_right = 0.5
+anchor_bottom = -0.133
+offset_left = -341.5
+offset_top = -67.978
+offset_right = 342.5
+offset_bottom = 68.022
+grow_horizontal = 2
+scale = Vector2(1.03576e-05, 1.03576e-05)
 pivot_offset = Vector2(342, 68)
-texture = ExtResource("13_8kfd5")
 expand_mode = 1
 
-[node name="Label" type="Label" parent="StateMachine/Juego/Contenido/Instancia2/correcto"]
+[node name="Label" type="Label" parent="StateMachine/Juego/Contenido/Instancia2/Moraleja/correcto"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -2334,56 +2517,9 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 50
 text = "CORRECTO"
+label_settings = ExtResource("22_3rqpf")
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="Moraleja" type="ColorRect" parent="StateMachine/Juego/Contenido/Instancia2"]
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 17.0
-offset_top = -553.0
-offset_right = -22.0
-offset_bottom = -19.0
-scale = Vector2(1e-05, 1e-05)
-pivot_offset = Vector2(340, 217)
-color = Color(0.533333, 0.733333, 0.384314, 1)
-
-[node name="Label" type="Label" parent="StateMachine/Juego/Contenido/Instancia2/Moraleja"]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 0.677
-offset_left = -1.0
-offset_top = -1.00006
-offset_right = -1.0
-offset_bottom = -0.978088
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 50
-text = "Esto es una moraleja"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Button" type="Button" parent="StateMachine/Juego/Contenido/Instancia2/Moraleja" node_paths=PackedStringArray("state_to_change", "state_machine")]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -201.5
-offset_top = -122.0
-offset_right = 201.5
-offset_bottom = -40.0
-grow_horizontal = 2
-grow_vertical = 0
-text = "Continuar"
-script = ExtResource("4_b64ug")
-state_to_change = NodePath("../../../..")
-state_machine = NodePath("../../../../..")
 
 [node name="Instancia3" type="Control" parent="StateMachine/Juego/Contenido"]
 visible = false
@@ -2852,12 +2988,13 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 1
 theme_override_font_sizes/font_size = 50
-text = "¿A que tribuna debe ir la zolita?"
+text = "¿A CUÁL TRIBUNA DEBE IR 
+EL ESPATO DE ISLANDIA?"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Timer" type="Timer" parent="StateMachine/Juego/Contenido/Instancia3/Consigna"]
-wait_time = 2.0
+wait_time = 4.5
 one_shot = true
 
 [node name="NubeController" type="Control" parent="StateMachine/Juego/Contenido/Instancia3"]
@@ -2991,7 +3128,7 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 40
 theme_override_styles/focus = ExtResource("18_5rso6")
-text = "NITRATOS"
+text = "CARBONATOS"
 flat = true
 
 [node name="nubeC1" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia3/NubeController2"]
@@ -3031,24 +3168,107 @@ libraries = {
 script = ExtResource("16_r2ac3")
 animation = "Nube_Appears"
 
-[node name="correcto" type="TextureRect" parent="StateMachine/Juego/Contenido/Instancia3"]
+[node name="Moraleja" type="ColorRect" parent="StateMachine/Juego/Contenido/Instancia3"]
+self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.503
-anchor_top = 0.483
-anchor_right = 0.503
-anchor_bottom = 0.483
-offset_left = -342.16
-offset_top = -68.24
-offset_right = 341.84
-offset_bottom = 67.76
-grow_horizontal = 2
+anchor_left = 0.496
+anchor_top = 0.5
+anchor_right = 0.496
+anchor_bottom = 0.5
+offset_left = -340.12
+offset_top = 87.0
+offset_right = 340.88
+offset_bottom = 621.0
 scale = Vector2(1e-05, 1e-05)
+pivot_offset = Vector2(340, 217)
+color = Color(0.533333, 0.733333, 0.384314, 1)
+
+[node name="Panel" type="Panel" parent="StateMachine/Juego/Contenido/Instancia3/Moraleja"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = -0.324
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 0.0160065
+offset_right = 1.0
+offset_bottom = 4.0
+theme = ExtResource("21_teo4q")
+script = ExtResource("35_msa5i")
+
+[node name="Button" type="Button" parent="StateMachine/Juego/Contenido/Instancia3/Moraleja/Panel" node_paths=PackedStringArray("state_to_change", "state_machine")]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -45.0
+offset_top = -95.0
+offset_right = 45.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("21_teo4q")
+script = ExtResource("4_b64ug")
+state_to_change = NodePath("../../../../../../Moraleja")
+state_machine = NodePath("../../../../../..")
+isEndOfGame = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="StateMachine/Juego/Contenido/Instancia3/Moraleja/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.067
+anchor_top = 0.201
+anchor_right = 0.933
+anchor_bottom = 0.887
+offset_left = 0.306
+offset_top = 0.0889893
+offset_right = -0.30603
+offset_bottom = 0.342957
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_colors/font_selected_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 21
+theme_override_font_sizes/bold_font_size = 19
+bbcode_enabled = true
+text = "[center][b]LOS ESPATOS DE ISLANDIA PERTENECEN AL GRUPO DE LOS CARBONATOS[/b]
+
+[b]SON MINERALES DE POCA DUREZA[/b],
+DENSIDAD VARIABLE
+Y COLORES MUY DIVERSOS
+
+[b] SE DISUELVEN FACILMENTE[/b]
+EN UN AMBIENTE ACUOSO ÁCIDO
+
+[b]SON DE GRAN APLICACIÓN INDUSTRIAL[/b]
+SIENDO MUCHOS MENAS
+ DE NUMEROSOS METAL
+
+ [b]SUELEN ENCONTRARSE EN ZONAS ÁRIDAS[/b]
+ DE LA CORTEZA TERRESTRE [/center]"
+
+[node name="correcto" type="TextureRect" parent="StateMachine/Juego/Contenido/Instancia3/Moraleja"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = -0.135
+anchor_right = 0.5
+anchor_bottom = -0.135
+offset_left = -342.0
+offset_top = -67.91
+offset_right = 342.0
+offset_bottom = 68.09
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.03576e-05, 1.03576e-05)
 pivot_offset = Vector2(342, 68)
 texture = ExtResource("13_8kfd5")
 expand_mode = 1
 
-[node name="Label" type="Label" parent="StateMachine/Juego/Contenido/Instancia3/correcto"]
+[node name="Label" type="Label" parent="StateMachine/Juego/Contenido/Instancia3/Moraleja/correcto"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -3057,57 +3277,9 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 50
 text = "CORRECTO"
+label_settings = ExtResource("22_3rqpf")
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="Moraleja" type="ColorRect" parent="StateMachine/Juego/Contenido/Instancia3"]
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 17.0
-offset_top = -553.0
-offset_right = -22.0
-offset_bottom = -19.0
-scale = Vector2(1e-05, 1e-05)
-pivot_offset = Vector2(340, 217)
-color = Color(0.533333, 0.733333, 0.384314, 1)
-
-[node name="Label" type="Label" parent="StateMachine/Juego/Contenido/Instancia3/Moraleja"]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 0.677
-offset_left = -1.0
-offset_top = -1.00006
-offset_right = -1.0
-offset_bottom = -0.978088
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 50
-text = "Esto es una moraleja"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Button" type="Button" parent="StateMachine/Juego/Contenido/Instancia3/Moraleja" node_paths=PackedStringArray("state_to_change", "state_machine")]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -201.5
-offset_top = -122.0
-offset_right = 201.5
-offset_bottom = -40.0
-grow_horizontal = 2
-grow_vertical = 0
-text = "Continuar"
-script = ExtResource("4_b64ug")
-state_to_change = NodePath("../../../../../Moraleja")
-state_machine = NodePath("../../../../..")
-isEndOfGame = true
 
 [node name="Particula" type="Control" parent="StateMachine/Juego/Contenido"]
 layout_mode = 1
@@ -3129,6 +3301,22 @@ z_index = 1
 position = Vector2(4, -596)
 emitting = false
 color = Color(1, 1, 1, 1)
+
+[node name="btnVolver" type="Button" parent="StateMachine/Juego/Contenido"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -119.0
+offset_top = 25.0
+offset_right = -29.0
+offset_bottom = 115.0
+grow_horizontal = 0
+theme = ExtResource("23_fcebh")
+script = ExtResource("18_f74bc")
+NextScene = "Map_Screen"
+fade_time = 0.2
+smoothness = 0.1
 
 [node name="Moraleja" type="Node" parent="StateMachine"]
 script = ExtResource("6_w0jtl")
@@ -3180,16 +3368,6 @@ autowrap_mode = 2
 wait_time = 3.0
 one_shot = true
 
-[node name="ButtonChangeScene" parent="StateMachine/Moraleja/Contenido" instance=ExtResource("7_gssyk")]
-visible = false
-layout_mode = 1
-offset_left = -197.0
-offset_top = -201.0
-offset_right = 207.0
-offset_bottom = -66.0
-text = "Continue"
-NextScene = "Map_Screen"
-
 [node name="Instancia1" type="Control" parent="StateMachine/Moraleja/Contenido"]
 layout_mode = 1
 anchors_preset = 15
@@ -3218,23 +3396,116 @@ script = ExtResource("4_b64ug")
 state_to_change = NodePath("../../../../Juego")
 state_machine = NodePath("../../../..")
 
-[node name="btnVolver" type="Button" parent="StateMachine"]
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -109.0
-offset_top = 15.0
-offset_right = -19.0
-offset_bottom = 99.0
-grow_horizontal = 0
-theme = ExtResource("23_fcebh")
-script = ExtResource("18_f74bc")
-NextScene = "Map_Screen"
-fade_time = 0.2
-smoothness = 0.1
+[node name="BackgroundPivot" type="Control" parent="StateMachine/Moraleja/Contenido"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(1.705, 1.705)
 
-[connection signal="pressed" from="StateMachine/Consigna/Contenido/Button" to="StateMachine/Consigna/Contenido/Button" method="_on_pressed"]
+[node name="Background2" type="TextureRect" parent="StateMachine/Moraleja/Contenido/BackgroundPivot"]
+layout_mode = 0
+offset_left = -1093.0
+offset_top = -2124.93
+offset_right = 1078.0
+offset_bottom = -765.927
+texture = ExtResource("7_n8j0s")
+stretch_mode = 1
+
+[node name="Floor" type="TextureRect" parent="StateMachine/Moraleja/Contenido/BackgroundPivot"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1095.0
+offset_top = -881.927
+offset_right = 1092.0
+offset_bottom = 435.073
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(1667, 996)
+texture = ExtResource("7_p8l5p")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Tribuna" type="Sprite2D" parent="StateMachine/Moraleja/Contenido/BackgroundPivot"]
+position = Vector2(650.08, -855.927)
+scale = Vector2(0.871684, 0.980867)
+texture = ExtResource("8_b68wy")
+
+[node name="Tribuna2" type="Sprite2D" parent="StateMachine/Moraleja/Contenido/BackgroundPivot"]
+position = Vector2(-648, -855.927)
+rotation = 3.14159
+scale = Vector2(0.872, -0.981)
+texture = ExtResource("8_b68wy")
+
+[node name="Sprite2D2" type="Sprite2D" parent="StateMachine/Moraleja/Contenido/BackgroundPivot"]
+position = Vector2(-15.8358, -232.845)
+texture = ExtResource("34_gpi08")
+
+[node name="Sprite2D" type="Sprite2D" parent="StateMachine/Moraleja/Contenido/BackgroundPivot"]
+position = Vector2(0, -225.22)
+texture = ExtResource("35_r4a56")
+
+[node name="Panel" type="Panel" parent="StateMachine/Moraleja/Contenido"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.493
+anchor_top = 0.253
+anchor_right = 0.493
+anchor_bottom = 0.253
+offset_left = -315.96
+offset_top = -283.84
+offset_right = 316.04
+offset_bottom = 284.16
+theme = ExtResource("21_teo4q")
+script = ExtResource("35_msa5i")
+
+[node name="ButtonChangeScene" parent="StateMachine/Moraleja/Contenido/Panel" instance=ExtResource("7_gssyk")]
+layout_mode = 1
+offset_left = -45.0
+offset_top = -90.0
+offset_right = 45.0
+offset_bottom = 0.0
+text = ""
+NextScene = "Map_Screen"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="StateMachine/Moraleja/Contenido"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.15
+anchor_top = 0.134
+anchor_right = 0.847
+anchor_bottom = 0.376
+offset_top = -0.520004
+offset_right = 0.159973
+offset_bottom = -0.280029
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_colors/font_selected_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 22
+theme_override_font_sizes/bold_font_size = 22
+bbcode_enabled = true
+text = " [center] LOS MINERALES SE AGRUPAN BAJO
+LA CLASIFICACIÓN DE STRUNZ
+
+ESTA CLASIFICA A LOS MINERALES
+BASANDOSE EN SU  COMPOSICIÓN
+
+[b]FUE CREADA EN 1938[/b]
+POR KARL HUGO STRUNZ
+
+[/center]"
+
 [connection signal="timeout" from="StateMachine/Consigna/Contenido/Timer" to="StateMachine/Consigna" method="TimeOut"]
+[connection signal="pressed" from="StateMachine/Consigna/Contenido/Panel/Button" to="StateMachine/Consigna/Contenido/Panel/Button" method="_on_pressed"]
 [connection signal="Transitioned" from="StateMachine/Juego" to="StateMachine/Juego/Contenido/Instancia1/Consigna" method="StartTimer"]
 [connection signal="Transitioned" from="StateMachine/Juego" to="StateMachine/Juego/Contenido/Instancia2/Consigna" method="StartTimer"]
 [connection signal="Transitioned" from="StateMachine/Juego" to="StateMachine/Juego/Contenido/Instancia2/NubeController/AnimationPlayer" method="Reset"]
@@ -3248,14 +3519,14 @@ smoothness = 0.1
 [connection signal="timeout" from="StateMachine/Juego/Contenido/Instancia1/Consigna/Timer" to="StateMachine/Juego/Contenido/Instancia1/NubeController/AnimationPlayer" method="Play"]
 [connection signal="timeout" from="StateMachine/Juego/Contenido/Instancia1/Consigna/Timer" to="StateMachine/Juego/Contenido/Instancia1/NubeController2/AnimationPlayer" method="Play"]
 [connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia1/NubeController/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia1/NubeController/AnimationPlayer" method="Reset"]
-[connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia1/NubeController/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia1/Tribunas/Piedra_Busqueda" method="SetScale" binds= [false]]
 [connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia1/NubeController/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia1/Tribunas/Piedra_Busqueda" method="SetNextAnimBool" binds= [false]]
+[connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia1/NubeController/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia1/Tribunas/Piedra_Busqueda" method="SetScale" binds= [false]]
 [connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia1/NubeController/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia1/NubeController" method="Setvisivility" binds= [false]]
 [connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia1/NubeController2/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia1/NubeController2/AnimationPlayer" method="Reset"]
-[connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia1/NubeController2/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia1/Tribunas/Piedra_Busqueda" method="SetScale" binds= [true]]
 [connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia1/NubeController2/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia1/Tribunas/Piedra_Busqueda" method="SetNextAnimBool" binds= [true]]
-[connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia1/Moraleja/Button" to="StateMachine/Juego/Contenido/Instancia1/Tribunas/Piedra_Busqueda" method="resetAllAnimation"]
-[connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia1/Moraleja/Button" to="StateMachine/Juego/Contenido/Instancia1/Moraleja/Button" method="_on_pressed"]
+[connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia1/NubeController2/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia1/Tribunas/Piedra_Busqueda" method="SetScale" binds= [true]]
+[connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia1/Moraleja/Panel/Button" to="StateMachine/Juego/Contenido/Instancia1/Tribunas/Piedra_Busqueda" method="resetAllAnimation"]
+[connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia1/Moraleja/Panel/Button" to="StateMachine/Juego/Contenido/Instancia1/Moraleja/Panel/Button" method="_on_pressed"]
 [connection signal="EndOfGame" from="StateMachine/Juego/Contenido/Instancia2/Button" to="." method="Set_Complete"]
 [connection signal="EndOfGame" from="StateMachine/Juego/Contenido/Instancia2/Button" to="StateMachine/Moraleja" method="isEndOfGame"]
 [connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia2/Button" to="StateMachine/Juego/Contenido/Instancia2/Button" method="_on_pressed"]
@@ -3263,27 +3534,26 @@ smoothness = 0.1
 [connection signal="timeout" from="StateMachine/Juego/Contenido/Instancia2/Consigna/Timer" to="StateMachine/Juego/Contenido/Instancia2/NubeController2/AnimationPlayer" method="Play"]
 [connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia2/NubeController/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia2/NubeController" method="Setvisivility"]
 [connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia2/NubeController/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia2/NubeController/AnimationPlayer" method="Reset"]
-[connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia2/NubeController/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia2/Tribunas/Piedra_Busqueda" method="SetScale" binds= [false]]
 [connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia2/NubeController/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia2/Tribunas/Piedra_Busqueda" method="SetNextAnimBool" binds= [false]]
+[connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia2/NubeController/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia2/Tribunas/Piedra_Busqueda" method="SetScale" binds= [false]]
 [connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia2/NubeController2/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia3/NubeController/AnimationPlayer" method="Reset"]
-[connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia2/NubeController2/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia2/Tribunas/Piedra_Busqueda" method="SetScale" binds= [true]]
 [connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia2/NubeController2/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia2/Tribunas/Piedra_Busqueda" method="SetNextAnimBool" binds= [true]]
-[connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia2/Moraleja/Button" to="StateMachine/Juego/Contenido/Instancia2/Tribunas/Piedra_Busqueda" method="resetAllAnimation"]
-[connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia2/Moraleja/Button" to="StateMachine/Juego/Contenido/Instancia2/Moraleja/Button" method="_on_pressed"]
+[connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia2/NubeController2/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia2/Tribunas/Piedra_Busqueda" method="SetScale" binds= [true]]
+[connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia2/Moraleja/Panel/Button" to="StateMachine/Juego/Contenido/Instancia2/Tribunas/Piedra_Busqueda" method="resetAllAnimation"]
+[connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia2/Moraleja/Panel/Button" to="StateMachine/Juego/Contenido/Instancia2/Moraleja/Panel/Button" method="_on_pressed"]
 [connection signal="EndOfGame" from="StateMachine/Juego/Contenido/Instancia3/Button" to="." method="Set_Complete"]
 [connection signal="EndOfGame" from="StateMachine/Juego/Contenido/Instancia3/Button" to="StateMachine/Moraleja" method="isEndOfGame"]
 [connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia3/Button" to="StateMachine/Juego/Contenido/Instancia3/Button" method="_on_pressed"]
 [connection signal="timeout" from="StateMachine/Juego/Contenido/Instancia3/Consigna/Timer" to="StateMachine/Juego/Contenido/Instancia3/NubeController/AnimationPlayer" method="Play"]
 [connection signal="timeout" from="StateMachine/Juego/Contenido/Instancia3/Consigna/Timer" to="StateMachine/Juego/Contenido/Instancia3/NubeController2/AnimationPlayer" method="Play"]
 [connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia3/NubeController/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia3/NubeController" method="Setvisivility"]
-[connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia3/NubeController/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia3/Tribunas/Piedra_Busqueda" method="SetScale" binds= [false]]
 [connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia3/NubeController/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia3/Tribunas/Piedra_Busqueda" method="SetNextAnimBool" binds= [false]]
-[connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia3/NubeController2/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia3/Tribunas/Piedra_Busqueda" method="SetScale" binds= [true]]
+[connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia3/NubeController/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia3/Tribunas/Piedra_Busqueda" method="SetScale" binds= [false]]
 [connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia3/NubeController2/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia3/Tribunas/Piedra_Busqueda" method="SetNextAnimBool" binds= [true]]
-[connection signal="EndOfGame" from="StateMachine/Juego/Contenido/Instancia3/Moraleja/Button" to="StateMachine/btnVolver" method="_on_pressed"]
-[connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia3/Moraleja/Button" to="." method="Set_Complete"]
-[connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia3/Moraleja/Button" to="StateMachine/Juego/Contenido/Instancia3/Tribunas/Piedra_Busqueda" method="resetAllAnimation"]
-[connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia3/Moraleja/Button" to="StateMachine/Juego/Contenido/Instancia3/Moraleja/Button" method="_on_pressed"]
+[connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia3/NubeController2/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia3/Tribunas/Piedra_Busqueda" method="SetScale" binds= [true]]
+[connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia3/Moraleja/Panel/Button" to="." method="Set_Complete"]
+[connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia3/Moraleja/Panel/Button" to="StateMachine/Juego/Contenido/Instancia3/Tribunas/Piedra_Busqueda" method="resetAllAnimation"]
+[connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia3/Moraleja/Panel/Button" to="StateMachine/Juego/Contenido/Instancia3/Moraleja/Panel/Button" method="_on_pressed"]
+[connection signal="pressed" from="StateMachine/Juego/Contenido/btnVolver" to="StateMachine/Juego/Contenido/btnVolver" method="_on_pressed"]
 [connection signal="timeout" from="StateMachine/Moraleja/Contenido/Timer" to="StateMachine/Moraleja" method="TimeOut"]
 [connection signal="pressed" from="StateMachine/Moraleja/Contenido/Instancia1/Button" to="StateMachine/Moraleja/Contenido/Instancia1/Button" method="_on_pressed"]
-[connection signal="pressed" from="StateMachine/btnVolver" to="StateMachine/btnVolver" method="_on_pressed"]

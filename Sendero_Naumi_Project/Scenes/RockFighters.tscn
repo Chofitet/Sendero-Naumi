@@ -1,10 +1,11 @@
-[gd_scene load_steps=56 format=3 uid="uid://lv8sdofmjhf3"]
+[gd_scene load_steps=66 format=3 uid="uid://lv8sdofmjhf3"]
 
 [ext_resource type="Script" path="res://_Scripts/Minigame_Save_Controller.gd" id="1_f0fiw"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/StateMachineMinigames.gd" id="2_12384"]
 [ext_resource type="Texture2D" uid="uid://dbv6rcnmmb8db" path="res://Sprites/ZonaGeología/fondo_geografia.png" id="2_xcj5x"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/ConsignaState.gd" id="3_cy1k7"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/Button_Change_StateMinigame.gd" id="4_0gq0b"]
+[ext_resource type="Texture2D" uid="uid://c5p3itai046fy" path="res://Sprites/UI/boton inicio fighter_1.png" id="4_d7p6d"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/JuegoState.gd" id="5_ks8gw"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/MoralejaState.gd" id="6_43bfo"]
 [ext_resource type="Script" path="res://_Scripts/MinG_RockFigther/RockSpriteController.gd" id="6_647wk"]
@@ -16,14 +17,18 @@
 [ext_resource type="Texture2D" uid="uid://blye8p4vg13px" path="res://Sprites/Fondo_Ladrillo.png" id="8_e6ros"]
 [ext_resource type="PackedScene" uid="uid://byauyjvexvbuc" path="res://Scenes/Experiments/ShardEmitter.tscn" id="8_urdon"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/Timer_State_Minigame.gd" id="9_cj3ki"]
+[ext_resource type="Texture2D" uid="uid://blsk5fxd3ydja" path="res://Sprites/ZonaGeología/Nombre_Fighter.png" id="11_44jl1"]
 [ext_resource type="Texture2D" uid="uid://cs7w5oevvpe4m" path="res://Sprites/ZonaGeología/Piedras/topacio_dureza.png" id="12_i8jde"]
+[ext_resource type="Texture2D" uid="uid://cncanwfoqtd2x" path="res://Sprites/ZonaGeología/anim_busqueda_tira.png" id="13_a7og2"]
 [ext_resource type="Texture2D" uid="uid://b7poe0ethot51" path="res://Sprites/ZonaGeología/Piedras/flurita_dureza.png" id="13_imic4"]
 [ext_resource type="Script" path="res://_Scripts/ChangeScene.gd" id="13_wbcp0"]
+[ext_resource type="Texture2D" uid="uid://cnjb8mxdursmc" path="res://Sprites/ZonaGeología/cartel corazon.png" id="14_wtv3b"]
 [ext_resource type="Texture2D" uid="uid://b01q38uc638rp" path="res://Sprites/ZonaGeología/Piedras/apatita_dureza.png" id="15_d4cfw"]
 [ext_resource type="Theme" uid="uid://cqe37y1kc0id5" path="res://Themes/Geología/RockFighters.tres" id="15_g1ws0"]
 [ext_resource type="Texture2D" uid="uid://dqlibyc57d0m8" path="res://Sprites/ZonaGeología/Piedras/diamante_dureza.png" id="16_t0483"]
 [ext_resource type="Texture2D" uid="uid://bbxmqnw28hvfq" path="res://Sprites/ZonaGeología/Piedras/yeso_dureza.png" id="17_cmsbk"]
 [ext_resource type="Script" path="res://_Scripts/PlayAnimation.gd" id="17_r375b"]
+[ext_resource type="StyleBox" uid="uid://b3tjes2hcm3wx" path="res://Resources/UI_Resources/StyleBoxTrasparent.tres" id="19_ao7ck"]
 [ext_resource type="Texture2D" uid="uid://chqivoetkgkoj" path="res://Sprites/UI/circulo.png" id="19_hel6a"]
 [ext_resource type="Script" path="res://_Scripts/MinG_RockFigther/OverlayFight.gd" id="20_lgsna"]
 [ext_resource type="Texture2D" uid="uid://bkcb0e40vi8iv" path="res://Sprites/ZonaGeología/BANNER FIGHTER.png" id="21_1l5kd"]
@@ -33,6 +38,13 @@
 [ext_resource type="Texture2D" uid="uid://dxtycvon1bw4p" path="res://Sprites/ZonaGeología/Piedras/zoisita - busqueda.png" id="26_0j7qb"]
 [ext_resource type="Texture2D" uid="uid://dx08onlcntyty" path="res://Sprites/ZonaGeología/Piedras/espato - busqueda.png" id="27_0jli2"]
 [ext_resource type="Theme" uid="uid://bokxu7jbpku04" path="res://Themes/Back_UI.tres" id="29_l5p5d"]
+[ext_resource type="Theme" uid="uid://bhum72inirq1q" path="res://Themes/Generic_UI.tres" id="33_7ompi"]
+[ext_resource type="Texture2D" uid="uid://cj3p1ogux66b0" path="res://Sprites/ZonaGeología/Cinturon.png" id="35_jgvc6"]
+[ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/FinState.gd" id="36_ljxo4"]
+[ext_resource type="Script" path="res://Scenes/GenericPanelController.gd" id="39_sasef"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_01r1e"]
+texture = ExtResource("4_d7p6d")
 
 [sub_resource type="Gradient" id="Gradient_axb3y"]
 offsets = PackedFloat32Array(0.118943, 1)
@@ -105,6 +117,18 @@ tracks/4/keys = {
 "update": 0,
 "values": [0.0, 3.14159]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../Button:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 10.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
 
 [sub_resource type="Animation" id="Animation_flp5j"]
 length = 0.001
@@ -167,6 +191,18 @@ tracks/4/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [0.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../Button:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vfwyg"]
@@ -959,26 +995,37 @@ grow_vertical = 2
 color = Color(0.0431373, 0.00784314, 0, 1)
 
 [node name="Button" type="Button" parent="RockFighters/StateMachine/Consigna/Contenido" node_paths=PackedStringArray("state_to_change", "state_machine")]
+visible = false
 layout_mode = 1
-anchors_preset = 7
+anchors_preset = -1
 anchor_left = 0.5
-anchor_top = 1.0
+anchor_top = 0.761
 anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -201.5
-offset_top = -175.0
-offset_right = 201.5
-offset_bottom = -45.0
+anchor_bottom = 0.761
+offset_left = -161.0
+offset_top = -82.0801
+offset_right = 161.0
+offset_bottom = 82.9199
 grow_horizontal = 2
-grow_vertical = 0
-text = "Siguiente
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxTexture_01r1e")
+theme_override_styles/hover = SubResource("StyleBoxTexture_01r1e")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_01r1e")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_01r1e")
+theme_override_styles/focus = SubResource("StyleBoxTexture_01r1e")
+text = "¡VAMOS!
 "
 script = ExtResource("4_0gq0b")
 state_to_change = NodePath("../../../Juego")
 state_machine = NodePath("../../..")
 
 [node name="Timer" type="Timer" parent="RockFighters/StateMachine/Consigna/Contenido"]
-wait_time = 8.0
+wait_time = 10.3
 
 [node name="Control" type="Control" parent="RockFighters/StateMachine/Consigna/Contenido"]
 layout_mode = 1
@@ -986,15 +1033,14 @@ anchor_left = 0.5
 anchor_top = 0.587
 anchor_right = 0.5
 anchor_bottom = 0.587
-offset_left = -7.0
 offset_top = -0.359985
-offset_right = -7.0
 offset_bottom = -0.359985
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="3Luz" type="Node2D" parent="RockFighters/StateMachine/Consigna/Contenido/Control"]
 visible = false
+position = Vector2(-15, 0)
 
 [node name="Polygon2D" type="Polygon2D" parent="RockFighters/StateMachine/Consigna/Contenido/Control/3Luz"]
 position = Vector2(0.0142641, -1.68695)
@@ -1016,6 +1062,7 @@ vertical_alignment = 1
 
 [node name="2Luz" type="Node2D" parent="RockFighters/StateMachine/Consigna/Contenido/Control"]
 visible = false
+position = Vector2(-15, 0)
 
 [node name="Polygon2D" type="Polygon2D" parent="RockFighters/StateMachine/Consigna/Contenido/Control/2Luz"]
 position = Vector2(0.0136654, -1.61615)
@@ -1037,6 +1084,7 @@ vertical_alignment = 1
 
 [node name="1Luz" type="Node2D" parent="RockFighters/StateMachine/Consigna/Contenido/Control"]
 visible = false
+position = Vector2(-15, 0)
 
 [node name="Polygon2D" type="Polygon2D" parent="RockFighters/StateMachine/Consigna/Contenido/Control/1Luz"]
 position = Vector2(0.0222563, -2.63577)
@@ -1155,38 +1203,66 @@ position = Vector2(-11, 119)
 
 [node name="Rock" parent="RockFighters/StateMachine/Juego/Contenido/Control/hinchada" instance=ExtResource("24_vtm00")]
 modulate = Color(0, 0, 0, 1)
-position = Vector2(-492, 412)
+position = Vector2(-515, 306)
+rotation = 0.251327
 _texture = ExtResource("25_lqy04")
+accesorio = ExtResource("11_44jl1")
+
+[node name="Gorri" parent="RockFighters/StateMachine/Juego/Contenido/Control/hinchada/Rock" index="1"]
+position = Vector2(307.5, -366.25)
+scale = Vector2(0.736068, 0.588781)
+texture = ExtResource("11_44jl1")
 
 [node name="Rock4" parent="RockFighters/StateMachine/Juego/Contenido/Control/hinchada" instance=ExtResource("24_vtm00")]
 modulate = Color(0, 0, 0, 1)
-position = Vector2(-348, 482)
-_texture = ExtResource("25_lqy04")
+position = Vector2(-472, 475)
+_texture = ExtResource("27_0jli2")
+
+[node name="ExtraRock" parent="RockFighters/StateMachine/Juego/Contenido/Control/hinchada/Rock4" index="2"]
+visible = false
 
 [node name="Rock2" parent="RockFighters/StateMachine/Juego/Contenido/Control/hinchada" instance=ExtResource("24_vtm00")]
 modulate = Color(0, 0, 0, 1)
-position = Vector2(275, 414)
+position = Vector2(-207, 405)
 rotation = 3.14159
-scale = Vector2(0.8, -0.8)
+scale = Vector2(-0.8, -0.8)
 _texture = ExtResource("26_0j7qb")
+accesorio = ExtResource("11_44jl1")
+
+[node name="Gorri" parent="RockFighters/StateMachine/Juego/Contenido/Control/hinchada/Rock2" index="1"]
+position = Vector2(297.499, -356.251)
+texture = ExtResource("11_44jl1")
+
+[node name="ExtraRock" parent="RockFighters/StateMachine/Juego/Contenido/Control/hinchada/Rock2" index="2"]
+visible = false
 
 [node name="Rock7" parent="RockFighters/StateMachine/Juego/Contenido/Control/hinchada" instance=ExtResource("24_vtm00")]
 modulate = Color(0, 0, 0, 1)
-position = Vector2(303, 594)
+position = Vector2(263, 517)
 rotation = 3.14159
 scale = Vector2(0.8, -0.8)
 _texture = ExtResource("26_0j7qb")
 
+[node name="ExtraRock" parent="RockFighters/StateMachine/Juego/Contenido/Control/hinchada/Rock7" index="2"]
+visible = false
+
 [node name="Rock8" parent="RockFighters/StateMachine/Juego/Contenido/Control/hinchada" instance=ExtResource("24_vtm00")]
 modulate = Color(0, 0, 0, 1)
-position = Vector2(90.0001, 572)
+position = Vector2(98, 523)
 _texture = ExtResource("26_0j7qb")
 
 [node name="Rock3" parent="RockFighters/StateMachine/Juego/Contenido/Control/hinchada" instance=ExtResource("24_vtm00")]
 modulate = Color(0, 0, 0, 1)
-position = Vector2(155, 469)
-rotation = -0.317074
+position = Vector2(564, 344)
+rotation = -0.113446
+scale = Vector2(-0.8, 0.8)
 _texture = ExtResource("27_0jli2")
+accesorio = ExtResource("14_wtv3b")
+
+[node name="Gorri" parent="RockFighters/StateMachine/Juego/Contenido/Control/hinchada/Rock3" index="1"]
+position = Vector2(304.437, -255.263)
+scale = Vector2(1.63246, 1.63246)
+texture = ExtResource("14_wtv3b")
 
 [node name="Rock6" parent="RockFighters/StateMachine/Juego/Contenido/Control/hinchada" instance=ExtResource("24_vtm00")]
 modulate = Color(0, 0, 0, 1)
@@ -1195,6 +1271,9 @@ rotation = 3.14159
 scale = Vector2(0.8, -0.8)
 _texture = ExtResource("27_0jli2")
 
+[node name="ExtraRock" parent="RockFighters/StateMachine/Juego/Contenido/Control/hinchada/Rock6" index="2"]
+visible = false
+
 [node name="Rock5" parent="RockFighters/StateMachine/Juego/Contenido/Control/hinchada" instance=ExtResource("24_vtm00")]
 modulate = Color(0, 0, 0, 1)
 position = Vector2(444, 418)
@@ -1202,10 +1281,16 @@ rotation = 2.82452
 scale = Vector2(0.8, -0.8)
 _texture = ExtResource("25_lqy04")
 
+[node name="ExtraRock" parent="RockFighters/StateMachine/Juego/Contenido/Control/hinchada/Rock5" index="2"]
+visible = false
+
 [node name="Rock9" parent="RockFighters/StateMachine/Juego/Contenido/Control/hinchada" instance=ExtResource("24_vtm00")]
 modulate = Color(0, 0, 0, 1)
 position = Vector2(-439, 708)
 _texture = ExtResource("25_lqy04")
+
+[node name="ExtraRock" parent="RockFighters/StateMachine/Juego/Contenido/Control/hinchada/Rock9" index="2"]
+visible = false
 
 [node name="Rock10" parent="RockFighters/StateMachine/Juego/Contenido/Control/hinchada" instance=ExtResource("24_vtm00")]
 modulate = Color(0, 0, 0, 1)
@@ -1213,12 +1298,51 @@ position = Vector2(-97, 814)
 rotation = -0.317074
 _texture = ExtResource("27_0jli2")
 
+[node name="ExtraRock" parent="RockFighters/StateMachine/Juego/Contenido/Control/hinchada/Rock10" index="2"]
+visible = false
+
 [node name="Rock11" parent="RockFighters/StateMachine/Juego/Contenido/Control/hinchada" instance=ExtResource("24_vtm00")]
 modulate = Color(0, 0, 0, 1)
 position = Vector2(560, 698)
 rotation = 2.82452
 scale = Vector2(0.8, -0.8)
 _texture = ExtResource("25_lqy04")
+
+[node name="ExtraRock" parent="RockFighters/StateMachine/Juego/Contenido/Control/hinchada/Rock11" index="2"]
+visible = false
+
+[node name="Sprite2D" type="Sprite2D" parent="RockFighters/StateMachine/Juego/Contenido/Control/hinchada"]
+position = Vector2(-10, 211)
+rotation = -0.775274
+scale = Vector2(0.284, 0.284)
+texture = ExtResource("13_a7og2")
+hframes = 14
+vframes = 6
+frame = 43
+
+[node name="Sprite2D2" type="Sprite2D" parent="RockFighters/StateMachine/Juego/Contenido/Control/hinchada"]
+position = Vector2(362, 135)
+scale = Vector2(0.284, 0.284)
+texture = ExtResource("13_a7og2")
+hframes = 14
+vframes = 6
+frame = 43
+
+[node name="Sprite2D3" type="Sprite2D" parent="RockFighters/StateMachine/Juego/Contenido/Control/hinchada"]
+position = Vector2(-291, 133)
+scale = Vector2(0.284, 0.284)
+texture = ExtResource("13_a7og2")
+hframes = 14
+vframes = 6
+frame = 43
+
+[node name="ColorRect2" type="ColorRect" parent="RockFighters/StateMachine/Juego/Contenido/Control"]
+layout_mode = 0
+offset_left = -511.0
+offset_top = 444.0
+offset_right = 540.0
+offset_bottom = 978.0
+color = Color(0, 0, 0, 1)
 
 [node name="Instancia1" type="Control" parent="RockFighters/StateMachine/Juego/Contenido"]
 layout_mode = 1
@@ -1324,6 +1448,16 @@ theme = ExtResource("15_g1ws0")
 text = "MISS
 CUARZO"
 
+[node name="BigButton" type="Button" parent="RockFighters/StateMachine/Juego/Contenido/Instancia1/Control/PiedraLuchador2/TextureRect2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/focus = ExtResource("19_ao7ck")
+flat = true
+
 [node name="Parts" type="Node2D" parent="RockFighters/StateMachine/Juego/Contenido/Instancia1/Control/PiedraLuchador2"]
 position = Vector2(800, 190)
 skew = -0.0959931
@@ -1369,11 +1503,11 @@ hframes = 14
 vframes = 5
 
 [node name="Timer" type="Timer" parent="RockFighters/StateMachine/Juego/Contenido/Instancia1/Control/PiedraLuchador2"]
-wait_time = 2.6
+wait_time = 3.2
 one_shot = true
 
 [node name="TimePassInstance" type="Timer" parent="RockFighters/StateMachine/Juego/Contenido/Instancia1/Control/PiedraLuchador2" node_paths=PackedStringArray("state_to_change", "state_machine")]
-wait_time = 4.0
+wait_time = 5.7
 one_shot = true
 script = ExtResource("9_cj3ki")
 state_to_change = NodePath("../../../../../../Moraleja")
@@ -1446,6 +1580,16 @@ theme = ExtResource("15_g1ws0")
 text = "DOÑA
 FLUORITA"
 
+[node name="BigButton" type="Button" parent="RockFighters/StateMachine/Juego/Contenido/Instancia1/Control/PiedraLuchador3/TextureRect2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/focus = ExtResource("19_ao7ck")
+flat = true
+
 [node name="Parts" type="Node2D" parent="RockFighters/StateMachine/Juego/Contenido/Instancia1/Control/PiedraLuchador3"]
 position = Vector2(800, 190)
 skew = -0.0959931
@@ -1491,11 +1635,11 @@ hframes = 14
 vframes = 5
 
 [node name="Timer" type="Timer" parent="RockFighters/StateMachine/Juego/Contenido/Instancia1/Control/PiedraLuchador3"]
-wait_time = 2.6
+wait_time = 3.2
 one_shot = true
 
 [node name="TimePassInstance" type="Timer" parent="RockFighters/StateMachine/Juego/Contenido/Instancia1/Control/PiedraLuchador3" node_paths=PackedStringArray("state_to_change", "state_machine")]
-wait_time = 4.0
+wait_time = 5.7
 one_shot = true
 script = ExtResource("9_cj3ki")
 state_to_change = NodePath("../../../../../../Moraleja")
@@ -1534,11 +1678,11 @@ grow_vertical = 2
 
 [node name="Control" type="Control" parent="RockFighters/StateMachine/Juego/Contenido/Instancia2"]
 layout_mode = 1
-anchor_top = 0.066
+anchor_top = 0.171
 anchor_right = 1.0
-anchor_bottom = 0.855
-offset_top = 86.52
-offset_bottom = 7.59998
+anchor_bottom = 0.898
+offset_top = 0.119995
+offset_bottom = 0.559937
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -1578,7 +1722,7 @@ scale = Vector2(-1, 1)
 script = ExtResource("6_647wk")
 
 [node name="TextureRect2" type="TextureRect" parent="RockFighters/StateMachine/Juego/Contenido/Instancia2/Control/PiedraLuchador2"]
-modulate = Color(0.619608, 0.870588, 0.862745, 1)
+self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1591,6 +1735,7 @@ texture = ExtResource("7_t1u6c")
 expand_mode = 1
 
 [node name="Name" type="Label" parent="RockFighters/StateMachine/Juego/Contenido/Instancia2/Control/PiedraLuchador2/TextureRect2"]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -1607,28 +1752,40 @@ text = "Sr. Cuarzo IV"
 horizontal_alignment = 1
 
 [node name="button" type="Button" parent="RockFighters/StateMachine/Juego/Contenido/Instancia2/Control/PiedraLuchador2/TextureRect2"]
-visible = false
 layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -1890.5
-offset_top = -5577.0
-offset_right = -1571.5
-offset_bottom = -5449.0
+anchors_preset = -1
+anchor_left = 0.491
+anchor_top = 0.179
+anchor_right = 0.491
+anchor_bottom = 0.179
+offset_left = 173.891
+offset_top = -35.3427
+offset_right = 492.891
+offset_bottom = 119.657
 grow_horizontal = 2
 grow_vertical = 0
+rotation = 0.250083
 scale = Vector2(-1, 1)
-text = "APATITA"
+theme = ExtResource("15_g1ws0")
+text = "APATITA
+DINAMITA"
+
+[node name="BigButton" type="Button" parent="RockFighters/StateMachine/Juego/Contenido/Instancia2/Control/PiedraLuchador2/TextureRect2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/focus = ExtResource("19_ao7ck")
+flat = true
 
 [node name="Parts" type="Node2D" parent="RockFighters/StateMachine/Juego/Contenido/Instancia2/Control/PiedraLuchador2"]
 position = Vector2(800, 190)
 skew = -0.0959931
 
 [node name="BrazoDer" type="Sprite2D" parent="RockFighters/StateMachine/Juego/Contenido/Instancia2/Control/PiedraLuchador2/Parts"]
-position = Vector2(190.94, 136.26)
+position = Vector2(167.94, 162.26)
 scale = Vector2(0.719844, 0.719844)
 texture = ExtResource("7_tdkmm")
 hframes = 14
@@ -1636,7 +1793,7 @@ vframes = 5
 frame = 16
 
 [node name="PiernaDer" type="Sprite2D" parent="RockFighters/StateMachine/Juego/Contenido/Instancia2/Control/PiedraLuchador2/Parts"]
-position = Vector2(167.525, 77.9921)
+position = Vector2(144.525, 103.992)
 scale = Vector2(0.81323, 0.81323)
 texture = ExtResource("7_tdkmm")
 hframes = 14
@@ -1646,14 +1803,14 @@ frame = 44
 [node name="Piedra" type="Sprite2D" parent="RockFighters/StateMachine/Juego/Contenido/Instancia2/Control/PiedraLuchador2/Parts"]
 position = Vector2(167, 177)
 rotation = 0.253073
-scale = Vector2(0.638783, 0.638783)
+scale = Vector2(0.794706, 0.794706)
 texture = ExtResource("15_d4cfw")
 
 [node name="ShardEmitter" parent="RockFighters/StateMachine/Juego/Contenido/Instancia2/Control/PiedraLuchador2/Parts/Piedra" instance=ExtResource("8_urdon")]
 threshhold = 50.0
 
 [node name="PiernaIzq" type="Sprite2D" parent="RockFighters/StateMachine/Juego/Contenido/Instancia2/Control/PiedraLuchador2/Parts"]
-position = Vector2(140.947, 84.0198)
+position = Vector2(117.947, 110.02)
 scale = Vector2(0.81323, 0.81323)
 texture = ExtResource("7_tdkmm")
 hframes = 14
@@ -1661,18 +1818,18 @@ vframes = 5
 frame = 30
 
 [node name="BrazoIzq" type="Sprite2D" parent="RockFighters/StateMachine/Juego/Contenido/Instancia2/Control/PiedraLuchador2/Parts"]
-position = Vector2(152.747, 138.27)
+position = Vector2(129.747, 164.27)
 scale = Vector2(0.708171, 0.708171)
 texture = ExtResource("7_tdkmm")
 hframes = 14
 vframes = 5
 
 [node name="Timer" type="Timer" parent="RockFighters/StateMachine/Juego/Contenido/Instancia2/Control/PiedraLuchador2"]
-wait_time = 2.6
+wait_time = 3.2
 one_shot = true
 
 [node name="TimePassInstance" type="Timer" parent="RockFighters/StateMachine/Juego/Contenido/Instancia2/Control/PiedraLuchador2" node_paths=PackedStringArray("state_to_change", "state_machine")]
-wait_time = 4.0
+wait_time = 5.7
 one_shot = true
 script = ExtResource("9_cj3ki")
 state_to_change = NodePath("../../../../../../Moraleja")
@@ -1716,7 +1873,7 @@ script = ExtResource("6_647wk")
 isWinner = true
 
 [node name="TextureRect2" type="TextureRect" parent="RockFighters/StateMachine/Juego/Contenido/Instancia2/Control/PiedraLuchador3"]
-modulate = Color(0.619608, 0.870588, 0.862745, 1)
+self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1729,20 +1886,32 @@ texture = ExtResource("7_t1u6c")
 expand_mode = 1
 
 [node name="button" type="Button" parent="RockFighters/StateMachine/Juego/Contenido/Instancia2/Control/PiedraLuchador3/TextureRect2"]
-visible = false
 layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -2025.0
-offset_top = -4761.0
-offset_right = -1706.0
-offset_bottom = -4633.0
+anchors_preset = -1
+anchor_left = 0.468
+anchor_top = 0.149
+anchor_right = 0.468
+anchor_bottom = 0.149
+offset_left = -147.288
+offset_top = -97.7639
+offset_right = 171.712
+offset_bottom = 54.2361
 grow_horizontal = 2
 grow_vertical = 0
-text = "DIAMANTE"
+rotation = 0.140131
+theme = ExtResource("15_g1ws0")
+text = "DIAMANTE
+EL NAPIAS"
+
+[node name="BigButton" type="Button" parent="RockFighters/StateMachine/Juego/Contenido/Instancia2/Control/PiedraLuchador3/TextureRect2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/focus = ExtResource("19_ao7ck")
+flat = true
 
 [node name="Parts" type="Node2D" parent="RockFighters/StateMachine/Juego/Contenido/Instancia2/Control/PiedraLuchador3"]
 position = Vector2(800, 190)
@@ -1789,11 +1958,11 @@ hframes = 14
 vframes = 5
 
 [node name="Timer" type="Timer" parent="RockFighters/StateMachine/Juego/Contenido/Instancia2/Control/PiedraLuchador3"]
-wait_time = 2.6
+wait_time = 3.2
 one_shot = true
 
 [node name="TimePassInstance" type="Timer" parent="RockFighters/StateMachine/Juego/Contenido/Instancia2/Control/PiedraLuchador3" node_paths=PackedStringArray("state_to_change", "state_machine")]
-wait_time = 4.0
+wait_time = 5.7
 one_shot = true
 script = ExtResource("9_cj3ki")
 state_to_change = NodePath("../../../../../../Moraleja")
@@ -1832,11 +2001,11 @@ grow_vertical = 2
 
 [node name="Control" type="Control" parent="RockFighters/StateMachine/Juego/Contenido/Instancia3"]
 layout_mode = 1
-anchor_top = 0.066
+anchor_top = 0.199
 anchor_right = 1.0
-anchor_bottom = 0.855
-offset_top = 86.52
-offset_bottom = 7.59998
+anchor_bottom = 0.927
+offset_top = 0.279984
+offset_bottom = -0.560181
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -1876,7 +2045,7 @@ scale = Vector2(-1, 1)
 script = ExtResource("6_647wk")
 
 [node name="TextureRect2" type="TextureRect" parent="RockFighters/StateMachine/Juego/Contenido/Instancia3/Control/PiedraLuchador2"]
-modulate = Color(0.619608, 0.870588, 0.862745, 1)
+self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1889,6 +2058,7 @@ texture = ExtResource("7_t1u6c")
 expand_mode = 1
 
 [node name="Name" type="Label" parent="RockFighters/StateMachine/Juego/Contenido/Instancia3/Control/PiedraLuchador2/TextureRect2"]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -1905,28 +2075,40 @@ text = "Sr. Cuarzo IV"
 horizontal_alignment = 1
 
 [node name="button" type="Button" parent="RockFighters/StateMachine/Juego/Contenido/Instancia3/Control/PiedraLuchador2/TextureRect2"]
-visible = false
 layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -1890.5
-offset_top = -5577.0
-offset_right = -1571.5
-offset_bottom = -5449.0
+anchors_preset = -1
+anchor_left = 0.497
+anchor_top = 0.11
+anchor_right = 0.497
+anchor_bottom = 0.11
+offset_left = 172.754
+offset_top = -38.4052
+offset_right = 491.754
+offset_bottom = 115.595
 grow_horizontal = 2
 grow_vertical = 0
+rotation = 0.232067
 scale = Vector2(-1, 1)
-text = "YESO"
+theme = ExtResource("15_g1ws0")
+text = "YESO
+MAKENSI"
+
+[node name="BigButton" type="Button" parent="RockFighters/StateMachine/Juego/Contenido/Instancia3/Control/PiedraLuchador2/TextureRect2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/focus = ExtResource("19_ao7ck")
+flat = true
 
 [node name="Parts" type="Node2D" parent="RockFighters/StateMachine/Juego/Contenido/Instancia3/Control/PiedraLuchador2"]
 position = Vector2(800, 190)
 skew = -0.0959931
 
 [node name="BrazoDer" type="Sprite2D" parent="RockFighters/StateMachine/Juego/Contenido/Instancia3/Control/PiedraLuchador2/Parts"]
-position = Vector2(190.94, 136.26)
+position = Vector2(107.94, 136.26)
 scale = Vector2(0.719844, 0.719844)
 texture = ExtResource("7_tdkmm")
 hframes = 14
@@ -1934,7 +2116,7 @@ vframes = 5
 frame = 16
 
 [node name="PiernaDer" type="Sprite2D" parent="RockFighters/StateMachine/Juego/Contenido/Instancia3/Control/PiedraLuchador2/Parts"]
-position = Vector2(167.525, 77.9921)
+position = Vector2(120.763, 95.1388)
 scale = Vector2(0.81323, 0.81323)
 texture = ExtResource("7_tdkmm")
 hframes = 14
@@ -1946,12 +2128,14 @@ position = Vector2(167, 177)
 rotation = 0.253073
 scale = Vector2(0.638783, 0.638783)
 texture = ExtResource("17_cmsbk")
+offset = Vector2(-46.505, 0)
 
 [node name="ShardEmitter" parent="RockFighters/StateMachine/Juego/Contenido/Instancia3/Control/PiedraLuchador2/Parts/Piedra" instance=ExtResource("8_urdon")]
+position = Vector2(16.6718, -4.31161)
 threshhold = 50.0
 
 [node name="PiernaIzq" type="Sprite2D" parent="RockFighters/StateMachine/Juego/Contenido/Instancia3/Control/PiedraLuchador2/Parts"]
-position = Vector2(140.947, 84.0198)
+position = Vector2(149.185, 101.167)
 scale = Vector2(0.81323, 0.81323)
 texture = ExtResource("7_tdkmm")
 hframes = 14
@@ -1959,18 +2143,18 @@ vframes = 5
 frame = 30
 
 [node name="BrazoIzq" type="Sprite2D" parent="RockFighters/StateMachine/Juego/Contenido/Instancia3/Control/PiedraLuchador2/Parts"]
-position = Vector2(152.747, 138.27)
+position = Vector2(103.747, 138.27)
 scale = Vector2(0.708171, 0.708171)
 texture = ExtResource("7_tdkmm")
 hframes = 14
 vframes = 5
 
 [node name="Timer" type="Timer" parent="RockFighters/StateMachine/Juego/Contenido/Instancia3/Control/PiedraLuchador2"]
-wait_time = 2.6
+wait_time = 3.2
 one_shot = true
 
 [node name="TimePassInstance" type="Timer" parent="RockFighters/StateMachine/Juego/Contenido/Instancia3/Control/PiedraLuchador2" node_paths=PackedStringArray("state_to_change", "state_machine")]
-wait_time = 4.0
+wait_time = 5.7
 one_shot = true
 script = ExtResource("9_cj3ki")
 state_to_change = NodePath("../../../../../../Moraleja")
@@ -2014,7 +2198,7 @@ script = ExtResource("6_647wk")
 isWinner = true
 
 [node name="TextureRect2" type="TextureRect" parent="RockFighters/StateMachine/Juego/Contenido/Instancia3/Control/PiedraLuchador3"]
-modulate = Color(0.619608, 0.870588, 0.862745, 1)
+self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -2027,20 +2211,32 @@ texture = ExtResource("7_t1u6c")
 expand_mode = 1
 
 [node name="button" type="Button" parent="RockFighters/StateMachine/Juego/Contenido/Instancia3/Control/PiedraLuchador3/TextureRect2"]
-visible = false
 layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -2201.5
-offset_top = -5577.0
-offset_right = -1882.5
-offset_bottom = -5449.0
+anchors_preset = -1
+anchor_left = 0.484
+anchor_top = 0.075
+anchor_right = 0.484
+anchor_bottom = 0.075
+offset_left = -148.144
+offset_top = -96.8419
+offset_right = 170.856
+offset_bottom = 57.1581
 grow_horizontal = 2
 grow_vertical = 0
-text = "TOPACIO"
+rotation = 0.12882
+theme = ExtResource("15_g1ws0")
+text = "HORACIO
+EL TOPACIO"
+
+[node name="BigButton" type="Button" parent="RockFighters/StateMachine/Juego/Contenido/Instancia3/Control/PiedraLuchador3/TextureRect2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/focus = ExtResource("19_ao7ck")
+flat = true
 
 [node name="Parts" type="Node2D" parent="RockFighters/StateMachine/Juego/Contenido/Instancia3/Control/PiedraLuchador3"]
 position = Vector2(800, 190)
@@ -2086,11 +2282,11 @@ hframes = 14
 vframes = 5
 
 [node name="Timer" type="Timer" parent="RockFighters/StateMachine/Juego/Contenido/Instancia3/Control/PiedraLuchador3"]
-wait_time = 2.6
+wait_time = 3.2
 one_shot = true
 
 [node name="TimePassInstance" type="Timer" parent="RockFighters/StateMachine/Juego/Contenido/Instancia3/Control/PiedraLuchador3" node_paths=PackedStringArray("state_to_change", "state_machine")]
-wait_time = 4.0
+wait_time = 5.7
 one_shot = true
 script = ExtResource("9_cj3ki")
 state_to_change = NodePath("../../../../../../Moraleja")
@@ -2195,7 +2391,7 @@ y = -200
 hasSizeOffset = true
 
 [node name="Timer" type="Timer" parent="RockFighters/StateMachine/Juego/Contenido/overlay1"]
-wait_time = 2.3
+wait_time = 6.0
 
 [node name="overlay2" type="ColorRect" parent="RockFighters/StateMachine/Juego/Contenido"]
 layout_mode = 1
@@ -2215,13 +2411,29 @@ script = ExtResource("20_lgsna")
 y = 200
 
 [node name="Timer" type="Timer" parent="RockFighters/StateMachine/Juego/Contenido/overlay2"]
-wait_time = 2.3
+wait_time = 6.0
+
+[node name="btnVolver" type="Button" parent="RockFighters/StateMachine/Juego/Contenido"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -110.0
+offset_top = 13.0
+offset_right = -20.0
+offset_bottom = 103.0
+grow_horizontal = 0
+theme = ExtResource("29_l5p5d")
+script = ExtResource("13_wbcp0")
+NextScene = "Map_Screen"
+fade_time = 0.2
+smoothness = 0.1
 
 [node name="Moraleja" type="Node" parent="RockFighters/StateMachine"]
 script = ExtResource("6_43bfo")
-Moralejas = [null, "El Cuarzo es uno de los minerales mas abundantes de todo el planeta Tierra.El Cuarzo está 7mo en la escala de Mohs, la escala de que mide la Dureza de Minerales y es mas duro que la Fluorita que está 4ta. ", &"El diamante es la sustancia natural mas dura del planeta.Su grado de dureza es 10.Solo algo tan duro como un diamante puede rayar a un diamante.Existen diamantes de cada color del arcoiris", "No El topacio se encuentra en el puesto 8 de la escala de Mohs de Dureza.Es una de las consideradas Piedras Preciosas y se usa mucho para joyería.Existen de muchos colores,pero los Naranja, Rojo y Rosa son los mas raros de encontrar,y los mas valiosos. el tamaño, si no la dureza"]
+Moralejas = ["", "El Cuarzo es más duro que la Fluorita.                   Se encuentra en el puesto número 7 de la Escala de Mohs,                               la escala de que mide la Dureza de Minerales.                           Es el segundo mineral mas abundante del planeta.El primero es el Feldespato, que abarca un 60% de la corteza terrestre.", &"El diamante es la sustancia natural mas dura del planeta del Tierra.Su grado de dureza en la escala de Mohs es el mas alto: 10.Solo algo tan duro como un diamante puede rayar a un diamante.Existen diamantes de cada color del arcoíris", "El topacio se encuentra en el puesto 8 de la escala de Mohs de Dureza.Es una de las consideradas Piedras Preciosas y se usa mayoritariamente para joyería.Existen de muchos colores,pero los Naranja, Rojo y Rosa son los mas raros de encontrar,y los mas valiosos."]
 Instancias = [null, NodePath("Contenido/Instancia1"), NodePath("Contenido/Instancia2"), NodePath("Contenido/Instancia3")]
-buttons = [NodePath("Contenido/Instancia1/Button"), NodePath("Contenido/Instancia2/Button2"), NodePath("Contenido/Instancia3/Control/ButtonChangeScene")]
+buttons = [NodePath("Contenido/Instancia1/Control/Conteiner/Button"), NodePath("Contenido/Instancia2/Control/Conteiner/Button2"), NodePath("../Fin/Contenido/Panel/ButtonChangeScene2")]
 
 [node name="Contenido" type="Control" parent="RockFighters/StateMachine/Moraleja"]
 visible = false
@@ -2243,6 +2455,7 @@ texture = ExtResource("2_xcj5x")
 stretch_mode = 1
 
 [node name="Conteiner" type="TextureRect" parent="RockFighters/StateMachine/Moraleja/Contenido"]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -2257,6 +2470,7 @@ texture = ExtResource("7_exbri")
 expand_mode = 1
 
 [node name="LblMoraleja" type="Label" parent="RockFighters/StateMachine/Moraleja/Contenido/Conteiner"]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.044
@@ -2281,6 +2495,7 @@ wait_time = 3.0
 one_shot = true
 
 [node name="Instancia1" type="Control" parent="RockFighters/StateMachine/Moraleja/Contenido"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -2305,20 +2520,21 @@ grow_vertical = 2
 modulate = Color(0.180392, 0.717647, 0.827451, 1)
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.508
-anchor_top = 0.357
-anchor_right = 0.508
-anchor_bottom = 0.357
-offset_left = -329.76
-offset_top = -317.96
-offset_right = 330.24
-offset_bottom = 318.04
+anchor_left = 0.5
+anchor_top = 0.272
+anchor_right = 0.5
+anchor_bottom = 0.272
+offset_left = -330.0
+offset_top = -318.16
+offset_right = 330.0
+offset_bottom = 317.84
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("19_hel6a")
 expand_mode = 1
 
 [node name="PARTS" type="Node2D" parent="RockFighters/StateMachine/Moraleja/Contenido/Instancia1/Control"]
+position = Vector2(-5, -135)
 
 [node name="BrazoIzq" type="Sprite2D" parent="RockFighters/StateMachine/Moraleja/Contenido/Instancia1/Control/PARTS"]
 position = Vector2(393, 456)
@@ -2371,24 +2587,77 @@ hframes = 14
 vframes = 5
 frame = 64
 
-[node name="Button" type="Button" parent="RockFighters/StateMachine/Moraleja/Contenido/Instancia1" node_paths=PackedStringArray("state_to_change", "state_machine")]
+[node name="Conteiner" type="Panel" parent="RockFighters/StateMachine/Moraleja/Contenido/Instancia1/Control"]
 layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -201.0
-offset_top = -113.0
-offset_right = 202.0
-offset_bottom = -23.0
+anchors_preset = -1
+anchor_left = 0.501
+anchor_top = 0.737
+anchor_right = 0.501
+anchor_bottom = 0.737
+offset_left = -330.72
+offset_top = -301.36
+offset_right = 330.28
+offset_bottom = 313.64
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("33_7ompi")
+script = ExtResource("39_sasef")
+
+[node name="Cinturon" type="Sprite2D" parent="RockFighters/StateMachine/Moraleja/Contenido/Instancia1/Control/Conteiner"]
+position = Vector2(327, -26)
+texture = ExtResource("35_jgvc6")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="RockFighters/StateMachine/Moraleja/Contenido/Instancia1/Control/Conteiner"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.073
+anchor_top = 0.147
+anchor_right = 0.927
+anchor_bottom = 0.858
+offset_left = -0.253006
+offset_top = 0.595001
+offset_right = 0.252991
+offset_bottom = 23.33
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_colors/font_selected_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 23
+theme_override_font_sizes/bold_font_size = 23
+bbcode_enabled = true
+text = "[center]  [b] EL CUARZO ES MÁS DURO QUE LA 
+FLUORITA [/b] 
+
+SE ENCUENTRA EN EL PUESTO NUMERO DE 7
+ DE [b]LA ESCALA DE MOHS[/b],
+LA ESCALA DE DUREZA DE LOS MINERALES
+
+ES EL SEGUNDO MINERAL MÁS
+ABUNDANTE DEL PLANETA
+
+ EL PRIMERO ES EL FELDESPATO,
+QUE ABARCA UN  60% DE LA CORTEZA
+TERRESTRE [/center]"
+
+[node name="Button" type="Button" parent="RockFighters/StateMachine/Moraleja/Contenido/Instancia1/Control/Conteiner" node_paths=PackedStringArray("state_to_change", "state_machine")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.495
+anchor_top = 0.923
+anchor_right = 0.495
+anchor_bottom = 0.923
+offset_left = -45.195
+offset_top = -45.1831
+offset_right = 44.805
+offset_bottom = 44.8169
 grow_horizontal = 2
 grow_vertical = 0
-text = "Continuar
+theme = ExtResource("33_7ompi")
+text = "
 "
 script = ExtResource("4_0gq0b")
-state_to_change = NodePath("../../../../Juego")
-state_machine = NodePath("../../../..")
+state_to_change = NodePath("../../../../../../Juego")
+state_machine = NodePath("../../../../../..")
 
 [node name="Instancia2" type="Control" parent="RockFighters/StateMachine/Moraleja/Contenido"]
 visible = false
@@ -2417,19 +2686,20 @@ modulate = Color(0.180392, 0.717647, 0.827451, 1)
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.508
-anchor_top = 0.357
+anchor_top = 0.273
 anchor_right = 0.508
-anchor_bottom = 0.357
+anchor_bottom = 0.273
 offset_left = -329.76
-offset_top = -317.96
+offset_top = -318.44
 offset_right = 330.24
-offset_bottom = 318.04
+offset_bottom = 317.56
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("19_hel6a")
 expand_mode = 1
 
 [node name="PARTS" type="Node2D" parent="RockFighters/StateMachine/Moraleja/Contenido/Instancia2/Control"]
+position = Vector2(-1, -124)
 
 [node name="BrazoIzq" type="Sprite2D" parent="RockFighters/StateMachine/Moraleja/Contenido/Instancia2/Control/PARTS"]
 position = Vector2(393, 456)
@@ -2482,24 +2752,74 @@ hframes = 14
 vframes = 5
 frame = 64
 
-[node name="Button2" type="Button" parent="RockFighters/StateMachine/Moraleja/Contenido/Instancia2" node_paths=PackedStringArray("state_to_change", "state_machine")]
+[node name="Conteiner" type="Panel" parent="RockFighters/StateMachine/Moraleja/Contenido/Instancia2/Control"]
 layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -201.0
-offset_top = -197.0
-offset_right = 202.0
-offset_bottom = -67.0
+anchors_preset = -1
+anchor_left = 0.049
+anchor_top = 0.502
+anchor_right = 0.96
+anchor_bottom = 0.989
+offset_left = -5.28
+offset_top = -0.560059
+offset_right = -0.200012
+offset_bottom = -19.92
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("33_7ompi")
+script = ExtResource("39_sasef")
+
+[node name="Cinturon" type="Sprite2D" parent="RockFighters/StateMachine/Moraleja/Contenido/Instancia2/Control/Conteiner"]
+position = Vector2(327, -26)
+texture = ExtResource("35_jgvc6")
+
+[node name="Button2" type="Button" parent="RockFighters/StateMachine/Moraleja/Contenido/Instancia2/Control/Conteiner" node_paths=PackedStringArray("state_to_change", "state_machine")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.499
+anchor_top = 0.916
+anchor_right = 0.499
+anchor_bottom = 0.916
+offset_left = -44.839
+offset_top = -45.264
+offset_right = 45.161
+offset_bottom = 44.736
 grow_horizontal = 2
 grow_vertical = 0
-text = "Continuar
+text = "
 "
 script = ExtResource("4_0gq0b")
-state_to_change = NodePath("../../../../Juego")
-state_machine = NodePath("../../../..")
+state_to_change = NodePath("../../../../../../Juego")
+state_machine = NodePath("../../../../../..")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="RockFighters/StateMachine/Moraleja/Contenido/Instancia2/Control/Conteiner"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.07
+anchor_top = 0.147
+anchor_right = 0.93
+anchor_bottom = 0.853
+offset_left = -0.27
+offset_top = 0.212105
+offset_right = 0.269958
+offset_bottom = -0.212036
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_colors/font_selected_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 25
+theme_override_font_sizes/bold_font_size = 25
+bbcode_enabled = true
+text = "[center] [b]EL DIAMANTE ES LA SUSTANCIA NATURAL MÁS DURA DEL PLANETA TIERRA[/b] 
+
+SU GRADO DE DUREZA 
+EN [b]LA ESCALA DE MOHS[/b] 
+ ES DE 10, EL MAS ALTO
+
+SÓLO ALGO TAN DURO COMO UN DIAMANTE
+PUEDE RAYAR A OTRO DIAMANTE
+
+EXISTEN DIAMANTES DE CADA UNO
+DE LOS COLORES DEL ARCOIRIS [/center]"
 
 [node name="Instancia3" type="Control" parent="RockFighters/StateMachine/Moraleja/Contenido"]
 visible = false
@@ -2528,20 +2848,20 @@ modulate = Color(0.180392, 0.717647, 0.827451, 1)
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.508
-anchor_top = 0.357
+anchor_top = 0.27
 anchor_right = 0.508
-anchor_bottom = 0.357
+anchor_bottom = 0.27
 offset_left = -329.76
-offset_top = -317.96
+offset_top = -318.6
 offset_right = 330.24
-offset_bottom = 318.04
+offset_bottom = 317.4
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("19_hel6a")
 expand_mode = 1
 
 [node name="PARTS" type="Node2D" parent="RockFighters/StateMachine/Moraleja/Contenido/Instancia3/Control"]
-position = Vector2(8, 14)
+position = Vector2(7, -78)
 
 [node name="BrazoIzq" type="Sprite2D" parent="RockFighters/StateMachine/Moraleja/Contenido/Instancia3/Control/PARTS"]
 position = Vector2(446, 426)
@@ -2594,30 +2914,148 @@ hframes = 14
 vframes = 5
 frame = 64
 
-[node name="ButtonChangeScene" parent="RockFighters/StateMachine/Moraleja/Contenido/Instancia3/Control" instance=ExtResource("7_itn4t")]
-visible = false
+[node name="Conteiner" type="Panel" parent="RockFighters/StateMachine/Moraleja/Contenido/Instancia3/Control"]
 layout_mode = 1
-offset_left = -197.0
-offset_top = -201.0
-offset_right = 207.0
-offset_bottom = -66.0
-text = "Continue"
-NextScene = "Map_Screen"
+anchors_preset = -1
+anchor_left = 0.049
+anchor_top = 0.502
+anchor_right = 0.96
+anchor_bottom = 0.989
+offset_left = -5.28
+offset_top = -0.560059
+offset_right = -0.200012
+offset_bottom = -19.92
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("33_7ompi")
+script = ExtResource("39_sasef")
 
-[node name="btnVolver" type="Button" parent="RockFighters/StateMachine"]
-anchors_preset = 1
-anchor_left = 1.0
+[node name="Cinturon" type="Sprite2D" parent="RockFighters/StateMachine/Moraleja/Contenido/Instancia3/Control/Conteiner"]
+position = Vector2(327, -26)
+texture = ExtResource("35_jgvc6")
+
+[node name="Button2" type="Button" parent="RockFighters/StateMachine/Moraleja/Contenido/Instancia3/Control/Conteiner" node_paths=PackedStringArray("state_to_change", "state_machine")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.499
+anchor_top = 0.916
+anchor_right = 0.499
+anchor_bottom = 0.916
+offset_left = -44.839
+offset_top = -45.264
+offset_right = 45.161
+offset_bottom = 44.736
+grow_horizontal = 2
+grow_vertical = 0
+text = "
+"
+script = ExtResource("4_0gq0b")
+state_to_change = NodePath("../../../../../../Fin")
+state_machine = NodePath("../../../../../..")
+isEndOfGame = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="RockFighters/StateMachine/Moraleja/Contenido/Instancia3/Control/Conteiner"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.076
+anchor_top = 0.182
+anchor_right = 0.918
+anchor_bottom = 0.831
+offset_left = -4.236
+offset_top = 0.0720901
+offset_right = 0.201965
+offset_bottom = 0.0759888
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_colors/font_selected_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 25
+theme_override_font_sizes/bold_font_size = 25
+bbcode_enabled = true
+text = "[center] [b]EL TOPACIO SE ENCUENTRA EN EL PUESTO 8 DE LA ESCALA DE MOHS[/b]
+
+ES UNA DE LAS [b]PIEDRAS PRECIOSAS[/b]
+Y SE USA EN MAYOR PARTE PARA
+HACER JOYERÍA
+
+EXISTEN DE MUCHOS COLORES, 
+PERO LOS COLOR NARANJA, ROJO Y ROSA
+SON LOS MAS RAROS DE ENCONTRAR
+Y POR ESO LOS MAS VALIOSOS [/center]"
+
+[node name="Fin" type="Node" parent="RockFighters/StateMachine"]
+script = ExtResource("36_ljxo4")
+
+[node name="Contenido" type="Control" parent="RockFighters/StateMachine/Fin"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
-offset_left = -104.0
-offset_top = 12.0
-offset_right = -14.0
-offset_bottom = 96.0
-grow_horizontal = 0
-theme = ExtResource("29_l5p5d")
-script = ExtResource("13_wbcp0")
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="RockFighters/StateMachine/Fin/Contenido"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_xcj5x")
+stretch_mode = 1
+
+[node name="Panel" type="Panel" parent="RockFighters/StateMachine/Fin/Contenido"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -289.0
+offset_right = 300.0
+offset_bottom = 316.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("33_7ompi")
+script = ExtResource("39_sasef")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="RockFighters/StateMachine/Fin/Contenido/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.085
+anchor_top = 0.131
+anchor_right = 0.915
+anchor_bottom = 0.862
+offset_top = 0.28199
+offset_bottom = -0.236023
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_colors/font_selected_color = Color(0, 0, 0, 1)
+theme_override_colors/selection_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 25
+theme_override_font_sizes/bold_font_size = 25
+bbcode_enabled = true
+text = "[center] [b]LA ESCALA DE MOHS[/b]
+SE BASA EN LA CAPACIDAD DE UN MINERAL
+PARA RAYAR VISIBLEMENTE A OTRO
+
+[b]¿ENCONTRASTE LA ESCALA DE MOHS
+ EN LA VITRINA DE GEOLOGIA DEL MUSEO?[/b]
+ALLI PODES VER LOS 10 GRADOS DE DUREZA
+
+[b]PISTA:[/b] A LA IZQUIERDA Y ATRAS [/center]"
+
+[node name="ButtonChangeScene2" parent="RockFighters/StateMachine/Fin/Contenido/Panel" instance=ExtResource("7_itn4t")]
+layout_mode = 1
+offset_left = -45.0
+offset_top = -94.0
+offset_right = 45.0
+offset_bottom = -4.0
+text = ""
 NextScene = "Map_Screen"
-fade_time = 0.2
-smoothness = 0.1
 
 [connection signal="Transitioned" from="RockFighters/StateMachine/Consigna" to="RockFighters/StateMachine/Juego/Contenido/Instancia1/Control/PiedraLuchador2/AnimUI" method="Play"]
 [connection signal="Transitioned" from="RockFighters/StateMachine/Consigna" to="RockFighters/StateMachine/Juego/Contenido/Instancia1/Control/PiedraLuchador3/AnimUI" method="Play"]
@@ -2655,8 +3093,21 @@ smoothness = 0.1
 [connection signal="fight" from="RockFighters/StateMachine/Juego/Contenido/Instancia3/Control/PiedraLuchador3" to="RockFighters/StateMachine/Juego/Contenido/Instancia3/Control/PiedraLuchador2" method="BlockAnim"]
 [connection signal="pressed" from="RockFighters/StateMachine/Juego/Contenido/Instancia3/Control/PiedraLuchador3/TextureRect2/button" to="RockFighters" method="Set_Complete"]
 [connection signal="timeout" from="RockFighters/StateMachine/Juego/Contenido/Instancia3/Control/PiedraLuchador3/TimePassInstance" to="RockFighters/StateMachine/Juego/Contenido/Instancia3/Control/PiedraLuchador3/TimePassInstance" method="_on_timeout"]
-[connection signal="EndOfGame" from="RockFighters/StateMachine/Moraleja/Contenido/Instancia1/Button" to="RockFighters/StateMachine/Moraleja/Contenido/Instancia3/Control/ButtonChangeScene" method="_on_pressed"]
-[connection signal="pressed" from="RockFighters/StateMachine/Moraleja/Contenido/Instancia1/Button" to="RockFighters/StateMachine/Moraleja/Contenido/Instancia1/Button" method="_on_pressed" flags=18]
-[connection signal="EndOfGame" from="RockFighters/StateMachine/Moraleja/Contenido/Instancia2/Button2" to="RockFighters/StateMachine/Moraleja/Contenido/Instancia3/Control/ButtonChangeScene" method="_on_pressed"]
-[connection signal="pressed" from="RockFighters/StateMachine/Moraleja/Contenido/Instancia2/Button2" to="RockFighters/StateMachine/Moraleja/Contenido/Instancia2/Button2" method="_on_pressed" flags=18]
-[connection signal="pressed" from="RockFighters/StateMachine/btnVolver" to="RockFighters/StateMachine/btnVolver" method="_on_pressed"]
+[connection signal="pressed" from="RockFighters/StateMachine/Juego/Contenido/btnVolver" to="RockFighters/StateMachine/Juego/Contenido/btnVolver" method="_on_pressed"]
+[connection signal="EndOfGame" from="RockFighters/StateMachine/Moraleja/Contenido/Instancia1/Control/Conteiner/Button" to="RockFighters/StateMachine/Fin/Contenido/Panel/ButtonChangeScene2" method="_on_pressed"]
+[connection signal="pressed" from="RockFighters/StateMachine/Moraleja/Contenido/Instancia1/Control/Conteiner/Button" to="RockFighters/StateMachine/Moraleja/Contenido/Instancia1/Control/Conteiner/Button" method="_on_pressed" flags=18]
+[connection signal="EndOfGame" from="RockFighters/StateMachine/Moraleja/Contenido/Instancia2/Control/Conteiner/Button2" to="RockFighters/StateMachine/Fin/Contenido/Panel/ButtonChangeScene2" method="_on_pressed"]
+[connection signal="pressed" from="RockFighters/StateMachine/Moraleja/Contenido/Instancia2/Control/Conteiner/Button2" to="RockFighters/StateMachine/Moraleja/Contenido/Instancia2/Control/Conteiner/Button2" method="_on_pressed" flags=18]
+[connection signal="EndOfGame" from="RockFighters/StateMachine/Moraleja/Contenido/Instancia3/Control/Conteiner/Button2" to="RockFighters" method="Set_Complete"]
+[connection signal="pressed" from="RockFighters/StateMachine/Moraleja/Contenido/Instancia3/Control/Conteiner/Button2" to="RockFighters/StateMachine/Moraleja/Contenido/Instancia3/Control/Conteiner/Button2" method="_on_pressed" flags=18]
+
+[editable path="RockFighters/StateMachine/Juego/Contenido/Control/hinchada/Rock"]
+[editable path="RockFighters/StateMachine/Juego/Contenido/Control/hinchada/Rock4"]
+[editable path="RockFighters/StateMachine/Juego/Contenido/Control/hinchada/Rock2"]
+[editable path="RockFighters/StateMachine/Juego/Contenido/Control/hinchada/Rock7"]
+[editable path="RockFighters/StateMachine/Juego/Contenido/Control/hinchada/Rock3"]
+[editable path="RockFighters/StateMachine/Juego/Contenido/Control/hinchada/Rock6"]
+[editable path="RockFighters/StateMachine/Juego/Contenido/Control/hinchada/Rock5"]
+[editable path="RockFighters/StateMachine/Juego/Contenido/Control/hinchada/Rock9"]
+[editable path="RockFighters/StateMachine/Juego/Contenido/Control/hinchada/Rock10"]
+[editable path="RockFighters/StateMachine/Juego/Contenido/Control/hinchada/Rock11"]

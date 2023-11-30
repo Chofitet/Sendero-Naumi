@@ -6,6 +6,8 @@ func Play():
 
 func  PlayAnim(anim):
 	play(anim)
+	var a = anim
+	pass
 
 func Stop():
 	stop()
