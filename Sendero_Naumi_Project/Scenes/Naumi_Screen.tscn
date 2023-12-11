@@ -37,10 +37,22 @@ tracks/1/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Naumi:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
 
 [sub_resource type="Animation" id="Animation_y0cb1"]
 resource_name = "zzz"
-length = 1.9
+length = 2.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -48,7 +60,7 @@ tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8),
+"times": PackedFloat32Array(0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2, 2.1, 2.2, 2.3, 2.4),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18]
@@ -60,10 +72,22 @@ tracks/1/path = NodePath(".:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 1.9),
+"times": PackedFloat32Array(0.6, 2.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Naumi:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(0.405749, 2.46229, 1),
+"update": 0,
+"values": [0.0, -0.0872665, 0.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_q3luw"]
@@ -123,23 +147,24 @@ expand_mode = 1
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 1
-anchor_left = 0.504
-anchor_top = 0.604
-anchor_right = 0.504
-anchor_bottom = 0.604
-offset_left = 0.119995
-offset_top = -0.120056
-offset_right = 0.119995
-offset_bottom = -0.120056
+anchor_left = 0.497
+anchor_top = 0.723
+anchor_right = 0.497
+anchor_bottom = 0.723
+offset_left = 0.160004
+offset_top = 0.559998
+offset_right = 0.160004
+offset_bottom = 0.559998
 
 [node name="Naumi" type="Sprite2D" parent="Control"]
 scale = Vector2(0.737864, 0.737864)
 texture = ExtResource("1_m5bgf")
+offset = Vector2(0, -200)
 script = ExtResource("5_67c3k")
 
 [node name="ZZZ" type="Sprite2D" parent="Control"]
 visible = false
-position = Vector2(83, -250)
+position = Vector2(128, -367)
 scale = Vector2(0.866142, 0.866142)
 texture = ExtResource("5_pr1k1")
 hframes = 19

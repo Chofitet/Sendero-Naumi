@@ -32,13 +32,15 @@ func _ready():
 	get_node("ButtonChangeContinue").visible = false
 
 func _on_button_pressed():
-	PlayerVariables.lastState = "ZoneCompleteEvent"
+	minigameResourseFile = ResourceLoader.load(save_file_path + save_file_name)
 	minigameResourseFile.StateMinigames["ToLevelNaumi"] = false
 	save()
 	get_node("AnimationPlayer").stop()
-	anim.play("N0-N1_evo")
+	anim.play("tap_anim")
 	button.visible = false
 
 func inEndAnim():
 	get_node("ButtonChangeContinue").visible = true
 
+func NextAnimAfterTap():
+	anim.play("N0-N1_evo")

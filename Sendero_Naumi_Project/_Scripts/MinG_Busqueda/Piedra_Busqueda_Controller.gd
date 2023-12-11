@@ -34,8 +34,11 @@ func LookAnim():
 func NextAnim():
 	anim.play("rock_idle")
 
-func JumpAnim():
+func vuvuzelaAnim():
 	if(isnextAnim):
+		anim.play("anim_vuvuzela_up")
+
+func JumpAnim():
 		anim.play("rock_jump")
 
 func SetNextAnimBool(Bool):

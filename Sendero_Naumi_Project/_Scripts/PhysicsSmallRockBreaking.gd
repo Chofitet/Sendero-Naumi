@@ -21,3 +21,6 @@ func SpawnOnDeath():
 		p.linear_velocity = linear_velocity * 0.5
 	#get_tree().current_scene.call_deferred("add_child", breakingInstance)
 	queue_free()
+
+func UnFreeze():
+	freeze = false

@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://o12fb1rdrhqt"]
+[gd_scene load_steps=4 format=3 uid="uid://o12fb1rdrhqt"]
 
+[ext_resource type="Texture2D" uid="uid://nuybqhitpej1" path="res://Sprites/Mapa/fondo_mapa.png" id="1_5oo6n"]
 [ext_resource type="PackedScene" uid="uid://biluutecl1cej" path="res://Scenes/Experiments/skip_sceen.tscn" id="1_o0fg5"]
+[ext_resource type="Theme" uid="uid://bhum72inirq1q" path="res://Themes/Generic_UI.tres" id="2_gr1an"]
 
 [node name="AdventureBegins" type="Control"]
 layout_mode = 3
@@ -19,22 +21,42 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.65098, 0.784314, 1, 1)
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 40
-theme_override_constants/margin_top = 40
-theme_override_constants/margin_right = 40
-theme_override_constants/margin_bottom = 40
+texture = ExtResource("1_5oo6n")
 
-[node name="Label" type="Label" parent="MarginContainer"]
+[node name="Panel" type="Panel" parent="."]
 layout_mode = 2
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -320.0
+offset_top = -231.0
+offset_right = 320.0
+offset_bottom = 231.0
+theme = ExtResource("2_gr1an")
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -282.0
+offset_top = -113.0
+offset_right = 282.0
+offset_bottom = 113.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 80
+theme_override_font_sizes/font_size = 50
 text = "SUERTE EN TU AVENTURA"
 horizontal_alignment = 1
 vertical_alignment = 1

@@ -17,7 +17,8 @@ func StartTimer():
 
 func ShowButtons():
 	for btn in buttons:
-		btn.visible = true
+		if (btn != null):
+			btn.visible = true
 
 func check_pixels_rendered():
 	var total_pixels = 0

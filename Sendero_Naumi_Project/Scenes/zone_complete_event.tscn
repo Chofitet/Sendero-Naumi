@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://_Scripts/ZoneCompleteEvent.gd" id="3_f0n8u"]
 [ext_resource type="Theme" uid="uid://bhum72inirq1q" path="res://Themes/Generic_UI.tres" id="4_da2c4"]
 [ext_resource type="LabelSettings" uid="uid://b7f8w8wf071ek" path="res://Themes/Geología/LabelSettings_Busqueda.tres" id="5_n317a"]
-[ext_resource type="Theme" uid="uid://bokxu7jbpku04" path="res://Themes/Back_UI.tres" id="6_rb203"]
+[ext_resource type="Script" path="res://Scenes/GenericPanelController.gd" id="5_pobjl"]
 [ext_resource type="Script" path="res://_Scripts/ChangeScene.gd" id="7_g1gi8"]
 
 [sub_resource type="Animation" id="Animation_asulk"]
@@ -25,7 +25,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../btnVolver:visible")
+tracks/1/path = NodePath("Panel:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -53,14 +53,14 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../btnVolver:visible")
+tracks/1/path = NodePath("Panel:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 1.7),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false, true]
+"values": [true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_tmldh"]
@@ -112,6 +112,7 @@ libraries = {
 }
 
 [node name="Panel" type="Panel" parent="Zone"]
+visible = false
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -124,6 +125,7 @@ grow_horizontal = 2
 scale = Vector2(0.5, 0.5)
 pivot_offset = Vector2(545, 154)
 theme = ExtResource("4_da2c4")
+script = ExtResource("5_pobjl")
 
 [node name="Label" type="Label" parent="Zone/Panel"]
 layout_mode = 1
@@ -144,21 +146,23 @@ horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
-[node name="btnVolver" type="Button" parent="."]
-visible = false
+[node name="btnVolver" type="Button" parent="Zone/Panel"]
 layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -119.0
-offset_top = 25.0
-offset_right = -29.0
-offset_bottom = 115.0
-grow_horizontal = 0
-theme = ExtResource("6_rb203")
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -44.0
+offset_top = -90.0
+offset_right = 76.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("4_da2c4")
 script = ExtResource("7_g1gi8")
 NextScene = "Map_Screen"
 fade_time = 0.2
 smoothness = 0.1
 
-[connection signal="pressed" from="btnVolver" to="btnVolver" method="_on_pressed"]
+[connection signal="pressed" from="Zone/Panel/btnVolver" to="Zone/Panel/btnVolver" method="_on_pressed"]

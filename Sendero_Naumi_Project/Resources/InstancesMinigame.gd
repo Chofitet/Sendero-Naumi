@@ -8,3 +8,7 @@ func UpdateInstance(string):
 func RestartIntances():
 	for key in InstanceMinigames.keys():
 		InstanceMinigames[key] = 0
+
+func RestartOneInstance(text):
+	InstanceMinigames[text] = 0
+	var e = InstanceMinigames[text]
