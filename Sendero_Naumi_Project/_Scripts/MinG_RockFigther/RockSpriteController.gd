@@ -5,10 +5,12 @@ var shardEmitter
 var overlay1
 var overlay2
 var timer
+var btnvolver
 signal fight
 
 func _ready():
 	timer = get_node("Timer")
+	get_node("TimePassInstance").timeout.connect(TimeOutPassLevel)
 	get_node("TextureRect2/BigButton").pressed.connect(Fight)
 	timer.timeout.connect(finishAnim)
 	shardEmitter = get_node("Parts/Piedra/ShardEmitter")
@@ -16,8 +18,10 @@ func _ready():
 	anim.play("Rock_Idle")
 	overlay1 = $"../../../overlay1"
 	overlay2 = $"../../../overlay2"
+	btnvolver = $"../../../btnVolver"
 
 func Fight(): 
+	btnvolver.visible = false
 	overlay1.Anim()
 	overlay2.Anim()
 	anim.play("Rock_Punch")
@@ -43,3 +47,6 @@ func BlockAnim():
 
 func EnterUI():
 	get_node("AnimUI").play("EnterScene")
+
+func TimeOutPassLevel():
+	btnvolver.visible = true

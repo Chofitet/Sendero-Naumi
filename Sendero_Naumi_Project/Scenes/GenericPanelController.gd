@@ -13,12 +13,12 @@ func _ready():
 	
 func StartTimer():
 	timer = get_tree().create_timer(timeToBtn)
-	timer.timeout.connect(ShowButtons)
+	timer.timeout.connect(ShowButtons.bind(true))
 
-func ShowButtons():
+func ShowButtons(x):
 	for btn in buttons:
 		if (btn != null):
-			btn.visible = true
+			btn.visible = x
 
 func check_pixels_rendered():
 	var total_pixels = 0
@@ -27,3 +27,6 @@ func check_pixels_rendered():
 	
 	if total_pixels >= 100:  
 		pixels_rendered.emit()
+
+func SetVisibility(x):
+	visible = x

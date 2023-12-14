@@ -3,6 +3,7 @@ extends AnimationPlayer
 
 func Play():
 	play(animation)
+	pass
 
 func  PlayAnim(anim):
 	play(anim)

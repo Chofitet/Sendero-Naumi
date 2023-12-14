@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://b00ok4g2p2vql"]
+[gd_scene load_steps=30 format=3 uid="uid://b00ok4g2p2vql"]
 
 [ext_resource type="Texture2D" uid="uid://bom2snkxot1ji" path="res://Sprites/Intro/loop-caida-tira.png" id="1_rx1cn"]
 [ext_resource type="Texture2D" uid="uid://hf5y4ic16cqj" path="res://Sprites/Intro/intro - background.jpg" id="1_xm8pn"]
@@ -11,7 +11,9 @@
 [ext_resource type="PackedScene" uid="uid://btnejcy6d18fh" path="res://Scenes/Experiments/anim_map.tscn" id="7_aobht"]
 [ext_resource type="Texture2D" uid="uid://chqivoetkgkoj" path="res://Sprites/UI/circulo.png" id="10_fkwv8"]
 [ext_resource type="Texture2D" uid="uid://dhx6ness36h5f" path="res://Sprites/logoChicoCirculo.png" id="11_88s5v"]
+[ext_resource type="Texture2D" uid="uid://dh3x8jnt6s57c" path="res://Sprites/UI/hand.png" id="12_dd5og"]
 [ext_resource type="PackedScene" uid="uid://djhg7jvxtexyl" path="res://Scenes/UI_Scenes/btn_Change_Scene.tscn" id="12_n3dw3"]
+[ext_resource type="Script" path="res://_Scripts/ControllerhandUI.gd" id="12_qle25"]
 
 [sub_resource type="Animation" id="Animation_fleps"]
 length = 0.001
@@ -277,7 +279,7 @@ tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 2, 4.4, 6.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"transitions": PackedFloat32Array(1, 1.3, 0.3, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
@@ -302,8 +304,8 @@ tracks/2/path = NodePath("../Label:self_modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0.3, 1, 4.4, 5.2),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0.3, 2, 4.4, 6.4),
+"transitions": PackedFloat32Array(1, 1.3, 0.3, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
@@ -339,6 +341,87 @@ tracks/1/keys = {
 _data = {
 "Fade_out_logo": SubResource("Animation_eyv2g"),
 "RESET": SubResource("Animation_7m1eg")
+}
+
+[sub_resource type="Animation" id="Animation_mlg4c"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ru52o"]
+resource_name = "idle_anim"
+length = 1.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.9),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -30)]
+}
+
+[sub_resource type="Animation" id="Animation_hfmdg"]
+resource_name = "start_anim"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(0.31864, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(1, 1)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"IdleAnim"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_t02fm"]
+_data = {
+"RESET": SubResource("Animation_mlg4c"),
+"idle_anim": SubResource("Animation_ru52o"),
+"start_anim": SubResource("Animation_hfmdg")
 }
 
 [node name="Mapa_Fall_Intro" type="Control"]
@@ -451,7 +534,7 @@ animation = "map_enter"
 
 [node name="LOGO" type="Sprite2D" parent="mapArriveSpot"]
 clip_children = 2
-position = Vector2(17, -607)
+position = Vector2(0, -607)
 scale = Vector2(0.37, 0.37)
 texture = ExtResource("10_fkwv8")
 
@@ -460,7 +543,7 @@ scale = Vector2(0.989189, 0.989189)
 texture = ExtResource("10_fkwv8")
 
 [node name="LogoChicoCirculo" type="Sprite2D" parent="mapArriveSpot/LOGO/LOGO"]
-scale = Vector2(0.622881, 0.622881)
+scale = Vector2(0.625962, 0.629346)
 texture = ExtResource("11_88s5v")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="mapArriveSpot/LOGO"]
@@ -471,20 +554,42 @@ libraries = {
 
 [node name="Label" type="Label" parent="mapArriveSpot"]
 layout_mode = 1
-anchors_preset = -1
+anchors_preset = 8
 anchor_left = 0.5
-anchor_top = 1.185
+anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 1.185
-offset_left = -349.0
-offset_top = -460.0
-offset_right = 390.0
-offset_bottom = -252.0
+anchor_bottom = 0.5
+offset_left = -238.0
+offset_top = -438.0
+offset_right = 238.0
+offset_bottom = -304.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_colors/font_color = Color(0.0351563, 0.09375, 0.09375, 1)
-theme_override_font_sizes/font_size = 80
+theme_override_font_sizes/font_size = 35
 text = "PRESENTA"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="handUI" type="Control" parent="mapArriveSpot"]
+layout_mode = 1
+anchors_preset = 0
+offset_top = -150.0
+offset_bottom = -150.0
+script = ExtResource("12_qle25")
+
+[node name="hand" type="Sprite2D" parent="mapArriveSpot/handUI"]
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("12_dd5og")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="mapArriveSpot/handUI/hand"]
+libraries = {
+"": SubResource("AnimationLibrary_t02fm")
+}
+
+[node name="Timer" type="Timer" parent="mapArriveSpot/handUI"]
+wait_time = 2.0
+one_shot = true
 
 [node name="ButtonChangeScene" parent="." instance=ExtResource("12_n3dw3")]
 layout_mode = 1
@@ -503,4 +608,6 @@ text = "Skip"
 NextScene = "Map_Screen"
 
 [connection signal="pressed" from="Map_fall_sprite/Button" to="Map_fall_sprite/AnimationPlayer" method="Play"]
+[connection signal="endAnim" from="mapArriveSpot/AnimMap" to="mapArriveSpot/handUI" method="SetVisibility" binds= [true]]
 [connection signal="trigger" from="mapArriveSpot/AnimMap" to="mapArriveSpot/Mapa/AnimationPlayer" method="Play"]
+[connection signal="trigger" from="mapArriveSpot/AnimMap" to="mapArriveSpot/handUI" method="SetVisibility" binds= [false]]

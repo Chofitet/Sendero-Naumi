@@ -7,6 +7,7 @@ var timerLoopLook
 var isWinner
 var isLose
 var isFlip
+var btnvolver
 var animFlip = "Anim_rigth"
 @export var backgroundpivot : Control
 @export var particle1 : CPUParticles2D
@@ -15,6 +16,7 @@ var background
 @export var SetVisibility := []
 
 func _ready():
+	btnvolver = $"../../../btnVolver"
 	anim = get_node("AnimController")
 	timerLoopLook = get_node("LoopLookAnim")
 	timerLoopLook.timeout.connect(LookAnim)
@@ -36,10 +38,11 @@ func NextAnim():
 
 func vuvuzelaAnim():
 	if(isnextAnim):
+		btnvolver.visible = false
 		anim.play("anim_vuvuzela_up")
 
 func JumpAnim():
-		anim.play("rock_jump")
+	anim.play("rock_jump")
 
 func SetNextAnimBool(Bool):
 	for v in SetVisibility:
@@ -103,6 +106,7 @@ func checkWinnerCondition():
 		moveToMask()
 
 func resetAllAnimation():
+	btnvolver.visible = true
 	particle1.visible = false
 	particle2.visible = false
 	particle1.emitting = false

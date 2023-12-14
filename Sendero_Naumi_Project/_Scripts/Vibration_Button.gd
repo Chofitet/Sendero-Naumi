@@ -1,4 +1,4 @@
-extends Button
+extends Node
 @export var vibrate : float
 
 

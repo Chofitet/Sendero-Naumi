@@ -9,7 +9,6 @@ func _ready():
 	initPosition = position
 
 func TranstaleToCenterScreen(animation):
-	get_parent().get_node("plutonicaSpot").visible = false
 	visible = true
 	z_index = 2
 	overlay.visible = true

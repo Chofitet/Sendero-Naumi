@@ -11,7 +11,6 @@ func _ready():
 
 func TranstaleToCenterScreen(animation):
 	visible = true
-	get_parent().get_node("VulcanicaSpot").visible = false
 	z_index = 2
 	overlay.visible = true
 	var tween = get_tree().create_tween()

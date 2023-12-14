@@ -15,7 +15,6 @@ func StartFall():
 
 func FinishFall():
 	get_node("Area2D").call_deferred("SetParent")
-	get_parent().get_node("sedimentariaSpot").visible = false
 	TranstaleToCenterScreen(2)
 
 

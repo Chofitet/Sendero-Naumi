@@ -30,7 +30,6 @@ func Heat1():
 	z_index = 2
 
 func TranstaleToCenterScreen():
-	get_parent().get_node("metamorficaSpot").visible = false
 	visible = true
 	overlay.visible = true
 	var tween = get_tree().create_tween()
