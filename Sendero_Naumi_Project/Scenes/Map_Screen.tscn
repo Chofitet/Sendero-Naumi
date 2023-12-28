@@ -1,11 +1,31 @@
-[gd_scene load_steps=5 format=3 uid="uid://ck4m8k46bmha1"]
+[gd_scene load_steps=24 format=3 uid="uid://ck4m8k46bmha1"]
 
-[ext_resource type="Script" path="res://_Scripts/Cam2D_Zone.gd" id="3_7kous"]
-[ext_resource type="PackedScene" uid="uid://2c3jur6qchgx" path="res://Scenes/zone.tscn" id="4_4kmdf"]
+[ext_resource type="Script" path="res://_Scripts/AdjustSeparationWithScreenSize.gd" id="2_1v6rf"]
+[ext_resource type="Script" path="res://Scenes/Zone.gd" id="2_4co6y"]
+[ext_resource type="Script" path="res://_Scripts/ScrollController.gd" id="2_es768"]
+[ext_resource type="Texture2D" uid="uid://05mdqsdsbuqm" path="res://Sprites/Mapa/geologia_mapa.png" id="4_jbstj"]
+[ext_resource type="Texture2D" uid="uid://gn0tmol3agtp" path="res://Sprites/Mapa/ciencias_mapa.png" id="5_isoyh"]
+[ext_resource type="Script" path="res://_Scripts/StateMachine/Button_Change_State.gd" id="5_oybyc"]
+[ext_resource type="Texture2D" uid="uid://3sby7wb2uo0e" path="res://Sprites/Mapa/ambiente_mapa.png" id="6_rl10m"]
+[ext_resource type="PackedScene" uid="uid://bc062m81xnnpx" path="res://Scenes/UI_Scenes/btn_mini_game.tscn" id="6_wq3mc"]
 [ext_resource type="PackedScene" uid="uid://djhg7jvxtexyl" path="res://Scenes/UI_Scenes/btn_Change_Scene.tscn" id="7_1v7i5"]
-[ext_resource type="Texture2D" uid="uid://co7pox44vqa08" path="res://Sprites/Naumi/Naumi_0.png" id="8_ssef4"]
+[ext_resource type="StyleBox" uid="uid://b3tjes2hcm3wx" path="res://Resources/UI_Resources/StyleBoxTrasparent.tres" id="7_7sb65"]
+[ext_resource type="Texture2D" uid="uid://l00ov7i7v281" path="res://Sprites/Mapa/eras_geologicas_mapa.png" id="7_ej8rg"]
+[ext_resource type="Texture2D" uid="uid://bpcc2ljyhkxfl" path="res://Sprites/Mapa/pin check - mapa.png" id="9_t7uji"]
+[ext_resource type="Script" path="res://_Scripts/AdjustMarginWithScreenSize.gd" id="11_6dn11"]
+[ext_resource type="Script" path="res://_Scripts/StateMachine/State_Machine.gd" id="12_2rk75"]
+[ext_resource type="Script" path="res://_Scripts/StateMachine/NoZone.gd" id="13_tgu8h"]
+[ext_resource type="Texture2D" uid="uid://lvhlr8303o1m" path="res://Sprites/Mapa/megafauna_mapa.png" id="14_jw7qj"]
+[ext_resource type="Script" path="res://_Scripts/StateMachine/MegafaunaZone.gd" id="15_y7a6y"]
+[ext_resource type="Script" path="res://_Scripts/StateMachine/GeologiaZone.gd" id="16_at6pn"]
+[ext_resource type="Script" path="res://_Scripts/AstronomiaZone.gd" id="16_gw1a5"]
+[ext_resource type="Texture2D" uid="uid://qg7pdjwdyxwo" path="res://Sprites/Mapa/titulo minimapa Geologia.png" id="18_hxpry"]
+[ext_resource type="Texture2D" uid="uid://btclh5i3dqhfm" path="res://Sprites/UI/Icono Naumi.png" id="21_cjjb8"]
+[ext_resource type="Texture2D" uid="uid://nuybqhitpej1" path="res://Sprites/Mapa/fondo_mapa.png" id="21_ti06q"]
+[ext_resource type="Theme" uid="uid://bokxu7jbpku04" path="res://Themes/Back_UI.tres" id="23_wkxyp"]
 
 [node name="Map_Screen" type="Control"]
+z_index = 1
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -18,43 +38,675 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -400.0
-offset_top = -711.0
-offset_right = 400.0
-offset_bottom = 711.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.745098, 0.796078, 1, 1)
+color = Color(0.65098, 0.784314, 1, 1)
 
-[node name="ButtonChangeScene" parent="." instance=ExtResource("7_1v7i5")]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_top = 0.0
-anchor_right = 1.0
-anchor_bottom = 0.0
-offset_left = -203.0
-offset_top = 60.0
-offset_right = -75.0
-offset_bottom = 183.0
-grow_horizontal = 0
-grow_vertical = 1
-text = ""
-flat = true
-NextScene = "Naumi_Screen"
-
-[node name="TextureRect" type="TextureRect" parent="ButtonChangeScene"]
+[node name="TextureRect2" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("8_ssef4")
+texture = ExtResource("21_ti06q")
+expand_mode = 1
+stretch_mode = 1
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(360, 640)
-script = ExtResource("3_7kous")
-ZoomVector = Vector2(3.2, 3.2)
+[node name="Anchor" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 
-[node name="Zone1" parent="." instance=ExtResource("4_4kmdf")]
+[node name="TimerScroll" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+clip_contents = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+follow_focus = true
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
+script = ExtResource("2_es768")
+limit = 5.0
+anchors = [NodePath("VBoxContainer/Piso1"), NodePath("VBoxContainer/Piso2"), NodePath("VBoxContainer/Piso3/Piso3")]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_constants/separation = 1280
+script = ExtResource("2_1v6rf")
+
+[node name="Piso3" type="MarginContainer" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/margin_top = 640
+script = ExtResource("11_6dn11")
+margin = "margin_top"
+
+[node name="Piso3" type="Control" parent="ScrollContainer/VBoxContainer/Piso3"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_neighbor_bottom = NodePath("../../Piso2")
+mouse_filter = 1
+
+[node name="Zona_Cuaterario" type="TextureRect" parent="ScrollContainer/VBoxContainer/Piso3/Piso3"]
+layout_mode = 1
+anchors_preset = -1
+offset_left = -338.0
+offset_top = -42.0
+offset_right = 651.0
+offset_bottom = 1755.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.35, 0.35)
+expand_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="ScrollContainer/VBoxContainer/Piso3/Piso3/Zona_Cuaterario"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = -0.034
+anchor_right = 1.046
+anchor_bottom = 1.0
+offset_top = 61.093
+offset_right = -45.4939
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_isoyh")
+
+[node name="Ambientes" type="TextureRect" parent="ScrollContainer/VBoxContainer/Piso3/Piso3"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.29
+anchor_top = 0.205
+anchor_right = 0.29
+anchor_bottom = 0.205
+offset_left = -339.0
+offset_top = -656.0
+offset_right = 720.0
+offset_bottom = 1160.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.33, 0.33)
+expand_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="ScrollContainer/VBoxContainer/Piso3/Piso3/Ambientes"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = -0.029
+anchor_right = 1.0
+anchor_bottom = 1.029
+offset_top = 52.664
+offset_bottom = -52.662
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_rl10m")
+
+[node name="Button_Change_State" type="Button" parent="ScrollContainer/VBoxContainer/Piso3/Piso3/Ambientes/TextureRect" node_paths=PackedStringArray("state_to_change", "state_machine")]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/focus = ExtResource("7_7sb65")
+flat = true
+script = ExtResource("5_oybyc")
+state_to_change = NodePath("../../../../../../../StateMachine/AstronomiaZone")
+state_machine = NodePath("../../../../../../../StateMachine")
+
+[node name="CompleteState" type="ColorRect" parent="ScrollContainer/VBoxContainer/Piso3/Piso3/Ambientes"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)
+
+[node name="TextureRect" type="TextureRect" parent="ScrollContainer/VBoxContainer/Piso3/Piso3/Ambientes/CompleteState"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -196.0
+offset_bottom = 204.0
+grow_horizontal = 0
+texture = ExtResource("9_t7uji")
+expand_mode = 1
+
+[node name="Eras_Geologicas" type="TextureRect" parent="ScrollContainer/VBoxContainer/Piso3/Piso3"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.586
+anchor_top = 0.5
+anchor_right = 0.586
+anchor_bottom = 0.5
+offset_left = 20.0001
+offset_top = -283.0
+offset_right = 1073.0
+offset_bottom = 1447.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.33, 0.33)
+expand_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="ScrollContainer/VBoxContainer/Piso3/Piso3/Eras_Geologicas"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = -0.055
+anchor_right = 1.013
+anchor_bottom = 1.055
+offset_left = 6.10352e-05
+offset_top = 95.15
+offset_right = -13.689
+offset_bottom = -95.1501
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_ej8rg")
+
+[node name="Button_Change_State" type="Button" parent="ScrollContainer/VBoxContainer/Piso3/Piso3/Eras_Geologicas/TextureRect" node_paths=PackedStringArray("state_to_change", "state_machine")]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.112
+anchor_top = 0.1
+anchor_right = 0.888
+anchor_bottom = 0.9
+offset_left = 0.0399933
+offset_right = -0.0401001
+offset_bottom = -0.00012207
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/focus = ExtResource("7_7sb65")
+flat = true
+script = ExtResource("5_oybyc")
+state_to_change = NodePath("../../../../../../../StateMachine/GeologiaZone")
+state_machine = NodePath("../../../../../../../StateMachine")
+
+[node name="CompleteState" type="ColorRect" parent="ScrollContainer/VBoxContainer/Piso3/Piso3/Eras_Geologicas"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)
+
+[node name="TextureRect" type="TextureRect" parent="ScrollContainer/VBoxContainer/Piso3/Piso3/Eras_Geologicas/CompleteState"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -398.0
+offset_bottom = 421.0
+grow_horizontal = 0
+texture = ExtResource("9_t7uji")
+expand_mode = 1
+
+[node name="Piso2" type="Control" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+focus_neighbor_top = NodePath("../Piso3/Piso3")
+focus_neighbor_bottom = NodePath("../Piso1/Piso1")
+mouse_filter = 1
+
+[node name="Zona_Paleontología" type="TextureRect" parent="ScrollContainer/VBoxContainer/Piso2"]
+layout_mode = 1
+anchors_preset = -1
+offset_left = -338.0
+offset_top = -42.0
+offset_right = 651.0
+offset_bottom = 1755.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.35, 0.35)
+expand_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="ScrollContainer/VBoxContainer/Piso2/Zona_Paleontología"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = -0.034
+anchor_right = 1.046
+anchor_bottom = 1.0
+offset_top = 61.093
+offset_right = -45.4939
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_isoyh")
+
+[node name="AstronomiaZone" type="TextureRect" parent="ScrollContainer/VBoxContainer/Piso2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.29
+anchor_top = 0.205
+anchor_right = 0.29
+anchor_bottom = 0.205
+offset_left = -339.0
+offset_top = -640.0
+offset_right = 720.0
+offset_bottom = 1176.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.33, 0.33)
+expand_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="ScrollContainer/VBoxContainer/Piso2/AstronomiaZone"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = -0.029
+anchor_right = 1.0
+anchor_bottom = 1.029
+offset_top = 52.664
+offset_bottom = -52.662
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_ej8rg")
+
+[node name="Button_Change_State" type="Button" parent="ScrollContainer/VBoxContainer/Piso2/AstronomiaZone/TextureRect" node_paths=PackedStringArray("state_to_change", "state_machine")]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/focus = ExtResource("7_7sb65")
+flat = true
+script = ExtResource("5_oybyc")
+state_to_change = NodePath("../../../../../../StateMachine/AstronomiaZone")
+state_machine = NodePath("../../../../../../StateMachine")
+
+[node name="CompleteState" type="ColorRect" parent="ScrollContainer/VBoxContainer/Piso2/AstronomiaZone"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)
+
+[node name="TextureRect" type="TextureRect" parent="ScrollContainer/VBoxContainer/Piso2/AstronomiaZone/CompleteState"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -196.0
+offset_bottom = 204.0
+grow_horizontal = 0
+texture = ExtResource("9_t7uji")
+expand_mode = 1
+
+[node name="GeologiaZone" type="TextureRect" parent="ScrollContainer/VBoxContainer/Piso2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.586
+anchor_top = 0.5
+anchor_right = 0.586
+anchor_bottom = 0.5
+offset_left = 20.0001
+offset_top = -283.0
+offset_right = 1073.0
+offset_bottom = 1447.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.33, 0.33)
+expand_mode = 1
+script = ExtResource("2_4co6y")
+
+[node name="TextureRect" type="TextureRect" parent="ScrollContainer/VBoxContainer/Piso2/GeologiaZone"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.493
+anchor_top = -0.626
+anchor_right = 1.013
+anchor_bottom = 1.597
+offset_left = 519.129
+offset_top = 1082.98
+offset_right = -13.689
+offset_bottom = -1032.81
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_jbstj")
+
+[node name="Button_Change_State" type="Button" parent="ScrollContainer/VBoxContainer/Piso2/GeologiaZone/TextureRect" node_paths=PackedStringArray("state_to_change", "state_machine")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.112
+anchor_top = 0.1
+anchor_right = 0.888
+anchor_bottom = 0.9
+offset_left = 0.0399933
+offset_right = -0.0401001
+offset_bottom = -0.00012207
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/focus = ExtResource("7_7sb65")
+flat = true
+script = ExtResource("5_oybyc")
+state_to_change = NodePath("../../../../../../StateMachine/GeologiaZone")
+state_machine = NodePath("../../../../../../StateMachine")
+
+[node name="CompleteState" type="ColorRect" parent="ScrollContainer/VBoxContainer/Piso2/GeologiaZone"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 1476.0
+offset_right = 0.00012207
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)
+
+[node name="TextureRect" type="TextureRect" parent="ScrollContainer/VBoxContainer/Piso2/GeologiaZone/CompleteState"]
+visible = false
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -398.0
+offset_bottom = 421.0
+grow_horizontal = 0
+texture = ExtResource("9_t7uji")
+expand_mode = 1
+
+[node name="Piso1" type="MarginContainer" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_constants/margin_bottom = 640
+script = ExtResource("11_6dn11")
+margin = "margin_bottom"
+
+[node name="Piso1" type="Control" parent="ScrollContainer/VBoxContainer/Piso1"]
+layout_mode = 2
+size_flags_horizontal = 4
+focus_neighbor_bottom = NodePath("../../Piso2")
+mouse_filter = 1
+
+[node name="MegafaunaZone" type="TextureRect" parent="ScrollContainer/VBoxContainer/Piso1/Piso1"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.586
+anchor_top = 0.5
+anchor_right = 0.586
+anchor_bottom = 0.5
+offset_left = -245.0
+offset_top = -415.0
+offset_right = 1296.0
+offset_bottom = 2117.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.33, 0.33)
+expand_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="ScrollContainer/VBoxContainer/Piso1/Piso1/MegafaunaZone"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.019
+anchor_right = 1.0
+anchor_bottom = 1.001
+offset_left = 20.0071
+offset_bottom = -1.7301
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("14_jw7qj")
+
+[node name="Button_Change_State" type="Button" parent="ScrollContainer/VBoxContainer/Piso1/Piso1/MegafaunaZone/TextureRect" node_paths=PackedStringArray("state_to_change", "state_machine")]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.112
+anchor_top = 0.1
+anchor_right = 0.888
+anchor_bottom = 0.9
+offset_left = 0.0399933
+offset_right = -0.0401001
+offset_bottom = -0.00012207
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/focus = ExtResource("7_7sb65")
+flat = true
+script = ExtResource("5_oybyc")
+state_to_change = NodePath("../../../../../../../StateMachine/MegafaunaZone")
+state_machine = NodePath("../../../../../../../StateMachine")
+
+[node name="CompleteState" type="ColorRect" parent="ScrollContainer/VBoxContainer/Piso1/Piso1/MegafaunaZone"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)
+
+[node name="TextureRect" type="TextureRect" parent="ScrollContainer/VBoxContainer/Piso1/Piso1/MegafaunaZone/CompleteState"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -398.0
+offset_bottom = 421.0
+grow_horizontal = 0
+texture = ExtResource("9_t7uji")
+expand_mode = 1
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+visible = false
+z_index = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(720, 1280)
+render_target_update_mode = 0
+
+[node name="ButtonBack" type="TextureRect" parent="SubViewportContainer/SubViewport"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("21_ti06q")
+stretch_mode = 1
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("12_2rk75")
+initial_state = NodePath("NoZone")
+
+[node name="AstronomiaZone" type="Node" parent="StateMachine" node_paths=PackedStringArray("ButtonBack")]
+script = ExtResource("16_gw1a5")
+Minigames = [NodePath(""), NodePath(""), NodePath("")]
+ButtonBack = NodePath("../../SubViewportContainer")
+
+[node name="GeologiaZone" type="Node" parent="StateMachine" node_paths=PackedStringArray("ButtonBack")]
+script = ExtResource("16_at6pn")
+Minigames = [NodePath("ZoomingZone/SubViewport/ZoomingZone/RockFighters"), NodePath("ZoomingZone/SubViewport/ZoomingZone/Transformando"), NodePath("ZoomingZone/SubViewport/ZoomingZone/Busqueda")]
+ButtonBack = NodePath("../../SubViewportContainer")
+
+[node name="ZoomingZone" type="SubViewportContainer" parent="StateMachine/GeologiaZone"]
+visible = false
+z_index = 2
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="StateMachine/GeologiaZone/ZoomingZone"]
+transparent_bg = true
+handle_input_locally = false
+canvas_item_default_texture_filter = 0
+size = Vector2i(720, 1280)
+render_target_update_mode = 0
+
+[node name="ZoomingZone" type="TextureRect" parent="StateMachine/GeologiaZone/ZoomingZone/SubViewport"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -284.905
+offset_top = -410.085
+offset_right = 807.095
+offset_bottom = 1509.92
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.535, 0.535)
+size_flags_vertical = 4
+texture = ExtResource("4_jbstj")
+
+[node name="RockFighters" parent="StateMachine/GeologiaZone/ZoomingZone/SubViewport/ZoomingZone" instance=ExtResource("6_wq3mc")]
+position = Vector2(299.524, 278.73)
+
+[node name="ButtonChangeScene" parent="StateMachine/GeologiaZone/ZoomingZone/SubViewport/ZoomingZone/RockFighters" index="0"]
+NextScene = "RockFighters"
+fade_time = 1.0
+texture = "dirt"
+is_inverted = true
+color = Color(0.560784, 0.321569, 0.211765, 1)
+
+[node name="Transformando" parent="StateMachine/GeologiaZone/ZoomingZone/SubViewport/ZoomingZone" instance=ExtResource("6_wq3mc")]
+position = Vector2(514.845, 1064.33)
+
+[node name="ButtonChangeScene" parent="StateMachine/GeologiaZone/ZoomingZone/SubViewport/ZoomingZone/Transformando" index="0"]
+NextScene = "Transformando"
+fade_time = 1.0
+texture = "dirt"
+is_inverted = true
+color = Color(0.560784, 0.321569, 0.211765, 1)
+
+[node name="Busqueda" parent="StateMachine/GeologiaZone/ZoomingZone/SubViewport/ZoomingZone" instance=ExtResource("6_wq3mc")]
+position = Vector2(617.4, 56.46)
+
+[node name="ButtonChangeScene" parent="StateMachine/GeologiaZone/ZoomingZone/SubViewport/ZoomingZone/Busqueda" index="0"]
+NextScene = "Busqueda"
+fade_time = 1.0
+texture = "dirt"
+is_inverted = true
+color = Color(0.560784, 0.321569, 0.211765, 1)
+
+[node name="Título" type="Sprite2D" parent="StateMachine/GeologiaZone/ZoomingZone/SubViewport/ZoomingZone"]
+position = Vector2(477.009, -119.85)
+scale = Vector2(1.86916, 1.86916)
+texture = ExtResource("18_hxpry")
+
+[node name="NoZone" type="Node" parent="StateMachine" node_paths=PackedStringArray("ButtonBack", "ButtonNaumi")]
+script = ExtResource("13_tgu8h")
+ButtonBack = NodePath("../../SubViewportContainer")
+ButtonNaumi = NodePath("../ButtonNaumi")
+
+[node name="Button" type="Button" parent="StateMachine/NoZone"]
+z_index = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 27.0
+offset_top = -108.0
+offset_right = 247.0
+offset_bottom = -24.0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 40
+text = "Restart"
+
+[node name="MegafaunaZone" type="Node" parent="StateMachine" node_paths=PackedStringArray("ButtonBack")]
+script = ExtResource("15_y7a6y")
+Minigames = [NodePath(""), NodePath(""), NodePath("")]
+ButtonBack = NodePath("../../SubViewportContainer")
+
+[node name="ButtonNaumi" type="TextureRect" parent="StateMachine"]
+visible = false
+z_index = 2
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -123.0
+offset_top = 26.0
+offset_right = -32.0
+offset_bottom = 117.0
+grow_horizontal = 0
+texture = ExtResource("21_cjjb8")
+expand_mode = 1
+
+[node name="ButtonChangeScene" parent="StateMachine/ButtonNaumi" instance=ExtResource("7_1v7i5")]
+z_index = 3
+layout_mode = 1
+anchors_preset = 15
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_vertical = 2
+text = ""
+flat = true
+NextScene = "Naumi_Screen"
+
+[node name="ButtonBack" type="Button" parent="StateMachine" node_paths=PackedStringArray("state_to_change", "state_machine")]
+z_index = 2
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -122.0
+offset_top = 27.0
+offset_right = -32.0
+offset_bottom = 117.0
+grow_horizontal = 0
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme = ExtResource("23_wkxyp")
+theme_override_font_sizes/font_size = 30
+script = ExtResource("5_oybyc")
+state_to_change = NodePath("../NoZone")
+state_machine = NodePath("..")
+
+[connection signal="pressed" from="ScrollContainer/VBoxContainer/Piso3/Piso3/Ambientes/TextureRect/Button_Change_State" to="ScrollContainer/VBoxContainer/Piso3/Piso3/Ambientes/TextureRect/Button_Change_State" method="_on_pressed"]
+[connection signal="pressed" from="ScrollContainer/VBoxContainer/Piso3/Piso3/Eras_Geologicas/TextureRect/Button_Change_State" to="ScrollContainer/VBoxContainer/Piso3/Piso3/Eras_Geologicas/TextureRect/Button_Change_State" method="_on_pressed"]
+[connection signal="pressed" from="ScrollContainer/VBoxContainer/Piso2/AstronomiaZone/TextureRect/Button_Change_State" to="ScrollContainer/VBoxContainer/Piso2/AstronomiaZone/TextureRect/Button_Change_State" method="_on_pressed"]
+[connection signal="pressed" from="ScrollContainer/VBoxContainer/Piso2/GeologiaZone/TextureRect/Button_Change_State" to="ScrollContainer/VBoxContainer/Piso2/GeologiaZone/TextureRect/Button_Change_State" method="_on_pressed"]
+[connection signal="pressed" from="ScrollContainer/VBoxContainer/Piso1/Piso1/MegafaunaZone/TextureRect/Button_Change_State" to="ScrollContainer/VBoxContainer/Piso1/Piso1/MegafaunaZone/TextureRect/Button_Change_State" method="_on_pressed"]
+[connection signal="backZone" from="StateMachine/GeologiaZone" to="ScrollContainer/VBoxContainer/Piso2/GeologiaZone" method="back_Zone"]
+[connection signal="inZone" from="StateMachine/GeologiaZone" to="ScrollContainer/VBoxContainer/Piso2/GeologiaZone" method="in_Zone"]
+[connection signal="tree_entered" from="StateMachine/GeologiaZone/ZoomingZone/SubViewport/ZoomingZone/RockFighters" to="StateMachine/GeologiaZone/ZoomingZone/SubViewport/ZoomingZone/RockFighters" method="_on_tree_entered" flags=18]
+[connection signal="tree_entered" from="StateMachine/GeologiaZone/ZoomingZone/SubViewport/ZoomingZone/Transformando" to="StateMachine/GeologiaZone/ZoomingZone/SubViewport/ZoomingZone/Transformando" method="_on_tree_entered" flags=18]
+[connection signal="tree_entered" from="StateMachine/GeologiaZone/ZoomingZone/SubViewport/ZoomingZone/Busqueda" to="StateMachine/GeologiaZone/ZoomingZone/SubViewport/ZoomingZone/Busqueda" method="_on_tree_entered" flags=18]
+[connection signal="pressed" from="StateMachine/NoZone/Button" to="StateMachine/NoZone" method="_on_button_pressed"]
+[connection signal="pressed" from="StateMachine/ButtonBack" to="StateMachine/ButtonBack" method="_on_pressed"]
+
+[editable path="StateMachine/GeologiaZone/ZoomingZone/SubViewport/ZoomingZone/RockFighters"]
+[editable path="StateMachine/GeologiaZone/ZoomingZone/SubViewport/ZoomingZone/Transformando"]
+[editable path="StateMachine/GeologiaZone/ZoomingZone/SubViewport/ZoomingZone/Busqueda"]

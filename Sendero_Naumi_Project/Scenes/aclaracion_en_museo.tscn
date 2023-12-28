@@ -1,0 +1,48 @@
+[gd_scene load_steps=3 format=3 uid="uid://n1l6rp24qq43"]
+
+[ext_resource type="Script" path="res://_Scripts/Permissions.gd" id="1_1ifmf"]
+[ext_resource type="PackedScene" uid="uid://biluutecl1cej" path="res://Scenes/Experiments/skip_sceen.tscn" id="1_kvjrp"]
+
+[node name="Aclaracion_En_Museo" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1ifmf")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.424
+anchor_right = 0.5
+anchor_bottom = 0.424
+offset_left = -315.0
+offset_top = -173.72
+offset_right = 315.0
+offset_bottom = 174.28
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 25
+text = "Sendero Naumi está diseñado para ser jugado en \"Museo Dr. Arturo Umberto Illia\"
+
+Disfrutalo durante tu visita"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="SkipSceen" parent="." instance=ExtResource("1_kvjrp")]
+wait_time = 5.0
+autostart = true
+NextScene = "mapa_fall_intro"

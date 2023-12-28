@@ -1,0 +1,3209 @@
+[gd_scene load_steps=72 format=3 uid="uid://lv8sdofmjhf3"]
+
+[ext_resource type="Script" path="res://_Scripts/Minigame_Save_Controller.gd" id="1_f0fiw"]
+[ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/StateMachineMinigames.gd" id="2_12384"]
+[ext_resource type="Texture2D" uid="uid://dbv6rcnmmb8db" path="res://Sprites/ZonaGeología/fondo_geografia.png" id="2_xcj5x"]
+[ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/ConsignaState.gd" id="3_cy1k7"]
+[ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/Button_Change_StateMinigame.gd" id="4_0gq0b"]
+[ext_resource type="Texture2D" uid="uid://c5p3itai046fy" path="res://Sprites/UI/boton inicio fighter_1.png" id="4_d7p6d"]
+[ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/JuegoState.gd" id="5_ks8gw"]
+[ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/MoralejaState.gd" id="6_43bfo"]
+[ext_resource type="Script" path="res://_Scripts/MinG_RockFigther/RockSpriteController.gd" id="6_647wk"]
+[ext_resource type="Texture2D" uid="uid://b5qoetxgjuq1s" path="res://Sprites/ZonaGeología/Piedras/cuarzo_dureza.png" id="6_pa2as"]
+[ext_resource type="Texture2D" uid="uid://dhxyesghnscff" path="res://Sprites/ZonaGeología/titulo-marco.png" id="7_exbri"]
+[ext_resource type="PackedScene" uid="uid://djhg7jvxtexyl" path="res://Scenes/UI_Scenes/btn_Change_Scene.tscn" id="7_itn4t"]
+[ext_resource type="Texture2D" uid="uid://dconeno5qr3px" path="res://Sprites/ZonaGeología/peleador1-marco.png" id="7_t1u6c"]
+[ext_resource type="Texture2D" uid="uid://c6qavsooil6af" path="res://Sprites/ZonaGeología/golpe_tira .png" id="7_tdkmm"]
+[ext_resource type="Texture2D" uid="uid://blye8p4vg13px" path="res://Sprites/Fondo_Ladrillo.png" id="8_e6ros"]
+[ext_resource type="PackedScene" uid="uid://byauyjvexvbuc" path="res://Scenes/Experiments/ShardEmitter.tscn" id="8_urdon"]
+[ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/Timer_State_Minigame.gd" id="9_cj3ki"]
+[ext_resource type="Texture2D" uid="uid://blsk5fxd3ydja" path="res://Sprites/ZonaGeología/Nombre_Fighter.png" id="11_44jl1"]
+[ext_resource type="Texture2D" uid="uid://cs7w5oevvpe4m" path="res://Sprites/ZonaGeología/Piedras/topacio_dureza.png" id="12_i8jde"]
+[ext_resource type="Texture2D" uid="uid://cncanwfoqtd2x" path="res://Sprites/ZonaGeología/anim_busqueda_tira.png" id="13_a7og2"]
+[ext_resource type="Texture2D" uid="uid://b7poe0ethot51" path="res://Sprites/ZonaGeología/Piedras/flurita_dureza.png" id="13_imic4"]
+[ext_resource type="Script" path="res://_Scripts/ChangeScene.gd" id="13_wbcp0"]
+[ext_resource type="Texture2D" uid="uid://cnjb8mxdursmc" path="res://Sprites/ZonaGeología/cartel corazon.png" id="14_wtv3b"]
+[ext_resource type="Texture2D" uid="uid://b01q38uc638rp" path="res://Sprites/ZonaGeología/Piedras/apatita_dureza.png" id="15_d4cfw"]
+[ext_resource type="Theme" uid="uid://cqe37y1kc0id5" path="res://Themes/Geología/RockFighters.tres" id="15_g1ws0"]
+[ext_resource type="Texture2D" uid="uid://dqlibyc57d0m8" path="res://Sprites/ZonaGeología/Piedras/diamante_dureza.png" id="16_t0483"]
+[ext_resource type="Texture2D" uid="uid://bbxmqnw28hvfq" path="res://Sprites/ZonaGeología/Piedras/yeso_dureza.png" id="17_cmsbk"]
+[ext_resource type="Script" path="res://_Scripts/PlayAnimation.gd" id="17_r375b"]
+[ext_resource type="StyleBox" uid="uid://b3tjes2hcm3wx" path="res://Resources/UI_Resources/StyleBoxTrasparent.tres" id="19_ao7ck"]
+[ext_resource type="Texture2D" uid="uid://chqivoetkgkoj" path="res://Sprites/UI/circulo.png" id="19_hel6a"]
+[ext_resource type="Script" path="res://_Scripts/MinG_RockFigther/OverlayFight.gd" id="20_lgsna"]
+[ext_resource type="Texture2D" uid="uid://bkcb0e40vi8iv" path="res://Sprites/ZonaGeología/BANNER FIGHTER.png" id="21_1l5kd"]
+[ext_resource type="Texture2D" uid="uid://bvshybq4bdhsf" path="res://Sprites/ZonaGeología/VS.png" id="22_5c02m"]
+[ext_resource type="PackedScene" uid="uid://cnxkgvr1r0dny" path="res://Scenes/Zona_Geología/rock_hincha.tscn" id="24_vtm00"]
+[ext_resource type="Texture2D" uid="uid://5bjovkq3aou5" path="res://Sprites/ZonaGeología/Piedras/halita - busqueda.png" id="25_lqy04"]
+[ext_resource type="Texture2D" uid="uid://dxtycvon1bw4p" path="res://Sprites/ZonaGeología/Piedras/zoisita - busqueda.png" id="26_0j7qb"]
+[ext_resource type="Texture2D" uid="uid://dx08onlcntyty" path="res://Sprites/ZonaGeología/Piedras/espato - busqueda.png" id="27_0jli2"]
+[ext_resource type="Theme" uid="uid://bokxu7jbpku04" path="res://Themes/Back_UI.tres" id="29_l5p5d"]
+[ext_resource type="Theme" uid="uid://bhum72inirq1q" path="res://Themes/Generic_UI.tres" id="33_7ompi"]
+[ext_resource type="Texture2D" uid="uid://cj3p1ogux66b0" path="res://Sprites/ZonaGeología/Cinturon.png" id="35_jgvc6"]
+[ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/FinState.gd" id="36_ljxo4"]
+[ext_resource type="Script" path="res://Scenes/GenericPanelController.gd" id="39_sasef"]
+[ext_resource type="Texture2D" uid="uid://dqx8i8skk58mn" path="res://Sprites/ZonaGeología/dureza-festejo-pareja1.png" id="43_ftm1s"]
+[ext_resource type="Texture2D" uid="uid://bweceq8ikkir5" path="res://Sprites/ZonaGeología/dureza-festejo-pareja2.png" id="44_il8rq"]
+[ext_resource type="Texture2D" uid="uid://clicyobmomilh" path="res://Sprites/ZonaGeología/dureza-festejo-pareja3.png" id="45_gestc"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_01r1e"]
+texture = ExtResource("4_d7p6d")
+
+[sub_resource type="Animation" id="Animation_afscj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_3vps2"]
+resource_name = "anim"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(0.4, 0.4),
+"update": 1,
+"values": [-0.0349066, 0.0349066]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_djbuf"]
+_data = {
+"RESET": SubResource("Animation_afscj"),
+"anim": SubResource("Animation_3vps2")
+}
+
+[sub_resource type="Gradient" id="Gradient_axb3y"]
+offsets = PackedFloat32Array(0.118943, 1)
+colors = PackedColorArray(0.992157, 0.870588, 0.647059, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_mjxnh"]
+gradient = SubResource("Gradient_axb3y")
+width = 1000
+
+[sub_resource type="Animation" id="Animation_hl4o1"]
+resource_name = "Intro_Reflectores"
+length = 11.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("1Luz:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("2Luz:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(4),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("3Luz:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(7),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = false
+tracks/3/path = NodePath("Estrella:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(9.5, 10.7),
+"transitions": PackedFloat32Array(2.14355, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(5, 5)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = false
+tracks/4/path = NodePath("Estrella:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(9.5, 10.7),
+"transitions": PackedFloat32Array(1.62451, 1),
+"update": 0,
+"values": [0.0, 3.14159]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../Button:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 10.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_flp5j"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("1Luz:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("2Luz:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("3Luz:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Estrella:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Estrella:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../Button:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vfwyg"]
+_data = {
+"Intro_Reflectores": SubResource("Animation_hl4o1"),
+"RESET": SubResource("Animation_flp5j")
+}
+
+[sub_resource type="Theme" id="Theme_ebkcc"]
+
+[sub_resource type="Animation" id="Animation_asrmn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../BrazoDer:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [16]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../PiernaIzq:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [30]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../PiernaDer:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [44]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Piedra:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(167, 177)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../Piedra:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.253073]
+}
+
+[sub_resource type="Animation" id="Animation_6y1ib"]
+resource_name = "Rock_Block"
+length = 2.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.5, 1.6, 1.7, 2, 2.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 0, 1, 0, 8, 9, 10, 11, 12, 11]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../BrazoDer:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.5, 1.6, 1.7, 2, 2.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [14, 15, 14, 15, 14, 22, 23, 24, 25, 26, 25]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../PiernaIzq:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.5, 1.6, 1.7, 2, 2.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [28, 29, 28, 29, 28, 36, 37, 38, 39, 40, 39]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../PiernaDer:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.5, 1.6, 1.7, 2, 2.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [42, 43, 42, 43, 42, 50, 51, 52, 53, 54, 53]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Piedra:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.5, 1.6, 1.7, 2, 2.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(163.342, 169.537), Vector2(163.342, 157.237), Vector2(163.342, 169.537), Vector2(163.342, 157.237), Vector2(163.342, 169.537), Vector2(165.815, 149.325), Vector2(158.725, 168.775), Vector2(158.725, 168.775), Vector2(163.342, 169.537), Vector2(165.826, 170.04), Vector2(163.342, 169.537)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../Piedra:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8, 1, 1.6, 1.7, 2, 2.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0.0, 0.0, 0.0, 0.253073, 0.253073, 0.169297, 0.197222, 0.169297]
+}
+
+[sub_resource type="Animation" id="Animation_82n62"]
+resource_name = "Rock_Idle"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../BrazoDer:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [14, 15]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../PiernaIzq:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [28, 29]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../PiernaDer:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [42, 43]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Piedra:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2(167, 177), Vector2(167, 169.17)]
+}
+
+[sub_resource type="Animation" id="Animation_t7te4"]
+resource_name = "Rock_Punch"
+length = 2.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.1, 1.9, 2, 2.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 0, 1, 0, 2, 3, 4, 5, 6]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../BrazoDer:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.1, 1.9, 2, 2.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [14, 15, 14, 15, 14, 16, 17, 18, 19, 20]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../PiernaIzq:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.1, 1.9, 2, 2.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [28, 29, 28, 29, 28, 30, 31, 32, 33, 34]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../PiernaDer:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.1, 1.9, 2, 2.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [42, 43, 42, 43, 42, 44, 45, 46, 47, 48]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Piedra:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.1, 1.9, 2, 2.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(166.522, 173.238), Vector2(166.522, 161.853), Vector2(166.522, 173.238), Vector2(166.522, 161.853), Vector2(166.522, 173.238), Vector2(217.2, 142.985), Vector2(238.34, 190.625), Vector2(198.487, 169.707), Vector2(162.125, 176.437), Vector2(162.813, 177.321)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../Piedra:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8, 1, 1.1, 1.9, 2, 2.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0.0593412, 0.0593412, 0.0593412, 0.336849, 0.0, 0.404916, -0.118682, -0.0506145]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bkw8r"]
+_data = {
+"RESET": SubResource("Animation_asrmn"),
+"Rock_Block": SubResource("Animation_6y1ib"),
+"Rock_Idle": SubResource("Animation_82n62"),
+"Rock_Punch": SubResource("Animation_t7te4")
+}
+
+[sub_resource type="Animation" id="Animation_171wr"]
+resource_name = "EnterScene"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1.2, 1.6, 2.2, 2.3, 2.4),
+"transitions": PackedFloat32Array(1, 1, 2.29739, 1, 1),
+"update": 0,
+"values": [Vector2(800, 0), Vector2(800, 0), Vector2(0, 0), Vector2(22.735, 0), Vector2(33, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TextureRect2:size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.2, 1.6, 2.1, 2.2, 2.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(366, 553), Vector2(366, 553), Vector2(469.11, 553), Vector2(340, 553), Vector2(366, 553)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Parts:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.8, 1.2, 1.8, 2),
+"transitions": PackedFloat32Array(1, 1, 2.29, 1),
+"update": 0,
+"values": [Vector2(800, 190), Vector2(800, 190), Vector2(12.676, 190), Vector2(19.845, 190)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Parts:skew")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1.2, 1.8, 1.9, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.1309, 0.0, -0.0959931, 0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Parts:skew")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(1.2, 1.8, 1.9, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.1309, 0.0, -0.0959931, 0.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = false
+tracks/5/path = NodePath("TextureRect2/button:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(1.2, 2.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_jkuln"]
+resource_name = "ExitScene"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.7),
+"transitions": PackedFloat32Array(1, 2.14355, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 0), Vector2(800, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TextureRect2/button:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_6je2i"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TextureRect2:size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(322, 553)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Parts:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(800, 190)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Parts:skew")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.0959931]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Parts:skew")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.0959931]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_oly2m"]
+_data = {
+"EnterScene": SubResource("Animation_171wr"),
+"ExitScene": SubResource("Animation_jkuln"),
+"RESET": SubResource("Animation_6je2i")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_h74ab"]
+font_size = 40
+
+[sub_resource type="Animation" id="Animation_dtboa"]
+resource_name = "EnterAnim"
+length = 2.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 3.36358, 1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(1e-05, 1e-05), Vector2(1, 1), Vector2(1.055, 1.055), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:pivot_offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(361.355, 59.885)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../VS:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2.1, 2.4),
+"transitions": PackedFloat32Array(1, 1.93187, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 0), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_knxec"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../VS:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nyamy"]
+_data = {
+"EnterAnim": SubResource("Animation_dtboa"),
+"RESET": SubResource("Animation_knxec")
+}
+
+[sub_resource type="Animation" id="Animation_8fb7d"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../BrazoIzq:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [15]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../BrazoDer:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../PiernaDer:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [43]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../PiernaIzq:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [29]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(375, 466)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_4sv41"]
+resource_name = "Rock_Winner"
+length = 0.9
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../BrazoIzq:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3, 0.4, 0.6, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [14, 15, 23, 22, 22, 23, 15]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../BrazoDer:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3, 0.4, 0.6, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 9, 8, 8, 9, 1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../PiernaDer:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3, 0.4, 0.6, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [42, 43, 51, 50, 50, 51, 43]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../PiernaIzq:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3, 0.4, 0.6, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [28, 29, 37, 36, 36, 37, 29]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3, 0.4, 0.6, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(375, 466), Vector2(375, 457), Vector2(362.515, 457), Vector2(372.12, 425.065), Vector2(372.12, 425.065), Vector2(362.515, 457), Vector2(375, 457)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0.0, 0.0, 0.20944, 0.20944, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mjj78"]
+_data = {
+"RESET": SubResource("Animation_8fb7d"),
+"Rock_Winner": SubResource("Animation_4sv41")
+}
+
+[node name="RockFighters" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RockFighters" type="Node" parent="."]
+script = ExtResource("1_f0fiw")
+
+[node name="Control" type="Control" parent="RockFighters"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="ColorRect" parent="RockFighters/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="StateMachine" type="Node" parent="RockFighters" node_paths=PackedStringArray("initial_state")]
+script = ExtResource("2_12384")
+initial_state = NodePath("Consigna")
+
+[node name="Consigna" type="Node" parent="RockFighters/StateMachine"]
+script = ExtResource("3_cy1k7")
+Consignas = ["Hey esto es una consigna"]
+
+[node name="Contenido" type="Control" parent="RockFighters/StateMachine/Consigna"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LblConsigna" type="Label" parent="RockFighters/StateMachine/Consigna/Contenido"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -270.0
+offset_top = -444.0
+offset_right = 294.0
+offset_bottom = 445.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "Consigna genérica Consigna genérica Consigna genérica"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="RockFighters/StateMachine/Consigna/Contenido"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0431373, 0.00784314, 0, 1)
+
+[node name="Button" type="Button" parent="RockFighters/StateMachine/Consigna/Contenido" node_paths=PackedStringArray("state_to_change", "state_machine")]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.761
+anchor_right = 0.5
+anchor_bottom = 0.761
+offset_left = -161.0
+offset_top = -82.0801
+offset_right = 161.0
+offset_bottom = 82.9199
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.025, 1.025)
+pivot_offset = Vector2(161, 82)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxTexture_01r1e")
+theme_override_styles/hover = SubResource("StyleBoxTexture_01r1e")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_01r1e")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_01r1e")
+theme_override_styles/focus = SubResource("StyleBoxTexture_01r1e")
+text = "¡VAMOS!
+"
+script = ExtResource("4_0gq0b")
+state_to_change = NodePath("../../../Juego")
+state_machine = NodePath("../../..")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="RockFighters/StateMachine/Consigna/Contenido/Button"]
+autoplay = "anim"
+speed_scale = 0.5
+libraries = {
+"": SubResource("AnimationLibrary_djbuf")
+}
+
+[node name="Timer" type="Timer" parent="RockFighters/StateMachine/Consigna/Contenido"]
+wait_time = 10.3
+
+[node name="Control" type="Control" parent="RockFighters/StateMachine/Consigna/Contenido"]
+layout_mode = 1
+anchor_left = 0.5
+anchor_top = 0.587
+anchor_right = 0.5
+anchor_bottom = 0.587
+offset_top = -0.359985
+offset_bottom = -0.359985
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="3Luz" type="Node2D" parent="RockFighters/StateMachine/Consigna/Contenido/Control"]
+visible = false
+position = Vector2(-15, 0)
+
+[node name="Polygon2D" type="Polygon2D" parent="RockFighters/StateMachine/Consigna/Contenido/Control/3Luz"]
+position = Vector2(0.0142641, -1.68695)
+rotation = 1.57925
+scale = Vector2(1.31381, 1)
+texture = SubResource("GradientTexture1D_mjxnh")
+polygon = PackedVector2Array(2.24341, -326.031, 5.37579, 280.965, -942.722, 509.989, -944.54, 371.48)
+uv = PackedVector2Array(-34, -2, -34, 362, -942, 184, -938, 46)
+
+[node name="Label" type="Label" parent="RockFighters/StateMachine/Consigna/Contenido/Control/3Luz"]
+offset_left = -237.0
+offset_top = -149.0
+offset_right = 288.0
+offset_bottom = -75.0
+theme_override_font_sizes/font_size = 25
+text = "SÓLO HAY UNA FORMA DE COMPROBARLO"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="2Luz" type="Node2D" parent="RockFighters/StateMachine/Consigna/Contenido/Control"]
+visible = false
+position = Vector2(-15, 0)
+
+[node name="Polygon2D" type="Polygon2D" parent="RockFighters/StateMachine/Consigna/Contenido/Control/2Luz"]
+position = Vector2(0.0136654, -1.61615)
+rotation = 1.57925
+scale = Vector2(1.30577, 1)
+texture = SubResource("GradientTexture1D_mjxnh")
+polygon = PackedVector2Array(5.28558, -321.056, 4.35895, 278.973, -940.981, -387.611, -944.811, -565.032)
+uv = PackedVector2Array(-34, -2, -34, 362, -942, 184, -938, 46)
+
+[node name="Label" type="Label" parent="RockFighters/StateMachine/Consigna/Contenido/Control/2Luz"]
+offset_left = -114.0
+offset_top = -249.0
+offset_right = 287.0
+offset_bottom = -175.0
+theme_override_font_sizes/font_size = 25
+text = "SON MÁS DUROS QUE OTROS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="1Luz" type="Node2D" parent="RockFighters/StateMachine/Consigna/Contenido/Control"]
+visible = false
+position = Vector2(-15, 0)
+
+[node name="Polygon2D" type="Polygon2D" parent="RockFighters/StateMachine/Consigna/Contenido/Control/1Luz"]
+position = Vector2(0.0222563, -2.63577)
+rotation = 1.57925
+scale = Vector2(1.3147, 1)
+texture = SubResource("GradientTexture1D_mjxnh")
+polygon = PackedVector2Array(2.2688, -323.031, 8.37573, 280.939, -937.222, 95.9279, -939.167, -134.064)
+uv = PackedVector2Array(-34, -2, -34, 362, -942, 184, -938, 46)
+
+[node name="Label" type="Label" parent="RockFighters/StateMachine/Consigna/Contenido/Control/1Luz"]
+offset_left = -175.0
+offset_top = -355.0
+offset_right = 226.0
+offset_bottom = -281.0
+theme_override_font_sizes/font_size = 25
+text = "DICEN QUE ALGUNOS MINERALES"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="RockFighters/StateMachine/Consigna/Contenido/Control/1Luz"]
+self_modulate = Color(0.27451, 0.27451, 0.27451, 1)
+position = Vector2(21, 1.84912)
+scale = Vector2(0.604, 0.127698)
+texture = ExtResource("19_hel6a")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="RockFighters/StateMachine/Consigna/Contenido/Control"]
+autoplay = "Intro_Reflectores"
+libraries = {
+"": SubResource("AnimationLibrary_vfwyg")
+}
+
+[node name="Estrella" type="Polygon2D" parent="RockFighters/StateMachine/Consigna/Contenido/Control"]
+scale = Vector2(1e-05, 1e-05)
+color = Color(0.992157, 0.870588, 0.647059, 1)
+polygon = PackedVector2Array(-1, -344, -98, -142, -323, -108, -155, 49, -192, 271, 8, 162, 209, 266, 164, 42, 325, -113, 100, -146)
+
+[node name="Juego" type="Node" parent="RockFighters/StateMachine" node_paths=PackedStringArray("NextState", "StateMachine")]
+script = ExtResource("5_ks8gw")
+NextState = NodePath(".")
+StateMachine = NodePath("..")
+InstanciasMinijuego = [NodePath("Contenido/Instancia1"), NodePath("Contenido/Instancia2"), NodePath("Contenido/Instancia3")]
+
+[node name="Contenido" type="Control" parent="RockFighters/StateMachine/Juego"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="RockFighters/StateMachine/Juego/Contenido"]
+layout_mode = 1
+anchor_left = 0.5
+anchor_top = 0.587
+anchor_right = 0.5
+anchor_bottom = 0.587
+offset_left = -7.0
+offset_top = 83.64
+offset_right = -7.0
+offset_bottom = 83.64
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="RockFighters/StateMachine/Juego/Contenido/Control"]
+position = Vector2(5, -178)
+scale = Vector2(0.928177, 0.928177)
+texture = ExtResource("8_e6ros")
+
+[node name="ColorRect" type="ColorRect" parent="RockFighters/StateMachine/Juego/Contenido/Control"]
+clip_children = 2
+layout_mode = 0
+offset_left = -488.0
+offset_top = -61.0
+offset_right = 546.0
+offset_bottom = 928.0
+color = Color(0.144531, 0.117188, 0.0546875, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="RockFighters/StateMachine/Juego/Contenido/Control/ColorRect"]
+self_modulate = Color(0.804688, 0.742188, 0.621094, 1)
+position = Vector2(493, 61)
+scale = Vector2(0.636, 0.126)
+texture = ExtResource("19_hel6a")
+
+[node name="3Luz" type="Node2D" parent="RockFighters/StateMachine/Juego/Contenido/Control"]
+
+[node name="Polygon2D" type="Polygon2D" parent="RockFighters/StateMachine/Juego/Contenido/Control/3Luz"]
+position = Vector2(0.0142641, -1.68695)
+rotation = 1.57925
+scale = Vector2(1.31381, 1)
+texture = SubResource("GradientTexture1D_mjxnh")
+polygon = PackedVector2Array(2.24341, -326.031, 5.37579, 310.913, -942.722, 509.989, -944.54, 371.48)
+uv = PackedVector2Array(-34, -2, -34, 362, -942, 184, -938, 46)
+
+[node name="2Luz" type="Node2D" parent="RockFighters/StateMachine/Juego/Contenido/Control"]
+
+[node name="Polygon2D" type="Polygon2D" parent="RockFighters/StateMachine/Juego/Contenido/Control/2Luz"]
+position = Vector2(0.0136654, -1.61615)
+rotation = 1.57925
+scale = Vector2(1.30577, 1)
+texture = SubResource("GradientTexture1D_mjxnh")
+polygon = PackedVector2Array(5.28558, -321.056, 4.35895, 313.879, -940.981, -387.611, -944.811, -565.032)
+uv = PackedVector2Array(-34, -2, -34, 362, -942, 184, -938, 46)
+
+[node name="1Luz" type="Node2D" parent="RockFighters/StateMachine/Juego/Contenido/Control"]
+
+[node name="Polygon2D" type="Polygon2D" parent="RockFighters/StateMachine/Juego/Contenido/Control/1Luz"]
+position = Vector2(0.0222563, -2.63577)
+rotation = 1.57925
+scale = Vector2(1.3147, 1)
+texture = SubResource("GradientTexture1D_mjxnh")
+polygon = PackedVector2Array(2.2688, -323.031, 8.37573, 311.879, -937.222, 95.9279, -939.167, -134.064)
+uv = PackedVector2Array(-34, -2, -34, 362, -942, 184, -938, 46)
+
+[node name="hinchada" type="Node2D" parent="RockFighters/StateMachine/Juego/Contenido/Control"]
+position = Vector2(-11, 119)
+
+[node name="Rock" parent="RockFighters/StateMachine/Juego/Contenido/Control/hinchada" instance=ExtResource("24_vtm00")]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-567, 298)
+rotation = 0.251327
+_texture = ExtResource("25_lqy04")
+accesorio = ExtResource("11_44jl1")
+
+[node name="Gorri" parent="RockFighters/StateMachine/Juego/Contenido/Control/hinchada/Rock" index="1"]
+position = Vector2(307.5, -366.25)
+scale = Vector2(0.736068, 0.588781)
+texture = ExtResource("11_44jl1")
+
+[node name="Rock4" parent="RockFighters/StateMachine/Juego/Contenido/Control/hinchada" instance=ExtResource("24_vtm00")]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-472, 475)
+_texture = ExtResource("27_0jli2")
+
+[node name="ExtraRock" parent="RockFighters/StateMachine/Juego/Contenido/Control/hinchada/Rock4" index="2"]
+visible = false
+
+[node name="Rock12" parent="RockFighters/StateMachine/Juego/Contenido/Control/hinchada" instance=ExtResource("24_vtm00")]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(192, 385)
+rotation = 3.14159
+scale = Vector2(0.8, -0.8)
+_texture = ExtResource("26_0j7qb")
+accesorio = ExtResource("11_44jl1")
+
+[node name="Gorri" parent="RockFighters/StateMachine/Juego/Contenido/Control/hinchada/Rock12" index="1"]
+position = Vector2(297.499, -356.251)
+texture = ExtResource("11_44jl1")
+
+[node name="ExtraRock" parent="RockFighters/StateMachine/Juego/Contenido/Control/hinchada/Rock12" index="2"]
+visible = false
+
+[node name="Rock13" parent="RockFighters/StateMachine/Juego/Contenido/Control/hinchada" instance=ExtResource("24_vtm00")]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-35, 415)
+rotation = 2.9456
+scale = Vector2(-0.8, -0.8)
+_texture = ExtResource("25_lqy04")
+accesorio = ExtResource("11_44jl1")
+
+[node name="Gorri" parent="RockFighters/StateMachine/Juego/Contenido/Control/hinchada/Rock13" index="1"]
+position = Vector2(297.499, -356.251)
+texture = ExtResource("11_44jl1")
+
+[node name="ExtraRock" parent="RockFighters/StateMachine/Juego/Contenido/Control/hinchada/Rock13" index="2"]
+visible = false
+
+[node name="Rock7" parent="RockFighters/StateMachine/Juego/Contenido/Control/hinchada" instance=ExtResource("24_vtm00")]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(263, 517)
+rotation = 3.14159
+scale = Vector2(0.8, -0.8)
+_texture = ExtResource("26_0j7qb")
+
+[node name="ExtraRock" parent="RockFighters/StateMachine/Juego/Contenido/Control/hinchada/Rock7" index="2"]
+visible = false
+
+[node name="Rock8" parent="RockFighters/StateMachine/Juego/Contenido/Control/hinchada" instance=ExtResource("24_vtm00")]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(98, 523)
+_texture = ExtResource("26_0j7qb")
+
+[node name="Rock3" parent="RockFighters/StateMachine/Juego/Contenido/Control/hinchada" instance=ExtResource("24_vtm00")]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(564, 344)
+rotation = -0.113446
+scale = Vector2(-0.8, 0.8)
+_texture = ExtResource("27_0jli2")
+accesorio = ExtResource("14_wtv3b")
+
+[node name="Gorri" parent="RockFighters/StateMachine/Juego/Contenido/Control/hinchada/Rock3" index="1"]
+position = Vector2(304.437, -255.263)
+scale = Vector2(1.63246, 1.63246)
+texture = ExtResource("14_wtv3b")
+
+[node name="Rock6" parent="RockFighters/StateMachine/Juego/Contenido/Control/hinchada" instance=ExtResource("24_vtm00")]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(0.999969, 586)
+rotation = 3.14159
+scale = Vector2(0.8, -0.8)
+_texture = ExtResource("27_0jli2")
+
+[node name="ExtraRock" parent="RockFighters/StateMachine/Juego/Contenido/Control/hinchada/Rock6" index="2"]
+visible = false
+
+[node name="Rock5" parent="RockFighters/StateMachine/Juego/Contenido/Control/hinchada" instance=ExtResource("24_vtm00")]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(444, 418)
+rotation = 2.82452
+scale = Vector2(0.8, -0.8)
+_texture = ExtResource("25_lqy04")
+
+[node name="ExtraRock" parent="RockFighters/StateMachine/Juego/Contenido/Control/hinchada/Rock5" index="2"]
+visible = false
+
+[node name="Rock9" parent="RockFighters/StateMachine/Juego/Contenido/Control/hinchada" instance=ExtResource("24_vtm00")]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-439, 708)
+_texture = ExtResource("25_lqy04")
+
+[node name="ExtraRock" parent="RockFighters/StateMachine/Juego/Contenido/Control/hinchada/Rock9" index="2"]
+visible = false
+
+[node name="Rock10" parent="RockFighters/StateMachine/Juego/Contenido/Control/hinchada" instance=ExtResource("24_vtm00")]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-97, 814)
+rotation = -0.317074
+_texture = ExtResource("27_0jli2")
+
+[node name="ExtraRock" parent="RockFighters/StateMachine/Juego/Contenido/Control/hinchada/Rock10" index="2"]
+visible = false
+
+[node name="Rock11" parent="RockFighters/StateMachine/Juego/Contenido/Control/hinchada" instance=ExtResource("24_vtm00")]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(560, 698)
+rotation = 2.82452
+scale = Vector2(0.8, -0.8)
+_texture = ExtResource("25_lqy04")
+
+[node name="ExtraRock" parent="RockFighters/StateMachine/Juego/Contenido/Control/hinchada/Rock11" index="2"]
+visible = false
+
+[node name="Sprite2D" type="Sprite2D" parent="RockFighters/StateMachine/Juego/Contenido/Control/hinchada"]
+position = Vector2(-70, 196)
+rotation = -0.775274
+scale = Vector2(0.284, 0.284)
+texture = ExtResource("13_a7og2")
+hframes = 14
+vframes = 7
+frame = 43
+
+[node name="Sprite2D4" type="Sprite2D" parent="RockFighters/StateMachine/Juego/Contenido/Control/hinchada"]
+position = Vector2(169, 175)
+rotation = 0.447981
+scale = Vector2(0.284, 0.284)
+texture = ExtResource("13_a7og2")
+hframes = 14
+vframes = 7
+frame = 43
+
+[node name="Sprite2D2" type="Sprite2D" parent="RockFighters/StateMachine/Juego/Contenido/Control/hinchada"]
+position = Vector2(362, 135)
+scale = Vector2(0.284, 0.284)
+texture = ExtResource("13_a7og2")
+hframes = 14
+vframes = 7
+frame = 43
+
+[node name="Sprite2D3" type="Sprite2D" parent="RockFighters/StateMachine/Juego/Contenido/Control/hinchada"]
+position = Vector2(-345, 147)
+scale = Vector2(0.284, 0.284)
+texture = ExtResource("13_a7og2")
+hframes = 14
+vframes = 7
+frame = 43
+
+[node name="ColorRect2" type="ColorRect" parent="RockFighters/StateMachine/Juego/Contenido/Control"]
+layout_mode = 0
+offset_left = -511.0
+offset_top = 444.0
+offset_right = 540.0
+offset_bottom = 978.0
+color = Color(0, 0, 0, 1)
+
+[node name="Instancia1" type="Control" parent="RockFighters/StateMachine/Juego/Contenido"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="RockFighters/StateMachine/Juego/Contenido/Instancia1"]
+layout_mode = 1
+anchor_top = 0.169
+anchor_right = 1.0
+anchor_bottom = 0.896
+offset_top = -0.320023
+offset_bottom = 0.119995
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_ebkcc")
+
+[node name="Button" type="Button" parent="RockFighters/StateMachine/Juego/Contenido/Instancia1/Control" node_paths=PackedStringArray("state_to_change", "state_machine")]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -161.0
+offset_top = 21.0
+offset_right = 161.0
+offset_bottom = 134.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Complete"
+script = ExtResource("4_0gq0b")
+state_to_change = NodePath("../../../../../Moraleja")
+state_machine = NodePath("../../../../..")
+isEndOfGame = true
+
+[node name="PiedraLuchador2" type="Control" parent="RockFighters/StateMachine/Juego/Contenido/Instancia1/Control"]
+layout_mode = 1
+anchor_left = 0.503
+anchor_top = 0.634
+anchor_right = 0.503
+anchor_bottom = 0.634
+offset_left = -0.160004
+offset_top = -486.887
+offset_right = 352.84
+offset_bottom = 329.113
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(-1, 1)
+script = ExtResource("6_647wk")
+isWinner = true
+
+[node name="TextureRect2" type="TextureRect" parent="RockFighters/StateMachine/Juego/Contenido/Instancia1/Control/PiedraLuchador2"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 322.0
+offset_bottom = 553.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_t1u6c")
+expand_mode = 1
+
+[node name="Name" type="Label" parent="RockFighters/StateMachine/Juego/Contenido/Instancia1/Control/PiedraLuchador2/TextureRect2"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.091
+anchor_right = 0.5
+anchor_bottom = 0.091
+offset_left = 159.0
+offset_top = -33.323
+offset_right = 476.0
+offset_bottom = 27.677
+scale = Vector2(-1, 1)
+theme_override_font_sizes/font_size = 40
+text = "Sr. Cuarzo IV"
+horizontal_alignment = 1
+
+[node name="button" type="Button" parent="RockFighters/StateMachine/Juego/Contenido/Instancia1/Control/PiedraLuchador2/TextureRect2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.477
+anchor_top = 0.184
+anchor_right = 0.477
+anchor_bottom = 0.184
+offset_left = 181.513
+offset_top = -38.472
+offset_right = 509.513
+offset_bottom = 123.528
+grow_horizontal = 2
+grow_vertical = 0
+rotation = 0.238739
+scale = Vector2(-1, 1)
+theme = ExtResource("15_g1ws0")
+text = "MISS
+CUARZO"
+
+[node name="BigButton" type="Button" parent="RockFighters/StateMachine/Juego/Contenido/Instancia1/Control/PiedraLuchador2/TextureRect2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/focus = ExtResource("19_ao7ck")
+flat = true
+
+[node name="Parts" type="Node2D" parent="RockFighters/StateMachine/Juego/Contenido/Instancia1/Control/PiedraLuchador2"]
+position = Vector2(800, 190)
+skew = -0.0959931
+
+[node name="BrazoDer" type="Sprite2D" parent="RockFighters/StateMachine/Juego/Contenido/Instancia1/Control/PiedraLuchador2/Parts"]
+position = Vector2(160, 158)
+scale = Vector2(0.719844, 0.719844)
+texture = ExtResource("7_tdkmm")
+hframes = 14
+vframes = 5
+frame = 16
+
+[node name="PiernaDer" type="Sprite2D" parent="RockFighters/StateMachine/Juego/Contenido/Instancia1/Control/PiedraLuchador2/Parts"]
+position = Vector2(172, 114)
+scale = Vector2(0.81323, 0.81323)
+texture = ExtResource("7_tdkmm")
+hframes = 14
+vframes = 5
+frame = 44
+
+[node name="Piedra" type="Sprite2D" parent="RockFighters/StateMachine/Juego/Contenido/Instancia1/Control/PiedraLuchador2/Parts"]
+position = Vector2(167, 177)
+rotation = 0.253073
+scale = Vector2(0.638783, 0.638783)
+texture = ExtResource("6_pa2as")
+
+[node name="ShardEmitter" parent="RockFighters/StateMachine/Juego/Contenido/Instancia1/Control/PiedraLuchador2/Parts/Piedra" instance=ExtResource("8_urdon")]
+threshhold = 50.0
+
+[node name="PiernaIzq" type="Sprite2D" parent="RockFighters/StateMachine/Juego/Contenido/Instancia1/Control/PiedraLuchador2/Parts"]
+position = Vector2(159, 120)
+scale = Vector2(0.81323, 0.81323)
+texture = ExtResource("7_tdkmm")
+hframes = 14
+vframes = 5
+frame = 30
+
+[node name="BrazoIzq" type="Sprite2D" parent="RockFighters/StateMachine/Juego/Contenido/Instancia1/Control/PiedraLuchador2/Parts"]
+position = Vector2(170, 142)
+scale = Vector2(0.708171, 0.708171)
+texture = ExtResource("7_tdkmm")
+hframes = 14
+vframes = 5
+
+[node name="Timer" type="Timer" parent="RockFighters/StateMachine/Juego/Contenido/Instancia1/Control/PiedraLuchador2"]
+wait_time = 3.2
+one_shot = true
+
+[node name="TimePassInstance" type="Timer" parent="RockFighters/StateMachine/Juego/Contenido/Instancia1/Control/PiedraLuchador2" node_paths=PackedStringArray("state_to_change", "state_machine")]
+wait_time = 5.7
+one_shot = true
+script = ExtResource("9_cj3ki")
+state_to_change = NodePath("../../../../../../Moraleja")
+state_machine = NodePath("../../../../../..")
+
+[node name="AnimPiedra" type="AnimationPlayer" parent="RockFighters/StateMachine/Juego/Contenido/Instancia1/Control/PiedraLuchador2"]
+root_node = NodePath("../Parts/BrazoIzq")
+libraries = {
+"": SubResource("AnimationLibrary_bkw8r")
+}
+
+[node name="GUIA" type="Sprite2D" parent="RockFighters/StateMachine/Juego/Contenido/Instancia1/Control/PiedraLuchador2"]
+visible = false
+position = Vector2(167, 140)
+scale = Vector2(0.712062, 0.700389)
+texture = ExtResource("7_tdkmm")
+hframes = 14
+vframes = 5
+frame = 63
+
+[node name="AnimUI" type="AnimationPlayer" parent="RockFighters/StateMachine/Juego/Contenido/Instancia1/Control/PiedraLuchador2"]
+libraries = {
+"": SubResource("AnimationLibrary_oly2m")
+}
+script = ExtResource("17_r375b")
+animation = "EnterScene"
+
+[node name="PiedraLuchador3" type="Control" parent="RockFighters/StateMachine/Juego/Contenido/Instancia1/Control"]
+layout_mode = 1
+anchor_left = 0.5
+anchor_top = 0.63
+anchor_right = 0.5
+anchor_bottom = 0.63
+offset_left = 2.0
+offset_top = -483.163
+offset_right = 355.0
+offset_bottom = 332.837
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("6_647wk")
+
+[node name="TextureRect2" type="TextureRect" parent="RockFighters/StateMachine/Juego/Contenido/Instancia1/Control/PiedraLuchador3"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 322.0
+offset_bottom = 553.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_t1u6c")
+expand_mode = 1
+
+[node name="button" type="Button" parent="RockFighters/StateMachine/Juego/Contenido/Instancia1/Control/PiedraLuchador3/TextureRect2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.507
+anchor_top = 0.167
+anchor_right = 0.507
+anchor_bottom = 0.167
+offset_left = -154.562
+offset_top = -106.351
+offset_right = 173.438
+offset_bottom = 58.649
+grow_horizontal = 2
+grow_vertical = 0
+rotation = 0.135014
+theme = ExtResource("15_g1ws0")
+text = "DOÑA
+FLUORITA"
+
+[node name="BigButton" type="Button" parent="RockFighters/StateMachine/Juego/Contenido/Instancia1/Control/PiedraLuchador3/TextureRect2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/focus = ExtResource("19_ao7ck")
+flat = true
+
+[node name="Parts" type="Node2D" parent="RockFighters/StateMachine/Juego/Contenido/Instancia1/Control/PiedraLuchador3"]
+position = Vector2(800, 190)
+skew = -0.0959931
+
+[node name="BrazoDer" type="Sprite2D" parent="RockFighters/StateMachine/Juego/Contenido/Instancia1/Control/PiedraLuchador3/Parts"]
+position = Vector2(160, 158)
+scale = Vector2(0.719844, 0.719844)
+texture = ExtResource("7_tdkmm")
+hframes = 14
+vframes = 5
+frame = 16
+
+[node name="PiernaDer" type="Sprite2D" parent="RockFighters/StateMachine/Juego/Contenido/Instancia1/Control/PiedraLuchador3/Parts"]
+position = Vector2(172, 114)
+scale = Vector2(0.81323, 0.81323)
+texture = ExtResource("7_tdkmm")
+hframes = 14
+vframes = 5
+frame = 44
+
+[node name="Piedra" type="Sprite2D" parent="RockFighters/StateMachine/Juego/Contenido/Instancia1/Control/PiedraLuchador3/Parts"]
+position = Vector2(167, 177)
+rotation = 0.253073
+scale = Vector2(0.638783, 0.638783)
+texture = ExtResource("13_imic4")
+
+[node name="ShardEmitter" parent="RockFighters/StateMachine/Juego/Contenido/Instancia1/Control/PiedraLuchador3/Parts/Piedra" instance=ExtResource("8_urdon")]
+threshhold = 50.0
+
+[node name="PiernaIzq" type="Sprite2D" parent="RockFighters/StateMachine/Juego/Contenido/Instancia1/Control/PiedraLuchador3/Parts"]
+position = Vector2(159, 120)
+scale = Vector2(0.81323, 0.81323)
+texture = ExtResource("7_tdkmm")
+hframes = 14
+vframes = 5
+frame = 30
+
+[node name="BrazoIzq" type="Sprite2D" parent="RockFighters/StateMachine/Juego/Contenido/Instancia1/Control/PiedraLuchador3/Parts"]
+position = Vector2(170, 142)
+scale = Vector2(0.708171, 0.708171)
+texture = ExtResource("7_tdkmm")
+hframes = 14
+vframes = 5
+
+[node name="Timer" type="Timer" parent="RockFighters/StateMachine/Juego/Contenido/Instancia1/Control/PiedraLuchador3"]
+wait_time = 3.2
+one_shot = true
+
+[node name="TimePassInstance" type="Timer" parent="RockFighters/StateMachine/Juego/Contenido/Instancia1/Control/PiedraLuchador3" node_paths=PackedStringArray("state_to_change", "state_machine")]
+wait_time = 5.7
+one_shot = true
+script = ExtResource("9_cj3ki")
+state_to_change = NodePath("../../../../../../Moraleja")
+state_machine = NodePath("../../../../../..")
+
+[node name="AnimPiedra" type="AnimationPlayer" parent="RockFighters/StateMachine/Juego/Contenido/Instancia1/Control/PiedraLuchador3"]
+root_node = NodePath("../Parts/BrazoIzq")
+libraries = {
+"": SubResource("AnimationLibrary_bkw8r")
+}
+
+[node name="GUIA" type="Sprite2D" parent="RockFighters/StateMachine/Juego/Contenido/Instancia1/Control/PiedraLuchador3"]
+visible = false
+position = Vector2(167, 140)
+scale = Vector2(0.712062, 0.700389)
+texture = ExtResource("7_tdkmm")
+hframes = 14
+vframes = 5
+frame = 63
+
+[node name="AnimUI" type="AnimationPlayer" parent="RockFighters/StateMachine/Juego/Contenido/Instancia1/Control/PiedraLuchador3"]
+libraries = {
+"": SubResource("AnimationLibrary_oly2m")
+}
+script = ExtResource("17_r375b")
+animation = "EnterScene"
+
+[node name="Instancia2" type="Control" parent="RockFighters/StateMachine/Juego/Contenido"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="RockFighters/StateMachine/Juego/Contenido/Instancia2"]
+layout_mode = 1
+anchor_top = 0.171
+anchor_right = 1.0
+anchor_bottom = 0.898
+offset_top = 0.119995
+offset_bottom = 0.559937
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="RockFighters/StateMachine/Juego/Contenido/Instancia2/Control" node_paths=PackedStringArray("state_to_change", "state_machine")]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -161.0
+offset_top = 21.0
+offset_right = 161.0
+offset_bottom = 134.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Complete"
+script = ExtResource("4_0gq0b")
+state_to_change = NodePath("../../../../../Moraleja")
+state_machine = NodePath("../../../../..")
+isEndOfGame = true
+
+[node name="PiedraLuchador2" type="Control" parent="RockFighters/StateMachine/Juego/Contenido/Instancia2/Control"]
+layout_mode = 1
+anchor_left = 0.514
+anchor_top = 0.527
+anchor_right = 0.514
+anchor_bottom = 0.527
+offset_left = -8.07999
+offset_top = -387.27
+offset_right = 344.92
+offset_bottom = 428.73
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(-1, 1)
+script = ExtResource("6_647wk")
+
+[node name="TextureRect2" type="TextureRect" parent="RockFighters/StateMachine/Juego/Contenido/Instancia2/Control/PiedraLuchador2"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 322.0
+offset_bottom = 553.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_t1u6c")
+expand_mode = 1
+
+[node name="Name" type="Label" parent="RockFighters/StateMachine/Juego/Contenido/Instancia2/Control/PiedraLuchador2/TextureRect2"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.091
+anchor_right = 0.5
+anchor_bottom = 0.091
+offset_left = 159.0
+offset_top = -33.323
+offset_right = 476.0
+offset_bottom = 27.677
+scale = Vector2(-1, 1)
+theme_override_font_sizes/font_size = 40
+text = "Sr. Cuarzo IV"
+horizontal_alignment = 1
+
+[node name="button" type="Button" parent="RockFighters/StateMachine/Juego/Contenido/Instancia2/Control/PiedraLuchador2/TextureRect2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.491
+anchor_top = 0.179
+anchor_right = 0.491
+anchor_bottom = 0.179
+offset_left = 173.891
+offset_top = -35.3427
+offset_right = 492.891
+offset_bottom = 119.657
+grow_horizontal = 2
+grow_vertical = 0
+rotation = 0.250083
+scale = Vector2(-1, 1)
+theme = ExtResource("15_g1ws0")
+text = "APATITA
+DINAMITA"
+
+[node name="BigButton" type="Button" parent="RockFighters/StateMachine/Juego/Contenido/Instancia2/Control/PiedraLuchador2/TextureRect2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/focus = ExtResource("19_ao7ck")
+flat = true
+
+[node name="Parts" type="Node2D" parent="RockFighters/StateMachine/Juego/Contenido/Instancia2/Control/PiedraLuchador2"]
+position = Vector2(800, 190)
+skew = -0.0959931
+
+[node name="BrazoDer" type="Sprite2D" parent="RockFighters/StateMachine/Juego/Contenido/Instancia2/Control/PiedraLuchador2/Parts"]
+position = Vector2(167.94, 162.26)
+scale = Vector2(0.719844, 0.719844)
+texture = ExtResource("7_tdkmm")
+hframes = 14
+vframes = 5
+frame = 16
+
+[node name="PiernaDer" type="Sprite2D" parent="RockFighters/StateMachine/Juego/Contenido/Instancia2/Control/PiedraLuchador2/Parts"]
+position = Vector2(144.525, 103.992)
+scale = Vector2(0.81323, 0.81323)
+texture = ExtResource("7_tdkmm")
+hframes = 14
+vframes = 5
+frame = 44
+
+[node name="Piedra" type="Sprite2D" parent="RockFighters/StateMachine/Juego/Contenido/Instancia2/Control/PiedraLuchador2/Parts"]
+position = Vector2(167, 177)
+rotation = 0.253073
+scale = Vector2(0.794706, 0.794706)
+texture = ExtResource("15_d4cfw")
+
+[node name="ShardEmitter" parent="RockFighters/StateMachine/Juego/Contenido/Instancia2/Control/PiedraLuchador2/Parts/Piedra" instance=ExtResource("8_urdon")]
+threshhold = 50.0
+
+[node name="PiernaIzq" type="Sprite2D" parent="RockFighters/StateMachine/Juego/Contenido/Instancia2/Control/PiedraLuchador2/Parts"]
+position = Vector2(117.947, 110.02)
+scale = Vector2(0.81323, 0.81323)
+texture = ExtResource("7_tdkmm")
+hframes = 14
+vframes = 5
+frame = 30
+
+[node name="BrazoIzq" type="Sprite2D" parent="RockFighters/StateMachine/Juego/Contenido/Instancia2/Control/PiedraLuchador2/Parts"]
+position = Vector2(129.747, 164.27)
+scale = Vector2(0.708171, 0.708171)
+texture = ExtResource("7_tdkmm")
+hframes = 14
+vframes = 5
+
+[node name="Timer" type="Timer" parent="RockFighters/StateMachine/Juego/Contenido/Instancia2/Control/PiedraLuchador2"]
+wait_time = 3.2
+one_shot = true
+
+[node name="TimePassInstance" type="Timer" parent="RockFighters/StateMachine/Juego/Contenido/Instancia2/Control/PiedraLuchador2" node_paths=PackedStringArray("state_to_change", "state_machine")]
+wait_time = 5.7
+one_shot = true
+script = ExtResource("9_cj3ki")
+state_to_change = NodePath("../../../../../../Moraleja")
+state_machine = NodePath("../../../../../..")
+
+[node name="AnimPiedra" type="AnimationPlayer" parent="RockFighters/StateMachine/Juego/Contenido/Instancia2/Control/PiedraLuchador2"]
+root_node = NodePath("../Parts/BrazoIzq")
+libraries = {
+"": SubResource("AnimationLibrary_bkw8r")
+}
+
+[node name="GUIA" type="Sprite2D" parent="RockFighters/StateMachine/Juego/Contenido/Instancia2/Control/PiedraLuchador2"]
+visible = false
+position = Vector2(167, 140)
+scale = Vector2(0.712062, 0.700389)
+texture = ExtResource("7_tdkmm")
+hframes = 14
+vframes = 5
+frame = 63
+
+[node name="AnimUI" type="AnimationPlayer" parent="RockFighters/StateMachine/Juego/Contenido/Instancia2/Control/PiedraLuchador2"]
+libraries = {
+"": SubResource("AnimationLibrary_oly2m")
+}
+script = ExtResource("17_r375b")
+animation = "EnterScene"
+
+[node name="PiedraLuchador3" type="Control" parent="RockFighters/StateMachine/Juego/Contenido/Instancia2/Control"]
+layout_mode = 1
+anchor_left = 0.514
+anchor_top = 0.527
+anchor_right = 0.514
+anchor_bottom = 0.527
+offset_left = -8.07999
+offset_top = -387.27
+offset_right = 344.92
+offset_bottom = 428.73
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("6_647wk")
+isWinner = true
+
+[node name="TextureRect2" type="TextureRect" parent="RockFighters/StateMachine/Juego/Contenido/Instancia2/Control/PiedraLuchador3"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 322.0
+offset_bottom = 553.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_t1u6c")
+expand_mode = 1
+
+[node name="button" type="Button" parent="RockFighters/StateMachine/Juego/Contenido/Instancia2/Control/PiedraLuchador3/TextureRect2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.468
+anchor_top = 0.149
+anchor_right = 0.468
+anchor_bottom = 0.149
+offset_left = -147.288
+offset_top = -97.7639
+offset_right = 171.712
+offset_bottom = 54.2361
+grow_horizontal = 2
+grow_vertical = 0
+rotation = 0.140131
+theme = ExtResource("15_g1ws0")
+text = "DIAMANTE
+EL NAPIAS"
+
+[node name="BigButton" type="Button" parent="RockFighters/StateMachine/Juego/Contenido/Instancia2/Control/PiedraLuchador3/TextureRect2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/focus = ExtResource("19_ao7ck")
+flat = true
+
+[node name="Parts" type="Node2D" parent="RockFighters/StateMachine/Juego/Contenido/Instancia2/Control/PiedraLuchador3"]
+position = Vector2(800, 190)
+skew = -0.0959931
+
+[node name="BrazoDer" type="Sprite2D" parent="RockFighters/StateMachine/Juego/Contenido/Instancia2/Control/PiedraLuchador3/Parts"]
+position = Vector2(160, 158)
+scale = Vector2(0.719844, 0.719844)
+texture = ExtResource("7_tdkmm")
+hframes = 14
+vframes = 5
+frame = 16
+
+[node name="PiernaDer" type="Sprite2D" parent="RockFighters/StateMachine/Juego/Contenido/Instancia2/Control/PiedraLuchador3/Parts"]
+position = Vector2(172, 114)
+scale = Vector2(0.81323, 0.81323)
+texture = ExtResource("7_tdkmm")
+hframes = 14
+vframes = 5
+frame = 44
+
+[node name="Piedra" type="Sprite2D" parent="RockFighters/StateMachine/Juego/Contenido/Instancia2/Control/PiedraLuchador3/Parts"]
+position = Vector2(167, 177)
+rotation = 0.253073
+scale = Vector2(0.638783, 0.638783)
+texture = ExtResource("16_t0483")
+
+[node name="ShardEmitter" parent="RockFighters/StateMachine/Juego/Contenido/Instancia2/Control/PiedraLuchador3/Parts/Piedra" instance=ExtResource("8_urdon")]
+threshhold = 50.0
+
+[node name="PiernaIzq" type="Sprite2D" parent="RockFighters/StateMachine/Juego/Contenido/Instancia2/Control/PiedraLuchador3/Parts"]
+position = Vector2(159, 120)
+scale = Vector2(0.81323, 0.81323)
+texture = ExtResource("7_tdkmm")
+hframes = 14
+vframes = 5
+frame = 30
+
+[node name="BrazoIzq" type="Sprite2D" parent="RockFighters/StateMachine/Juego/Contenido/Instancia2/Control/PiedraLuchador3/Parts"]
+position = Vector2(170, 142)
+scale = Vector2(0.708171, 0.708171)
+texture = ExtResource("7_tdkmm")
+hframes = 14
+vframes = 5
+
+[node name="Timer" type="Timer" parent="RockFighters/StateMachine/Juego/Contenido/Instancia2/Control/PiedraLuchador3"]
+wait_time = 3.2
+one_shot = true
+
+[node name="TimePassInstance" type="Timer" parent="RockFighters/StateMachine/Juego/Contenido/Instancia2/Control/PiedraLuchador3" node_paths=PackedStringArray("state_to_change", "state_machine")]
+wait_time = 5.7
+one_shot = true
+script = ExtResource("9_cj3ki")
+state_to_change = NodePath("../../../../../../Moraleja")
+state_machine = NodePath("../../../../../..")
+
+[node name="AnimPiedra" type="AnimationPlayer" parent="RockFighters/StateMachine/Juego/Contenido/Instancia2/Control/PiedraLuchador3"]
+root_node = NodePath("../Parts/BrazoIzq")
+libraries = {
+"": SubResource("AnimationLibrary_bkw8r")
+}
+
+[node name="GUIA" type="Sprite2D" parent="RockFighters/StateMachine/Juego/Contenido/Instancia2/Control/PiedraLuchador3"]
+visible = false
+position = Vector2(167, 140)
+scale = Vector2(0.712062, 0.700389)
+texture = ExtResource("7_tdkmm")
+hframes = 14
+vframes = 5
+frame = 63
+
+[node name="AnimUI" type="AnimationPlayer" parent="RockFighters/StateMachine/Juego/Contenido/Instancia2/Control/PiedraLuchador3"]
+libraries = {
+"": SubResource("AnimationLibrary_oly2m")
+}
+script = ExtResource("17_r375b")
+animation = "EnterScene"
+
+[node name="Instancia3" type="Control" parent="RockFighters/StateMachine/Juego/Contenido"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="RockFighters/StateMachine/Juego/Contenido/Instancia3"]
+layout_mode = 1
+anchor_top = 0.199
+anchor_right = 1.0
+anchor_bottom = 0.927
+offset_top = 0.279984
+offset_bottom = -0.560181
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="RockFighters/StateMachine/Juego/Contenido/Instancia3/Control" node_paths=PackedStringArray("state_to_change", "state_machine")]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -161.0
+offset_top = 21.0
+offset_right = 161.0
+offset_bottom = 134.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Complete"
+script = ExtResource("4_0gq0b")
+state_to_change = NodePath("../../../../../Moraleja")
+state_machine = NodePath("../../../../..")
+isEndOfGame = true
+
+[node name="PiedraLuchador2" type="Control" parent="RockFighters/StateMachine/Juego/Contenido/Instancia3/Control"]
+layout_mode = 1
+anchor_left = 0.514
+anchor_top = 0.527
+anchor_right = 0.514
+anchor_bottom = 0.527
+offset_left = -8.07999
+offset_top = -387.27
+offset_right = 344.92
+offset_bottom = 428.73
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(-1, 1)
+script = ExtResource("6_647wk")
+
+[node name="TextureRect2" type="TextureRect" parent="RockFighters/StateMachine/Juego/Contenido/Instancia3/Control/PiedraLuchador2"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 322.0
+offset_bottom = 553.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_t1u6c")
+expand_mode = 1
+
+[node name="Name" type="Label" parent="RockFighters/StateMachine/Juego/Contenido/Instancia3/Control/PiedraLuchador2/TextureRect2"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.091
+anchor_right = 0.5
+anchor_bottom = 0.091
+offset_left = 159.0
+offset_top = -33.323
+offset_right = 476.0
+offset_bottom = 27.677
+scale = Vector2(-1, 1)
+theme_override_font_sizes/font_size = 40
+text = "Sr. Cuarzo IV"
+horizontal_alignment = 1
+
+[node name="button" type="Button" parent="RockFighters/StateMachine/Juego/Contenido/Instancia3/Control/PiedraLuchador2/TextureRect2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.497
+anchor_top = 0.11
+anchor_right = 0.497
+anchor_bottom = 0.11
+offset_left = 172.754
+offset_top = -38.4052
+offset_right = 491.754
+offset_bottom = 115.595
+grow_horizontal = 2
+grow_vertical = 0
+rotation = 0.232067
+scale = Vector2(-1, 1)
+theme = ExtResource("15_g1ws0")
+text = "YESO
+MAKENSI"
+
+[node name="BigButton" type="Button" parent="RockFighters/StateMachine/Juego/Contenido/Instancia3/Control/PiedraLuchador2/TextureRect2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/focus = ExtResource("19_ao7ck")
+flat = true
+
+[node name="Parts" type="Node2D" parent="RockFighters/StateMachine/Juego/Contenido/Instancia3/Control/PiedraLuchador2"]
+position = Vector2(800, 190)
+skew = -0.0959931
+
+[node name="BrazoDer" type="Sprite2D" parent="RockFighters/StateMachine/Juego/Contenido/Instancia3/Control/PiedraLuchador2/Parts"]
+position = Vector2(107.94, 136.26)
+scale = Vector2(0.719844, 0.719844)
+texture = ExtResource("7_tdkmm")
+hframes = 14
+vframes = 5
+frame = 16
+
+[node name="PiernaDer" type="Sprite2D" parent="RockFighters/StateMachine/Juego/Contenido/Instancia3/Control/PiedraLuchador2/Parts"]
+position = Vector2(120.763, 95.1388)
+scale = Vector2(0.81323, 0.81323)
+texture = ExtResource("7_tdkmm")
+hframes = 14
+vframes = 5
+frame = 44
+
+[node name="Piedra" type="Sprite2D" parent="RockFighters/StateMachine/Juego/Contenido/Instancia3/Control/PiedraLuchador2/Parts"]
+position = Vector2(167, 177)
+rotation = 0.253073
+scale = Vector2(0.638783, 0.638783)
+texture = ExtResource("17_cmsbk")
+offset = Vector2(-46.505, 0)
+
+[node name="ShardEmitter" parent="RockFighters/StateMachine/Juego/Contenido/Instancia3/Control/PiedraLuchador2/Parts/Piedra" instance=ExtResource("8_urdon")]
+position = Vector2(16.6718, -4.31161)
+threshhold = 50.0
+
+[node name="PiernaIzq" type="Sprite2D" parent="RockFighters/StateMachine/Juego/Contenido/Instancia3/Control/PiedraLuchador2/Parts"]
+position = Vector2(149.185, 101.167)
+scale = Vector2(0.81323, 0.81323)
+texture = ExtResource("7_tdkmm")
+hframes = 14
+vframes = 5
+frame = 30
+
+[node name="BrazoIzq" type="Sprite2D" parent="RockFighters/StateMachine/Juego/Contenido/Instancia3/Control/PiedraLuchador2/Parts"]
+position = Vector2(103.747, 138.27)
+scale = Vector2(0.708171, 0.708171)
+texture = ExtResource("7_tdkmm")
+hframes = 14
+vframes = 5
+
+[node name="Timer" type="Timer" parent="RockFighters/StateMachine/Juego/Contenido/Instancia3/Control/PiedraLuchador2"]
+wait_time = 3.2
+one_shot = true
+
+[node name="TimePassInstance" type="Timer" parent="RockFighters/StateMachine/Juego/Contenido/Instancia3/Control/PiedraLuchador2" node_paths=PackedStringArray("state_to_change", "state_machine")]
+wait_time = 5.7
+one_shot = true
+script = ExtResource("9_cj3ki")
+state_to_change = NodePath("../../../../../../Moraleja")
+state_machine = NodePath("../../../../../..")
+
+[node name="AnimPiedra" type="AnimationPlayer" parent="RockFighters/StateMachine/Juego/Contenido/Instancia3/Control/PiedraLuchador2"]
+root_node = NodePath("../Parts/BrazoIzq")
+libraries = {
+"": SubResource("AnimationLibrary_bkw8r")
+}
+
+[node name="GUIA" type="Sprite2D" parent="RockFighters/StateMachine/Juego/Contenido/Instancia3/Control/PiedraLuchador2"]
+visible = false
+position = Vector2(167, 140)
+scale = Vector2(0.712062, 0.700389)
+texture = ExtResource("7_tdkmm")
+hframes = 14
+vframes = 5
+frame = 63
+
+[node name="AnimUI" type="AnimationPlayer" parent="RockFighters/StateMachine/Juego/Contenido/Instancia3/Control/PiedraLuchador2"]
+libraries = {
+"": SubResource("AnimationLibrary_oly2m")
+}
+script = ExtResource("17_r375b")
+animation = "EnterScene"
+
+[node name="PiedraLuchador3" type="Control" parent="RockFighters/StateMachine/Juego/Contenido/Instancia3/Control"]
+layout_mode = 1
+anchor_left = 0.514
+anchor_top = 0.527
+anchor_right = 0.514
+anchor_bottom = 0.527
+offset_left = -8.07999
+offset_top = -387.27
+offset_right = 344.92
+offset_bottom = 428.73
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("6_647wk")
+isWinner = true
+
+[node name="TextureRect2" type="TextureRect" parent="RockFighters/StateMachine/Juego/Contenido/Instancia3/Control/PiedraLuchador3"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 322.0
+offset_bottom = 553.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_t1u6c")
+expand_mode = 1
+
+[node name="button" type="Button" parent="RockFighters/StateMachine/Juego/Contenido/Instancia3/Control/PiedraLuchador3/TextureRect2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.484
+anchor_top = 0.075
+anchor_right = 0.484
+anchor_bottom = 0.075
+offset_left = -148.144
+offset_top = -96.8419
+offset_right = 170.856
+offset_bottom = 57.1581
+grow_horizontal = 2
+grow_vertical = 0
+rotation = 0.12882
+theme = ExtResource("15_g1ws0")
+text = "HORACIO
+EL TOPACIO"
+
+[node name="BigButton" type="Button" parent="RockFighters/StateMachine/Juego/Contenido/Instancia3/Control/PiedraLuchador3/TextureRect2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/focus = ExtResource("19_ao7ck")
+flat = true
+
+[node name="Parts" type="Node2D" parent="RockFighters/StateMachine/Juego/Contenido/Instancia3/Control/PiedraLuchador3"]
+position = Vector2(800, 190)
+skew = -0.0959931
+
+[node name="BrazoDer" type="Sprite2D" parent="RockFighters/StateMachine/Juego/Contenido/Instancia3/Control/PiedraLuchador3/Parts"]
+position = Vector2(196.226, 154.959)
+scale = Vector2(0.719844, 0.719844)
+texture = ExtResource("7_tdkmm")
+hframes = 14
+vframes = 5
+frame = 16
+
+[node name="PiernaDer" type="Sprite2D" parent="RockFighters/StateMachine/Juego/Contenido/Instancia3/Control/PiedraLuchador3/Parts"]
+position = Vector2(181.114, 62.1648)
+scale = Vector2(0.81323, 0.81323)
+texture = ExtResource("7_tdkmm")
+hframes = 14
+vframes = 5
+frame = 44
+
+[node name="Piedra" type="Sprite2D" parent="RockFighters/StateMachine/Juego/Contenido/Instancia3/Control/PiedraLuchador3/Parts"]
+position = Vector2(167, 177)
+rotation = 0.253073
+texture = ExtResource("12_i8jde")
+
+[node name="ShardEmitter" parent="RockFighters/StateMachine/Juego/Contenido/Instancia3/Control/PiedraLuchador3/Parts/Piedra" instance=ExtResource("8_urdon")]
+threshhold = 50.0
+
+[node name="PiernaIzq" type="Sprite2D" parent="RockFighters/StateMachine/Juego/Contenido/Instancia3/Control/PiedraLuchador3/Parts"]
+position = Vector2(139.352, 79.3115)
+scale = Vector2(0.81323, 0.81323)
+texture = ExtResource("7_tdkmm")
+hframes = 14
+vframes = 5
+frame = 30
+
+[node name="BrazoIzq" type="Sprite2D" parent="RockFighters/StateMachine/Juego/Contenido/Instancia3/Control/PiedraLuchador3/Parts"]
+position = Vector2(182.935, 129.743)
+scale = Vector2(0.708171, 0.708171)
+texture = ExtResource("7_tdkmm")
+hframes = 14
+vframes = 5
+
+[node name="Timer" type="Timer" parent="RockFighters/StateMachine/Juego/Contenido/Instancia3/Control/PiedraLuchador3"]
+wait_time = 3.2
+one_shot = true
+
+[node name="TimePassInstance" type="Timer" parent="RockFighters/StateMachine/Juego/Contenido/Instancia3/Control/PiedraLuchador3" node_paths=PackedStringArray("state_to_change", "state_machine")]
+wait_time = 5.7
+one_shot = true
+script = ExtResource("9_cj3ki")
+state_to_change = NodePath("../../../../../../Moraleja")
+state_machine = NodePath("../../../../../..")
+
+[node name="AnimPiedra" type="AnimationPlayer" parent="RockFighters/StateMachine/Juego/Contenido/Instancia3/Control/PiedraLuchador3"]
+root_node = NodePath("../Parts/BrazoIzq")
+libraries = {
+"": SubResource("AnimationLibrary_bkw8r")
+}
+
+[node name="GUIA" type="Sprite2D" parent="RockFighters/StateMachine/Juego/Contenido/Instancia3/Control/PiedraLuchador3"]
+visible = false
+position = Vector2(167, 140)
+scale = Vector2(0.712062, 0.700389)
+texture = ExtResource("7_tdkmm")
+hframes = 14
+vframes = 5
+frame = 63
+
+[node name="AnimUI" type="AnimationPlayer" parent="RockFighters/StateMachine/Juego/Contenido/Instancia3/Control/PiedraLuchador3"]
+autoplay = "EnterScene"
+libraries = {
+"": SubResource("AnimationLibrary_oly2m")
+}
+script = ExtResource("17_r375b")
+animation = "EnterScene"
+
+[node name="Consigna2" type="TextureRect" parent="RockFighters/StateMachine/Juego/Contenido"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.503
+anchor_top = 0.3
+anchor_right = 0.503
+anchor_bottom = 0.3
+offset_left = -346.16
+offset_top = -268.0
+offset_right = 346.84
+offset_bottom = -88.0
+grow_horizontal = 2
+pivot_offset = Vector2(361.355, 59.885)
+texture = ExtResource("21_1l5kd")
+expand_mode = 1
+
+[node name="Consigna" type="Label" parent="RockFighters/StateMachine/Juego/Contenido/Consigna2"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -299.0
+offset_top = -43.0
+offset_right = 299.0
+offset_bottom = 43.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "Elige al luchador más duro"
+label_settings = SubResource("LabelSettings_h74ab")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="RockFighters/StateMachine/Juego/Contenido/Consigna2"]
+libraries = {
+"": SubResource("AnimationLibrary_nyamy")
+}
+script = ExtResource("17_r375b")
+animation = "EnterAnim"
+
+[node name="VS" type="TextureRect" parent="RockFighters/StateMachine/Juego/Contenido"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.651
+anchor_right = 0.5
+anchor_bottom = 0.651
+offset_left = -71.0
+offset_top = -537.28
+offset_right = 91.0
+offset_bottom = -384.28
+pivot_offset = Vector2(82.89, 68.575)
+texture = ExtResource("22_5c02m")
+stretch_mode = 2
+
+[node name="overlay1" type="ColorRect" parent="RockFighters/StateMachine/Juego/Contenido"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.906
+anchor_right = 1.91
+offset_left = -335.68
+offset_top = -2180.0
+offset_right = 335.8
+offset_bottom = -11.0
+grow_horizontal = 2
+pivot_offset = Vector2(1013, 1054)
+color = Color(0.00784314, 0.00784314, 0.00784314, 1)
+script = ExtResource("20_lgsna")
+y = -200
+hasSizeOffset = true
+
+[node name="Timer" type="Timer" parent="RockFighters/StateMachine/Juego/Contenido/overlay1"]
+wait_time = 6.0
+
+[node name="overlay2" type="ColorRect" parent="RockFighters/StateMachine/Juego/Contenido"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -1.375
+anchor_top = 1.0
+anchor_right = 2.375
+anchor_bottom = 1.001
+offset_left = 6.10352e-05
+offset_top = 1.0
+offset_bottom = 1379.72
+grow_horizontal = 2
+grow_vertical = 0
+pivot_offset = Vector2(1350, 0)
+color = Color(0, 0, 0, 1)
+script = ExtResource("20_lgsna")
+y = 200
+
+[node name="Timer" type="Timer" parent="RockFighters/StateMachine/Juego/Contenido/overlay2"]
+wait_time = 6.0
+
+[node name="btnVolver" type="Button" parent="RockFighters/StateMachine/Juego/Contenido"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -110.0
+offset_top = 13.0
+offset_right = -20.0
+offset_bottom = 103.0
+grow_horizontal = 0
+theme = ExtResource("29_l5p5d")
+script = ExtResource("13_wbcp0")
+NextScene = "Map_Screen"
+fade_time = 0.2
+smoothness = 0.1
+
+[node name="Moraleja" type="Node" parent="RockFighters/StateMachine"]
+script = ExtResource("6_43bfo")
+Moralejas = ["", "El Cuarzo es más duro que la Fluorita.                   Se encuentra en el puesto número 7 de la Escala de Mohs,                               la escala de que mide la Dureza de Minerales.                           Es el segundo mineral mas abundante del planeta.El primero es el Feldespato, que abarca un 60% de la corteza terrestre.", &"El diamante es la sustancia natural mas dura del planeta del Tierra.Su grado de dureza en la escala de Mohs es el mas alto: 10.Solo algo tan duro como un diamante puede rayar a un diamante.Existen diamantes de cada color del arcoíris", "El topacio se encuentra en el puesto 8 de la escala de Mohs de Dureza.Es una de las consideradas Piedras Preciosas y se usa mayoritariamente para joyería.Existen de muchos colores,pero los Naranja, Rojo y Rosa son los mas raros de encontrar,y los mas valiosos."]
+Instancias = [null, NodePath("Contenido/Instancia1"), NodePath("Contenido/Instancia2"), NodePath("Contenido/Instancia3")]
+buttons = [NodePath("Contenido/Instancia1/Control/Conteiner/Button"), NodePath("Contenido/Instancia2/Control/Conteiner/Button2"), NodePath("../Fin/Contenido/Panel/ButtonChangeScene2")]
+
+[node name="Contenido" type="Control" parent="RockFighters/StateMachine/Moraleja"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="RockFighters/StateMachine/Moraleja/Contenido"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_xcj5x")
+stretch_mode = 1
+
+[node name="Conteiner" type="TextureRect" parent="RockFighters/StateMachine/Moraleja/Contenido"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.708
+anchor_right = 0.5
+anchor_bottom = 0.708
+offset_left = -340.0
+offset_top = -92.24
+offset_right = 348.0
+offset_bottom = 226.76
+texture = ExtResource("7_exbri")
+expand_mode = 1
+
+[node name="LblMoraleja" type="Label" parent="RockFighters/StateMachine/Moraleja/Contenido/Conteiner"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.044
+anchor_top = 0.157
+anchor_right = 0.956
+anchor_bottom = 0.856
+offset_left = -0.272003
+offset_top = -0.0830002
+offset_right = 0.271973
+offset_bottom = -0.0640259
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 25
+text = "Consigna genérica Consigna genérica Consigna genérica"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Timer" type="Timer" parent="RockFighters/StateMachine/Moraleja/Contenido"]
+wait_time = 3.0
+one_shot = true
+
+[node name="Instancia1" type="Control" parent="RockFighters/StateMachine/Moraleja/Contenido"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="RockFighters/StateMachine/Moraleja/Contenido/Instancia1"]
+layout_mode = 1
+anchor_left = 0.5
+anchor_top = 0.386
+anchor_right = 0.5
+anchor_bottom = 0.386
+offset_left = -360.0
+offset_top = -494.08
+offset_right = 360.0
+offset_bottom = 785.92
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="RockFighters/StateMachine/Moraleja/Contenido/Instancia1/Control"]
+modulate = Color(0.0390625, 0.683594, 0.753906, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.272
+anchor_right = 0.5
+anchor_bottom = 0.272
+offset_left = -330.0
+offset_top = -318.16
+offset_right = 330.0
+offset_bottom = 317.84
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("19_hel6a")
+expand_mode = 1
+
+[node name="PARTS" type="Node2D" parent="RockFighters/StateMachine/Moraleja/Contenido/Instancia1/Control"]
+position = Vector2(-5, -135)
+
+[node name="BrazoIzq" type="Sprite2D" parent="RockFighters/StateMachine/Moraleja/Contenido/Instancia1/Control/PARTS"]
+position = Vector2(393, 456)
+scale = Vector2(1.0428, 1.0428)
+texture = ExtResource("7_tdkmm")
+hframes = 14
+vframes = 5
+frame = 15
+
+[node name="PiernaDer" type="Sprite2D" parent="RockFighters/StateMachine/Moraleja/Contenido/Instancia1/Control/PARTS"]
+position = Vector2(347, 455)
+scale = Vector2(0.916342, 0.916342)
+texture = ExtResource("7_tdkmm")
+hframes = 14
+vframes = 5
+frame = 43
+
+[node name="PiedraWin" type="Sprite2D" parent="RockFighters/StateMachine/Moraleja/Contenido/Instancia1/Control/PARTS"]
+position = Vector2(375, 466)
+texture = ExtResource("6_pa2as")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="RockFighters/StateMachine/Moraleja/Contenido/Instancia1/Control/PARTS/PiedraWin"]
+autoplay = "Rock_Winner"
+libraries = {
+"": SubResource("AnimationLibrary_mjj78")
+}
+
+[node name="BrazoDer" type="Sprite2D" parent="RockFighters/StateMachine/Moraleja/Contenido/Instancia1/Control/PARTS"]
+position = Vector2(384, 440)
+scale = Vector2(0.891051, 0.891051)
+texture = ExtResource("7_tdkmm")
+hframes = 14
+vframes = 5
+frame = 1
+
+[node name="PiernaIzq" type="Sprite2D" parent="RockFighters/StateMachine/Moraleja/Contenido/Instancia1/Control/PARTS"]
+position = Vector2(391, 485)
+scale = Vector2(0.81323, 0.81323)
+texture = ExtResource("7_tdkmm")
+hframes = 14
+vframes = 5
+frame = 29
+
+[node name="GUIA" type="Sprite2D" parent="RockFighters/StateMachine/Moraleja/Contenido/Instancia1/Control/PARTS"]
+visible = false
+position = Vector2(376, 412)
+scale = Vector2(1.0856, 1.06781)
+texture = ExtResource("7_tdkmm")
+hframes = 14
+vframes = 5
+frame = 64
+
+[node name="Conteiner" type="Panel" parent="RockFighters/StateMachine/Moraleja/Contenido/Instancia1/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.501
+anchor_top = 0.737
+anchor_right = 0.501
+anchor_bottom = 0.737
+offset_left = -330.72
+offset_top = -301.36
+offset_right = 330.28
+offset_bottom = 263.64
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("33_7ompi")
+script = ExtResource("39_sasef")
+
+[node name="Cinturon" type="Sprite2D" parent="RockFighters/StateMachine/Moraleja/Contenido/Instancia1/Control/Conteiner"]
+position = Vector2(327, -26)
+texture = ExtResource("35_jgvc6")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="RockFighters/StateMachine/Moraleja/Contenido/Instancia1/Control/Conteiner"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.558
+anchor_right = 0.5
+anchor_bottom = 0.558
+offset_left = -288.5
+offset_top = -203.27
+offset_right = 288.5
+offset_bottom = 190.73
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_selected_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 25
+theme_override_font_sizes/bold_font_size = 25
+bbcode_enabled = true
+text = "[center][b]EL CUARZO
+ES MÁS DURO QUE LA FLUORITA [/b] 
+
+ES EL SEGUNDO MINERAL MÁS
+ABUNDANTE DEL PLANETA 
+
+Y ESTÁ EN EL PUESTO NÚMERO 7
+DE [b]LA ESCALA DE MOHS[/b],
+LA ESCALA QUE MIDE LA DUREZA 
+DE LOS MINERALES
+ [/center]"
+
+[node name="Button" type="Button" parent="RockFighters/StateMachine/Moraleja/Contenido/Instancia1/Control/Conteiner" node_paths=PackedStringArray("state_to_change", "state_machine")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.495
+anchor_top = 1.0
+anchor_right = 0.495
+anchor_bottom = 1.0
+offset_left = -45.195
+offset_top = -47.0001
+offset_right = 44.805
+offset_bottom = 42.9999
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("33_7ompi")
+text = "
+"
+script = ExtResource("4_0gq0b")
+state_to_change = NodePath("../../../../../../Juego")
+state_machine = NodePath("../../../../../..")
+
+[node name="Instancia2" type="Control" parent="RockFighters/StateMachine/Moraleja/Contenido"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="RockFighters/StateMachine/Moraleja/Contenido/Instancia2"]
+layout_mode = 1
+anchor_left = 0.5
+anchor_top = 0.386
+anchor_right = 0.5
+anchor_bottom = 0.386
+offset_left = -360.0
+offset_top = -494.08
+offset_right = 360.0
+offset_bottom = 785.92
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="RockFighters/StateMachine/Moraleja/Contenido/Instancia2/Control"]
+modulate = Color(0.0390625, 0.683594, 0.753906, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.508
+anchor_top = 0.273
+anchor_right = 0.508
+anchor_bottom = 0.273
+offset_left = -329.76
+offset_top = -318.44
+offset_right = 330.24
+offset_bottom = 317.56
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("19_hel6a")
+expand_mode = 1
+
+[node name="PARTS" type="Node2D" parent="RockFighters/StateMachine/Moraleja/Contenido/Instancia2/Control"]
+position = Vector2(-1, -124)
+
+[node name="BrazoIzq" type="Sprite2D" parent="RockFighters/StateMachine/Moraleja/Contenido/Instancia2/Control/PARTS"]
+position = Vector2(393, 456)
+scale = Vector2(1.0428, 1.0428)
+texture = ExtResource("7_tdkmm")
+hframes = 14
+vframes = 5
+frame = 15
+
+[node name="PiernaDer" type="Sprite2D" parent="RockFighters/StateMachine/Moraleja/Contenido/Instancia2/Control/PARTS"]
+position = Vector2(367, 414)
+scale = Vector2(0.916342, 0.916342)
+texture = ExtResource("7_tdkmm")
+hframes = 14
+vframes = 5
+frame = 43
+
+[node name="PiedraWin" type="Sprite2D" parent="RockFighters/StateMachine/Moraleja/Contenido/Instancia2/Control/PARTS"]
+position = Vector2(375, 466)
+texture = ExtResource("16_t0483")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="RockFighters/StateMachine/Moraleja/Contenido/Instancia2/Control/PARTS/PiedraWin"]
+autoplay = "Rock_Winner"
+libraries = {
+"": SubResource("AnimationLibrary_mjj78")
+}
+
+[node name="BrazoDer" type="Sprite2D" parent="RockFighters/StateMachine/Moraleja/Contenido/Instancia2/Control/PARTS"]
+position = Vector2(384, 440)
+scale = Vector2(0.891051, 0.891051)
+texture = ExtResource("7_tdkmm")
+hframes = 14
+vframes = 5
+frame = 1
+
+[node name="PiernaIzq" type="Sprite2D" parent="RockFighters/StateMachine/Moraleja/Contenido/Instancia2/Control/PARTS"]
+position = Vector2(378, 443)
+scale = Vector2(0.81323, 0.81323)
+texture = ExtResource("7_tdkmm")
+hframes = 14
+vframes = 5
+frame = 29
+
+[node name="GUIA" type="Sprite2D" parent="RockFighters/StateMachine/Moraleja/Contenido/Instancia2/Control/PARTS"]
+visible = false
+position = Vector2(376, 412)
+scale = Vector2(1.0856, 1.06781)
+texture = ExtResource("7_tdkmm")
+hframes = 14
+vframes = 5
+frame = 64
+
+[node name="Conteiner" type="Panel" parent="RockFighters/StateMachine/Moraleja/Contenido/Instancia2/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.049
+anchor_top = 0.502
+anchor_right = 0.96
+anchor_bottom = 0.916
+offset_left = -5.28
+offset_top = -0.559937
+offset_right = -0.200012
+offset_bottom = -0.480103
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("33_7ompi")
+script = ExtResource("39_sasef")
+
+[node name="Cinturon" type="Sprite2D" parent="RockFighters/StateMachine/Moraleja/Contenido/Instancia2/Control/Conteiner"]
+position = Vector2(327, -26)
+texture = ExtResource("35_jgvc6")
+
+[node name="Button2" type="Button" parent="RockFighters/StateMachine/Moraleja/Contenido/Instancia2/Control/Conteiner" node_paths=PackedStringArray("state_to_change", "state_machine")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.499
+anchor_top = 0.997
+anchor_right = 0.5
+anchor_bottom = 0.997
+offset_left = -44.839
+offset_top = -45.188
+offset_right = 44.5
+offset_bottom = 44.812
+grow_horizontal = 2
+grow_vertical = 0
+text = "
+"
+script = ExtResource("4_0gq0b")
+state_to_change = NodePath("../../../../../../Juego")
+state_machine = NodePath("../../../../../..")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="RockFighters/StateMachine/Moraleja/Contenido/Instancia2/Control/Conteiner"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.525
+anchor_right = 0.5
+anchor_bottom = 0.525
+offset_left = -286.5
+offset_top = -169.25
+offset_right = 286.5
+offset_bottom = 168.75
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_selected_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 25
+theme_override_font_sizes/bold_font_size = 25
+bbcode_enabled = true
+text = "[center][b]EL DIAMANTE 
+ES LA SUSTANCIA NATURAL MÁS DURA 
+DEL PLANETA TIERRA[/b] 
+
+SU GRADO DE DUREZA ES 10,
+EL MÁS ALTO EN [b]LA ESCALA DE MOHS[/b]
+
+SÓLO ALGO TAN DURO COMO UN DIAMANTE
+PUEDE RAYAR A OTRO DIAMANTE
+[/center]"
+
+[node name="Instancia3" type="Control" parent="RockFighters/StateMachine/Moraleja/Contenido"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="RockFighters/StateMachine/Moraleja/Contenido/Instancia3"]
+layout_mode = 1
+anchor_left = 0.5
+anchor_top = 0.386
+anchor_right = 0.5
+anchor_bottom = 0.386
+offset_left = -360.0
+offset_top = -494.08
+offset_right = 360.0
+offset_bottom = 785.92
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="RockFighters/StateMachine/Moraleja/Contenido/Instancia3/Control"]
+modulate = Color(0.0390625, 0.683594, 0.753906, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.508
+anchor_top = 0.27
+anchor_right = 0.508
+anchor_bottom = 0.27
+offset_left = -329.76
+offset_top = -318.6
+offset_right = 330.24
+offset_bottom = 317.4
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("19_hel6a")
+expand_mode = 1
+
+[node name="PARTS" type="Node2D" parent="RockFighters/StateMachine/Moraleja/Contenido/Instancia3/Control"]
+position = Vector2(7, -78)
+
+[node name="BrazoIzq" type="Sprite2D" parent="RockFighters/StateMachine/Moraleja/Contenido/Instancia3/Control/PARTS"]
+position = Vector2(446, 426)
+scale = Vector2(1.0428, 1.0428)
+texture = ExtResource("7_tdkmm")
+hframes = 14
+vframes = 5
+frame = 15
+
+[node name="PiernaDer" type="Sprite2D" parent="RockFighters/StateMachine/Moraleja/Contenido/Instancia3/Control/PARTS"]
+position = Vector2(394, 347)
+scale = Vector2(0.916342, 0.916342)
+texture = ExtResource("7_tdkmm")
+hframes = 14
+vframes = 5
+frame = 43
+
+[node name="PiedraWin" type="Sprite2D" parent="RockFighters/StateMachine/Moraleja/Contenido/Instancia3/Control/PARTS"]
+position = Vector2(375, 466)
+texture = ExtResource("12_i8jde")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="RockFighters/StateMachine/Moraleja/Contenido/Instancia3/Control/PARTS/PiedraWin"]
+autoplay = "Rock_Winner"
+libraries = {
+"": SubResource("AnimationLibrary_mjj78")
+}
+
+[node name="BrazoDer" type="Sprite2D" parent="RockFighters/StateMachine/Moraleja/Contenido/Instancia3/Control/PARTS"]
+position = Vector2(344, 414)
+scale = Vector2(0.891051, 0.891051)
+texture = ExtResource("7_tdkmm")
+hframes = 14
+vframes = 5
+frame = 1
+
+[node name="PiernaIzq" type="Sprite2D" parent="RockFighters/StateMachine/Moraleja/Contenido/Instancia3/Control/PARTS"]
+position = Vector2(352, 375)
+scale = Vector2(0.81323, 0.81323)
+texture = ExtResource("7_tdkmm")
+hframes = 14
+vframes = 5
+frame = 29
+
+[node name="GUIA" type="Sprite2D" parent="RockFighters/StateMachine/Moraleja/Contenido/Instancia3/Control/PARTS"]
+visible = false
+position = Vector2(376, 412)
+scale = Vector2(1.0856, 1.06781)
+texture = ExtResource("7_tdkmm")
+hframes = 14
+vframes = 5
+frame = 64
+
+[node name="Conteiner" type="Panel" parent="RockFighters/StateMachine/Moraleja/Contenido/Instancia3/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.049
+anchor_top = 0.502
+anchor_right = 0.96
+anchor_bottom = 0.989
+offset_left = -5.28
+offset_top = -0.559937
+offset_right = -0.200012
+offset_bottom = -108.92
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("33_7ompi")
+script = ExtResource("39_sasef")
+
+[node name="Cinturon" type="Sprite2D" parent="RockFighters/StateMachine/Moraleja/Contenido/Instancia3/Control/Conteiner"]
+position = Vector2(327, -26)
+texture = ExtResource("35_jgvc6")
+
+[node name="Button2" type="Button" parent="RockFighters/StateMachine/Moraleja/Contenido/Instancia3/Control/Conteiner" node_paths=PackedStringArray("state_to_change", "state_machine")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.499
+anchor_top = 0.995
+anchor_right = 0.499
+anchor_bottom = 0.995
+offset_left = -44.839
+offset_top = -44.98
+offset_right = 45.161
+offset_bottom = 45.02
+grow_horizontal = 2
+grow_vertical = 0
+text = "
+"
+script = ExtResource("4_0gq0b")
+state_to_change = NodePath("../../../../../../Fin")
+state_machine = NodePath("../../../../../..")
+isEndOfGame = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="RockFighters/StateMachine/Moraleja/Contenido/Instancia3/Control/Conteiner"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.552
+anchor_right = 0.5
+anchor_bottom = 0.552
+offset_left = -284.5
+offset_top = -179.28
+offset_right = 284.5
+offset_bottom = 179.72
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_selected_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 25
+theme_override_font_sizes/bold_font_size = 25
+bbcode_enabled = true
+text = "[center][b]EL TOPACIO
+SE ENCUENTRA EN EL PUESTO 8[/b]
+
+ES UNA DE LAS [b]PIEDRAS PRECIOSAS[/b]
+Y SE USA EN MAYOR PARTE PARA
+HACER JOYERÍA
+
+LOS DE COLOR NARANJA, ROJO Y ROSA
+SON LOS MÁS RAROS Y VALIOSOS[center]"
+
+[node name="Fin" type="Node" parent="RockFighters/StateMachine"]
+script = ExtResource("36_ljxo4")
+
+[node name="Contenido" type="Control" parent="RockFighters/StateMachine/Fin"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="RockFighters/StateMachine/Fin/Contenido"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_xcj5x")
+stretch_mode = 1
+
+[node name="Control" type="Control" parent="RockFighters/StateMachine/Fin/Contenido"]
+layout_mode = 1
+anchor_left = 0.5
+anchor_top = 0.734
+anchor_right = 0.5
+anchor_bottom = 0.734
+offset_top = 0.47998
+offset_bottom = 0.47998
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Dureza-festejo-pareja3" type="Sprite2D" parent="RockFighters/StateMachine/Fin/Contenido/Control"]
+position = Vector2(38.9999, 27)
+scale = Vector2(0.650056, 0.650057)
+texture = ExtResource("45_gestc")
+
+[node name="Dureza-festejo-pareja2" type="Sprite2D" parent="RockFighters/StateMachine/Fin/Contenido/Control"]
+position = Vector2(-125, -131)
+scale = Vector2(0.752044, 0.751515)
+texture = ExtResource("44_il8rq")
+
+[node name="Panel" type="Panel" parent="RockFighters/StateMachine/Fin/Contenido"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.335
+anchor_right = 0.5
+anchor_bottom = 0.335
+offset_left = -300.0
+offset_top = -192.8
+offset_right = 300.0
+offset_bottom = 193.2
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("33_7ompi")
+script = ExtResource("39_sasef")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="RockFighters/StateMachine/Fin/Contenido/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -240.0
+offset_top = -127.0
+offset_right = 240.0
+offset_bottom = 135.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_selected_color = Color(0, 0, 0, 1)
+theme_override_colors/selection_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 25
+theme_override_font_sizes/bold_font_size = 25
+bbcode_enabled = true
+text = "[center][b]¿ENCONTRASTE LA ESCALA DE MOHS
+ EN LA VITRINA DE GEOLOGÍA?[/b]
+
+ALLÍ PODÉS VER LOS 10 INTEGRANTES 
+DE LA ESCALA DE DUREZA
+
+[b]PISTA:[/b] A LA IZQUIERDA Y ATRÁS [/center]"
+
+[node name="ButtonChangeScene2" parent="RockFighters/StateMachine/Fin/Contenido/Panel" instance=ExtResource("7_itn4t")]
+layout_mode = 1
+offset_left = -45.0
+offset_top = -47.0
+offset_right = 45.0
+offset_bottom = 43.0
+text = ""
+NextScene = "Map_Screen"
+
+[node name="Dureza-festejo-pareja1" type="Sprite2D" parent="RockFighters/StateMachine/Fin/Contenido/Panel"]
+position = Vector2(256, -60)
+scale = Vector2(0.550848, 0.550848)
+texture = ExtResource("43_ftm1s")
+
+[connection signal="Transitioned" from="RockFighters/StateMachine/Consigna" to="RockFighters/StateMachine/Juego/Contenido/Instancia1/Control/PiedraLuchador2/AnimUI" method="Play"]
+[connection signal="Transitioned" from="RockFighters/StateMachine/Consigna" to="RockFighters/StateMachine/Juego/Contenido/Instancia1/Control/PiedraLuchador3/AnimUI" method="Play"]
+[connection signal="Transitioned" from="RockFighters/StateMachine/Consigna" to="RockFighters/StateMachine/Juego/Contenido/Instancia2/Control/PiedraLuchador2/AnimUI" method="Play"]
+[connection signal="Transitioned" from="RockFighters/StateMachine/Consigna" to="RockFighters/StateMachine/Juego/Contenido/Instancia2/Control/PiedraLuchador3/AnimUI" method="Play"]
+[connection signal="Transitioned" from="RockFighters/StateMachine/Consigna" to="RockFighters/StateMachine/Juego/Contenido/Consigna2/AnimationPlayer" method="Play"]
+[connection signal="pressed" from="RockFighters/StateMachine/Consigna/Contenido/Button" to="RockFighters/StateMachine/Consigna/Contenido/Button" method="_on_pressed"]
+[connection signal="timeout" from="RockFighters/StateMachine/Consigna/Contenido/Timer" to="RockFighters/StateMachine/Consigna" method="TimeOut" flags=18]
+[connection signal="EndOfGame" from="RockFighters/StateMachine/Juego/Contenido/Instancia1/Control/Button" to="RockFighters" method="Set_Complete" flags=18]
+[connection signal="EndOfGame" from="RockFighters/StateMachine/Juego/Contenido/Instancia1/Control/Button" to="RockFighters/StateMachine/Moraleja" method="isEndOfGame" flags=18]
+[connection signal="pressed" from="RockFighters/StateMachine/Juego/Contenido/Instancia1/Control/Button" to="RockFighters/StateMachine/Juego/Contenido/Instancia1/Control/Button" method="_on_pressed" flags=18]
+[connection signal="fight" from="RockFighters/StateMachine/Juego/Contenido/Instancia1/Control/PiedraLuchador2" to="RockFighters/StateMachine/Juego/Contenido/Instancia1/Control/PiedraLuchador3" method="BlockAnim"]
+[connection signal="timeout" from="RockFighters/StateMachine/Juego/Contenido/Instancia1/Control/PiedraLuchador2/TimePassInstance" to="RockFighters/StateMachine/Juego/Contenido/Instancia1/Control/PiedraLuchador2/TimePassInstance" method="_on_timeout"]
+[connection signal="fight" from="RockFighters/StateMachine/Juego/Contenido/Instancia1/Control/PiedraLuchador3" to="RockFighters/StateMachine/Juego/Contenido/Instancia1/Control/PiedraLuchador2" method="BlockAnim"]
+[connection signal="timeout" from="RockFighters/StateMachine/Juego/Contenido/Instancia1/Control/PiedraLuchador3/TimePassInstance" to="RockFighters/StateMachine/Juego/Contenido/Instancia1/Control/PiedraLuchador3/TimePassInstance" method="_on_timeout"]
+[connection signal="visibility_changed" from="RockFighters/StateMachine/Juego/Contenido/Instancia2" to="RockFighters/StateMachine/Juego/Contenido/Instancia2/Control/PiedraLuchador2" method="EnterUI"]
+[connection signal="visibility_changed" from="RockFighters/StateMachine/Juego/Contenido/Instancia2" to="RockFighters/StateMachine/Juego/Contenido/Instancia2/Control/PiedraLuchador3" method="EnterUI"]
+[connection signal="visibility_changed" from="RockFighters/StateMachine/Juego/Contenido/Instancia2" to="RockFighters/StateMachine/Juego/Contenido/Consigna2/AnimationPlayer" method="Play"]
+[connection signal="EndOfGame" from="RockFighters/StateMachine/Juego/Contenido/Instancia2/Control/Button" to="RockFighters" method="Set_Complete" flags=18]
+[connection signal="EndOfGame" from="RockFighters/StateMachine/Juego/Contenido/Instancia2/Control/Button" to="RockFighters/StateMachine/Moraleja" method="isEndOfGame" flags=18]
+[connection signal="pressed" from="RockFighters/StateMachine/Juego/Contenido/Instancia2/Control/Button" to="RockFighters/StateMachine/Juego/Contenido/Instancia2/Control/Button" method="_on_pressed" flags=18]
+[connection signal="fight" from="RockFighters/StateMachine/Juego/Contenido/Instancia2/Control/PiedraLuchador2" to="RockFighters/StateMachine/Juego/Contenido/Instancia2/Control/PiedraLuchador3" method="BlockAnim"]
+[connection signal="timeout" from="RockFighters/StateMachine/Juego/Contenido/Instancia2/Control/PiedraLuchador2/TimePassInstance" to="RockFighters/StateMachine/Juego/Contenido/Instancia2/Control/PiedraLuchador2/TimePassInstance" method="_on_timeout"]
+[connection signal="fight" from="RockFighters/StateMachine/Juego/Contenido/Instancia2/Control/PiedraLuchador3" to="RockFighters/StateMachine/Juego/Contenido/Instancia2/Control/PiedraLuchador2" method="BlockAnim"]
+[connection signal="timeout" from="RockFighters/StateMachine/Juego/Contenido/Instancia2/Control/PiedraLuchador3/TimePassInstance" to="RockFighters/StateMachine/Juego/Contenido/Instancia2/Control/PiedraLuchador3/TimePassInstance" method="_on_timeout"]
+[connection signal="visibility_changed" from="RockFighters/StateMachine/Juego/Contenido/Instancia3" to="RockFighters/StateMachine/Juego/Contenido/Instancia3/Control/PiedraLuchador2" method="EnterUI"]
+[connection signal="visibility_changed" from="RockFighters/StateMachine/Juego/Contenido/Instancia3" to="RockFighters/StateMachine/Juego/Contenido/Instancia3/Control/PiedraLuchador3" method="EnterUI"]
+[connection signal="visibility_changed" from="RockFighters/StateMachine/Juego/Contenido/Instancia3" to="RockFighters/StateMachine/Juego/Contenido/Consigna2/AnimationPlayer" method="Play"]
+[connection signal="EndOfGame" from="RockFighters/StateMachine/Juego/Contenido/Instancia3/Control/Button" to="RockFighters" method="Set_Complete" flags=18]
+[connection signal="EndOfGame" from="RockFighters/StateMachine/Juego/Contenido/Instancia3/Control/Button" to="RockFighters/StateMachine/Moraleja" method="isEndOfGame" flags=18]
+[connection signal="pressed" from="RockFighters/StateMachine/Juego/Contenido/Instancia3/Control/Button" to="RockFighters/StateMachine/Juego/Contenido/Instancia3/Control/Button" method="_on_pressed" flags=18]
+[connection signal="fight" from="RockFighters/StateMachine/Juego/Contenido/Instancia3/Control/PiedraLuchador2" to="RockFighters/StateMachine/Juego/Contenido/Instancia3/Control/PiedraLuchador3" method="BlockAnim"]
+[connection signal="pressed" from="RockFighters/StateMachine/Juego/Contenido/Instancia3/Control/PiedraLuchador2/TextureRect2/button" to="RockFighters" method="Set_Complete"]
+[connection signal="timeout" from="RockFighters/StateMachine/Juego/Contenido/Instancia3/Control/PiedraLuchador2/TimePassInstance" to="RockFighters/StateMachine/Juego/Contenido/Instancia3/Control/PiedraLuchador2/TimePassInstance" method="_on_timeout"]
+[connection signal="fight" from="RockFighters/StateMachine/Juego/Contenido/Instancia3/Control/PiedraLuchador3" to="RockFighters/StateMachine/Juego/Contenido/Instancia3/Control/PiedraLuchador2" method="BlockAnim"]
+[connection signal="pressed" from="RockFighters/StateMachine/Juego/Contenido/Instancia3/Control/PiedraLuchador3/TextureRect2/button" to="RockFighters" method="Set_Complete"]
+[connection signal="timeout" from="RockFighters/StateMachine/Juego/Contenido/Instancia3/Control/PiedraLuchador3/TimePassInstance" to="RockFighters/StateMachine/Juego/Contenido/Instancia3/Control/PiedraLuchador3/TimePassInstance" method="_on_timeout"]
+[connection signal="pressed" from="RockFighters/StateMachine/Juego/Contenido/btnVolver" to="RockFighters/StateMachine/Juego/Contenido/btnVolver" method="_on_pressed"]
+[connection signal="EndOfGame" from="RockFighters/StateMachine/Moraleja/Contenido/Instancia1/Control/Conteiner/Button" to="RockFighters/StateMachine/Fin/Contenido/Panel/ButtonChangeScene2" method="_on_pressed"]
+[connection signal="pressed" from="RockFighters/StateMachine/Moraleja/Contenido/Instancia1/Control/Conteiner/Button" to="RockFighters/StateMachine/Moraleja/Contenido/Instancia1/Control/Conteiner/Button" method="_on_pressed" flags=18]
+[connection signal="EndOfGame" from="RockFighters/StateMachine/Moraleja/Contenido/Instancia2/Control/Conteiner/Button2" to="RockFighters/StateMachine/Fin/Contenido/Panel/ButtonChangeScene2" method="_on_pressed"]
+[connection signal="pressed" from="RockFighters/StateMachine/Moraleja/Contenido/Instancia2/Control/Conteiner/Button2" to="RockFighters/StateMachine/Moraleja/Contenido/Instancia2/Control/Conteiner/Button2" method="_on_pressed" flags=18]
+[connection signal="EndOfGame" from="RockFighters/StateMachine/Moraleja/Contenido/Instancia3/Control/Conteiner/Button2" to="RockFighters" method="Set_Complete"]
+[connection signal="pressed" from="RockFighters/StateMachine/Moraleja/Contenido/Instancia3/Control/Conteiner/Button2" to="RockFighters/StateMachine/Moraleja/Contenido/Instancia3/Control/Conteiner/Button2" method="_on_pressed" flags=18]
+
+[editable path="RockFighters/StateMachine/Juego/Contenido/Control/hinchada/Rock"]
+[editable path="RockFighters/StateMachine/Juego/Contenido/Control/hinchada/Rock4"]
+[editable path="RockFighters/StateMachine/Juego/Contenido/Control/hinchada/Rock12"]
+[editable path="RockFighters/StateMachine/Juego/Contenido/Control/hinchada/Rock13"]
+[editable path="RockFighters/StateMachine/Juego/Contenido/Control/hinchada/Rock7"]
+[editable path="RockFighters/StateMachine/Juego/Contenido/Control/hinchada/Rock3"]
+[editable path="RockFighters/StateMachine/Juego/Contenido/Control/hinchada/Rock6"]
+[editable path="RockFighters/StateMachine/Juego/Contenido/Control/hinchada/Rock5"]
+[editable path="RockFighters/StateMachine/Juego/Contenido/Control/hinchada/Rock9"]
+[editable path="RockFighters/StateMachine/Juego/Contenido/Control/hinchada/Rock10"]
+[editable path="RockFighters/StateMachine/Juego/Contenido/Control/hinchada/Rock11"]

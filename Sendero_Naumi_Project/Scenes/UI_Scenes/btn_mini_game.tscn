@@ -1,37 +1,98 @@
-[gd_scene load_steps=4 format=3 uid="uid://bc062m81xnnpx"]
+[gd_scene load_steps=7 format=3 uid="uid://bc062m81xnnpx"]
 
-[ext_resource type="Texture2D" uid="uid://c5225cmvtpnmy" path="res://Sprites/animal_stop.png" id="1_yvsft"]
+[ext_resource type="Texture2D" uid="uid://c5225cmvtpnmy" path="res://Sprites/Mapa/pin - mapa.png" id="1_xlje6"]
 [ext_resource type="PackedScene" uid="uid://djhg7jvxtexyl" path="res://Scenes/UI_Scenes/btn_Change_Scene.tscn" id="3_j744p"]
 
 [sub_resource type="GDScript" id="GDScript_pfah2"]
 script/source = "extends Sprite2D
-@export var LevelNumber : int
+var save_file_path = \"user://\"
+var save_file_name = \"MiniGameResource.tres\"
+var minigameResourseFile = MiniGameResource.new()
+var instance = InstanceResource.new()
+var button
 
-func _on_tree_entered():
-	if PlayerVariables.MinigameStage == LevelNumber:
-		visible = true
-	elif PlayerVariables.MinigameStage > LevelNumber:
-		visible = true
-		texture = load(\"res://Sprites/argentina_Flag.png\")
-		get_node(\"ButtonChangeScene\").disabled = true
+func _ready():
+	button = get_node(\"ButtonChangeScene\")
+	button.pressed.connect(CheckComplete)
+	
+	load_file()
+	if !minigameResourseFile.StateMinigames[self.name]:
+		get_node(\"AnimationPlayer\").play(\"Scale-bounce\")
+	elif minigameResourseFile.StateMinigames[self.name]:
+		texture = load(\"res://Sprites/Mapa/pin check - mapa.png\")
+
+func load_file():
+	minigameResourseFile  = ResourceLoader.load(save_file_path  + save_file_name)
+
+func OnZone():
+	pass
+
+
+func CheckComplete():
+	if minigameResourseFile.StateMinigames[self.name]:
+		instance = ResourceLoader.load(save_file_path + \"InstanceResource.tres\" )
+		instance.RestartOneInstance(self.name)
+		ResourceSaver.save(instance, save_file_path + \"InstanceResource.tres\")
 "
 
+[sub_resource type="Animation" id="Animation_67m84"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_r4wke"]
+resource_name = "Scale-bounce"
+length = 1.25
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6, 1.2),
+"transitions": PackedFloat32Array(1.56917, 0.594604, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.2, 1.2), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8t5hd"]
+_data = {
+"RESET": SubResource("Animation_67m84"),
+"Scale-bounce": SubResource("Animation_r4wke")
+}
+
 [node name="btn_MiniGame" type="Sprite2D"]
-position = Vector2(-273.088, 110.476)
-scale = Vector2(0.448714, 0.394347)
-texture = ExtResource("1_yvsft")
+position = Vector2(-400.425, 222.385)
+texture = ExtResource("1_xlje6")
 script = SubResource("GDScript_pfah2")
-LevelNumber = 1
 
 [node name="ButtonChangeScene" parent="." instance=ExtResource("3_j744p")]
-anchors_preset = 15
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 1.0
-offset_left = -256.0
-offset_top = -256.0
-offset_right = -256.0
-offset_bottom = -256.0
+anchors_preset = -1
+anchor_left = -0.422
+anchor_top = -0.531
+anchor_right = 1.422
+anchor_bottom = 3.877
+offset_left = -50.5875
+offset_top = -56.5925
+offset_right = -50.7155
+offset_bottom = -56.4885
 grow_vertical = 2
 text = ""
 flat = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_8t5hd")
+}

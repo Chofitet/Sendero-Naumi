@@ -1,0 +1,125 @@
+[gd_scene load_steps=8 format=3 uid="uid://cnxkgvr1r0dny"]
+
+[ext_resource type="Texture2D" uid="uid://dxtycvon1bw4p" path="res://Sprites/ZonaGeología/Piedras/zoisita - busqueda.png" id="1_k5wol"]
+[ext_resource type="Script" path="res://_Scripts/MinG_Busqueda/rock_hincha.gd" id="1_vrput"]
+[ext_resource type="Texture2D" uid="uid://d06bxmrxy40s0" path="res://Sprites/ZonaGeología/gorri.png" id="2_6pfub"]
+[ext_resource type="Texture2D" uid="uid://cncanwfoqtd2x" path="res://Sprites/ZonaGeología/anim_busqueda_tira.png" id="3_xi7gm"]
+
+[sub_resource type="Animation" id="Animation_abybi"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [42]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Rock:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0785398]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Gorri:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_3w1p4"]
+resource_name = "idle"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [42, 43]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Rock:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0.0785398, -0.0785398]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Gorri:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0.0698132, -0.139626]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gxusv"]
+_data = {
+"RESET": SubResource("Animation_abybi"),
+"idle": SubResource("Animation_3w1p4")
+}
+
+[node name="Rock" type="Node2D"]
+position = Vector2(439.715, -64.9999)
+scale = Vector2(0.8, 0.8)
+script = ExtResource("1_vrput")
+
+[node name="Rock" type="Sprite2D" parent="."]
+position = Vector2(306, -253)
+rotation = 0.0785398
+scale = Vector2(0.404, 0.384834)
+texture = ExtResource("1_k5wol")
+
+[node name="Gorri" type="Sprite2D" parent="."]
+position = Vector2(295.356, -315)
+scale = Vector2(0.595238, 0.595238)
+texture = ExtResource("2_6pfub")
+offset = Vector2(-4.41, -113.105)
+
+[node name="ExtraRock" type="Sprite2D" parent="."]
+position = Vector2(285.444, -273.256)
+scale = Vector2(0.532006, 0.532007)
+texture = ExtResource("3_xi7gm")
+hframes = 14
+vframes = 7
+frame = 42
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../ExtraRock")
+autoplay = "idle"
+speed_scale = 0.7
+libraries = {
+"": SubResource("AnimationLibrary_gxusv")
+}

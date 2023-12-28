@@ -19,3 +19,5 @@ func _ready():
 func _on_pressed():
 	SceneManager.change_scene(NextScene, Fade_in , Fade_out, General_Option )
 
+func SetVisibility(x):
+	visible = x

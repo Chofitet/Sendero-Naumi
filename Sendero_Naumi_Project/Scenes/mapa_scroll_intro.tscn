@@ -1,0 +1,1458 @@
+[gd_scene load_steps=50 format=3 uid="uid://buth5gc88nt3j"]
+
+[ext_resource type="Texture2D" uid="uid://cjjoaemhep814" path="res://Sprites/mapa-detalle.png" id="1_kw7ma"]
+[ext_resource type="Texture2D" uid="uid://hf5y4ic16cqj" path="res://Sprites/Intro/intro - background.jpg" id="1_un13t"]
+[ext_resource type="Texture2D" uid="uid://nuybqhitpej1" path="res://Sprites/Mapa/fondo_mapa.png" id="1_wa0ye"]
+[ext_resource type="Script" path="res://_Scripts/Auto_Scroll_Intro_Map.gd" id="2_n60vv"]
+[ext_resource type="Texture2D" uid="uid://jd6systmhxf1" path="res://Sprites/Intro/intro - suelo.png" id="2_uf5dd"]
+[ext_resource type="Script" path="res://_Scripts/AdjustMarginWithScreenSize.gd" id="4_4e1by"]
+[ext_resource type="Texture2D" uid="uid://chqivoetkgkoj" path="res://Sprites/UI/circulo.png" id="5_8y8kv"]
+[ext_resource type="Script" path="res://Scenes/GenericPanelController.gd" id="5_a6sio"]
+[ext_resource type="Texture2D" uid="uid://cscyymtnwxau6" path="res://Sprites/UI/titulo_concepts.png" id="5_pglwp"]
+[ext_resource type="Texture2D" uid="uid://dhx6ness36h5f" path="res://Sprites/logoChicoCirculo.png" id="6_dtbi3"]
+[ext_resource type="Texture2D" uid="uid://gn0tmol3agtp" path="res://Sprites/Mapa/ciencias_mapa.png" id="6_sqkww"]
+[ext_resource type="Texture2D" uid="uid://3sby7wb2uo0e" path="res://Sprites/Mapa/ambiente_mapa.png" id="7_6t5sw"]
+[ext_resource type="Script" path="res://_Scripts/StateMachine/Button_Change_State.gd" id="8_rb8q7"]
+[ext_resource type="Texture2D" uid="uid://l00ov7i7v281" path="res://Sprites/Mapa/eras_geologicas_mapa.png" id="10_c3fc7"]
+[ext_resource type="Texture2D" uid="uid://dnpt3mo8vtigw" path="res://Sprites/Naumi/ZZZ - idle.png" id="10_w6hht"]
+[ext_resource type="Texture2D" uid="uid://05mdqsdsbuqm" path="res://Sprites/Mapa/geologia_mapa.png" id="11_tirda"]
+[ext_resource type="Texture2D" uid="uid://lvhlr8303o1m" path="res://Sprites/Mapa/megafauna_mapa.png" id="12_4oixe"]
+[ext_resource type="Script" path="res://_Scripts/PlayAnimation.gd" id="15_4c0kx"]
+[ext_resource type="PackedScene" uid="uid://djhg7jvxtexyl" path="res://Scenes/UI_Scenes/btn_Change_Scene.tscn" id="16_0ow6t"]
+[ext_resource type="Texture2D" uid="uid://bpcc2ljyhkxfl" path="res://Sprites/Mapa/pin check - mapa.png" id="17_0u7nf"]
+[ext_resource type="StyleBox" uid="uid://b3tjes2hcm3wx" path="res://Resources/UI_Resources/StyleBoxTrasparent.tres" id="17_2a5jd"]
+[ext_resource type="Script" path="res://SetFirstPlay.gd" id="18_6lysc"]
+[ext_resource type="Texture2D" uid="uid://c5225cmvtpnmy" path="res://Sprites/Mapa/pin - mapa.png" id="20_fn5ys"]
+[ext_resource type="Texture2D" uid="uid://co7pox44vqa08" path="res://Sprites/Naumi/Naumi_0.png" id="20_ndgvp"]
+[ext_resource type="Texture2D" uid="uid://bq38efwktyuua" path="res://Sprites/UI/exclamacion2.png" id="22_c1o0u"]
+[ext_resource type="Theme" uid="uid://bhum72inirq1q" path="res://Themes/Generic_UI.tres" id="23_003pn"]
+[ext_resource type="LabelSettings" uid="uid://bd2jj8jlh3vp2" path="res://Themes/Geología/LabelSetting_Generic.tres" id="24_tj67n"]
+[ext_resource type="Texture2D" uid="uid://dyc6lr4k2lmfp" path="res://Sprites/UI/BotonAceptarGenerico.png" id="26_4d43e"]
+[ext_resource type="Script" path="res://_Scripts/Vibration_Button.gd" id="29_imofv"]
+
+[sub_resource type="Animation" id="Animation_fuilv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LabelControl/Panel/Label:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["¿ESTO? ESTO ES UN NAUMI"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LabelControl:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("LabelControl/Panel/Button:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_deepo"]
+resource_name = "naumi_intro_anim"
+length = 6.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LabelControl/Panel/Label:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1.1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["¿ESTO? 
+ESTO ES UN NAUMI"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LabelControl:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("LabelControl/Panel/Button:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(5.1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_b0422"]
+resource_name = "naumi_intro_anim_2"
+length = 7.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LabelControl/Panel/Label:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["DICEN QUE LOS NAUMIS SON CRIATURAS MUY CURIOSAS Y RESPONDEN A DESCUBRIMIENTOS ¿PODRIAS LLEVARLO EN TU VIAJE?"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LabelControl/Panel/ButtonChangeScene:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 6.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("LabelControl/Panel/ButtonChangeScene2:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 6.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("LabelControl/Panel/Button:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5k4kw"]
+_data = {
+"RESET": SubResource("Animation_fuilv"),
+"naumi_intro_anim": SubResource("Animation_deepo"),
+"naumi_intro_anim_2": SubResource("Animation_b0422")
+}
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wbaqp"]
+texture = ExtResource("26_4d43e")
+
+[sub_resource type="Animation" id="Animation_2bcfk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Naumi:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_y0cb1"]
+resource_name = "zzz"
+length = 2.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2, 2.1, 2.2, 2.3, 2.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.6, 2.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Naumi:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(0.405749, 2.46229, 1),
+"update": 0,
+"values": [0.0, -0.0872665, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_q3luw"]
+_data = {
+"RESET": SubResource("Animation_2bcfk"),
+"zzz": SubResource("Animation_y0cb1")
+}
+
+[sub_resource type="Animation" id="Animation_tbfkl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.5708]
+}
+
+[sub_resource type="Animation" id="Animation_pimfn"]
+resource_name = "Title_enter"
+length = 2.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 2.14355, 2.54912, 2.07053),
+"update": 0,
+"values": [1.5708, -0.0872665, 0.0872665, 0.0]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(2.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"ScrollScreen"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_p6ptu"]
+_data = {
+"RESET": SubResource("Animation_tbfkl"),
+"Title_enter": SubResource("Animation_pimfn")
+}
+
+[sub_resource type="Animation" id="Animation_ysvb4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1541, 2532)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-272, -159)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("animal spot:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("animal spot2:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("animal spot3:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../../../../LabelControl/Panel/Button:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../../../../Control/chan:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../../../../LabelControl2:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../../../../Control/chan:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("../../../../LabelControl:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_1vwuu"]
+resource_name = "Zone_anim"
+length = 8.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.7, 1.7),
+"transitions": PackedFloat32Array(0.450625, 1),
+"update": 0,
+"values": [Vector2(1541, 2532), Vector2(2180, 3582)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.7, 1.7),
+"transitions": PackedFloat32Array(0.45, 1),
+"update": 0,
+"values": [Vector2(-272, -159), Vector2(-377, -332)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("animal spot:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.7, 1.7, 2, 2.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(1e-05, 1e-05), Vector2(2.2, 2.2), Vector2(2, 2)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("animal spot2:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.7, 2.2, 2.5, 2.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(1e-05, 1e-05), Vector2(2.2, 2.2), Vector2(2, 2)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("animal spot3:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.7, 2.7, 3, 3.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(1e-05, 1e-05), Vector2(2.2, 2.2), Vector2(2, 2)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../../../../LabelControl/Panel/Button:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 3.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../../../../LabelControl:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_hch7n"]
+resource_name = "chan_anim"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../../../Control/chan:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.4),
+"transitions": PackedFloat32Array(2.73208, 1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(2.5, 2.5), Vector2(2, 2)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../../../LabelControl2:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../../../../Control/chan:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../../../../LabelControl:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../../../../Control/Node")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_on_pressed"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fh205"]
+_data = {
+"RESET": SubResource("Animation_ysvb4"),
+"Zone_anim": SubResource("Animation_1vwuu"),
+"chan_anim": SubResource("Animation_hch7n")
+}
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_82gmb"]
+texture = ExtResource("26_4d43e")
+
+[sub_resource type="Animation" id="Animation_u46we"]
+resource_name = "Label"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../LabelControl:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_2vuxp"]
+resource_name = "Map_Slice"
+length = 9.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(2.46229, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-1600, 0)]
+}
+tracks/1/type = "animation"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../Naumi_Intro/AnimationPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": PackedStringArray(),
+"times": PackedFloat32Array()
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../../Naumi_Intro/AnimationPlayer")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["naumi_intro_anim"],
+"method": &"PlayAnim"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_6tr83"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xofdi"]
+_data = {
+"Label": SubResource("Animation_u46we"),
+"Map_Slice": SubResource("Animation_2vuxp"),
+"RESET": SubResource("Animation_6tr83")
+}
+
+[node name="Mapa_Scroll_Intro" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Naumi_Intro" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Naumi_Intro"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.387
+anchor_right = 0.5
+anchor_bottom = 0.387
+offset_left = -451.0
+offset_top = -802.36
+offset_right = 451.0
+offset_bottom = 801.64
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_un13t")
+expand_mode = 1
+
+[node name="ColorRect" type="TextureRect" parent="Naumi_Intro"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.501
+anchor_top = 0.654
+anchor_right = 0.501
+anchor_bottom = 0.654
+offset_left = -585.72
+offset_top = -552.12
+offset_right = 584.28
+offset_bottom = 602.88
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("2_uf5dd")
+expand_mode = 1
+
+[node name="SaveFirstPlay" type="Node" parent="Naumi_Intro"]
+script = ExtResource("18_6lysc")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Naumi_Intro"]
+libraries = {
+"": SubResource("AnimationLibrary_5k4kw")
+}
+script = ExtResource("15_4c0kx")
+
+[node name="LabelControl" type="ColorRect" parent="Naumi_Intro"]
+visible = false
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -334.0
+offset_top = 64.0
+offset_right = 340.0
+offset_bottom = 332.0
+grow_horizontal = 2
+color = Color(0.172549, 0.172549, 0.172549, 0.356863)
+
+[node name="Panel" type="Panel" parent="Naumi_Intro/LabelControl"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -351.0
+offset_top = -114.0
+offset_right = 351.0
+offset_bottom = 114.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("23_003pn")
+
+[node name="Label" type="Label" parent="Naumi_Intro/LabelControl/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -296.0
+offset_top = -57.0
+offset_right = 294.0
+offset_bottom = 57.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "¿ESTO? ESTO ES UN NAUMI"
+label_settings = ExtResource("24_tj67n")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="ButtonChangeScene" parent="Naumi_Intro/LabelControl/Panel" instance=ExtResource("16_0ow6t")]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.809
+anchor_right = 0.809
+offset_left = -44.918
+offset_top = -46.0
+offset_right = 45.082
+offset_bottom = 44.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxTexture_wbaqp")
+theme_override_styles/hover = SubResource("StyleBoxTexture_wbaqp")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_wbaqp")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_wbaqp")
+text = "SI"
+NextScene = "AdventureBegins"
+
+[node name="ButtonChangeScene2" parent="Naumi_Intro/LabelControl/Panel" instance=ExtResource("16_0ow6t")]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.172
+anchor_right = 0.172
+offset_left = -44.744
+offset_top = -46.0
+offset_right = 45.256
+offset_bottom = 43.9999
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxTexture_wbaqp")
+theme_override_styles/hover = SubResource("StyleBoxTexture_wbaqp")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_wbaqp")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_wbaqp")
+text = "OK"
+NextScene = "AdventureBegins"
+
+[node name="Button" type="Button" parent="Naumi_Intro/LabelControl/Panel"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.798
+anchor_top = 0.991
+anchor_right = 0.798
+anchor_bottom = 0.991
+offset_left = -45.196
+offset_top = -44.948
+offset_right = 44.804
+offset_bottom = 45.052
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Control" type="Control" parent="Naumi_Intro"]
+layout_mode = 1
+anchor_left = 0.497
+anchor_top = 0.723
+anchor_right = 0.497
+anchor_bottom = 0.723
+offset_left = 0.160004
+offset_top = 0.559998
+offset_right = 0.160004
+offset_bottom = 0.559998
+
+[node name="Naumi" type="Sprite2D" parent="Naumi_Intro/Control"]
+scale = Vector2(0.737864, 0.737864)
+texture = ExtResource("20_ndgvp")
+offset = Vector2(0, -200)
+
+[node name="ZZZ" type="Sprite2D" parent="Naumi_Intro/Control"]
+visible = false
+position = Vector2(128, -367)
+scale = Vector2(0.866142, 0.866142)
+texture = ExtResource("10_w6hht")
+hframes = 19
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Naumi_Intro/Control/ZZZ"]
+speed_scale = 0.7
+libraries = {
+"": SubResource("AnimationLibrary_q3luw")
+}
+script = ExtResource("15_4c0kx")
+animation = "zzz"
+
+[node name="Button" type="Button" parent="Naumi_Intro/Control"]
+layout_mode = 0
+offset_left = -156.0
+offset_top = -396.0
+offset_right = 164.0
+offset_bottom = 92.0
+theme_override_styles/focus = ExtResource("17_2a5jd")
+flat = true
+
+[node name="Map_Scroll" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Mapa-detalle" type="Sprite2D" parent="Map_Scroll"]
+position = Vector2(445, 628)
+rotation = 1.61737
+texture = ExtResource("1_kw7ma")
+
+[node name="Polygon2D" type="Polygon2D" parent="Map_Scroll"]
+texture_repeat = 2
+texture = ExtResource("1_wa0ye")
+polygon = PackedVector2Array(738, -35, 775, -4, 793, -44, 823, 74, 793, 178, 745, 254, 772, 321, 807, 406, 863, 434, 868, 523, 833, 550, 849, 610, 815, 693, 751, 701, 713, 770, 828, 947, 825, 1030, 786, 1063, 813, 1237, 837, 1244, 808, 1285, 724, 1339, 610, 1322)
+
+[node name="TextureRect2" type="TextureRect" parent="Map_Scroll"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_wa0ye")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Map_Scroll" node_paths=PackedStringArray("LastMarginConteiner")]
+layout_mode = 2
+anchor_left = 0.5
+anchor_right = 0.5
+offset_bottom = 6484.0
+size_flags_horizontal = 6
+theme_override_constants/separation = 640
+script = ExtResource("2_n60vv")
+scrollDuration = 28.0
+LastMarginConteiner = NodePath("Piso1")
+
+[node name="Titulo" type="MarginContainer" parent="Map_Scroll/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 640
+script = ExtResource("4_4e1by")
+margin = "margin_top"
+
+[node name="Control" type="Control" parent="Map_Scroll/VBoxContainer/Titulo"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="TextureRect" type="TextureRect" parent="Map_Scroll/VBoxContainer/Titulo/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -331.0
+offset_top = -379.0
+offset_right = 331.0
+offset_bottom = -98.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 1.5708
+pivot_offset = Vector2(331, 1000)
+texture = ExtResource("5_pglwp")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Map_Scroll/VBoxContainer/Titulo/Control/TextureRect"]
+autoplay = "Title_enter"
+libraries = {
+"": SubResource("AnimationLibrary_p6ptu")
+}
+
+[node name="LOGO" type="Sprite2D" parent="Map_Scroll/VBoxContainer/Titulo/Control/TextureRect"]
+visible = false
+position = Vector2(337, 454.5)
+scale = Vector2(0.264, 0.264)
+texture = ExtResource("5_8y8kv")
+
+[node name="LOGO" type="Sprite2D" parent="Map_Scroll/VBoxContainer/Titulo/Control/TextureRect/LOGO"]
+clip_children = 2
+scale = Vector2(0.954545, 0.954545)
+texture = ExtResource("5_8y8kv")
+
+[node name="LogoChicoCirculo" type="Sprite2D" parent="Map_Scroll/VBoxContainer/Titulo/Control/TextureRect/LOGO/LOGO"]
+scale = Vector2(0.622881, 0.622881)
+texture = ExtResource("6_dtbi3")
+
+[node name="middleIslands" type="MarginContainer" parent="Map_Scroll/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 1000
+theme_override_constants/margin_bottom = 1000
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Map_Scroll/VBoxContainer/middleIslands"]
+layout_mode = 2
+
+[node name="Piso3" type="MarginContainer" parent="Map_Scroll/VBoxContainer/middleIslands/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_bottom = 1920
+
+[node name="Piso3" type="Control" parent="Map_Scroll/VBoxContainer/middleIslands/VBoxContainer/Piso3"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_neighbor_bottom = NodePath("../../Piso2/Piso2")
+mouse_filter = 1
+
+[node name="Zona_Cuaterario" type="TextureRect" parent="Map_Scroll/VBoxContainer/middleIslands/VBoxContainer/Piso3/Piso3"]
+layout_mode = 1
+anchors_preset = -1
+offset_left = -338.0
+offset_top = 326.0
+offset_right = 651.0
+offset_bottom = 2123.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.35, 0.35)
+expand_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="Map_Scroll/VBoxContainer/middleIslands/VBoxContainer/Piso3/Piso3/Zona_Cuaterario"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = -0.034
+anchor_right = 1.046
+anchor_bottom = 1.0
+offset_top = 61.093
+offset_right = -45.4939
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_sqkww")
+
+[node name="Ambientes" type="TextureRect" parent="Map_Scroll/VBoxContainer/middleIslands/VBoxContainer/Piso3/Piso3"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.29
+anchor_top = 0.205
+anchor_right = 0.29
+anchor_bottom = 0.205
+offset_left = -339.0
+offset_top = -813.0
+offset_right = 720.0
+offset_bottom = 1003.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.33, 0.33)
+expand_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="Map_Scroll/VBoxContainer/middleIslands/VBoxContainer/Piso3/Piso3/Ambientes"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = -0.029
+anchor_right = 1.0
+anchor_bottom = 1.029
+offset_left = -10.5
+offset_top = 0.665039
+offset_right = 10.5
+offset_bottom = -0.662964
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_6t5sw")
+
+[node name="Eras_Geologicas" type="TextureRect" parent="Map_Scroll/VBoxContainer/middleIslands/VBoxContainer/Piso3/Piso3"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.586
+anchor_top = 0.5
+anchor_right = 0.586
+anchor_bottom = 0.5
+offset_left = -13.9999
+offset_top = -229.0
+offset_right = 1039.0
+offset_bottom = 1501.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.33, 0.33)
+expand_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="Map_Scroll/VBoxContainer/middleIslands/VBoxContainer/Piso3/Piso3/Eras_Geologicas"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = -0.055
+anchor_right = 1.013
+anchor_bottom = 1.055
+offset_left = 6.10352e-05
+offset_top = 95.15
+offset_right = -13.689
+offset_bottom = -95.1501
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("10_c3fc7")
+
+[node name="Button_Change_State" type="Button" parent="Map_Scroll/VBoxContainer/middleIslands/VBoxContainer/Piso3/Piso3/Eras_Geologicas/TextureRect"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.112
+anchor_top = 0.1
+anchor_right = 0.888
+anchor_bottom = 0.9
+offset_left = 0.0399933
+offset_right = -0.0401001
+offset_bottom = -0.00012207
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+flat = true
+script = ExtResource("8_rb8q7")
+
+[node name="CompleteState" type="ColorRect" parent="Map_Scroll/VBoxContainer/middleIslands/VBoxContainer/Piso3/Piso3/Eras_Geologicas"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)
+
+[node name="TextureRect" type="TextureRect" parent="Map_Scroll/VBoxContainer/middleIslands/VBoxContainer/Piso3/Piso3/Eras_Geologicas/CompleteState"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -398.0
+offset_bottom = 421.0
+grow_horizontal = 0
+texture = ExtResource("17_0u7nf")
+expand_mode = 1
+
+[node name="Piso2" type="MarginContainer" parent="Map_Scroll/VBoxContainer/middleIslands/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_bottom = 0
+
+[node name="Piso2" type="Control" parent="Map_Scroll/VBoxContainer/middleIslands/VBoxContainer/Piso2"]
+layout_mode = 2
+size_flags_horizontal = 4
+focus_neighbor_top = NodePath("../../Piso3/Piso3")
+focus_neighbor_bottom = NodePath("../../../../Piso1/Piso2")
+mouse_filter = 1
+
+[node name="Zona_Paleontología" type="TextureRect" parent="Map_Scroll/VBoxContainer/middleIslands/VBoxContainer/Piso2/Piso2"]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 2.0
+offset_top = 295.0
+offset_right = 991.0
+offset_bottom = 2092.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.35, 0.35)
+expand_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="Map_Scroll/VBoxContainer/middleIslands/VBoxContainer/Piso2/Piso2/Zona_Paleontología"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = -0.034
+anchor_right = 1.046
+anchor_bottom = 1.0
+offset_top = 61.093
+offset_right = -45.4939
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_sqkww")
+
+[node name="AstronomiaZone" type="TextureRect" parent="Map_Scroll/VBoxContainer/middleIslands/VBoxContainer/Piso2/Piso2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.29
+anchor_top = 0.205
+anchor_right = 0.29
+anchor_bottom = 0.205
+offset_left = -339.0
+offset_top = -321.0
+offset_right = 720.0
+offset_bottom = 1495.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.33, 0.33)
+expand_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="Map_Scroll/VBoxContainer/middleIslands/VBoxContainer/Piso2/Piso2/AstronomiaZone"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = -0.029
+anchor_right = 1.0
+anchor_bottom = 1.029
+offset_top = 52.664
+offset_bottom = -52.662
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("10_c3fc7")
+
+[node name="GeologiaZone" type="TextureRect" parent="Map_Scroll/VBoxContainer/middleIslands/VBoxContainer/Piso2/Piso2"]
+layout_mode = 1
+anchors_preset = -1
+offset_left = -29.0
+offset_top = -915.0
+offset_right = 1130.0
+offset_bottom = 989.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.33, 0.33)
+expand_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="Map_Scroll/VBoxContainer/middleIslands/VBoxContainer/Piso2/Piso2/GeologiaZone"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.493
+anchor_top = -0.626
+anchor_right = 1.013
+anchor_bottom = 1.597
+offset_left = 519.129
+offset_top = 1082.98
+offset_right = -13.689
+offset_bottom = -1032.81
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("11_tirda")
+
+[node name="Piso1" type="MarginContainer" parent="Map_Scroll/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_constants/margin_top = 0
+
+[node name="Piso2" type="Control" parent="Map_Scroll/VBoxContainer/Piso1"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+focus_neighbor_bottom = NodePath("../../middleIslands/VBoxContainer/Piso2/Piso2")
+mouse_filter = 1
+
+[node name="MegafaunaZone" type="TextureRect" parent="Map_Scroll/VBoxContainer/Piso1/Piso2"]
+layout_mode = 1
+anchors_preset = -1
+offset_left = -272.0
+offset_top = -159.0
+offset_right = 1269.0
+offset_bottom = 2373.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.33, 0.33)
+expand_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="Map_Scroll/VBoxContainer/Piso1/Piso2/MegafaunaZone"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("12_4oixe")
+
+[node name="animal spot" type="Sprite2D" parent="Map_Scroll/VBoxContainer/Piso1/Piso2/MegafaunaZone"]
+position = Vector2(1496.97, 2048.48)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("20_fn5ys")
+
+[node name="animal spot2" type="Sprite2D" parent="Map_Scroll/VBoxContainer/Piso1/Piso2/MegafaunaZone"]
+position = Vector2(824.242, 903.029)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("20_fn5ys")
+
+[node name="animal spot3" type="Sprite2D" parent="Map_Scroll/VBoxContainer/Piso1/Piso2/MegafaunaZone"]
+position = Vector2(1624.24, 512.121)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("20_fn5ys")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Map_Scroll/VBoxContainer/Piso1/Piso2/MegafaunaZone"]
+libraries = {
+"": SubResource("AnimationLibrary_fh205")
+}
+script = ExtResource("15_4c0kx")
+animation = "Zone_anim"
+
+[node name="LabelControl" type="ColorRect" parent="Map_Scroll"]
+visible = false
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -332.0
+offset_top = 85.0
+offset_right = 332.0
+offset_bottom = 335.0
+grow_horizontal = 2
+color = Color(0.172549, 0.172549, 0.172549, 0.356863)
+
+[node name="Panel" type="Panel" parent="Map_Scroll/LabelControl"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -23.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("23_003pn")
+
+[node name="Label" type="Label" parent="Map_Scroll/LabelControl/Panel"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 62.0
+offset_top = 32.0
+offset_right = -62.0
+offset_bottom = -32.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 20
+text = "¡HOLA!
+ESTO ES SENDERO NAUMI. 
+UN LUGAR PARA APRENDER EXPLORANDO Y DIVERTIRSE."
+label_settings = ExtResource("24_tj67n")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Button" type="Button" parent="Map_Scroll/LabelControl/Panel"]
+visible = false
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -538.0
+offset_top = -364.5
+offset_right = 538.0
+offset_bottom = 1328.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/focus = ExtResource("17_2a5jd")
+text = "
+"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Map_Scroll/LabelControl/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -291.0
+offset_top = -31.0
+offset_right = 291.0
+offset_bottom = 31.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_selected_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/normal_font_size = 22
+theme_override_font_sizes/bold_font_size = 22
+bbcode_enabled = true
+text = "[center]ESTO ES [b]SENDERO NAUMI[/b]
+UNA NUEVA FORMA DE RECORRER EL MUSEO[/center]"
+fit_content = true
+
+[node name="LabelControl2" type="ColorRect" parent="Map_Scroll"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -324.5
+offset_top = -125.5
+offset_right = 324.5
+offset_bottom = 125.5
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0)
+
+[node name="Panel" type="Panel" parent="Map_Scroll/LabelControl2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 12.0
+offset_bottom = -12.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("23_003pn")
+script = ExtResource("5_a6sio")
+timeToBtn = 4.0
+
+[node name="Label" type="Label" parent="Map_Scroll/LabelControl2/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 24.0
+offset_top = 32.0001
+offset_right = -24.0
+offset_bottom = -31.9999
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 25
+text = "¡UN MOMENTO! 
+ANTES QUE EMPIECES...
+TENEMOS ALGO PARA VOS"
+label_settings = ExtResource("24_tj67n")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Button" type="Button" parent="Map_Scroll/LabelControl2/Panel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 155.5
+offset_top = -45.0
+offset_right = 239.5
+offset_bottom = 39.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 45
+theme_override_styles/normal = SubResource("StyleBoxTexture_82gmb")
+theme_override_styles/hover = SubResource("StyleBoxTexture_82gmb")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_82gmb")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_82gmb")
+theme_override_styles/focus = ExtResource("17_2a5jd")
+text = "?
+"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Map_Scroll/LabelControl2"]
+libraries = {
+"": SubResource("AnimationLibrary_xofdi")
+}
+script = ExtResource("15_4c0kx")
+
+[node name="Panel" type="Panel" parent="Map_Scroll"]
+visible = false
+layout_mode = 0
+offset_left = 679.0
+offset_top = 1090.0
+offset_right = 733.0
+offset_bottom = 4343.0
+
+[node name="Control" type="Control" parent="Map_Scroll"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="chan" type="Sprite2D" parent="Map_Scroll/Control"]
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("22_c1o0u")
+
+[node name="Node" type="Node" parent="Map_Scroll/Control"]
+script = ExtResource("29_imofv")
+vibrate = 300.0
+
+[connection signal="pressed" from="Naumi_Intro/LabelControl/Panel/Button" to="Naumi_Intro/AnimationPlayer" method="PlayAnim" binds= ["naumi_intro_anim_2"]]
+[connection signal="tree_entered" from="Naumi_Intro/Control/Naumi" to="Naumi_Intro/Control/Naumi" method="_on_tree_entered"]
+[connection signal="tree_exited" from="Naumi_Intro/Control/Naumi" to="Naumi_Intro/Control/Naumi" method="_on_tree_exited"]
+[connection signal="pressed" from="Naumi_Intro/Control/Button" to="Naumi_Intro/Control/ZZZ/AnimationPlayer" method="Play"]
+[connection signal="stopscroll" from="Map_Scroll/VBoxContainer" to="Map_Scroll/VBoxContainer/Piso1/Piso2/MegafaunaZone/AnimationPlayer" method="Play"]
+[connection signal="pressed" from="Map_Scroll/VBoxContainer/middleIslands/VBoxContainer/Piso3/Piso3/Eras_Geologicas/TextureRect/Button_Change_State" to="Map_Scroll/VBoxContainer/middleIslands/VBoxContainer/Piso3/Piso3/Eras_Geologicas/TextureRect/Button_Change_State" method="_on_pressed"]
+[connection signal="pressed" from="Map_Scroll/LabelControl/Panel/Button" to="Map_Scroll/VBoxContainer/Piso1/Piso2/MegafaunaZone/AnimationPlayer" method="PlayAnim" binds= ["chan_anim"]]
+[connection signal="pressed" from="Map_Scroll/LabelControl2/Panel/Button" to="Map_Scroll/LabelControl2/AnimationPlayer" method="PlayAnim" binds= ["Map_Slice"]]
