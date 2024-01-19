@@ -1,20 +1,716 @@
-[gd_scene load_steps=4 format=3 uid="uid://dh3tp053f8evp"]
+[gd_scene load_steps=9 format=3 uid="uid://dh3tp053f8evp"]
 
+[ext_resource type="Texture2D" uid="uid://nuybqhitpej1" path="res://Sprites/Mapa/fondo_mapa.png" id="1_4o8pu"]
 [ext_resource type="Script" path="res://_Scripts/MinG_Astronauta/AstronautaMove.gd" id="1_wrrhl"]
-[ext_resource type="Texture2D" uid="uid://bgy7tv3s2j7ng" path="res://icon.svg" id="2_x8t34"]
+[ext_resource type="Texture2D" uid="uid://b2op8eppn0juv" path="res://Sprites/ZonaAstronomia/Astronauta.png" id="3_2av1y"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="4_jsk5h"]
+[ext_resource type="Texture2D" uid="uid://drrio0noaq2fi" path="res://Sprites/ZonaGeología/piedra-PhotoRoom.png-PhotoRoom.png" id="4_k6u36"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2D.gd" id="6_i6jbq"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_83hx5"]
-radius = 22.0
-height = 76.0
+radius = 67.0
+height = 138.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2javv"]
+radius = 209.476
 
 [node name="Prototipo_Astronauta" type="Node2D"]
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = -5767.0
+offset_top = -5318.0
+offset_right = 5807.0
+offset_bottom = 5358.0
+size_flags_horizontal = 4
+texture = ExtResource("1_4o8pu")
+stretch_mode = 1
+
+[node name="Astronauta" type="CharacterBody2D" parent="."]
+position = Vector2(363, 639)
 motion_mode = 1
 script = ExtResource("1_wrrhl")
+max_speed = 500
+friction = 100
+rotationSpeed = 10
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+[node name="Sprite2D" type="Sprite2D" parent="Astronauta"]
+scale = Vector2(2.13559, 2.13559)
+texture = ExtResource("3_2av1y")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Astronauta"]
 shape = SubResource("CapsuleShape2D_83hx5")
 
-[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
-texture = ExtResource("2_x8t34")
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(-5556, -4998, -5217, -4387, -5601, -2984, -4945, -2124, -5647, -1083, -5126, -676, -5579, 523, -4923, 1383, -5330, 2695, -5466, 3465, -5307, 4528, -5579, 4913, -4379, 5026, -3655, 4777, -2682, 5207, -1370, 4800, -239, 5275, 1028, 4981, 2001, 5275, 3020, 4958, 4581, 5365, 5486, 5184, 5237, 3872, 5463, 3329, 5079, 953, 5577, 704, 5282, -676, 5215, -2260, 5147, -3867, 5396, -5179, 3721, -5247, 2793, -4862, 666, -5156, -1121, -4930, -3406, -4817, -5013, -5111, -5058, -6333, 6685, -6288, 6504, 5999, -6710, 5863, -6506, -6401, -5058, -4953)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(363, 639)
+
+[node name="PhantomCameraHost" type="Node" parent="Camera2D"]
+script = ExtResource("4_jsk5h")
+
+[node name="Meteoritos" type="Node2D" parent="."]
+
+[node name="RigidBody2D" type="RigidBody2D" parent="Meteoritos"]
+position = Vector2(283, -1233)
+disable_mode = 2
+gravity_scale = 0.0
+can_sleep = false
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Meteoritos/RigidBody2D"]
+position = Vector2(647, 1318)
+shape = SubResource("CircleShape2D_2javv")
+
+[node name="Sprite2D" type="Sprite2D" parent="Meteoritos/RigidBody2D/CollisionShape2D4"]
+texture = ExtResource("4_k6u36")
+
+[node name="RigidBody2D2" type="RigidBody2D" parent="Meteoritos"]
+disable_mode = 2
+gravity_scale = 0.0
+can_sleep = false
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Meteoritos/RigidBody2D2"]
+position = Vector2(647, 1318)
+shape = SubResource("CircleShape2D_2javv")
+
+[node name="Sprite2D" type="Sprite2D" parent="Meteoritos/RigidBody2D2/CollisionShape2D4"]
+texture = ExtResource("4_k6u36")
+
+[node name="RigidBody2D3" type="RigidBody2D" parent="Meteoritos"]
+position = Vector2(-1075, -1086)
+disable_mode = 2
+gravity_scale = 0.0
+can_sleep = false
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Meteoritos/RigidBody2D3"]
+position = Vector2(647, 1318)
+shape = SubResource("CircleShape2D_2javv")
+
+[node name="Sprite2D" type="Sprite2D" parent="Meteoritos/RigidBody2D3/CollisionShape2D4"]
+texture = ExtResource("4_k6u36")
+
+[node name="RigidBody2D4" type="RigidBody2D" parent="Meteoritos"]
+position = Vector2(-1414, 79)
+disable_mode = 2
+gravity_scale = 0.0
+can_sleep = false
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Meteoritos/RigidBody2D4"]
+position = Vector2(647, 1318)
+shape = SubResource("CircleShape2D_2javv")
+
+[node name="Sprite2D" type="Sprite2D" parent="Meteoritos/RigidBody2D4/CollisionShape2D4"]
+texture = ExtResource("4_k6u36")
+
+[node name="RigidBody2D5" type="RigidBody2D" parent="Meteoritos"]
+position = Vector2(-735, 1052)
+disable_mode = 2
+gravity_scale = 0.0
+can_sleep = false
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Meteoritos/RigidBody2D5"]
+position = Vector2(647, 1318)
+shape = SubResource("CircleShape2D_2javv")
+
+[node name="Sprite2D" type="Sprite2D" parent="Meteoritos/RigidBody2D5/CollisionShape2D4"]
+texture = ExtResource("4_k6u36")
+
+[node name="RigidBody2D6" type="RigidBody2D" parent="Meteoritos"]
+position = Vector2(1335, -226)
+disable_mode = 2
+gravity_scale = 0.0
+can_sleep = false
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Meteoritos/RigidBody2D6"]
+position = Vector2(647, 1318)
+shape = SubResource("CircleShape2D_2javv")
+
+[node name="Sprite2D" type="Sprite2D" parent="Meteoritos/RigidBody2D6/CollisionShape2D4"]
+texture = ExtResource("4_k6u36")
+
+[node name="RigidBody2D7" type="RigidBody2D" parent="Meteoritos"]
+position = Vector2(724, 1154)
+disable_mode = 2
+gravity_scale = 0.0
+can_sleep = false
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Meteoritos/RigidBody2D7"]
+position = Vector2(647, 1318)
+shape = SubResource("CircleShape2D_2javv")
+
+[node name="Sprite2D" type="Sprite2D" parent="Meteoritos/RigidBody2D7/CollisionShape2D4"]
+texture = ExtResource("4_k6u36")
+
+[node name="RigidBody2D8" type="RigidBody2D" parent="Meteoritos"]
+position = Vector2(2739, -4180)
+disable_mode = 2
+gravity_scale = 0.0
+can_sleep = false
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Meteoritos/RigidBody2D8"]
+position = Vector2(647, 1318)
+shape = SubResource("CircleShape2D_2javv")
+
+[node name="Sprite2D" type="Sprite2D" parent="Meteoritos/RigidBody2D8/CollisionShape2D4"]
+texture = ExtResource("4_k6u36")
+
+[node name="RigidBody2D9" type="RigidBody2D" parent="Meteoritos"]
+position = Vector2(2456, -2947)
+disable_mode = 2
+gravity_scale = 0.0
+can_sleep = false
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Meteoritos/RigidBody2D9"]
+position = Vector2(647, 1318)
+shape = SubResource("CircleShape2D_2javv")
+
+[node name="Sprite2D" type="Sprite2D" parent="Meteoritos/RigidBody2D9/CollisionShape2D4"]
+texture = ExtResource("4_k6u36")
+
+[node name="RigidBody2D10" type="RigidBody2D" parent="Meteoritos"]
+position = Vector2(1381, -4033)
+disable_mode = 2
+gravity_scale = 0.0
+can_sleep = false
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Meteoritos/RigidBody2D10"]
+position = Vector2(647, 1318)
+shape = SubResource("CircleShape2D_2javv")
+
+[node name="Sprite2D" type="Sprite2D" parent="Meteoritos/RigidBody2D10/CollisionShape2D4"]
+texture = ExtResource("4_k6u36")
+
+[node name="RigidBody2D11" type="RigidBody2D" parent="Meteoritos"]
+position = Vector2(1042, -2868)
+disable_mode = 2
+gravity_scale = 0.0
+can_sleep = false
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Meteoritos/RigidBody2D11"]
+position = Vector2(647, 1318)
+shape = SubResource("CircleShape2D_2javv")
+
+[node name="Sprite2D" type="Sprite2D" parent="Meteoritos/RigidBody2D11/CollisionShape2D4"]
+texture = ExtResource("4_k6u36")
+
+[node name="RigidBody2D12" type="RigidBody2D" parent="Meteoritos"]
+position = Vector2(1721, -1895)
+disable_mode = 2
+gravity_scale = 0.0
+can_sleep = false
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Meteoritos/RigidBody2D12"]
+position = Vector2(647, 1318)
+shape = SubResource("CircleShape2D_2javv")
+
+[node name="Sprite2D" type="Sprite2D" parent="Meteoritos/RigidBody2D12/CollisionShape2D4"]
+texture = ExtResource("4_k6u36")
+
+[node name="RigidBody2D13" type="RigidBody2D" parent="Meteoritos"]
+position = Vector2(3791, -3173)
+disable_mode = 2
+gravity_scale = 0.0
+can_sleep = false
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Meteoritos/RigidBody2D13"]
+position = Vector2(647, 1318)
+shape = SubResource("CircleShape2D_2javv")
+
+[node name="Sprite2D" type="Sprite2D" parent="Meteoritos/RigidBody2D13/CollisionShape2D4"]
+texture = ExtResource("4_k6u36")
+
+[node name="RigidBody2D14" type="RigidBody2D" parent="Meteoritos"]
+position = Vector2(3180, -1793)
+disable_mode = 2
+gravity_scale = 0.0
+can_sleep = false
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Meteoritos/RigidBody2D14"]
+position = Vector2(647, 1318)
+shape = SubResource("CircleShape2D_2javv")
+
+[node name="Sprite2D" type="Sprite2D" parent="Meteoritos/RigidBody2D14/CollisionShape2D4"]
+texture = ExtResource("4_k6u36")
+
+[node name="RigidBody2D15" type="RigidBody2D" parent="Meteoritos"]
+position = Vector2(-806, -4778)
+disable_mode = 2
+gravity_scale = 0.0
+can_sleep = false
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Meteoritos/RigidBody2D15"]
+position = Vector2(647, 1318)
+shape = SubResource("CircleShape2D_2javv")
+
+[node name="Sprite2D" type="Sprite2D" parent="Meteoritos/RigidBody2D15/CollisionShape2D4"]
+texture = ExtResource("4_k6u36")
+
+[node name="RigidBody2D16" type="RigidBody2D" parent="Meteoritos"]
+position = Vector2(-1089, -3545)
+disable_mode = 2
+gravity_scale = 0.0
+can_sleep = false
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Meteoritos/RigidBody2D16"]
+position = Vector2(647, 1318)
+shape = SubResource("CircleShape2D_2javv")
+
+[node name="Sprite2D" type="Sprite2D" parent="Meteoritos/RigidBody2D16/CollisionShape2D4"]
+texture = ExtResource("4_k6u36")
+
+[node name="RigidBody2D17" type="RigidBody2D" parent="Meteoritos"]
+position = Vector2(-2164, -4631)
+disable_mode = 2
+gravity_scale = 0.0
+can_sleep = false
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Meteoritos/RigidBody2D17"]
+position = Vector2(647, 1318)
+shape = SubResource("CircleShape2D_2javv")
+
+[node name="Sprite2D" type="Sprite2D" parent="Meteoritos/RigidBody2D17/CollisionShape2D4"]
+texture = ExtResource("4_k6u36")
+
+[node name="RigidBody2D18" type="RigidBody2D" parent="Meteoritos"]
+position = Vector2(-2503, -3466)
+disable_mode = 2
+gravity_scale = 0.0
+can_sleep = false
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Meteoritos/RigidBody2D18"]
+position = Vector2(647, 1318)
+shape = SubResource("CircleShape2D_2javv")
+
+[node name="Sprite2D" type="Sprite2D" parent="Meteoritos/RigidBody2D18/CollisionShape2D4"]
+texture = ExtResource("4_k6u36")
+
+[node name="RigidBody2D19" type="RigidBody2D" parent="Meteoritos"]
+position = Vector2(-1824, -2493)
+disable_mode = 2
+gravity_scale = 0.0
+can_sleep = false
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Meteoritos/RigidBody2D19"]
+position = Vector2(647, 1318)
+shape = SubResource("CircleShape2D_2javv")
+
+[node name="Sprite2D" type="Sprite2D" parent="Meteoritos/RigidBody2D19/CollisionShape2D4"]
+texture = ExtResource("4_k6u36")
+
+[node name="RigidBody2D20" type="RigidBody2D" parent="Meteoritos"]
+position = Vector2(246, -3771)
+disable_mode = 2
+gravity_scale = 0.0
+can_sleep = false
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Meteoritos/RigidBody2D20"]
+position = Vector2(647, 1318)
+shape = SubResource("CircleShape2D_2javv")
+
+[node name="Sprite2D" type="Sprite2D" parent="Meteoritos/RigidBody2D20/CollisionShape2D4"]
+texture = ExtResource("4_k6u36")
+
+[node name="RigidBody2D21" type="RigidBody2D" parent="Meteoritos"]
+position = Vector2(-365, -2391)
+disable_mode = 2
+gravity_scale = 0.0
+can_sleep = false
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Meteoritos/RigidBody2D21"]
+position = Vector2(647, 1318)
+shape = SubResource("CircleShape2D_2javv")
+
+[node name="Sprite2D" type="Sprite2D" parent="Meteoritos/RigidBody2D21/CollisionShape2D4"]
+texture = ExtResource("4_k6u36")
+
+[node name="RigidBody2D22" type="RigidBody2D" parent="Meteoritos"]
+position = Vector2(-3283, -2236)
+disable_mode = 2
+gravity_scale = 0.0
+can_sleep = false
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Meteoritos/RigidBody2D22"]
+position = Vector2(647, 1318)
+shape = SubResource("CircleShape2D_2javv")
+
+[node name="Sprite2D" type="Sprite2D" parent="Meteoritos/RigidBody2D22/CollisionShape2D4"]
+texture = ExtResource("4_k6u36")
+
+[node name="RigidBody2D23" type="RigidBody2D" parent="Meteoritos"]
+position = Vector2(-3566, -1003)
+disable_mode = 2
+gravity_scale = 0.0
+can_sleep = false
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Meteoritos/RigidBody2D23"]
+position = Vector2(647, 1318)
+shape = SubResource("CircleShape2D_2javv")
+
+[node name="Sprite2D" type="Sprite2D" parent="Meteoritos/RigidBody2D23/CollisionShape2D4"]
+texture = ExtResource("4_k6u36")
+
+[node name="RigidBody2D24" type="RigidBody2D" parent="Meteoritos"]
+position = Vector2(-4641, -2089)
+disable_mode = 2
+gravity_scale = 0.0
+can_sleep = false
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Meteoritos/RigidBody2D24"]
+position = Vector2(647, 1318)
+shape = SubResource("CircleShape2D_2javv")
+
+[node name="Sprite2D" type="Sprite2D" parent="Meteoritos/RigidBody2D24/CollisionShape2D4"]
+texture = ExtResource("4_k6u36")
+
+[node name="RigidBody2D25" type="RigidBody2D" parent="Meteoritos"]
+position = Vector2(-4980, -924)
+disable_mode = 2
+gravity_scale = 0.0
+can_sleep = false
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Meteoritos/RigidBody2D25"]
+position = Vector2(647, 1318)
+shape = SubResource("CircleShape2D_2javv")
+
+[node name="Sprite2D" type="Sprite2D" parent="Meteoritos/RigidBody2D25/CollisionShape2D4"]
+texture = ExtResource("4_k6u36")
+
+[node name="RigidBody2D26" type="RigidBody2D" parent="Meteoritos"]
+position = Vector2(-4301, 49)
+disable_mode = 2
+gravity_scale = 0.0
+can_sleep = false
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Meteoritos/RigidBody2D26"]
+position = Vector2(647, 1318)
+shape = SubResource("CircleShape2D_2javv")
+
+[node name="Sprite2D" type="Sprite2D" parent="Meteoritos/RigidBody2D26/CollisionShape2D4"]
+texture = ExtResource("4_k6u36")
+
+[node name="RigidBody2D27" type="RigidBody2D" parent="Meteoritos"]
+position = Vector2(-2231, -1229)
+disable_mode = 2
+gravity_scale = 0.0
+can_sleep = false
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Meteoritos/RigidBody2D27"]
+position = Vector2(647, 1318)
+shape = SubResource("CircleShape2D_2javv")
+
+[node name="Sprite2D" type="Sprite2D" parent="Meteoritos/RigidBody2D27/CollisionShape2D4"]
+texture = ExtResource("4_k6u36")
+
+[node name="RigidBody2D28" type="RigidBody2D" parent="Meteoritos"]
+position = Vector2(-2842, 151)
+disable_mode = 2
+gravity_scale = 0.0
+can_sleep = false
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Meteoritos/RigidBody2D28"]
+position = Vector2(647, 1318)
+shape = SubResource("CircleShape2D_2javv")
+
+[node name="Sprite2D" type="Sprite2D" parent="Meteoritos/RigidBody2D28/CollisionShape2D4"]
+texture = ExtResource("4_k6u36")
+
+[node name="RigidBody2D29" type="RigidBody2D" parent="Meteoritos"]
+position = Vector2(3210, 775)
+disable_mode = 2
+gravity_scale = 0.0
+can_sleep = false
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Meteoritos/RigidBody2D29"]
+position = Vector2(647, 1318)
+shape = SubResource("CircleShape2D_2javv")
+
+[node name="Sprite2D" type="Sprite2D" parent="Meteoritos/RigidBody2D29/CollisionShape2D4"]
+texture = ExtResource("4_k6u36")
+
+[node name="RigidBody2D30" type="RigidBody2D" parent="Meteoritos"]
+position = Vector2(2927, 2008)
+disable_mode = 2
+gravity_scale = 0.0
+can_sleep = false
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Meteoritos/RigidBody2D30"]
+position = Vector2(647, 1318)
+shape = SubResource("CircleShape2D_2javv")
+
+[node name="Sprite2D" type="Sprite2D" parent="Meteoritos/RigidBody2D30/CollisionShape2D4"]
+texture = ExtResource("4_k6u36")
+
+[node name="RigidBody2D31" type="RigidBody2D" parent="Meteoritos"]
+position = Vector2(1852, 922)
+disable_mode = 2
+gravity_scale = 0.0
+can_sleep = false
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Meteoritos/RigidBody2D31"]
+position = Vector2(647, 1318)
+shape = SubResource("CircleShape2D_2javv")
+
+[node name="Sprite2D" type="Sprite2D" parent="Meteoritos/RigidBody2D31/CollisionShape2D4"]
+texture = ExtResource("4_k6u36")
+
+[node name="RigidBody2D32" type="RigidBody2D" parent="Meteoritos"]
+position = Vector2(1513, 2087)
+disable_mode = 2
+gravity_scale = 0.0
+can_sleep = false
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Meteoritos/RigidBody2D32"]
+position = Vector2(647, 1318)
+shape = SubResource("CircleShape2D_2javv")
+
+[node name="Sprite2D" type="Sprite2D" parent="Meteoritos/RigidBody2D32/CollisionShape2D4"]
+texture = ExtResource("4_k6u36")
+
+[node name="RigidBody2D33" type="RigidBody2D" parent="Meteoritos"]
+position = Vector2(2192, 3060)
+disable_mode = 2
+gravity_scale = 0.0
+can_sleep = false
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Meteoritos/RigidBody2D33"]
+position = Vector2(647, 1318)
+shape = SubResource("CircleShape2D_2javv")
+
+[node name="Sprite2D" type="Sprite2D" parent="Meteoritos/RigidBody2D33/CollisionShape2D4"]
+texture = ExtResource("4_k6u36")
+
+[node name="RigidBody2D34" type="RigidBody2D" parent="Meteoritos"]
+position = Vector2(4262, 1782)
+disable_mode = 2
+gravity_scale = 0.0
+can_sleep = false
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Meteoritos/RigidBody2D34"]
+position = Vector2(647, 1318)
+shape = SubResource("CircleShape2D_2javv")
+
+[node name="Sprite2D" type="Sprite2D" parent="Meteoritos/RigidBody2D34/CollisionShape2D4"]
+texture = ExtResource("4_k6u36")
+
+[node name="RigidBody2D35" type="RigidBody2D" parent="Meteoritos"]
+position = Vector2(3651, 3162)
+disable_mode = 2
+gravity_scale = 0.0
+can_sleep = false
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Meteoritos/RigidBody2D35"]
+position = Vector2(647, 1318)
+shape = SubResource("CircleShape2D_2javv")
+
+[node name="Sprite2D" type="Sprite2D" parent="Meteoritos/RigidBody2D35/CollisionShape2D4"]
+texture = ExtResource("4_k6u36")
+
+[node name="RigidBody2D36" type="RigidBody2D" parent="Meteoritos"]
+position = Vector2(-3454, 925)
+disable_mode = 2
+gravity_scale = 0.0
+can_sleep = false
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Meteoritos/RigidBody2D36"]
+position = Vector2(647, 1318)
+shape = SubResource("CircleShape2D_2javv")
+
+[node name="Sprite2D" type="Sprite2D" parent="Meteoritos/RigidBody2D36/CollisionShape2D4"]
+texture = ExtResource("4_k6u36")
+
+[node name="RigidBody2D37" type="RigidBody2D" parent="Meteoritos"]
+position = Vector2(-3737, 2158)
+disable_mode = 2
+gravity_scale = 0.0
+can_sleep = false
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Meteoritos/RigidBody2D37"]
+position = Vector2(647, 1318)
+shape = SubResource("CircleShape2D_2javv")
+
+[node name="Sprite2D" type="Sprite2D" parent="Meteoritos/RigidBody2D37/CollisionShape2D4"]
+texture = ExtResource("4_k6u36")
+
+[node name="RigidBody2D38" type="RigidBody2D" parent="Meteoritos"]
+position = Vector2(-4812, 1072)
+disable_mode = 2
+gravity_scale = 0.0
+can_sleep = false
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Meteoritos/RigidBody2D38"]
+position = Vector2(647, 1318)
+shape = SubResource("CircleShape2D_2javv")
+
+[node name="Sprite2D" type="Sprite2D" parent="Meteoritos/RigidBody2D38/CollisionShape2D4"]
+texture = ExtResource("4_k6u36")
+
+[node name="RigidBody2D39" type="RigidBody2D" parent="Meteoritos"]
+position = Vector2(-5151, 2237)
+disable_mode = 2
+gravity_scale = 0.0
+can_sleep = false
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Meteoritos/RigidBody2D39"]
+position = Vector2(647, 1318)
+shape = SubResource("CircleShape2D_2javv")
+
+[node name="Sprite2D" type="Sprite2D" parent="Meteoritos/RigidBody2D39/CollisionShape2D4"]
+texture = ExtResource("4_k6u36")
+
+[node name="RigidBody2D40" type="RigidBody2D" parent="Meteoritos"]
+position = Vector2(-4472, 3210)
+disable_mode = 2
+gravity_scale = 0.0
+can_sleep = false
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Meteoritos/RigidBody2D40"]
+position = Vector2(647, 1318)
+shape = SubResource("CircleShape2D_2javv")
+
+[node name="Sprite2D" type="Sprite2D" parent="Meteoritos/RigidBody2D40/CollisionShape2D4"]
+texture = ExtResource("4_k6u36")
+
+[node name="RigidBody2D41" type="RigidBody2D" parent="Meteoritos"]
+position = Vector2(-2402, 1932)
+disable_mode = 2
+gravity_scale = 0.0
+can_sleep = false
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Meteoritos/RigidBody2D41"]
+position = Vector2(647, 1318)
+shape = SubResource("CircleShape2D_2javv")
+
+[node name="Sprite2D" type="Sprite2D" parent="Meteoritos/RigidBody2D41/CollisionShape2D4"]
+texture = ExtResource("4_k6u36")
+
+[node name="RigidBody2D42" type="RigidBody2D" parent="Meteoritos"]
+position = Vector2(-3013, 3312)
+disable_mode = 2
+gravity_scale = 0.0
+can_sleep = false
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Meteoritos/RigidBody2D42"]
+position = Vector2(647, 1318)
+shape = SubResource("CircleShape2D_2javv")
+
+[node name="Sprite2D" type="Sprite2D" parent="Meteoritos/RigidBody2D42/CollisionShape2D4"]
+texture = ExtResource("4_k6u36")
+
+[node name="RigidBody2D43" type="RigidBody2D" parent="Meteoritos"]
+position = Vector2(-4202, -5483)
+disable_mode = 2
+gravity_scale = 0.0
+can_sleep = false
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Meteoritos/RigidBody2D43"]
+position = Vector2(647, 1318)
+shape = SubResource("CircleShape2D_2javv")
+
+[node name="Sprite2D" type="Sprite2D" parent="Meteoritos/RigidBody2D43/CollisionShape2D4"]
+texture = ExtResource("4_k6u36")
+
+[node name="RigidBody2D44" type="RigidBody2D" parent="Meteoritos"]
+position = Vector2(-4485, -4250)
+disable_mode = 2
+gravity_scale = 0.0
+can_sleep = false
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Meteoritos/RigidBody2D44"]
+position = Vector2(647, 1318)
+shape = SubResource("CircleShape2D_2javv")
+
+[node name="Sprite2D" type="Sprite2D" parent="Meteoritos/RigidBody2D44/CollisionShape2D4"]
+texture = ExtResource("4_k6u36")
+
+[node name="RigidBody2D45" type="RigidBody2D" parent="Meteoritos"]
+position = Vector2(-5560, -5336)
+disable_mode = 2
+gravity_scale = 0.0
+can_sleep = false
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Meteoritos/RigidBody2D45"]
+position = Vector2(647, 1318)
+shape = SubResource("CircleShape2D_2javv")
+
+[node name="Sprite2D" type="Sprite2D" parent="Meteoritos/RigidBody2D45/CollisionShape2D4"]
+texture = ExtResource("4_k6u36")
+
+[node name="RigidBody2D46" type="RigidBody2D" parent="Meteoritos"]
+position = Vector2(-5899, -4171)
+disable_mode = 2
+gravity_scale = 0.0
+can_sleep = false
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Meteoritos/RigidBody2D46"]
+position = Vector2(647, 1318)
+shape = SubResource("CircleShape2D_2javv")
+
+[node name="Sprite2D" type="Sprite2D" parent="Meteoritos/RigidBody2D46/CollisionShape2D4"]
+texture = ExtResource("4_k6u36")
+
+[node name="RigidBody2D47" type="RigidBody2D" parent="Meteoritos"]
+position = Vector2(-5220, -3198)
+disable_mode = 2
+gravity_scale = 0.0
+can_sleep = false
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Meteoritos/RigidBody2D47"]
+position = Vector2(647, 1318)
+shape = SubResource("CircleShape2D_2javv")
+
+[node name="Sprite2D" type="Sprite2D" parent="Meteoritos/RigidBody2D47/CollisionShape2D4"]
+texture = ExtResource("4_k6u36")
+
+[node name="RigidBody2D48" type="RigidBody2D" parent="Meteoritos"]
+position = Vector2(-3150, -4476)
+disable_mode = 2
+gravity_scale = 0.0
+can_sleep = false
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Meteoritos/RigidBody2D48"]
+position = Vector2(647, 1318)
+shape = SubResource("CircleShape2D_2javv")
+
+[node name="Sprite2D" type="Sprite2D" parent="Meteoritos/RigidBody2D48/CollisionShape2D4"]
+texture = ExtResource("4_k6u36")
+
+[node name="RigidBody2D49" type="RigidBody2D" parent="Meteoritos"]
+position = Vector2(-3761, -3096)
+disable_mode = 2
+gravity_scale = 0.0
+can_sleep = false
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Meteoritos/RigidBody2D49"]
+position = Vector2(647, 1318)
+shape = SubResource("CircleShape2D_2javv")
+
+[node name="Sprite2D" type="Sprite2D" parent="Meteoritos/RigidBody2D49/CollisionShape2D4"]
+texture = ExtResource("4_k6u36")
+
+[node name="PhantomCamera2D" type="Node2D" parent="."]
+position = Vector2(363, 639)
+script = ExtResource("6_i6jbq")
+CamOffsetH = 400.0
+CamOffsetY = 500.0
+priority_override = false
+priority = 0
+zoom = Vector2(1, 1)
+follow_mode = 2
+follow_target = NodePath("../Astronauta")
+follow_parameters/target_offset = Vector2(0, 0)
+follow_parameters/damping = true
+follow_parameters/damping_value = 4.376
+frame_preview = true
+pixel_perfect = true
+limit/draw_limits = true
+limit/left = -10000000
+limit/top = -10000000
+limit/right = 10000000
+limit/bottom = 10000000
+limit/limit_node_target = NodePath("")
+limit/smoothed = false
+tween_parameters = null
+tween_on_load = true
+inactive_update_mode = 0

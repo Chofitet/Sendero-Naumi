@@ -1,28 +1,49 @@
 extends CharacterBody2D
 
 
-const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
+@export var max_speed = 100
+@export var acceleration = 800
+@export var friction = 800
+@export var rotationSpeed = 5
 
-# Get the gravity from the project settings to be synced with RigidBody nodes.
-var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
-
+@onready var sprite = $Sprite2D
+@onready var target_position = Vector2.ZERO
+var direction: Vector2
+var isPressing
 
 func _physics_process(delta):
-	# Add the gravity.
-	if not is_on_floor():
-		velocity.y += gravity * delta
+	Move(delta)
 
-	# Handle Jump.
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
+func _input(event: InputEvent) -> void:
+	if Input.is_action_pressed("TouchScreen"):
+		target_position= event.position
+		isPressing = true
+	if  Input.is_action_just_released("TouchScreen"):
+		isPressing = false
+		direction = Vector2.ZERO
 
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	var direction = Input.get_axis("ui_left", "ui_right")
-	if direction:
-		velocity.x = direction * SPEED
+func Move(delta):
+	if !isPressing:
+		Apply_Friction(friction * delta)
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-
+		direction = (target_position - get_viewport_rect().get_center()).normalized()
+		RotateToDirectionSmoothly(delta)
+		Apply_Movement(direction * acceleration * delta)
+	
 	move_and_slide()
+
+func Apply_Friction(amount):
+	if velocity.length() > amount:
+		velocity -= velocity.normalized() * amount
+	else: velocity = Vector2.ZERO
+	
+func Apply_Movement(accel):
+	velocity += accel
+	velocity = velocity.limit_length(max_speed)
+
+func RotateToDirectionSmoothly(delta):
+	var target_rotation = direction.angle()
+	sprite.rotation = lerp_angle(sprite.rotation,target_rotation, rotationSpeed * delta)
+
+func _get_follow_node_direction() -> Vector2:
+	return direction
