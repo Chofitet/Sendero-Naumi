@@ -1,0 +1,408 @@
+[gd_scene load_steps=21 format=3 uid="uid://hbmgu1q1d7os"]
+
+[ext_resource type="Script" path="res://_Scripts/Minigame_Save_Controller.gd" id="1_dk1kn"]
+[ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/StateMachineMinigames.gd" id="2_445ba"]
+[ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/ConsignaState.gd" id="3_snobg"]
+[ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/Button_Change_StateMinigame.gd" id="4_oxiwq"]
+[ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/JuegoState.gd" id="5_ykya6"]
+[ext_resource type="Script" path="res://_Scripts/DragSpot.gd" id="6_ym134"]
+[ext_resource type="Texture2D" uid="uid://dj57ce5tt06yj" path="res://Sprites/UI/bubble brown.png" id="7_xojdd"]
+[ext_resource type="Script" path="res://_Scripts/MinG_MegaFood/FoodMenuController.gd" id="8_25wym"]
+[ext_resource type="Texture2D" uid="uid://cwrbbpcgs4yh1" path="res://Sprites/ZonaMegafauna/food1.png" id="9_5aoxv"]
+[ext_resource type="PackedScene" uid="uid://ci3c3pocxiywq" path="res://Scenes/Experiments/drag_object.tscn" id="10_etwym"]
+[ext_resource type="Texture2D" uid="uid://dju3k7rwel3oy" path="res://Sprites/ZonaMegafauna/food2.png" id="11_sjngh"]
+[ext_resource type="Texture2D" uid="uid://oebtfgoo7lrq" path="res://Sprites/ZonaMegafauna/food3.png" id="12_26y8n"]
+[ext_resource type="Texture2D" uid="uid://b245vfv2mo8pf" path="res://Sprites/ZonaMegafauna/food4.png" id="13_v4pwy"]
+[ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/Timer_State_Minigame.gd" id="15_50ehp"]
+[ext_resource type="Script" path="res://Scenes/Experiments/BlockScreen.gd" id="15_kqwgb"]
+[ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/MoralejaState.gd" id="16_e0xhq"]
+[ext_resource type="PackedScene" uid="uid://djhg7jvxtexyl" path="res://Scenes/UI_Scenes/btn_Change_Scene.tscn" id="17_n5n07"]
+[ext_resource type="Theme" uid="uid://bhum72inirq1q" path="res://Themes/Generic_UI.tres" id="17_plgvp"]
+[ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/FinState.gd" id="18_tm25d"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pj3pu"]
+size = Vector2(140, 130)
+
+[node name="FoodTruck" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="FoodTruck" type="Node" parent="."]
+script = ExtResource("1_dk1kn")
+
+[node name="Control" type="Control" parent="FoodTruck"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="ColorRect" parent="FoodTruck/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.72549, 1, 1, 1)
+
+[node name="StateMachine" type="Node" parent="FoodTruck" node_paths=PackedStringArray("initial_state")]
+script = ExtResource("2_445ba")
+initial_state = NodePath("Consigna")
+
+[node name="Consigna" type="Node" parent="FoodTruck/StateMachine"]
+script = ExtResource("3_snobg")
+Consignas = ["Dale a cada animal la comida correspondiente a su dieta", "Dale a cada animal la comida correspondiente a su dieta"]
+
+[node name="Contenido" type="Control" parent="FoodTruck/StateMachine/Consigna"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LblConsigna" type="Label" parent="FoodTruck/StateMachine/Consigna/Contenido"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -270.0
+offset_top = -444.0
+offset_right = 294.0
+offset_bottom = 445.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "Dale a cada animal la comida que corresponde con su dieta"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Button" type="Button" parent="FoodTruck/StateMachine/Consigna/Contenido" node_paths=PackedStringArray("state_to_change", "state_machine")]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -201.0
+offset_top = -197.0
+offset_right = 202.0
+offset_bottom = -67.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Siguiente
+"
+script = ExtResource("4_oxiwq")
+state_to_change = NodePath("../../../Juego")
+state_machine = NodePath("../../..")
+
+[node name="Timer" type="Timer" parent="FoodTruck/StateMachine/Consigna/Contenido"]
+wait_time = 3.0
+
+[node name="Juego" type="Node" parent="FoodTruck/StateMachine" node_paths=PackedStringArray("NextState", "StateMachine")]
+script = ExtResource("5_ykya6")
+NextState = NodePath(".")
+StateMachine = NodePath("..")
+InstanciasMinijuego = [NodePath("Contenido/Instancia1"), NodePath("")]
+
+[node name="Contenido" type="Control" parent="FoodTruck/StateMachine/Juego"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Instancia1" type="Control" parent="FoodTruck/StateMachine/Juego/Contenido"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="FoodTruck/StateMachine/Juego/Contenido/Instancia1" node_paths=PackedStringArray("state_to_change", "state_machine")]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -161.0
+offset_top = -165.0
+offset_right = 161.0
+offset_bottom = -52.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Complete"
+script = ExtResource("4_oxiwq")
+state_to_change = NodePath("../../../../Moraleja")
+state_machine = NodePath("../../../..")
+isEndOfGame = true
+
+[node name="Control" type="Control" parent="FoodTruck/StateMachine/Juego/Contenido/Instancia1"]
+layout_mode = 1
+anchor_left = 0.504
+anchor_top = 0.267
+anchor_right = 0.504
+anchor_bottom = 0.267
+offset_left = 0.119995
+offset_top = 0.23999
+offset_right = 0.119995
+offset_bottom = 0.23999
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Spot" type="Area2D" parent="FoodTruck/StateMachine/Juego/Contenido/Instancia1/Control" node_paths=PackedStringArray("RigthObject")]
+position = Vector2(-5, 0)
+script = ExtResource("6_ym134")
+RigthObject = NodePath("../../HBoxContainer/food1/DragObject")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FoodTruck/StateMachine/Juego/Contenido/Instancia1/Control/Spot"]
+shape = SubResource("RectangleShape2D_pj3pu")
+
+[node name="Sprite2D" type="Sprite2D" parent="FoodTruck/StateMachine/Juego/Contenido/Instancia1/Control/Spot"]
+scale = Vector2(0.46729, 1)
+texture = ExtResource("7_xojdd")
+
+[node name="HBoxContainer" type="Control" parent="FoodTruck/StateMachine/Juego/Contenido/Instancia1"]
+layout_mode = 2
+anchors_preset = 0
+anchor_left = 0.5
+anchor_top = 0.75
+anchor_right = 0.5
+anchor_bottom = 0.75
+offset_left = -721.0
+offset_top = -205.0
+offset_right = -174.0
+offset_bottom = -88.0001
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(3.5, 3.5)
+script = ExtResource("8_25wym")
+anchors = [NodePath("food1"), NodePath("food2"), NodePath("food3"), NodePath("food4")]
+limitGesture = 100.0
+limitHold = 300.0
+limitunderHolf = 20.0
+
+[node name="food1" type="Sprite2D" parent="FoodTruck/StateMachine/Juego/Contenido/Instancia1/HBoxContainer"]
+position = Vector2(57.1429, 59.1428)
+texture = ExtResource("9_5aoxv")
+
+[node name="DragObject" parent="FoodTruck/StateMachine/Juego/Contenido/Instancia1/HBoxContainer/food1" node_paths=PackedStringArray("spot") instance=ExtResource("10_etwym")]
+spot = NodePath("../../../Control/Spot")
+holdTime = 0.2
+
+[node name="CollisionShape2D" parent="FoodTruck/StateMachine/Juego/Contenido/Instancia1/HBoxContainer/food1/DragObject" index="0"]
+position = Vector2(-0.142857, -1.57144)
+
+[node name="Button" parent="FoodTruck/StateMachine/Juego/Contenido/Instancia1/HBoxContainer/food1/DragObject" index="1"]
+offset_left = -54.0
+offset_top = -50.0
+offset_right = 53.0
+offset_bottom = 50.0
+
+[node name="food2" type="Sprite2D" parent="FoodTruck/StateMachine/Juego/Contenido/Instancia1/HBoxContainer"]
+position = Vector2(204.571, 56.5714)
+texture = ExtResource("11_sjngh")
+
+[node name="DragObject" parent="FoodTruck/StateMachine/Juego/Contenido/Instancia1/HBoxContainer/food2" node_paths=PackedStringArray("spot") instance=ExtResource("10_etwym")]
+spot = NodePath("../../../Control/Spot")
+holdTime = 0.2
+
+[node name="food3" type="Sprite2D" parent="FoodTruck/StateMachine/Juego/Contenido/Instancia1/HBoxContainer"]
+position = Vector2(344.286, 58.2857)
+texture = ExtResource("12_26y8n")
+
+[node name="DragObject" parent="FoodTruck/StateMachine/Juego/Contenido/Instancia1/HBoxContainer/food3" node_paths=PackedStringArray("spot") instance=ExtResource("10_etwym")]
+spot = NodePath("../../../Control/Spot")
+holdTime = 0.2
+
+[node name="food4" type="Sprite2D" parent="FoodTruck/StateMachine/Juego/Contenido/Instancia1/HBoxContainer"]
+position = Vector2(488.857, 56.5714)
+texture = ExtResource("13_v4pwy")
+
+[node name="DragObject" parent="FoodTruck/StateMachine/Juego/Contenido/Instancia1/HBoxContainer/food4" node_paths=PackedStringArray("spot") instance=ExtResource("10_etwym")]
+spot = NodePath("../../../Control/Spot")
+holdTime = 0.2
+
+[node name="TimerScroll" type="Timer" parent="FoodTruck/StateMachine/Juego/Contenido/Instancia1"]
+wait_time = 0.2
+one_shot = true
+
+[node name="BlockScreen" type="Control" parent="FoodTruck/StateMachine/Juego/Contenido/Instancia1"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_force_pass_scroll_events = false
+script = ExtResource("15_kqwgb")
+
+[node name="TimerPassInstance" type="Timer" parent="FoodTruck/StateMachine/Juego/Contenido/Instancia1" node_paths=PackedStringArray("state_to_change", "state_machine")]
+wait_time = 3.0
+one_shot = true
+script = ExtResource("15_50ehp")
+state_to_change = NodePath("../../../../Moraleja")
+state_machine = NodePath("../../../..")
+isEndOfGame = true
+
+[node name="btnVolver" parent="FoodTruck/StateMachine/Juego/Contenido" instance=ExtResource("17_n5n07")]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 0.0
+offset_left = -99.0
+offset_top = 18.0
+offset_right = -17.0
+offset_bottom = 97.0
+grow_horizontal = 0
+grow_vertical = 1
+theme = ExtResource("17_plgvp")
+text = ""
+NextScene = "Map_Screen"
+
+[node name="Moraleja" type="Node" parent="FoodTruck/StateMachine"]
+script = ExtResource("16_e0xhq")
+Moralejas = [null, "el Diente de sable es carnívoro. Ojo con acariciarlo, podrias perder un dedo :/"]
+Instancias = [NodePath("Contenido/Instancia1")]
+buttons = [NodePath("Contenido/Instancia1/Button")]
+
+[node name="Contenido" type="Control" parent="FoodTruck/StateMachine/Moraleja"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Conteiner" type="Control" parent="FoodTruck/StateMachine/Moraleja/Contenido"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LblMoraleja" type="Label" parent="FoodTruck/StateMachine/Moraleja/Contenido/Conteiner"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -270.0
+offset_top = -444.0
+offset_right = 294.0
+offset_bottom = 445.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "Consigna genérica Consigna genérica Consigna genérica"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Timer" type="Timer" parent="FoodTruck/StateMachine/Moraleja/Contenido"]
+wait_time = 3.0
+one_shot = true
+
+[node name="ButtonChangeScene" parent="FoodTruck/StateMachine/Moraleja/Contenido" instance=ExtResource("17_n5n07")]
+visible = false
+layout_mode = 1
+offset_left = -197.0
+offset_top = -201.0
+offset_right = 207.0
+offset_bottom = -66.0
+text = "Continue"
+NextScene = "Map_Screen"
+
+[node name="Instancia1" type="Control" parent="FoodTruck/StateMachine/Moraleja/Contenido"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="FoodTruck/StateMachine/Moraleja/Contenido/Instancia1" node_paths=PackedStringArray("state_to_change", "state_machine")]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -201.0
+offset_top = -197.0
+offset_right = 202.0
+offset_bottom = -67.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "que?
+"
+script = ExtResource("4_oxiwq")
+state_to_change = NodePath("../../../../Fin")
+state_machine = NodePath("../../../..")
+isEndOfGame = true
+
+[node name="Fin" type="Node" parent="FoodTruck/StateMachine"]
+script = ExtResource("18_tm25d")
+
+[node name="Contenido" type="Control" parent="FoodTruck/StateMachine/Fin"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ButtonChangeScene" parent="FoodTruck/StateMachine/Fin/Contenido" instance=ExtResource("17_n5n07")]
+layout_mode = 1
+offset_left = -197.0
+offset_top = -186.0
+offset_right = 207.0
+offset_bottom = -51.0
+text = "Continue"
+NextScene = "Map_Screen"
+
+[connection signal="pressed" from="FoodTruck/StateMachine/Consigna/Contenido/Button" to="FoodTruck/StateMachine/Consigna/Contenido/Button" method="_on_pressed" flags=18]
+[connection signal="timeout" from="FoodTruck/StateMachine/Consigna/Contenido/Timer" to="FoodTruck/StateMachine/Consigna" method="TimeOut" flags=18]
+[connection signal="EndOfGame" from="FoodTruck/StateMachine/Juego/Contenido/Instancia1/Button" to="FoodTruck" method="Set_Complete" flags=18]
+[connection signal="EndOfGame" from="FoodTruck/StateMachine/Juego/Contenido/Instancia1/Button" to="FoodTruck/StateMachine/Moraleja" method="isEndOfGame" flags=18]
+[connection signal="pressed" from="FoodTruck/StateMachine/Juego/Contenido/Instancia1/Button" to="FoodTruck/StateMachine/Juego/Contenido/Instancia1/Button" method="_on_pressed" flags=18]
+[connection signal="RightAns" from="FoodTruck/StateMachine/Juego/Contenido/Instancia1/Control/Spot" to="FoodTruck/StateMachine/Juego/Contenido/Instancia1/HBoxContainer" method="stopDrag" flags=18]
+[connection signal="RightAns" from="FoodTruck/StateMachine/Juego/Contenido/Instancia1/Control/Spot" to="FoodTruck/StateMachine/Juego/Contenido/Instancia1/TimerPassInstance" method="StartTime"]
+[connection signal="RightAns" from="FoodTruck/StateMachine/Juego/Contenido/Instancia1/Control/Spot" to="FoodTruck/StateMachine/Juego/Contenido/Instancia1/BlockScreen" method="SetVisibility" flags=18 binds= [true]]
+[connection signal="WrongAns" from="FoodTruck/StateMachine/Juego/Contenido/Instancia1/Control/Spot" to="FoodTruck/StateMachine/Juego/Contenido/Instancia1/HBoxContainer" method="stopDrag" flags=18]
+[connection signal="WrongAns" from="FoodTruck/StateMachine/Juego/Contenido/Instancia1/Control/Spot" to="FoodTruck/StateMachine/Juego/Contenido/Instancia1/TimerPassInstance" method="StartTime"]
+[connection signal="WrongAns" from="FoodTruck/StateMachine/Juego/Contenido/Instancia1/Control/Spot" to="FoodTruck/StateMachine/Juego/Contenido/Instancia1/BlockScreen" method="SetVisibility" flags=18 binds= [true]]
+[connection signal="isScrolling" from="FoodTruck/StateMachine/Juego/Contenido/Instancia1/HBoxContainer" to="FoodTruck/StateMachine/Juego/Contenido/Instancia1/HBoxContainer/food1/DragObject" method="CancelDrag" flags=18]
+[connection signal="isScrolling" from="FoodTruck/StateMachine/Juego/Contenido/Instancia1/HBoxContainer" to="FoodTruck/StateMachine/Juego/Contenido/Instancia1/HBoxContainer/food2/DragObject" method="CancelDrag" flags=18]
+[connection signal="isScrolling" from="FoodTruck/StateMachine/Juego/Contenido/Instancia1/HBoxContainer" to="FoodTruck/StateMachine/Juego/Contenido/Instancia1/HBoxContainer/food3/DragObject" method="CancelDrag" flags=18]
+[connection signal="isScrolling" from="FoodTruck/StateMachine/Juego/Contenido/Instancia1/HBoxContainer" to="FoodTruck/StateMachine/Juego/Contenido/Instancia1/HBoxContainer/food4/DragObject" method="CancelDrag" flags=18]
+[connection signal="EndOfGame" from="FoodTruck/StateMachine/Juego/Contenido/Instancia1/TimerPassInstance" to="FoodTruck" method="Set_Complete"]
+[connection signal="timeout" from="FoodTruck/StateMachine/Moraleja/Contenido/Timer" to="FoodTruck/StateMachine/Moraleja" method="TimeOut" flags=18]
+[connection signal="pressed" from="FoodTruck/StateMachine/Moraleja/Contenido/Instancia1/Button" to="FoodTruck/StateMachine/Moraleja/Contenido/Instancia1/Button" method="_on_pressed" flags=18]
+
+[editable path="FoodTruck/StateMachine/Juego/Contenido/Instancia1/HBoxContainer/food1/DragObject"]

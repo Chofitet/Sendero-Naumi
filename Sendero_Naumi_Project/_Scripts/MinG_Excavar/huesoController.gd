@@ -1,6 +1,7 @@
 extends Sprite2D
 var hotspots := []
 var countSpots
+var isComplete
 var i : int
 func _ready():
 	for HS in get_children():
@@ -14,9 +15,10 @@ func checkHotSpots():
 	for HS in hotspots:
 		if !HS.isTrue : return
 		i = i + 1
-		print(i)
 	if i == countSpots:
 		DiscoverHueso()
 
 func DiscoverHueso():
 	z_index = 1
+	isComplete = true
+	get_parent().CheckTrue()

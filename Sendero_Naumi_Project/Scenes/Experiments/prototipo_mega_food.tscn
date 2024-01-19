@@ -1,0 +1,123 @@
+[gd_scene load_steps=11 format=3 uid="uid://cq6uaxtapn7f8"]
+
+[ext_resource type="Script" path="res://_Scripts/MinG_MegaFood/FoodMenuController.gd" id="1_27o4a"]
+[ext_resource type="Texture2D" uid="uid://cwrbbpcgs4yh1" path="res://Sprites/ZonaMegafauna/food1.png" id="2_nf0ba"]
+[ext_resource type="Texture2D" uid="uid://dju3k7rwel3oy" path="res://Sprites/ZonaMegafauna/food2.png" id="3_jylua"]
+[ext_resource type="PackedScene" uid="uid://ci3c3pocxiywq" path="res://Scenes/Experiments/drag_object.tscn" id="3_lirrh"]
+[ext_resource type="Texture2D" uid="uid://oebtfgoo7lrq" path="res://Sprites/ZonaMegafauna/food3.png" id="4_pm26b"]
+[ext_resource type="Texture2D" uid="uid://b245vfv2mo8pf" path="res://Sprites/ZonaMegafauna/food4.png" id="5_pc8a0"]
+[ext_resource type="Script" path="res://_Scripts/DragSpot.gd" id="7_wi4wb"]
+[ext_resource type="PackedScene" uid="uid://biluutecl1cej" path="res://Scenes/Experiments/skip_sceen.tscn" id="8_duxjt"]
+[ext_resource type="Script" path="res://Scenes/Experiments/BlockScreen.gd" id="9_q3c4v"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pj3pu"]
+size = Vector2(140, 130)
+
+[node name="Prototipo_MegaFood" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Spot" type="Area2D" parent="." node_paths=PackedStringArray("RigthObject")]
+position = Vector2(358, 244)
+script = ExtResource("7_wi4wb")
+RigthObject = NodePath("../HBoxContainer/food1/DragObject")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spot"]
+shape = SubResource("RectangleShape2D_pj3pu")
+
+[node name="HBoxContainer" type="Control" parent="."]
+layout_mode = 2
+anchors_preset = 0
+anchor_left = 0.5
+anchor_top = 0.75
+anchor_right = 0.5
+anchor_bottom = 0.75
+offset_left = -721.0
+offset_top = -205.0
+offset_right = -174.0
+offset_bottom = -88.0001
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(3.5, 3.5)
+script = ExtResource("1_27o4a")
+anchors = [NodePath("food1"), NodePath("food2"), NodePath("food3"), NodePath("food4")]
+limitGesture = 100.0
+limitHold = 300.0
+limitunderHolf = 20.0
+
+[node name="food1" type="Sprite2D" parent="HBoxContainer"]
+position = Vector2(57.1429, 59.1428)
+texture = ExtResource("2_nf0ba")
+
+[node name="DragObject" parent="HBoxContainer/food1" node_paths=PackedStringArray("spot") instance=ExtResource("3_lirrh")]
+spot = NodePath("../../../Spot")
+holdTime = 0.2
+
+[node name="CollisionShape2D" parent="HBoxContainer/food1/DragObject" index="0"]
+position = Vector2(-0.142857, -1.57144)
+
+[node name="Button" parent="HBoxContainer/food1/DragObject" index="1"]
+offset_left = -54.0
+offset_top = -50.0
+offset_right = 53.0
+offset_bottom = 50.0
+
+[node name="food2" type="Sprite2D" parent="HBoxContainer"]
+position = Vector2(204.571, 56.5714)
+texture = ExtResource("3_jylua")
+
+[node name="DragObject" parent="HBoxContainer/food2" node_paths=PackedStringArray("spot") instance=ExtResource("3_lirrh")]
+spot = NodePath("../../../Spot")
+holdTime = 0.2
+
+[node name="food3" type="Sprite2D" parent="HBoxContainer"]
+position = Vector2(344.286, 58.2857)
+texture = ExtResource("4_pm26b")
+
+[node name="DragObject" parent="HBoxContainer/food3" node_paths=PackedStringArray("spot") instance=ExtResource("3_lirrh")]
+spot = NodePath("../../../Spot")
+holdTime = 0.2
+
+[node name="food4" type="Sprite2D" parent="HBoxContainer"]
+position = Vector2(488.857, 56.5714)
+texture = ExtResource("5_pc8a0")
+
+[node name="DragObject" parent="HBoxContainer/food4" node_paths=PackedStringArray("spot") instance=ExtResource("3_lirrh")]
+spot = NodePath("../../../Spot")
+holdTime = 0.2
+
+[node name="TimerScroll" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
+[node name="SkipSceen" parent="." instance=ExtResource("8_duxjt")]
+wait_time = 2.0
+NextScene = "Map_Screen"
+
+[node name="BlockScreen" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_force_pass_scroll_events = false
+script = ExtResource("9_q3c4v")
+
+[connection signal="RightAns" from="Spot" to="HBoxContainer" method="stopDrag"]
+[connection signal="RightAns" from="Spot" to="SkipSceen" method="StartTimer"]
+[connection signal="RightAns" from="Spot" to="BlockScreen" method="SetVisibility" binds= [true]]
+[connection signal="WrongAns" from="Spot" to="HBoxContainer" method="stopDrag"]
+[connection signal="WrongAns" from="Spot" to="SkipSceen" method="StartTimer"]
+[connection signal="WrongAns" from="Spot" to="BlockScreen" method="SetVisibility" binds= [true]]
+[connection signal="isScrolling" from="HBoxContainer" to="HBoxContainer/food1/DragObject" method="CancelDrag"]
+[connection signal="isScrolling" from="HBoxContainer" to="HBoxContainer/food2/DragObject" method="CancelDrag"]
+[connection signal="isScrolling" from="HBoxContainer" to="HBoxContainer/food3/DragObject" method="CancelDrag"]
+[connection signal="isScrolling" from="HBoxContainer" to="HBoxContainer/food4/DragObject" method="CancelDrag"]
+
+[editable path="HBoxContainer/food1/DragObject"]

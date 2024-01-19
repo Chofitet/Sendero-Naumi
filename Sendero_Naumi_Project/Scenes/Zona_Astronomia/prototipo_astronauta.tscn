@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://dh3tp053f8evp"]
+
+[ext_resource type="Script" path="res://_Scripts/MinG_Astronauta/AstronautaMove.gd" id="1_wrrhl"]
+[ext_resource type="Texture2D" uid="uid://bgy7tv3s2j7ng" path="res://icon.svg" id="2_x8t34"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_83hx5"]
+radius = 22.0
+height = 76.0
+
+[node name="Prototipo_Astronauta" type="Node2D"]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+motion_mode = 1
+script = ExtResource("1_wrrhl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+shape = SubResource("CapsuleShape2D_83hx5")
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+texture = ExtResource("2_x8t34")
