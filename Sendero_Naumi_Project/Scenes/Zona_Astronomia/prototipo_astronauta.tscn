@@ -1,15 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://dh3tp053f8evp"]
+[gd_scene load_steps=8 format=3 uid="uid://dh3tp053f8evp"]
 
 [ext_resource type="Texture2D" uid="uid://nuybqhitpej1" path="res://Sprites/Mapa/fondo_mapa.png" id="1_4o8pu"]
-[ext_resource type="Script" path="res://_Scripts/MinG_Astronauta/AstronautaMove.gd" id="1_wrrhl"]
-[ext_resource type="Texture2D" uid="uid://b2op8eppn0juv" path="res://Sprites/ZonaAstronomia/Astronauta.png" id="3_2av1y"]
+[ext_resource type="PackedScene" uid="uid://dtbscg5vj1osr" path="res://Scenes/Zona_Astronomia/astronautaController.tscn" id="2_p7w2n"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="4_jsk5h"]
 [ext_resource type="Texture2D" uid="uid://drrio0noaq2fi" path="res://Sprites/ZonaGeología/piedra-PhotoRoom.png-PhotoRoom.png" id="4_k6u36"]
+[ext_resource type="PackedScene" uid="uid://bhvn7rj6jhh2" path="res://Scenes/Zona_Astronomia/collision_object.tscn" id="6_gnnbh"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2D.gd" id="6_i6jbq"]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_83hx5"]
-radius = 67.0
-height = 138.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2javv"]
 radius = 209.476
@@ -25,20 +21,7 @@ size_flags_horizontal = 4
 texture = ExtResource("1_4o8pu")
 stretch_mode = 1
 
-[node name="Astronauta" type="CharacterBody2D" parent="."]
-position = Vector2(363, 639)
-motion_mode = 1
-script = ExtResource("1_wrrhl")
-max_speed = 500
-friction = 100
-rotationSpeed = 10
-
-[node name="Sprite2D" type="Sprite2D" parent="Astronauta"]
-scale = Vector2(2.13559, 2.13559)
-texture = ExtResource("3_2av1y")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Astronauta"]
-shape = SubResource("CapsuleShape2D_83hx5")
+[node name="Astronauta" parent="." instance=ExtResource("2_p7w2n")]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
@@ -56,6 +39,7 @@ script = ExtResource("4_jsk5h")
 [node name="RigidBody2D" type="RigidBody2D" parent="Meteoritos"]
 position = Vector2(283, -1233)
 disable_mode = 2
+mass = 200.0
 gravity_scale = 0.0
 can_sleep = false
 
@@ -68,6 +52,7 @@ texture = ExtResource("4_k6u36")
 
 [node name="RigidBody2D2" type="RigidBody2D" parent="Meteoritos"]
 disable_mode = 2
+mass = 200.0
 gravity_scale = 0.0
 can_sleep = false
 
@@ -81,6 +66,7 @@ texture = ExtResource("4_k6u36")
 [node name="RigidBody2D3" type="RigidBody2D" parent="Meteoritos"]
 position = Vector2(-1075, -1086)
 disable_mode = 2
+mass = 200.0
 gravity_scale = 0.0
 can_sleep = false
 
@@ -92,8 +78,9 @@ shape = SubResource("CircleShape2D_2javv")
 texture = ExtResource("4_k6u36")
 
 [node name="RigidBody2D4" type="RigidBody2D" parent="Meteoritos"]
-position = Vector2(-1414, 79)
+position = Vector2(-669, 136)
 disable_mode = 2
+mass = 200.0
 gravity_scale = 0.0
 can_sleep = false
 
@@ -107,6 +94,7 @@ texture = ExtResource("4_k6u36")
 [node name="RigidBody2D5" type="RigidBody2D" parent="Meteoritos"]
 position = Vector2(-735, 1052)
 disable_mode = 2
+mass = 200.0
 gravity_scale = 0.0
 can_sleep = false
 
@@ -120,6 +108,7 @@ texture = ExtResource("4_k6u36")
 [node name="RigidBody2D6" type="RigidBody2D" parent="Meteoritos"]
 position = Vector2(1335, -226)
 disable_mode = 2
+mass = 200.0
 gravity_scale = 0.0
 can_sleep = false
 
@@ -133,6 +122,7 @@ texture = ExtResource("4_k6u36")
 [node name="RigidBody2D7" type="RigidBody2D" parent="Meteoritos"]
 position = Vector2(724, 1154)
 disable_mode = 2
+mass = 200.0
 gravity_scale = 0.0
 can_sleep = false
 
@@ -146,6 +136,7 @@ texture = ExtResource("4_k6u36")
 [node name="RigidBody2D8" type="RigidBody2D" parent="Meteoritos"]
 position = Vector2(2739, -4180)
 disable_mode = 2
+mass = 200.0
 gravity_scale = 0.0
 can_sleep = false
 
@@ -159,6 +150,7 @@ texture = ExtResource("4_k6u36")
 [node name="RigidBody2D9" type="RigidBody2D" parent="Meteoritos"]
 position = Vector2(2456, -2947)
 disable_mode = 2
+mass = 200.0
 gravity_scale = 0.0
 can_sleep = false
 
@@ -172,6 +164,7 @@ texture = ExtResource("4_k6u36")
 [node name="RigidBody2D10" type="RigidBody2D" parent="Meteoritos"]
 position = Vector2(1381, -4033)
 disable_mode = 2
+mass = 200.0
 gravity_scale = 0.0
 can_sleep = false
 
@@ -185,6 +178,7 @@ texture = ExtResource("4_k6u36")
 [node name="RigidBody2D11" type="RigidBody2D" parent="Meteoritos"]
 position = Vector2(1042, -2868)
 disable_mode = 2
+mass = 200.0
 gravity_scale = 0.0
 can_sleep = false
 
@@ -198,6 +192,7 @@ texture = ExtResource("4_k6u36")
 [node name="RigidBody2D12" type="RigidBody2D" parent="Meteoritos"]
 position = Vector2(1721, -1895)
 disable_mode = 2
+mass = 200.0
 gravity_scale = 0.0
 can_sleep = false
 
@@ -211,6 +206,7 @@ texture = ExtResource("4_k6u36")
 [node name="RigidBody2D13" type="RigidBody2D" parent="Meteoritos"]
 position = Vector2(3791, -3173)
 disable_mode = 2
+mass = 200.0
 gravity_scale = 0.0
 can_sleep = false
 
@@ -224,6 +220,7 @@ texture = ExtResource("4_k6u36")
 [node name="RigidBody2D14" type="RigidBody2D" parent="Meteoritos"]
 position = Vector2(3180, -1793)
 disable_mode = 2
+mass = 200.0
 gravity_scale = 0.0
 can_sleep = false
 
@@ -237,6 +234,7 @@ texture = ExtResource("4_k6u36")
 [node name="RigidBody2D15" type="RigidBody2D" parent="Meteoritos"]
 position = Vector2(-806, -4778)
 disable_mode = 2
+mass = 200.0
 gravity_scale = 0.0
 can_sleep = false
 
@@ -250,6 +248,7 @@ texture = ExtResource("4_k6u36")
 [node name="RigidBody2D16" type="RigidBody2D" parent="Meteoritos"]
 position = Vector2(-1089, -3545)
 disable_mode = 2
+mass = 200.0
 gravity_scale = 0.0
 can_sleep = false
 
@@ -263,6 +262,7 @@ texture = ExtResource("4_k6u36")
 [node name="RigidBody2D17" type="RigidBody2D" parent="Meteoritos"]
 position = Vector2(-2164, -4631)
 disable_mode = 2
+mass = 200.0
 gravity_scale = 0.0
 can_sleep = false
 
@@ -276,6 +276,7 @@ texture = ExtResource("4_k6u36")
 [node name="RigidBody2D18" type="RigidBody2D" parent="Meteoritos"]
 position = Vector2(-2503, -3466)
 disable_mode = 2
+mass = 200.0
 gravity_scale = 0.0
 can_sleep = false
 
@@ -289,6 +290,7 @@ texture = ExtResource("4_k6u36")
 [node name="RigidBody2D19" type="RigidBody2D" parent="Meteoritos"]
 position = Vector2(-1824, -2493)
 disable_mode = 2
+mass = 200.0
 gravity_scale = 0.0
 can_sleep = false
 
@@ -302,6 +304,7 @@ texture = ExtResource("4_k6u36")
 [node name="RigidBody2D20" type="RigidBody2D" parent="Meteoritos"]
 position = Vector2(246, -3771)
 disable_mode = 2
+mass = 200.0
 gravity_scale = 0.0
 can_sleep = false
 
@@ -315,6 +318,7 @@ texture = ExtResource("4_k6u36")
 [node name="RigidBody2D21" type="RigidBody2D" parent="Meteoritos"]
 position = Vector2(-365, -2391)
 disable_mode = 2
+mass = 200.0
 gravity_scale = 0.0
 can_sleep = false
 
@@ -328,6 +332,7 @@ texture = ExtResource("4_k6u36")
 [node name="RigidBody2D22" type="RigidBody2D" parent="Meteoritos"]
 position = Vector2(-3283, -2236)
 disable_mode = 2
+mass = 200.0
 gravity_scale = 0.0
 can_sleep = false
 
@@ -341,6 +346,7 @@ texture = ExtResource("4_k6u36")
 [node name="RigidBody2D23" type="RigidBody2D" parent="Meteoritos"]
 position = Vector2(-3566, -1003)
 disable_mode = 2
+mass = 200.0
 gravity_scale = 0.0
 can_sleep = false
 
@@ -354,6 +360,7 @@ texture = ExtResource("4_k6u36")
 [node name="RigidBody2D24" type="RigidBody2D" parent="Meteoritos"]
 position = Vector2(-4641, -2089)
 disable_mode = 2
+mass = 200.0
 gravity_scale = 0.0
 can_sleep = false
 
@@ -367,6 +374,7 @@ texture = ExtResource("4_k6u36")
 [node name="RigidBody2D25" type="RigidBody2D" parent="Meteoritos"]
 position = Vector2(-4980, -924)
 disable_mode = 2
+mass = 200.0
 gravity_scale = 0.0
 can_sleep = false
 
@@ -380,6 +388,7 @@ texture = ExtResource("4_k6u36")
 [node name="RigidBody2D26" type="RigidBody2D" parent="Meteoritos"]
 position = Vector2(-4301, 49)
 disable_mode = 2
+mass = 200.0
 gravity_scale = 0.0
 can_sleep = false
 
@@ -393,6 +402,7 @@ texture = ExtResource("4_k6u36")
 [node name="RigidBody2D27" type="RigidBody2D" parent="Meteoritos"]
 position = Vector2(-2231, -1229)
 disable_mode = 2
+mass = 200.0
 gravity_scale = 0.0
 can_sleep = false
 
@@ -406,6 +416,7 @@ texture = ExtResource("4_k6u36")
 [node name="RigidBody2D28" type="RigidBody2D" parent="Meteoritos"]
 position = Vector2(-2842, 151)
 disable_mode = 2
+mass = 200.0
 gravity_scale = 0.0
 can_sleep = false
 
@@ -419,6 +430,7 @@ texture = ExtResource("4_k6u36")
 [node name="RigidBody2D29" type="RigidBody2D" parent="Meteoritos"]
 position = Vector2(3210, 775)
 disable_mode = 2
+mass = 200.0
 gravity_scale = 0.0
 can_sleep = false
 
@@ -432,6 +444,7 @@ texture = ExtResource("4_k6u36")
 [node name="RigidBody2D30" type="RigidBody2D" parent="Meteoritos"]
 position = Vector2(2927, 2008)
 disable_mode = 2
+mass = 200.0
 gravity_scale = 0.0
 can_sleep = false
 
@@ -445,6 +458,7 @@ texture = ExtResource("4_k6u36")
 [node name="RigidBody2D31" type="RigidBody2D" parent="Meteoritos"]
 position = Vector2(1852, 922)
 disable_mode = 2
+mass = 200.0
 gravity_scale = 0.0
 can_sleep = false
 
@@ -458,6 +472,7 @@ texture = ExtResource("4_k6u36")
 [node name="RigidBody2D32" type="RigidBody2D" parent="Meteoritos"]
 position = Vector2(1513, 2087)
 disable_mode = 2
+mass = 200.0
 gravity_scale = 0.0
 can_sleep = false
 
@@ -471,6 +486,7 @@ texture = ExtResource("4_k6u36")
 [node name="RigidBody2D33" type="RigidBody2D" parent="Meteoritos"]
 position = Vector2(2192, 3060)
 disable_mode = 2
+mass = 200.0
 gravity_scale = 0.0
 can_sleep = false
 
@@ -484,6 +500,7 @@ texture = ExtResource("4_k6u36")
 [node name="RigidBody2D34" type="RigidBody2D" parent="Meteoritos"]
 position = Vector2(4262, 1782)
 disable_mode = 2
+mass = 200.0
 gravity_scale = 0.0
 can_sleep = false
 
@@ -497,6 +514,7 @@ texture = ExtResource("4_k6u36")
 [node name="RigidBody2D35" type="RigidBody2D" parent="Meteoritos"]
 position = Vector2(3651, 3162)
 disable_mode = 2
+mass = 200.0
 gravity_scale = 0.0
 can_sleep = false
 
@@ -510,6 +528,7 @@ texture = ExtResource("4_k6u36")
 [node name="RigidBody2D36" type="RigidBody2D" parent="Meteoritos"]
 position = Vector2(-3454, 925)
 disable_mode = 2
+mass = 200.0
 gravity_scale = 0.0
 can_sleep = false
 
@@ -523,6 +542,7 @@ texture = ExtResource("4_k6u36")
 [node name="RigidBody2D37" type="RigidBody2D" parent="Meteoritos"]
 position = Vector2(-3737, 2158)
 disable_mode = 2
+mass = 200.0
 gravity_scale = 0.0
 can_sleep = false
 
@@ -536,6 +556,7 @@ texture = ExtResource("4_k6u36")
 [node name="RigidBody2D38" type="RigidBody2D" parent="Meteoritos"]
 position = Vector2(-4812, 1072)
 disable_mode = 2
+mass = 200.0
 gravity_scale = 0.0
 can_sleep = false
 
@@ -549,6 +570,7 @@ texture = ExtResource("4_k6u36")
 [node name="RigidBody2D39" type="RigidBody2D" parent="Meteoritos"]
 position = Vector2(-5151, 2237)
 disable_mode = 2
+mass = 200.0
 gravity_scale = 0.0
 can_sleep = false
 
@@ -562,6 +584,7 @@ texture = ExtResource("4_k6u36")
 [node name="RigidBody2D40" type="RigidBody2D" parent="Meteoritos"]
 position = Vector2(-4472, 3210)
 disable_mode = 2
+mass = 200.0
 gravity_scale = 0.0
 can_sleep = false
 
@@ -575,6 +598,7 @@ texture = ExtResource("4_k6u36")
 [node name="RigidBody2D41" type="RigidBody2D" parent="Meteoritos"]
 position = Vector2(-2402, 1932)
 disable_mode = 2
+mass = 200.0
 gravity_scale = 0.0
 can_sleep = false
 
@@ -588,6 +612,7 @@ texture = ExtResource("4_k6u36")
 [node name="RigidBody2D42" type="RigidBody2D" parent="Meteoritos"]
 position = Vector2(-3013, 3312)
 disable_mode = 2
+mass = 200.0
 gravity_scale = 0.0
 can_sleep = false
 
@@ -601,6 +626,7 @@ texture = ExtResource("4_k6u36")
 [node name="RigidBody2D43" type="RigidBody2D" parent="Meteoritos"]
 position = Vector2(-4202, -5483)
 disable_mode = 2
+mass = 200.0
 gravity_scale = 0.0
 can_sleep = false
 
@@ -614,6 +640,7 @@ texture = ExtResource("4_k6u36")
 [node name="RigidBody2D44" type="RigidBody2D" parent="Meteoritos"]
 position = Vector2(-4485, -4250)
 disable_mode = 2
+mass = 200.0
 gravity_scale = 0.0
 can_sleep = false
 
@@ -627,6 +654,7 @@ texture = ExtResource("4_k6u36")
 [node name="RigidBody2D45" type="RigidBody2D" parent="Meteoritos"]
 position = Vector2(-5560, -5336)
 disable_mode = 2
+mass = 200.0
 gravity_scale = 0.0
 can_sleep = false
 
@@ -640,6 +668,7 @@ texture = ExtResource("4_k6u36")
 [node name="RigidBody2D46" type="RigidBody2D" parent="Meteoritos"]
 position = Vector2(-5899, -4171)
 disable_mode = 2
+mass = 200.0
 gravity_scale = 0.0
 can_sleep = false
 
@@ -653,6 +682,7 @@ texture = ExtResource("4_k6u36")
 [node name="RigidBody2D47" type="RigidBody2D" parent="Meteoritos"]
 position = Vector2(-5220, -3198)
 disable_mode = 2
+mass = 200.0
 gravity_scale = 0.0
 can_sleep = false
 
@@ -665,7 +695,9 @@ texture = ExtResource("4_k6u36")
 
 [node name="RigidBody2D48" type="RigidBody2D" parent="Meteoritos"]
 position = Vector2(-3150, -4476)
+rotation = 0.000739745
 disable_mode = 2
+mass = 200.0
 gravity_scale = 0.0
 can_sleep = false
 
@@ -679,6 +711,7 @@ texture = ExtResource("4_k6u36")
 [node name="RigidBody2D49" type="RigidBody2D" parent="Meteoritos"]
 position = Vector2(-3761, -3096)
 disable_mode = 2
+mass = 200.0
 gravity_scale = 0.0
 can_sleep = false
 
@@ -714,3 +747,5 @@ limit/smoothed = false
 tween_parameters = null
 tween_on_load = true
 inactive_update_mode = 0
+
+[node name="CollisionObject" parent="." instance=ExtResource("6_gnnbh")]

@@ -16,8 +16,7 @@ func Exit():
 	backZone.emit()
 
 func _ready():
-	pass
-	#CheckAllTrue(Minigames)
+	CheckAllTrue(Minigames)
 
 #Setea qué botones de minijuegos deben aparecer dependiendo de la zona
 func ShowMiniGamesButtons():

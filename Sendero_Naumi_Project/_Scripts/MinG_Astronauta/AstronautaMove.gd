@@ -10,6 +10,11 @@ extends CharacterBody2D
 @onready var target_position = Vector2.ZERO
 var direction: Vector2
 var isPressing
+var Meteoros :=[]
+signal AllCollect
+
+func _ready():
+	$Area2D.area_entered.connect(GetPickUpObjects)
 
 func _physics_process(delta):
 	Move(delta)
@@ -31,7 +36,17 @@ func Move(delta):
 		Apply_Movement(direction * acceleration * delta)
 	
 	move_and_slide()
-
+	
+	for i in get_slide_collision_count():
+		var c = get_slide_collision(i)
+		if c.get_collider() is RigidBody2D or c.get_collider() is StaticBody2D:
+			if c.get_collider().is_in_group("movible"):
+				c.get_collider().apply_central_impulse(-c.get_normal() * 80)
+			else: 
+				var collision_info = move_and_collide(velocity * delta)
+				if collision_info:
+					velocity = velocity.bounce(collision_info.get_normal())
+					
 func Apply_Friction(amount):
 	if velocity.length() > amount:
 		velocity -= velocity.normalized() * amount
@@ -47,3 +62,13 @@ func RotateToDirectionSmoothly(delta):
 
 func _get_follow_node_direction() -> Vector2:
 	return direction
+
+func GetPickUpObjects(x):
+	if x.is_in_group("meteoro"):
+		x.queue_free()
+		Meteoros.append(x)
+		print(Meteoros.size())
+	
+	if Meteoros.size() == 3:
+		AllCollect.emit()
+	

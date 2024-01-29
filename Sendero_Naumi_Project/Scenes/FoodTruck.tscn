@@ -8,11 +8,11 @@
 [ext_resource type="Script" path="res://_Scripts/DragSpot.gd" id="6_ym134"]
 [ext_resource type="Texture2D" uid="uid://dj57ce5tt06yj" path="res://Sprites/UI/bubble brown.png" id="7_xojdd"]
 [ext_resource type="Script" path="res://_Scripts/MinG_MegaFood/FoodMenuController.gd" id="8_25wym"]
-[ext_resource type="Texture2D" uid="uid://cwrbbpcgs4yh1" path="res://Sprites/ZonaMegafauna/food1.png" id="9_5aoxv"]
+[ext_resource type="Texture2D" uid="uid://dyy8kyyp1qd8c" path="res://Sprites/ZonaMegafauna/platoHerbivoro.png" id="9_1mktl"]
 [ext_resource type="PackedScene" uid="uid://ci3c3pocxiywq" path="res://Scenes/Experiments/drag_object.tscn" id="10_etwym"]
-[ext_resource type="Texture2D" uid="uid://dju3k7rwel3oy" path="res://Sprites/ZonaMegafauna/food2.png" id="11_sjngh"]
-[ext_resource type="Texture2D" uid="uid://oebtfgoo7lrq" path="res://Sprites/ZonaMegafauna/food3.png" id="12_26y8n"]
-[ext_resource type="Texture2D" uid="uid://b245vfv2mo8pf" path="res://Sprites/ZonaMegafauna/food4.png" id="13_v4pwy"]
+[ext_resource type="Texture2D" uid="uid://t1vryprea4f0" path="res://Sprites/ZonaMegafauna/platoOmnivoro.png" id="11_ty4hw"]
+[ext_resource type="Texture2D" uid="uid://pkpt8p8nkoxr" path="res://Sprites/ZonaMegafauna/platoCarnivoro.png" id="12_yqdj4"]
+[ext_resource type="Texture2D" uid="uid://b0733dafom8ls" path="res://Sprites/ZonaMegafauna/platoCarrognivoro.png" id="13_o6dmd"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/Timer_State_Minigame.gd" id="15_50ehp"]
 [ext_resource type="Script" path="res://Scenes/Experiments/BlockScreen.gd" id="15_kqwgb"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/MoralejaState.gd" id="16_e0xhq"]
@@ -124,7 +124,6 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Instancia1" type="Control" parent="FoodTruck/StateMachine/Juego/Contenido"]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -178,19 +177,18 @@ scale = Vector2(0.46729, 1)
 texture = ExtResource("7_xojdd")
 
 [node name="HBoxContainer" type="Control" parent="FoodTruck/StateMachine/Juego/Contenido/Instancia1"]
-layout_mode = 2
-anchors_preset = 0
+layout_mode = 1
 anchor_left = 0.5
-anchor_top = 0.75
+anchor_top = 0.702
 anchor_right = 0.5
-anchor_bottom = 0.75
-offset_left = -721.0
-offset_top = -205.0
-offset_right = -174.0
-offset_bottom = -88.0001
+anchor_bottom = 0.702
+offset_left = -547.0
+offset_top = -229.56
+offset_right = 1910.0
+offset_bottom = 423.44
 grow_horizontal = 2
-grow_vertical = 0
-scale = Vector2(3.5, 3.5)
+grow_vertical = 2
+scale = Vector2(0.705, 0.705)
 script = ExtResource("8_25wym")
 anchors = [NodePath("food1"), NodePath("food2"), NodePath("food3"), NodePath("food4")]
 limitGesture = 100.0
@@ -198,45 +196,63 @@ limitHold = 300.0
 limitunderHolf = 20.0
 
 [node name="food1" type="Sprite2D" parent="FoodTruck/StateMachine/Juego/Contenido/Instancia1/HBoxContainer"]
-position = Vector2(57.1429, 59.1428)
-texture = ExtResource("9_5aoxv")
+position = Vector2(57.1429, 329)
+texture = ExtResource("9_1mktl")
 
 [node name="DragObject" parent="FoodTruck/StateMachine/Juego/Contenido/Instancia1/HBoxContainer/food1" node_paths=PackedStringArray("spot") instance=ExtResource("10_etwym")]
 spot = NodePath("../../../Control/Spot")
 holdTime = 0.2
 
 [node name="CollisionShape2D" parent="FoodTruck/StateMachine/Juego/Contenido/Instancia1/HBoxContainer/food1/DragObject" index="0"]
-position = Vector2(-0.142857, -1.57144)
+position = Vector2(-0.142838, -1.57141)
 
 [node name="Button" parent="FoodTruck/StateMachine/Juego/Contenido/Instancia1/HBoxContainer/food1/DragObject" index="1"]
-offset_left = -54.0
-offset_top = -50.0
-offset_right = 53.0
-offset_bottom = 50.0
+offset_left = -339.0
+offset_top = -316.0
+offset_right = 338.0
+offset_bottom = 317.0
 
 [node name="food2" type="Sprite2D" parent="FoodTruck/StateMachine/Juego/Contenido/Instancia1/HBoxContainer"]
-position = Vector2(204.571, 56.5714)
-texture = ExtResource("11_sjngh")
+position = Vector2(776.5, 326.429)
+texture = ExtResource("11_ty4hw")
 
 [node name="DragObject" parent="FoodTruck/StateMachine/Juego/Contenido/Instancia1/HBoxContainer/food2" node_paths=PackedStringArray("spot") instance=ExtResource("10_etwym")]
 spot = NodePath("../../../Control/Spot")
 holdTime = 0.2
 
+[node name="Button" parent="FoodTruck/StateMachine/Juego/Contenido/Instancia1/HBoxContainer/food2/DragObject" index="1"]
+offset_left = -335.0
+offset_top = -312.0
+offset_right = 335.0
+offset_bottom = 312.0
+
 [node name="food3" type="Sprite2D" parent="FoodTruck/StateMachine/Juego/Contenido/Instancia1/HBoxContainer"]
-position = Vector2(344.286, 58.2857)
-texture = ExtResource("12_26y8n")
+position = Vector2(1494.5, 328.143)
+texture = ExtResource("12_yqdj4")
 
 [node name="DragObject" parent="FoodTruck/StateMachine/Juego/Contenido/Instancia1/HBoxContainer/food3" node_paths=PackedStringArray("spot") instance=ExtResource("10_etwym")]
 spot = NodePath("../../../Control/Spot")
 holdTime = 0.2
 
+[node name="Button" parent="FoodTruck/StateMachine/Juego/Contenido/Instancia1/HBoxContainer/food3/DragObject" index="1"]
+offset_left = -338.0
+offset_top = -314.0
+offset_right = 337.0
+offset_bottom = 315.0
+
 [node name="food4" type="Sprite2D" parent="FoodTruck/StateMachine/Juego/Contenido/Instancia1/HBoxContainer"]
-position = Vector2(488.857, 56.5714)
-texture = ExtResource("13_v4pwy")
+position = Vector2(2224.5, 326.429)
+texture = ExtResource("13_o6dmd")
 
 [node name="DragObject" parent="FoodTruck/StateMachine/Juego/Contenido/Instancia1/HBoxContainer/food4" node_paths=PackedStringArray("spot") instance=ExtResource("10_etwym")]
 spot = NodePath("../../../Control/Spot")
 holdTime = 0.2
+
+[node name="Button" parent="FoodTruck/StateMachine/Juego/Contenido/Instancia1/HBoxContainer/food4/DragObject" index="1"]
+offset_left = -347.0
+offset_top = -323.0
+offset_right = 347.0
+offset_bottom = 323.0
 
 [node name="TimerScroll" type="Timer" parent="FoodTruck/StateMachine/Juego/Contenido/Instancia1"]
 wait_time = 0.2
@@ -406,3 +422,6 @@ NextScene = "Map_Screen"
 [connection signal="pressed" from="FoodTruck/StateMachine/Moraleja/Contenido/Instancia1/Button" to="FoodTruck/StateMachine/Moraleja/Contenido/Instancia1/Button" method="_on_pressed" flags=18]
 
 [editable path="FoodTruck/StateMachine/Juego/Contenido/Instancia1/HBoxContainer/food1/DragObject"]
+[editable path="FoodTruck/StateMachine/Juego/Contenido/Instancia1/HBoxContainer/food2/DragObject"]
+[editable path="FoodTruck/StateMachine/Juego/Contenido/Instancia1/HBoxContainer/food3/DragObject"]
+[editable path="FoodTruck/StateMachine/Juego/Contenido/Instancia1/HBoxContainer/food4/DragObject"]

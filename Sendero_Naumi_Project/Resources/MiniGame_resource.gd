@@ -7,6 +7,7 @@ class_name MiniGameResource
 "RockFighters" : false,
 "Transformando": false,
 "Busqueda": false,
+"Astronauta": false,
 "noFirstTimePlay" : false}
 
 func Set_State_Minigame(string):

@@ -89,19 +89,24 @@ var _camera_offset: Vector2
 #endregion
 
 #CustomMethods
-
+var inLimit : bool
+var FinalOffsetVector
 func _physics_process(delta):
-	var FinalOffsetVector = get_follow_target_node()._get_follow_node_direction().normalized() * Vector2(CamOffsetH,CamOffsetY)
-	
-	_set_offset_cam(FinalOffsetVector, delta)
+	var t 
+	if get_follow_target_node().has_method("_get_follow_node_direction") :
+		if !inLimit:
+			FinalOffsetVector = get_follow_target_node()._get_follow_node_direction().normalized() * Vector2(CamOffsetH,CamOffsetY)
+			t = 120
+		else:
+			t = 10
+		_set_offset_cam(FinalOffsetVector, delta,t)
 	
 var OffsetVector : Vector2
-func _set_offset_cam(x, delta):
-	var tween = get_tree().create_tween()
-	print(delta)
-	tween.tween_property(self,"OffsetVector",x,120* delta)
-	set_follow_target_offset(OffsetVector) 
 
+func _set_offset_cam(x, delta, time):
+	var tween = get_tree().create_tween()
+	tween.tween_property(self,"OffsetVector",x,time* delta)
+	set_follow_target_offset(OffsetVector) 
 
 #region Properties
 

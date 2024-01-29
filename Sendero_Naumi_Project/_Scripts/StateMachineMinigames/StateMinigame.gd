@@ -41,3 +41,8 @@ func GetFixedIndex(array) -> int:
 
 func SetActualMinigame(Nminigame):
 	ActualMinigame = Nminigame
+
+func SetVisibilityHUD(x):
+	for c in get_children():
+		if c is CanvasLayer:
+			c.visible = x

@@ -14,12 +14,14 @@ func _ready():
 	
 func Enter():
 	Content.visible = true
+	SetVisibilityHUD(true)
 	SetGameInstance(true)
 	Transitioned.emit()
 
 func Exit():
 	Content.visible = false
 	SetGameInstance(false)
+	SetVisibilityHUD(false)
 	IncruseInstanceOfMinigame()
 
 #Muestra la instancia de minijuegos correspondiente segun lo guardado en los saves del jugador

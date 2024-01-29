@@ -1,0 +1,728 @@
+[gd_scene load_steps=28 format=3 uid="uid://dk066mi38cvh7"]
+
+[ext_resource type="Script" path="res://_Scripts/Minigame_Save_Controller.gd" id="1_th4gl"]
+[ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/StateMachineMinigames.gd" id="2_fl1ab"]
+[ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/ConsignaState.gd" id="3_3a6v3"]
+[ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/Button_Change_StateMinigame.gd" id="4_1n0vc"]
+[ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/JuegoState.gd" id="5_wjedw"]
+[ext_resource type="Texture2D" uid="uid://nuybqhitpej1" path="res://Sprites/Mapa/fondo_mapa.png" id="6_iavf7"]
+[ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/MoralejaState.gd" id="6_yvrem"]
+[ext_resource type="Script" path="res://_Scripts/MinG_Astronauta/NaveController.gd" id="7_acnt4"]
+[ext_resource type="PackedScene" uid="uid://dtbscg5vj1osr" path="res://Scenes/Zona_Astronomia/astronautaController.tscn" id="7_jv4gs"]
+[ext_resource type="PackedScene" uid="uid://djhg7jvxtexyl" path="res://Scenes/UI_Scenes/btn_Change_Scene.tscn" id="7_xf3bk"]
+[ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/FinState.gd" id="8_82fk8"]
+[ext_resource type="Script" path="res://_Scripts/MinG_Astronauta/CamControllerAstronauta.gd" id="8_dafos"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="8_eyv1l"]
+[ext_resource type="Texture2D" uid="uid://bs61ipoo6jueu" path="res://Sprites/ZonaAstronomia/NaveInterior.png" id="8_w48x6"]
+[ext_resource type="Texture2D" uid="uid://puccpmbqwi4c" path="res://Sprites/ZonaAstronomia/NaveExterior.png" id="9_7dd1c"]
+[ext_resource type="Texture2D" uid="uid://drrio0noaq2fi" path="res://Sprites/ZonaGeología/piedra-PhotoRoom.png-PhotoRoom.png" id="9_88pnb"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2D.gd" id="10_ex8uo"]
+[ext_resource type="Script" path="res://_Scripts/CapsulaController.gd" id="10_fm36a"]
+[ext_resource type="Texture2D" uid="uid://do80na5f1l4ly" path="res://Sprites/ZonaAstronomia/capsula.png" id="11_fl6hj"]
+[ext_resource type="PackedScene" uid="uid://dsjra6y4xe8g7" path="res://Scenes/Experiments/pick_up_object.tscn" id="11_i2vqs"]
+[ext_resource type="PackedScene" uid="uid://bhvn7rj6jhh2" path="res://Scenes/Zona_Astronomia/collision_object.tscn" id="11_nklpy"]
+[ext_resource type="Texture2D" uid="uid://b7poe0ethot51" path="res://Sprites/ZonaGeología/Piedras/flurita_dureza.png" id="14_gaug6"]
+[ext_resource type="Theme" uid="uid://bokxu7jbpku04" path="res://Themes/Back_UI.tres" id="21_7epdq"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2javv"]
+radius = 209.476
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_flhw3"]
+light_mode = 1
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_48pma"]
+size = Vector2(544, 20)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_h2n3c"]
+light_mode = 1
+
+[node name="Astronauta" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Astronauta" type="Node" parent="."]
+script = ExtResource("1_th4gl")
+
+[node name="Control" type="Control" parent="Astronauta"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="ColorRect" parent="Astronauta/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.72549, 1, 1, 1)
+
+[node name="StateMachine" type="Node" parent="Astronauta" node_paths=PackedStringArray("initial_state")]
+script = ExtResource("2_fl1ab")
+initial_state = NodePath("Consigna")
+
+[node name="Consigna" type="Node" parent="Astronauta/StateMachine"]
+script = ExtResource("3_3a6v3")
+Consignas = ["Volá por el espacio wiiiiiiiiiiiii"]
+
+[node name="Contenido" type="Control" parent="Astronauta/StateMachine/Consigna"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LblConsigna" type="Label" parent="Astronauta/StateMachine/Consigna/Contenido"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -270.0
+offset_top = -444.0
+offset_right = 294.0
+offset_bottom = 445.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "Consigna genérica Consigna genérica Consigna genérica"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Button" type="Button" parent="Astronauta/StateMachine/Consigna/Contenido" node_paths=PackedStringArray("state_to_change", "state_machine")]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -201.0
+offset_top = -197.0
+offset_right = 202.0
+offset_bottom = -67.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Siguiente
+"
+script = ExtResource("4_1n0vc")
+state_to_change = NodePath("../../../Juego")
+state_machine = NodePath("../../..")
+
+[node name="Juego" type="Node" parent="Astronauta/StateMachine" node_paths=PackedStringArray("NextState", "StateMachine")]
+script = ExtResource("5_wjedw")
+NextState = NodePath(".")
+StateMachine = NodePath("..")
+InstanciasMinijuego = [NodePath("Contenido/Instancia1")]
+
+[node name="Contenido" type="Control" parent="Astronauta/StateMachine/Juego"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Instancia1" type="Control" parent="Astronauta/StateMachine/Juego/Contenido"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="level" type="Node2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1"]
+
+[node name="TextureRect" type="TextureRect" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level"]
+offset_left = -8134.0
+offset_top = -3144.0
+offset_right = 5554.0
+offset_bottom = 8580.0
+size_flags_horizontal = 4
+texture = ExtResource("6_iavf7")
+stretch_mode = 1
+
+[node name="FondoReference" type="Polygon2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level"]
+color = Color(1, 1, 1, 0)
+polygon = PackedVector2Array(-7049, -1209, 1182, -1261, 1249, 5735, -6964, 5719)
+
+[node name="Meteoritos" type="Node2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level"]
+position = Vector2(-554, -339)
+
+[node name="Cueva" type="Node2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/Meteoritos"]
+position = Vector2(-5799, 76)
+
+[node name="RigidBody2D7" type="RigidBody2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/Meteoritos/Cueva"]
+position = Vector2(160, -238)
+rotation = 1.91901
+disable_mode = 2
+mass = 200.0
+gravity_scale = 0.0
+can_sleep = false
+freeze = true
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/Meteoritos/Cueva/RigidBody2D7"]
+shape = SubResource("CircleShape2D_2javv")
+
+[node name="Sprite2D" type="Sprite2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/Meteoritos/Cueva/RigidBody2D7/CollisionShape2D4"]
+self_modulate = Color(0.574219, 0.445313, 0.328125, 1)
+texture = ExtResource("9_88pnb")
+
+[node name="RigidBody2D10" type="RigidBody2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/Meteoritos/Cueva"]
+position = Vector2(-451, 125)
+rotation = -1.29794
+disable_mode = 2
+mass = 200.0
+gravity_scale = 0.0
+can_sleep = false
+freeze = true
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/Meteoritos/Cueva/RigidBody2D10"]
+shape = SubResource("CircleShape2D_2javv")
+
+[node name="Sprite2D" type="Sprite2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/Meteoritos/Cueva/RigidBody2D10/CollisionShape2D4"]
+self_modulate = Color(0.574219, 0.445313, 0.328125, 1)
+texture = ExtResource("9_88pnb")
+
+[node name="RigidBody2D11" type="RigidBody2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/Meteoritos/Cueva"]
+position = Vector2(-593, -281)
+rotation = -0.091877
+disable_mode = 2
+mass = 200.0
+gravity_scale = 0.0
+can_sleep = false
+freeze = true
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/Meteoritos/Cueva/RigidBody2D11"]
+shape = SubResource("CircleShape2D_2javv")
+
+[node name="Sprite2D" type="Sprite2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/Meteoritos/Cueva/RigidBody2D11/CollisionShape2D4"]
+self_modulate = Color(0.574219, 0.445313, 0.328125, 1)
+texture = ExtResource("9_88pnb")
+
+[node name="RigidBody2D12" type="RigidBody2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/Meteoritos/Cueva"]
+position = Vector2(-500, -693)
+rotation = -0.275139
+disable_mode = 2
+mass = 200.0
+gravity_scale = 0.0
+can_sleep = false
+freeze = true
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/Meteoritos/Cueva/RigidBody2D12"]
+shape = SubResource("CircleShape2D_2javv")
+
+[node name="Sprite2D" type="Sprite2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/Meteoritos/Cueva/RigidBody2D12/CollisionShape2D4"]
+self_modulate = Color(0.574219, 0.445313, 0.328125, 1)
+texture = ExtResource("9_88pnb")
+
+[node name="RigidBody2D13" type="RigidBody2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/Meteoritos/Cueva"]
+position = Vector2(-112, -950)
+rotation = 0.730426
+disable_mode = 2
+mass = 200.0
+gravity_scale = 0.0
+can_sleep = false
+freeze = true
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/Meteoritos/Cueva/RigidBody2D13"]
+shape = SubResource("CircleShape2D_2javv")
+
+[node name="Sprite2D" type="Sprite2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/Meteoritos/Cueva/RigidBody2D13/CollisionShape2D4"]
+self_modulate = Color(0.574219, 0.445313, 0.328125, 1)
+texture = ExtResource("9_88pnb")
+
+[node name="RigidBody2D14" type="RigidBody2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/Meteoritos/Cueva"]
+position = Vector2(306, -957)
+rotation = 1.67869
+disable_mode = 2
+mass = 200.0
+gravity_scale = 0.0
+can_sleep = false
+freeze = true
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/Meteoritos/Cueva/RigidBody2D14"]
+shape = SubResource("CircleShape2D_2javv")
+
+[node name="Sprite2D" type="Sprite2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/Meteoritos/Cueva/RigidBody2D14/CollisionShape2D4"]
+self_modulate = Color(0.574219, 0.445313, 0.328125, 1)
+texture = ExtResource("9_88pnb")
+
+[node name="RigidBody2D15" type="RigidBody2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/Meteoritos/Cueva"]
+position = Vector2(608, -1121)
+rotation = 0.238833
+disable_mode = 2
+mass = 200.0
+gravity_scale = 0.0
+can_sleep = false
+freeze = true
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/Meteoritos/Cueva/RigidBody2D15"]
+shape = SubResource("CircleShape2D_2javv")
+
+[node name="Sprite2D" type="Sprite2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/Meteoritos/Cueva/RigidBody2D15/CollisionShape2D4"]
+self_modulate = Color(0.574219, 0.445313, 0.328125, 1)
+texture = ExtResource("9_88pnb")
+
+[node name="RigidBody2D16" type="RigidBody2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/Meteoritos/Cueva"]
+position = Vector2(1029, -976)
+rotation = 1.59375
+disable_mode = 2
+mass = 200.0
+gravity_scale = 0.0
+can_sleep = false
+freeze = true
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/Meteoritos/Cueva/RigidBody2D16"]
+shape = SubResource("CircleShape2D_2javv")
+
+[node name="Sprite2D" type="Sprite2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/Meteoritos/Cueva/RigidBody2D16/CollisionShape2D4"]
+self_modulate = Color(0.574219, 0.445313, 0.328125, 1)
+texture = ExtResource("9_88pnb")
+
+[node name="RigidBody2D17" type="RigidBody2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/Meteoritos/Cueva"]
+position = Vector2(1177, -569)
+rotation = 2.62854
+disable_mode = 2
+mass = 200.0
+gravity_scale = 0.0
+can_sleep = false
+freeze = true
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/Meteoritos/Cueva/RigidBody2D17"]
+shape = SubResource("CircleShape2D_2javv")
+
+[node name="Sprite2D" type="Sprite2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/Meteoritos/Cueva/RigidBody2D17/CollisionShape2D4"]
+self_modulate = Color(0.574219, 0.445313, 0.328125, 1)
+texture = ExtResource("9_88pnb")
+
+[node name="RigidBody2D18" type="RigidBody2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/Meteoritos/Cueva"]
+position = Vector2(989, -236)
+rotation = -3.04334
+disable_mode = 2
+mass = 200.0
+gravity_scale = 0.0
+can_sleep = false
+freeze = true
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/Meteoritos/Cueva/RigidBody2D18"]
+shape = SubResource("CircleShape2D_2javv")
+
+[node name="Sprite2D" type="Sprite2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/Meteoritos/Cueva/RigidBody2D18/CollisionShape2D4"]
+self_modulate = Color(0.574219, 0.445313, 0.328125, 1)
+texture = ExtResource("9_88pnb")
+
+[node name="RigidBody2D19" type="RigidBody2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/Meteoritos/Cueva"]
+position = Vector2(562, -199)
+rotation = -2.50149
+disable_mode = 2
+mass = 200.0
+gravity_scale = 0.0
+can_sleep = false
+freeze = true
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/Meteoritos/Cueva/RigidBody2D19"]
+shape = SubResource("CircleShape2D_2javv")
+
+[node name="Sprite2D" type="Sprite2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/Meteoritos/Cueva/RigidBody2D19/CollisionShape2D4"]
+self_modulate = Color(0.574219, 0.445313, 0.328125, 1)
+texture = ExtResource("9_88pnb")
+
+[node name="DedosDeDios" type="Node2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/Meteoritos"]
+position = Vector2(-1172, 2818)
+
+[node name="RigidBody2D7" type="RigidBody2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/Meteoritos/DedosDeDios"]
+position = Vector2(1114, 2691)
+rotation = 1.68141
+disable_mode = 2
+mass = 200.0
+gravity_scale = 0.0
+can_sleep = false
+freeze = true
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/Meteoritos/DedosDeDios/RigidBody2D7"]
+shape = SubResource("CircleShape2D_2javv")
+
+[node name="Sprite2D" type="Sprite2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/Meteoritos/DedosDeDios/RigidBody2D7/CollisionShape2D4"]
+self_modulate = Color(0.313726, 0.345098, 0.384314, 1)
+texture = ExtResource("9_88pnb")
+
+[node name="RigidBody2D8" type="RigidBody2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/Meteoritos/DedosDeDios"]
+position = Vector2(1222, 2219)
+rotation = 2.51559
+disable_mode = 2
+mass = 200.0
+gravity_scale = 0.0
+can_sleep = false
+freeze = true
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/Meteoritos/DedosDeDios/RigidBody2D8"]
+shape = SubResource("CircleShape2D_2javv")
+
+[node name="Sprite2D" type="Sprite2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/Meteoritos/DedosDeDios/RigidBody2D8/CollisionShape2D4"]
+self_modulate = Color(0.313726, 0.345098, 0.384314, 1)
+texture = ExtResource("9_88pnb")
+
+[node name="RigidBody2D9" type="RigidBody2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/Meteoritos/DedosDeDios"]
+position = Vector2(1778, 1803)
+rotation = 3.92723
+disable_mode = 2
+mass = 200.0
+gravity_scale = 0.0
+can_sleep = false
+freeze = true
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/Meteoritos/DedosDeDios/RigidBody2D9"]
+shape = SubResource("CircleShape2D_2javv")
+
+[node name="Sprite2D" type="Sprite2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/Meteoritos/DedosDeDios/RigidBody2D9/CollisionShape2D4"]
+self_modulate = Color(0.313726, 0.345098, 0.384314, 1)
+texture = ExtResource("9_88pnb")
+
+[node name="RigidBody2D10" type="RigidBody2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/Meteoritos/DedosDeDios"]
+position = Vector2(2427, 1652)
+rotation = 3.04536
+disable_mode = 2
+mass = 200.0
+gravity_scale = 0.0
+can_sleep = false
+freeze = true
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/Meteoritos/DedosDeDios/RigidBody2D10"]
+shape = SubResource("CircleShape2D_2javv")
+
+[node name="Sprite2D" type="Sprite2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/Meteoritos/DedosDeDios/RigidBody2D10/CollisionShape2D4"]
+self_modulate = Color(0.313726, 0.345098, 0.384314, 1)
+texture = ExtResource("9_88pnb")
+
+[node name="RigidBody2D11" type="RigidBody2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/Meteoritos/DedosDeDios"]
+position = Vector2(1954, 2349)
+rotation = 3.04536
+scale = Vector2(0.64, 0.64)
+disable_mode = 2
+mass = 200.0
+gravity_scale = 0.0
+can_sleep = false
+freeze = true
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/Meteoritos/DedosDeDios/RigidBody2D11"]
+shape = SubResource("CircleShape2D_2javv")
+
+[node name="Sprite2D" type="Sprite2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/Meteoritos/DedosDeDios/RigidBody2D11/CollisionShape2D4"]
+self_modulate = Color(0.313726, 0.345098, 0.384314, 1)
+texture = ExtResource("9_88pnb")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level"]
+position = Vector2(2793, 3487)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/StaticBody2D"]
+position = Vector2(-9703.67, -4701)
+scale = Vector2(2.78085, 1.77895)
+polygon = PackedVector2Array(-7, -1, -67, 197, -48, 444, -34, 1567, -24, 3898, 2916, 3883, 2911, -22, 19, -6, 17, -78, 2936, -77, 2982, 3949, -118, 3937, -72, -23)
+
+[node name="Meteoroide" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level" instance=ExtResource("11_i2vqs")]
+position = Vector2(-5666, -887)
+scale = Vector2(2.595, 2.595)
+
+[node name="Meteoroide2" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level" instance=ExtResource("11_i2vqs")]
+position = Vector2(710, 5221)
+scale = Vector2(2.595, 2.595)
+_texture = ExtResource("14_gaug6")
+
+[node name="NaveController" type="Node2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1" node_paths=PackedStringArray("minDistance", "maxDistance", "player")]
+position = Vector2(368, 642)
+script = ExtResource("7_acnt4")
+minDistance = NodePath("AnchorMin")
+maxDistance = NodePath("AnchorMax")
+player = NodePath("../Astronauta")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController"]
+position = Vector2(-368, -642)
+
+[node name="interior" type="Sprite2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController"]
+material = SubResource("CanvasItemMaterial_flhw3")
+texture = ExtResource("8_w48x6")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/interior"]
+
+[node name="Polygon2D" type="CollisionPolygon2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/interior/StaticBody2D"]
+polygon = PackedVector2Array(-115, -324, -193, -207, -268, 138, -265, 391, 273, 385, 216, -78, 131, -330, 180, -328, 261, -50, 298, 295, 298, 401, 203, 425, -253, 422, -302, 407, -298, 34, -221, -213, -148, -336)
+
+[node name="exterior" type="Sprite2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController"]
+self_modulate = Color(1, 1, 1, 0)
+z_index = 1
+texture = ExtResource("9_7dd1c")
+
+[node name="AnchorMin" type="Node2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController"]
+position = Vector2(14, -352)
+
+[node name="AnchorMax" type="Node2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController"]
+position = Vector2(14, -440)
+
+[node name="Capsula" type="Node2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController"]
+position = Vector2(185, -324)
+script = ExtResource("10_fm36a")
+
+[node name="Collider" type="StaticBody2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Capsula"]
+position = Vector2(-168, 28)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Capsula/Collider"]
+polygon = PackedVector2Array(-168, -31, -10, -167, 107, -115, 165, -28)
+one_way_collision = true
+
+[node name="TriggerOutside" type="Area2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Capsula"]
+position = Vector2(-176, -273)
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Capsula/TriggerOutside"]
+position = Vector2(14, 36)
+shape = SubResource("RectangleShape2D_48pma")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Capsula/TriggerOutside"]
+position = Vector2(155, 50)
+rotation = 0.675708
+shape = SubResource("RectangleShape2D_48pma")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Capsula/TriggerOutside"]
+position = Vector2(-203, 86)
+rotation = -0.982402
+shape = SubResource("RectangleShape2D_48pma")
+
+[node name="Sprite2D" type="Sprite2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Capsula"]
+position = Vector2(15, 46)
+rotation = 2.51327
+scale = Vector2(1.29333, 1.29333)
+texture = ExtResource("11_fl6hj")
+offset = Vector2(-140.155, -77.71)
+
+[node name="Astronauta" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1" instance=ExtResource("7_jv4gs")]
+material = SubResource("CanvasItemMaterial_h2n3c")
+
+[node name="Camera2D" type="Camera2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1" node_paths=PackedStringArray("FondoReference", "phantom", "player")]
+visible = false
+position = Vector2(363, 639)
+enabled = false
+script = ExtResource("8_dafos")
+FondoReference = NodePath("../level/FondoReference")
+phantom = NodePath("../PhantomCamera2D")
+player = NodePath("../Astronauta")
+
+[node name="PhantomCameraHost" type="Node" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/Camera2D"]
+script = ExtResource("8_eyv1l")
+
+[node name="PhantomCamera2D" type="Node2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1"]
+position = Vector2(363, 639)
+script = ExtResource("10_ex8uo")
+CamOffsetH = 400.0
+CamOffsetY = 500.0
+priority_override = false
+priority = 0
+zoom = Vector2(1, 1)
+follow_mode = 2
+follow_target = NodePath("../Astronauta")
+follow_parameters/target_offset = Vector2(0, 0)
+follow_parameters/damping = true
+follow_parameters/damping_value = 4.376
+frame_preview = true
+pixel_perfect = true
+limit/draw_limits = true
+limit/left = -10000000
+limit/top = -10000000
+limit/right = 10000000
+limit/bottom = 10000000
+limit/limit_node_target = NodePath("")
+limit/smoothed = false
+tween_parameters = null
+tween_on_load = true
+inactive_update_mode = 0
+
+[node name="CollisionObject" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1" instance=ExtResource("11_nklpy")]
+
+[node name="Label" type="Label" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1"]
+visible = false
+layout_mode = 0
+offset_right = 598.0
+offset_bottom = 177.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Instancia 1"
+
+[node name="Button" type="Button" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1" node_paths=PackedStringArray("state_to_change", "state_machine")]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -161.0
+offset_top = -165.0
+offset_right = 161.0
+offset_bottom = -52.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Complete"
+script = ExtResource("4_1n0vc")
+state_to_change = NodePath("../../../../Moraleja")
+state_machine = NodePath("../../../..")
+isEndOfGame = true
+
+[node name="HUD" type="CanvasLayer" parent="Astronauta/StateMachine/Juego"]
+visible = false
+
+[node name="ButtonChangeScene" parent="Astronauta/StateMachine/Juego/HUD" instance=ExtResource("7_xf3bk")]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 0.0
+offset_left = -106.0
+offset_top = 21.0
+offset_right = -16.0
+offset_bottom = 111.0
+grow_horizontal = 0
+grow_vertical = 1
+theme = ExtResource("21_7epdq")
+text = "
+"
+NextScene = "Map_Screen"
+
+[node name="Moraleja" type="Node" parent="Astronauta/StateMachine"]
+script = ExtResource("6_yvrem")
+Moralejas = [null, "Y esto es una moraleja"]
+Instancias = [NodePath("Contenido/Instancia1")]
+buttons = [NodePath("Contenido/Instancia1/Button")]
+
+[node name="Contenido" type="Control" parent="Astronauta/StateMachine/Moraleja"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Conteiner" type="Control" parent="Astronauta/StateMachine/Moraleja/Contenido"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LblMoraleja" type="Label" parent="Astronauta/StateMachine/Moraleja/Contenido/Conteiner"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -270.0
+offset_top = -444.0
+offset_right = 294.0
+offset_bottom = 445.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "Consigna genérica Consigna genérica Consigna genérica"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Timer" type="Timer" parent="Astronauta/StateMachine/Moraleja/Contenido"]
+wait_time = 3.0
+one_shot = true
+
+[node name="ButtonChangeScene" parent="Astronauta/StateMachine/Moraleja/Contenido" instance=ExtResource("7_xf3bk")]
+visible = false
+layout_mode = 1
+offset_left = -197.0
+offset_top = -201.0
+offset_right = 207.0
+offset_bottom = -66.0
+text = "Continue"
+NextScene = "Map_Screen"
+
+[node name="Instancia1" type="Control" parent="Astronauta/StateMachine/Moraleja/Contenido"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="Astronauta/StateMachine/Moraleja/Contenido/Instancia1" node_paths=PackedStringArray("state_to_change", "state_machine")]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -201.0
+offset_top = -197.0
+offset_right = 202.0
+offset_bottom = -67.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "que?
+"
+script = ExtResource("4_1n0vc")
+state_to_change = NodePath("../../../../Juego")
+state_machine = NodePath("../../../..")
+
+[node name="Fin" type="Node" parent="Astronauta/StateMachine"]
+script = ExtResource("8_82fk8")
+
+[node name="Contenido" type="Control" parent="Astronauta/StateMachine/Fin"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ButtonChangeScene" parent="Astronauta/StateMachine/Fin/Contenido" instance=ExtResource("7_xf3bk")]
+layout_mode = 1
+offset_left = -197.0
+offset_top = -186.0
+offset_right = 207.0
+offset_bottom = -51.0
+text = "Continue"
+NextScene = "Map_Screen"
+
+[connection signal="pressed" from="Astronauta/StateMachine/Consigna/Contenido/Button" to="Astronauta/StateMachine/Consigna/Contenido/Button" method="_on_pressed" flags=18]
+[connection signal="Transitioned" from="Astronauta/StateMachine/Juego" to="Astronauta/StateMachine/Juego/Contenido/Instancia1/Camera2D" method="Enable" binds= [true]]
+[connection signal="EndOfGame" from="Astronauta/StateMachine/Juego/Contenido/Instancia1/Button" to="Astronauta" method="Set_Complete" flags=18]
+[connection signal="EndOfGame" from="Astronauta/StateMachine/Juego/Contenido/Instancia1/Button" to="Astronauta/StateMachine/Moraleja" method="isEndOfGame" flags=18]
+[connection signal="pressed" from="Astronauta/StateMachine/Juego/Contenido/Instancia1/Button" to="Astronauta/StateMachine/Juego/Contenido/Instancia1/Button" method="_on_pressed" flags=18]
+[connection signal="timeout" from="Astronauta/StateMachine/Moraleja/Contenido/Timer" to="Astronauta/StateMachine/Moraleja" method="TimeOut" flags=18]
+[connection signal="pressed" from="Astronauta/StateMachine/Moraleja/Contenido/Instancia1/Button" to="Astronauta/StateMachine/Moraleja/Contenido/Instancia1/Button" method="_on_pressed" flags=18]
