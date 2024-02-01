@@ -1,0 +1,40 @@
+[gd_scene load_steps=4 format=3 uid="uid://cc3lcmyec2iso"]
+
+[ext_resource type="Texture2D" uid="uid://ce822oixpgtsk" path="res://Sprites/ZonaAstronomia/reloj_arena.png" id="1_bjhsy"]
+[ext_resource type="Script" path="res://_Scripts/MiniG_DondeEstuvo/ItemUnir.gd" id="2_ndw4w"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gn8hy"]
+radius = 6.08276
+
+[node name="ItemUnir" type="TextureRect"]
+z_index = 1
+offset_left = 65.0
+offset_top = 118.0
+offset_right = 308.0
+offset_bottom = 361.0
+texture = ExtResource("1_bjhsy")
+expand_mode = 4
+script = ExtResource("2_ndw4w")
+
+[node name="Line2D" type="Line2D" parent="."]
+position = Vector2(121, 121)
+points = PackedVector2Array(-1, -5, 13, -5)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+
+[node name="Area2D" type="Area2D" parent="." groups=["item"]]
+position = Vector2(137, 117)
+priority = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" groups=["item"]]
+shape = SubResource("CircleShape2D_gn8hy")

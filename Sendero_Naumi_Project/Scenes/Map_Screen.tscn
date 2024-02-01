@@ -590,6 +590,16 @@ texture = "dirt"
 is_inverted = true
 color = Color(0.560784, 0.321569, 0.211765, 1)
 
+[node name="DondeEstuvo" parent="StateMachine/AstronomiaZone/ZoomingZone/SubViewport/ZoomingZone" instance=ExtResource("6_wq3mc")]
+position = Vector2(690.285, 398.355)
+
+[node name="ButtonChangeScene" parent="StateMachine/AstronomiaZone/ZoomingZone/SubViewport/ZoomingZone/DondeEstuvo" index="0"]
+NextScene = "DondeEstuvo"
+fade_time = 1.0
+texture = "dirt"
+is_inverted = true
+color = Color(0.560784, 0.321569, 0.211765, 1)
+
 [node name="Título" type="Sprite2D" parent="StateMachine/AstronomiaZone/ZoomingZone/SubViewport/ZoomingZone"]
 visible = false
 position = Vector2(477.009, -119.85)
@@ -805,6 +815,7 @@ state_machine = NodePath("..")
 [connection signal="pressed" from="ScrollContainer/VBoxContainer/Piso2/GeologiaZone/TextureRect/Button_Change_State" to="ScrollContainer/VBoxContainer/Piso2/GeologiaZone/TextureRect/Button_Change_State" method="_on_pressed"]
 [connection signal="pressed" from="ScrollContainer/VBoxContainer/Piso1/Piso1/MegafaunaZone/TextureRect/Button_Change_State" to="ScrollContainer/VBoxContainer/Piso1/Piso1/MegafaunaZone/TextureRect/Button_Change_State" method="_on_pressed"]
 [connection signal="tree_entered" from="StateMachine/AstronomiaZone/ZoomingZone/SubViewport/ZoomingZone/Astronauta" to="StateMachine/AstronomiaZone/ZoomingZone/SubViewport/ZoomingZone/Astronauta" method="_on_tree_entered" flags=18]
+[connection signal="tree_entered" from="StateMachine/AstronomiaZone/ZoomingZone/SubViewport/ZoomingZone/DondeEstuvo" to="StateMachine/AstronomiaZone/ZoomingZone/SubViewport/ZoomingZone/DondeEstuvo" method="_on_tree_entered" flags=18]
 [connection signal="backZone" from="StateMachine/GeologiaZone" to="ScrollContainer/VBoxContainer/Piso2/GeologiaZone" method="back_Zone"]
 [connection signal="inZone" from="StateMachine/GeologiaZone" to="ScrollContainer/VBoxContainer/Piso2/GeologiaZone" method="in_Zone"]
 [connection signal="tree_entered" from="StateMachine/GeologiaZone/ZoomingZone/SubViewport/ZoomingZone/RockFighters" to="StateMachine/GeologiaZone/ZoomingZone/SubViewport/ZoomingZone/RockFighters" method="_on_tree_entered" flags=18]
@@ -816,6 +827,7 @@ state_machine = NodePath("..")
 [connection signal="pressed" from="StateMachine/ButtonBack" to="StateMachine/ButtonBack" method="_on_pressed"]
 
 [editable path="StateMachine/AstronomiaZone/ZoomingZone/SubViewport/ZoomingZone/Astronauta"]
+[editable path="StateMachine/AstronomiaZone/ZoomingZone/SubViewport/ZoomingZone/DondeEstuvo"]
 [editable path="StateMachine/GeologiaZone/ZoomingZone/SubViewport/ZoomingZone/RockFighters"]
 [editable path="StateMachine/GeologiaZone/ZoomingZone/SubViewport/ZoomingZone/Transformando"]
 [editable path="StateMachine/GeologiaZone/ZoomingZone/SubViewport/ZoomingZone/Busqueda"]

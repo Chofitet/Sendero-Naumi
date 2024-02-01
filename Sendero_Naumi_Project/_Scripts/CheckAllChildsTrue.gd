@@ -23,8 +23,6 @@ func CheckTrue():
 	if b: AllTrue.emit()
 
 func CheckOthers(i)-> bool:
-	print(i)
-	print(childs.size())
 	if i == childs.size():
 		return true
 	else: return false

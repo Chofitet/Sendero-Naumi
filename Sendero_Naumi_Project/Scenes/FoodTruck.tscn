@@ -1,10 +1,11 @@
-[gd_scene load_steps=21 format=3 uid="uid://hbmgu1q1d7os"]
+[gd_scene load_steps=22 format=3 uid="uid://hbmgu1q1d7os"]
 
 [ext_resource type="Script" path="res://_Scripts/Minigame_Save_Controller.gd" id="1_dk1kn"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/StateMachineMinigames.gd" id="2_445ba"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/ConsignaState.gd" id="3_snobg"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/Button_Change_StateMinigame.gd" id="4_oxiwq"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/JuegoState.gd" id="5_ykya6"]
+[ext_resource type="Texture2D" uid="uid://bwjh6nd0lb21s" path="res://Sprites/ZonaMegafauna/patas mega.png" id="6_gxs7l"]
 [ext_resource type="Script" path="res://_Scripts/DragSpot.gd" id="6_ym134"]
 [ext_resource type="Texture2D" uid="uid://dj57ce5tt06yj" path="res://Sprites/UI/bubble brown.png" id="7_xojdd"]
 [ext_resource type="Script" path="res://_Scripts/MinG_MegaFood/FoodMenuController.gd" id="8_25wym"]
@@ -153,19 +154,33 @@ isEndOfGame = true
 
 [node name="Control" type="Control" parent="FoodTruck/StateMachine/Juego/Contenido/Instancia1"]
 layout_mode = 1
-anchor_left = 0.504
-anchor_top = 0.267
-anchor_right = 0.504
-anchor_bottom = 0.267
-offset_left = 0.119995
-offset_top = 0.23999
-offset_right = 0.119995
-offset_bottom = 0.23999
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -3.0
+offset_top = 570.0
+offset_right = -3.0
+offset_bottom = 570.0
 grow_horizontal = 2
-grow_vertical = 2
+
+[node name="Polygon2D" type="Polygon2D" parent="FoodTruck/StateMachine/Juego/Contenido/Instancia1/Control"]
+position = Vector2(-3, -263)
+scale = Vector2(1.10903, 1.86796)
+color = Color(0.552941, 0.552941, 0.552941, 1)
+polygon = PackedVector2Array(-287, -7, -286, 220, 299.361, 218.549, 300, -5)
+
+[node name="Animal" type="Sprite2D" parent="FoodTruck/StateMachine/Juego/Contenido/Instancia1/Control"]
+position = Vector2(0, -541)
+scale = Vector2(0.629047, 0.629047)
+texture = ExtResource("6_gxs7l")
+
+[node name="Button" type="Button" parent="FoodTruck/StateMachine/Juego/Contenido/Instancia1/Control/Animal"]
+offset_right = 8.0
+offset_bottom = 8.0
 
 [node name="Spot" type="Area2D" parent="FoodTruck/StateMachine/Juego/Contenido/Instancia1/Control" node_paths=PackedStringArray("RigthObject")]
-position = Vector2(-5, 0)
+modulate = Color(1, 1, 1, 0)
+position = Vector2(0, -57)
 script = ExtResource("6_ym134")
 RigthObject = NodePath("../../HBoxContainer/food1/DragObject")
 
@@ -179,13 +194,13 @@ texture = ExtResource("7_xojdd")
 [node name="HBoxContainer" type="Control" parent="FoodTruck/StateMachine/Juego/Contenido/Instancia1"]
 layout_mode = 1
 anchor_left = 0.5
-anchor_top = 0.702
+anchor_top = 0.787
 anchor_right = 0.5
-anchor_bottom = 0.702
+anchor_bottom = 0.787
 offset_left = -547.0
-offset_top = -229.56
+offset_top = -230.36
 offset_right = 1910.0
-offset_bottom = 423.44
+offset_bottom = 422.64
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.705, 0.705)
@@ -213,7 +228,7 @@ offset_right = 338.0
 offset_bottom = 317.0
 
 [node name="food2" type="Sprite2D" parent="FoodTruck/StateMachine/Juego/Contenido/Instancia1/HBoxContainer"]
-position = Vector2(776.5, 326.429)
+position = Vector2(776.5, 324.823)
 texture = ExtResource("11_ty4hw")
 
 [node name="DragObject" parent="FoodTruck/StateMachine/Juego/Contenido/Instancia1/HBoxContainer/food2" node_paths=PackedStringArray("spot") instance=ExtResource("10_etwym")]

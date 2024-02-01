@@ -8,6 +8,7 @@ class_name MiniGameResource
 "Transformando": false,
 "Busqueda": false,
 "Astronauta": false,
+"DondeEstuvo": false,
 "noFirstTimePlay" : false}
 
 func Set_State_Minigame(string):
