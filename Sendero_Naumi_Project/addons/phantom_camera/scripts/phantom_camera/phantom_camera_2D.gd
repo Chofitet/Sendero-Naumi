@@ -92,6 +92,7 @@ var _camera_offset: Vector2
 var inLimit : bool
 var FinalOffsetVector
 func _physics_process(delta):
+	if Engine.is_editor_hint(): return
 	var t 
 	if get_follow_target_node().has_method("_get_follow_node_direction") :
 		if !inLimit:
