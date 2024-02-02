@@ -13,6 +13,7 @@ func _on_timeout():
 	if isEndOfGame:
 		#self.visible = false
 		EndOfGame.emit()
+	stop()
 
 func StartTime():
 	start()

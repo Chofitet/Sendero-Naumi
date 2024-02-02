@@ -71,3 +71,8 @@ func isEnableButton(x):
 	if x:
 		$Button.visible = true
 	else: $Button.visible = false
+
+func ResetPosition():
+	object.position = initial_spot
+	isInPosition = false
+	is_in_spot = false

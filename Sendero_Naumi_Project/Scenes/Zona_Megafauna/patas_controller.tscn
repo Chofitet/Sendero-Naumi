@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=3 uid="uid://dcredgeon3w2q"]
+
+[ext_resource type="Texture2D" uid="uid://bwjh6nd0lb21s" path="res://Sprites/ZonaMegafauna/patas mega.png" id="1_tgrje"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tak26"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_tgrje")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="PatasController" type="Control"]
+layout_mode = 3
+grow_horizontal = 2
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+scale = Vector2(1.10903, 2.15804)
+color = Color(0.552941, 0.552941, 0.552941, 1)
+offset = Vector2(0, -102.465)
+polygon = PackedVector2Array(-287, -7, -286, 220, 299.361, 218.549, 300, -5)
+
+[node name="Animal" type="AnimatedSprite2D" parent="."]
+position = Vector2(13, -522)
+scale = Vector2(0.629047, 0.629047)
+sprite_frames = SubResource("SpriteFrames_tak26")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]

@@ -130,3 +130,8 @@ func enableInteraction():
 
 func stopDrag():
 	StopDrag = true
+
+func Reset():
+	for f in get_children():
+		f.get_node("DragObject").ResetPosition()
+	StopDrag = false

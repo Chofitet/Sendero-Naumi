@@ -28,3 +28,6 @@ func CheckRigthArea(x):
 
 func DeletArea(x):
 	objectInArea = null
+
+func Reset():
+	once = false
