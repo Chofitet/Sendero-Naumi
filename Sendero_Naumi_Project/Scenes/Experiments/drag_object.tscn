@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://ci3c3pocxiywq"]
+
+[ext_resource type="Script" path="res://_Scripts/DraggableObject.gd" id="1_t63q5"]
+[ext_resource type="StyleBox" uid="uid://b3tjes2hcm3wx" path="res://Resources/UI_Resources/StyleBoxTrasparent.tres" id="2_eefwh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d2eok"]
+size = Vector2(541.319, 498.829)
+
+[node name="DragObject" type="Area2D"]
+script = ExtResource("1_t63q5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_d2eok")
+
+[node name="Button" type="Button" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -336.0
+offset_top = -321.0
+offset_right = 336.0
+offset_bottom = 321.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/focus = ExtResource("2_eefwh")
+flat = true
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.05
+one_shot = true

@@ -1,0 +1,192 @@
+[gd_scene load_steps=23 format=3 uid="uid://th8puibmfg6j"]
+
+[ext_resource type="Texture2D" uid="uid://da2iohh0447fo" path="res://Sprites/ZonaGeología/escenario-fondo-transformaciones.png" id="1_4m1rr"]
+[ext_resource type="Texture2D" uid="uid://bjvt6w4o6o03t" path="res://Sprites/ZonaMegafauna/megafauna.png" id="1_r5w63"]
+[ext_resource type="Script" path="res://_Scripts/MinG_Excavar/huesoController.gd" id="2_36frd"]
+[ext_resource type="Script" path="res://_Scripts/MinG_Excavar/TopoController.gd" id="2_a7muk"]
+[ext_resource type="Texture2D" uid="uid://cj6ppdn1sywnt" path="res://Sprites/ZonaMegafauna/esqueleto1.png" id="2_ijoj2"]
+[ext_resource type="Texture2D" uid="uid://di5vqji1sfu2m" path="res://Sprites/Naumi/Naumi_02.png" id="3_kk3ft"]
+[ext_resource type="Script" path="res://_Scripts/MinG_Excavar/hotspot.gd" id="3_kmbpw"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_x16bw"]
+radius = 1.5
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_h24x2"]
+radius = 1.5
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6yeae"]
+radius = 1.5
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_45mlx"]
+radius = 1.5
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ao4y8"]
+radius = 1.5
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g2u4d"]
+radius = 1.5
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0ea4k"]
+radius = 1.5
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bayta"]
+radius = 1.5
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vbayx"]
+radius = 1.5
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jbfw3"]
+radius = 1.5
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vshlv"]
+radius = 1.5
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pikk6"]
+radius = 1.5
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_q2guk"]
+radius = 1.5
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_j7ivs"]
+blend_mode = 2
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xfnj2"]
+radius = 126.051
+
+[node name="PruebaPaintMesh" type="Node2D"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = 15.0
+offset_top = 216.0
+offset_right = 695.0
+offset_bottom = 1279.0
+texture = ExtResource("1_r5w63")
+
+[node name="hueso" type="Sprite2D" parent="."]
+position = Vector2(410, 418)
+scale = Vector2(4.28985, 4.28986)
+texture = ExtResource("2_ijoj2")
+script = ExtResource("2_36frd")
+
+[node name="hotspot" type="Area2D" parent="hueso"]
+position = Vector2(25.875, 0.466265)
+script = ExtResource("3_kmbpw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hueso/hotspot"]
+shape = SubResource("CircleShape2D_x16bw")
+
+[node name="hotspot2" type="Area2D" parent="hueso"]
+position = Vector2(5.82771, 0.93248)
+script = ExtResource("3_kmbpw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hueso/hotspot2"]
+shape = SubResource("CircleShape2D_h24x2")
+
+[node name="hotspot3" type="Area2D" parent="hueso"]
+position = Vector2(26.3412, -15.6182)
+script = ExtResource("3_kmbpw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hueso/hotspot3"]
+shape = SubResource("CircleShape2D_6yeae")
+
+[node name="hotspot4" type="Area2D" parent="hueso"]
+position = Vector2(10.0237, 17.25)
+script = ExtResource("3_kmbpw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hueso/hotspot4"]
+shape = SubResource("CircleShape2D_45mlx")
+
+[node name="hotspot5" type="Area2D" parent="hueso"]
+position = Vector2(19.348, 3.96288)
+script = ExtResource("3_kmbpw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hueso/hotspot5"]
+shape = SubResource("CircleShape2D_ao4y8")
+
+[node name="hotspot6" type="Area2D" parent="hueso"]
+position = Vector2(11.8885, -17.7162)
+script = ExtResource("3_kmbpw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hueso/hotspot6"]
+shape = SubResource("CircleShape2D_g2u4d")
+
+[node name="Area2D" type="Area2D" parent="hueso"]
+position = Vector2(27.973, 10.9561)
+script = ExtResource("3_kmbpw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hueso/Area2D"]
+shape = SubResource("CircleShape2D_0ea4k")
+
+[node name="hotspot8" type="Area2D" parent="hueso"]
+position = Vector2(-6.29392, -14.4527)
+script = ExtResource("3_kmbpw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hueso/hotspot8"]
+shape = SubResource("CircleShape2D_bayta")
+
+[node name="hotspot9" type="Area2D" parent="hueso"]
+position = Vector2(-18.6487, -9.09117)
+script = ExtResource("3_kmbpw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hueso/hotspot9"]
+shape = SubResource("CircleShape2D_vbayx")
+
+[node name="hotspot10" type="Area2D" parent="hueso"]
+position = Vector2(-27.0405, -20.5135)
+script = ExtResource("3_kmbpw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hueso/hotspot10"]
+shape = SubResource("CircleShape2D_jbfw3")
+
+[node name="hotspot11" type="Area2D" parent="hueso"]
+position = Vector2(-8.85811, -3.72968)
+script = ExtResource("3_kmbpw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hueso/hotspot11"]
+shape = SubResource("CircleShape2D_vshlv")
+
+[node name="hotspot12" type="Area2D" parent="hueso"]
+position = Vector2(-19.8142, 1.63179)
+script = ExtResource("3_kmbpw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hueso/hotspot12"]
+shape = SubResource("CircleShape2D_pikk6")
+
+[node name="hotspot13" type="Area2D" parent="hueso"]
+position = Vector2(-29.1385, -10.0236)
+script = ExtResource("3_kmbpw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hueso/hotspot13"]
+shape = SubResource("CircleShape2D_q2guk")
+
+[node name="CanvasGroup" type="CanvasGroup" parent="."]
+
+[node name="Tierra" type="Sprite2D" parent="CanvasGroup"]
+position = Vector2(342, 574)
+scale = Vector2(0.490123, 0.490123)
+texture = ExtResource("1_4m1rr")
+
+[node name="TopoController" type="Node2D" parent="CanvasGroup"]
+script = ExtResource("2_a7muk")
+
+[node name="Line2D" type="Line2D" parent="CanvasGroup/TopoController"]
+material = SubResource("CanvasItemMaterial_j7ivs")
+position = Vector2(5.51676, 767)
+width = 60.0
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+sharp_limit = 4.795
+round_precision = 6
+
+[node name="topo" type="Sprite2D" parent="CanvasGroup/TopoController"]
+z_index = 2
+position = Vector2(6.51676, 1275)
+rotation = 0.821239
+scale = Vector2(0.243945, 0.243945)
+texture = ExtResource("3_kk3ft")
+
+[node name="Area2D" type="Area2D" parent="CanvasGroup/TopoController/topo"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasGroup/TopoController/topo/Area2D"]
+shape = SubResource("CircleShape2D_xfnj2")

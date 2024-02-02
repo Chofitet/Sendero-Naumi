@@ -1,0 +1,829 @@
+[gd_scene load_steps=39 format=3 uid="uid://m3gbb64llbqn"]
+
+[ext_resource type="Script" path="res://_Scripts/Minigame_Save_Controller.gd" id="1_6uc2r"]
+[ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/StateMachineMinigames.gd" id="2_4ogka"]
+[ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/ConsignaState.gd" id="3_nk4vw"]
+[ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/Button_Change_StateMinigame.gd" id="4_2v8ca"]
+[ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/JuegoState.gd" id="5_nqckt"]
+[ext_resource type="Texture2D" uid="uid://bjvt6w4o6o03t" path="res://Sprites/ZonaMegafauna/megafauna.png" id="6_f1tgk"]
+[ext_resource type="Script" path="res://_Scripts/CheckAllChildsTrue.gd" id="7_io4up"]
+[ext_resource type="Texture2D" uid="uid://cj6ppdn1sywnt" path="res://Sprites/ZonaMegafauna/esqueleto1.png" id="8_gm3c6"]
+[ext_resource type="Script" path="res://_Scripts/MinG_Excavar/huesoController.gd" id="9_113nf"]
+[ext_resource type="Script" path="res://_Scripts/MinG_Excavar/hotspot.gd" id="10_s5h5i"]
+[ext_resource type="Texture2D" uid="uid://c4tlq4bsahyse" path="res://Sprites/ZonaMegafauna/esqueleto2.png" id="11_ihmrh"]
+[ext_resource type="Texture2D" uid="uid://cgyvid0asdj5p" path="res://Sprites/ZonaMegafauna/esqueleto4.png" id="12_y8p0c"]
+[ext_resource type="Texture2D" uid="uid://da2iohh0447fo" path="res://Sprites/ZonaGeología/escenario-fondo-transformaciones.png" id="13_r3kwh"]
+[ext_resource type="Script" path="res://_Scripts/MinG_Excavar/TopoController.gd" id="14_2g78w"]
+[ext_resource type="Texture2D" uid="uid://cacd7l8i83wxc" path="res://Sprites/ZonaMegafauna/topo.png" id="15_iboc0"]
+[ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/Timer_State_Minigame.gd" id="16_ps323"]
+[ext_resource type="Texture2D" uid="uid://drrio0noaq2fi" path="res://Sprites/ZonaGeología/piedra-PhotoRoom.png-PhotoRoom.png" id="17_ljngh"]
+[ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/MoralejaState.gd" id="17_ulbcj"]
+[ext_resource type="PackedScene" uid="uid://djhg7jvxtexyl" path="res://Scenes/UI_Scenes/btn_Change_Scene.tscn" id="18_dvs2k"]
+[ext_resource type="Theme" uid="uid://bhum72inirq1q" path="res://Themes/Generic_UI.tres" id="18_f477x"]
+[ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/FinState.gd" id="19_uslqa"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_x16bw"]
+radius = 1.5
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_h24x2"]
+radius = 1.5
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6yeae"]
+radius = 1.5
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_45mlx"]
+radius = 1.5
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ao4y8"]
+radius = 1.5
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g2u4d"]
+radius = 1.5
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0ea4k"]
+radius = 1.5
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bayta"]
+radius = 1.5
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vbayx"]
+radius = 1.5
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jbfw3"]
+radius = 1.5
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vshlv"]
+radius = 1.5
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pikk6"]
+radius = 1.5
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_q2guk"]
+radius = 1.5
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_j7ivs"]
+blend_mode = 2
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pnr1u"]
+radius = 35.0742
+height = 72.8197
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xfnj2"]
+radius = 149.216
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_w3lcj"]
+radius = 55.0091
+
+[node name="Excavando" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Excavando" type="Node" parent="."]
+script = ExtResource("1_6uc2r")
+
+[node name="Control" type="Control" parent="Excavando"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="ColorRect" parent="Excavando/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.72549, 1, 1, 1)
+
+[node name="StateMachine" type="Node" parent="Excavando" node_paths=PackedStringArray("initial_state")]
+script = ExtResource("2_4ogka")
+initial_state = NodePath("Consigna")
+
+[node name="Consigna" type="Node" parent="Excavando/StateMachine"]
+script = ExtResource("3_nk4vw")
+Consignas = ["Guiá al topo para encontrar los fósiles"]
+
+[node name="Contenido" type="Control" parent="Excavando/StateMachine/Consigna"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LblConsigna" type="Label" parent="Excavando/StateMachine/Consigna/Contenido"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -270.0
+offset_top = -444.0
+offset_right = 294.0
+offset_bottom = 445.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "Consigna genérica Consigna genérica Consigna genérica"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Button" type="Button" parent="Excavando/StateMachine/Consigna/Contenido" node_paths=PackedStringArray("state_to_change", "state_machine")]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -201.0
+offset_top = -197.0
+offset_right = 202.0
+offset_bottom = -67.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Siguiente
+"
+script = ExtResource("4_2v8ca")
+state_to_change = NodePath("../../../Juego")
+state_machine = NodePath("../../..")
+
+[node name="Timer" type="Timer" parent="Excavando/StateMachine/Consigna/Contenido"]
+wait_time = 3.0
+
+[node name="Juego" type="Node" parent="Excavando/StateMachine" node_paths=PackedStringArray("NextState", "StateMachine")]
+script = ExtResource("5_nqckt")
+NextState = NodePath(".")
+StateMachine = NodePath("..")
+InstanciasMinijuego = [NodePath("Contenido/Instancia1")]
+
+[node name="Contenido" type="Control" parent="Excavando/StateMachine/Juego"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Instancia1" type="Control" parent="Excavando/StateMachine/Juego/Contenido"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PassInstance" type="Timer" parent="Excavando/StateMachine/Juego/Contenido/Instancia1" node_paths=PackedStringArray("state_to_change", "state_machine")]
+wait_time = 2.0
+one_shot = true
+script = ExtResource("16_ps323")
+state_to_change = NodePath("../../../../Fin")
+state_machine = NodePath("../../../..")
+isEndOfGame = true
+
+[node name="PruebaPaintMesh" type="Node2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1"]
+
+[node name="Label" type="Label" parent="Excavando/StateMachine/Juego/Contenido/Instancia1"]
+layout_mode = 0
+offset_right = 598.0
+offset_bottom = 177.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Instancia 1"
+
+[node name="Button" type="Button" parent="Excavando/StateMachine/Juego/Contenido/Instancia1" node_paths=PackedStringArray("state_to_change", "state_machine")]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -161.0
+offset_top = -165.0
+offset_right = 161.0
+offset_bottom = -52.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Complete"
+script = ExtResource("4_2v8ca")
+state_to_change = NodePath("../../../../Moraleja")
+state_machine = NodePath("../../../..")
+isEndOfGame = true
+
+[node name="center" type="Control" parent="Excavando/StateMachine/Juego/Contenido/Instancia1"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -340.0
+offset_top = -531.5
+offset_right = 340.0
+offset_bottom = 531.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_f1tgk")
+
+[node name="HuesosController" type="Node2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect"]
+position = Vector2(-15, -216)
+script = ExtResource("7_io4up")
+
+[node name="hueso" type="Sprite2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController"]
+position = Vector2(410, 418)
+scale = Vector2(4.28985, 4.28986)
+texture = ExtResource("8_gm3c6")
+script = ExtResource("9_113nf")
+
+[node name="hotspot" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso"]
+position = Vector2(25.875, 0.466265)
+script = ExtResource("10_s5h5i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso/hotspot"]
+shape = SubResource("CircleShape2D_x16bw")
+
+[node name="hotspot2" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso"]
+position = Vector2(5.82771, 0.93248)
+script = ExtResource("10_s5h5i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso/hotspot2"]
+shape = SubResource("CircleShape2D_h24x2")
+
+[node name="hotspot3" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso"]
+position = Vector2(26.3412, -15.6182)
+script = ExtResource("10_s5h5i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso/hotspot3"]
+shape = SubResource("CircleShape2D_6yeae")
+
+[node name="hotspot4" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso"]
+position = Vector2(10.0237, 17.25)
+script = ExtResource("10_s5h5i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso/hotspot4"]
+shape = SubResource("CircleShape2D_45mlx")
+
+[node name="hotspot5" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso"]
+position = Vector2(19.348, 3.96288)
+script = ExtResource("10_s5h5i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso/hotspot5"]
+shape = SubResource("CircleShape2D_ao4y8")
+
+[node name="hotspot6" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso"]
+position = Vector2(11.8885, -17.7162)
+script = ExtResource("10_s5h5i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso/hotspot6"]
+shape = SubResource("CircleShape2D_g2u4d")
+
+[node name="Area2D" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso"]
+position = Vector2(27.973, 10.9561)
+script = ExtResource("10_s5h5i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso/Area2D"]
+shape = SubResource("CircleShape2D_0ea4k")
+
+[node name="hotspot8" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso"]
+position = Vector2(-6.29392, -14.4527)
+script = ExtResource("10_s5h5i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso/hotspot8"]
+shape = SubResource("CircleShape2D_bayta")
+
+[node name="hotspot9" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso"]
+position = Vector2(-18.6487, -9.09117)
+script = ExtResource("10_s5h5i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso/hotspot9"]
+shape = SubResource("CircleShape2D_vbayx")
+
+[node name="hotspot10" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso"]
+position = Vector2(-27.0405, -20.5135)
+script = ExtResource("10_s5h5i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso/hotspot10"]
+shape = SubResource("CircleShape2D_jbfw3")
+
+[node name="hotspot11" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso"]
+position = Vector2(-8.85811, -3.72968)
+script = ExtResource("10_s5h5i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso/hotspot11"]
+shape = SubResource("CircleShape2D_vshlv")
+
+[node name="hotspot12" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso"]
+position = Vector2(-19.8142, 1.63179)
+script = ExtResource("10_s5h5i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso/hotspot12"]
+shape = SubResource("CircleShape2D_pikk6")
+
+[node name="hotspot13" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso"]
+position = Vector2(-29.1385, -10.0236)
+script = ExtResource("10_s5h5i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso/hotspot13"]
+shape = SubResource("CircleShape2D_q2guk")
+
+[node name="hueso2" type="Sprite2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController"]
+position = Vector2(183, 814)
+rotation = -1.13443
+scale = Vector2(4.28985, 4.28986)
+texture = ExtResource("8_gm3c6")
+script = ExtResource("9_113nf")
+
+[node name="hotspot" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso2"]
+position = Vector2(25.875, 0.466265)
+script = ExtResource("10_s5h5i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso2/hotspot"]
+shape = SubResource("CircleShape2D_x16bw")
+
+[node name="hotspot2" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso2"]
+position = Vector2(5.82771, 0.93248)
+script = ExtResource("10_s5h5i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso2/hotspot2"]
+shape = SubResource("CircleShape2D_h24x2")
+
+[node name="hotspot3" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso2"]
+position = Vector2(26.3412, -15.6182)
+script = ExtResource("10_s5h5i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso2/hotspot3"]
+shape = SubResource("CircleShape2D_6yeae")
+
+[node name="hotspot4" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso2"]
+position = Vector2(10.0237, 17.25)
+script = ExtResource("10_s5h5i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso2/hotspot4"]
+shape = SubResource("CircleShape2D_45mlx")
+
+[node name="hotspot5" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso2"]
+position = Vector2(19.348, 3.96288)
+script = ExtResource("10_s5h5i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso2/hotspot5"]
+shape = SubResource("CircleShape2D_ao4y8")
+
+[node name="hotspot6" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso2"]
+position = Vector2(11.8885, -17.7162)
+script = ExtResource("10_s5h5i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso2/hotspot6"]
+shape = SubResource("CircleShape2D_g2u4d")
+
+[node name="Area2D" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso2"]
+position = Vector2(27.973, 10.9561)
+script = ExtResource("10_s5h5i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso2/Area2D"]
+shape = SubResource("CircleShape2D_0ea4k")
+
+[node name="hotspot8" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso2"]
+position = Vector2(-6.29392, -14.4527)
+script = ExtResource("10_s5h5i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso2/hotspot8"]
+shape = SubResource("CircleShape2D_bayta")
+
+[node name="hotspot9" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso2"]
+position = Vector2(-18.6487, -9.09117)
+script = ExtResource("10_s5h5i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso2/hotspot9"]
+shape = SubResource("CircleShape2D_vbayx")
+
+[node name="hotspot10" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso2"]
+position = Vector2(-27.0405, -20.5135)
+script = ExtResource("10_s5h5i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso2/hotspot10"]
+shape = SubResource("CircleShape2D_jbfw3")
+
+[node name="hotspot11" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso2"]
+position = Vector2(-8.85811, -3.72968)
+script = ExtResource("10_s5h5i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso2/hotspot11"]
+shape = SubResource("CircleShape2D_vshlv")
+
+[node name="hotspot12" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso2"]
+position = Vector2(-19.8142, 1.63179)
+script = ExtResource("10_s5h5i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso2/hotspot12"]
+shape = SubResource("CircleShape2D_pikk6")
+
+[node name="hotspot13" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso2"]
+position = Vector2(-29.1385, -10.0236)
+script = ExtResource("10_s5h5i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso2/hotspot13"]
+shape = SubResource("CircleShape2D_q2guk")
+
+[node name="hueso3" type="Sprite2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController"]
+position = Vector2(528, 806)
+rotation = 0.200497
+scale = Vector2(4.28985, 4.28986)
+texture = ExtResource("11_ihmrh")
+script = ExtResource("9_113nf")
+
+[node name="hotspot" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso3"]
+position = Vector2(23.8969, -4.1429)
+script = ExtResource("10_s5h5i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso3/hotspot"]
+shape = SubResource("CircleShape2D_x16bw")
+
+[node name="hotspot2" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso3"]
+position = Vector2(5.82771, 0.93248)
+script = ExtResource("10_s5h5i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso3/hotspot2"]
+shape = SubResource("CircleShape2D_h24x2")
+
+[node name="hotspot3" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso3"]
+position = Vector2(-10.1294, 6.3403)
+script = ExtResource("10_s5h5i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso3/hotspot3"]
+shape = SubResource("CircleShape2D_6yeae")
+
+[node name="hotspot4" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso3"]
+position = Vector2(-5.42354, 20.132)
+script = ExtResource("10_s5h5i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso3/hotspot4"]
+shape = SubResource("CircleShape2D_45mlx")
+
+[node name="hotspot5" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso3"]
+position = Vector2(8.90693, 12.2244)
+script = ExtResource("10_s5h5i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso3/hotspot5"]
+shape = SubResource("CircleShape2D_ao4y8")
+
+[node name="hotspot6" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso3"]
+position = Vector2(6.35206, -15.5633)
+script = ExtResource("10_s5h5i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso3/hotspot6"]
+shape = SubResource("CircleShape2D_g2u4d")
+
+[node name="Area2D" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso3"]
+position = Vector2(21.0142, 9.76387)
+script = ExtResource("10_s5h5i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso3/Area2D"]
+shape = SubResource("CircleShape2D_0ea4k")
+
+[node name="hotspot8" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso3"]
+position = Vector2(-0.618261, -7.72415)
+script = ExtResource("10_s5h5i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso3/hotspot8"]
+shape = SubResource("CircleShape2D_bayta")
+
+[node name="hotspot9" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso3"]
+position = Vector2(-10.1567, -17.2036)
+script = ExtResource("10_s5h5i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso3/hotspot9"]
+shape = SubResource("CircleShape2D_vbayx")
+
+[node name="hotspot10" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso3"]
+position = Vector2(-6.39562, -27.9586)
+script = ExtResource("10_s5h5i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso3/hotspot10"]
+shape = SubResource("CircleShape2D_jbfw3")
+
+[node name="hotspot11" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso3"]
+position = Vector2(-15.6024, -4.20322)
+script = ExtResource("10_s5h5i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso3/hotspot11"]
+shape = SubResource("CircleShape2D_vshlv")
+
+[node name="hotspot12" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso3"]
+position = Vector2(-26.3021, 9.8649)
+script = ExtResource("10_s5h5i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso3/hotspot12"]
+shape = SubResource("CircleShape2D_pikk6")
+
+[node name="hotspot13" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso3"]
+position = Vector2(-23.1424, -17.8948)
+script = ExtResource("10_s5h5i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso3/hotspot13"]
+shape = SubResource("CircleShape2D_q2guk")
+
+[node name="hueso4" type="Sprite2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController"]
+position = Vector2(356, 1088)
+rotation = 0.0493182
+scale = Vector2(4.28985, 4.28986)
+texture = ExtResource("12_y8p0c")
+script = ExtResource("9_113nf")
+
+[node name="hotspot" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso4"]
+position = Vector2(39.7726, 6.67238)
+rotation = -0.167976
+script = ExtResource("10_s5h5i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso4/hotspot"]
+shape = SubResource("CircleShape2D_x16bw")
+
+[node name="hotspot2" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso4"]
+position = Vector2(35.4728, -4.78496)
+script = ExtResource("10_s5h5i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso4/hotspot2"]
+shape = SubResource("CircleShape2D_h24x2")
+
+[node name="hotspot3" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso4"]
+position = Vector2(-16.6115, 18.0909)
+script = ExtResource("10_s5h5i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso4/hotspot3"]
+shape = SubResource("CircleShape2D_6yeae")
+
+[node name="hotspot4" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso4"]
+position = Vector2(-1.7132, 3.11865)
+script = ExtResource("10_s5h5i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso4/hotspot4"]
+shape = SubResource("CircleShape2D_45mlx")
+
+[node name="hotspot5" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso4"]
+position = Vector2(9.67178, 20.9947)
+script = ExtResource("10_s5h5i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso4/hotspot5"]
+shape = SubResource("CircleShape2D_ao4y8")
+
+[node name="hotspot6" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso4"]
+position = Vector2(26.528, -15.7796)
+script = ExtResource("10_s5h5i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso4/hotspot6"]
+shape = SubResource("CircleShape2D_g2u4d")
+
+[node name="Area2D" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso4"]
+position = Vector2(13.9061, 7.48235)
+script = ExtResource("10_s5h5i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso4/Area2D"]
+shape = SubResource("CircleShape2D_0ea4k")
+
+[node name="hotspot8" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso4"]
+position = Vector2(-4.43216, -4.68248)
+script = ExtResource("10_s5h5i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso4/hotspot8"]
+shape = SubResource("CircleShape2D_bayta")
+
+[node name="hotspot9" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso4"]
+position = Vector2(8.69245, -13.0322)
+script = ExtResource("10_s5h5i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso4/hotspot9"]
+shape = SubResource("CircleShape2D_vbayx")
+
+[node name="hotspot10" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso4"]
+position = Vector2(-0.0140114, -14.4696)
+script = ExtResource("10_s5h5i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso4/hotspot10"]
+shape = SubResource("CircleShape2D_jbfw3")
+
+[node name="hotspot11" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso4"]
+position = Vector2(-35.5707, 12.2583)
+script = ExtResource("10_s5h5i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso4/hotspot11"]
+shape = SubResource("CircleShape2D_vshlv")
+
+[node name="hotspot12" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso4"]
+position = Vector2(-17.5943, 7.63678)
+script = ExtResource("10_s5h5i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso4/hotspot12"]
+shape = SubResource("CircleShape2D_pikk6")
+
+[node name="hotspot13" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso4"]
+position = Vector2(21.8051, -2.71)
+script = ExtResource("10_s5h5i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso4/hotspot13"]
+shape = SubResource("CircleShape2D_q2guk")
+
+[node name="CanvasGroup" type="CanvasGroup" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center"]
+position = Vector2(-360, -640)
+
+[node name="Tierra" type="Sprite2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/CanvasGroup"]
+position = Vector2(366, 638)
+scale = Vector2(0.490123, 0.490123)
+texture = ExtResource("13_r3kwh")
+
+[node name="Line2D" type="Line2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/CanvasGroup"]
+material = SubResource("CanvasItemMaterial_j7ivs")
+position = Vector2(5.51676, 767)
+width = 60.0
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+sharp_limit = 4.795
+round_precision = 6
+
+[node name="TopoController" type="CharacterBody2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/CanvasGroup" node_paths=PackedStringArray("line")]
+motion_mode = 1
+wall_min_slide_angle = 0.785398
+script = ExtResource("14_2g78w")
+speed = 200.0
+line = NodePath("../Line2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/CanvasGroup/TopoController"]
+rotation = -0.731293
+shape = SubResource("CapsuleShape2D_pnr1u")
+
+[node name="topo" type="Sprite2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/CanvasGroup/TopoController"]
+z_index = 2
+rotation = 0.821239
+scale = Vector2(0.938922, 0.938922)
+texture = ExtResource("15_iboc0")
+offset = Vector2(6.88, 0)
+
+[node name="Area2D" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/CanvasGroup/TopoController/topo"]
+scale = Vector2(0.259814, 0.259814)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/CanvasGroup/TopoController/topo/Area2D"]
+shape = SubResource("CircleShape2D_xfnj2")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1"]
+position = Vector2(305, 810)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/StaticBody2D"]
+shape = SubResource("CircleShape2D_w3lcj")
+
+[node name="Sprite2D" type="Sprite2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/StaticBody2D"]
+self_modulate = Color(0.32549, 0.243137, 0.235294, 1)
+scale = Vector2(0.346154, 0.346154)
+texture = ExtResource("17_ljngh")
+
+[node name="btnVolver" parent="Excavando/StateMachine/Juego/Contenido" instance=ExtResource("18_dvs2k")]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 0.0
+offset_left = -99.0
+offset_top = 18.0
+offset_right = -17.0
+offset_bottom = 97.0
+grow_horizontal = 0
+grow_vertical = 1
+theme = ExtResource("18_f477x")
+text = ""
+NextScene = "Map_Screen"
+
+[node name="Moraleja" type="Node" parent="Excavando/StateMachine"]
+script = ExtResource("17_ulbcj")
+Moralejas = [null, "Y esto es una moraleja"]
+Instancias = [NodePath("Contenido/Instancia1")]
+buttons = [NodePath("Contenido/Instancia1/Button")]
+
+[node name="Contenido" type="Control" parent="Excavando/StateMachine/Moraleja"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Conteiner" type="Control" parent="Excavando/StateMachine/Moraleja/Contenido"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LblMoraleja" type="Label" parent="Excavando/StateMachine/Moraleja/Contenido/Conteiner"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -270.0
+offset_top = -444.0
+offset_right = 294.0
+offset_bottom = 445.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "Consigna genérica Consigna genérica Consigna genérica"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Timer" type="Timer" parent="Excavando/StateMachine/Moraleja/Contenido"]
+wait_time = 3.0
+one_shot = true
+
+[node name="ButtonChangeScene" parent="Excavando/StateMachine/Moraleja/Contenido" instance=ExtResource("18_dvs2k")]
+visible = false
+layout_mode = 1
+offset_left = -197.0
+offset_top = -201.0
+offset_right = 207.0
+offset_bottom = -66.0
+text = "Continue"
+NextScene = "Map_Screen"
+
+[node name="Instancia1" type="Control" parent="Excavando/StateMachine/Moraleja/Contenido"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="Excavando/StateMachine/Moraleja/Contenido/Instancia1" node_paths=PackedStringArray("state_to_change", "state_machine")]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -201.0
+offset_top = -197.0
+offset_right = 202.0
+offset_bottom = -67.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "que?
+"
+script = ExtResource("4_2v8ca")
+state_to_change = NodePath("../../../../Juego")
+state_machine = NodePath("../../../..")
+
+[node name="Fin" type="Node" parent="Excavando/StateMachine"]
+script = ExtResource("19_uslqa")
+
+[node name="Contenido" type="Control" parent="Excavando/StateMachine/Fin"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ButtonChangeScene" parent="Excavando/StateMachine/Fin/Contenido" instance=ExtResource("18_dvs2k")]
+layout_mode = 1
+offset_left = -197.0
+offset_top = -186.0
+offset_right = 207.0
+offset_bottom = -51.0
+text = "Continue"
+NextScene = "Map_Screen"
+
+[connection signal="pressed" from="Excavando/StateMachine/Consigna/Contenido/Button" to="Excavando/StateMachine/Consigna/Contenido/Button" method="_on_pressed" flags=18]
+[connection signal="timeout" from="Excavando/StateMachine/Consigna/Contenido/Timer" to="Excavando/StateMachine/Consigna" method="TimeOut" flags=18]
+[connection signal="EndOfGame" from="Excavando/StateMachine/Juego/Contenido/Instancia1/PassInstance" to="Excavando" method="Set_Complete"]
+[connection signal="EndOfGame" from="Excavando/StateMachine/Juego/Contenido/Instancia1/Button" to="Excavando" method="Set_Complete" flags=18]
+[connection signal="EndOfGame" from="Excavando/StateMachine/Juego/Contenido/Instancia1/Button" to="Excavando/StateMachine/Moraleja" method="isEndOfGame" flags=18]
+[connection signal="pressed" from="Excavando/StateMachine/Juego/Contenido/Instancia1/Button" to="Excavando/StateMachine/Juego/Contenido/Instancia1/Button" method="_on_pressed" flags=18]
+[connection signal="AllTrue" from="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController" to="Excavando/StateMachine/Juego/Contenido/Instancia1/PassInstance" method="StartTime"]
+[connection signal="timeout" from="Excavando/StateMachine/Moraleja/Contenido/Timer" to="Excavando/StateMachine/Moraleja" method="TimeOut" flags=18]
+[connection signal="pressed" from="Excavando/StateMachine/Moraleja/Contenido/Instancia1/Button" to="Excavando/StateMachine/Moraleja/Contenido/Instancia1/Button" method="_on_pressed" flags=18]

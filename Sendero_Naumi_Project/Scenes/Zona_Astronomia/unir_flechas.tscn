@@ -1,0 +1,80 @@
+[gd_scene load_steps=5 format=3 uid="uid://ga4nk834uu7n"]
+
+[ext_resource type="PackedScene" uid="uid://cc3lcmyec2iso" path="res://Scenes/Zona_Astronomia/item_unir.tscn" id="2_ctxqf"]
+[ext_resource type="Script" path="res://_Scripts/CheckAllChildsTrue.gd" id="2_tokgv"]
+[ext_resource type="PackedScene" uid="uid://btwjusl4scgqt" path="res://Scenes/Zona_Astronomia/spot_unir.tscn" id="4_mm371"]
+[ext_resource type="Script" path="res://_Scripts/MiniG_DondeEstuvo/CheckUnions.gd" id="4_yvt80"]
+
+[node name="UnirFlechas" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.227
+anchor_top = 0.494
+anchor_right = 0.227
+anchor_bottom = 0.494
+offset_left = -98.44
+offset_top = -514.32
+offset_right = 144.56
+offset_bottom = 513.68
+theme_override_constants/separation = 145
+
+[node name="CheckTrue" type="Node2D" parent="VBoxContainer"]
+position = Vector2(-65, -118)
+script = ExtResource("2_tokgv")
+
+[node name="ItemUnir" parent="VBoxContainer/CheckTrue" instance=ExtResource("2_ctxqf")]
+
+[node name="ItemUnir2" parent="VBoxContainer/CheckTrue" instance=ExtResource("2_ctxqf")]
+offset_top = 506.0
+offset_bottom = 749.0
+
+[node name="ItemUnir3" parent="VBoxContainer/CheckTrue" instance=ExtResource("2_ctxqf")]
+offset_top = 894.0
+offset_bottom = 1137.0
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="." node_paths=PackedStringArray("btn")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.769
+anchor_top = 0.494
+anchor_right = 0.769
+anchor_bottom = 0.494
+offset_left = -121.68
+offset_top = -514.32
+offset_right = 121.32
+offset_bottom = 513.68
+theme_override_constants/separation = 145
+script = ExtResource("4_yvt80")
+btn = NodePath("../Button")
+
+[node name="SpotUnir" parent="VBoxContainer2" instance=ExtResource("4_mm371")]
+layout_mode = 2
+
+[node name="SpotUnir2" parent="VBoxContainer2" instance=ExtResource("4_mm371")]
+layout_mode = 2
+
+[node name="SpotUnir3" parent="VBoxContainer2" instance=ExtResource("4_mm371")]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -257.0
+offset_top = -118.0
+offset_right = -49.0
+offset_bottom = -38.0
+grow_horizontal = 0
+grow_vertical = 0

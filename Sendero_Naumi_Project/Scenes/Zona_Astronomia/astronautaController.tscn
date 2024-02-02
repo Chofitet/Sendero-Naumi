@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://dtbscg5vj1osr"]
+
+[ext_resource type="Script" path="res://_Scripts/MinG_Astronauta/AstronautaMove.gd" id="1_jndun"]
+[ext_resource type="Texture2D" uid="uid://b2op8eppn0juv" path="res://Sprites/ZonaAstronomia/Astronauta.png" id="2_q1a83"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_83hx5"]
+radius = 67.0
+height = 138.0
+
+[node name="Astronauta" type="CharacterBody2D"]
+position = Vector2(363, 639)
+collision_layer = 2
+collision_mask = 7
+motion_mode = 1
+script = ExtResource("1_jndun")
+max_speed = 500
+friction = 100
+rotationSpeed = 10
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+use_parent_material = true
+scale = Vector2(2.13559, 2.13559)
+texture = ExtResource("2_q1a83")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["Player"]]
+rotation = -1.53319
+shape = SubResource("CapsuleShape2D_83hx5")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" groups=["Player"]]
+rotation = -1.53319
+shape = SubResource("CapsuleShape2D_83hx5")

@@ -5,9 +5,16 @@ extends Timer
 @export var isEndOfGame : bool
 signal EndOfGame
 
+func _ready():
+	timeout.connect(_on_timeout)
+
 func _on_timeout():
 	state_machine.Trigger_On_Child_Transition(state_to_change.name)
 	if isEndOfGame:
-		self.visible = false
+		#self.visible = false
 		EndOfGame.emit()
+	stop()
+
+func StartTime():
+	start()
 
