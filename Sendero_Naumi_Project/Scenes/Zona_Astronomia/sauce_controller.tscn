@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=3 uid="uid://jdh76exbwsls"]
+
+[ext_resource type="Script" path="res://_Scripts/sauce_controller.gd" id="1_ehdu6"]
+[ext_resource type="Texture2D" uid="uid://chqivoetkgkoj" path="res://Sprites/UI/circulo.png" id="3_u7bxm"]
+[ext_resource type="Material" uid="uid://c5l5yx6k062dd" path="res://shaders/Waterfall.tres" id="4_oy1bh"]
+[ext_resource type="Texture2D" uid="uid://bgy7tv3s2j7ng" path="res://icon.svg" id="5_xgtgc"]
+[ext_resource type="Script" path="res://shaders/Sprite_Shader.gd" id="6_5ybiq"]
+
+[node name="SauceController" type="Node2D"]
+position = Vector2(309, 233)
+script = ExtResource("1_ehdu6")
+speed = 200.0
+GlassSpeed = 150.0
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+z_index = 1
+position = Vector2(3, -27)
+polygon = PackedVector2Array(-41, 36, 25, 47, 62, -32, 152, -50, 226, -224, -19, -231, -83, -80, -36, -38)
+
+[node name="Button" type="Button" parent="."]
+offset_left = -86.0
+offset_top = -239.0
+offset_right = 222.0
+offset_bottom = -11.0
+flat = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 367)
+scale = Vector2(0.212, 0.212)
+texture = ExtResource("3_u7bxm")
+
+[node name="GlassMask" type="Sprite2D" parent="."]
+clip_children = 2
+z_index = 1
+position = Vector2(-6, 353)
+scale = Vector2(0.234, 0.234)
+texture = ExtResource("3_u7bxm")
+
+[node name="Glass" type="Sprite2D" parent="GlassMask"]
+material = ExtResource("4_oy1bh")
+position = Vector2(47.0083, -1297.95)
+rotation = 1.57079
+scale = Vector2(12.022, 11.1192)
+texture = ExtResource("5_xgtgc")
+script = ExtResource("6_5ybiq")

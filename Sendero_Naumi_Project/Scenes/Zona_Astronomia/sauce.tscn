@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://dctuh63hauqo7"]
+
+[ext_resource type="Material" uid="uid://c5l5yx6k062dd" path="res://shaders/Waterfall.tres" id="1_xipn2"]
+[ext_resource type="Texture2D" uid="uid://bgy7tv3s2j7ng" path="res://icon.svg" id="2_lblqk"]
+[ext_resource type="Script" path="res://shaders/shader_water.gd" id="3_h7nj3"]
+
+[node name="Sauce" type="Line2D"]
+material = ExtResource("1_xipn2")
+width = 50.0
+default_color = Color(0.266667, 0.172549, 0, 1)
+texture = ExtResource("2_lblqk")
+texture_mode = 2
+sharp_limit = 10.0
+script = ExtResource("3_h7nj3")
+
+[node name="ArrivalPoint" type="Marker2D" parent="."]
+position = Vector2(0, 314)
+
+[connection signal="item_rect_changed" from="." to="." method="_on_Waterfall_item_rect_changed"]
