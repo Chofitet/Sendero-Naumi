@@ -5,6 +5,7 @@ var objectInArea
 signal RightAns
 signal WrongAns
 var once
+signal OnSpot
 
 func _ready():
 	area_entered.connect(CheckRigthArea)
@@ -14,6 +15,7 @@ func _input(event: InputEvent) -> void:
 	if once: return
 	if Input.is_action_just_released("TouchScreen"):
 		if objectInArea == null : return
+		OnSpot.emit(objectInArea.get_parent())
 		if objectInArea == RigthObject:
 			RightAns.emit()
 			once = true
@@ -31,3 +33,4 @@ func DeletArea(x):
 
 func Reset():
 	once = false
+	objectInArea = null

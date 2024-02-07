@@ -8,8 +8,10 @@ var isInPosition
 var AskSpot
 @export var spot : Area2D
 @export var holdTime : float
+@export var DesapearInPlace : bool
 var timerHold
 var isInTime
+
 
 func _ready():
 	timerHold = $Timer
@@ -37,6 +39,7 @@ func _on_button_pressed():
 	pick_up = false
 	CheckRightSpot()
 	if (is_in_spot):
+		if DesapearInPlace: object.visible = false
 		var tween = get_tree().create_tween()
 		tween = tween.tween_property(object, "global_position",spot.global_position,0.1).set_ease(Tween.EASE_OUT)
 		isInPosition = true
@@ -73,6 +76,7 @@ func isEnableButton(x):
 	else: $Button.visible = false
 
 func ResetPosition():
+	object.visible = true
 	object.position = initial_spot
 	isInPosition = false
 	is_in_spot = false

@@ -1,9 +1,49 @@
-[gd_scene load_steps=47 format=3 uid="uid://dcredgeon3w2q"]
+[gd_scene load_steps=51 format=3 uid="uid://dcredgeon3w2q"]
 
+[ext_resource type="Script" path="res://_Scripts/MinG_MegaFood/PatasController.gd" id="1_g46fd"]
 [ext_resource type="Texture2D" uid="uid://djvqdfcyt21ef" path="res://Sprites/ZonaMegafauna/smilo frames.png" id="1_rl1d6"]
 [ext_resource type="Texture2D" uid="uid://ug0k40iqqooq" path="res://Sprites/ZonaMegafauna/mega frames.png" id="2_0m86a"]
+[ext_resource type="Texture2D" uid="uid://gbi1vckfb2af" path="res://Sprites/ZonaMegafauna/bandeja.png" id="2_15wck"]
 [ext_resource type="Texture2D" uid="uid://dp3bdprtxb375" path="res://Sprites/ZonaMegafauna/macra frames.png" id="2_gx71e"]
 [ext_resource type="Texture2D" uid="uid://bimhl7qrfdc54" path="res://Sprites/ZonaMegafauna/glipto frames.png" id="3_tvcuh"]
+[ext_resource type="Texture2D" uid="uid://t1vryprea4f0" path="res://Sprites/ZonaMegafauna/platoOmnivoro.png" id="6_0ei0b"]
+
+[sub_resource type="Animation" id="Animation_wvc11"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("pivot:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -1000)]
+}
+
+[sub_resource type="Animation" id="Animation_rvryq"]
+resource_name = "enterAnim"
+length = 2.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("pivot:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, -0.5, 2),
+"update": 0,
+"values": [Vector2(0, -1000), Vector2(0, 100), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tj4kr"]
+_data = {
+"RESET": SubResource("Animation_wvc11"),
+"enterAnim": SubResource("Animation_rvryq")
+}
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ocptq"]
 atlas = ExtResource("1_rl1d6")
@@ -73,7 +113,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_jd86f")
 }],
-"loop": true,
+"loop": false,
 "name": &"call",
 "speed": 6.0
 }, {
@@ -194,7 +234,7 @@ animations = [{
 "duration": 2.0,
 "texture": SubResource("AtlasTexture_w8nxa")
 }],
-"loop": true,
+"loop": false,
 "name": &"call",
 "speed": 6.0
 }, {
@@ -249,7 +289,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_fv7yf")
 }],
-"loop": true,
+"loop": false,
 "name": &"call",
 "speed": 6.0
 }, {
@@ -311,7 +351,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ad5v7")
 }],
-"loop": true,
+"loop": false,
 "name": &"call",
 "speed": 6.0
 }, {
@@ -327,70 +367,73 @@ animations = [{
 "speed": 6.0
 }]
 
-[sub_resource type="Animation" id="Animation_rvryq"]
-resource_name = "enterAnim"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Smilodon:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"idle"]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_tj4kr"]
-_data = {
-"enterAnim": SubResource("Animation_rvryq")
-}
-
 [node name="PatasController" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 grow_horizontal = 2
-
-[node name="Polygon2D" type="Polygon2D" parent="."]
-scale = Vector2(1.10903, 2.15804)
-color = Color(0.552941, 0.552941, 0.552941, 1)
-offset = Vector2(0, -102.465)
-polygon = PackedVector2Array(-287, -7, -286, 220, 299.361, 218.549, 300, -5)
-
-[node name="Smilodon" type="AnimatedSprite2D" parent="."]
-position = Vector2(13, -522)
-scale = Vector2(0.629047, 0.629047)
-sprite_frames = SubResource("SpriteFrames_tak26")
-animation = &"idle"
-frame_progress = 0.769315
-
-[node name="Megaterio" type="AnimatedSprite2D" parent="."]
-visible = false
-position = Vector2(13, -522)
-scale = Vector2(0.629047, 0.629047)
-sprite_frames = SubResource("SpriteFrames_lcn4g")
-animation = &"call"
-frame = 13
-frame_progress = 0.65882
-
-[node name="Gliptodon" type="AnimatedSprite2D" parent="."]
-visible = false
-position = Vector2(13, -522)
-scale = Vector2(0.629047, 0.629047)
-sprite_frames = SubResource("SpriteFrames_s0yl6")
-animation = &"idle"
-frame_progress = 0.618228
-
-[node name="Macrauquenia" type="AnimatedSprite2D" parent="."]
-visible = false
-position = Vector2(13, -522)
-scale = Vector2(0.629047, 0.629047)
-sprite_frames = SubResource("SpriteFrames_1rk3b")
-animation = &"idle"
-frame_progress = 0.364793
+script = ExtResource("1_g46fd")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_tj4kr")
 }
+
+[node name="pivot" type="Node2D" parent="."]
+position = Vector2(0, -1000)
+
+[node name="bandeja" type="Sprite2D" parent="pivot"]
+position = Vector2(5, 3)
+scale = Vector2(0.657754, 0.657754)
+texture = ExtResource("2_15wck")
+
+[node name="Sprite2D" type="Sprite2D" parent="pivot"]
+position = Vector2(0, 11)
+scale = Vector2(0.722543, 0.722543)
+texture = ExtResource("6_0ei0b")
+
+[node name="Smilodon" type="AnimatedSprite2D" parent="pivot"]
+position = Vector2(13, -581)
+scale = Vector2(0.629047, 0.629047)
+sprite_frames = SubResource("SpriteFrames_tak26")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="Megaterio" type="AnimatedSprite2D" parent="pivot"]
+visible = false
+position = Vector2(13, -565)
+scale = Vector2(0.629047, 0.629047)
+sprite_frames = SubResource("SpriteFrames_lcn4g")
+animation = &"call"
+autoplay = "idle"
+frame = 13
+frame_progress = 1.0
+
+[node name="Gliptodon" type="AnimatedSprite2D" parent="pivot"]
+visible = false
+position = Vector2(13, -522)
+scale = Vector2(0.629047, 0.629047)
+sprite_frames = SubResource("SpriteFrames_s0yl6")
+animation = &"call"
+autoplay = "idle"
+
+[node name="Macrauquenia" type="AnimatedSprite2D" parent="pivot"]
+visible = false
+position = Vector2(13, -554)
+scale = Vector2(0.629047, 0.629047)
+sprite_frames = SubResource("SpriteFrames_1rk3b")
+animation = &"call"
+autoplay = "idle"
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1.5
+
+[node name="Label" type="Label" parent="."]
+visible = false
+layout_mode = 0
+offset_left = -322.0
+offset_top = -97.0
+offset_right = 362.0
+offset_bottom = 120.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 80
+text = "Back anim"
