@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=3 uid="uid://dcredgeon3w2q"]
+[gd_scene load_steps=58 format=3 uid="uid://dcredgeon3w2q"]
 
 [ext_resource type="Script" path="res://_Scripts/MinG_MegaFood/PatasController.gd" id="1_g46fd"]
 [ext_resource type="Texture2D" uid="uid://djvqdfcyt21ef" path="res://Sprites/ZonaMegafauna/smilo frames.png" id="1_rl1d6"]
@@ -6,7 +6,12 @@
 [ext_resource type="Texture2D" uid="uid://gbi1vckfb2af" path="res://Sprites/ZonaMegafauna/bandeja.png" id="2_15wck"]
 [ext_resource type="Texture2D" uid="uid://dp3bdprtxb375" path="res://Sprites/ZonaMegafauna/macra frames.png" id="2_gx71e"]
 [ext_resource type="Texture2D" uid="uid://bimhl7qrfdc54" path="res://Sprites/ZonaMegafauna/glipto frames.png" id="3_tvcuh"]
-[ext_resource type="Texture2D" uid="uid://t1vryprea4f0" path="res://Sprites/ZonaMegafauna/platoOmnivoro.png" id="6_0ei0b"]
+[ext_resource type="Texture2D" uid="uid://cjjoaemhep814" path="res://Sprites/mapa-detalle.png" id="3_wnaal"]
+[ext_resource type="Texture2D" uid="uid://b4fjgta8xopxn" path="res://Sprites/ZonaMegafauna/pata smilodon.png" id="6_nqg1u"]
+[ext_resource type="Texture2D" uid="uid://o00lvwkrmxos" path="res://Sprites/ZonaMegafauna/coraza glipto.png" id="7_bkdyf"]
+[ext_resource type="Texture2D" uid="uid://dtnlxun7i0pay" path="res://Sprites/ZonaMegafauna/pata megaterio.png" id="8_pus57"]
+[ext_resource type="Texture2D" uid="uid://dvmdpkungtrl4" path="res://Sprites/ZonaMegafauna/pata gliptodon.png" id="10_1jw0u"]
+[ext_resource type="Texture2D" uid="uid://40detnn2ricl" path="res://Sprites/ZonaMegafauna/pata macrauquenia.png" id="13_oc55n"]
 
 [sub_resource type="Animation" id="Animation_wvc11"]
 length = 0.001
@@ -17,6 +22,18 @@ tracks/0/path = NodePath("pivot:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -1000)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("papel:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -39,10 +56,55 @@ tracks/0/keys = {
 "values": [Vector2(0, -1000), Vector2(0, 100), Vector2(0, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_rm5b2"]
+resource_name = "result"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("pivot:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6, 0.8, 1, 1.6),
+"transitions": PackedFloat32Array(1, -0.5, 2, 2, 1),
+"update": 0,
+"values": [Vector2(0, -1000), Vector2(0, 100), Vector2(0, 0), Vector2(0, 0), Vector2(0, -1000)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("papel:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, -0.5, 2),
+"update": 0,
+"values": [Vector2(0, -1000), Vector2(0, 100), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_sy63e"]
+resource_name = "take"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("papel:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 0.5),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 2500)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_tj4kr"]
 _data = {
 "RESET": SubResource("Animation_wvc11"),
-"enterAnim": SubResource("Animation_rvryq")
+"enterAnim": SubResource("Animation_rvryq"),
+"result": SubResource("Animation_rm5b2"),
+"take": SubResource("Animation_sy63e")
 }
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ocptq"]
@@ -127,6 +189,89 @@ animations = [{
 "loop": true,
 "name": &"idle",
 "speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_nqg1u")
+}],
+"loop": true,
+"name": &"result",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1xu16"]
+atlas = ExtResource("3_tvcuh")
+region = Rect2(2998, 0, 1499, 1319)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qu3gk"]
+atlas = ExtResource("3_tvcuh")
+region = Rect2(4497, 0, 1499, 1319)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1nuc3"]
+atlas = ExtResource("3_tvcuh")
+region = Rect2(5996, 0, 1499, 1319)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fv7yf"]
+atlas = ExtResource("3_tvcuh")
+region = Rect2(7495, 0, 1499, 1319)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cx4qb"]
+atlas = ExtResource("3_tvcuh")
+region = Rect2(0, 0, 1499, 1319)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fh3pq"]
+atlas = ExtResource("3_tvcuh")
+region = Rect2(1499, 0, 1499, 1319)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_s0yl6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1xu16")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qu3gk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1nuc3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fv7yf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1xu16")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qu3gk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1nuc3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fv7yf")
+}],
+"loop": false,
+"name": &"call",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_cx4qb")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_fh3pq")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_1jw0u")
+}],
+"loop": true,
+"name": &"result",
+"speed": 5.0
 }]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_samcd"]
@@ -248,61 +393,14 @@ animations = [{
 "loop": true,
 "name": &"idle",
 "speed": 6.0
-}]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1xu16"]
-atlas = ExtResource("3_tvcuh")
-region = Rect2(2998, 0, 1499, 1319)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_qu3gk"]
-atlas = ExtResource("3_tvcuh")
-region = Rect2(4497, 0, 1499, 1319)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1nuc3"]
-atlas = ExtResource("3_tvcuh")
-region = Rect2(5996, 0, 1499, 1319)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fv7yf"]
-atlas = ExtResource("3_tvcuh")
-region = Rect2(7495, 0, 1499, 1319)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_cx4qb"]
-atlas = ExtResource("3_tvcuh")
-region = Rect2(0, 0, 1499, 1319)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fh3pq"]
-atlas = ExtResource("3_tvcuh")
-region = Rect2(1499, 0, 1499, 1319)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_s0yl6"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1xu16")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_qu3gk")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1nuc3")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_fv7yf")
-}],
-"loop": false,
-"name": &"call",
-"speed": 6.0
 }, {
 "frames": [{
-"duration": 2.0,
-"texture": SubResource("AtlasTexture_cx4qb")
-}, {
-"duration": 2.0,
-"texture": SubResource("AtlasTexture_fh3pq")
+"duration": 1.0,
+"texture": ExtResource("8_pus57")
 }],
 "loop": true,
-"name": &"idle",
-"speed": 6.0
+"name": &"result",
+"speed": 5.0
 }]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v5yh0"]
@@ -350,6 +448,30 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ad5v7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3ft8v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ew8so")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ouatk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ad5v7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3ft8v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ew8so")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ouatk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ad5v7")
 }],
 "loop": false,
 "name": &"call",
@@ -365,6 +487,14 @@ animations = [{
 "loop": true,
 "name": &"idle",
 "speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_oc55n")
+}],
+"loop": true,
+"name": &"result",
+"speed": 5.0
 }]
 
 [node name="PatasController" type="Control"]
@@ -378,41 +508,50 @@ libraries = {
 "": SubResource("AnimationLibrary_tj4kr")
 }
 
+[node name="papel" type="Sprite2D" parent="."]
+position = Vector2(0, -1000)
+scale = Vector2(0.209375, 0.430508)
+texture = ExtResource("3_wnaal")
+
 [node name="pivot" type="Node2D" parent="."]
 position = Vector2(0, -1000)
 
 [node name="bandeja" type="Sprite2D" parent="pivot"]
+visible = false
 position = Vector2(5, 3)
 scale = Vector2(0.657754, 0.657754)
 texture = ExtResource("2_15wck")
 
 [node name="Sprite2D" type="Sprite2D" parent="pivot"]
-position = Vector2(0, 11)
+position = Vector2(0, 2)
 scale = Vector2(0.722543, 0.722543)
-texture = ExtResource("6_0ei0b")
 
 [node name="Smilodon" type="AnimatedSprite2D" parent="pivot"]
+visible = false
 position = Vector2(13, -581)
 scale = Vector2(0.629047, 0.629047)
 sprite_frames = SubResource("SpriteFrames_tak26")
 animation = &"idle"
 autoplay = "idle"
 
+[node name="Gliptodon" type="AnimatedSprite2D" parent="pivot"]
+position = Vector2(-14, -522)
+scale = Vector2(0.629047, 0.629047)
+sprite_frames = SubResource("SpriteFrames_s0yl6")
+animation = &"call"
+autoplay = "idle"
+frame = 7
+frame_progress = 1.0
+
+[node name="Sprite2D2" type="Sprite2D" parent="pivot/Gliptodon"]
+position = Vector2(42.9221, -282.968)
+texture = ExtResource("7_bkdyf")
+
 [node name="Megaterio" type="AnimatedSprite2D" parent="pivot"]
 visible = false
 position = Vector2(13, -565)
 scale = Vector2(0.629047, 0.629047)
 sprite_frames = SubResource("SpriteFrames_lcn4g")
-animation = &"call"
-autoplay = "idle"
-frame = 13
-frame_progress = 1.0
-
-[node name="Gliptodon" type="AnimatedSprite2D" parent="pivot"]
-visible = false
-position = Vector2(13, -522)
-scale = Vector2(0.629047, 0.629047)
-sprite_frames = SubResource("SpriteFrames_s0yl6")
 animation = &"call"
 autoplay = "idle"
 
