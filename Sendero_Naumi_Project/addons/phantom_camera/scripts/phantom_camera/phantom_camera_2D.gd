@@ -109,6 +109,10 @@ func _set_offset_cam(x, delta, time):
 	tween.tween_property(self,"OffsetVector",x,time* delta)
 	set_follow_target_offset(OffsetVector) 
 
+func _set_zoom_cam(vector,time):
+	var tween = get_tree().create_tween()
+	tween.tween_property(self,"zoom", vector,time * get_process_delta_time())
+
 #region Properties
 
 func _get_property_list() -> Array:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://dk066mi38cvh7"]
+[gd_scene load_steps=34 format=3 uid="uid://dk066mi38cvh7"]
 
 [ext_resource type="Script" path="res://_Scripts/Minigame_Save_Controller.gd" id="1_th4gl"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/StateMachineMinigames.gd" id="2_fl1ab"]
@@ -26,6 +26,7 @@
 [ext_resource type="Texture2D" uid="uid://b7poe0ethot51" path="res://Sprites/ZonaGeología/Piedras/flurita_dureza.png" id="14_gaug6"]
 [ext_resource type="Texture2D" uid="uid://bjdjhfvi3gkdk" path="res://Sprites/ZonaAstronomia/Screenshot_1.png" id="20_5amnt"]
 [ext_resource type="Theme" uid="uid://bokxu7jbpku04" path="res://Themes/Back_UI.tres" id="21_7epdq"]
+[ext_resource type="Script" path="res://_Scripts/MinG_Astronauta/ZoomArea.gd" id="22_wst5e"]
 [ext_resource type="Texture2D" uid="uid://b2op8eppn0juv" path="res://Sprites/ZonaAstronomia/Astronauta.png" id="23_p54qi"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2javv"]
@@ -39,6 +40,9 @@ size = Vector2(544, 20)
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_h2n3c"]
 light_mode = 1
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fm43q"]
+radius = 3974.14
 
 [node name="Astronauta" type="Control"]
 layout_mode = 3
@@ -748,7 +752,7 @@ scale = Vector2(1.29333, 1.29333)
 texture = ExtResource("11_fl6hj")
 offset = Vector2(-140.155, -77.71)
 
-[node name="Astronauta" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1" instance=ExtResource("7_jv4gs")]
+[node name="Astronauta" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1" groups=["player"] instance=ExtResource("7_jv4gs")]
 material = SubResource("CanvasItemMaterial_h2n3c")
 
 [node name="Camera2D" type="Camera2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1" node_paths=PackedStringArray("FondoReference", "phantom", "player")]
@@ -816,6 +820,16 @@ script = ExtResource("4_1n0vc")
 state_to_change = NodePath("../../../../Moraleja")
 state_machine = NodePath("../../../..")
 isEndOfGame = true
+
+[node name="ZoomArea" type="Area2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1" node_paths=PackedStringArray("PhantomCam")]
+position = Vector2(1094, -8454)
+script = ExtResource("22_wst5e")
+PhantomCam = NodePath("../PhantomCamera2D")
+ZoomFactor = Vector2(0.8, 0.8)
+timeToZoom = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/ZoomArea"]
+shape = SubResource("CircleShape2D_fm43q")
 
 [node name="Screenshot1" type="Sprite2D" parent="Astronauta/StateMachine/Juego/Contenido"]
 self_modulate = Color(1, 1, 1, 0.517647)
