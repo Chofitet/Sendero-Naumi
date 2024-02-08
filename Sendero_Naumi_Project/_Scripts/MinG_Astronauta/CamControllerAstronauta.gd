@@ -44,6 +44,7 @@ func _physics_process(delta):
 		phantom.inLimit = true
 		offsety = -(player.position.y - limitYUP)
 		phantom.FinalOffsetVector.y = offsety
+		print(limitYUP)
 	else: offsety = 0
 	
 	
