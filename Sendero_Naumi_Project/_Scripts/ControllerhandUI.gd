@@ -2,6 +2,7 @@ extends Control
 var sprite
 var timer
 var anim
+@export var AnimToPlay : String
 
 func _ready():
 	sprite = get_node("hand")
@@ -22,4 +23,4 @@ func StartAnim():
 	anim.play("start_anim")
 
 func IdleAnim():
-	anim.play("idle_anim")
+	anim.play(AnimToPlay)

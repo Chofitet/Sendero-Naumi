@@ -1,12 +1,13 @@
-[gd_scene load_steps=58 format=3 uid="uid://dcredgeon3w2q"]
+[gd_scene load_steps=60 format=3 uid="uid://dcredgeon3w2q"]
 
 [ext_resource type="Script" path="res://_Scripts/MinG_MegaFood/PatasController.gd" id="1_g46fd"]
 [ext_resource type="Texture2D" uid="uid://djvqdfcyt21ef" path="res://Sprites/ZonaMegafauna/smilo frames.png" id="1_rl1d6"]
 [ext_resource type="Texture2D" uid="uid://ug0k40iqqooq" path="res://Sprites/ZonaMegafauna/mega frames.png" id="2_0m86a"]
 [ext_resource type="Texture2D" uid="uid://gbi1vckfb2af" path="res://Sprites/ZonaMegafauna/bandeja.png" id="2_15wck"]
 [ext_resource type="Texture2D" uid="uid://dp3bdprtxb375" path="res://Sprites/ZonaMegafauna/macra frames.png" id="2_gx71e"]
+[ext_resource type="Texture2D" uid="uid://d3b0oj2fm373t" path="res://Sprites/ZonaMegafauna/hoja - lejos.png" id="2_vlk4s"]
 [ext_resource type="Texture2D" uid="uid://bimhl7qrfdc54" path="res://Sprites/ZonaMegafauna/glipto frames.png" id="3_tvcuh"]
-[ext_resource type="Texture2D" uid="uid://cjjoaemhep814" path="res://Sprites/mapa-detalle.png" id="3_wnaal"]
+[ext_resource type="Texture2D" uid="uid://w4ob407duwyu" path="res://Sprites/ZonaMegafauna/hoja - apoyada.png" id="4_peb2t"]
 [ext_resource type="Texture2D" uid="uid://b4fjgta8xopxn" path="res://Sprites/ZonaMegafauna/pata smilodon.png" id="6_nqg1u"]
 [ext_resource type="Texture2D" uid="uid://o00lvwkrmxos" path="res://Sprites/ZonaMegafauna/coraza glipto.png" id="7_bkdyf"]
 [ext_resource type="Texture2D" uid="uid://dtnlxun7i0pay" path="res://Sprites/ZonaMegafauna/pata megaterio.png" id="8_pus57"]
@@ -106,6 +107,8 @@ _data = {
 "result": SubResource("Animation_rm5b2"),
 "take": SubResource("Animation_sy63e")
 }
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pjpwy"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ocptq"]
 atlas = ExtResource("1_rl1d6")
@@ -510,8 +513,8 @@ libraries = {
 
 [node name="papel" type="Sprite2D" parent="."]
 position = Vector2(0, -1000)
-scale = Vector2(0.209375, 0.430508)
-texture = ExtResource("3_wnaal")
+scale = Vector2(0.766197, 1.14436)
+texture = ExtResource("2_vlk4s")
 
 [node name="pivot" type="Node2D" parent="."]
 position = Vector2(0, -1000)
@@ -522,26 +525,35 @@ position = Vector2(5, 3)
 scale = Vector2(0.657754, 0.657754)
 texture = ExtResource("2_15wck")
 
+[node name="Sprite2D" type="Sprite2D" parent="pivot/bandeja"]
+position = Vector2(272.138, 200.683)
+texture = ExtResource("4_peb2t")
+
 [node name="Sprite2D" type="Sprite2D" parent="pivot"]
 position = Vector2(0, 2)
 scale = Vector2(0.722543, 0.722543)
+
+[node name="null" type="AnimatedSprite2D" parent="pivot"]
+visible = false
+position = Vector2(13, -581)
+scale = Vector2(0.629047, 0.629047)
+sprite_frames = SubResource("SpriteFrames_pjpwy")
 
 [node name="Smilodon" type="AnimatedSprite2D" parent="pivot"]
 visible = false
 position = Vector2(13, -581)
 scale = Vector2(0.629047, 0.629047)
 sprite_frames = SubResource("SpriteFrames_tak26")
-animation = &"idle"
+animation = &"result"
 autoplay = "idle"
 
 [node name="Gliptodon" type="AnimatedSprite2D" parent="pivot"]
+visible = false
 position = Vector2(-14, -522)
 scale = Vector2(0.629047, 0.629047)
 sprite_frames = SubResource("SpriteFrames_s0yl6")
-animation = &"call"
+animation = &"result"
 autoplay = "idle"
-frame = 7
-frame_progress = 1.0
 
 [node name="Sprite2D2" type="Sprite2D" parent="pivot/Gliptodon"]
 position = Vector2(42.9221, -282.968)

@@ -1,11 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://cq6uaxtapn7f8"]
+[gd_scene load_steps=7 format=3 uid="uid://cq6uaxtapn7f8"]
 
 [ext_resource type="Script" path="res://_Scripts/MinG_MegaFood/FoodMenuController.gd" id="1_27o4a"]
-[ext_resource type="Texture2D" uid="uid://cwrbbpcgs4yh1" path="res://Sprites/ZonaMegafauna/food1.png" id="2_nf0ba"]
-[ext_resource type="Texture2D" uid="uid://dju3k7rwel3oy" path="res://Sprites/ZonaMegafauna/food2.png" id="3_jylua"]
 [ext_resource type="PackedScene" uid="uid://ci3c3pocxiywq" path="res://Scenes/Experiments/drag_object.tscn" id="3_lirrh"]
-[ext_resource type="Texture2D" uid="uid://oebtfgoo7lrq" path="res://Sprites/ZonaMegafauna/food3.png" id="4_pm26b"]
-[ext_resource type="Texture2D" uid="uid://b245vfv2mo8pf" path="res://Sprites/ZonaMegafauna/food4.png" id="5_pc8a0"]
 [ext_resource type="Script" path="res://_Scripts/DragSpot.gd" id="7_wi4wb"]
 [ext_resource type="PackedScene" uid="uid://biluutecl1cej" path="res://Scenes/Experiments/skip_sceen.tscn" id="8_duxjt"]
 [ext_resource type="Script" path="res://Scenes/Experiments/BlockScreen.gd" id="9_q3c4v"]
@@ -51,7 +47,6 @@ limitunderHolf = 20.0
 
 [node name="food1" type="Sprite2D" parent="HBoxContainer"]
 position = Vector2(57.1429, 59.1428)
-texture = ExtResource("2_nf0ba")
 
 [node name="DragObject" parent="HBoxContainer/food1" node_paths=PackedStringArray("spot") instance=ExtResource("3_lirrh")]
 spot = NodePath("../../../Spot")
@@ -68,7 +63,6 @@ offset_bottom = 50.0
 
 [node name="food2" type="Sprite2D" parent="HBoxContainer"]
 position = Vector2(204.571, 56.5714)
-texture = ExtResource("3_jylua")
 
 [node name="DragObject" parent="HBoxContainer/food2" node_paths=PackedStringArray("spot") instance=ExtResource("3_lirrh")]
 spot = NodePath("../../../Spot")
@@ -76,7 +70,6 @@ holdTime = 0.2
 
 [node name="food3" type="Sprite2D" parent="HBoxContainer"]
 position = Vector2(344.286, 58.2857)
-texture = ExtResource("4_pm26b")
 
 [node name="DragObject" parent="HBoxContainer/food3" node_paths=PackedStringArray("spot") instance=ExtResource("3_lirrh")]
 spot = NodePath("../../../Spot")
@@ -84,7 +77,6 @@ holdTime = 0.2
 
 [node name="food4" type="Sprite2D" parent="HBoxContainer"]
 position = Vector2(488.857, 56.5714)
-texture = ExtResource("5_pc8a0")
 
 [node name="DragObject" parent="HBoxContainer/food4" node_paths=PackedStringArray("spot") instance=ExtResource("3_lirrh")]
 spot = NodePath("../../../Spot")

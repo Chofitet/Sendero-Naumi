@@ -11,7 +11,8 @@ var AskSpot
 @export var DesapearInPlace : bool
 var timerHold
 var isInTime
-
+signal isDraggin
+signal mouse_realese
 
 func _ready():
 	timerHold = $Timer
@@ -22,7 +23,7 @@ func _ready():
 	initial_spot = object.position
 	area_entered.connect(GetSpot)
 	area_exited.connect(deleteSpot)
-signal mouse_realese
+
 
 func _process(delta):
 	if pick_up == true and isInTime:
@@ -69,6 +70,7 @@ func TimeToDrag():
 	tween = tween.tween_property(object, "global_position",get_global_mouse_position(),0.1).set_ease(Tween.EASE_OUT)
 	await tween
 	isInTime = true
+	isDraggin.emit()
 
 func isEnableButton(x):
 	if x:

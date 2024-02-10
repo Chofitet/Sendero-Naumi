@@ -6,6 +6,7 @@ var animalsArray : =[]
 var isInGame
 signal Taken
 var AnimResultFinish = false
+var stopCall
 
 func SetAnimalInstance(x):
 	inx_animal = x
@@ -31,6 +32,7 @@ func PlayEnterAnim():
 	timer.start()
 
 func PlayCallAnim():
+	if stopCall: return
 	animalsArray[inx_animal].play("call")
 	timer.wait_time = randf_range(4.5,5)
 	timer.stop()
@@ -39,13 +41,12 @@ func PlayOutAnim(plate):
 	if !isInGame : return
 	animalsArray[inx_animal].play("idle")
 	timer.timeout.disconnect(PlayCallAnim)
-	#animalsArray[inx_animal].play("idle")
 	anim.play_backwards("enterAnim")
 	AddPlateAtPivot(plate)
-	#$Label.visible = true
 	await anim.animation_finished
 	anim.play("RESET")
 	isInGame = false
+	if inx_animal == 0: return
 	ResultAnim()
 
 func BackToIdle():
@@ -63,6 +64,9 @@ func ResultAnim():
 	
 
 func AddPlateAtPivot(plate):
+	if plate is String:
+		$pivot/Sprite2D.texture = null
+		return
 	var _texture = plate.texture
 	$pivot/Sprite2D.texture = _texture
 
