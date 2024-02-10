@@ -8,8 +8,11 @@ var isInPosition
 var AskSpot
 @export var spot : Area2D
 @export var holdTime : float
+@export var DesapearInPlace : bool
 var timerHold
 var isInTime
+signal isDraggin
+signal mouse_realese
 
 func _ready():
 	timerHold = $Timer
@@ -20,7 +23,7 @@ func _ready():
 	initial_spot = object.position
 	area_entered.connect(GetSpot)
 	area_exited.connect(deleteSpot)
-signal mouse_realese
+
 
 func _process(delta):
 	if pick_up == true and isInTime:
@@ -37,6 +40,7 @@ func _on_button_pressed():
 	pick_up = false
 	CheckRightSpot()
 	if (is_in_spot):
+		if DesapearInPlace: object.visible = false
 		var tween = get_tree().create_tween()
 		tween = tween.tween_property(object, "global_position",spot.global_position,0.1).set_ease(Tween.EASE_OUT)
 		isInPosition = true
@@ -66,6 +70,7 @@ func TimeToDrag():
 	tween = tween.tween_property(object, "global_position",get_global_mouse_position(),0.1).set_ease(Tween.EASE_OUT)
 	await tween
 	isInTime = true
+	isDraggin.emit()
 
 func isEnableButton(x):
 	if x:
@@ -73,6 +78,7 @@ func isEnableButton(x):
 	else: $Button.visible = false
 
 func ResetPosition():
+	object.visible = true
 	object.position = initial_spot
 	isInPosition = false
 	is_in_spot = false

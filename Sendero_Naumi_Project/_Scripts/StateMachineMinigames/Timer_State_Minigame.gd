@@ -15,6 +15,6 @@ func _on_timeout():
 		EndOfGame.emit()
 	stop()
 
-func StartTime():
+func StartTime(x):
 	start()
 

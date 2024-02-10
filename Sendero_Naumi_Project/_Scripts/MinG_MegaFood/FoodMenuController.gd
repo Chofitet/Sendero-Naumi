@@ -17,6 +17,7 @@ var multitouch
 var StopDrag
 var isverticalGesture
 signal isScrolling
+signal CompleteSwipe
 
 func _ready():
 	inputTouch = InputEventScreenTouch.new()
@@ -24,6 +25,8 @@ func _ready():
 	timer.timeout.connect(calculateGesture)
 	position.x = position.x + (get_viewport_rect().size.x/2 - get_node(anchors[i]).global_position.x)
 	enableInteraction()
+	for f in get_children():
+		f.get_node("DragObject").isDraggin.connect(StopCallAnim)
 	
 func _input(event: InputEvent) -> void:
 	if StopDrag : return
@@ -46,6 +49,7 @@ func _input(event: InputEvent) -> void:
 		
 	if Input.is_action_just_released("TouchScreen"):
 		if multitouch : return
+		get_parent().get_node("PatasController").stopCall = false
 		releasePos = event.position
 		inHold()
 		hold = false
@@ -113,6 +117,7 @@ func set_next_anchor(direction):
 			i -= 1
 			next_anchor = position.x + (get_viewport_rect().size.x/2 - get_node(anchors[i]).global_position.x)
 	enableInteraction()
+	CompleteSwipe.emit()
 	return next_anchor
 
 func enableInteraction():
@@ -130,8 +135,16 @@ func enableInteraction():
 
 func stopDrag():
 	StopDrag = true
+	
 
 func Reset():
 	for f in get_children():
 		f.get_node("DragObject").ResetPosition()
 	StopDrag = false
+
+func LockUnklockGragObjects(x):
+	for f in get_children():
+		f.get_node("DragObject").isEnableButton(x)
+	
+func StopCallAnim():
+	get_parent().get_node("PatasController").stopCall = true
