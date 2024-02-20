@@ -5,6 +5,7 @@ extends Control
 @onready var HboxConteiner = get_parent().get_node("HBoxContainer")
 @onready var plate = $plate
 @export var JuegoState: StateMinigame
+@export var StateMachine : Node
 signal EndTutorial
 var isInTutorial
 var OnceSwipe
@@ -45,3 +46,4 @@ func OnSpot(x):
 	plate.visible = false
 	isInTutorial = false
 	EndTutorial.emit()
+	StateMachine.Trigger_On_Child_Transition(JuegoState.name)

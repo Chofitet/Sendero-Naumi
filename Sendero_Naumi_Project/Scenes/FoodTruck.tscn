@@ -1,14 +1,16 @@
-[gd_scene load_steps=35 format=3 uid="uid://hbmgu1q1d7os"]
+[gd_scene load_steps=39 format=3 uid="uid://hbmgu1q1d7os"]
 
 [ext_resource type="Script" path="res://_Scripts/Minigame_Save_Controller.gd" id="1_dk1kn"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/StateMachineMinigames.gd" id="2_445ba"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/ConsignaState.gd" id="3_snobg"]
+[ext_resource type="Texture2D" uid="uid://db7pgaqli54g7" path="res://Sprites/ZonaMegafauna/intro-Foodtruck.png" id="4_d2g47"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/Button_Change_StateMinigame.gd" id="4_oxiwq"]
-[ext_resource type="Texture2D" uid="uid://cugid7osy8dho" path="res://Sprites/ZonaMegafauna/comidas - assets.png" id="4_ynjuf"]
+[ext_resource type="Texture2D" uid="uid://bnmu1ur2bap7b" path="res://Sprites/nubes.png" id="4_s52cp"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/JuegoState.gd" id="5_ykya6"]
 [ext_resource type="Script" path="res://_Scripts/MinG_MegaFood/SetAnimalInstance.gd" id="6_qnxys"]
 [ext_resource type="PackedScene" uid="uid://dcredgeon3w2q" path="res://Scenes/Zona_Megafauna/patas_controller.tscn" id="6_t8dfd"]
 [ext_resource type="Script" path="res://_Scripts/DragSpot.gd" id="6_ym134"]
+[ext_resource type="Script" path="res://Scenes/GenericPanelController.gd" id="7_nckvf"]
 [ext_resource type="Texture2D" uid="uid://q7ghlhn1wgxr" path="res://Sprites/ZonaMegafauna/fondo - piso.png" id="7_r14yg"]
 [ext_resource type="Texture2D" uid="uid://dj57ce5tt06yj" path="res://Sprites/UI/bubble brown.png" id="7_xojdd"]
 [ext_resource type="Script" path="res://_Scripts/MinG_MegaFood/FoodMenuController.gd" id="8_25wym"]
@@ -30,6 +32,15 @@
 [ext_resource type="Texture2D" uid="uid://bu32wt8l3eyrh" path="res://Sprites/ZonaMegafauna/hoja - cerca.png" id="22_kphs1"]
 [ext_resource type="Theme" uid="uid://bokxu7jbpku04" path="res://Themes/Back_UI.tres" id="22_ktljq"]
 [ext_resource type="Texture2D" uid="uid://bctjm2l20y57p" path="res://Sprites/ZonaMegafauna/resultado - mal.png" id="24_cjtbl"]
+
+[sub_resource type="Gradient" id="Gradient_wwaor"]
+offsets = PackedFloat32Array(0, 0.51751, 1)
+colors = PackedColorArray(0.372549, 0.45098, 0.545098, 1, 0.588235, 0.713726, 0.741176, 1, 0.721569, 0.807843, 0.815686, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_5fake"]
+gradient = SubResource("Gradient_wwaor")
+fill_from = Vector2(0.491453, 0)
+fill_to = Vector2(0.521368, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pj3pu"]
 size = Vector2(140, 130)
@@ -116,6 +127,78 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="TextureRect" type="TextureRect" parent="FoodTruck/StateMachine/Consigna/Contenido"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_5fake")
+
+[node name="nube" type="Sprite2D" parent="FoodTruck/StateMachine/Consigna/Contenido/TextureRect"]
+position = Vector2(457, 60)
+scale = Vector2(0.616949, 0.616949)
+texture = ExtResource("4_s52cp")
+hframes = 8
+
+[node name="nube2" type="Sprite2D" parent="FoodTruck/StateMachine/Consigna/Contenido/TextureRect"]
+position = Vector2(635, 242)
+scale = Vector2(0.616949, 0.616949)
+texture = ExtResource("4_s52cp")
+hframes = 8
+frame = 5
+
+[node name="nube3" type="Sprite2D" parent="FoodTruck/StateMachine/Consigna/Contenido/TextureRect"]
+position = Vector2(675, 435)
+scale = Vector2(0.616949, 0.616949)
+texture = ExtResource("4_s52cp")
+hframes = 8
+frame = 4
+
+[node name="nube4" type="Sprite2D" parent="FoodTruck/StateMachine/Consigna/Contenido/TextureRect"]
+position = Vector2(378, 263)
+scale = Vector2(0.616949, 0.616949)
+texture = ExtResource("4_s52cp")
+hframes = 8
+frame = 7
+
+[node name="nube5" type="Sprite2D" parent="FoodTruck/StateMachine/Consigna/Contenido/TextureRect"]
+position = Vector2(107, 94)
+scale = Vector2(0.616949, 0.616949)
+texture = ExtResource("4_s52cp")
+hframes = 8
+frame = 3
+
+[node name="nube6" type="Sprite2D" parent="FoodTruck/StateMachine/Consigna/Contenido/TextureRect"]
+position = Vector2(109, 480)
+scale = Vector2(0.616949, 0.616949)
+texture = ExtResource("4_s52cp")
+hframes = 8
+frame = 5
+
+[node name="nube7" type="Sprite2D" parent="FoodTruck/StateMachine/Consigna/Contenido/TextureRect"]
+position = Vector2(247, 667)
+scale = Vector2(0.616949, 0.616949)
+texture = ExtResource("4_s52cp")
+hframes = 8
+frame = 3
+
+[node name="nube8" type="Sprite2D" parent="FoodTruck/StateMachine/Consigna/Contenido/TextureRect"]
+position = Vector2(369, 400)
+scale = Vector2(0.616949, 0.616949)
+texture = ExtResource("4_s52cp")
+flip_h = true
+hframes = 8
+frame = 4
+
+[node name="nube9" type="Sprite2D" parent="FoodTruck/StateMachine/Consigna/Contenido/TextureRect"]
+position = Vector2(558, 635)
+scale = Vector2(0.616949, 0.616949)
+texture = ExtResource("4_s52cp")
+hframes = 8
+frame = 1
+
 [node name="background" type="Control" parent="FoodTruck/StateMachine/Consigna/Contenido"]
 layout_mode = 1
 anchors_preset = 7
@@ -126,10 +209,25 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 0
 
+[node name="ColorRect" type="ColorRect" parent="FoodTruck/StateMachine/Consigna/Contenido/background"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -401.0
+offset_top = -373.0
+offset_right = 401.0
+offset_bottom = 242.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.324219, 0.371094, 0.273438, 1)
+
 [node name="Sprite2D" type="Sprite2D" parent="FoodTruck/StateMachine/Consigna/Contenido/background"]
-position = Vector2(0, -637)
+position = Vector2(12, -627)
 scale = Vector2(0.6679, 0.6679)
-texture = ExtResource("4_ynjuf")
+texture = ExtResource("4_d2g47")
 
 [node name="LblConsigna" type="Label" parent="FoodTruck/StateMachine/Consigna/Contenido"]
 visible = false
@@ -152,25 +250,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="Button" type="Button" parent="FoodTruck/StateMachine/Consigna/Contenido" node_paths=PackedStringArray("state_to_change", "state_machine")]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -201.0
-offset_top = -197.0
-offset_right = 202.0
-offset_bottom = -67.0
-grow_horizontal = 2
-grow_vertical = 0
-text = "Siguiente
-"
-script = ExtResource("4_oxiwq")
-state_to_change = NodePath("../../../Juego")
-state_machine = NodePath("../../..")
-
 [node name="Timer" type="Timer" parent="FoodTruck/StateMachine/Consigna/Contenido"]
 wait_time = 3.0
 
@@ -188,6 +267,7 @@ offset_bottom = 138.64
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("17_plgvp")
+script = ExtResource("7_nckvf")
 
 [node name="Label" type="Label" parent="FoodTruck/StateMachine/Consigna/Contenido/Panel"]
 layout_mode = 1
@@ -208,13 +288,33 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
+[node name="Button" type="Button" parent="FoodTruck/StateMachine/Consigna/Contenido/Panel" node_paths=PackedStringArray("state_to_change", "state_machine")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.775
+anchor_top = 1.0
+anchor_right = 0.775
+anchor_bottom = 1.0
+offset_left = -45.0
+offset_top = -49.0
+offset_right = 45.0
+offset_bottom = 41.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource("17_plgvp")
+text = "
+"
+script = ExtResource("4_oxiwq")
+state_to_change = NodePath("../../../../Juego")
+state_machine = NodePath("../../../..")
+
 [node name="Juego" type="Node" parent="FoodTruck/StateMachine" node_paths=PackedStringArray("NextState", "StateMachine")]
 script = ExtResource("5_ykya6")
 NextState = NodePath(".")
 StateMachine = NodePath("..")
 InstanciasMinijuego = [NodePath("Contenido/Instancia1"), NodePath("Contenido/Instancia2"), NodePath("Contenido/Instancia3"), NodePath("Contenido/Instancia4"), NodePath("Contenido/Instancia5"), NodePath("Contenido/Instancia6")]
 
-[node name="Contenido" type="Control" parent="FoodTruck/StateMachine/Juego"]
+[node name="Contenido" type="Control" parent="FoodTruck/StateMachine/Juego" node_paths=PackedStringArray("stateMachine", "StateToChange")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -223,6 +323,8 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("6_qnxys")
 Instances = [NodePath("Instancia1"), NodePath("Instancia2"), NodePath("Instancia3"), NodePath("Instancia4"), NodePath("Instancia5")]
+stateMachine = NodePath("../..")
+StateToChange = NodePath("..")
 
 [node name="Fondo" type="Control" parent="FoodTruck/StateMachine/Juego/Contenido"]
 layout_mode = 1
@@ -333,7 +435,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Tutorial" type="Control" parent="FoodTruck/StateMachine/Juego/Contenido" node_paths=PackedStringArray("JuegoState")]
+[node name="Tutorial" type="Control" parent="FoodTruck/StateMachine/Juego/Contenido" node_paths=PackedStringArray("JuegoState", "StateMachine")]
 layout_mode = 1
 anchor_left = 0.5
 anchor_top = 0.783
@@ -345,6 +447,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("11_0o25m")
 JuegoState = NodePath("../..")
+StateMachine = NodePath("../../..")
 
 [node name="DeslizaPlatos" type="Panel" parent="FoodTruck/StateMachine/Juego/Contenido/Tutorial"]
 layout_mode = 0
@@ -606,16 +709,13 @@ NUESTRAS GARRAS SON SÓLO PARA DEFENDERNOS,
 
 SOMOS HERVIBOROS Y CARROÑEROS."
 
-[node name="Button" type="Button" parent="FoodTruck/StateMachine/Juego/Contenido/PaperController/pivot" node_paths=PackedStringArray("state_to_change", "state_machine")]
+[node name="Button" type="Button" parent="FoodTruck/StateMachine/Juego/Contenido/PaperController/pivot"]
 offset_left = -378.0
-offset_top = -1068.55
+offset_top = -1194.0
 offset_right = 386.0
-offset_bottom = -82.5459
+offset_bottom = -82.0
 rotation = -0.00101281
 flat = true
-script = ExtResource("4_oxiwq")
-state_to_change = NodePath("../../../..")
-state_machine = NodePath("../../../../..")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="FoodTruck/StateMachine/Juego/Contenido/PaperController"]
 libraries = {
@@ -764,12 +864,11 @@ offset_bottom = -51.0
 text = "Continue"
 NextScene = "Map_Screen"
 
-[connection signal="pressed" from="FoodTruck/StateMachine/Consigna/Contenido/Button" to="FoodTruck/StateMachine/Consigna/Contenido/Button" method="_on_pressed" flags=18]
 [connection signal="timeout" from="FoodTruck/StateMachine/Consigna/Contenido/Timer" to="FoodTruck/StateMachine/Consigna" method="TimeOut" flags=18]
+[connection signal="pressed" from="FoodTruck/StateMachine/Consigna/Contenido/Panel/Button" to="FoodTruck/StateMachine/Consigna/Contenido/Panel/Button" method="_on_pressed" flags=18]
 [connection signal="Transitioned" from="FoodTruck/StateMachine/Juego" to="FoodTruck/StateMachine/Juego/Contenido/AnchorSpot/Spot" method="Reset"]
 [connection signal="Transitioned" from="FoodTruck/StateMachine/Juego" to="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer" method="Reset"]
 [connection signal="Transitioned" from="FoodTruck/StateMachine/Juego" to="FoodTruck/StateMachine/Juego/Contenido/BlockScreen" method="SetVisibility" binds= [false]]
-[connection signal="EndTutorial" from="FoodTruck/StateMachine/Juego/Contenido/Tutorial" to="FoodTruck/StateMachine/Juego/Contenido/PaperController/pivot/Button" method="_on_pressed"]
 [connection signal="EndTutorial" from="FoodTruck/StateMachine/Juego/Contenido/Tutorial" to="FoodTruck/StateMachine/Juego/Contenido/PatasController" method="AddPlateAtPivot" binds= ["null"]]
 [connection signal="OnSpot" from="FoodTruck/StateMachine/Juego/Contenido/AnchorSpot/Spot" to="FoodTruck/StateMachine/Juego/Contenido/PatasController" method="PlayOutAnim"]
 [connection signal="OnSpot" from="FoodTruck/StateMachine/Juego/Contenido/AnchorSpot/Spot" to="FoodTruck/StateMachine/Juego/Contenido/Tutorial" method="OnSpot"]

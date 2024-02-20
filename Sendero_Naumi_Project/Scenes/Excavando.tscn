@@ -1,25 +1,29 @@
-[gd_scene load_steps=39 format=3 uid="uid://m3gbb64llbqn"]
+[gd_scene load_steps=51 format=3 uid="uid://m3gbb64llbqn"]
 
 [ext_resource type="Script" path="res://_Scripts/Minigame_Save_Controller.gd" id="1_6uc2r"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/StateMachineMinigames.gd" id="2_4ogka"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/ConsignaState.gd" id="3_nk4vw"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/Button_Change_StateMinigame.gd" id="4_2v8ca"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/JuegoState.gd" id="5_nqckt"]
-[ext_resource type="Texture2D" uid="uid://bjvt6w4o6o03t" path="res://Sprites/ZonaMegafauna/megafauna.png" id="6_f1tgk"]
 [ext_resource type="Script" path="res://_Scripts/CheckAllChildsTrue.gd" id="7_io4up"]
+[ext_resource type="Texture2D" uid="uid://4xrxs1a8fktp" path="res://Sprites/ZonaAstronomia/tierra fondo - excavacion.png" id="7_xouvp"]
 [ext_resource type="Texture2D" uid="uid://cj6ppdn1sywnt" path="res://Sprites/ZonaMegafauna/esqueleto1.png" id="8_gm3c6"]
 [ext_resource type="Script" path="res://_Scripts/MinG_Excavar/huesoController.gd" id="9_113nf"]
 [ext_resource type="Script" path="res://_Scripts/MinG_Excavar/hotspot.gd" id="10_s5h5i"]
 [ext_resource type="Texture2D" uid="uid://c4tlq4bsahyse" path="res://Sprites/ZonaMegafauna/esqueleto2.png" id="11_ihmrh"]
 [ext_resource type="Texture2D" uid="uid://cgyvid0asdj5p" path="res://Sprites/ZonaMegafauna/esqueleto4.png" id="12_y8p0c"]
-[ext_resource type="Texture2D" uid="uid://da2iohh0447fo" path="res://Sprites/ZonaGeología/escenario-fondo-transformaciones.png" id="13_r3kwh"]
+[ext_resource type="Texture2D" uid="uid://cxijkdnbjec6k" path="res://Sprites/ZonaAstronomia/tierra frente - excavacion.png" id="14_0h6vo"]
+[ext_resource type="Texture2D" uid="uid://xvpc3u2jfsaf" path="res://Sprites/ZonaMegafauna/megaterio fosil 2 - excavacion.png" id="14_0qvux"]
 [ext_resource type="Script" path="res://_Scripts/MinG_Excavar/TopoController.gd" id="14_2g78w"]
-[ext_resource type="Texture2D" uid="uid://cacd7l8i83wxc" path="res://Sprites/ZonaMegafauna/topo.png" id="15_iboc0"]
+[ext_resource type="Texture2D" uid="uid://bdmeomusxj6va" path="res://Sprites/ZonaAstronomia/hueco - excavacion.png" id="15_sh0vx"]
+[ext_resource type="PackedScene" uid="uid://3rvhy3nlrjxy" path="res://Scenes/Zona_Megafauna/mole_particles.tscn" id="16_olaoq"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/Timer_State_Minigame.gd" id="16_ps323"]
+[ext_resource type="Texture2D" uid="uid://ckyu8v4h18rq1" path="res://Sprites/ZonaMegafauna/topo tiras.png" id="17_bk7kx"]
 [ext_resource type="Texture2D" uid="uid://drrio0noaq2fi" path="res://Sprites/ZonaGeología/piedra-PhotoRoom.png-PhotoRoom.png" id="17_ljngh"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/MoralejaState.gd" id="17_ulbcj"]
 [ext_resource type="PackedScene" uid="uid://djhg7jvxtexyl" path="res://Scenes/UI_Scenes/btn_Change_Scene.tscn" id="18_dvs2k"]
 [ext_resource type="Theme" uid="uid://bhum72inirq1q" path="res://Themes/Generic_UI.tres" id="18_f477x"]
+[ext_resource type="Texture2D" uid="uid://cuiyi4ot53wx1" path="res://Sprites/ZonaMegafauna/topo tiras alt.png" id="19_pbc8n"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/FinState.gd" id="19_uslqa"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_x16bw"]
@@ -67,6 +71,68 @@ blend_mode = 2
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pnr1u"]
 radius = 35.0742
 height = 72.8197
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lrw2r"]
+atlas = ExtResource("17_bk7kx")
+region = Rect2(800, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wywp3"]
+atlas = ExtResource("17_bk7kx")
+region = Rect2(1000, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bc81i"]
+atlas = ExtResource("19_pbc8n")
+region = Rect2(0, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s3k2u"]
+atlas = ExtResource("19_pbc8n")
+region = Rect2(200, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yirvf"]
+atlas = ExtResource("19_pbc8n")
+region = Rect2(400, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oxi41"]
+atlas = ExtResource("19_pbc8n")
+region = Rect2(600, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t0vts"]
+atlas = ExtResource("19_pbc8n")
+region = Rect2(800, 0, 200, 200)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_j6tlh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lrw2r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wywp3")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bc81i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s3k2u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yirvf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oxi41")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t0vts")
+}],
+"loop": true,
+"name": &"move",
+"speed": 5.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xfnj2"]
 radius = 149.216
@@ -230,429 +296,446 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TextureRect" type="TextureRect" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center"]
+[node name="TierraFondo" type="TextureRect" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -340.0
-offset_top = -531.5
-offset_right = 340.0
-offset_bottom = 531.5
+offset_left = -643.0
+offset_top = -1005.0
+offset_right = 643.0
+offset_bottom = 1005.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("6_f1tgk")
+texture = ExtResource("7_xouvp")
+stretch_mode = 1
 
-[node name="HuesosController" type="Node2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect"]
-position = Vector2(-15, -216)
+[node name="HuesosController" type="Node2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TierraFondo"]
+position = Vector2(259, 244)
 script = ExtResource("7_io4up")
 
-[node name="hueso" type="Sprite2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController"]
+[node name="hueso" type="Sprite2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TierraFondo/HuesosController"]
+visible = false
 position = Vector2(410, 418)
 scale = Vector2(4.28985, 4.28986)
 texture = ExtResource("8_gm3c6")
 script = ExtResource("9_113nf")
 
-[node name="hotspot" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso"]
+[node name="hotspot" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TierraFondo/HuesosController/hueso"]
 position = Vector2(25.875, 0.466265)
 script = ExtResource("10_s5h5i")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso/hotspot"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TierraFondo/HuesosController/hueso/hotspot"]
 shape = SubResource("CircleShape2D_x16bw")
 
-[node name="hotspot2" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso"]
+[node name="hotspot2" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TierraFondo/HuesosController/hueso"]
 position = Vector2(5.82771, 0.93248)
 script = ExtResource("10_s5h5i")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso/hotspot2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TierraFondo/HuesosController/hueso/hotspot2"]
 shape = SubResource("CircleShape2D_h24x2")
 
-[node name="hotspot3" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso"]
+[node name="hotspot3" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TierraFondo/HuesosController/hueso"]
 position = Vector2(26.3412, -15.6182)
 script = ExtResource("10_s5h5i")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso/hotspot3"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TierraFondo/HuesosController/hueso/hotspot3"]
 shape = SubResource("CircleShape2D_6yeae")
 
-[node name="hotspot4" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso"]
+[node name="hotspot4" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TierraFondo/HuesosController/hueso"]
 position = Vector2(10.0237, 17.25)
 script = ExtResource("10_s5h5i")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso/hotspot4"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TierraFondo/HuesosController/hueso/hotspot4"]
 shape = SubResource("CircleShape2D_45mlx")
 
-[node name="hotspot5" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso"]
+[node name="hotspot5" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TierraFondo/HuesosController/hueso"]
 position = Vector2(19.348, 3.96288)
 script = ExtResource("10_s5h5i")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso/hotspot5"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TierraFondo/HuesosController/hueso/hotspot5"]
 shape = SubResource("CircleShape2D_ao4y8")
 
-[node name="hotspot6" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso"]
+[node name="hotspot6" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TierraFondo/HuesosController/hueso"]
 position = Vector2(11.8885, -17.7162)
 script = ExtResource("10_s5h5i")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso/hotspot6"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TierraFondo/HuesosController/hueso/hotspot6"]
 shape = SubResource("CircleShape2D_g2u4d")
 
-[node name="Area2D" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso"]
+[node name="Area2D" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TierraFondo/HuesosController/hueso"]
 position = Vector2(27.973, 10.9561)
 script = ExtResource("10_s5h5i")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TierraFondo/HuesosController/hueso/Area2D"]
 shape = SubResource("CircleShape2D_0ea4k")
 
-[node name="hotspot8" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso"]
+[node name="hotspot8" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TierraFondo/HuesosController/hueso"]
 position = Vector2(-6.29392, -14.4527)
 script = ExtResource("10_s5h5i")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso/hotspot8"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TierraFondo/HuesosController/hueso/hotspot8"]
 shape = SubResource("CircleShape2D_bayta")
 
-[node name="hotspot9" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso"]
+[node name="hotspot9" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TierraFondo/HuesosController/hueso"]
 position = Vector2(-18.6487, -9.09117)
 script = ExtResource("10_s5h5i")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso/hotspot9"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TierraFondo/HuesosController/hueso/hotspot9"]
 shape = SubResource("CircleShape2D_vbayx")
 
-[node name="hotspot10" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso"]
+[node name="hotspot10" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TierraFondo/HuesosController/hueso"]
 position = Vector2(-27.0405, -20.5135)
 script = ExtResource("10_s5h5i")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso/hotspot10"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TierraFondo/HuesosController/hueso/hotspot10"]
 shape = SubResource("CircleShape2D_jbfw3")
 
-[node name="hotspot11" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso"]
+[node name="hotspot11" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TierraFondo/HuesosController/hueso"]
 position = Vector2(-8.85811, -3.72968)
 script = ExtResource("10_s5h5i")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso/hotspot11"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TierraFondo/HuesosController/hueso/hotspot11"]
 shape = SubResource("CircleShape2D_vshlv")
 
-[node name="hotspot12" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso"]
+[node name="hotspot12" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TierraFondo/HuesosController/hueso"]
 position = Vector2(-19.8142, 1.63179)
 script = ExtResource("10_s5h5i")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso/hotspot12"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TierraFondo/HuesosController/hueso/hotspot12"]
 shape = SubResource("CircleShape2D_pikk6")
 
-[node name="hotspot13" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso"]
+[node name="hotspot13" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TierraFondo/HuesosController/hueso"]
 position = Vector2(-29.1385, -10.0236)
 script = ExtResource("10_s5h5i")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso/hotspot13"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TierraFondo/HuesosController/hueso/hotspot13"]
 shape = SubResource("CircleShape2D_q2guk")
 
-[node name="hueso2" type="Sprite2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController"]
+[node name="hueso2" type="Sprite2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TierraFondo/HuesosController"]
+visible = false
 position = Vector2(183, 814)
 rotation = -1.13443
 scale = Vector2(4.28985, 4.28986)
 texture = ExtResource("8_gm3c6")
 script = ExtResource("9_113nf")
 
-[node name="hotspot" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso2"]
+[node name="hotspot" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TierraFondo/HuesosController/hueso2"]
 position = Vector2(25.875, 0.466265)
 script = ExtResource("10_s5h5i")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso2/hotspot"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TierraFondo/HuesosController/hueso2/hotspot"]
 shape = SubResource("CircleShape2D_x16bw")
 
-[node name="hotspot2" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso2"]
+[node name="hotspot2" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TierraFondo/HuesosController/hueso2"]
 position = Vector2(5.82771, 0.93248)
 script = ExtResource("10_s5h5i")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso2/hotspot2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TierraFondo/HuesosController/hueso2/hotspot2"]
 shape = SubResource("CircleShape2D_h24x2")
 
-[node name="hotspot3" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso2"]
+[node name="hotspot3" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TierraFondo/HuesosController/hueso2"]
 position = Vector2(26.3412, -15.6182)
 script = ExtResource("10_s5h5i")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso2/hotspot3"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TierraFondo/HuesosController/hueso2/hotspot3"]
 shape = SubResource("CircleShape2D_6yeae")
 
-[node name="hotspot4" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso2"]
+[node name="hotspot4" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TierraFondo/HuesosController/hueso2"]
 position = Vector2(10.0237, 17.25)
 script = ExtResource("10_s5h5i")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso2/hotspot4"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TierraFondo/HuesosController/hueso2/hotspot4"]
 shape = SubResource("CircleShape2D_45mlx")
 
-[node name="hotspot5" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso2"]
+[node name="hotspot5" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TierraFondo/HuesosController/hueso2"]
 position = Vector2(19.348, 3.96288)
 script = ExtResource("10_s5h5i")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso2/hotspot5"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TierraFondo/HuesosController/hueso2/hotspot5"]
 shape = SubResource("CircleShape2D_ao4y8")
 
-[node name="hotspot6" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso2"]
+[node name="hotspot6" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TierraFondo/HuesosController/hueso2"]
 position = Vector2(11.8885, -17.7162)
 script = ExtResource("10_s5h5i")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso2/hotspot6"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TierraFondo/HuesosController/hueso2/hotspot6"]
 shape = SubResource("CircleShape2D_g2u4d")
 
-[node name="Area2D" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso2"]
+[node name="Area2D" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TierraFondo/HuesosController/hueso2"]
 position = Vector2(27.973, 10.9561)
 script = ExtResource("10_s5h5i")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso2/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TierraFondo/HuesosController/hueso2/Area2D"]
 shape = SubResource("CircleShape2D_0ea4k")
 
-[node name="hotspot8" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso2"]
+[node name="hotspot8" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TierraFondo/HuesosController/hueso2"]
 position = Vector2(-6.29392, -14.4527)
 script = ExtResource("10_s5h5i")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso2/hotspot8"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TierraFondo/HuesosController/hueso2/hotspot8"]
 shape = SubResource("CircleShape2D_bayta")
 
-[node name="hotspot9" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso2"]
+[node name="hotspot9" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TierraFondo/HuesosController/hueso2"]
 position = Vector2(-18.6487, -9.09117)
 script = ExtResource("10_s5h5i")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso2/hotspot9"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TierraFondo/HuesosController/hueso2/hotspot9"]
 shape = SubResource("CircleShape2D_vbayx")
 
-[node name="hotspot10" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso2"]
+[node name="hotspot10" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TierraFondo/HuesosController/hueso2"]
 position = Vector2(-27.0405, -20.5135)
 script = ExtResource("10_s5h5i")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso2/hotspot10"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TierraFondo/HuesosController/hueso2/hotspot10"]
 shape = SubResource("CircleShape2D_jbfw3")
 
-[node name="hotspot11" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso2"]
+[node name="hotspot11" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TierraFondo/HuesosController/hueso2"]
 position = Vector2(-8.85811, -3.72968)
 script = ExtResource("10_s5h5i")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso2/hotspot11"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TierraFondo/HuesosController/hueso2/hotspot11"]
 shape = SubResource("CircleShape2D_vshlv")
 
-[node name="hotspot12" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso2"]
+[node name="hotspot12" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TierraFondo/HuesosController/hueso2"]
 position = Vector2(-19.8142, 1.63179)
 script = ExtResource("10_s5h5i")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso2/hotspot12"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TierraFondo/HuesosController/hueso2/hotspot12"]
 shape = SubResource("CircleShape2D_pikk6")
 
-[node name="hotspot13" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso2"]
+[node name="hotspot13" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TierraFondo/HuesosController/hueso2"]
 position = Vector2(-29.1385, -10.0236)
 script = ExtResource("10_s5h5i")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso2/hotspot13"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TierraFondo/HuesosController/hueso2/hotspot13"]
 shape = SubResource("CircleShape2D_q2guk")
 
-[node name="hueso3" type="Sprite2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController"]
+[node name="hueso3" type="Sprite2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TierraFondo/HuesosController"]
+visible = false
 position = Vector2(528, 806)
 rotation = 0.200497
 scale = Vector2(4.28985, 4.28986)
 texture = ExtResource("11_ihmrh")
 script = ExtResource("9_113nf")
 
-[node name="hotspot" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso3"]
+[node name="hotspot" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TierraFondo/HuesosController/hueso3"]
 position = Vector2(23.8969, -4.1429)
 script = ExtResource("10_s5h5i")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso3/hotspot"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TierraFondo/HuesosController/hueso3/hotspot"]
 shape = SubResource("CircleShape2D_x16bw")
 
-[node name="hotspot2" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso3"]
+[node name="hotspot2" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TierraFondo/HuesosController/hueso3"]
 position = Vector2(5.82771, 0.93248)
 script = ExtResource("10_s5h5i")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso3/hotspot2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TierraFondo/HuesosController/hueso3/hotspot2"]
 shape = SubResource("CircleShape2D_h24x2")
 
-[node name="hotspot3" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso3"]
+[node name="hotspot3" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TierraFondo/HuesosController/hueso3"]
 position = Vector2(-10.1294, 6.3403)
 script = ExtResource("10_s5h5i")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso3/hotspot3"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TierraFondo/HuesosController/hueso3/hotspot3"]
 shape = SubResource("CircleShape2D_6yeae")
 
-[node name="hotspot4" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso3"]
+[node name="hotspot4" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TierraFondo/HuesosController/hueso3"]
 position = Vector2(-5.42354, 20.132)
 script = ExtResource("10_s5h5i")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso3/hotspot4"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TierraFondo/HuesosController/hueso3/hotspot4"]
 shape = SubResource("CircleShape2D_45mlx")
 
-[node name="hotspot5" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso3"]
+[node name="hotspot5" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TierraFondo/HuesosController/hueso3"]
 position = Vector2(8.90693, 12.2244)
 script = ExtResource("10_s5h5i")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso3/hotspot5"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TierraFondo/HuesosController/hueso3/hotspot5"]
 shape = SubResource("CircleShape2D_ao4y8")
 
-[node name="hotspot6" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso3"]
+[node name="hotspot6" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TierraFondo/HuesosController/hueso3"]
 position = Vector2(6.35206, -15.5633)
 script = ExtResource("10_s5h5i")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso3/hotspot6"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TierraFondo/HuesosController/hueso3/hotspot6"]
 shape = SubResource("CircleShape2D_g2u4d")
 
-[node name="Area2D" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso3"]
+[node name="Area2D" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TierraFondo/HuesosController/hueso3"]
 position = Vector2(21.0142, 9.76387)
 script = ExtResource("10_s5h5i")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso3/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TierraFondo/HuesosController/hueso3/Area2D"]
 shape = SubResource("CircleShape2D_0ea4k")
 
-[node name="hotspot8" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso3"]
+[node name="hotspot8" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TierraFondo/HuesosController/hueso3"]
 position = Vector2(-0.618261, -7.72415)
 script = ExtResource("10_s5h5i")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso3/hotspot8"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TierraFondo/HuesosController/hueso3/hotspot8"]
 shape = SubResource("CircleShape2D_bayta")
 
-[node name="hotspot9" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso3"]
+[node name="hotspot9" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TierraFondo/HuesosController/hueso3"]
 position = Vector2(-10.1567, -17.2036)
 script = ExtResource("10_s5h5i")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso3/hotspot9"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TierraFondo/HuesosController/hueso3/hotspot9"]
 shape = SubResource("CircleShape2D_vbayx")
 
-[node name="hotspot10" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso3"]
+[node name="hotspot10" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TierraFondo/HuesosController/hueso3"]
 position = Vector2(-6.39562, -27.9586)
 script = ExtResource("10_s5h5i")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso3/hotspot10"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TierraFondo/HuesosController/hueso3/hotspot10"]
 shape = SubResource("CircleShape2D_jbfw3")
 
-[node name="hotspot11" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso3"]
+[node name="hotspot11" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TierraFondo/HuesosController/hueso3"]
 position = Vector2(-15.6024, -4.20322)
 script = ExtResource("10_s5h5i")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso3/hotspot11"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TierraFondo/HuesosController/hueso3/hotspot11"]
 shape = SubResource("CircleShape2D_vshlv")
 
-[node name="hotspot12" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso3"]
+[node name="hotspot12" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TierraFondo/HuesosController/hueso3"]
 position = Vector2(-26.3021, 9.8649)
 script = ExtResource("10_s5h5i")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso3/hotspot12"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TierraFondo/HuesosController/hueso3/hotspot12"]
 shape = SubResource("CircleShape2D_pikk6")
 
-[node name="hotspot13" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso3"]
+[node name="hotspot13" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TierraFondo/HuesosController/hueso3"]
 position = Vector2(-23.1424, -17.8948)
 script = ExtResource("10_s5h5i")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso3/hotspot13"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TierraFondo/HuesosController/hueso3/hotspot13"]
 shape = SubResource("CircleShape2D_q2guk")
 
-[node name="hueso4" type="Sprite2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController"]
+[node name="hueso4" type="Sprite2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TierraFondo/HuesosController"]
+visible = false
 position = Vector2(356, 1088)
 rotation = 0.0493182
 scale = Vector2(4.28985, 4.28986)
 texture = ExtResource("12_y8p0c")
 script = ExtResource("9_113nf")
 
-[node name="hotspot" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso4"]
+[node name="hotspot" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TierraFondo/HuesosController/hueso4"]
 position = Vector2(39.7726, 6.67238)
 rotation = -0.167976
 script = ExtResource("10_s5h5i")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso4/hotspot"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TierraFondo/HuesosController/hueso4/hotspot"]
 shape = SubResource("CircleShape2D_x16bw")
 
-[node name="hotspot2" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso4"]
+[node name="hotspot2" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TierraFondo/HuesosController/hueso4"]
 position = Vector2(35.4728, -4.78496)
 script = ExtResource("10_s5h5i")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso4/hotspot2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TierraFondo/HuesosController/hueso4/hotspot2"]
 shape = SubResource("CircleShape2D_h24x2")
 
-[node name="hotspot3" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso4"]
+[node name="hotspot3" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TierraFondo/HuesosController/hueso4"]
 position = Vector2(-16.6115, 18.0909)
 script = ExtResource("10_s5h5i")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso4/hotspot3"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TierraFondo/HuesosController/hueso4/hotspot3"]
 shape = SubResource("CircleShape2D_6yeae")
 
-[node name="hotspot4" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso4"]
+[node name="hotspot4" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TierraFondo/HuesosController/hueso4"]
 position = Vector2(-1.7132, 3.11865)
 script = ExtResource("10_s5h5i")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso4/hotspot4"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TierraFondo/HuesosController/hueso4/hotspot4"]
 shape = SubResource("CircleShape2D_45mlx")
 
-[node name="hotspot5" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso4"]
+[node name="hotspot5" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TierraFondo/HuesosController/hueso4"]
 position = Vector2(9.67178, 20.9947)
 script = ExtResource("10_s5h5i")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso4/hotspot5"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TierraFondo/HuesosController/hueso4/hotspot5"]
 shape = SubResource("CircleShape2D_ao4y8")
 
-[node name="hotspot6" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso4"]
+[node name="hotspot6" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TierraFondo/HuesosController/hueso4"]
 position = Vector2(26.528, -15.7796)
 script = ExtResource("10_s5h5i")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso4/hotspot6"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TierraFondo/HuesosController/hueso4/hotspot6"]
 shape = SubResource("CircleShape2D_g2u4d")
 
-[node name="Area2D" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso4"]
+[node name="Area2D" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TierraFondo/HuesosController/hueso4"]
 position = Vector2(13.9061, 7.48235)
 script = ExtResource("10_s5h5i")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso4/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TierraFondo/HuesosController/hueso4/Area2D"]
 shape = SubResource("CircleShape2D_0ea4k")
 
-[node name="hotspot8" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso4"]
+[node name="hotspot8" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TierraFondo/HuesosController/hueso4"]
 position = Vector2(-4.43216, -4.68248)
 script = ExtResource("10_s5h5i")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso4/hotspot8"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TierraFondo/HuesosController/hueso4/hotspot8"]
 shape = SubResource("CircleShape2D_bayta")
 
-[node name="hotspot9" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso4"]
+[node name="hotspot9" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TierraFondo/HuesosController/hueso4"]
 position = Vector2(8.69245, -13.0322)
 script = ExtResource("10_s5h5i")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso4/hotspot9"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TierraFondo/HuesosController/hueso4/hotspot9"]
 shape = SubResource("CircleShape2D_vbayx")
 
-[node name="hotspot10" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso4"]
+[node name="hotspot10" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TierraFondo/HuesosController/hueso4"]
 position = Vector2(-0.0140114, -14.4696)
 script = ExtResource("10_s5h5i")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso4/hotspot10"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TierraFondo/HuesosController/hueso4/hotspot10"]
 shape = SubResource("CircleShape2D_jbfw3")
 
-[node name="hotspot11" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso4"]
+[node name="hotspot11" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TierraFondo/HuesosController/hueso4"]
 position = Vector2(-35.5707, 12.2583)
 script = ExtResource("10_s5h5i")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso4/hotspot11"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TierraFondo/HuesosController/hueso4/hotspot11"]
 shape = SubResource("CircleShape2D_vshlv")
 
-[node name="hotspot12" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso4"]
+[node name="hotspot12" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TierraFondo/HuesosController/hueso4"]
 position = Vector2(-17.5943, 7.63678)
 script = ExtResource("10_s5h5i")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso4/hotspot12"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TierraFondo/HuesosController/hueso4/hotspot12"]
 shape = SubResource("CircleShape2D_pikk6")
 
-[node name="hotspot13" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso4"]
+[node name="hotspot13" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TierraFondo/HuesosController/hueso4"]
 position = Vector2(21.8051, -2.71)
 script = ExtResource("10_s5h5i")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController/hueso4/hotspot13"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TierraFondo/HuesosController/hueso4/hotspot13"]
 shape = SubResource("CircleShape2D_q2guk")
+
+[node name="Sprite2D" type="Sprite2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TierraFondo"]
+position = Vector2(643, 1006)
+scale = Vector2(0.57963, 0.57963)
+texture = ExtResource("14_0qvux")
+flip_h = true
 
 [node name="CanvasGroup" type="CanvasGroup" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center"]
 position = Vector2(-360, -640)
 
-[node name="Tierra" type="Sprite2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/CanvasGroup"]
-position = Vector2(366, 638)
-scale = Vector2(0.490123, 0.490123)
-texture = ExtResource("13_r3kwh")
+[node name="Tierra" type="TextureRect" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/CanvasGroup"]
+visible = false
+offset_left = -442.0
+offset_top = -260.0
+offset_right = 1193.0
+offset_bottom = 1541.0
+texture = ExtResource("14_0h6vo")
+stretch_mode = 1
 
 [node name="Line2D" type="Line2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/CanvasGroup"]
 material = SubResource("CanvasItemMaterial_j7ivs")
 position = Vector2(5.51676, 767)
-width = 60.0
+width = 80.0
+texture = ExtResource("15_sh0vx")
+texture_mode = 1
 joint_mode = 2
 begin_cap_mode = 2
 end_cap_mode = 2
@@ -660,9 +743,12 @@ sharp_limit = 4.795
 round_precision = 6
 
 [node name="TopoController" type="CharacterBody2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/CanvasGroup" node_paths=PackedStringArray("line")]
+position = Vector2(109, 1204)
 motion_mode = 1
-wall_min_slide_angle = 0.785398
+wall_min_slide_angle = 0.488692
 script = ExtResource("14_2g78w")
+Color1 = Color(0.316406, 0.195313, 0.15625, 1)
+Color2 = Color(0.65625, 0.574219, 0.429688, 1)
 speed = 200.0
 line = NodePath("../Line2D")
 
@@ -670,26 +756,361 @@ line = NodePath("../Line2D")
 rotation = -0.731293
 shape = SubResource("CapsuleShape2D_pnr1u")
 
-[node name="topo" type="Sprite2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/CanvasGroup/TopoController"]
+[node name="topo" type="Node2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/CanvasGroup/TopoController"]
+
+[node name="RayCast2D" type="RayCast2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/CanvasGroup/TopoController/topo"]
+position = Vector2(7, 0)
+target_position = Vector2(48, 0)
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="MoleParticles" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/CanvasGroup/TopoController/topo" instance=ExtResource("16_olaoq")]
 z_index = 2
-rotation = 0.821239
 scale = Vector2(0.938922, 0.938922)
-texture = ExtResource("15_iboc0")
+amount = 8
+
+[node name="topo" type="AnimatedSprite2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/CanvasGroup/TopoController/topo"]
+z_index = 2
+scale = Vector2(0.938922, 0.938922)
+sprite_frames = SubResource("SpriteFrames_j6tlh")
+animation = &"move"
+autoplay = "idle"
 offset = Vector2(6.88, 0)
 
-[node name="Area2D" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/CanvasGroup/TopoController/topo"]
+[node name="Area2D" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/CanvasGroup/TopoController/topo/topo"]
 scale = Vector2(0.259814, 0.259814)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/CanvasGroup/TopoController/topo/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/CanvasGroup/TopoController/topo/topo/Area2D"]
 shape = SubResource("CircleShape2D_xfnj2")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1"]
-position = Vector2(305, 810)
+[node name="Node2D" type="Node2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center"]
+position = Vector2(-2014, -1045)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/StaticBody2D"]
+[node name="StaticBody2D" type="StaticBody2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Node2D"]
+position = Vector2(601, 1334)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Node2D/StaticBody2D"]
 shape = SubResource("CircleShape2D_w3lcj")
 
-[node name="Sprite2D" type="Sprite2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/StaticBody2D"]
+[node name="Sprite2D" type="Sprite2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Node2D/StaticBody2D"]
+self_modulate = Color(0.32549, 0.243137, 0.235294, 1)
+scale = Vector2(0.346154, 0.346154)
+texture = ExtResource("17_ljngh")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Node2D"]
+position = Vector2(473, 1427)
+rotation = -1.83508
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Node2D/StaticBody2D2"]
+shape = SubResource("CircleShape2D_w3lcj")
+
+[node name="Sprite2D" type="Sprite2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Node2D/StaticBody2D2"]
+self_modulate = Color(0.32549, 0.243137, 0.235294, 1)
+scale = Vector2(0.346154, 0.346154)
+texture = ExtResource("17_ljngh")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Node2D"]
+position = Vector2(511, 969)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Node2D/StaticBody2D3"]
+shape = SubResource("CircleShape2D_w3lcj")
+
+[node name="Sprite2D" type="Sprite2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Node2D/StaticBody2D3"]
+self_modulate = Color(0.32549, 0.243137, 0.235294, 1)
+scale = Vector2(0.346154, 0.346154)
+texture = ExtResource("17_ljngh")
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Node2D"]
+position = Vector2(399, 1072)
+rotation = -2.73629
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Node2D/StaticBody2D4"]
+shape = SubResource("CircleShape2D_w3lcj")
+
+[node name="Sprite2D" type="Sprite2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Node2D/StaticBody2D4"]
+self_modulate = Color(0.32549, 0.243137, 0.235294, 1)
+scale = Vector2(0.346154, 0.346154)
+texture = ExtResource("17_ljngh")
+
+[node name="StaticBody2D5" type="StaticBody2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Node2D"]
+position = Vector2(929, 1142)
+rotation = -0.841954
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Node2D/StaticBody2D5"]
+shape = SubResource("CircleShape2D_w3lcj")
+
+[node name="Sprite2D" type="Sprite2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Node2D/StaticBody2D5"]
+self_modulate = Color(0.32549, 0.243137, 0.235294, 1)
+scale = Vector2(0.346154, 0.346154)
+texture = ExtResource("17_ljngh")
+
+[node name="StaticBody2D6" type="StaticBody2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Node2D"]
+position = Vector2(781, 621)
+rotation = -1.48458
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Node2D/StaticBody2D6"]
+shape = SubResource("CircleShape2D_w3lcj")
+
+[node name="Sprite2D" type="Sprite2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Node2D/StaticBody2D6"]
+self_modulate = Color(0.32549, 0.243137, 0.235294, 1)
+scale = Vector2(0.346154, 0.346154)
+texture = ExtResource("17_ljngh")
+
+[node name="StaticBody2D11" type="StaticBody2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Node2D"]
+position = Vector2(581.026, 515.83)
+rotation = -3.04293
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Node2D/StaticBody2D11"]
+shape = SubResource("CircleShape2D_w3lcj")
+
+[node name="Sprite2D" type="Sprite2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Node2D/StaticBody2D11"]
+self_modulate = Color(0.32549, 0.243137, 0.235294, 1)
+scale = Vector2(0.346154, 0.346154)
+texture = ExtResource("17_ljngh")
+
+[node name="StaticBody2D12" type="StaticBody2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Node2D"]
+position = Vector2(463.302, 653.916)
+rotation = -4.67757
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Node2D/StaticBody2D12"]
+shape = SubResource("CircleShape2D_w3lcj")
+
+[node name="Sprite2D" type="Sprite2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Node2D/StaticBody2D12"]
+self_modulate = Color(0.32549, 0.243137, 0.235294, 1)
+scale = Vector2(0.346154, 0.346154)
+texture = ExtResource("17_ljngh")
+
+[node name="StaticBody2D7" type="StaticBody2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Node2D"]
+position = Vector2(936, 1473)
+rotation = -0.971039
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Node2D/StaticBody2D7"]
+shape = SubResource("CircleShape2D_w3lcj")
+
+[node name="Sprite2D" type="Sprite2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Node2D/StaticBody2D7"]
+self_modulate = Color(0.32549, 0.243137, 0.235294, 1)
+scale = Vector2(0.346154, 0.346154)
+texture = ExtResource("17_ljngh")
+
+[node name="StaticBody2D8" type="StaticBody2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Node2D"]
+position = Vector2(883, 1594)
+rotation = 2.96421
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Node2D/StaticBody2D8"]
+shape = SubResource("CircleShape2D_w3lcj")
+
+[node name="Sprite2D" type="Sprite2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Node2D/StaticBody2D8"]
+self_modulate = Color(0.32549, 0.243137, 0.235294, 1)
+scale = Vector2(0.346154, 0.346154)
+texture = ExtResource("17_ljngh")
+
+[node name="StaticBody2D9" type="StaticBody2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Node2D"]
+position = Vector2(947, 844)
+rotation = 1.60374
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Node2D/StaticBody2D9"]
+shape = SubResource("CircleShape2D_w3lcj")
+
+[node name="Sprite2D" type="Sprite2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Node2D/StaticBody2D9"]
+self_modulate = Color(0.32549, 0.243137, 0.235294, 1)
+scale = Vector2(0.346154, 0.346154)
+texture = ExtResource("17_ljngh")
+
+[node name="StaticBody2D10" type="StaticBody2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Node2D"]
+position = Vector2(983, 694)
+rotation = 1.60374
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Node2D/StaticBody2D10"]
+shape = SubResource("CircleShape2D_w3lcj")
+
+[node name="Sprite2D" type="Sprite2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Node2D/StaticBody2D10"]
+self_modulate = Color(0.32549, 0.243137, 0.235294, 1)
+scale = Vector2(0.346154, 0.346154)
+texture = ExtResource("17_ljngh")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center"]
+position = Vector2(-211, 279)
+rotation = -0.924114
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/StaticBody2D"]
+shape = SubResource("CircleShape2D_w3lcj")
+
+[node name="Sprite2D" type="Sprite2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/StaticBody2D"]
+self_modulate = Color(0.32549, 0.243137, 0.235294, 1)
+scale = Vector2(0.346154, 0.346154)
+texture = ExtResource("17_ljngh")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center"]
+position = Vector2(43, 353)
+rotation = 0.939511
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/StaticBody2D2"]
+shape = SubResource("CircleShape2D_w3lcj")
+
+[node name="Sprite2D" type="Sprite2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/StaticBody2D2"]
+self_modulate = Color(0.32549, 0.243137, 0.235294, 1)
+scale = Vector2(0.346154, 0.346154)
+texture = ExtResource("17_ljngh")
+
+[node name="StaticBody2D13" type="StaticBody2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center"]
+position = Vector2(382, -575)
+rotation = 0.464314
+scale = Vector2(2.67, 2.67)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/StaticBody2D13"]
+shape = SubResource("CircleShape2D_w3lcj")
+
+[node name="Sprite2D" type="Sprite2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/StaticBody2D13"]
+self_modulate = Color(0.32549, 0.243137, 0.235294, 1)
+scale = Vector2(0.346154, 0.346154)
+texture = ExtResource("17_ljngh")
+
+[node name="StaticBody2D14" type="StaticBody2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center"]
+position = Vector2(-377, -666)
+rotation = -0.872342
+scale = Vector2(2.67, 2.67)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/StaticBody2D14"]
+shape = SubResource("CircleShape2D_w3lcj")
+
+[node name="Sprite2D" type="Sprite2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/StaticBody2D14"]
+self_modulate = Color(0.32549, 0.243137, 0.235294, 1)
+scale = Vector2(0.346154, 0.346154)
+texture = ExtResource("17_ljngh")
+
+[node name="StaticBody2D10" type="StaticBody2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center"]
+position = Vector2(224, 405)
+rotation = -0.0607477
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/StaticBody2D10"]
+shape = SubResource("CircleShape2D_w3lcj")
+
+[node name="Sprite2D" type="Sprite2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/StaticBody2D10"]
+self_modulate = Color(0.32549, 0.243137, 0.235294, 1)
+scale = Vector2(0.346154, 0.346154)
+texture = ExtResource("17_ljngh")
+
+[node name="StaticBody2D11" type="StaticBody2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center"]
+position = Vector2(389, 374)
+rotation = -1.62416
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/StaticBody2D11"]
+shape = SubResource("CircleShape2D_w3lcj")
+
+[node name="Sprite2D" type="Sprite2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/StaticBody2D11"]
+self_modulate = Color(0.32549, 0.243137, 0.235294, 1)
+scale = Vector2(0.346154, 0.346154)
+texture = ExtResource("17_ljngh")
+
+[node name="StaticBody2D12" type="StaticBody2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center"]
+position = Vector2(362, 153)
+rotation = 1.13521
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/StaticBody2D12"]
+shape = SubResource("CircleShape2D_w3lcj")
+
+[node name="Sprite2D" type="Sprite2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/StaticBody2D12"]
+self_modulate = Color(0.32549, 0.243137, 0.235294, 1)
+scale = Vector2(0.346154, 0.346154)
+texture = ExtResource("17_ljngh")
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center"]
+position = Vector2(-242, -9)
+rotation = 0.939511
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/StaticBody2D4"]
+shape = SubResource("CircleShape2D_w3lcj")
+
+[node name="Sprite2D" type="Sprite2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/StaticBody2D4"]
+self_modulate = Color(0.32549, 0.243137, 0.235294, 1)
+scale = Vector2(0.346154, 0.346154)
+texture = ExtResource("17_ljngh")
+
+[node name="StaticBody2D15" type="StaticBody2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center"]
+position = Vector2(-382, 59)
+rotation = 0.459203
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/StaticBody2D15"]
+shape = SubResource("CircleShape2D_w3lcj")
+
+[node name="Sprite2D" type="Sprite2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/StaticBody2D15"]
+self_modulate = Color(0.32549, 0.243137, 0.235294, 1)
+scale = Vector2(0.346154, 0.346154)
+texture = ExtResource("17_ljngh")
+
+[node name="StaticBody2D5" type="StaticBody2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center"]
+position = Vector2(210, 194)
+rotation = -0.889537
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/StaticBody2D5"]
+shape = SubResource("CircleShape2D_w3lcj")
+
+[node name="Sprite2D" type="Sprite2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/StaticBody2D5"]
+self_modulate = Color(0.32549, 0.243137, 0.235294, 1)
+scale = Vector2(0.346154, 0.346154)
+texture = ExtResource("17_ljngh")
+
+[node name="StaticBody2D6" type="StaticBody2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center"]
+position = Vector2(64, -321)
+rotation = -1.98758
+scale = Vector2(0.735, 0.735)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/StaticBody2D6"]
+shape = SubResource("CircleShape2D_w3lcj")
+
+[node name="Sprite2D" type="Sprite2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/StaticBody2D6"]
+self_modulate = Color(0.32549, 0.243137, 0.235294, 1)
+scale = Vector2(0.346154, 0.346154)
+texture = ExtResource("17_ljngh")
+
+[node name="StaticBody2D9" type="StaticBody2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center"]
+position = Vector2(79, -453)
+rotation = -4.44488
+scale = Vector2(0.735, 0.735)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/StaticBody2D9"]
+shape = SubResource("CircleShape2D_w3lcj")
+
+[node name="Sprite2D" type="Sprite2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/StaticBody2D9"]
+self_modulate = Color(0.32549, 0.243137, 0.235294, 1)
+scale = Vector2(0.346154, 0.346154)
+texture = ExtResource("17_ljngh")
+
+[node name="StaticBody2D7" type="StaticBody2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center"]
+position = Vector2(-101, -243)
+rotation = -2.21943
+scale = Vector2(0.75, 0.75)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/StaticBody2D7"]
+shape = SubResource("CircleShape2D_w3lcj")
+
+[node name="Sprite2D" type="Sprite2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/StaticBody2D7"]
+self_modulate = Color(0.32549, 0.243137, 0.235294, 1)
+scale = Vector2(0.346154, 0.346154)
+texture = ExtResource("17_ljngh")
+
+[node name="StaticBody2D8" type="StaticBody2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center"]
+position = Vector2(-171, -368)
+rotation = -2.21943
+scale = Vector2(0.75, 0.75)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/StaticBody2D8"]
+shape = SubResource("CircleShape2D_w3lcj")
+
+[node name="Sprite2D" type="Sprite2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/StaticBody2D8"]
+self_modulate = Color(0.32549, 0.243137, 0.235294, 1)
+scale = Vector2(0.346154, 0.346154)
+texture = ExtResource("17_ljngh")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center"]
+position = Vector2(-87, 19)
+rotation = 0.0853477
+scale = Vector2(0.81, 0.81)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/StaticBody2D3"]
+shape = SubResource("CircleShape2D_w3lcj")
+
+[node name="Sprite2D" type="Sprite2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/StaticBody2D3"]
 self_modulate = Color(0.32549, 0.243137, 0.235294, 1)
 scale = Vector2(0.346154, 0.346154)
 texture = ExtResource("17_ljngh")
@@ -718,6 +1139,7 @@ Instancias = [NodePath("Contenido/Instancia1")]
 buttons = [NodePath("Contenido/Instancia1/Button")]
 
 [node name="Contenido" type="Control" parent="Excavando/StateMachine/Moraleja"]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -824,6 +1246,6 @@ NextScene = "Map_Screen"
 [connection signal="EndOfGame" from="Excavando/StateMachine/Juego/Contenido/Instancia1/Button" to="Excavando" method="Set_Complete" flags=18]
 [connection signal="EndOfGame" from="Excavando/StateMachine/Juego/Contenido/Instancia1/Button" to="Excavando/StateMachine/Moraleja" method="isEndOfGame" flags=18]
 [connection signal="pressed" from="Excavando/StateMachine/Juego/Contenido/Instancia1/Button" to="Excavando/StateMachine/Juego/Contenido/Instancia1/Button" method="_on_pressed" flags=18]
-[connection signal="AllTrue" from="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TextureRect/HuesosController" to="Excavando/StateMachine/Juego/Contenido/Instancia1/PassInstance" method="StartTime"]
+[connection signal="AllTrue" from="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TierraFondo/HuesosController" to="Excavando/StateMachine/Juego/Contenido/Instancia1/PassInstance" method="StartTime"]
 [connection signal="timeout" from="Excavando/StateMachine/Moraleja/Contenido/Timer" to="Excavando/StateMachine/Moraleja" method="TimeOut" flags=18]
 [connection signal="pressed" from="Excavando/StateMachine/Moraleja/Contenido/Instancia1/Button" to="Excavando/StateMachine/Moraleja/Contenido/Instancia1/Button" method="_on_pressed" flags=18]

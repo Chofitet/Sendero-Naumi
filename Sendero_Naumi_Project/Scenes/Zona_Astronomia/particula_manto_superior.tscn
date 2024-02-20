@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://32kdxdiyp5q"]
+
+[ext_resource type="Texture2D" uid="uid://drrio0noaq2fi" path="res://Sprites/ZonaGeología/piedra-PhotoRoom.png-PhotoRoom.png" id="1_dlsc5"]
+[ext_resource type="Script" path="res://_Scripts/MinG_ManzanaCaramelizada/particula_manto_superior.gd" id="1_p7mmg"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_in62i"]
+radius = 9.21954
+
+[node name="ParticulaMantoSuperior" type="RigidBody2D"]
+inertia = 4.92
+script = ExtResource("1_p7mmg")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.317647, 0.196078, 0.0431373, 1)
+scale = Vector2(0.0576923, 0.0576923)
+texture = ExtResource("1_dlsc5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_in62i")
+disabled = true
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(0, -7)
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.02

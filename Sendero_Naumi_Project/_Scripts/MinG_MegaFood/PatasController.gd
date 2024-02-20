@@ -59,7 +59,7 @@ func ResultAnim():
 	$pivot/bandeja.visible = false
 	$pivot/Sprite2D.texture = null
 	anim.play("result")
-	await  anim.animation_finished
+	await  get_tree().create_timer(1.6).timeout
 	AnimResultFinish = true
 	
 
