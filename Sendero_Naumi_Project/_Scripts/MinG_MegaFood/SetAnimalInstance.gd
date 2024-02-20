@@ -4,6 +4,8 @@ extends Control
 @onready var Spot = $AnchorSpot/Spot
 var DragObjects :=[]
 var instanceResourse = InstanceResource.new()
+@export var stateMachine : Node
+@export var StateToChange : StateMinigame
 
 func _ready():
 	var instanceResourse = ResourceLoader.load("user://InstanceResource.tres")
@@ -24,6 +26,7 @@ func SetInstanceAnimal():
 
 func SetCorrectPlate(instance):
 	var resultText = papercontroller.get_node("txt")
+	await get_tree().create_timer(2).timeout
 	if instance == get_node(Instances[1]).name:
 		#smilodonte
 		Spot.RigthObject = DragObjects[2]
@@ -70,8 +73,11 @@ func SetResultEvent():
 	papercontroller.get_node("Button").button_down.connect(EndResultEvent)
 
 func EndResultEvent():
+	
 	if get_node(Instances[4]).visible == true:
 		$ButtonFin._on_pressed()
+	else:
+		stateMachine.Trigger_On_Child_Transition(StateToChange.name)
 	$PaperController/AnimationPlayer.play_backwards("paper")
 	
 	

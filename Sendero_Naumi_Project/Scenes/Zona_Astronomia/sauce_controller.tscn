@@ -1,21 +1,67 @@
-[gd_scene load_steps=6 format=3 uid="uid://jdh76exbwsls"]
+[gd_scene load_steps=18 format=3 uid="uid://jdh76exbwsls"]
 
 [ext_resource type="Script" path="res://_Scripts/sauce_controller.gd" id="1_ehdu6"]
+[ext_resource type="Texture2D" uid="uid://bnyxu8bmho85s" path="res://Sprites/ZonaAstronomia/ketchup.png" id="2_uc0lq"]
+[ext_resource type="Texture2D" uid="uid://cpu7xxqkaxhj3" path="res://Sprites/ZonaAstronomia/manzana_palo.png" id="3_8hfra"]
+[ext_resource type="Texture2D" uid="uid://kbvw1xiq56hk" path="res://Sprites/ZonaAstronomia/glaseado.png" id="3_hbiwk"]
 [ext_resource type="Texture2D" uid="uid://chqivoetkgkoj" path="res://Sprites/UI/circulo.png" id="3_u7bxm"]
 [ext_resource type="Material" uid="uid://c5l5yx6k062dd" path="res://shaders/Waterfall.tres" id="4_oy1bh"]
 [ext_resource type="Texture2D" uid="uid://bgy7tv3s2j7ng" path="res://icon.svg" id="5_xgtgc"]
 [ext_resource type="Script" path="res://shaders/Sprite_Shader.gd" id="6_5ybiq"]
+[ext_resource type="Shader" path="res://shaders/Cover_Texture.gdshader" id="6_eoii8"]
+[ext_resource type="Texture2D" uid="uid://b6ixas13q38y0" path="res://addons/scene_manager/shader_patterns/waves.png" id="8_dmtfn"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_80uqe"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_cqm1e"]
+seamless = true
+noise = SubResource("FastNoiseLite_80uqe")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_xo70c"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_tdxph"]
+seamless = true
+noise = SubResource("FastNoiseLite_xo70c")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_pik6n"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_7mdtg"]
+seamless = true
+noise = SubResource("FastNoiseLite_pik6n")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xd1gm"]
+shader = ExtResource("6_eoii8")
+shader_parameter/cutoff = 0.983
+shader_parameter/smoothness = 0.089
+shader_parameter/inverted = false
+shader_parameter/scroll1 = Vector2(1, 0.4)
+shader_parameter/scroll2 = Vector2(0.2, 1.4)
+shader_parameter/speed = 0.02
+shader_parameter/xStretch = 0.65
+shader_parameter/yStretch = 1.35
+shader_parameter/laserSize = 1.0
+shader_parameter/wobbliness = 0.1
+shader_parameter/color1 = Color(0.494118, 0.337255, 0, 1)
+shader_parameter/color2 = Color(0.27451, 0.14902, 0, 1)
+shader_parameter/colorMixFactor = 7.0
+shader_parameter/glowFactor = 2.5
+shader_parameter/minAlpha = 0.3
+shader_parameter/alpha_texture = ExtResource("8_dmtfn")
+shader_parameter/NOISE_PATTERN1 = SubResource("NoiseTexture2D_cqm1e")
+shader_parameter/NOISE_PATTERN2 = SubResource("NoiseTexture2D_tdxph")
+shader_parameter/TRANSPARENCY_VARIATION = SubResource("NoiseTexture2D_7mdtg")
 
 [node name="SauceController" type="Node2D"]
 position = Vector2(309, 233)
 script = ExtResource("1_ehdu6")
-speed = 200.0
+speed = 120.0
 GlassSpeed = 150.0
 
-[node name="Polygon2D" type="Polygon2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = 1
-position = Vector2(3, -27)
-polygon = PackedVector2Array(-41, 36, 25, 47, 62, -32, 152, -50, 226, -224, -19, -231, -83, -80, -36, -38)
+position = Vector2(247, -181)
+rotation = -2.21133
+texture = ExtResource("2_uc0lq")
 
 [node name="Button" type="Button" parent="."]
 offset_left = -86.0
@@ -24,17 +70,20 @@ offset_right = 222.0
 offset_bottom = -11.0
 flat = true
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, 367)
-scale = Vector2(0.212, 0.212)
-texture = ExtResource("3_u7bxm")
+[node name="GlassMask2" type="Sprite2D" parent="."]
+clip_children = 2
+z_index = 1
+position = Vector2(-6, 624)
+rotation = -3.14159
+scale = Vector2(3, 3)
+texture = ExtResource("3_8hfra")
 
 [node name="GlassMask" type="Sprite2D" parent="."]
 clip_children = 2
 z_index = 1
-position = Vector2(-6, 353)
-scale = Vector2(0.234, 0.234)
-texture = ExtResource("3_u7bxm")
+position = Vector2(-2, 490)
+scale = Vector2(1.175, 1.175)
+texture = ExtResource("3_hbiwk")
 
 [node name="Glass" type="Sprite2D" parent="GlassMask"]
 material = ExtResource("4_oy1bh")
@@ -43,3 +92,10 @@ rotation = 1.57079
 scale = Vector2(12.022, 11.1192)
 texture = ExtResource("5_xgtgc")
 script = ExtResource("6_5ybiq")
+
+[node name="GlassMask2" type="Sprite2D" parent="GlassMask"]
+material = SubResource("ShaderMaterial_xd1gm")
+position = Vector2(-4.27356, 4.27368)
+rotation = 3.13664
+scale = Vector2(0.440388, 0.433911)
+texture = ExtResource("3_u7bxm")

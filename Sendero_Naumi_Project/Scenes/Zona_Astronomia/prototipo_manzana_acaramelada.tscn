@@ -1,4 +1,153 @@
-[gd_scene format=3 uid="uid://bsb18c5hv7eqb"]
+[gd_scene load_steps=40 format=3 uid="uid://bsb18c5hv7eqb"]
+
+[ext_resource type="Script" path="res://_Scripts/MinG_ManzanaCaramelizada/Prick_Apple.gd" id="1_r36tp"]
+[ext_resource type="Texture2D" uid="uid://dmlxs78uiq3u7" path="res://Sprites/ZonaAstronomia/palo.png" id="2_jqpnu"]
+[ext_resource type="Texture2D" uid="uid://cpu7xxqkaxhj3" path="res://Sprites/ZonaAstronomia/manzana_palo.png" id="3_ni1sf"]
+[ext_resource type="StyleBox" uid="uid://b3tjes2hcm3wx" path="res://Resources/UI_Resources/StyleBoxTrasparent.tres" id="4_0ejvw"]
+[ext_resource type="Texture2D" uid="uid://cs6cko45lsxr8" path="res://Sprites/ZonaAstronomia/balde_manzanas.png" id="4_ugcc5"]
+[ext_resource type="Script" path="res://_Scripts/PlayAnimation.gd" id="5_p62ov"]
+[ext_resource type="Texture2D" uid="uid://chqivoetkgkoj" path="res://Sprites/UI/circulo.png" id="7_5chm1"]
+[ext_resource type="Texture2D" uid="uid://bnyxu8bmho85s" path="res://Sprites/ZonaAstronomia/ketchup.png" id="8_7mvru"]
+[ext_resource type="Script" path="res://_Scripts/sauce_controller.gd" id="8_clycu"]
+[ext_resource type="Texture2D" uid="uid://kbvw1xiq56hk" path="res://Sprites/ZonaAstronomia/glaseado.png" id="10_p2og1"]
+[ext_resource type="Material" uid="uid://c5l5yx6k062dd" path="res://shaders/Waterfall.tres" id="11_adxku"]
+[ext_resource type="Texture2D" uid="uid://bgy7tv3s2j7ng" path="res://icon.svg" id="12_u5vdb"]
+[ext_resource type="Script" path="res://shaders/Sprite_Shader.gd" id="13_sithq"]
+[ext_resource type="Shader" path="res://shaders/Cover_Texture.gdshader" id="14_3n5ae"]
+[ext_resource type="Texture2D" uid="uid://b6ixas13q38y0" path="res://addons/scene_manager/shader_patterns/waves.png" id="15_acgxh"]
+[ext_resource type="PackedScene" uid="uid://b8yd1lqtvn8s8" path="res://Scenes/Zona_Astronomia/obj_apple_contoller.tscn" id="16_5j8ro"]
+[ext_resource type="Script" path="res://_Scripts/CheckAllChildsTrue.gd" id="17_fx3gq"]
+[ext_resource type="PackedScene" uid="uid://6k1uiqxaeru3" path="res://Scenes/Zona_Astronomia/area_pegote.tscn" id="17_ne3f2"]
+[ext_resource type="PackedScene" uid="uid://ci3c3pocxiywq" path="res://Scenes/Experiments/drag_object.tscn" id="18_vlyuk"]
+[ext_resource type="Script" path="res://_Scripts/MinG_ManzanaCaramelizada/SpreadAppleCotroller.gd" id="19_5trw2"]
+[ext_resource type="PackedScene" uid="uid://bldt6mswitxlv" path="res://Scenes/Zona_Astronomia/pegotes_manzana.tscn" id="20_y35df"]
+[ext_resource type="Texture2D" uid="uid://d0laj4gqbhaqo" path="res://Sprites/ZonaAstronomia/CirculoPegotes.png" id="21_a01n5"]
+[ext_resource type="Script" path="res://_Scripts/MinG_ManzanaCaramelizada/DetectShake.gd" id="23_ee7a8"]
+[ext_resource type="Script" path="res://_Scripts/MinG_ManzanaCaramelizada/SpotParticle.gd" id="23_t8utv"]
+[ext_resource type="Script" path="res://Scenes/Zona_Astronomia/SpawnAreaPoints.gd" id="24_uor64"]
+[ext_resource type="PackedScene" uid="uid://32kdxdiyp5q" path="res://Scenes/Zona_Astronomia/particula_manto_superior.tscn" id="25_o26nb"]
+
+[sub_resource type="Animation" id="Animation_4ba5u"]
+resource_name = "Prick_Apple"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("pivot:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.7, 1.1, 2.6),
+"transitions": PackedFloat32Array(1, 2, 2, 0.5),
+"update": 0,
+"values": [Vector2(0, -2000), Vector2(0, -300), Vector2(0, -300), Vector2(0, -2000)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("pivot/palo:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("2_jqpnu"), ExtResource("3_ni1sf")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("pivot/palo:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 1), Vector2(1, 0.825), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_np6ft"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("pivot:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -2000)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("pivot/palo:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 0.825)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_aalvt"]
+_data = {
+"Prick_Apple": SubResource("Animation_4ba5u"),
+"RESET": SubResource("Animation_np6ft")
+}
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_80uqe"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_cqm1e"]
+seamless = true
+noise = SubResource("FastNoiseLite_80uqe")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_xo70c"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_tdxph"]
+seamless = true
+noise = SubResource("FastNoiseLite_xo70c")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_pik6n"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_7mdtg"]
+seamless = true
+noise = SubResource("FastNoiseLite_pik6n")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xd1gm"]
+shader = ExtResource("14_3n5ae")
+shader_parameter/cutoff = 0.983
+shader_parameter/smoothness = 0.089
+shader_parameter/inverted = false
+shader_parameter/scroll1 = Vector2(1, 0.4)
+shader_parameter/scroll2 = Vector2(0.2, 1.4)
+shader_parameter/speed = 0.02
+shader_parameter/xStretch = 0.65
+shader_parameter/yStretch = 1.35
+shader_parameter/laserSize = 1.0
+shader_parameter/wobbliness = 0.1
+shader_parameter/color1 = Color(0.494118, 0.337255, 0, 1)
+shader_parameter/color2 = Color(0.27451, 0.14902, 0, 1)
+shader_parameter/colorMixFactor = 7.0
+shader_parameter/glowFactor = 2.5
+shader_parameter/minAlpha = 0.3
+shader_parameter/alpha_texture = ExtResource("15_acgxh")
+shader_parameter/NOISE_PATTERN1 = SubResource("NoiseTexture2D_cqm1e")
+shader_parameter/NOISE_PATTERN2 = SubResource("NoiseTexture2D_tdxph")
+shader_parameter/TRANSPARENCY_VARIATION = SubResource("NoiseTexture2D_7mdtg")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vknpb"]
+radius = 66.6632
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_racr1"]
+radius = 7.21113
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c2mvv"]
+size = Vector2(188, 303)
 
 [node name="Prototipo_ManzanaAcaramelada" type="Control"]
 layout_mode = 3
@@ -25,3 +174,2559 @@ offset_bottom = 8.0
 
 [node name="Sprite2D" type="Sprite2D" parent="CenterScreen"]
 position = Vector2(278, -547)
+
+[node name="Instancia1" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="Instancia1"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("1_r36tp")
+
+[node name="pivot" type="Node2D" parent="Instancia1/Control"]
+position = Vector2(0, -2000)
+
+[node name="palo" type="Sprite2D" parent="Instancia1/Control/pivot"]
+scale = Vector2(1, 0.825)
+texture = ExtResource("3_ni1sf")
+
+[node name="baldeManzana" type="Sprite2D" parent="Instancia1/Control"]
+position = Vector2(0, -360)
+scale = Vector2(1.34444, 1.33333)
+texture = ExtResource("4_ugcc5")
+
+[node name="Button" type="Button" parent="Instancia1/Control"]
+layout_mode = 0
+offset_left = -186.0
+offset_top = -423.0
+offset_right = 197.0
+offset_bottom = 8.0
+theme_override_styles/focus = ExtResource("4_0ejvw")
+flat = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Instancia1/Control"]
+libraries = {
+"": SubResource("AnimationLibrary_aalvt")
+}
+script = ExtResource("5_p62ov")
+animation = "Prick_Apple"
+
+[node name="Instancia2" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="center" type="Control" parent="Instancia2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="initPosition" type="Node2D" parent="Instancia2/center"]
+position = Vector2(76, -294)
+
+[node name="finalPosition" type="Node2D" parent="Instancia2/center"]
+position = Vector2(256, -516)
+
+[node name="Sprite2D" type="Sprite2D" parent="Instancia2/center/finalPosition"]
+visible = false
+scale = Vector2(0.068, 0.068)
+texture = ExtResource("7_5chm1")
+
+[node name="SauceController" type="Node2D" parent="Instancia2/center"]
+visible = false
+position = Vector2(-3, -337)
+script = ExtResource("8_clycu")
+speed = 120.0
+GlassSpeed = 150.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Instancia2/center/SauceController"]
+z_index = 1
+position = Vector2(257, -180)
+rotation = -2.21133
+texture = ExtResource("8_7mvru")
+
+[node name="Button" type="Button" parent="Instancia2/center/SauceController"]
+offset_left = -86.0
+offset_top = -239.0
+offset_right = 222.0
+offset_bottom = -11.0
+flat = true
+
+[node name="GlassMask2" type="Sprite2D" parent="Instancia2/center/SauceController"]
+clip_children = 2
+z_index = 1
+position = Vector2(-6, 794)
+rotation = -3.14159
+scale = Vector2(3, 3)
+texture = ExtResource("3_ni1sf")
+
+[node name="GlassMask" type="Sprite2D" parent="Instancia2/center/SauceController"]
+clip_children = 2
+z_index = 1
+position = Vector2(-2, 660)
+scale = Vector2(1.175, 1.175)
+texture = ExtResource("10_p2og1")
+
+[node name="Glass" type="Sprite2D" parent="Instancia2/center/SauceController/GlassMask"]
+material = ExtResource("11_adxku")
+position = Vector2(47.0083, -1297.95)
+rotation = 1.57079
+scale = Vector2(12.022, 11.1192)
+texture = ExtResource("12_u5vdb")
+script = ExtResource("13_sithq")
+
+[node name="GlassMask2" type="Sprite2D" parent="Instancia2/center/SauceController/GlassMask"]
+material = SubResource("ShaderMaterial_xd1gm")
+position = Vector2(-4.27356, 4.27368)
+rotation = 3.13664
+scale = Vector2(0.440388, 0.433911)
+texture = ExtResource("7_5chm1")
+
+[node name="ObjectContoller" parent="Instancia2" node_paths=PackedStringArray("finalPosition") instance=ExtResource("16_5j8ro")]
+layout_mode = 1
+finalPosition = NodePath("../center/finalPosition")
+
+[node name="Instancia3" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="center" type="Control" parent="Instancia3"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="initPosition" type="Node2D" parent="Instancia3/center"]
+position = Vector2(76, -294)
+
+[node name="finalPosition" type="Node2D" parent="Instancia3/center"]
+position = Vector2(256, -516)
+
+[node name="ObjectContoller" parent="Instancia3" instance=ExtResource("16_5j8ro")]
+visible = false
+layout_mode = 1
+
+[node name="pote" type="Node2D" parent="Instancia3"]
+position = Vector2(351, 634)
+
+[node name="Polygon2D" type="Polygon2D" parent="Instancia3/pote"]
+position = Vector2(-353, -633)
+color = Color(0.572549, 0.572549, 0.572549, 1)
+polygon = PackedVector2Array(-6, 3, 718, 3, 716, 1282, -8, 1285)
+
+[node name="Sprite2D" type="Sprite2D" parent="Instancia3/pote"]
+self_modulate = Color(0.470588, 0.470588, 0.470588, 1)
+position = Vector2(5, -11)
+scale = Vector2(0.722, 0.722)
+texture = ExtResource("7_5chm1")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Instancia3/pote"]
+self_modulate = Color(0.384314, 0.384314, 0.384314, 1)
+position = Vector2(5, -11)
+scale = Vector2(0.658, 0.658)
+texture = ExtResource("7_5chm1")
+
+[node name="Area2D" type="Area2D" parent="Instancia3/pote"]
+visible = false
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Instancia3/pote/Area2D"]
+polygon = PackedVector2Array(-308, 97, -231, 218, -104, 301, 46, 319, 179, 268, 286, 166, 332, 23, 313, -132, 235, -248, 113, -320, -22, -338, -162, -293, -263, -204, -318, -77, -312, 80, -351, 80, -348, -419, 363, -419, 363, 404, -353, 402, -352, 99)
+
+[node name="CheckAllComplete" type="Node2D" parent="Instancia3/pote"]
+script = ExtResource("17_fx3gq")
+
+[node name="AreaPegote1" parent="Instancia3/pote/CheckAllComplete" node_paths=PackedStringArray("AnimInApple") instance=ExtResource("17_ne3f2")]
+rotation = 3.13275
+AnimInApple = NodePath("../../../manzana/PegotesManzana1")
+
+[node name="AreaPegote2" parent="Instancia3/pote/CheckAllComplete" node_paths=PackedStringArray("AnimInApple") instance=ExtResource("17_ne3f2")]
+rotation = 1.52227
+AnimInApple = NodePath("../../../manzana/PegotesManzana2")
+
+[node name="AreaPegote3" parent="Instancia3/pote/CheckAllComplete" node_paths=PackedStringArray("AnimInApple") instance=ExtResource("17_ne3f2")]
+AnimInApple = NodePath("../../../manzana/PegotesManzana3")
+
+[node name="AreaPegote4" parent="Instancia3/pote/CheckAllComplete" node_paths=PackedStringArray("AnimInApple") instance=ExtResource("17_ne3f2")]
+rotation = -1.55934
+AnimInApple = NodePath("../../../manzana/PegotesManzana4")
+
+[node name="manzana" type="Sprite2D" parent="Instancia3"]
+position = Vector2(249, 416)
+rotation = 0.649439
+scale = Vector2(2.2971, 2.2971)
+texture = ExtResource("3_ni1sf")
+offset = Vector2(100.29, 0)
+script = ExtResource("19_5trw2")
+
+[node name="DragObject" parent="Instancia3/manzana" groups=["apple"] instance=ExtResource("18_vlyuk")]
+position = Vector2(97, 0)
+notCenterObject = true
+LimitCircleArea = true
+MaxRadiusClamp = 180.0
+
+[node name="CollisionShape2D" parent="Instancia3/manzana/DragObject" index="0"]
+position = Vector2(-4, 49)
+shape = SubResource("CircleShape2D_vknpb")
+
+[node name="Button" parent="Instancia3/manzana/DragObject" index="1"]
+offset_left = -76.0
+offset_top = -26.0
+offset_right = 76.0
+offset_bottom = 127.0
+
+[node name="PegotesManzana1" parent="Instancia3/manzana" instance=ExtResource("20_y35df")]
+position = Vector2(94.6429, 44.0168)
+rotation = 2.35612
+
+[node name="PegotesManzana2" parent="Instancia3/manzana" instance=ExtResource("20_y35df")]
+position = Vector2(88.9733, 42.3091)
+rotation = 0.873049
+
+[node name="PegotesManzana3" parent="Instancia3/manzana" instance=ExtResource("20_y35df")]
+
+[node name="PegotesManzana4" parent="Instancia3/manzana" instance=ExtResource("20_y35df")]
+position = Vector2(99.9081, 50.9509)
+rotation = -2.35213
+
+[node name="CirculoPegotes" type="Sprite2D" parent="Instancia3"]
+position = Vector2(363.5, 633.5)
+scale = Vector2(1.05556, 1.04354)
+texture = ExtResource("21_a01n5")
+
+[node name="ejesCordenados" type="Node2D" parent="Instancia3"]
+visible = false
+position = Vector2(351, 636)
+rotation = 0.630805
+
+[node name="Line2D" type="Line2D" parent="Instancia3/ejesCordenados"]
+points = PackedVector2Array(-1, -455, -13, 490)
+default_color = Color(0, 0.78125, 0.78125, 1)
+
+[node name="Line2D2" type="Line2D" parent="Instancia3/ejesCordenados"]
+points = PackedVector2Array(-488, 0, 465, -3)
+default_color = Color(0, 0.784314, 0.784314, 1)
+
+[node name="Instancia4" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="manzana" type="Node2D" parent="Instancia4"]
+position = Vector2(331, 1095)
+rotation = -3.14159
+
+[node name="Sprite2D" type="Sprite2D" parent="Instancia4/manzana"]
+scale = Vector2(2.5874, 2.5874)
+texture = ExtResource("3_ni1sf")
+
+[node name="spots" type="Node2D" parent="Instancia4/manzana"]
+script = ExtResource("17_fx3gq")
+PercentComplete = 0.75
+
+[node name="Area2D" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-11.9994, 133)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D281" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-12.9998, 82)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D281" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D282" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-32.9998, 93.0001)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D282" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D283" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(12.0001, 60)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D283" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D284" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(1.00017, 69)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D284" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D285" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-14.9998, 67)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D285" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D286" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-42.9998, 81.0001)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D286" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D268" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-49.9996, 153)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D268" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D269" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-64.9996, 150)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D269" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D270" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-22.9997, 111)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D270" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D271" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-16.9997, 98)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D271" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D272" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(13.0003, 96)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D272" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D273" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(24.0002, 87)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D273" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D274" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(48.0002, 82.9999)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D274" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D275" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(81.0002, 75.9998)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D275" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D276" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(67.0002, 71.9999)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D276" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D277" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(55.0002, 71.9998)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D277" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D278" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(35.0002, 75.9999)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D278" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D279" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(28.0002, 62.9999)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D279" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D280" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(3.00023, 84.0001)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D280" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D115" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(18.001, 232)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D115" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D116" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(50.001, 221)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D116" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D117" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(20.0013, 287)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D117" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D118" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(55.0013, 288)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D118" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D145" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(55.0013, 288)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D145" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D151" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(40, -13.0001)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D151" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D152" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(66.9999, -16.0002)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D152" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D153" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(29.0011, 246)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D153" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D154" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(51.0012, 261)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D154" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D155" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(57.0008, 184)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D155" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D156" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(138.001, 230.999)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D156" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D157" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-0.998917, 240)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D157" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D158" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(25.0008, 196)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D158" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D159" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(11.0009, 209)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D159" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D160" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-6.9991, 205)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D160" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D161" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-19.999, 216)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D161" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D162" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-15.9992, 183)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D162" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D163" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-39.999, 230)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D163" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D164" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-54.999, 226)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D164" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D165" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-70.9989, 241)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D165" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D166" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-85.9989, 235)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D166" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D167" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-89.999, 217)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D167" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D168" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-75.9991, 204)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D168" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D169" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-82.9992, 189)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D169" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D170" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-100.999, 185)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D170" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D171" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-112.999, 196)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D171" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D172" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-130.999, 194.001)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D172" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D173" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-143.999, 206.001)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D173" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D174" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-138.999, 222.001)
+rotation = -0.153662
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D174" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D175" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-120.999, 247.001)
+rotation = -0.153662
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D175" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D176" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-99.9989, 247)
+rotation = -0.153662
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D176" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D177" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-93.9988, 266)
+rotation = -0.153662
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D177" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D178" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-17.9988, 283)
+rotation = -0.153662
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D178" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D179" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-0.998856, 261)
+rotation = -0.153662
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D179" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D180" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(17.0012, 269)
+rotation = -0.153662
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D180" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D181" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(38.0013, 290)
+rotation = -0.153662
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D181" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D182" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(72.0013, 281)
+rotation = -0.153662
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D182" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D183" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(87.0012, 264)
+rotation = -0.153662
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D183" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D184" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(103.001, 271)
+rotation = -0.153662
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D184" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D185" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(117.001, 257)
+rotation = -0.153662
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D185" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D186" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(63.0011, 249)
+rotation = -0.153662
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D186" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D187" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(60.0011, 233)
+rotation = -0.153662
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D187" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D188" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(110.001, 243)
+rotation = -0.153662
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D188" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D189" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(36.001, 232)
+rotation = -0.153662
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D189" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D190" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(69.001, 218)
+rotation = -0.153662
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D190" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D191" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(87.001, 220)
+rotation = -0.153662
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D191" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D192" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(123.001, 214.999)
+rotation = -0.153662
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D192" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D193" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(150.001, 201.999)
+rotation = -0.153662
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D193" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D194" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(140.001, 196.999)
+rotation = -0.153662
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D194" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D195" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(105.001, 194)
+rotation = -0.153662
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D195" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D196" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(83.0008, 191)
+rotation = -0.153662
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D196" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D197" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(46.0009, 200)
+rotation = -0.153662
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D197" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D198" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(16.0008, 177)
+rotation = -0.153662
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D198" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D199" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-43.9991, 197)
+rotation = -0.153662
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D199" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D200" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-60.9992, 177)
+rotation = -0.153662
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D200" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D201" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-75.9992, 174)
+rotation = -0.153662
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D201" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D202" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-76.9993, 157)
+rotation = -0.153662
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D202" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D203" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-96.9993, 156)
+rotation = -0.153662
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D203" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D204" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-110.999, 169)
+rotation = -0.153662
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D204" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D205" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-126.999, 163.001)
+rotation = -0.153662
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D205" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D206" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-157.999, 176.001)
+rotation = -0.153662
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D206" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D207" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-150.999, 233.001)
+rotation = -0.153662
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D207" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D208" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-169.999, 188.001)
+rotation = -0.153662
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D208" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D209" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-186.999, 164.001)
+rotation = -0.153662
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D209" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D210" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-141.999, 143.001)
+rotation = -0.153662
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D210" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D211" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-128.999, 146.001)
+rotation = -0.153662
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D211" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D212" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-38.9993, 164)
+rotation = -0.153662
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D212" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D213" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(116.001, 180)
+rotation = -0.153662
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D213" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D214" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(135.001, 180.999)
+rotation = -0.153662
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D214" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D215" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(160.001, 172.999)
+rotation = -0.153662
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D215" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D216" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(146.001, 167.999)
+rotation = -0.153662
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D216" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D217" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(126.001, 147.999)
+rotation = -0.153662
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D217" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D218" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(91.0007, 159)
+rotation = -0.153662
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D218" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D219" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(68.0007, 162)
+rotation = -0.153662
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D219" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D220" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(59.0007, 150)
+rotation = -0.153662
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D220" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D221" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(27.0007, 147)
+rotation = -0.153662
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D221" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D222" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-7.99936, 151)
+rotation = -0.153662
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D222" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D223" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-25.9993, 147)
+rotation = -0.153662
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D223" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D224" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-100.999, 137)
+rotation = -0.153662
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D224" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D225" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-113.999, 127)
+rotation = -0.153662
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D225" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D226" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-146.999, 124.001)
+rotation = -0.153662
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D226" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D227" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-164.999, 120.001)
+rotation = -0.153662
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D227" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D228" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-47.9995, 123)
+rotation = -0.153662
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D228" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D229" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-26.9995, 125)
+rotation = -0.153662
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D229" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D230" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-8.99948, 115)
+rotation = -0.153662
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D230" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D231" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(6.00061, 138)
+rotation = -0.153662
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D231" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D232" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(36.0006, 129)
+rotation = -0.153662
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D232" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D233" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(57.0006, 134)
+rotation = -0.153662
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D233" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D234" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(74.0006, 129)
+rotation = -0.153662
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D234" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D235" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(89.0006, 139)
+rotation = -0.153662
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D235" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D236" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(100.001, 122)
+rotation = -0.153662
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D236" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D237" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(121.001, 128.999)
+rotation = -0.153662
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D237" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D238" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(155.001, 123.999)
+rotation = -0.153662
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D238" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D239" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(163, 104.999)
+rotation = -0.153662
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D239" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D240" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(143.001, 112.999)
+rotation = -0.153662
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D240" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D241" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(127.001, 115.999)
+rotation = -0.153662
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D241" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D242" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(128, 97.9995)
+rotation = -0.153662
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D242" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D243" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(97.0005, 106)
+rotation = -0.153662
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D243" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D244" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(39.0005, 112)
+rotation = -0.153662
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D244" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D245" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(22.0005, 107)
+rotation = -0.153662
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D245" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D246" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(6.0005, 114)
+rotation = -0.153662
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D246" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D247" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-53.9996, 105)
+rotation = -0.153662
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D247" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D248" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-71.9995, 101)
+rotation = -0.153662
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D248" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D249" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-80.9995, 124)
+rotation = -0.153662
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D249" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D250" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-105, 107)
+rotation = -0.153662
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D250" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D251" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-121.999, 113.001)
+rotation = -0.153662
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D251" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D252" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-138, 110.001)
+rotation = -0.153662
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D252" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D253" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-140, 93.0006)
+rotation = -0.153662
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D253" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D254" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-170, 78.0008)
+rotation = -0.153662
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D254" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D255" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-160, 64.0007)
+rotation = -0.153662
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D255" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D256" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-140, 66.0005)
+rotation = -0.153662
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D256" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D257" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-130, 82.0007)
+rotation = -0.153662
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D257" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D258" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(169, 71.9992)
+rotation = -0.153662
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D258" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D259" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(154, 80.9993)
+rotation = -0.153662
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D259" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D260" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(136, 82.9994)
+rotation = -0.153662
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D260" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D261" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(118, 82.9995)
+rotation = -0.153662
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D261" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D262" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(105, 92.9995)
+rotation = -0.153662
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D262" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D263" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(87.0004, 90.9996)
+rotation = -0.153662
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D263" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D264" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(76.0004, 99.9997)
+rotation = -0.153662
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D264" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D265" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(54.0005, 99.9998)
+rotation = -0.153662
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D265" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D146" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-107.999, 213)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D146" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D147" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-122.999, 230.001)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D147" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D148" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-140.999, 177.001)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D148" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D149" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-63.9994, 136)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D149" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D150" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(18, -7.00012)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D150" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D134" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-56.9987, 282)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D134" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D135" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-68.9989, 258)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D135" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D136" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-171.999, 204.001)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D136" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D137" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-201.999, 122.001)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D137" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D138" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-204, 97.0009)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D138" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D139" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-198, 71.0009)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D139" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D140" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-193, 46.0008)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D140" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D141" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-168, 98.0008)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D141" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D142" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-180.999, 138.001)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D142" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D143" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-103, 81.0005)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D143" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D144" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-103, 81.0005)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D144" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D119" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(88.0012, 279)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D119" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D120" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(130.001, 245.999)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D120" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D121" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(81.0011, 250)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D121" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D122" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(95.001, 233)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D122" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D123" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(106.001, 211)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D123" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D124" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(111.001, 156)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D124" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D125" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(142.001, 147.999)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D125" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D126" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(165.001, 137.999)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D126" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D127" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(52.0007, 166)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D127" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D128" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(28.0007, 164)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D128" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D129" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-1.99924, 171)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D129" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D130" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-40.9992, 182)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D130" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D131" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-58.9991, 210)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D131" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D132" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-28.9988, 267)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D132" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D133" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-34.9989, 246)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D133" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D2" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(18.0005, 124)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D2" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D3" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(44.0006, 146)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D3" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D4" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(57.0005, 118)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D4" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D5" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-43.9994, 142)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D5" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D6" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(10.0007, 156)
+rotation = -0.785397
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D6" groups=["apple2"]]
+position = Vector2(0.707184, -0.70697)
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D7" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-20.9993, 165)
+rotation = -0.785397
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D7" groups=["apple2"]]
+position = Vector2(0.707184, -0.70697)
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D22" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(7.00079, 190)
+rotation = 0.915193
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D22" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D23" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(37.0008, 181)
+rotation = 0.915193
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D23" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D24" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(63.0009, 203)
+rotation = 0.915193
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D24" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D25" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(76.0007, 175)
+rotation = 0.915193
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D25" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D26" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-24.9991, 199)
+rotation = 0.915193
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D26" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D27" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(29.0009, 213)
+rotation = 0.129796
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D27" groups=["apple2"]]
+position = Vector2(0.707184, -0.70697)
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D28" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-1.99905, 222)
+rotation = 0.129796
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D28" groups=["apple2"]]
+position = Vector2(0.707184, -0.70697)
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D29" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(46.001, 243)
+rotation = 0.915193
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D29" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D30" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(76.001, 234)
+rotation = 0.915193
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D30" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D31" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(102.001, 256)
+rotation = 0.915193
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D31" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D32" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(115.001, 228)
+rotation = 0.915193
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D32" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D33" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(14.0011, 252)
+rotation = 0.915193
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D33" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D34" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(68.0012, 266)
+rotation = 0.129796
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D34" groups=["apple2"]]
+position = Vector2(0.707184, -0.70697)
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D35" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(33.0012, 262)
+rotation = 0.129796
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D35" groups=["apple2"]]
+position = Vector2(0.707184, -0.70697)
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D266" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(32.0012, 277)
+rotation = 0.129796
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D266" groups=["apple2"]]
+position = Vector2(0.707184, -0.70697)
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D267" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(50.0012, 275)
+rotation = 0.129796
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D267" groups=["apple2"]]
+position = Vector2(0.707184, -0.70697)
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D36" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-144, 48.0007)
+rotation = 0.915193
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D36" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D37" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-114, 39.0006)
+rotation = 0.915193
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D37" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D38" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-87.9998, 61.0004)
+rotation = 0.915193
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D38" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D39" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-74.9999, 33.0003)
+rotation = 0.915193
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D39" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D40" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-176, 57.0008)
+rotation = 0.915193
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D40" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D41" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-122, 71.0006)
+rotation = 0.129796
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D41" groups=["apple2"]]
+position = Vector2(0.707184, -0.70697)
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D42" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-153, 80.0007)
+rotation = 0.129796
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D42" groups=["apple2"]]
+position = Vector2(0.707275, -0.70697)
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D8" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-48.9998, 93.0001)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D8" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D287" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-63.9998, 88.0001)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D287" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D288" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-56.9998, 75.0001)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D288" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D289" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-78.9998, 84.0002)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D289" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D290" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-71.9998, 71.0002)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D290" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D291" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-89.9998, 74.0002)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D291" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D292" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-83.9997, 109)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D292" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D293" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-63.9993, 271)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D293" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D9" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-27.9997, 77.0001)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D9" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D10" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-1.99957, 99)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D10" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D11" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(16.0002, 75)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D11" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D12" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-89.9996, 95.0004)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D12" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D13" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-35.9995, 109)
+rotation = -0.785397
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D13" groups=["apple2"]]
+position = Vector2(0.707184, -0.70697)
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D14" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-66.9995, 118)
+rotation = -0.785397
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D14" groups=["apple2"]]
+position = Vector2(0.707184, -0.70697)
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D15" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(76.0002, 54.9998)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D15" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D16" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(106, 45.9996)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D16" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D17" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(132, 67.9995)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D17" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D18" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(35.0004, 95.9998)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D18" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D19" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(44.0003, 63.9999)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D19" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D20" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(98.0003, 77.9997)
+rotation = -0.785397
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D20" groups=["apple2"]]
+position = Vector2(0.707184, -0.70697)
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D21" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(67.0004, 86.9998)
+rotation = -0.785397
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D21" groups=["apple2"]]
+position = Vector2(0.707184, -0.70697)
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D43" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(115, 106)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D43" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D44" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(145, 96.9995)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D44" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D83" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(131.001, 165.999)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D83" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D84" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(161.001, 156.999)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D84" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D85" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(170, 88.9993)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D85" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D91" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(157, 62.9993)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D91" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D92" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(136, 43.9994)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D92" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D93" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(32, 12.9999)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D93" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D94" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(62, 3.99976)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D94" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D95" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(88.0001, 25.9996)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D95" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D96" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(9.15527e-05, 22)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D96" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D97" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(54.0001, 35.9998)
+rotation = -0.785397
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D97" groups=["apple2"]]
+position = Vector2(0.707184, -0.70697)
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D98" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(23.0002, 44.9999)
+rotation = -0.785397
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D98" groups=["apple2"]]
+position = Vector2(0.707184, -0.70697)
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D99" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(113, 20.9994)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D99" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D100" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(92, 1.99951)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D100" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D109" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-58.9997, 55.0002)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D109" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D113" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-184, 88.0008)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D113" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D114" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-175, 31.0007)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D114" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D110" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-30.9998, 54.0001)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D110" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D111" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-5.9998, 48.9999)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D111" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D112" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-26.9999, 30)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D112" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D101" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-137, -3.99939)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D101" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D102" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-107, -12.9995)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D102" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D103" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-81, 9.00037)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D103" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D104" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-169, 5.00073)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D104" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D105" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-115, 19.0005)
+rotation = -0.785397
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D105" groups=["apple2"]]
+position = Vector2(0.707184, -0.70697)
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D106" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-146, 28.0006)
+rotation = -0.785397
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D106" groups=["apple2"]]
+position = Vector2(0.707184, -0.70697)
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D107" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-56, 4.00012)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D107" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D108" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-77.0001, -14.9998)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D108" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D86" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(90.0009, 206.999)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D86" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D87" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(99.0008, 175)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D87" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D88" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(153.001, 188.999)
+rotation = -0.785397
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D88" groups=["apple2"]]
+position = Vector2(0.707184, -0.70697)
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D89" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(122.001, 197.999)
+rotation = -0.785397
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D89" groups=["apple2"]]
+position = Vector2(0.707184, -0.70697)
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D90" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(142.001, 213.999)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D90" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D45" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(171.001, 118.999)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D45" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D46" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(74.0007, 147)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D46" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D47" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(83.0005, 115)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D47" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D48" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(137.001, 129)
+rotation = -0.785397
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D48" groups=["apple2"]]
+position = Vector2(0.707184, -0.70697)
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D49" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(106.001, 138)
+rotation = -0.785397
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D49" groups=["apple2"]]
+position = Vector2(0.707184, -0.70697)
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D50" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-152, 107.001)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D50" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D51" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-122, 98.0007)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D51" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D52" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-95.9995, 120.001)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D52" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D53" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-192.999, 148.001)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D53" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D54" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-183.999, 116.001)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D54" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D55" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-129.999, 130.001)
+rotation = -0.785397
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D55" groups=["apple2"]]
+position = Vector2(0.707184, -0.70697)
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D56" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-160.999, 139.001)
+rotation = -0.785397
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D56" groups=["apple2"]]
+position = Vector2(0.707184, -0.70697)
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D57" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-113.999, 150.001)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D57" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D58" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-83.9994, 141)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D58" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D59" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-57.9993, 163)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D59" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D60" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-154.999, 191.001)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D60" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D61" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-145.999, 159.001)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D61" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D62" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-91.9992, 173)
+rotation = -0.785397
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D62" groups=["apple2"]]
+position = Vector2(0.707184, -0.70697)
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D63" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-122.999, 182.001)
+rotation = -0.785397
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D63" groups=["apple2"]]
+position = Vector2(0.707184, -0.70697)
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D64" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-94.9991, 201.001)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D64" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D65" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-64.9991, 192)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D65" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D66" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-38.999, 214)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D66" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D67" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-135.999, 242.001)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D67" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D68" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-126.999, 210.001)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D68" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D69" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-72.999, 224)
+rotation = -0.785397
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D69" groups=["apple2"]]
+position = Vector2(0.707184, -0.70697)
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D70" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-103.999, 233)
+rotation = -0.785397
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D70" groups=["apple2"]]
+position = Vector2(0.707184, -0.70697)
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D71" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-19.999, 234)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D71" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D72" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-108.999, 257)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D72" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D73" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-53.9989, 244)
+rotation = -0.785397
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D73" groups=["apple2"]]
+position = Vector2(0.707184, -0.70697)
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D74" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-84.9988, 253)
+rotation = -0.785397
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D74" groups=["apple2"]]
+position = Vector2(0.707184, -0.70697)
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D75" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-14.9989, 256)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D75" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D76" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-153.999, 217.001)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D76" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D80" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-182.999, 180.001)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D80" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D82" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-169.999, 161.001)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D82" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D77" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-48.9988, 266)
+rotation = -0.785397
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D77" groups=["apple2"]]
+position = Vector2(0.707184, -0.70697)
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D78" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-79.9987, 275)
+rotation = -0.785397
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D78" groups=["apple2"]]
+position = Vector2(0.707184, -0.70697)
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D79" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-0.998779, 278)
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D79" groups=["apple2"]]
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Area2D81" type="Area2D" parent="Instancia4/manzana/spots" groups=["apple2"]]
+position = Vector2(-34.9987, 288)
+rotation = -0.785397
+script = ExtResource("23_t8utv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia4/manzana/spots/Area2D81" groups=["apple2"]]
+position = Vector2(0.707184, -0.70697)
+shape = SubResource("CircleShape2D_racr1")
+
+[node name="Node2D" type="Node2D" parent="Instancia4"]
+position = Vector2(0, 198)
+
+[node name="frasco" type="Node2D" parent="Instancia4"]
+position = Vector2(664, -112)
+rotation = 0.685708
+script = ExtResource("23_ee7a8")
+DistantThreshold = 10.0
+
+[node name="Polygon2D" type="Polygon2D" parent="Instancia4/frasco"]
+position = Vector2(92, 107)
+polygon = PackedVector2Array(-92, -108, -92, 198, 104, 196, 103, -107)
+
+[node name="DragObject" parent="Instancia4/frasco" instance=ExtResource("18_vlyuk")]
+position = Vector2(92, 107)
+notCenterObject = true
+LimitRectangleArea = true
+BoundsRectangleClamp = Vector2(500, 400)
+
+[node name="CollisionShape2D" parent="Instancia4/frasco/DragObject" index="0"]
+position = Vector2(0, 44.5)
+shape = SubResource("RectangleShape2D_c2mvv")
+
+[node name="Button" parent="Instancia4/frasco/DragObject" index="1"]
+offset_left = -96.0
+offset_top = -110.0
+offset_right = 102.0
+offset_bottom = 195.0
+
+[node name="Timer" type="Timer" parent="Instancia4/frasco"]
+
+[node name="SpawnArea" type="Node2D" parent="Instancia4/frasco" node_paths=PackedStringArray("Parent")]
+position = Vector2(8.78877, 288.686)
+rotation = -0.0988413
+script = ExtResource("24_uor64")
+Parent = NodePath("../../Node2D")
+toInstance = ExtResource("25_o26nb")
+
+[node name="SpawnPoint1" type="Marker2D" parent="Instancia4/frasco/SpawnArea"]
+position = Vector2(1.40714, 0.140915)
+
+[node name="SpawnPoint2" type="Marker2D" parent="Instancia4/frasco/SpawnArea"]
+position = Vector2(140.79, -7.94748)
+
+[connection signal="button_down" from="Instancia1/Control/Button" to="Instancia1/Control/AnimationPlayer" method="Play"]
+[connection signal="ObjectInPosition" from="Instancia2/ObjectContoller" to="Instancia2/center/SauceController" method="ActiveLevel"]
+[connection signal="ObjectInPosition" from="Instancia3/ObjectContoller" to="Instancia2/center/SauceController" method="ActiveLevel"]
+
+[editable path="Instancia3/manzana/DragObject"]
+[editable path="Instancia4/frasco/DragObject"]
