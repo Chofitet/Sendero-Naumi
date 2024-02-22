@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=3 uid="uid://m3gbb64llbqn"]
+[gd_scene load_steps=50 format=3 uid="uid://m3gbb64llbqn"]
 
 [ext_resource type="Script" path="res://_Scripts/Minigame_Save_Controller.gd" id="1_6uc2r"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/StateMachineMinigames.gd" id="2_4ogka"]
@@ -13,7 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://c4tlq4bsahyse" path="res://Sprites/ZonaMegafauna/esqueleto2.png" id="11_ihmrh"]
 [ext_resource type="Texture2D" uid="uid://cgyvid0asdj5p" path="res://Sprites/ZonaMegafauna/esqueleto4.png" id="12_y8p0c"]
 [ext_resource type="Texture2D" uid="uid://cxijkdnbjec6k" path="res://Sprites/ZonaAstronomia/tierra frente - excavacion.png" id="14_0h6vo"]
-[ext_resource type="Texture2D" uid="uid://xvpc3u2jfsaf" path="res://Sprites/ZonaMegafauna/megaterio fosil 2 - excavacion.png" id="14_0qvux"]
+[ext_resource type="Texture2D" uid="uid://bxqyeawcu8e62" path="res://Sprites/ZonaMegafauna/megaterio fosil 2 - excavacion.png" id="14_0qvux"]
 [ext_resource type="Script" path="res://_Scripts/MinG_Excavar/TopoController.gd" id="14_2g78w"]
 [ext_resource type="Texture2D" uid="uid://bdmeomusxj6va" path="res://Sprites/ZonaAstronomia/hueco - excavacion.png" id="15_sh0vx"]
 [ext_resource type="PackedScene" uid="uid://3rvhy3nlrjxy" path="res://Scenes/Zona_Megafauna/mole_particles.tscn" id="16_olaoq"]
@@ -96,10 +96,6 @@ region = Rect2(400, 0, 200, 200)
 atlas = ExtResource("19_pbc8n")
 region = Rect2(600, 0, 200, 200)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_t0vts"]
-atlas = ExtResource("19_pbc8n")
-region = Rect2(800, 0, 200, 200)
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_j6tlh"]
 animations = [{
 "frames": [{
@@ -125,9 +121,6 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_oxi41")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_t0vts")
 }],
 "loop": true,
 "name": &"move",
@@ -713,16 +706,14 @@ script = ExtResource("10_s5h5i")
 shape = SubResource("CircleShape2D_q2guk")
 
 [node name="Sprite2D" type="Sprite2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/TierraFondo"]
-position = Vector2(643, 1006)
+position = Vector2(639, 962)
 scale = Vector2(0.57963, 0.57963)
 texture = ExtResource("14_0qvux")
-flip_h = true
 
 [node name="CanvasGroup" type="CanvasGroup" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center"]
 position = Vector2(-360, -640)
 
 [node name="Tierra" type="TextureRect" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/CanvasGroup"]
-visible = false
 offset_left = -442.0
 offset_top = -260.0
 offset_right = 1193.0
@@ -743,13 +734,13 @@ sharp_limit = 4.795
 round_precision = 6
 
 [node name="TopoController" type="CharacterBody2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/CanvasGroup" node_paths=PackedStringArray("line")]
-position = Vector2(109, 1204)
+position = Vector2(148, 107)
 motion_mode = 1
 wall_min_slide_angle = 0.488692
 script = ExtResource("14_2g78w")
 Color1 = Color(0.316406, 0.195313, 0.15625, 1)
 Color2 = Color(0.65625, 0.574219, 0.429688, 1)
-speed = 200.0
+speed = 230.0
 line = NodePath("../Line2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/CanvasGroup/TopoController"]
@@ -786,166 +777,60 @@ shape = SubResource("CircleShape2D_xfnj2")
 [node name="Node2D" type="Node2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center"]
 position = Vector2(-2014, -1045)
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Node2D"]
-position = Vector2(601, 1334)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Node2D/StaticBody2D"]
-shape = SubResource("CircleShape2D_w3lcj")
-
-[node name="Sprite2D" type="Sprite2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Node2D/StaticBody2D"]
-self_modulate = Color(0.32549, 0.243137, 0.235294, 1)
-scale = Vector2(0.346154, 0.346154)
-texture = ExtResource("17_ljngh")
-
-[node name="StaticBody2D2" type="StaticBody2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Node2D"]
-position = Vector2(473, 1427)
-rotation = -1.83508
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Node2D/StaticBody2D2"]
-shape = SubResource("CircleShape2D_w3lcj")
-
-[node name="Sprite2D" type="Sprite2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Node2D/StaticBody2D2"]
-self_modulate = Color(0.32549, 0.243137, 0.235294, 1)
-scale = Vector2(0.346154, 0.346154)
-texture = ExtResource("17_ljngh")
-
-[node name="StaticBody2D3" type="StaticBody2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Node2D"]
-position = Vector2(511, 969)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Node2D/StaticBody2D3"]
-shape = SubResource("CircleShape2D_w3lcj")
-
-[node name="Sprite2D" type="Sprite2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Node2D/StaticBody2D3"]
-self_modulate = Color(0.32549, 0.243137, 0.235294, 1)
-scale = Vector2(0.346154, 0.346154)
-texture = ExtResource("17_ljngh")
-
-[node name="StaticBody2D4" type="StaticBody2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Node2D"]
-position = Vector2(399, 1072)
-rotation = -2.73629
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Node2D/StaticBody2D4"]
-shape = SubResource("CircleShape2D_w3lcj")
-
-[node name="Sprite2D" type="Sprite2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Node2D/StaticBody2D4"]
-self_modulate = Color(0.32549, 0.243137, 0.235294, 1)
-scale = Vector2(0.346154, 0.346154)
-texture = ExtResource("17_ljngh")
-
-[node name="StaticBody2D5" type="StaticBody2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Node2D"]
-position = Vector2(929, 1142)
-rotation = -0.841954
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Node2D/StaticBody2D5"]
-shape = SubResource("CircleShape2D_w3lcj")
-
-[node name="Sprite2D" type="Sprite2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Node2D/StaticBody2D5"]
-self_modulate = Color(0.32549, 0.243137, 0.235294, 1)
-scale = Vector2(0.346154, 0.346154)
-texture = ExtResource("17_ljngh")
-
-[node name="StaticBody2D6" type="StaticBody2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Node2D"]
-position = Vector2(781, 621)
-rotation = -1.48458
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Node2D/StaticBody2D6"]
-shape = SubResource("CircleShape2D_w3lcj")
-
-[node name="Sprite2D" type="Sprite2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Node2D/StaticBody2D6"]
-self_modulate = Color(0.32549, 0.243137, 0.235294, 1)
-scale = Vector2(0.346154, 0.346154)
-texture = ExtResource("17_ljngh")
-
-[node name="StaticBody2D11" type="StaticBody2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Node2D"]
-position = Vector2(581.026, 515.83)
-rotation = -3.04293
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Node2D/StaticBody2D11"]
-shape = SubResource("CircleShape2D_w3lcj")
-
-[node name="Sprite2D" type="Sprite2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Node2D/StaticBody2D11"]
-self_modulate = Color(0.32549, 0.243137, 0.235294, 1)
-scale = Vector2(0.346154, 0.346154)
-texture = ExtResource("17_ljngh")
-
-[node name="StaticBody2D12" type="StaticBody2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Node2D"]
-position = Vector2(463.302, 653.916)
-rotation = -4.67757
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Node2D/StaticBody2D12"]
-shape = SubResource("CircleShape2D_w3lcj")
-
-[node name="Sprite2D" type="Sprite2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Node2D/StaticBody2D12"]
-self_modulate = Color(0.32549, 0.243137, 0.235294, 1)
-scale = Vector2(0.346154, 0.346154)
-texture = ExtResource("17_ljngh")
-
-[node name="StaticBody2D7" type="StaticBody2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Node2D"]
-position = Vector2(936, 1473)
-rotation = -0.971039
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Node2D/StaticBody2D7"]
-shape = SubResource("CircleShape2D_w3lcj")
-
-[node name="Sprite2D" type="Sprite2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Node2D/StaticBody2D7"]
-self_modulate = Color(0.32549, 0.243137, 0.235294, 1)
-scale = Vector2(0.346154, 0.346154)
-texture = ExtResource("17_ljngh")
-
-[node name="StaticBody2D8" type="StaticBody2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Node2D"]
-position = Vector2(883, 1594)
-rotation = 2.96421
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Node2D/StaticBody2D8"]
-shape = SubResource("CircleShape2D_w3lcj")
-
-[node name="Sprite2D" type="Sprite2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Node2D/StaticBody2D8"]
-self_modulate = Color(0.32549, 0.243137, 0.235294, 1)
-scale = Vector2(0.346154, 0.346154)
-texture = ExtResource("17_ljngh")
-
-[node name="StaticBody2D9" type="StaticBody2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Node2D"]
-position = Vector2(947, 844)
-rotation = 1.60374
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Node2D/StaticBody2D9"]
-shape = SubResource("CircleShape2D_w3lcj")
-
-[node name="Sprite2D" type="Sprite2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Node2D/StaticBody2D9"]
-self_modulate = Color(0.32549, 0.243137, 0.235294, 1)
-scale = Vector2(0.346154, 0.346154)
-texture = ExtResource("17_ljngh")
-
-[node name="StaticBody2D10" type="StaticBody2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Node2D"]
-position = Vector2(983, 694)
-rotation = 1.60374
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Node2D/StaticBody2D10"]
-shape = SubResource("CircleShape2D_w3lcj")
-
-[node name="Sprite2D" type="Sprite2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Node2D/StaticBody2D10"]
-self_modulate = Color(0.32549, 0.243137, 0.235294, 1)
-scale = Vector2(0.346154, 0.346154)
-texture = ExtResource("17_ljngh")
-
 [node name="StaticBody2D" type="StaticBody2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center"]
-position = Vector2(-211, 279)
-rotation = -0.924114
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/StaticBody2D"]
-shape = SubResource("CircleShape2D_w3lcj")
+visible = false
+position = Vector2(-56, 167)
+rotation = -0.565487
+scale = Vector2(0.405, 0.405)
+metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/StaticBody2D"]
 self_modulate = Color(0.32549, 0.243137, 0.235294, 1)
 scale = Vector2(0.346154, 0.346154)
 texture = ExtResource("17_ljngh")
 
-[node name="StaticBody2D2" type="StaticBody2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center"]
-position = Vector2(43, 353)
-rotation = 0.939511
+[node name="StaticBody2D5" type="StaticBody2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center"]
+visible = false
+position = Vector2(-87, 216)
+rotation = 2.06822
+scale = Vector2(0.58, 0.58)
+metadata/_edit_group_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/StaticBody2D2"]
-shape = SubResource("CircleShape2D_w3lcj")
+[node name="Sprite2D" type="Sprite2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/StaticBody2D5"]
+self_modulate = Color(0.32549, 0.243137, 0.235294, 1)
+scale = Vector2(0.346154, 0.346154)
+texture = ExtResource("17_ljngh")
+
+[node name="StaticBody2D16" type="StaticBody2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center"]
+visible = false
+position = Vector2(-240, 234)
+rotation = -2.71922
+scale = Vector2(0.51, 0.51)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/StaticBody2D16"]
+self_modulate = Color(0.32549, 0.243137, 0.235294, 1)
+scale = Vector2(0.346154, 0.346154)
+texture = ExtResource("17_ljngh")
+
+[node name="StaticBody2D19" type="StaticBody2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center"]
+visible = false
+position = Vector2(262, -207)
+rotation = -0.565487
+scale = Vector2(0.405, 0.405)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/StaticBody2D19"]
+self_modulate = Color(0.32549, 0.243137, 0.235294, 1)
+scale = Vector2(0.346154, 0.346154)
+texture = ExtResource("17_ljngh")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center"]
+visible = false
+position = Vector2(209, 496)
+rotation = 0.939511
+scale = Vector2(3.485, 0.7)
+metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/StaticBody2D2"]
 self_modulate = Color(0.32549, 0.243137, 0.235294, 1)
@@ -953,12 +838,11 @@ scale = Vector2(0.346154, 0.346154)
 texture = ExtResource("17_ljngh")
 
 [node name="StaticBody2D13" type="StaticBody2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center"]
-position = Vector2(382, -575)
-rotation = 0.464314
-scale = Vector2(2.67, 2.67)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/StaticBody2D13"]
-shape = SubResource("CircleShape2D_w3lcj")
+visible = false
+position = Vector2(264, -651)
+rotation = 0.823795
+scale = Vector2(5.61, 2.67)
+metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/StaticBody2D13"]
 self_modulate = Color(0.32549, 0.243137, 0.235294, 1)
@@ -966,24 +850,50 @@ scale = Vector2(0.346154, 0.346154)
 texture = ExtResource("17_ljngh")
 
 [node name="StaticBody2D14" type="StaticBody2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center"]
-position = Vector2(-377, -666)
-rotation = -0.872342
+visible = false
+position = Vector2(-295, 572)
+rotation = -1.58999
 scale = Vector2(2.67, 2.67)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/StaticBody2D14"]
-shape = SubResource("CircleShape2D_w3lcj")
+metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/StaticBody2D14"]
 self_modulate = Color(0.32549, 0.243137, 0.235294, 1)
 scale = Vector2(0.346154, 0.346154)
 texture = ExtResource("17_ljngh")
 
-[node name="StaticBody2D10" type="StaticBody2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center"]
-position = Vector2(224, 405)
-rotation = -0.0607477
+[node name="StaticBody2D17" type="StaticBody2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center"]
+visible = false
+position = Vector2(59, 694)
+rotation = -0.0349066
+scale = Vector2(2.67, 2.67)
+metadata/_edit_group_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/StaticBody2D10"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/StaticBody2D17"]
 shape = SubResource("CircleShape2D_w3lcj")
+
+[node name="Sprite2D" type="Sprite2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/StaticBody2D17"]
+self_modulate = Color(0.32549, 0.243137, 0.235294, 1)
+scale = Vector2(0.346154, 0.346154)
+texture = ExtResource("17_ljngh")
+
+[node name="StaticBody2D18" type="StaticBody2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center"]
+visible = false
+position = Vector2(127, 340)
+rotation = 0.563741
+scale = Vector2(0.72, 0.72)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/StaticBody2D18"]
+self_modulate = Color(0.32549, 0.243137, 0.235294, 1)
+scale = Vector2(0.346154, 0.346154)
+texture = ExtResource("17_ljngh")
+
+[node name="StaticBody2D10" type="StaticBody2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center"]
+visible = false
+position = Vector2(283, 308)
+rotation = -0.539307
+scale = Vector2(2.34, 1)
+metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/StaticBody2D10"]
 self_modulate = Color(0.32549, 0.243137, 0.235294, 1)
@@ -991,23 +901,34 @@ scale = Vector2(0.346154, 0.346154)
 texture = ExtResource("17_ljngh")
 
 [node name="StaticBody2D11" type="StaticBody2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center"]
-position = Vector2(389, 374)
+visible = false
+position = Vector2(272, 48)
 rotation = -1.62416
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/StaticBody2D11"]
-shape = SubResource("CircleShape2D_w3lcj")
+metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/StaticBody2D11"]
 self_modulate = Color(0.32549, 0.243137, 0.235294, 1)
 scale = Vector2(0.346154, 0.346154)
 texture = ExtResource("17_ljngh")
 
-[node name="StaticBody2D12" type="StaticBody2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center"]
-position = Vector2(362, 153)
-rotation = 1.13521
+[node name="StaticBody2D15" type="StaticBody2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center"]
+visible = false
+position = Vector2(362, 211)
+rotation = -1.38405
+scale = Vector2(1.79, 1.505)
+metadata/_edit_group_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/StaticBody2D12"]
-shape = SubResource("CircleShape2D_w3lcj")
+[node name="Sprite2D" type="Sprite2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/StaticBody2D15"]
+self_modulate = Color(0.32549, 0.243137, 0.235294, 1)
+scale = Vector2(0.346154, 0.346154)
+texture = ExtResource("17_ljngh")
+
+[node name="StaticBody2D12" type="StaticBody2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center"]
+visible = false
+position = Vector2(254, 77)
+rotation = -3.77166
+scale = Vector2(1.75, 1.07)
+metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/StaticBody2D12"]
 self_modulate = Color(0.32549, 0.243137, 0.235294, 1)
@@ -1015,48 +936,23 @@ scale = Vector2(0.346154, 0.346154)
 texture = ExtResource("17_ljngh")
 
 [node name="StaticBody2D4" type="StaticBody2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center"]
-position = Vector2(-242, -9)
-rotation = 0.939511
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/StaticBody2D4"]
-shape = SubResource("CircleShape2D_w3lcj")
+visible = false
+position = Vector2(-270, -18)
+rotation = -1.33518
+scale = Vector2(1.415, 2.005)
+metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/StaticBody2D4"]
 self_modulate = Color(0.32549, 0.243137, 0.235294, 1)
 scale = Vector2(0.346154, 0.346154)
 texture = ExtResource("17_ljngh")
 
-[node name="StaticBody2D15" type="StaticBody2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center"]
-position = Vector2(-382, 59)
-rotation = 0.459203
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/StaticBody2D15"]
-shape = SubResource("CircleShape2D_w3lcj")
-
-[node name="Sprite2D" type="Sprite2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/StaticBody2D15"]
-self_modulate = Color(0.32549, 0.243137, 0.235294, 1)
-scale = Vector2(0.346154, 0.346154)
-texture = ExtResource("17_ljngh")
-
-[node name="StaticBody2D5" type="StaticBody2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center"]
-position = Vector2(210, 194)
-rotation = -0.889537
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/StaticBody2D5"]
-shape = SubResource("CircleShape2D_w3lcj")
-
-[node name="Sprite2D" type="Sprite2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/StaticBody2D5"]
-self_modulate = Color(0.32549, 0.243137, 0.235294, 1)
-scale = Vector2(0.346154, 0.346154)
-texture = ExtResource("17_ljngh")
-
 [node name="StaticBody2D6" type="StaticBody2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center"]
-position = Vector2(64, -321)
-rotation = -1.98758
-scale = Vector2(0.735, 0.735)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/StaticBody2D6"]
-shape = SubResource("CircleShape2D_w3lcj")
+visible = false
+position = Vector2(59, -278)
+rotation = -4.87645
+scale = Vector2(0.675, 0.191)
+metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/StaticBody2D6"]
 self_modulate = Color(0.32549, 0.243137, 0.235294, 1)
@@ -1064,56 +960,155 @@ scale = Vector2(0.346154, 0.346154)
 texture = ExtResource("17_ljngh")
 
 [node name="StaticBody2D9" type="StaticBody2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center"]
-position = Vector2(79, -453)
+visible = false
+position = Vector2(92, -445)
 rotation = -4.44488
-scale = Vector2(0.735, 0.735)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/StaticBody2D9"]
-shape = SubResource("CircleShape2D_w3lcj")
+scale = Vector2(2.115, 0.44)
+metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/StaticBody2D9"]
 self_modulate = Color(0.32549, 0.243137, 0.235294, 1)
 scale = Vector2(0.346154, 0.346154)
 texture = ExtResource("17_ljngh")
 
+[node name="StaticBody2D20" type="StaticBody2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center"]
+visible = false
+position = Vector2(67, -549)
+rotation = -2.17119
+scale = Vector2(1.83, 1.505)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/StaticBody2D20"]
+self_modulate = Color(0.32549, 0.243137, 0.235294, 1)
+scale = Vector2(0.346154, 0.346154)
+texture = ExtResource("17_ljngh")
+
 [node name="StaticBody2D7" type="StaticBody2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center"]
+visible = false
 position = Vector2(-101, -243)
 rotation = -2.21943
-scale = Vector2(0.75, 0.75)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/StaticBody2D7"]
-shape = SubResource("CircleShape2D_w3lcj")
+scale = Vector2(0.855, 0.535)
+metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/StaticBody2D7"]
 self_modulate = Color(0.32549, 0.243137, 0.235294, 1)
-scale = Vector2(0.346154, 0.346154)
+position = Vector2(-33.5611, 0)
+scale = Vector2(0.482029, 0.346154)
 texture = ExtResource("17_ljngh")
 
 [node name="StaticBody2D8" type="StaticBody2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center"]
-position = Vector2(-171, -368)
+visible = false
+position = Vector2(-152, -328)
 rotation = -2.21943
-scale = Vector2(0.75, 0.75)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/StaticBody2D8"]
-shape = SubResource("CircleShape2D_w3lcj")
+scale = Vector2(1.32, 0.89)
+metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/StaticBody2D8"]
 self_modulate = Color(0.32549, 0.243137, 0.235294, 1)
-scale = Vector2(0.346154, 0.346154)
+position = Vector2(1.96696, -1.89914)
+scale = Vector2(0.354117, 0.389862)
 texture = ExtResource("17_ljngh")
 
 [node name="StaticBody2D3" type="StaticBody2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center"]
-position = Vector2(-87, 19)
-rotation = 0.0853477
-scale = Vector2(0.81, 0.81)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/StaticBody2D3"]
-shape = SubResource("CircleShape2D_w3lcj")
+visible = false
+position = Vector2(-113, -5)
+rotation = -2.90597
+scale = Vector2(0.81, 0.32)
+metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/StaticBody2D3"]
 self_modulate = Color(0.32549, 0.243137, 0.235294, 1)
 scale = Vector2(0.346154, 0.346154)
 texture = ExtResource("17_ljngh")
+
+[node name="Rocas" type="Node2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center"]
+
+[node name="StaticBody2D21" type="StaticBody2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Rocas"]
+position = Vector2(-360, -640)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Rocas/StaticBody2D21"]
+position = Vector2(418, 306)
+polygon = PackedVector2Array(8, 18, 6, 65, 18, 91, 4, 98, -12, 86, -19, 31, -8, -11, -2, -90, -70, -182, -91, -246, 48, -233, 276, -234, 257, -37, 114.129, -135.079, 46, -64)
+
+[node name="StaticBody2D22" type="StaticBody2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Rocas"]
+position = Vector2(-360, -640)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Rocas/StaticBody2D22"]
+position = Vector2(16, 394)
+polygon = PackedVector2Array(300, 104, 234, 14, 220, -12, 197, -47, 127, -135, 117, -164, 161, -179, 207, -160, 231, -124, 263, -40, 292, 42, 312, 87)
+
+[node name="StaticBody2D23" type="StaticBody2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Rocas"]
+position = Vector2(-360, -640)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Rocas/StaticBody2D23"]
+position = Vector2(496, 541)
+polygon = PackedVector2Array(159, -88, 140, -49, 107, -77, 131, -198, 166, -199, 165, -119)
+
+[node name="StaticBody2D24" type="StaticBody2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Rocas"]
+position = Vector2(-360, -640)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Rocas/StaticBody2D24"]
+position = Vector2(136, 910)
+polygon = PackedVector2Array(171, -81, 166.696, -39.3935, 159, -23, 144, -17, 120, -16, 107, -29, 110.333, -43.3333, 127, -60, 139, -99, 127, -127, 140, -147, 169, -136, 189, -111)
+
+[node name="StaticBody2D28" type="StaticBody2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Rocas"]
+position = Vector2(-360, -640)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Rocas/StaticBody2D28"]
+position = Vector2(-5, 1080)
+polygon = PackedVector2Array(185, -101, 139, -116, 138, -150, 171, -159, 205, -127)
+
+[node name="StaticBody2D29" type="StaticBody2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Rocas"]
+position = Vector2(-360, -640)
+
+[node name="StaticBody2D26" type="StaticBody2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Rocas"]
+position = Vector2(-360, -640)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Rocas/StaticBody2D26"]
+position = Vector2(512, 765)
+polygon = PackedVector2Array(236, 525, -181, 519, -533, 530, -525, 198, -384, 303, -322.383, 396.146, -330, 423, -316, 438, -291.325, 443.096, -241, 425, -163.672, 416.067, -128, 447, -73, 613, -46, 635, -2, 644, 92, 635, 97, 575, 113, 543, 110, 506, 83, 482, 36, 393, -32, 293, -72, 223, -85.9245, 178.805, -88, 155, -81.6154, 145.423, -76, 144, -68, 148, -53.1778, 159.841, 24, 178, 123, 126, 127.032, 57.8828, 72, 43, 9, 61, -7.98625, 56.5036, -16, 48, -11.9519, 35.9145, 14, 30, 41, -6, 47, -110, 124, -160, 217, -112)
+
+[node name="StaticBody2D27" type="StaticBody2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Rocas"]
+position = Vector2(-360, -640)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Rocas/StaticBody2D27"]
+position = Vector2(-27, 703)
+polygon = PackedVector2Array(227, -56, 181, -4, 21, 86, 21, -449, 133, -234, 168, -186, 241, -109, 326, -57, 320, -39)
+
+[node name="CollisionPolygon2D2" type="Polygon2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Rocas/StaticBody2D27"]
+position = Vector2(418, 306)
+color = Color(0.215686, 0.121569, 0.0509804, 1)
+polygon = PackedVector2Array(8, 18, 6, 65, 18, 91, 4, 98, -12, 86, -19, 31, -8, -11, -2, -90, -70, -182, -91, -246, -162, -465, 304, -475, 257, -37, 114.129, -135.079, 46, -64)
+
+[node name="CollisionPolygon2D3" type="Polygon2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Rocas/StaticBody2D27"]
+position = Vector2(16, 394)
+color = Color(0.215686, 0.121569, 0.0509804, 1)
+polygon = PackedVector2Array(300, 104, 243, 67, 238, 29, 217, -18, 194, -47, 120, -138, 117, -164, 161, -179, 207, -160, 231, -124, 263, -40, 292, 42, 312, 87)
+
+[node name="CollisionPolygon2D4" type="Polygon2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Rocas/StaticBody2D27"]
+position = Vector2(496, 541)
+color = Color(0.215686, 0.121569, 0.0509804, 1)
+polygon = PackedVector2Array(159, -88, 140, -49, 107, -77, 131, -198, 166, -199, 165, -119)
+
+[node name="CollisionPolygon2D5" type="Polygon2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Rocas/StaticBody2D27"]
+position = Vector2(136, 910)
+color = Color(0.215686, 0.121569, 0.0509804, 1)
+polygon = PackedVector2Array(171, -81, 166.696, -39.3935, 159, -23, 144, -17, 120, -16, 107, -29, 110.333, -43.3333, 127, -60, 139, -99, 127, -127, 140, -147, 169, -136, 189, -111)
+
+[node name="CollisionPolygon2D6" type="Polygon2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Rocas/StaticBody2D27"]
+position = Vector2(-5, 1080)
+color = Color(0.215686, 0.121569, 0.0509804, 1)
+polygon = PackedVector2Array(185, -101, 139, -116, 138, -150, 171, -159, 205, -127)
+
+[node name="CollisionPolygon2D7" type="Polygon2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Rocas/StaticBody2D27"]
+position = Vector2(512, 765)
+color = Color(0.215686, 0.121569, 0.0509804, 1)
+polygon = PackedVector2Array(228, 778, -549, 781, -531, 192, -503.583, 210.398, -379, 294, -321.704, 391.434, -330, 422, -316, 438, -291.325, 443.096, -241, 425, -164.216, 416.13, -128, 446, -72, 612, -43, 635, -3, 642, 89, 633, 95, 575, 110, 542, 107, 507, 81.3513, 484.315, 36, 393, -32, 293, -72, 223, -85.9245, 178.805, -88, 155, -81.6154, 145.423, -76, 144, -68, 148, -53.1778, 159.841, 24, 178, 123, 126, 127.032, 57.8828, 72, 43, 9, 61, -7.98625, 56.5036, -16, 48, -11.9519, 35.9145, 14, 30, 41, -6, 47, -110, 124, -160, 217, -112)
+
+[node name="CollisionPolygon2D8" type="Polygon2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Rocas/StaticBody2D27"]
+position = Vector2(-27, 703)
+color = Color(0.215686, 0.121569, 0.0509804, 1)
+polygon = PackedVector2Array(227, -56, 181, -4, 21, 86, 21, -449, 113, -338, 133, -253, 182, -177, 218.215, -139.922, 241, -109, 326, -57, 320, -39)
 
 [node name="btnVolver" parent="Excavando/StateMachine/Juego/Contenido" instance=ExtResource("18_dvs2k")]
 layout_mode = 1
