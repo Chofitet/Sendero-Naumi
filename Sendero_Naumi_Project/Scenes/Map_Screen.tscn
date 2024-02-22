@@ -584,6 +584,10 @@ texture = ExtResource("11_r0n4l")
 position = Vector2(514.845, 1064.33)
 
 [node name="ButtonChangeScene" parent="StateMachine/AstronomiaZone/ZoomingZone/SubViewport/ZoomingZone/Astronauta" index="0"]
+offset_left = -23.393
+offset_top = -5.083
+offset_right = -174.037
+offset_bottom = -671.091
 NextScene = "Astronauta"
 fade_time = 1.0
 texture = "dirt"
@@ -594,7 +598,25 @@ color = Color(0.560784, 0.321569, 0.211765, 1)
 position = Vector2(690.285, 398.355)
 
 [node name="ButtonChangeScene" parent="StateMachine/AstronomiaZone/ZoomingZone/SubViewport/ZoomingZone/DondeEstuvo" index="0"]
+offset_left = -25.303
+offset_top = -8.198
+offset_right = -175.947
+offset_bottom = -674.206
 NextScene = "DondeEstuvo"
+fade_time = 1.0
+texture = "dirt"
+is_inverted = true
+color = Color(0.560784, 0.321569, 0.211765, 1)
+
+[node name="ManzanaAcaramelada" parent="StateMachine/AstronomiaZone/ZoomingZone/SubViewport/ZoomingZone" instance=ExtResource("6_wq3mc")]
+position = Vector2(738.44, 800)
+
+[node name="ButtonChangeScene" parent="StateMachine/AstronomiaZone/ZoomingZone/SubViewport/ZoomingZone/ManzanaAcaramelada" index="0"]
+offset_left = -24.613
+offset_top = -8.708
+offset_right = -175.257
+offset_bottom = -674.716
+NextScene = "ManzanaAcaramelada"
 fade_time = 1.0
 texture = "dirt"
 is_inverted = true
@@ -816,6 +838,7 @@ state_machine = NodePath("..")
 [connection signal="pressed" from="ScrollContainer/VBoxContainer/Piso1/Piso1/MegafaunaZone/TextureRect/Button_Change_State" to="ScrollContainer/VBoxContainer/Piso1/Piso1/MegafaunaZone/TextureRect/Button_Change_State" method="_on_pressed"]
 [connection signal="tree_entered" from="StateMachine/AstronomiaZone/ZoomingZone/SubViewport/ZoomingZone/Astronauta" to="StateMachine/AstronomiaZone/ZoomingZone/SubViewport/ZoomingZone/Astronauta" method="_on_tree_entered" flags=18]
 [connection signal="tree_entered" from="StateMachine/AstronomiaZone/ZoomingZone/SubViewport/ZoomingZone/DondeEstuvo" to="StateMachine/AstronomiaZone/ZoomingZone/SubViewport/ZoomingZone/DondeEstuvo" method="_on_tree_entered" flags=18]
+[connection signal="tree_entered" from="StateMachine/AstronomiaZone/ZoomingZone/SubViewport/ZoomingZone/ManzanaAcaramelada" to="StateMachine/AstronomiaZone/ZoomingZone/SubViewport/ZoomingZone/ManzanaAcaramelada" method="_on_tree_entered" flags=18]
 [connection signal="backZone" from="StateMachine/GeologiaZone" to="ScrollContainer/VBoxContainer/Piso2/GeologiaZone" method="back_Zone"]
 [connection signal="inZone" from="StateMachine/GeologiaZone" to="ScrollContainer/VBoxContainer/Piso2/GeologiaZone" method="in_Zone"]
 [connection signal="tree_entered" from="StateMachine/GeologiaZone/ZoomingZone/SubViewport/ZoomingZone/RockFighters" to="StateMachine/GeologiaZone/ZoomingZone/SubViewport/ZoomingZone/RockFighters" method="_on_tree_entered" flags=18]
@@ -828,6 +851,7 @@ state_machine = NodePath("..")
 
 [editable path="StateMachine/AstronomiaZone/ZoomingZone/SubViewport/ZoomingZone/Astronauta"]
 [editable path="StateMachine/AstronomiaZone/ZoomingZone/SubViewport/ZoomingZone/DondeEstuvo"]
+[editable path="StateMachine/AstronomiaZone/ZoomingZone/SubViewport/ZoomingZone/ManzanaAcaramelada"]
 [editable path="StateMachine/GeologiaZone/ZoomingZone/SubViewport/ZoomingZone/RockFighters"]
 [editable path="StateMachine/GeologiaZone/ZoomingZone/SubViewport/ZoomingZone/Transformando"]
 [editable path="StateMachine/GeologiaZone/ZoomingZone/SubViewport/ZoomingZone/Busqueda"]
