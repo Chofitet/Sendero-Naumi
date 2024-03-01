@@ -9,8 +9,6 @@ func _ready():
 	area_exited.connect(Set_Bool_false)
 
 func Set_Bool_True(x):
-	pass
-	print(x.get_parent().name)
 	if x.is_in_group("Player"): 
 		inArea = true
 

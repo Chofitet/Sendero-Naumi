@@ -4,60 +4,62 @@ var topo
 var particles
 var raycast : RayCast2D
 var isMoving 
+var initPos 
 var toStopMoveAnim : bool = false
 @export var Color1 : Color
 @export var Color2 : Color
 @export var speed : float
+var _speed 
 @export var line : Line2D
 var collision_line = load("res://Scenes/Zona_Megafauna/line_collider.tscn")
-
+@onready var timer = $Timer
+var relative_position 
 
 func _ready():
+	_speed = speed
+	timer.timeout.connect(SpawnCollider)
 	topo = $topo
-	#topo.get_node("topo").animation_looped.connect(AnimationLoopFinished)
+	initPos = topo.position
 	particles = $topo/MoleParticles
 	raycast = $topo/RayCast2D
-
-#func AnimationLoopFinished():
-#	print("loop")
-#	if toStopMoveAnim:
-#		topo.get_node("topo").play("idle")
-#		toStopMoveAnim = false
-
+	
 
 func _input(event: InputEvent) -> void:
+	if Input.is_action_just_pressed("TouchScreen"):
+		timer.start()
 	if Input.is_action_pressed("TouchScreen"):
 		isMoving = true 
 		pressedPos = event.position
 		particles.emitting = true
 		topo.get_node("topo").play("move")
 	if Input.is_action_just_released("TouchScreen"):
+		timer.stop()
 		isMoving = false
 		particles.emitting = false
 		topo.get_node("topo").play("idle")
 		toStopMoveAnim = true
-		
 
 func _process(delta):
 	if !isMoving: return
-	if abs(topo.global_position.length() - pressedPos.length()) < 5 : return
-	var relative_position = global_position - line.global_position 
+	relative_position = global_position - line.global_position 
 	var direction = (pressedPos - global_position).normalized()
-	
-	
-	Apply_Movement(direction * 8000 * delta)
-	move_and_slide()
+	if topo.global_position.distance_to(pressedPos) > 110 :
+		Apply_Movement(direction * 8000 * delta)
+		move_and_slide()
+		line.add_point(relative_position)
 	topo.look_at(pressedPos)
-	line.add_point(relative_position)
-	var line_instance_collider = collision_line.instantiate()
-	line_instance_collider.position = relative_position
-	line.add_child(line_instance_collider)
 	
-	CheckIsInLine()
 
 func Apply_Movement(accel):
 	velocity += accel
-	velocity = velocity.limit_length(speed)
+	velocity = velocity.limit_length(_speed)
+
+func SpawnCollider():
+	var line_instance_collider = collision_line.instantiate()
+	line_instance_collider.position = relative_position
+	line.add_child(line_instance_collider)
+
+	CheckIsInLine()
 
 func CheckIsInLine():
 	if !raycast.get_collider() : 
@@ -68,3 +70,16 @@ func CheckIsInLine():
 		particles.color = Color2
 	else:
 		particles.color = Color1
+
+func EnableDisaneable(x):
+	visible = x
+	if !x:
+		_speed = 0
+
+func Reset():
+	visible = true
+	_speed = speed
+	topo.position = initPos
+	line.clear_points()
+	for c in line.get_children():
+		c.queue_free()
