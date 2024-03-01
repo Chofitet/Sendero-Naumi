@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://bot8yluvf08xw"]
+
+[ext_resource type="Shader" path="res://addons/scene_manager/scene_manager.gdshader" id="1_6xx16"]
+[ext_resource type="Texture2D" uid="uid://ccs0kiq21dif2" path="res://addons/scene_manager/shader_patterns/diagonal.png" id="2_ikmkk"]
+[ext_resource type="Script" path="res://_Scripts/IndividualFade.gd" id="3_wqy3d"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wvslw"]
+shader = ExtResource("1_6xx16")
+shader_parameter/cutoff = 1.0
+shader_parameter/smoothness = 0.135
+shader_parameter/color = Vector3(0, 0, 0)
+shader_parameter/inverted = true
+shader_parameter/linear_fade = false
+shader_parameter/custom_texture = ExtResource("2_ikmkk")
+
+[node name="Fade" type="ColorRect"]
+z_index = 2
+material = SubResource("ShaderMaterial_wvslw")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_wqy3d")

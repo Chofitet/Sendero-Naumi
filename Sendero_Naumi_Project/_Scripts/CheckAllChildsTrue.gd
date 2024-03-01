@@ -3,6 +3,7 @@ extends Node2D
 signal AllTrue
 var childs :=[]
 @export var PercentComplete : float
+@export var debug : bool
 
 # Condiciones: Todos los hijos directos deben de tener un script
 # con la variable isComplete
@@ -47,3 +48,8 @@ func CalculatePercent() -> float:
 	num = PercentComplete * childs.size()
 	
 	return round(num)
+
+func _process(delta):
+	if debug:
+		AllTrue.emit()
+		debug = false

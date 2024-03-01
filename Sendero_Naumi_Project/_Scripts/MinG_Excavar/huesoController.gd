@@ -16,12 +16,9 @@ func checkHotSpots():
 	for HS in hotspots:
 		if !HS.isTrue : return
 		i = i + 1
+		print(i)
 	if i == countSpots:
+		isComplete = true
 		AllSpots.emit()
-		#arreglar para topo
-		#DiscoverHueso()
 
-func DiscoverHueso():
-	z_index = 1
-	isComplete = true
-	get_parent().CheckTrue()
+

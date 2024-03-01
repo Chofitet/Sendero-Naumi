@@ -10,4 +10,5 @@ func _ready():
 func TopoEnter(x):
 	if !x.is_in_group(group): return
 	isTrue = true
+	$CollisionShape2D.set_deferred("disabled",true)
 	get_parent().checkHotSpots()

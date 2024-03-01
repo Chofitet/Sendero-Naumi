@@ -6,6 +6,8 @@ extends Control
 @export var timeAnim : float
 @export var FinalScale : Vector2
 @export var FinalRotation: float
+@export var _StateMachine : Node
+@export var LastInstance : Control
 
 @export var TextureApple : Texture
 @onready var apple = $manzana
@@ -19,10 +21,11 @@ func _ready():
 	$Button.button_down.connect(DoAnim)
 
 func DoAnim():
+	get_parent().OnButton()
 	$Button.visible = false
 	#Object
 	var tweenPos = get_tree().create_tween()
-	tweenPos.tween_property(object,"global_position",finalPosition.global_position, timeAnim)
+	tweenPos.tween_property(object,"position",finalPosition.position, timeAnim)
 	var tweenS = get_tree().create_tween()
 	tweenS.tween_property(object.get_node("Sprite2D"),"scale", FinalScale, timeAnim)
 	var tweenR = get_tree().create_tween()
@@ -32,7 +35,11 @@ func DoAnim():
 	tweenPos2.tween_property(apple,"position",Vector2.ZERO + Vector2(0,offsety), timeAnim)
 	var tweenS2 = get_tree().create_tween()
 	tweenS2.tween_property(apple.get_node("Sprite2D"),"scale", FinalScaleM, timeAnim)
-	
 	await tweenPos.finished
+	PassInstance()
 	visible = false
 	ObjectInPosition.emit()
+
+func PassInstance():
+	_StateMachine.Trigger_On_Child_Transition("Juego")
+
