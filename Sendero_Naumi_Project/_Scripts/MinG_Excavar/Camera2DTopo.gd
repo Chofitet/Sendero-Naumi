@@ -20,7 +20,7 @@ func _process(delta):
 		tween.tween_property(self,"offset", Vector2(offset.x,a),0.2)
 	
 	if onAreaDown:
-		var a = get_viewport_rect().size.y/2 + (topo.global_position.y - get_viewport_rect().size.y +260)
+		var a = get_viewport_rect().size.y/2 + (topo.global_position.y - get_viewport_rect().size.y +637)
 		tween.tween_property(self,"offset", Vector2(offset.x,a),0.2)
 	
 
