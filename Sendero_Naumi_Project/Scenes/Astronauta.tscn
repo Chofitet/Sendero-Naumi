@@ -25,9 +25,9 @@
 [ext_resource type="PackedScene" uid="uid://bhvn7rj6jhh2" path="res://Scenes/Zona_Astronomia/collision_object.tscn" id="11_nklpy"]
 [ext_resource type="Texture2D" uid="uid://b7poe0ethot51" path="res://Sprites/ZonaGeología/Piedras/flurita_dureza.png" id="14_gaug6"]
 [ext_resource type="Texture2D" uid="uid://bjdjhfvi3gkdk" path="res://Sprites/ZonaAstronomia/Screenshot_1.png" id="20_5amnt"]
-[ext_resource type="Theme" uid="uid://bokxu7jbpku04" path="res://Themes/Back_UI.tres" id="21_7epdq"]
 [ext_resource type="Script" path="res://_Scripts/MinG_Astronauta/ZoomArea.gd" id="22_wst5e"]
 [ext_resource type="Texture2D" uid="uid://b2op8eppn0juv" path="res://Sprites/ZonaAstronomia/Astronauta.png" id="23_p54qi"]
+[ext_resource type="PackedScene" uid="uid://dlwmbps456ind" path="res://Scenes/Experiments/btnVolver.tscn" id="25_oyvyl"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2javv"]
 radius = 209.476
@@ -956,25 +956,7 @@ rotation = -2.70113
 scale = Vector2(2.13559, 2.13559)
 texture = ExtResource("23_p54qi")
 
-[node name="HUD" type="CanvasLayer" parent="Astronauta/StateMachine/Juego"]
-visible = false
-
-[node name="ButtonChangeScene" parent="Astronauta/StateMachine/Juego/HUD" instance=ExtResource("7_xf3bk")]
-anchors_preset = 1
-anchor_left = 1.0
-anchor_top = 0.0
-anchor_right = 1.0
-anchor_bottom = 0.0
-offset_left = -106.0
-offset_top = 21.0
-offset_right = -16.0
-offset_bottom = 111.0
-grow_horizontal = 0
-grow_vertical = 1
-theme = ExtResource("21_7epdq")
-text = "
-"
-NextScene = "Map_Screen"
+[node name="HUD" parent="Astronauta/StateMachine/Juego" instance=ExtResource("25_oyvyl")]
 
 [node name="Moraleja" type="Node" parent="Astronauta/StateMachine"]
 script = ExtResource("6_yvrem")

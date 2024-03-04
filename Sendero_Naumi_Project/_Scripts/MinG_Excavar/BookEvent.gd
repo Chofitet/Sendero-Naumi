@@ -55,7 +55,7 @@ func SelectSpriteFade() -> String:
 		return "bones"
 	else: return "vivo"
 
-func DoAnim(x):
+func DoAnim():
 	anim.play("book_enter")
 	await anim.animation_finished
 	anim.play("Pencil_enter")

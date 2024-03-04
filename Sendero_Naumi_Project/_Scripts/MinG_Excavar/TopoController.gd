@@ -17,7 +17,7 @@ var relative_position
 
 func _ready():
 	_speed = speed
-	timer.timeout.connect(SpawnCollider)
+	#timer.timeout.connect(SpawnCollider)
 	topo = $topo
 	initPos = topo.position
 	particles = $topo/MoleParticles
@@ -29,7 +29,7 @@ func _input(event: InputEvent) -> void:
 		timer.start()
 	if Input.is_action_pressed("TouchScreen"):
 		isMoving = true 
-		pressedPos = event.position
+		pressedPos = get_global_mouse_position()
 		particles.emitting = true
 		topo.get_node("topo").play("move")
 	if Input.is_action_just_released("TouchScreen"):

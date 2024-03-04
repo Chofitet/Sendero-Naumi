@@ -1,4 +1,4 @@
-[gd_scene load_steps=76 format=3 uid="uid://m3gbb64llbqn"]
+[gd_scene load_steps=81 format=3 uid="uid://m3gbb64llbqn"]
 
 [ext_resource type="Script" path="res://_Scripts/Minigame_Save_Controller.gd" id="1_6uc2r"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/StateMachineMinigames.gd" id="2_4ogka"]
@@ -38,7 +38,9 @@
 [ext_resource type="Texture2D" uid="uid://osslshvruyeq" path="res://Sprites/ZonaMegafauna/pencil.png" id="31_3iuyc"]
 [ext_resource type="Texture2D" uid="uid://c6arlslp4nw7u" path="res://Sprites/ZonaMegafauna/megaterio vivo - excavacion.png" id="32_80c0n"]
 [ext_resource type="Texture2D" uid="uid://dowufrhlgpfe" path="res://Sprites/UI/Boton_Volver.png" id="33_cayiq"]
-[ext_resource type="Texture2D" uid="uid://8vi1sfohmqnv" path="res://Sprites/COSA.png" id="39_percy"]
+[ext_resource type="Script" path="res://_Scripts/MinG_Excavar/Camera2DTopo.gd" id="37_luhad"]
+[ext_resource type="Texture2D" uid="uid://bnrplypfacx64" path="res://Sprites/WhatsApp Image 2024-03-01 at 15.04.55.jpeg" id="37_vx1c6"]
+[ext_resource type="PackedScene" uid="uid://dlwmbps456ind" path="res://Scenes/Experiments/btnVolver.tscn" id="38_0b8dm"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_j7ivs"]
 blend_mode = 2
@@ -104,6 +106,12 @@ animations = [{
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xfnj2"]
 radius = 149.216
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_umb6f"]
+size = Vector2(1020, 118)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lmfrv"]
+size = Vector2(1020, 172.5)
 
 [sub_resource type="Animation" id="Animation_ojpeh"]
 length = 0.001
@@ -364,7 +372,7 @@ shader = ExtResource("26_763yu")
 shader_parameter/cutoff = 0.0
 shader_parameter/smoothness = 0.07
 shader_parameter/inverted = true
-shader_parameter/custom_texture = ExtResource("14_0qvux")
+shader_parameter/custom_texture = ExtResource("16_txmq6")
 shader_parameter/mask_texture = ExtResource("27_hgbov")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_q7sr5"]
@@ -373,6 +381,14 @@ shader_parameter/cutoff = 1.0
 shader_parameter/smoothness = 0.128
 shader_parameter/inverted = true
 shader_parameter/custom_texture = ExtResource("32_80c0n")
+shader_parameter/mask_texture = ExtResource("27_hgbov")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yso4i"]
+shader = ExtResource("26_763yu")
+shader_parameter/cutoff = 1.0
+shader_parameter/smoothness = 0.1
+shader_parameter/inverted = true
+shader_parameter/custom_texture = ExtResource("19_ryw8i")
 shader_parameter/mask_texture = ExtResource("27_hgbov")
 
 [node name="Excavando" type="Control"]
@@ -387,7 +403,6 @@ grow_vertical = 2
 script = ExtResource("1_6uc2r")
 
 [node name="Control" type="Control" parent="Excavando"]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -396,6 +411,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Background" type="ColorRect" parent="Excavando/Control"]
+z_index = -1
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -406,7 +422,7 @@ color = Color(0.72549, 1, 1, 1)
 
 [node name="StateMachine" type="Node" parent="Excavando" node_paths=PackedStringArray("initial_state")]
 script = ExtResource("2_4ogka")
-initial_state = NodePath("Juego")
+initial_state = NodePath("Consigna")
 
 [node name="Consigna" type="Node" parent="Excavando/StateMachine"]
 script = ExtResource("3_nk4vw")
@@ -509,7 +525,6 @@ z_index = 1
 position = Vector2(-360, -640)
 
 [node name="Tierra" type="TextureRect" parent="Excavando/StateMachine/Juego/Contenido/background/CanvasGroup"]
-visible = false
 offset_left = -442.0
 offset_top = -260.0
 offset_right = 1193.0
@@ -530,7 +545,7 @@ sharp_limit = 4.795
 round_precision = 6
 
 [node name="TopoController" type="CharacterBody2D" parent="Excavando/StateMachine/Juego/Contenido/background/CanvasGroup" node_paths=PackedStringArray("line")]
-position = Vector2(148, 107)
+position = Vector2(100, 290)
 motion_mode = 1
 wall_min_slide_angle = 0.488692
 script = ExtResource("14_2g78w")
@@ -569,11 +584,49 @@ scale = Vector2(0.259814, 0.259814)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/background/CanvasGroup/TopoController/topo/topo/Area2D"]
 shape = SubResource("CircleShape2D_xfnj2")
 
-[node name="StartPosition" type="Marker2D" parent="Excavando/StateMachine/Juego/Contenido/background/CanvasGroup/TopoController/topo"]
-position = Vector2(328, 1106)
-
 [node name="Timer" type="Timer" parent="Excavando/StateMachine/Juego/Contenido/background/CanvasGroup/TopoController"]
 wait_time = 0.1
+
+[node name="Camera2D" type="Camera2D" parent="Excavando/StateMachine/Juego/Contenido/background" node_paths=PackedStringArray("topo")]
+position = Vector2(-360, -640)
+script = ExtResource("37_luhad")
+topo = NodePath("../CanvasGroup/TopoController/topo/topo")
+
+[node name="StartPosition" type="Marker2D" parent="Excavando/StateMachine/Juego/Contenido"]
+position = Vector2(476, 1310)
+
+[node name="Area2dDown" type="Control" parent="Excavando/StateMachine/Juego/Contenido"]
+z_index = 1
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_top = -2.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Area2D" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Area2dDown"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Area2dDown/Area2D"]
+position = Vector2(0, -186)
+shape = SubResource("RectangleShape2D_umb6f")
+
+[node name="Area2dUp" type="Control" parent="Excavando/StateMachine/Juego/Contenido"]
+z_index = 1
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+grow_horizontal = 2
+
+[node name="Area2D" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Area2dUp"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Area2dUp/Area2D"]
+position = Vector2(0, 141.25)
+shape = SubResource("RectangleShape2D_lmfrv")
 
 [node name="Instancia1" type="Control" parent="Excavando/StateMachine/Juego/Contenido"]
 layout_mode = 1
@@ -616,9 +669,10 @@ flip_h = true
 script = ExtResource("9_113nf")
 
 [node name="hotspot" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/HuesoController/CheckAllTrue/EsqueletoSmilo"]
-position = Vector2(-295.016, -248.434)
+position = Vector2(284.429, -232.17)
 scale = Vector2(7.40101, 7.40103)
 script = ExtResource("10_s5h5i")
+group = "topo"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/HuesoController/CheckAllTrue/EsqueletoSmilo/hotspot"]
 shape = SubResource("CircleShape2D_x16bw")
@@ -824,21 +878,6 @@ position = Vector2(168, -304)
 polygon = PackedVector2Array(-42, 58, -49, 31, -8, -57, 4, -175, -48, -259, -273, -400, -338, -482, -349, -542, 301, -547, 233, -448, 93, -179, 70, -85, -10, 48)
 
 [node name="polygon2D" type="Node2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Rocas"]
-
-[node name="CollisionPolygon2D2" type="Polygon2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Rocas/polygon2D"]
-position = Vector2(677.634, 160)
-texture = ExtResource("22_u6pjk")
-texture_scale = Vector2(2.545, 2.545)
-polygon = PackedVector2Array(8, 18, 6, 65, 18, 91, 4, 98, -12, 86, -19, 31, -8, -11, -2, -90, -70, -182, -91, -246, -162, -465, 304, -475, 257, -37, 114.129, -135.079, 46, -64)
-script = ExtResource("24_rkt5g")
-
-[node name="Line2D" type="Line2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Rocas/polygon2D/CollisionPolygon2D2"]
-width = 40.0
-texture = ExtResource("23_7bnse")
-texture_mode = 1
-joint_mode = 2
-begin_cap_mode = 2
-end_cap_mode = 2
 
 [node name="CollisionPolygon2D3" type="Polygon2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Rocas/polygon2D"]
 position = Vector2(215.634, -19)
@@ -1801,8 +1840,10 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.294118)
 
-[node name="animLibro" type="Control" parent="Excavando/StateMachine/Juego/Contenido"]
-layout_mode = 1
+[node name="CanvasLayer" type="CanvasLayer" parent="Excavando/StateMachine/Juego/Contenido"]
+
+[node name="animLibro" type="Control" parent="Excavando/StateMachine/Juego/Contenido/CanvasLayer"]
+layout_mode = 3
 anchor_left = 0.5
 anchor_top = 0.787
 anchor_right = 0.5
@@ -1812,99 +1853,101 @@ offset_bottom = 0.639893
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="EventoLibro" type="Node2D" parent="Excavando/StateMachine/Juego/Contenido/animLibro" node_paths=PackedStringArray("StateMachine")]
+[node name="EventoLibro" type="Node2D" parent="Excavando/StateMachine/Juego/Contenido/CanvasLayer/animLibro" node_paths=PackedStringArray("StateMachine")]
 z_index = 2
 position = Vector2(0, -288)
 script = ExtResource("26_kjycq")
-StateMachine = NodePath("../../../..")
+StateMachine = NodePath("../../../../..")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Excavando/StateMachine/Juego/Contenido/animLibro/EventoLibro"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Excavando/StateMachine/Juego/Contenido/CanvasLayer/animLibro/EventoLibro"]
 libraries = {
 "": SubResource("AnimationLibrary_3niem")
 }
 
-[node name="LibroController" type="Node2D" parent="Excavando/StateMachine/Juego/Contenido/animLibro/EventoLibro"]
+[node name="LibroController" type="Node2D" parent="Excavando/StateMachine/Juego/Contenido/CanvasLayer/animLibro/EventoLibro"]
 position = Vector2(0, -45)
 
-[node name="libro" type="Sprite2D" parent="Excavando/StateMachine/Juego/Contenido/animLibro/EventoLibro/LibroController"]
+[node name="libro" type="Sprite2D" parent="Excavando/StateMachine/Juego/Contenido/CanvasLayer/animLibro/EventoLibro/LibroController"]
 position = Vector2(0, 1443)
 scale = Vector2(0.67037, 0.67037)
 texture = ExtResource("28_q7wkf")
 
-[node name="nariz" type="Sprite2D" parent="Excavando/StateMachine/Juego/Contenido/animLibro/EventoLibro/LibroController/libro"]
+[node name="nariz" type="Sprite2D" parent="Excavando/StateMachine/Juego/Contenido/CanvasLayer/animLibro/EventoLibro/LibroController/libro"]
 z_index = 1
 position = Vector2(440.055, 751.823)
 texture = ExtResource("29_g3cc8")
 
-[node name="pata" type="Sprite2D" parent="Excavando/StateMachine/Juego/Contenido/animLibro/EventoLibro/LibroController/libro"]
+[node name="pata" type="Sprite2D" parent="Excavando/StateMachine/Juego/Contenido/CanvasLayer/animLibro/EventoLibro/LibroController/libro"]
 position = Vector2(-405.746, 823.426)
 texture = ExtResource("30_iq5an")
 
-[node name="megaterio" type="Node2D" parent="Excavando/StateMachine/Juego/Contenido/animLibro/EventoLibro/LibroController/libro"]
+[node name="megaterio" type="Node2D" parent="Excavando/StateMachine/Juego/Contenido/CanvasLayer/animLibro/EventoLibro/LibroController/libro"]
+visible = false
 position = Vector2(0, -10.4418)
 scale = Vector2(1.49171, 1.49171)
 
-[node name="bones" type="Sprite2D" parent="Excavando/StateMachine/Juego/Contenido/animLibro/EventoLibro/LibroController/libro/megaterio"]
+[node name="bones" type="Sprite2D" parent="Excavando/StateMachine/Juego/Contenido/CanvasLayer/animLibro/EventoLibro/LibroController/libro/megaterio"]
 material = SubResource("ShaderMaterial_iivr6")
 position = Vector2(-11, -0.000366211)
 rotation = -0.204534
 scale = Vector2(0.374242, 0.374242)
 texture = ExtResource("14_0qvux")
 
-[node name="vivo" type="Sprite2D" parent="Excavando/StateMachine/Juego/Contenido/animLibro/EventoLibro/LibroController/libro/megaterio"]
+[node name="vivo" type="Sprite2D" parent="Excavando/StateMachine/Juego/Contenido/CanvasLayer/animLibro/EventoLibro/LibroController/libro/megaterio"]
 material = SubResource("ShaderMaterial_ubqmg")
 position = Vector2(-26.0001, 8)
 scale = Vector2(0.665144, 0.665144)
 texture = ExtResource("32_80c0n")
 
-[node name="smilodonte" type="Node2D" parent="Excavando/StateMachine/Juego/Contenido/animLibro/EventoLibro/LibroController/libro"]
-position = Vector2(-7.45856, -77.5686)
-scale = Vector2(1.49171, 1.49171)
-
-[node name="bones" type="Sprite2D" parent="Excavando/StateMachine/Juego/Contenido/animLibro/EventoLibro/LibroController/libro/smilodonte"]
-material = SubResource("ShaderMaterial_q8vls")
-scale = Vector2(0.377778, 0.377778)
-texture = ExtResource("16_txmq6")
-
-[node name="vivo" type="Sprite2D" parent="Excavando/StateMachine/Juego/Contenido/animLibro/EventoLibro/LibroController/libro/smilodonte"]
-modulate = Color(0.219608, 0.219608, 0.219608, 1)
-material = SubResource("ShaderMaterial_q7sr5")
-scale = Vector2(0.377778, 0.377778)
-texture = ExtResource("14_0qvux")
-
-[node name="gliptodonte" type="Node2D" parent="Excavando/StateMachine/Juego/Contenido/animLibro/EventoLibro/LibroController/libro"]
+[node name="smilodonte" type="Node2D" parent="Excavando/StateMachine/Juego/Contenido/CanvasLayer/animLibro/EventoLibro/LibroController/libro"]
 visible = false
 position = Vector2(-7.45856, -77.5686)
 scale = Vector2(1.49171, 1.49171)
 
-[node name="bones" type="Sprite2D" parent="Excavando/StateMachine/Juego/Contenido/animLibro/EventoLibro/LibroController/libro/gliptodonte"]
+[node name="bones" type="Sprite2D" parent="Excavando/StateMachine/Juego/Contenido/CanvasLayer/animLibro/EventoLibro/LibroController/libro/smilodonte"]
 material = SubResource("ShaderMaterial_q8vls")
-scale = Vector2(0.377778, 0.377778)
-texture = ExtResource("14_0qvux")
+scale = Vector2(0.490342, 0.490342)
+texture = ExtResource("16_txmq6")
 
-[node name="vivo" type="Sprite2D" parent="Excavando/StateMachine/Juego/Contenido/animLibro/EventoLibro/LibroController/libro/gliptodonte"]
+[node name="vivo" type="Sprite2D" parent="Excavando/StateMachine/Juego/Contenido/CanvasLayer/animLibro/EventoLibro/LibroController/libro/smilodonte"]
 modulate = Color(0.219608, 0.219608, 0.219608, 1)
 material = SubResource("ShaderMaterial_q7sr5")
 scale = Vector2(0.377778, 0.377778)
 texture = ExtResource("14_0qvux")
 
-[node name="macrauquenia" type="Node2D" parent="Excavando/StateMachine/Juego/Contenido/animLibro/EventoLibro/LibroController/libro"]
+[node name="gliptodonte" type="Node2D" parent="Excavando/StateMachine/Juego/Contenido/CanvasLayer/animLibro/EventoLibro/LibroController/libro"]
+visible = false
+position = Vector2(-7.45856, -77.5686)
+scale = Vector2(1.49171, 1.49171)
+
+[node name="bones" type="Sprite2D" parent="Excavando/StateMachine/Juego/Contenido/CanvasLayer/animLibro/EventoLibro/LibroController/libro/gliptodonte"]
+material = SubResource("ShaderMaterial_yso4i")
+scale = Vector2(0.542095, 0.542095)
+texture = ExtResource("19_ryw8i")
+
+[node name="vivo" type="Sprite2D" parent="Excavando/StateMachine/Juego/Contenido/CanvasLayer/animLibro/EventoLibro/LibroController/libro/gliptodonte"]
+modulate = Color(0.219608, 0.219608, 0.219608, 1)
+material = SubResource("ShaderMaterial_q7sr5")
+scale = Vector2(0.377778, 0.377778)
+texture = ExtResource("14_0qvux")
+
+[node name="macrauquenia" type="Node2D" parent="Excavando/StateMachine/Juego/Contenido/CanvasLayer/animLibro/EventoLibro/LibroController/libro"]
 visible = false
 position = Vector2(-7.45856, -77.5689)
 scale = Vector2(1.49171, 1.49171)
 
-[node name="bones" type="Sprite2D" parent="Excavando/StateMachine/Juego/Contenido/animLibro/EventoLibro/LibroController/libro/macrauquenia"]
+[node name="bones" type="Sprite2D" parent="Excavando/StateMachine/Juego/Contenido/CanvasLayer/animLibro/EventoLibro/LibroController/libro/macrauquenia"]
 material = SubResource("ShaderMaterial_q8vls")
 scale = Vector2(0.377778, 0.377778)
 texture = ExtResource("14_0qvux")
 
-[node name="vivo" type="Sprite2D" parent="Excavando/StateMachine/Juego/Contenido/animLibro/EventoLibro/LibroController/libro/macrauquenia"]
+[node name="vivo" type="Sprite2D" parent="Excavando/StateMachine/Juego/Contenido/CanvasLayer/animLibro/EventoLibro/LibroController/libro/macrauquenia"]
 modulate = Color(0.219608, 0.219608, 0.219608, 1)
 material = SubResource("ShaderMaterial_q7sr5")
 scale = Vector2(0.377778, 0.377778)
 texture = ExtResource("14_0qvux")
 
-[node name="Label" type="Label" parent="Excavando/StateMachine/Juego/Contenido/animLibro/EventoLibro/LibroController/libro"]
+[node name="Label" type="Label" parent="Excavando/StateMachine/Juego/Contenido/CanvasLayer/animLibro/EventoLibro/LibroController/libro"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -1922,14 +1965,14 @@ horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
-[node name="pencil" type="Node2D" parent="Excavando/StateMachine/Juego/Contenido/animLibro/EventoLibro"]
+[node name="pencil" type="Node2D" parent="Excavando/StateMachine/Juego/Contenido/CanvasLayer/animLibro/EventoLibro"]
 position = Vector2(311, -1317)
 
-[node name="Sprite2D" type="Sprite2D" parent="Excavando/StateMachine/Juego/Contenido/animLibro/EventoLibro/pencil"]
+[node name="Sprite2D" type="Sprite2D" parent="Excavando/StateMachine/Juego/Contenido/CanvasLayer/animLibro/EventoLibro/pencil"]
 rotation = 0.546402
 texture = ExtResource("31_3iuyc")
 
-[node name="Button" type="Button" parent="Excavando/StateMachine/Juego/Contenido/animLibro/EventoLibro"]
+[node name="Button" type="Button" parent="Excavando/StateMachine/Juego/Contenido/CanvasLayer/animLibro/EventoLibro"]
 visible = false
 anchors_preset = 15
 anchor_right = 1.0
@@ -1942,20 +1985,21 @@ grow_horizontal = 2
 grow_vertical = 2
 flat = true
 
-[node name="btnContinue" type="Button" parent="Excavando/StateMachine/Juego/Contenido/animLibro/EventoLibro"]
+[node name="btnContinue" type="Button" parent="Excavando/StateMachine/Juego/Contenido/CanvasLayer/animLibro/EventoLibro"]
 visible = false
-offset_left = 194.0
+offset_left = -66.0
 offset_top = 307.0
-offset_right = 310.0
+offset_right = 50.0
 offset_bottom = 400.0
 flat = true
 
-[node name="Sprite2D" type="Sprite2D" parent="Excavando/StateMachine/Juego/Contenido/animLibro/EventoLibro/btnContinue"]
+[node name="Sprite2D" type="Sprite2D" parent="Excavando/StateMachine/Juego/Contenido/CanvasLayer/animLibro/EventoLibro/btnContinue"]
 position = Vector2(62, 46)
 texture = ExtResource("33_cayiq")
 flip_h = true
 
 [node name="btnVolver" parent="Excavando/StateMachine/Juego/Contenido" instance=ExtResource("18_dvs2k")]
+visible = false
 z_index = 1
 layout_mode = 1
 anchors_preset = 1
@@ -1972,6 +2016,9 @@ grow_vertical = 1
 theme = ExtResource("18_f477x")
 text = ""
 NextScene = "Map_Screen"
+
+[node name="HUD" parent="Excavando/StateMachine/Juego/Contenido" instance=ExtResource("38_0b8dm")]
+visible = true
 
 [node name="Moraleja" type="Node" parent="Excavando/StateMachine"]
 script = ExtResource("17_ulbcj")
@@ -2081,17 +2128,25 @@ offset_bottom = -51.0
 text = "Continue"
 NextScene = "Map_Screen"
 
-[node name="Cosa" type="Sprite2D" parent="."]
-position = Vector2(-752, 612)
-scale = Vector2(0.649603, 0.649603)
-texture = ExtResource("39_percy")
+[node name="WhatsAppImage2024-03-01At15_04_55" type="Sprite2D" parent="."]
+position = Vector2(-529, 614)
+texture = ExtResource("37_vx1c6")
 
 [connection signal="pressed" from="Excavando/StateMachine/Consigna/Contenido/Button" to="Excavando/StateMachine/Consigna/Contenido/Button" method="_on_pressed" flags=18]
 [connection signal="timeout" from="Excavando/StateMachine/Consigna/Contenido/Timer" to="Excavando/StateMachine/Consigna" method="TimeOut" flags=18]
-[connection signal="animation_finished" from="Excavando/StateMachine/Juego/Contenido/Instancia1/center/HuesoController/AnimationPlayer" to="Excavando/StateMachine/Juego/Contenido/animLibro/EventoLibro" method="DoAnim"]
-[connection signal="animation_finished" from="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/AnimationPlayer" to="Excavando/StateMachine/Juego/Contenido/animLibro/EventoLibro" method="DoAnim"]
-[connection signal="AllTrue" from="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue" to="Excavando/StateMachine/Juego/Contenido/animLibro/EventoLibro" method="SetSkeleton" binds= ["megaterio"]]
-[connection signal="Restart" from="Excavando/StateMachine/Juego/Contenido/animLibro/EventoLibro" to="Excavando/StateMachine/Juego/Contenido/background/CanvasGroup/TopoController" method="Reset"]
-[connection signal="button_down" from="Excavando/StateMachine/Juego/Contenido/animLibro/EventoLibro/Button" to="Excavando/StateMachine/Juego/Contenido/background/CanvasGroup/TopoController" method="EnableDisaneable" binds= [false]]
+[connection signal="area_entered" from="Excavando/StateMachine/Juego/Contenido/Area2dDown/Area2D" to="Excavando/StateMachine/Juego/Contenido/background/Camera2D" method="SetOnAreaDown" binds= [true]]
+[connection signal="area_exited" from="Excavando/StateMachine/Juego/Contenido/Area2dDown/Area2D" to="Excavando/StateMachine/Juego/Contenido/background/Camera2D" method="SetOnAreaDown" binds= [false]]
+[connection signal="area_entered" from="Excavando/StateMachine/Juego/Contenido/Area2dUp/Area2D" to="Excavando/StateMachine/Juego/Contenido/background/Camera2D" method="SetOnAreaUp" binds= [true]]
+[connection signal="area_exited" from="Excavando/StateMachine/Juego/Contenido/Area2dUp/Area2D" to="Excavando/StateMachine/Juego/Contenido/background/Camera2D" method="SetOnAreaUp" binds= [false]]
+[connection signal="SkeletonDiscover" from="Excavando/StateMachine/Juego/Contenido/Instancia1/center/HuesoController" to="Excavando/StateMachine/Juego/Contenido/CanvasLayer/animLibro/EventoLibro" method="DoAnim"]
+[connection signal="animation_finished" from="Excavando/StateMachine/Juego/Contenido/Instancia1/center/HuesoController/AnimationPlayer" to="Excavando/StateMachine/Juego/Contenido/CanvasLayer/animLibro/EventoLibro" method="DoAnim"]
+[connection signal="AllSpots" from="Excavando/StateMachine/Juego/Contenido/Instancia1/center/HuesoController/CheckAllTrue/EsqueletoSmilo" to="Excavando/StateMachine/Juego/Contenido/CanvasLayer/animLibro/EventoLibro" method="DoAnim"]
+[connection signal="AllSpots" from="Excavando/StateMachine/Juego/Contenido/Instancia1/center/HuesoController/CheckAllTrue/EsqueletoSmilo" to="Excavando/StateMachine/Juego/Contenido/CanvasLayer/animLibro/EventoLibro" method="SetSkeleton" binds= ["smilodonte"]]
+[connection signal="AllSpots" from="Excavando/StateMachine/Juego/Contenido/Instancia1/center/HuesoController/CheckAllTrue/EsqueletoGlipto" to="Excavando/StateMachine/Juego/Contenido/CanvasLayer/animLibro/EventoLibro" method="DoAnim"]
+[connection signal="AllSpots" from="Excavando/StateMachine/Juego/Contenido/Instancia1/center/HuesoController/CheckAllTrue/EsqueletoGlipto" to="Excavando/StateMachine/Juego/Contenido/CanvasLayer/animLibro/EventoLibro" method="SetSkeleton" binds= ["gliptodonte"]]
+[connection signal="animation_finished" from="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/AnimationPlayer" to="Excavando/StateMachine/Juego/Contenido/CanvasLayer/animLibro/EventoLibro" method="DoAnim"]
+[connection signal="AllTrue" from="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue" to="Excavando/StateMachine/Juego/Contenido/CanvasLayer/animLibro/EventoLibro" method="SetSkeleton" binds= ["megaterio"]]
+[connection signal="Restart" from="Excavando/StateMachine/Juego/Contenido/CanvasLayer/animLibro/EventoLibro" to="Excavando/StateMachine/Juego/Contenido/background/CanvasGroup/TopoController" method="Reset"]
+[connection signal="button_down" from="Excavando/StateMachine/Juego/Contenido/CanvasLayer/animLibro/EventoLibro/Button" to="Excavando/StateMachine/Juego/Contenido/background/CanvasGroup/TopoController" method="EnableDisaneable" binds= [false]]
 [connection signal="timeout" from="Excavando/StateMachine/Moraleja/Contenido/Timer" to="Excavando/StateMachine/Moraleja" method="TimeOut" flags=18]
 [connection signal="pressed" from="Excavando/StateMachine/Moraleja/Contenido/Instancia1/Button" to="Excavando/StateMachine/Moraleja/Contenido/Instancia1/Button" method="_on_pressed" flags=18]
