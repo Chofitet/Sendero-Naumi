@@ -107,9 +107,6 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_xfnj2"]
 radius = 149.216
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_umb6f"]
-size = Vector2(1020, 1081)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lmfrv"]
 size = Vector2(1020, 172.5)
 
@@ -156,6 +153,9 @@ radius = 1.5
 [sub_resource type="Gradient" id="Gradient_dkd33"]
 offsets = PackedFloat32Array(0, 0.504425, 1)
 colors = PackedColorArray(0.34902, 0.152941, 0, 1, 0.35, 0.35, 0.35, 1, 0.640625, 0.5625, 0.441406, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_umb6f"]
+size = Vector2(1020, 1241)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_h24x2"]
 radius = 1.5
@@ -608,18 +608,14 @@ offset_bottom = -2.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="Area2D" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Area2dDown"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Area2dDown/Area2D"]
-position = Vector2(0, -90.5)
-shape = SubResource("RectangleShape2D_umb6f")
-
 [node name="Area2dUp" type="Control" parent="Excavando/StateMachine/Juego/Contenido"]
 z_index = 1
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
+offset_left = -1739.0
+offset_right = -1739.0
 grow_horizontal = 2
 
 [node name="Area2D" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Area2dUp"]
@@ -649,7 +645,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="HuesoController" type="Node2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center"]
-position = Vector2(74, -26)
+position = Vector2(74, 241)
 script = ExtResource("8_osvhx")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/HuesoController"]
@@ -842,8 +838,17 @@ script = ExtResource("10_s5h5i")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/HuesoController/CheckAllTrue/EsqueletoGlipto/hotspot"]
 shape = SubResource("CircleShape2D_x16bw")
 
+[node name="Area2D" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center"]
+z_index = 1
+position = Vector2(0, 905)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Area2D"]
+position = Vector2(0, -170.5)
+shape = SubResource("RectangleShape2D_umb6f")
+
 [node name="Rocas" type="Node2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center"]
 z_index = 1
+position = Vector2(0, 267)
 
 [node name="colliders" type="Node2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Rocas"]
 
@@ -2135,8 +2140,6 @@ texture = ExtResource("37_vx1c6")
 
 [connection signal="pressed" from="Excavando/StateMachine/Consigna/Contenido/Button" to="Excavando/StateMachine/Consigna/Contenido/Button" method="_on_pressed" flags=18]
 [connection signal="timeout" from="Excavando/StateMachine/Consigna/Contenido/Timer" to="Excavando/StateMachine/Consigna" method="TimeOut" flags=18]
-[connection signal="area_entered" from="Excavando/StateMachine/Juego/Contenido/Area2dDown/Area2D" to="Excavando/StateMachine/Juego/Contenido/background/Camera2D" method="SetOnAreaDown" binds= [true]]
-[connection signal="area_exited" from="Excavando/StateMachine/Juego/Contenido/Area2dDown/Area2D" to="Excavando/StateMachine/Juego/Contenido/background/Camera2D" method="SetOnAreaDown" binds= [false]]
 [connection signal="area_entered" from="Excavando/StateMachine/Juego/Contenido/Area2dUp/Area2D" to="Excavando/StateMachine/Juego/Contenido/background/Camera2D" method="SetOnAreaUp" binds= [true]]
 [connection signal="area_exited" from="Excavando/StateMachine/Juego/Contenido/Area2dUp/Area2D" to="Excavando/StateMachine/Juego/Contenido/background/Camera2D" method="SetOnAreaUp" binds= [false]]
 [connection signal="SkeletonDiscover" from="Excavando/StateMachine/Juego/Contenido/Instancia1/center/HuesoController" to="Excavando/StateMachine/Juego/Contenido/CanvasLayer/animLibro/EventoLibro" method="DoAnim"]
@@ -2145,6 +2148,8 @@ texture = ExtResource("37_vx1c6")
 [connection signal="AllSpots" from="Excavando/StateMachine/Juego/Contenido/Instancia1/center/HuesoController/CheckAllTrue/EsqueletoSmilo" to="Excavando/StateMachine/Juego/Contenido/CanvasLayer/animLibro/EventoLibro" method="SetSkeleton" binds= ["smilodonte"]]
 [connection signal="AllSpots" from="Excavando/StateMachine/Juego/Contenido/Instancia1/center/HuesoController/CheckAllTrue/EsqueletoGlipto" to="Excavando/StateMachine/Juego/Contenido/CanvasLayer/animLibro/EventoLibro" method="DoAnim"]
 [connection signal="AllSpots" from="Excavando/StateMachine/Juego/Contenido/Instancia1/center/HuesoController/CheckAllTrue/EsqueletoGlipto" to="Excavando/StateMachine/Juego/Contenido/CanvasLayer/animLibro/EventoLibro" method="SetSkeleton" binds= ["gliptodonte"]]
+[connection signal="area_entered" from="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Area2D" to="Excavando/StateMachine/Juego/Contenido/background/Camera2D" method="SetOnAreaDown" binds= [true]]
+[connection signal="area_exited" from="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Area2D" to="Excavando/StateMachine/Juego/Contenido/background/Camera2D" method="SetOnAreaDown" binds= [false]]
 [connection signal="animation_finished" from="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/AnimationPlayer" to="Excavando/StateMachine/Juego/Contenido/CanvasLayer/animLibro/EventoLibro" method="DoAnim"]
 [connection signal="AllTrue" from="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue" to="Excavando/StateMachine/Juego/Contenido/CanvasLayer/animLibro/EventoLibro" method="SetSkeleton" binds= ["megaterio"]]
 [connection signal="Restart" from="Excavando/StateMachine/Juego/Contenido/CanvasLayer/animLibro/EventoLibro" to="Excavando/StateMachine/Juego/Contenido/background/CanvasGroup/TopoController" method="Reset"]
