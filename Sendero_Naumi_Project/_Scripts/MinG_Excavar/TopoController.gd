@@ -11,27 +11,28 @@ var toStopMoveAnim : bool = false
 @export var speed : float
 var _speed 
 @export var line : Line2D
-var collision_line = load("res://Scenes/Zona_Megafauna/line_collider.tscn")
+var collision_line = preload("res://Scenes/Zona_Megafauna/line_collider.tscn")
 @onready var timer = $Timer
 var relative_position 
 
 func _ready():
 	_speed = speed
-	#timer.timeout.connect(SpawnCollider)
+	timer.timeout.connect(SpawnCollider)
 	topo = $topo
-	initPos = topo.position
+	initPos = position
 	particles = $topo/MoleParticles
 	raycast = $topo/RayCast2D
+	EnableDisaneable(false)
 	
 
 func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("TouchScreen"):
 		timer.start()
+		particles.emitting = true
+		topo.get_node("topo").play("move")
 	if Input.is_action_pressed("TouchScreen"):
 		isMoving = true 
 		pressedPos = get_global_mouse_position()
-		particles.emitting = true
-		topo.get_node("topo").play("move")
 	if Input.is_action_just_released("TouchScreen"):
 		timer.stop()
 		isMoving = false
@@ -40,6 +41,7 @@ func _input(event: InputEvent) -> void:
 		toStopMoveAnim = true
 
 func _process(delta):
+	print(Engine.get_frames_per_second())
 	if !isMoving: return
 	relative_position = global_position - line.global_position 
 	var direction = (pressedPos - global_position).normalized()
@@ -71,15 +73,16 @@ func CheckIsInLine():
 	else:
 		particles.color = Color1
 
-func EnableDisaneable(x):
-	visible = x
-	if !x:
+func EnableDisaneable(state,resetInstance:bool = false):
+	if !state:
 		_speed = 0
+	else :
+		_speed = speed
+	
+	if resetInstance:
+		position = initPos
+		line.clear_points()
+		get_parent().get_node("Camera2D").RestartPos()
+		for c in line.get_children():
+			c.queue_free()
 
-func Reset():
-	visible = true
-	_speed = speed
-	topo.position = initPos
-	line.clear_points()
-	for c in line.get_children():
-		c.queue_free()

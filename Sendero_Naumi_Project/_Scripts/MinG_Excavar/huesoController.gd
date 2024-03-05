@@ -16,7 +16,6 @@ func checkHotSpots():
 	for HS in hotspots:
 		if !HS.isTrue : return
 		i = i + 1
-		print(i)
 	if i == countSpots:
 		isComplete = true
 		AllSpots.emit()
