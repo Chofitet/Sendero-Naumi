@@ -4,7 +4,10 @@ var topo
 var particles
 var raycast : RayCast2D
 var isMoving 
-var initPos 
+@export var initPos : Marker2D
+@export var SecondPos : Marker2D
+@export var instance1 : Control
+@export var instance2 : Control
 var toStopMoveAnim : bool = false
 @export var Color1 : Color
 @export var Color2 : Color
@@ -19,7 +22,6 @@ func _ready():
 	_speed = speed
 	timer.timeout.connect(SpawnCollider)
 	topo = $topo
-	initPos = position
 	particles = $topo/MoleParticles
 	raycast = $topo/RayCast2D
 	EnableDisaneable(false)
@@ -80,9 +82,15 @@ func EnableDisaneable(state,resetInstance:bool = false):
 		_speed = speed
 	
 	if resetInstance:
-		position = initPos
+		position = SelectInscancePosition()
 		line.clear_points()
 		get_parent().get_node("Camera2D").RestartPos()
 		for c in line.get_children():
 			c.queue_free()
 
+func SelectInscancePosition() -> Vector2:
+	if instance1.visible:
+		return initPos.position
+	if instance2.visible:
+		return SecondPos.position
+	return Vector2.ZERO

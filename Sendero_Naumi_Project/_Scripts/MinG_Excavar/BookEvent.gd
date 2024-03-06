@@ -10,23 +10,25 @@ var fadeTexture = load("res://addons/scene_manager/shader_patterns/diagonal.png"
 var isFinalInstance
 var SpriteFade
 var fadeFactor
+var fadeFactor2 
 var isfading
 var isInstancing
 var skCount = 0
 var isPencil = true
 signal Restart
+signal BookEvent
 
 func SetSkeleton(sk):
 	for i in $LibroController/libro.get_children():
 		if i.name == sk:
 			skeleton = i
 			skCount += 1
-			if skCount == 2:
+			if skCount == 3:
 				isInstancing = true
 			if sk == "megaterio":
 				isInstancing = true
 				isFinalInstance = true
-		
+	skeleton.get_node("Label").visible = true
 	$LibroController/libro/Label.text = sk
 	
 
@@ -50,8 +52,8 @@ func Draw():
 	await anim.animation_finished
 	if !isPencil: 
 		$btnContinue.visible = true
-		$LibroController/libro/Label.visible = true
 		return
+	fadeFactor2 = 0
 	isPencil = false
 	$pencil/Sprite2D.texture = SelectTexture()
 	anim.play("Pencil_enter")
@@ -70,6 +72,7 @@ func SelectSpriteFade() -> String:
 	else: return "vivo"
 
 func DoAnim():
+	BookEvent.emit(false)
 	Restart.emit(false)
 	anim.play("book_enter")
 	await anim.animation_finished
@@ -85,7 +88,12 @@ func _process(delta):
 		if fadeFactor <= 0:
 			isfading = false
 		SpriteFade.get_material().set_shader_parameter("cutoff", fadeFactor) 
-
+		if !isPencil:
+			fadeFactor2 += delta * 0.5
+			var otherSprite = skeleton.get_node("bones")
+			otherSprite.get_material().set_shader_parameter("inverted", false) 
+			otherSprite.get_material().set_shader_parameter("cutoff", fadeFactor2) 
+			
 func restartAll():
 	Restart.emit(true)
 	anim.play_backwards("book_enter")
@@ -103,16 +111,19 @@ func restartAll():
 	var instance2 = Fade.instantiate()
 	get_parent().get_parent().add_child(instance2)
 	instance2.init(fadeTexture,2,false,false)
+	
 
 func ToRestart():
-	$LibroController/libro/Label.visible = false
 	skeleton.get_node("vivo").get_material().set_shader_parameter("cutoff", 1)
 	skeleton.get_node("bones").get_material().set_shader_parameter("cutoff", 1)
 	isPencil = true
 	$pencil/Sprite2D.texture = SelectTexture()
+	skeleton.get_node("Label").visible = false
+	BookEvent.emit(true)
 	
 func ChangeInstanceMinigame():
 	if isFinalInstance:
+		BookEvent.emit(false)
 		StateMachine.Trigger_On_Child_Transition("Fin")
 	else:
 		StateMachine.Trigger_On_Child_Transition("Juego")
