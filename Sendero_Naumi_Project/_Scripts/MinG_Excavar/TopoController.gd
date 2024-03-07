@@ -25,15 +25,17 @@ func _ready():
 	particles = $topo/MoleParticles
 	raycast = $topo/RayCast2D
 	EnableDisaneable(false)
+	line.add_point(global_position - line.global_position)
+	line.add_point(global_position - line.global_position - Vector2(3,0))
 	
 
 func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("TouchScreen"):
+		isMoving = true 
 		timer.start()
 		particles.emitting = true
 		topo.get_node("topo").play("move")
 	if Input.is_action_pressed("TouchScreen"):
-		isMoving = true 
 		pressedPos = get_global_mouse_position()
 	if Input.is_action_just_released("TouchScreen"):
 		timer.stop()
@@ -42,8 +44,7 @@ func _input(event: InputEvent) -> void:
 		topo.get_node("topo").play("idle")
 		toStopMoveAnim = true
 
-func _process(delta):
-	print(Engine.get_frames_per_second())
+func _physics_process(delta):
 	if !isMoving: return
 	relative_position = global_position - line.global_position 
 	var direction = (pressedPos - global_position).normalized()
@@ -83,7 +84,7 @@ func EnableDisaneable(state,resetInstance:bool = false):
 	
 	if resetInstance:
 		position = SelectInscancePosition()
-		line.clear_points()
+		#line.clear_points()
 		get_parent().get_node("Camera2D").RestartPos()
 		for c in line.get_children():
 			c.queue_free()

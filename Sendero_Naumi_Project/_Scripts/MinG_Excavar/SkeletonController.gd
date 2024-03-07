@@ -13,7 +13,7 @@ func _ready():
 
 func DoDiscoverAnim(x):
 	x.get_node("particles").Emit()
-	x.z_index = 1
+	x.z_index = 2
 	var initScale = x.scale
 	var tween = get_tree().create_tween()
 	tween.tween_property(x,"scale",initScale*1.15,0.3).set_ease(Tween.EASE_IN_OUT)

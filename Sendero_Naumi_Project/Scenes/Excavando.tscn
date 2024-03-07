@@ -1,4 +1,4 @@
-[gd_scene load_steps=89 format=3 uid="uid://m3gbb64llbqn"]
+[gd_scene load_steps=92 format=3 uid="uid://m3gbb64llbqn"]
 
 [ext_resource type="Script" path="res://_Scripts/Minigame_Save_Controller.gd" id="1_6uc2r"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/StateMachineMinigames.gd" id="2_4ogka"]
@@ -25,11 +25,14 @@
 [ext_resource type="Texture2D" uid="uid://cuiyi4ot53wx1" path="res://Sprites/ZonaMegafauna/topo tiras alt.png" id="19_pbc8n"]
 [ext_resource type="Texture2D" uid="uid://dkkyhv72i3ud8" path="res://Sprites/ZonaMegafauna/gliptodon fosil - excavacion.png" id="19_ryw8i"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/FinState.gd" id="19_uslqa"]
+[ext_resource type="Texture2D" uid="uid://oi5guylx2qrd" path="res://Sprites/ZonaMegafauna/smilodon pozo - excavacion.png" id="20_sj1tm"]
 [ext_resource type="Texture2D" uid="uid://bmmttxd4j1mk" path="res://Sprites/ZonaMegafauna/macrauquenia - fosil.png" id="22_8jam6"]
 [ext_resource type="Texture2D" uid="uid://c86atw5p5xojw" path="res://Sprites/ZonaMegafauna/piedra - excavacion.png" id="22_u6pjk"]
 [ext_resource type="Texture2D" uid="uid://badkgjv7fmia5" path="res://Sprites/ZonaAstronomia/dirtEdge.png" id="23_7bnse"]
+[ext_resource type="Texture2D" uid="uid://36q5wobmimet" path="res://Sprites/ZonaMegafauna/gliptodon pozo - excavacion.png" id="23_snvhs"]
 [ext_resource type="Script" path="res://_Scripts/CheckInstanceState.gd" id="24_r51bh"]
 [ext_resource type="Script" path="res://Scenes/Zona_Megafauna/FillEdgesWithTextures.gd" id="24_rkt5g"]
+[ext_resource type="Texture2D" uid="uid://dpoqiaakqjxnl" path="res://Sprites/ZonaMegafauna/macrauquenia pozo - excavacion.png" id="25_wsswo"]
 [ext_resource type="Shader" path="res://shaders/FadeTexture.gdshader" id="26_763yu"]
 [ext_resource type="Script" path="res://_Scripts/MinG_Excavar/BookEvent.gd" id="26_kjycq"]
 [ext_resource type="Texture2D" uid="uid://vchumiux3vli" path="res://addons/scene_manager/shader_patterns/vertical.png" id="27_hgbov"]
@@ -259,7 +262,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("../../../overlay:visible")
+tracks/4/path = NodePath("overlay:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -287,14 +290,14 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../../../overlay:visible")
+tracks/1/path = NodePath("overlay:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [false, true]
+"values": [false, false, true]
 }
 
 [sub_resource type="Animation" id="Animation_02nwt"]
@@ -611,6 +614,7 @@ collide_with_bodies = false
 [node name="MoleParticles" parent="Excavando/StateMachine/Juego/Contenido/background/CanvasGroup/TopoController/topo" instance=ExtResource("16_olaoq")]
 z_index = 2
 scale = Vector2(0.938922, 0.938922)
+emitting = false
 amount = 8
 
 [node name="topo" type="AnimatedSprite2D" parent="Excavando/StateMachine/Juego/Contenido/background/CanvasGroup/TopoController/topo"]
@@ -833,6 +837,13 @@ group = "topo"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/HuesoController/CheckAllTrue/EsqueletoSmilo/hotspot18"]
 shape = SubResource("CircleShape2D_x16bw")
+
+[node name="contorno" type="Sprite2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/HuesoController/CheckAllTrue/EsqueletoSmilo"]
+z_index = -1
+position = Vector2(-17.0881, 27.3334)
+scale = Vector2(1.00064, 1.00064)
+texture = ExtResource("20_sj1tm")
+flip_h = true
 
 [node name="particles" type="Node2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/HuesoController/CheckAllTrue/EsqueletoSmilo"]
 z_index = 2
@@ -1141,6 +1152,12 @@ group = "topo"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/HuesoController/CheckAllTrue/EsqueletoGlipto/hotspot15"]
 shape = SubResource("CircleShape2D_x16bw")
+
+[node name="contorno" type="Sprite2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/HuesoController/CheckAllTrue/EsqueletoGlipto"]
+z_index = -1
+position = Vector2(-6.58112, -6.98145)
+scale = Vector2(1.00064, 1.00064)
+texture = ExtResource("23_snvhs")
 
 [node name="particles" type="Node2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/HuesoController/CheckAllTrue/EsqueletoGlipto"]
 z_index = 2
@@ -1568,6 +1585,12 @@ group = "topo"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/HuesoController/CheckAllTrue/EsqueletoMacra/hotspot11"]
 shape = SubResource("CircleShape2D_x16bw")
+
+[node name="contorno" type="Sprite2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/HuesoController/CheckAllTrue/EsqueletoMacra"]
+z_index = -1
+position = Vector2(-1.4588, -15.5186)
+scale = Vector2(1.00064, 1.00064)
+texture = ExtResource("25_wsswo")
 
 [node name="particles" type="Node2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/HuesoController/CheckAllTrue/EsqueletoMacra"]
 z_index = 2
@@ -2300,7 +2323,7 @@ shape = SubResource("CircleShape2D_q2guk")
 
 [node name="contorno" type="Sprite2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/Esqueleto"]
 z_index = -1
-position = Vector2(0, 72.46)
+position = Vector2(0, 74.1852)
 scale = Vector2(1.00064, 1.00064)
 texture = ExtResource("19_ksyc2")
 
@@ -2615,17 +2638,6 @@ joint_mode = 2
 begin_cap_mode = 2
 end_cap_mode = 2
 
-[node name="overlay" type="ColorRect" parent="Excavando/StateMachine/Juego/Contenido"]
-visible = false
-z_index = 1
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 0.294118)
-
 [node name="CanvasLayer" type="CanvasLayer" parent="Excavando/StateMachine/Juego/Contenido"]
 
 [node name="animLibro" type="Control" parent="Excavando/StateMachine/Juego/Contenido/CanvasLayer"]
@@ -2644,6 +2656,19 @@ z_index = 2
 position = Vector2(0, -288)
 script = ExtResource("26_kjycq")
 StateMachine = NodePath("../../../../..")
+
+[node name="overlay" type="ColorRect" parent="Excavando/StateMachine/Juego/Contenido/CanvasLayer/animLibro/EventoLibro"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1179.0
+offset_top = -1010.0
+offset_right = 1179.0
+offset_bottom = 1010.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.478431)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Excavando/StateMachine/Juego/Contenido/CanvasLayer/animLibro/EventoLibro"]
 libraries = {
