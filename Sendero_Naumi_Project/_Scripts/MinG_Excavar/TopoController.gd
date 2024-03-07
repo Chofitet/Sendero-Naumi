@@ -25,9 +25,6 @@ func _ready():
 	particles = $topo/MoleParticles
 	raycast = $topo/RayCast2D
 	EnableDisaneable(false)
-	line.add_point(global_position - line.global_position)
-	line.add_point(global_position - line.global_position - Vector2(3,0))
-	
 
 func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("TouchScreen"):

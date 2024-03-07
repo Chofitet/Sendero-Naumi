@@ -3,6 +3,8 @@ extends Node2D
 @onready var checkTrue = $CheckAllTrue
 @onready var anim = $AnimationPlayer
 @onready var rocas = get_parent().get_node("Rocas")
+var Book = preload("res://Scenes/Zona_Megafauna/evento_libro.tscn")
+@export var ParentBook : Control
 @export var DoAnim : bool
 signal SkeletonDiscover
 
@@ -19,4 +21,8 @@ func DoDiscoverAnim(x):
 	tween.tween_property(x,"scale",initScale*1.15,0.3).set_ease(Tween.EASE_IN_OUT)
 	tween.tween_property(x,"scale",initScale,0.3).set_ease(Tween.EASE_IN_OUT)
 	await tween.finished
+	var instance = Book.instantiate()
+	ParentBook.add_child(instance)
+	instance.SetSkeleton(x.name)
+	instance.DoAnim()
 	SkeletonDiscover.emit()

@@ -1,12 +1,7 @@
 extends Node2D
 
-@onready var anim = $AnimationPlayer
-@export var StateMachine : Node
+var anim 
 var skeleton 
-var SpritePencil = load("res://Sprites/ZonaMegafauna/pencil.png")
-var SpriteBrush = load("res://Sprites/ZonaMegafauna/brush - excavando.png")
-var Fade = load("res://Scenes/Experiments/IndividualFade.tscn")
-var fadeTexture = load("res://addons/scene_manager/shader_patterns/diagonal.png")
 var isFinalInstance
 var SpriteFade
 var fadeFactor
@@ -17,6 +12,10 @@ var skCount = 0
 var isPencil = true
 signal Restart
 signal BookEvent
+var SpritePencil
+var SpriteBrush
+var Fade
+var fadeTexture
 
 func SetSkeleton(sk):
 	for i in $LibroController/libro.get_children():
@@ -30,18 +29,21 @@ func SetSkeleton(sk):
 				isFinalInstance = true
 	skeleton.get_node("Label").visible = true
 	$LibroController/libro/Label.text = sk
-	
+
 
 func _ready():
+	SpritePencil = load("res://Sprites/ZonaMegafauna/pencil.png")
+	SpriteBrush = load("res://Sprites/ZonaMegafauna/brush - excavando.png")
+	Fade = load("res://Scenes/Experiments/IndividualFade.tscn")
+	fadeTexture = load("res://addons/scene_manager/shader_patterns/diagonal.png")
+	anim = $AnimationPlayer
 	$btnContinue.pressed.connect(restartAll)
 	$Button.button_down.connect(Draw)
 	$Button.visible = false
-	visible = false
 	anim.play("book_enter")
 	await anim.animation_finished
 	anim.play("RESET")
 	await anim.animation_finished
-	visible = true
 
 func Draw():
 	$Button.visible = false
@@ -100,7 +102,8 @@ func restartAll():
 	$btnContinue.visible = false
 	await anim.animation_finished
 	ToRestart()
-	if !isInstancing: 
+	if !isInstancing:
+		queue_free()
 		return
 	var instance = Fade.instantiate()
 	get_parent().get_parent().add_child(instance)
@@ -111,7 +114,7 @@ func restartAll():
 	var instance2 = Fade.instantiate()
 	get_parent().get_parent().add_child(instance2)
 	instance2.init(fadeTexture,2,false,false)
-	
+	queue_free()
 
 func ToRestart():
 	skeleton.get_node("vivo").get_material().set_shader_parameter("cutoff", 1)
@@ -124,8 +127,9 @@ func ToRestart():
 func ChangeInstanceMinigame():
 	if isFinalInstance:
 		BookEvent.emit(false)
-		StateMachine.Trigger_On_Child_Transition("Fin")
+		#StateMachine.Trigger_On_Child_Transition("Fin")
 	else:
-		StateMachine.Trigger_On_Child_Transition("Juego")
+		pass
+		#StateMachine.Trigger_On_Child_Transition("Juego")
 
 
