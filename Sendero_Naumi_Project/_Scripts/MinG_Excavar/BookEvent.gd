@@ -1,5 +1,6 @@
 extends Node2D
 
+var StateMachine
 var anim 
 var skeleton 
 var isFinalInstance
@@ -8,45 +9,43 @@ var fadeFactor
 var fadeFactor2 
 var isfading
 var isInstancing
-var skCount = 0
 var isPencil = true
+var topo
 signal Restart
 signal BookEvent
-var SpritePencil
-var SpriteBrush
-var Fade
-var fadeTexture
+var SpritePencil = preload("res://Sprites/ZonaMegafauna/pencil.png")
+var SpriteBrush = preload("res://Sprites/ZonaMegafauna/brush - excavando.png")
+var Fade = preload("res://Scenes/Experiments/IndividualFade.tscn")
+var fadeTexture = preload("res://addons/scene_manager/shader_patterns/diagonal.png")
 
 func SetSkeleton(sk):
-	for i in $LibroController/libro.get_children():
+	for i in $LibroController/libro/animales.get_children():
+		i.visible = false
+		i.get_node("bones").get_material().set_shader_parameter("inverted", true)
+		i.get_node("vivo").get_material().set_shader_parameter("cutoff", 1)
+		i.get_node("bones").get_material().set_shader_parameter("cutoff", 1)
 		if i.name == sk:
 			skeleton = i
-			skCount += 1
-			if skCount == 3:
-				isInstancing = true
+			skeleton.visible = true
 			if sk == "megaterio":
 				isInstancing = true
 				isFinalInstance = true
-	skeleton.get_node("Label").visible = true
 	$LibroController/libro/Label.text = sk
 
+func IsPassingInstance(statemachine):
+	isInstancing = true
+	StateMachine = statemachine
+	
 
 func _ready():
-	SpritePencil = load("res://Sprites/ZonaMegafauna/pencil.png")
-	SpriteBrush = load("res://Sprites/ZonaMegafauna/brush - excavando.png")
-	Fade = load("res://Scenes/Experiments/IndividualFade.tscn")
-	fadeTexture = load("res://addons/scene_manager/shader_patterns/diagonal.png")
 	anim = $AnimationPlayer
 	$btnContinue.pressed.connect(restartAll)
 	$Button.button_down.connect(Draw)
 	$Button.visible = false
-	anim.play("book_enter")
-	await anim.animation_finished
-	anim.play("RESET")
-	await anim.animation_finished
 
 func Draw():
 	$Button.visible = false
+	skeleton.get_node("Label").visible = true
 	anim.play("pencil_anim")
 	fadeFactor = 1
 	SpriteFade = skeleton.get_node(SelectSpriteFade())
@@ -73,7 +72,8 @@ func SelectSpriteFade() -> String:
 		return "bones"
 	else: return "vivo"
 
-func DoAnim():
+func DoAnim(_topo):
+	topo = _topo
 	BookEvent.emit(false)
 	Restart.emit(false)
 	anim.play("book_enter")
@@ -95,16 +95,21 @@ func _process(delta):
 			var otherSprite = skeleton.get_node("bones")
 			otherSprite.get_material().set_shader_parameter("inverted", false) 
 			otherSprite.get_material().set_shader_parameter("cutoff", fadeFactor2) 
-			
+
+
 func restartAll():
-	Restart.emit(true)
-	anim.play_backwards("book_enter")
+	topo.EnableDisaneable(true)
 	$btnContinue.visible = false
+	if isInstancing: InstanceTransition()
+	anim.play_backwards("book_enter")
 	await anim.animation_finished
 	ToRestart()
 	if !isInstancing:
 		queue_free()
 		return
+	
+
+func InstanceTransition():
 	var instance = Fade.instantiate()
 	get_parent().get_parent().add_child(instance)
 	instance.init(fadeTexture,2,true)
@@ -117,8 +122,6 @@ func restartAll():
 	queue_free()
 
 func ToRestart():
-	skeleton.get_node("vivo").get_material().set_shader_parameter("cutoff", 1)
-	skeleton.get_node("bones").get_material().set_shader_parameter("cutoff", 1)
 	isPencil = true
 	$pencil/Sprite2D.texture = SelectTexture()
 	skeleton.get_node("Label").visible = false
@@ -127,9 +130,9 @@ func ToRestart():
 func ChangeInstanceMinigame():
 	if isFinalInstance:
 		BookEvent.emit(false)
-		#StateMachine.Trigger_On_Child_Transition("Fin")
+		StateMachine.Trigger_On_Child_Transition("Fin")
 	else:
 		pass
-		#StateMachine.Trigger_On_Child_Transition("Juego")
+		StateMachine.Trigger_On_Child_Transition("Juego")
 
 

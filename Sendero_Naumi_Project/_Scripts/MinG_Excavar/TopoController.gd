@@ -6,17 +6,19 @@ var raycast : RayCast2D
 var isMoving 
 @export var initPos : Marker2D
 @export var SecondPos : Marker2D
+@export var PointWay : Marker2D
 @export var instance1 : Control
 @export var instance2 : Control
-var toStopMoveAnim : bool = false
 @export var Color1 : Color
 @export var Color2 : Color
 @export var speed : float
+@export var cam : Camera2D
 var _speed 
 @export var line : Line2D
 var collision_line = preload("res://Scenes/Zona_Megafauna/line_collider.tscn")
 @onready var timer = $Timer
 var relative_position 
+var isStoped
 
 func _ready():
 	_speed = speed
@@ -30,6 +32,7 @@ func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("TouchScreen"):
 		isMoving = true 
 		timer.start()
+		if isStoped: return
 		particles.emitting = true
 		topo.get_node("topo").play("move")
 	if Input.is_action_pressed("TouchScreen"):
@@ -39,7 +42,6 @@ func _input(event: InputEvent) -> void:
 		isMoving = false
 		particles.emitting = false
 		topo.get_node("topo").play("idle")
-		toStopMoveAnim = true
 
 func _physics_process(delta):
 	if !isMoving: return
@@ -49,7 +51,8 @@ func _physics_process(delta):
 		Apply_Movement(direction * 8000 * delta)
 		move_and_slide()
 		line.add_point(relative_position)
-	topo.look_at(pressedPos)
+	if !isStoped and _speed != 0:
+		topo.look_at(pressedPos)
 	
 
 func Apply_Movement(accel):
@@ -75,16 +78,24 @@ func CheckIsInLine():
 
 func EnableDisaneable(state,resetInstance:bool = false):
 	if !state:
+		topo.get_node("topo").play("idle")
+		particles.emitting = false
+		isStoped = true
 		_speed = 0
 	else :
+		isStoped = false
 		_speed = speed
 	
 	if resetInstance:
 		position = SelectInscancePosition()
-		#line.clear_points()
-		get_parent().get_node("Camera2D").RestartPos()
+		topo.rotation = deg_to_rad(SelectInstanceRotation())
+		print(SelectInstanceRotation())
+		line.clear_points()
+		cam.RestartPos()
 		for c in line.get_children():
 			c.queue_free()
+		line.add_point(PointWay.position - line.global_position)
+		line.add_point(global_position - line.global_position + Vector2(10,10))
 
 func SelectInscancePosition() -> Vector2:
 	if instance1.visible:
@@ -92,3 +103,13 @@ func SelectInscancePosition() -> Vector2:
 	if instance2.visible:
 		return SecondPos.position
 	return Vector2.ZERO
+
+func SelectInstanceRotation() -> float:
+	if instance1.visible:
+		return 39
+	if instance2.visible:
+		return -20
+	return 0 
+
+func ConnectBook(instance):
+	instance.BookEvent.connect(EnableDisaneable)

@@ -1,14 +1,20 @@
-[gd_scene load_steps=65 format=3 uid="uid://m3gbb64llbqn"]
+[gd_scene load_steps=70 format=3 uid="uid://m3gbb64llbqn"]
 
 [ext_resource type="Script" path="res://_Scripts/Minigame_Save_Controller.gd" id="1_6uc2r"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/StateMachineMinigames.gd" id="2_4ogka"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/ConsignaState.gd" id="3_nk4vw"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/Button_Change_StateMinigame.gd" id="4_2v8ca"]
+[ext_resource type="Texture2D" uid="uid://bm1ir8wka6ekk" path="res://Sprites/ZonaMegafauna/fondo intro - excavacion.png" id="5_kfccv"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/JuegoState.gd" id="5_nqckt"]
+[ext_resource type="Texture2D" uid="uid://bnmu1ur2bap7b" path="res://Sprites/nubes.png" id="6_eybv5"]
+[ext_resource type="Texture2D" uid="uid://dbap4ctug186q" path="res://Sprites/ZonaMegafauna/topo intro - excavacion.png" id="6_xhxme"]
 [ext_resource type="Script" path="res://_Scripts/CheckAllChildsTrue.gd" id="7_io4up"]
 [ext_resource type="Texture2D" uid="uid://4xrxs1a8fktp" path="res://Sprites/ZonaAstronomia/tierra fondo - excavacion.png" id="7_xouvp"]
+[ext_resource type="Script" path="res://Scenes/GenericPanelController.gd" id="8_5u038"]
 [ext_resource type="Script" path="res://_Scripts/MinG_Excavar/SkeletonController.gd" id="8_osvhx"]
+[ext_resource type="Texture2D" uid="uid://d3vqbj36ckks4" path="res://Sprites/ZonaMegafauna/piedritas intro - excavacion.png" id="8_wwrjc"]
 [ext_resource type="Script" path="res://_Scripts/MinG_Excavar/huesoController.gd" id="9_113nf"]
+[ext_resource type="LabelSettings" uid="uid://bd2jj8jlh3vp2" path="res://Themes/Geología/LabelSetting_Generic.tres" id="9_p6o04"]
 [ext_resource type="Script" path="res://_Scripts/MinG_Excavar/hotspot.gd" id="10_s5h5i"]
 [ext_resource type="Script" path="res://_Scripts/MinG_Excavar/EmitChildParticles.gd" id="13_l1my3"]
 [ext_resource type="Texture2D" uid="uid://cxijkdnbjec6k" path="res://Sprites/ZonaAstronomia/tierra frente - excavacion.png" id="14_0h6vo"]
@@ -37,6 +43,15 @@
 [ext_resource type="PackedScene" uid="uid://dlwmbps456ind" path="res://Scenes/Experiments/btnVolver.tscn" id="38_0b8dm"]
 [ext_resource type="Script" path="res://_Scripts/MinG_Excavar/TutorialExcavando.gd" id="42_o38rj"]
 [ext_resource type="Script" path="res://Scenes/Experiments/btnVolverController.gd" id="46_m1qiq"]
+
+[sub_resource type="Gradient" id="Gradient_wwaor"]
+offsets = PackedFloat32Array(0, 0.51751, 1)
+colors = PackedColorArray(0.372549, 0.45098, 0.545098, 1, 0.588235, 0.713726, 0.741176, 1, 0.721569, 0.807843, 0.815686, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_3gsbp"]
+gradient = SubResource("Gradient_wwaor")
+fill_from = Vector2(0.491453, 0)
+fill_to = Vector2(0.521368, 1)
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_j7ivs"]
 blend_mode = 2
@@ -102,43 +117,6 @@ animations = [{
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xfnj2"]
 radius = 149.216
-
-[sub_resource type="Animation" id="Animation_ojpeh"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CheckAllTrue:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_if4uv"]
-resource_name = "Skeleton_Discover"
-length = 0.6
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CheckAllTrue:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.6),
-"transitions": PackedFloat32Array(1, -2, 1),
-"update": 0,
-"values": [Vector2(1, 1), Vector2(1.06, 1.06), Vector2(1, 1)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_qbh5s"]
-_data = {
-"RESET": SubResource("Animation_ojpeh"),
-"Skeleton_Discover": SubResource("Animation_if4uv")
-}
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_x16bw"]
 radius = 1.5
@@ -216,6 +194,10 @@ color = Color(0.72549, 1, 1, 1)
 script = ExtResource("2_4ogka")
 initial_state = NodePath("Consigna")
 
+[node name="Camera2D" type="Camera2D" parent="Excavando/StateMachine" node_paths=PackedStringArray("topo")]
+script = ExtResource("37_luhad")
+topo = NodePath("../Juego/Contenido/background/CanvasGroup/TopoController/topo/topo")
+
 [node name="Consigna" type="Node" parent="Excavando/StateMachine"]
 script = ExtResource("3_nk4vw")
 Consignas = ["Guiá al topo para encontrar los fósiles"]
@@ -244,12 +226,12 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 40
-text = "Consigna genérica Consigna genérica Consigna genérica"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
 [node name="Button" type="Button" parent="Excavando/StateMachine/Consigna/Contenido" node_paths=PackedStringArray("state_to_change", "state_machine")]
+visible = false
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -270,6 +252,152 @@ state_machine = NodePath("../../..")
 
 [node name="Timer" type="Timer" parent="Excavando/StateMachine/Consigna/Contenido"]
 wait_time = 3.0
+
+[node name="TextureRect" type="TextureRect" parent="Excavando/StateMachine/Consigna/Contenido"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -326.0
+offset_bottom = -326.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_3gsbp")
+
+[node name="nube" type="Sprite2D" parent="Excavando/StateMachine/Consigna/Contenido/TextureRect"]
+position = Vector2(145, 302)
+scale = Vector2(0.616949, 0.616949)
+texture = ExtResource("6_eybv5")
+hframes = 8
+
+[node name="nube2" type="Sprite2D" parent="Excavando/StateMachine/Consigna/Contenido/TextureRect"]
+position = Vector2(669, 272)
+scale = Vector2(0.616949, 0.616949)
+texture = ExtResource("6_eybv5")
+hframes = 8
+frame = 5
+
+[node name="nube3" type="Sprite2D" parent="Excavando/StateMachine/Consigna/Contenido/TextureRect"]
+position = Vector2(675, 435)
+scale = Vector2(0.616949, 0.616949)
+texture = ExtResource("6_eybv5")
+hframes = 8
+frame = 4
+
+[node name="nube4" type="Sprite2D" parent="Excavando/StateMachine/Consigna/Contenido/TextureRect"]
+position = Vector2(378, 263)
+scale = Vector2(0.616949, 0.616949)
+texture = ExtResource("6_eybv5")
+hframes = 8
+frame = 7
+
+[node name="nube5" type="Sprite2D" parent="Excavando/StateMachine/Consigna/Contenido/TextureRect"]
+position = Vector2(107, 94)
+scale = Vector2(0.616949, 0.616949)
+texture = ExtResource("6_eybv5")
+hframes = 8
+frame = 3
+
+[node name="nube8" type="Sprite2D" parent="Excavando/StateMachine/Consigna/Contenido/TextureRect"]
+position = Vector2(369, 400)
+scale = Vector2(0.616949, 0.616949)
+texture = ExtResource("6_eybv5")
+flip_h = true
+hframes = 8
+frame = 4
+
+[node name="ColorRect" type="ColorRect" parent="Excavando/StateMachine/Consigna/Contenido"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.33
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 0.599976
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.364706, 0.384314, 0.290196, 1)
+
+[node name="Control" type="Control" parent="Excavando/StateMachine/Consigna/Contenido"]
+layout_mode = 1
+anchor_left = 0.5
+anchor_top = 0.364
+anchor_right = 0.5
+anchor_bottom = 0.364
+offset_top = 0.0799561
+offset_bottom = 0.0799561
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Sprite2D2" type="Sprite2D" parent="Excavando/StateMachine/Consigna/Contenido/Control"]
+scale = Vector2(0.674074, 0.674074)
+texture = ExtResource("5_kfccv")
+
+[node name="center" type="Control" parent="Excavando/StateMachine/Consigna/Contenido"]
+layout_mode = 1
+anchor_left = 0.5
+anchor_top = 0.609
+anchor_right = 0.5
+anchor_bottom = 0.609
+offset_top = -0.52002
+offset_bottom = -0.52002
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Sprite2D2" type="Sprite2D" parent="Excavando/StateMachine/Consigna/Contenido/center"]
+position = Vector2(2, 260)
+scale = Vector2(0.664706, 0.664706)
+texture = ExtResource("8_wwrjc")
+
+[node name="Sprite2D" type="Sprite2D" parent="Excavando/StateMachine/Consigna/Contenido/center"]
+position = Vector2(5, 42)
+scale = Vector2(0.666667, 0.666667)
+texture = ExtResource("6_xhxme")
+
+[node name="Panel" type="Panel" parent="Excavando/StateMachine/Consigna/Contenido"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -315.0
+offset_top = 91.0
+offset_right = 315.0
+offset_bottom = 363.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("18_f477x")
+script = ExtResource("8_5u038")
+
+[node name="Label" type="Label" parent="Excavando/StateMachine/Consigna/Contenido/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -249.0
+offset_top = -42.0
+offset_right = 249.0
+offset_bottom = 42.0
+grow_horizontal = 2
+grow_vertical = 2
+label_settings = ExtResource("9_p6o04")
+
+[node name="Button" type="Button" parent="Excavando/StateMachine/Consigna/Contenido/Panel" node_paths=PackedStringArray("state_to_change", "state_machine")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.775
+anchor_top = 1.004
+anchor_right = 0.775
+anchor_bottom = 1.004
+offset_left = -45.25
+offset_top = -45.088
+offset_right = 44.75
+offset_bottom = 44.912
+grow_horizontal = 0
+grow_vertical = 0
+script = ExtResource("4_2v8ca")
+state_to_change = NodePath("../../../../Juego")
+state_machine = NodePath("../../../..")
 
 [node name="Juego" type="Node" parent="Excavando/StateMachine" node_paths=PackedStringArray("NextState", "StateMachine")]
 script = ExtResource("5_nqckt")
@@ -336,29 +464,30 @@ end_cap_mode = 2
 sharp_limit = 4.795
 round_precision = 6
 
-[node name="Camera2D" type="Camera2D" parent="Excavando/StateMachine/Juego/Contenido/background/CanvasGroup" node_paths=PackedStringArray("topo")]
-script = ExtResource("37_luhad")
-topo = NodePath("../TopoController/topo/topo")
-
 [node name="FirstPos" type="Marker2D" parent="Excavando/StateMachine/Juego/Contenido/background/CanvasGroup"]
 position = Vector2(100, 290)
 
 [node name="SecondPos" type="Marker2D" parent="Excavando/StateMachine/Juego/Contenido/background/CanvasGroup"]
 position = Vector2(125, 104)
 
-[node name="TopoController" type="CharacterBody2D" parent="Excavando/StateMachine/Juego/Contenido/background/CanvasGroup" node_paths=PackedStringArray("initPos", "SecondPos", "instance1", "instance2", "line")]
-z_index = 2
-position = Vector2(100, 290)
+[node name="pointWay" type="Marker2D" parent="Excavando/StateMachine/Juego/Contenido/background/CanvasGroup"]
+position = Vector2(-70, 168)
+
+[node name="TopoController" type="CharacterBody2D" parent="Excavando/StateMachine/Juego/Contenido/background/CanvasGroup" node_paths=PackedStringArray("initPos", "SecondPos", "PointWay", "instance1", "instance2", "cam", "line")]
+z_index = 1
+position = Vector2(101, 290)
 motion_mode = 1
 wall_min_slide_angle = 0.488692
 script = ExtResource("14_2g78w")
 initPos = NodePath("../FirstPos")
 SecondPos = NodePath("../SecondPos")
+PointWay = NodePath("../pointWay")
 instance1 = NodePath("../../../Instancia1")
 instance2 = NodePath("../../../Instancia2")
 Color1 = Color(0.316406, 0.195313, 0.15625, 1)
 Color2 = Color(0.65625, 0.574219, 0.429688, 1)
 speed = 230.0
+cam = NodePath("../../../../../Camera2D")
 line = NodePath("../Line2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/background/CanvasGroup/TopoController"]
@@ -418,15 +547,12 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="HuesoController" type="Node2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center" node_paths=PackedStringArray("ParentBook")]
+[node name="HuesoController" type="Node2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center" node_paths=PackedStringArray("ParentBook", "Statemachine", "topoController")]
 position = Vector2(74, 241)
 script = ExtResource("8_osvhx")
 ParentBook = NodePath("../../../CanvasLayer/animLibro")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/HuesoController"]
-libraries = {
-"": SubResource("AnimationLibrary_qbh5s")
-}
+Statemachine = NodePath("../../../../..")
+topoController = NodePath("../../../background/CanvasGroup/TopoController")
 
 [node name="CheckAllTrue" type="Node2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/HuesoController"]
 script = ExtResource("7_io4up")
@@ -1666,437 +1792,435 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="HuesoController" type="Node2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center"]
+[node name="HuesoController" type="Node2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center" node_paths=PackedStringArray("ParentBook", "Statemachine", "topoController")]
 position = Vector2(74, -26)
 script = ExtResource("8_osvhx")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController"]
-libraries = {
-"": SubResource("AnimationLibrary_qbh5s")
-}
+ParentBook = NodePath("../../../CanvasLayer/animLibro")
+Statemachine = NodePath("../../../../..")
+topoController = NodePath("../../../background/CanvasGroup/TopoController")
 
 [node name="CheckAllTrue" type="Node2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController"]
 script = ExtResource("7_io4up")
 
-[node name="Esqueleto" type="Sprite2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue"]
+[node name="megaterio" type="Sprite2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue"]
 position = Vector2(-78, -17)
 scale = Vector2(0.57963, 0.57963)
 texture = ExtResource("14_0qvux")
 script = ExtResource("9_113nf")
 
-[node name="hotspot3" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/Esqueleto"]
+[node name="hotspot3" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/megaterio"]
 position = Vector2(-6.90088, -417.508)
 scale = Vector2(7.40101, 7.40103)
 script = ExtResource("10_s5h5i")
 group = "topo"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/Esqueleto/hotspot3"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/megaterio/hotspot3"]
 position = Vector2(1.04904e-05, 0.233062)
 shape = SubResource("CircleShape2D_6yeae")
 
-[node name="hotspot4" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/Esqueleto"]
+[node name="hotspot4" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/megaterio"]
 position = Vector2(44.8562, -296.741)
 scale = Vector2(7.40101, 7.40103)
 script = ExtResource("10_s5h5i")
 group = "topo"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/Esqueleto/hotspot4"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/megaterio/hotspot4"]
 shape = SubResource("CircleShape2D_45mlx")
 
-[node name="hotspot5" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/Esqueleto"]
+[node name="hotspot5" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/megaterio"]
 position = Vector2(108.69, -244.984)
 scale = Vector2(7.40101, 7.40103)
 script = ExtResource("10_s5h5i")
 group = "topo"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/Esqueleto/hotspot5"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/megaterio/hotspot5"]
 shape = SubResource("CircleShape2D_ao4y8")
 
-[node name="hotspot6" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/Esqueleto"]
+[node name="hotspot6" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/megaterio"]
 position = Vector2(165.623, -148.37)
 scale = Vector2(7.40101, 7.40103)
 script = ExtResource("10_s5h5i")
 group = "topo"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/Esqueleto/hotspot6"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/megaterio/hotspot6"]
 shape = SubResource("CircleShape2D_g2u4d")
 
-[node name="hotspo7" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/Esqueleto"]
+[node name="hotspo7" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/megaterio"]
 position = Vector2(193.227, -405.431)
 scale = Vector2(7.40101, 7.40103)
 script = ExtResource("10_s5h5i")
 group = "topo"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/Esqueleto/hotspo7"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/megaterio/hotspo7"]
 shape = SubResource("CircleShape2D_0ea4k")
 
-[node name="hotspot8" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/Esqueleto"]
+[node name="hotspot8" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/megaterio"]
 position = Vector2(298.466, -281.214)
 scale = Vector2(7.40101, 7.40103)
 script = ExtResource("10_s5h5i")
 group = "topo"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/Esqueleto/hotspot8"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/megaterio/hotspot8"]
 shape = SubResource("CircleShape2D_bayta")
 
-[node name="hotspot9" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/Esqueleto"]
+[node name="hotspot9" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/megaterio"]
 position = Vector2(284.664, -196.677)
 scale = Vector2(7.40101, 7.40103)
 script = ExtResource("10_s5h5i")
 group = "topo"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/Esqueleto/hotspot9"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/megaterio/hotspot9"]
 shape = SubResource("CircleShape2D_vbayx")
 
-[node name="hotspot10" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/Esqueleto"]
+[node name="hotspot10" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/megaterio"]
 position = Vector2(-113.866, -643.514)
 scale = Vector2(7.40101, 7.40103)
 script = ExtResource("10_s5h5i")
 group = "topo"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/Esqueleto/hotspot10"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/megaterio/hotspot10"]
 shape = SubResource("CircleShape2D_jbfw3")
 
-[node name="hotspot11" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/Esqueleto"]
+[node name="hotspot11" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/megaterio"]
 position = Vector2(-46.5814, -538.274)
 scale = Vector2(7.40101, 7.40103)
 script = ExtResource("10_s5h5i")
 group = "topo"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/Esqueleto/hotspot11"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/megaterio/hotspot11"]
 shape = SubResource("CircleShape2D_vshlv")
 
-[node name="hotspot14" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/Esqueleto"]
+[node name="hotspot14" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/megaterio"]
 position = Vector2(296.741, -115.591)
 scale = Vector2(7.40101, 7.40103)
 script = ExtResource("10_s5h5i")
 group = "topo"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/Esqueleto/hotspot14"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/megaterio/hotspot14"]
 shape = SubResource("CircleShape2D_q2guk")
 
-[node name="hotspot15" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/Esqueleto"]
+[node name="hotspot15" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/megaterio"]
 position = Vector2(272.588, -27.6038)
 scale = Vector2(7.40101, 7.40103)
 script = ExtResource("10_s5h5i")
 group = "topo"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/Esqueleto/hotspot15"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/megaterio/hotspot15"]
 shape = SubResource("CircleShape2D_q2guk")
 
-[node name="hotspot16" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/Esqueleto"]
+[node name="hotspot16" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/megaterio"]
 position = Vector2(231.182, 39.6805)
 scale = Vector2(7.40101, 7.40103)
 script = ExtResource("10_s5h5i")
 group = "topo"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/Esqueleto/hotspot16"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/megaterio/hotspot16"]
 shape = SubResource("CircleShape2D_q2guk")
 
-[node name="hotspot17" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/Esqueleto"]
+[node name="hotspot17" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/megaterio"]
 position = Vector2(191.502, 119.041)
 scale = Vector2(7.40101, 7.40103)
 script = ExtResource("10_s5h5i")
 group = "topo"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/Esqueleto/hotspot17"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/megaterio/hotspot17"]
 shape = SubResource("CircleShape2D_q2guk")
 
-[node name="hotspot19" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/Esqueleto"]
+[node name="hotspot19" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/megaterio"]
 position = Vector2(208.754, 284.664)
 scale = Vector2(7.40101, 7.40103)
 script = ExtResource("10_s5h5i")
 group = "topo"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/Esqueleto/hotspot19"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/megaterio/hotspot19"]
 position = Vector2(7.62939e-06, 0)
 shape = SubResource("CircleShape2D_q2guk")
 
-[node name="hotspot21" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/Esqueleto"]
+[node name="hotspot21" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/megaterio"]
 position = Vector2(172.524, 452.013)
 scale = Vector2(7.40101, 7.40103)
 script = ExtResource("10_s5h5i")
 group = "topo"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/Esqueleto/hotspot21"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/megaterio/hotspot21"]
 shape = SubResource("CircleShape2D_q2guk")
 
-[node name="hotspot22" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/Esqueleto"]
+[node name="hotspot22" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/megaterio"]
 position = Vector2(255.335, 470.99)
 scale = Vector2(7.40101, 7.40103)
 script = ExtResource("10_s5h5i")
 group = "topo"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/Esqueleto/hotspot22"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/megaterio/hotspot22"]
 shape = SubResource("CircleShape2D_q2guk")
 
-[node name="hotspot23" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/Esqueleto"]
+[node name="hotspot23" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/megaterio"]
 position = Vector2(37.9553, 396.805)
 scale = Vector2(7.40101, 7.40103)
 script = ExtResource("10_s5h5i")
 group = "topo"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/Esqueleto/hotspot23"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/megaterio/hotspot23"]
 shape = SubResource("CircleShape2D_q2guk")
 
-[node name="hotspot24" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/Esqueleto"]
+[node name="hotspot24" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/megaterio"]
 position = Vector2(-12.0767, 489.968)
 scale = Vector2(7.40101, 7.40103)
 script = ExtResource("10_s5h5i")
 group = "topo"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/Esqueleto/hotspot24"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/megaterio/hotspot24"]
 shape = SubResource("CircleShape2D_q2guk")
 
-[node name="hotspot26" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/Esqueleto"]
+[node name="hotspot26" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/megaterio"]
 position = Vector2(-29.329, 591.757)
 scale = Vector2(7.40101, 7.40103)
 script = ExtResource("10_s5h5i")
 group = "topo"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/Esqueleto/hotspot26"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/megaterio/hotspot26"]
 shape = SubResource("CircleShape2D_q2guk")
 
-[node name="hotspot27" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/Esqueleto"]
+[node name="hotspot27" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/megaterio"]
 position = Vector2(6.90094, 678.019)
 scale = Vector2(7.40101, 7.40103)
 script = ExtResource("10_s5h5i")
 group = "topo"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/Esqueleto/hotspot27"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/megaterio/hotspot27"]
 shape = SubResource("CircleShape2D_q2guk")
 
-[node name="hotspot28" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/Esqueleto"]
+[node name="hotspot28" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/megaterio"]
 position = Vector2(24.1533, 766.006)
 scale = Vector2(7.40101, 7.40103)
 script = ExtResource("10_s5h5i")
 group = "topo"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/Esqueleto/hotspot28"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/megaterio/hotspot28"]
 shape = SubResource("CircleShape2D_q2guk")
 
-[node name="hotspot30" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/Esqueleto"]
+[node name="hotspot30" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/megaterio"]
 position = Vector2(-6.901, 850.542)
 scale = Vector2(7.40101, 7.40103)
 script = ExtResource("10_s5h5i")
 group = "topo"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/Esqueleto/hotspot30"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/megaterio/hotspot30"]
 shape = SubResource("CircleShape2D_q2guk")
 
-[node name="hotspot32" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/Esqueleto"]
+[node name="hotspot32" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/megaterio"]
 position = Vector2(-350.223, 417.508)
 scale = Vector2(7.40101, 7.40103)
 script = ExtResource("10_s5h5i")
 group = "topo"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/Esqueleto/hotspot32"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/megaterio/hotspot32"]
 shape = SubResource("CircleShape2D_q2guk")
 
-[node name="hotspot34" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/Esqueleto"]
+[node name="hotspot34" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/megaterio"]
 position = Vector2(-279.489, 395.08)
 scale = Vector2(7.40101, 7.40103)
 script = ExtResource("10_s5h5i")
 group = "topo"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/Esqueleto/hotspot34"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/megaterio/hotspot34"]
 shape = SubResource("CircleShape2D_q2guk")
 
-[node name="hotspot36" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/Esqueleto"]
+[node name="hotspot36" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/megaterio"]
 position = Vector2(-265.687, 279.489)
 scale = Vector2(7.40101, 7.40103)
 script = ExtResource("10_s5h5i")
 group = "topo"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/Esqueleto/hotspot36"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/megaterio/hotspot36"]
 shape = SubResource("CircleShape2D_q2guk")
 
-[node name="hotspot38" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/Esqueleto"]
+[node name="hotspot38" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/megaterio"]
 position = Vector2(-217.38, 188.051)
 scale = Vector2(7.40101, 7.40103)
 script = ExtResource("10_s5h5i")
 group = "topo"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/Esqueleto/hotspot38"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/megaterio/hotspot38"]
 shape = SubResource("CircleShape2D_q2guk")
 
-[node name="hotspot39" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/Esqueleto"]
+[node name="hotspot39" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/megaterio"]
 position = Vector2(-108.69, 203.578)
 scale = Vector2(7.40101, 7.40103)
 script = ExtResource("10_s5h5i")
 group = "topo"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/Esqueleto/hotspot39"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/megaterio/hotspot39"]
 shape = SubResource("CircleShape2D_q2guk")
 
-[node name="hotspot40" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/Esqueleto"]
+[node name="hotspot40" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/megaterio"]
 position = Vector2(-41.4058, 217.38)
 scale = Vector2(7.40101, 7.40103)
 script = ExtResource("10_s5h5i")
 group = "topo"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/Esqueleto/hotspot40"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/megaterio/hotspot40"]
 shape = SubResource("CircleShape2D_q2guk")
 
-[node name="hotspot41" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/Esqueleto"]
+[node name="hotspot41" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/megaterio"]
 position = Vector2(81.0862, 339.872)
 scale = Vector2(7.40101, 7.40103)
 script = ExtResource("10_s5h5i")
 group = "topo"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/Esqueleto/hotspot41"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/megaterio/hotspot41"]
 shape = SubResource("CircleShape2D_q2guk")
 
-[node name="hotspot43" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/Esqueleto"]
+[node name="hotspot43" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/megaterio"]
 position = Vector2(18.9776, 279.489)
 scale = Vector2(7.40101, 7.40103)
 script = ExtResource("10_s5h5i")
 group = "topo"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/Esqueleto/hotspot43"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/megaterio/hotspot43"]
 shape = SubResource("CircleShape2D_q2guk")
 
-[node name="hotspot44" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/Esqueleto"]
+[node name="hotspot44" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/megaterio"]
 position = Vector2(134.569, 272.588)
 scale = Vector2(7.40101, 7.40103)
 script = ExtResource("10_s5h5i")
 group = "topo"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/Esqueleto/hotspot44"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/megaterio/hotspot44"]
 shape = SubResource("CircleShape2D_q2guk")
 
-[node name="hotspot48" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/Esqueleto"]
+[node name="hotspot48" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/megaterio"]
 position = Vector2(82.8115, 27.6038)
 scale = Vector2(7.40101, 7.40103)
 script = ExtResource("10_s5h5i")
 group = "topo"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/Esqueleto/hotspot48"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/megaterio/hotspot48"]
 shape = SubResource("CircleShape2D_q2guk")
 
-[node name="hotspot49" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/Esqueleto"]
+[node name="hotspot49" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/megaterio"]
 position = Vector2(65.5591, 82.8114)
 scale = Vector2(7.40101, 7.40103)
 script = ExtResource("10_s5h5i")
 group = "topo"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/Esqueleto/hotspot49"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/megaterio/hotspot49"]
 shape = SubResource("CircleShape2D_q2guk")
 
-[node name="hotspot50" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/Esqueleto"]
+[node name="hotspot50" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/megaterio"]
 position = Vector2(55.2076, 148.37)
 scale = Vector2(7.40101, 7.40103)
 script = ExtResource("10_s5h5i")
 group = "topo"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/Esqueleto/hotspot50"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/megaterio/hotspot50"]
 shape = SubResource("CircleShape2D_q2guk")
 
-[node name="hotspot53" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/Esqueleto"]
+[node name="hotspot53" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/megaterio"]
 position = Vector2(207.029, -60.3834)
 scale = Vector2(7.40101, 7.40103)
 script = ExtResource("10_s5h5i")
 group = "topo"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/Esqueleto/hotspot53"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/megaterio/hotspot53"]
 shape = SubResource("CircleShape2D_q2guk")
 
-[node name="hotspot54" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/Esqueleto"]
+[node name="hotspot54" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/megaterio"]
 position = Vector2(31.0543, -86.2619)
 scale = Vector2(7.40101, 7.40103)
 script = ExtResource("10_s5h5i")
 group = "topo"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/Esqueleto/hotspot54"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/megaterio/hotspot54"]
 shape = SubResource("CircleShape2D_q2guk")
 
-[node name="hotspot56" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/Esqueleto"]
+[node name="hotspot56" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/megaterio"]
 position = Vector2(-93.1629, -63.8339)
 scale = Vector2(7.40101, 7.40103)
 script = ExtResource("10_s5h5i")
 group = "topo"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/Esqueleto/hotspot56"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/megaterio/hotspot56"]
 shape = SubResource("CircleShape2D_q2guk")
 
-[node name="hotspot57" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/Esqueleto"]
+[node name="hotspot57" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/megaterio"]
 position = Vector2(-205.303, -119.041)
 scale = Vector2(7.40101, 7.40103)
 script = ExtResource("10_s5h5i")
 group = "topo"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/Esqueleto/hotspot57"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/megaterio/hotspot57"]
 shape = SubResource("CircleShape2D_q2guk")
 
-[node name="hotspot58" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/Esqueleto"]
+[node name="hotspot58" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/megaterio"]
 position = Vector2(-260.511, -175.974)
 rotation = -1.03964
 scale = Vector2(7.40101, 7.40103)
 script = ExtResource("10_s5h5i")
 group = "topo"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/Esqueleto/hotspot58"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/megaterio/hotspot58"]
 shape = SubResource("CircleShape2D_q2guk")
 
-[node name="hotspot62" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/Esqueleto"]
+[node name="hotspot62" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/megaterio"]
 position = Vector2(-320.894, -258.786)
 scale = Vector2(7.40101, 7.40103)
 script = ExtResource("10_s5h5i")
 group = "topo"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/Esqueleto/hotspot62"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/megaterio/hotspot62"]
 shape = SubResource("CircleShape2D_q2guk")
 
-[node name="hotspot63" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/Esqueleto"]
+[node name="hotspot63" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/megaterio"]
 position = Vector2(-355.399, -348.498)
 scale = Vector2(7.40101, 7.40103)
 script = ExtResource("10_s5h5i")
 group = "topo"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/Esqueleto/hotspot63"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/megaterio/hotspot63"]
 shape = SubResource("CircleShape2D_q2guk")
 
-[node name="hotspot66" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/Esqueleto"]
+[node name="hotspot66" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/megaterio"]
 position = Vector2(274.313, -491.693)
 scale = Vector2(7.40101, 7.40103)
 script = ExtResource("10_s5h5i")
 group = "topo"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/Esqueleto/hotspot66"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/megaterio/hotspot66"]
 position = Vector2(0.233109, 0.233101)
 shape = SubResource("CircleShape2D_q2guk")
 
-[node name="hotspot68" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/Esqueleto"]
+[node name="hotspot68" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/megaterio"]
 position = Vector2(295.016, -367.476)
 scale = Vector2(7.40101, 7.40103)
 script = ExtResource("10_s5h5i")
 group = "topo"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/Esqueleto/hotspot68"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/megaterio/hotspot68"]
 shape = SubResource("CircleShape2D_q2guk")
 
-[node name="hotspot67" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/Esqueleto"]
+[node name="hotspot67" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/megaterio"]
 position = Vector2(338.147, 455.463)
 scale = Vector2(7.40101, 7.40103)
 script = ExtResource("10_s5h5i")
 group = "topo"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/Esqueleto/hotspot67"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/megaterio/hotspot67"]
 shape = SubResource("CircleShape2D_q2guk")
 
-[node name="contorno" type="Sprite2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/Esqueleto"]
+[node name="contorno" type="Sprite2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/megaterio"]
 z_index = -1
 position = Vector2(0, 74.1852)
 scale = Vector2(1.00064, 1.00064)
 texture = ExtResource("19_ksyc2")
 
-[node name="particles" type="Node2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/Esqueleto"]
+[node name="particles" type="Node2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/megaterio"]
 z_index = 2
 position = Vector2(134.569, 29.3291)
 scale = Vector2(1.72524, 1.72524)
 script = ExtResource("13_l1my3")
 
-[node name="MoleParticles" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/Esqueleto/particles" instance=ExtResource("16_olaoq")]
+[node name="MoleParticles" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/megaterio/particles" instance=ExtResource("16_olaoq")]
 position = Vector2(44.9999, -73)
 rotation = -2.90034
 emitting = false
@@ -2114,7 +2238,7 @@ scale_amount_max = 2.6
 color = Color(1, 1, 1, 1)
 color_initial_ramp = SubResource("Gradient_dkd33")
 
-[node name="MoleParticles2" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/Esqueleto/particles" instance=ExtResource("16_olaoq")]
+[node name="MoleParticles2" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/megaterio/particles" instance=ExtResource("16_olaoq")]
 position = Vector2(72, -254)
 rotation = -3.53881
 emitting = false
@@ -2132,7 +2256,7 @@ scale_amount_max = 2.6
 color = Color(1, 1, 1, 1)
 color_initial_ramp = SubResource("Gradient_dkd33")
 
-[node name="MoleParticles3" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/Esqueleto/particles" instance=ExtResource("16_olaoq")]
+[node name="MoleParticles3" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/megaterio/particles" instance=ExtResource("16_olaoq")]
 position = Vector2(-14, 366)
 rotation = -3.30946
 emitting = false
@@ -2150,7 +2274,7 @@ scale_amount_max = 2.6
 color = Color(1, 1, 1, 1)
 color_initial_ramp = SubResource("Gradient_dkd33")
 
-[node name="MoleParticles4" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/Esqueleto/particles" instance=ExtResource("16_olaoq")]
+[node name="MoleParticles4" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/megaterio/particles" instance=ExtResource("16_olaoq")]
 position = Vector2(-79, 369)
 rotation = -6.44826
 emitting = false
@@ -2168,7 +2292,7 @@ scale_amount_max = 2.6
 color = Color(1, 1, 1, 1)
 color_initial_ramp = SubResource("Gradient_dkd33")
 
-[node name="MoleParticles5" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/Esqueleto/particles" instance=ExtResource("16_olaoq")]
+[node name="MoleParticles5" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/megaterio/particles" instance=ExtResource("16_olaoq")]
 position = Vector2(-215, 110)
 rotation = -6.30632
 emitting = false
@@ -2186,7 +2310,7 @@ scale_amount_max = 2.6
 color = Color(1, 1, 1, 1)
 color_initial_ramp = SubResource("Gradient_dkd33")
 
-[node name="MoleParticles7" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/Esqueleto/particles" instance=ExtResource("16_olaoq")]
+[node name="MoleParticles7" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/megaterio/particles" instance=ExtResource("16_olaoq")]
 position = Vector2(-255, -172)
 rotation = -6.93689
 emitting = false
@@ -2204,7 +2328,7 @@ scale_amount_max = 2.6
 color = Color(1, 1, 1, 1)
 color_initial_ramp = SubResource("Gradient_dkd33")
 
-[node name="MoleParticles8" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/Esqueleto/particles" instance=ExtResource("16_olaoq")]
+[node name="MoleParticles8" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/megaterio/particles" instance=ExtResource("16_olaoq")]
 position = Vector2(-92.0001, -316)
 rotation = -4.68531
 emitting = false
@@ -2222,7 +2346,7 @@ scale_amount_max = 2.6
 color = Color(1, 1, 1, 1)
 color_initial_ramp = SubResource("Gradient_dkd33")
 
-[node name="MoleParticles9" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/Esqueleto/particles" instance=ExtResource("16_olaoq")]
+[node name="MoleParticles9" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/megaterio/particles" instance=ExtResource("16_olaoq")]
 position = Vector2(-20, 61)
 rotation = -4.71035
 emitting = false
@@ -2300,7 +2424,7 @@ polygon = PackedVector2Array(227, -56, 215.7, -43.2265, 210, -33, 202.626, -28.4
 position = Vector2(58, -334)
 texture = ExtResource("22_u6pjk")
 texture_scale = Vector2(2.545, 2.545)
-polygon = PackedVector2Array(8, 18, 6, 65, 18, 91, 16, 96, 12, 99, 4, 98, -12, 86, -19, 31, -8, -11, -2, -90, -70, -182, -91, -246, -102, -282, -270, -437, 359, -474, 358, 4, 313, -4, 275, -33, 268, -34, 264, -33, 258, -34, 257, -37, 238, -58, 218, -66, 167, -124, 145, -133, 114.129, -135.079, 92, -110, 86, -87, 77, -78, 46, -64)
+polygon = PackedVector2Array(8, 18, 6, 65, 18, 91, 16, 96, 12, 99, 4, 98, -12, 86, -19, 31, -8, -11, -2, -90, -70, -182, -91, -246, -102, -282, -261, -356, -339, -456, -423, -632, 370, -625, 358, 4, 313, -4, 275, -33, 268, -34, 264, -33, 258, -34, 257, -37, 238, -58, 218, -66, 167, -124, 145, -133, 114.129, -135.079, 92, -110, 86, -87, 77, -78, 46, -64)
 script = ExtResource("24_rkt5g")
 
 [node name="Line2D" type="Line2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/Rocas/polygon2D/CollisionPolygon2D2"]
@@ -2416,7 +2540,7 @@ grow_vertical = 0
 
 [node name="Tutorial" type="CanvasLayer" parent="Excavando/StateMachine/Juego/Contenido"]
 
-[node name="Tutorial" type="Control" parent="Excavando/StateMachine/Juego/Contenido/Tutorial" node_paths=PackedStringArray("FirstInstance")]
+[node name="Tutorial" type="Control" parent="Excavando/StateMachine/Juego/Contenido/Tutorial" node_paths=PackedStringArray("FirstInstance", "ParentBook")]
 layout_mode = 3
 anchor_left = 0.5
 anchor_top = 0.627
@@ -2428,6 +2552,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("42_o38rj")
 FirstInstance = NodePath("../../Instancia1")
+ParentBook = NodePath("../../CanvasLayer/animLibro")
 
 [node name="Panel" type="Panel" parent="Excavando/StateMachine/Juego/Contenido/Tutorial/Tutorial"]
 layout_mode = 1
@@ -2469,6 +2594,7 @@ hacia donde excavar"
 shape = SubResource("RectangleShape2D_m5e66")
 
 [node name="HUD" parent="Excavando/StateMachine/Juego" instance=ExtResource("38_0b8dm")]
+visible = true
 script = ExtResource("46_m1qiq")
 
 [node name="Moraleja" type="Node" parent="Excavando/StateMachine"]
@@ -2583,8 +2709,8 @@ NextScene = "Map_Screen"
 [connection signal="timeout" from="Excavando/StateMachine/Consigna/Contenido/Timer" to="Excavando/StateMachine/Consigna" method="TimeOut" flags=18]
 [connection signal="Transitioned" from="Excavando/StateMachine/Juego" to="Excavando/StateMachine/Juego/Contenido/Tutorial/Tutorial" method="ShowTutorial"]
 [connection signal="Transitioned" from="Excavando/StateMachine/Juego" to="Excavando/StateMachine/Juego/Contenido/background/CanvasGroup/TopoController" method="EnableDisaneable" binds= [true, true]]
-[connection signal="area_entered" from="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Area2D" to="Excavando/StateMachine/Juego/Contenido/background/CanvasGroup/Camera2D" method="SetOnAreaDown" binds= [true]]
-[connection signal="area_exited" from="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Area2D" to="Excavando/StateMachine/Juego/Contenido/background/CanvasGroup/Camera2D" method="SetOnAreaDown" binds= [false]]
+[connection signal="area_entered" from="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Area2D" to="Excavando/StateMachine/Camera2D" method="SetOnAreaDown" binds= [true]]
+[connection signal="area_exited" from="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Area2D" to="Excavando/StateMachine/Camera2D" method="SetOnAreaDown" binds= [false]]
 [connection signal="timeout" from="Excavando/StateMachine/Moraleja/Contenido/Timer" to="Excavando/StateMachine/Moraleja" method="TimeOut" flags=18]
 [connection signal="pressed" from="Excavando/StateMachine/Moraleja/Contenido/Instancia1/Button" to="Excavando/StateMachine/Moraleja/Contenido/Instancia1/Button" method="_on_pressed" flags=18]
 [connection signal="pressed" from="Excavando/StateMachine/Fin/Contenido/ButtonChangeScene" to="Excavando" method="Set_Complete"]
