@@ -5,6 +5,7 @@ extends Node2D
 @export var GlassSpeed : float
 var incruse : float = 0
 var inPressed = false
+var once
 var sauce_instance = load("res://shaders/prueba_shader.tscn")
 
 func ActiveLevel():
@@ -25,7 +26,10 @@ func FillGlass():
 	decrement -=  get_process_delta_time() * GlassSpeed * 0.001
 	glass.material.set_shader_parameter("cutoff",decrement)
 	if glass.material.get_shader_parameter("cutoff") <= 0:
+		if once: return
 		$manzana/MoveParentTo.MoveParent()
 		$manzana/ScaleParent.ScaleParent()
 		$Ingredient/MoveParentTo.MoveParent()
 		$Ingredient/ScaleParent.ScaleParent()
+		$Ingredient/RotateParent.RotateParent()
+		once = true
