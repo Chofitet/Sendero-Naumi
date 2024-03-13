@@ -7,6 +7,7 @@ var isMoving
 @export var initPos : Marker2D
 @export var SecondPos : Marker2D
 @export var PointWay : Marker2D
+@export var PointWay2 : Marker2D
 @export var instance1 : Control
 @export var instance2 : Control
 @export var Color1 : Color
@@ -15,6 +16,7 @@ var isMoving
 @export var cam : Camera2D
 var _speed 
 @export var line : Line2D
+@export var labelDebug : Label
 var collision_line = preload("res://Scenes/Zona_Megafauna/line_collider.tscn")
 @onready var timer = $Timer
 var relative_position 
@@ -22,7 +24,7 @@ var isStoped
 
 func _ready():
 	_speed = speed
-	timer.timeout.connect(SpawnCollider)
+	timer.timeout.connect(DrawLine)
 	topo = $topo
 	particles = $topo/MoleParticles
 	raycast = $topo/RayCast2D
@@ -50,10 +52,12 @@ func _physics_process(delta):
 	if topo.global_position.distance_to(pressedPos) > 110 :
 		Apply_Movement(direction * 8000 * delta)
 		move_and_slide()
-		line.add_point(relative_position)
 	if !isStoped and _speed != 0:
 		topo.look_at(pressedPos)
 	
+
+func DrawLine():
+	line.add_point(relative_position)
 
 func Apply_Movement(accel):
 	velocity += accel
@@ -89,12 +93,11 @@ func EnableDisaneable(state,resetInstance:bool = false):
 	if resetInstance:
 		position = SelectInscancePosition()
 		topo.rotation = deg_to_rad(SelectInstanceRotation())
-		print(SelectInstanceRotation())
 		line.clear_points()
 		cam.RestartPos()
 		for c in line.get_children():
 			c.queue_free()
-		line.add_point(PointWay.position - line.global_position)
+		line.add_point(SelectWayPoint() - line.global_position)
 		line.add_point(global_position - line.global_position + Vector2(10,10))
 
 func SelectInscancePosition() -> Vector2:
@@ -104,12 +107,27 @@ func SelectInscancePosition() -> Vector2:
 		return SecondPos.position
 	return Vector2.ZERO
 
+func SelectWayPoint() -> Vector2:
+	if instance1.visible:
+		return PointWay.position
+	if instance2.visible:
+		return PointWay2.position
+	return PointWay.position
+
 func SelectInstanceRotation() -> float:
 	if instance1.visible:
-		return 39
+		return 27
 	if instance2.visible:
-		return -20
+		return 27
 	return 0 
 
 func ConnectBook(instance):
 	instance.BookEvent.connect(EnableDisaneable)
+
+func DebugSpeed(x):
+	if x:
+		_speed += 5
+	else:
+		_speed -= 5
+	
+	labelDebug.text = str(_speed)
