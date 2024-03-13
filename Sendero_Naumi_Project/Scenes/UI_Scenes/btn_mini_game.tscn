@@ -14,6 +14,7 @@ var button
 func _ready():
 	button = get_node(\"ButtonChangeScene\")
 	button.pressed.connect(CheckComplete)
+	button.NextScene = name
 	
 	load_file()
 	if !minigameResourseFile.StateMinigames[self.name]:

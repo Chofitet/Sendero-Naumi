@@ -1,33 +1,51 @@
 extends Node2D
 
-@onready var anim = $AnimationPlayer
-@export var StateMachine : Node
+var StateMachine
+var anim 
 var skeleton 
-var SpritePencil = load("res://Sprites/ZonaMegafauna/pencil.png")
-var SpriteBrush = load("res://Sprites/ZonaMegafauna/brush - excavando.png")
-var Fade = load("res://Scenes/Experiments/IndividualFade.tscn")
-var fadeTexture = load("res://addons/scene_manager/shader_patterns/diagonal.png")
+var isFinalInstance
 var SpriteFade
 var fadeFactor
+var fadeFactor2 
 var isfading
+var isInstancing
 var isPencil = true
+var topo
 signal Restart
+signal BookEvent
+var SpritePencil = preload("res://Sprites/ZonaMegafauna/pencil.png")
+var SpriteBrush = preload("res://Sprites/ZonaMegafauna/brush - excavando.png")
+var Fade = preload("res://Scenes/Experiments/IndividualFade.tscn")
+var fadeTexture = preload("res://addons/scene_manager/shader_patterns/diagonal.png")
 
 func SetSkeleton(sk):
-	for i in $LibroController/libro.get_children():
+	for i in $LibroController/libro/animales.get_children():
+		i.visible = false
+		i.get_node("bones").get_material().set_shader_parameter("inverted", true)
+		i.get_node("vivo").get_material().set_shader_parameter("cutoff", 1)
+		i.get_node("bones").get_material().set_shader_parameter("cutoff", 1)
 		if i.name == sk:
 			skeleton = i
-		
+			skeleton.visible = true
+			if sk == "megaterio":
+				isInstancing = true
+				isFinalInstance = true
 	$LibroController/libro/Label.text = sk
+
+func IsPassingInstance(statemachine):
+	isInstancing = true
+	StateMachine = statemachine
 	
 
 func _ready():
+	anim = $AnimationPlayer
 	$btnContinue.pressed.connect(restartAll)
 	$Button.button_down.connect(Draw)
 	$Button.visible = false
 
 func Draw():
 	$Button.visible = false
+	skeleton.get_node("Label").visible = true
 	anim.play("pencil_anim")
 	fadeFactor = 1
 	SpriteFade = skeleton.get_node(SelectSpriteFade())
@@ -35,15 +53,14 @@ func Draw():
 	await anim.animation_finished
 	if !isPencil: 
 		$btnContinue.visible = true
-		$LibroController/libro/Label.visible = true
 		return
+	fadeFactor2 = 0
 	isPencil = false
 	$pencil/Sprite2D.texture = SelectTexture()
 	anim.play("Pencil_enter")
 	$Button.visible = true
 	await anim.animation_finished
 	anim.play("pencil_idle")
-	
 
 func SelectTexture() -> Texture:
 	if isPencil:
@@ -55,13 +72,17 @@ func SelectSpriteFade() -> String:
 		return "bones"
 	else: return "vivo"
 
-func DoAnim(x):
+func DoAnim(_topo):
+	topo = _topo
+	BookEvent.emit(false)
+	Restart.emit(false)
 	anim.play("book_enter")
 	await anim.animation_finished
 	anim.play("Pencil_enter")
 	await anim.animation_finished
 	anim.play("pencil_idle")
 	$Button.visible = true
+	
 
 func _process(delta):
 	if isfading:
@@ -69,30 +90,49 @@ func _process(delta):
 		if fadeFactor <= 0:
 			isfading = false
 		SpriteFade.get_material().set_shader_parameter("cutoff", fadeFactor) 
+		if !isPencil:
+			fadeFactor2 += delta * 0.5
+			var otherSprite = skeleton.get_node("bones")
+			otherSprite.get_material().set_shader_parameter("inverted", false) 
+			otherSprite.get_material().set_shader_parameter("cutoff", fadeFactor2) 
+
 
 func restartAll():
-	anim.play_backwards("book_enter")
+	topo.EnableDisaneable(true)
 	$btnContinue.visible = false
+	if isInstancing: InstanceTransition()
+	anim.play_backwards("book_enter")
 	await anim.animation_finished
+	ToRestart()
+	if !isInstancing:
+		queue_free()
+		return
+	
+
+func InstanceTransition():
 	var instance = Fade.instantiate()
 	get_parent().get_parent().add_child(instance)
 	instance.init(fadeTexture,2,true)
 	await get_tree().create_timer(2).timeout
 	ChangeInstanceMinigame()
-	Restart.emit()
-	ToRestart()
+	Restart.emit(true,true)
 	var instance2 = Fade.instantiate()
 	get_parent().get_parent().add_child(instance2)
 	instance2.init(fadeTexture,2,false,false)
+	queue_free()
 
 func ToRestart():
-	$LibroController/libro/Label.visible = false
-	skeleton.get_node("vivo").get_material().set_shader_parameter("cutoff", 1)
-	skeleton.get_node("bones").get_material().set_shader_parameter("cutoff", 1)
 	isPencil = true
 	$pencil/Sprite2D.texture = SelectTexture()
+	skeleton.get_node("Label").visible = false
+	BookEvent.emit(true)
 	
 func ChangeInstanceMinigame():
-	StateMachine.Trigger_On_Child_Transition("Juego")
+	if isFinalInstance:
+		BookEvent.emit(false)
+		StateMachine.Trigger_On_Child_Transition("Fin")
+	else:
+		pass
+		StateMachine.Trigger_On_Child_Transition("Juego")
 
 

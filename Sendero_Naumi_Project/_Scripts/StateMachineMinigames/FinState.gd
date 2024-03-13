@@ -9,3 +9,4 @@ func _ready():
 	
 func Enter():
 	Content.visible = true
+	Transitioned.emit()
