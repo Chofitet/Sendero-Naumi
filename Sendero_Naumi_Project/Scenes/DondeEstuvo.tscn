@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://b017ojh8vtsd6"]
+[gd_scene load_steps=21 format=3 uid="uid://b017ojh8vtsd6"]
 
 [ext_resource type="Script" path="res://_Scripts/Minigame_Save_Controller.gd" id="1_ouwf6"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/StateMachineMinigames.gd" id="2_5wf26"]
@@ -14,15 +14,12 @@
 [ext_resource type="Texture2D" uid="uid://bg58cmjajfdso" path="res://Sprites/ZonaAstronomia/Astronauta_Boot2.png" id="12_2kppj"]
 [ext_resource type="Texture2D" uid="uid://df1865451y56p" path="res://Sprites/ZonaAstronomia/Astronauta_Boot.png" id="13_woilb"]
 [ext_resource type="Theme" uid="uid://bhum72inirq1q" path="res://Themes/Generic_UI.tres" id="14_j3442"]
-[ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/MoralejaState.gd" id="14_lwkob"]
 [ext_resource type="Script" path="res://Scenes/GenericPanelController.gd" id="15_acmhj"]
 [ext_resource type="PackedScene" uid="uid://djhg7jvxtexyl" path="res://Scenes/UI_Scenes/btn_Change_Scene.tscn" id="15_jwaju"]
 [ext_resource type="Script" path="res://_Scripts/CheckAllChildsTrue.gd" id="16_6ug6m"]
-[ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/FinState.gd" id="16_pvyiw"]
 [ext_resource type="PackedScene" uid="uid://cc3lcmyec2iso" path="res://Scenes/Zona_Astronomia/item_unir.tscn" id="17_l3cj0"]
 [ext_resource type="Script" path="res://_Scripts/MiniG_DondeEstuvo/CheckUnions.gd" id="18_6mqoo"]
 [ext_resource type="PackedScene" uid="uid://btwjusl4scgqt" path="res://Scenes/Zona_Astronomia/spot_unir.tscn" id="19_8egw1"]
-[ext_resource type="Theme" uid="uid://bokxu7jbpku04" path="res://Themes/Back_UI.tres" id="21_bbl0c"]
 
 [node name="DondeEstuvo" type="Control"]
 layout_mode = 3
@@ -207,12 +204,6 @@ HighQualityTexture = ExtResource("11_ywqkw")
 hasClue = true
 angleInCenter = 20.0
 
-[node name="Button" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/ScreenCenter/Clue_obj" index="0"]
-offset_left = -68.0
-offset_top = -68.0
-offset_right = -68.0
-offset_bottom = -68.0
-
 [node name="Clue_obj2" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/ScreenCenter" instance=ExtResource("9_x0fc4")]
 position = Vector2(-201, -10)
 texture = ExtResource("12_2kppj")
@@ -220,12 +211,6 @@ HighQualityTexture = ExtResource("13_woilb")
 hasClue = true
 angleInCenter = -30.0
 extra_scale = Vector2(0.6, 0.6)
-
-[node name="Button" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/ScreenCenter/Clue_obj2" index="0"]
-offset_left = -68.0
-offset_top = -68.0
-offset_right = -68.0
-offset_bottom = -68.0
 
 [node name="Clue_obj3" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/ScreenCenter" instance=ExtResource("9_x0fc4")]
 position = Vector2(89, -128)
@@ -235,23 +220,11 @@ hasClue = true
 angleInCenter = 30.0
 extra_scale = Vector2(0.6, 0.6)
 
-[node name="Button" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/ScreenCenter/Clue_obj3" index="0"]
-offset_left = -68.0
-offset_top = -68.0
-offset_right = -68.0
-offset_bottom = -68.0
-
 [node name="Clue_obj4" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/ScreenCenter" instance=ExtResource("9_x0fc4")]
 position = Vector2(3, 60)
 texture = ExtResource("10_j1jfp")
 HighQualityTexture = ExtResource("11_ywqkw")
 angleInCenter = 20.0
-
-[node name="Button" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/ScreenCenter/Clue_obj4" index="0"]
-offset_left = -68.0
-offset_top = -68.0
-offset_right = -68.0
-offset_bottom = -68.0
 
 [node name="Panel" type="Panel" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1"]
 visible = false
@@ -367,7 +340,7 @@ layout_mode = 2
 [node name="SpotUnir3" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/VBoxContainer2" instance=ExtResource("19_8egw1")]
 layout_mode = 2
 
-[node name="Button" type="Button" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2" node_paths=PackedStringArray("state_to_change", "state_machine")]
+[node name="Button" type="Button" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2" node_paths=PackedStringArray("state_machine")]
 visible = false
 layout_mode = 1
 anchors_preset = 3
@@ -382,7 +355,6 @@ offset_bottom = -38.0
 grow_horizontal = 0
 grow_vertical = 0
 script = ExtResource("4_j3ig5")
-state_to_change = NodePath("../../../../Moraleja")
 state_machine = NodePath("../../../..")
 isEndOfGame = true
 
@@ -401,126 +373,3 @@ offset_right = -16.0
 offset_bottom = 111.0
 grow_horizontal = 0
 grow_vertical = 1
-theme = ExtResource("21_bbl0c")
-text = "
-"
-NextScene = "Map_Screen"
-fade_time = 0.1
-
-[node name="Moraleja" type="Node" parent="DondeEstuvo/StateMachine"]
-script = ExtResource("14_lwkob")
-Moralejas = [null, "Y esto es una moraleja"]
-Instancias = [NodePath("Contenido/Instancia1")]
-buttons = [NodePath("Contenido/Instancia1/Button")]
-
-[node name="Contenido" type="Control" parent="DondeEstuvo/StateMachine/Moraleja"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Conteiner" type="Control" parent="DondeEstuvo/StateMachine/Moraleja/Contenido"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="LblMoraleja" type="Label" parent="DondeEstuvo/StateMachine/Moraleja/Contenido/Conteiner"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -270.0
-offset_top = -444.0
-offset_right = 294.0
-offset_bottom = 445.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 40
-text = "Consigna genérica Consigna genérica Consigna genérica"
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 2
-
-[node name="Timer" type="Timer" parent="DondeEstuvo/StateMachine/Moraleja/Contenido"]
-wait_time = 3.0
-one_shot = true
-
-[node name="ButtonChangeScene" parent="DondeEstuvo/StateMachine/Moraleja/Contenido" instance=ExtResource("15_jwaju")]
-visible = false
-layout_mode = 1
-offset_left = -197.0
-offset_top = -201.0
-offset_right = 207.0
-offset_bottom = -66.0
-text = "Continue"
-NextScene = "Map_Screen"
-
-[node name="Instancia1" type="Control" parent="DondeEstuvo/StateMachine/Moraleja/Contenido"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Button" type="Button" parent="DondeEstuvo/StateMachine/Moraleja/Contenido/Instancia1" node_paths=PackedStringArray("state_to_change", "state_machine")]
-visible = false
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -201.0
-offset_top = -197.0
-offset_right = 202.0
-offset_bottom = -67.0
-grow_horizontal = 2
-grow_vertical = 0
-text = "que?
-"
-script = ExtResource("4_j3ig5")
-state_to_change = NodePath("../../../../Juego")
-state_machine = NodePath("../../../..")
-
-[node name="Fin" type="Node" parent="DondeEstuvo/StateMachine"]
-script = ExtResource("16_pvyiw")
-
-[node name="Contenido" type="Control" parent="DondeEstuvo/StateMachine/Fin"]
-visible = false
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="ButtonChangeScene" parent="DondeEstuvo/StateMachine/Fin/Contenido" instance=ExtResource("15_jwaju")]
-layout_mode = 1
-offset_left = -197.0
-offset_top = -186.0
-offset_right = 207.0
-offset_bottom = -51.0
-text = "Continue"
-NextScene = "Map_Screen"
-
-[connection signal="pressed" from="DondeEstuvo/StateMachine/Consigna/Contenido/Button" to="DondeEstuvo/StateMachine/Consigna/Contenido/Button" method="_on_pressed" flags=18]
-[connection signal="timeout" from="DondeEstuvo/StateMachine/Consigna/Contenido/Timer" to="DondeEstuvo/StateMachine/Consigna" method="TimeOut" flags=18]
-[connection signal="EndOfGame" from="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/Button" to="DondeEstuvo" method="Set_Complete"]
-[connection signal="timeout" from="DondeEstuvo/StateMachine/Moraleja/Contenido/Timer" to="DondeEstuvo/StateMachine/Moraleja" method="TimeOut" flags=18]
-[connection signal="pressed" from="DondeEstuvo/StateMachine/Moraleja/Contenido/Instancia1/Button" to="DondeEstuvo/StateMachine/Moraleja/Contenido/Instancia1/Button" method="_on_pressed" flags=18]
-
-[editable path="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/ScreenCenter/Clue_obj"]
-[editable path="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/ScreenCenter/Clue_obj2"]
-[editable path="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/ScreenCenter/Clue_obj3"]
-[editable path="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/ScreenCenter/Clue_obj4"]
