@@ -65,7 +65,7 @@ func _on_button_pressed():
 		tween = tween.tween_property(object, "global_position",spot.global_position,0.1).set_ease(Tween.EASE_OUT)
 		isInPosition = true
 	else: 
-		CancelDrag(object)
+		CancelDrag()
 	
 func GetSpot(x):
 	AskSpot = x
@@ -78,7 +78,7 @@ func CheckRightSpot():
 		is_in_spot = true
 	else: is_in_spot = false
 
-func CancelDrag(x):
+func CancelDrag():
 	if timerHold.timeout.is_connected(TimeToDrag):
 		timerHold.timeout.disconnect(TimeToDrag)
 	var tween = get_tree().create_tween()

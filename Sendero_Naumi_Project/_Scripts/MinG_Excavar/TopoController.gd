@@ -34,6 +34,7 @@ func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("TouchScreen"):
 		isMoving = true 
 		timer.start()
+		line.add_point(global_position - line.global_position)
 		if isStoped: return
 		particles.emitting = true
 		topo.get_node("topo").play("move")
