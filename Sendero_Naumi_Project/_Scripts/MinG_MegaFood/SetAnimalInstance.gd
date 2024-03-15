@@ -8,6 +8,7 @@ var instanceResourse = InstanceResource.new()
 @export var StateToChange : StateMinigame
 
 func _ready():
+	ConnectSetInstanceAnimalTransitioned()
 	var instanceResourse = ResourceLoader.load("user://InstanceResource.tres")
 	if instanceResourse.InstanceMinigames["FoodTruck"] != 0 :
 		get_parent().Transitioned.connect(SetInstanceAnimal)

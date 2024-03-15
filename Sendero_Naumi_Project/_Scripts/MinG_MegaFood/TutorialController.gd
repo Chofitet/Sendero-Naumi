@@ -10,14 +10,11 @@ signal EndTutorial
 var isInTutorial
 var OnceSwipe
 
-func _ready():
-	JuegoState.Transitioned.connect(CheckInTutorial)
-
 func CheckInTutorial():
-	print(get_parent().Instances[0])
 	if get_parent().get_node("Instancia1").visible == true:
 		isInTutorial = true
 		HboxConteiner.LockUnklockGragObjects(false)
+		DeslizaPlatosUI.visible = true
 	else:
 		isInTutorial = false
 		DeslizaPlatosUI.visible = false
@@ -25,7 +22,7 @@ func CheckInTutorial():
 
 func FirstSwipe():
 	if !isInTutorial or OnceSwipe: return
-	get_parent().ConnectSetInstanceAnimalTransitioned()
+	#get_parent().ConnectSetInstanceAnimalTransitioned()
 	DeslizaPlatosUI.visible = false
 	OnceSwipe = true
 	await get_tree().create_timer(1).timeout

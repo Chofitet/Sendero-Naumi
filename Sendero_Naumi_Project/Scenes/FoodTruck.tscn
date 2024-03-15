@@ -162,11 +162,13 @@ frame = 1
 
 [node name="background" type="Control" parent="FoodTruck/StateMachine/Consigna/Contenido"]
 layout_mode = 1
-anchors_preset = 7
+anchors_preset = 8
 anchor_left = 0.5
-anchor_top = 1.0
+anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 1.0
+anchor_bottom = 0.5
+offset_top = 640.0
+offset_bottom = 640.0
 grow_horizontal = 2
 grow_vertical = 0
 
@@ -411,6 +413,7 @@ JuegoState = NodePath("../..")
 StateMachine = NodePath("../../..")
 
 [node name="DeslizaPlatos" type="Panel" parent="FoodTruck/StateMachine/Juego/Contenido/Tutorial"]
+visible = false
 layout_mode = 0
 offset_left = -315.0
 offset_top = -741.0
@@ -712,17 +715,23 @@ NextScene = "Map_Screen"
 [connection signal="Transitioned" from="FoodTruck/StateMachine/Juego" to="FoodTruck/StateMachine/Juego/Contenido/AnchorSpot/Spot" method="Reset"]
 [connection signal="Transitioned" from="FoodTruck/StateMachine/Juego" to="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer" method="Reset"]
 [connection signal="Transitioned" from="FoodTruck/StateMachine/Juego" to="FoodTruck/StateMachine/Juego/Contenido/BlockScreen" method="SetVisibility" binds= [false]]
+[connection signal="ReorganizePlates" from="FoodTruck/StateMachine/Juego/Contenido/PatasController" to="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer" method="ReOrganizePlates"]
+[connection signal="StartTutorial" from="FoodTruck/StateMachine/Juego/Contenido/PatasController" to="FoodTruck/StateMachine/Juego/Contenido/Tutorial" method="CheckInTutorial"]
 [connection signal="EndTutorial" from="FoodTruck/StateMachine/Juego/Contenido/Tutorial" to="FoodTruck/StateMachine/Juego/Contenido/PatasController" method="AddPlateAtPivot" binds= ["null"]]
-[connection signal="OnSpot" from="FoodTruck/StateMachine/Juego/Contenido/AnchorSpot/Spot" to="FoodTruck/StateMachine/Juego/Contenido/PatasController" method="PlayOutAnim"]
+[connection signal="OnSpot" from="FoodTruck/StateMachine/Juego/Contenido/AnchorSpot/Spot" to="FoodTruck/StateMachine/Juego/Contenido/PatasController" method="AddPlateAtPivot"]
 [connection signal="OnSpot" from="FoodTruck/StateMachine/Juego/Contenido/AnchorSpot/Spot" to="FoodTruck/StateMachine/Juego/Contenido/Tutorial" method="OnSpot"]
+[connection signal="OnSpot" from="FoodTruck/StateMachine/Juego/Contenido/AnchorSpot/Spot" to="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer" method="SetPlate"]
+[connection signal="RightAns" from="FoodTruck/StateMachine/Juego/Contenido/AnchorSpot/Spot" to="FoodTruck/StateMachine/Juego/Contenido/PatasController" method="PlayOutAnim"]
 [connection signal="RightAns" from="FoodTruck/StateMachine/Juego/Contenido/AnchorSpot/Spot" to="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer" method="stopDrag"]
 [connection signal="RightAns" from="FoodTruck/StateMachine/Juego/Contenido/AnchorSpot/Spot" to="FoodTruck/StateMachine/Juego/Contenido" method="SetPaperParameters" binds= [true]]
 [connection signal="RightAns" from="FoodTruck/StateMachine/Juego/Contenido/AnchorSpot/Spot" to="FoodTruck/StateMachine/Juego/Contenido/BlockScreen" method="SetVisibility" binds= [true]]
+[connection signal="WrongAns" from="FoodTruck/StateMachine/Juego/Contenido/AnchorSpot/Spot" to="FoodTruck/StateMachine/Juego/Contenido/PatasController" method="WrongAns"]
 [connection signal="WrongAns" from="FoodTruck/StateMachine/Juego/Contenido/AnchorSpot/Spot" to="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer" method="stopDrag"]
 [connection signal="WrongAns" from="FoodTruck/StateMachine/Juego/Contenido/AnchorSpot/Spot" to="FoodTruck/StateMachine/Juego/Contenido" method="SetPaperParameters" binds= [false]]
 [connection signal="WrongAns" from="FoodTruck/StateMachine/Juego/Contenido/AnchorSpot/Spot" to="FoodTruck/StateMachine/Juego/Contenido/BlockScreen" method="SetVisibility" binds= [true]]
 [connection signal="pressed" from="FoodTruck/StateMachine/Juego/Contenido/AnchorSpot/btnResult" to="FoodTruck/StateMachine/Juego/Contenido/PatasController" method="PlayTakeAnim"]
 [connection signal="CompleteSwipe" from="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer" to="FoodTruck/StateMachine/Juego/Contenido/Tutorial" method="FirstSwipe"]
+[connection signal="PlatesReset" from="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer" to="FoodTruck/StateMachine/Juego/Contenido/BlockScreen" method="SetVisibility" binds= [false]]
 [connection signal="isScrolling" from="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer" to="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer/food1/DragObject" method="CancelDrag"]
 [connection signal="isScrolling" from="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer" to="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer/food2/DragObject" method="CancelDrag"]
 [connection signal="isScrolling" from="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer" to="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer/food3/DragObject" method="CancelDrag"]

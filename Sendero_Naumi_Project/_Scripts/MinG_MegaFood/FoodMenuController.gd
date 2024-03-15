@@ -18,6 +18,7 @@ var StopDrag
 var isverticalGesture
 signal isScrolling
 signal CompleteSwipe
+signal PlatesReset
 
 func _ready():
 	inputTouch = InputEventScreenTouch.new()
@@ -109,7 +110,7 @@ func inHold():
 
 func set_next_anchor(direction):
 	if("rigth" == direction):
-		if (i != 3):
+		if (i != anchors.size()-1):
 			i += 1
 			next_anchor = position.x + (get_viewport_rect().size.x/2 - get_node(anchors[i]).global_position.x)
 	if("left" == direction):
@@ -148,3 +149,36 @@ func LockUnklockGragObjects(x):
 	
 func StopCallAnim():
 	get_parent().get_node("PatasController").stopCall = true
+
+var plateRef
+func ReOrganizePlates():
+	var ismiddleplate = false
+	var indexToRemove
+	for p in anchors:
+		var indexp = anchors.find(p)
+		var plate = get_node(p)
+		if ismiddleplate:
+			var tween = get_tree().create_tween()
+			var target_x = plate.position.x - abs(get_node(anchors[0]).position.x - get_node(anchors[1]).position.x)
+			tween.tween_property(plate,"position", Vector2(target_x,plate.position.y),0.2).set_ease(Tween.EASE_OUT)
+			ChangeInitPos(plate,Vector2(target_x,plate.position.y))
+			print(plate.name)
+		else:
+			if plate == plateRef:
+				if indexp == anchors.size()-1:
+					var tween = get_tree().create_tween()
+					tween.tween_property(self,"position", Vector2(set_next_anchor("left"),position.y),0.2).set_ease(Tween.EASE_OUT)
+				else:
+					ismiddleplate = true
+				indexToRemove = indexp
+	
+	anchors.remove_at(indexToRemove)
+	PlatesReset.emit()
+	LockUnklockGragObjects(true)
+	StopDrag = false
+
+func ChangeInitPos(plate,platePos):
+	plate.get_node("DragObject").initial_spot = platePos
+
+func SetPlate(p):
+	plateRef = p
