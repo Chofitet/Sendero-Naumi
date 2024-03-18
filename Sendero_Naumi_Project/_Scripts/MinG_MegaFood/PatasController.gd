@@ -9,6 +9,8 @@ var animalsArray : =[]
 var isInGame
 var AnimResultFinish = false
 var stopCall
+signal StartComand
+signal EndComand
 signal StartTutorial
 signal ReorganizePlates
 
@@ -48,7 +50,6 @@ func PlayOutAnim():
 	await anim.animation_finished
 	anim.play("RESET")
 	isInGame = false
-	if inx_animal == 0: return
 	ResultAnim()
 
 func BackToIdle():
@@ -99,6 +100,7 @@ func PlayTakeAnim():
 	get_parent().SetResultEvent()
 	
 func CommandAppear():
+	StartComand.emit()
 	CommandText.visible = true
 	if inx_animal == 0:
 		CommandText.get_node("Label").text = "¡POR NÚMERO, POR FAVOR!"
@@ -114,5 +116,6 @@ func SetCommand(order : float, animal : String, istutorial = false):
 	await get_tree().create_timer(3).timeout
 	CommandText.visible = false
 	PlayEnterAnim()
+	EndComand.emit()
 	if istutorial:
 		StartTutorial.emit()

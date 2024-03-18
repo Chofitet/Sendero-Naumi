@@ -5,6 +5,7 @@ var object
 var is_in_spot = false
 var initial_spot
 var isInPosition
+var lastPosition
 var AskSpot
 @export var spot : Area2D
 @export var holdTime : float
@@ -27,6 +28,7 @@ func _ready():
 	timerHold.timeout.connect(TimeToDrag)
 	object = get_parent()
 	initial_spot = object.position
+	lastPosition = initial_spot
 	area_entered.connect(GetSpot)
 	area_exited.connect(deleteSpot)
 
@@ -82,7 +84,7 @@ func CancelDrag():
 	if timerHold.timeout.is_connected(TimeToDrag):
 		timerHold.timeout.disconnect(TimeToDrag)
 	var tween = get_tree().create_tween()
-	tween = tween.tween_property(object, "position",initial_spot,0.1).set_ease(Tween.EASE_OUT)
+	tween = tween.tween_property(object, "position",lastPosition,0.1).set_ease(Tween.EASE_OUT)
 	isInPosition = false
 
 func TimeToDrag():
@@ -95,11 +97,16 @@ func TimeToDrag():
 func isEnableButton(x):
 	if x:
 		$Button.visible = true
-	else: $Button.visible = false
+		get_node("CollisionShape2D").disabled = false
+	else: 
+		$Button.visible = false
+		get_node("CollisionShape2D").disabled = true
 
 func ResetPosition():
 	object.visible = true
 	object.position = initial_spot
+	lastPosition = initial_spot
+	print(initial_spot)
 	isInPosition = false
 	is_in_spot = false
 

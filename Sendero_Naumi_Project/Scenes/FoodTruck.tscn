@@ -522,7 +522,6 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.705, 0.705)
 script = ExtResource("8_25wym")
-anchors = [NodePath("food1"), NodePath("food2"), NodePath("food3"), NodePath("food4")]
 limitGesture = 100.0
 limitHold = 300.0
 limitunderHolf = 20.0
@@ -606,6 +605,7 @@ offset_right = -17.0
 offset_bottom = 97.0
 grow_horizontal = 0
 grow_vertical = 1
+NextScene = "Map_Screen"
 
 [node name="Moraleja" type="Node" parent="FoodTruck/StateMachine"]
 script = ExtResource("29_orp8w")
@@ -715,9 +715,13 @@ NextScene = "Map_Screen"
 [connection signal="Transitioned" from="FoodTruck/StateMachine/Juego" to="FoodTruck/StateMachine/Juego/Contenido/AnchorSpot/Spot" method="Reset"]
 [connection signal="Transitioned" from="FoodTruck/StateMachine/Juego" to="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer" method="Reset"]
 [connection signal="Transitioned" from="FoodTruck/StateMachine/Juego" to="FoodTruck/StateMachine/Juego/Contenido/BlockScreen" method="SetVisibility" binds= [false]]
+[connection signal="EndComand" from="FoodTruck/StateMachine/Juego/Contenido/PatasController" to="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer" method="stopDrag" binds= [false]]
+[connection signal="EndComand" from="FoodTruck/StateMachine/Juego/Contenido/PatasController" to="FoodTruck/StateMachine/Juego/Contenido/BlockScreen" method="SetVisibility" binds= [false]]
+[connection signal="ReorganizePlates" from="FoodTruck/StateMachine/Juego/Contenido/PatasController" to="FoodTruck/StateMachine/Juego/Contenido/AnchorSpot/Spot" method="Reset"]
 [connection signal="ReorganizePlates" from="FoodTruck/StateMachine/Juego/Contenido/PatasController" to="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer" method="ReOrganizePlates"]
+[connection signal="StartComand" from="FoodTruck/StateMachine/Juego/Contenido/PatasController" to="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer" method="stopDrag"]
+[connection signal="StartComand" from="FoodTruck/StateMachine/Juego/Contenido/PatasController" to="FoodTruck/StateMachine/Juego/Contenido/BlockScreen" method="SetVisibility" binds= [true]]
 [connection signal="StartTutorial" from="FoodTruck/StateMachine/Juego/Contenido/PatasController" to="FoodTruck/StateMachine/Juego/Contenido/Tutorial" method="CheckInTutorial"]
-[connection signal="EndTutorial" from="FoodTruck/StateMachine/Juego/Contenido/Tutorial" to="FoodTruck/StateMachine/Juego/Contenido/PatasController" method="AddPlateAtPivot" binds= ["null"]]
 [connection signal="OnSpot" from="FoodTruck/StateMachine/Juego/Contenido/AnchorSpot/Spot" to="FoodTruck/StateMachine/Juego/Contenido/PatasController" method="AddPlateAtPivot"]
 [connection signal="OnSpot" from="FoodTruck/StateMachine/Juego/Contenido/AnchorSpot/Spot" to="FoodTruck/StateMachine/Juego/Contenido/Tutorial" method="OnSpot"]
 [connection signal="OnSpot" from="FoodTruck/StateMachine/Juego/Contenido/AnchorSpot/Spot" to="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer" method="SetPlate"]
