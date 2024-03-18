@@ -14,6 +14,7 @@ var isInCenter : bool = false
 @export var extra_scale : Vector2 = Vector2(1,1)
 @onready var button = $Button
 var inPlace : bool
+var otherPosition : Marker2D
 
 func _ready():
 	button.set_anchors_preset(Control.PRESET_FULL_RECT)
@@ -30,7 +31,10 @@ func BtnPress():
 		isInCenter = false
 		z_index = 0
 		NoCenter.emit()
-		MakeAnim(initPosition, lowQualityTexture)
+		if otherPosition == null:
+			MakeAnim(initPosition, lowQualityTexture)
+		else:
+			MakeAnim(otherPosition.position, lowQualityTexture)
 	elif isInCenter and hasClue:
 		isInCenter = false
 		if !inPlace: ToInventary.emit()
