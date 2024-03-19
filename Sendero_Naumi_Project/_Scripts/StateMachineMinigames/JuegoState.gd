@@ -27,6 +27,7 @@ func Exit():
 #Muestra la instancia de minijuegos correspondiente segun lo guardado en los saves del jugador
 func SetGameInstance(setBool):
 	var numGame = GetInstanceOfMinigame()
+	print(numGame)
 	get_node(InstanciasMinijuego[numGame]).visible = setBool
 	
 
