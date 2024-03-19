@@ -21,6 +21,7 @@ func Physics_Update(_detla : float):
 
 func GetInstanceOfMinigame() -> int:
 	load_file()
+	print(get_parent().get_parent().name)
 	return InstanceR.InstanceMinigames[get_parent().get_parent().name]
 
 func IncruseInstanceOfMinigame():
