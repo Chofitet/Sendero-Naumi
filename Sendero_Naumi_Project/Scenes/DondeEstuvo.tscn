@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://b017ojh8vtsd6"]
+[gd_scene load_steps=31 format=3 uid="uid://b017ojh8vtsd6"]
 
 [ext_resource type="Script" path="res://_Scripts/Minigame_Save_Controller.gd" id="1_ouwf6"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/StateMachineMinigames.gd" id="2_5wf26"]
@@ -9,17 +9,27 @@
 [ext_resource type="Texture2D" uid="uid://chqivoetkgkoj" path="res://Sprites/UI/circulo.png" id="7_umoyt"]
 [ext_resource type="Texture2D" uid="uid://dmjr82oyg8r7m" path="res://Sprites/ZonaAstronomia/locker - donde.png" id="8_uf6hm"]
 [ext_resource type="PackedScene" uid="uid://dwwbflxn5qafe" path="res://Scenes/Zona_Astronomia/clue_obj.tscn" id="9_x0fc4"]
-[ext_resource type="Texture2D" uid="uid://csn03lca6g180" path="res://Sprites/ZonaAstronomia/reloj_arena2.png" id="10_j1jfp"]
+[ext_resource type="Texture2D" uid="uid://db262s78jvdlr" path="res://Sprites/ZonaAstronomia/bota der - donde.png" id="10_odq7q"]
 [ext_resource type="Texture2D" uid="uid://ce822oixpgtsk" path="res://Sprites/ZonaAstronomia/reloj_arena.png" id="11_ywqkw"]
-[ext_resource type="Texture2D" uid="uid://bg58cmjajfdso" path="res://Sprites/ZonaAstronomia/Astronauta_Boot2.png" id="12_2kppj"]
+[ext_resource type="Texture2D" uid="uid://bvdoo8ewk85tt" path="res://Sprites/ZonaAstronomia/bota izq - donde.png" id="12_ly1ac"]
 [ext_resource type="Texture2D" uid="uid://df1865451y56p" path="res://Sprites/ZonaAstronomia/Astronauta_Boot.png" id="13_woilb"]
+[ext_resource type="Texture2D" uid="uid://bp3qkeiuoh53m" path="res://Sprites/ZonaAstronomia/reloj - donde.png" id="14_2f6rp"]
+[ext_resource type="Texture2D" uid="uid://c63e52omky0ra" path="res://Sprites/ZonaAstronomia/globo - donde.png" id="14_i8rg6"]
 [ext_resource type="Theme" uid="uid://bhum72inirq1q" path="res://Themes/Generic_UI.tres" id="14_j3442"]
 [ext_resource type="Script" path="res://Scenes/GenericPanelController.gd" id="15_acmhj"]
 [ext_resource type="PackedScene" uid="uid://djhg7jvxtexyl" path="res://Scenes/UI_Scenes/btn_Change_Scene.tscn" id="15_jwaju"]
+[ext_resource type="Texture2D" uid="uid://budh3y8jmu6q6" path="res://Sprites/ZonaAstronomia/casco - donde.png" id="15_p6mcc"]
 [ext_resource type="Script" path="res://_Scripts/CheckAllChildsTrue.gd" id="16_6ug6m"]
+[ext_resource type="Texture2D" uid="uid://c4tjmjqxydcpt" path="res://Sprites/ZonaAstronomia/campera - donde.png" id="16_vo578"]
+[ext_resource type="Texture2D" uid="uid://gw5syjbt4iqk" path="res://Sprites/ZonaAstronomia/guante izq - donde.png" id="17_k3lcg"]
 [ext_resource type="PackedScene" uid="uid://cc3lcmyec2iso" path="res://Scenes/Zona_Astronomia/item_unir.tscn" id="17_l3cj0"]
 [ext_resource type="Script" path="res://_Scripts/MiniG_DondeEstuvo/CheckUnions.gd" id="18_6mqoo"]
+[ext_resource type="Texture2D" uid="uid://baltt5oyvpxl6" path="res://Sprites/ZonaAstronomia/guante der - donde.png" id="18_cu56d"]
 [ext_resource type="PackedScene" uid="uid://btwjusl4scgqt" path="res://Scenes/Zona_Astronomia/spot_unir.tscn" id="19_8egw1"]
+[ext_resource type="Texture2D" uid="uid://dtgctdtbo4u3c" path="res://Sprites/ZonaAstronomia/jetpack - donde.png" id="19_33dpm"]
+[ext_resource type="Texture2D" uid="uid://b2wbskrgayrbh" path="res://Sprites/ZonaAstronomia/pantalon - donde.png" id="20_yoct4"]
+[ext_resource type="Texture2D" uid="uid://clnk3ovgb26dq" path="res://Sprites/ZonaAstronomia/media - donde.png" id="21_rvd13"]
+[ext_resource type="Texture2D" uid="uid://df32p4srre22w" path="res://Sprites/ZonaAstronomia/lockerdis.png" id="24_qpval"]
 
 [node name="DondeEstuvo" type="Control"]
 layout_mode = 3
@@ -135,7 +145,7 @@ anchors_preset = 0
 offset_right = 628.0
 offset_bottom = 190.0
 script = ExtResource("6_5o457")
-Objects = [NodePath("../ScreenCenter/Clue_obj"), NodePath("../ScreenCenter/Clue_obj2"), NodePath("../ScreenCenter/Clue_obj3"), NodePath("../ScreenCenter/Clue_obj4")]
+Objects = [NodePath("../ScreenCenter/Clue_bota_der"), NodePath("../ScreenCenter/Clue_bota_izq"), NodePath("../ScreenCenter/Clue_reloj"), NodePath("../ScreenCenter/Clue_casco")]
 ObjectsShowInTrue = NodePath("../Panel")
 
 [node name="MarginContainer" type="MarginContainer" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/Inventary"]
@@ -196,32 +206,89 @@ grow_vertical = 2
 scale = Vector2(0.675926, 0.675926)
 texture = ExtResource("8_uf6hm")
 
-[node name="Clue_obj" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/ScreenCenter" instance=ExtResource("9_x0fc4")]
-position = Vector2(201, 81)
-texture = ExtResource("10_j1jfp")
-HighQualityTexture = ExtResource("11_ywqkw")
-hasClue = true
-angleInCenter = 20.0
-
-[node name="Clue_obj2" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/ScreenCenter" instance=ExtResource("9_x0fc4")]
-position = Vector2(-201, -10)
-texture = ExtResource("12_2kppj")
-HighQualityTexture = ExtResource("13_woilb")
+[node name="Clue_bota_izq" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/ScreenCenter" instance=ExtResource("9_x0fc4")]
+position = Vector2(-209, 432)
+scale = Vector2(0.690476, 0.690476)
+texture = ExtResource("12_ly1ac")
+HighQualityTexture = ExtResource("12_ly1ac")
 hasClue = true
 angleInCenter = -30.0
 extra_scale = Vector2(0.6, 0.6)
 
-[node name="Clue_obj3" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/ScreenCenter" instance=ExtResource("9_x0fc4")]
-position = Vector2(89, -128)
-texture = ExtResource("12_2kppj")
+[node name="Clue_bota_der" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/ScreenCenter" instance=ExtResource("9_x0fc4")]
+position = Vector2(175.33, 428.16)
+rotation = 0.450969
+scale = Vector2(0.674271, 0.670588)
+texture = ExtResource("10_odq7q")
+HighQualityTexture = ExtResource("10_odq7q")
+hasClue = true
+angleInCenter = 20.0
+
+[node name="Clue_reloj" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/ScreenCenter" instance=ExtResource("9_x0fc4")]
+position = Vector2(-108, -325)
+scale = Vector2(0.654545, 0.654545)
+texture = ExtResource("14_2f6rp")
 HighQualityTexture = ExtResource("13_woilb")
 hasClue = true
 angleInCenter = 30.0
 extra_scale = Vector2(0.6, 0.6)
 
-[node name="Clue_obj4" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/ScreenCenter" instance=ExtResource("9_x0fc4")]
-position = Vector2(3, 60)
-texture = ExtResource("10_j1jfp")
+[node name="Clue_globo" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/ScreenCenter" instance=ExtResource("9_x0fc4")]
+position = Vector2(-223, -298)
+scale = Vector2(0.654545, 0.654545)
+texture = ExtResource("14_i8rg6")
+HighQualityTexture = ExtResource("13_woilb")
+hasClue = true
+angleInCenter = 30.0
+extra_scale = Vector2(0.6, 0.6)
+
+[node name="Clue_casco" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/ScreenCenter" instance=ExtResource("9_x0fc4")]
+position = Vector2(97, -373)
+scale = Vector2(0.660436, 0.660436)
+texture = ExtResource("15_p6mcc")
+HighQualityTexture = ExtResource("11_ywqkw")
+angleInCenter = 20.0
+
+[node name="Clue_campera" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/ScreenCenter" instance=ExtResource("9_x0fc4")]
+position = Vector2(80, -38)
+scale = Vector2(0.682119, 0.682119)
+texture = ExtResource("16_vo578")
+HighQualityTexture = ExtResource("11_ywqkw")
+angleInCenter = 20.0
+
+[node name="Clue_guante_der" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/ScreenCenter" instance=ExtResource("9_x0fc4")]
+position = Vector2(-119, -57)
+scale = Vector2(0.661157, 0.661157)
+texture = ExtResource("17_k3lcg")
+HighQualityTexture = ExtResource("11_ywqkw")
+angleInCenter = 20.0
+
+[node name="Clue_guante_izq" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/ScreenCenter" instance=ExtResource("9_x0fc4")]
+position = Vector2(-207, -50)
+scale = Vector2(0.666667, 0.666667)
+texture = ExtResource("18_cu56d")
+HighQualityTexture = ExtResource("11_ywqkw")
+angleInCenter = 20.0
+
+[node name="Clue_jetpack" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/ScreenCenter" instance=ExtResource("9_x0fc4")]
+position = Vector2(67, 210)
+scale = Vector2(0.684636, 0.684636)
+texture = ExtResource("19_33dpm")
+HighQualityTexture = ExtResource("11_ywqkw")
+angleInCenter = 20.0
+
+[node name="Clue_pantalon" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/ScreenCenter" instance=ExtResource("9_x0fc4")]
+position = Vector2(-169, 137)
+scale = Vector2(0.679842, 0.679842)
+texture = ExtResource("20_yoct4")
+HighQualityTexture = ExtResource("11_ywqkw")
+angleInCenter = 20.0
+
+[node name="Clue_media" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/ScreenCenter" instance=ExtResource("9_x0fc4")]
+visible = false
+position = Vector2(-104, 482)
+scale = Vector2(0.679842, 0.679842)
+texture = ExtResource("21_rvd13")
 HighQualityTexture = ExtResource("11_ywqkw")
 angleInCenter = 20.0
 
@@ -275,6 +342,13 @@ grow_vertical = 2
 theme_override_font_sizes/normal_font_size = 25
 bbcode_enabled = true
 text = "[center]ENCONTRASTE TODAS LAS PISTAS[/center]"
+
+[node name="Lockerdis" type="Sprite2D" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1"]
+visible = false
+self_modulate = Color(1, 1, 1, 0.603922)
+position = Vector2(357, 637.954)
+scale = Vector2(1.64447, 1.64447)
+texture = ExtResource("24_qpval")
 
 [node name="Instancia2" type="Control" parent="DondeEstuvo/StateMachine/Juego/Contenido"]
 visible = false
@@ -358,7 +432,6 @@ state_machine = NodePath("../../../..")
 isEndOfGame = true
 
 [node name="HUD" type="CanvasLayer" parent="DondeEstuvo/StateMachine/Juego"]
-visible = false
 
 [node name="ButtonChangeScene" parent="DondeEstuvo/StateMachine/Juego/HUD" instance=ExtResource("15_jwaju")]
 anchors_preset = 1
@@ -372,3 +445,4 @@ offset_right = -16.0
 offset_bottom = 111.0
 grow_horizontal = 0
 grow_vertical = 1
+NextScene = "Map_Screen"

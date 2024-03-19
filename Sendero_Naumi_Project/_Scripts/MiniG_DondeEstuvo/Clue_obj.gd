@@ -1,9 +1,11 @@
+@tool
 extends Sprite2D
 
 signal ToInventary
 signal ToCenter
 signal NoCenter
 var initPosition
+var initScale
 @export var HighQualityTexture : Texture
 @onready var lowQualityTexture = texture
 @export var AnimatedSpeed : float = 0.3
@@ -17,10 +19,13 @@ var inPlace : bool
 var otherPosition : Marker2D
 
 func _ready():
-	button.set_anchors_preset(Control.PRESET_FULL_RECT)
+	initScale = scale
 	initPosition = position
 	button.pressed.connect(BtnPress)
 
+func adjustRect():
+	button.set_anchors_preset(Control.PRESET_FULL_RECT)
+	
 func BtnPress():
 	if !isInCenter:
 		isInCenter = true
@@ -67,7 +72,7 @@ func CalculateScaleVector(_texture) -> Vector2:
 	var vector
 	var h : float
 	var v : float
-	h = float(_texture.get_width()) / float(texture.get_width())
+	h = float(_texture.get_width())  / float(texture.get_width()) 
 	v = float(_texture.get_height()) / float(texture.get_height())
 	print(vector)
 	vector = Vector2(h,v)
