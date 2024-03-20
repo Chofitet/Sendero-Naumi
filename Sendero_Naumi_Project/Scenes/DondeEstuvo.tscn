@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://b017ojh8vtsd6"]
+[gd_scene load_steps=43 format=3 uid="uid://b017ojh8vtsd6"]
 
 [ext_resource type="Script" path="res://_Scripts/Minigame_Save_Controller.gd" id="1_ouwf6"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/StateMachineMinigames.gd" id="2_5wf26"]
@@ -7,12 +7,13 @@
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/JuegoState.gd" id="5_8uhx2"]
 [ext_resource type="Script" path="res://_Scripts/MiniG_DondeEstuvo/Inventary.gd" id="6_5o457"]
 [ext_resource type="Texture2D" uid="uid://chqivoetkgkoj" path="res://Sprites/UI/circulo.png" id="7_umoyt"]
+[ext_resource type="Texture2D" uid="uid://cq0nrg4icb47d" path="res://Sprites/ZonaAstronomia/piso - donde.png" id="8_orttm"]
 [ext_resource type="Texture2D" uid="uid://dmjr82oyg8r7m" path="res://Sprites/ZonaAstronomia/locker - donde.png" id="8_uf6hm"]
+[ext_resource type="Script" path="res://_Scripts/MiniG_DondeEstuvo/BlockClues.gd" id="9_jvdca"]
 [ext_resource type="PackedScene" uid="uid://dwwbflxn5qafe" path="res://Scenes/Zona_Astronomia/clue_obj.tscn" id="9_x0fc4"]
 [ext_resource type="Texture2D" uid="uid://db262s78jvdlr" path="res://Sprites/ZonaAstronomia/bota der - donde.png" id="10_odq7q"]
-[ext_resource type="Texture2D" uid="uid://ce822oixpgtsk" path="res://Sprites/ZonaAstronomia/reloj_arena.png" id="11_ywqkw"]
 [ext_resource type="Texture2D" uid="uid://bvdoo8ewk85tt" path="res://Sprites/ZonaAstronomia/bota izq - donde.png" id="12_ly1ac"]
-[ext_resource type="Texture2D" uid="uid://df1865451y56p" path="res://Sprites/ZonaAstronomia/Astronauta_Boot.png" id="13_woilb"]
+[ext_resource type="Script" path="res://_Scripts/PlayAnimation.gd" id="13_ukv5b"]
 [ext_resource type="Texture2D" uid="uid://bp3qkeiuoh53m" path="res://Sprites/ZonaAstronomia/reloj - donde.png" id="14_2f6rp"]
 [ext_resource type="Texture2D" uid="uid://c63e52omky0ra" path="res://Sprites/ZonaAstronomia/globo - donde.png" id="14_i8rg6"]
 [ext_resource type="Theme" uid="uid://bhum72inirq1q" path="res://Themes/Generic_UI.tres" id="14_j3442"]
@@ -25,11 +26,339 @@
 [ext_resource type="PackedScene" uid="uid://cc3lcmyec2iso" path="res://Scenes/Zona_Astronomia/item_unir.tscn" id="17_l3cj0"]
 [ext_resource type="Script" path="res://_Scripts/MiniG_DondeEstuvo/CheckUnions.gd" id="18_6mqoo"]
 [ext_resource type="Texture2D" uid="uid://baltt5oyvpxl6" path="res://Sprites/ZonaAstronomia/guante der - donde.png" id="18_cu56d"]
+[ext_resource type="Texture2D" uid="uid://cd27gi6cyrqkl" path="res://Sprites/ZonaAstronomia/campera XL- donde.png" id="19_7rvr1"]
 [ext_resource type="PackedScene" uid="uid://btwjusl4scgqt" path="res://Scenes/Zona_Astronomia/spot_unir.tscn" id="19_8egw1"]
 [ext_resource type="Texture2D" uid="uid://dtgctdtbo4u3c" path="res://Sprites/ZonaAstronomia/jetpack - donde.png" id="19_33dpm"]
 [ext_resource type="Texture2D" uid="uid://b2wbskrgayrbh" path="res://Sprites/ZonaAstronomia/pantalon - donde.png" id="20_yoct4"]
 [ext_resource type="Texture2D" uid="uid://clnk3ovgb26dq" path="res://Sprites/ZonaAstronomia/media - donde.png" id="21_rvd13"]
 [ext_resource type="Texture2D" uid="uid://df32p4srre22w" path="res://Sprites/ZonaAstronomia/lockerdis.png" id="24_qpval"]
+[ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/MoralejaState.gd" id="33_wluhy"]
+
+[sub_resource type="Animation" id="Animation_gsqlp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-330, 267.143)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.585, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0294423]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:skew")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_ua7wr"]
+resource_name = "fall"
+length = 1.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.3, 0.7, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-330, 267.143), Vector2(-330, 641.429), Vector2(-311.429, 618.572), Vector2(-311.429, 645.715)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.3, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.585, 1), Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.3, 0.7, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0294423, 0.815069, 1.60047]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:skew")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.3, 0.6, 0.7, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 0.244346, 0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pl8tj"]
+_data = {
+"RESET": SubResource("Animation_gsqlp"),
+"fall": SubResource("Animation_ua7wr")
+}
+
+[sub_resource type="Animation" id="Animation_7iq31"]
+resource_name = "fall"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(225.714, 672.572), Vector2(212.857, 605.429), Vector2(212.857, 658.286), Vector2(245.714, 658.286), Vector2(227.143, 658.286)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [-1.5708, -0.449599, 0.359957, -0.174533, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_ojvvf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(225.714, 672.572)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-1.5708]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_621jd"]
+_data = {
+"RESET": SubResource("Animation_ojvvf"),
+"fall": SubResource("Animation_7iq31")
+}
+
+[sub_resource type="Animation" id="Animation_pdrgd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(200.452, -82.5291)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.355182]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Clue_reloj:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Clue_reloj:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(201.429, 672.572)]
+}
+
+[sub_resource type="Animation" id="Animation_sovcw"]
+resource_name = "fall"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.2, 0.5, 0.6, 0.7, 0.8),
+"transitions": PackedFloat32Array(2, 2, 1, 1, 1),
+"update": 0,
+"values": [Vector2(200.452, -82.5291), Vector2(181.429, 676.857), Vector2(181.429, 688.776), Vector2(181.429, 659.714), Vector2(181.429, 676.857)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [-0.355182, 1.00705, 1.5708]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.5, 0.6, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.803002, 1), Vector2(1.0394, 1), Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Clue_reloj:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Clue_reloj:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.6, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(201.429, 691.143), Vector2(213.571, 661.143), Vector2(225.714, 672.572)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wrfk7"]
+_data = {
+"RESET": SubResource("Animation_pdrgd"),
+"fall": SubResource("Animation_sovcw")
+}
 
 [node name="DondeEstuvo" type="Control"]
 layout_mode = 3
@@ -51,6 +380,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Background" type="ColorRect" parent="DondeEstuvo/Control"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -141,11 +471,12 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Inventary" type="Control" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1"]
+layout_mode = 1
 anchors_preset = 0
 offset_right = 628.0
 offset_bottom = 190.0
 script = ExtResource("6_5o457")
-Objects = [NodePath("../ScreenCenter/Clue_bota_der"), NodePath("../ScreenCenter/Clue_bota_izq"), NodePath("../ScreenCenter/Clue_reloj"), NodePath("../ScreenCenter/Clue_casco")]
+Objects = [NodePath("../ScreenCenter/Clues/Clue_bota_der"), NodePath("../ScreenCenter/Clues/Clue_reloj"), NodePath("../ScreenCenter/Clues/Clue_globo")]
 ObjectsShowInTrue = NodePath("../Panel")
 
 [node name="MarginContainer" type="MarginContainer" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/Inventary"]
@@ -169,17 +500,26 @@ layout_mode = 2
 texture = ExtResource("7_umoyt")
 expand_mode = 2
 
+[node name="center" type="Marker2D" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/Inventary/MarginContainer/HBoxContainer/Clue1"]
+position = Vector2(85, 85)
+
 [node name="Clue2" type="TextureRect" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/Inventary/MarginContainer/HBoxContainer"]
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 texture = ExtResource("7_umoyt")
 expand_mode = 2
 
+[node name="center" type="Marker2D" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/Inventary/MarginContainer/HBoxContainer/Clue2"]
+position = Vector2(85, 85)
+
 [node name="Clue3" type="TextureRect" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/Inventary/MarginContainer/HBoxContainer"]
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 texture = ExtResource("7_umoyt")
 expand_mode = 2
+
+[node name="center" type="Marker2D" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/Inventary/MarginContainer/HBoxContainer/Clue3"]
+position = Vector2(85, 85)
 
 [node name="Overlay" type="ColorRect" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1"]
 visible = false
@@ -201,96 +541,153 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(0.7, 0.7)
 
-[node name="Armario" type="Sprite2D" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/ScreenCenter"]
-scale = Vector2(0.675926, 0.675926)
+[node name="background" type="ColorRect" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/ScreenCenter"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -594.0
+offset_top = -1319.0
+offset_right = 595.0
+offset_bottom = 1318.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.286275, 0.301961, 0.305882, 1)
+
+[node name="piso" type="Sprite2D" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/ScreenCenter/background"]
+position = Vector2(594, 2149.28)
+texture = ExtResource("8_orttm")
+
+[node name="Armario" type="Sprite2D" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/ScreenCenter/background"]
+position = Vector2(594, 1363.57)
 texture = ExtResource("8_uf6hm")
 
-[node name="Clue_bota_izq" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/ScreenCenter" instance=ExtResource("9_x0fc4")]
-position = Vector2(-209, 432)
-scale = Vector2(0.690476, 0.690476)
-texture = ExtResource("12_ly1ac")
-HighQualityTexture = ExtResource("12_ly1ac")
-hasClue = true
-angleInCenter = -30.0
-extra_scale = Vector2(0.6, 0.6)
+[node name="Clues" type="Node2D" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/ScreenCenter" node_paths=PackedStringArray("overlay")]
+position = Vector2(0, 44.5714)
+script = ExtResource("9_jvdca")
+overlay = NodePath("../../Overlay")
 
-[node name="Clue_bota_der" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/ScreenCenter" instance=ExtResource("9_x0fc4")]
-position = Vector2(175.33, 428.16)
-rotation = 0.450969
-scale = Vector2(0.674271, 0.670588)
+[node name="Clue_bota_der" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/ScreenCenter/Clues" instance=ExtResource("9_x0fc4")]
+visible = false
+position = Vector2(-330, 267.143)
+rotation = 0.0294423
+scale = Vector2(0.585, 1)
 texture = ExtResource("10_odq7q")
 HighQualityTexture = ExtResource("10_odq7q")
 hasClue = true
 angleInCenter = 20.0
+extra_scale = Vector2(4, 4)
 
-[node name="Clue_reloj" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/ScreenCenter" instance=ExtResource("9_x0fc4")]
-position = Vector2(-108, -325)
-scale = Vector2(0.654545, 0.654545)
+[node name="AnimationPlayer" type="AnimationPlayer" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/ScreenCenter/Clues/Clue_bota_der"]
+libraries = {
+"": SubResource("AnimationLibrary_pl8tj")
+}
+script = ExtResource("13_ukv5b")
+animation = "fall"
+DestroyInFinish = "fall"
+
+[node name="Clue_bota_izq" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/ScreenCenter/Clues" instance=ExtResource("9_x0fc4")]
+position = Vector2(-135.714, 649.714)
+rotation = -0.0337218
+texture = ExtResource("12_ly1ac")
+flip_h = true
+HighQualityTexture = ExtResource("12_ly1ac")
+angleInCenter = -30.0
+extra_scale = Vector2(4, 4)
+
+[node name="Clue_reloj" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/ScreenCenter/Clues" instance=ExtResource("9_x0fc4")]
+visible = false
+position = Vector2(201.429, 672.572)
+rotation = -1.5708
 texture = ExtResource("14_2f6rp")
-HighQualityTexture = ExtResource("13_woilb")
+HighQualityTexture = ExtResource("14_2f6rp")
 hasClue = true
 angleInCenter = 30.0
-extra_scale = Vector2(0.6, 0.6)
+extra_scale = Vector2(5, 5)
 
-[node name="Clue_globo" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/ScreenCenter" instance=ExtResource("9_x0fc4")]
-position = Vector2(-223, -298)
-scale = Vector2(0.654545, 0.654545)
+[node name="AnimationPlayer" type="AnimationPlayer" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/ScreenCenter/Clues/Clue_reloj"]
+libraries = {
+"": SubResource("AnimationLibrary_621jd")
+}
+script = ExtResource("13_ukv5b")
+animation = "fall"
+DestroyInFinish = "fall"
+
+[node name="Clue_globo" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/ScreenCenter/Clues" instance=ExtResource("9_x0fc4")]
+position = Vector2(107.143, -445.714)
 texture = ExtResource("14_i8rg6")
-HighQualityTexture = ExtResource("13_woilb")
+HighQualityTexture = ExtResource("14_i8rg6")
 hasClue = true
 angleInCenter = 30.0
-extra_scale = Vector2(0.6, 0.6)
+extra_scale = Vector2(5, 5)
 
-[node name="Clue_casco" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/ScreenCenter" instance=ExtResource("9_x0fc4")]
-position = Vector2(97, -373)
-scale = Vector2(0.660436, 0.660436)
+[node name="Clue_casco" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/ScreenCenter/Clues" node_paths=PackedStringArray("otherPosition") instance=ExtResource("9_x0fc4")]
+position = Vector2(110, -557.143)
 texture = ExtResource("15_p6mcc")
-HighQualityTexture = ExtResource("11_ywqkw")
+offset = Vector2(16, 0)
+HighQualityTexture = ExtResource("15_p6mcc")
 angleInCenter = 20.0
+extra_scale = Vector2(3, 3)
+otherPosition = NodePath("../../CascoPos2")
 
-[node name="Clue_campera" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/ScreenCenter" instance=ExtResource("9_x0fc4")]
-position = Vector2(80, -38)
-scale = Vector2(0.682119, 0.682119)
+[node name="Clue_campera" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/ScreenCenter/Clues" instance=ExtResource("9_x0fc4")]
+position = Vector2(-208.571, -55.7143)
 texture = ExtResource("16_vo578")
-HighQualityTexture = ExtResource("11_ywqkw")
-angleInCenter = 20.0
+HighQualityTexture = ExtResource("19_7rvr1")
+angleInCenter = -20.0
 
-[node name="Clue_guante_der" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/ScreenCenter" instance=ExtResource("9_x0fc4")]
-position = Vector2(-119, -57)
-scale = Vector2(0.661157, 0.661157)
-texture = ExtResource("17_k3lcg")
-HighQualityTexture = ExtResource("11_ywqkw")
-angleInCenter = 20.0
-
-[node name="Clue_guante_izq" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/ScreenCenter" instance=ExtResource("9_x0fc4")]
-position = Vector2(-207, -50)
-scale = Vector2(0.666667, 0.666667)
-texture = ExtResource("18_cu56d")
-HighQualityTexture = ExtResource("11_ywqkw")
-angleInCenter = 20.0
-
-[node name="Clue_jetpack" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/ScreenCenter" instance=ExtResource("9_x0fc4")]
-position = Vector2(67, 210)
-scale = Vector2(0.684636, 0.684636)
+[node name="Clue_jetpack" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/ScreenCenter/Clues" instance=ExtResource("9_x0fc4")]
+position = Vector2(101.429, 314.286)
 texture = ExtResource("19_33dpm")
-HighQualityTexture = ExtResource("11_ywqkw")
-angleInCenter = 20.0
+HighQualityTexture = ExtResource("19_33dpm")
+angleInCenter = 10.0
+extra_scale = Vector2(2.5, 2.5)
 
-[node name="Clue_pantalon" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/ScreenCenter" instance=ExtResource("9_x0fc4")]
-position = Vector2(-169, 137)
-scale = Vector2(0.679842, 0.679842)
+[node name="Clue_pantalon" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/ScreenCenter/Clues" instance=ExtResource("9_x0fc4")]
+position = Vector2(-252.857, 208.571)
 texture = ExtResource("20_yoct4")
-HighQualityTexture = ExtResource("11_ywqkw")
-angleInCenter = 20.0
+HighQualityTexture = ExtResource("20_yoct4")
+angleInCenter = -20.0
+extra_scale = Vector2(3.3, 3.3)
 
-[node name="Clue_media" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/ScreenCenter" instance=ExtResource("9_x0fc4")]
+[node name="Clue_guante_der" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/ScreenCenter/Clues" instance=ExtResource("9_x0fc4")]
+position = Vector2(200.452, -82.5291)
+rotation = -0.355182
+texture = ExtResource("17_k3lcg")
+HighQualityTexture = ExtResource("17_k3lcg")
+AnimatedSpeed = 0.4
+angleInCenter = 230.0
+extra_scale = Vector2(4, 4)
+inactiveInReady = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/ScreenCenter/Clues/Clue_guante_der"]
+libraries = {
+"": SubResource("AnimationLibrary_wrfk7")
+}
+script = ExtResource("13_ukv5b")
+animation = "fall"
+DestroyInFinish = "fall"
+
+[node name="Clue_media" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/ScreenCenter/Clues" instance=ExtResource("9_x0fc4")]
 visible = false
 position = Vector2(-104, 482)
-scale = Vector2(0.679842, 0.679842)
 texture = ExtResource("21_rvd13")
-HighQualityTexture = ExtResource("11_ywqkw")
+HighQualityTexture = ExtResource("21_rvd13")
 angleInCenter = 20.0
+
+[node name="Clue_guante_izq" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/ScreenCenter/Clues" instance=ExtResource("9_x0fc4")]
+position = Vector2(125.714, -84.5714)
+rotation = 0.311291
+texture = ExtResource("18_cu56d")
+HighQualityTexture = ExtResource("18_cu56d")
+angleInCenter = 20.0
+extra_scale = Vector2(4, 4)
+
+[node name="CascoPos2" type="Marker2D" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/ScreenCenter"]
+position = Vector2(-224.286, -557.143)
 
 [node name="Panel" type="Panel" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1"]
 visible = false
@@ -347,8 +744,14 @@ text = "[center]ENCONTRASTE TODAS LAS PISTAS[/center]"
 visible = false
 self_modulate = Color(1, 1, 1, 0.603922)
 position = Vector2(357, 637.954)
-scale = Vector2(1.64447, 1.64447)
+scale = Vector2(1.71558, 1.71558)
 texture = ExtResource("24_qpval")
+
+[node name="CamperaXl-Donde" type="Sprite2D" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1"]
+visible = false
+position = Vector2(356, 679)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("19_7rvr1")
 
 [node name="Instancia2" type="Control" parent="DondeEstuvo/StateMachine/Juego/Contenido"]
 visible = false
@@ -377,16 +780,24 @@ position = Vector2(-65, -118)
 script = ExtResource("16_6ug6m")
 
 [node name="ItemUnir" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/VBoxContainer/CheckTrue" node_paths=PackedStringArray("correctSpot") instance=ExtResource("17_l3cj0")]
+texture = ExtResource("10_odq7q")
+expand_mode = 0
 correctSpot = NodePath("../../../VBoxContainer2/SpotUnir")
 
 [node name="ItemUnir2" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/VBoxContainer/CheckTrue" node_paths=PackedStringArray("correctSpot") instance=ExtResource("17_l3cj0")]
-offset_top = 506.0
-offset_bottom = 749.0
+offset_top = 527.0
+offset_bottom = 728.0
+texture = ExtResource("14_i8rg6")
+expand_mode = 0
 correctSpot = NodePath("../../../VBoxContainer2/SpotUnir2")
 
 [node name="ItemUnir3" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/VBoxContainer/CheckTrue" node_paths=PackedStringArray("correctSpot") instance=ExtResource("17_l3cj0")]
+offset_left = 106.0
 offset_top = 894.0
+offset_right = 267.0
 offset_bottom = 1137.0
+texture = ExtResource("14_2f6rp")
+expand_mode = 0
 correctSpot = NodePath("../../../VBoxContainer2/SpotUnir3")
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2" node_paths=PackedStringArray("btn")]
@@ -413,7 +824,7 @@ layout_mode = 2
 [node name="SpotUnir3" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/VBoxContainer2" instance=ExtResource("19_8egw1")]
 layout_mode = 2
 
-[node name="Button" type="Button" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2" node_paths=PackedStringArray("state_machine")]
+[node name="Button" type="Button" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2" node_paths=PackedStringArray("state_to_change", "state_machine")]
 visible = false
 layout_mode = 1
 anchors_preset = 3
@@ -428,6 +839,7 @@ offset_bottom = -38.0
 grow_horizontal = 0
 grow_vertical = 0
 script = ExtResource("4_j3ig5")
+state_to_change = NodePath("../../../../Moraleja")
 state_machine = NodePath("../../../..")
 isEndOfGame = true
 
@@ -446,3 +858,36 @@ offset_bottom = 111.0
 grow_horizontal = 0
 grow_vertical = 1
 NextScene = "Map_Screen"
+
+[node name="Moraleja" type="Node" parent="DondeEstuvo/StateMachine"]
+script = ExtResource("33_wluhy")
+
+[node name="Contenido" type="Control" parent="DondeEstuvo/StateMachine/Moraleja"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ButtonChangeScene" parent="DondeEstuvo/StateMachine/Moraleja/Contenido" instance=ExtResource("15_jwaju")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 404.0
+offset_bottom = 135.0
+grow_horizontal = 1
+grow_vertical = 1
+text = "menu
+"
+NextScene = "Map_Screen"
+
+[connection signal="NoCenter" from="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/ScreenCenter/Clues/Clue_pantalon" to="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/ScreenCenter/Clues/Clue_bota_der/AnimationPlayer" method="Play"]
+[connection signal="ToCenter" from="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/ScreenCenter/Clues/Clue_guante_der" to="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/ScreenCenter/Clues/Clue_reloj/AnimationPlayer" method="Play"]
+[connection signal="ToCenter" from="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/ScreenCenter/Clues/Clue_guante_izq" to="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/ScreenCenter/Clues/Clue_guante_der/AnimationPlayer" method="PlayAnim" binds= ["fall"]]

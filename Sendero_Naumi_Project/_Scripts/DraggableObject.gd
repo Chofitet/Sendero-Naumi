@@ -8,6 +8,7 @@ var isInPosition
 var lastPosition
 var AskSpot
 @export var spot : Area2D
+@export var PlaceInAllSpots : bool
 @export var holdTime : float
 @export var DesapearInPlace : bool
 @export var notCenterObject : bool
@@ -59,7 +60,13 @@ func _on_button_pressed():
 	await  mouse_realese
 	isInTime = false
 	pick_up = false
-	if !spot: return
+	if !PlaceInAllSpots:
+		if !spot: return
+		PlaceInRightSpot()
+	else:
+		PlaceInSpot()
+
+func PlaceInRightSpot():
 	CheckRightSpot()
 	if (is_in_spot):
 		if DesapearInPlace: object.visible = false
@@ -68,7 +75,16 @@ func _on_button_pressed():
 		isInPosition = true
 	else: 
 		CancelDrag()
-	
+
+func PlaceInSpot():
+	if !AskSpot:
+		CancelDrag()
+		return
+	if DesapearInPlace: object.visible = false
+	var tween = get_tree().create_tween()
+	tween = tween.tween_property(object, "global_position",AskSpot.global_position,0.1).set_ease(Tween.EASE_OUT)
+	isInPosition = true
+
 func GetSpot(x):
 	AskSpot = x
 	

@@ -19,9 +19,10 @@ func SetInventarySpot(obj):
 	var spotOffset = Vector2(Spots[i].size.x / 2 + 20, Spots[i].size.y /2 + 20)
 	print(Spots[i].size.x)
 	print(spotOffset)
-	obj.ToPosition = Spots[i].position - offset.position + spotOffset
+	obj.ToPosition = Spots[i].get_node("center").global_position
+	obj.z_index = 1
 	i += 1
-	if i == Objects.size() - 1:
+	if i == Objects.size():
 		get_node(ObjectsShowInTrue).visible = true
 
 func SetOverlayTrue(obj):

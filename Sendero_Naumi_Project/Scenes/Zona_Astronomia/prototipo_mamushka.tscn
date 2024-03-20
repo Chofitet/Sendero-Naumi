@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=3 uid="uid://wyqpk0ax153"]
+
+[ext_resource type="PackedScene" uid="uid://7ypbdd5rheui" path="res://Scenes/Zona_Astronomia/mamushka_controller.tscn" id="1_cmxqy"]
+[ext_resource type="PackedScene" uid="uid://y2uavtfxilcv" path="res://Scenes/Zona_Astronomia/mamushka_layer.tscn" id="2_85c2p"]
+[ext_resource type="Texture2D" uid="uid://dpnclrykjhq8f" path="res://Sprites/ZonaAstronomia/Mamushka_Arriba.png" id="3_t2qn2"]
+[ext_resource type="Texture2D" uid="uid://bn3ka84btw5ji" path="res://Sprites/ZonaAstronomia/Mamushka_Abajo.png" id="4_ly8e8"]
+[ext_resource type="Texture2D" uid="uid://da6hjyn0lo2y0" path="res://Sprites/ZonaAstronomia/Mamushka_Arriba_Layer3.png" id="4_s8qk1"]
+[ext_resource type="Texture2D" uid="uid://djivbvfp0j8hc" path="res://Sprites/ZonaAstronomia/Mamushka_Abajo_Layer3.png" id="5_sijwl"]
+
+[node name="Prototipo_Mamushka" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Mamushka_Layer" parent="." instance=ExtResource("2_85c2p")]
+position = Vector2(177, 1080)
+ParteArriba = ExtResource("3_t2qn2")
+ParteAbajo = ExtResource("4_ly8e8")
+NumOfLayer = 1
+
+[node name="Mamushka_Layer3" parent="." instance=ExtResource("2_85c2p")]
+modulate = Color(0.211765, 0.352941, 1, 1)
+position = Vector2(195, 225)
+ParteArriba = ExtResource("4_s8qk1")
+ParteAbajo = ExtResource("5_sijwl")
+NumOfLayer = 1
+
+[node name="Sprite2D" parent="Mamushka_Layer3/Arriba/pivotRot" index="0"]
+texture = ExtResource("4_s8qk1")
+
+[node name="Sprite2D" parent="Mamushka_Layer3/Abajo/pivotRot" index="0"]
+texture = ExtResource("5_sijwl")
+
+[node name="Mamushka_Layer2" parent="." instance=ExtResource("2_85c2p")]
+position = Vector2(555, 222)
+ParteArriba = ExtResource("4_s8qk1")
+ParteAbajo = ExtResource("5_sijwl")
+
+[node name="mamushkaController" parent="." instance=ExtResource("1_cmxqy")]
+position = Vector2(332, 714)
+
+[editable path="Mamushka_Layer3"]
