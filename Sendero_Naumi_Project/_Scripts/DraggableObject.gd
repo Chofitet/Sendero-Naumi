@@ -5,8 +5,10 @@ var object
 var is_in_spot = false
 var initial_spot
 var isInPosition
+var lastPosition
 var AskSpot
 @export var spot : Area2D
+@export var PlaceInAllSpots : bool
 @export var holdTime : float
 @export var DesapearInPlace : bool
 @export var notCenterObject : bool
@@ -14,6 +16,7 @@ var AskSpot
 @export var MaxRadiusClamp : float
 @export var LimitRectangleArea : bool
 @export var BoundsRectangleClamp : Vector2
+@export var tweenTime : float = 0.1
 var timerHold
 var isInTime
 var GrabOffset : Vector2
@@ -27,6 +30,7 @@ func _ready():
 	timerHold.timeout.connect(TimeToDrag)
 	object = get_parent()
 	initial_spot = object.position
+	lastPosition = initial_spot
 	area_entered.connect(GetSpot)
 	area_exited.connect(deleteSpot)
 
@@ -57,7 +61,13 @@ func _on_button_pressed():
 	await  mouse_realese
 	isInTime = false
 	pick_up = false
-	if !spot: return
+	if !PlaceInAllSpots:
+		if !spot: return
+		PlaceInRightSpot()
+	else:
+		PlaceInSpot()
+
+func PlaceInRightSpot():
 	CheckRightSpot()
 	if (is_in_spot):
 		if DesapearInPlace: object.visible = false
@@ -65,8 +75,17 @@ func _on_button_pressed():
 		tween = tween.tween_property(object, "global_position",spot.global_position,0.1).set_ease(Tween.EASE_OUT)
 		isInPosition = true
 	else: 
-		CancelDrag(object)
-	
+		CancelDrag()
+
+func PlaceInSpot():
+	if !AskSpot:
+		CancelDrag()
+		return
+	if DesapearInPlace: object.visible = false
+	var tween = get_tree().create_tween()
+	tween = tween.tween_property(object, "global_position",AskSpot.global_position,0.1).set_ease(Tween.EASE_OUT)
+	isInPosition = true
+
 func GetSpot(x):
 	AskSpot = x
 	
@@ -78,11 +97,11 @@ func CheckRightSpot():
 		is_in_spot = true
 	else: is_in_spot = false
 
-func CancelDrag(x):
+func CancelDrag():
 	if timerHold.timeout.is_connected(TimeToDrag):
 		timerHold.timeout.disconnect(TimeToDrag)
 	var tween = get_tree().create_tween()
-	tween = tween.tween_property(object, "position",initial_spot,0.1).set_ease(Tween.EASE_OUT)
+	tween = tween.tween_property(object, "position",lastPosition,tweenTime).set_ease(Tween.EASE_OUT)
 	isInPosition = false
 
 func TimeToDrag():
@@ -95,11 +114,16 @@ func TimeToDrag():
 func isEnableButton(x):
 	if x:
 		$Button.visible = true
-	else: $Button.visible = false
+		get_node("CollisionShape2D").disabled = false
+	else: 
+		$Button.visible = false
+		get_node("CollisionShape2D").disabled = true
 
 func ResetPosition():
 	object.visible = true
 	object.position = initial_spot
+	lastPosition = initial_spot
+	print(initial_spot)
 	isInPosition = false
 	is_in_spot = false
 
