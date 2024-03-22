@@ -1,11 +1,15 @@
-[gd_scene load_steps=7 format=3 uid="uid://wyqpk0ax153"]
+[gd_scene load_steps=11 format=3 uid="uid://wyqpk0ax153"]
 
 [ext_resource type="PackedScene" uid="uid://7ypbdd5rheui" path="res://Scenes/Zona_Astronomia/mamushka_controller.tscn" id="1_cmxqy"]
 [ext_resource type="PackedScene" uid="uid://y2uavtfxilcv" path="res://Scenes/Zona_Astronomia/mamushka_layer.tscn" id="2_85c2p"]
 [ext_resource type="Texture2D" uid="uid://dpnclrykjhq8f" path="res://Sprites/ZonaAstronomia/Mamushka_Arriba.png" id="3_t2qn2"]
 [ext_resource type="Texture2D" uid="uid://bn3ka84btw5ji" path="res://Sprites/ZonaAstronomia/Mamushka_Abajo.png" id="4_ly8e8"]
 [ext_resource type="Texture2D" uid="uid://da6hjyn0lo2y0" path="res://Sprites/ZonaAstronomia/Mamushka_Arriba_Layer3.png" id="4_s8qk1"]
+[ext_resource type="Texture2D" uid="uid://hx1cqmcicau6" path="res://Sprites/ZonaAstronomia/Mamushka_Arriba_Layer1.png" id="4_ta0u0"]
+[ext_resource type="Texture2D" uid="uid://n83j70rwqv28" path="res://Sprites/ZonaAstronomia/Mamushka_Abajo_Layer1.png" id="5_0utwx"]
 [ext_resource type="Texture2D" uid="uid://djivbvfp0j8hc" path="res://Sprites/ZonaAstronomia/Mamushka_Abajo_Layer3.png" id="5_sijwl"]
+[ext_resource type="Texture2D" uid="uid://cwvseb3fw0j5m" path="res://Sprites/ZonaAstronomia/Mamushka_Arriba_Layer2.png" id="8_vmdi4"]
+[ext_resource type="Texture2D" uid="uid://kltd8mxosvuj" path="res://Sprites/ZonaAstronomia/Mamushka_Abajo_Layer2.png" id="9_7f1wj"]
 
 [node name="Prototipo_Mamushka" type="Control"]
 layout_mode = 3
@@ -15,31 +19,109 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Mamushka_Layer" parent="." instance=ExtResource("2_85c2p")]
-position = Vector2(177, 1080)
-ParteArriba = ExtResource("3_t2qn2")
-ParteAbajo = ExtResource("4_ly8e8")
-NumOfLayer = 1
-
 [node name="Mamushka_Layer3" parent="." instance=ExtResource("2_85c2p")]
-modulate = Color(0.211765, 0.352941, 1, 1)
-position = Vector2(195, 225)
-ParteArriba = ExtResource("4_s8qk1")
-ParteAbajo = ExtResource("5_sijwl")
-NumOfLayer = 1
-
-[node name="Sprite2D" parent="Mamushka_Layer3/Arriba/pivotRot" index="0"]
-texture = ExtResource("4_s8qk1")
-
-[node name="Sprite2D" parent="Mamushka_Layer3/Abajo/pivotRot" index="0"]
-texture = ExtResource("5_sijwl")
+position = Vector2(195, 301)
+rotation = 0.0
+scale = Vector2(2.3, 2.3)
+ParteArriba = ExtResource("4_ta0u0")
+ParteAbajo = ExtResource("5_0utwx")
 
 [node name="Mamushka_Layer2" parent="." instance=ExtResource("2_85c2p")]
 position = Vector2(555, 222)
+rotation = 3.14159
+scale = Vector2(2.3, -2.3)
 ParteArriba = ExtResource("4_s8qk1")
 ParteAbajo = ExtResource("5_sijwl")
+NumOfLayer = 2
+
+[node name="Mamushka_Layer4" parent="." instance=ExtResource("2_85c2p")]
+position = Vector2(555, 1060)
+rotation = 3.14159
+scale = Vector2(2.3, -2.3)
+ParteArriba = ExtResource("9_7f1wj")
+ParteAbajo = ExtResource("8_vmdi4")
+NumOfLayer = 1
+
+[node name="Mamushka_Layer" parent="." instance=ExtResource("2_85c2p")]
+position = Vector2(215, 985)
+rotation = 0.0
+scale = Vector2(2.3, 2.3)
+ParteArriba = ExtResource("3_t2qn2")
+ParteAbajo = ExtResource("4_ly8e8")
+NumOfLayer = 3
 
 [node name="mamushkaController" parent="." instance=ExtResource("1_cmxqy")]
-position = Vector2(332, 714)
+position = Vector2(385, 624)
+scale = Vector2(2.3, 2.3)
 
-[editable path="Mamushka_Layer3"]
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 263.0
+offset_top = 712.0
+offset_right = 506.0
+offset_bottom = 752.0
+theme_override_font_sizes/normal_font_size = 25
+theme_override_font_sizes/bold_font_size = 25
+bbcode_enabled = true
+text = "[center][b]NUCLEO INTERNO[/b]"
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 74.0
+offset_top = 419.0
+offset_right = 317.0
+offset_bottom = 459.0
+theme_override_font_sizes/normal_font_size = 25
+theme_override_font_sizes/bold_font_size = 25
+bbcode_enabled = true
+text = "[center][b]NUCLEO EXTERNO[/b]"
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 435.0
+offset_top = 419.0
+offset_right = 678.0
+offset_bottom = 459.0
+theme_override_font_sizes/normal_font_size = 25
+theme_override_font_sizes/bold_font_size = 25
+bbcode_enabled = true
+text = "[center][b]MANTO INFERIOR[/b]"
+
+[node name="RichTextLabel4" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 435.0
+offset_top = 419.0
+offset_right = 678.0
+offset_bottom = 459.0
+theme_override_font_sizes/normal_font_size = 25
+theme_override_font_sizes/bold_font_size = 25
+bbcode_enabled = true
+text = "[center][b]MANTO INFERIOR[/b]"
+
+[node name="RichTextLabel5" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 435.0
+offset_top = 1218.0
+offset_right = 678.0
+offset_bottom = 1258.0
+theme_override_font_sizes/normal_font_size = 25
+theme_override_font_sizes/bold_font_size = 25
+bbcode_enabled = true
+text = "[center][b]MANTO SUPERIOR[/b]"
+
+[node name="RichTextLabel6" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 96.0
+offset_top = 1218.0
+offset_right = 339.0
+offset_bottom = 1258.0
+theme_override_font_sizes/normal_font_size = 25
+theme_override_font_sizes/bold_font_size = 25
+bbcode_enabled = true
+text = "[center][b]CORTEZA[/b]"

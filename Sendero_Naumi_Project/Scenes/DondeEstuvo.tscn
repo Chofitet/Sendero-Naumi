@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://b017ojh8vtsd6"]
+[gd_scene load_steps=42 format=3 uid="uid://b017ojh8vtsd6"]
 
 [ext_resource type="Script" path="res://_Scripts/Minigame_Save_Controller.gd" id="1_ouwf6"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/StateMachineMinigames.gd" id="2_5wf26"]
@@ -24,7 +24,6 @@
 [ext_resource type="Texture2D" uid="uid://c4tjmjqxydcpt" path="res://Sprites/ZonaAstronomia/campera - donde.png" id="16_vo578"]
 [ext_resource type="Texture2D" uid="uid://gw5syjbt4iqk" path="res://Sprites/ZonaAstronomia/guante izq - donde.png" id="17_k3lcg"]
 [ext_resource type="PackedScene" uid="uid://cc3lcmyec2iso" path="res://Scenes/Zona_Astronomia/item_unir.tscn" id="17_l3cj0"]
-[ext_resource type="Script" path="res://_Scripts/MiniG_DondeEstuvo/CheckUnions.gd" id="18_6mqoo"]
 [ext_resource type="Texture2D" uid="uid://baltt5oyvpxl6" path="res://Sprites/ZonaAstronomia/guante der - donde.png" id="18_cu56d"]
 [ext_resource type="Texture2D" uid="uid://cd27gi6cyrqkl" path="res://Sprites/ZonaAstronomia/campera XL- donde.png" id="19_7rvr1"]
 [ext_resource type="PackedScene" uid="uid://btwjusl4scgqt" path="res://Scenes/Zona_Astronomia/spot_unir.tscn" id="19_8egw1"]
@@ -167,6 +166,33 @@ _data = {
 "fall": SubResource("Animation_ua7wr")
 }
 
+[sub_resource type="Animation" id="Animation_ojvvf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(225.714, 672.572)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-1.5708]
+}
+
 [sub_resource type="Animation" id="Animation_7iq31"]
 resource_name = "fall"
 length = 0.5
@@ -193,33 +219,6 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
 "values": [-1.5708, -0.449599, 0.359957, -0.174533, 0.0]
-}
-
-[sub_resource type="Animation" id="Animation_ojvvf"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(225.714, 672.572)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [-1.5708]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_621jd"]
@@ -463,6 +462,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Instancia1" type="Control" parent="DondeEstuvo/StateMachine/Juego/Contenido"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -754,7 +754,6 @@ scale = Vector2(0.6, 0.6)
 texture = ExtResource("19_7rvr1")
 
 [node name="Instancia2" type="Control" parent="DondeEstuvo/StateMachine/Juego/Contenido"]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -800,7 +799,7 @@ texture = ExtResource("14_2f6rp")
 expand_mode = 0
 correctSpot = NodePath("../../../VBoxContainer2/SpotUnir3")
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2" node_paths=PackedStringArray("btn")]
+[node name="VBoxContainer2" type="VBoxContainer" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.769
@@ -812,8 +811,6 @@ offset_top = -514.32
 offset_right = 121.32
 offset_bottom = 513.68
 theme_override_constants/separation = 145
-script = ExtResource("18_6mqoo")
-btn = NodePath("../Button")
 
 [node name="SpotUnir" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/VBoxContainer2" instance=ExtResource("19_8egw1")]
 layout_mode = 2
@@ -891,3 +888,4 @@ NextScene = "Map_Screen"
 [connection signal="NoCenter" from="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/ScreenCenter/Clues/Clue_pantalon" to="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/ScreenCenter/Clues/Clue_bota_der/AnimationPlayer" method="Play"]
 [connection signal="ToCenter" from="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/ScreenCenter/Clues/Clue_guante_der" to="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/ScreenCenter/Clues/Clue_reloj/AnimationPlayer" method="Play"]
 [connection signal="ToCenter" from="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/ScreenCenter/Clues/Clue_guante_izq" to="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/ScreenCenter/Clues/Clue_guante_der/AnimationPlayer" method="PlayAnim" binds= ["fall"]]
+[connection signal="AllTrue" from="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/VBoxContainer/CheckTrue" to="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/Button" method="SetVisibility" binds= [true]]

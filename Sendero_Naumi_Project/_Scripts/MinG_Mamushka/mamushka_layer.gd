@@ -1,11 +1,13 @@
 @tool
 extends Node2D
+@onready var initRot = rotation
 
 @export var ParteArriba : Texture: 
 	set(new_value):
 		ParteArriba = new_value
 		$Arriba/pivotRot/Sprite2D.texture = ParteArriba
-		
+		ScaleAnimatedFace()
+		AdjustRotationPivot()
 
 @export var ParteAbajo : Texture:
 	set(new_value):
@@ -48,9 +50,16 @@ func CheckRigthIsLayer(x) :
 		area2D.get_node("CollisionShape2D").disabled = true
 		anim.play("Close")
 		await anim.animation_finished
+		var direc = get_viewport_rect().get_center() - global_position
+		var tween = get_tree().create_tween()
+		tween.tween_property(self,"rotation",atan2(direc.y, direc.x),0.3).set_ease(Tween.EASE_IN_OUT)
+		await tween.finished
 		x.get_node("DragObject").CancelDrag()
 		anim.play("spit")
 		x.z_index = 0
+		await anim.animation_finished
+		var tween2 = get_tree().create_tween()
+		tween2.tween_property(self,"rotation",initRot,0.5).set_ease(Tween.EASE_IN_OUT)
 		await get_tree().create_timer(1).timeout
 		area2D.get_node("CollisionShape2D").disabled = false
 
@@ -58,7 +67,19 @@ func AddToMamushkaController(x):
 	x.AddLayer()
 	x.get_node("DragObject").CancelDrag()
 	queue_free()
-	#al terminar animación close aumenta en 1 el state controller y se autodestruye
+
+func AdjustRotationPivot():
+	var spriteW = float(ParteArriba.get_width())
+	var x = spriteW *0.7 - spriteW/2
+	print(x)
+	$Arriba/pivotRot.position.y = x
+	$Arriba/pivotRot.position.x = -ParteArriba.get_height()/2
+	$Arriba/pivotRot/Sprite2D.position = Vector2(ParteArriba.get_height()/2,-x)
+	
+func ScaleAnimatedFace():
+	var animatedFace = $Arriba/pivotRot/emociones
+	var scaleFactor = float(ParteArriba.get_width())/300
+	animatedFace.scale = Vector2(scaleFactor,scaleFactor)
 
 func _process(delta):
 	if !MamushkaController : return

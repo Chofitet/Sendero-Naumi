@@ -15,3 +15,5 @@ func _on_pressed():
 		EndOfGame.emit()
 	state_machine.Trigger_On_Child_Transition(state_to_change.name)
 
+func SetVisibility(x):
+	visible = x

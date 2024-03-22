@@ -16,6 +16,7 @@ var AskSpot
 @export var MaxRadiusClamp : float
 @export var LimitRectangleArea : bool
 @export var BoundsRectangleClamp : Vector2
+@export var tweenTime : float = 0.1
 var timerHold
 var isInTime
 var GrabOffset : Vector2
@@ -100,7 +101,7 @@ func CancelDrag():
 	if timerHold.timeout.is_connected(TimeToDrag):
 		timerHold.timeout.disconnect(TimeToDrag)
 	var tween = get_tree().create_tween()
-	tween = tween.tween_property(object, "position",lastPosition,0.1).set_ease(Tween.EASE_OUT)
+	tween = tween.tween_property(object, "position",lastPosition,tweenTime).set_ease(Tween.EASE_OUT)
 	isInPosition = false
 
 func TimeToDrag():
