@@ -1,0 +1,829 @@
+[gd_scene load_steps=36 format=3 uid="uid://cmi6pyso7kswe"]
+
+[ext_resource type="Script" path="res://_Scripts/Minigame_Save_Controller.gd" id="1_8wifm"]
+[ext_resource type="Texture2D" uid="uid://nuybqhitpej1" path="res://Sprites/Mapa/fondo_mapa.png" id="2_feayv"]
+[ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/StateMachineMinigames.gd" id="3_adlxq"]
+[ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/ConsignaState.gd" id="4_cjbo7"]
+[ext_resource type="Script" path="res://_Scripts/MinG_Mamushka/IntroMamushkas.gd" id="5_fdjm2"]
+[ext_resource type="Texture2D" uid="uid://chqivoetkgkoj" path="res://Sprites/UI/circulo.png" id="6_pj2ad"]
+[ext_resource type="Texture2D" uid="uid://dhwcbvofcrvts" path="res://Sprites/ZonaAstronomia/Mamushka_Nucleo_Cabeza.png" id="7_13d85"]
+[ext_resource type="Script" path="res://_Scripts/MinG_Mamushka/MamushkaEnterAnim.gd" id="8_okaqd"]
+[ext_resource type="Texture2D" uid="uid://ccn14hstafcs2" path="res://Sprites/ZonaAstronomia/Mamushka_Abajo_Layer1_S.png" id="9_tpxlo"]
+[ext_resource type="Texture2D" uid="uid://hx1cqmcicau6" path="res://Sprites/ZonaAstronomia/Mamushka_Arriba_Layer1.png" id="10_q6s7q"]
+[ext_resource type="Texture2D" uid="uid://cfem44pns2kyy" path="res://Sprites/ZonaAstronomia/Mamushka_Abajo_Layer3_S.png" id="11_036q1"]
+[ext_resource type="Texture2D" uid="uid://da6hjyn0lo2y0" path="res://Sprites/ZonaAstronomia/Mamushka_Arriba_Layer3.png" id="12_yswpi"]
+[ext_resource type="Texture2D" uid="uid://ddkrprbwf054f" path="res://Sprites/ZonaAstronomia/Mamushka_Arriba_Layer2_S.png" id="13_chdu8"]
+[ext_resource type="Texture2D" uid="uid://kltd8mxosvuj" path="res://Sprites/ZonaAstronomia/Mamushka_Abajo_Layer2.png" id="14_blpg8"]
+[ext_resource type="Texture2D" uid="uid://5jla3pxvtm0j" path="res://Sprites/ZonaAstronomia/Mamushka_Abajo_S.png" id="15_aaosa"]
+[ext_resource type="Texture2D" uid="uid://dpnclrykjhq8f" path="res://Sprites/ZonaAstronomia/Mamushka_Arriba.png" id="16_tpmtx"]
+[ext_resource type="Theme" uid="uid://bhum72inirq1q" path="res://Themes/Generic_UI.tres" id="17_5nv3c"]
+[ext_resource type="LabelSettings" uid="uid://bd2jj8jlh3vp2" path="res://Themes/Geología/LabelSetting_Generic.tres" id="18_6el6g"]
+[ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/Button_Change_StateMinigame.gd" id="19_jksu4"]
+[ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/JuegoState.gd" id="20_mbp0a"]
+[ext_resource type="PackedScene" uid="uid://y2uavtfxilcv" path="res://Scenes/Zona_Astronomia/mamushka_layer.tscn" id="21_au4ea"]
+[ext_resource type="Texture2D" uid="uid://n83j70rwqv28" path="res://Sprites/ZonaAstronomia/Mamushka_Abajo_Layer1.png" id="22_okc7l"]
+[ext_resource type="Texture2D" uid="uid://djivbvfp0j8hc" path="res://Sprites/ZonaAstronomia/Mamushka_Abajo_Layer3.png" id="23_mwb5w"]
+[ext_resource type="Texture2D" uid="uid://cwvseb3fw0j5m" path="res://Sprites/ZonaAstronomia/Mamushka_Arriba_Layer2.png" id="24_a6m25"]
+[ext_resource type="Texture2D" uid="uid://bn3ka84btw5ji" path="res://Sprites/ZonaAstronomia/Mamushka_Abajo.png" id="25_6kd5y"]
+[ext_resource type="PackedScene" uid="uid://7ypbdd5rheui" path="res://Scenes/Zona_Astronomia/mamushka_controller.tscn" id="26_7ew2e"]
+[ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/MoralejaState.gd" id="27_i6a7j"]
+[ext_resource type="PackedScene" uid="uid://djhg7jvxtexyl" path="res://Scenes/UI_Scenes/btn_Change_Scene.tscn" id="28_vrtpg"]
+[ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/FinState.gd" id="29_ku3po"]
+
+[sub_resource type="Animation" id="Animation_2a1hy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Corteza:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Panel/Button:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Capas:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Panel/Label:text")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["LA TIERRA ESTÁ COMPUESTA POR VARIAS CAPAS"]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Panel:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("NucleoInterno/Sprite2D2:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -979)]
+}
+
+[sub_resource type="Animation" id="Animation_uq6bu"]
+resource_name = "intro"
+length = 2.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Corteza:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1, 2.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Panel/Button:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1, 2.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Panel/Label:text")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["LA TIERRA ESTÁ COMPUESTA POR VARIAS CAPAS"]
+}
+
+[sub_resource type="Animation" id="Animation_xsrm7"]
+resource_name = "Intro_2"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Panel/Button:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Capas:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Panel/Label:text")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["AL CENTRO DE ESTA SE ENCUENTRA EL NÚCLEO INTERNO
+"]
+}
+
+[sub_resource type="Animation" id="Animation_80ij2"]
+resource_name = "Intro_3"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Panel:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("NucleoInterno/Sprite2D2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.5, 2),
+"update": 0,
+"values": [Vector2(0, -979), Vector2(0, -29)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Panel/Button:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Panel/Label:text")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["SI IMAGINAMOS LA TIERRA COMO MAMUSHKAS..."]
+}
+
+[sub_resource type="Animation" id="Animation_7j2vf"]
+resource_name = "Intro_4"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Panel:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Panel/Label:text")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["¿EN QUÉ ORDEN TE PARECE QUE VAN?
+"]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_082ak"]
+_data = {
+"Intro_2": SubResource("Animation_xsrm7"),
+"Intro_3": SubResource("Animation_80ij2"),
+"Intro_4": SubResource("Animation_7j2vf"),
+"RESET": SubResource("Animation_2a1hy"),
+"intro_1": SubResource("Animation_uq6bu")
+}
+
+[node name="Mamushkas" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Mamushkas" type="Node" parent="."]
+script = ExtResource("1_8wifm")
+
+[node name="Control" type="Control" parent="Mamushkas"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="ColorRect" parent="Mamushkas/Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.72549, 1, 1, 1)
+
+[node name="TextureRect" type="TextureRect" parent="Mamushkas/Control"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_feayv")
+stretch_mode = 1
+
+[node name="StateMachine" type="Node" parent="Mamushkas" node_paths=PackedStringArray("initial_state")]
+script = ExtResource("3_adlxq")
+initial_state = NodePath("Consigna")
+
+[node name="Consigna" type="Node" parent="Mamushkas/StateMachine"]
+script = ExtResource("4_cjbo7")
+Consignas = ["Hey esto es una consigna"]
+
+[node name="Contenido" type="Control" parent="Mamushkas/StateMachine/Consigna"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LblConsigna" type="Label" parent="Mamushkas/StateMachine/Consigna/Contenido"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -270.0
+offset_top = -444.0
+offset_right = 294.0
+offset_bottom = 445.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "Consigna genérica Consigna genérica Consigna genérica"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Timer" type="Timer" parent="Mamushkas/StateMachine/Consigna/Contenido"]
+wait_time = 3.0
+
+[node name="Intro" type="Control" parent="Mamushkas/StateMachine/Consigna/Contenido"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("5_fdjm2")
+
+[node name="Tierra Capas" type="Control" parent="Mamushkas/StateMachine/Consigna/Contenido/Intro"]
+layout_mode = 1
+anchor_left = 0.5
+anchor_top = 0.616
+anchor_right = 0.5
+anchor_bottom = 0.616
+offset_top = -118.48
+offset_bottom = -0.480103
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Capas" type="Node2D" parent="Mamushkas/StateMachine/Consigna/Contenido/Intro/Tierra Capas"]
+
+[node name="Corteza2" type="Sprite2D" parent="Mamushkas/StateMachine/Consigna/Contenido/Intro/Tierra Capas/Capas"]
+self_modulate = Color(0.359375, 0.855469, 0.960938, 1)
+scale = Vector2(0.622, 0.622)
+texture = ExtResource("6_pj2ad")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Mamushkas/StateMachine/Consigna/Contenido/Intro/Tierra Capas/Capas"]
+self_modulate = Color(0.488281, 0.382813, 0.394531, 1)
+scale = Vector2(0.512, 0.512)
+texture = ExtResource("6_pj2ad")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Mamushkas/StateMachine/Consigna/Contenido/Intro/Tierra Capas/Capas"]
+self_modulate = Color(0.0703125, 0.636719, 0.476563, 1)
+scale = Vector2(0.392, 0.392)
+texture = ExtResource("6_pj2ad")
+
+[node name="Sprite2D4" type="Sprite2D" parent="Mamushkas/StateMachine/Consigna/Contenido/Intro/Tierra Capas/Capas"]
+self_modulate = Color(0.921875, 0.570313, 0.398438, 1)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("6_pj2ad")
+
+[node name="NucleoInterno" type="Node2D" parent="Mamushkas/StateMachine/Consigna/Contenido/Intro/Tierra Capas"]
+
+[node name="Sprite2D" type="Sprite2D" parent="Mamushkas/StateMachine/Consigna/Contenido/Intro/Tierra Capas/NucleoInterno"]
+self_modulate = Color(0.964844, 0.941406, 0.378906, 1)
+scale = Vector2(0.12, 0.12)
+texture = ExtResource("6_pj2ad")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Mamushkas/StateMachine/Consigna/Contenido/Intro/Tierra Capas/NucleoInterno"]
+position = Vector2(0, -979)
+scale = Vector2(2.3, 2.3)
+texture = ExtResource("7_13d85")
+
+[node name="Corteza" type="Sprite2D" parent="Mamushkas/StateMachine/Consigna/Contenido/Intro/Tierra Capas"]
+self_modulate = Color(0.359375, 0.855469, 0.960938, 1)
+scale = Vector2(0.622, 0.622)
+texture = ExtResource("6_pj2ad")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Mamushkas/StateMachine/Consigna/Contenido/Intro"]
+root_node = NodePath("../Tierra Capas")
+libraries = {
+"": SubResource("AnimationLibrary_082ak")
+}
+
+[node name="MamushkasUp" type="Control" parent="Mamushkas/StateMachine/Consigna/Contenido/Intro"]
+layout_mode = 1
+anchor_left = 0.5
+anchor_top = 0.357
+anchor_right = 0.5
+anchor_bottom = 0.357
+offset_top = -82.96
+offset_bottom = 0.039978
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="mamushkaInitPos3" type="Marker2D" parent="Mamushkas/StateMachine/Consigna/Contenido/Intro/MamushkasUp"]
+position = Vector2(187, -15)
+
+[node name="Mamushka3" type="Node2D" parent="Mamushkas/StateMachine/Consigna/Contenido/Intro/MamushkasUp" node_paths=PackedStringArray("initPos")]
+position = Vector2(493, -402)
+scale = Vector2(2.3, 2.3)
+script = ExtResource("8_okaqd")
+initPos = NodePath("../mamushkaInitPos3")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Mamushkas/StateMachine/Consigna/Contenido/Intro/MamushkasUp/Mamushka3"]
+texture = ExtResource("9_tpxlo")
+
+[node name="Sprite2D" type="Sprite2D" parent="Mamushkas/StateMachine/Consigna/Contenido/Intro/MamushkasUp/Mamushka3"]
+texture = ExtResource("10_q6s7q")
+
+[node name="mamushkaInitPos2" type="Marker2D" parent="Mamushkas/StateMachine/Consigna/Contenido/Intro/MamushkasUp"]
+position = Vector2(-162, -63)
+
+[node name="Mamushka2" type="Node2D" parent="Mamushkas/StateMachine/Consigna/Contenido/Intro/MamushkasUp" node_paths=PackedStringArray("initPos")]
+position = Vector2(-555, -432)
+scale = Vector2(2.3, 2.3)
+script = ExtResource("8_okaqd")
+initPos = NodePath("../mamushkaInitPos2")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Mamushkas/StateMachine/Consigna/Contenido/Intro/MamushkasUp/Mamushka2"]
+texture = ExtResource("11_036q1")
+
+[node name="Sprite2D" type="Sprite2D" parent="Mamushkas/StateMachine/Consigna/Contenido/Intro/MamushkasUp/Mamushka2"]
+texture = ExtResource("12_yswpi")
+
+[node name="MamushkasDown" type="Control" parent="Mamushkas/StateMachine/Consigna/Contenido/Intro"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="mamushkaInitPos4" type="Marker2D" parent="Mamushkas/StateMachine/Consigna/Contenido/Intro/MamushkasDown"]
+position = Vector2(-177, -220)
+
+[node name="Mamushka4" type="Node2D" parent="Mamushkas/StateMachine/Consigna/Contenido/Intro/MamushkasDown" node_paths=PackedStringArray("initPos")]
+position = Vector2(-522, 140)
+scale = Vector2(2.3, 2.3)
+script = ExtResource("8_okaqd")
+initPos = NodePath("../mamushkaInitPos4")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Mamushkas/StateMachine/Consigna/Contenido/Intro/MamushkasDown/Mamushka4"]
+texture = ExtResource("13_chdu8")
+
+[node name="Sprite2D" type="Sprite2D" parent="Mamushkas/StateMachine/Consigna/Contenido/Intro/MamushkasDown/Mamushka4"]
+texture = ExtResource("14_blpg8")
+
+[node name="mamushkaInitPos" type="Marker2D" parent="Mamushkas/StateMachine/Consigna/Contenido/Intro/MamushkasDown"]
+position = Vector2(163, -295)
+
+[node name="Mamushka" type="Node2D" parent="Mamushkas/StateMachine/Consigna/Contenido/Intro/MamushkasDown" node_paths=PackedStringArray("initPos")]
+position = Vector2(574, 119)
+scale = Vector2(2.3, 2.3)
+script = ExtResource("8_okaqd")
+initPos = NodePath("../mamushkaInitPos")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Mamushkas/StateMachine/Consigna/Contenido/Intro/MamushkasDown/Mamushka"]
+texture = ExtResource("15_aaosa")
+
+[node name="Sprite2D" type="Sprite2D" parent="Mamushkas/StateMachine/Consigna/Contenido/Intro/MamushkasDown/Mamushka"]
+texture = ExtResource("16_tpmtx")
+
+[node name="Panel" type="Panel" parent="Mamushkas/StateMachine/Consigna/Contenido/Intro"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -341.0
+offset_top = 36.0
+offset_right = 341.0
+offset_bottom = 280.0
+grow_horizontal = 2
+theme = ExtResource("17_5nv3c")
+
+[node name="Label" type="Label" parent="Mamushkas/StateMachine/Consigna/Contenido/Intro/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -282.0
+offset_top = -67.0
+offset_right = 282.0
+offset_bottom = 67.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 0
+text = "LA TIERRA ESTÁ COMPUESTA POR VARIAS CAPAS"
+label_settings = ExtResource("18_6el6g")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+uppercase = true
+
+[node name="Button" type="Button" parent="Mamushkas/StateMachine/Consigna/Contenido/Intro/Panel"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.805
+anchor_top = 1.0
+anchor_right = 0.805
+anchor_bottom = 1.0
+offset_left = -45.0101
+offset_top = -47.0
+offset_right = 44.9899
+offset_bottom = 43.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Button" type="Button" parent="Mamushkas/StateMachine/Consigna/Contenido/Intro" node_paths=PackedStringArray("state_to_change", "state_machine")]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -201.0
+offset_top = -197.0
+offset_right = 202.0
+offset_bottom = -67.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Siguiente
+"
+script = ExtResource("19_jksu4")
+state_to_change = NodePath("../../../../Juego")
+state_machine = NodePath("../../../..")
+
+[node name="Juego" type="Node" parent="Mamushkas/StateMachine" node_paths=PackedStringArray("NextState", "StateMachine")]
+script = ExtResource("20_mbp0a")
+NextState = NodePath(".")
+StateMachine = NodePath("..")
+InstanciasMinijuego = [NodePath("Contenido/Instancia1")]
+
+[node name="Contenido" type="Control" parent="Mamushkas/StateMachine/Juego"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Instancia1" type="Control" parent="Mamushkas/StateMachine/Juego/Contenido"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Mamushkas/StateMachine/Juego/Contenido/Instancia1"]
+visible = false
+layout_mode = 0
+offset_right = 598.0
+offset_bottom = 177.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Instancia 1"
+
+[node name="Button" type="Button" parent="Mamushkas/StateMachine/Juego/Contenido/Instancia1" node_paths=PackedStringArray("state_to_change", "state_machine")]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -161.0
+offset_top = -165.0
+offset_right = 161.0
+offset_bottom = -52.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Complete"
+script = ExtResource("19_jksu4")
+state_to_change = NodePath("../../../../Moraleja")
+state_machine = NodePath("../../../..")
+isEndOfGame = true
+
+[node name="MamushkasUp" type="Control" parent="Mamushkas/StateMachine/Juego/Contenido/Instancia1"]
+layout_mode = 1
+anchor_left = 0.5
+anchor_top = 0.357
+anchor_right = 0.5
+anchor_bottom = 0.357
+offset_top = -82.96
+offset_bottom = 0.039978
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="mamushkaInitPos3" type="Marker2D" parent="Mamushkas/StateMachine/Juego/Contenido/Instancia1/MamushkasUp"]
+position = Vector2(187, -15)
+
+[node name="Mamushka_Layer3" parent="Mamushkas/StateMachine/Juego/Contenido/Instancia1/MamushkasUp" node_paths=PackedStringArray("mamu") instance=ExtResource("21_au4ea")]
+position = Vector2(187, -15)
+rotation = -3.14159
+scale = Vector2(2.3, -2.3)
+ParteArriba = ExtResource("10_q6s7q")
+ParteAbajo = ExtResource("22_okc7l")
+ParteAbajoS = ExtResource("9_tpxlo")
+color = Color(0.921875, 0.570313, 0.398438, 1)
+panelText = "[center][b] El NUCLEO EXTERNO SON 2 KM DE PLIM PLIM"
+offsetPanel = Vector2(0, -48)
+mamu = NodePath("../../MamushkaCenter/mamushkaController")
+
+[node name="mamushkaInitPos2" type="Marker2D" parent="Mamushkas/StateMachine/Juego/Contenido/Instancia1/MamushkasUp"]
+position = Vector2(-162, -63)
+
+[node name="Mamushka_Layer2" parent="Mamushkas/StateMachine/Juego/Contenido/Instancia1/MamushkasUp" node_paths=PackedStringArray("mamu") instance=ExtResource("21_au4ea")]
+position = Vector2(-162, -63)
+scale = Vector2(2.3, 2.3)
+ParteArriba = ExtResource("12_yswpi")
+ParteAbajo = ExtResource("23_mwb5w")
+ParteAbajoS = ExtResource("11_036q1")
+NumOfLayer = 2
+color = Color(0.488281, 0.382813, 0.394531, 1)
+panelText = "[center][b] El NUCLEO EXTERNO SON 2 KM DE PLIM PLIM"
+mamu = NodePath("../../MamushkaCenter/mamushkaController")
+
+[node name="MamushkasDown" type="Control" parent="Mamushkas/StateMachine/Juego/Contenido/Instancia1"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="mamushkaInitPos4" type="Marker2D" parent="Mamushkas/StateMachine/Juego/Contenido/Instancia1/MamushkasDown"]
+position = Vector2(-177, -220)
+
+[node name="Mamushka_Layer4" parent="Mamushkas/StateMachine/Juego/Contenido/Instancia1/MamushkasDown" node_paths=PackedStringArray("mamu") instance=ExtResource("21_au4ea")]
+position = Vector2(-177, -220)
+scale = Vector2(2.3, 2.3)
+ParteArriba = ExtResource("14_blpg8")
+ParteAbajo = ExtResource("24_a6m25")
+ParteAbajoS = ExtResource("13_chdu8")
+NumOfLayer = 1
+color = Color(0.0703125, 0.636719, 0.476563, 1)
+panelText = "[center][b] El NUCLEO EXTERNO SON 2 KM DE PLIM PLIM"
+mamu = NodePath("../../MamushkaCenter/mamushkaController")
+
+[node name="mamushkaInitPos" type="Marker2D" parent="Mamushkas/StateMachine/Juego/Contenido/Instancia1/MamushkasDown"]
+position = Vector2(163, -295)
+
+[node name="Mamushka_Layer" parent="Mamushkas/StateMachine/Juego/Contenido/Instancia1/MamushkasDown" node_paths=PackedStringArray("mamu") instance=ExtResource("21_au4ea")]
+position = Vector2(163, -295)
+rotation = -3.14159
+scale = Vector2(2.3, -2.3)
+ParteArriba = ExtResource("16_tpmtx")
+ParteAbajo = ExtResource("25_6kd5y")
+NumOfLayer = 3
+color = Color(0.359375, 0.855469, 0.960938, 1)
+panelText = "[center][b] El NUCLEO EXTERNO SON 2 KM DE PLIM PLIM"
+offsetPanel = Vector2(0, 75)
+mamu = NodePath("../../MamushkaCenter/mamushkaController")
+
+[node name="MamushkaCenter" type="Control" parent="Mamushkas/StateMachine/Juego/Contenido/Instancia1"]
+layout_mode = 1
+anchor_left = 0.5
+anchor_top = 0.592
+anchor_right = 0.5
+anchor_bottom = 0.592
+offset_top = -117.76
+offset_bottom = 0.23999
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="mamushkaController" parent="Mamushkas/StateMachine/Juego/Contenido/Instancia1/MamushkaCenter" instance=ExtResource("26_7ew2e")]
+scale = Vector2(2.3, 2.3)
+
+[node name="Moraleja" type="Node" parent="Mamushkas/StateMachine"]
+script = ExtResource("27_i6a7j")
+Moralejas = [null, "Y esto es una moraleja"]
+Instancias = [NodePath("Contenido/Instancia1")]
+buttons = [NodePath("Contenido/Instancia1/Button")]
+
+[node name="Contenido" type="Control" parent="Mamushkas/StateMachine/Moraleja"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Conteiner" type="Control" parent="Mamushkas/StateMachine/Moraleja/Contenido"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LblMoraleja" type="Label" parent="Mamushkas/StateMachine/Moraleja/Contenido/Conteiner"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -270.0
+offset_top = -444.0
+offset_right = 294.0
+offset_bottom = 445.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "Consigna genérica Consigna genérica Consigna genérica"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Timer" type="Timer" parent="Mamushkas/StateMachine/Moraleja/Contenido"]
+wait_time = 3.0
+one_shot = true
+
+[node name="ButtonChangeScene" parent="Mamushkas/StateMachine/Moraleja/Contenido" instance=ExtResource("28_vrtpg")]
+visible = false
+layout_mode = 1
+offset_left = -197.0
+offset_top = -201.0
+offset_right = 207.0
+offset_bottom = -66.0
+text = "Continue"
+NextScene = "Map_Screen"
+
+[node name="Instancia1" type="Control" parent="Mamushkas/StateMachine/Moraleja/Contenido"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="Mamushkas/StateMachine/Moraleja/Contenido/Instancia1" node_paths=PackedStringArray("state_to_change", "state_machine")]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -201.0
+offset_top = -197.0
+offset_right = 202.0
+offset_bottom = -67.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "que?
+"
+script = ExtResource("19_jksu4")
+state_to_change = NodePath("../../../../Juego")
+state_machine = NodePath("../../../..")
+
+[node name="Fin" type="Node" parent="Mamushkas/StateMachine"]
+script = ExtResource("29_ku3po")
+
+[node name="Contenido" type="Control" parent="Mamushkas/StateMachine/Fin"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ButtonChangeScene" parent="Mamushkas/StateMachine/Fin/Contenido" instance=ExtResource("28_vrtpg")]
+layout_mode = 1
+offset_left = -197.0
+offset_top = -186.0
+offset_right = 207.0
+offset_bottom = -51.0
+text = "Continue"
+NextScene = "Map_Screen"
+
+[connection signal="timeout" from="Mamushkas/StateMachine/Consigna/Contenido/Timer" to="Mamushkas/StateMachine/Consigna" method="TimeOut" flags=18]
+[connection signal="pressed" from="Mamushkas/StateMachine/Consigna/Contenido/Intro/Button" to="Mamushkas/StateMachine/Consigna/Contenido/Intro/Button" method="_on_pressed" flags=18]
+[connection signal="EndOfGame" from="Mamushkas/StateMachine/Juego/Contenido/Instancia1/Button" to="Mamushkas" method="Set_Complete" flags=18]
+[connection signal="EndOfGame" from="Mamushkas/StateMachine/Juego/Contenido/Instancia1/Button" to="Mamushkas/StateMachine/Moraleja" method="isEndOfGame" flags=18]
+[connection signal="pressed" from="Mamushkas/StateMachine/Juego/Contenido/Instancia1/Button" to="Mamushkas/StateMachine/Juego/Contenido/Instancia1/Button" method="_on_pressed" flags=18]
+[connection signal="timeout" from="Mamushkas/StateMachine/Moraleja/Contenido/Timer" to="Mamushkas/StateMachine/Moraleja" method="TimeOut" flags=18]
+[connection signal="pressed" from="Mamushkas/StateMachine/Moraleja/Contenido/Instancia1/Button" to="Mamushkas/StateMachine/Moraleja/Contenido/Instancia1/Button" method="_on_pressed" flags=18]

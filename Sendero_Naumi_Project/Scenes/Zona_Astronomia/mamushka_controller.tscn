@@ -1,23 +1,114 @@
-[gd_scene load_steps=13 format=3 uid="uid://7ypbdd5rheui"]
+[gd_scene load_steps=16 format=3 uid="uid://7ypbdd5rheui"]
 
 [ext_resource type="PackedScene" uid="uid://ci3c3pocxiywq" path="res://Scenes/Experiments/drag_object.tscn" id="1_1vclv"]
 [ext_resource type="Script" path="res://_Scripts/MinG_Mamushka/mamushka_controller.gd" id="1_vp2p0"]
 [ext_resource type="Texture2D" uid="uid://bmo7ofh7n6xnd" path="res://Sprites/ZonaAstronomia/Mamushka_Nucleo.png" id="3_8xnbq"]
 [ext_resource type="Texture2D" uid="uid://da6hjyn0lo2y0" path="res://Sprites/ZonaAstronomia/Mamushka_Arriba_Layer3.png" id="4_0rd8j"]
+[ext_resource type="Texture2D" uid="uid://ccn14hstafcs2" path="res://Sprites/ZonaAstronomia/Mamushka_Abajo_Layer1_S.png" id="4_xnfnv"]
 [ext_resource type="Texture2D" uid="uid://dpnclrykjhq8f" path="res://Sprites/ZonaAstronomia/Mamushka_Arriba.png" id="4_yj1g3"]
 [ext_resource type="Texture2D" uid="uid://hx1cqmcicau6" path="res://Sprites/ZonaAstronomia/Mamushka_Arriba_Layer1.png" id="4_ynnr7"]
-[ext_resource type="Texture2D" uid="uid://djivbvfp0j8hc" path="res://Sprites/ZonaAstronomia/Mamushka_Abajo_Layer3.png" id="5_4feum"]
-[ext_resource type="Texture2D" uid="uid://bn3ka84btw5ji" path="res://Sprites/ZonaAstronomia/Mamushka_Abajo.png" id="5_7trku"]
-[ext_resource type="Texture2D" uid="uid://n83j70rwqv28" path="res://Sprites/ZonaAstronomia/Mamushka_Abajo_Layer1.png" id="5_xgh67"]
-[ext_resource type="Texture2D" uid="uid://cwvseb3fw0j5m" path="res://Sprites/ZonaAstronomia/Mamushka_Arriba_Layer2.png" id="6_2s4of"]
+[ext_resource type="Texture2D" uid="uid://ddkrprbwf054f" path="res://Sprites/ZonaAstronomia/Mamushka_Arriba_Layer2_S.png" id="6_w8l6n"]
 [ext_resource type="Texture2D" uid="uid://kltd8mxosvuj" path="res://Sprites/ZonaAstronomia/Mamushka_Abajo_Layer2.png" id="7_q7t1h"]
+[ext_resource type="Texture2D" uid="uid://cfem44pns2kyy" path="res://Sprites/ZonaAstronomia/Mamushka_Abajo_Layer3_S.png" id="8_rj6o0"]
+[ext_resource type="Texture2D" uid="uid://5jla3pxvtm0j" path="res://Sprites/ZonaAstronomia/Mamushka_Abajo_S.png" id="10_vh3oj"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4gsva"]
-radius = 34.0
+radius = 26.0
 height = 106.0
+
+[sub_resource type="Animation" id="Animation_pvjbg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_1gwp8"]
+resource_name = "idle"
+length = 2.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.8, 2.1),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [-0.0872665, 0.0872665]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7p0wm"]
+_data = {
+"RESET": SubResource("Animation_pvjbg"),
+"idle": SubResource("Animation_1gwp8")
+}
 
 [node name="mamushkaController" type="Node2D"]
 script = ExtResource("1_vp2p0")
+
+[node name="Sprites" type="Node2D" parent="."]
+
+[node name="Layer0" type="Sprite2D" parent="Sprites"]
+texture = ExtResource("3_8xnbq")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Sprites/Layer0"]
+offset_left = -122.0
+offset_right = 121.0
+offset_bottom = 40.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_colors/font_selected_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 12
+theme_override_font_sizes/bold_font_size = 12
+bbcode_enabled = true
+text = "[center]NUCLEO
+ INTERNO"
+
+[node name="Layer1" type="Node2D" parent="Sprites"]
+visible = false
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprites/Layer1"]
+texture = ExtResource("4_xnfnv")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Sprites/Layer1"]
+texture = ExtResource("4_ynnr7")
+
+[node name="Layer2" type="Node2D" parent="Sprites"]
+visible = false
+
+[node name="Sprite2D2" type="Sprite2D" parent="Sprites/Layer2"]
+texture = ExtResource("6_w8l6n")
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprites/Layer2"]
+texture = ExtResource("7_q7t1h")
+
+[node name="Layer3" type="Node2D" parent="Sprites"]
+visible = false
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprites/Layer3"]
+texture = ExtResource("8_rj6o0")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Sprites/Layer3"]
+texture = ExtResource("4_0rd8j")
+
+[node name="Layer4" type="Node2D" parent="Sprites"]
+visible = false
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprites/Layer4"]
+texture = ExtResource("10_vh3oj")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Sprites/Layer4"]
+texture = ExtResource("4_yj1g3")
 
 [node name="DragObject" parent="." instance=ExtResource("1_1vclv")]
 PlaceInAllSpots = true
@@ -32,45 +123,10 @@ offset_top = -82.0
 offset_right = 87.0
 offset_bottom = 82.0
 
-[node name="Sprites" type="Node2D" parent="."]
-
-[node name="Layer0" type="Sprite2D" parent="Sprites"]
-texture = ExtResource("3_8xnbq")
-
-[node name="Layer1" type="Node2D" parent="Sprites"]
-visible = false
-
-[node name="Sprite2D" type="Sprite2D" parent="Sprites/Layer1"]
-texture = ExtResource("5_xgh67")
-
-[node name="Sprite2D2" type="Sprite2D" parent="Sprites/Layer1"]
-texture = ExtResource("4_ynnr7")
-
-[node name="Layer2" type="Node2D" parent="Sprites"]
-visible = false
-
-[node name="Sprite2D2" type="Sprite2D" parent="Sprites/Layer2"]
-texture = ExtResource("6_2s4of")
-
-[node name="Sprite2D" type="Sprite2D" parent="Sprites/Layer2"]
-texture = ExtResource("7_q7t1h")
-
-[node name="Layer3" type="Node2D" parent="Sprites"]
-visible = false
-
-[node name="Sprite2D" type="Sprite2D" parent="Sprites/Layer3"]
-texture = ExtResource("5_4feum")
-
-[node name="Sprite2D2" type="Sprite2D" parent="Sprites/Layer3"]
-texture = ExtResource("4_0rd8j")
-
-[node name="Layer4" type="Node2D" parent="Sprites"]
-visible = false
-
-[node name="Sprite2D" type="Sprite2D" parent="Sprites/Layer4"]
-texture = ExtResource("5_7trku")
-
-[node name="Sprite2D2" type="Sprite2D" parent="Sprites/Layer4"]
-texture = ExtResource("4_yj1g3")
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+speed_scale = 4.0
+libraries = {
+"": SubResource("AnimationLibrary_7p0wm")
+}
 
 [editable path="DragObject"]
