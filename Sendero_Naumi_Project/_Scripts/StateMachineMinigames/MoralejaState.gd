@@ -20,11 +20,14 @@ func Enter():
 
 func Exit():
 	Content.visible = false
+	SetInstancia(false)
+	if buttons.is_empty(): return
 	for b in buttons:
 		get_node(b).visible = true
-	SetInstancia(false)
+	
 
 func SetMoraleja():
+	if Moralejas.is_empty() : return
 	var textMoraleja = Moralejas[GetFixedIndex(Moralejas)]
 	get_node("Contenido/Conteiner/LblMoraleja").set_deferred("text", textMoraleja) 
  
@@ -32,5 +35,6 @@ func isEndOfGame():
 	EndOfGame = true
 
 func SetInstancia(x):
+	if Instancias.is_empty(): return
 	get_node(Instancias[GetFixedIndex(Instancias)]).visible = x
 	if x: i += 1

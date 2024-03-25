@@ -1,6 +1,6 @@
 extends Control
 
-@export var anchors := []
+var anchors := []
 @export var limitGesture : float
 @export var limitHold : float
 @export var limitunderHolf : float
@@ -18,16 +18,24 @@ var StopDrag
 var isverticalGesture
 signal isScrolling
 signal CompleteSwipe
+signal PlatesReset
 
 func _ready():
+	AddPlatesOnAnchor()
 	inputTouch = InputEventScreenTouch.new()
 	timer = get_parent().get_node("TimerScroll")
 	timer.timeout.connect(calculateGesture)
-	position.x = position.x + (get_viewport_rect().size.x/2 - get_node(anchors[i]).global_position.x)
+	position.x = position.x + (get_viewport_rect().size.x/2 - anchors[i].global_position.x)
 	enableInteraction()
 	for f in get_children():
 		f.get_node("DragObject").isDraggin.connect(StopCallAnim)
-	
+
+func AddPlatesOnAnchor():
+	anchors.clear()
+	for p in get_children():
+		if p is Sprite2D and p not in anchors:
+			anchors.append(p)
+
 func _input(event: InputEvent) -> void:
 	if StopDrag : return
 	if event is InputEventScreenTouch:
@@ -77,7 +85,7 @@ func calculateGesture() -> void:
 	var d 
 	d= releasePos - pressedPos
 	if (abs(d.x) < limitGesture) : 
-		next_anchor = position.x + (get_viewport_rect().size.x/2 - get_node(anchors[i]).global_position.x)
+		next_anchor = position.x + (get_viewport_rect().size.x/2 - anchors[i].global_position.x)
 		var tween = get_tree().create_tween()
 		tween.tween_property(self,"position", Vector2(next_anchor,position.y),0.15).set_ease(Tween.EASE_OUT)
 		return
@@ -103,43 +111,44 @@ func inHold():
 			var tween = get_tree().create_tween()
 			tween.tween_property(self,"position", Vector2(set_next_anchor("left"),position.y),0.2).set_ease(Tween.EASE_OUT)
 	else :
-		next_anchor = position.x + (get_viewport_rect().size.x/2 - get_node(anchors[i]).global_position.x)
+		next_anchor = position.x + (get_viewport_rect().size.x/2 - anchors[i].global_position.x)
 		var tween = get_tree().create_tween()
 		tween.tween_property(self,"position", Vector2(next_anchor,position.y),0.15).set_ease(Tween.EASE_OUT)
 
 func set_next_anchor(direction):
 	if("rigth" == direction):
-		if (i != 3):
+		if (i != anchors.size()-1):
 			i += 1
-			next_anchor = position.x + (get_viewport_rect().size.x/2 - get_node(anchors[i]).global_position.x)
+			next_anchor = position.x + (get_viewport_rect().size.x/2 - anchors[i].global_position.x)
 	if("left" == direction):
 		if (i != 0):
 			i -= 1
-			next_anchor = position.x + (get_viewport_rect().size.x/2 - get_node(anchors[i]).global_position.x)
+			next_anchor = position.x + (get_viewport_rect().size.x/2 - anchors[i].global_position.x)
 	enableInteraction()
 	CompleteSwipe.emit()
 	return next_anchor
 
 func enableInteraction():
-	for b in get_node(anchors[i]).get_children():
+	for b in anchors[i].get_children():
 		if b is Area2D:
 			b.isEnableButton(true)
 	if (i < (anchors.size() - 1)):
-		for b in get_node(anchors[1 + i]).get_children():
+		for b in anchors[1 + i].get_children():
 			if b is Area2D:
 				b.isEnableButton(false)
 	if (i > 0):
-		for b in get_node(anchors[i - 1]).get_children():
+		for b in anchors[i - 1].get_children():
 			if b is Area2D:
 				b.isEnableButton(false)
 
-func stopDrag():
-	StopDrag = true
+func stopDrag(x = true):
+	StopDrag = x
 	
 
 func Reset():
 	for f in get_children():
 		f.get_node("DragObject").ResetPosition()
+	AddPlatesOnAnchor()
 	StopDrag = false
 
 func LockUnklockGragObjects(x):
@@ -148,3 +157,36 @@ func LockUnklockGragObjects(x):
 	
 func StopCallAnim():
 	get_parent().get_node("PatasController").stopCall = true
+
+var plateRef
+func ReOrganizePlates():
+	var ismiddleplate = false
+	var indexToRemove
+	LockUnklockGragObjects(true)
+	for plate in anchors:
+		var indexp = anchors.find(plate)
+		if ismiddleplate:
+			var tween = get_tree().create_tween()
+			var target_x = plate.position.x - abs(anchors[0].position.x - anchors[1].position.x)
+			tween.tween_property(plate,"position", Vector2(target_x,plate.position.y),0.2).set_ease(Tween.EASE_OUT)
+			ChangeInitPos(plate,Vector2(target_x,plate.position.y))
+			print(plate.name)
+		else:
+			if plate == plateRef:
+				if indexp == anchors.size()-1:
+					var tween = get_tree().create_tween()
+					tween.tween_property(self,"position", Vector2(set_next_anchor("left"),position.y),0.2).set_ease(Tween.EASE_OUT)
+				else:
+					ismiddleplate = true
+				indexToRemove = indexp
+	anchors.remove_at(indexToRemove)
+	enableInteraction()
+	PlatesReset.emit()
+	StopDrag = false
+
+func ChangeInitPos(plate,platePos):
+	plate.get_node("DragObject").lastPosition = platePos
+	plate.get_node("DragObject").isEnableButton(false)
+
+func SetPlate(p):
+	plateRef = p

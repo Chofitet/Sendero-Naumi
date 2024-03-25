@@ -26,10 +26,12 @@ func _input(event):
 		if ClickInButton == false: return
 		ClickInButton = false
 		if isInArea != null:
-			isComplete = true
 			area.position = isInArea.global_position - area.get_parent().global_position
 			line.set_point_position(1,isInArea.global_position - line.global_position)
 			get_parent().CheckTrue()
+			if isInArea == correctSpot.get_node("Area2D"):
+				area.area_exited.disconnect(OutArea)
+				isInArea.get_parent().Disconnect()
 			return
 		posClick = Vector2.ZERO
 		area.position = Vector2.ZERO
@@ -47,13 +49,15 @@ func _process(delta):
 		area.global_position= posClick
 
 func OnArea(x):
+	if !x.is_in_group("Spot"): return
 	isInArea = x 
 	if x == correctSpot.get_node("Area2D"):
-		isComplete = true
+		CorrectArea()
 	
 func OutArea(x):
 	isInArea = null
 	isComplete = false
+	button.button_down.connect(OnButton)
 
 func resetAll():
 	isInArea = null
@@ -61,3 +65,7 @@ func resetAll():
 	posClick = Vector2.ZERO
 	area.position = Vector2.ZERO
 	line.set_point_position(1,posClick)
+
+func CorrectArea():
+	isComplete = true
+	button.button_down.disconnect(OnButton)

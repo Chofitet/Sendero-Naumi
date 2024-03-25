@@ -1,5 +1,9 @@
 extends AnimationPlayer
 @export var animation : String
+@export var DestroyInFinish : String
+
+func _ready():
+	animation_finished.connect(DestroyAnimInFinishAnim)
 
 func Play():
 	play(animation)
@@ -15,3 +19,7 @@ func Stop():
 
 func Reset():
 	play("RESET")
+
+func DestroyAnimInFinishAnim(x):
+	if x == DestroyInFinish:
+		queue_free()

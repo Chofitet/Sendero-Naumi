@@ -10,14 +10,11 @@ signal EndTutorial
 var isInTutorial
 var OnceSwipe
 
-func _ready():
-	JuegoState.Transitioned.connect(CheckInTutorial)
-
 func CheckInTutorial():
-	print(get_parent().Instances[0])
 	if get_parent().get_node("Instancia1").visible == true:
 		isInTutorial = true
 		HboxConteiner.LockUnklockGragObjects(false)
+		DeslizaPlatosUI.visible = true
 	else:
 		isInTutorial = false
 		DeslizaPlatosUI.visible = false
@@ -25,7 +22,7 @@ func CheckInTutorial():
 
 func FirstSwipe():
 	if !isInTutorial or OnceSwipe: return
-	get_parent().ConnectSetInstanceAnimalTransitioned()
+	#get_parent().ConnectSetInstanceAnimalTransitioned()
 	DeslizaPlatosUI.visible = false
 	OnceSwipe = true
 	await get_tree().create_timer(1).timeout
@@ -36,14 +33,12 @@ func OnSpot(x):
 	if !isInTutorial: return
 	LlevaloBandejaUI.get_node("Label").text = "¡MUY BIEN!"
 	LlevaloBandejaUI.visible = false
-	plate.texture = x.texture
-	await  get_tree().create_timer(2).timeout
-	DeslizaPlatosUI.visible = true
-	DeslizaPlatosUI.get_node("Label").text = "EMPECEMOS"
-	var tween = get_tree().create_tween()
-	tween.tween_property(plate,"position",Vector2.ZERO,0.8).set_ease(Tween.EASE_OUT)
-	await get_tree().create_timer(3).timeout
-	plate.visible = false
+#	plate.visible = true
+#	plate.texture = x.texture
+#	await  get_tree().create_timer(2).timeout
+#	DeslizaPlatosUI.visible = true
+#	DeslizaPlatosUI.get_node("Label").text = "EMPECEMOS"
+#	await  get_tree().create_timer(2).timeout
+	DeslizaPlatosUI.visible = false
 	isInTutorial = false
 	EndTutorial.emit()
-	StateMachine.Trigger_On_Child_Transition(JuegoState.name)

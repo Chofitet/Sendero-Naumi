@@ -8,15 +8,12 @@ var instanceResourse = InstanceResource.new()
 @export var StateToChange : StateMinigame
 
 func _ready():
+	get_parent().Transitioned.connect(SetInstanceAnimal)
 	var instanceResourse = ResourceLoader.load("user://InstanceResource.tres")
 	if instanceResourse.InstanceMinigames["FoodTruck"] != 0 :
 		get_parent().Transitioned.connect(SetInstanceAnimal)
 	for i in $HBoxContainer.get_children():
 		DragObjects.append(i.get_node("DragObject"))
-
-func ConnectSetInstanceAnimalTransitioned():
-	get_parent().Transitioned.connect(SetInstanceAnimal)
-	SetInstanceAnimal()
 
 func SetInstanceAnimal():
 	for i in Instances:
@@ -27,7 +24,7 @@ func SetInstanceAnimal():
 func SetCorrectPlate(instance):
 	var resultText = papercontroller.get_node("txt")
 	await get_tree().create_timer(2).timeout
-	if instance == get_node(Instances[1]).name:
+	if instance == get_node(Instances[0]).name:
 		#smilodonte
 		Spot.RigthObject = DragObjects[2]
 		resultText.text = "[b]A LOS MEGATERIOS NOS ENCANTA COMER HIERBAS!
@@ -37,11 +34,11 @@ Y LAS SOBRAS QUE DEJAN OTROS ANIMALES!
 NUESTRAS GARRAS SON SÓLO PARA DEFENDERNOS,
 
 SOMOS HERVIBOROS Y CARROÑEROS."
-	elif instance == get_node(Instances[2]).name:
+	elif instance == get_node(Instances[1]).name:
 		#gliptodonte
 		Spot.RigthObject = DragObjects[0]
 		resultText.text = "gliptodonte"
-	elif instance == get_node(Instances[3]).name:
+	elif instance == get_node(Instances[2]).name:
 		#megaterio
 		Spot.RigthObject = DragObjects[3]
 		resultText.text = "[b]A LOS MEGATERIOS NOS ENCANTA COMER HIERBAS!
@@ -51,7 +48,7 @@ Y LAS SOBRAS QUE DEJAN OTROS ANIMALES!
 NUESTRAS GARRAS SON SÓLO PARA DEFENDERNOS,
 
 SOMOS HERVIBOROS Y CARROÑEROS."
-	elif instance == get_node(Instances[4]).name:
+	elif instance == get_node(Instances[3]).name:
 		#macrauquenia
 		Spot.RigthObject = DragObjects[0]
 		resultText.text = "macrauquenia"
@@ -74,7 +71,7 @@ func SetResultEvent():
 
 func EndResultEvent():
 	
-	if get_node(Instances[4]).visible == true:
+	if get_node(Instances[3]).visible == true:
 		$ButtonFin._on_pressed()
 	else:
 		stateMachine.Trigger_On_Child_Transition(StateToChange.name)

@@ -1,0 +1,107 @@
+[gd_scene load_steps=7 format=3 uid="uid://bu70xltoq3ycs"]
+
+[ext_resource type="Texture2D" uid="uid://bu32wt8l3eyrh" path="res://Sprites/ZonaMegafauna/hoja - cerca.png" id="1_leavd"]
+[ext_resource type="Texture2D" uid="uid://bctjm2l20y57p" path="res://Sprites/ZonaMegafauna/resultado - mal.png" id="2_n5gf8"]
+[ext_resource type="Texture2D" uid="uid://dowufrhlgpfe" path="res://Sprites/UI/Boton_Volver.png" id="3_uvp0k"]
+
+[sub_resource type="Animation" id="Animation_mfn4p"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("pivot:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 1200)]
+}
+
+[sub_resource type="Animation" id="Animation_1tami"]
+resource_name = "paper"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("pivot:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 2),
+"update": 0,
+"values": [Vector2(0, 1200), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1i6yr"]
+_data = {
+"RESET": SubResource("Animation_mfn4p"),
+"paper": SubResource("Animation_1tami")
+}
+
+[node name="PaperController" type="Control"]
+layout_mode = 3
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_top = 2.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="pivot" type="Node2D" parent="."]
+position = Vector2(0, 1200)
+
+[node name="paper" type="Sprite2D" parent="pivot"]
+position = Vector2(-12, -588.546)
+scale = Vector2(0.701176, 0.701176)
+texture = ExtResource("1_leavd")
+
+[node name="result" type="Sprite2D" parent="pivot"]
+position = Vector2(180, -845)
+rotation = 0.371543
+scale = Vector2(0.361002, 0.361002)
+texture = ExtResource("2_n5gf8")
+
+[node name="txt" type="RichTextLabel" parent="pivot"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -284.0
+offset_top = -1069.0
+offset_right = 300.0
+offset_bottom = -655.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 30
+theme_override_font_sizes/bold_font_size = 30
+bbcode_enabled = true
+text = "[b]A LOS MEGATERIOS NOS ENCANTA COMER HIERBAS!
+
+Y LAS SOBRAS QUE DEJAN OTROS ANIMALES!
+
+NUESTRAS GARRAS SON SÓLO PARA DEFENDERNOS,
+
+SOMOS HERVIBOROS Y CARROÑEROS."
+
+[node name="Button" type="Button" parent="pivot"]
+offset_left = 65.0
+offset_top = -423.0
+offset_right = 196.0
+offset_bottom = -284.0
+rotation = -0.00101281
+scale = Vector2(-1, 1)
+icon = ExtResource("3_uvp0k")
+flat = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_1i6yr")
+}
