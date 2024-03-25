@@ -3,14 +3,11 @@ extends CollisionPolygon2D
 var line2d : Line2D
 var original_points : Array
 var outlineFactor
-
 var collision_polygon: Polygon2D
 
-func _input(event):
-	if Input.is_action_just_pressed("TouchScreen"):
-		print("a")
 
 func _ready():
+	draw.connect(update_line2d)
 	for child in get_children():
 		if child is Polygon2D:
 			collision_polygon = child
@@ -19,12 +16,10 @@ func _ready():
 	outlineFactor = line2d.width/2
 	original_points = get_polygon()
 
-func _process(delta):
-	if Engine.is_editor_hint():
-		collision_polygon.polygon = get_polygon()
-	update_line2d()
 
 func update_line2d():
+	print("draw")
+	collision_polygon.polygon = get_polygon()
 	line2d.clear_points()
 	var puntos = get_polygon()
 
