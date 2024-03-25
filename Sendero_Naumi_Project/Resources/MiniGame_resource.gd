@@ -10,6 +10,7 @@ class_name MiniGameResource
 "Astronauta": false,
 "DondeEstuvo": false,
 "ManzanaAcaramelada": false,
+"Mamushkas" : false,
 "noFirstTimePlay" : false}
 
 func Set_State_Minigame(string):

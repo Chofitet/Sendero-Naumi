@@ -22,7 +22,6 @@ func CheckRight() -> int:
 
 func OnSpot(x):
 	$DragObject.isEnableButton(x)
-	
 
 func Rotate(rot = 0, time = 0):
 	var tween = get_tree().create_tween()

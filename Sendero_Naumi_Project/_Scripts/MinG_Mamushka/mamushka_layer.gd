@@ -28,6 +28,7 @@ extends Node2D
 var panel = load("res://Scenes/Zona_Astronomia/panelMamushka.tscn")
 @export var color : Color
 @export var panelText : String
+@export var offsetPanel : Vector2
 var isInArea
 var MamushkaController
 @export var mamu : Node2D
@@ -73,11 +74,13 @@ func CheckRigthIsLayer(x) :
 		var direc = get_viewport_rect().get_center() - global_position
 		var tween = get_tree().create_tween()
 		tween.tween_property(self,"rotation",atan2(direc.y, direc.x),0.2).set_ease(Tween.EASE_IN_OUT)
-		x.Rotate(atan2(direc.y, direc.x),0.2)
+		#x.Rotate(atan2(direc.y, direc.x),0.2)
+		x.visible = false
 		await tween.finished
 		x.get_node("DragObject").CancelDrag()
 		anim.play("spit")
-		x.Rotate(0,0.2)
+		#x.Rotate(0,0.2)
+		x.visible = true
 		area2D.get_node("CollisionShape2D").disabled = false
 		await anim.animation_finished
 		x.z_index = 0
@@ -126,6 +129,9 @@ func _process(delta):
 func SpawnPanel():
 	var instancePanel = panel.instantiate()
 	get_parent().add_child(instancePanel)
-	instancePanel.position = position + Vector2(-100,-100)
-	instancePanel.get_theme_stylebox("panel").bg_color = color
+	instancePanel.position = position + Vector2(-100,-100) + offsetPanel
+	var newStylebox = instancePanel.get_theme_stylebox("panel").duplicate()
+	newStylebox.bg_color = color
+	instancePanel.add_theme_stylebox_override("panel", newStylebox)
+	
 	instancePanel.get_node("RichTextLabel").text = panelText
