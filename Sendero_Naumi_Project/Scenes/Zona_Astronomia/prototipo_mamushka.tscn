@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://wyqpk0ax153"]
+[gd_scene load_steps=14 format=3 uid="uid://wyqpk0ax153"]
 
 [ext_resource type="PackedScene" uid="uid://7ypbdd5rheui" path="res://Scenes/Zona_Astronomia/mamushka_controller.tscn" id="1_cmxqy"]
 [ext_resource type="PackedScene" uid="uid://y2uavtfxilcv" path="res://Scenes/Zona_Astronomia/mamushka_layer.tscn" id="2_85c2p"]
@@ -6,10 +6,13 @@
 [ext_resource type="Texture2D" uid="uid://bn3ka84btw5ji" path="res://Sprites/ZonaAstronomia/Mamushka_Abajo.png" id="4_ly8e8"]
 [ext_resource type="Texture2D" uid="uid://da6hjyn0lo2y0" path="res://Sprites/ZonaAstronomia/Mamushka_Arriba_Layer3.png" id="4_s8qk1"]
 [ext_resource type="Texture2D" uid="uid://hx1cqmcicau6" path="res://Sprites/ZonaAstronomia/Mamushka_Arriba_Layer1.png" id="4_ta0u0"]
+[ext_resource type="Texture2D" uid="uid://ccn14hstafcs2" path="res://Sprites/ZonaAstronomia/Mamushka_Abajo_Layer1_S.png" id="4_vt1dh"]
 [ext_resource type="Texture2D" uid="uid://n83j70rwqv28" path="res://Sprites/ZonaAstronomia/Mamushka_Abajo_Layer1.png" id="5_0utwx"]
 [ext_resource type="Texture2D" uid="uid://djivbvfp0j8hc" path="res://Sprites/ZonaAstronomia/Mamushka_Abajo_Layer3.png" id="5_sijwl"]
+[ext_resource type="Texture2D" uid="uid://cfem44pns2kyy" path="res://Sprites/ZonaAstronomia/Mamushka_Abajo_Layer3_S.png" id="7_kieq1"]
 [ext_resource type="Texture2D" uid="uid://cwvseb3fw0j5m" path="res://Sprites/ZonaAstronomia/Mamushka_Arriba_Layer2.png" id="8_vmdi4"]
 [ext_resource type="Texture2D" uid="uid://kltd8mxosvuj" path="res://Sprites/ZonaAstronomia/Mamushka_Abajo_Layer2.png" id="9_7f1wj"]
+[ext_resource type="Texture2D" uid="uid://ddkrprbwf054f" path="res://Sprites/ZonaAstronomia/Mamushka_Arriba_Layer2_S.png" id="10_7fdug"]
 
 [node name="Prototipo_Mamushka" type="Control"]
 layout_mode = 3
@@ -19,42 +22,87 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Mamushka_Layer3" parent="." instance=ExtResource("2_85c2p")]
-position = Vector2(195, 301)
-rotation = 0.0
-scale = Vector2(2.3, 2.3)
+[node name="MamushkasUp" type="Control" parent="."]
+layout_mode = 1
+anchor_left = 0.5
+anchor_top = 0.357
+anchor_right = 0.5
+anchor_bottom = 0.357
+offset_top = -82.96
+offset_bottom = 0.039978
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Mamushka_Layer3" parent="MamushkasUp" node_paths=PackedStringArray("mamu") instance=ExtResource("2_85c2p")]
+position = Vector2(187, -15)
+rotation = -3.14159
+scale = Vector2(2.3, -2.3)
 ParteArriba = ExtResource("4_ta0u0")
 ParteAbajo = ExtResource("5_0utwx")
+ParteAbajoS = ExtResource("4_vt1dh")
+color = Color(0.921875, 0.570313, 0.398438, 1)
+panelText = "eeeeee"
+mamu = NodePath("../../MamushkaCenter/mamushkaController")
 
-[node name="Mamushka_Layer2" parent="." instance=ExtResource("2_85c2p")]
-position = Vector2(555, 222)
-rotation = 3.14159
-scale = Vector2(2.3, -2.3)
+[node name="Mamushka_Layer2" parent="MamushkasUp" node_paths=PackedStringArray("mamu") instance=ExtResource("2_85c2p")]
+position = Vector2(-162, -63)
+scale = Vector2(2.3, 2.3)
 ParteArriba = ExtResource("4_s8qk1")
 ParteAbajo = ExtResource("5_sijwl")
+ParteAbajoS = ExtResource("7_kieq1")
 NumOfLayer = 2
+color = Color(0.488281, 0.382813, 0.394531, 1)
+panelText = ""
+mamu = NodePath("../../MamushkaCenter/mamushkaController")
 
-[node name="Mamushka_Layer4" parent="." instance=ExtResource("2_85c2p")]
-position = Vector2(555, 1060)
-rotation = 3.14159
-scale = Vector2(2.3, -2.3)
+[node name="MamushkasDown" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Mamushka_Layer4" parent="MamushkasDown" node_paths=PackedStringArray("mamu") instance=ExtResource("2_85c2p")]
+position = Vector2(-177, -220)
+scale = Vector2(2.3, 2.3)
 ParteArriba = ExtResource("9_7f1wj")
 ParteAbajo = ExtResource("8_vmdi4")
+ParteAbajoS = ExtResource("10_7fdug")
 NumOfLayer = 1
+color = Color(0.0703125, 0.636719, 0.476563, 1)
+panelText = ""
+mamu = NodePath("../../MamushkaCenter/mamushkaController")
 
-[node name="Mamushka_Layer" parent="." instance=ExtResource("2_85c2p")]
-position = Vector2(215, 985)
-rotation = 0.0
-scale = Vector2(2.3, 2.3)
+[node name="Mamushka_Layer" parent="MamushkasDown" node_paths=PackedStringArray("mamu") instance=ExtResource("2_85c2p")]
+position = Vector2(163, -295)
+rotation = -3.14159
+scale = Vector2(2.3, -2.3)
 ParteArriba = ExtResource("3_t2qn2")
 ParteAbajo = ExtResource("4_ly8e8")
 NumOfLayer = 3
+color = Color(0.359375, 0.855469, 0.960938, 1)
+panelText = ""
+mamu = NodePath("../../MamushkaCenter/mamushkaController")
 
-[node name="mamushkaController" parent="." instance=ExtResource("1_cmxqy")]
-position = Vector2(385, 624)
+[node name="MamushkaCenter" type="Control" parent="."]
+layout_mode = 1
+anchor_left = 0.5
+anchor_top = 0.592
+anchor_right = 0.5
+anchor_bottom = 0.592
+offset_top = -117.76
+offset_bottom = 0.23999
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="mamushkaController" parent="MamushkaCenter" instance=ExtResource("1_cmxqy")]
 scale = Vector2(2.3, 2.3)
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 offset_left = 263.0
@@ -67,6 +115,7 @@ bbcode_enabled = true
 text = "[center][b]NUCLEO INTERNO[/b]"
 
 [node name="RichTextLabel2" type="RichTextLabel" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 offset_left = 74.0
@@ -79,6 +128,7 @@ bbcode_enabled = true
 text = "[center][b]NUCLEO EXTERNO[/b]"
 
 [node name="RichTextLabel3" type="RichTextLabel" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 offset_left = 435.0
@@ -91,6 +141,7 @@ bbcode_enabled = true
 text = "[center][b]MANTO INFERIOR[/b]"
 
 [node name="RichTextLabel4" type="RichTextLabel" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 offset_left = 435.0
@@ -103,6 +154,7 @@ bbcode_enabled = true
 text = "[center][b]MANTO INFERIOR[/b]"
 
 [node name="RichTextLabel5" type="RichTextLabel" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 offset_left = 435.0
@@ -115,6 +167,7 @@ bbcode_enabled = true
 text = "[center][b]MANTO SUPERIOR[/b]"
 
 [node name="RichTextLabel6" type="RichTextLabel" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 offset_left = 96.0
