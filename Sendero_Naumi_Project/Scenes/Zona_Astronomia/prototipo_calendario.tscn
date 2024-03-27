@@ -1,0 +1,130 @@
+[gd_scene load_steps=14 format=3 uid="uid://bx6cytq7k6ptu"]
+
+[ext_resource type="Script" path="res://_Scripts/MinG_MegaFood/FoodMenuController.gd" id="1_1ivvo"]
+[ext_resource type="Texture2D" uid="uid://dyy8kyyp1qd8c" path="res://Sprites/ZonaMegafauna/platoHerbivoro.png" id="2_ccsin"]
+[ext_resource type="PackedScene" uid="uid://ci3c3pocxiywq" path="res://Scenes/Experiments/drag_object.tscn" id="3_85w11"]
+[ext_resource type="Texture2D" uid="uid://t1vryprea4f0" path="res://Sprites/ZonaMegafauna/platoOmnivoro.png" id="4_dhe34"]
+[ext_resource type="Texture2D" uid="uid://pkpt8p8nkoxr" path="res://Sprites/ZonaMegafauna/platoCarnivoro.png" id="5_lyc86"]
+[ext_resource type="Texture2D" uid="uid://b0733dafom8ls" path="res://Sprites/ZonaMegafauna/platoCarrognivoro.png" id="6_ytrnw"]
+[ext_resource type="Script" path="res://_Scripts/DragSpot.gd" id="7_ey52d"]
+[ext_resource type="Texture2D" uid="uid://dj57ce5tt06yj" path="res://Sprites/UI/bubble brown.png" id="8_jvt1r"]
+[ext_resource type="Texture2D" uid="uid://chqivoetkgkoj" path="res://Sprites/UI/circulo.png" id="9_2ibhd"]
+[ext_resource type="Texture2D" uid="uid://dsct31faqdyb0" path="res://Sprites/ZonaAstronomia/globo dentro XL- donde.png" id="9_7xl70"]
+[ext_resource type="PackedScene" uid="uid://bdo2us7w8vphg" path="res://Scenes/Zona_Astronomia/snow_effect.tscn" id="9_ji56u"]
+[ext_resource type="Texture2D" uid="uid://d4lqbgcmqqish" path="res://Sprites/ZonaAstronomia/globo XL- donde.png" id="12_13qav"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b8dn8"]
+size = Vector2(140, 130)
+
+[node name="Prototipo_Calendario" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="Control" parent="."]
+layout_mode = 1
+anchor_left = 0.5
+anchor_top = 0.787
+anchor_right = 0.5
+anchor_bottom = 0.787
+offset_left = -547.0
+offset_top = -230.36
+offset_right = 1910.0
+offset_bottom = 422.64
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.705, 0.705)
+script = ExtResource("1_1ivvo")
+limitGesture = 100.0
+limitHold = 300.0
+limitunderHolf = 20.0
+
+[node name="Date1" type="Sprite2D" parent="HBoxContainer"]
+self_modulate = Color(0, 0, 0, 1)
+position = Vector2(57.1429, 329)
+texture = ExtResource("2_ccsin")
+
+[node name="DragObject" parent="HBoxContainer/Date1" node_paths=PackedStringArray("spot") instance=ExtResource("3_85w11")]
+spot = NodePath("../../../Spot")
+holdTime = 0.2
+DesapearInPlace = true
+
+[node name="Date2" type="Sprite2D" parent="HBoxContainer"]
+self_modulate = Color(0, 0, 0, 1)
+position = Vector2(776.5, 324.823)
+texture = ExtResource("4_dhe34")
+
+[node name="DragObject" parent="HBoxContainer/Date2" node_paths=PackedStringArray("spot") instance=ExtResource("3_85w11")]
+spot = NodePath("../../../Spot")
+holdTime = 0.2
+DesapearInPlace = true
+
+[node name="Date3" type="Sprite2D" parent="HBoxContainer"]
+self_modulate = Color(0, 0, 0, 1)
+position = Vector2(1494.5, 328.143)
+texture = ExtResource("5_lyc86")
+
+[node name="DragObject" parent="HBoxContainer/Date3" node_paths=PackedStringArray("spot") instance=ExtResource("3_85w11")]
+spot = NodePath("../../../Spot")
+holdTime = 0.2
+DesapearInPlace = true
+
+[node name="Date4" type="Sprite2D" parent="HBoxContainer"]
+self_modulate = Color(0, 0, 0, 1)
+position = Vector2(2224.5, 326.429)
+texture = ExtResource("6_ytrnw")
+
+[node name="DragObject" parent="HBoxContainer/Date4" node_paths=PackedStringArray("spot") instance=ExtResource("3_85w11")]
+spot = NodePath("../../../Spot")
+holdTime = 0.2
+DesapearInPlace = true
+
+[node name="TimerScroll" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
+[node name="Spot" type="Area2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(363, 294)
+script = ExtResource("7_ey52d")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spot"]
+shape = SubResource("RectangleShape2D_b8dn8")
+
+[node name="Sprite2D" type="Sprite2D" parent="Spot"]
+scale = Vector2(0.46729, 1)
+texture = ExtResource("8_jvt1r")
+
+[node name="Globo" type="Node2D" parent="."]
+position = Vector2(0, 303)
+
+[node name="Sprite2D" type="Sprite2D" parent="Globo"]
+visible = false
+self_modulate = Color(0, 0.0156863, 0.0156863, 1)
+position = Vector2(388.5, 222)
+scale = Vector2(0.469, 0.442)
+texture = ExtResource("9_2ibhd")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Globo"]
+position = Vector2(380, 227)
+scale = Vector2(0.553421, 0.553421)
+texture = ExtResource("9_7xl70")
+
+[node name="SnowEffect" parent="Globo" instance=ExtResource("9_ji56u")]
+position = Vector2(384.256, 200)
+rotation = 0.170688
+scale = Vector2(1.69705, 1.60551)
+skew = 0.0209959
+
+[node name="Sprite2D3" type="Sprite2D" parent="Globo"]
+position = Vector2(383, 220.5)
+scale = Vector2(0.546219, 0.546219)
+texture = ExtResource("12_13qav")
+
+[connection signal="isScrolling" from="HBoxContainer" to="HBoxContainer/Date1/DragObject" method="CancelDrag"]
+[connection signal="isScrolling" from="HBoxContainer" to="HBoxContainer/Date2/DragObject" method="CancelDrag"]
+[connection signal="isScrolling" from="HBoxContainer" to="HBoxContainer/Date3/DragObject" method="CancelDrag"]
+[connection signal="isScrolling" from="HBoxContainer" to="HBoxContainer/Date4/DragObject" method="CancelDrag"]

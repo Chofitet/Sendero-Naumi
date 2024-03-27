@@ -1,0 +1,62 @@
+[gd_scene load_steps=7 format=3 uid="uid://bdo2us7w8vphg"]
+
+[ext_resource type="Texture2D" uid="uid://dt1we50ngyt5j" path="res://Sprites/ZonaAstronomia/SnowParticle.png" id="1_wg2pc"]
+[ext_resource type="Texture2D" uid="uid://b5yok6v482jgg" path="res://Sprites/ZonaAstronomia/VortexEffect.png" id="2_2acyx"]
+
+[sub_resource type="Curve" id="Curve_6idsq"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.180233, 1), 0.0842104, 0.0842104, 0, 0, Vector2(0.883721, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="Gradient" id="Gradient_o41b1"]
+offsets = PackedFloat32Array(0.0141844, 0.269504)
+colors = PackedColorArray(0.777162, 0.920445, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ltlmk"]
+blend_mode = 1
+
+[sub_resource type="Curve" id="Curve_rc8td"]
+min_value = -1.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.305263), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="SnowEffect" type="Node2D"]
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+amount = 32
+lifetime = 0.6
+texture = ExtResource("1_wg2pc")
+emission_shape = 2
+emission_sphere_radius = 128.0
+direction = Vector2(0.8, 1)
+spread = 0.0
+gravity = Vector2(0, 100)
+initial_velocity_max = 42.55
+angular_velocity_min = -350.0
+orbit_velocity_max = 0.1
+scale_amount_min = 0.2
+scale_amount_max = 0.8
+scale_amount_curve = SubResource("Curve_6idsq")
+color_ramp = SubResource("Gradient_o41b1")
+hue_variation_min = 0.53
+hue_variation_max = 0.53
+
+[node name="CPUParticles2D2" type="CPUParticles2D" parent="."]
+visible = false
+material = SubResource("CanvasItemMaterial_ltlmk")
+position = Vector2(0, -72)
+amount = 3
+lifetime = 2.5
+texture = ExtResource("2_2acyx")
+gravity = Vector2(0, 0)
+angular_velocity_min = 100.0
+angular_velocity_max = 100.0
+scale_amount_min = 3.0
+scale_amount_max = 3.0
+color = Color(0.67451, 1, 1, 0.0470588)
+hue_variation_min = -0.04
+hue_variation_max = -0.04
+hue_variation_curve = SubResource("Curve_rc8td")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true

@@ -21,14 +21,21 @@ var isInCenter : bool = false
 @export var inactiveInReady : bool
 var inPlace : bool
 @export var otherPosition : Marker2D
+@export var AppearChild : bool = false
+@export var EditableButton : bool = false
+var ScaleOfChild
 
 func _ready():
+	if AppearChild: 
+		move_child(get_node("FrontTexture"),0)
+		ScaleOfChild = get_node("FrontTexture").scale
 	initScale = scale
 	initPosition = position
 	initRotation = rotation_degrees
 	button.pressed.connect(BtnPress)
 	if inactiveInReady:
 		BlockButton(false)
+	if EditableButton : return
 	adjustRect()
 
 func adjustRect():
@@ -41,7 +48,7 @@ func BtnPress():
 		isInCenter = true
 		z_index = 2
 		ToCenter.emit()
-		MakeAnim(Vector2.ZERO, HighQualityTexture, extra_scale, angleInCenter,1)
+		MakeAnim(Vector2.ZERO, HighQualityTexture, extra_scale, angleInCenter,1, false,true)
 	elif isInCenter and !hasClue:
 		get_parent().BlockOthersClues(self,true)
 		isInCenter = false
@@ -51,7 +58,8 @@ func BtnPress():
 			MakeAnim(initPosition, lowQualityTexture, Vector2.ONE, initRotation)
 		else:
 			MakeAnim(otherPosition.position, lowQualityTexture, Vector2.ONE, otherPosition.rotation_degrees)
-
+		await get_tree().create_timer(1).timeout
+		adjustRect()
 	elif isInCenter and hasClue:
 		get_parent().BlockOthersClues(self,true)
 		isInCenter = false
@@ -60,8 +68,13 @@ func BtnPress():
 		NoCenter.emit()
 		z_index = 0
 		MakeAnim(ToPosition, lowQualityTexture,inventary_scale, 0,0,true)
+		await get_tree().create_timer(1).timeout
+		adjustRect()
+	
+	
+	
 
-func MakeAnim(pos, _texture, extra_scale : Vector2 = Vector2(1,1), rotateAngle : float = 0 , index = 0, _hasClue = false):
+func MakeAnim(pos, _texture, extra_scale : Vector2 = Vector2(1,1), rotateAngle : float = 0 , index = 0, _hasClue = false, isChildVisible = false):
 	z_index = 1
 	button.visible = false
 	var tween = get_tree().create_tween()
@@ -76,11 +89,29 @@ func MakeAnim(pos, _texture, extra_scale : Vector2 = Vector2(1,1), rotateAngle :
 		tween4.tween_property(self,"global_position",pos,AnimatedSpeed).set_ease(Tween.EASE_OUT)
 	await tween.finished
 	z_index = index
+	if AppearChild:
+		ShowChild(isChildVisible)
+
+var inFrot
+func ShowChild(isVisible):
+	if isVisible:
+		self_modulate = Color(0,0,0,0)
+		get_node("FrontTexture").visible = true
+	else:
+		inFrot = true
+		self_modulate = Color(1,1,1,1)
+		get_node("FrontTexture").visible = false
 
 func ChangeTexture(_texture,extrascale):
 	button.visible = true
 	texture = _texture
 	scale = Vector2.ONE * extrascale
+	if AppearChild: 
+		if !inFrot:
+			get_node("FrontTexture").scale = Vector2.ONE
+		else:
+			get_node("FrontTexture").scale = ScaleOfChild
+			inFrot = false
 	button.position = Vector2(-_texture.get_width()/2, -_texture.get_height()/2)
 
 func CalculateScaleVector(_texture) -> Vector2:

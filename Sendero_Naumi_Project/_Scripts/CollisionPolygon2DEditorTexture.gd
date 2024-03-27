@@ -18,7 +18,6 @@ func _ready():
 
 
 func update_line2d():
-	print("draw")
 	collision_polygon.polygon = get_polygon()
 	line2d.clear_points()
 	var puntos = get_polygon()

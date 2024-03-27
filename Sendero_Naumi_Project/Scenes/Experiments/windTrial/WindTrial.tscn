@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://bw6m1dq3dpm13"]
+
+[ext_resource type="Script" path="res://Scenes/Experiments/windTrial/WindGust.gd" id="1_6crlc"]
+
+[sub_resource type="Gradient" id="Gradient_bl6gk"]
+offsets = PackedFloat32Array(0, 0.522876, 1)
+colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 0.65098, 1, 1, 1, 0)
+
+[sub_resource type="Curve2D" id="Curve2D_4ej61"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -1, -2, -42.747, -8.48171, 42.747, 8.48171, 83, -60, -58.368, -8.9797, 58.368, 8.9797, 131, 20, 0, 34.7963, 0, -34.7963, 254, -74, 51.6333, -10.1022, -51.6333, 10.1022, 179, -134, -52.7557, 2.24492, 52.7557, -2.24492, 184, -72)
+}
+point_count = 6
+
+[node name="WindTrial" type="Line2D"]
+scale = Vector2(0.6, 0.6)
+script = ExtResource("1_6crlc")
+trail_length = 0.5
+trail_color_gradient = SubResource("Gradient_bl6gk")
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_4ej61")

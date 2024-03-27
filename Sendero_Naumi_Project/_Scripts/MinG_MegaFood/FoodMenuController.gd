@@ -19,6 +19,8 @@ var isverticalGesture
 signal isScrolling
 signal CompleteSwipe
 signal PlatesReset
+signal RealeaseDragObject
+
 
 func _ready():
 	AddPlatesOnAnchor()
@@ -27,8 +29,6 @@ func _ready():
 	timer.timeout.connect(calculateGesture)
 	position.x = position.x + (get_viewport_rect().size.x/2 - anchors[i].global_position.x)
 	enableInteraction()
-	for f in get_children():
-		f.get_node("DragObject").isDraggin.connect(StopCallAnim)
 
 func AddPlatesOnAnchor():
 	anchors.clear()
@@ -57,7 +57,7 @@ func _input(event: InputEvent) -> void:
 		
 	if Input.is_action_just_released("TouchScreen"):
 		if multitouch : return
-		get_parent().get_node("PatasController").stopCall = false
+		RealeaseDragObject.emit()
 		releasePos = event.position
 		inHold()
 		hold = false
@@ -155,9 +155,6 @@ func LockUnklockGragObjects(x):
 	for f in get_children():
 		f.get_node("DragObject").isEnableButton(x)
 	
-func StopCallAnim():
-	get_parent().get_node("PatasController").stopCall = true
-
 var plateRef
 func ReOrganizePlates():
 	var ismiddleplate = false
