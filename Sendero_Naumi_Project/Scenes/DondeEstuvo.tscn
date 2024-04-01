@@ -1,14 +1,16 @@
-[gd_scene load_steps=54 format=3 uid="uid://b017ojh8vtsd6"]
+[gd_scene load_steps=63 format=3 uid="uid://b017ojh8vtsd6"]
 
 [ext_resource type="Script" path="res://_Scripts/Minigame_Save_Controller.gd" id="1_ouwf6"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/StateMachineMinigames.gd" id="2_5wf26"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/ConsignaState.gd" id="3_74cva"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/Button_Change_StateMinigame.gd" id="4_j3ig5"]
+[ext_resource type="Texture2D" uid="uid://fm157t23p14m" path="res://Sprites/ZonaAstronomia/astronauta intrepido - donde.png" id="5_0i0tc"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/JuegoState.gd" id="5_8uhx2"]
 [ext_resource type="Script" path="res://_Scripts/MiniG_DondeEstuvo/Inventary.gd" id="6_5o457"]
 [ext_resource type="Texture2D" uid="uid://chqivoetkgkoj" path="res://Sprites/UI/circulo.png" id="7_umoyt"]
 [ext_resource type="Texture2D" uid="uid://cq0nrg4icb47d" path="res://Sprites/ZonaAstronomia/piso - donde.png" id="8_orttm"]
 [ext_resource type="Texture2D" uid="uid://dmjr82oyg8r7m" path="res://Sprites/ZonaAstronomia/locker - donde.png" id="8_uf6hm"]
+[ext_resource type="LabelSettings" uid="uid://bd2jj8jlh3vp2" path="res://Themes/Geología/LabelSetting_Generic.tres" id="8_xrogw"]
 [ext_resource type="Script" path="res://_Scripts/MiniG_DondeEstuvo/BlockClues.gd" id="9_jvdca"]
 [ext_resource type="PackedScene" uid="uid://dwwbflxn5qafe" path="res://Scenes/Zona_Astronomia/clue_obj.tscn" id="9_x0fc4"]
 [ext_resource type="Texture2D" uid="uid://db262s78jvdlr" path="res://Sprites/ZonaAstronomia/bota der - donde.png" id="10_odq7q"]
@@ -21,9 +23,12 @@
 [ext_resource type="Script" path="res://Scenes/GenericPanelController.gd" id="15_acmhj"]
 [ext_resource type="PackedScene" uid="uid://djhg7jvxtexyl" path="res://Scenes/UI_Scenes/btn_Change_Scene.tscn" id="15_jwaju"]
 [ext_resource type="Texture2D" uid="uid://dm5pff8fu54ls" path="res://Sprites/ZonaAstronomia/bota izq XL- donde.png" id="15_lqru8"]
+[ext_resource type="PackedScene" uid="uid://ccohf3i4e5i6n" path="res://Scenes/Zona_Astronomia/bota_particles.tscn" id="15_nrbr8"]
 [ext_resource type="Texture2D" uid="uid://budh3y8jmu6q6" path="res://Sprites/ZonaAstronomia/casco - donde.png" id="15_p6mcc"]
 [ext_resource type="Script" path="res://_Scripts/CheckAllChildsTrue.gd" id="16_6ug6m"]
+[ext_resource type="Texture2D" uid="uid://wsicrocifuq" path="res://Sprites/ZonaAstronomia/pegoton.png" id="16_dlngy"]
 [ext_resource type="Texture2D" uid="uid://c4tjmjqxydcpt" path="res://Sprites/ZonaAstronomia/campera - donde.png" id="16_vo578"]
+[ext_resource type="Texture2D" uid="uid://2pbkxqdsftom" path="res://Sprites/ZonaAstronomia/pegote.png" id="17_dqffb"]
 [ext_resource type="Texture2D" uid="uid://gw5syjbt4iqk" path="res://Sprites/ZonaAstronomia/guante izq - donde.png" id="17_k3lcg"]
 [ext_resource type="PackedScene" uid="uid://cc3lcmyec2iso" path="res://Scenes/Zona_Astronomia/item_unir.tscn" id="17_l3cj0"]
 [ext_resource type="Texture2D" uid="uid://baltt5oyvpxl6" path="res://Sprites/ZonaAstronomia/guante der - donde.png" id="18_cu56d"]
@@ -44,6 +49,21 @@
 [ext_resource type="Texture2D" uid="uid://d4lqbgcmqqish" path="res://Sprites/ZonaAstronomia/globo XL- donde.png" id="32_n8qqk"]
 [ext_resource type="PackedScene" uid="uid://bdo2us7w8vphg" path="res://Scenes/Zona_Astronomia/snow_effect.tscn" id="33_h0coo"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/MoralejaState.gd" id="33_wluhy"]
+
+[sub_resource type="Gradient" id="Gradient_xmfka"]
+colors = PackedColorArray(0.286275, 0.301961, 0.305882, 1, 0.234268, 0.247826, 0.251215, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_2w5pl"]
+gradient = SubResource("Gradient_xmfka")
+fill_to = Vector2(0, 1)
+
+[sub_resource type="Gradient" id="Gradient_gf8l2"]
+offsets = PackedFloat32Array(0.390071, 0.602837)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="Curve" id="Curve_a0uqe"]
+_data = [Vector2(0, 0.578947), 0.0, 0.0, 0, 0, Vector2(0.104651, 1), -0.059039, 0.0, 0, 0]
+point_count = 2
 
 [sub_resource type="Animation" id="Animation_gsqlp"]
 length = 0.001
@@ -390,7 +410,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Background" type="ColorRect" parent="DondeEstuvo/Control"]
+[node name="TextureRect" type="TextureRect" parent="DondeEstuvo/Control"]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -398,7 +418,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.72549, 1, 1, 1)
+texture = SubResource("GradientTexture2D_2w5pl")
 
 [node name="StateMachine" type="Node" parent="DondeEstuvo" node_paths=PackedStringArray("initial_state")]
 script = ExtResource("2_5wf26")
@@ -437,27 +457,95 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="Button" type="Button" parent="DondeEstuvo/StateMachine/Consigna/Contenido" node_paths=PackedStringArray("state_to_change", "state_machine")]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -201.0
-offset_top = -197.0
-offset_right = 202.0
-offset_bottom = -67.0
-grow_horizontal = 2
-grow_vertical = 0
-text = "Siguiente
-"
-script = ExtResource("4_j3ig5")
-state_to_change = NodePath("../../../Juego")
-state_machine = NodePath("../../..")
-
 [node name="Timer" type="Timer" parent="DondeEstuvo/StateMachine/Consigna/Contenido"]
 wait_time = 3.0
+
+[node name="Center" type="Control" parent="DondeEstuvo/StateMachine/Consigna/Contenido"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="DondeEstuvo/StateMachine/Consigna/Contenido/Center"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -796.0
+offset_top = -796.0
+offset_right = 796.0
+offset_bottom = 796.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_2w5pl")
+
+[node name="Sprite2D" type="Sprite2D" parent="DondeEstuvo/StateMachine/Consigna/Contenido/Center"]
+position = Vector2(0, 591)
+scale = Vector2(1.125, 1.125)
+texture = ExtResource("8_orttm")
+
+[node name="astronauta" type="Sprite2D" parent="DondeEstuvo/StateMachine/Consigna/Contenido/Center"]
+position = Vector2(0, 118)
+texture = ExtResource("5_0i0tc")
+
+[node name="Panel" type="Panel" parent="DondeEstuvo/StateMachine/Consigna/Contenido"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -343.0
+offset_top = -171.0
+offset_right = 343.0
+offset_bottom = 171.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("14_j3442")
+script = ExtResource("15_acmhj")
+
+[node name="Label" type="Label" parent="DondeEstuvo/StateMachine/Consigna/Contenido/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -272.0
+offset_top = -122.0
+offset_right = 272.0
+offset_bottom = 122.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "X"
+label_settings = ExtResource("8_xrogw")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Button2" type="Button" parent="DondeEstuvo/StateMachine/Consigna/Contenido/Panel" node_paths=PackedStringArray("state_to_change", "state_machine")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.796
+anchor_top = 1.0
+anchor_right = 0.796
+anchor_bottom = 1.0
+offset_left = -45.056
+offset_top = -48.0
+offset_right = 44.944
+offset_bottom = 42.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "
+"
+script = ExtResource("4_j3ig5")
+state_to_change = NodePath("../../../../Juego")
+state_machine = NodePath("../../../..")
 
 [node name="Juego" type="Node" parent="DondeEstuvo/StateMachine" node_paths=PackedStringArray("NextState", "StateMachine")]
 script = ExtResource("5_8uhx2")
@@ -590,6 +678,62 @@ texture = ExtResource("10_odq7q")
 HighQualityTexture = ExtResource("13_bbeo2")
 hasClue = true
 angleInCenter = 20.0
+AppearChild = true
+
+[node name="FrontTexture" type="Node2D" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/ScreenCenter/Clues/Clue_bota_der"]
+visible = false
+scale = Vector2(0.255, 0.255)
+
+[node name="Sprite2D" type="Sprite2D" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/ScreenCenter/Clues/Clue_bota_der/FrontTexture"]
+texture = ExtResource("13_bbeo2")
+
+[node name="Control" type="Control" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/ScreenCenter/Clues/Clue_bota_der/FrontTexture"]
+clip_contents = true
+layout_mode = 3
+anchors_preset = 0
+offset_left = -870.0
+offset_top = -3.0
+offset_right = 1076.0
+offset_bottom = 636.0
+
+[node name="bota_particles" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/ScreenCenter/Clues/Clue_bota_der/FrontTexture" instance=ExtResource("15_nrbr8")]
+visibility_layer = 2
+position = Vector2(12.0001, 268.143)
+amount = 16
+lifetime = 3.0
+one_shot = true
+texture = ExtResource("16_dlngy")
+initial_velocity_min = 100.0
+initial_velocity_max = 150.0
+damping_min = 100.0
+damping_max = 150.0
+angle_min = -180.0
+angle_max = 180.0
+scale_amount_min = 1.0
+scale_amount_max = 2.0
+color = Color(0.776471, 0.827451, 0.839216, 1)
+color_ramp = SubResource("Gradient_gf8l2")
+
+[node name="bota_particles_static" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/ScreenCenter/Clues/Clue_bota_der/FrontTexture" instance=ExtResource("15_nrbr8")]
+visibility_layer = 2
+position = Vector2(12.0001, 268.143)
+amount = 28
+lifetime = 3.0
+one_shot = true
+texture = ExtResource("17_dqffb")
+direction = Vector2(0, -1)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 50.0
+initial_velocity_max = 100.0
+damping_min = 5.318
+damping_max = 23.404
+angle_min = -180.0
+angle_max = 180.0
+scale_amount_min = 3.0
+scale_amount_max = 4.0
+scale_amount_curve = SubResource("Curve_a0uqe")
+color = Color(0.686275, 0.752941, 0.768627, 0.403922)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/ScreenCenter/Clues/Clue_bota_der"]
 libraries = {
@@ -615,6 +759,7 @@ texture = ExtResource("14_2f6rp")
 HighQualityTexture = ExtResource("18_ibfaq")
 hasClue = true
 angleInCenter = 13.0
+inventary_scale = Vector2(1.3, 1.3)
 AppearChild = true
 
 [node name="FrontTexture" type="Node2D" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/ScreenCenter/Clues/Clue_reloj"]
@@ -650,6 +795,7 @@ texture = ExtResource("14_i8rg6")
 HighQualityTexture = ExtResource("32_n8qqk")
 hasClue = true
 angleInCenter = -5.0
+inventary_scale = Vector2(1.3, 1.3)
 AppearChild = true
 
 [node name="FrontTexture" type="Node2D" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/ScreenCenter/Clues/Clue_globo"]
@@ -708,6 +854,12 @@ scale = Vector2(3, 3)
 visibility_layer = 2
 texture = ExtResource("32_n8qqk")
 
+[node name="Clue_pantalon" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/ScreenCenter/Clues" instance=ExtResource("9_x0fc4")]
+position = Vector2(-244.5, 245.429)
+texture = ExtResource("20_yoct4")
+HighQualityTexture = ExtResource("22_cf257")
+angleInCenter = -20.0
+
 [node name="Clue_campera" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/ScreenCenter/Clues" instance=ExtResource("9_x0fc4")]
 position = Vector2(-243.071, -71.7142)
 texture = ExtResource("16_vo578")
@@ -719,12 +871,6 @@ position = Vector2(130, 314.286)
 texture = ExtResource("19_33dpm")
 HighQualityTexture = ExtResource("26_h5quh")
 angleInCenter = 10.0
-
-[node name="Clue_pantalon" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/ScreenCenter/Clues" instance=ExtResource("9_x0fc4")]
-position = Vector2(-244.5, 208.571)
-texture = ExtResource("20_yoct4")
-HighQualityTexture = ExtResource("22_cf257")
-angleInCenter = -20.0
 
 [node name="Clue_guante_der" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/ScreenCenter/Clues" instance=ExtResource("9_x0fc4")]
 position = Vector2(200.452, -82.5291)
@@ -775,7 +921,6 @@ offset_right = -59.45
 offset_bottom = -99.0
 
 [node name="Clue_casco" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/ScreenCenter/Clues" node_paths=PackedStringArray("otherPosition") instance=ExtResource("9_x0fc4")]
-visible = false
 position = Vector2(110, -557.143)
 texture = ExtResource("15_p6mcc")
 HighQualityTexture = ExtResource("20_8hxtq")
@@ -802,23 +947,6 @@ grow_vertical = 0
 theme = ExtResource("14_j3442")
 script = ExtResource("15_acmhj")
 
-[node name="Button" type="Button" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/Panel" node_paths=PackedStringArray("state_to_change", "state_machine")]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -45.0
-offset_top = -49.0
-offset_right = 45.0
-offset_bottom = 41.0
-grow_horizontal = 2
-grow_vertical = 0
-script = ExtResource("4_j3ig5")
-state_to_change = NodePath("../../../..")
-state_machine = NodePath("../../../../..")
-
 [node name="RichTextLabel" type="RichTextLabel" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/Panel"]
 layout_mode = 1
 anchors_preset = -1
@@ -835,6 +963,23 @@ grow_vertical = 2
 theme_override_font_sizes/normal_font_size = 25
 bbcode_enabled = true
 text = "[center]ENCONTRASTE TODAS LAS PISTAS[/center]"
+
+[node name="Button" type="Button" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/Panel" node_paths=PackedStringArray("state_to_change", "state_machine")]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -45.0
+offset_top = -49.0
+offset_right = 45.0
+offset_bottom = 41.0
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("4_j3ig5")
+state_to_change = NodePath("../../../..")
+state_machine = NodePath("../../../../..")
 
 [node name="Lockerdis" type="Sprite2D" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1"]
 visible = false
@@ -857,6 +1002,15 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.733333, 0.890196, 0.996078, 1)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2"]
 layout_mode = 1

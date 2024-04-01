@@ -1,13 +1,21 @@
-[gd_scene format=3 uid="uid://d12v5d1clta2q"]
+[gd_scene load_steps=3 format=3 uid="uid://d12v5d1clta2q"]
+
+[ext_resource type="Texture2D" uid="uid://wsicrocifuq" path="res://Sprites/ZonaAstronomia/pegoton.png" id="1_0meqn"]
+[ext_resource type="Texture2D" uid="uid://bqtu57m8fjrd2" path="res://Sprites/ZonaAstronomia/reloj XL- donde.png" id="2_yn5da"]
 
 [node name="RelojParticles" type="CPUParticles2D"]
-amount = 16
+amount = 32
 lifetime = 1.3
+texture = ExtResource("1_0meqn")
 emission_shape = 5
 emission_points = PackedVector2Array(2.6, 0, -2.6, 0, 0, 0)
 emission_normals = PackedVector2Array()
 emission_colors = PackedColorArray()
-gravity = Vector2(0, 100)
-scale_amount_min = 5.0
-scale_amount_max = 8.0
-color = Color(0.519531, 0.21875, 0.183594, 1)
+gravity = Vector2(0, 200)
+scale_amount_min = 0.2
+scale_amount_max = 0.3
+color = Color(0.678431, 0.270588, 0.223529, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+show_behind_parent = true
+texture = ExtResource("2_yn5da")

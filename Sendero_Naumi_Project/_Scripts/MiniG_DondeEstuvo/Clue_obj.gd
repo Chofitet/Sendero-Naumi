@@ -97,11 +97,17 @@ func ShowChild(isVisible):
 	if isVisible:
 		self_modulate = Color(0,0,0,0)
 		get_node("FrontTexture").visible = true
+		for p in get_node("FrontTexture").get_children():
+			if p is CPUParticles2D:
+				p.restart()
+				p.emitting = true
+
+	
 	else:
 		inFrot = true
 		self_modulate = Color(1,1,1,1)
 		get_node("FrontTexture").visible = false
-
+		
 func ChangeTexture(_texture,extrascale):
 	button.visible = true
 	texture = _texture
