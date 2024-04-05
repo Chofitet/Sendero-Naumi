@@ -1,13 +1,16 @@
-[gd_scene load_steps=63 format=3 uid="uid://b017ojh8vtsd6"]
+[gd_scene load_steps=91 format=3 uid="uid://b017ojh8vtsd6"]
 
 [ext_resource type="Script" path="res://_Scripts/Minigame_Save_Controller.gd" id="1_ouwf6"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/StateMachineMinigames.gd" id="2_5wf26"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/ConsignaState.gd" id="3_74cva"]
+[ext_resource type="Script" path="res://_Scripts/MiniG_DondeEstuvo/IntroControllerDondeEstuvo.gd" id="4_gu0u2"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/Button_Change_StateMinigame.gd" id="4_j3ig5"]
 [ext_resource type="Texture2D" uid="uid://fm157t23p14m" path="res://Sprites/ZonaAstronomia/astronauta intrepido - donde.png" id="5_0i0tc"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/JuegoState.gd" id="5_8uhx2"]
 [ext_resource type="Script" path="res://_Scripts/MiniG_DondeEstuvo/Inventary.gd" id="6_5o457"]
 [ext_resource type="Texture2D" uid="uid://chqivoetkgkoj" path="res://Sprites/UI/circulo.png" id="7_umoyt"]
+[ext_resource type="Texture2D" uid="uid://mvtplwtmm7qn" path="res://Sprites/ZonaAstronomia/puerta - donde.png" id="7_usj8a"]
+[ext_resource type="Texture2D" uid="uid://cvrhcowyqn0vl" path="res://Sprites/ZonaAstronomia/marco - donde.png" id="8_bpts2"]
 [ext_resource type="Texture2D" uid="uid://cq0nrg4icb47d" path="res://Sprites/ZonaAstronomia/piso - donde.png" id="8_orttm"]
 [ext_resource type="Texture2D" uid="uid://dmjr82oyg8r7m" path="res://Sprites/ZonaAstronomia/locker - donde.png" id="8_uf6hm"]
 [ext_resource type="LabelSettings" uid="uid://bd2jj8jlh3vp2" path="res://Themes/Geología/LabelSetting_Generic.tres" id="8_xrogw"]
@@ -49,12 +52,74 @@
 [ext_resource type="Texture2D" uid="uid://d4lqbgcmqqish" path="res://Sprites/ZonaAstronomia/globo XL- donde.png" id="32_n8qqk"]
 [ext_resource type="PackedScene" uid="uid://bdo2us7w8vphg" path="res://Scenes/Zona_Astronomia/snow_effect.tscn" id="33_h0coo"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/MoralejaState.gd" id="33_wluhy"]
+[ext_resource type="Texture2D" uid="uid://b1y8qh1nn5max" path="res://Sprites/ZonaAstronomia/fondo_mapa.png" id="46_r64we"]
+[ext_resource type="Script" path="res://_Scripts/Set_enabled.gd" id="48_jrsju"]
+[ext_resource type="Texture2D" uid="uid://dt1we50ngyt5j" path="res://Sprites/ZonaAstronomia/SnowParticle.png" id="51_7725q"]
+[ext_resource type="Script" path="res://_Scripts/SetVisibleChilds.gd" id="54_8ekae"]
 
 [sub_resource type="Gradient" id="Gradient_xmfka"]
-colors = PackedColorArray(0.286275, 0.301961, 0.305882, 1, 0.234268, 0.247826, 0.251215, 1)
+colors = PackedColorArray(0.666667, 0.65098, 0.592157, 1, 0.6, 0.576471, 0.537255, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_2w5pl"]
 gradient = SubResource("Gradient_xmfka")
+fill_to = Vector2(0, 1)
+
+[sub_resource type="Animation" id="Animation_567qw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("puertaPivot:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -45)]
+}
+
+[sub_resource type="Animation" id="Animation_klems"]
+resource_name = "open_Door"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("puertaPivot:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(0.5, 2),
+"update": 0,
+"values": [Vector2(0, -45), Vector2(0, -1112)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_iumpp"]
+_data = {
+"RESET": SubResource("Animation_567qw"),
+"open_Door": SubResource("Animation_klems")
+}
+
+[sub_resource type="Gradient" id="Gradient_xujkl"]
+colors = PackedColorArray(0.733333, 0.701961, 0.643137, 1, 0.815686, 0.8, 0.745098, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ll50c"]
+gradient = SubResource("Gradient_xujkl")
+fill_to = Vector2(0, 1)
+
+[sub_resource type="Gradient" id="Gradient_f76wa"]
+offsets = PackedFloat32Array(0, 0.991453)
+colors = PackedColorArray(0.734375, 0.703125, 0.644531, 1, 0.746094, 0.71875, 0.660156, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_4xb6e"]
+gradient = SubResource("Gradient_f76wa")
+fill_to = Vector2(0, 1)
+
+[sub_resource type="Gradient" id="Gradient_adu5s"]
+colors = PackedColorArray(0.800781, 0.78125, 0.726563, 1, 0.800781, 0.78125, 0.726563, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_36vgk"]
+gradient = SubResource("Gradient_adu5s")
 fill_to = Vector2(0, 1)
 
 [sub_resource type="Gradient" id="Gradient_gf8l2"]
@@ -391,6 +456,274 @@ _data = {
 "fall": SubResource("Animation_sovcw")
 }
 
+[sub_resource type="Animation" id="Animation_yogp1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Clue1:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Clue2:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Clue3:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Clue1:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(176, 108)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Clue2:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(6, -137)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Clue3:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-183, 106)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("TextureRect:self_modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("TextureRect:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_4yisa"]
+resource_name = "appear"
+length = 1.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Clue1:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.9, 1.2, 1.3),
+"transitions": PackedFloat32Array(2, 2, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(1.2, 1.2), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Clue2:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.6, 0.9, 1),
+"transitions": PackedFloat32Array(2, 2, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(1.2, 1.2), Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Clue3:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.3, 0.6, 0.7),
+"transitions": PackedFloat32Array(2, 2, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(1.2, 1.2), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_8rmco"]
+resource_name = "inPlace"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Clue1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.6, 1.2),
+"transitions": PackedFloat32Array(2, 0.5),
+"update": 0,
+"values": [Vector2(176, 108), Vector2(-152.85, 324.5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Clue2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.6, 1.2),
+"transitions": PackedFloat32Array(2, 0.5),
+"update": 0,
+"values": [Vector2(6, -137), Vector2(-152.85, -315.5)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Clue3:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.6, 1.2),
+"transitions": PackedFloat32Array(2, 0.5),
+"update": 0,
+"values": [Vector2(-183, 106), Vector2(-152.85, 4.49991)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("TextureRect:self_modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1.2),
+"transitions": PackedFloat32Array(1, 0.5),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("TextureRect:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yuq6j"]
+_data = {
+"RESET": SubResource("Animation_yogp1"),
+"appear": SubResource("Animation_4yisa"),
+"inPlace": SubResource("Animation_8rmco")
+}
+
+[sub_resource type="Curve" id="Curve_vwj1c"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.180233, 1), 0.0842104, 0.0842104, 0, 0, Vector2(0.883721, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="Gradient" id="Gradient_fhgp1"]
+offsets = PackedFloat32Array(0.0141844, 0.269504)
+colors = PackedColorArray(0.777162, 0.920445, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="Curve" id="Curve_lg1ha"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), -0.541251, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_kxyq1"]
+colors = PackedColorArray(0.419813, 0.419813, 0.419813, 1, 1, 1, 1, 1)
+
+[sub_resource type="Animation" id="Animation_diea1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VBoxContainer2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-3, -2067)]
+}
+
+[sub_resource type="Animation" id="Animation_nhelu"]
+resource_name = "planetEnter"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VBoxContainer2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(2, -2, -2, -2),
+"update": 0,
+"values": [Vector2(-3, -2067), Vector2(-3, -600), Vector2(-3, -552), Vector2(-3, -600)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_i7dih"]
+_data = {
+"RESET": SubResource("Animation_diea1"),
+"planetEnter": SubResource("Animation_nhelu")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ml8ui"]
+bg_color = Color(0.0390625, 0.683594, 0.753906, 1)
+corner_radius_top_left = 40
+corner_radius_top_right = 40
+corner_radius_bottom_right = 40
+corner_radius_bottom_left = 40
+
 [node name="DondeEstuvo" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -428,7 +761,7 @@ initial_state = NodePath("Consigna")
 script = ExtResource("3_74cva")
 Consignas = ["Hey esto es una consigna"]
 
-[node name="Contenido" type="Control" parent="DondeEstuvo/StateMachine/Consigna"]
+[node name="Contenido" type="Control" parent="DondeEstuvo/StateMachine/Consigna" node_paths=PackedStringArray("StateMachine")]
 visible = false
 layout_mode = 3
 anchors_preset = 15
@@ -436,6 +769,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("4_gu0u2")
+StateMachine = NodePath("../..")
 
 [node name="LblConsigna" type="Label" parent="DondeEstuvo/StateMachine/Consigna/Contenido"]
 layout_mode = 1
@@ -460,6 +795,12 @@ autowrap_mode = 2
 [node name="Timer" type="Timer" parent="DondeEstuvo/StateMachine/Consigna/Contenido"]
 wait_time = 3.0
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="DondeEstuvo/StateMachine/Consigna/Contenido"]
+root_node = NodePath("../Center")
+libraries = {
+"": SubResource("AnimationLibrary_iumpp")
+}
+
 [node name="Center" type="Control" parent="DondeEstuvo/StateMachine/Consigna/Contenido"]
 layout_mode = 1
 anchors_preset = 8
@@ -475,16 +816,16 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -796.0
-offset_top = -796.0
-offset_right = 796.0
-offset_bottom = 796.0
+offset_left = -521.0
+offset_top = -825.0
+offset_right = 519.0
+offset_bottom = 418.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("GradientTexture2D_2w5pl")
 
 [node name="Sprite2D" type="Sprite2D" parent="DondeEstuvo/StateMachine/Consigna/Contenido/Center"]
-position = Vector2(0, 591)
+position = Vector2(0, 583)
 scale = Vector2(1.125, 1.125)
 texture = ExtResource("8_orttm")
 
@@ -492,8 +833,71 @@ texture = ExtResource("8_orttm")
 position = Vector2(0, 118)
 texture = ExtResource("5_0i0tc")
 
+[node name="puertaPivot" type="Node2D" parent="DondeEstuvo/StateMachine/Consigna/Contenido/Center"]
+position = Vector2(0, -45)
+
+[node name="puerta" type="Sprite2D" parent="DondeEstuvo/StateMachine/Consigna/Contenido/Center/puertaPivot"]
+position = Vector2(0, 85)
+scale = Vector2(0.666667, 0.666667)
+texture = ExtResource("7_usj8a")
+
+[node name="TextureRect2" type="TextureRect" parent="DondeEstuvo/StateMachine/Consigna/Contenido/Center"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 323.0
+offset_top = -838.0
+offset_right = 479.0
+offset_bottom = 871.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_ll50c")
+
+[node name="TextureRect3" type="TextureRect" parent="DondeEstuvo/StateMachine/Consigna/Contenido/Center"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -474.0
+offset_top = -838.0
+offset_right = -320.0
+offset_bottom = 875.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_ll50c")
+
+[node name="TextureRect4" type="TextureRect" parent="DondeEstuvo/StateMachine/Consigna/Contenido/Center"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -358.0
+offset_top = -838.0
+offset_right = 336.0
+offset_bottom = -510.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_4xb6e")
+
+[node name="TextureRect5" type="TextureRect" parent="DondeEstuvo/StateMachine/Consigna/Contenido/Center"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -358.0
+offset_top = 555.0
+offset_right = 336.0
+offset_bottom = 875.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_36vgk")
+
+[node name="pared" type="Sprite2D" parent="DondeEstuvo/StateMachine/Consigna/Contenido/Center"]
+scale = Vector2(0.668518, 0.668518)
+texture = ExtResource("8_bpts2")
+
 [node name="Panel" type="Panel" parent="DondeEstuvo/StateMachine/Consigna/Contenido"]
-self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -522,13 +926,13 @@ offset_right = 272.0
 offset_bottom = 122.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "X"
+text = "EXPLICACIÓN LARGA"
 label_settings = ExtResource("8_xrogw")
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="Button2" type="Button" parent="DondeEstuvo/StateMachine/Consigna/Contenido/Panel" node_paths=PackedStringArray("state_to_change", "state_machine")]
+[node name="Button2" type="Button" parent="DondeEstuvo/StateMachine/Consigna/Contenido/Panel"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.796
@@ -543,9 +947,60 @@ grow_horizontal = 0
 grow_vertical = 0
 text = "
 "
-script = ExtResource("4_j3ig5")
-state_to_change = NodePath("../../../../Juego")
-state_machine = NodePath("../../../..")
+
+[node name="Panel2" type="Panel" parent="DondeEstuvo/StateMachine/Consigna/Contenido"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.181
+anchor_right = 0.5
+anchor_bottom = 0.181
+offset_left = -343.0
+offset_top = -170.68
+offset_right = 343.0
+offset_bottom = 171.32
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("14_j3442")
+script = ExtResource("15_acmhj")
+
+[node name="Label" type="Label" parent="DondeEstuvo/StateMachine/Consigna/Contenido/Panel2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -272.0
+offset_top = -122.0
+offset_right = 272.0
+offset_bottom = 122.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "TIMIDO POCO COMUNICATIVO"
+label_settings = ExtResource("8_xrogw")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Button2" type="Button" parent="DondeEstuvo/StateMachine/Consigna/Contenido/Panel2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.796
+anchor_top = 1.0
+anchor_right = 0.796
+anchor_bottom = 1.0
+offset_left = -45.056
+offset_top = -48.0
+offset_right = 44.944
+offset_bottom = 42.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "
+"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="DondeEstuvo/StateMachine/Consigna/Contenido"]
 
 [node name="Juego" type="Node" parent="DondeEstuvo/StateMachine" node_paths=PackedStringArray("NextState", "StateMachine")]
 script = ExtResource("5_8uhx2")
@@ -562,6 +1017,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Instancia1" type="Control" parent="DondeEstuvo/StateMachine/Juego/Contenido"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -569,14 +1025,18 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Inventary" type="Control" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1"]
+[node name="Inventary" type="Control" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1" node_paths=PackedStringArray("Finalpanel", "CenterClues", "StateMachine")]
 layout_mode = 1
-anchors_preset = 0
+anchor_top = 0.148
+anchor_bottom = 0.148
+offset_top = -189.44
 offset_right = 628.0
-offset_bottom = 190.0
+offset_bottom = 0.559998
 script = ExtResource("6_5o457")
 Objects = [NodePath("../ScreenCenter/Clues/Clue_bota_der"), NodePath("../ScreenCenter/Clues/Clue_reloj"), NodePath("../ScreenCenter/Clues/Clue_globo")]
-ObjectsShowInTrue = NodePath("../Panel")
+Finalpanel = NodePath("../EncontradoPanel")
+CenterClues = NodePath("../CenterClues")
+StateMachine = NodePath("../../../..")
 
 [node name="MarginContainer" type="MarginContainer" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/Inventary"]
 layout_mode = 1
@@ -594,7 +1054,7 @@ size_flags_horizontal = 0
 theme_override_constants/separation = 40
 
 [node name="Clue1" type="TextureRect" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/Inventary/MarginContainer/HBoxContainer"]
-self_modulate = Color(1, 1, 1, 0)
+modulate = Color(0, 0, 0, 0.439216)
 layout_mode = 2
 texture = ExtResource("7_umoyt")
 expand_mode = 2
@@ -603,7 +1063,7 @@ expand_mode = 2
 position = Vector2(85, 85)
 
 [node name="Clue2" type="TextureRect" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/Inventary/MarginContainer/HBoxContainer"]
-self_modulate = Color(1, 1, 1, 0)
+modulate = Color(0, 0, 0, 0.439216)
 layout_mode = 2
 texture = ExtResource("7_umoyt")
 expand_mode = 2
@@ -612,7 +1072,7 @@ expand_mode = 2
 position = Vector2(85, 85)
 
 [node name="Clue3" type="TextureRect" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/Inventary/MarginContainer/HBoxContainer"]
-self_modulate = Color(1, 1, 1, 0)
+modulate = Color(0, 0, 0, 0.439216)
 layout_mode = 2
 texture = ExtResource("7_umoyt")
 expand_mode = 2
@@ -661,7 +1121,7 @@ position = Vector2(594, 2149.28)
 texture = ExtResource("8_orttm")
 
 [node name="Armario" type="Sprite2D" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/ScreenCenter/background"]
-position = Vector2(594, 1363.57)
+position = Vector2(572.571, 1371.86)
 texture = ExtResource("8_uf6hm")
 
 [node name="Clues" type="Node2D" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/ScreenCenter" node_paths=PackedStringArray("overlay")]
@@ -699,6 +1159,7 @@ offset_bottom = 636.0
 [node name="bota_particles" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/ScreenCenter/Clues/Clue_bota_der/FrontTexture" instance=ExtResource("15_nrbr8")]
 visibility_layer = 2
 position = Vector2(12.0001, 268.143)
+emitting = false
 amount = 16
 lifetime = 3.0
 one_shot = true
@@ -717,6 +1178,7 @@ color_ramp = SubResource("Gradient_gf8l2")
 [node name="bota_particles_static" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/ScreenCenter/Clues/Clue_bota_der/FrontTexture" instance=ExtResource("15_nrbr8")]
 visibility_layer = 2
 position = Vector2(12.0001, 268.143)
+emitting = false
 amount = 28
 lifetime = 3.0
 one_shot = true
@@ -770,7 +1232,6 @@ scale = Vector2(0.19, 0.19)
 texture = ExtResource("18_ibfaq")
 
 [node name="Control" type="Control" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/ScreenCenter/Clues/Clue_reloj/FrontTexture"]
-clip_contents = true
 layout_mode = 3
 anchors_preset = 0
 offset_left = -45.0
@@ -861,7 +1322,7 @@ HighQualityTexture = ExtResource("22_cf257")
 angleInCenter = -20.0
 
 [node name="Clue_campera" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/ScreenCenter/Clues" instance=ExtResource("9_x0fc4")]
-position = Vector2(-243.071, -71.7142)
+position = Vector2(-234.286, -71.7142)
 texture = ExtResource("16_vo578")
 HighQualityTexture = ExtResource("19_7rvr1")
 angleInCenter = -20.0
@@ -930,24 +1391,90 @@ otherPosition = NodePath("../../CascoPos2")
 [node name="CascoPos2" type="Marker2D" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/ScreenCenter"]
 position = Vector2(-224.286, -557.143)
 
-[node name="Panel" type="Panel" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1"]
-visible = false
+[node name="CenterClues" type="Control" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1"]
+z_index = 1
 layout_mode = 1
-anchors_preset = 7
+anchors_preset = 8
 anchor_left = 0.5
-anchor_top = 1.0
+anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -326.0
-offset_top = -314.0
-offset_right = 326.0
-offset_bottom = -79.0
+anchor_bottom = 0.5
 grow_horizontal = 2
-grow_vertical = 0
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/CenterClues"]
+visible = false
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = -669.0
+offset_top = -669.0
+offset_right = 709.0
+offset_bottom = 709.0
+texture = ExtResource("46_r64we")
+stretch_mode = 1
+
+[node name="Clue1" type="Node2D" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/CenterClues"]
+position = Vector2(176, 108)
+scale = Vector2(1e-05, 1e-05)
+
+[node name="Clue1" type="Sprite2D" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/CenterClues/Clue1"]
+self_modulate = Color(0.478431, 1, 0.470588, 1)
+scale = Vector2(0.22, 0.22)
+texture = ExtResource("7_umoyt")
+
+[node name="Sprite2D" type="Sprite2D" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/CenterClues/Clue1/Clue1"]
+scale = Vector2(4.64286, 4.64286)
+texture = ExtResource("14_2f6rp")
+
+[node name="Clue2" type="Node2D" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/CenterClues"]
+position = Vector2(6, -137)
+scale = Vector2(1e-05, 1e-05)
+
+[node name="Clue2" type="Sprite2D" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/CenterClues/Clue2"]
+self_modulate = Color(0.478431, 1, 0.470588, 1)
+scale = Vector2(0.22, 0.22)
+texture = ExtResource("7_umoyt")
+
+[node name="Sprite2D" type="Sprite2D" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/CenterClues/Clue2/Clue2"]
+scale = Vector2(4.64286, 4.64286)
+texture = ExtResource("14_i8rg6")
+
+[node name="Clue3" type="Node2D" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/CenterClues"]
+position = Vector2(-183, 106)
+scale = Vector2(1e-05, 1e-05)
+
+[node name="Clue3" type="Sprite2D" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/CenterClues/Clue3"]
+self_modulate = Color(0.478431, 1, 0.470588, 1)
+scale = Vector2(0.22, 0.22)
+texture = ExtResource("7_umoyt")
+
+[node name="Sprite2D" type="Sprite2D" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/CenterClues/Clue3/Clue3"]
+scale = Vector2(3.42857, 3.42857)
+texture = ExtResource("10_odq7q")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/CenterClues"]
+libraries = {
+"": SubResource("AnimationLibrary_yuq6j")
+}
+
+[node name="EncontradoPanel" type="Panel" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1"]
+visible = false
+z_index = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.171
+anchor_right = 0.5
+anchor_bottom = 0.171
+offset_left = -326.0
+offset_top = -116.88
+offset_right = 326.0
+offset_bottom = 118.12
+grow_horizontal = 2
 theme = ExtResource("14_j3442")
 script = ExtResource("15_acmhj")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/Panel"]
+[node name="RichTextLabel" type="RichTextLabel" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/EncontradoPanel"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -964,22 +1491,19 @@ theme_override_font_sizes/normal_font_size = 25
 bbcode_enabled = true
 text = "[center]ENCONTRASTE TODAS LAS PISTAS[/center]"
 
-[node name="Button" type="Button" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/Panel" node_paths=PackedStringArray("state_to_change", "state_machine")]
+[node name="Button" type="Button" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/EncontradoPanel"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -45.0
+offset_left = 155.0
 offset_top = -49.0
-offset_right = 45.0
+offset_right = 245.0
 offset_bottom = 41.0
 grow_horizontal = 2
 grow_vertical = 0
-script = ExtResource("4_j3ig5")
-state_to_change = NodePath("../../../..")
-state_machine = NodePath("../../../../..")
 
 [node name="Lockerdis" type="Sprite2D" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1"]
 visible = false
@@ -994,6 +1518,71 @@ position = Vector2(356, 679)
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("19_7rvr1")
 
+[node name="Consigna" type="Control" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("48_jrsju")
+
+[node name="ColorRect" type="ColorRect" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/Consigna"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)
+
+[node name="Consigna" type="Panel" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/Consigna"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.494
+anchor_top = 0.166
+anchor_right = 0.494
+anchor_bottom = 0.166
+offset_left = -322.354
+offset_top = -113.48
+offset_right = 330.646
+offset_bottom = 120.52
+theme = ExtResource("14_j3442")
+script = ExtResource("15_acmhj")
+
+[node name="Label" type="Label" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/Consigna/Consigna"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -230.5
+offset_top = -90.0
+offset_right = 230.5
+offset_bottom = 90.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "AYUDANOS A ENCONTRAR PISTAS DE DONDE ESTUVIERON"
+label_settings = ExtResource("8_xrogw")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Button" type="Button" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/Consigna/Consigna"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.807
+anchor_top = 0.996
+anchor_right = 0.807
+anchor_bottom = 0.996
+offset_left = -44.971
+offset_top = -45.064
+offset_right = 45.029
+offset_bottom = 44.936
+grow_horizontal = 0
+grow_vertical = 0
+
 [node name="Instancia2" type="Control" parent="DondeEstuvo/StateMachine/Juego/Contenido"]
 visible = false
 layout_mode = 1
@@ -1003,74 +1592,282 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ColorRect" type="ColorRect" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2"]
+[node name="TextureRect" type="TextureRect" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -977.0
+offset_top = -977.0
+offset_right = 977.0
+offset_bottom = 977.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.733333, 0.890196, 0.996078, 1)
+texture = ExtResource("46_r64we")
+stretch_mode = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2"]
+[node name="center" type="Control" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2"]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.227
-anchor_top = 0.494
-anchor_right = 0.227
-anchor_bottom = 0.494
-offset_left = -98.44
-offset_top = -514.32
-offset_right = 144.56
-offset_bottom = 892.68
-theme_override_constants/separation = 145
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="CheckTrue" type="Node2D" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/VBoxContainer"]
-position = Vector2(-65, -118)
+[node name="CheckTrue" type="Node2D" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/center"]
+position = Vector2(-79, 0)
 script = ExtResource("16_6ug6m")
 
-[node name="ItemUnir" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/VBoxContainer/CheckTrue" node_paths=PackedStringArray("correctSpot") instance=ExtResource("17_l3cj0")]
+[node name="ItemUnir2" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/center/CheckTrue" node_paths=PackedStringArray("correctSpot") instance=ExtResource("17_l3cj0")]
+position = Vector2(-152.85, -315.5)
+correctSpot = NodePath("../../../pivotPlanets/VBoxContainer2/SpotUnir5")
+colorShader = Color(0.823529, 0.113725, 0.454902, 1)
+
+[node name="Sprite2D" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/center/CheckTrue/ItemUnir2" index="1"]
+scale = Vector2(0.1837, 0.1837)
+
+[node name="Panel" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/center/CheckTrue/ItemUnir2" index="4"]
+anchors_preset = -1
+anchor_left = 0.526
+anchor_top = 1.315
+anchor_right = 0.526
+anchor_bottom = 1.315
+offset_left = -183.536
+offset_top = -87.005
+offset_right = 47.464
+offset_bottom = -39.005
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/center/CheckTrue/ItemUnir2"]
+position = Vector2(-1.14999, -11.5)
+amount = 32
+lifetime = 0.25
+texture = ExtResource("51_7725q")
+emission_shape = 2
+emission_sphere_radius = 47.83
+direction = Vector2(0.8, 1)
+spread = 0.0
+gravity = Vector2(0, 100)
+initial_velocity_max = 42.55
+angular_velocity_min = -350.0
+orbit_velocity_max = 0.1
+scale_amount_min = 0.1
+scale_amount_max = 0.4
+scale_amount_curve = SubResource("Curve_vwj1c")
+color_ramp = SubResource("Gradient_fhgp1")
+hue_variation_min = 0.53
+hue_variation_max = 0.53
+
+[node name="ItemUnir" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/center/CheckTrue" node_paths=PackedStringArray("correctSpot") instance=ExtResource("17_l3cj0")]
+position = Vector2(-152.85, 4.49991)
+scale = Vector2(0.7, 0.7)
 texture = ExtResource("10_odq7q")
-expand_mode = 0
-correctSpot = NodePath("../../../VBoxContainer2/SpotUnir")
+correctSpot = NodePath("../../../pivotPlanets/VBoxContainer2/SpotUnir4")
+colorShader = Color(0, 0.427451, 0.827451, 1)
 
-[node name="ItemUnir2" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/VBoxContainer/CheckTrue" node_paths=PackedStringArray("correctSpot") instance=ExtResource("17_l3cj0")]
-offset_top = 527.0
-offset_bottom = 728.0
-texture = ExtResource("14_i8rg6")
-expand_mode = 0
-correctSpot = NodePath("../../../VBoxContainer2/SpotUnir2")
+[node name="LaserRay" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/center/CheckTrue/ItemUnir" index="0"]
+scale = Vector2(1.35, 1.35)
 
-[node name="ItemUnir3" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/VBoxContainer/CheckTrue" node_paths=PackedStringArray("correctSpot") instance=ExtResource("17_l3cj0")]
-offset_left = 106.0
-offset_top = 894.0
-offset_right = 267.0
-offset_bottom = 1137.0
+[node name="Sprite2D" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/center/CheckTrue/ItemUnir" index="1"]
+scale = Vector2(0.248143, 0.248143)
+
+[node name="Button" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/center/CheckTrue/ItemUnir" index="3"]
+anchor_left = -0.101
+anchor_top = -0.117
+anchor_right = 1.116
+anchor_bottom = 1.094
+offset_left = -99.002
+offset_top = -87.525
+offset_right = -98.968
+offset_bottom = -87.45
+
+[node name="Panel" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/center/CheckTrue/ItemUnir" index="4"]
+z_index = 1
+offset_left = -158.786
+offset_right = 90.2143
+scale = Vector2(1.3, 1.3)
+
+[node name="Label" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/center/CheckTrue/ItemUnir/Panel" index="0"]
+text = "POLVO BLANCO"
+
+[node name="bota_particles" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/center/CheckTrue/ItemUnir" instance=ExtResource("15_nrbr8")]
+visible = false
+visibility_layer = 2
+position = Vector2(-5.92855, 70.7144)
+amount = 16
+lifetime = 3.0
+explosiveness = 0.0
+texture = ExtResource("16_dlngy")
+initial_velocity_min = 100.0
+initial_velocity_max = 150.0
+damping_min = 100.0
+damping_max = 150.0
+angle_min = -180.0
+angle_max = 180.0
+scale_amount_min = 0.2
+scale_amount_max = 2.0
+color = Color(0.776471, 0.827451, 0.839216, 1)
+color_ramp = SubResource("Gradient_gf8l2")
+
+[node name="bota_particles_static" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/center/CheckTrue/ItemUnir" instance=ExtResource("15_nrbr8")]
+visibility_layer = 2
+position = Vector2(-5.92855, 10.7144)
+amount = 32
+lifetime = 3.0
+explosiveness = 0.0
+texture = ExtResource("16_dlngy")
+emission_rect_extents = Vector2(76.25, 10)
+spread = 1.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 50.0
+initial_velocity_max = 70.0
+damping_min = 12.355
+damping_max = 29.412
+angle_min = -180.0
+angle_max = 180.0
+scale_amount_min = 0.5
+scale_amount_max = 1.0
+scale_amount_curve = SubResource("Curve_lg1ha")
+color = Color(0.686275, 0.752941, 0.768627, 0.403922)
+color_ramp = SubResource("Gradient_kxyq1")
+
+[node name="ItemUnir3" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/center/CheckTrue" node_paths=PackedStringArray("correctSpot") instance=ExtResource("17_l3cj0")]
+position = Vector2(-152.85, 324.5)
+scale = Vector2(0.854286, 0.854286)
 texture = ExtResource("14_2f6rp")
-expand_mode = 0
-correctSpot = NodePath("../../../VBoxContainer2/SpotUnir3")
+correctSpot = NodePath("../../../pivotPlanets/VBoxContainer2/SpotUnir")
+colorShader = Color(0.988235, 0.580392, 0.188235, 1)
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2"]
+[node name="LaserRay" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/center/CheckTrue/ItemUnir3" index="0"]
+scale = Vector2(1.15, 1.15)
+
+[node name="Sprite2D" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/center/CheckTrue/ItemUnir3" index="1"]
+scale = Vector2(0.193963, 0.193963)
+
+[node name="Panel" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/center/CheckTrue/ItemUnir3" index="4"]
+offset_top = 84.8662
+offset_bottom = 132.866
+
+[node name="Label" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/center/CheckTrue/ItemUnir3/Panel" index="0"]
+text = "RELOJ DE ARENA"
+
+[node name="RelojParticles" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/center/CheckTrue/ItemUnir3" instance=ExtResource("19_mvjee")]
+amount = 42
+lifetime = 0.5
+scale_amount_min = 0.1
+scale_amount_max = 0.1
+
+[node name="Panel" type="Panel" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/center"]
+layout_mode = 0
+offset_left = -91.0
+offset_top = -115.0
+offset_right = 329.0
+offset_bottom = 126.0
+theme = ExtResource("14_j3442")
+script = ExtResource("15_acmhj")
+
+[node name="Label" type="Label" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/center/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -143.0
+offset_top = -89.5
+offset_right = 143.0
+offset_bottom = 89.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "¿DE DONDE TE PARECE QUE VIENE CADA ITEM?"
+label_settings = ExtResource("8_xrogw")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Button" type="Button" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/center/Panel"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.769
-anchor_top = 0.494
-anchor_right = 0.769
-anchor_bottom = 0.494
-offset_left = -121.68
-offset_top = -514.32
-offset_right = 121.32
-offset_bottom = 513.68
-theme_override_constants/separation = 145
+anchor_left = 0.697
+anchor_top = 1.0
+anchor_right = 0.697
+anchor_bottom = 1.0
+offset_left = -44.83
+offset_top = -53.0
+offset_right = 45.17
+offset_bottom = 37.0
+grow_horizontal = 0
+grow_vertical = 0
 
-[node name="SpotUnir" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/VBoxContainer2" instance=ExtResource("19_8egw1")]
-layout_mode = 2
+[node name="pivotPlanets" type="Control" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2"]
+layout_mode = 1
+anchor_left = 0.692
+anchor_top = 0.496
+anchor_right = 0.692
+anchor_bottom = 0.496
+offset_left = 23.76
+offset_top = 0.119995
+offset_right = 23.76
+offset_bottom = 0.119995
 
-[node name="SpotUnir2" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/VBoxContainer2" instance=ExtResource("19_8egw1")]
-layout_mode = 2
+[node name="VBoxContainer2" type="Control" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/pivotPlanets"]
+layout_mode = 1
+anchor_left = 0.799
+anchor_top = 0.5
+anchor_right = 0.799
+anchor_bottom = 0.5
+offset_left = -3.0
+offset_top = -2067.0
+offset_right = 157.0
+offset_bottom = -867.0
+grow_horizontal = 2
 
-[node name="SpotUnir3" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/VBoxContainer2" instance=ExtResource("19_8egw1")]
+[node name="SpotUnir" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/pivotPlanets/VBoxContainer2" node_paths=PackedStringArray("item") instance=ExtResource("19_8egw1")]
 layout_mode = 2
+offset_right = 160.0
+offset_bottom = 160.0
+nombre = "Marte"
+item = NodePath("../../../center/CheckTrue/ItemUnir3")
+
+[node name="SpotUnir2" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/pivotPlanets/VBoxContainer2" instance=ExtResource("19_8egw1")]
+layout_mode = 2
+offset_top = 250.0
+offset_right = 160.0
+offset_bottom = 410.0
+nombre = "SATURNO"
+
+[node name="SpotUnir3" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/pivotPlanets/VBoxContainer2" instance=ExtResource("19_8egw1")]
+layout_mode = 2
+offset_top = 500.0
+offset_right = 160.0
+offset_bottom = 660.0
+nombre = "SOL"
+
+[node name="SpotUnir4" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/pivotPlanets/VBoxContainer2" node_paths=PackedStringArray("item") instance=ExtResource("19_8egw1")]
+layout_mode = 2
+offset_top = 750.0
+offset_right = 160.0
+offset_bottom = 910.0
+nombre = "LUNA"
+item = NodePath("../../../center/CheckTrue/ItemUnir")
+
+[node name="SpotUnir5" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/pivotPlanets/VBoxContainer2" node_paths=PackedStringArray("item") instance=ExtResource("19_8egw1")]
+layout_mode = 2
+offset_top = 1000.0
+offset_right = 160.0
+offset_bottom = 1160.0
+nombre = "NEPTUNO"
+item = NodePath("../../../center/CheckTrue/ItemUnir2")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/pivotPlanets"]
+libraries = {
+"": SubResource("AnimationLibrary_i7dih")
+}
+script = ExtResource("13_ukv5b")
+animation = "planetEnter"
 
 [node name="Button" type="Button" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2" node_paths=PackedStringArray("state_to_change", "state_machine")]
 visible = false
@@ -1090,6 +1887,123 @@ script = ExtResource("4_j3ig5")
 state_to_change = NodePath("../../../../Moraleja")
 state_machine = NodePath("../../../..")
 isEndOfGame = true
+
+[node name="Panels" type="Control" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2"]
+z_index = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("54_8ekae")
+
+[node name="Panel" type="Panel" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/Panels"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -185.0
+offset_top = -124.0
+offset_right = 185.0
+offset_bottom = 124.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ml8ui")
+
+[node name="Label" type="Label" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/Panels/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -163.0
+offset_top = -94.0
+offset_right = 164.0
+offset_bottom = 94.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "ES MUY FACIL LEVANTAR POLVOEN LA LUNA ES UN SATELITE CON GRAVEDAD MUY DEBIL Y ZAZAZZAZAZZAZAZAZAZA"
+label_settings = ExtResource("8_xrogw")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Panel2" type="Panel" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/Panels"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -185.0
+offset_top = -442.0
+offset_right = 185.0
+offset_bottom = -194.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ml8ui")
+
+[node name="Label" type="Label" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/Panels/Panel2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -163.0
+offset_top = -94.0
+offset_right = 164.0
+offset_bottom = 94.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "ES MUY FACIL LEVANTAR POLVOEN LA LUNA ES UN SATELITE CON GRAVEDAD MUY DEBIL Y ZAZAZZAZAZZAZAZAZAZA"
+label_settings = ExtResource("8_xrogw")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Panel3" type="Panel" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/Panels"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -185.0
+offset_top = 206.0
+offset_right = 185.0
+offset_bottom = 454.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ml8ui")
+
+[node name="Label" type="Label" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/Panels/Panel3"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -163.0
+offset_top = -94.0
+offset_right = 164.0
+offset_bottom = 94.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "ES MUY FACIL LEVANTAR POLVOEN LA LUNA ES UN SATELITE CON GRAVEDAD MUY DEBIL Y ZAZAZZAZAZZAZAZAZAZA"
+label_settings = ExtResource("8_xrogw")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
 
 [node name="HUD" type="CanvasLayer" parent="DondeEstuvo/StateMachine/Juego"]
 
@@ -1149,7 +2063,19 @@ texture = ExtResource("20_8hxtq")
 [connection signal="NoCenter" from="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/ScreenCenter/Clues/Clue_pantalon" to="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/ScreenCenter/Clues/Clue_bota_der/AnimationPlayer" method="Play"]
 [connection signal="ToCenter" from="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/ScreenCenter/Clues/Clue_guante_der" to="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/ScreenCenter/Clues/Clue_reloj/AnimationPlayer" method="Play"]
 [connection signal="ToCenter" from="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/ScreenCenter/Clues/Clue_guante_izq" to="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/ScreenCenter/Clues/Clue_guante_der/AnimationPlayer" method="PlayAnim" binds= ["fall"]]
-[connection signal="AllTrue" from="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/VBoxContainer/CheckTrue" to="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/Button" method="SetVisibility" binds= [true]]
+[connection signal="pressed" from="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/Consigna/Consigna/Button" to="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/Consigna" method="SetVisibility" binds= [false]]
+[connection signal="AllTrue" from="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/center/CheckTrue" to="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/pivotPlanets/VBoxContainer2/SpotUnir" method="AnimToAling"]
+[connection signal="AllTrue" from="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/center/CheckTrue" to="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/pivotPlanets/VBoxContainer2/SpotUnir2" method="AnimToRigth"]
+[connection signal="AllTrue" from="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/center/CheckTrue" to="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/pivotPlanets/VBoxContainer2/SpotUnir3" method="AnimToRigth"]
+[connection signal="AllTrue" from="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/center/CheckTrue" to="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/pivotPlanets/VBoxContainer2/SpotUnir4" method="AnimToAling"]
+[connection signal="AllTrue" from="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/center/CheckTrue" to="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/pivotPlanets/VBoxContainer2/SpotUnir5" method="AnimToAling"]
+[connection signal="AllTrue" from="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/center/CheckTrue" to="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/Button" method="SetVisibility" binds= [true]]
+[connection signal="pressed" from="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/center/Panel/Button" to="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/pivotPlanets/AnimationPlayer" method="Play"]
+[connection signal="pressed" from="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/center/Panel/Button" to="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/center/Panel" method="SetVisibility" binds= [false]]
+[connection signal="PlanetsAling" from="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/pivotPlanets/VBoxContainer2/SpotUnir" to="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/Panels" method="SetVisibleChilds" binds= [true]]
 
 [editable path="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/ScreenCenter/Clues/Clue_guante_der"]
 [editable path="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/ScreenCenter/Clues/Clue_guante_izq"]
+[editable path="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/center/CheckTrue/ItemUnir2"]
+[editable path="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/center/CheckTrue/ItemUnir"]
+[editable path="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/center/CheckTrue/ItemUnir3"]

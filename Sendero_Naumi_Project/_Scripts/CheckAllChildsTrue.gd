@@ -4,6 +4,7 @@ signal AllTrue
 var childs :=[]
 @export var PercentComplete : float
 @export var debug : bool
+var isalltrue
 
 # Condiciones: Todos los hijos directos deben de tener un script
 # con la variable isComplete
@@ -24,6 +25,7 @@ func CheckTrue():
 			b = CheckOthers(i)
 	if b:
 		AllTrue.emit()
+		isalltrue = true
 
 func CheckPartialChildTrue():
 	var i = 0

@@ -1,19 +1,50 @@
-[gd_scene load_steps=4 format=3 uid="uid://btwjusl4scgqt"]
+[gd_scene load_steps=6 format=3 uid="uid://btwjusl4scgqt"]
 
-[ext_resource type="Texture2D" uid="uid://ce822oixpgtsk" path="res://Sprites/ZonaAstronomia/reloj_arena.png" id="1_5038q"]
+[ext_resource type="Texture2D" uid="uid://gcawnq85pux5" path="res://Sprites/ZonaAstronomia/marte - donde.png" id="1_tao7j"]
 [ext_resource type="Script" path="res://_Scripts/MiniG_DondeEstuvo/SpotUnir.gd" id="2_m80u4"]
+[ext_resource type="LabelSettings" uid="uid://bd2jj8jlh3vp2" path="res://Themes/Geología/LabelSetting_Generic.tres" id="3_ua7sx"]
+[ext_resource type="StyleBox" uid="uid://5oga2arj2sv0" path="res://Resources/UI_Resources/PanelSimple.tres" id="3_uk6hp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cyikq"]
-size = Vector2(124, 226)
+size = Vector2(150, 150)
 
 [node name="SpotUnir" type="TextureRect"]
 z_index = 1
-texture = ExtResource("1_5038q")
+texture = ExtResource("1_tao7j")
 expand_mode = 4
 script = ExtResource("2_m80u4")
 
 [node name="Area2D" type="Area2D" parent="." groups=["Spot"]]
-position = Vector2(120, 115)
+position = Vector2(77, 74)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-1, 1)
 shape = SubResource("RectangleShape2D_cyikq")
+
+[node name="unionSpot" type="Marker2D" parent="."]
+position = Vector2(4, 73)
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_top = 163.0
+offset_right = 153.0
+offset_bottom = 203.0
+theme_override_styles/panel = ExtResource("3_uk6hp")
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -67.5
+offset_top = -11.0
+offset_right = 67.5
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "MARTE"
+label_settings = ExtResource("3_ua7sx")
+horizontal_alignment = 1
+vertical_alignment = 1
