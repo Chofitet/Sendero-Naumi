@@ -24,12 +24,12 @@ func PassSecondPanel():
 	panel2.visible = false
 	var instance = instanceTransition.instantiate()
 	canvas.add_child(instance)
-	instance.init(trextureFade,2,true)
-	await get_tree().create_timer(2).timeout
+	instance.init(trextureFade,1,true)
+	await get_tree().create_timer(1).timeout
 	PassStateMinigame()
 	var instance2 = instanceTransition.instantiate()
 	canvas.add_child(instance2)
-	instance2.init(trextureFade,2,false,false)
+	instance2.init(trextureFade,1,false,false)
 
 func PassStateMinigame():
 	StateMachine.Trigger_On_Child_Transition("Juego")

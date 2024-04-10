@@ -2,6 +2,7 @@ extends AnimationPlayer
 @export var animation : String
 @export var DestroyInFinish : String
 
+
 func _ready():
 	animation_finished.connect(DestroyAnimInFinishAnim)
 

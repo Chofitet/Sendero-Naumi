@@ -88,6 +88,7 @@ func MakeAnim(pos, _texture, extra_scale : Vector2 = Vector2(1,1), rotateAngle :
 		var tween4 = get_tree().create_tween()
 		tween4.tween_property(self,"global_position",pos,AnimatedSpeed).set_ease(Tween.EASE_OUT)
 	await tween.finished
+	button.visible = true
 	z_index = index
 	if AppearChild:
 		ShowChild(isChildVisible)
@@ -109,7 +110,6 @@ func ShowChild(isVisible):
 		get_node("FrontTexture").visible = false
 		
 func ChangeTexture(_texture,extrascale):
-	button.visible = true
 	texture = _texture
 	scale = Vector2.ONE * extrascale
 	if AppearChild: 

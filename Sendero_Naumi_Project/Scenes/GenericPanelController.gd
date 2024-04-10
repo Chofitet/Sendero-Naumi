@@ -1,15 +1,21 @@
 extends Panel
 var buttons := []
 @export var timeToBtn = 3.5
+@export var SetVisibleFalseWithBtn : bool
+@export var timeToAppear : float
 var timer
 signal pixels_rendered
+
 
 func _ready():
 	for btn in get_children():
 		if btn is Button:
 			buttons.append(btn)
 			btn.visible = false
+			if SetVisibleFalseWithBtn:
+				btn.pressed.connect(SetVisibility.bind(false))
 	draw.connect(StartTimer)
+	
 	
 func StartTimer():
 	timer = get_tree().create_timer(timeToBtn)
@@ -30,3 +36,7 @@ func check_pixels_rendered():
 
 func SetVisibility(x):
 	visible = x
+
+func StartTimerToAppear():
+	await get_tree().create_timer(timeToAppear).timeout
+	visible = true
