@@ -11,6 +11,7 @@ class_name MiniGameResource
 "DondeEstuvo": false,
 "ManzanaAcaramelada": false,
 "Mamushkas" : false,
+"Calendario" : false,
 "noFirstTimePlay" : false}
 
 func Set_State_Minigame(string):

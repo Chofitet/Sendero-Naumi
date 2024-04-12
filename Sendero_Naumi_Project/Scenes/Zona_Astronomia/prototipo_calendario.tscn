@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://bx6cytq7k6ptu"]
+[gd_scene load_steps=40 format=3 uid="uid://bx6cytq7k6ptu"]
 
 [ext_resource type="Script" path="res://_Scripts/MinG_MegaFood/FoodMenuController.gd" id="1_1ivvo"]
 [ext_resource type="Texture2D" uid="uid://nuybqhitpej1" path="res://Sprites/Mapa/fondo_mapa.png" id="1_vkc1j"]
@@ -16,7 +16,11 @@
 [ext_resource type="StyleBox" uid="uid://5oga2arj2sv0" path="res://Resources/UI_Resources/PanelSimple.tres" id="9_hiu02"]
 [ext_resource type="Script" path="res://_Scripts/MinG_Calendario/SpotCalendario.gd" id="10_soou1"]
 [ext_resource type="Shader" path="res://shaders/blur.gdshader" id="11_6tbsg"]
+[ext_resource type="Texture2D" uid="uid://chqivoetkgkoj" path="res://Sprites/UI/circulo.png" id="13_6mi6a"]
 [ext_resource type="Texture2D" uid="uid://cwmw6juhd7d25" path="res://Sprites/ZonaAstronomia/calendario_enero.png" id="13_dnqs4"]
+[ext_resource type="Script" path="res://_Scripts/MinG_Calendario/AnswerController.gd" id="13_jroje"]
+[ext_resource type="Texture2D" uid="uid://f2xwgbsx02ke" path="res://Sprites/ZonaAstronomia/DateSlot.png" id="14_3f44g"]
+[ext_resource type="LabelSettings" uid="uid://b7f8w8wf071ek" path="res://Themes/Geología/LabelSettings_Busqueda.tres" id="15_44ljj"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_kg4fr"]
 font = ExtResource("4_5ynwd")
@@ -144,6 +148,20 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector2(0, 0), Vector2(0, -59), Vector2(0, 1215)]
 }
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Button2")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_on_pressed"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_pbd06"]
 resource_name = "questions"
@@ -219,6 +237,155 @@ shader_parameter/yOffset = null
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b8dn8"]
 size = Vector2(140, 130)
 
+[sub_resource type="Animation" id="Animation_ggryb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Contenido/Spot/AnswerController/AnswerSpot:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Contenido/Spot/AnswerController/AnswerSpot/answer:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Contenido/Spot/AnswerController/BlackRectangles:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Contenido/Spot/AnswerController/BlackRectangles/parpado:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -200)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Contenido/Spot/AnswerController/BlackRectangles/parpado2:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 200)]
+}
+
+[sub_resource type="Animation" id="Animation_pigvw"]
+resource_name = "rigthAnim"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Contenido/Spot/AnswerController/BlackRectangles:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Contenido/Spot/AnswerController/BlackRectangles/parpado:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -200), Vector2(0, 200)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Contenido/Spot/AnswerController/BlackRectangles/parpado2:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 200), Vector2(0, -200)]
+}
+
+[sub_resource type="Animation" id="Animation_irdj5"]
+resource_name = "rigthAnim"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Contenido/Spot/AnswerController/AnswerSpot:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 1),
+"transitions": PackedFloat32Array(1, 2, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -22), Vector2(0, 1187)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Contenido/Spot/AnswerController/AnswerSpot/answer:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Contenido/Spot/AnswerController/AnswerSpot/answer:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.1, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.614828]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lqutb"]
+_data = {
+"RESET": SubResource("Animation_ggryb"),
+"rigthAnim": SubResource("Animation_pigvw"),
+"wrongAnim": SubResource("Animation_irdj5")
+}
+
 [sub_resource type="Animation" id="Animation_jcupq"]
 length = 0.001
 tracks/0/type = "value"
@@ -231,7 +398,19 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, 584.401)]
+"values": [Vector2(0, 1562)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../pivotHboxController/HBoxContainer:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 712)]
 }
 
 [sub_resource type="Animation" id="Animation_pmrq2"]
@@ -247,7 +426,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.6, 0.8),
 "transitions": PackedFloat32Array(1, -2, 1),
 "update": 0,
-"values": [Vector2(0, 584.401), Vector2(0, -80), Vector2(0, 0)]
+"values": [Vector2(0, 1562), Vector2(0, -80), Vector2(0, 0)]
 }
 tracks/1/type = "method"
 tracks/1/imported = false
@@ -264,8 +443,42 @@ tracks/1/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_30k15"]
+resource_name = "Answer_Enter"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../pivotHboxController/HBoxContainer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.5),
+"transitions": PackedFloat32Array(0.5, 1, 1),
+"update": 0,
+"values": [Vector2(0, 712), Vector2(0, -55), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_0r5nc"]
+resource_name = "Answer_Exit"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../pivotHboxController/HBoxContainer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.5),
+"transitions": PackedFloat32Array(1, 2, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -55), Vector2(0, 722)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_h810o"]
 _data = {
+"Answer_Enter": SubResource("Animation_30k15"),
+"Answer_Exit": SubResource("Animation_0r5nc"),
 "RESET": SubResource("Animation_jcupq"),
 "enero_enter": SubResource("Animation_pmrq2")
 }
@@ -608,7 +821,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Spot" type="Control" parent="Instancia1" node_paths=PackedStringArray("container")]
+[node name="Spot" type="Control" parent="Instancia1"]
 layout_mode = 1
 anchor_left = 0.499
 anchor_top = 0.409
@@ -620,14 +833,11 @@ offset_right = -0.279968
 offset_bottom = -0.52002
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(3.12286, 3.12286)
 script = ExtResource("10_soou1")
 radius_facus = 0.3
-container = NodePath("../HBoxContainer")
 
 [node name="Enero" type="Node2D" parent="Instancia1/Spot"]
-position = Vector2(0, 584.401)
-scale = Vector2(0.32022, 0.32022)
+position = Vector2(0, 1562)
 
 [node name="Calendario_Enero" type="Sprite2D" parent="Instancia1/Spot/Enero"]
 material = SubResource("ShaderMaterial_6rajr")
@@ -635,16 +845,73 @@ scale = Vector2(9.13115, 9.13115)
 texture = ExtResource("13_dnqs4")
 offset = Vector2(-2.985, 6.44)
 
-[node name="Spot" type="Area2D" parent="Instancia1/Spot"]
+[node name="DateQuestion" type="Node2D" parent="Instancia1/Spot"]
+visible = false
+
+[node name="MASK" type="Sprite2D" parent="Instancia1/Spot/DateQuestion"]
+self_modulate = Color(0.25, 0.265625, 0.25, 1)
+clip_children = 2
+scale = Vector2(0.658, 0.658)
+texture = ExtResource("13_6mi6a")
+
+[node name="date" type="Sprite2D" parent="Instancia1/Spot/DateQuestion/MASK"]
+scale = Vector2(1.51976, 1.51976)
+texture = ExtResource("14_3f44g")
+
+[node name="Label" type="Label" parent="Instancia1/Spot/DateQuestion/MASK/date"]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.229
+anchor_right = 0.5
+anchor_bottom = 0.229
+offset_left = -389.0
+offset_top = -212.86
+offset_right = -211.0
+offset_bottom = -126.86
+grow_horizontal = 2
+text = "MAYO"
+label_settings = ExtResource("15_44ljj")
+
+[node name="AnswerController" type="Node2D" parent="Instancia1/Spot" node_paths=PackedStringArray("hBoxConteiner")]
+script = ExtResource("13_jroje")
+hBoxConteiner = NodePath("../../HBoxContainer")
+
+[node name="AnswerSpot" type="Node2D" parent="Instancia1/Spot/AnswerController"]
+
+[node name="answer" type="Sprite2D" parent="Instancia1/Spot/AnswerController/AnswerSpot"]
+
+[node name="Spot" type="Area2D" parent="Instancia1/Spot/AnswerController" node_paths=PackedStringArray("RigthObject")]
 modulate = Color(1, 1, 1, 0)
 script = ExtResource("7_ey52d")
+RigthObject = NodePath("../../../HBoxContainer/Date1/DragObject")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia1/Spot/Spot"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instancia1/Spot/AnswerController/Spot"]
 shape = SubResource("RectangleShape2D_b8dn8")
 
-[node name="Sprite2D" type="Sprite2D" parent="Instancia1/Spot/Spot"]
+[node name="Sprite2D" type="Sprite2D" parent="Instancia1/Spot/AnswerController/Spot"]
 scale = Vector2(0.46729, 1)
 texture = ExtResource("8_jvt1r")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Instancia1/Spot/AnswerController"]
+root_node = NodePath("../../../..")
+libraries = {
+"": SubResource("AnimationLibrary_lqutb")
+}
+
+[node name="BlackRectangles" type="Node2D" parent="Instancia1/Spot/AnswerController"]
+
+[node name="parpado" type="Polygon2D" parent="Instancia1/Spot/AnswerController/BlackRectangles"]
+position = Vector2(0, 200)
+scale = Vector2(1, 0.985714)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(-339, 4, -288, -70.058, -215, -126, -117, -170.493, -3.00003, -180.638, 101, -173.536, 197, -137.014, 271, -79.1884, 335, 4, 326, -589.478, -339, -591.507)
+
+[node name="parpado2" type="Polygon2D" parent="Instancia1/Spot/AnswerController/BlackRectangles"]
+position = Vector2(0, -200)
+rotation = 3.14159
+scale = Vector2(1, 0.985714)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(-339, 4, -288, -70.058, -215, -126, -117, -170.493, -3.00003, -180.638, 101, -173.536, 197, -137.014, 271, -79.1884, 335, 4, 326, -589.478, -339, -591.507)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Instancia1/Spot"]
 root_node = NodePath("../Enero")
@@ -652,6 +919,34 @@ autoplay = "enero_enter"
 libraries = {
 "": SubResource("AnimationLibrary_h810o")
 }
+
+[node name="Panel" type="Panel" parent="Instancia1/Spot"]
+visible = false
+layout_mode = 0
+offset_left = -320.0
+offset_top = -487.0
+offset_right = 322.0
+offset_bottom = -226.0
+theme = ExtResource("5_1uwyd")
+
+[node name="Label" type="Label" parent="Instancia1/Spot/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -222.0
+offset_top = -64.5
+offset_right = 222.0
+offset_bottom = 64.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "¿QUÉ PASÓ EN ENERO?"
+label_settings = ExtResource("7_k8bes")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
 
 [node name="HBoxContainer" type="Control" parent="Instancia1"]
 visible = false
@@ -672,11 +967,11 @@ limitHold = 300.0
 limitunderHolf = 20.0
 
 [node name="Date1" type="Sprite2D" parent="Instancia1/HBoxContainer"]
-position = Vector2(57.1429, 329)
+position = Vector2(228, 329)
 texture = ExtResource("4_178gl")
 
 [node name="DragObject" parent="Instancia1/HBoxContainer/Date1" node_paths=PackedStringArray("spot") instance=ExtResource("3_85w11")]
-spot = NodePath("../../../Spot/Spot")
+spot = NodePath("../../../Spot/AnswerController/Spot")
 holdTime = 0.2
 DesapearInPlace = true
 
@@ -685,29 +980,30 @@ position = Vector2(776.5, 324.823)
 texture = ExtResource("4_178gl")
 
 [node name="DragObject" parent="Instancia1/HBoxContainer/Date2" node_paths=PackedStringArray("spot") instance=ExtResource("3_85w11")]
-spot = NodePath("../../../Spot/Spot")
+spot = NodePath("../../../Spot/AnswerController/Spot")
 holdTime = 0.2
 DesapearInPlace = true
 
 [node name="Date3" type="Sprite2D" parent="Instancia1/HBoxContainer"]
-position = Vector2(1494.5, 328.143)
+position = Vector2(1328, 328.143)
 texture = ExtResource("4_178gl")
 
 [node name="DragObject" parent="Instancia1/HBoxContainer/Date3" node_paths=PackedStringArray("spot") instance=ExtResource("3_85w11")]
-spot = NodePath("../../../Spot/Spot")
+spot = NodePath("../../../Spot/AnswerController/Spot")
 holdTime = 0.2
 DesapearInPlace = true
 
 [node name="Date4" type="Sprite2D" parent="Instancia1/HBoxContainer"]
-position = Vector2(2224.5, 326.429)
+position = Vector2(1875, 326.429)
 texture = ExtResource("4_178gl")
 
 [node name="DragObject" parent="Instancia1/HBoxContainer/Date4" node_paths=PackedStringArray("spot") instance=ExtResource("3_85w11")]
-spot = NodePath("../../../Spot/Spot")
+spot = NodePath("../../../Spot/AnswerController/Spot")
 holdTime = 0.2
 DesapearInPlace = true
 
 [node name="Button" type="Button" parent="Instancia1"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -726,6 +1022,7 @@ one_shot = true
 [connection signal="pressed" from="intro/Panel3/Button" to="intro/Panel4" method="SetVisibility" binds= [true]]
 [connection signal="pressed" from="intro/Panel3/Button" to="intro/AnimationPlayer" method="PlayAnim" binds= ["questions"]]
 [connection signal="pressed" from="intro/Panel4/Button" to="intro/AnimationPlayer" method="PlayAnim" binds= ["pass"]]
+[connection signal="OnSpot" from="Instancia1/Spot/AnswerController/Spot" to="Instancia1/HBoxContainer" method="SetPlate"]
 [connection signal="isScrolling" from="Instancia1/HBoxContainer" to="Instancia1/HBoxContainer/Date1/DragObject" method="CancelDrag"]
 [connection signal="isScrolling" from="Instancia1/HBoxContainer" to="Instancia1/HBoxContainer/Date2/DragObject" method="CancelDrag"]
 [connection signal="isScrolling" from="Instancia1/HBoxContainer" to="Instancia1/HBoxContainer/Date3/DragObject" method="CancelDrag"]

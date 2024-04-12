@@ -6,19 +6,36 @@ uniform vec2 focus_point = vec2(0.5, 0.5);
 uniform float focus_radius = 0.1;
 uniform bool ColorBackground;
 uniform vec4 BackgroundColor : source_color;
+uniform bool DrawTransparent;
 uniform float xOffset;
 uniform float yOffset;
 
 void fragment() {
+	vec2 floatVector = vec2(textureSize(TEXTURE,0));
+	
+	vec2 normalizedUV = UV / floatVector;
+	float aspectRatio = floatVector.x / floatVector.y;
+	
+	float normalizedRadius = focus_radius / max(floatVector.x, floatVector.y) * aspectRatio;
+	vec2 normalizedFocusPoint = focus_point / floatVector;
+	float adjustedDistance = distance(normalizedFocusPoint, normalizedUV * vec2(1.0, aspectRatio));
+	
 	vec4 color = texture(TEXTURE, UV);
 	vec4 color_up = texture(TEXTURE, UV + vec2(0.0, blur_amount.y));
 	vec4 color_down = texture(TEXTURE, UV + vec2(0.0, -blur_amount.y));
 	vec4 color_left = texture(TEXTURE, UV + vec2(-blur_amount.x, 0.0));
 	vec4 color_right = texture(TEXTURE, UV + vec2(blur_amount.x, 0.0));
+
 	
-	
-	if(distance(focus_point + vec2(xOffset,yOffset ), UV) < focus_radius) {
-		COLOR = color;
+	if(adjustedDistance < normalizedRadius ) {
+		if (DrawTransparent)
+		{
+			COLOR = vec4(0,0,0,0);
+		}
+		else{
+			COLOR = color;
+		}
+		
 	}
 	else {
 		

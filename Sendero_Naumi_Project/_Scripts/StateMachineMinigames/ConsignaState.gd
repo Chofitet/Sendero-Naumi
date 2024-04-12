@@ -19,5 +19,6 @@ func Exit():
 
 func SetConsigna():
 	var textConsigna = Consignas[GetFixedIndex(Consignas)]
+	if !get_node("Contenido/LblConsigna"): return
 	get_node("Contenido/LblConsigna").set_deferred("text", textConsigna) 
 
