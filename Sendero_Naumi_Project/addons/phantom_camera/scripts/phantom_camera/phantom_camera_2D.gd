@@ -86,21 +86,28 @@ var _camera_offset: Vector2
 
 @export var CamOffsetH : float
 @export var CamOffsetY : float
+var inZoom : bool
 #endregion
 
 #CustomMethods
 var inLimit : bool
 var FinalOffsetVector
+var enterPosition
 func _physics_process(delta):
 	if Engine.is_editor_hint(): return
 	var t 
 	if get_follow_mode() == Constants.FollowMode.NONE : return
 	if get_follow_target_node().has_method("_get_follow_node_direction") :
-		if !inLimit:
+		
+		if !inLimit and !inZoom:
 			FinalOffsetVector = get_follow_target_node()._get_follow_node_direction().normalized() * Vector2(CamOffsetH,CamOffsetY)
 			t = 120
 		else:
 			t = 10
+		if inZoom:
+			FinalOffsetVector =  get_follow_target_node()._get_follow_node_direction().normalized() * Vector2(CamOffsetH,CamOffsetY)
+			position.x = 913
+			t = 120
 		_set_offset_cam(FinalOffsetVector, delta,t)
 	
 var OffsetVector : Vector2
@@ -111,8 +118,13 @@ func _set_offset_cam(x, delta, time):
 	set_follow_target_offset(OffsetVector) 
 
 func _set_zoom_cam(vector,time):
+	if vector == Vector2.ONE: inZoom = false
+	else: 
+		enterPosition = get_follow_target_node().position.x
+		inZoom = true
 	var tween = get_tree().create_tween()
 	tween.tween_property(self,"zoom", vector,time * get_process_delta_time())
+
 
 #region Properties
 

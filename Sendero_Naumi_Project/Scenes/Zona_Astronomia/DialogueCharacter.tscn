@@ -1,0 +1,66 @@
+[gd_scene load_steps=5 format=3 uid="uid://blcdo5n6nfd6h"]
+
+[ext_resource type="Script" path="res://_Scripts/MinG_Astronauta/ProximityDialogue.gd" id="1_80e3r"]
+[ext_resource type="Texture2D" uid="uid://b2op8eppn0juv" path="res://Sprites/ZonaAstronomia/Astronauta.png" id="2_0hjg3"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_oliqe"]
+radius = 104.251
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pjxkq"]
+bg_color = Color(0.862745, 0.862745, 0.862745, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[node name="TheGuy" type="Node2D"]
+script = ExtResource("1_80e3r")
+player = NodePath("../Instancia1/Astronauta")
+txt = "Esto es un dialogo"
+ScaleFactorDialogue = 1.0
+DialogueDistance = Vector2(55.005, -160.26)
+AstronautAngle = -1.66
+
+[node name="sprite" type="Sprite2D" parent="."]
+rotation = -1.66
+scale = Vector2(2.13559, 2.13559)
+texture = ExtResource("2_0hjg3")
+
+[node name="Area2D" type="Area2D" parent="."]
+rotation = -1.5708
+scale = Vector2(2.13559, 2.13559)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_oliqe")
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = 55.005
+offset_top = -160.26
+offset_right = 314.005
+offset_bottom = -86.26
+pivot_offset = Vector2(0, 84.58)
+theme_override_styles/panel = SubResource("StyleBoxFlat_pjxkq")
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -130.5
+offset_top = -19.0
+offset_right = 130.5
+offset_bottom = 19.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 25
+text = "Esto es un dialogo"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Polygon2D" type="Polygon2D" parent="Panel"]
+color = Color(0.859375, 0.859375, 0.859375, 1)
+polygon = PackedVector2Array(17, 74, 0, 86, 0, 53)

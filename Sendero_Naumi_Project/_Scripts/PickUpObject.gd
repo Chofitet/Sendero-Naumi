@@ -1,7 +1,10 @@
+@tool
 extends Area2D
 
 
-@export var _texture : Texture
+@export var _texture : Texture:
+	set (new_value):
+		_texture = new_value
 @export var rotation_speed : float
 
 func _ready():

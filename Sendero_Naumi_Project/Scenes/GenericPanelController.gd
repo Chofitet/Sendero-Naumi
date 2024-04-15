@@ -14,6 +14,8 @@ func _ready():
 			btn.visible = false
 			if SetVisibleFalseWithBtn:
 				btn.pressed.connect(SetVisibility.bind(false))
+		if btn is Area2D:
+			btn.area_entered.connect(SetVisibilityFalseArea2D)
 	draw.connect(StartTimer)
 	
 	
@@ -36,6 +38,9 @@ func check_pixels_rendered():
 
 func SetVisibility(x):
 	visible = x
+
+func SetVisibilityFalseArea2D(x):
+	visible = false
 
 func StartTimerToAppear():
 	await get_tree().create_timer(timeToAppear).timeout
