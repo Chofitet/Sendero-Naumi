@@ -32,3 +32,6 @@ func InDraggin():
 
 func MouseRealese():
 	anim.play("idle")
+
+func PlayAnimTitulo():
+	$Sprites/Layer0/titulo/AnimationPlayer.play("titulo_anim")

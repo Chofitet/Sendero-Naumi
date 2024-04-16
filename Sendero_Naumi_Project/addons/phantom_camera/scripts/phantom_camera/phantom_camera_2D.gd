@@ -106,6 +106,8 @@ func _physics_process(delta):
 			t = 10
 		if inZoom:
 			FinalOffsetVector =  get_follow_target_node()._get_follow_node_direction().normalized() * Vector2(CamOffsetH,CamOffsetY)
+			if position.y < -13000:
+				position.y = -13000
 			position.x = 913
 			t = 120
 		_set_offset_cam(FinalOffsetVector, delta,t)

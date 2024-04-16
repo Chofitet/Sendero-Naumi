@@ -1,16 +1,55 @@
-[gd_scene load_steps=16 format=3 uid="uid://7ypbdd5rheui"]
+[gd_scene load_steps=21 format=3 uid="uid://7ypbdd5rheui"]
 
 [ext_resource type="PackedScene" uid="uid://ci3c3pocxiywq" path="res://Scenes/Experiments/drag_object.tscn" id="1_1vclv"]
 [ext_resource type="Script" path="res://_Scripts/MinG_Mamushka/mamushka_controller.gd" id="1_vp2p0"]
-[ext_resource type="Texture2D" uid="uid://bmo7ofh7n6xnd" path="res://Sprites/ZonaAstronomia/Mamushka_Nucleo.png" id="3_8xnbq"]
-[ext_resource type="Texture2D" uid="uid://da6hjyn0lo2y0" path="res://Sprites/ZonaAstronomia/Mamushka_Arriba_Layer3.png" id="4_0rd8j"]
-[ext_resource type="Texture2D" uid="uid://ccn14hstafcs2" path="res://Sprites/ZonaAstronomia/Mamushka_Abajo_Layer1_S.png" id="4_xnfnv"]
-[ext_resource type="Texture2D" uid="uid://dpnclrykjhq8f" path="res://Sprites/ZonaAstronomia/Mamushka_Arriba.png" id="4_yj1g3"]
-[ext_resource type="Texture2D" uid="uid://hx1cqmcicau6" path="res://Sprites/ZonaAstronomia/Mamushka_Arriba_Layer1.png" id="4_ynnr7"]
-[ext_resource type="Texture2D" uid="uid://ddkrprbwf054f" path="res://Sprites/ZonaAstronomia/Mamushka_Arriba_Layer2_S.png" id="6_w8l6n"]
-[ext_resource type="Texture2D" uid="uid://kltd8mxosvuj" path="res://Sprites/ZonaAstronomia/Mamushka_Abajo_Layer2.png" id="7_q7t1h"]
-[ext_resource type="Texture2D" uid="uid://cfem44pns2kyy" path="res://Sprites/ZonaAstronomia/Mamushka_Abajo_Layer3_S.png" id="8_rj6o0"]
-[ext_resource type="Texture2D" uid="uid://5jla3pxvtm0j" path="res://Sprites/ZonaAstronomia/Mamushka_Abajo_S.png" id="10_vh3oj"]
+[ext_resource type="Texture2D" uid="uid://dt7a1hlrffbp5" path="res://Sprites/ZonaAstronomia/nucleo interno orbe - matryoshka.png" id="2_mq7ap"]
+[ext_resource type="Texture2D" uid="uid://hndpxlxqn8cp" path="res://Sprites/ZonaAstronomia/nucleo interno cabeza - matryoshka.png" id="3_mop5m"]
+[ext_resource type="Texture2D" uid="uid://dvxyarv13qcnc" path="res://Sprites/ZonaAstronomia/nucleo interno titulo - matryoshka.png" id="4_615u1"]
+[ext_resource type="Texture2D" uid="uid://b2fcti66m2xj6" path="res://Sprites/ZonaAstronomia/nucleo externo cadera - matryoshka.png" id="4_vtdnp"]
+[ext_resource type="Texture2D" uid="uid://b6u3ourwabx6u" path="res://Sprites/ZonaAstronomia/nucleo externo cabeza - matryoshka.png" id="5_cfk08"]
+[ext_resource type="Texture2D" uid="uid://bdr53jvrjkxj3" path="res://Sprites/ZonaAstronomia/manto inferior cadera - matryoshka.png" id="6_705o7"]
+[ext_resource type="Texture2D" uid="uid://bxvsh6ftcgtqb" path="res://Sprites/ZonaAstronomia/manto inferior cabeza - matryoshka.png" id="7_kj77h"]
+[ext_resource type="Texture2D" uid="uid://bawvtie0lnxa6" path="res://Sprites/ZonaAstronomia/manto superior cadera - matryoshka.png" id="8_olphd"]
+[ext_resource type="Texture2D" uid="uid://c0nbss33gavx8" path="res://Sprites/ZonaAstronomia/manto superior cabeza - matryoshka.png" id="9_goi1i"]
+[ext_resource type="Texture2D" uid="uid://d32row7tshqb0" path="res://Sprites/ZonaAstronomia/corteza cadera - matryoshka.png" id="10_pihha"]
+[ext_resource type="Texture2D" uid="uid://i35qq4wfk7ig" path="res://Sprites/ZonaAstronomia/corteza cabeza - matryoshka.png" id="11_eextx"]
+
+[sub_resource type="Animation" id="Animation_1wwsl"]
+resource_name = "titulo_anim"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ixei7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_v5xse"]
+_data = {
+"RESET": SubResource("Animation_ixei7"),
+"titulo_anim": SubResource("Animation_1wwsl")
+}
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4gsva"]
 radius = 26.0
@@ -59,56 +98,63 @@ script = ExtResource("1_vp2p0")
 
 [node name="Sprites" type="Node2D" parent="."]
 
-[node name="Layer0" type="Sprite2D" parent="Sprites"]
-texture = ExtResource("3_8xnbq")
+[node name="Layer0" type="Node2D" parent="Sprites"]
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Sprites/Layer0"]
-offset_left = -122.0
-offset_right = 121.0
-offset_bottom = 40.0
-theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_colors/font_selected_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/normal_font_size = 12
-theme_override_font_sizes/bold_font_size = 12
-bbcode_enabled = true
-text = "[center]NUCLEO
- INTERNO"
+[node name="Layer5" type="Sprite2D" parent="Sprites/Layer0"]
+position = Vector2(0, 25)
+texture = ExtResource("2_mq7ap")
+
+[node name="Layer0" type="Sprite2D" parent="Sprites/Layer0"]
+texture = ExtResource("3_mop5m")
+
+[node name="titulo" type="Sprite2D" parent="Sprites/Layer0"]
+self_modulate = Color(1, 1, 1, 0)
+texture = ExtResource("4_615u1")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprites/Layer0/titulo"]
+libraries = {
+"": SubResource("AnimationLibrary_v5xse")
+}
 
 [node name="Layer1" type="Node2D" parent="Sprites"]
 visible = false
 
 [node name="Sprite2D" type="Sprite2D" parent="Sprites/Layer1"]
-texture = ExtResource("4_xnfnv")
+texture = ExtResource("4_vtdnp")
+flip_h = true
 
 [node name="Sprite2D2" type="Sprite2D" parent="Sprites/Layer1"]
-texture = ExtResource("4_ynnr7")
+texture = ExtResource("5_cfk08")
+flip_h = true
 
 [node name="Layer2" type="Node2D" parent="Sprites"]
 visible = false
 
 [node name="Sprite2D2" type="Sprite2D" parent="Sprites/Layer2"]
-texture = ExtResource("6_w8l6n")
+texture = ExtResource("6_705o7")
 
 [node name="Sprite2D" type="Sprite2D" parent="Sprites/Layer2"]
-texture = ExtResource("7_q7t1h")
+texture = ExtResource("7_kj77h")
 
 [node name="Layer3" type="Node2D" parent="Sprites"]
 visible = false
 
 [node name="Sprite2D" type="Sprite2D" parent="Sprites/Layer3"]
-texture = ExtResource("8_rj6o0")
+texture = ExtResource("8_olphd")
 
 [node name="Sprite2D2" type="Sprite2D" parent="Sprites/Layer3"]
-texture = ExtResource("4_0rd8j")
+texture = ExtResource("9_goi1i")
 
 [node name="Layer4" type="Node2D" parent="Sprites"]
 visible = false
 
 [node name="Sprite2D" type="Sprite2D" parent="Sprites/Layer4"]
-texture = ExtResource("10_vh3oj")
+texture = ExtResource("10_pihha")
+flip_h = true
 
 [node name="Sprite2D2" type="Sprite2D" parent="Sprites/Layer4"]
-texture = ExtResource("4_yj1g3")
+texture = ExtResource("11_eextx")
+flip_h = true
 
 [node name="DragObject" parent="." instance=ExtResource("1_1vclv")]
 PlaceInAllSpots = true

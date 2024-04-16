@@ -33,8 +33,6 @@ func _input(event: InputEvent) -> void:
 		sprite.add_child(particleInstance)
 		particleInstance.rotation = direction.angle()
 		particleInstance.emitting = true
-		await get_tree().create_timer(particleInstance.lifetime).timeout
-		particleInstance.queue_free()
 	if Input.is_action_pressed("TouchScreen"):
 		if isBlock: return
 		target_position= event.position

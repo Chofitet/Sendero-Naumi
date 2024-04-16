@@ -1,6 +1,6 @@
 @tool
 extends Area2D
-
+signal  Picked
 
 @export var _texture : Texture:
 	set (new_value):
@@ -13,7 +13,8 @@ func _ready():
 	$CollisionShape2D.shape.radius = $Sprite2D.scale.x
 
 func PickObject(x):
-	pass
+	if x.is_in_group("Player"):
+		Picked.emit()
 
 func _process(delta):
 	rotate(rotation_speed*delta)

@@ -13,3 +13,4 @@ func _ready():
 func _process(delta):
 	d += delta * speed2
 	global_position = Vector2(sin(d*speed) * radius,cos(d*speed) * radius) + CenterObject.global_position
+
