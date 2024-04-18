@@ -1,6 +1,11 @@
 extends Control
 
-var anim
+@export var piedraTexture : Texture2D:
+	set(new_value):
+		piedraTexture = new_value
+
+@onready var anim = $AnimController
+@export var animBackground : AnimationPlayer
 var piedra
 var isnextAnim
 var timerLoopLook
@@ -14,10 +19,10 @@ var animFlip = "Anim_rigth"
 @export var particle2 : CPUParticles2D
 var background
 @export var SetVisibility := []
+var animationSprite
 
 func _ready():
-	btnvolver = $"../../../btnVolver"
-	anim = get_node("AnimController")
+	$Piedra/Piedra.texture = piedraTexture
 	timerLoopLook = get_node("LoopLookAnim")
 	timerLoopLook.timeout.connect(LookAnim)
 	timerLoopLook.wait_time=6
@@ -26,6 +31,9 @@ func _ready():
 	piedra = get_node("Piedra/Piedra")
 	anim.play("rock_look")
 	background = get_node("BackgroundPivot/Background")
+	if $Piedra/AnimPiedra1:
+		animationSprite = $Piedra/AnimPiedra1
+		anim.animation_started.connect(PlayAnimatedSprite)
 
 func LookAnim():
 	if !isnextAnim:
@@ -38,7 +46,6 @@ func NextAnim():
 
 func vuvuzelaAnim():
 	if(isnextAnim):
-		btnvolver.visible = false
 		anim.play("anim_vuvuzela_up")
 
 func JumpAnim():
@@ -85,31 +92,16 @@ func LoopLoseAnim():
 	timerLoopLook.wait_time=3
 	timerLoopLook.start()
 
-func moveToMask():
-	var mask = get_parent().get_node("Mask")
-	backgroundpivot.reparent(mask, true)
-	
-
 func AnimBackground():
-	get_parent().get_parent().get_node("AnimBackground").play(animFlip)
+	animBackground.play(animFlip)
+	
 
 func StopFlipAnim():
 	if !isWinner:
-		moveToMask()
 		EndAnim()
 
 func MaskAnim():
-	get_parent().get_parent().get_node("AnimBackground").play("Anim_mask")
+	animBackground.play("Anim_mask")
 
-func checkWinnerCondition():
-	if !isWinner:
-		moveToMask()
-
-func resetAllAnimation():
-	btnvolver.visible = true
-	particle1.visible = false
-	particle2.visible = false
-	particle1.emitting = false
-	particle2.emitting = false
-	anim.play("RESET")
-	get_parent().get_parent().get_node("AnimBackground").play("RESET")
+func PlayAnimatedSprite(x):
+	animationSprite.play(x)
