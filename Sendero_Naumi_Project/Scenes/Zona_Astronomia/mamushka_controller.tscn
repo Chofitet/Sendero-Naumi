@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://7ypbdd5rheui"]
+[gd_scene load_steps=24 format=3 uid="uid://7ypbdd5rheui"]
 
 [ext_resource type="PackedScene" uid="uid://ci3c3pocxiywq" path="res://Scenes/Experiments/drag_object.tscn" id="1_1vclv"]
 [ext_resource type="Script" path="res://_Scripts/MinG_Mamushka/mamushka_controller.gd" id="1_vp2p0"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://c0nbss33gavx8" path="res://Sprites/ZonaAstronomia/manto superior cabeza - matryoshka.png" id="9_goi1i"]
 [ext_resource type="Texture2D" uid="uid://d32row7tshqb0" path="res://Sprites/ZonaAstronomia/corteza cadera - matryoshka.png" id="10_pihha"]
 [ext_resource type="Texture2D" uid="uid://i35qq4wfk7ig" path="res://Sprites/ZonaAstronomia/corteza cabeza - matryoshka.png" id="11_eextx"]
+[ext_resource type="SpriteFrames" uid="uid://ccg0trgfp1e7r" path="res://Resources/mamushkasAnimatedEmotions/mamushka_Corteza_anim.tres" id="13_vk4tl"]
 
 [sub_resource type="Animation" id="Animation_ixei7"]
 length = 0.001
@@ -69,6 +70,54 @@ tracks/0/keys = {
 "update": 0,
 "values": [0.0]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprites/Layer4/Sprite2D3:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_1gwp8"]
 resource_name = "idle"
@@ -87,10 +136,68 @@ tracks/0/keys = {
 "values": [-0.0872665, 0.0872665]
 }
 
+[sub_resource type="Animation" id="Animation_cyvqp"]
+resource_name = "to_final"
+length = 6.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(3, 6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(2.13, 2.13)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(3, 6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -172)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprites/Layer4/Sprite2D3:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-16.9161, -1503.9)]
+}
+
+[sub_resource type="Animation" id="Animation_8qvhm"]
+resource_name = "opacity"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7p0wm"]
 _data = {
 "RESET": SubResource("Animation_pvjbg"),
-"idle": SubResource("Animation_1gwp8")
+"idle": SubResource("Animation_1gwp8"),
+"opacity": SubResource("Animation_8qvhm"),
+"to_final": SubResource("Animation_cyvqp")
 }
 
 [node name="mamushkaController" type="Node2D"]
@@ -156,6 +263,17 @@ flip_h = true
 texture = ExtResource("11_eextx")
 flip_h = true
 
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Sprites/Layer4"]
+position = Vector2(-141, -229)
+sprite_frames = ExtResource("13_vk4tl")
+animation = &"idle"
+autoplay = "idle"
+centered = false
+
+[node name="Sprite2D3" type="Sprite2D" parent="Sprites/Layer4"]
+texture = ExtResource("11_eextx")
+flip_h = true
+
 [node name="DragObject" parent="." instance=ExtResource("1_1vclv")]
 PlaceInAllSpots = true
 tweenTime = 0.3
@@ -174,5 +292,20 @@ speed_scale = 4.0
 libraries = {
 "": SubResource("AnimationLibrary_7p0wm")
 }
+
+[node name="ButtonFinal" type="Button" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -210.0
+offset_top = -299.0
+offset_right = 210.0
+offset_bottom = 299.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
 
 [editable path="DragObject"]

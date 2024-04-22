@@ -47,7 +47,10 @@ func Move(delta):
 	if !isPressing:
 		Apply_Friction(friction * delta)
 	else:
-		direction = (target_position - get_viewport_rect().get_center()).normalized()
+		if !PhantomCam.outOfBounds:
+			direction = (target_position - get_viewport_rect().get_center()).normalized()
+		else: direction = (target_position - get_global_transform_with_canvas().get_origin()).normalized()
+		
 		RotateToDirectionSmoothly(delta)
 		Apply_Movement(direction * acceleration * delta)
 	
@@ -84,7 +87,6 @@ func GetPickUpObjects(x):
 		pcInventary.CheckMeteoro(GetMeteoroIndex(x))
 		x.queue_free()
 		Meteoros.append(x)
-		print(Meteoros.size())
 	
 	if Meteoros.size() == 3:
 		AllCollect.emit()

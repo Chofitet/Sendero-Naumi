@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://cmi6pyso7kswe"]
+[gd_scene load_steps=47 format=3 uid="uid://cmi6pyso7kswe"]
 
 [ext_resource type="Script" path="res://_Scripts/Minigame_Save_Controller.gd" id="1_8wifm"]
 [ext_resource type="Texture2D" uid="uid://nuybqhitpej1" path="res://Sprites/Mapa/fondo_mapa.png" id="2_feayv"]
@@ -26,6 +26,7 @@
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/JuegoState.gd" id="20_mbp0a"]
 [ext_resource type="PackedScene" uid="uid://y2uavtfxilcv" path="res://Scenes/Zona_Astronomia/mamushka_layer.tscn" id="21_au4ea"]
 [ext_resource type="Texture2D" uid="uid://i35qq4wfk7ig" path="res://Sprites/ZonaAstronomia/corteza cabeza - matryoshka.png" id="21_b44a8"]
+[ext_resource type="Script" path="res://Scenes/GenericPanelController.gd" id="23_2cpnv"]
 [ext_resource type="PackedScene" uid="uid://7ypbdd5rheui" path="res://Scenes/Zona_Astronomia/mamushka_controller.tscn" id="26_7ew2e"]
 [ext_resource type="PackedScene" uid="uid://dlwmbps456ind" path="res://Scenes/Experiments/btnVolver.tscn" id="27_e3ccu"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/MoralejaState.gd" id="27_i6a7j"]
@@ -35,6 +36,7 @@
 [ext_resource type="Texture2D" uid="uid://bwmm8duicyds0" path="res://Sprites/ZonaAstronomia/manto inferior traste - matryoshka.png" id="29_im8nw"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/FinState.gd" id="29_ku3po"]
 [ext_resource type="Texture2D" uid="uid://bvctyxt4id4qo" path="res://Sprites/ZonaAstronomia/corteza traste - matryoshka.png" id="30_lnyp6"]
+[ext_resource type="Script" path="res://_Scripts/PlayAnimation.gd" id="33_hpa81"]
 
 [sub_resource type="Animation" id="Animation_xsrm7"]
 resource_name = "Intro_2"
@@ -70,11 +72,23 @@ tracks/2/path = NodePath("../Panel/Label:text")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0),
+"times": PackedFloat32Array(2),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": ["AL CENTRO DE ESTA SE ENCUENTRA EL NÚCLEO INTERNO
 "]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Panel:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(2),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_80ij2"]
@@ -155,6 +169,18 @@ tracks/1/keys = {
 "values": ["¿EN QUÉ ORDEN TE PARECE QUE VAN?
 "]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Panel:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(20, 413)]
+}
 
 [sub_resource type="Animation" id="Animation_2a1hy"]
 length = 0.001
@@ -216,7 +242,7 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [false]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -230,10 +256,22 @@ tracks/5/keys = {
 "update": 0,
 "values": [Vector2(0, -979)]
 }
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../Panel:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(19, 36)]
+}
 
 [sub_resource type="Animation" id="Animation_uq6bu"]
 resource_name = "intro"
-length = 2.5
+length = 4.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -241,7 +279,7 @@ tracks/0/path = NodePath("Corteza:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(1, 2.5),
+"times": PackedFloat32Array(2, 3.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
@@ -249,26 +287,38 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../Panel/Button:visible")
+tracks/1/path = NodePath("../Panel/Label:text")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(1, 2.5),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(3.5),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false, true]
+"values": ["LA TIERRA ESTÁ COMPUESTA POR VARIAS CAPAS"]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("../Panel/Label:text")
+tracks/2/path = NodePath("../Panel:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(1),
+"times": PackedFloat32Array(2, 3.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Panel/Button:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(4.5),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": ["LA TIERRA ESTÁ COMPUESTA POR VARIAS CAPAS"]
+"values": [true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_082ak"]
@@ -278,6 +328,163 @@ _data = {
 "Intro_4": SubResource("Animation_7j2vf"),
 "RESET": SubResource("Animation_2a1hy"),
 "intro_1": SubResource("Animation_uq6bu")
+}
+
+[sub_resource type="Animation" id="Animation_5jrnu"]
+resource_name = "anim_outro"
+length = 2.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mamushka1/marron:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-165, -226), Vector2(48, 55), Vector2(34, 30)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Mamushka2/amarillo:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(386, -180), Vector2(198, 85), Vector2(220, 51)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Mamushka3/verde:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-124, 406), Vector2(66, 177), Vector2(38, 211)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Mamushka4/naranja:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(389, 397), Vector2(209, 186), Vector2(230, 213)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Mamushka5/celeste:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(130, 664), Vector2(130, 200), Vector2(130, 244)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Tierra Capas/Corteza:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.4, 2.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_uf5bf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mamushka1/marron:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-200, -200)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Mamushka2/amarillo:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(200, -200)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Mamushka3/verde:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-200, 200)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Mamushka4/naranja:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(800, 200)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Mamushka5/celeste:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(100, 800)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Tierra Capas/Corteza:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vkf7x"]
+_data = {
+"RESET": SubResource("Animation_uf5bf"),
+"anim_outro": SubResource("Animation_5jrnu")
 }
 
 [node name="Mamushkas" type="Control"]
@@ -329,6 +536,7 @@ script = ExtResource("4_cjbo7")
 Consignas = ["Hey esto es una consigna"]
 
 [node name="Contenido" type="Control" parent="Mamushkas/StateMachine/Consigna"]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -372,11 +580,11 @@ script = ExtResource("5_fdjm2")
 [node name="Tierra Capas" type="Control" parent="Mamushkas/StateMachine/Consigna/Contenido/Intro"]
 layout_mode = 1
 anchor_left = 0.5
-anchor_top = 0.616
+anchor_top = 0.523
 anchor_right = 0.5
-anchor_bottom = 0.616
-offset_top = -118.48
-offset_bottom = -0.480103
+anchor_bottom = 0.523
+offset_top = 0.559998
+offset_bottom = 118.56
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -416,12 +624,11 @@ libraries = {
 
 [node name="MamushkasUp" type="Control" parent="Mamushkas/StateMachine/Consigna/Contenido/Intro"]
 layout_mode = 1
+anchors_preset = 5
 anchor_left = 0.5
-anchor_top = 0.357
 anchor_right = 0.5
-anchor_bottom = 0.357
-offset_top = -82.96
-offset_bottom = 0.039978
+offset_top = 374.0
+offset_bottom = 457.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -496,16 +703,22 @@ texture = ExtResource("21_b44a8")
 flip_h = true
 
 [node name="Panel" type="Panel" parent="Mamushkas/StateMachine/Consigna/Contenido/Intro"]
+visible = false
 layout_mode = 1
-anchors_preset = 5
+anchors_preset = -1
 anchor_left = 0.5
+anchor_top = 0.277
 anchor_right = 0.5
+anchor_bottom = 0.277
 offset_left = -341.0
-offset_top = 36.0
+offset_top = -318.56
 offset_right = 341.0
-offset_bottom = 280.0
+offset_bottom = -74.56
 grow_horizontal = 2
 theme = ExtResource("17_5nv3c")
+script = ExtResource("23_2cpnv")
+timeToBtn = 1.5
+SetVisibleFalseWithBtn = true
 
 [node name="Label" type="Label" parent="Mamushkas/StateMachine/Consigna/Contenido/Intro/Panel"]
 layout_mode = 1
@@ -579,6 +792,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Instancia1" type="Control" parent="Mamushkas/StateMachine/Juego/Contenido"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -616,12 +830,11 @@ isEndOfGame = true
 
 [node name="MamushkasUp" type="Control" parent="Mamushkas/StateMachine/Juego/Contenido/Instancia1"]
 layout_mode = 1
+anchors_preset = 5
 anchor_left = 0.5
-anchor_top = 0.357
 anchor_right = 0.5
-anchor_bottom = 0.357
-offset_top = -82.96
-offset_bottom = 0.039978
+offset_top = 374.0
+offset_bottom = 457.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -694,16 +907,156 @@ mamu = NodePath("../../MamushkaCenter/mamushkaController")
 
 [node name="MamushkaCenter" type="Control" parent="Mamushkas/StateMachine/Juego/Contenido/Instancia1"]
 layout_mode = 1
+anchors_preset = 8
 anchor_left = 0.5
-anchor_top = 0.592
+anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.592
-offset_top = -117.76
-offset_bottom = 0.23999
+anchor_bottom = 0.5
+offset_top = -59.0
+offset_bottom = 59.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="mamushkaController" parent="Mamushkas/StateMachine/Juego/Contenido/Instancia1/MamushkaCenter" instance=ExtResource("26_7ew2e")]
+[node name="mamushkaController" parent="Mamushkas/StateMachine/Juego/Contenido/Instancia1/MamushkaCenter" node_paths=PackedStringArray("Outro") instance=ExtResource("26_7ew2e")]
+Outro = NodePath("../../Outro")
+
+[node name="Outro" type="Control" parent="Mamushkas/StateMachine/Juego/Contenido/Instancia1"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Tierra Capas" type="Control" parent="Mamushkas/StateMachine/Juego/Contenido/Instancia1/Outro"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = -58.9999
+offset_bottom = 58.9999
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Capas" type="Node2D" parent="Mamushkas/StateMachine/Juego/Contenido/Instancia1/Outro/Tierra Capas"]
+
+[node name="Corteza2" type="Sprite2D" parent="Mamushkas/StateMachine/Juego/Contenido/Instancia1/Outro/Tierra Capas/Capas"]
+texture = ExtResource("6_jln3r")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Mamushkas/StateMachine/Juego/Contenido/Instancia1/Outro/Tierra Capas/Capas"]
+texture = ExtResource("7_0imvd")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Mamushkas/StateMachine/Juego/Contenido/Instancia1/Outro/Tierra Capas/Capas"]
+texture = ExtResource("8_hhnhm")
+
+[node name="Sprite2D4" type="Sprite2D" parent="Mamushkas/StateMachine/Juego/Contenido/Instancia1/Outro/Tierra Capas/Capas"]
+texture = ExtResource("9_rt56d")
+
+[node name="NucleoInterno" type="Node2D" parent="Mamushkas/StateMachine/Juego/Contenido/Instancia1/Outro/Tierra Capas"]
+
+[node name="Sprite2D" type="Sprite2D" parent="Mamushkas/StateMachine/Juego/Contenido/Instancia1/Outro/Tierra Capas/NucleoInterno"]
+texture = ExtResource("10_xj7ql")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Mamushkas/StateMachine/Juego/Contenido/Instancia1/Outro/Tierra Capas/NucleoInterno"]
+position = Vector2(0, -979)
+texture = ExtResource("11_di0dp")
+
+[node name="Corteza" type="Sprite2D" parent="Mamushkas/StateMachine/Juego/Contenido/Instancia1/Outro/Tierra Capas"]
+self_modulate = Color(0.359375, 0.855469, 0.960938, 1)
+scale = Vector2(0.622, 0.622)
+texture = ExtResource("6_pj2ad")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Mamushkas/StateMachine/Juego/Contenido/Instancia1/Outro"]
+libraries = {
+"": SubResource("AnimationLibrary_vkf7x")
+}
+script = ExtResource("33_hpa81")
+animation = "anim_outro"
+
+[node name="Mamushka1" type="Control" parent="Mamushkas/StateMachine/Juego/Contenido/Instancia1/Outro"]
+anchors_preset = 0
+offset_right = 262.0
+offset_bottom = 247.0
+
+[node name="marron" type="Sprite2D" parent="Mamushkas/StateMachine/Juego/Contenido/Instancia1/Outro/Mamushka1"]
+position = Vector2(-200, -200)
+rotation = 2.50377
+texture = ExtResource("17_g11at")
+
+[node name="Mamushka2" type="Control" parent="Mamushkas/StateMachine/Juego/Contenido/Instancia1/Outro"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -262.0
+offset_bottom = 247.0
+grow_horizontal = 0
+
+[node name="amarillo" type="Sprite2D" parent="Mamushkas/StateMachine/Juego/Contenido/Instancia1/Outro/Mamushka2"]
+position = Vector2(200, -200)
+rotation = 3.77736
+scale = Vector2(1.82834, 1.82834)
+texture = ExtResource("11_di0dp")
+
+[node name="Sprite2D" type="Sprite2D" parent="Mamushkas/StateMachine/Juego/Contenido/Instancia1/Outro/Mamushka2/amarillo"]
+show_behind_parent = true
+position = Vector2(0.589661, 30.011)
+texture = ExtResource("10_xj7ql")
+
+[node name="Mamushka3" type="Control" parent="Mamushkas/StateMachine/Juego/Contenido/Instancia1/Outro"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -247.0
+offset_right = 262.0
+grow_vertical = 0
+
+[node name="verde" type="Sprite2D" parent="Mamushkas/StateMachine/Juego/Contenido/Instancia1/Outro/Mamushka3"]
+position = Vector2(-200, 200)
+rotation = 0.7543
+scale = Vector2(1.20224, 1.20224)
+texture = ExtResource("19_7eqns")
+
+[node name="Mamushka4" type="Control" parent="Mamushkas/StateMachine/Juego/Contenido/Instancia1/Outro"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -262.0
+offset_top = -247.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="naranja" type="Sprite2D" parent="Mamushkas/StateMachine/Juego/Contenido/Instancia1/Outro/Mamushka4"]
+position = Vector2(800, 200)
+rotation = -0.711565
+scale = Vector2(1.50928, 1.50928)
+texture = ExtResource("15_v8xcu")
+
+[node name="Mamushka5" type="Control" parent="Mamushkas/StateMachine/Juego/Contenido/Instancia1/Outro"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -131.0
+offset_top = -247.0
+offset_right = 131.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="celeste" type="Sprite2D" parent="Mamushkas/StateMachine/Juego/Contenido/Instancia1/Outro/Mamushka5"]
+position = Vector2(100, 800)
+rotation = 0.00691336
+scale = Vector2(1.50928, 1.50928)
+texture = ExtResource("21_b44a8")
 
 [node name="HUD" parent="Mamushkas/StateMachine/Juego/Contenido" instance=ExtResource("27_e3ccu")]
 visible = true
@@ -799,6 +1152,7 @@ state_machine = NodePath("../../../..")
 script = ExtResource("29_ku3po")
 
 [node name="Contenido" type="Control" parent="Mamushkas/StateMachine/Fin"]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

@@ -87,6 +87,7 @@ var _camera_offset: Vector2
 @export var CamOffsetH : float
 @export var CamOffsetY : float
 var inZoom : bool
+var outOfBounds : bool
 #endregion
 
 #CustomMethods
@@ -107,7 +108,9 @@ func _physics_process(delta):
 		if inZoom:
 			FinalOffsetVector =  get_follow_target_node()._get_follow_node_direction().normalized() * Vector2(CamOffsetH,CamOffsetY)
 			if position.y < -13000:
+				outOfBounds = true
 				position.y = -13000
+			else: outOfBounds = false
 			position.x = 913
 			t = 120
 		_set_offset_cam(FinalOffsetVector, delta,t)

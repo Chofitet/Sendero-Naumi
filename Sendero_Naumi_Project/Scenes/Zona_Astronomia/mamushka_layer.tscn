@@ -1,31 +1,15 @@
-[gd_scene load_steps=19 format=3 uid="uid://y2uavtfxilcv"]
+[gd_scene load_steps=16 format=3 uid="uid://y2uavtfxilcv"]
 
 [ext_resource type="Script" path="res://_Scripts/MinG_Mamushka/mamushka_layer.gd" id="1_77ket"]
-[ext_resource type="Texture2D" uid="uid://dpnclrykjhq8f" path="res://Sprites/ZonaAstronomia/Mamushka_Arriba.png" id="2_32lc0"]
-[ext_resource type="Texture2D" uid="uid://cfem44pns2kyy" path="res://Sprites/ZonaAstronomia/Mamushka_Abajo_Layer3_S.png" id="2_um657"]
-[ext_resource type="Texture2D" uid="uid://5jla3pxvtm0j" path="res://Sprites/ZonaAstronomia/Mamushka_Abajo_S.png" id="3_0cacm"]
-[ext_resource type="Texture2D" uid="uid://dmxv2hdlqxjin" path="res://Sprites/ZonaAstronomia/carita-cute-1.png" id="3_n1gpi"]
-[ext_resource type="Texture2D" uid="uid://bn3ka84btw5ji" path="res://Sprites/ZonaAstronomia/Mamushka_Abajo.png" id="4_0kvxm"]
-[ext_resource type="Texture2D" uid="uid://da6hjyn0lo2y0" path="res://Sprites/ZonaAstronomia/Mamushka_Arriba_Layer3.png" id="4_h8xay"]
+[ext_resource type="Texture2D" uid="uid://bvctyxt4id4qo" path="res://Sprites/ZonaAstronomia/corteza traste - matryoshka.png" id="2_g7k75"]
+[ext_resource type="Texture2D" uid="uid://d32row7tshqb0" path="res://Sprites/ZonaAstronomia/corteza cadera - matryoshka.png" id="3_idsvd"]
+[ext_resource type="Texture2D" uid="uid://i35qq4wfk7ig" path="res://Sprites/ZonaAstronomia/corteza cabeza - matryoshka.png" id="4_vd5v2"]
+[ext_resource type="SpriteFrames" uid="uid://ccg0trgfp1e7r" path="res://Resources/mamushkasAnimatedEmotions/mamushka_Corteza_anim.tres" id="5_biq4e"]
+[ext_resource type="Texture2D" uid="uid://chqivoetkgkoj" path="res://Sprites/UI/circulo.png" id="5_emuww"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8f5q3"]
 radius = 40.0
 height = 102.0
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_b45gb"]
-atlas = ExtResource("3_n1gpi")
-region = Rect2(0, 0, 300, 300)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_mcllp"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_b45gb")
-}],
-"loop": true,
-"name": &"idle",
-"speed": 5.0
-}]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ncs2b"]
 bg_color = Color(0.359375, 0.855469, 0.960938, 1)
@@ -113,6 +97,18 @@ tracks/2/keys = {
 "update": 0,
 "values": [-0.523599, 0.0]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("pivot/Arriba/pivotRot/Sprite2D/emociones:animation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"idle"]
+}
 
 [sub_resource type="Animation" id="Animation_4hu4a"]
 resource_name = "Open"
@@ -152,6 +148,18 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(0.5, 2),
 "update": 0,
 "values": [0.0, -0.523599]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("pivot/Arriba/pivotRot/Sprite2D/emociones:animation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"surprise"]
 }
 
 [sub_resource type="Animation" id="Animation_krfpt"]
@@ -216,6 +224,18 @@ tracks/4/keys = {
 "update": 0,
 "values": [0.0]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("pivot/Arriba/pivotRot/Sprite2D/emociones:animation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"idle"]
+}
 
 [sub_resource type="Animation" id="Animation_abxal"]
 resource_name = "idle"
@@ -232,6 +252,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(-2, -2),
 "update": 0,
 "values": [-0.0872665, 0.0872665]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("pivot/Arriba/pivotRot/Sprite2D/emociones:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"idle"]
 }
 
 [sub_resource type="Animation" id="Animation_h3455"]
@@ -285,6 +317,18 @@ tracks/3/keys = {
 "update": 0,
 "values": [Vector2(0, 0), Vector2(0, 0), Vector2(0, 10), Vector2(0, 0)]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("pivot/Arriba/pivotRot/Sprite2D/emociones:animation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"angry"]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gdt3o"]
 _data = {
@@ -298,22 +342,11 @@ _data = {
 
 [node name="Mamushka_Layer" type="Node2D"]
 script = ExtResource("1_77ket")
-color = null
-panelText = null
 
 [node name="Spot" type="Area2D" parent="." groups=["spot"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Spot"]
 shape = SubResource("CapsuleShape2D_8f5q3")
-
-[node name="Node2D" type="Node2D" parent="."]
-visible = false
-
-[node name="MamushkaAbajoLayer3" type="Sprite2D" parent="Node2D"]
-texture = ExtResource("2_um657")
-
-[node name="MamushkaArribaLayer3" type="Sprite2D" parent="Node2D"]
-texture = ExtResource("4_h8xay")
 
 [node name="pivot" type="Node2D" parent="."]
 
@@ -325,11 +358,11 @@ position = Vector2(-70, 0)
 [node name="Sprite2D" type="Sprite2D" parent="pivot/Abajo/pivotRot"]
 z_index = -1
 position = Vector2(70, 0)
-texture = ExtResource("4_0kvxm")
+texture = ExtResource("2_g7k75")
 
 [node name="Sprite2D2" type="Sprite2D" parent="pivot/Abajo/pivotRot"]
 position = Vector2(70, 0)
-texture = ExtResource("3_0cacm")
+texture = ExtResource("3_idsvd")
 
 [node name="Arriba" type="Node2D" parent="pivot"]
 
@@ -338,14 +371,20 @@ position = Vector2(-65, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="pivot/Arriba/pivotRot"]
 position = Vector2(64.978, 0)
-texture = ExtResource("2_32lc0")
+texture = ExtResource("4_vd5v2")
 
-[node name="emociones" type="AnimatedSprite2D" parent="pivot/Arriba/pivotRot"]
-visible = false
-position = Vector2(70, 0)
-scale = Vector2(0.433333, 0.433333)
-sprite_frames = SubResource("SpriteFrames_mcllp")
+[node name="emociones" type="AnimatedSprite2D" parent="pivot/Arriba/pivotRot/Sprite2D"]
+position = Vector2(5.02201, 1.42924e-05)
+scale = Vector2(1, 1)
+sprite_frames = ExtResource("5_biq4e")
 animation = &"idle"
+
+[node name="Sprite2D2" type="Sprite2D" parent="pivot/Arriba/pivotRot"]
+visible = false
+clip_children = 1
+position = Vector2(66.2433, -112.028)
+scale = Vector2(0.136732, 0.143057)
+texture = ExtResource("5_emuww")
 
 [node name="Label" type="Node2D" parent="."]
 visible = false
