@@ -2,8 +2,8 @@ extends Control
 var anim
 var shardEmitter
 @export var isWinner : bool
-var overlay1
-var overlay2
+@export var overlay1 : ColorRect
+@export var overlay2 : ColorRect
 var timer
 var btnvolver
 signal fight
@@ -16,8 +16,7 @@ func _ready():
 	shardEmitter = get_node("Parts/Piedra/ShardEmitter")
 	anim = get_node("AnimPiedra")
 	anim.play("Rock_Idle")
-	overlay1 = $"../../../overlay1"
-	overlay2 = $"../../../overlay2"
+	get_parent().get_parent().InstanceTrue.connect(EnterUI)
 	btnvolver = $"../../../HUD"
 
 func Fight(): 

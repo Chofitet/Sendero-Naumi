@@ -6,18 +6,14 @@ var timer
 var initialpos
 
 func _ready():
-	timer = get_node("Timer")
-	timer.timeout.connect(AnimBack)
+	get_parent().get_parent().get_parent().Transitioned.connect(AnimBack)
 	initialpos = position
 
 func Anim():
-	var Sizeoffset
-	if hasSizeOffset: Sizeoffset = size.y
-	else: Sizeoffset=0
-	timer.start()
-	var tween = get_tree().create_tween()
-	tween.tween_property(self,"position", Vector2(position.x,get_viewport_rect().size.y/2 + get_viewport_rect().size.y/20 - Sizeoffset + y), 0.5 )
+	$AnimationPlayer.play("close_overlay")
+	await $AnimationPlayer.animation_finished
+	get_parent().get_node("hinchada").visible = false
 
 func AnimBack():
-	var tween = get_tree().create_tween()
-	tween.tween_property(self,"position", initialpos,0.5)
+	get_parent().get_node("hinchada").visible = true
+	$AnimationPlayer.play("RESET")
