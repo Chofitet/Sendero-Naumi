@@ -1,4 +1,4 @@
-[gd_scene load_steps=141 format=3 uid="uid://cndqno434rnuu"]
+[gd_scene load_steps=140 format=3 uid="uid://cndqno434rnuu"]
 
 [ext_resource type="Script" path="res://_Scripts/Minigame_Save_Controller.gd" id="1_aaeor"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/StateMachineMinigames.gd" id="2_0bmn1"]
@@ -16,7 +16,6 @@
 [ext_resource type="Script" path="res://_Scripts/MinG_Transformando/TapButtonMagma.gd" id="11_6i15p"]
 [ext_resource type="Script" path="res://Sprites/GenericPanelController.gd" id="11_c5c17"]
 [ext_resource type="Texture2D" uid="uid://drrio0noaq2fi" path="res://Sprites/ZonaGeología/piedra-PhotoRoom.png-PhotoRoom.png" id="11_d535g"]
-[ext_resource type="Texture2D" uid="uid://cncanwfoqtd2x" path="res://Sprites/ZonaGeología/anim_busqueda_tira.png" id="13_q70le"]
 [ext_resource type="Script" path="res://_Scripts/MinG_Transformando/MetamorficaController.gd" id="16_im4xr"]
 [ext_resource type="Texture2D" uid="uid://bri2r701momuv" path="res://Sprites/ZonaGeología/bloqueo2-transformaciones.png" id="16_ut7cq"]
 [ext_resource type="Script" path="res://_Scripts/SetVisibility.gd" id="17_3w3mr"]
@@ -41,7 +40,6 @@
 [ext_resource type="Texture2D" uid="uid://dvg4ws5o3pr7p" path="res://Sprites/ZonaGeología/Piedras/preplutonica - transformaciones.png" id="31_4ma1n"]
 [ext_resource type="Texture2D" uid="uid://0lu4k8jagkum" path="res://Sprites/ZonaGeología/Piedras/volcanica - transformaciones.png" id="32_bldxx"]
 [ext_resource type="Texture2D" uid="uid://b4xnthtnr2j0u" path="res://Sprites/ZonaGeología/Piedras/prevolcanica - transformaciones.png" id="33_t4nqu"]
-[ext_resource type="Texture2D" uid="uid://snvjn7lgr4p8" path="res://Sprites/ZonaGeología/despertar - transformaciones.png" id="35_4afh4"]
 [ext_resource type="Texture2D" uid="uid://chqivoetkgkoj" path="res://Sprites/UI/circulo.png" id="37_8l3iv"]
 [ext_resource type="Theme" uid="uid://bhum72inirq1q" path="res://Themes/Generic_UI.tres" id="37_fprag"]
 [ext_resource type="Texture2D" uid="uid://c4fapt82lfrng" path="res://Sprites/ZonaGeología/face 1.png" id="37_ofvaq"]
@@ -49,6 +47,7 @@
 [ext_resource type="Texture2D" uid="uid://blvtoxf6sl7ty" path="res://Sprites/glow.png" id="39_ryerp"]
 [ext_resource type="Script" path="res://_Scripts/MinG_Transformando/DeleteInPress.gd" id="43_2l657"]
 [ext_resource type="Script" path="res://_Scripts/MinG_Transformando/ButtonsInfoController.gd" id="46_iftno"]
+[ext_resource type="Texture2D" uid="uid://c5flpl3ki740o" path="res://Sprites/ZonaGeología/despertar - transformaciones2.png" id="48_6k4b4"]
 [ext_resource type="Script" path="res://_Scripts/MinG_Transformando/PickAreaSedimentaria.gd" id="48_ii2md"]
 [ext_resource type="PackedScene" uid="uid://dlwmbps456ind" path="res://Scenes/Experiments/btnVolver.tscn" id="52_ke02p"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/MoralejaState.gd" id="53_mko3e"]
@@ -2647,31 +2646,18 @@ bbcode_enabled = true
 text = "[center] CUANDO LA TIERRA TIEMBLA[/center]"
 scroll_active = false
 
-[node name="roca2" type="Sprite2D" parent="Transformando/StateMachine/Consigna/Contenido/Panel3"]
-position = Vector2(273.903, 281.984)
-rotation = 2.86808
-scale = Vector2(1, -1)
-
-[node name="Sprite2D2" type="Sprite2D" parent="Transformando/StateMachine/Consigna/Contenido/Panel3/roca2"]
-clip_children = 2
-position = Vector2(8, 27)
-rotation = 2.93532
-scale = Vector2(0.230446, -0.320065)
-skew = 0.195477
-texture = ExtResource("13_q70le")
-hframes = 14
-vframes = 7
-frame = 19
-
-[node name="Sprite2D" type="Sprite2D" parent="Transformando/StateMachine/Consigna/Contenido/Panel3/roca2/Sprite2D2"]
-self_modulate = Color(0.8, 0.8, 0.8, 1)
-position = Vector2(1.93835, -25.3384)
-texture = ExtResource("37_8l3iv")
-
-[node name="Sprite2D" type="Sprite2D" parent="Transformando/StateMachine/Consigna/Contenido/Panel3/roca2"]
-rotation = 0.148615
-scale = Vector2(0.302884, 0.302884)
+[node name="roca" type="Sprite2D" parent="Transformando/StateMachine/Consigna/Contenido/Panel3"]
+position = Vector2(278.884, 269.935)
+rotation = 3.03344
+scale = Vector2(0.302884, -0.302884)
 texture = ExtResource("11_d535g")
+
+[node name="Sprite2D" type="Sprite2D" parent="Transformando/StateMachine/Consigna/Contenido/Panel3/roca"]
+position = Vector2(-5.88417, -15.2742)
+rotation = -0.622742
+scale = Vector2(1.71391, 1.70916)
+texture = ExtResource("55_jjvq6")
+flip_h = true
 
 [node name="Button" type="Button" parent="Transformando/StateMachine/Consigna/Contenido/Panel3"]
 layout_mode = 1
@@ -2723,31 +2709,6 @@ bbcode_enabled = true
 text = "[center] PUEDEN SUCEDER CAMBIOS[/center]"
 scroll_active = false
 
-[node name="roca" type="Sprite2D" parent="Transformando/StateMachine/Consigna/Contenido/Panel2"]
-position = Vector2(277.36, 270.78)
-rotation = 0.246249
-
-[node name="Sprite2D2" type="Sprite2D" parent="Transformando/StateMachine/Consigna/Contenido/Panel2/roca"]
-clip_children = 2
-position = Vector2(8, 27)
-rotation = 2.93532
-scale = Vector2(0.230446, -0.320065)
-skew = 0.195477
-texture = ExtResource("13_q70le")
-hframes = 14
-vframes = 7
-frame = 19
-
-[node name="Sprite2D" type="Sprite2D" parent="Transformando/StateMachine/Consigna/Contenido/Panel2/roca/Sprite2D2"]
-self_modulate = Color(0.8, 0.8, 0.8, 1)
-position = Vector2(1.93835, -25.3384)
-texture = ExtResource("37_8l3iv")
-
-[node name="Sprite2D" type="Sprite2D" parent="Transformando/StateMachine/Consigna/Contenido/Panel2/roca"]
-rotation = 0.148615
-scale = Vector2(0.302884, 0.302884)
-texture = ExtResource("11_d535g")
-
 [node name="Button" type="Button" parent="Transformando/StateMachine/Consigna/Contenido/Panel2"]
 layout_mode = 1
 anchors_preset = -1
@@ -2759,6 +2720,19 @@ offset_left = -38.4627
 offset_top = -42.6806
 offset_right = 38.5373
 offset_bottom = 34.3194
+
+[node name="roca" type="Sprite2D" parent="Transformando/StateMachine/Consigna/Contenido/Panel2"]
+position = Vector2(271.312, 257.918)
+rotation = 3.32416
+scale = Vector2(-0.303, -0.303)
+texture = ExtResource("11_d535g")
+
+[node name="Sprite2D" type="Sprite2D" parent="Transformando/StateMachine/Consigna/Contenido/Panel2/roca"]
+position = Vector2(-5.88417, -15.2742)
+rotation = -0.622742
+scale = Vector2(1.71391, 1.70916)
+texture = ExtResource("55_jjvq6")
+flip_h = true
 
 [node name="Panel" type="Panel" parent="Transformando/StateMachine/Consigna/Contenido"]
 visible = false
@@ -2817,31 +2791,18 @@ bbcode_enabled = true
 text = "[center] POR DENTRO Y POR FUERA[/center]"
 scroll_active = false
 
-[node name="roca3" type="Sprite2D" parent="Transformando/StateMachine/Consigna/Contenido/Panel"]
-position = Vector2(285.95, 276.829)
-rotation = 2.91312
-scale = Vector2(1, -1)
-
-[node name="Sprite2D2" type="Sprite2D" parent="Transformando/StateMachine/Consigna/Contenido/Panel/roca3"]
-clip_children = 2
-position = Vector2(8, 27)
-rotation = 2.93532
-scale = Vector2(0.230446, -0.320065)
-skew = 0.195477
-texture = ExtResource("13_q70le")
-hframes = 14
-vframes = 7
-frame = 19
-
-[node name="Sprite2D" type="Sprite2D" parent="Transformando/StateMachine/Consigna/Contenido/Panel/roca3/Sprite2D2"]
-self_modulate = Color(0.8, 0.8, 0.8, 1)
-position = Vector2(1.93835, -25.3384)
-texture = ExtResource("37_8l3iv")
-
-[node name="Sprite2D" type="Sprite2D" parent="Transformando/StateMachine/Consigna/Contenido/Panel/roca3"]
-rotation = 0.148615
-scale = Vector2(0.302884, 0.302884)
+[node name="roca" type="Sprite2D" parent="Transformando/StateMachine/Consigna/Contenido/Panel"]
+position = Vector2(268.047, 260.668)
+rotation = 3.03344
+scale = Vector2(0.302884, -0.302884)
 texture = ExtResource("11_d535g")
+
+[node name="Sprite2D" type="Sprite2D" parent="Transformando/StateMachine/Consigna/Contenido/Panel/roca"]
+position = Vector2(-5.88417, -15.2742)
+rotation = -0.622742
+scale = Vector2(1.71391, 1.70916)
+texture = ExtResource("55_jjvq6")
+flip_h = true
 
 [node name="Juego" type="Node" parent="Transformando/StateMachine" node_paths=PackedStringArray("NextState", "StateMachine")]
 script = ExtResource("5_twmif")
@@ -2850,7 +2811,6 @@ StateMachine = NodePath("..")
 InstanciasMinijuego = [NodePath("Contenido/Instancia1")]
 
 [node name="Contenido" type="Control" parent="Transformando/StateMachine/Juego"]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -4720,8 +4680,8 @@ libraries = {
 [node name="Anim" type="Sprite2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Metamorfica"]
 self_modulate = Color(0.8, 0.8, 0.8, 1)
 position = Vector2(0, -19)
-scale = Vector2(1.15429, 1.15429)
-texture = ExtResource("35_4afh4")
+scale = Vector2(2.36804, 2.36804)
+texture = ExtResource("48_6k4b4")
 hframes = 12
 vframes = 4
 frame = 8
@@ -4861,8 +4821,8 @@ texture = ExtResource("21_tqyrq")
 self_modulate = Color(0.8, 0.8, 0.8, 1)
 z_index = 1
 position = Vector2(-0.399963, -0.400024)
-scale = Vector2(0.312, 0.321)
-texture = ExtResource("35_4afh4")
+scale = Vector2(0.626393, 0.644462)
+texture = ExtResource("48_6k4b4")
 hframes = 12
 vframes = 4
 frame = 8
@@ -5190,8 +5150,8 @@ script = ExtResource("43_2l657")
 self_modulate = Color(0.8, 0.8, 0.8, 1)
 z_index = 1
 position = Vector2(-15.5556, 6.66664)
-scale = Vector2(1.05079, 1.05079)
-texture = ExtResource("35_4afh4")
+scale = Vector2(2.11051, 2.11051)
+texture = ExtResource("48_6k4b4")
 hframes = 12
 vframes = 4
 frame = 8
@@ -5264,10 +5224,10 @@ theme_override_styles/focus = ExtResource("18_52khh")
 flat = true
 
 [node name="Volcanica" type="Sprite2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control" node_paths=PackedStringArray("overlay", "NubeAnim")]
-self_modulate = Color(2.00392, 1, 1, 0)
+self_modulate = Color(1, 1, 1, 0)
 z_index = 1
 position = Vector2(244, 249)
-rotation = 1.12058
+rotation = 1.06465
 scale = Vector2(0.156566, 0.156566)
 texture = ExtResource("33_t4nqu")
 script = ExtResource("31_2h3ow")
@@ -5397,8 +5357,8 @@ grow_vertical = 0
 self_modulate = Color(0.8, 0.8, 0.8, 1)
 z_index = 1
 position = Vector2(-7.77771, 8.88889)
-scale = Vector2(1.13048, 1.13048)
-texture = ExtResource("35_4afh4")
+scale = Vector2(2.29111, 2.29111)
+texture = ExtResource("48_6k4b4")
 hframes = 12
 vframes = 4
 frame = 8
@@ -5440,8 +5400,8 @@ texture = ExtResource("32_bldxx")
 self_modulate = Color(0.8, 0.8, 0.8, 1)
 position = Vector2(28.1249, -32.8125)
 rotation = -0.261016
-scale = Vector2(1.10041, 1.10041)
-texture = ExtResource("35_4afh4")
+scale = Vector2(2.22909, 2.22909)
+texture = ExtResource("48_6k4b4")
 hframes = 12
 vframes = 4
 frame = 8
@@ -5516,6 +5476,7 @@ visible = true
 script = ExtResource("53_mko3e")
 
 [node name="Contenido" type="Control" parent="Transformando/StateMachine/Moraleja"]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
