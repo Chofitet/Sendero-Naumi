@@ -1,6 +1,6 @@
 extends Panel
 var buttons := []
-@export var timeToBtn = 3.5
+@export var timeToBtn = 1
 @export var SetVisibleFalseWithBtn : bool
 @export var timeToAppear : float
 var timer

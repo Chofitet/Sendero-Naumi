@@ -1,11 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://y2uavtfxilcv"]
+[gd_scene load_steps=15 format=3 uid="uid://y2uavtfxilcv"]
 
 [ext_resource type="Script" path="res://_Scripts/MinG_Mamushka/mamushka_layer.gd" id="1_77ket"]
 [ext_resource type="Texture2D" uid="uid://bvctyxt4id4qo" path="res://Sprites/ZonaAstronomia/corteza traste - matryoshka.png" id="2_g7k75"]
 [ext_resource type="Texture2D" uid="uid://d32row7tshqb0" path="res://Sprites/ZonaAstronomia/corteza cadera - matryoshka.png" id="3_idsvd"]
 [ext_resource type="Texture2D" uid="uid://i35qq4wfk7ig" path="res://Sprites/ZonaAstronomia/corteza cabeza - matryoshka.png" id="4_vd5v2"]
 [ext_resource type="SpriteFrames" uid="uid://ccg0trgfp1e7r" path="res://Resources/mamushkasAnimatedEmotions/mamushka_Corteza_anim.tres" id="5_biq4e"]
-[ext_resource type="Texture2D" uid="uid://chqivoetkgkoj" path="res://Sprites/UI/circulo.png" id="5_emuww"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8f5q3"]
 radius = 40.0
@@ -253,18 +252,6 @@ tracks/0/keys = {
 "update": 0,
 "values": [-0.0872665, 0.0872665]
 }
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("pivot/Arriba/pivotRot/Sprite2D/emociones:animation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"idle"]
-}
 
 [sub_resource type="Animation" id="Animation_h3455"]
 resource_name = "spit"
@@ -374,17 +361,10 @@ position = Vector2(64.978, 0)
 texture = ExtResource("4_vd5v2")
 
 [node name="emociones" type="AnimatedSprite2D" parent="pivot/Arriba/pivotRot/Sprite2D"]
+show_behind_parent = true
 position = Vector2(5.02201, 1.42924e-05)
-scale = Vector2(1, 1)
 sprite_frames = ExtResource("5_biq4e")
 animation = &"idle"
-
-[node name="Sprite2D2" type="Sprite2D" parent="pivot/Arriba/pivotRot"]
-visible = false
-clip_children = 1
-position = Vector2(66.2433, -112.028)
-scale = Vector2(0.136732, 0.143057)
-texture = ExtResource("5_emuww")
 
 [node name="Label" type="Node2D" parent="."]
 visible = false

@@ -39,6 +39,7 @@ var isInArea
 var MamushkaController
 @export var mamu : Node2D
 var ismouse
+var isAngry
 
 
 func _ready():
@@ -91,7 +92,10 @@ func CheckRigthIsLayer(x) :
 		x.z_index = 0
 		var tween2 = get_tree().create_tween()
 		tween2.tween_property(self,"rotation",initRot,0.1).set_ease(Tween.EASE_IN_OUT)
+		x.OnSpot(true)
+		isAngry = true
 		await get_tree().create_timer(2).timeout
+		isAngry=false
 		SetEmotion("idle")
 		
 	x.OnSpot(true)
@@ -112,8 +116,11 @@ func AdjustRotationPivot():
 	$pivot/Arriba/pivotRot/Sprite2D.position = Vector2(ParteArriba.get_height()/2,-x)
 	
 func DraggingController():
-	ismouse= true
+	ismouse = true
 	anim.play("idle")
+	SetEmotion("idle")
+	if isAngry:
+		SetEmotion("angry", 1)
 
 func RealeseController():
 	ismouse = false
@@ -140,7 +147,7 @@ func SpawnPanel():
 	
 	instancePanel.get_node("RichTextLabel").text = panelText
 
-func SetEmotion(emotion):
+func SetEmotion(emotion, time = 0):
 	emotions.play(emotion)
 	if emotion == "idle":
 		await get_tree().create_timer(randf_range(7,10)).timeout
@@ -148,4 +155,6 @@ func SetEmotion(emotion):
 		emotions.play("look")
 		await emotions.animation_finished
 		SetEmotion("idle")
-
+	if time != 0:
+		await get_tree().create_timer(time).timeout
+		SetEmotion("idle")

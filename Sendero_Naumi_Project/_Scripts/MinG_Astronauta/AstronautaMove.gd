@@ -20,7 +20,6 @@ var isBlock = true
 func _ready():
 	$Area2D.area_entered.connect(GetPickUpObjects)
 	$Area2D.area_entered.connect(SetSelfCamFollow)
-	
 
 func _physics_process(delta):
 	Move(delta)

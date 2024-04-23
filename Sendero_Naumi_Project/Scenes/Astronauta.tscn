@@ -1699,7 +1699,7 @@ end_cap_mode = 2
 
 [node name="Meteoroide" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide" instance=ExtResource("11_i2vqs")]
 position = Vector2(968.492, -1374.71)
-rotation = 109572.0
+rotation = 113054.0
 scale = Vector2(2.595, 2.595)
 
 [node name="TheGuy" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide" instance=ExtResource("35_frqpj")]
@@ -1834,7 +1834,7 @@ CenterObject = NodePath("../elPrincipito")
 show_behind_parent = false
 
 [node name="meteoro" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoro/Meteoro1" instance=ExtResource("11_i2vqs")]
-rotation = 109572.0
+rotation = 113054.0
 scale = Vector2(2.595, 2.595)
 _texture = ExtResource("14_gaug6")
 
@@ -1851,7 +1851,7 @@ CenterObject = NodePath("../elPrincipito")
 show_behind_parent = false
 
 [node name="meteoro" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoro/Meteoro2" instance=ExtResource("11_i2vqs")]
-rotation = 109572.0
+rotation = 113054.0
 scale = Vector2(2.595, 2.595)
 _texture = ExtResource("14_gaug6")
 
@@ -1868,7 +1868,7 @@ CenterObject = NodePath("../elPrincipito")
 show_behind_parent = false
 
 [node name="meteoro" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoro/Meteoro3" instance=ExtResource("11_i2vqs")]
-rotation = 109572.0
+rotation = 113054.0
 scale = Vector2(2.595, 2.595)
 _texture = ExtResource("14_gaug6")
 
@@ -1993,30 +1993,11 @@ _texture = ExtResource("9_88pnb")
 rotation_speed = 0.0
 
 [node name="TheGuy3" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteorito" instance=ExtResource("35_frqpj")]
-visible = false
 position = Vector2(1396, -18191)
 player = NodePath("../../../../Astronauta")
 ScaleFactorDialogue = 5.0
 DialogueDistance = Vector2(-11.445, -160.26)
 AstronautAngle = -2.755
-
-[node name="RotateArround4" type="Node2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level" node_paths=PackedStringArray("CenterObject")]
-visible = false
-z_index = 1
-position = Vector2(1592, -201)
-rotation = -0.788223
-script = ExtResource("11_712vn")
-radius = 300.0
-speed = 1.6
-CenterObject = NodePath("../RocasEspaciales/Meteoroide/RocasEmpujables/CollisionObject9")
-
-[node name="Trial" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RotateArround4" instance=ExtResource("16_grs1x")]
-show_behind_parent = false
-
-[node name="meteoro" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RotateArround4" instance=ExtResource("11_i2vqs")]
-rotation = 38891.1
-scale = Vector2(2.595, 2.595)
-_texture = ExtResource("14_gaug6")
 
 [node name="NaveController" type="Node2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1" node_paths=PackedStringArray("minDistance", "maxDistance", "player")]
 position = Vector2(368, 642)
@@ -2069,7 +2050,6 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = ExtResource("20_5lj7u")
 script = ExtResource("21_sbo2s")
-timeToBtn = 0.3
 SetVisibleFalseWithBtn = true
 timeToAppear = 0.3
 
@@ -2124,7 +2104,6 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = ExtResource("20_5lj7u")
 script = ExtResource("21_sbo2s")
-timeToBtn = 0.3
 SetVisibleFalseWithBtn = true
 timeToAppear = 0.3
 
@@ -2179,7 +2158,6 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = ExtResource("20_5lj7u")
 script = ExtResource("21_sbo2s")
-timeToBtn = 0.3
 SetVisibleFalseWithBtn = true
 timeToAppear = 0.3
 
@@ -2286,16 +2264,16 @@ follow_mode = 2
 follow_target = NodePath("../NaveController")
 follow_parameters/target_offset = Vector2(0, 0)
 follow_parameters/damping = true
-follow_parameters/damping_value = 4.376
+follow_parameters/damping_value = 5.0
 frame_preview = true
-pixel_perfect = true
+pixel_perfect = false
 limit/draw_limits = true
 limit/left = -10000000
 limit/top = -10000000
 limit/right = 10000000
 limit/bottom = 10000000
 limit/limit_node_target = NodePath("")
-limit/smoothed = false
+limit/smoothed = true
 tween_parameters = null
 tween_on_load = true
 inactive_update_mode = 0
@@ -2516,7 +2494,6 @@ NextScene = "Map_Screen"
 [connection signal="tree_exited" from="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoro/Meteoro1/meteoro" to="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoro/Meteoro1/Trial" method="StopLine"]
 [connection signal="tree_exited" from="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoro/Meteoro2/meteoro" to="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoro/Meteoro2/Trial" method="StopLine"]
 [connection signal="tree_exited" from="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoro/Meteoro3/meteoro" to="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoro/Meteoro3/Trial" method="StopLine"]
-[connection signal="tree_exited" from="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RotateArround4/meteoro" to="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RotateArround4/Trial" method="StopLine"]
 [connection signal="pressed" from="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/interior/Intro/Panel/Button" to="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/interior/Intro/Panel2" method="SetVisibility" binds= [true]]
 [connection signal="pressed" from="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/interior/Intro/Panel2/Button" to="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/interior/Intro/Panel3" method="SetVisibility" binds= [true]]
 [connection signal="pressed" from="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/interior/Intro/Panel2/Button" to="Astronauta/StateMachine/Juego/Contenido/Instancia1/Astronauta" method="BlockMove" binds= [false]]
