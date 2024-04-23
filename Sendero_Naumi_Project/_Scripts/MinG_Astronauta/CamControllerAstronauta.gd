@@ -22,7 +22,6 @@ func _physics_process(delta):
 	var limitYUP= pointsFondo[0].y + get_viewport_rect().size.y/2
 	var limitYDown= pointsFondo[3].y - get_viewport_rect().size.y/2
 	
-	
 	phantom.inLimit = false
 	if !(position.x > limitXRigth-10 or position.x < limitXLeft+10 or position.y > limitYDown -10 or position.y < limitYUP + 10): return
 	
@@ -44,7 +43,6 @@ func _physics_process(delta):
 		phantom.inLimit = true
 		offsety = -(player.position.y - limitYUP)
 		phantom.FinalOffsetVector.y = offsety
-		print(limitYUP)
 	else: offsety = 0
 	
 	

@@ -1,7 +1,15 @@
+@tool
 extends TextureRect
 var lastEnter
 signal mouse_released
+signal PlanetsAling
 var isexit
+@export var nombre: String:
+	set(newValue):
+		nombre = newValue
+		$Panel/Label.text = nombre
+
+@export var item : Sprite2D
 
 func _ready():
 	$Area2D.area_entered.connect(CheckUnion)
@@ -29,3 +37,18 @@ func Exit(x):
 
 func Disconnect():
 	$Area2D.queue_free()
+
+func AnimToRigth():
+	await get_tree().create_timer(2).timeout
+	var tween = get_tree().create_tween()
+	tween.tween_property(self,"position", position + Vector2(500,0),1).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_SPRING) 
+
+func AnimToAling():
+	await get_tree().create_timer(3).timeout
+	var tween = get_tree().create_tween()
+	tween.tween_property(self,"global_position", Vector2(global_position.x,item.global_position.y - get_rect().size.y/2), 1).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_SPRING)
+	await tween.finished
+	var tween2 = get_tree().create_tween()
+	tween2.tween_property(self,"position", Vector2(position.x +40,position.y),0.3)
+	PlanetsAling.emit()
+	

@@ -36,7 +36,7 @@ UNA NUEVA FORMA DE RECORRER EL MUSEO[/center]",false,7.5)
 		once3 = true
 		ControlLabel("[center]CUANDO ENCUENTRES
 ALGUNO DE ESTOS LUGARES EN EL MUSEO
-APRETALO EN EL MAPA PARA EMPEZAR A JUGAR[/center]",true,100)
+APRETALO EN EL MAPA PARA EMPEZAR A JUGAR[/center]",true,10000)
 		
 	
 func ControlLabel(txt,adjust,time):

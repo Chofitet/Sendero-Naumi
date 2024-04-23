@@ -9,7 +9,8 @@ class_name InstanceResource
 	"Astronauta":0, 
 	"DondeEstuvo":0,
 	"ManzanaAcaramelada":0,
-	"Mamushkas":0}
+	"Mamushkas":0,
+	"Calendario":0}
 
 func UpdateInstance(string):
 	InstanceMinigames[string] = InstanceMinigames[string] + 1

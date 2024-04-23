@@ -5,3 +5,6 @@ extends Node2D
 func _ready():
 	get_node("Rock").texture = _texture
 	get_node("Gorri").texture = accesorio
+
+func ChangeTexture(_texture):
+	$Rock.texture = _texture

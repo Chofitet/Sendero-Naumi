@@ -14,6 +14,11 @@ signal EndComand
 signal StartTutorial
 signal ReorganizePlates
 
+func _ready():
+	for f in get_parent().get_node("HBoxContainer").get_children():
+		f.get_node("DragObject").isDraggin.connect(StopCallAnim.bind(true))
+	get_parent().get_node("HBoxContainer").RealeaseDragObject.connect(StopCallAnim.bind(false))
+
 func SetAnimalInstance(x):
 	inx_animal = x
 	for a in $pivot.get_children():
@@ -41,6 +46,9 @@ func PlayCallAnim():
 	animalsArray[inx_animal].play("call")
 	timer.wait_time = randf_range(4.5,5)
 	timer.stop()
+
+func StopCallAnim(x):
+	stopCall = x
 
 func PlayOutAnim():
 	if !isInGame : return

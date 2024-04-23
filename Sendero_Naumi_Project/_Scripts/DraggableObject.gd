@@ -70,7 +70,8 @@ func _on_button_pressed():
 func PlaceInRightSpot():
 	CheckRightSpot()
 	if (is_in_spot):
-		if DesapearInPlace: object.visible = false
+		if DesapearInPlace: 
+			object.visible = false
 		var tween = get_tree().create_tween()
 		tween = tween.tween_property(object, "global_position",spot.global_position,0.1).set_ease(Tween.EASE_OUT)
 		isInPosition = true
@@ -81,13 +82,15 @@ func PlaceInSpot():
 	if !AskSpot:
 		CancelDrag()
 		return
-	if DesapearInPlace: object.visible = false
+	if DesapearInPlace: 
+		object.visible = false
 	var tween = get_tree().create_tween()
 	tween = tween.tween_property(object, "global_position",AskSpot.global_position,0.1).set_ease(Tween.EASE_OUT)
 	isInPosition = true
 
 func GetSpot(x):
-	AskSpot = x
+	if x.is_in_group("spot"):
+		AskSpot = x
 	
 func deleteSpot(x):
 	AskSpot = null
