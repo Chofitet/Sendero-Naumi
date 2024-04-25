@@ -6,12 +6,14 @@ extends CharacterBody2D
 @export var friction = 800
 @export var rotationSpeed = 5
 @export var pcInventary : Control
-
+var CrashForce : Vector2 = Vector2.ONE
 @onready var particles = $Sprite2D/CPUParticles2D
 @onready var particleCircle = preload("res://Scenes/Zona_Astronomia/particleAstronauta.tscn")
 @onready var sprite = $Sprite2D
 @onready var target_position = Vector2.ZERO
 var direction: Vector2
+var lastdirection : Vector2
+var isCrash
 var isPressing
 var Meteoros :=[]
 signal AllCollect
@@ -46,12 +48,14 @@ func Move(delta):
 	if !isPressing:
 		Apply_Friction(friction * delta)
 	else:
-		if !PhantomCam.outOfBounds:
-			direction = (target_position - get_viewport_rect().get_center()).normalized()
-		else: direction = (target_position - get_global_transform_with_canvas().get_origin()).normalized()
+		direction = (target_position - get_global_transform_with_canvas().get_origin()).normalized()
 		
 		RotateToDirectionSmoothly(delta)
-		Apply_Movement(direction * acceleration * delta)
+		Apply_Movement(direction * acceleration * delta * CrashForce)
+		lastdirection = direction
+	
+	if isCrash:
+		Apply_Movement(lastdirection * acceleration * delta * -1 * 800)
 	
 	move_and_slide()
 	
@@ -60,7 +64,7 @@ func Move(delta):
 		if c.get_collider() is RigidBody2D or c.get_collider() is StaticBody2D:
 			if c.get_collider().is_in_group("movible"):
 				c.get_collider().apply_central_impulse(-c.get_normal() * 80)
-			else: 
+			else:
 				var collision_info = move_and_collide(velocity * delta)
 				if collision_info:
 					velocity = velocity.bounce(collision_info.get_normal())
@@ -83,12 +87,18 @@ func _get_follow_node_direction() -> Vector2:
 
 func GetPickUpObjects(x):
 	if x.is_in_group("meteoro"):
-		pcInventary.CheckMeteoro(GetMeteoroIndex(x))
+		
+		if Meteoros.find(x.name) == -1:
+			Meteoros.append(x.name)
+			pcInventary.CheckMeteoro(GetMeteoroIndex(x))
+		
 		x.queue_free()
-		Meteoros.append(x)
+	
 	
 	if Meteoros.size() == 3:
 		AllCollect.emit()
+		BlockMove(true)
+		isPressing = false
 
 func GetMeteoroIndex(x)->int:
 	if x.name == "Meteoroide":
@@ -106,3 +116,12 @@ func SetSelfCamFollow(x):
 	if x.is_in_group("FollowCam"):
 		PhantomCam.set_follow_target_node(self)
 		
+
+func DoCrash():
+	BlockMove(true)
+	isCrash = true
+	var tween = get_tree().create_tween()
+	tween.tween_property(sprite,"rotation_degrees", sprite.rotation_degrees + 360*3,2)
+	await tween.finished
+	isCrash = false
+	BlockMove(false)

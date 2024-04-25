@@ -17,6 +17,7 @@ func _ready():
 		SpriteLayers[0].visible = true
 
 func AddLayer():
+	SpriteLayers[state].visible = false
 	state += 1
 	SpriteLayers[state].visible = true
 	if state == 4:

@@ -7,6 +7,11 @@ extends Node2D
 		$pivot/Arriba/pivotRot/Sprite2D.texture = ParteArriba
 		AdjustRotationPivot()
 
+@export var ParteArriba2 : Texture: 
+	set(new_value):
+		ParteArriba2 = new_value
+		$pivot/Arriba/pivotRot/Sprite2D/parte2.texture = ParteArriba2
+
 @export var ParteAbajo : Texture:
 	set(new_value):
 			ParteAbajo = new_value
@@ -140,7 +145,7 @@ func SpawnPanel():
 	var instancePanel = panel.instantiate()
 	get_parent().add_child(instancePanel)
 	instancePanel.Connect(mamu)
-	instancePanel.position = position + Vector2(-100,-100) + offsetPanel
+	instancePanel.position = position + Vector2(-160,-160) + offsetPanel
 	var newStylebox = instancePanel.get_theme_stylebox("panel").duplicate()
 	newStylebox.bg_color = color
 	instancePanel.add_theme_stylebox_override("panel", newStylebox)

@@ -87,7 +87,8 @@ var _camera_offset: Vector2
 @export var CamOffsetH : float
 @export var CamOffsetY : float
 var inZoom : bool
-var outOfBounds : bool
+var BlockFirstPart
+
 #endregion
 
 #CustomMethods
@@ -107,15 +108,20 @@ func _physics_process(delta):
 			t = 10
 		if inZoom:
 			FinalOffsetVector =  get_follow_target_node()._get_follow_node_direction().normalized() * Vector2(CamOffsetH,CamOffsetY)
-			if position.y < -13000:
-				outOfBounds = true
-				position.y = -13000
-			else: outOfBounds = false
+			if position.y < -14000:
+				position.y = -14000
 			position.x = 913
+			if BlockFirstPart:
+				if position.y > -8400:
+					position.y = -8400
 			t = 120
 		_set_offset_cam(FinalOffsetVector, delta,t)
 	
 var OffsetVector : Vector2
+
+func Set_BlockFirstPart(x):
+	if x.is_in_group("Player"):
+		BlockFirstPart = true
 
 func _set_offset_cam(x, delta, time):
 	var tween = get_tree().create_tween()

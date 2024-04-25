@@ -10,7 +10,7 @@ extends Node2D
 
 func _ready():
 	canvas_modulate.color = Color(0,0,0,1)
-	
+	pass
 
 func _process(delta):
 	if capsule.isOutside: return
