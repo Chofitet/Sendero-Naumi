@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=3 uid="uid://dk066mi38cvh7"]
+[gd_scene load_steps=64 format=3 uid="uid://dk066mi38cvh7"]
 
 [ext_resource type="Script" path="res://_Scripts/Minigame_Save_Controller.gd" id="1_th4gl"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/StateMachineMinigames.gd" id="2_fl1ab"]
@@ -45,6 +45,7 @@
 [ext_resource type="Script" path="res://_Scripts/PhantomAreaSetPriority.gd" id="39_f6slj"]
 [ext_resource type="Script" path="res://_Scripts/MinG_Astronauta/WallOfLevel.gd" id="40_het88"]
 [ext_resource type="Texture2D" uid="uid://b2op8eppn0juv" path="res://Sprites/ZonaAstronomia/Astronauta.png" id="41_ar1qs"]
+[ext_resource type="Script" path="res://_Scripts/ChangeScene.gd" id="45_n360i"]
 
 [sub_resource type="Gradient" id="Gradient_628gc"]
 offsets = PackedFloat32Array(0.470588, 0.663866, 0.756303, 0.865546, 1)
@@ -1728,7 +1729,7 @@ end_cap_mode = 2
 
 [node name="Meteoroide" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide" instance=ExtResource("11_i2vqs")]
 position = Vector2(968.492, -1374.71)
-rotation = 174120.0
+rotation = 185207.0
 scale = Vector2(2.595, 2.595)
 
 [node name="TheGuy" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide" instance=ExtResource("35_frqpj")]
@@ -1864,7 +1865,7 @@ show_behind_parent = false
 points = PackedVector2Array(5949, -8939)
 
 [node name="meteoro" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoro/Meteoro1" node_paths=PackedStringArray("MeteoritoTarget") instance=ExtResource("11_i2vqs")]
-rotation = 31016.3
+rotation = 42575.6
 scale = Vector2(2.595, 2.595)
 MeteoritoTarget = NodePath("../../../Meteorito/MeteoritoAppear/targetMeteorito")
 _texture = ExtResource("14_gaug6")
@@ -1878,14 +1879,14 @@ z_index = 1
 position = Vector2(913, -8421)
 script = ExtResource("11_712vn")
 radius = 2000.0
-speed = 0.7
+speed = -0.7
 CenterObject = NodePath("../elPrincipito")
 
 [node name="Trial" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoro/Meteoro3" instance=ExtResource("16_grs1x")]
 show_behind_parent = false
 
 [node name="meteoro" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoro/Meteoro3" node_paths=PackedStringArray("MeteoritoTarget") instance=ExtResource("11_i2vqs")]
-rotation = 30998.7
+rotation = 42557.0
 scale = Vector2(2.595, 2.595)
 MeteoritoTarget = NodePath("../../../Meteorito/MeteoritoAppear/targetMeteorito")
 _texture = ExtResource("14_gaug6")
@@ -2065,15 +2066,13 @@ grow_vertical = 2
 visible = false
 use_parent_material = true
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = 10
 anchor_right = 1.0
-anchor_bottom = 1.0
 offset_left = -232.0
-offset_top = -111.0
+offset_top = -275.0
 offset_right = 232.0
-offset_bottom = 111.0
+offset_bottom = -53.0
 grow_horizontal = 2
-grow_vertical = 2
 theme_override_styles/panel = ExtResource("20_5lj7u")
 script = ExtResource("21_sbo2s")
 SetVisibleFalseWithBtn = true
@@ -2096,7 +2095,7 @@ grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 25
 text = "BUEN DÍA CADETE 
-¿LISTO PARA LA MISIÓN?"
+REPASEMOS LA MISIÓN..."
 horizontal_alignment = 1
 
 [node name="Button" type="Button" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/interior/Intro/Panel"]
@@ -2123,9 +2122,9 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -232.0
-offset_top = -111.0
+offset_top = -275.0
 offset_right = 232.0
-offset_bottom = 111.0
+offset_bottom = -53.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = ExtResource("20_5lj7u")
@@ -2149,7 +2148,8 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 25
-text = "RECOLECTA 3 TIPOS DE ROCAS ESPACIALES"
+text = "DEBES RECOLECTA:
+3 TIPOS DE ROCAS ESPACIALES"
 horizontal_alignment = 1
 autowrap_mode = 2
 
@@ -2177,9 +2177,9 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -232.0
-offset_top = -111.0
+offset_top = -275.0
 offset_right = 232.0
-offset_bottom = 111.0
+offset_bottom = -53.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = ExtResource("20_5lj7u")
@@ -2195,15 +2195,15 @@ anchor_left = 0.498
 anchor_top = 0.282
 anchor_right = 0.498
 anchor_bottom = 0.282
-offset_left = -194.072
+offset_left = -216.072
 offset_top = -29.604
-offset_right = 193.928
+offset_right = 215.928
 offset_bottom = 93.396
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 25
-text = "MANTEN PULSADO PARA USAR TU PROPULSOR"
+text = "MANTEN PRESIONADO PARA MOVERTE CON TU PROPULSOR"
 horizontal_alignment = 1
 autowrap_mode = 2
 
@@ -2448,6 +2448,7 @@ tween_on_load = true
 inactive_update_mode = 0
 
 [node name="Area2D" type="Area2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/PhantomCamera2D2"]
+position = Vector2(0, 1953)
 script = ExtResource("39_f6slj")
 JustInEnter = true
 JustOnce = true
@@ -2620,41 +2621,51 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Panel" type="Panel" parent="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/Outro"]
+visible = false
 use_parent_material = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -232.0
-offset_top = -111.0
-offset_right = 232.0
+offset_left = -267.0
+offset_top = -407.0
+offset_right = 267.0
 offset_bottom = 111.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = ExtResource("20_5lj7u")
 script = ExtResource("21_sbo2s")
 SetVisibleFalseWithBtn = true
-timeToAppear = 0.3
+timeToAppear = 1.0
 
 [node name="Label" type="Label" parent="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/Outro/Panel"]
 use_parent_material = true
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.498
-anchor_top = 0.282
-anchor_right = 0.498
-anchor_bottom = 0.282
-offset_left = -194.072
-offset_top = -29.604
-offset_right = 193.928
-offset_bottom = 93.396
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -278.5
+offset_top = -247.0
+offset_right = 278.5
+offset_bottom = 247.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 25
-text = "BUEN DÍA CADETE 
-¿LISTO PARA LA MISIÓN?"
+theme_override_constants/line_spacing = 0
+theme_override_font_sizes/font_size = 22
+text = "HAY 3 TIPOS DE ROCAS ESPACIALES:
+
+EL METEOROIDE ES CUALQUIER ROCA ESPACIAL QUE ESTÉ FLOTANDO EN EL ESPACIO SIN TOCAR 
+A OTRO CUERPO
+
+PUEDEN SER PEDAZOS DE PLANETAS, COMETAS
+O SATÉLITES.
+"
 horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
 
 [node name="Button" type="Button" parent="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/Outro/Panel"]
 use_parent_material = true
@@ -2673,14 +2684,15 @@ grow_vertical = 0
 theme = ExtResource("22_d5f6h")
 
 [node name="Panel2" type="Panel" parent="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/Outro"]
+visible = false
 use_parent_material = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -232.0
-offset_top = -111.0
-offset_right = 232.0
+offset_left = -267.0
+offset_top = -407.0
+offset_right = 267.0
 offset_bottom = 111.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -2692,21 +2704,30 @@ timeToAppear = 0.3
 [node name="Label" type="Label" parent="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/Outro/Panel2"]
 use_parent_material = true
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.498
-anchor_top = 0.282
-anchor_right = 0.498
-anchor_bottom = 0.282
-offset_left = -194.072
-offset_top = -29.604
-offset_right = 193.928
-offset_bottom = 93.396
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -278.5
+offset_top = -247.0
+offset_right = 278.5
+offset_bottom = 247.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 25
-text = "RECOLECTA 3 TIPOS DE ROCAS ESPACIALES"
+theme_override_constants/line_spacing = 0
+theme_override_font_sizes/font_size = 22
+text = "AL METEORO DE NOCHE LE DICEN  
+“ESTRELLA FUGAZ”
+
+PERO ES UN METEOROIDE QUE
+AL LOGRAR ENTRAR CON GRAN VELOCIDAD
+EN LA ATMÓSFERA DE UN PLANETA 
+DESPRENDE UNA LARGA COLA DE LUZ 
+AL QUEMARSE EN SU CAÍDA."
 horizontal_alignment = 1
+vertical_alignment = 1
 autowrap_mode = 2
 
 [node name="Button" type="Button" parent="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/Outro/Panel2"]
@@ -2724,6 +2745,129 @@ offset_bottom = 33.0
 grow_horizontal = 0
 grow_vertical = 0
 theme = ExtResource("22_d5f6h")
+
+[node name="Panel3" type="Panel" parent="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/Outro"]
+visible = false
+use_parent_material = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -294.0
+offset_top = -407.0
+offset_right = 294.0
+offset_bottom = 111.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("20_5lj7u")
+script = ExtResource("21_sbo2s")
+SetVisibleFalseWithBtn = true
+timeToAppear = 0.3
+
+[node name="Label" type="Label" parent="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/Outro/Panel3"]
+use_parent_material = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -277.0
+offset_top = -247.0
+offset_right = 277.0
+offset_bottom = 247.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 0
+theme_override_font_sizes/font_size = 22
+text = "SI UN METEORO LOGRA CHOCAR CON UN PLANETA
+SIN DESTRUIRSE POR LA VELOCIDAD O
+EL CALOR DE SU CAÍDA,
+SE GANA EL NOMBRE DE: METEORITO.
+
+LOS METEORITOS SON ROCAS QUE LOGRARON LLEGAR DESDE EL ESPACIO EXTERIOR
+
+SE DICE QUE HAY 190 CRÁTERES DE METEORITOS EN LA TIERRA."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Button" type="Button" parent="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/Outro/Panel3"]
+use_parent_material = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.853
+anchor_top = 1.0
+anchor_right = 0.853
+anchor_bottom = 1.0
+offset_left = -34.792
+offset_top = -37.0
+offset_right = 35.208
+offset_bottom = 33.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource("22_d5f6h")
+
+[node name="Panel4" type="Panel" parent="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/Outro"]
+visible = false
+use_parent_material = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -294.0
+offset_top = -407.0
+offset_right = 294.0
+offset_bottom = 111.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("20_5lj7u")
+script = ExtResource("21_sbo2s")
+SetVisibleFalseWithBtn = true
+timeToAppear = 0.3
+
+[node name="Label" type="Label" parent="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/Outro/Panel4"]
+use_parent_material = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -277.0
+offset_top = -247.0
+offset_right = 277.0
+offset_bottom = 247.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 0
+theme_override_font_sizes/font_size = 22
+text = "LAS ROCAS ESPACIALES NOS AYUDAN A
+INVESTIGAR OTROS MUNDOS 
+¡PODES APRENDER A RECONOCERLAS EN EL MUSEO!"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Button" type="Button" parent="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/Outro/Panel4"]
+use_parent_material = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.853
+anchor_top = 1.0
+anchor_right = 0.853
+anchor_bottom = 1.0
+offset_left = -34.792
+offset_top = -37.0
+offset_right = 35.208
+offset_bottom = 33.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource("22_d5f6h")
+script = ExtResource("45_n360i")
+NextScene = "Map_Screen"
 
 [node name="AstronautaPivot" type="Node2D" parent="Astronauta/StateMachine/Fin/Contenido/Center/Nave"]
 position = Vector2(-134, 262)
@@ -2791,8 +2935,10 @@ NextScene = "Map_Screen"
 [connection signal="area_entered" from="Astronauta/StateMachine/Juego/Contenido/Instancia1/PhantomCamera2D2/Area2D" to="Astronauta/StateMachine/Juego/Contenido/Instancia1/PhantomCamera2D2/Downwall" method="Set_Collider_Position"]
 [connection signal="timeout" from="Astronauta/StateMachine/Moraleja/Contenido/Timer" to="Astronauta/StateMachine/Moraleja" method="TimeOut" flags=18]
 [connection signal="pressed" from="Astronauta/StateMachine/Moraleja/Contenido/Instancia1/Button" to="Astronauta/StateMachine/Moraleja/Contenido/Instancia1/Button" method="_on_pressed" flags=18]
-[connection signal="pressed" from="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/Outro/Panel/Button" to="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/Outro/Panel2" method="SetVisibility"]
-[connection signal="pressed" from="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/Outro/Panel2/Button" to="Astronauta/StateMachine/Juego/Contenido/Instancia1/Astronauta" method="BlockMove"]
+[connection signal="Transitioned" from="Astronauta/StateMachine/Fin" to="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/Outro/Panel" method="StartTimerToAppear"]
+[connection signal="pressed" from="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/Outro/Panel/Button" to="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/Outro/Panel2" method="SetVisibility" binds= [true]]
+[connection signal="pressed" from="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/Outro/Panel2/Button" to="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/Outro/Panel3" method="SetVisibility" binds= [true]]
+[connection signal="pressed" from="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/Outro/Panel3/Button" to="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/Outro/Panel4" method="SetVisibility" binds= [true]]
 
 [editable path="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoro/Meteoro1/meteoro"]
 [editable path="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoro/TheGuy2"]

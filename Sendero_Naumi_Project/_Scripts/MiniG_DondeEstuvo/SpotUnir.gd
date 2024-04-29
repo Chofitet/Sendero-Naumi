@@ -46,8 +46,9 @@ func AnimToRigth():
 func AnimToAling():
 	await get_tree().create_timer(3).timeout
 	var tween = get_tree().create_tween()
-	tween.tween_property(self,"global_position", Vector2(global_position.x,item.global_position.y - get_rect().size.y/2), 1).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_SPRING)
+	tween.tween_property(self,"global_position", Vector2(global_position.x,item.global_position.y - $unionSpot.position.y), 1).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_SPRING)
 	await tween.finished
+	$unionSpot.position.x += 50 
 	var tween2 = get_tree().create_tween()
 	tween2.tween_property(self,"position", Vector2(position.x +40,position.y),0.3)
 	PlanetsAling.emit()

@@ -14,6 +14,7 @@ var General_Option
 @export var color : Color
 
 func _ready():
+	timeout.connect(_on_timeout)
 	Fade_in = SceneManager.create_options(fade_time, texture, smoothness, is_inverted)
 	Fade_out = SceneManager.create_options(fade_time, texture, smoothness, is_inverted)
 	General_Option = SceneManager.create_general_options(color, 0, true, true)

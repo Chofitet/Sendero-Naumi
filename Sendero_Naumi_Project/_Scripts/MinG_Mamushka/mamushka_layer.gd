@@ -97,6 +97,7 @@ func CheckRigthIsLayer(x) :
 		x.z_index = 0
 		var tween2 = get_tree().create_tween()
 		tween2.tween_property(self,"rotation",initRot,0.1).set_ease(Tween.EASE_IN_OUT)
+		await tween2.finished
 		x.OnSpot(true)
 		isAngry = true
 		await get_tree().create_timer(2).timeout

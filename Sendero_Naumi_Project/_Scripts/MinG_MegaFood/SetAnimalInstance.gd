@@ -4,8 +4,6 @@ extends Control
 @onready var Spot = $AnchorSpot/Spot
 var DragObjects :=[]
 var instanceResourse = InstanceResource.new()
-@export var stateMachine : Node
-@export var StateToChange : StateMinigame
 
 func _ready():
 	get_parent().Transitioned.connect(SetInstanceAnimal)
@@ -70,11 +68,8 @@ func SetResultEvent():
 	papercontroller.get_node("Button").button_down.connect(EndResultEvent)
 
 func EndResultEvent():
-	
-	if get_node(Instances[3]).visible == true:
-		$ButtonFin._on_pressed()
-	else:
-		stateMachine.Trigger_On_Child_Transition(StateToChange.name)
 	$PaperController/AnimationPlayer.play_backwards("paper")
+	$BlockScreen.SetVisibility(true)
+	$Cordon/Cortina.PlayCordonAppear()
 	
 	

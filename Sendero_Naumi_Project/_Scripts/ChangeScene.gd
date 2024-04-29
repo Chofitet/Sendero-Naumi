@@ -12,6 +12,7 @@ var Fade_out
 var General_Option
 
 func _ready():
+	pressed.connect(_on_pressed)
 	Fade_in = SceneManager.create_options(fade_time, texture, smoothness, is_inverted)
 	Fade_out = SceneManager.create_options(fade_time, texture, smoothness, is_inverted)
 	General_Option = SceneManager.create_general_options(color, 0, true, true)

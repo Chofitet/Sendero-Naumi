@@ -1,4 +1,4 @@
-[gd_scene load_steps=119 format=3 uid="uid://b017ojh8vtsd6"]
+[gd_scene load_steps=118 format=3 uid="uid://b017ojh8vtsd6"]
 
 [ext_resource type="Script" path="res://_Scripts/Minigame_Save_Controller.gd" id="1_ouwf6"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/StateMachineMinigames.gd" id="2_5wf26"]
@@ -60,7 +60,6 @@
 [ext_resource type="StyleBox" uid="uid://b3tjes2hcm3wx" path="res://Resources/UI_Resources/StyleBoxTrasparent.tres" id="48_k14e0"]
 [ext_resource type="StyleBox" uid="uid://5oga2arj2sv0" path="res://Resources/UI_Resources/PanelSimple.tres" id="50_hrlt0"]
 [ext_resource type="Texture2D" uid="uid://dt1we50ngyt5j" path="res://Sprites/ZonaAstronomia/SnowParticle.png" id="51_7725q"]
-[ext_resource type="Script" path="res://_Scripts/SetVisibleChilds.gd" id="54_8ekae"]
 [ext_resource type="Texture2D" uid="uid://dkqk7qmj3ga37" path="res://Sprites/ZonaAstronomia/saturno - donde.png" id="54_48nd8"]
 [ext_resource type="Script" path="res://_Scripts/CheckInstanceState.gd" id="54_u7brv"]
 [ext_resource type="Texture2D" uid="uid://bp0htfixseccf" path="res://Sprites/ZonaAstronomia/sol - donde.png" id="55_ucjwp"]
@@ -2098,6 +2097,9 @@ position = Vector2(-152.85, -315.5)
 correctSpot = NodePath("../../../pivotPlanets/VBoxContainer2/SpotUnir5")
 colorShader = Color(0.823529, 0.113725, 0.454902, 1)
 
+[node name="LaserRay" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/center/CheckTrue/ItemUnir2" index="0"]
+points = PackedVector2Array(57, 1.00002, 1, 0)
+
 [node name="Sprite2D" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/center/CheckTrue/ItemUnir2" index="1"]
 self_modulate = Color(0.454902, 0.384314, 0.411765, 1)
 scale = Vector2(0.1817, 0.1817)
@@ -2279,7 +2281,7 @@ grow_horizontal = 2
 layout_mode = 2
 offset_right = 160.0
 offset_bottom = 160.0
-nombre = "Marte"
+nombre = "MARTE"
 item = NodePath("../../../center/CheckTrue/ItemUnir3")
 
 [node name="SpotUnir2" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/pivotPlanets/VBoxContainer2" instance=ExtResource("19_8egw1")]
@@ -2382,26 +2384,6 @@ libraries = {
 script = ExtResource("13_ukv5b")
 animation = "planetEnter"
 
-[node name="Button" type="Button" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2" node_paths=PackedStringArray("state_to_change", "state_machine")]
-visible = false
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -257.0
-offset_top = -118.0
-offset_right = -49.0
-offset_bottom = -38.0
-grow_horizontal = 0
-grow_vertical = 0
-text = "CONTINUAR"
-script = ExtResource("4_j3ig5")
-state_to_change = NodePath("../../../../Fin")
-state_machine = NodePath("../../../..")
-isEndOfGame = true
-
 [node name="Panels" type="Control" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2"]
 z_index = 1
 layout_mode = 1
@@ -2412,10 +2394,10 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("54_8ekae")
 
 [node name="Panel" type="Panel" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/Panels"]
 visible = false
+z_index = 1
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -2423,12 +2405,14 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -185.0
-offset_top = -124.0
+offset_top = -154.0
 offset_right = 185.0
-offset_bottom = 124.0
+offset_bottom = 154.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = ExtResource("56_xob8t")
+script = ExtResource("15_acmhj")
+offBtnWithBtn = true
 
 [node name="Label" type="Label" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/Panels/Panel"]
 layout_mode = 1
@@ -2437,20 +2421,44 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -163.0
-offset_top = -94.0
-offset_right = 164.0
-offset_bottom = 94.0
+offset_left = -177.5
+offset_top = -137.0
+offset_right = 177.5
+offset_bottom = 137.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "ES MUY FACIL LEVANTAR POLVOEN LA LUNA ES UN SATELITE CON GRAVEDAD MUY DEBIL Y ZAZAZZAZAZZAZAZAZAZA"
-label_settings = ExtResource("8_xrogw")
+theme_override_constants/line_spacing = 0
+theme_override_font_sizes/font_size = 22
+text = "LA LUNA ES UN SATÉLITE
+CON UNA GRAVEDAD MUY DÉBIL,
+POR ESO LOS ASTRONAUTAS
+PARECEN REBOTAR EN ELLA Y LEVANTAN TANTO POLVO.
+HACE BILLONES DE AÑOS 
+UNA ROCA CHOCÓ CON LA
+TIERRA, FORMANDO LA LUNA.
+"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
+[node name="Button" type="Button" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/Panels/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.938
+anchor_top = 0.961
+anchor_right = 0.938
+anchor_bottom = 0.961
+offset_left = -30.06
+offset_top = -29.988
+offset_right = 29.94
+offset_bottom = 30.012
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource("14_j3442")
+
 [node name="Panel2" type="Panel" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/Panels"]
 visible = false
+z_index = 1
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -2458,12 +2466,14 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -185.0
-offset_top = -442.0
+offset_top = -464.0
 offset_right = 185.0
-offset_bottom = -194.0
+offset_bottom = -172.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = ExtResource("56_xob8t")
+script = ExtResource("15_acmhj")
+offBtnWithBtn = true
 
 [node name="Label" type="Label" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/Panels/Panel2"]
 layout_mode = 1
@@ -2472,20 +2482,42 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -163.0
-offset_top = -94.0
-offset_right = 164.0
-offset_bottom = 94.0
+offset_left = -176.5
+offset_top = -136.0
+offset_right = 176.5
+offset_bottom = 136.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "ES MUY FACIL LEVANTAR POLVOEN LA LUNA ES UN SATELITE CON GRAVEDAD MUY DEBIL Y ZAZAZZAZAZZAZAZAZAZA"
-label_settings = ExtResource("8_xrogw")
+theme_override_constants/line_spacing = 0
+theme_override_font_sizes/font_size = 22
+text = "SIENDO 400 VECES MÁS GRANDE QUE LA TIERRA Y CON -218 °C
+A URANO LE DICEN: 
+“EL GIGANTE DE HIELO”.
+UN AÑO ALLÍ DURA 84 AÑOS 
+EN LA TIERRA,
+¡PERO UN DÍA SOLO 17 HS!"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
+[node name="Button" type="Button" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/Panels/Panel2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.938
+anchor_top = 0.938
+anchor_right = 0.938
+anchor_bottom = 0.938
+offset_left = -30.06
+offset_top = -29.896
+offset_right = 29.94
+offset_bottom = 30.104
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource("14_j3442")
+
 [node name="Panel3" type="Panel" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/Panels"]
 visible = false
+z_index = 1
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -2493,12 +2525,14 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -185.0
-offset_top = 206.0
+offset_top = 176.0
 offset_right = 185.0
-offset_bottom = 454.0
+offset_bottom = 484.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = ExtResource("56_xob8t")
+script = ExtResource("15_acmhj")
+offBtnWithBtn = true
 
 [node name="Label" type="Label" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/Panels/Panel3"]
 layout_mode = 1
@@ -2507,17 +2541,43 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -163.0
-offset_top = -94.0
-offset_right = 164.0
-offset_bottom = 94.0
+offset_left = -181.0
+offset_top = -153.0
+offset_right = 181.0
+offset_bottom = 153.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "ES MUY FACIL LEVANTAR POLVOEN LA LUNA ES UN SATELITE CON GRAVEDAD MUY DEBIL Y ZAZAZZAZAZZAZAZAZAZA"
-label_settings = ExtResource("8_xrogw")
+theme_override_constants/line_spacing = 0
+theme_override_font_sizes/font_size = 22
+text = "APODADO “EL PLANETA ROJO”
+MARTE PARECE CÁLIDO 
+PERO ES MUY FRÍO.
+TIENE TORMENTAS DE TIERRA
+QUE PUEDEN DURAR MESES
+Y ENVOLVERLO POR COMPLETO.
+UN DÍA EN MARTE DURA 37 MINUTOS MÁS QUE ACÁ."
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
+
+[node name="Button" type="Button" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/Panels/Panel3" node_paths=PackedStringArray("state_to_change", "state_machine")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.938
+anchor_top = 0.945
+anchor_right = 0.938
+anchor_bottom = 0.945
+offset_left = -30.06
+offset_top = -30.06
+offset_right = 29.94
+offset_bottom = 29.94
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource("14_j3442")
+script = ExtResource("4_j3ig5")
+state_to_change = NodePath("../../../../../../Fin")
+state_machine = NodePath("../../../../../..")
+isEndOfGame = true
 
 [node name="HUD" type="CanvasLayer" parent="DondeEstuvo/StateMachine/Juego"]
 
@@ -2722,13 +2782,16 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -172.0
+offset_left = -179.0
 offset_top = -80.0
-offset_right = 172.0
+offset_right = 179.0
 offset_bottom = 80.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "CADA UNO DE LOS PLANETAS EN NUESTRO SISTEMA SOLAR TIENE SUS PROPIAS CARACTERÍSTICAS"
+text = "CADA PLANETA DE NUESTRO
+SISTEMA SOLAR TIENE SUS
+PROPIAS CARACTERISTICAS
+QUE LO HACEN ÚNICO"
 label_settings = ExtResource("8_xrogw")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -2737,14 +2800,14 @@ autowrap_mode = 2
 [node name="Button" type="Button" parent="DondeEstuvo/StateMachine/Fin/Contenido/center/Panel"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.839
-anchor_top = 1.043
-anchor_right = 0.839
-anchor_bottom = 1.043
-offset_left = -35.108
-offset_top = -35.03
-offset_right = 34.892
-offset_bottom = 34.97
+anchor_left = 0.952
+anchor_top = 0.91
+anchor_right = 0.952
+anchor_bottom = 0.91
+offset_left = -30.144
+offset_top = -30.1
+offset_right = 29.856
+offset_bottom = 29.9
 grow_horizontal = 0
 grow_vertical = 0
 theme = ExtResource("14_j3442")
@@ -2766,13 +2829,14 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -172.0
+offset_left = -176.0
 offset_top = -80.0
-offset_right = 172.0
+offset_right = 176.0
 offset_bottom = 80.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "ACA VA LA OTRA COSA INTERESANTE QUE TE QUIERO CONTAR"
+text = "¡ANIMATE A DESCUBRIR MÁS
+EN EL MUSEO!"
 label_settings = ExtResource("8_xrogw")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -2781,14 +2845,14 @@ autowrap_mode = 2
 [node name="ButtonChangeScene" parent="DondeEstuvo/StateMachine/Fin/Contenido/center/Panel2" instance=ExtResource("15_jwaju")]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.84
-anchor_top = 1.048
-anchor_right = 0.84
-anchor_bottom = 1.048
-offset_left = -35.04
-offset_top = -35.08
-offset_right = 34.96
-offset_bottom = 34.92
+anchor_left = 0.952
+anchor_top = 0.914
+anchor_right = 0.952
+anchor_bottom = 0.914
+offset_left = -30.144
+offset_top = -29.94
+offset_right = 29.856
+offset_bottom = 30.06
 grow_horizontal = 0
 theme = ExtResource("14_j3442")
 text = "
@@ -2810,8 +2874,10 @@ NextScene = "Map_Screen"
 [connection signal="AllTrue" from="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/center/CheckTrue" to="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/pivotPlanets/VBoxContainer2/SpotUnir4" method="AnimToAling"]
 [connection signal="AllTrue" from="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/center/CheckTrue" to="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/pivotPlanets/VBoxContainer2/SpotUnir5" method="AnimToAling"]
 [connection signal="PlanetsAling" from="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/pivotPlanets/VBoxContainer2/SpotUnir" to="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/Panel" method="SetVisibility" binds= [false]]
-[connection signal="PlanetsAling" from="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/pivotPlanets/VBoxContainer2/SpotUnir" to="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/Button" method="SetVisibility" binds= [true]]
-[connection signal="PlanetsAling" from="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/pivotPlanets/VBoxContainer2/SpotUnir" to="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/Panels" method="SetVisibleChilds" binds= [true]]
+[connection signal="PlanetsAling" from="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/pivotPlanets/VBoxContainer2/SpotUnir" to="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/Panels/Panel" method="SetVisibility" binds= [true]]
+[connection signal="pressed" from="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/Panels/Panel/Button" to="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/Panels/Panel2" method="SetVisibility" binds= [true]]
+[connection signal="pressed" from="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/Panels/Panel2/Button" to="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/Panels/Panel3" method="SetVisibility" binds= [true]]
+[connection signal="pressed" from="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/Panels/Panel3/Button" to="DondeEstuvo" method="Set_Complete"]
 [connection signal="Transitioned" from="DondeEstuvo/StateMachine/Fin" to="DondeEstuvo/StateMachine/Fin/Contenido/center/Panel" method="StartTimerToAppear"]
 [connection signal="pressed" from="DondeEstuvo/StateMachine/Fin/Contenido/center/Panel/Button" to="DondeEstuvo/StateMachine/Fin/Contenido/center/Panel2" method="SetVisibility" binds= [true]]
 [connection signal="pressed" from="DondeEstuvo/StateMachine/Fin/Contenido/center/Panel2/ButtonChangeScene" to="DondeEstuvo" method="Set_Complete"]
