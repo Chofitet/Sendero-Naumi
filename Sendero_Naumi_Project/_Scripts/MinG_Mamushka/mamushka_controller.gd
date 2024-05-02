@@ -34,9 +34,12 @@ func Rotate(rot = 0, time = 0):
 	tween.tween_property(self,"rotation",rot,time)
 
 func InDraggin():
+	SpriteLayers[state].get_node("emotions").play("surprise")
 	anim.pause()
+	
 
 func MouseRealese():
+	SpriteLayers[state].get_node("emotions").play("idle")
 	anim.play("idle")
 
 func PlayAnimTitulo():
@@ -49,6 +52,5 @@ func FinalState():
 	z_index = 1
 	rotation = 0
 	await anim.animation_finished
-	anim.play(("opacity"))
 	Outro.visible = true
 	Outro.get_node("AnimationPlayer").Play()

@@ -1,17 +1,22 @@
-[gd_scene load_steps=29 format=3 uid="uid://7ypbdd5rheui"]
+[gd_scene load_steps=35 format=3 uid="uid://7ypbdd5rheui"]
 
 [ext_resource type="PackedScene" uid="uid://ci3c3pocxiywq" path="res://Scenes/Experiments/drag_object.tscn" id="1_1vclv"]
 [ext_resource type="Script" path="res://_Scripts/MinG_Mamushka/mamushka_controller.gd" id="1_vp2p0"]
+[ext_resource type="Texture2D" uid="uid://cctu3otg3du6u" path="res://Sprites/ZonaAstronomia/corteza orbe - matryoshka.png" id="2_1pjty"]
 [ext_resource type="Texture2D" uid="uid://dt7a1hlrffbp5" path="res://Sprites/ZonaAstronomia/nucleo interno orbe - matryoshka.png" id="2_mq7ap"]
 [ext_resource type="SpriteFrames" uid="uid://bvixt5dbp1fob" path="res://Resources/mamushkasAnimatedEmotions/mamushka_Nucleo_Interno_anim.tres" id="3_grwlx"]
+[ext_resource type="Texture2D" uid="uid://bhmy3hjr7stdn" path="res://Sprites/ZonaAstronomia/manto superior orbe - matryoshka.png" id="3_itwy6"]
 [ext_resource type="Texture2D" uid="uid://hndpxlxqn8cp" path="res://Sprites/ZonaAstronomia/nucleo interno cabeza - matryoshka.png" id="3_mop5m"]
+[ext_resource type="Texture2D" uid="uid://d3r50tafvdk2k" path="res://Sprites/ZonaAstronomia/manto inferior orbe - matryoshka.png" id="4_0lmy8"]
 [ext_resource type="Texture2D" uid="uid://dvxyarv13qcnc" path="res://Sprites/ZonaAstronomia/nucleo interno titulo - matryoshka.png" id="4_615u1"]
 [ext_resource type="Texture2D" uid="uid://b2fcti66m2xj6" path="res://Sprites/ZonaAstronomia/nucleo externo cadera - matryoshka.png" id="4_vtdnp"]
+[ext_resource type="Texture2D" uid="uid://ddsoyjsp6y3oc" path="res://Sprites/ZonaAstronomia/nucleo externo orbe - matryoshka.png" id="5_7uhmk"]
 [ext_resource type="Texture2D" uid="uid://b6u3ourwabx6u" path="res://Sprites/ZonaAstronomia/nucleo externo cabeza - matryoshka.png" id="5_cfk08"]
 [ext_resource type="Texture2D" uid="uid://bdr53jvrjkxj3" path="res://Sprites/ZonaAstronomia/manto inferior cadera - matryoshka.png" id="6_705o7"]
 [ext_resource type="Texture2D" uid="uid://bxvsh6ftcgtqb" path="res://Sprites/ZonaAstronomia/manto inferior cabeza - matryoshka.png" id="7_kj77h"]
 [ext_resource type="SpriteFrames" uid="uid://dnjwuu7vb0tlm" path="res://Resources/mamushkasAnimatedEmotions/mamushka_Nucleo_Externo_anim.tres" id="7_ub6oe"]
 [ext_resource type="Texture2D" uid="uid://bawvtie0lnxa6" path="res://Sprites/ZonaAstronomia/manto superior cadera - matryoshka.png" id="8_olphd"]
+[ext_resource type="Texture2D" uid="uid://bkrvukm6ytwwl" path="res://Sprites/ZonaAstronomia/tierra - matryoshka.png" id="8_vwifp"]
 [ext_resource type="Texture2D" uid="uid://c0nbss33gavx8" path="res://Sprites/ZonaAstronomia/manto superior cabeza - matryoshka.png" id="9_goi1i"]
 [ext_resource type="SpriteFrames" uid="uid://dpg7axukfw85v" path="res://Resources/mamushkasAnimatedEmotions/mamushka_Manto_Inferior_anim.tres" id="10_byp4t"]
 [ext_resource type="Texture2D" uid="uid://d32row7tshqb0" path="res://Sprites/ZonaAstronomia/corteza cadera - matryoshka.png" id="10_pihha"]
@@ -19,6 +24,7 @@
 [ext_resource type="SpriteFrames" uid="uid://du6ewcx4aeo10" path="res://Resources/mamushkasAnimatedEmotions/mamushka_Manto_Superior_anim.tres" id="13_88kvf"]
 [ext_resource type="SpriteFrames" uid="uid://ccg0trgfp1e7r" path="res://Resources/mamushkasAnimatedEmotions/mamushka_Corteza_anim.tres" id="13_vk4tl"]
 [ext_resource type="Texture2D" uid="uid://kvjt6tm36pd8" path="res://Sprites/ZonaAstronomia/corteza tapa - matryoshka.png" id="17_as8vg"]
+[ext_resource type="StyleBox" uid="uid://b3tjes2hcm3wx" path="res://Resources/UI_Resources/StyleBoxTrasparent.tres" id="20_w1fus"]
 
 [sub_resource type="Animation" id="Animation_ixei7"]
 length = 0.001
@@ -123,6 +129,30 @@ tracks/4/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Sprites:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("CapasTierra:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_1gwp8"]
 resource_name = "idle"
@@ -159,7 +189,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_cyvqp"]
 resource_name = "to_final"
-length = 6.0
+length = 12.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -167,7 +197,7 @@ tracks/0/path = NodePath(".:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(3, 6),
+"times": PackedFloat32Array(3.2, 12),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(1, 1), Vector2(2.13, 2.13)]
@@ -179,7 +209,7 @@ tracks/1/path = NodePath(".:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(3, 6),
+"times": PackedFloat32Array(3.2, 12),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(0, 0), Vector2(0, -172)]
@@ -196,6 +226,30 @@ tracks/2/keys = {
 "update": 0,
 "values": [Vector2(0, 0), Vector2(-16.9161, -1503.9)]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprites:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(3.1, 12),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CapasTierra:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7p0wm"]
 _data = {
@@ -208,6 +262,34 @@ _data = {
 [node name="mamushkaController" type="Node2D"]
 script = ExtResource("1_vp2p0")
 
+[node name="CapasTierra" type="Node2D" parent="."]
+visible = false
+position = Vector2(0, 76)
+scale = Vector2(0.455, 0.455)
+
+[node name="Capas" type="Node2D" parent="CapasTierra"]
+
+[node name="Corteza2" type="Sprite2D" parent="CapasTierra/Capas"]
+texture = ExtResource("2_1pjty")
+
+[node name="Sprite2D2" type="Sprite2D" parent="CapasTierra/Capas"]
+texture = ExtResource("3_itwy6")
+
+[node name="Sprite2D3" type="Sprite2D" parent="CapasTierra/Capas"]
+texture = ExtResource("4_0lmy8")
+
+[node name="Sprite2D4" type="Sprite2D" parent="CapasTierra/Capas"]
+texture = ExtResource("5_7uhmk")
+
+[node name="Sprite2D" type="Sprite2D" parent="CapasTierra/Capas"]
+scale = Vector2(1, 1)
+texture = ExtResource("2_mq7ap")
+
+[node name="Corteza" type="Sprite2D" parent="CapasTierra"]
+self_modulate = Color(1, 1, 1, 0)
+scale = Vector2(1.01099, 1.01099)
+texture = ExtResource("8_vwifp")
+
 [node name="Sprites" type="Node2D" parent="."]
 
 [node name="Layer0" type="Node2D" parent="Sprites"]
@@ -218,7 +300,7 @@ texture = ExtResource("2_mq7ap")
 
 [node name="emotions" type="AnimatedSprite2D" parent="Sprites/Layer0"]
 sprite_frames = ExtResource("3_grwlx")
-animation = &"idle"
+animation = &"surprise"
 autoplay = "idle"
 
 [node name="Layer0" type="Sprite2D" parent="Sprites/Layer0"]
@@ -243,7 +325,7 @@ flip_h = true
 
 [node name="emotions" type="AnimatedSprite2D" parent="Sprites/Layer1"]
 sprite_frames = ExtResource("7_ub6oe")
-animation = &"idle"
+animation = &"surprise"
 autoplay = "idle"
 
 [node name="Sprite2D2" type="Sprite2D" parent="Sprites/Layer1"]
@@ -333,6 +415,7 @@ offset_right = 210.0
 offset_bottom = 299.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/focus = ExtResource("20_w1fus")
 flat = true
 
 [editable path="DragObject"]

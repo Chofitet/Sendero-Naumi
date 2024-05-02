@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://hbmgu1q1d7os"]
+[gd_scene load_steps=56 format=3 uid="uid://hbmgu1q1d7os"]
 
 [ext_resource type="Script" path="res://_Scripts/Minigame_Save_Controller.gd" id="1_dk1kn"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/StateMachineMinigames.gd" id="2_445ba"]
@@ -34,6 +34,19 @@
 [ext_resource type="PackedScene" uid="uid://bu70xltoq3ycs" path="res://Scenes/Zona_Megafauna/paper_controller.tscn" id="27_iymen"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/MoralejaState.gd" id="29_orp8w"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/FinState.gd" id="30_7lvq3"]
+[ext_resource type="Texture2D" uid="uid://d2tvt5jq21shq" path="res://Sprites/ZonaMegafauna/mega frames1.png" id="35_socc7"]
+[ext_resource type="Texture2D" uid="uid://bn0ma3jsj556o" path="res://Sprites/ZonaMegafauna/pulgar - foodtruck.png" id="36_1p62h"]
+[ext_resource type="Texture2D" uid="uid://doa548wychbgi" path="res://Sprites/ZonaMegafauna/perfil1 - foodtruck.png" id="37_0dc1m"]
+[ext_resource type="Texture2D" uid="uid://be0iwvq5bt2l1" path="res://Sprites/ZonaMegafauna/review1 - foodtruck.png" id="37_5l05l"]
+[ext_resource type="Texture2D" uid="uid://cooqep5mssfv4" path="res://Sprites/ZonaMegafauna/perfil4 - foodtruck.png" id="37_rolar"]
+[ext_resource type="Texture2D" uid="uid://drn8bxi1fahvc" path="res://Sprites/ZonaMegafauna/perfil3 - foodtruck.png" id="38_qcswf"]
+[ext_resource type="Texture2D" uid="uid://nbobxo3p484q" path="res://Sprites/ZonaMegafauna/perfil2 - foodtruck.png" id="39_35qsy"]
+[ext_resource type="Texture2D" uid="uid://ohmic6210bhn" path="res://Sprites/ZonaMegafauna/review2 - foodtruck.png" id="39_en2ls"]
+[ext_resource type="Texture2D" uid="uid://bgxpoofwqbfdx" path="res://Sprites/ZonaMegafauna/estrella - foodtruck.png" id="40_kui26"]
+[ext_resource type="Texture2D" uid="uid://chqivoetkgkoj" path="res://Sprites/UI/circulo.png" id="41_w22xk"]
+[ext_resource type="Texture2D" uid="uid://bgu2a8yvdx88v" path="res://Sprites/ZonaMegafauna/review3 - foodtruck.png" id="41_yshj5"]
+[ext_resource type="Texture2D" uid="uid://dv8qy3pocdvhs" path="res://Sprites/ZonaMegafauna/review4 - foodtruck.png" id="43_cudcr"]
+[ext_resource type="LabelSettings" uid="uid://b7f8w8wf071ek" path="res://Themes/Geología/LabelSettings_Busqueda.tres" id="46_5e6x3"]
 
 [sub_resource type="Gradient" id="Gradient_crw6p"]
 offsets = PackedFloat32Array(0, 0.51751, 1)
@@ -47,6 +60,45 @@ fill_to = Vector2(0.521368, 1)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pj3pu"]
 size = Vector2(140, 130)
 
+[sub_resource type="Animation" id="Animation_t84p4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("cordon:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-1.5708]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../FinalPanel:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Button:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
 [sub_resource type="Animation" id="Animation_2tckf"]
 resource_name = "cordon_anim"
 length = 4.0
@@ -57,10 +109,10 @@ tracks/0/path = NodePath("cordon:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(2.9, 3.2, 3.4, 3.6),
-"transitions": PackedFloat32Array(1, -2, -2, -2),
+"times": PackedFloat32Array(0, 2.9, 3.2, 3.4, 3.6),
+"transitions": PackedFloat32Array(1, 1, -2, -2, -2),
 "update": 0,
-"values": [-1.79594, 0.523599, -0.261799, 0.0]
+"values": [-1.5708, -1.5708, 0.523599, -0.261799, 0.0]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -85,45 +137,6 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
-}
-
-[sub_resource type="Animation" id="Animation_t84p4"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("cordon:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [-1.79594]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../../FinalPanel:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Button:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_so3tm"]
@@ -170,7 +183,7 @@ color = Color(0.72549, 1, 1, 1)
 
 [node name="StateMachine" type="Node" parent="FoodTruck" node_paths=PackedStringArray("initial_state")]
 script = ExtResource("2_445ba")
-initial_state = NodePath("Consigna")
+initial_state = NodePath("Fin")
 
 [node name="Consigna" type="Node" parent="FoodTruck/StateMachine"]
 script = ExtResource("3_snobg")
@@ -724,16 +737,17 @@ script = ExtResource("15_tqyfo")
 Pos = NodePath("../../Mesada/CortinaPos")
 StateMachine = NodePath("../../../..")
 
-[node name="cortina" type="Sprite2D" parent="FoodTruck/StateMachine/Juego/Contenido/Cordon/Cortina"]
-position = Vector2(0, -452)
-scale = Vector2(0.746099, 0.785838)
-texture = ExtResource("15_8s50t")
-
 [node name="cordon" type="Sprite2D" parent="FoodTruck/StateMachine/Juego/Contenido/Cordon/Cortina"]
-rotation = -1.79594
+position = Vector2(0, -26)
+rotation = -1.5708
 scale = Vector2(0.75, 0.75)
 texture = ExtResource("16_73qbv")
-offset = Vector2(0, 137.47)
+offset = Vector2(0, 160)
+
+[node name="cortina" type="Sprite2D" parent="FoodTruck/StateMachine/Juego/Contenido/Cordon/Cortina"]
+position = Vector2(0, -556)
+scale = Vector2(0.746099, 0.785838)
+texture = ExtResource("15_8s50t")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="FoodTruck/StateMachine/Juego/Contenido/Cordon/Cortina"]
 libraries = {
@@ -744,7 +758,7 @@ libraries = {
 visible = false
 offset_left = -197.0
 offset_right = 205.0
-offset_bottom = 331.0
+offset_bottom = 441.0
 theme_override_styles/focus = ExtResource("13_gnx46")
 flat = true
 script = ExtResource("17_7dvpr")
@@ -892,9 +906,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -300.0
-offset_top = 71.0
+offset_top = 53.0
 offset_right = 300.0
-offset_bottom = 111.0
+offset_bottom = 93.0
 grow_horizontal = 2
 
 [node name="Label" type="Label" parent="FoodTruck/StateMachine/Fin/Contenido/Panel"]
@@ -912,6 +926,322 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "FOOD-TRUCK-CRITIC.COM.IDA"
 label_settings = ExtResource("12_nn3tt")
+
+[node name="Comentarios" type="Control" parent="FoodTruck/StateMachine/Fin/Contenido"]
+layout_mode = 1
+anchor_left = 0.5
+anchor_top = 0.751
+anchor_right = 0.5
+anchor_bottom = 0.751
+offset_left = -343.0
+offset_top = -321.28
+offset_right = 343.0
+offset_bottom = 320.72
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="foto1" type="Control" parent="FoodTruck/StateMachine/Fin/Contenido/Comentarios"]
+clip_contents = true
+layout_mode = 2
+anchors_preset = 0
+offset_left = 259.0
+offset_top = -8.0
+offset_right = 658.0
+offset_bottom = 179.0
+
+[node name="Sprite2D3" type="Sprite2D" parent="FoodTruck/StateMachine/Fin/Contenido/Comentarios/foto1"]
+position = Vector2(237, 93)
+scale = Vector2(0.445935, 0.409369)
+texture = ExtResource("11_ygtxt")
+
+[node name="Sprite2D4" type="Sprite2D" parent="FoodTruck/StateMachine/Fin/Contenido/Comentarios/foto1"]
+position = Vector2(198.967, 95)
+scale = Vector2(0.213873, 0.213873)
+texture = ExtResource("13_o6dmd")
+
+[node name="Sprite2D" type="Sprite2D" parent="FoodTruck/StateMachine/Fin/Contenido/Comentarios/foto1"]
+position = Vector2(203.967, 72)
+scale = Vector2(0.177407, 0.177407)
+texture = ExtResource("35_socc7")
+hframes = 2
+
+[node name="foto2" type="Control" parent="FoodTruck/StateMachine/Fin/Contenido/Comentarios"]
+clip_contents = true
+anchors_preset = 0
+offset_left = 467.0
+offset_top = 200.0
+offset_right = 659.0
+offset_bottom = 390.0
+
+[node name="Sprite2D3" type="Sprite2D" parent="FoodTruck/StateMachine/Fin/Contenido/Comentarios/foto2"]
+position = Vector2(86.8509, 93)
+scale = Vector2(0.200423, 0.327902)
+texture = ExtResource("8_al03m")
+
+[node name="Sprite2D4" type="Sprite2D" parent="FoodTruck/StateMachine/Fin/Contenido/Comentarios/foto2"]
+position = Vector2(97.0001, 96)
+scale = Vector2(0.265896, 0.265896)
+texture = ExtResource("9_1mktl")
+
+[node name="foto5" type="Control" parent="FoodTruck/StateMachine/Fin/Contenido/Comentarios"]
+clip_contents = true
+anchors_preset = 0
+offset_left = 258.0
+offset_top = 409.0
+offset_right = 450.0
+offset_bottom = 599.0
+
+[node name="Sprite2D3" type="Sprite2D" parent="FoodTruck/StateMachine/Fin/Contenido/Comentarios/foto5"]
+position = Vector2(86.8509, 93)
+scale = Vector2(0.200423, 0.327902)
+texture = ExtResource("8_al03m")
+
+[node name="Sprite2D4" type="Sprite2D" parent="FoodTruck/StateMachine/Fin/Contenido/Comentarios/foto5"]
+position = Vector2(97.0001, 96)
+scale = Vector2(0.265896, 0.265896)
+texture = ExtResource("11_ty4hw")
+
+[node name="foto4" type="Control" parent="FoodTruck/StateMachine/Fin/Contenido/Comentarios"]
+clip_contents = true
+anchors_preset = 0
+offset_left = 258.0
+offset_top = 200.0
+offset_right = 450.0
+offset_bottom = 390.0
+
+[node name="Sprite2D3" type="Sprite2D" parent="FoodTruck/StateMachine/Fin/Contenido/Comentarios/foto4"]
+position = Vector2(86.8509, 93)
+scale = Vector2(0.200423, 0.327902)
+texture = ExtResource("8_al03m")
+
+[node name="Sprite2D4" type="Sprite2D" parent="FoodTruck/StateMachine/Fin/Contenido/Comentarios/foto4"]
+position = Vector2(117, 123)
+scale = Vector2(0.605881, 0.605882)
+texture = ExtResource("36_1p62h")
+
+[node name="foto3" type="Control" parent="FoodTruck/StateMachine/Fin/Contenido/Comentarios"]
+clip_contents = true
+anchors_preset = 0
+offset_left = 467.0
+offset_top = 410.0
+offset_right = 659.0
+offset_bottom = 600.0
+
+[node name="Sprite2D3" type="Sprite2D" parent="FoodTruck/StateMachine/Fin/Contenido/Comentarios/foto3"]
+position = Vector2(86.8509, 93)
+scale = Vector2(0.200423, 0.327902)
+texture = ExtResource("8_al03m")
+
+[node name="Sprite2D4" type="Sprite2D" parent="FoodTruck/StateMachine/Fin/Contenido/Comentarios/foto3"]
+position = Vector2(97.0001, 96)
+scale = Vector2(0.265896, 0.265896)
+texture = ExtResource("12_yqdj4")
+
+[node name="ColorRect" type="ColorRect" parent="FoodTruck/StateMachine/Fin/Contenido/Comentarios/foto3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.443137)
+
+[node name="Label" type="Label" parent="FoodTruck/StateMachine/Fin/Contenido/Comentarios/foto3"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "+36"
+label_settings = ExtResource("12_nn3tt")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="FoodTruck/StateMachine/Fin/Contenido/Comentarios"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -221.0
+offset_right = 114.0
+offset_bottom = 363.0
+grow_vertical = 2
+scale = Vector2(0.715, 0.715)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="FoodTruck/StateMachine/Fin/Contenido/Comentarios/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 80
+
+[node name="TextureRect" type="TextureRect" parent="FoodTruck/StateMachine/Fin/Contenido/Comentarios/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("37_rolar")
+
+[node name="TextureRect" type="TextureRect" parent="FoodTruck/StateMachine/Fin/Contenido/Comentarios/HBoxContainer/VBoxContainer/TextureRect"]
+layout_mode = 0
+offset_left = 112.0
+offset_right = 339.0
+offset_bottom = 156.0
+texture = ExtResource("37_5l05l")
+
+[node name="TextureRect2" type="TextureRect" parent="FoodTruck/StateMachine/Fin/Contenido/Comentarios/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("37_0dc1m")
+
+[node name="TextureRect" type="TextureRect" parent="FoodTruck/StateMachine/Fin/Contenido/Comentarios/HBoxContainer/VBoxContainer/TextureRect2"]
+layout_mode = 0
+offset_left = 107.0
+offset_right = 334.0
+offset_bottom = 156.0
+texture = ExtResource("39_en2ls")
+
+[node name="TextureRect3" type="TextureRect" parent="FoodTruck/StateMachine/Fin/Contenido/Comentarios/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("38_qcswf")
+
+[node name="TextureRect" type="TextureRect" parent="FoodTruck/StateMachine/Fin/Contenido/Comentarios/HBoxContainer/VBoxContainer/TextureRect3"]
+layout_mode = 0
+offset_left = 116.0
+offset_right = 343.0
+offset_bottom = 156.0
+texture = ExtResource("41_yshj5")
+
+[node name="TextureRect4" type="TextureRect" parent="FoodTruck/StateMachine/Fin/Contenido/Comentarios/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("39_35qsy")
+
+[node name="TextureRect" type="TextureRect" parent="FoodTruck/StateMachine/Fin/Contenido/Comentarios/HBoxContainer/VBoxContainer/TextureRect4"]
+layout_mode = 0
+offset_left = 107.0
+offset_right = 334.0
+offset_bottom = 156.0
+texture = ExtResource("43_cudcr")
+
+[node name="Control" type="Control" parent="FoodTruck/StateMachine/Fin/Contenido"]
+layout_mode = 1
+anchor_left = 0.5
+anchor_top = 0.287
+anchor_right = 0.5
+anchor_bottom = 0.287
+offset_left = -298.0
+offset_top = -255.36
+offset_right = 298.0
+offset_bottom = 256.64
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel2" type="Panel" parent="FoodTruck/StateMachine/Fin/Contenido/Control"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.283
+anchor_right = 0.5
+anchor_bottom = 0.283
+offset_left = -279.0
+offset_top = -98.05
+offset_right = 279.0
+offset_bottom = 237.95
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("17_plgvp")
+script = ExtResource("7_nckvf")
+
+[node name="Label" type="Label" parent="FoodTruck/StateMachine/Fin/Contenido/Control/Panel2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -203.0
+offset_top = -113.0
+offset_right = 203.0
+offset_bottom = 114.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Estrellas" type="HBoxContainer" parent="FoodTruck/StateMachine/Fin/Contenido/Control"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -324.0
+offset_top = -119.0
+offset_right = 324.0
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="FoodTruck/StateMachine/Fin/Contenido/Control/Estrellas"]
+layout_mode = 2
+texture = ExtResource("40_kui26")
+expand_mode = 2
+
+[node name="TextureRect2" type="TextureRect" parent="FoodTruck/StateMachine/Fin/Contenido/Control/Estrellas"]
+layout_mode = 2
+texture = ExtResource("40_kui26")
+expand_mode = 2
+
+[node name="TextureRect3" type="TextureRect" parent="FoodTruck/StateMachine/Fin/Contenido/Control/Estrellas"]
+layout_mode = 2
+texture = ExtResource("40_kui26")
+expand_mode = 2
+
+[node name="TextureRect4" type="TextureRect" parent="FoodTruck/StateMachine/Fin/Contenido/Control/Estrellas"]
+layout_mode = 2
+texture = ExtResource("40_kui26")
+expand_mode = 2
+
+[node name="TextureRect5" type="TextureRect" parent="FoodTruck/StateMachine/Fin/Contenido/Control/Estrellas"]
+layout_mode = 2
+texture = ExtResource("40_kui26")
+expand_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="FoodTruck/StateMachine/Fin/Contenido/Control"]
+clip_children = 2
+layout_mode = 0
+offset_left = 148.0
+offset_top = 1.0
+offset_right = 454.0
+offset_bottom = 307.0
+texture = ExtResource("41_w22xk")
+expand_mode = 1
+
+[node name="ColorRect" type="ColorRect" parent="FoodTruck/StateMachine/Fin/Contenido/Control/TextureRect"]
+layout_mode = 0
+offset_right = 314.0
+offset_bottom = 314.0
+color = Color(0.584314, 0.788235, 0.788235, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="FoodTruck/StateMachine/Fin/Contenido/Control/TextureRect"]
+position = Vector2(164, 154)
+scale = Vector2(0.304964, 0.304964)
+texture = ExtResource("4_d2g47")
+
+[node name="Label" type="Label" parent="FoodTruck/StateMachine/Fin/Contenido/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.693
+anchor_right = 0.5
+anchor_bottom = 0.693
+offset_left = -292.5
+offset_top = -42.816
+offset_right = 292.5
+offset_bottom = 43.184
+grow_horizontal = 2
+grow_vertical = 2
+text = "MEGAFAUNA TRUCK"
+label_settings = ExtResource("46_5e6x3")
 
 [connection signal="Transitioned" from="FoodTruck/StateMachine/Juego" to="FoodTruck/StateMachine/Juego/Contenido/AnchorSpot/Spot" method="Reset"]
 [connection signal="Transitioned" from="FoodTruck/StateMachine/Juego" to="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer" method="Reset"]
