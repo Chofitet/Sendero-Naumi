@@ -1,4 +1,4 @@
-[gd_scene load_steps=88 format=3 uid="uid://m3gbb64llbqn"]
+[gd_scene load_steps=87 format=3 uid="uid://m3gbb64llbqn"]
 
 [ext_resource type="Script" path="res://_Scripts/Minigame_Save_Controller.gd" id="1_6uc2r"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/StateMachineMinigames.gd" id="2_4ogka"]
@@ -47,7 +47,6 @@
 [ext_resource type="Script" path="res://_Scripts/CollisionPolygon2DEditorTexture.gd" id="37_q8rfa"]
 [ext_resource type="PackedScene" uid="uid://dlwmbps456ind" path="res://Scenes/Experiments/btnVolver.tscn" id="38_0b8dm"]
 [ext_resource type="Script" path="res://_Scripts/MinG_Excavar/TutorialExcavando.gd" id="42_o38rj"]
-[ext_resource type="Script" path="res://Scenes/Experiments/btnVolverController.gd" id="46_m1qiq"]
 [ext_resource type="Texture2D" uid="uid://bdu2ssuthqhuo" path="res://Sprites/manito topinho tiras - excavacion.png" id="46_vplk7"]
 [ext_resource type="Texture2D" uid="uid://crqlxim1mi1uo" path="res://Sprites/ZonaMegafauna/outro topitos - excavacion.png" id="49_s5641"]
 [ext_resource type="Texture2D" uid="uid://gdqy5o83iegu" path="res://Sprites/ZonaMegafauna/lombrizio 1 - excavacion.png" id="50_m33c2"]
@@ -525,6 +524,7 @@ position = Vector2(-60, 394)
 [node name="TopoController" type="CharacterBody2D" parent="Excavando/StateMachine/Juego/Contenido/background/CanvasGroup" node_paths=PackedStringArray("initPos", "SecondPos", "PointWay", "PointWay2", "instance1", "instance2", "cam", "line", "labelDebug")]
 z_index = 1
 position = Vector2(179.303, 528)
+scale = Vector2(1.01109, 0.996175)
 motion_mode = 1
 wall_min_slide_angle = 0.488692
 script = ExtResource("14_2g78w")
@@ -3480,11 +3480,8 @@ hacia donde excavar"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Tutorial/Tutorial/Area2D"]
 shape = SubResource("RectangleShape2D_m5e66")
 
-[node name="HUD" parent="Excavando/StateMachine/Juego" instance=ExtResource("38_0b8dm")]
-visible = true
-script = ExtResource("46_m1qiq")
-
 [node name="debug" type="CanvasLayer" parent="Excavando/StateMachine/Juego"]
+visible = false
 
 [node name="Button" type="Button" parent="Excavando/StateMachine/Juego/debug"]
 z_index = 1
@@ -3507,6 +3504,8 @@ offset_left = 131.0
 offset_top = 37.0
 offset_right = 249.0
 offset_bottom = 96.0
+
+[node name="btnVolver" parent="Excavando/StateMachine/Juego" instance=ExtResource("38_0b8dm")]
 
 [node name="Moraleja" type="Node" parent="Excavando/StateMachine"]
 script = ExtResource("17_ulbcj")

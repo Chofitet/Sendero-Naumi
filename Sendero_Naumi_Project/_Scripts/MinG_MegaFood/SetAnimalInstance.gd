@@ -4,6 +4,7 @@ extends Control
 @onready var Spot = $AnchorSpot/Spot
 var DragObjects :=[]
 var instanceResourse = InstanceResource.new()
+@export var stateMachine : Node 
 
 func _ready():
 	get_parent().Transitioned.connect(SetInstanceAnimal)
@@ -61,7 +62,7 @@ func SetPaperParameters(resultBool):
 	if resultBool:
 		resultSprite.texture = RigthImg
 	else: resultSprite.texture = WrongImg
-	
+
 
 func SetResultEvent():
 	$PaperController/AnimationPlayer.play("paper")
@@ -70,6 +71,9 @@ func SetResultEvent():
 func EndResultEvent():
 	$PaperController/AnimationPlayer.play_backwards("paper")
 	$BlockScreen.SetVisibility(true)
-	$Cordon/Cortina.PlayCordonAppear()
+	if get_node(Instances[3]).visible:
+		$Cordon/Cortina.PlayCordonAppear()
+	else:
+		get_parent().get_parent().Trigger_On_Child_Transition("Juego")
 	
 	

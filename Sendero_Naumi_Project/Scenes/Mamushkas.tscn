@@ -602,7 +602,7 @@ stretch_mode = 1
 
 [node name="StateMachine" type="Node" parent="Mamushkas" node_paths=PackedStringArray("initial_state")]
 script = ExtResource("3_adlxq")
-initial_state = NodePath("Juego")
+initial_state = NodePath("Consigna")
 
 [node name="Consigna" type="Node" parent="Mamushkas/StateMachine"]
 script = ExtResource("4_cjbo7")
@@ -893,6 +893,7 @@ StateMachine = NodePath("..")
 InstanciasMinijuego = [NodePath("Contenido/Instancia1")]
 
 [node name="Contenido" type="Control" parent="Mamushkas/StateMachine/Juego"]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -1331,8 +1332,7 @@ text = "
 "
 NextScene = "Map_Screen"
 
-[node name="HUD" parent="Mamushkas/StateMachine/Juego/Contenido" instance=ExtResource("27_e3ccu")]
-visible = true
+[node name="btnVolver" parent="Mamushkas/StateMachine/Juego" instance=ExtResource("27_e3ccu")]
 
 [node name="Moraleja" type="Node" parent="Mamushkas/StateMachine"]
 script = ExtResource("27_i6a7j")

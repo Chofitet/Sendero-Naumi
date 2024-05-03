@@ -1,4 +1,4 @@
-[gd_scene load_steps=118 format=3 uid="uid://b017ojh8vtsd6"]
+[gd_scene load_steps=119 format=3 uid="uid://b017ojh8vtsd6"]
 
 [ext_resource type="Script" path="res://_Scripts/Minigame_Save_Controller.gd" id="1_ouwf6"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/StateMachineMinigames.gd" id="2_5wf26"]
@@ -68,6 +68,7 @@
 [ext_resource type="Texture2D" uid="uid://dw7qxlr0arskr" path="res://Sprites/ZonaAstronomia/neptuno - donde.png" id="57_2milj"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/FinState.gd" id="58_x5nop"]
 [ext_resource type="Texture2D" uid="uid://gcawnq85pux5" path="res://Sprites/ZonaAstronomia/marte - donde.png" id="60_5k74w"]
+[ext_resource type="PackedScene" uid="uid://dlwmbps456ind" path="res://Scenes/Experiments/btnVolver.tscn" id="65_lsfn2"]
 [ext_resource type="Script" path="res://_Scripts/MinG_Astronauta/RotateArround.gd" id="69_73jyr"]
 [ext_resource type="Texture2D" uid="uid://c32qpehikvkq4" path="res://Sprites/ZonaAstronomia/mercurio - donde.png" id="70_ydolt"]
 [ext_resource type="Texture2D" uid="uid://u75klppxeirg" path="res://Sprites/ZonaAstronomia/venus - donde.png" id="71_1yhgj"]
@@ -2579,21 +2580,7 @@ state_to_change = NodePath("../../../../../../Fin")
 state_machine = NodePath("../../../../../..")
 isEndOfGame = true
 
-[node name="HUD" type="CanvasLayer" parent="DondeEstuvo/StateMachine/Juego"]
-
-[node name="ButtonChangeScene" parent="DondeEstuvo/StateMachine/Juego/HUD" instance=ExtResource("15_jwaju")]
-anchors_preset = 1
-anchor_left = 1.0
-anchor_top = 0.0
-anchor_right = 1.0
-anchor_bottom = 0.0
-offset_left = -106.0
-offset_top = 21.0
-offset_right = -16.0
-offset_bottom = 111.0
-grow_horizontal = 0
-grow_vertical = 1
-NextScene = "Map_Screen"
+[node name="btnVolver" parent="DondeEstuvo/StateMachine/Juego" instance=ExtResource("65_lsfn2")]
 
 [node name="Moraleja" type="Node" parent="DondeEstuvo/StateMachine"]
 script = ExtResource("33_wluhy")
