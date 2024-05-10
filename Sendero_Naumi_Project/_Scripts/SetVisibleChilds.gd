@@ -8,3 +8,6 @@ func SetVisibleChilds(x):
 func SetNextChildVisibel(x):
 	index += 1
 	get_child(index).visible = x
+
+func SetVisible(x):
+	visible = x

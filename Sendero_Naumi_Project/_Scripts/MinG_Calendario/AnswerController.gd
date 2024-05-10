@@ -5,9 +5,14 @@ extends Node2D
 @onready var anim = $AnimationPlayer
 @export var hBoxConteiner : Control
 @export var StateMachine : Node
-
+@export var panel : Panel
+@export var calendar : Sprite2D
+signal RigthAnswere
 var isLastInstance
 var AnswerTexture 
+
+func _process(delta):
+	pass
 
 func _ready():
 	spot.OnSpot.connect(get_Answer)
@@ -23,12 +28,19 @@ func RigthAnswer():
 	tween.tween_property(hBoxConteiner,"position",Vector2(hBoxConteiner.position.x,722),0.5)
 	anim.play("rigthAnim")
 	await anim.animation_finished
-	if isLastInstance:
-		get_parent().TofinScreen(StateMachine)
-		return
+	anim.play("idle")
+#	if isLastInstance:
+#		get_parent().TofinScreen(StateMachine)
+#		return
+	RigthAnswere.emit()
+	await get_tree().create_timer(1).timeout
+	panel.visible = false
+	visible = false
 	StateMachine.Trigger_On_Child_Transition("Juego")
+	calendar.SetSlot()
 	answer.texture = null
 	AnswerTexture = null
+	anim.play("RESET")
 	spot.Reset()
 
 func WrongAnswer():
@@ -40,19 +52,18 @@ func WrongAnswer():
 	AnswerTexture = null
 	spot.Reset()
 
-func Set_Slot(txt, panel, answers, correctAnswer,LabelTexture, _isLastInstance = false):
+func Set_Slot(txt, AnsweresTextures, correctAnswer, _isLastInstance = false):
 	var i = 0
+	visible = true
 	isLastInstance = _isLastInstance
 	for date in hBoxConteiner.get_children():
-		date.texture = answers[i]
-		date.get_node("Label").text = LabelTexture[i]
+		date.texture = AnsweresTextures[i]
 		if i == correctAnswer:
-			spot.RigthObject = date.get_child(1)
+			spot.RigthObject = date.get_child(0)
 		i += 1
 	hBoxConteiner.Reset()
-	$DateQuestion.visible = true
-	$DateQuestion/MASK/date/Label.text = txt
-	anim.play_backwards("rigthAnim")
-	panel.text = "¿QUÉ PASÓ EN " + txt + "?" 
+	panel.get_child(0).text = txt
+	panel.visible = true
 	await anim.animation_finished
+	panel.visible = true
 	anim.play("RESET")
