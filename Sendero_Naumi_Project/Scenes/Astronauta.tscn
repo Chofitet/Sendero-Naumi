@@ -44,8 +44,8 @@
 [ext_resource type="PackedScene" uid="uid://blcdo5n6nfd6h" path="res://Scenes/Zona_Astronomia/DialogueCharacter.tscn" id="35_frqpj"]
 [ext_resource type="Script" path="res://_Scripts/PhantomAreaSetPriority.gd" id="39_f6slj"]
 [ext_resource type="Script" path="res://_Scripts/MinG_Astronauta/WallOfLevel.gd" id="40_het88"]
-[ext_resource type="Texture2D" uid="uid://b2op8eppn0juv" path="res://Sprites/ZonaAstronomia/Astronauta.png" id="41_ar1qs"]
 [ext_resource type="Script" path="res://_Scripts/ChangeScene.gd" id="45_n360i"]
+[ext_resource type="Texture2D" uid="uid://ca20spuu3q5ks" path="res://Sprites/ZonaAstronomia/astronauta - astronauta.png" id="46_qiyux"]
 
 [sub_resource type="Gradient" id="Gradient_628gc"]
 offsets = PackedFloat32Array(0.470588, 0.663866, 0.756303, 0.865546, 1)
@@ -79,7 +79,7 @@ colors = PackedColorArray(1, 1, 1, 1, 0.303233, 0.303233, 0.303233, 1, 0.301961,
 size = Vector2(483, 239)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_48pma"]
-size = Vector2(544, 20)
+size = Vector2(544, 40.1443)
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_h2n3c"]
 light_mode = 1
@@ -175,7 +175,7 @@ color = Color(0.72549, 1, 1, 1)
 
 [node name="StateMachine" type="Node" parent="Astronauta" node_paths=PackedStringArray("initial_state")]
 script = ExtResource("2_fl1ab")
-initial_state = NodePath("Juego")
+initial_state = NodePath("Fin")
 
 [node name="Consigna" type="Node" parent="Astronauta/StateMachine"]
 script = ExtResource("3_3a6v3")
@@ -1201,7 +1201,7 @@ end_cap_mode = 2
 [node name="CollisionPolygon2D91" type="CollisionPolygon2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/Collisiones/Laberinto"]
 position = Vector2(137.45, 3876.58)
 rotation = -0.794118
-polygon = PackedVector2Array(-1146.01, -1494.29, -826.036, -1696.57, -528.322, -1778.83, -196.241, -1747.64, 50.5781, -1654.27, 121.235, -1566.68, 539.607, -1132.39, 603.417, -665.123, 545.638, -364.388, 322.773, -10.1819)
+polygon = PackedVector2Array(-1146.01, -1494.29, -826.036, -1696.57, -528.322, -1778.83, -196.241, -1747.64, 87.7173, -1615.06, -41.4911, -1475.46, 347.983, -1052.03, 500.149, -1148.29, 603.417, -665.123, 545.638, -364.388, 322.773, -10.1819)
 script = ExtResource("7_nhdbp")
 metadata/_edit_group_ = true
 
@@ -1210,11 +1210,11 @@ position = Vector2(-2.82837, -0.0246582)
 rotation = 0.0149409
 texture = ExtResource("8_4dx32")
 texture_scale = Vector2(2.545, 2.545)
-polygon = PackedVector2Array(-1146.01, -1494.29, -826.036, -1696.57, -528.322, -1778.83, -196.241, -1747.64, 50.5781, -1654.27, 121.235, -1566.68, 539.607, -1132.39, 603.417, -665.123, 545.638, -364.388, 322.773, -10.1819)
+polygon = PackedVector2Array(-1146.01, -1494.29, -826.036, -1696.57, -528.322, -1778.83, -196.241, -1747.64, 87.7173, -1615.06, -41.4911, -1475.46, 347.983, -1052.03, 500.149, -1148.29, 603.417, -665.123, 545.638, -364.388, 322.773, -10.1819)
 
 [node name="Line2D" type="Line2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/Collisiones/Laberinto/CollisionPolygon2D91/CollisionPolygon2D6"]
 position = Vector2(1, 0)
-points = PackedVector2Array(-1146.01, -1494.29, -826.036, -1696.57, -528.322, -1778.83, -196.241, -1747.64, 50.5781, -1654.27, 121.235, -1566.68, 539.607, -1132.39, 603.417, -665.123, 545.638, -364.388, 322.773, -10.1819, -1146.01, -1494.29)
+points = PackedVector2Array(-1146.01, -1494.29, -826.036, -1696.57, -528.322, -1778.83, -196.241, -1747.64, 87.7173, -1615.06, -41.4911, -1475.46, 347.983, -1052.03, 500.149, -1148.29, 603.417, -665.123, 545.638, -364.388, 322.773, -10.1819, -1146.01, -1494.29)
 width = 40.0
 texture = ExtResource("9_fd6y6")
 texture_mode = 1
@@ -1729,7 +1729,7 @@ end_cap_mode = 2
 
 [node name="Meteoroide" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide" instance=ExtResource("11_i2vqs")]
 position = Vector2(968.492, -1374.71)
-rotation = 185207.0
+rotation = 195328.0
 scale = Vector2(2.595, 2.595)
 
 [node name="TheGuy" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide" instance=ExtResource("35_frqpj")]
@@ -1865,7 +1865,7 @@ show_behind_parent = false
 points = PackedVector2Array(5949, -8939)
 
 [node name="meteoro" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoro/Meteoro1" node_paths=PackedStringArray("MeteoritoTarget") instance=ExtResource("11_i2vqs")]
-rotation = 42575.6
+rotation = 53107.4
 scale = Vector2(2.595, 2.595)
 MeteoritoTarget = NodePath("../../../Meteorito/MeteoritoAppear/targetMeteorito")
 _texture = ExtResource("14_gaug6")
@@ -1886,7 +1886,7 @@ CenterObject = NodePath("../elPrincipito")
 show_behind_parent = false
 
 [node name="meteoro" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoro/Meteoro3" node_paths=PackedStringArray("MeteoritoTarget") instance=ExtResource("11_i2vqs")]
-rotation = 42557.0
+rotation = 53088.8
 scale = Vector2(2.595, 2.595)
 MeteoritoTarget = NodePath("../../../Meteorito/MeteoritoAppear/targetMeteorito")
 _texture = ExtResource("14_gaug6")
@@ -2043,7 +2043,7 @@ texture = ExtResource("8_w48x6")
 [node name="StaticBody2D" type="StaticBody2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/interior"]
 
 [node name="Polygon2D" type="CollisionPolygon2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/interior/StaticBody2D"]
-polygon = PackedVector2Array(-115, -324, -193, -207, -268, 138, -265, 391, 273, 385, 216, -78, 131, -330, 180, -328, 261, -50, 298, 295, 298, 401, 203, 425, -253, 422, -302, 407, -298, 34, -221, -213, -148, -336)
+polygon = PackedVector2Array(-256, -228, -291, -21, -299, 234, -285, 556, -28, 569, 253, 556, 290, 342, 266, -13, 234, -213, 255, -220, 291, -42, 319, 306, 297, 568, 217, 595, -252, 583, -315, 600, -330, 278, -311, -77, -280, -231)
 
 [node name="Computer" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/interior" instance=ExtResource("19_552cy")]
 
@@ -2216,6 +2216,7 @@ shape = SubResource("RectangleShape2D_3kd6y")
 [node name="exterior" type="Sprite2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController"]
 self_modulate = Color(1, 1, 1, 0)
 z_index = 1
+position = Vector2(22, 384)
 texture = ExtResource("9_7dd1c")
 
 [node name="AnchorMin" type="Node2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController"]
@@ -2225,14 +2226,14 @@ position = Vector2(14, -352)
 position = Vector2(14, -440)
 
 [node name="Capsula" type="Node2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController"]
-position = Vector2(185, -324)
+position = Vector2(233, -257)
 script = ExtResource("10_fm36a")
 
 [node name="Collider" type="StaticBody2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Capsula"]
 position = Vector2(-168, 28)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Capsula/Collider"]
-polygon = PackedVector2Array(-168, -31, -10, -167, 107, -115, 165, -28)
+polygon = PackedVector2Array(-345, 0, -250, -249, -69, -376, 115, -221, 189, 6)
 one_way_collision = true
 
 [node name="TriggerOutside" type="Area2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Capsula"]
@@ -2240,29 +2241,28 @@ position = Vector2(-176, -273)
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Capsula/TriggerOutside"]
-position = Vector2(14, 36)
+position = Vector2(-62, -11)
 shape = SubResource("RectangleShape2D_48pma")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Capsula/TriggerOutside"]
-position = Vector2(155, 50)
-rotation = 0.675708
+position = Vector2(132, 135)
+rotation = 1.1952
 shape = SubResource("RectangleShape2D_48pma")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Capsula/TriggerOutside"]
-position = Vector2(-203, 86)
-rotation = -0.982402
+position = Vector2(-284.211, 149.926)
+rotation = -1.15439
 shape = SubResource("RectangleShape2D_48pma")
 
 [node name="Sprite2D" type="Sprite2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Capsula"]
 position = Vector2(15, 46)
 rotation = 2.51327
-scale = Vector2(1.29333, 1.29333)
 texture = ExtResource("11_fl6hj")
-offset = Vector2(-140.155, -77.71)
+offset = Vector2(-257.18, -171.105)
 
 [node name="Astronauta" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1" node_paths=PackedStringArray("PhantomCam", "pcInventary") groups=["player"] instance=ExtResource("7_jv4gs")]
 material = SubResource("CanvasItemMaterial_h2n3c")
-position = Vector2(225, 903)
+position = Vector2(247, 1123)
 PhantomCam = NodePath("../PhantomCamera2D")
 pcInventary = NodePath("../PCInventary/pcInventary")
 
@@ -2874,8 +2874,8 @@ position = Vector2(-134, 262)
 
 [node name="Astronauta" type="Sprite2D" parent="Astronauta/StateMachine/Fin/Contenido/Center/Nave" node_paths=PackedStringArray("CenterObject")]
 position = Vector2(-132, 262)
-scale = Vector2(2.44068, 2.44068)
-texture = ExtResource("41_ar1qs")
+scale = Vector2(1.21127, 1.21127)
+texture = ExtResource("46_qiyux")
 script = ExtResource("11_712vn")
 selfRotation = -1.0
 CenterObject = NodePath("../AstronautaPivot")

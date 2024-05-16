@@ -306,6 +306,7 @@ script = ExtResource("3_snobg")
 Consignas = ["Dale a cada animal la comida correspondiente a su dieta", "Dale a cada animal la comida correspondiente a su dieta"]
 
 [node name="Contenido" type="Control" parent="FoodTruck/StateMachine/Consigna"]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -564,7 +565,6 @@ StateMachine = NodePath("..")
 InstanciasMinijuego = [NodePath("Contenido/Instancia1"), NodePath("Contenido/Instancia2"), NodePath("Contenido/Instancia3"), NodePath("Contenido/Instancia4"), NodePath("Contenido/Instancia5"), NodePath("Contenido/Instancia6")]
 
 [node name="Contenido" type="Control" parent="FoodTruck/StateMachine/Juego"]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -1468,7 +1468,7 @@ smoothness = 0.2
 [connection signal="WrongAns" from="FoodTruck/StateMachine/Juego/Contenido/AnchorSpot/Spot" to="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer" method="stopDrag"]
 [connection signal="WrongAns" from="FoodTruck/StateMachine/Juego/Contenido/AnchorSpot/Spot" to="FoodTruck/StateMachine/Juego/Contenido" method="SetPaperParameters" binds= [false]]
 [connection signal="WrongAns" from="FoodTruck/StateMachine/Juego/Contenido/AnchorSpot/Spot" to="FoodTruck/StateMachine/Juego/Contenido/BlockScreen" method="SetVisibility" binds= [true]]
-[connection signal="pressed" from="FoodTruck/StateMachine/Juego/Contenido/AnchorSpot/btnResult" to="FoodTruck/StateMachine/Juego/Contenido/PatasController" method="PlayTakeAnim"]
+[connection signal="button_down" from="FoodTruck/StateMachine/Juego/Contenido/AnchorSpot/btnResult" to="FoodTruck/StateMachine/Juego/Contenido/PatasController" method="PlayTakeAnim"]
 [connection signal="CompleteSwipe" from="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer" to="FoodTruck/StateMachine/Juego/Contenido/Tutorial" method="FirstSwipe"]
 [connection signal="PlatesReset" from="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer" to="FoodTruck/StateMachine/Juego/Contenido/BlockScreen" method="SetVisibility" binds= [false]]
 [connection signal="isScrolling" from="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer" to="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer/food1/DragObject" method="CancelDrag"]

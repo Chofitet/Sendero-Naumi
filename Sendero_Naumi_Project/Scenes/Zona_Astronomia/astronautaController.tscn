@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://_Scripts/MinG_Astronauta/AstronautaMove.gd" id="1_jndun"]
 [ext_resource type="Texture2D" uid="uid://wsicrocifuq" path="res://Sprites/ZonaAstronomia/pegoton.png" id="2_bsf0e"]
-[ext_resource type="Texture2D" uid="uid://b2op8eppn0juv" path="res://Sprites/ZonaAstronomia/Astronauta.png" id="2_q1a83"]
+[ext_resource type="Texture2D" uid="uid://ca20spuu3q5ks" path="res://Sprites/ZonaAstronomia/astronauta - astronauta.png" id="2_pun23"]
 
 [sub_resource type="Curve" id="Curve_xbool"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -26,11 +26,14 @@ max_speed = 500
 friction = 100
 rotationSpeed = 10
 
+[node name="Polygon2D" type="Polygon2D" parent="."]
+visible = false
+polygon = PackedVector2Array(-78.9138, 61.1115, 77.0846, 59.8913, 78.9124, -62.1114, -81.086, -60.8856)
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
 use_parent_material = true
-rotation = -4.56572e-05
-scale = Vector2(2.13559, 2.13559)
-texture = ExtResource("2_q1a83")
+rotation = -1.5708
+texture = ExtResource("2_pun23")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="Sprite2D"]
 show_behind_parent = true

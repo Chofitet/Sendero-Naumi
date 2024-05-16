@@ -3,6 +3,7 @@ var NumOfTap = 3
 signal Earthquake
 signal BeforeEarthquake
 signal SmallEarthquake
+@export var EarthquakeAnim : AnimationPlayer
 var timer 
 var texturelava
 var initTexture
@@ -10,6 +11,11 @@ var initScale
 var textureLavaChica
 @export var lavaFace : Sprite2D
 @export var nextLavaFace : Sprite2D
+@export var ParentRock : Node2D
+@export var PartsToBreak : int
+var NumOfPart = 0
+var PartsOfPath := []
+var NumOfTouch = 0
 
 func _ready():
 	initScale = lavaFace.get_parent().scale
@@ -20,20 +26,49 @@ func _ready():
 	timer.timeout.connect(EmitEarthquake)
 	self.pressed.connect(Tap)
 	initTexture = lavaFace.texture
+	for p in $resquebrajado.get_children():
+		PartsOfPath.append(p)
+		NumOfPart +=1
 
 func Tap():
-	#NumOfTap -= 1
-	#Input.vibrate_handheld(100)
-	#if (NumOfTap != 0): SmallEarthquake.emit()
+	if NumOfTouch != PartsToBreak:
+		EarthquakeAnim.OnSmallEarthquake()
+		ActiveDesquebrajado(NumOfTouch)
+		NumOfTouch += 1
+		Input.vibrate_handheld(600)
+		HitLavaFace(0.6)
+		return
+	Input.vibrate_handheld(1500)
+	NumOfTap = 3
+	disabled = true
+	timer.start()
+	HitLavaFace(1.5)
+	$Bloqueo.visible = false
+	$patch.visible = false
+	for p in PartsOfPath:
+		p.Explote(ParentRock)
+	BeforeEarthquake.emit()
+
+func HitLavaFace(time):
 	if name == "TapButton1":
-		lavaFace.texture = texturelava
+			lavaFace.texture = texturelava
 	else:
 		lavaFace.texture = textureLavaChica
-	Input.vibrate_handheld(300)
-	NumOfTap = 3
-	visible = false
-	timer.start()
-	BeforeEarthquake.emit()
+	await get_tree().create_timer(time).timeout
+	if name == "TapButton1":
+		lavaFace.texture = load("res://Sprites/ZonaGeología/face 1.png")
+	else:
+		lavaFace.texture = load("res://Sprites/ZonaGeología/face 3.png")
+
+func ActiveDesquebrajado(numTouch):
+	var num = roundi(NumOfPart / PartsToBreak)
+	var min = num * numTouch
+	num = num + (num * numTouch)
+	print(min)
+	print(num)
+	for i in range(min,num):
+		PartsOfPath[i].Appear()
+		await get_tree().create_timer(0.02).timeout
 
 func EmitEarthquake():
 	lavaFace.get_node("AnimationPlayer").play("lava_face_anim")
@@ -45,4 +80,12 @@ func ChangeLavaFace():
 	nextLavaFace.get_node("AnimationPlayer").play("lava_face_anim_back")
 
 func SetTrueVisibility():
-	visible = true
+	disabled = false
+	$Glow.visible = true
+
+func TransparentPatch(num):
+	var tween = get_tree().create_tween()
+	tween.tween_method(MakeTransparence.bind(get_node("patch"+str(num))),1.0,0.0,1.5)
+
+func MakeTransparence(value, patch):
+	patch.self_modulate = Color(1,1,1,value)

@@ -7,13 +7,14 @@ extends Node2D
 @onready var exterior = $exterior
 @onready var anchor = $Anchor
 @onready var capsule = $Capsula
+var _isOut
 
 func _ready():
 	canvas_modulate.color = Color(0,0,0,1)
 	pass
 
 func _process(delta):
-	if capsule.isOutside: return
+	if _isOut: return
 	DawnSpace(get_increaser())
 
 func get_increaser() -> float:
@@ -30,3 +31,7 @@ func DawnSpace(x):
 	canvas_modulate.color = Color(x,x,x,1)
 	exterior.self_modulate = Color(1,1,1,x)
 
+func IsOut():
+	$interior.material = null
+	exterior.self_modulate = Color(1,1,1,1)
+	_isOut = true

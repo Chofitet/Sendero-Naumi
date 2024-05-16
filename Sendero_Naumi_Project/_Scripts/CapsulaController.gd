@@ -11,4 +11,4 @@ func _ready():
 func Outsite(x):
 	var tween = get_tree().create_tween()
 	tween.tween_property(sprite,"rotation",0,0.2).set_ease(Tween.EASE_IN_OUT)
-	isOutside = true
+	get_parent().IsOut()
