@@ -11,3 +11,7 @@ func Freeze():
 	for p in get_children():
 		if p.has_method("Freeze"):
 			p.call_deferred("Freeze")
+
+func setInstances(x):
+	for c in get_children():
+		c.SetInstances(x)

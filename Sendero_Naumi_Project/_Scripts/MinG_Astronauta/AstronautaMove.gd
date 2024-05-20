@@ -11,6 +11,8 @@ var CrashForce : Vector2 = Vector2.ONE
 @onready var particleCircle = preload("res://Scenes/Zona_Astronomia/particleAstronauta.tscn")
 @onready var sprite = $Sprite2D
 @onready var target_position = Vector2.ZERO
+@onready var textureIdle = preload("res://Sprites/ZonaAstronomia/astronauta - astronauta.png")
+@onready var texturePropulsion = preload("res://Sprites/ZonaAstronomia/astronauta propuIsion - astronauta.png")
 var direction: Vector2
 var lastdirection : Vector2
 var isCrash
@@ -29,6 +31,7 @@ func _physics_process(delta):
 func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("TouchScreen"):
 		if isBlock: return
+		sprite.texture = texturePropulsion
 		particles.emitting = true
 		var particleInstance = particleCircle.instantiate()
 		sprite.add_child(particleInstance)
@@ -40,6 +43,7 @@ func _input(event: InputEvent) -> void:
 		isPressing = true
 	if  Input.is_action_just_released("TouchScreen"):
 		if isBlock: return
+		sprite.texture = textureIdle
 		particles.emitting = false
 		isPressing = false
 		direction = Vector2.ZERO
