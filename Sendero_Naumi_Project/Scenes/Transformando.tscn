@@ -1,4 +1,4 @@
-[gd_scene load_steps=159 format=3 uid="uid://cndqno434rnuu"]
+[gd_scene load_steps=156 format=3 uid="uid://cndqno434rnuu"]
 
 [ext_resource type="Script" path="res://_Scripts/Minigame_Save_Controller.gd" id="1_aaeor"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/StateMachineMinigames.gd" id="2_0bmn1"]
@@ -66,14 +66,11 @@
 [ext_resource type="Texture2D" uid="uid://dbv6rcnmmb8db" path="res://Sprites/ZonaGeología/fondo_geografia.png" id="54_kgmgn"]
 [ext_resource type="Texture2D" uid="uid://dwbr82uf0o1e5" path="res://Sprites/ZonaGeología/ABAJO DERECHA.png" id="55_jjvq6"]
 [ext_resource type="Texture2D" uid="uid://v2iwablhma3r" path="res://Sprites/ZonaGeología/ABAJO IZQUIERDA.png" id="56_rh8d4"]
-[ext_resource type="PackedScene" uid="uid://c6pidn4ar3f6i" path="res://Scenes/Experiments/QuarterPiceRock.tscn" id="57_17f23"]
 [ext_resource type="Texture2D" uid="uid://ven0goh0qykx" path="res://Sprites/ZonaGeología/ARRIBA IZQUIERDA.png" id="57_cbncc"]
 [ext_resource type="Texture2D" uid="uid://cxv37roch44iv" path="res://Sprites/ZonaGeología/ARRIBA DERECHA.png" id="58_5llw6"]
 [ext_resource type="Script" path="res://Scenes/GenericPanelController.gd" id="59_2f8t6"]
 [ext_resource type="PackedScene" uid="uid://djhg7jvxtexyl" path="res://Scenes/UI_Scenes/btn_Change_Scene.tscn" id="60_e25mp"]
 [ext_resource type="Environment" uid="uid://qu2t3xojw2xb" path="res://Resources/TransformandoEnvironment.tres" id="61_f0bbx"]
-[ext_resource type="PackedScene" uid="uid://cvonm4ck6rmpr" path="res://Scenes/Experiments/BreakingRock.tscn" id="64_ykw12"]
-[ext_resource type="PackedScene" uid="uid://cv7xiqsftfjit" path="res://Scenes/Experiments/BreakingSmallRock.tscn" id="65_hf4hd"]
 
 [sub_resource type="Animation" id="Animation_e0s7o"]
 resource_name = "Earthquake"
@@ -3250,7 +3247,7 @@ editor_settings/show_bone_gizmo = false
 
 [node name="Bone3" type="Bone2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/LavaFallVolcanica/PathFollow2D/Node2D/Lava snake/Skeleton2D/Bone1/Bone2"]
 position = Vector2(28.2843, -0.121915)
-rotation = -0.0028367
+rotation = -0.00283671
 scale = Vector2(0.999829, 0.999829)
 rest = Transform2D(1, 0, 0, 1, 32, 0)
 editor_settings/show_bone_gizmo = false
@@ -3385,14 +3382,13 @@ position = Vector2(594, 515)
 script = ExtResource("7_78yff")
 rockParent = NodePath("../../../rockParent")
 
-[node name="PhysicsRock2" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/rockInstances" node_paths=PackedStringArray("PreLoad") groups=["BreakingTriggerStatic"] instance=ExtResource("6_ywrk8")]
+[node name="PhysicsRock2" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/rockInstances" groups=["BreakingTriggerStatic"] instance=ExtResource("6_ywrk8")]
 position = Vector2(-685, -672)
 collision_layer = 1
 mass = 100.0
 physics_material_override = SubResource("PhysicsMaterial_wq84y")
 gravity_scale = 0.8
 freeze = true
-PreLoad = NodePath("../../ResourcePreloader")
 _Color = Color(0.429688, 0.289063, 0.230469, 1)
 group = "BreakingTrigger"
 
@@ -3536,41 +3532,12 @@ position = Vector2(-745, -687)
 freeze = true
 metadata/_edit_group_ = true
 
-[node name="QuarterPiceRock" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/rockInstances" node_paths=PackedStringArray("Preload") instance=ExtResource("57_17f23")]
-modulate = Color(0.667969, 0.636719, 0.492188, 1)
-position = Vector2(-726, -769)
-freeze = true
-Preload = NodePath("../../ResourcePreloader")
-
-[node name="Sprite2D2" type="Sprite2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/rockInstances/QuarterPiceRock"]
-position = Vector2(-1, 2)
-scale = Vector2(0.416, 0.416)
-texture = ExtResource("27_bw70x")
-hframes = 11
-vframes = 4
-frame = 4
-
-[node name="QuarterPiceRock2" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/rockInstances" node_paths=PackedStringArray("Preload") instance=ExtResource("57_17f23")]
-modulate = Color(0.701961, 0.501961, 0.439216, 1)
-position = Vector2(-792, -734)
-rotation = -0.990252
-freeze = true
-Preload = NodePath("../../ResourcePreloader")
-
-[node name="Sprite2D2" type="Sprite2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/rockInstances/QuarterPiceRock2"]
-position = Vector2(-1, 2)
-scale = Vector2(0.416, 0.416)
-texture = ExtResource("27_bw70x")
-hframes = 11
-vframes = 4
-frame = 2
-
 [node name="rockInstances2" type="Node2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control" node_paths=PackedStringArray("rockParent")]
 position = Vector2(595, 517)
 script = ExtResource("7_78yff")
 rockParent = NodePath("../../../rockParent")
 
-[node name="PhysicsRock" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/rockInstances2" node_paths=PackedStringArray("PreLoad") groups=["BreakingTrigger"] instance=ExtResource("6_ywrk8")]
+[node name="PhysicsRock" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/rockInstances2" groups=["BreakingTrigger"] instance=ExtResource("6_ywrk8")]
 position = Vector2(-343, -300)
 rotation = -0.151844
 scale = Vector2(1.105, 1.105)
@@ -3579,7 +3546,6 @@ mass = 100.0
 physics_material_override = SubResource("PhysicsMaterial_wq84y")
 gravity_scale = 0.8
 freeze = true
-PreLoad = NodePath("../../ResourcePreloader")
 _Color = Color(0.707031, 0.511719, 0.441406, 1)
 group = "BreakingTrigger"
 
@@ -3741,59 +3707,66 @@ position = Vector2(-448, -336)
 freeze = true
 metadata/_edit_group_ = true
 
+[node name="SmallPieceRock18" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/rockInstances2" instance=ExtResource("21_kkj7f")]
+modulate = Color(0.464844, 0.472656, 0.492188, 1)
+position = Vector2(-539, -756)
+rotation = -1.09437
+freeze = true
+linear_velocity = Vector2(200, 0)
+metadata/_edit_group_ = true
+
+[node name="SmallPieceRock19" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/rockInstances2" instance=ExtResource("21_kkj7f")]
+modulate = Color(0.464844, 0.472656, 0.492188, 1)
+position = Vector2(-539, -770)
+rotation = -1.09437
+freeze = true
+linear_velocity = Vector2(200, 0)
+metadata/_edit_group_ = true
+
+[node name="SmallPieceRock20" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/rockInstances2" instance=ExtResource("21_kkj7f")]
+modulate = Color(0.464844, 0.472656, 0.492188, 1)
+position = Vector2(-576, -821)
+rotation = -1.09437
+freeze = true
+linear_velocity = Vector2(200, 0)
+metadata/_edit_group_ = true
+
+[node name="SmallPieceRock8" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/rockInstances2" instance=ExtResource("21_kkj7f")]
+modulate = Color(0.464844, 0.472656, 0.492188, 1)
+position = Vector2(-639, -798)
+rotation = -1.09437
+freeze = true
+linear_velocity = Vector2(200, 0)
+metadata/_edit_group_ = true
+
+[node name="SmallPieceRock21" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/rockInstances2" instance=ExtResource("21_kkj7f")]
+modulate = Color(0.464844, 0.472656, 0.492188, 1)
+position = Vector2(-625, -737)
+rotation = -1.09437
+freeze = true
+linear_velocity = Vector2(200, 0)
+metadata/_edit_group_ = true
+
+[node name="SmallPieceRock23" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/rockInstances2" instance=ExtResource("21_kkj7f")]
+modulate = Color(0.464844, 0.472656, 0.492188, 1)
+position = Vector2(-590, -774)
+rotation = -1.09437
+freeze = true
+linear_velocity = Vector2(200, 0)
+metadata/_edit_group_ = true
+
+[node name="SmallPieceRock24" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/rockInstances2" instance=ExtResource("21_kkj7f")]
+modulate = Color(0.464844, 0.472656, 0.492188, 1)
+position = Vector2(-691, -741)
+rotation = -1.09437
+freeze = true
+linear_velocity = Vector2(200, 0)
+metadata/_edit_group_ = true
+
 [node name="RocksInEarthquake" type="Node2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control" node_paths=PackedStringArray("rockParent")]
 position = Vector2(597, 514)
 script = ExtResource("7_78yff")
 rockParent = NodePath("../../../rockParent")
-
-[node name="SmallPieceRock11" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/RocksInEarthquake" instance=ExtResource("21_kkj7f")]
-modulate = Color(0.464844, 0.472656, 0.492188, 1)
-position = Vector2(-635, -626)
-rotation = -1.09437
-freeze = true
-metadata/_edit_group_ = true
-
-[node name="SmallPieceRock10" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/RocksInEarthquake" instance=ExtResource("21_kkj7f")]
-modulate = Color(0.464844, 0.472656, 0.492188, 1)
-position = Vector2(-635, -640)
-rotation = -1.09437
-freeze = true
-metadata/_edit_group_ = true
-
-[node name="SmallPieceRock9" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/RocksInEarthquake" instance=ExtResource("21_kkj7f")]
-modulate = Color(0.464844, 0.472656, 0.492188, 1)
-position = Vector2(-623, -633)
-rotation = -1.09437
-freeze = true
-metadata/_edit_group_ = true
-
-[node name="SmallPieceRock8" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/RocksInEarthquake" instance=ExtResource("21_kkj7f")]
-modulate = Color(0.464844, 0.472656, 0.492188, 1)
-position = Vector2(-626, -651)
-rotation = -1.09437
-freeze = true
-metadata/_edit_group_ = true
-
-[node name="SmallPieceRock7" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/RocksInEarthquake" instance=ExtResource("21_kkj7f")]
-modulate = Color(0.464844, 0.472656, 0.492188, 1)
-position = Vector2(-608, -535)
-rotation = -1.09437
-freeze = true
-metadata/_edit_group_ = true
-
-[node name="SmallPieceRock6" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/RocksInEarthquake" instance=ExtResource("21_kkj7f")]
-modulate = Color(0.464844, 0.472656, 0.492188, 1)
-position = Vector2(-622, -575)
-rotation = -1.09437
-freeze = true
-metadata/_edit_group_ = true
-
-[node name="SmallPieceRock5" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/RocksInEarthquake" instance=ExtResource("21_kkj7f")]
-modulate = Color(0.464844, 0.472656, 0.492188, 1)
-position = Vector2(-624, -552)
-rotation = -1.09437
-freeze = true
-metadata/_edit_group_ = true
 
 [node name="SmallPieceRock4" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/RocksInEarthquake" instance=ExtResource("21_kkj7f")]
 modulate = Color(0.464844, 0.472656, 0.492188, 1)
@@ -3977,6 +3950,46 @@ metadata/_edit_group_ = true
 modulate = Color(0.470588, 0.470588, 0.470588, 1)
 position = Vector2(-440, -347)
 freeze = true
+metadata/_edit_group_ = true
+
+[node name="SmallPieceRock36" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/RocksInEarthquake" instance=ExtResource("21_kkj7f")]
+modulate = Color(0.464844, 0.472656, 0.492188, 1)
+position = Vector2(-615, -496)
+rotation = -1.09437
+freeze = true
+linear_velocity = Vector2(400, 0)
+metadata/_edit_group_ = true
+
+[node name="SmallPieceRock8" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/RocksInEarthquake" instance=ExtResource("21_kkj7f")]
+modulate = Color(0.464844, 0.472656, 0.492188, 1)
+position = Vector2(-644, -486)
+rotation = -1.09437
+freeze = true
+linear_velocity = Vector2(400, 0)
+metadata/_edit_group_ = true
+
+[node name="SmallPieceRock37" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/RocksInEarthquake" instance=ExtResource("21_kkj7f")]
+modulate = Color(0.464844, 0.472656, 0.492188, 1)
+position = Vector2(-618, -429)
+rotation = -1.09437
+freeze = true
+linear_velocity = Vector2(400, 0)
+metadata/_edit_group_ = true
+
+[node name="SmallPieceRock38" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/RocksInEarthquake" instance=ExtResource("21_kkj7f")]
+modulate = Color(0.464844, 0.472656, 0.492188, 1)
+position = Vector2(-618, -463)
+rotation = -1.09437
+freeze = true
+linear_velocity = Vector2(400, 0)
+metadata/_edit_group_ = true
+
+[node name="SmallPieceRock39" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/RocksInEarthquake" instance=ExtResource("21_kkj7f")]
+modulate = Color(0.464844, 0.472656, 0.492188, 1)
+position = Vector2(-650, -458)
+rotation = -1.09437
+freeze = true
+linear_velocity = Vector2(400, 0)
 metadata/_edit_group_ = true
 
 [node name="Tramo6" type="Control" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control"]
@@ -6264,7 +6277,7 @@ rotation = 1.5708
 shape = SubResource("CapsuleShape2D_6goou")
 
 [node name="SedimentariaTime" type="Timer" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Sedimentaria"]
-wait_time = 9.0
+wait_time = 9.5
 one_shot = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Sedimentaria"]
@@ -6944,13 +6957,9 @@ text = "TOCÁ EL MAGMA PARA CAUSAR CAMBIOS"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ResourcePreloader" type="ResourcePreloader" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control"]
-process_thread_group = 2
-process_thread_group_order = 0
-process_thread_messages = 0
-resources = [PackedStringArray("BreakingRock", "BreakingSmallRock"), [ExtResource("64_ykw12"), ExtResource("65_hf4hd")]]
-
-[node name="rockParent" type="Node2D" parent="Transformando/StateMachine/Juego/Contenido"]
+[node name="rockParent" type="Node2D" parent="Transformando/StateMachine/Juego/Contenido" node_paths=PackedStringArray("rockParent")]
+script = ExtResource("7_78yff")
+rockParent = NodePath(".")
 
 [node name="btnVolver" parent="Transformando/StateMachine/Juego" instance=ExtResource("52_ke02p")]
 
@@ -7180,9 +7189,8 @@ script = ExtResource("28_glfmw")
 [connection signal="pressed" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/metamorficaSpot/Button" to="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Nube/AnimationNube" method="PlayAnim" binds= ["Nube_metamorfica"]]
 [connection signal="body_entered" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Sedimentaria/Area2D" to="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Sedimentaria/Area2D" method="Agrup"]
 [connection signal="body_exited" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Sedimentaria/Area2D" to="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Sedimentaria/Area2D" method="Ungrup"]
-[connection signal="timeout" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Sedimentaria/SedimentariaTime" to="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/rockInstances" method="Freeze"]
-[connection signal="timeout" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Sedimentaria/SedimentariaTime" to="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/rockInstances2" method="Freeze"]
 [connection signal="timeout" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Sedimentaria/SedimentariaTime" to="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Sedimentaria/Area2D" method="time"]
+[connection signal="timeout" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Sedimentaria/SedimentariaTime" to="Transformando/StateMachine/Juego/Contenido/rockParent" method="Freeze"]
 [connection signal="button_up" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Sedimentaria/SedimentariasPopUp/ColorRect/Panel/Button2" to="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Sedimentaria" method="buttonpress"]
 [connection signal="button_up" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Sedimentaria/SedimentariasPopUp/ColorRect/Panel/Button" to="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Sedimentaria" method="buttonpress"]
 [connection signal="pressed" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Sedimentaria/SedimentariasPopUp/ColorRect/Panel/Button" to="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Cueva/AnimationPlayer" method="Play"]
