@@ -13,7 +13,7 @@ signal Transitioned
 func _ready():
 	load_file()
 	if minigameResourseFile.StateMinigames["ToLevelNaumi"]:
-		get_tree().change_scene_to_file("res://Scenes/Naumi_Level_Up.tscn")
+		get_tree().change_scene_to_file("res://Scenes/zone_complete_event.tscn")
 
 func load_file():
 	minigameResourseFile  = ResourceLoader.load(save_file_path  + save_file_name)
@@ -39,7 +39,7 @@ func CheckAllTrue(Minigames):
 			if !once: 
 				minigameResourseFile.Set_State_Minigame("ToLevelNaumi")
 				save()
-				get_tree().change_scene_to_file("res://Scenes/Naumi_Level_Up.tscn")
+				get_tree().change_scene_to_file("res://Scenes/zone_complete_event.tscn")
 
 #Reinicia todos las Zonas y Minijuegos
 func RestartAll():

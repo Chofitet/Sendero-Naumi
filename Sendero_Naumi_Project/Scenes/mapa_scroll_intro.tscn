@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://buth5gc88nt3j"]
+[gd_scene load_steps=56 format=3 uid="uid://buth5gc88nt3j"]
 
 [ext_resource type="Texture2D" uid="uid://cjjoaemhep814" path="res://Sprites/mapa-detalle.png" id="1_kw7ma"]
 [ext_resource type="Texture2D" uid="uid://hf5y4ic16cqj" path="res://Sprites/Intro/intro - background.jpg" id="1_un13t"]
@@ -16,6 +16,8 @@
 [ext_resource type="Texture2D" uid="uid://dnpt3mo8vtigw" path="res://Sprites/Naumi/ZZZ - idle.png" id="10_w6hht"]
 [ext_resource type="Texture2D" uid="uid://05mdqsdsbuqm" path="res://Sprites/Mapa/geologia_mapa.png" id="11_tirda"]
 [ext_resource type="Texture2D" uid="uid://lvhlr8303o1m" path="res://Sprites/Mapa/megafauna_mapa.png" id="12_4oixe"]
+[ext_resource type="Script" path="res://_Scripts/SetVisibleChilds.gd" id="12_cc620"]
+[ext_resource type="LabelSettings" uid="uid://b7f8w8wf071ek" path="res://Themes/Geología/LabelSettings_Busqueda.tres" id="12_mlivv"]
 [ext_resource type="Script" path="res://_Scripts/PlayAnimation.gd" id="15_4c0kx"]
 [ext_resource type="PackedScene" uid="uid://djhg7jvxtexyl" path="res://Scenes/UI_Scenes/btn_Change_Scene.tscn" id="16_0ow6t"]
 [ext_resource type="Texture2D" uid="uid://bpcc2ljyhkxfl" path="res://Sprites/Mapa/pin check - mapa.png" id="17_0u7nf"]
@@ -210,6 +212,18 @@ tracks/2/keys = {
 "update": 0,
 "values": [0.0]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("..:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
 
 [sub_resource type="Animation" id="Animation_y0cb1"]
 resource_name = "zzz"
@@ -250,11 +264,92 @@ tracks/2/keys = {
 "update": 0,
 "values": [0.0, -0.0872665, 0.0]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("..:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, -0.0872665, 0.0]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_q3luw"]
 _data = {
 "RESET": SubResource("Animation_2bcfk"),
 "zzz": SubResource("Animation_y0cb1")
+}
+
+[sub_resource type="Animation" id="Animation_hvnxi"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_tl17c"]
+resource_name = "enter"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(4, 4), Vector2(3.61, 3.61)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimationPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"Play"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_rp0io"]
+resource_name = "idle"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(3.61, 3.61), Vector2(4, 4), Vector2(3.61, 3.61)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_os5q7"]
+_data = {
+"RESET": SubResource("Animation_hvnxi"),
+"enter": SubResource("Animation_tl17c"),
+"idle": SubResource("Animation_rp0io")
 }
 
 [sub_resource type="Animation" id="Animation_tbfkl"]
@@ -650,14 +745,14 @@ tracks/1/keys = {
 tracks/2/type = "method"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("../../Naumi_Intro/AnimationPlayer")
+tracks/2/path = NodePath("../../Naumi_Intro/Control/Button/Label/AnimationPlayer")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(1),
+"times": PackedFloat32Array(1.5),
 "transitions": PackedFloat32Array(1),
 "values": [{
-"args": ["naumi_intro_anim"],
+"args": ["enter"],
 "method": &"PlayAnim"
 }]
 }
@@ -881,6 +976,30 @@ offset_right = 164.0
 offset_bottom = 92.0
 theme_override_styles/focus = ExtResource("17_2a5jd")
 flat = true
+script = ExtResource("12_cc620")
+
+[node name="Label" type="Label" parent="Naumi_Intro/Control/Button"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.478
+anchor_top = 0.5
+anchor_right = 0.478
+anchor_bottom = 0.5
+offset_left = -7.96001
+offset_top = -35.0
+offset_right = 19.04
+offset_bottom = 51.0
+scale = Vector2(1e-05, 1e-05)
+pivot_offset = Vector2(13.13, 42.595)
+text = "?"
+label_settings = ExtResource("12_mlivv")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Naumi_Intro/Control/Button/Label"]
+libraries = {
+"": SubResource("AnimationLibrary_os5q7")
+}
+script = ExtResource("15_4c0kx")
+animation = "idle"
 
 [node name="Map_Scroll" type="Control" parent="."]
 layout_mode = 1
@@ -1450,10 +1569,14 @@ texture = ExtResource("22_c1o0u")
 script = ExtResource("29_imofv")
 vibrate = 300.0
 
+[connection signal="pressed" from="Naumi_Intro/LabelControl/Panel/ButtonChangeScene" to="Naumi_Intro/SaveFirstPlay" method="FirstPlay"]
+[connection signal="pressed" from="Naumi_Intro/LabelControl/Panel/ButtonChangeScene2" to="Naumi_Intro/SaveFirstPlay" method="FirstPlay"]
 [connection signal="pressed" from="Naumi_Intro/LabelControl/Panel/Button" to="Naumi_Intro/AnimationPlayer" method="PlayAnim" binds= ["naumi_intro_anim_2"]]
 [connection signal="tree_entered" from="Naumi_Intro/Control/Naumi" to="Naumi_Intro/Control/Naumi" method="_on_tree_entered"]
 [connection signal="tree_exited" from="Naumi_Intro/Control/Naumi" to="Naumi_Intro/Control/Naumi" method="_on_tree_exited"]
 [connection signal="pressed" from="Naumi_Intro/Control/Button" to="Naumi_Intro/Control/ZZZ/AnimationPlayer" method="Play"]
+[connection signal="pressed" from="Naumi_Intro/Control/Button" to="Naumi_Intro/AnimationPlayer" method="PlayAnim" binds= ["naumi_intro_anim"]]
+[connection signal="pressed" from="Naumi_Intro/Control/Button" to="Naumi_Intro/Control/Button" method="SetVisible" binds= [false]]
 [connection signal="stopscroll" from="Map_Scroll/VBoxContainer" to="Map_Scroll/VBoxContainer/Piso1/Piso2/MegafaunaZone/AnimationPlayer" method="Play"]
 [connection signal="pressed" from="Map_Scroll/VBoxContainer/middleIslands/VBoxContainer/Piso3/Piso3/Eras_Geologicas/TextureRect/Button_Change_State" to="Map_Scroll/VBoxContainer/middleIslands/VBoxContainer/Piso3/Piso3/Eras_Geologicas/TextureRect/Button_Change_State" method="_on_pressed"]
 [connection signal="pressed" from="Map_Scroll/LabelControl/Panel/Button" to="Map_Scroll/VBoxContainer/Piso1/Piso2/MegafaunaZone/AnimationPlayer" method="PlayAnim" binds= ["chan_anim"]]

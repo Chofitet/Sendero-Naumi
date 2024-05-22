@@ -28,6 +28,7 @@ func _ready():
 	else: 
 		save(instanceResource,save_file_name_Instances)
 	
+	PlayerVariables.SetLastZoneBeforeQuit()
 	CheckFirsPlayTime()
 
 func CheckFirsPlayTime():

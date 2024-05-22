@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=3 uid="uid://dk066mi38cvh7"]
+[gd_scene load_steps=78 format=3 uid="uid://dk066mi38cvh7"]
 
 [ext_resource type="Script" path="res://_Scripts/Minigame_Save_Controller.gd" id="1_th4gl"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/StateMachineMinigames.gd" id="2_fl1ab"]
@@ -6,10 +6,10 @@
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/Button_Change_StateMinigame.gd" id="4_1n0vc"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/JuegoState.gd" id="5_wjedw"]
 [ext_resource type="Texture2D" uid="uid://nuybqhitpej1" path="res://Sprites/Mapa/fondo_mapa.png" id="6_folb8"]
-[ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/MoralejaState.gd" id="6_yvrem"]
 [ext_resource type="Script" path="res://_Scripts/MinG_Astronauta/NaveController.gd" id="7_acnt4"]
 [ext_resource type="PackedScene" uid="uid://dtbscg5vj1osr" path="res://Scenes/Zona_Astronomia/astronautaController.tscn" id="7_jv4gs"]
 [ext_resource type="Script" path="res://_Scripts/CollisionPolygon2DEditorTexture.gd" id="7_nhdbp"]
+[ext_resource type="PackedScene" uid="uid://cxjhvsdei4u8q" path="res://Scenes/Experiments/CollisionPolygon2DMaker.tscn" id="7_s4reo"]
 [ext_resource type="PackedScene" uid="uid://djhg7jvxtexyl" path="res://Scenes/UI_Scenes/btn_Change_Scene.tscn" id="7_xf3bk"]
 [ext_resource type="Texture2D" uid="uid://c86atw5p5xojw" path="res://Sprites/ZonaMegafauna/piedra - excavacion.png" id="8_4dx32"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/FinState.gd" id="8_82fk8"]
@@ -17,36 +17,266 @@
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="8_eyv1l"]
 [ext_resource type="Texture2D" uid="uid://bs61ipoo6jueu" path="res://Sprites/ZonaAstronomia/NaveInterior.png" id="8_w48x6"]
 [ext_resource type="Texture2D" uid="uid://puccpmbqwi4c" path="res://Sprites/ZonaAstronomia/NaveExterior.png" id="9_7dd1c"]
-[ext_resource type="Texture2D" uid="uid://drrio0noaq2fi" path="res://Sprites/ZonaGeología/piedra-PhotoRoom.png-PhotoRoom.png" id="9_88pnb"]
 [ext_resource type="Texture2D" uid="uid://badkgjv7fmia5" path="res://Sprites/ZonaAstronomia/dirtEdge.png" id="9_fd6y6"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2D.gd" id="10_ex8uo"]
 [ext_resource type="Script" path="res://_Scripts/CapsulaController.gd" id="10_fm36a"]
 [ext_resource type="Texture2D" uid="uid://chqivoetkgkoj" path="res://Sprites/UI/circulo.png" id="10_s0cgv"]
+[ext_resource type="Texture2D" uid="uid://ppspego84wu8" path="res://Sprites/ZonaAstronomia/asteroide 1 textura - astronauta.png" id="10_yncry"]
 [ext_resource type="Script" path="res://_Scripts/MinG_Astronauta/RotateArround.gd" id="11_712vn"]
 [ext_resource type="Texture2D" uid="uid://do80na5f1l4ly" path="res://Sprites/ZonaAstronomia/capsula.png" id="11_fl6hj"]
 [ext_resource type="PackedScene" uid="uid://dsjra6y4xe8g7" path="res://Scenes/Experiments/pick_up_object.tscn" id="11_i2vqs"]
 [ext_resource type="PackedScene" uid="uid://bhvn7rj6jhh2" path="res://Scenes/Zona_Astronomia/collision_object.tscn" id="11_nklpy"]
-[ext_resource type="Texture2D" uid="uid://b7poe0ethot51" path="res://Sprites/ZonaGeología/Piedras/flurita_dureza.png" id="14_gaug6"]
+[ext_resource type="Texture2D" uid="uid://b2h2am0c8xv15" path="res://Sprites/ZonaAstronomia/meteoroide - astronauta.png" id="11_x4hhq"]
+[ext_resource type="Script" path="res://_Scripts/PlayAnimation.gd" id="13_ikt7k"]
+[ext_resource type="PackedScene" uid="uid://cwc8753xgyd6i" path="res://Scenes/Zona_Astronomia/particleAstronauta.tscn" id="15_2uk6t"]
 [ext_resource type="PackedScene" uid="uid://b4nd3esel25b6" path="res://Scenes/Experiments/trialEffect.tscn" id="16_grs1x"]
+[ext_resource type="Texture2D" uid="uid://b1al6piky5ml1" path="res://Sprites/ZonaAstronomia/meteoro - astronauta.png" id="17_uxw0q"]
 [ext_resource type="Material" uid="uid://cor0lrtroo02k" path="res://shaders/LigthMaterial.tres" id="17_ybe5w"]
 [ext_resource type="Script" path="res://_Scripts/SetVisibility.gd" id="18_2s0px"]
 [ext_resource type="Texture2D" uid="uid://wsicrocifuq" path="res://Sprites/ZonaAstronomia/pegoton.png" id="18_ms2d6"]
 [ext_resource type="PackedScene" uid="uid://bfoprt6qtltqf" path="res://Scenes/Zona_Astronomia/computer.tscn" id="19_552cy"]
 [ext_resource type="StyleBox" uid="uid://cunyyfksq4kvc" path="res://Resources/UI_Resources/PanelScreen.tres" id="20_5lj7u"]
+[ext_resource type="Texture2D" uid="uid://dc45biossbhcd" path="res://Sprites/ZonaAstronomia/meteorito - astronauta.png" id="21_57l06"]
 [ext_resource type="Script" path="res://Scenes/GenericPanelController.gd" id="21_sbo2s"]
 [ext_resource type="Theme" uid="uid://bhum72inirq1q" path="res://Themes/Generic_UI.tres" id="22_d5f6h"]
 [ext_resource type="Script" path="res://_Scripts/MinG_Astronauta/ZoomArea.gd" id="22_wst5e"]
 [ext_resource type="PackedScene" uid="uid://dlwmbps456ind" path="res://Scenes/Experiments/btnVolver.tscn" id="25_oyvyl"]
 [ext_resource type="Texture2D" uid="uid://dv4a24ah52onn" path="res://Sprites/ZonaAstronomia/capsulaInterior.png" id="30_8apus"]
-[ext_resource type="Texture2D" uid="uid://b5qoetxgjuq1s" path="res://Sprites/ZonaGeología/Piedras/cuarzo_dureza.png" id="31_ku00f"]
 [ext_resource type="Script" path="res://_Scripts/MinG_Astronauta/pcInventary.gd" id="31_x60lp"]
 [ext_resource type="Texture2D" uid="uid://uf5uauamlbgx" path="res://addons/scene_manager/icons/GuiChecked.svg" id="33_0uqck"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="34_cy5l0"]
 [ext_resource type="PackedScene" uid="uid://blcdo5n6nfd6h" path="res://Scenes/Zona_Astronomia/DialogueCharacter.tscn" id="35_frqpj"]
 [ext_resource type="Script" path="res://_Scripts/PhantomAreaSetPriority.gd" id="39_f6slj"]
 [ext_resource type="Script" path="res://_Scripts/MinG_Astronauta/WallOfLevel.gd" id="40_het88"]
-[ext_resource type="Script" path="res://_Scripts/ChangeScene.gd" id="45_n360i"]
+[ext_resource type="Texture2D" uid="uid://ocq30h65yxis" path="res://Sprites/UI/BotonAceptarCeleste.png" id="42_u1nrq"]
 [ext_resource type="Texture2D" uid="uid://ca20spuu3q5ks" path="res://Sprites/ZonaAstronomia/astronauta - astronauta.png" id="46_qiyux"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_baev4"]
+size = Vector2(92.4131, 196.199)
+
+[sub_resource type="Animation" id="Animation_ntpu7"]
+resource_name = "move"
+length = 2.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Path2D/PathFollow2D/TheGuy2/StaticBody2D/CollisionShape2D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Path2D/PathFollow2D:progress_ratio")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.6, 2.5),
+"transitions": PackedFloat32Array(2, -0.757859, 2),
+"update": 0,
+"values": [0.0, 0.64, 1.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Path2D/PathFollow2D/TheGuy2/sprite:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.8, 1.6, 2.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [1.63014, 0.261799, 0.261799, 2.00601]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Path2D/PathFollow2D/TheGuy2/CPUParticles2D:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 2.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Path2D/PathFollow2D/TheGuy2/CPUParticles2D:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.8, 1.6, 2.1, 2.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0265647, -1.25519, -1.25519, -0.340592, 0.428971]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = false
+tracks/5/path = NodePath("Path2D/PathFollow2D/TheGuy2/particleCircle:emitting")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Path2D/PathFollow2D/TheGuy2/Panel:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Path2D/PathFollow2D/TheGuy2/Area2D/CollisionShape2D:disabled")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_b4qh4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Path2D/PathFollow2D/TheGuy2/StaticBody2D/CollisionShape2D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Path2D/PathFollow2D:progress_ratio")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Path2D/PathFollow2D/TheGuy2/sprite:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.63014]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Path2D/PathFollow2D/TheGuy2/CPUParticles2D:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Path2D/PathFollow2D/TheGuy2/CPUParticles2D:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0265647]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Path2D/PathFollow2D/TheGuy2/particleCircle:emitting")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Path2D/PathFollow2D/TheGuy2/Panel:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Path2D/PathFollow2D/TheGuy2/Area2D/CollisionShape2D:disabled")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qooww"]
+_data = {
+"RESET": SubResource("Animation_b4qh4"),
+"move": SubResource("Animation_ntpu7")
+}
+
+[sub_resource type="Curve2D" id="Curve2D_auh48"]
+_data = {
+"points": PackedVector2Array(0, 0, -1.645, 14.315, -3, 3.00024, 44.6324, -40.4074, -44.6324, 40.4074, -43, 98.0002, 37.865, -13.005, 0, 0, -218, 206)
+}
+point_count = 3
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_drp5q"]
+size = Vector2(155.455, 62.7478)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_27igt"]
+size = Vector2(106.262, 478.009)
+
+[sub_resource type="Curve" id="Curve_0uqyq"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_37kl3"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
 [sub_resource type="Gradient" id="Gradient_628gc"]
 offsets = PackedFloat32Array(0.470588, 0.663866, 0.756303, 0.865546, 1)
@@ -76,24 +306,6 @@ point_count = 2
 offsets = PackedFloat32Array(0, 0.921739, 0.982609)
 colors = PackedColorArray(1, 1, 1, 1, 0.303233, 0.303233, 0.303233, 1, 0.301961, 0.301961, 0.301961, 0)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3kd6y"]
-size = Vector2(483, 239)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_48pma"]
-size = Vector2(544, 40.1443)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ohny0"]
-size = Vector2(491, 67)
-
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_h2n3c"]
-light_mode = 1
-
-[sub_resource type="Resource" id="Resource_gls3l"]
-script = ExtResource("34_cy5l0")
-duration = 1.0
-transition = 0
-ease = 2
-
 [sub_resource type="Animation" id="Animation_ax162"]
 length = 0.001
 tracks/0/type = "value"
@@ -122,7 +334,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.2, 0.3),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(1e-05, 1e-05), Vector2(5.2, 5.2), Vector2(5, 5)]
+"values": [Vector2(1e-05, 1e-05), Vector2(1, 1), Vector2(0.8, 0.8)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_fpol8"]
@@ -130,6 +342,24 @@ _data = {
 "RESET": SubResource("Animation_ax162"),
 "check": SubResource("Animation_btch4")
 }
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3kd6y"]
+size = Vector2(483, 239)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_48pma"]
+size = Vector2(544, 40.1443)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ohny0"]
+size = Vector2(491, 67)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_h2n3c"]
+light_mode = 1
+
+[sub_resource type="Resource" id="Resource_gls3l"]
+script = ExtResource("34_cy5l0")
+duration = 1.0
+transition = 0
+ease = 2
 
 [sub_resource type="Resource" id="Resource_t43a6"]
 script = ExtResource("34_cy5l0")
@@ -316,11 +546,17 @@ polygon = PackedVector2Array(2100.5, -65.2843, 2114.52, -112.776, 2102.51, -116.
 [node name="Laberinto" type="StaticBody2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/Collisiones"]
 position = Vector2(1142, -285)
 
+[node name="CollisionPolygon2D84" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/Collisiones/Laberinto" instance=ExtResource("7_s4reo")]
+position = Vector2(2683, 169)
+_texture = ExtResource("10_yncry")
+_textureLine = ExtResource("9_fd6y6")
+
 [node name="CollisionPolygon2D13" type="CollisionPolygon2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/Collisiones/Laberinto"]
 position = Vector2(-2147.55, 1500.58)
 rotation = -0.794118
 polygon = PackedVector2Array(75.6718, 90.4445, -43.2039, 99.3078, -188.277, 30.8651, -188.973, -173.149, -183.59, -263.262, -56.4621, -326.502, -0.596619, -326.722, 78.3747, -229.842, 179.255, -110.893, 199.69, -21.6154, 172.93, 46.7432)
 script = ExtResource("7_nhdbp")
+_scale = Vector2(0, 0)
 metadata/_edit_group_ = true
 
 [node name="CollisionPolygon2D6" type="Polygon2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/Collisiones/Laberinto/CollisionPolygon2D13"]
@@ -345,6 +581,7 @@ position = Vector2(-1829.55, 1224.58)
 rotation = -0.794118
 polygon = PackedVector2Array(-208.622, 12.3022, -173.056, -92.7506, -188.973, -173.149, -252.479, -229.213, -235.766, -280.688, -160.101, -362.056, -56.4621, -326.502, 78.3747, -229.842, 170.069, -111.68, 159.738, -62.2704, 65.3327, -21.3727, -78.4203, 2.12341)
 script = ExtResource("7_nhdbp")
+_scale = Vector2(0, 0)
 metadata/_edit_group_ = true
 
 [node name="CollisionPolygon2D6" type="Polygon2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/Collisiones/Laberinto/CollisionPolygon2D67"]
@@ -369,6 +606,7 @@ position = Vector2(-1675.55, 956.579)
 rotation = -0.794118
 polygon = PackedVector2Array(-160.218, -105.367, -188.973, -173.149, -252.479, -229.213, -235.766, -280.688, -160.101, -362.056, -56.4621, -326.502, 18.1431, -286.252, 78.3747, -229.842, 37.1378, -112.839, 47.1212, -41.3313, -20.4398, 2.62903, -89.5856, -14.9452, -134.958, -54.5569)
 script = ExtResource("7_nhdbp")
+_scale = Vector2(0, 0)
 metadata/_edit_group_ = true
 
 [node name="CollisionPolygon2D6" type="Polygon2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/Collisiones/Laberinto/CollisionPolygon2D68"]
@@ -393,6 +631,7 @@ position = Vector2(-1331.55, 376.579)
 rotation = -0.794118
 polygon = PackedVector2Array(75.6718, 90.4445, -43.2039, 99.3078, -188.277, 30.8651, -193.335, -37.771, -178.061, -86.4301, -236.827, -159.07, -183.59, -263.262, -137.832, -320.848, -46.9432, -363.897, 23.6167, -346.311, 91.9981, -241.059, 179.255, -110.893, 199.69, -21.6154, 172.93, 46.7432)
 script = ExtResource("7_nhdbp")
+_scale = Vector2(0, 0)
 metadata/_edit_group_ = true
 
 [node name="CollisionPolygon2D6" type="Polygon2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/Collisiones/Laberinto/CollisionPolygon2D46"]
@@ -417,6 +656,7 @@ position = Vector2(-2045.55, -259.421)
 rotation = -0.794118
 polygon = PackedVector2Array(75.6718, 90.4445, -43.2039, 99.3078, -188.277, 30.8651, -193.335, -37.771, -178.061, -86.4301, -236.827, -159.07, -183.59, -263.262, -137.832, -320.848, -46.9432, -363.897, 23.6167, -346.311, 91.9981, -241.059, 179.255, -110.893, 199.69, -21.6154, 172.93, 46.7432)
 script = ExtResource("7_nhdbp")
+_scale = Vector2(0, 0)
 metadata/_edit_group_ = true
 
 [node name="CollisionPolygon2D6" type="Polygon2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/Collisiones/Laberinto/CollisionPolygon2D49"]
@@ -441,6 +681,7 @@ position = Vector2(-213.548, 36.579)
 rotation = -0.794118
 polygon = PackedVector2Array(100.481, 326.843, -22.1066, 274.861, -116.716, 95.8381, -225.269, -105.935, -236.611, -427.072, -165.227, -422.914, -46.9432, -363.897, 14.0627, -385.994, 51.6163, -313.539, 269.319, -140.514, 403.734, 14.8132, 331.974, 297.041)
 script = ExtResource("7_nhdbp")
+_scale = Vector2(0, 0)
 metadata/_edit_group_ = true
 
 [node name="CollisionPolygon2D6" type="Polygon2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/Collisiones/Laberinto/CollisionPolygon2D52"]
@@ -465,6 +706,7 @@ position = Vector2(330.45, -351.421)
 rotation = -0.794118
 polygon = PackedVector2Array(126.927, 51.2919, -161.587, 51.6045, -300.534, 172.727, -280.045, 93.7067, -242.683, -55.1727, -158.867, -16.9638, -74.9385, -72.8027, 105.99, -142.645, 204.093, -39.9626, 179.571, 14.98)
 script = ExtResource("7_nhdbp")
+_scale = Vector2(0, 0)
 metadata/_edit_group_ = true
 
 [node name="CollisionPolygon2D6" type="Polygon2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/Collisiones/Laberinto/CollisionPolygon2D53"]
@@ -489,6 +731,7 @@ position = Vector2(-797.548, -1555.42)
 rotation = -0.794118
 polygon = PackedVector2Array(76.6809, 55.8035, 49.2939, 114.964, 6.8313, 140.84, 1.74634, 188.184, -59.4695, 243.048, -163.065, -46.8586, -74.9385, -72.8027, 34.8254, -90.9382, 145.989, -26.3267, 166.72, 29.0103, 118.393, 56.8743)
 script = ExtResource("7_nhdbp")
+_scale = Vector2(0, 0)
 metadata/_edit_group_ = true
 
 [node name="CollisionPolygon2D6" type="Polygon2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/Collisiones/Laberinto/CollisionPolygon2D59"]
@@ -513,6 +756,7 @@ position = Vector2(-774.548, -1831.42)
 rotation = -0.794118
 polygon = PackedVector2Array(52.9448, 182.88, 1.74634, 188.184, -147.408, 47.4849, -163.065, -46.8586, -74.9385, -72.8027, 145.989, -26.3267, 166.72, 29.0103, 161.418, 150.591)
 script = ExtResource("7_nhdbp")
+_scale = Vector2(0, 0)
 metadata/_edit_group_ = true
 
 [node name="CollisionPolygon2D6" type="Polygon2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/Collisiones/Laberinto/CollisionPolygon2D60"]
@@ -537,6 +781,7 @@ position = Vector2(-800.548, -2389.42)
 rotation = -0.794118
 polygon = PackedVector2Array(48.2109, 158.089, 1.74634, 188.184, -114.705, 351.838, -170.24, 395.196, -243.208, 329.503, -229.753, 246.179, -149.697, 147.878, -147.408, 47.4849, -137.986, -59.9172, -74.9385, -72.8027, 58.3237, -28.5056, 156.111, -51.6958, 149.689, 35.9331, 191.497, 107.011)
 script = ExtResource("7_nhdbp")
+_scale = Vector2(0, 0)
 metadata/_edit_group_ = true
 
 [node name="CollisionPolygon2D6" type="Polygon2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/Collisiones/Laberinto/CollisionPolygon2D88"]
@@ -561,6 +806,7 @@ position = Vector2(-550.548, -2839.42)
 rotation = -0.794118
 polygon = PackedVector2Array(-207.949, 664.992, -247.196, 462.409, -256.043, 179.479, -276.059, 42.1206, -304.807, -67.0288, -163.065, -46.8586, -59.8491, -100.25, 145.989, -26.3267, 256.132, 74.3396, 205.699, 181.383, 105.536, 314.865, 24.1873, 480.333)
 script = ExtResource("7_nhdbp")
+_scale = Vector2(0, 0)
 metadata/_edit_group_ = true
 
 [node name="CollisionPolygon2D6" type="Polygon2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/Collisiones/Laberinto/CollisionPolygon2D86"]
@@ -585,6 +831,7 @@ position = Vector2(-1306.55, -2937.42)
 rotation = -0.794118
 polygon = PackedVector2Array(-163.629, 610.222, -218.691, 437.201, -353.781, 197.012, -276.059, 42.1206, -163.065, -46.8586, -59.8491, -100.25, 145.989, -26.3267, 325.121, 190.911, 569.67, 528.932, 383.568, 462.253, 284.084, 517.956, 129.02, 460.033, 139.1, 601.548, 18.2424, 675.45)
 script = ExtResource("7_nhdbp")
+_scale = Vector2(0, 0)
 metadata/_edit_group_ = true
 
 [node name="CollisionPolygon2D6" type="Polygon2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/Collisiones/Laberinto/CollisionPolygon2D87"]
@@ -609,6 +856,7 @@ position = Vector2(-2111.55, -3049.42)
 rotation = -0.794118
 polygon = PackedVector2Array(-205.908, 674.202, -542.692, 371.441, -649.963, 22.5957, -557.533, -197.224, 255.074, -939.7, 358.408, -639.84, 355.198, -443.582, 357.758, -64.7871, 513.221, 238.125, 614.437, 585.186, 508.708, 546.078, 433.21, 527.035, 347.388, 556.693, 284.084, 517.956, 178.966, 652.102, 18.2424, 675.45)
 script = ExtResource("7_nhdbp")
+_scale = Vector2(0, 0)
 metadata/_edit_group_ = true
 
 [node name="CollisionPolygon2D6" type="Polygon2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/Collisiones/Laberinto/CollisionPolygon2D89"]
@@ -633,6 +881,7 @@ position = Vector2(-381.548, -1930.42)
 rotation = -0.794118
 polygon = PackedVector2Array(78.0078, 178.378, -52.1294, 271.417, -133.549, 39.4739, -163.065, -46.8586, -114.35, -94.3604, -47.6252, -123.478, 30.0181, -107.244, 171.898, 2.8916, 188.572, 36.9795)
 script = ExtResource("7_nhdbp")
+_scale = Vector2(0, 0)
 metadata/_edit_group_ = true
 
 [node name="CollisionPolygon2D6" type="Polygon2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/Collisiones/Laberinto/CollisionPolygon2D79"]
@@ -657,6 +906,7 @@ position = Vector2(-381.548, -1930.42)
 rotation = -0.794118
 polygon = PackedVector2Array(-5.49048, -333.13, 95.0525, -429.13, 173.115, -460.978, 221.552, -420.249, 212.192, -319.917, 286.287, -59.0459, 247.059, -20.4956, 153.946, -46.7642, 14.7949, -145.562)
 script = ExtResource("7_nhdbp")
+_scale = Vector2(0, 0)
 metadata/_edit_group_ = true
 
 [node name="CollisionPolygon2D6" type="Polygon2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/Collisiones/Laberinto/CollisionPolygon2D96"]
@@ -681,6 +931,7 @@ position = Vector2(123.45, -1579.42)
 rotation = -0.794118
 polygon = PackedVector2Array(98.928, 505.027, 70.1267, 564.175, 45.2249, 581.636, -245.299, 325.949, -200.844, 255.623, -162.589, 44.8777, -145.831, -52.2072, -55.5886, -148.385, 79.5657, -234.45, 145.989, -26.3267, 195.703, 111.291, 155.095, 226.906)
 script = ExtResource("7_nhdbp")
+_scale = Vector2(0, 0)
 metadata/_edit_group_ = true
 
 [node name="CollisionPolygon2D6" type="Polygon2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/Collisiones/Laberinto/CollisionPolygon2D75"]
@@ -705,6 +956,7 @@ position = Vector2(449.45, 237.579)
 rotation = -0.794118
 polygon = PackedVector2Array(-98.9564, 5.47974, -147.112, 13.5455, -264.251, -95.6675, -299.443, -195.68, -326.137, -297.033, -240.255, -252.442, -155.221, -272.914, 9.35071, -278.079, -51.0458, -55.6231)
 script = ExtResource("7_nhdbp")
+_scale = Vector2(0, 0)
 metadata/_edit_group_ = true
 
 [node name="CollisionPolygon2D6" type="Polygon2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/Collisiones/Laberinto/CollisionPolygon2D56"]
@@ -729,6 +981,7 @@ position = Vector2(804.45, 335.579)
 rotation = -0.794118
 polygon = PackedVector2Array(-98.9564, 5.47974, -147.112, 13.5455, -264.251, -95.6675, -299.443, -195.68, -326.137, -297.033, -253.413, -284.378, -222.312, -364.013, -61.4097, -164.612, -51.0458, -55.6231)
 script = ExtResource("7_nhdbp")
+_scale = Vector2(0, 0)
 metadata/_edit_group_ = true
 
 [node name="CollisionPolygon2D6" type="Polygon2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/Collisiones/Laberinto/CollisionPolygon2D61"]
@@ -753,6 +1006,7 @@ position = Vector2(1179.45, 408.579)
 rotation = -0.794118
 polygon = PackedVector2Array(-81.3718, 16.2401, -155.698, 106.105, -277.991, 101.503, -315.091, 58.0443, -312.442, -124.02, -324.06, -251.405, -345.677, -286.243, -252.871, -305.941, -244.328, -434.211, -132.053, -294.28, -17.7585, -264.291, 16.3323, -159.691, -18.5569, -51.0971)
 script = ExtResource("7_nhdbp")
+_scale = Vector2(0, 0)
 metadata/_edit_group_ = true
 
 [node name="CollisionPolygon2D6" type="Polygon2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/Collisiones/Laberinto/CollisionPolygon2D62"]
@@ -777,6 +1031,7 @@ position = Vector2(1587.45, 804.579)
 rotation = -0.794118
 polygon = PackedVector2Array(-81.3718, 16.2401, -155.698, 106.105, -277.991, 101.503, -315.091, 58.0443, -312.442, -124.02, -324.06, -251.405, -310.839, -348.521, -286.821, -426.803, -121.845, -370.208, -93.0723, -263.887, 16.3323, -159.691, -18.5569, -51.0971)
 script = ExtResource("7_nhdbp")
+_scale = Vector2(0, 0)
 metadata/_edit_group_ = true
 
 [node name="CollisionPolygon2D6" type="Polygon2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/Collisiones/Laberinto/CollisionPolygon2D76"]
@@ -801,6 +1056,7 @@ position = Vector2(1498.45, 337.579)
 rotation = -0.794118
 polygon = PackedVector2Array(-81.3718, 16.2401, -155.698, 106.105, -277.991, 101.503, -315.091, 58.0443, -312.442, -124.02, -238.447, -297.683, -244.328, -434.211, -33.9077, -399.141, -4.07666, -333.117, 32.5786, -238.749, 16.3323, -159.691, -18.5569, -51.0971)
 script = ExtResource("7_nhdbp")
+_scale = Vector2(0, 0)
 metadata/_edit_group_ = true
 
 [node name="CollisionPolygon2D6" type="Polygon2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/Collisiones/Laberinto/CollisionPolygon2D70"]
@@ -825,6 +1081,7 @@ position = Vector2(1681.45, -64.421)
 rotation = -0.794118
 polygon = PackedVector2Array(-81.3718, 16.2401, -155.698, 106.105, -277.991, 101.503, -315.091, 58.0443, -328.503, -106.835, -413.873, -246.394, -265.268, -372.58, -33.9077, -399.141, -4.07666, -333.117, 32.5786, -238.749, 16.3323, -159.691, -18.5569, -51.0971)
 script = ExtResource("7_nhdbp")
+_scale = Vector2(0, 0)
 metadata/_edit_group_ = true
 
 [node name="CollisionPolygon2D6" type="Polygon2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/Collisiones/Laberinto/CollisionPolygon2D71"]
@@ -844,35 +1101,12 @@ joint_mode = 2
 begin_cap_mode = 2
 end_cap_mode = 2
 
-[node name="CollisionPolygon2D84" type="CollisionPolygon2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/Collisiones/Laberinto"]
-position = Vector2(2676.45, 175.579)
-rotation = -0.794118
-polygon = PackedVector2Array(-277.991, 101.503, -315.091, 58.0443, -328.503, -106.835, -413.873, -246.394, -265.268, -372.58, -33.9077, -399.141, -4.07666, -333.117, 32.5786, -238.749, -1.47388, -174.155)
-script = ExtResource("7_nhdbp")
-metadata/_edit_group_ = true
-
-[node name="CollisionPolygon2D6" type="Polygon2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/Collisiones/Laberinto/CollisionPolygon2D84"]
-position = Vector2(-2.82837, -0.0246582)
-rotation = 0.0149409
-texture = ExtResource("8_4dx32")
-texture_scale = Vector2(2.545, 2.545)
-polygon = PackedVector2Array(-277.991, 101.503, -315.091, 58.0443, -328.503, -106.835, -413.873, -246.394, -265.268, -372.58, -33.9077, -399.141, -4.07666, -333.117, 32.5786, -238.749, -1.47388, -174.155)
-
-[node name="Line2D" type="Line2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/Collisiones/Laberinto/CollisionPolygon2D84/CollisionPolygon2D6"]
-position = Vector2(1, 0)
-points = PackedVector2Array(-277.991, 101.503, -315.091, 58.0443, -328.503, -106.835, -413.873, -246.394, -265.268, -372.58, -33.9077, -399.141, -4.07666, -333.117, 32.5786, -238.749, -1.47388, -174.155, -277.991, 101.503)
-width = 40.0
-texture = ExtResource("9_fd6y6")
-texture_mode = 1
-joint_mode = 2
-begin_cap_mode = 2
-end_cap_mode = 2
-
 [node name="CollisionPolygon2D101" type="CollisionPolygon2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/Collisiones/Laberinto"]
 position = Vector2(2767.45, -3542.42)
 rotation = -0.794118
 polygon = PackedVector2Array(-37.0586, 153.928, -185.681, 168.189, -277.991, 101.503, -315.091, 58.0443, -372.86, -99.3254, -519.387, -325.472, 57.9854, -365.693, 314.872, -255.379, 215.015, -208.755, 144.771, -100.469, 51.3589, 69.843)
 script = ExtResource("7_nhdbp")
+_scale = Vector2(0, 0)
 metadata/_edit_group_ = true
 
 [node name="CollisionPolygon2D6" type="Polygon2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/Collisiones/Laberinto/CollisionPolygon2D101"]
@@ -897,6 +1131,7 @@ position = Vector2(1855.45, -505.421)
 rotation = -0.794118
 polygon = PackedVector2Array(-81.3718, 16.2401, -155.698, 106.105, -277.991, 101.503, -315.091, 58.0443, -328.503, -106.835, -413.873, -246.394, -265.268, -372.58, -33.9077, -399.141, -4.07666, -333.117, 32.5786, -238.749, 16.3323, -159.691, -18.5569, -51.0971)
 script = ExtResource("7_nhdbp")
+_scale = Vector2(0, 0)
 metadata/_edit_group_ = true
 
 [node name="CollisionPolygon2D6" type="Polygon2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/Collisiones/Laberinto/CollisionPolygon2D77"]
@@ -921,6 +1156,7 @@ position = Vector2(2275.45, -45.421)
 rotation = -0.794118
 polygon = PackedVector2Array(-125.616, -18.7957, -221.191, 75.1268, -277.991, 101.503, -366.446, 189.83, -348.448, 396.47, -439.472, 455.076, -639.42, 354.333, -622.644, 214.467, -702.202, 93.5607, -819.023, 28.8999, -944.648, 0.933472, -888.695, -90.5061, -721.771, -257.348, -413.873, -246.394, -265.268, -372.58, 170.021, -673.852, 392.35, -625.95, 415.341, -424.216, 391.724, -148.64, 217.595, -47.6243, -18.5569, -51.0971)
 script = ExtResource("7_nhdbp")
+_scale = Vector2(0, 0)
 metadata/_edit_group_ = true
 
 [node name="CollisionPolygon2D6" type="Polygon2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/Collisiones/Laberinto/CollisionPolygon2D85"]
@@ -945,6 +1181,7 @@ position = Vector2(1876.45, -1030.42)
 rotation = -0.794118
 polygon = PackedVector2Array(-81.3718, 16.2401, -155.698, 106.105, -277.991, 101.503, -315.091, 58.0443, -423.128, -121.803, -413.873, -246.394, -265.268, -372.58, -122.196, -573.159, 66.3167, -539.694, -18.5569, -51.0971)
 script = ExtResource("7_nhdbp")
+_scale = Vector2(0, 0)
 metadata/_edit_group_ = true
 
 [node name="CollisionPolygon2D6" type="Polygon2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/Collisiones/Laberinto/CollisionPolygon2D78"]
@@ -969,6 +1206,7 @@ position = Vector2(1564.45, -391.421)
 rotation = -0.794118
 polygon = PackedVector2Array(-106.318, -204.603, -283.938, -108.568, -407.125, -91.9634, -372.372, -387.596, -235.208, -506.966, -166.691, -417.27, -49.7227, -369.579, -4.07666, -333.117)
 script = ExtResource("7_nhdbp")
+_scale = Vector2(0, 0)
 metadata/_edit_group_ = true
 
 [node name="CollisionPolygon2D6" type="Polygon2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/Collisiones/Laberinto/CollisionPolygon2D72"]
@@ -993,6 +1231,7 @@ position = Vector2(1586.45, -793.42)
 rotation = -0.794118
 polygon = PackedVector2Array(-106.318, -204.603, -223.917, -98.8514, -335.426, -123.866, -443.811, -182.796, -512.975, -252.227, -305.254, -421.307, -166.691, -417.27, -49.7227, -369.579)
 script = ExtResource("7_nhdbp")
+_scale = Vector2(0, 0)
 metadata/_edit_group_ = true
 
 [node name="CollisionPolygon2D6" type="Polygon2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/Collisiones/Laberinto/CollisionPolygon2D73"]
@@ -1017,6 +1256,7 @@ position = Vector2(1154.45, -1384.42)
 rotation = -0.794118
 polygon = PackedVector2Array(-106.318, -204.603, -116.702, 13.1036, -178.769, 156.818, -292.101, 259.778, -418.847, 279.18, -512.975, -252.227, -437.608, -407.611, -362.575, -740.724, -492.275, -1112.39, -393.208, -1201.33, -310.315, -1307.86, -222.981, -1360.07, -139.466, -1431.06, -7.11719, -1328.52, 35.1357, -1261.95, 70.501, -1117, -59.6738, -769.196, -166.691, -417.27)
 script = ExtResource("7_nhdbp")
+_scale = Vector2(0, 0)
 metadata/_edit_group_ = true
 
 [node name="CollisionPolygon2D6" type="Polygon2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/Collisiones/Laberinto/CollisionPolygon2D74"]
@@ -1041,6 +1281,7 @@ position = Vector2(1178.45, -1966.42)
 rotation = -0.794118
 polygon = PackedVector2Array(134.344, 416.945, -46.1274, 434.464, -233.253, 485.16, -451.605, 710.953, -527.858, 697.559, -565.301, 612.377, -451.377, 441.537, -418.847, 279.18, -540.027, -15.3374, -501.188, -252.596, -418.056, -379.155, -378.037, -589.532, -300.686, -701.999, -313.298, -877.478, -509.924, -1034.76, -504.327, -1108.96, -403.021, -1211.32, -119.469, -1372.2, -32.9463, -1401.14, 324.42, -1107.39, 511.895, -873.818, 663.638, -759.353, 704.815, -534.832, 559.412, 83.3488)
 script = ExtResource("7_nhdbp")
+_scale = Vector2(0, 0)
 metadata/_edit_group_ = true
 
 [node name="CollisionPolygon2D6" type="Polygon2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/Collisiones/Laberinto/CollisionPolygon2D80"]
@@ -1065,6 +1306,7 @@ position = Vector2(2480.45, -2323.42)
 rotation = -0.794118
 polygon = PackedVector2Array(-418.847, 279.18, -540.027, -15.3374, -501.188, -252.596, -418.056, -379.155, -503.371, -488.797, -544.575, -629.169, -456.506, -997.525, -404.08, -1171.02, -476.288, -1405.01, -125.77, -1298.71, 289.989, -1132.44, 481.155, -997.834, 647.91, -739.691, 704.815, -534.832, 559.412, 83.3488, -296.157, 367.011)
 script = ExtResource("7_nhdbp")
+_scale = Vector2(0, 0)
 metadata/_edit_group_ = true
 
 [node name="CollisionPolygon2D6" type="Polygon2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/Collisiones/Laberinto/CollisionPolygon2D81"]
@@ -1089,6 +1331,7 @@ position = Vector2(2865.45, -888.42)
 rotation = -0.794118
 polygon = PackedVector2Array(-509.586, 10.726, -501.188, -252.596, -418.056, -379.155, -503.371, -488.797, -544.575, -629.169, -456.506, -997.525, -404.08, -1171.02, -476.288, -1405.01, -98.8584, -1546.68, 50.5781, -1654.27, 183.655, -1588.76, 95.2402, -1099.49, 367.169, -815.542, -246.557, -53.3057)
 script = ExtResource("7_nhdbp")
+_scale = Vector2(0, 0)
 metadata/_edit_group_ = true
 
 [node name="CollisionPolygon2D6" type="Polygon2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/Collisiones/Laberinto/CollisionPolygon2D82"]
@@ -1113,6 +1356,7 @@ position = Vector2(2865.45, 1874.58)
 rotation = -0.794118
 polygon = PackedVector2Array(-676.101, 262.793, -712.792, -395.161, -756.193, -689, -745.731, -1077.83, -1097.54, -1076.49, -1230.37, -1308.39, -994.498, -1552.07, -853.21, -1946.4, -658.194, -2316.3, -507.167, -2452.83, -519.527, -2066.36, -577.48, -1949.99, -476.288, -1405.01, -98.8584, -1546.68, 50.5781, -1654.27, 183.655, -1588.76, 95.2402, -1099.49, 379.638, -790.115)
 script = ExtResource("7_nhdbp")
+_scale = Vector2(0, 0)
 metadata/_edit_group_ = true
 
 [node name="CollisionPolygon2D6" type="Polygon2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/Collisiones/Laberinto/CollisionPolygon2D83"]
@@ -1137,6 +1381,7 @@ position = Vector2(1908.41, 3376.28)
 rotation = -0.794118
 polygon = PackedVector2Array(110.577, -444.64, -179.689, -422.756, -258.217, -696.143, -522.737, -947.178, -745.731, -1077.83, -938.589, -1370.35, -891.054, -1666.61, -476.288, -1405.01, -98.8584, -1546.68, 50.5781, -1654.27, 183.655, -1588.76, 326.271, -1722.39, 473.105, -1649.76, 613.599, -1356.81, 913.301, -1360.19, 448.271, -983.993, 460.177, -712.74)
 script = ExtResource("7_nhdbp")
+_scale = Vector2(0, 0)
 metadata/_edit_group_ = true
 
 [node name="CollisionPolygon2D6" type="Polygon2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/Collisiones/Laberinto/CollisionPolygon2D98"]
@@ -1161,6 +1406,7 @@ position = Vector2(1701.65, 4343.45)
 rotation = -0.794118
 polygon = PackedVector2Array(-476.288, -1405.01, -201.759, -1722.24, -101.994, -1707.1, 474.336, -1245.4, 448.271, -983.993, 460.177, -712.74)
 script = ExtResource("7_nhdbp")
+_scale = Vector2(0, 0)
 metadata/_edit_group_ = true
 
 [node name="CollisionPolygon2D6" type="Polygon2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/Collisiones/Laberinto/CollisionPolygon2D99"]
@@ -1185,13 +1431,14 @@ position = Vector2(-1399.58, 3583.28)
 rotation = -0.794118
 polygon = PackedVector2Array(110.577, -444.64, -712.792, -395.161, -756.193, -689, -745.731, -1077.83, -476.288, -1405.01, -201.759, -1722.24, -101.994, -1707.1, 639.877, -1681.6, 474.336, -1245.4, 448.271, -983.993, 460.177, -712.74, 411.366, -570.457)
 script = ExtResource("7_nhdbp")
+_scale = Vector2(0, 0)
 metadata/_edit_group_ = true
 
 [node name="CollisionPolygon2D6" type="Polygon2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/Collisiones/Laberinto/CollisionPolygon2D100"]
 position = Vector2(-2.82837, -0.0246582)
 rotation = 0.0149409
-texture = ExtResource("8_4dx32")
-texture_scale = Vector2(2.545, 2.545)
+texture = ExtResource("10_yncry")
+texture_scale = Vector2(1.3, 1.3)
 polygon = PackedVector2Array(110.577, -444.64, -712.792, -395.161, -756.193, -689, -745.731, -1077.83, -476.288, -1405.01, -201.759, -1722.24, -101.994, -1707.1, 639.877, -1681.6, 474.336, -1245.4, 448.271, -983.993, 460.177, -712.74, 411.366, -570.457)
 
 [node name="Line2D" type="Line2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/Collisiones/Laberinto/CollisionPolygon2D100/CollisionPolygon2D6"]
@@ -1209,13 +1456,13 @@ position = Vector2(137.45, 3876.58)
 rotation = -0.794118
 polygon = PackedVector2Array(-1146.01, -1494.29, -826.036, -1696.57, -528.322, -1778.83, -196.241, -1747.64, 87.7173, -1615.06, -41.4911, -1475.46, 347.983, -1052.03, 500.149, -1148.29, 603.417, -665.123, 545.638, -364.388, 322.773, -10.1819)
 script = ExtResource("7_nhdbp")
+_scale = Vector2(0, 0)
 metadata/_edit_group_ = true
 
 [node name="CollisionPolygon2D6" type="Polygon2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/Collisiones/Laberinto/CollisionPolygon2D91"]
 position = Vector2(-2.82837, -0.0246582)
 rotation = 0.0149409
-texture = ExtResource("8_4dx32")
-texture_scale = Vector2(2.545, 2.545)
+texture = ExtResource("10_yncry")
 polygon = PackedVector2Array(-1146.01, -1494.29, -826.036, -1696.57, -528.322, -1778.83, -196.241, -1747.64, 87.7173, -1615.06, -41.4911, -1475.46, 347.983, -1052.03, 500.149, -1148.29, 603.417, -665.123, 545.638, -364.388, 322.773, -10.1819)
 
 [node name="Line2D" type="Line2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/Collisiones/Laberinto/CollisionPolygon2D91/CollisionPolygon2D6"]
@@ -1234,6 +1481,7 @@ rotation = -0.794118
 scale = Vector2(0.188486, 0.188486)
 polygon = PackedVector2Array(-53.4974, 248.547, -899.204, 211.171, -1177.45, 8.7373, -1410.85, -315.683, -1403.52, -1157.11, -826.036, -1696.57, -56.728, -1701.85, 539.607, -1132.39, 545.638, -364.388)
 script = ExtResource("7_nhdbp")
+_scale = Vector2(0, 0)
 metadata/_edit_group_ = true
 
 [node name="CollisionPolygon2D6" type="Polygon2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/Collisiones/Laberinto/CollisionPolygon2D92"]
@@ -1258,6 +1506,7 @@ position = Vector2(243.45, -333.421)
 rotation = -0.794118
 polygon = PackedVector2Array(-140.704, -32.0088, -188.575, -97.129, -283.85, -199.787, 139.584, -102.753, 67.1042, -62.3712, -19.3691, -39.0828, -93.3247, 8.35748)
 script = ExtResource("7_nhdbp")
+_scale = Vector2(0, 0)
 metadata/_edit_group_ = true
 
 [node name="CollisionPolygon2D6" type="Polygon2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/Collisiones/Laberinto/CollisionPolygon2D55"]
@@ -1282,6 +1531,7 @@ position = Vector2(861.45, -186.421)
 rotation = -0.794118
 polygon = PackedVector2Array(-232.763, 104.726, -350.539, -93.5913, -283.85, -199.787, -28.6494, -191.197, -5.78857, -217.869, 65.0776, -154.316, 37.9497, -124.853, -21.3027, 101.62)
 script = ExtResource("7_nhdbp")
+_scale = Vector2(0, 0)
 metadata/_edit_group_ = true
 
 [node name="CollisionPolygon2D6" type="Polygon2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/Collisiones/Laberinto/CollisionPolygon2D63"]
@@ -1306,6 +1556,7 @@ position = Vector2(555.45, -988.42)
 rotation = -0.794118
 polygon = PackedVector2Array(-168.499, 114.479, -347.699, -94.981, -329.103, -200.182, -349.232, -243.492, -303.13, -259.354, -97.824, -43.3026, -56.7065, 106.968)
 script = ExtResource("7_nhdbp")
+_scale = Vector2(0, 0)
 metadata/_edit_group_ = true
 
 [node name="CollisionPolygon2D6" type="Polygon2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/Collisiones/Laberinto/CollisionPolygon2D64"]
@@ -1330,6 +1581,7 @@ position = Vector2(1000.45, -893.42)
 rotation = -0.794118
 polygon = PackedVector2Array(-229.859, 14.9453, -519.545, 230.923, -593.29, 173.003, -369.479, -30.1145, -412.292, -229.193, -329.533, -232.006, -303.13, -259.354, -261.717, -143.023)
 script = ExtResource("7_nhdbp")
+_scale = Vector2(0, 0)
 metadata/_edit_group_ = true
 
 [node name="CollisionPolygon2D6" type="Polygon2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/Collisiones/Laberinto/CollisionPolygon2D65"]
@@ -1354,6 +1606,7 @@ position = Vector2(-1035.55, -749.42)
 rotation = -0.794118
 polygon = PackedVector2Array(163.189, 109.593, -85.3121, 224.81, -147.015, 83.5524, -300.698, -132.756, -182.407, -271.761, -118.512, -346.843, 107.913, -363.255, 263.958, -174.504, 214.483, -15.1227)
 script = ExtResource("7_nhdbp")
+_scale = Vector2(0, 0)
 metadata/_edit_group_ = true
 
 [node name="CollisionPolygon2D6" type="Polygon2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/Collisiones/Laberinto/CollisionPolygon2D51"]
@@ -1378,6 +1631,7 @@ position = Vector2(-1035.55, -749.42)
 rotation = -0.794118
 polygon = PackedVector2Array(166.472, 138.614, 72.8129, 337.209, -5.9071, 606.647, 42.4293, 740.01, -180.781, 685.029, -223.811, 618.89, -80.64, 256.672, 40.5852, 221.665)
 script = ExtResource("7_nhdbp")
+_scale = Vector2(0, 0)
 metadata/_edit_group_ = true
 
 [node name="CollisionPolygon2D6" type="Polygon2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/Collisiones/Laberinto/CollisionPolygon2D95"]
@@ -1402,6 +1656,7 @@ position = Vector2(-335.548, -1439.42)
 rotation = -0.794118
 polygon = PackedVector2Array(-55.9502, 841.704, -496.317, 740.279, -607.651, 614.146, -620.891, 429.469, -566.51, 275.08, -300.698, -132.756, -182.407, -271.761, -118.512, -346.843, 107.913, -363.255, 179.368, -204.941, 244.208, -99.0123, 115.606, 22.9854, 52.6072, 14.8677, -4.90869, 5.59253, -171.176, -54.5321, -393.228, 109.001, -511.579, 301.016, -479.23, 483.739, -363.162, 664.699, -70.5308, 719.225, -14.4207, 772.042)
 script = ExtResource("7_nhdbp")
+_scale = Vector2(0, 0)
 metadata/_edit_group_ = true
 
 [node name="CollisionPolygon2D6" type="Polygon2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/Collisiones/Laberinto/CollisionPolygon2D58"]
@@ -1426,6 +1681,7 @@ position = Vector2(-1941.55, 164.579)
 rotation = -0.794118
 polygon = PackedVector2Array(112.991, 189.769, -36.7601, 90.171, -193.335, -37.771, -178.061, -86.4301, -236.827, -159.07, -183.59, -263.262, -137.832, -320.848, -55.2083, -308.106, 165.226, -205.064, 179.255, -110.893, 199.69, -21.6154, 247.387, 103.963)
 script = ExtResource("7_nhdbp")
+_scale = Vector2(0, 0)
 metadata/_edit_group_ = true
 
 [node name="CollisionPolygon2D6" type="Polygon2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/Collisiones/Laberinto/CollisionPolygon2D50"]
@@ -1450,6 +1706,7 @@ position = Vector2(-2411.55, 380.579)
 rotation = -0.794118
 polygon = PackedVector2Array(112.991, 189.769, -36.7601, 90.171, -193.335, -37.771, 93.3382, -252.442, 165.226, -205.064, 179.255, -110.893, 199.69, -21.6154, 247.387, 103.963)
 script = ExtResource("7_nhdbp")
+_scale = Vector2(0, 0)
 metadata/_edit_group_ = true
 
 [node name="CollisionPolygon2D6" type="Polygon2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/Collisiones/Laberinto/CollisionPolygon2D66"]
@@ -1474,6 +1731,7 @@ position = Vector2(-1053.55, 78.579)
 rotation = -0.794118
 polygon = PackedVector2Array(-66.0505, 43.245, -188.277, 30.8651, -193.335, -37.771, -178.061, -86.4301, -297.99, -281.23, -378.852, -414.877, -345.45, -514.999, -433.028, -608.397, -467.358, -726.08, -418.611, -802.026, -238.754, -830.157, -56.8838, -683.608, -91.5529, -540.152, 63.5708, -386.976, 161.674, -284.293, 104.833, -91.0345)
 script = ExtResource("7_nhdbp")
+_scale = Vector2(0, 0)
 metadata/_edit_group_ = true
 
 [node name="CollisionPolygon2D6" type="Polygon2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/Collisiones/Laberinto/CollisionPolygon2D47"]
@@ -1498,6 +1756,7 @@ position = Vector2(-1579.55, -525.421)
 rotation = -0.794118
 polygon = PackedVector2Array(-98.9277, 83.2651, -188.277, 30.8651, -193.335, -37.771, -178.061, -86.4301, -297.99, -281.23, -378.852, -414.877, -353.787, -532.042, 36.4098, -515.911, 160.472, -389.667, -23.0668, -182.663)
 script = ExtResource("7_nhdbp")
+_scale = Vector2(0, 0)
 metadata/_edit_group_ = true
 
 [node name="CollisionPolygon2D6" type="Polygon2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/Collisiones/Laberinto/CollisionPolygon2D48"]
@@ -1522,6 +1781,7 @@ position = Vector2(-1579.55, -525.421)
 rotation = -0.794118
 polygon = PackedVector2Array(479.259, -861.374, 536.144, -816.328, 543.618, -700.293, 513.304, -629.844, 548.829, -568.014, 493.307, -526.07, 376.102, -465.571, 183.308, -413.51, 108.974, -484.872, 77.0648, -555.863, 144.356, -650.033)
 script = ExtResource("7_nhdbp")
+_scale = Vector2(0, 0)
 metadata/_edit_group_ = true
 
 [node name="CollisionPolygon2D6" type="Polygon2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/Collisiones/Laberinto/CollisionPolygon2D69"]
@@ -1546,6 +1806,7 @@ position = Vector2(-1579.55, -525.421)
 rotation = -0.794118
 polygon = PackedVector2Array(-62.5673, -599.509, -433.028, -608.397, -467.358, -726.08, -418.611, -802.026, -69.5027, -1101.63, 169.971, -1154.7, 364.237, -1051.18, 465.058, -935.747, 48.734, -631.774)
 script = ExtResource("7_nhdbp")
+_scale = Vector2(0, 0)
 metadata/_edit_group_ = true
 
 [node name="CollisionPolygon2D6" type="Polygon2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/Collisiones/Laberinto/CollisionPolygon2D94"]
@@ -1570,6 +1831,7 @@ position = Vector2(-2065.55, -1371.42)
 rotation = -0.794118
 polygon = PackedVector2Array(364.237, -1051.18, 516.716, -858.925, 900.461, -508.376, 768.13, -416.189, 598.394, -413.426, 441.564, -187.804, 268.542, -51.4214, 102.462, -224.703, -132.533, -279.788, -382.802, -286.213)
 script = ExtResource("7_nhdbp")
+_scale = Vector2(0, 0)
 metadata/_edit_group_ = true
 
 [node name="CollisionPolygon2D6" type="Polygon2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/Collisiones/Laberinto/CollisionPolygon2D90"]
@@ -1594,6 +1856,7 @@ position = Vector2(-819.549, -1385.42)
 rotation = -0.794118
 polygon = PackedVector2Array(-375.886, -511.728, -243.321, -630.785, -217.788, -801.689, -210.602, -976.995, -248.595, -1161.18, -100.033, -1249.69, 28.1646, -1273.32, 208.772, -1306.4, 304.442, -1248.99, 394.895, -1079.91, 509.094, -957.991, 516.716, -858.925, 543.618, -700.293, 526.768, -551.942, 369.017, -382.899, 183.308, -413.51, 76.9458, -217.855, -30.9373, -172.125, -213.668, -301.002, -383.462, -453.809)
 script = ExtResource("7_nhdbp")
+_scale = Vector2(0, 0)
 metadata/_edit_group_ = true
 
 [node name="CollisionPolygon2D6" type="Polygon2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/Collisiones/Laberinto/CollisionPolygon2D57"]
@@ -1618,6 +1881,7 @@ position = Vector2(-819.549, -1385.42)
 rotation = -0.794118
 polygon = PackedVector2Array(-477.483, -538.071, -562.678, -499.214, -583.631, -529.097, -577.556, -577.129, -564.763, -746.729, -489.944, -893.161, -387.039, -1016.72, -290.165, -935.261, -285.988, -765.512, -346.813, -601.988, -426.943, -495.202)
 script = ExtResource("7_nhdbp")
+_scale = Vector2(0, 0)
 metadata/_edit_group_ = true
 
 [node name="CollisionPolygon2D6" type="Polygon2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/Collisiones/Laberinto/CollisionPolygon2D93"]
@@ -1642,6 +1906,7 @@ position = Vector2(-2281.55, 1882.58)
 rotation = -0.794118
 polygon = PackedVector2Array(36.8379, 83.7416, -43.2039, 99.3078, -207.676, 66.0525, -315.276, 79.257, -303.444, 19.9608, -188.973, -173.149, -183.59, -263.262, -56.4621, -326.502, -0.596619, -326.722, 78.3747, -229.842, 112.421, -150.368, 163.01, -113.156, 294.096, -62.5132, 219.869, 16.0385, 128.795, 80.3007)
 script = ExtResource("7_nhdbp")
+_scale = Vector2(0, 0)
 metadata/_edit_group_ = true
 
 [node name="CollisionPolygon2D6" type="Polygon2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/Collisiones/Laberinto/CollisionPolygon2D14"]
@@ -1666,6 +1931,7 @@ position = Vector2(-1795.55, 1081.58)
 rotation = -0.794118
 polygon = PackedVector2Array(-319.235, -439.813, -223.485, -634.854, -43.2824, -702.582, 200.937, -732.274, 385.467, -728.543, 568.738, -580.568, 588.767, -444.624, 528.262, -317.868, 608.167, -236.558, 605.361, -158.09, 509.332, -93.1642, 399.667, -86.3418, 229.413, -24.1844, 270.528, -279.101, 93.4287, -405.101, -42.3307, -406.285, -164.54, -339.466, -307.309, -347.782)
 script = ExtResource("7_nhdbp")
+_scale = Vector2(0, 0)
 metadata/_edit_group_ = true
 
 [node name="CollisionPolygon2D6" type="Polygon2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/Collisiones/Laberinto/CollisionPolygon2D22"]
@@ -1690,6 +1956,7 @@ position = Vector2(-2582.55, 1504.58)
 rotation = -0.794118
 polygon = PackedVector2Array(14.9586, 200.581, -19.3431, 160.683, -43.2039, 99.3078, -207.676, 66.0525, 112.421, -150.368, 163.01, -113.156, 103.981, 47.2025, 102.434, 184.019, 83.3481, 223.806, 61.3361, 234.221)
 script = ExtResource("7_nhdbp")
+_scale = Vector2(0, 0)
 metadata/_edit_group_ = true
 
 [node name="CollisionPolygon2D6" type="Polygon2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/Collisiones/Laberinto/CollisionPolygon2D15"]
@@ -1714,6 +1981,7 @@ position = Vector2(-2482.55, 1123.58)
 rotation = -0.794118
 polygon = PackedVector2Array(14.9586, 200.581, -19.3431, 160.683, -60.9127, 143.349, -110.23, 163.072, -163.268, 163.317, -152.167, 66.1829, -217.727, 2.32275, 78.3747, -229.842, 112.421, -150.368, 163.01, -113.156, 103.981, 47.2025, 102.434, 184.019, 83.3481, 223.806, 61.3361, 234.221)
 script = ExtResource("7_nhdbp")
+_scale = Vector2(0, 0)
 metadata/_edit_group_ = true
 
 [node name="CollisionPolygon2D6" type="Polygon2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/Collisiones/Laberinto/CollisionPolygon2D24"]
@@ -1735,12 +2003,95 @@ end_cap_mode = 2
 
 [node name="Meteoroide" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide" instance=ExtResource("11_i2vqs")]
 position = Vector2(968.492, -1374.71)
-rotation = 213544.0
-scale = Vector2(2.595, 2.595)
+rotation = 22405.9
+scale = Vector2(2.975, 2.975)
+_texture = ExtResource("11_x4hhq")
 
 [node name="TheGuy" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide" instance=ExtResource("35_frqpj")]
-position = Vector2(829, -1369)
+position = Vector2(760, -1341)
 player = NodePath("../../../../Astronauta")
+
+[node name="CollisionShape2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/TheGuy/Area2D" index="0"]
+position = Vector2(7.02368, 48.4644)
+shape = SubResource("RectangleShape2D_baev4")
+
+[node name="GuyWall" type="Node2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide"]
+position = Vector2(1007, -1813)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/GuyWall"]
+libraries = {
+"": SubResource("AnimationLibrary_qooww")
+}
+script = ExtResource("13_ikt7k")
+animation = "move"
+
+[node name="Path2D" type="Path2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/GuyWall"]
+curve = SubResource("Curve2D_auh48")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/GuyWall/Path2D"]
+position = Vector2(-3, 3.00024)
+rotation = 1.68521
+
+[node name="TheGuy2" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/GuyWall/Path2D/PathFollow2D" instance=ExtResource("35_frqpj")]
+position = Vector2(-3.9292, -1.60059)
+rotation = -0.270157
+player = NodePath("../../../../../../../Astronauta")
+txt = "Recordá la misión"
+
+[node name="sprite" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/GuyWall/Path2D/PathFollow2D/TheGuy2" index="0"]
+rotation = 1.63014
+
+[node name="CollisionShape2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/GuyWall/Path2D/PathFollow2D/TheGuy2/Area2D" index="0"]
+position = Vector2(7.29767, 52.8821)
+rotation = -0.130287
+scale = Vector2(0.999999, 0.999999)
+shape = SubResource("RectangleShape2D_drp5q")
+
+[node name="Panel" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/GuyWall/Path2D/PathFollow2D/TheGuy2" index="2"]
+offset_left = -28.6799
+offset_top = 24.9712
+offset_right = 230.32
+offset_bottom = 98.9712
+rotation = -1.69791
+scale = Vector2(-1, 1)
+
+[node name="Label" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/GuyWall/Path2D/PathFollow2D/TheGuy2/Panel" index="0"]
+offset_left = 129.604
+offset_top = -19.3254
+offset_right = 390.604
+offset_bottom = 18.6746
+scale = Vector2(-1, 1)
+text = "Recordá la misión"
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/GuyWall/Path2D/PathFollow2D/TheGuy2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/GuyWall/Path2D/PathFollow2D/TheGuy2/StaticBody2D"]
+position = Vector2(-19.5713, 2.55838)
+rotation = -0.129983
+shape = SubResource("RectangleShape2D_27igt")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/GuyWall/Path2D/PathFollow2D/TheGuy2"]
+show_behind_parent = true
+use_parent_material = true
+rotation = 0.0265647
+scale = Vector2(0.468255, 0.468255)
+emitting = false
+amount = 16
+lifetime = 2.0
+texture = ExtResource("18_ms2d6")
+direction = Vector2(0, -1)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 200.0
+initial_velocity_max = 200.0
+angular_velocity_min = 10.0
+angular_velocity_max = 20.0
+scale_amount_curve = SubResource("Curve_0uqyq")
+color_ramp = SubResource("Gradient_37kl3")
+
+[node name="particleCircle" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/GuyWall/Path2D/PathFollow2D/TheGuy2" instance=ExtResource("15_2uk6t")]
+position = Vector2(3.56311, -63.1729)
+rotation = 1.66143
 
 [node name="RocasEmpujables" type="Node2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide"]
 
@@ -1871,13 +2222,13 @@ show_behind_parent = false
 points = PackedVector2Array(5949, -8939)
 
 [node name="meteoro" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoro/Meteoro1" node_paths=PackedStringArray("MeteoritoTarget") instance=ExtResource("11_i2vqs")]
-rotation = 71595.5
+rotation = 104586.0
 scale = Vector2(2.595, 2.595)
 MeteoritoTarget = NodePath("../../../Meteorito/MeteoritoAppear/targetMeteorito")
-_texture = ExtResource("14_gaug6")
+_texture = ExtResource("17_uxw0q")
 
 [node name="Sprite2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoro/Meteoro1/meteoro" index="1"]
-texture = ExtResource("14_gaug6")
+texture = ExtResource("17_uxw0q")
 
 [node name="Meteoro3" type="Node2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoro" node_paths=PackedStringArray("CenterObject")]
 top_level = true
@@ -1892,10 +2243,10 @@ CenterObject = NodePath("../elPrincipito")
 show_behind_parent = false
 
 [node name="meteoro" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoro/Meteoro3" node_paths=PackedStringArray("MeteoritoTarget") instance=ExtResource("11_i2vqs")]
-rotation = 71576.5
+rotation = 104567.0
 scale = Vector2(2.595, 2.595)
 MeteoritoTarget = NodePath("../../../Meteorito/MeteoritoAppear/targetMeteorito")
-_texture = ExtResource("14_gaug6")
+_texture = ExtResource("17_uxw0q")
 
 [node name="RocasEmpujables" type="Node2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoro"]
 rotation = -0.788223
@@ -1954,7 +2305,7 @@ offset_right = 391.5
 scale = Vector2(-1, 1)
 
 [node name="Meteorito" type="Node2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales"]
-position = Vector2(-108, 3257)
+position = Vector2(-183, 3257)
 
 [node name="TextureRect" type="TextureRect" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteorito"]
 offset_left = -1630.0
@@ -1970,6 +2321,7 @@ position = Vector2(3968.05, -20317.3)
 rotation = -0.794118
 polygon = PackedVector2Array(2407.83, -1816.67, -35.5889, 447.276, -308.058, 448.265, -879.317, 382.736, -1580.37, 157.981, -1638.03, -558.993, -1740.04, -818.888, -1966.29, -1103.41, -2210.68, -1236.73, -2375.94, -1187.71, -2586.17, -994.445, -2733.41, -696.359, -2933.17, -933.562, -3075.95, -1146.72, -3364.26, -1643.7, -3564.47, -2213.92, -3564.06, -2951.89, -1270.47, -5165.9)
 script = ExtResource("7_nhdbp")
+_scale = Vector2(0, 0)
 metadata/_edit_group_ = true
 
 [node name="CollisionPolygon2D6" type="Polygon2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteorito/Collision/CollisionPolygon2D97"]
@@ -1997,7 +2349,6 @@ DialogueDistance = Vector2(-11.445, -160.26)
 AstronautAngle = -2.755
 
 [node name="MeteoritoAppear" type="Sprite2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteorito"]
-visible = false
 position = Vector2(1739, -19331)
 script = ExtResource("18_2s0px")
 
@@ -2022,11 +2373,10 @@ scale_amount_curve = SubResource("Curve_vuutm")
 color_ramp = SubResource("Gradient_502ld")
 
 [node name="meteorito" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteorito/MeteoritoAppear" instance=ExtResource("11_i2vqs")]
-modulate = Color(0.273438, 0.300781, 0.332031, 1)
 position = Vector2(4, -1)
 rotation = 0.900674
 scale = Vector2(4.965, 4.965)
-_texture = ExtResource("9_88pnb")
+_texture = ExtResource("21_57l06")
 rotation_speed = 0.0
 
 [node name="targetMeteorito" type="Marker2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteorito/MeteoritoAppear"]
@@ -2178,6 +2528,68 @@ offset_bottom = 33.0
 grow_horizontal = 0
 grow_vertical = 0
 theme = ExtResource("22_d5f6h")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/interior/Intro/Panel2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 30.0
+offset_top = 120.0
+offset_right = -29.0
+offset_bottom = -31.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/interior/Intro/Panel2/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("11_x4hhq")
+expand_mode = 2
+
+[node name="check" type="Sprite2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/interior/Intro/Panel2/HBoxContainer/TextureRect"]
+position = Vector2(59, 58)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("33_0uqck")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/interior/Intro/Panel2/HBoxContainer/TextureRect"]
+root_node = NodePath("../check")
+libraries = {
+"": SubResource("AnimationLibrary_fpol8")
+}
+
+[node name="TextureRect2" type="TextureRect" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/interior/Intro/Panel2/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("17_uxw0q")
+expand_mode = 2
+
+[node name="check" type="Sprite2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/interior/Intro/Panel2/HBoxContainer/TextureRect2"]
+position = Vector2(59, 58)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("33_0uqck")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/interior/Intro/Panel2/HBoxContainer/TextureRect2"]
+root_node = NodePath("../check")
+libraries = {
+"": SubResource("AnimationLibrary_fpol8")
+}
+
+[node name="TextureRect3" type="TextureRect" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/interior/Intro/Panel2/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("21_57l06")
+expand_mode = 2
+
+[node name="check" type="Sprite2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/interior/Intro/Panel2/HBoxContainer/TextureRect3"]
+position = Vector2(59, 58)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("33_0uqck")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/interior/Intro/Panel2/HBoxContainer/TextureRect3"]
+root_node = NodePath("../check")
+libraries = {
+"": SubResource("AnimationLibrary_fpol8")
+}
 
 [node name="Panel3" type="Panel" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/interior/Intro"]
 visible = false
@@ -2377,18 +2789,18 @@ offset_right = -44.0
 offset_bottom = -31.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = -264
+theme_override_constants/separation = 50
 alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/PCInventary/pcInventary/Panel/HBoxContainer"]
 layout_mode = 2
-texture = ExtResource("31_ku00f")
+texture = ExtResource("11_x4hhq")
 expand_mode = 2
 
 [node name="check" type="Sprite2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/PCInventary/pcInventary/Panel/HBoxContainer/TextureRect"]
 position = Vector2(59, 58)
 scale = Vector2(1e-05, 1e-05)
-texture = ExtResource("33_0uqck")
+texture = ExtResource("42_u1nrq")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/PCInventary/pcInventary/Panel/HBoxContainer/TextureRect"]
 root_node = NodePath("../check")
@@ -2398,13 +2810,13 @@ libraries = {
 
 [node name="TextureRect2" type="TextureRect" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/PCInventary/pcInventary/Panel/HBoxContainer"]
 layout_mode = 2
-texture = ExtResource("31_ku00f")
+texture = ExtResource("17_uxw0q")
 expand_mode = 2
 
 [node name="check" type="Sprite2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/PCInventary/pcInventary/Panel/HBoxContainer/TextureRect2"]
 position = Vector2(59, 58)
 scale = Vector2(1e-05, 1e-05)
-texture = ExtResource("33_0uqck")
+texture = ExtResource("42_u1nrq")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/PCInventary/pcInventary/Panel/HBoxContainer/TextureRect2"]
 root_node = NodePath("../check")
@@ -2414,13 +2826,13 @@ libraries = {
 
 [node name="TextureRect3" type="TextureRect" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/PCInventary/pcInventary/Panel/HBoxContainer"]
 layout_mode = 2
-texture = ExtResource("31_ku00f")
+texture = ExtResource("21_57l06")
 expand_mode = 2
 
 [node name="check" type="Sprite2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/PCInventary/pcInventary/Panel/HBoxContainer/TextureRect3"]
 position = Vector2(59, 58)
 scale = Vector2(1e-05, 1e-05)
-texture = ExtResource("33_0uqck")
+texture = ExtResource("42_u1nrq")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/PCInventary/pcInventary/Panel/HBoxContainer/TextureRect3"]
 root_node = NodePath("../check")
@@ -2506,93 +2918,6 @@ shape = SubResource("RectangleShape2D_8dfup")
 
 [node name="HUD" parent="Astronauta/StateMachine/Juego" instance=ExtResource("25_oyvyl")]
 
-[node name="Moraleja" type="Node" parent="Astronauta/StateMachine"]
-script = ExtResource("6_yvrem")
-Moralejas = [null, "Y esto es una moraleja"]
-Instancias = [NodePath("Contenido/Instancia1")]
-buttons = [NodePath("Contenido/Instancia1/Button")]
-
-[node name="Contenido" type="Control" parent="Astronauta/StateMachine/Moraleja"]
-visible = false
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Conteiner" type="Control" parent="Astronauta/StateMachine/Moraleja/Contenido"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="LblMoraleja" type="Label" parent="Astronauta/StateMachine/Moraleja/Contenido/Conteiner"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -270.0
-offset_top = -444.0
-offset_right = 294.0
-offset_bottom = 445.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 40
-text = "Consigna genérica Consigna genérica Consigna genérica"
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 2
-
-[node name="Timer" type="Timer" parent="Astronauta/StateMachine/Moraleja/Contenido"]
-wait_time = 3.0
-one_shot = true
-
-[node name="ButtonChangeScene" parent="Astronauta/StateMachine/Moraleja/Contenido" instance=ExtResource("7_xf3bk")]
-visible = false
-layout_mode = 1
-offset_left = -197.0
-offset_top = -201.0
-offset_right = 207.0
-offset_bottom = -66.0
-text = "Continue"
-NextScene = "Map_Screen"
-
-[node name="Instancia1" type="Control" parent="Astronauta/StateMachine/Moraleja/Contenido"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Button" type="Button" parent="Astronauta/StateMachine/Moraleja/Contenido/Instancia1" node_paths=PackedStringArray("state_to_change", "state_machine")]
-visible = false
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -201.0
-offset_top = -197.0
-offset_right = 202.0
-offset_bottom = -67.0
-grow_horizontal = 2
-grow_vertical = 0
-text = "que?
-"
-script = ExtResource("4_1n0vc")
-state_to_change = NodePath("../../../../Juego")
-state_machine = NodePath("../../../..")
-
 [node name="Fin" type="Node" parent="Astronauta/StateMachine"]
 script = ExtResource("8_82fk8")
 
@@ -2628,9 +2953,17 @@ grow_vertical = 2
 
 [node name="interior" type="Sprite2D" parent="Astronauta/StateMachine/Fin/Contenido/Center/Nave"]
 material = ExtResource("17_ybe5w")
+position = Vector2(0, 149)
 texture = ExtResource("8_w48x6")
 
+[node name="capsula" type="Sprite2D" parent="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior"]
+show_behind_parent = true
+position = Vector2(-10, -566)
+texture = ExtResource("30_8apus")
+
 [node name="Computer" parent="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior" instance=ExtResource("19_552cy")]
+position = Vector2(109, 116)
+isPerspective = true
 
 [node name="Outro" type="Control" parent="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior"]
 material = ExtResource("17_ybe5w")
@@ -2837,7 +3170,6 @@ grow_vertical = 0
 theme = ExtResource("22_d5f6h")
 
 [node name="Panel4" type="Panel" parent="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/Outro"]
-visible = false
 use_parent_material = true
 layout_mode = 1
 anchors_preset = 15
@@ -2878,29 +3210,25 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="Button" type="Button" parent="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/Outro/Panel4"]
-use_parent_material = true
+[node name="ButtonChangeScene" parent="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/Outro/Panel4" instance=ExtResource("7_xf3bk")]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.853
-anchor_top = 1.0
-anchor_right = 0.853
-anchor_bottom = 1.0
-offset_left = -34.792
+anchor_left = 0.855
+anchor_right = 0.855
+offset_left = -35.24
 offset_top = -37.0
-offset_right = 35.208
+offset_right = 34.76
 offset_bottom = 33.0
 grow_horizontal = 0
-grow_vertical = 0
 theme = ExtResource("22_d5f6h")
-script = ExtResource("45_n360i")
+text = ""
 NextScene = "Map_Screen"
 
 [node name="AstronautaPivot" type="Node2D" parent="Astronauta/StateMachine/Fin/Contenido/Center/Nave"]
-position = Vector2(-134, 262)
+position = Vector2(-134, 411)
 
 [node name="Astronauta" type="Sprite2D" parent="Astronauta/StateMachine/Fin/Contenido/Center/Nave" node_paths=PackedStringArray("CenterObject")]
-position = Vector2(-132, 262)
+position = Vector2(-132, 411)
 scale = Vector2(1.21127, 1.21127)
 texture = ExtResource("46_qiyux")
 script = ExtResource("11_712vn")
@@ -2943,6 +3271,7 @@ NextScene = "Map_Screen"
 [connection signal="pressed" from="Astronauta/StateMachine/Consigna/Contenido/Button" to="Astronauta/StateMachine/Consigna/Contenido/Button" method="_on_pressed" flags=18]
 [connection signal="Transitioned" from="Astronauta/StateMachine/Juego" to="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/interior/Intro/Panel" method="StartTimerToAppear"]
 [connection signal="Transitioned" from="Astronauta/StateMachine/Juego" to="Astronauta/StateMachine/Juego/Contenido/Instancia1/Camera2D" method="Enable" binds= [true]]
+[connection signal="Picked" from="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/Meteoroide" to="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/GuyWall/AnimationPlayer" method="Play"]
 [connection signal="Crash" from="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoro/Meteoro1/meteoro" to="Astronauta/StateMachine/Juego/Contenido/Instancia1/PhantomCamera2D2/UpWall" method="SetActiveCollision"]
 [connection signal="Crash" from="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoro/Meteoro1/meteoro" to="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteorito/MeteoritoAppear" method="Setvisivility" binds= [true]]
 [connection signal="Crash" from="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoro/Meteoro1/meteoro" to="Astronauta/StateMachine/Juego/Contenido/Instancia1/PhantomCamera2D2" method="set_priority" binds= [0]]
@@ -2960,12 +3289,14 @@ NextScene = "Map_Screen"
 [connection signal="area_entered" from="Astronauta/StateMachine/Juego/Contenido/Instancia1/PhantomCamera2D2/Area2D" to="Astronauta/StateMachine/Juego/Contenido/Instancia1/PhantomCamera2D" method="Set_BlockFirstPart"]
 [connection signal="area_entered" from="Astronauta/StateMachine/Juego/Contenido/Instancia1/PhantomCamera2D2/Area2D" to="Astronauta/StateMachine/Juego/Contenido/Instancia1/PhantomCamera2D2/UpWall" method="Set_Collider_Position"]
 [connection signal="area_entered" from="Astronauta/StateMachine/Juego/Contenido/Instancia1/PhantomCamera2D2/Area2D" to="Astronauta/StateMachine/Juego/Contenido/Instancia1/PhantomCamera2D2/Downwall" method="Set_Collider_Position"]
-[connection signal="timeout" from="Astronauta/StateMachine/Moraleja/Contenido/Timer" to="Astronauta/StateMachine/Moraleja" method="TimeOut" flags=18]
-[connection signal="pressed" from="Astronauta/StateMachine/Moraleja/Contenido/Instancia1/Button" to="Astronauta/StateMachine/Moraleja/Contenido/Instancia1/Button" method="_on_pressed" flags=18]
+[connection signal="Transitioned" from="Astronauta/StateMachine/Fin" to="Astronauta" method="Set_Complete"]
 [connection signal="Transitioned" from="Astronauta/StateMachine/Fin" to="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/Outro/Panel" method="StartTimerToAppear"]
 [connection signal="pressed" from="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/Outro/Panel/Button" to="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/Outro/Panel2" method="SetVisibility" binds= [true]]
 [connection signal="pressed" from="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/Outro/Panel2/Button" to="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/Outro/Panel3" method="SetVisibility" binds= [true]]
 [connection signal="pressed" from="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/Outro/Panel3/Button" to="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/Outro/Panel4" method="SetVisibility" binds= [true]]
+[connection signal="pressed" from="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/Outro/Panel4/ButtonChangeScene" to="Astronauta" method="Set_Complete"]
 
+[editable path="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/TheGuy"]
+[editable path="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/GuyWall/Path2D/PathFollow2D/TheGuy2"]
 [editable path="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoro/Meteoro1/meteoro"]
 [editable path="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoro/TheGuy2"]

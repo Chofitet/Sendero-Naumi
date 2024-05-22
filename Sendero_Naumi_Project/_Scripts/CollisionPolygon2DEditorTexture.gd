@@ -5,6 +5,21 @@ var original_points : Array
 var outlineFactor
 var collision_polygon: Polygon2D
 
+@export var _texture : Texture:
+	set(new_value):
+		_texture = new_value
+		$CollisionPolygon2D6.texture = _texture
+
+@export var _scale : Vector2 = Vector2(1,1):
+	set(new_value):
+		_scale = new_value
+		$CollisionPolygon2D6.texture_scale = _scale
+
+@export var _textureLine : Texture:
+	set(new_value):
+		_textureLine = new_value
+		$CollisionPolygon2D6/Line2D.texture = _textureLine
+
 
 func _ready():
 	draw.connect(update_line2d)
