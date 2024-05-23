@@ -14,10 +14,11 @@ func _ready():
 func CheckMeteoro(index):
 	visible = true
 	var anim : AnimationPlayer = MeteorosUI[index] 
+	await  get_tree().create_timer(2).timeout
 	anim.play("check")
 	await anim.animation_finished
 	computer.Setface("surprice")
-	await get_tree().create_timer(2).timeout
+	await get_tree().create_timer(3).timeout
 	if _misionComplete:
 		CompleteMision()
 		return

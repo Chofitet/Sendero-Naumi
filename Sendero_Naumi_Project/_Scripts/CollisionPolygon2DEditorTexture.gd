@@ -22,6 +22,7 @@ var collision_polygon: Polygon2D
 
 
 func _ready():
+	$CollisionPolygon2D6.texture_rotation = randi_range(0, 2*PI)
 	draw.connect(update_line2d)
 	for child in get_children():
 		if child is Polygon2D:
