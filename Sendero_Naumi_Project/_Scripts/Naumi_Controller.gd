@@ -20,11 +20,13 @@ func save():
 
 func _ready():
 	
-	SetNaumi(NaumiState())
+	
 	
 	if isEvolving:
+		SetNaumi(NaumiState() - 1)
 		ToLevelUp()
 	else:
+		SetNaumi(NaumiState())
 		btn.pressed.connect(Sleeping)
 
 func ToLevelUp():
@@ -39,6 +41,7 @@ func Evolve():
 	btn.pressed.connect(Sleeping)
 	PlayerVariables.SetNaumiEvolve()
 	SetNaumi(NaumiState())
+	NaumiAnim.play("sleeping")
 	$CanvasLayer/ButtonChangeScene.visible = true
 
 func Sleeping():
@@ -53,7 +56,7 @@ func SetNaumi(num):
 		0:
 			NaumiAnim.sprite_frames = preload("res://Resources/NaumiSpriteFrames/N0.tres")
 		1:
-			NaumiAnim.sprite_frames_changed = preload("res://Resources/NaumiSpriteFrames/N1.tres")
+			NaumiAnim.sprite_frames = preload("res://Resources/NaumiSpriteFrames/N1.tres")
 
 func NaumiState() -> int:
 	var num = 0

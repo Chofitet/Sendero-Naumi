@@ -27,7 +27,7 @@ func CheckMeteoro(index):
 func CompleteMision():
 	$Panel/HBoxContainer.visible = false
 	$Panel/MisionLabel.visible = true
-	await get_tree().create_timer(3).timeout
+	await get_tree().create_timer(4).timeout
 	var instantiateFade = fade.instantiate()
 	get_parent().add_child(instantiateFade)
 	instantiateFade.init(fadeTexture,2,true)

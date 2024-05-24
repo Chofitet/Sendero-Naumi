@@ -71,13 +71,13 @@ func SetOverlayTrue(obj):
 			get_node(O).button.visible = false
 	if obj ==  get_node(Objects[0]): 
 		PanelObj.visible = true
-		PanelObj.get_child(0).text = "¿UNA BOTA CON POLVO?"
+		PanelObj.get_child(0).text = "UNA BOTA CON POLVO?"
 	elif obj ==  get_node(Objects[1]):
 		PanelObj.visible = true
-		PanelObj.get_child(0).text = "¿UN RELOJ CON ARENA ROJA?"
+		PanelObj.get_child(0).text = "UN RELOJ CON ARENA ROJA?"
 	elif obj ==  get_node(Objects[2]):
 		PanelObj.visible = true
-		PanelObj.get_child(0).text = "¿UN GLOBO CON NIEVE?"
+		PanelObj.get_child(0).text = "UN GLOBO CON NIEVE?"
 
 func SetOverlayFalse(obj):
 	overlay.visible = false

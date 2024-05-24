@@ -17,7 +17,6 @@
 [ext_resource type="Texture2D" uid="uid://05mdqsdsbuqm" path="res://Sprites/Mapa/geologia_mapa.png" id="11_tirda"]
 [ext_resource type="Texture2D" uid="uid://lvhlr8303o1m" path="res://Sprites/Mapa/megafauna_mapa.png" id="12_4oixe"]
 [ext_resource type="Script" path="res://_Scripts/SetVisibleChilds.gd" id="12_cc620"]
-[ext_resource type="LabelSettings" uid="uid://b7f8w8wf071ek" path="res://Themes/Geología/LabelSettings_Busqueda.tres" id="12_mlivv"]
 [ext_resource type="Script" path="res://_Scripts/PlayAnimation.gd" id="15_4c0kx"]
 [ext_resource type="PackedScene" uid="uid://djhg7jvxtexyl" path="res://Scenes/UI_Scenes/btn_Change_Scene.tscn" id="16_0ow6t"]
 [ext_resource type="Texture2D" uid="uid://bpcc2ljyhkxfl" path="res://Sprites/Mapa/pin check - mapa.png" id="17_0u7nf"]
@@ -283,6 +282,11 @@ _data = {
 "zzz": SubResource("Animation_y0cb1")
 }
 
+[sub_resource type="LabelSettings" id="LabelSettings_wfa71"]
+font_size = 120
+outline_size = 16
+outline_color = Color(0, 0, 0, 1)
+
 [sub_resource type="Animation" id="Animation_hvnxi"]
 length = 0.001
 tracks/0/type = "value"
@@ -311,7 +315,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.4, 0.5),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(4, 4), Vector2(3.61, 3.61)]
+"values": [Vector2(0, 0), Vector2(2, 2), Vector2(1.805, 1.805)]
 }
 tracks/1/type = "method"
 tracks/1/imported = false
@@ -330,7 +334,6 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_rp0io"]
 resource_name = "idle"
-length = 0.8
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -339,10 +342,10 @@ tracks/0/path = NodePath(".:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.4, 0.8),
+"times": PackedFloat32Array(0, 0.5, 1),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(3.61, 3.61), Vector2(4, 4), Vector2(3.61, 3.61)]
+"values": [Vector2(1.805, 1.805), Vector2(2.2, 2.2), Vector2(1.805, 1.805)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_os5q7"]
@@ -981,18 +984,18 @@ script = ExtResource("12_cc620")
 [node name="Label" type="Label" parent="Naumi_Intro/Control/Button"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.478
-anchor_top = 0.5
-anchor_right = 0.478
-anchor_bottom = 0.5
-offset_left = -7.96001
-offset_top = -35.0
-offset_right = 19.04
-offset_bottom = 51.0
+anchor_left = 0.504
+anchor_top = 0.531
+anchor_right = 0.504
+anchor_bottom = 0.531
+offset_left = -27.28
+offset_top = -82.128
+offset_right = 26.72
+offset_bottom = 85.872
 scale = Vector2(1e-05, 1e-05)
-pivot_offset = Vector2(13.13, 42.595)
+pivot_offset = Vector2(26.505, 86.52)
 text = "?"
-label_settings = ExtResource("12_mlivv")
+label_settings = SubResource("LabelSettings_wfa71")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Naumi_Intro/Control/Button/Label"]
 libraries = {
@@ -1006,8 +1009,6 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 720.0
-offset_bottom = 1280.0
 grow_horizontal = 2
 grow_vertical = 2
 

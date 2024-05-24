@@ -13,7 +13,7 @@ func _ready():
 
 func checkZone():
 	if PlayerVariables.lastState == "NoZone":
-		get_tree().change_scene_to_file("res://Scenes/Map_Screen.tscn")
+		#get_tree().change_scene_to_file("res://Scenes/Map_Screen.tscn")
 		return
 	texture = texturas[PlayerVariables.lastState]
 

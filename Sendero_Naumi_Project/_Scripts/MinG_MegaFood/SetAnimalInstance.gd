@@ -26,31 +26,63 @@ func SetCorrectPlate(instance):
 	if instance == get_node(Instances[0]).name:
 		#smilodonte
 		Spot.RigthObject = DragObjects[2]
-		resultText.text = "[b]A LOS MEGATERIOS NOS ENCANTA COMER HIERBAS!
+		resultText.text = "GRRRACIAS!
 
-Y LAS SOBRAS QUE DEJAN OTROS ANIMALES!
+CAZO TODOS LOS DÍAS CON MIS 
+GARRAS Y DIENTES DE SABLE
 
-NUESTRAS GARRAS SON SÓLO PARA DEFENDERNOS,
+PERO HOY DIJE:
 
-SOMOS HERVIBOROS Y CARROÑEROS."
+SMILO,
+TOMATE EL DÍA.
+
+Y LA VERDAD QUE NO ME ARREPIENTO
+
+CARNÍVORO 4-LIFE!"
 	elif instance == get_node(Instances[1]).name:
 		#gliptodonte
 		Spot.RigthObject = DragObjects[0]
-		resultText.text = "gliptodonte"
+		resultText.text = "LE ENCANTÓ A MI SEÑORA
+
+SUMÉ PUNTOS A LO LOCO
+
+LOS GLYPTODON SOMOS MUY 
+ESTRICTOS CON NUESTRA DIETA
+SOLO VEGETALES
+
+ASI QUE VAMOS A VENIR SEGUIDO!
+
+UN GLYPTOABRAZO"
 	elif instance == get_node(Instances[2]).name:
 		#megaterio
 		Spot.RigthObject = DragObjects[3]
-		resultText.text = "[b]A LOS MEGATERIOS NOS ENCANTA COMER HIERBAS!
+		resultText.text = "RICASO!!
+A LOS MEGATERIOS NOS ENCANTAN
+LOS VEGETALES Y LA CARROÑA 
+(LAS SOBRAS DE OTROS ANIMALES)
+¿CÓMO SABÍAS?
 
-Y LAS SOBRAS QUE DEJAN OTROS ANIMALES!
+PD: LAS GARRAS SOLO LAS USAMOS
+PARA DEFENDERNOS
 
-NUESTRAS GARRAS SON SÓLO PARA DEFENDERNOS,
+PERDON SI TE ASUSTÉ
 
-SOMOS HERVIBOROS Y CARROÑEROS."
+RECOMIENDO!"
 	elif instance == get_node(Instances[3]).name:
 		#macrauquenia
 		Spot.RigthObject = DragObjects[0]
-		resultText.text = "macrauquenia"
+		resultText.text = "ME VINO DE DIEZ LA VEGGIE MERIENDA!
+
+GRACIAS POR NO PREGUNTAR SI SOY 
+UN CAMELLO,
+
+TODOS ME DICEN LO MISMO
+
+PERO NADA QUE VER!
+NI PRIMOS SOMOS
+
+TENGO QUE IR A EXTINGUIRME AHORA,
+PERO DESPUÉS VUELVO"
 
 @onready var papercontroller = $PaperController/pivot
 @onready var RigthImg = load("res://Sprites/ZonaMegafauna/resultado - bien.png")

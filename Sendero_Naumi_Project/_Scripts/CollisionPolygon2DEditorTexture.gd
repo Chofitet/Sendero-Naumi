@@ -20,9 +20,16 @@ var collision_polygon: Polygon2D
 		_textureLine = new_value
 		$CollisionPolygon2D6/Line2D.texture = _textureLine
 
+@export var RotationTexture: float:
+	set(new_value):
+		RotationTexture = new_value
+		$CollisionPolygon2D6.texture_rotation = rad_to_deg(RotationTexture)
+
+@export var RandomRotation: bool
 
 func _ready():
-	$CollisionPolygon2D6.texture_rotation = randi_range(0, 2*PI)
+	if RandomRotation:
+		$CollisionPolygon2D6.texture_rotation = randi_range(0, 2*PI)
 	draw.connect(update_line2d)
 	for child in get_children():
 		if child is Polygon2D:

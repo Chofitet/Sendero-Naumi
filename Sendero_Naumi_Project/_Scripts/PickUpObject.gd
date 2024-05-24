@@ -13,7 +13,6 @@ var isMeteorito
 func _ready():
 	$Sprite2D.texture = _texture
 	area_entered.connect(PickObject)
-	$CollisionShape2D.shape.radius = $Sprite2D.scale.x
 
 func PickObject(x):
 	if x.is_in_group("Player"):

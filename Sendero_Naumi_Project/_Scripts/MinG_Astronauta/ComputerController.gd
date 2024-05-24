@@ -9,5 +9,6 @@ func _ready():
 	else :
 		$faceAnim.sprite_frames = load("res://Resources/PC_Face_Astronauta/PC_perspective.tres")
 		$Perspectiva.visible = true
+
 func Setface(anim):
 	face.play(anim)

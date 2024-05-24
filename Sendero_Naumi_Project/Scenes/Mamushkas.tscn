@@ -96,7 +96,8 @@ tracks/2/keys = {
 "times": PackedFloat32Array(2),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": ["AL CENTRO DE ESTA SE ENCUENTRA EL NÚCLEO INTERNO
+"values": ["5000 KM DENTRO Y GIRANDO A OTRA VELOCIDAD
+ESTÁ EL NÚCLEO INTERNO
 "]
 }
 tracks/3/type = "value"
@@ -160,7 +161,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(1),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": ["SI IMAGINAMOS LA TIERRA COMO MAMUSHKAS..."]
+"values": ["SI IMAGINAMOS LAS CAPAS COMO MAMUSHKAS"]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -199,7 +200,8 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": ["¿EN QUÉ ORDEN TE PARECE QUE VAN?
+"values": ["DE MENOR A MAYOR
+¿EN QUÉ ORDEN TE PARECE QUE VAN?
 "]
 }
 tracks/2/type = "value"
@@ -610,6 +612,7 @@ script = ExtResource("4_cjbo7")
 Consignas = ["Hey esto es una consigna"]
 
 [node name="Contenido" type="Control" parent="Mamushkas/StateMachine/Consigna"]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -821,10 +824,10 @@ anchor_left = 0.5
 anchor_top = 0.277
 anchor_right = 0.5
 anchor_bottom = 0.277
-offset_left = -341.0
-offset_top = -318.56
-offset_right = 341.0
-offset_bottom = -74.56
+offset_left = 19.0
+offset_top = 36.0
+offset_right = 723.0
+offset_bottom = 280.0
 grow_horizontal = 2
 theme = ExtResource("17_5nv3c")
 script = ExtResource("23_2cpnv")
@@ -837,9 +840,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -282.0
+offset_left = -304.0
 offset_top = -67.0
-offset_right = 282.0
+offset_right = 304.0
 offset_bottom = 67.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -893,7 +896,6 @@ StateMachine = NodePath("..")
 InstanciasMinijuego = [NodePath("Contenido/Instancia1")]
 
 [node name="Contenido" type="Control" parent="Mamushkas/StateMachine/Juego"]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -958,8 +960,10 @@ ParteArriba = ExtResource("15_v8xcu")
 ParteAbajo = ExtResource("27_pn83x")
 ParteAbajoS = ExtResource("14_e8nsy")
 EmotionsSpriteFrames = ExtResource("29_s2x2d")
-color = Color(0.921875, 0.570313, 0.398438, 1)
-panelText = "[center][b] El NUCLEO EXTERNO SON 2 KM DE PLIM PLIM"
+color = Color(0.796875, 0.492188, 0.285156, 1)
+panelText = "EL NÚCLEO EXTERNO ES LÍQUIDO, TIENE 2.100 KM DE GROSOR Y UNA TEMPERATURA DE HASTA 6.100 GRADOS. JUNTO AL NÚCLEO INTERNO GENERAN EL CAMPO MAGNÉTICO DE LA TIERRA."
+panelText1 = ""
+panelText2 = ""
 offsetPanel = Vector2(0, -48)
 mamu = NodePath("../../MamushkaCenter/mamushkaController")
 
@@ -992,8 +996,10 @@ ParteAbajo = ExtResource("28_tm3wm")
 ParteAbajoS = ExtResource("16_0awb4")
 EmotionsSpriteFrames = ExtResource("30_5j55l")
 NumOfLayer = 2
-color = Color(0.488281, 0.382813, 0.394531, 1)
-panelText = "[center][b] El NUCLEO EXTERNO SON 2 KM DE PLIM PLIM"
+color = Color(0.429688, 0.269531, 0.222656, 1)
+panelText = "EL MANTO SUPERIOR ES EL QUE HACE QUE LAS PLACAS TECTÓNICAS SE MUEVAN."
+panelText1 = "CUANDO ESTAS CHOCAN ENTRE SÍ OCURREN TERREMOTOS."
+panelText2 = ""
 mamu = NodePath("../../MamushkaCenter/mamushkaController")
 
 [node name="MamushkasDown" type="Control" parent="Mamushkas/StateMachine/Juego/Contenido/Instancia1"]
@@ -1016,8 +1022,10 @@ ParteAbajo = ExtResource("29_im8nw")
 ParteAbajoS = ExtResource("18_vqmf8")
 EmotionsSpriteFrames = ExtResource("33_6noqd")
 NumOfLayer = 1
-color = Color(0.0703125, 0.636719, 0.476563, 1)
-panelText = "[center][b] El NUCLEO EXTERNO SON 2 KM DE PLIM PLIM"
+color = Color(0.367188, 0.5625, 0.445313, 1)
+panelText = "EL MANTO INFERIOR ES LA CAPA MÁS GRANDE DE TODAS, ABARCA EL 56% DEL VOLUMEN DEL PLANETA Y TIENE UNA TEMPERATURA DE HASTA 2.360°C."
+panelText1 = ""
+panelText2 = ""
 mamu = NodePath("../../MamushkaCenter/mamushkaController")
 
 [node name="mamushkaInitPos" type="Marker2D" parent="Mamushkas/StateMachine/Juego/Contenido/Instancia1/MamushkasDown"]
@@ -1033,8 +1041,10 @@ ParteAbajo = ExtResource("30_lnyp6")
 ParteAbajoS = ExtResource("20_e7hqk")
 EmotionsSpriteFrames = ExtResource("33_y54pp")
 NumOfLayer = 3
-color = Color(0.359375, 0.855469, 0.960938, 1)
-panelText = "[center][b] El NUCLEO EXTERNO SON 2 KM DE PLIM PLIM"
+color = Color(0.246094, 0.550781, 0.617188, 1)
+panelText = "EN REALIDAD SON 2 CORTEZAS!"
+panelText1 = "LA CORTEZA OCEÁNICA, QUE ABARCA EL FONDO DEL MAR."
+panelText2 = "Y LA CORTEZA CONTINENTAL, QUE ES DONDE HABITAMOS."
 offsetPanel = Vector2(0, 75)
 mamu = NodePath("../../MamushkaCenter/mamushkaController")
 
@@ -1260,9 +1270,10 @@ offset_right = 240.5
 offset_bottom = 71.5
 grow_horizontal = 2
 grow_vertical = 2
-text = "BARA BARA BARA BARA
-SE SE SESE SE SE SESE
-MMMH MMMH MMMH"
+text = "LA TIERRA TIENE MÁS DE
+6 MIL KM DE PROFUNDIDAD
+Y MÁS DE 12 MIL KM DE DIÁMETRO
+"
 label_settings = ExtResource("18_6el6g")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -1313,7 +1324,7 @@ offset_right = 240.5
 offset_bottom = 71.5
 grow_horizontal = 2
 grow_vertical = 2
-text = "BIRI BIRI BIRI BIRI"
+text = "¿CUÁNTO PENSÁS RECORRER?"
 label_settings = ExtResource("18_6el6g")
 horizontal_alignment = 1
 vertical_alignment = 1

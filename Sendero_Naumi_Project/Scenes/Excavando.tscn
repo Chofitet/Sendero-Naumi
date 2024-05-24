@@ -44,9 +44,9 @@
 [ext_resource type="Texture2D" uid="uid://bf8u12qywvsci" path="res://Sprites/ZonaMegafauna/silla - excavacion.png" id="25_35po4"]
 [ext_resource type="Texture2D" uid="uid://dpoqiaakqjxnl" path="res://Sprites/ZonaMegafauna/macrauquenia pozo - excavacion.png" id="25_wsswo"]
 [ext_resource type="Script" path="res://_Scripts/MinG_Excavar/Camera2DTopo.gd" id="37_luhad"]
-[ext_resource type="Script" path="res://_Scripts/CollisionPolygon2DEditorTexture.gd" id="37_q8rfa"]
 [ext_resource type="PackedScene" uid="uid://dlwmbps456ind" path="res://Scenes/Experiments/btnVolver.tscn" id="38_0b8dm"]
 [ext_resource type="Script" path="res://_Scripts/MinG_Excavar/TutorialExcavando.gd" id="42_o38rj"]
+[ext_resource type="PackedScene" uid="uid://cxjhvsdei4u8q" path="res://Scenes/Experiments/CollisionPolygon2DMaker.tscn" id="45_sbax0"]
 [ext_resource type="Texture2D" uid="uid://bdu2ssuthqhuo" path="res://Sprites/manito topinho tiras - excavacion.png" id="46_vplk7"]
 [ext_resource type="Texture2D" uid="uid://crqlxim1mi1uo" path="res://Sprites/ZonaMegafauna/outro topitos - excavacion.png" id="49_s5641"]
 [ext_resource type="Texture2D" uid="uid://gdqy5o83iegu" path="res://Sprites/ZonaMegafauna/lombrizio 1 - excavacion.png" id="50_m33c2"]
@@ -404,9 +404,9 @@ anchors_preset = -1
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -315.0
-offset_top = 91.0
+offset_top = 45.0
 offset_right = 315.0
-offset_bottom = 363.0
+offset_bottom = 409.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("18_f477x")
@@ -425,7 +425,15 @@ offset_right = 249.0
 offset_bottom = 42.0
 grow_horizontal = 2
 grow_vertical = 2
+text = "El mundo tiene mucho por  descubrir.
+
+Ayuda a Roco Topo a completar su enciclopedia de la Megafauna.
+"
 label_settings = ExtResource("9_p6o04")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+uppercase = true
 
 [node name="Button" type="Button" parent="Excavando/StateMachine/Consigna/Contenido/Panel" node_paths=PackedStringArray("state_to_change", "state_machine")]
 layout_mode = 1
@@ -521,7 +529,7 @@ position = Vector2(-70, 213)
 [node name="pointWay2" type="Marker2D" parent="Excavando/StateMachine/Juego/Contenido/background/CanvasGroup"]
 position = Vector2(-60, 394)
 
-[node name="TopoController" type="CharacterBody2D" parent="Excavando/StateMachine/Juego/Contenido/background/CanvasGroup" node_paths=PackedStringArray("initPos", "SecondPos", "PointWay", "PointWay2", "instance1", "instance2", "cam", "line", "labelDebug")]
+[node name="TopoController" type="CharacterBody2D" parent="Excavando/StateMachine/Juego/Contenido/background/CanvasGroup" node_paths=PackedStringArray("initPos", "SecondPos", "PointWay", "PointWay2", "instance1", "instance2", "cam", "line")]
 z_index = 1
 position = Vector2(179.303, 528)
 scale = Vector2(1.01109, 0.996175)
@@ -539,7 +547,6 @@ Color2 = Color(0.65625, 0.574219, 0.429688, 1)
 speed = 300.0
 cam = NodePath("../../../../../Camera2D")
 line = NodePath("../Line2D")
-labelDebug = NodePath("../../../../debug/Label")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/background/CanvasGroup/TopoController"]
 rotation = -0.731293
@@ -580,6 +587,7 @@ shape = SubResource("CircleShape2D_xfnj2")
 wait_time = 0.2
 
 [node name="Instancia1" type="Control" parent="Excavando/StateMachine/Juego/Contenido"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -2198,74 +2206,33 @@ position = Vector2(0, 267)
 [node name="StaticBody2D21" type="StaticBody2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Rocas/colliders"]
 position = Vector2(-207, -53)
 
-[node name="CollisionPolygon2D5" type="CollisionPolygon2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Rocas/colliders/StaticBody2D21"]
+[node name="CollisionPolygon2D84" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Rocas/colliders/StaticBody2D21" instance=ExtResource("45_sbax0")]
 position = Vector2(521, 587)
-rotation = -0.794118
 polygon = PackedVector2Array(-5.06274, -149.249, -42.5688, -146.041, -63.7195, -153.297, -67.888, -161.818, -62.8459, -172.381, -42.2482, -182.809, -41, -212, -12, -244, 62, -247, 78.3747, -229.842, 83.834, -207.166, 18.2893, -151.167)
-script = ExtResource("37_q8rfa")
-metadata/_edit_group_ = true
+_texture = ExtResource("22_u6pjk")
+_scale = Vector2(2.545, 2.545)
+_textureLine = ExtResource("23_7bnse")
+RotationTexture = 100.0
+RandomRotation = false
 
-[node name="CollisionPolygon2D6" type="Polygon2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Rocas/colliders/StaticBody2D21/CollisionPolygon2D5"]
-position = Vector2(-2.82837, -0.0246582)
-rotation = 0.0149409
-texture = ExtResource("22_u6pjk")
-texture_scale = Vector2(2.545, 2.545)
+[node name="CollisionPolygon2D86" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Rocas/colliders/StaticBody2D21" instance=ExtResource("45_sbax0")]
+position = Vector2(521, 587)
 polygon = PackedVector2Array(-5.06274, -149.249, -42.5688, -146.041, -63.7195, -153.297, -67.888, -161.818, -62.8459, -172.381, -42.2482, -182.809, -41, -212, -12, -244, 62, -247, 78.3747, -229.842, 83.834, -207.166, 18.2893, -151.167)
+_texture = ExtResource("22_u6pjk")
+_scale = Vector2(2.545, 2.545)
+_textureLine = ExtResource("23_7bnse")
+RotationTexture = 100.0
+RandomRotation = false
 
-[node name="Line2D" type="Line2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Rocas/colliders/StaticBody2D21/CollisionPolygon2D5/CollisionPolygon2D6"]
-position = Vector2(1, 0)
-points = PackedVector2Array(-5.06274, -149.249, -42.5688, -146.041, -63.7195, -153.297, -67.888, -161.818, -62.8459, -172.381, -42.2482, -182.809, -41, -212, -12, -244, 62, -247, 78.3747, -229.842, 83.834, -207.166, 18.2893, -151.167, -5.06274, -149.249)
-width = 40.0
-texture = ExtResource("23_7bnse")
-texture_mode = 1
-joint_mode = 2
-begin_cap_mode = 2
-end_cap_mode = 2
-
-[node name="CollisionPolygon2D8" type="CollisionPolygon2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Rocas/colliders/StaticBody2D21"]
-position = Vector2(372, 1236)
-rotation = -0.960217
-polygon = PackedVector2Array(4.03845, -165.156, -2.51416, -172.776, -10.541, -184.247, -24.3843, -195.309, -43.6877, -200.916, -45.1893, -219.807, -12, -244, 62, -247, 78.3747, -229.842, 84.657, -206.926, 21.4866, -154.176, 13.704, -154.833)
-script = ExtResource("37_q8rfa")
-metadata/_edit_group_ = true
-
-[node name="CollisionPolygon2D9" type="Polygon2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Rocas/colliders/StaticBody2D21/CollisionPolygon2D8"]
-position = Vector2(-1.96594, -1.06519)
-rotation = 0.011783
-texture = ExtResource("22_u6pjk")
-texture_scale = Vector2(2.545, 2.545)
-polygon = PackedVector2Array(4.03845, -165.156, -2.51416, -172.776, -10.541, -184.247, -24.3843, -195.309, -43.6877, -200.916, -45.1893, -219.807, -12, -244, 62, -247, 78.3747, -229.842, 84.657, -206.926, 21.4866, -154.176, 13.704, -154.833)
-
-[node name="Line2D" type="Line2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Rocas/colliders/StaticBody2D21/CollisionPolygon2D8/CollisionPolygon2D9"]
-position = Vector2(1, 0)
-points = PackedVector2Array(4.03845, -165.156, -2.51416, -172.776, -10.541, -184.247, -24.3843, -195.309, -43.6877, -200.916, -45.1893, -219.807, -12, -244, 62, -247, 78.3747, -229.842, 84.657, -206.926, 21.4866, -154.176, 13.704, -154.833, 4.03845, -165.156)
-width = 40.0
-texture = ExtResource("23_7bnse")
-texture_mode = 1
-joint_mode = 2
-begin_cap_mode = 2
-end_cap_mode = 2
-
-[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Rocas/colliders/StaticBody2D21"]
+[node name="CollisionPolygon2D85" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Rocas/colliders/StaticBody2D21" instance=ExtResource("45_sbax0")]
 position = Vector2(168, -304)
-polygon = PackedVector2Array(-25, 55, -37, 58, -47, 54, -50, 48, -49, 31, -31, 4, -8, -57, 4, -175, -25, -224, -26, -238, -17, -266, -14, -297, -35, -320, -83, -361, -113, -382, -137, -401, -164, -416, -215, -416, -241, -406, -267, -407, -276.667, -420.667, -288.333, -427.333, -303, -429, -314, -410, -319.315, -369.476, -320.6, -359, -327, -358.5, -342.5, -365.5, -358.5, -372, -380, -378.5, -393, -961, 607, -937, 610, -730, 669, 2599, -458, 2592, -456, 479, -385, -289.5, -316, -261, -319.75, -230.5, -318.5, -171.25, -319.5, -132.5, -315.75, -95.75, -308, -14, -311, 77.5, -279, 117.5, -273, 187.5, -218.5, 221, -164.812, 259.722, -113.667, 231, -78.3333, 234.667, -33.2, 280.6, -9, 286, 6.19995, 301, 10, 318, 3.19995, 335.4, 15.9999, 359.4, 37.2, 386.4, 125.2, 412, 174, 478, 182, 508.4, 223.8, 534.6, 233, 542, 237, 553.4, 231, 567, 221.6, 572, 164.8, 571.2, 105, 588, 68.1803, 529.69, 20.7963, 491.483, -40, 422, -90.5, 377.5, -134, 363.5, -194.667, 355.333, -229, 385, -266.5, 433, -284.5, 481, -297, 515.5, -314.5, 526, -317.527, 550.694, -254.25, 584.75, -261.75, 625.25, -319.25, 703.5, -320, 770.5, -317.152, 813.645, -300.162, 852.58, -254, 889, -200, 912, -179, 992, -116, 1057, -51.3333, 1175.67, -36, 1200, -29, 1221, -30, 1254, -65.25, 1310.75, -106.333, 1351, -209.333, 1435.33, -248.667, 1483.33, -269.667, 1544, -284.667, 1632, -285.269, 1706.02, -268.575, 1774.06, -247.25, 1884, -214.25, 1935, -188, 1948.5, -59.25, 1962.25, 61.25, 1965, 238.429, 1958.04, 291.244, 1949.99, 324.956, 1915.15, 390.133, 1808.59, 403.857, 1754.86, 384, 1531, 367.333, 1473.33, 345.667, 1442.67, 173.333, 1344, 128.5, 1279, 120, 1248, 114, 1221, 116, 1200, 132.667, 1174.33, 178, 1149.5, 227, 1108.5, 291.667, 1027, 342, 955, 334, 926, 341, 895, 388, 863, 399.176, 812.313, 391.243, 753.449, 397.667, 725.667, 396, 719, 397.333, 694.667, 394.6, 689.2, 396.333, 654.667, 394.6, 645.8, 395.667, 608.667, 394, 589.333, 392.6, 582.4, 396, 535.333, 396.4, 523.6, 313, 444.5, 293.667, 396, 291, 359.5, 341, 338.5, 385.667, 341.333, 396, 260, 371, 197.333, 352.667, 175, 329.222, 143, 308, 149.889, 293.333, 139, 242.5, 139, 226, 195.5, 194.7, 222.2, 190.75, 249.25, 165.833, 255.5, 137, 281.333, 123, 279, 119.667, 266, 133.333, 238.333, 149.75, 233.75, 157.333, 225, 154, 209.667, 160.958, 199, 168.281, 182.313, 196, 154, 214, 126, 243, 94, 267, 90, 317, 91, 340.667, 77.6667, 368.667, 57.6667, 385.333, 51.3334, 390.333, 40.6667, 389.667, 22.6667, 374.667, -14.6666, 387.333, -45.3333, 387.667, -69.3333, 394, -106, 391, -145, 409.5, -180.5, 388, -231, 392, -298, 385, -358, 387, -380, 376, -391, 369, -404, 361, -407, 351, -405, 247, -376, 225, -368, 214, -361, 210, -351, 167, -258, 93, -179, 70, -85, -10, 48, -21, 53)
-script = ExtResource("37_q8rfa")
-metadata/_edit_group_ = true
-
-[node name="CollisionPolygon2D4" type="Polygon2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Rocas/colliders/StaticBody2D21/CollisionPolygon2D3"]
-texture = ExtResource("22_u6pjk")
-texture_scale = Vector2(2.545, 2.545)
-polygon = PackedVector2Array(-25, 55, -37, 58, -47, 54, -50, 48, -49, 31, -31, 4, -8, -57, 4, -175, -25, -224, -26, -238, -17, -266, -14, -297, -35, -320, -83, -361, -113, -382, -137, -401, -164, -416, -215, -416, -241, -406, -267, -407, -276.667, -420.667, -288.333, -427.333, -303, -429, -314, -410, -319.315, -369.476, -320.6, -359, -327, -358.5, -342.5, -365.5, -358.5, -372, -380, -378.5, -393, -961, 607, -937, 610, -730, 669, 2599, -458, 2592, -456, 479, -385, -289.5, -316, -261, -319.75, -230.5, -318.5, -171.25, -319.5, -132.5, -315.75, -95.75, -308, -14, -311, 77.5, -279, 117.5, -273, 187.5, -218.5, 221, -164.812, 259.722, -113.667, 231, -78.3333, 234.667, -33.2, 280.6, -9, 286, 6.19995, 301, 10, 318, 3.19995, 335.4, 15.9999, 359.4, 37.2, 386.4, 125.2, 412, 174, 478, 182, 508.4, 223.8, 534.6, 233, 542, 237, 553.4, 231, 567, 221.6, 572, 164.8, 571.2, 105, 588, 68.1803, 529.69, 20.7963, 491.483, -40, 422, -90.5, 377.5, -134, 363.5, -194.667, 355.333, -229, 385, -266.5, 433, -284.5, 481, -297, 515.5, -314.5, 526, -317.527, 550.694, -254.25, 584.75, -261.75, 625.25, -319.25, 703.5, -320, 770.5, -317.152, 813.645, -300.162, 852.58, -254, 889, -200, 912, -179, 992, -116, 1057, -51.3333, 1175.67, -36, 1200, -29, 1221, -30, 1254, -65.25, 1310.75, -106.333, 1351, -209.333, 1435.33, -248.667, 1483.33, -269.667, 1544, -284.667, 1632, -285.269, 1706.02, -268.575, 1774.06, -247.25, 1884, -214.25, 1935, -188, 1948.5, -59.25, 1962.25, 61.25, 1965, 238.429, 1958.04, 291.244, 1949.99, 324.956, 1915.15, 390.133, 1808.59, 403.857, 1754.86, 384, 1531, 367.333, 1473.33, 345.667, 1442.67, 173.333, 1344, 128.5, 1279, 120, 1248, 114, 1221, 116, 1200, 132.667, 1174.33, 178, 1149.5, 227, 1108.5, 291.667, 1027, 342, 955, 334, 926, 341, 895, 388, 863, 399.176, 812.313, 391.243, 753.449, 397.667, 725.667, 396, 719, 397.333, 694.667, 394.6, 689.2, 396.333, 654.667, 394.6, 645.8, 395.667, 608.667, 394, 589.333, 392.6, 582.4, 396, 535.333, 396.4, 523.6, 313, 444.5, 293.667, 396, 291, 359.5, 341, 338.5, 385.667, 341.333, 396, 260, 371, 197.333, 352.667, 175, 329.222, 143, 308, 149.889, 293.333, 139, 242.5, 139, 226, 195.5, 194.7, 222.2, 190.75, 249.25, 165.833, 255.5, 137, 281.333, 123, 279, 119.667, 266, 133.333, 238.333, 149.75, 233.75, 157.333, 225, 154, 209.667, 160.958, 199, 168.281, 182.313, 196, 154, 214, 126, 243, 94, 267, 90, 317, 91, 340.667, 77.6667, 368.667, 57.6667, 385.333, 51.3334, 390.333, 40.6667, 389.667, 22.6667, 374.667, -14.6666, 387.333, -45.3333, 387.667, -69.3333, 394, -106, 391, -145, 409.5, -180.5, 388, -231, 392, -298, 385, -358, 387, -380, 376, -391, 369, -404, 361, -407, 351, -405, 247, -376, 225, -368, 214, -361, 210, -351, 167, -258, 93, -179, 70, -85, -10, 48, -21, 53)
-
-[node name="Line2D" type="Line2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Rocas/colliders/StaticBody2D21/CollisionPolygon2D3/CollisionPolygon2D4"]
-position = Vector2(1, 0)
-points = PackedVector2Array(-25, 55, -37, 58, -47, 54, -50, 48, -49, 31, -31, 4, -8, -57, 4, -175, -25, -224, -26, -238, -17, -266, -14, -297, -35, -320, -83, -361, -113, -382, -137, -401, -164, -416, -215, -416, -241, -406, -267, -407, -276.667, -420.667, -288.333, -427.333, -303, -429, -314, -410, -319.315, -369.476, -320.6, -359, -327, -358.5, -342.5, -365.5, -358.5, -372, -380, -378.5, -393, -961, 607, -937, 610, -730, 669, 2599, -458, 2592, -456, 479, -385, -289.5, -316, -261, -319.75, -230.5, -318.5, -171.25, -319.5, -132.5, -315.75, -95.75, -308, -14, -311, 77.5, -279, 117.5, -273, 187.5, -218.5, 221, -164.812, 259.722, -113.667, 231, -78.3333, 234.667, -33.2, 280.6, -9, 286, 6.19995, 301, 10, 318, 3.19995, 335.4, 15.9999, 359.4, 37.2, 386.4, 125.2, 412, 174, 478, 182, 508.4, 223.8, 534.6, 233, 542, 237, 553.4, 231, 567, 221.6, 572, 164.8, 571.2, 105, 588, 68.1803, 529.69, 20.7963, 491.483, -40, 422, -90.5, 377.5, -134, 363.5, -194.667, 355.333, -229, 385, -266.5, 433, -284.5, 481, -297, 515.5, -314.5, 526, -317.527, 550.694, -254.25, 584.75, -261.75, 625.25, -319.25, 703.5, -320, 770.5, -317.152, 813.645, -300.162, 852.58, -254, 889, -200, 912, -179, 992, -116, 1057, -51.3333, 1175.67, -36, 1200, -29, 1221, -30, 1254, -65.25, 1310.75, -106.333, 1351, -209.333, 1435.33, -248.667, 1483.33, -269.667, 1544, -284.667, 1632, -285.269, 1706.02, -268.575, 1774.06, -247.25, 1884, -214.25, 1935, -188, 1948.5, -59.25, 1962.25, 61.25, 1965, 238.429, 1958.04, 291.244, 1949.99, 324.956, 1915.15, 390.133, 1808.59, 403.857, 1754.86, 384, 1531, 367.333, 1473.33, 345.667, 1442.67, 173.333, 1344, 128.5, 1279, 120, 1248, 114, 1221, 116, 1200, 132.667, 1174.33, 178, 1149.5, 227, 1108.5, 291.667, 1027, 342, 955, 334, 926, 341, 895, 388, 863, 399.176, 812.313, 391.243, 753.449, 397.667, 725.667, 396, 719, 397.333, 694.667, 394.6, 689.2, 396.333, 654.667, 394.6, 645.8, 395.667, 608.667, 394, 589.333, 392.6, 582.4, 396, 535.333, 396.4, 523.6, 313, 444.5, 293.667, 396, 291, 359.5, 341, 338.5, 385.667, 341.333, 396, 260, 371, 197.333, 352.667, 175, 329.222, 143, 308, 149.889, 293.333, 139, 242.5, 139, 226, 195.5, 194.7, 222.2, 190.75, 249.25, 165.833, 255.5, 137, 281.333, 123, 279, 119.667, 266, 133.333, 238.333, 149.75, 233.75, 157.333, 225, 154, 209.667, 160.958, 199, 168.281, 182.313, 196, 154, 214, 126, 243, 94, 267, 90, 317, 91, 340.667, 77.6667, 368.667, 57.6667, 385.333, 51.3334, 390.333, 40.6667, 389.667, 22.6667, 374.667, -14.6666, 387.333, -45.3333, 387.667, -69.3333, 394, -106, 391, -145, 409.5, -180.5, 388, -231, 392, -298, 385, -358, 387, -380, 376, -391, 369, -404, 361, -407, 351, -405, 247, -376, 225, -368, 214, -361, 210, -351, 167, -258, 93, -179, 70, -85, -10, 48, -21, 53, -25, 55)
-width = 40.0
-texture = ExtResource("23_7bnse")
-texture_mode = 1
-joint_mode = 2
-begin_cap_mode = 2
-end_cap_mode = 2
+rotation = 0.0
+polygon = PackedVector2Array(-25, 55, -37, 58, -47, 54, -50, 48, -49, 31, -31, 4, -8, -57, 4, -175, -25, -224, -26, -238, -17, -266, -14, -297, -35, -320, -83, -361, -113, -382, -137, -401, -164, -416, -215, -416, -241, -406, -267, -407, -276.667, -420.667, -288.333, -427.333, -303, -429, -314, -410, -319.315, -369.476, -320.6, -359, -327, -358.5, -342.5, -365.5, -358.5, -372, -380, -378.5, -393, -961, 607, -937, 610, -730, 669, 2599, -458, 2592, -456, 479, -385, -289.5, -316, -261, -319.75, -230.5, -318.5, -171.25, -319.5, -132.5, -315.75, -95.75, -308, -14, -311, 77.5, -279, 117.5, -273, 187.5, -218.5, 221, -164.812, 259.722, -113.667, 231, -78.3333, 234.667, -33.2, 280.6, -9, 286, 6.19995, 301, 10, 318, 3.19995, 335.4, 15.9999, 359.4, 37.2, 386.4, 125.2, 412, 174, 478, 183, 508, 223.8, 534.6, 233, 542, 237, 553.4, 231, 567, 221.6, 572, 164.8, 571.2, 107, 587, 68.1803, 529.69, 20.7963, 491.483, -40, 422, -90.5, 377.5, -134, 363.5, -194.667, 355.333, -229, 385, -266.5, 433, -284.5, 481, -297, 515.5, -314.5, 526, -317.527, 550.694, -254.25, 584.75, -261.75, 625.25, -319.25, 703.5, -320, 770.5, -317.152, 813.645, -300.162, 852.58, -254, 889, -200, 912, -179, 992, -116, 1057, -51.3333, 1175.67, -36, 1200, -29, 1221, -30, 1254, -65.25, 1310.75, -106.333, 1351, -209.333, 1435.33, -248.667, 1483.33, -269.667, 1544, -284.667, 1632, -285.269, 1706.02, -268.575, 1774.06, -247.25, 1884, -214.25, 1935, -188, 1948.5, -59.25, 1962.25, 61.25, 1965, 238.429, 1958.04, 291.244, 1949.99, 324.956, 1915.15, 390.133, 1808.59, 403.857, 1754.86, 384, 1531, 367.333, 1473.33, 345.667, 1442.67, 173.333, 1344, 128.5, 1279, 120, 1248, 114, 1221, 116, 1200, 132.667, 1174.33, 178, 1149.5, 227, 1108.5, 291.667, 1027, 342, 955, 334, 926, 341, 895, 388, 863, 399.176, 812.313, 391.243, 753.449, 397.667, 725.667, 396, 719, 397.333, 694.667, 394.6, 689.2, 396.333, 654.667, 394.6, 645.8, 395.667, 608.667, 394, 589.333, 392.6, 582.4, 396, 535.333, 396.4, 523.6, 313, 444.5, 293.667, 396, 291, 359.5, 341, 338.5, 385.667, 341.333, 396, 260, 371, 197.333, 352.667, 175, 329.222, 143, 308, 149.889, 293.333, 139, 242.5, 139, 226, 195.5, 194.7, 222.2, 190.75, 249.25, 165.833, 255.5, 137, 281.333, 123, 279, 119.667, 266, 133.333, 238.333, 149.75, 233.75, 157.333, 225, 154, 209.667, 160.958, 199, 168.281, 182.313, 196, 154, 214, 126, 243, 94, 267, 90, 317, 91, 340.667, 77.6667, 368.667, 57.6667, 385.333, 51.3334, 390.333, 40.6667, 389.667, 22.6667, 374.667, -14.6666, 387.333, -45.3333, 387.667, -69.3333, 394, -106, 391, -145, 409.5, -180.5, 388, -231, 392, -298, 385, -358, 387, -380, 376, -391, 369, -404, 361, -407, 351, -405, 247, -376, 225, -368, 214, -361, 210, -351, 167, -258, 93, -179, 70, -85, -10, 48, -21, 53)
+_texture = ExtResource("22_u6pjk")
+_scale = Vector2(2.545, 2.545)
+_textureLine = ExtResource("23_7bnse")
+RotationTexture = 100.0
+RandomRotation = false
 
 [node name="polygon2D" type="Node2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Rocas"]
 visible = false
@@ -3169,115 +3136,55 @@ position = Vector2(0, 1552.04)
 [node name="StaticBody2D22" type="StaticBody2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/Rocas/colliders"]
 position = Vector2(-360, -640)
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/Rocas/colliders/StaticBody2D22"]
+[node name="CollisionPolygon2D84" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/Rocas/colliders/StaticBody2D22" instance=ExtResource("45_sbax0")]
 position = Vector2(16, 394)
+rotation = 0.0
 polygon = PackedVector2Array(300, 104, 244, 74.96, 234, 14, 220, -12, 195, -53.04, 142, -69.04, 127, -135, 119, -149, 120, -161, 130, -176, 146, -181, 155, -229.04, 188, -216.54, 206, -206.04, 214, -186.04, 216, -152, 222, -136, 231, -124, 258, -71, 287.5, -53.54, 281, -6, 292, 42, 312, 87, 316, 95, 312, 102, 306, 103)
-script = ExtResource("37_q8rfa")
-metadata/_edit_group_ = true
+_texture = ExtResource("22_u6pjk")
+_scale = Vector2(2.545, 2.545)
+_textureLine = ExtResource("23_7bnse")
+RotationTexture = 100.0
+RandomRotation = false
 
-[node name="CollisionPolygon2D" type="Polygon2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/Rocas/colliders/StaticBody2D22/CollisionPolygon2D"]
-position = Vector2(0, -0.0400391)
-texture = ExtResource("22_u6pjk")
-texture_scale = Vector2(2.545, 2.545)
-polygon = PackedVector2Array(300, 104, 244, 74.96, 234, 14, 220, -12, 195, -53.04, 142, -69.04, 127, -135, 119, -149, 120, -161, 130, -176, 146, -181, 155, -229.04, 188, -216.54, 206, -206.04, 214, -186.04, 216, -152, 222, -136, 231, -124, 258, -71, 287.5, -53.54, 281, -6, 292, 42, 312, 87, 316, 95, 312, 102, 306, 103)
-script = ExtResource("24_rkt5g")
-
-[node name="Line2D" type="Line2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/Rocas/colliders/StaticBody2D22/CollisionPolygon2D/CollisionPolygon2D"]
-points = PackedVector2Array(300, 104, 244, 74.96, 234, 14, 220, -12, 195, -53.04, 142, -69.04, 127, -135, 119, -149, 120, -161, 130, -176, 146, -181, 155, -229.04, 188, -216.54, 206, -206.04, 214, -186.04, 216, -152, 222, -136, 231, -124, 258, -71, 287.5, -53.54, 281, -6, 292, 42, 312, 87, 316, 95, 312, 102, 306, 103, 300, 104)
-width = 40.0
-texture = ExtResource("23_7bnse")
-texture_mode = 1
-joint_mode = 2
-begin_cap_mode = 2
-end_cap_mode = 2
-
-[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/Rocas/colliders/StaticBody2D22"]
+[node name="CollisionPolygon2D85" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/Rocas/colliders/StaticBody2D22" instance=ExtResource("45_sbax0")]
 position = Vector2(496, 541)
+rotation = 0.0
 polygon = PackedVector2Array(135, -104.373, 135.667, -38.04, 114.333, -33.0398, 100.667, -42.7065, 93.6667, -84.04, 104.667, -147.04, 106.667, -208.706, 101.933, -226.071, 130.596, -220.716, 132.333, -185.373, 133.667, -160.373, 133.333, -127.373)
-script = ExtResource("37_q8rfa")
-metadata/_edit_group_ = true
+_texture = ExtResource("22_u6pjk")
+_scale = Vector2(2.545, 2.545)
+_textureLine = ExtResource("23_7bnse")
+RotationTexture = 100.0
+RandomRotation = false
 
-[node name="CollisionPolygon2D9" type="Polygon2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/Rocas/colliders/StaticBody2D22/CollisionPolygon2D2"]
-position = Vector2(0, -0.0400391)
-texture = ExtResource("22_u6pjk")
-texture_scale = Vector2(2.545, 2.545)
-polygon = PackedVector2Array(135, -104.373, 135.667, -38.04, 114.333, -33.0398, 100.667, -42.7065, 93.6667, -84.04, 104.667, -147.04, 106.667, -208.706, 101.933, -226.071, 130.596, -220.716, 132.333, -185.373, 133.667, -160.373, 133.333, -127.373)
-script = ExtResource("24_rkt5g")
-
-[node name="Line2D" type="Line2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/Rocas/colliders/StaticBody2D22/CollisionPolygon2D2/CollisionPolygon2D9"]
-points = PackedVector2Array(135, -104.373, 135.667, -38.04, 114.333, -33.0398, 100.667, -42.7065, 93.6667, -84.04, 104.667, -147.04, 106.667, -208.706, 101.933, -226.071, 130.596, -220.716, 132.333, -185.373, 133.667, -160.373, 133.333, -127.373, 135, -104.373)
-width = 40.0
-texture = ExtResource("23_7bnse")
-texture_mode = 1
-joint_mode = 2
-begin_cap_mode = 2
-end_cap_mode = 2
-
-[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/Rocas/colliders/StaticBody2D22"]
+[node name="CollisionPolygon2D86" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/Rocas/colliders/StaticBody2D22" instance=ExtResource("45_sbax0")]
 position = Vector2(136, 910)
+rotation = 0.0
 polygon = PackedVector2Array(171, -81, 166.696, -39.3935, 159, -23, 144, -17, 120, -16, 107, -29, 110.333, -43.3333, 127, -60, 139, -99, 117, -125.54, 150.5, -151.04, 169, -136, 189, -111, 190, -105, 187, -100, 179.435, -95.0588)
-script = ExtResource("37_q8rfa")
-metadata/_edit_group_ = true
+_texture = ExtResource("22_u6pjk")
+_scale = Vector2(2.545, 2.545)
+_textureLine = ExtResource("23_7bnse")
+RotationTexture = 100.0
+RandomRotation = false
 
-[node name="CollisionPolygon2D10" type="Polygon2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/Rocas/colliders/StaticBody2D22/CollisionPolygon2D3"]
-position = Vector2(0, -0.0400391)
-texture = ExtResource("22_u6pjk")
-texture_scale = Vector2(2.545, 2.545)
-polygon = PackedVector2Array(171, -81, 166.696, -39.3935, 159, -23, 144, -17, 120, -16, 107, -29, 110.333, -43.3333, 127, -60, 139, -99, 117, -125.54, 150.5, -151.04, 169, -136, 189, -111, 190, -105, 187, -100, 179.435, -95.0588)
-script = ExtResource("24_rkt5g")
-
-[node name="Line2D" type="Line2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/Rocas/colliders/StaticBody2D22/CollisionPolygon2D3/CollisionPolygon2D10"]
-points = PackedVector2Array(171, -81, 166.696, -39.3935, 159, -23, 144, -17, 120, -16, 107, -29, 110.333, -43.3333, 127, -60, 139, -99, 117, -125.54, 150.5, -151.04, 169, -136, 189, -111, 190, -105, 187, -100, 179.435, -95.0588, 171, -81)
-width = 40.0
-texture = ExtResource("23_7bnse")
-texture_mode = 1
-joint_mode = 2
-begin_cap_mode = 2
-end_cap_mode = 2
-
-[node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/Rocas/colliders/StaticBody2D22"]
+[node name="CollisionPolygon2D87" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/Rocas/colliders/StaticBody2D22" instance=ExtResource("45_sbax0")]
 position = Vector2(-5, 1080)
-polygon = PackedVector2Array(185, -101, 139, -116, 102.333, -140.707, 117.333, -160.04, 134, -176.04, 158, -162, 171, -159, 205, -127, 198, -109)
-script = ExtResource("37_q8rfa")
-metadata/_edit_group_ = true
+rotation = 0.0
+polygon = PackedVector2Array(161, -108.04, 139, -116, 102.333, -140.707, 117.333, -160.04, 134, -176.04, 158, -162, 171, -159, 205, -127, 198, -109, 185, -101.04)
+_texture = ExtResource("22_u6pjk")
+_scale = Vector2(2.545, 2.545)
+_textureLine = ExtResource("23_7bnse")
+RotationTexture = 100.0
+RandomRotation = false
 
-[node name="CollisionPolygon2D11" type="Polygon2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/Rocas/colliders/StaticBody2D22/CollisionPolygon2D4"]
-position = Vector2(0, -0.0400391)
-texture = ExtResource("22_u6pjk")
-texture_scale = Vector2(2.545, 2.545)
-polygon = PackedVector2Array(185, -101, 139, -116, 102.333, -140.707, 117.333, -160.04, 134, -176.04, 158, -162, 171, -159, 205, -127, 198, -109)
-script = ExtResource("24_rkt5g")
-
-[node name="Line2D" type="Line2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/Rocas/colliders/StaticBody2D22/CollisionPolygon2D4/CollisionPolygon2D11"]
-points = PackedVector2Array(185, -101, 139, -116, 102.333, -140.707, 117.333, -160.04, 134, -176.04, 158, -162, 171, -159, 205, -127, 198, -109, 185, -101)
-width = 40.0
-texture = ExtResource("23_7bnse")
-texture_mode = 1
-joint_mode = 2
-begin_cap_mode = 2
-end_cap_mode = 2
-
-[node name="CollisionPolygon2D5" type="CollisionPolygon2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/Rocas/colliders/StaticBody2D22"]
+[node name="CollisionPolygon2D88" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/Rocas/colliders/StaticBody2D22" instance=ExtResource("45_sbax0")]
 position = Vector2(512, 765)
+rotation = 0.0
 polygon = PackedVector2Array(244.184, 1347.96, -563.816, 1343.96, -584, -1797.59, -453.476, -1737.39, -325, -1669.04, -209.749, -1536.28, -175.288, -1494.33, -155.061, -1448.63, -143.824, -1399.19, -137, -1245.59, -134.085, -1190.92, -139.5, -1145.04, -161, -1096.54, -198.178, -1059.86, -326.178, -1009.86, -422.529, -947.669, -474.588, -892.941, -489.271, -828.868, -509.5, -577.25, -511.699, -513.048, -507.667, -491.667, -460, -430.04, -414, -397.04, -406, -296.25, -370.75, -247.5, -298.2, -171, -212.6, -118.8, -208.75, -110.5, -209.893, -107.004, -210.875, -104, -219.125, -101, -268.375, -109.875, -338.333, -75.0398, -368, -75.3333, -384, -59.3333, -401, -23.6666, -430.4, -6, -473, 14, -492.333, 33.6666, -500, 49.9999, -505.667, 83.3332, -510.667, 164, -510, 202, -505, 223, -477, 260, -451, 285, -420, 298, -384, 303, -346.5, 325.5, -358.442, 353.479, -265, 374.96, -216, 378.96, -197, 372.21, -184, 382.96, -160.5, 382.96, -99, 396.96, -90, 420.46, -105.5, 430.46, -142, 419.96, -172.136, 406.801, -207.5, 416.46, -234, 442.96, -261, 511.96, -261, 573.46, -227, 592.96, -194.5, 569.96, -163.5, 566.21, -132, 562.46, -86.5, 608.96, -27, 637.96, 8, 633.96, 54, 630.96, 122, 580.96, 146.5, 492, 153, 479, 159.667, 469.667, 164, 458, 166.5, 437.5, 151.166, 415.498, 131.58, 411.722, 126.4, 407, 124.029, 398.98, 136.3, 385.058, 131.6, 377.2, 130.637, 369.484, 121.5, 355, 104.5, 346.5, 80.25, 343.75, 66, 349.25, 41.9651, 343.316, -5.5, 356.46, -31.5, 336.96, -32, 293, -72, 223, -85.9245, 178.805, -88, 155, -81.6154, 145.423, -76, 144, -68, 148, -53.1778, 159.841, -21, 173, 24, 178, 45, 172, 123, 126, 132, 112, 132, 96, 127.032, 57.8828, 88, 42, 72, 43, 9, 61, -7.98625, 56.5036, -16, 48, -11.9519, 35.9145, 14, 30, 41, -6, 39, -58, 48, -80, 47, -110, 53, -122, 77, -154.04, 130, -149.04, 168, -167, 190.667, -174, 201.333, -190, 204.667, -203.667, 207.25, -348.875, 206.104, -356.62, 206.75, -425.375, 205.227, -427.498, 205.333, -470, 205.986, -474.023, 195.677, -489.89, 181.818, -503.749, 174.326, -519.481, 148.48, -530.344, 139, -583.04, 115, -669.54, 34, -673.04, -15.5, -635.54, -8.5, -587.54, -23, -568.04, -17.75, -536.25, -48, -522.75, -86, -441.75, -93.3333, -402.04, -75.8571, -368.143, -77.8571, -363.214, -81.8571, -359.786, -89.6429, -360.786, -105.929, -373, -113.25, -429.25, -102.25, -470.75, -127.667, -511.373, -145.333, -561.707, -182.333, -581.04, -215, -632.04, -242.333, -672.333, -286, -708, -315.5, -743, -330, -784, -319.5, -812.092, -289.16, -835.073, -245.5, -858.092, -113, -906.592, -76.4001, -931.714, -47.9323, -958.683, -28.4543, -977.412, 10, -1038.59, 27, -1121.04, 32, -1211.04, 33.9999, -1323.59, 13.3012, -1424.08, -22.461, -1542.27, -35, -1569.59, -57.5, -1629.04, -104.5, -1706.04, -177, -1789.04, -229, -1847.04, -281, -1899.04, -405, -1973.04, -570.623, -2069.04, -584.766, -2672.04, 280.733, -2672.04)
-script = ExtResource("37_q8rfa")
-metadata/_edit_group_ = true
-
-[node name="CollisionPolygon2D9" type="Polygon2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/Rocas/colliders/StaticBody2D22/CollisionPolygon2D5"]
-position = Vector2(-1, -0.0400391)
-texture = ExtResource("22_u6pjk")
-texture_scale = Vector2(2.545, 2.545)
-polygon = PackedVector2Array(244.184, 1347.96, -563.816, 1343.96, -584, -1797.59, -453.476, -1737.39, -325, -1669.04, -209.749, -1536.28, -175.288, -1494.33, -155.061, -1448.63, -143.824, -1399.19, -137, -1245.59, -134.085, -1190.92, -139.5, -1145.04, -161, -1096.54, -198.178, -1059.86, -326.178, -1009.86, -422.529, -947.669, -474.588, -892.941, -489.271, -828.868, -509.5, -577.25, -511.699, -513.048, -507.667, -491.667, -460, -430.04, -414, -397.04, -406, -296.25, -370.75, -247.5, -298.2, -171, -212.6, -118.8, -208.75, -110.5, -209.893, -107.004, -210.875, -104, -219.125, -101, -268.375, -109.875, -338.333, -75.0398, -368, -75.3333, -384, -59.3333, -401, -23.6666, -430.4, -6, -473, 14, -492.333, 33.6666, -500, 49.9999, -505.667, 83.3332, -510.667, 164, -510, 202, -505, 223, -477, 260, -451, 285, -420, 298, -384, 303, -346.5, 325.5, -358.442, 353.479, -265, 374.96, -216, 378.96, -197, 372.21, -184, 382.96, -160.5, 382.96, -99, 396.96, -90, 420.46, -105.5, 430.46, -142, 419.96, -172.136, 406.801, -207.5, 416.46, -234, 442.96, -261, 511.96, -261, 573.46, -227, 592.96, -194.5, 569.96, -163.5, 566.21, -132, 562.46, -86.5, 608.96, -27, 637.96, 8, 633.96, 54, 630.96, 122, 580.96, 146.5, 492, 153, 479, 159.667, 469.667, 164, 458, 166.5, 437.5, 151.166, 415.498, 131.58, 411.722, 126.4, 407, 124.029, 398.98, 136.3, 385.058, 131.6, 377.2, 130.637, 369.484, 121.5, 355, 104.5, 346.5, 80.25, 343.75, 66, 349.25, 41.9651, 343.316, -5.5, 356.46, -31.5, 336.96, -32, 293, -72, 223, -85.9245, 178.805, -88, 155, -81.6154, 145.423, -76, 144, -68, 148, -53.1778, 159.841, -21, 173, 24, 178, 45, 172, 123, 126, 132, 112, 132, 96, 127.032, 57.8828, 88, 42, 72, 43, 9, 61, -7.98625, 56.5036, -16, 48, -11.9519, 35.9145, 14, 30, 41, -6, 39, -58, 48, -80, 47, -110, 53, -122, 77, -154.04, 130, -149.04, 168, -167, 190.667, -174, 201.333, -190, 204.667, -203.667, 207.25, -348.875, 206.104, -356.62, 206.75, -425.375, 205.227, -427.498, 205.333, -470, 205.986, -474.023, 195.677, -489.89, 181.818, -503.749, 174.326, -519.481, 148.48, -530.344, 139, -583.04, 115, -669.54, 34, -673.04, -15.5, -635.54, -8.5, -587.54, -23, -568.04, -17.75, -536.25, -48, -522.75, -86, -441.75, -93.3333, -402.04, -75.8571, -368.143, -77.8571, -363.214, -81.8571, -359.786, -89.6429, -360.786, -105.929, -373, -113.25, -429.25, -102.25, -470.75, -127.667, -511.373, -145.333, -561.707, -182.333, -581.04, -215, -632.04, -242.333, -672.333, -286, -708, -315.5, -743, -330, -784, -319.5, -812.092, -289.16, -835.073, -245.5, -858.092, -113, -906.592, -76.4001, -931.714, -47.9323, -958.683, -28.4543, -977.412, 10, -1038.59, 27, -1121.04, 32, -1211.04, 33.9999, -1323.59, 13.3012, -1424.08, -22.461, -1542.27, -35, -1569.59, -57.5, -1629.04, -104.5, -1706.04, -177, -1789.04, -229, -1847.04, -281, -1899.04, -405, -1973.04, -570.623, -2069.04, -584.766, -2672.04, 280.733, -2672.04)
-script = ExtResource("24_rkt5g")
-
-[node name="Line2D" type="Line2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/Rocas/colliders/StaticBody2D22/CollisionPolygon2D5/CollisionPolygon2D9"]
-points = PackedVector2Array(244.184, 1347.96, -563.816, 1343.96, -584, -1797.59, -453.476, -1737.39, -325, -1669.04, -209.749, -1536.28, -175.288, -1494.33, -155.061, -1448.63, -143.824, -1399.19, -137, -1245.59, -134.085, -1190.92, -139.5, -1145.04, -161, -1096.54, -198.178, -1059.86, -326.178, -1009.86, -422.529, -947.669, -474.588, -892.941, -489.271, -828.868, -509.5, -577.25, -511.699, -513.048, -507.667, -491.667, -460, -430.04, -414, -397.04, -406, -296.25, -370.75, -247.5, -298.2, -171, -212.6, -118.8, -208.75, -110.5, -209.893, -107.004, -210.875, -104, -219.125, -101, -268.375, -109.875, -338.333, -75.0398, -368, -75.3333, -384, -59.3333, -401, -23.6666, -430.4, -6, -473, 14, -492.333, 33.6666, -500, 49.9999, -505.667, 83.3332, -510.667, 164, -510, 202, -505, 223, -477, 260, -451, 285, -420, 298, -384, 303, -346.5, 325.5, -358.442, 353.479, -265, 374.96, -216, 378.96, -197, 372.21, -184, 382.96, -160.5, 382.96, -99, 396.96, -90, 420.46, -105.5, 430.46, -142, 419.96, -172.136, 406.801, -207.5, 416.46, -234, 442.96, -261, 511.96, -261, 573.46, -227, 592.96, -194.5, 569.96, -163.5, 566.21, -132, 562.46, -86.5, 608.96, -27, 637.96, 8, 633.96, 54, 630.96, 122, 580.96, 146.5, 492, 153, 479, 159.667, 469.667, 164, 458, 166.5, 437.5, 151.166, 415.498, 131.58, 411.722, 126.4, 407, 124.029, 398.98, 136.3, 385.058, 131.6, 377.2, 130.637, 369.484, 121.5, 355, 104.5, 346.5, 80.25, 343.75, 66, 349.25, 41.9651, 343.316, -5.5, 356.46, -31.5, 336.96, -32, 293, -72, 223, -85.9245, 178.805, -88, 155, -81.6154, 145.423, -76, 144, -68, 148, -53.1778, 159.841, -21, 173, 24, 178, 45, 172, 123, 126, 132, 112, 132, 96, 127.032, 57.8828, 88, 42, 72, 43, 9, 61, -7.98625, 56.5036, -16, 48, -11.9519, 35.9145, 14, 30, 41, -6, 39, -58, 48, -80, 47, -110, 53, -122, 77, -154.04, 130, -149.04, 168, -167, 190.667, -174, 201.333, -190, 204.667, -203.667, 207.25, -348.875, 206.104, -356.62, 206.75, -425.375, 205.227, -427.498, 205.333, -470, 205.986, -474.023, 195.677, -489.89, 181.818, -503.749, 174.326, -519.481, 148.48, -530.344, 139, -583.04, 115, -669.54, 34, -673.04, -15.5, -635.54, -8.5, -587.54, -23, -568.04, -17.75, -536.25, -48, -522.75, -86, -441.75, -93.3333, -402.04, -75.8571, -368.143, -77.8571, -363.214, -81.8571, -359.786, -89.6429, -360.786, -105.929, -373, -113.25, -429.25, -102.25, -470.75, -127.667, -511.373, -145.333, -561.707, -182.333, -581.04, -215, -632.04, -242.333, -672.333, -286, -708, -315.5, -743, -330, -784, -319.5, -812.092, -289.16, -835.073, -245.5, -858.092, -113, -906.592, -76.4001, -931.714, -47.9323, -958.683, -28.4543, -977.412, 10, -1038.59, 27, -1121.04, 32, -1211.04, 33.9999, -1323.59, 13.3012, -1424.08, -22.461, -1542.27, -35, -1569.59, -57.5, -1629.04, -104.5, -1706.04, -177, -1789.04, -229, -1847.04, -281, -1899.04, -405, -1973.04, -570.623, -2069.04, -584.766, -2672.04, 280.733, -2672.04, 244.184, 1347.96)
-width = 40.0
-texture = ExtResource("23_7bnse")
-texture_mode = 1
-joint_mode = 2
-begin_cap_mode = 2
-end_cap_mode = 2
+_texture = ExtResource("22_u6pjk")
+_scale = Vector2(2.545, 2.545)
+_textureLine = ExtResource("23_7bnse")
+RotationTexture = 100.0
+RandomRotation = false
 
 [node name="AnteriorLayout" type="Node2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/Rocas"]
 
@@ -3424,7 +3331,6 @@ grow_horizontal = 2
 grow_vertical = 0
 
 [node name="Tutorial" type="CanvasLayer" parent="Excavando/StateMachine/Juego/Contenido"]
-visible = false
 
 [node name="Tutorial" type="Control" parent="Excavando/StateMachine/Juego/Contenido/Tutorial" node_paths=PackedStringArray("FirstInstance", "ParentBook")]
 layout_mode = 3
@@ -3471,38 +3377,12 @@ grow_vertical = 2
 theme_override_font_sizes/normal_font_size = 25
 bbcode_enabled = true
 text = "[center]
-Mantene tu dedo presionado para guiar a 
-hacia donde excavar"
+MANTÉN Y DESLIZA EL DEDO POR LA PANTALLA PARA GUIAR A ROCO TOPO."
 
 [node name="Area2D" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Tutorial/Tutorial"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Tutorial/Tutorial/Area2D"]
 shape = SubResource("RectangleShape2D_m5e66")
-
-[node name="debug" type="CanvasLayer" parent="Excavando/StateMachine/Juego"]
-visible = false
-
-[node name="Button" type="Button" parent="Excavando/StateMachine/Juego/debug"]
-z_index = 1
-offset_left = 32.0
-offset_top = 24.0
-offset_right = 116.0
-offset_bottom = 60.0
-text = "+ speed"
-
-[node name="Button2" type="Button" parent="Excavando/StateMachine/Juego/debug"]
-z_index = 1
-offset_left = 32.0
-offset_top = 67.0
-offset_right = 116.0
-offset_bottom = 103.0
-text = "- speed"
-
-[node name="Label" type="Label" parent="Excavando/StateMachine/Juego/debug"]
-offset_left = 131.0
-offset_top = 37.0
-offset_right = 249.0
-offset_bottom = 96.0
 
 [node name="btnVolver" parent="Excavando/StateMachine/Juego" instance=ExtResource("38_0b8dm")]
 
@@ -3660,12 +3540,17 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -279.0
-offset_top = -102.5
+offset_top = -70.5
 offset_right = 279.0
-offset_bottom = 103.5
+offset_bottom = 71.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/normal_font_size = 25
+bbcode_enabled = true
+text = "[center]EL MUNDO AÚN TIENE MUCHO POR EXPLORAR Y  DESCUBRIR, 
+AHORA TE TOCA A TI ,
+¿QUÉ MEJOR QUE COMPARTIR LA AVENTURA?"
+autowrap_mode = 2
 
 [node name="ButtonChangeScene" parent="Excavando/StateMachine/Fin/Contenido/Panel" instance=ExtResource("18_dvs2k")]
 layout_mode = 1
@@ -3693,8 +3578,6 @@ NextScene = "Map_Screen"
 [connection signal="AllSpots" from="Excavando/StateMachine/Juego/Contenido/Instancia2/center/Objetos/steve" to="Excavando/StateMachine/Juego/Contenido/Instancia2/center/Objetos/steve/particles" method="Emit"]
 [connection signal="area_entered" from="Excavando/StateMachine/Juego/Contenido/Instancia2/center/AreaMoveCam" to="Excavando/StateMachine/Camera2D" method="SetOnAreaDown" binds= [true]]
 [connection signal="area_exited" from="Excavando/StateMachine/Juego/Contenido/Instancia2/center/AreaMoveCam" to="Excavando/StateMachine/Camera2D" method="SetOnAreaDown" binds= [false]]
-[connection signal="pressed" from="Excavando/StateMachine/Juego/debug/Button" to="Excavando/StateMachine/Juego/Contenido/background/CanvasGroup/TopoController" method="DebugSpeed" binds= [true]]
-[connection signal="pressed" from="Excavando/StateMachine/Juego/debug/Button2" to="Excavando/StateMachine/Juego/Contenido/background/CanvasGroup/TopoController" method="DebugSpeed" binds= [false]]
 [connection signal="timeout" from="Excavando/StateMachine/Moraleja/Contenido/Timer" to="Excavando/StateMachine/Moraleja" method="TimeOut" flags=18]
 [connection signal="pressed" from="Excavando/StateMachine/Moraleja/Contenido/Instancia1/Button" to="Excavando/StateMachine/Moraleja/Contenido/Instancia1/Button" method="_on_pressed" flags=18]
 [connection signal="Transitioned" from="Excavando/StateMachine/Fin" to="Excavando/StateMachine/Camera2D" method="RestartPos"]

@@ -39,7 +39,8 @@ func InDraggin():
 	
 
 func MouseRealese():
-	SpriteLayers[state].get_node("emotions").play("idle")
+	var SL = SpriteLayers[state].get_node("emotions")
+	if SL: SL.play("idle")
 	anim.play("idle")
 
 func PlayAnimTitulo():

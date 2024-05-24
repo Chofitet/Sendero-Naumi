@@ -1,11 +1,13 @@
-[gd_scene load_steps=81 format=3 uid="uid://dk066mi38cvh7"]
+[gd_scene load_steps=88 format=3 uid="uid://dk066mi38cvh7"]
 
 [ext_resource type="Script" path="res://_Scripts/Minigame_Save_Controller.gd" id="1_th4gl"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/StateMachineMinigames.gd" id="2_fl1ab"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/ConsignaState.gd" id="3_3a6v3"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/Button_Change_StateMinigame.gd" id="4_1n0vc"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/JuegoState.gd" id="5_wjedw"]
-[ext_resource type="Texture2D" uid="uid://nuybqhitpej1" path="res://Sprites/Mapa/fondo_mapa.png" id="6_folb8"]
+[ext_resource type="Texture2D" uid="uid://1eljhbidwyxc" path="res://Sprites/ZonaAstronomia/fondo - astronauta .png" id="6_1w3av"]
+[ext_resource type="Texture2D" uid="uid://bh0iciwmedsr2" path="res://Sprites/ZonaAstronomia/fondo alt - astronauta.png" id="6_puu50"]
+[ext_resource type="Texture2D" uid="uid://cncfmvsajm616" path="res://Sprites/ZonaAstronomia/fondo - astronauta.png" id="6_xtgdo"]
 [ext_resource type="Script" path="res://_Scripts/MinG_Astronauta/NaveController.gd" id="7_acnt4"]
 [ext_resource type="PackedScene" uid="uid://dtbscg5vj1osr" path="res://Scenes/Zona_Astronomia/astronautaController.tscn" id="7_jv4gs"]
 [ext_resource type="Script" path="res://_Scripts/CollisionPolygon2DEditorTexture.gd" id="7_nhdbp"]
@@ -18,6 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://bs61ipoo6jueu" path="res://Sprites/ZonaAstronomia/NaveInterior.png" id="8_w48x6"]
 [ext_resource type="Texture2D" uid="uid://puccpmbqwi4c" path="res://Sprites/ZonaAstronomia/NaveExterior.png" id="9_7dd1c"]
 [ext_resource type="Texture2D" uid="uid://badkgjv7fmia5" path="res://Sprites/ZonaAstronomia/dirtEdge.png" id="9_fd6y6"]
+[ext_resource type="Script" path="res://_Scripts/MinG_Astronauta/ScaleBackground.gd" id="9_y6sl7"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2D.gd" id="10_ex8uo"]
 [ext_resource type="Script" path="res://_Scripts/CapsulaController.gd" id="10_fm36a"]
 [ext_resource type="Texture2D" uid="uid://chqivoetkgkoj" path="res://Sprites/UI/circulo.png" id="10_s0cgv"]
@@ -26,9 +29,13 @@
 [ext_resource type="Texture2D" uid="uid://do80na5f1l4ly" path="res://Sprites/ZonaAstronomia/capsula.png" id="11_fl6hj"]
 [ext_resource type="PackedScene" uid="uid://dsjra6y4xe8g7" path="res://Scenes/Experiments/pick_up_object.tscn" id="11_i2vqs"]
 [ext_resource type="PackedScene" uid="uid://bhvn7rj6jhh2" path="res://Scenes/Zona_Astronomia/collision_object.tscn" id="11_nklpy"]
+[ext_resource type="Texture2D" uid="uid://f1lumnhxgsew" path="res://Sprites/ZonaAstronomia/asteroide 3 textura - astronauta.png" id="11_qi82a"]
 [ext_resource type="Texture2D" uid="uid://b2h2am0c8xv15" path="res://Sprites/ZonaAstronomia/meteoroide - astronauta.png" id="11_x4hhq"]
 [ext_resource type="Texture2D" uid="uid://bda0ec4gfnyvm" path="res://Sprites/ZonaAstronomia/asteroide 1 borde - astronauta.png" id="11_xjool"]
+[ext_resource type="Texture2D" uid="uid://cq0pylxbkarph" path="res://Sprites/ZonaAstronomia/asteroide 3 borde - astronauta.png" id="12_orsf0"]
+[ext_resource type="Texture2D" uid="uid://rfl4lghx8yt5" path="res://Sprites/ZonaAstronomia/asteroide 2 textura - astronauta.png" id="13_bpdn7"]
 [ext_resource type="Script" path="res://_Scripts/PlayAnimation.gd" id="13_ikt7k"]
+[ext_resource type="Texture2D" uid="uid://xfttp5t3wjyc" path="res://Sprites/ZonaAstronomia/asteroide 2 borde - astronauta.png" id="14_hx5lg"]
 [ext_resource type="PackedScene" uid="uid://cwc8753xgyd6i" path="res://Scenes/Zona_Astronomia/particleAstronauta.tscn" id="15_2uk6t"]
 [ext_resource type="PackedScene" uid="uid://b4nd3esel25b6" path="res://Scenes/Experiments/trialEffect.tscn" id="16_grs1x"]
 [ext_resource type="Texture2D" uid="uid://b1al6piky5ml1" path="res://Sprites/ZonaAstronomia/meteoro - astronauta.png" id="17_uxw0q"]
@@ -504,8 +511,38 @@ offset_top = -18402.0
 offset_right = 3910.0
 offset_bottom = 2345.0
 size_flags_horizontal = 4
-texture = ExtResource("6_folb8")
+texture = ExtResource("6_puu50")
 stretch_mode = 1
+
+[node name="TextureRect2" type="TextureRect" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level"]
+self_modulate = Color(1, 1, 1, 0.364706)
+z_index = -1
+offset_left = -1991.0
+offset_top = -18402.0
+offset_right = 3910.0
+offset_bottom = 2345.0
+size_flags_horizontal = 4
+texture = ExtResource("6_xtgdo")
+stretch_mode = 1
+
+[node name="TextureRect3" type="TextureRect" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level"]
+visible = false
+z_index = -1
+offset_left = -1991.0
+offset_top = -18402.0
+offset_right = 3910.0
+offset_bottom = 2345.0
+size_flags_horizontal = 4
+texture = ExtResource("6_1w3av")
+stretch_mode = 1
+
+[node name="background" type="Polygon2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level"]
+visible = false
+z_index = -1
+texture = ExtResource("6_1w3av")
+texture_scale = Vector2(0.725, 0.725)
+polygon = PackedVector2Array(-1990, -18403, 3910, -18402, 3910, 2345, -1990, 2345)
+script = ExtResource("9_y6sl7")
 
 [node name="LevelimitsCollision" type="StaticBody2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level"]
 position = Vector2(2069, 2205)
@@ -556,12 +593,16 @@ polygon = PackedVector2Array(2100.5, -65.2843, 2114.52, -112.776, 2102.51, -116.
 position = Vector2(3825, -116)
 _texture = ExtResource("10_yncry")
 _textureLine = ExtResource("9_fd6y6")
+RotationTexture = 0.0
+RandomRotation = false
 
 [node name="CollisionPolygon2D97" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/Collisiones" instance=ExtResource("7_s4reo")]
 position = Vector2(-1005.55, 1215.58)
 polygon = PackedVector2Array(75.6718, 90.4445, -43.2039, 99.3078, -188.277, 30.8651, -188.973, -173.149, -183.59, -263.262, -56.4621, -326.502, -0.596619, -326.722, 78.3747, -229.842, 179.255, -110.893, 199.69, -21.6154, 172.93, 46.7432)
 _texture = ExtResource("10_yncry")
 _textureLine = ExtResource("9_fd6y6")
+RotationTexture = 0.0
+RandomRotation = false
 
 [node name="Laberinto" type="StaticBody2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/Collisiones"]
 position = Vector2(1142, -285)
@@ -570,347 +611,518 @@ position = Vector2(1142, -285)
 position = Vector2(-1829.55, 1224.58)
 polygon = PackedVector2Array(-208.622, 12.3022, -173.056, -92.7506, -188.973, -173.149, -252.479, -229.213, -235.766, -280.688, -160.101, -362.056, -56.4621, -326.502, 78.3747, -229.842, 170.069, -111.68, 159.738, -62.2704, 65.3327, -21.3727, -78.4203, 2.12341)
 _texture = ExtResource("10_yncry")
+_scale = Vector2(0.5, 0.5)
 _textureLine = ExtResource("11_xjool")
+RotationTexture = 0.0
+RandomRotation = true
 
 [node name="@CollisionPolygon2D@67256" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/Collisiones/Laberinto" instance=ExtResource("7_s4reo")]
 position = Vector2(-1675.55, 956.579)
 polygon = PackedVector2Array(-160.218, -105.367, -188.973, -173.149, -252.479, -229.213, -235.766, -280.688, -160.101, -362.056, -56.4621, -326.502, 18.1431, -286.252, 78.3747, -229.842, 37.1378, -112.839, 47.1212, -41.3313, -20.4398, 2.62903, -89.5856, -14.9452, -134.958, -54.5569)
-_texture = ExtResource("10_yncry")
-_textureLine = ExtResource("11_xjool")
+_texture = ExtResource("11_qi82a")
+_scale = Vector2(0.5, 0.5)
+_textureLine = ExtResource("12_orsf0")
+RotationTexture = 0.0
+RandomRotation = true
 
 [node name="@CollisionPolygon2D@67257" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/Collisiones/Laberinto" instance=ExtResource("7_s4reo")]
 position = Vector2(-1331.55, 376.579)
 polygon = PackedVector2Array(53.1574, 77.5206, -43.2039, 99.3078, -188.277, 30.8651, -193.335, -37.771, -178.061, -86.4301, -236.827, -159.07, -183.59, -263.262, -137.832, -320.848, -46.9432, -363.897, 23.6167, -346.311, 91.9981, -241.059, 179.255, -110.893, 199.69, -21.6154, 172.93, 46.7432)
-_texture = ExtResource("10_yncry")
-_textureLine = ExtResource("11_xjool")
+_texture = ExtResource("13_bpdn7")
+_scale = Vector2(0.5, 0.5)
+_textureLine = ExtResource("14_hx5lg")
+RotationTexture = 0.0
+RandomRotation = true
 
 [node name="@CollisionPolygon2D@67258" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/Collisiones/Laberinto" instance=ExtResource("7_s4reo")]
 position = Vector2(-2045.55, -259.421)
 polygon = PackedVector2Array(75.6718, 90.4445, -43.2039, 99.3078, -188.277, 30.8651, -193.335, -37.771, -178.061, -86.4301, -236.827, -159.07, -183.59, -263.262, -137.832, -320.848, -46.9432, -363.897, 23.6167, -346.311, 91.9981, -241.059, 179.255, -110.893, 199.69, -21.6154, 172.93, 46.7432)
 _texture = ExtResource("10_yncry")
+_scale = Vector2(0.5, 0.5)
 _textureLine = ExtResource("11_xjool")
+RotationTexture = 0.0
+RandomRotation = true
 
 [node name="@CollisionPolygon2D@67259" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/Collisiones/Laberinto" instance=ExtResource("7_s4reo")]
 position = Vector2(-213.548, 36.579)
 polygon = PackedVector2Array(100.481, 326.843, -22.1066, 274.861, -116.716, 95.8381, -225.269, -105.935, -236.611, -427.072, -165.227, -422.914, -46.9432, -363.897, 14.0627, -385.994, 51.6163, -313.539, 269.319, -140.514, 403.734, 14.8132, 331.974, 297.041)
 _texture = ExtResource("10_yncry")
+_scale = Vector2(0.5, 0.5)
 _textureLine = ExtResource("11_xjool")
+RotationTexture = 0.0
+RandomRotation = true
 
 [node name="@CollisionPolygon2D@67260" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/Collisiones/Laberinto" instance=ExtResource("7_s4reo")]
 position = Vector2(330.45, -351.421)
 polygon = PackedVector2Array(126.927, 51.2919, -161.587, 51.6045, -300.534, 172.727, -280.045, 93.7067, -242.683, -55.1727, -158.867, -16.9638, -74.9385, -72.8027, 105.99, -142.645, 204.093, -39.9626, 179.571, 14.98)
-_texture = ExtResource("10_yncry")
-_textureLine = ExtResource("11_xjool")
+_texture = ExtResource("13_bpdn7")
+_scale = Vector2(0.5, 0.5)
+_textureLine = ExtResource("14_hx5lg")
+RotationTexture = 0.0
+RandomRotation = true
 
 [node name="@CollisionPolygon2D@67261" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/Collisiones/Laberinto" instance=ExtResource("7_s4reo")]
 position = Vector2(-797.548, -1555.42)
 polygon = PackedVector2Array(76.6809, 55.8035, 49.2939, 114.964, 6.8313, 140.84, 1.74634, 188.184, -59.4695, 243.048, -163.065, -46.8586, -74.9385, -72.8027, 34.8254, -90.9382, 145.989, -26.3267, 166.72, 29.0103, 118.393, 56.8743)
 _texture = ExtResource("10_yncry")
+_scale = Vector2(0.5, 0.5)
 _textureLine = ExtResource("11_xjool")
+RotationTexture = 0.0
+RandomRotation = true
 
 [node name="@CollisionPolygon2D@67262" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/Collisiones/Laberinto" instance=ExtResource("7_s4reo")]
 position = Vector2(-774.548, -1831.42)
 polygon = PackedVector2Array(52.9448, 182.88, 1.74634, 188.184, -147.408, 47.4849, -163.065, -46.8586, -74.9385, -72.8027, 145.989, -26.3267, 166.72, 29.0103, 161.418, 150.591)
-_texture = ExtResource("10_yncry")
-_textureLine = ExtResource("11_xjool")
+_texture = ExtResource("11_qi82a")
+_scale = Vector2(0.5, 0.5)
+_textureLine = ExtResource("12_orsf0")
+RotationTexture = 0.0
+RandomRotation = true
 
 [node name="@CollisionPolygon2D@67263" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/Collisiones/Laberinto" instance=ExtResource("7_s4reo")]
 position = Vector2(-800.548, -2389.42)
 polygon = PackedVector2Array(48.2109, 158.089, 1.74634, 188.184, -114.705, 351.838, -170.24, 395.196, -243.208, 329.503, -229.753, 246.179, -149.697, 147.878, -147.408, 47.4849, -137.986, -59.9172, -74.9385, -72.8027, 58.3237, -28.5056, 156.111, -51.6958, 149.689, 35.9331, 191.497, 107.011)
-_texture = ExtResource("10_yncry")
-_textureLine = ExtResource("11_xjool")
+_texture = ExtResource("11_qi82a")
+_scale = Vector2(0.5, 0.5)
+_textureLine = ExtResource("12_orsf0")
+RotationTexture = 0.0
+RandomRotation = true
 
 [node name="@CollisionPolygon2D@67264" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/Collisiones/Laberinto" instance=ExtResource("7_s4reo")]
 position = Vector2(-550.548, -2839.42)
 polygon = PackedVector2Array(-207.949, 664.992, -247.196, 462.409, -256.043, 179.479, -276.059, 42.1206, -304.807, -67.0288, -163.065, -46.8586, -59.8491, -100.25, 145.989, -26.3267, 256.132, 74.3396, 205.699, 181.383, 105.536, 314.865, 24.1873, 480.333)
 _texture = ExtResource("10_yncry")
+_scale = Vector2(0.5, 0.5)
 _textureLine = ExtResource("11_xjool")
+RotationTexture = 0.0
+RandomRotation = true
 
 [node name="@CollisionPolygon2D@67265" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/Collisiones/Laberinto" instance=ExtResource("7_s4reo")]
 position = Vector2(-1306.55, -2937.42)
 polygon = PackedVector2Array(-163.629, 610.222, -218.691, 437.201, -353.781, 197.012, -276.059, 42.1206, -163.065, -46.8586, -59.8491, -100.25, 145.989, -26.3267, 325.121, 190.911, 569.67, 528.932, 383.568, 462.253, 284.084, 517.956, 129.02, 460.033, 139.1, 601.548, 18.2424, 675.45)
 _texture = ExtResource("10_yncry")
+_scale = Vector2(0.5, 0.5)
 _textureLine = ExtResource("11_xjool")
+RotationTexture = 0.0
+RandomRotation = true
 
 [node name="@CollisionPolygon2D@67266" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/Collisiones/Laberinto" instance=ExtResource("7_s4reo")]
 position = Vector2(-2111.55, -3049.42)
 polygon = PackedVector2Array(-205.908, 674.202, -542.692, 371.441, -649.963, 22.5957, -557.533, -197.224, 255.074, -939.7, 358.408, -639.84, 355.198, -443.582, 357.758, -64.7871, 513.221, 238.125, 614.437, 585.186, 508.708, 546.078, 433.21, 527.035, 347.388, 556.693, 284.084, 517.956, 178.966, 652.102, 18.2424, 675.45)
 _texture = ExtResource("10_yncry")
+_scale = Vector2(0.5, 0.5)
 _textureLine = ExtResource("11_xjool")
+RotationTexture = 0.0
+RandomRotation = true
 
 [node name="@CollisionPolygon2D@67267" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/Collisiones/Laberinto" instance=ExtResource("7_s4reo")]
 position = Vector2(-381.548, -1930.42)
 polygon = PackedVector2Array(78.0078, 178.378, -52.1294, 271.417, -133.549, 39.4739, -163.065, -46.8586, -114.35, -94.3604, -47.6252, -123.478, 30.0181, -107.244, 171.898, 2.8916, 188.572, 36.9795)
 _texture = ExtResource("10_yncry")
+_scale = Vector2(0.5, 0.5)
 _textureLine = ExtResource("11_xjool")
+RotationTexture = 0.0
+RandomRotation = true
 
 [node name="@CollisionPolygon2D@67268" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/Collisiones/Laberinto" instance=ExtResource("7_s4reo")]
 position = Vector2(-381.548, -1930.42)
 polygon = PackedVector2Array(-5.49048, -333.13, 95.0525, -429.13, 173.115, -460.978, 221.552, -420.249, 212.192, -319.917, 286.287, -59.0459, 247.059, -20.4956, 153.946, -46.7642, 14.7949, -145.562)
 _texture = ExtResource("10_yncry")
+_scale = Vector2(0.5, 0.5)
 _textureLine = ExtResource("11_xjool")
+RotationTexture = 0.0
+RandomRotation = true
 
 [node name="@CollisionPolygon2D@67269" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/Collisiones/Laberinto" instance=ExtResource("7_s4reo")]
 position = Vector2(123.45, -1579.42)
 polygon = PackedVector2Array(98.928, 505.027, 70.1267, 564.175, 45.2249, 581.636, -245.299, 325.949, -200.844, 255.623, -162.589, 44.8777, -145.831, -52.2072, -55.5886, -148.385, 79.5657, -234.45, 145.989, -26.3267, 195.703, 111.291, 155.095, 226.906)
 _texture = ExtResource("10_yncry")
+_scale = Vector2(0.5, 0.5)
 _textureLine = ExtResource("11_xjool")
+RotationTexture = 0.0
+RandomRotation = true
 
 [node name="@CollisionPolygon2D@67270" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/Collisiones/Laberinto" instance=ExtResource("7_s4reo")]
 position = Vector2(449.45, 239.579)
 polygon = PackedVector2Array(-98.9564, 5.47974, -147.112, 13.5455, -264.251, -95.6675, -299.443, -195.68, -326.137, -297.033, -240.255, -252.442, -155.221, -272.914, 9.35071, -278.079, -51.0458, -55.6231)
-_texture = ExtResource("10_yncry")
-_textureLine = ExtResource("11_xjool")
+_texture = ExtResource("13_bpdn7")
+_scale = Vector2(0.5, 0.5)
+_textureLine = ExtResource("14_hx5lg")
+RotationTexture = 0.0
+RandomRotation = true
 
 [node name="@CollisionPolygon2D@67271" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/Collisiones/Laberinto" instance=ExtResource("7_s4reo")]
 position = Vector2(804.45, 351.579)
 polygon = PackedVector2Array(-98.9564, 5.47974, -147.112, 13.5455, -264.251, -95.6675, -299.443, -195.68, -326.137, -297.033, -253.413, -284.378, -222.312, -364.013, -61.4097, -164.612, -51.0458, -55.6231)
 _texture = ExtResource("10_yncry")
+_scale = Vector2(0.5, 0.5)
 _textureLine = ExtResource("11_xjool")
+RotationTexture = 0.0
+RandomRotation = true
 
 [node name="@CollisionPolygon2D@67272" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/Collisiones/Laberinto" instance=ExtResource("7_s4reo")]
 position = Vector2(1179.45, 408.579)
 polygon = PackedVector2Array(-81.3718, 16.2401, -155.698, 106.105, -277.991, 101.503, -315.091, 58.0443, -312.442, -124.02, -324.06, -251.405, -345.677, -286.243, -252.871, -305.941, -244.328, -434.211, -132.053, -294.28, -17.7585, -264.291, 16.3323, -159.691, -18.5569, -51.0971)
-_texture = ExtResource("10_yncry")
-_textureLine = ExtResource("11_xjool")
+_texture = ExtResource("11_qi82a")
+_scale = Vector2(0.5, 0.5)
+_textureLine = ExtResource("12_orsf0")
+RotationTexture = 0.0
+RandomRotation = true
 
 [node name="@CollisionPolygon2D@67273" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/Collisiones/Laberinto" instance=ExtResource("7_s4reo")]
 position = Vector2(1587.45, 804.579)
 polygon = PackedVector2Array(-81.3718, 16.2401, -155.698, 106.105, -277.991, 101.503, -315.091, 58.0443, -312.442, -124.02, -324.06, -251.405, -310.839, -348.521, -286.821, -426.803, -121.845, -370.208, -93.0723, -263.887, 16.3323, -159.691, -18.5569, -51.0971)
 _texture = ExtResource("10_yncry")
+_scale = Vector2(0.5, 0.5)
 _textureLine = ExtResource("11_xjool")
+RotationTexture = 0.0
+RandomRotation = true
 
 [node name="@CollisionPolygon2D@67274" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/Collisiones/Laberinto" instance=ExtResource("7_s4reo")]
 position = Vector2(1498.45, 338.579)
 polygon = PackedVector2Array(-81.3718, 16.2401, -155.698, 106.105, -277.991, 101.503, -315.091, 58.0443, -312.442, -124.02, -238.447, -297.683, -244.328, -434.211, -33.9077, -399.141, -4.07666, -333.117, 32.5786, -238.749, 16.3323, -159.691, -18.5569, -51.0971)
 _texture = ExtResource("10_yncry")
+_scale = Vector2(0.5, 0.5)
 _textureLine = ExtResource("11_xjool")
+RotationTexture = 0.0
+RandomRotation = true
 
 [node name="@CollisionPolygon2D@67275" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/Collisiones/Laberinto" instance=ExtResource("7_s4reo")]
 position = Vector2(1681.45, -64.421)
 polygon = PackedVector2Array(-81.3718, 16.2401, -155.698, 106.105, -277.991, 101.503, -315.091, 58.0443, -328.503, -106.835, -413.873, -246.394, -265.268, -372.58, -33.9077, -399.141, -4.07666, -333.117, 32.5786, -238.749, 16.3323, -159.691, -18.5569, -51.0971)
-_texture = ExtResource("10_yncry")
-_textureLine = ExtResource("11_xjool")
+_texture = ExtResource("13_bpdn7")
+_scale = Vector2(0.5, 0.5)
+_textureLine = ExtResource("14_hx5lg")
+RotationTexture = 0.0
+RandomRotation = true
 
 [node name="@CollisionPolygon2D@67276" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/Collisiones/Laberinto" instance=ExtResource("7_s4reo")]
 position = Vector2(2767.45, -3542.42)
 polygon = PackedVector2Array(-37.0586, 153.928, -185.681, 168.189, -277.991, 101.503, -315.091, 58.0443, -372.86, -99.3254, -519.387, -325.472, 57.9854, -365.693, 314.872, -255.379, 215.015, -208.755, 144.771, -100.469, 51.3589, 69.843)
 _texture = ExtResource("10_yncry")
+_scale = Vector2(0.5, 0.5)
 _textureLine = ExtResource("11_xjool")
+RotationTexture = 0.0
+RandomRotation = true
 
 [node name="@CollisionPolygon2D@67277" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/Collisiones/Laberinto" instance=ExtResource("7_s4reo")]
 position = Vector2(1855.45, -505.421)
 polygon = PackedVector2Array(-81.3718, 16.2401, -155.698, 106.105, -277.991, 101.503, -315.091, 58.0443, -328.503, -106.835, -413.873, -246.394, -265.268, -372.58, -33.9077, -399.141, -4.07666, -333.117, 32.5786, -238.749, 16.3323, -159.691, -18.5569, -51.0971)
-_texture = ExtResource("10_yncry")
-_textureLine = ExtResource("11_xjool")
+_texture = ExtResource("11_qi82a")
+_scale = Vector2(0.5, 0.5)
+_textureLine = ExtResource("12_orsf0")
+RotationTexture = 0.0
+RandomRotation = true
 
 [node name="@CollisionPolygon2D@67278" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/Collisiones/Laberinto" instance=ExtResource("7_s4reo")]
 position = Vector2(2275.45, -45.421)
 polygon = PackedVector2Array(-125.616, -18.7957, -221.191, 75.1268, -277.991, 101.503, -366.446, 189.83, -348.448, 396.47, -439.472, 455.076, -639.42, 354.333, -622.644, 214.467, -702.202, 93.5607, -819.023, 28.8999, -944.648, 0.933472, -888.695, -90.5061, -721.771, -257.348, -413.873, -246.394, -265.268, -372.58, 170.021, -673.852, 392.35, -625.95, 415.341, -424.216, 391.724, -148.64, 217.595, -47.6243, -18.5569, -51.0971)
-_texture = ExtResource("10_yncry")
-_textureLine = ExtResource("11_xjool")
+_texture = ExtResource("13_bpdn7")
+_scale = Vector2(0.5, 0.5)
+_textureLine = ExtResource("14_hx5lg")
+RotationTexture = 0.0
+RandomRotation = true
 
 [node name="@CollisionPolygon2D@67279" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/Collisiones/Laberinto" instance=ExtResource("7_s4reo")]
 position = Vector2(1876.45, -1030.42)
 polygon = PackedVector2Array(-81.3718, 16.2401, -155.698, 106.105, -277.991, 101.503, -315.091, 58.0443, -423.128, -121.803, -413.873, -246.394, -265.268, -372.58, -122.196, -573.159, 66.3167, -539.694, -18.5569, -51.0971)
-_texture = ExtResource("10_yncry")
-_textureLine = ExtResource("11_xjool")
+_texture = ExtResource("11_qi82a")
+_scale = Vector2(0.5, 0.5)
+_textureLine = ExtResource("12_orsf0")
+RotationTexture = 0.0
+RandomRotation = true
 
 [node name="@CollisionPolygon2D@67280" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/Collisiones/Laberinto" instance=ExtResource("7_s4reo")]
 position = Vector2(1564.45, -391.421)
 polygon = PackedVector2Array(-106.318, -204.603, -283.938, -108.568, -407.125, -91.9634, -372.372, -387.596, -235.208, -506.966, -166.691, -417.27, -49.7227, -369.579, -4.07666, -333.117)
 _texture = ExtResource("10_yncry")
+_scale = Vector2(0.5, 0.5)
 _textureLine = ExtResource("11_xjool")
+RotationTexture = 0.0
+RandomRotation = true
 
 [node name="@CollisionPolygon2D@67281" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/Collisiones/Laberinto" instance=ExtResource("7_s4reo")]
 position = Vector2(1586.45, -793.42)
 polygon = PackedVector2Array(-106.318, -204.603, -223.917, -98.8514, -335.426, -123.866, -443.811, -182.796, -512.975, -252.227, -305.254, -421.307, -166.691, -417.27, -49.7227, -369.579)
-_texture = ExtResource("10_yncry")
-_textureLine = ExtResource("11_xjool")
+_texture = ExtResource("11_qi82a")
+_scale = Vector2(0.5, 0.5)
+_textureLine = ExtResource("12_orsf0")
+RotationTexture = 0.0
+RandomRotation = true
 
 [node name="@CollisionPolygon2D@67282" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/Collisiones/Laberinto" instance=ExtResource("7_s4reo")]
 position = Vector2(1154.45, -1384.42)
 polygon = PackedVector2Array(-106.318, -204.603, -116.702, 13.1036, -178.769, 156.818, -292.101, 259.778, -418.847, 279.18, -512.975, -252.227, -437.608, -407.611, -362.575, -740.724, -492.275, -1112.39, -393.208, -1201.33, -310.315, -1307.86, -222.981, -1360.07, -139.466, -1431.06, -7.11719, -1328.52, 35.1357, -1261.95, 70.501, -1117, -59.6738, -769.196, -166.691, -417.27)
-_texture = ExtResource("10_yncry")
-_textureLine = ExtResource("11_xjool")
+_texture = ExtResource("13_bpdn7")
+_scale = Vector2(0.5, 0.5)
+_textureLine = ExtResource("14_hx5lg")
+RotationTexture = 0.0
+RandomRotation = true
 
 [node name="@CollisionPolygon2D@67283" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/Collisiones/Laberinto" instance=ExtResource("7_s4reo")]
 position = Vector2(1178.45, -1966.42)
 polygon = PackedVector2Array(134.344, 416.945, -46.1274, 434.464, -233.253, 485.16, -451.605, 710.953, -527.858, 697.559, -565.301, 612.377, -451.377, 441.537, -418.847, 279.18, -540.027, -15.3374, -501.188, -252.596, -418.056, -379.155, -378.037, -589.532, -300.686, -701.999, -313.298, -877.478, -509.924, -1034.76, -504.327, -1108.96, -403.021, -1211.32, -119.469, -1372.2, -32.9463, -1401.14, 324.42, -1107.39, 511.895, -873.818, 663.638, -759.353, 704.815, -534.832, 559.412, 83.3488)
 _texture = ExtResource("10_yncry")
+_scale = Vector2(0.5, 0.5)
 _textureLine = ExtResource("11_xjool")
+RotationTexture = 0.0
+RandomRotation = true
 
 [node name="@CollisionPolygon2D@67284" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/Collisiones/Laberinto" instance=ExtResource("7_s4reo")]
 position = Vector2(2480.45, -2323.42)
 polygon = PackedVector2Array(-418.847, 279.18, -540.027, -15.3374, -501.188, -252.596, -418.056, -379.155, -503.371, -488.797, -544.575, -629.169, -456.506, -997.525, -404.08, -1171.02, -476.288, -1405.01, -125.77, -1298.71, 289.989, -1132.44, 481.155, -997.834, 647.91, -739.691, 704.815, -534.832, 559.412, 83.3488, -296.157, 367.011)
-_texture = ExtResource("10_yncry")
-_textureLine = ExtResource("11_xjool")
+_texture = ExtResource("13_bpdn7")
+_scale = Vector2(0.5, 0.5)
+_textureLine = ExtResource("14_hx5lg")
+RotationTexture = 0.0
+RandomRotation = true
 
 [node name="@CollisionPolygon2D@67285" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/Collisiones/Laberinto" instance=ExtResource("7_s4reo")]
 position = Vector2(2865.45, -888.42)
 polygon = PackedVector2Array(-509.586, 10.726, -501.188, -252.596, -418.056, -379.155, -503.371, -488.797, -544.575, -629.169, -456.506, -997.525, -404.08, -1171.02, -476.288, -1405.01, -98.8584, -1546.68, 50.5781, -1654.27, 183.655, -1588.76, 95.2402, -1099.49, 367.169, -815.542, -246.557, -53.3057)
-_texture = ExtResource("10_yncry")
-_textureLine = ExtResource("11_xjool")
+_texture = ExtResource("11_qi82a")
+_scale = Vector2(0.5, 0.5)
+_textureLine = ExtResource("12_orsf0")
+RotationTexture = 0.0
+RandomRotation = true
 
 [node name="@CollisionPolygon2D@67286" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/Collisiones/Laberinto" instance=ExtResource("7_s4reo")]
 position = Vector2(2865.45, 1874.58)
 polygon = PackedVector2Array(-676.101, 262.793, -712.792, -395.161, -756.193, -689, -745.731, -1077.83, -1097.54, -1076.49, -1230.37, -1308.39, -994.498, -1552.07, -853.21, -1946.4, -658.194, -2316.3, -507.167, -2452.83, -519.527, -2066.36, -577.48, -1949.99, -476.288, -1405.01, -98.8584, -1546.68, 50.5781, -1654.27, 183.655, -1588.76, 95.2402, -1099.49, 379.638, -790.115)
-_texture = ExtResource("10_yncry")
-_textureLine = ExtResource("11_xjool")
+_texture = ExtResource("11_qi82a")
+_scale = Vector2(0.5, 0.5)
+_textureLine = ExtResource("12_orsf0")
+RotationTexture = 0.0
+RandomRotation = true
 
 [node name="@CollisionPolygon2D@67287" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/Collisiones/Laberinto" instance=ExtResource("7_s4reo")]
 position = Vector2(1908.41, 3376.28)
 polygon = PackedVector2Array(110.577, -444.64, -179.689, -422.756, -258.217, -696.143, -522.737, -947.178, -745.731, -1077.83, -938.589, -1370.35, -891.054, -1666.61, -476.288, -1405.01, -98.8584, -1546.68, 50.5781, -1654.27, 183.655, -1588.76, 326.271, -1722.39, 473.105, -1649.76, 613.599, -1356.81, 913.301, -1360.19, 448.271, -983.993, 460.177, -712.74)
-_texture = ExtResource("10_yncry")
-_textureLine = ExtResource("11_xjool")
+_texture = ExtResource("13_bpdn7")
+_scale = Vector2(0.5, 0.5)
+_textureLine = ExtResource("14_hx5lg")
+RotationTexture = 0.0
+RandomRotation = true
 
 [node name="@CollisionPolygon2D@67288" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/Collisiones/Laberinto" instance=ExtResource("7_s4reo")]
 position = Vector2(1701.65, 4343.45)
 polygon = PackedVector2Array(-476.288, -1405.01, -201.759, -1722.24, -101.994, -1707.1, 474.336, -1245.4, 448.271, -983.993, 460.177, -712.74)
 _texture = ExtResource("10_yncry")
+_scale = Vector2(0.5, 0.5)
 _textureLine = ExtResource("11_xjool")
+RotationTexture = 0.0
+RandomRotation = true
 
 [node name="@CollisionPolygon2D@67289" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/Collisiones/Laberinto" instance=ExtResource("7_s4reo")]
 position = Vector2(-1399.58, 3583.28)
 polygon = PackedVector2Array(110.577, -444.64, -712.792, -395.161, -756.193, -689, -745.731, -1077.83, -476.288, -1405.01, -201.759, -1722.24, -101.994, -1707.1, 639.877, -1681.6, 474.336, -1245.4, 448.271, -983.993, 460.177, -712.74, 411.366, -570.457)
-_texture = ExtResource("10_yncry")
-_textureLine = ExtResource("11_xjool")
+_texture = ExtResource("13_bpdn7")
+_scale = Vector2(0.5, 0.5)
+_textureLine = ExtResource("14_hx5lg")
+RotationTexture = 0.0
+RandomRotation = true
 
 [node name="@CollisionPolygon2D@67290" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/Collisiones/Laberinto" instance=ExtResource("7_s4reo")]
 position = Vector2(137.45, 3876.58)
 polygon = PackedVector2Array(-1146.01, -1494.29, -826.036, -1696.57, -528.322, -1778.83, -196.241, -1747.64, 87.7173, -1615.06, -41.4911, -1475.46, 347.983, -1052.03, 500.149, -1148.29, 603.417, -665.123, 545.638, -364.388, 322.773, -10.1819)
 _texture = ExtResource("10_yncry")
+_scale = Vector2(0.5, 0.5)
 _textureLine = ExtResource("11_xjool")
+RotationTexture = 0.0
+RandomRotation = true
 
 [node name="@CollisionPolygon2D@67291" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/Collisiones/Laberinto" instance=ExtResource("7_s4reo")]
 position = Vector2(-305.843, 1146.24)
 polygon = PackedVector2Array(-6.11304, 140.384, -103.641, 133.876, -163.416, 95.8768, -218.665, 25.3888, -210.951, -129.406, -96.1674, -236.597, 47.265, -223.325, 162.301, -116.252, 166.049, 21.6722, 42.6447, 144.345)
 _texture = ExtResource("10_yncry")
+_scale = Vector2(0.5, 0.5)
 _textureLine = ExtResource("11_xjool")
+RotationTexture = 0.0
+RandomRotation = true
 
 [node name="@CollisionPolygon2D@67292" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/Collisiones/Laberinto" instance=ExtResource("7_s4reo")]
 position = Vector2(243.45, -333.421)
 polygon = PackedVector2Array(-140.704, -32.0088, -188.575, -97.129, -283.85, -199.787, 139.584, -102.753, 67.1042, -62.3712, -19.3691, -39.0828, -93.3247, 8.35748)
-_texture = ExtResource("10_yncry")
-_textureLine = ExtResource("11_xjool")
+_texture = ExtResource("13_bpdn7")
+_scale = Vector2(0.5, 0.5)
+_textureLine = ExtResource("14_hx5lg")
+RotationTexture = 0.0
+RandomRotation = true
 
 [node name="@CollisionPolygon2D@67293" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/Collisiones/Laberinto" instance=ExtResource("7_s4reo")]
 position = Vector2(861.45, -186.421)
 polygon = PackedVector2Array(-232.763, 104.726, -350.539, -93.5913, -283.85, -199.787, -28.6494, -191.197, -5.78857, -217.869, 65.0776, -154.316, 37.9497, -124.853, -21.3027, 101.62)
 _texture = ExtResource("10_yncry")
+_scale = Vector2(0.5, 0.5)
 _textureLine = ExtResource("11_xjool")
+RotationTexture = 0.0
+RandomRotation = true
 
 [node name="@CollisionPolygon2D@67294" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/Collisiones/Laberinto" instance=ExtResource("7_s4reo")]
 position = Vector2(555.45, -988.42)
 polygon = PackedVector2Array(-168.499, 114.479, -347.699, -94.981, -329.103, -200.182, -349.232, -243.492, -303.13, -259.354, -97.824, -43.3026, -56.7065, 106.968)
 _texture = ExtResource("10_yncry")
+_scale = Vector2(0.5, 0.5)
 _textureLine = ExtResource("11_xjool")
+RotationTexture = 0.0
+RandomRotation = true
 
 [node name="@CollisionPolygon2D@67295" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/Collisiones/Laberinto" instance=ExtResource("7_s4reo")]
 position = Vector2(1000.45, -893.42)
 polygon = PackedVector2Array(-229.859, 14.9453, -519.545, 230.923, -593.29, 173.003, -369.479, -30.1145, -412.292, -229.193, -329.533, -232.006, -303.13, -259.354, -261.717, -143.023)
 _texture = ExtResource("10_yncry")
+_scale = Vector2(0.5, 0.5)
 _textureLine = ExtResource("11_xjool")
+RotationTexture = 0.0
+RandomRotation = true
 
 [node name="@CollisionPolygon2D@67296" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/Collisiones/Laberinto" instance=ExtResource("7_s4reo")]
 position = Vector2(-1035.55, -749.42)
 polygon = PackedVector2Array(163.189, 109.593, -85.3121, 224.81, -147.015, 83.5524, -300.698, -132.756, -182.407, -271.761, -118.512, -346.843, 107.913, -363.255, 263.958, -174.504, 214.483, -15.1227)
 _texture = ExtResource("10_yncry")
+_scale = Vector2(0.5, 0.5)
 _textureLine = ExtResource("11_xjool")
+RotationTexture = 0.0
+RandomRotation = true
 
 [node name="@CollisionPolygon2D@67297" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/Collisiones/Laberinto" instance=ExtResource("7_s4reo")]
 position = Vector2(-1035.55, -749.42)
 polygon = PackedVector2Array(103.856, 183.325, 139.556, 144.037, 157.128, 156.211, 72.8129, 337.209, -5.9071, 606.647, 42.4293, 740.01, -180.781, 685.029, -223.811, 618.89, -80.64, 256.672, 40.5852, 221.665)
 _texture = ExtResource("10_yncry")
+_scale = Vector2(0.5, 0.5)
 _textureLine = ExtResource("11_xjool")
+RotationTexture = 0.0
+RandomRotation = true
 
 [node name="@CollisionPolygon2D@67298" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/Collisiones/Laberinto" instance=ExtResource("7_s4reo")]
 position = Vector2(-335.548, -1439.42)
 polygon = PackedVector2Array(-55.9502, 841.704, -496.317, 740.279, -607.651, 614.146, -620.891, 429.469, -566.51, 275.08, -300.698, -132.756, -182.407, -271.761, -118.512, -346.843, 107.913, -363.255, 179.368, -204.941, 244.208, -99.0123, 115.606, 22.9854, 52.6072, 14.8677, -4.90869, 5.59253, -171.176, -54.5321, -393.228, 109.001, -511.579, 301.016, -479.23, 483.739, -363.162, 664.699, -70.5308, 719.225, -14.4207, 772.042)
 _texture = ExtResource("10_yncry")
+_scale = Vector2(0.5, 0.5)
 _textureLine = ExtResource("11_xjool")
+RotationTexture = 0.0
+RandomRotation = true
 
 [node name="@CollisionPolygon2D@67299" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/Collisiones/Laberinto" instance=ExtResource("7_s4reo")]
 position = Vector2(-1941.55, 164.579)
 polygon = PackedVector2Array(112.991, 189.769, -36.7601, 90.171, -193.335, -37.771, -178.061, -86.4301, -236.827, -159.07, -183.59, -263.262, -137.832, -320.848, -55.2083, -308.106, 165.226, -205.064, 179.255, -110.893, 199.69, -21.6154, 247.387, 103.963)
-_texture = ExtResource("10_yncry")
-_textureLine = ExtResource("11_xjool")
+_texture = ExtResource("13_bpdn7")
+_scale = Vector2(0.5, 0.5)
+_textureLine = ExtResource("14_hx5lg")
+RotationTexture = 0.0
+RandomRotation = true
 
 [node name="@CollisionPolygon2D@67300" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/Collisiones/Laberinto" instance=ExtResource("7_s4reo")]
 position = Vector2(-2411.55, 380.579)
 polygon = PackedVector2Array(112.991, 189.769, -36.7601, 90.171, -193.335, -37.771, 93.3382, -252.442, 165.226, -205.064, 179.255, -110.893, 199.69, -21.6154, 247.387, 103.963)
-_texture = ExtResource("10_yncry")
-_textureLine = ExtResource("11_xjool")
+_texture = ExtResource("13_bpdn7")
+_scale = Vector2(0.5, 0.5)
+_textureLine = ExtResource("14_hx5lg")
+RotationTexture = 0.0
+RandomRotation = true
 
 [node name="@CollisionPolygon2D@67301" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/Collisiones/Laberinto" instance=ExtResource("7_s4reo")]
 position = Vector2(-1053.55, 78.579)
 polygon = PackedVector2Array(-66.0505, 43.245, -188.277, 30.8651, -193.335, -37.771, -178.061, -86.4301, -297.99, -281.23, -378.852, -414.877, -345.45, -514.999, -433.028, -608.397, -467.358, -726.08, -418.611, -802.026, -238.754, -830.157, -56.8838, -683.608, -91.5529, -540.152, 63.5708, -386.976, 161.674, -284.293, 104.833, -91.0345)
 _texture = ExtResource("10_yncry")
+_scale = Vector2(0.5, 0.5)
 _textureLine = ExtResource("11_xjool")
+RotationTexture = 0.0
+RandomRotation = true
 
 [node name="@CollisionPolygon2D@67302" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/Collisiones/Laberinto" instance=ExtResource("7_s4reo")]
 position = Vector2(-1579.55, -525.421)
 polygon = PackedVector2Array(-98.9277, 83.2651, -188.277, 30.8651, -193.335, -37.771, -178.061, -86.4301, -297.99, -281.23, -378.852, -414.877, -353.787, -532.042, 36.4098, -515.911, 160.472, -389.667, -23.0668, -182.663)
-_texture = ExtResource("10_yncry")
-_textureLine = ExtResource("11_xjool")
+_texture = ExtResource("13_bpdn7")
+_scale = Vector2(0.5, 0.5)
+_textureLine = ExtResource("14_hx5lg")
+RotationTexture = 0.0
+RandomRotation = true
 
 [node name="@CollisionPolygon2D@67303" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/Collisiones/Laberinto" instance=ExtResource("7_s4reo")]
 position = Vector2(-1579.55, -525.421)
 polygon = PackedVector2Array(479.259, -861.374, 536.144, -816.328, 543.618, -700.293, 513.304, -629.844, 548.829, -568.014, 493.307, -526.07, 376.102, -465.571, 183.308, -413.51, 108.974, -484.872, 77.0648, -555.863, 144.356, -650.033)
 _texture = ExtResource("10_yncry")
+_scale = Vector2(0.5, 0.5)
 _textureLine = ExtResource("11_xjool")
+RotationTexture = 0.0
+RandomRotation = true
 
 [node name="@CollisionPolygon2D@67304" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/Collisiones/Laberinto" instance=ExtResource("7_s4reo")]
 position = Vector2(-1579.55, -525.421)
 polygon = PackedVector2Array(-62.5673, -599.509, -433.028, -608.397, -467.358, -726.08, -418.611, -802.026, -69.5027, -1101.63, 169.971, -1154.7, 364.237, -1051.18, 465.058, -935.747, 48.734, -631.774)
-_texture = ExtResource("10_yncry")
-_textureLine = ExtResource("11_xjool")
+_texture = ExtResource("11_qi82a")
+_scale = Vector2(0.5, 0.5)
+_textureLine = ExtResource("12_orsf0")
+RotationTexture = 0.0
+RandomRotation = true
 
 [node name="@CollisionPolygon2D@67305" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/Collisiones/Laberinto" instance=ExtResource("7_s4reo")]
 position = Vector2(-2065.55, -1371.42)
 polygon = PackedVector2Array(364.237, -1051.18, 516.716, -858.925, 900.461, -508.376, 768.13, -416.189, 598.394, -413.426, 441.564, -187.804, 268.542, -51.4214, 102.462, -224.703, -132.533, -279.788, -382.802, -286.213)
-_texture = ExtResource("10_yncry")
-_textureLine = ExtResource("11_xjool")
+_texture = ExtResource("13_bpdn7")
+_scale = Vector2(0.5, 0.5)
+_textureLine = ExtResource("14_hx5lg")
+RotationTexture = 0.0
+RandomRotation = true
 
 [node name="@CollisionPolygon2D@67306" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/Collisiones/Laberinto" instance=ExtResource("7_s4reo")]
 position = Vector2(-819.549, -1385.42)
 polygon = PackedVector2Array(-375.886, -511.728, -243.321, -630.785, -217.788, -801.689, -210.602, -976.995, -248.595, -1161.18, -100.033, -1249.69, 28.1646, -1273.32, 208.772, -1306.4, 304.442, -1248.99, 394.895, -1079.91, 509.094, -957.991, 516.716, -858.925, 543.618, -700.293, 526.768, -551.942, 369.017, -382.899, 183.308, -413.51, 76.9458, -217.855, -30.9373, -172.125, -213.668, -301.002, -383.462, -453.809)
-_texture = ExtResource("10_yncry")
-_textureLine = ExtResource("11_xjool")
+_texture = ExtResource("13_bpdn7")
+_scale = Vector2(0.5, 0.5)
+_textureLine = ExtResource("14_hx5lg")
+RotationTexture = 0.0
+RandomRotation = true
 
 [node name="@CollisionPolygon2D@67307" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/Collisiones/Laberinto" instance=ExtResource("7_s4reo")]
 position = Vector2(-819.549, -1385.42)
 polygon = PackedVector2Array(-477.483, -538.071, -562.678, -499.214, -583.631, -529.097, -577.556, -577.129, -564.763, -746.729, -489.944, -893.161, -387.039, -1016.72, -290.165, -935.261, -285.988, -765.512, -346.813, -601.988, -426.943, -495.202)
-_texture = ExtResource("10_yncry")
-_textureLine = ExtResource("11_xjool")
+_texture = ExtResource("11_qi82a")
+_scale = Vector2(0.5, 0.5)
+_textureLine = ExtResource("12_orsf0")
+RotationTexture = 0.0
+RandomRotation = true
 
 [node name="@CollisionPolygon2D@67308" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/Collisiones/Laberinto" instance=ExtResource("7_s4reo")]
 position = Vector2(-2281.55, 1882.58)
 polygon = PackedVector2Array(36.8379, 83.7416, -43.2039, 99.3078, -207.676, 66.0525, -315.276, 79.257, -303.444, 19.9608, -188.973, -173.149, -183.59, -263.262, -56.4621, -326.502, -0.596619, -326.722, 78.3747, -229.842, 112.421, -150.368, 163.01, -113.156, 294.096, -62.5132, 219.869, 16.0385, 128.795, 80.3007)
 _texture = ExtResource("10_yncry")
+_scale = Vector2(0.5, 0.5)
 _textureLine = ExtResource("11_xjool")
+RotationTexture = 0.0
+RandomRotation = true
 
 [node name="@CollisionPolygon2D@67309" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/Collisiones/Laberinto" instance=ExtResource("7_s4reo")]
 position = Vector2(-1795.55, 1081.58)
 polygon = PackedVector2Array(-319.235, -439.813, -223.485, -634.854, -43.2824, -702.582, 200.937, -732.274, 385.467, -728.543, 568.738, -580.568, 588.767, -444.624, 528.262, -317.868, 608.167, -236.558, 605.361, -158.09, 509.332, -93.1642, 399.667, -86.3418, 229.413, -24.1844, 270.528, -279.101, 93.4287, -405.101, -42.3307, -406.285, -164.54, -339.466, -307.309, -347.782)
 _texture = ExtResource("10_yncry")
+_scale = Vector2(0.5, 0.5)
 _textureLine = ExtResource("11_xjool")
+RotationTexture = 0.0
+RandomRotation = true
 
 [node name="@CollisionPolygon2D@67310" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/Collisiones/Laberinto" instance=ExtResource("7_s4reo")]
 position = Vector2(-2582.55, 1504.58)
 polygon = PackedVector2Array(14.9586, 200.581, -19.3431, 160.683, -43.2039, 99.3078, -207.676, 66.0525, 112.421, -150.368, 163.01, -113.156, 103.981, 47.2025, 102.434, 184.019, 83.3481, 223.806, 61.3361, 234.221)
-_texture = ExtResource("10_yncry")
-_textureLine = ExtResource("11_xjool")
+_texture = ExtResource("13_bpdn7")
+_scale = Vector2(0.5, 0.5)
+_textureLine = ExtResource("14_hx5lg")
+RotationTexture = 0.0
+RandomRotation = true
 
 [node name="_CollisionPolygon2D_67311" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/Collisiones/Laberinto" instance=ExtResource("7_s4reo")]
 position = Vector2(-2482.55, 1123.58)
 polygon = PackedVector2Array(14.9586, 200.581, -19.3431, 160.683, -60.9127, 143.349, -110.23, 163.072, -163.268, 163.317, -152.167, 66.1829, -217.727, 2.32275, 78.3747, -229.842, 112.421, -150.368, 163.01, -113.156, 103.981, 47.2025, 102.434, 184.019, 83.3481, 223.806, 61.3361, 234.221)
-_texture = ExtResource("10_yncry")
-_textureLine = ExtResource("11_xjool")
+_texture = ExtResource("13_bpdn7")
+_scale = Vector2(0.5, 0.5)
+_textureLine = ExtResource("14_hx5lg")
+RotationTexture = 0.0
+RandomRotation = true
 
 [node name="Meteoroide" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide" instance=ExtResource("11_i2vqs")]
 position = Vector2(976, -1362)
-rotation = 15979.5
+rotation = 29915.3
 scale = Vector2(2.975, 2.975)
 _texture = ExtResource("11_x4hhq")
 
@@ -945,9 +1157,7 @@ rotation = 1.68521
 position = Vector2(-3.9292, -1.60059)
 rotation = -0.270157
 player = NodePath("../../../../../../../Astronauta")
-RotateInEnter = false
 txt = "Recordá la misión"
-increment = 0.0
 
 [node name="sprite" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/GuyWall/Path2D/PathFollow2D/TheGuy2" index="0"]
 rotation = 1.63014
@@ -1133,7 +1343,7 @@ show_behind_parent = false
 points = PackedVector2Array(5949, -8939)
 
 [node name="meteoro" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoro/Meteoro1" node_paths=PackedStringArray("MeteoritoTarget") instance=ExtResource("11_i2vqs")]
-rotation = 145711.0
+rotation = 159461.0
 scale = Vector2(2.595, 2.595)
 MeteoritoTarget = NodePath("../../../Meteorito/MeteoritoAppear/targetMeteorito")
 _texture = ExtResource("17_uxw0q")
@@ -1154,7 +1364,7 @@ CenterObject = NodePath("../elPrincipito")
 show_behind_parent = false
 
 [node name="meteoro" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoro/Meteoro3" node_paths=PackedStringArray("MeteoritoTarget") instance=ExtResource("11_i2vqs")]
-rotation = 145692.0
+rotation = 159442.0
 scale = Vector2(2.595, 2.595)
 MeteoritoTarget = NodePath("../../../Meteorito/MeteoritoAppear/targetMeteorito")
 _texture = ExtResource("17_uxw0q")
@@ -1201,11 +1411,9 @@ polygon = PackedVector2Array(-3774.88, 1173.39, -3918.88, 141.392, -3780.88, -89
 [node name="TheGuy2" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoro" instance=ExtResource("35_frqpj")]
 position = Vector2(846, -6408)
 player = NodePath("../../../../Astronauta")
-RotateInEnter = false
 ScaleFactorDialogue = 5.0
 inversedDialogue = true
 DialogueDistance = Vector2(-72.21, -160.26)
-increment = 0.0
 
 [node name="Panel" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoro/TheGuy2" index="2"]
 offset_left = -72.21
@@ -1240,7 +1448,7 @@ metadata/_edit_group_ = true
 position = Vector2(-2.82837, -0.0246582)
 texture = ExtResource("8_4dx32")
 texture_scale = Vector2(2.545, 2.545)
-texture_rotation = 6.0
+texture_rotation = 3.0
 polygon = PackedVector2Array(2407.83, -1816.67, -35.5889, 447.276, -308.058, 448.265, -879.317, 382.736, -1580.37, 157.981, -1638.03, -558.993, -1740.04, -818.888, -1966.29, -1103.41, -2210.68, -1236.73, -2375.94, -1187.71, -2586.17, -994.445, -2733.41, -696.359, -2933.17, -933.562, -3075.95, -1146.72, -3364.26, -1643.7, -3564.47, -2213.92, -3564.06, -2951.89, -1270.47, -5165.9)
 
 [node name="Line2D" type="Line2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteorito/Collision/CollisionPolygon2D97/CollisionPolygon2D6"]
@@ -1256,11 +1464,9 @@ end_cap_mode = 2
 [node name="TheGuy3" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteorito" instance=ExtResource("35_frqpj")]
 position = Vector2(1396, -18191)
 player = NodePath("../../../../Astronauta")
-RotateInEnter = false
 ScaleFactorDialogue = 5.0
 DialogueDistance = Vector2(-11.445, -160.26)
 AstronautAngle = -2.755
-increment = 0.0
 
 [node name="sprite" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteorito/TheGuy3" index="0"]
 rotation = -2.755
@@ -1367,7 +1573,6 @@ grow_vertical = 2
 size_flags_horizontal = 4
 
 [node name="Panel" type="Panel" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro"]
-visible = false
 use_parent_material = true
 layout_mode = 1
 anchors_preset = 10
@@ -1385,15 +1590,15 @@ timeToAppear = 0.3
 [node name="Label" type="Label" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro/Panel"]
 use_parent_material = true
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.498
-anchor_top = 0.282
-anchor_right = 0.498
-anchor_bottom = 0.282
-offset_left = -194.072
-offset_top = -29.604
-offset_right = 193.928
-offset_bottom = 93.396
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -194.0
+offset_top = -61.5
+offset_right = 194.0
+offset_bottom = 61.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -1401,6 +1606,7 @@ theme_override_font_sizes/font_size = 25
 text = "BUEN DÍA CADETE 
 REPASEMOS LA MISIÓN..."
 horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Button" type="Button" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro/Panel"]
 use_parent_material = true
@@ -1452,10 +1658,11 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 25
-text = "DEBES RECOLECTA:
+text = "DEBES RECOLECTAR:
 3 TIPOS DE ROCAS ESPACIALES"
 horizontal_alignment = 1
 autowrap_mode = 2
+uppercase = true
 
 [node name="Button" type="Button" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro/Panel2"]
 use_parent_material = true
@@ -1540,6 +1747,7 @@ libraries = {
 }
 
 [node name="Panel3" type="Panel" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro"]
+visible = false
 use_parent_material = true
 layout_mode = 1
 anchors_preset = 15
@@ -2085,7 +2293,7 @@ position = Vector2(-10, -566)
 texture = ExtResource("30_8apus")
 
 [node name="Computer" parent="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior" instance=ExtResource("19_552cy")]
-position = Vector2(109, 116)
+position = Vector2(106, 123)
 isPerspective = true
 
 [node name="Outro" type="Control" parent="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior"]
@@ -2111,9 +2319,9 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -267.0
-offset_top = -407.0
+offset_top = -325.0
 offset_right = 267.0
-offset_bottom = 111.0
+offset_bottom = 29.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = ExtResource("20_5lj7u")
@@ -2174,9 +2382,9 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -267.0
-offset_top = -407.0
+offset_top = -320.0
 offset_right = 267.0
-offset_bottom = 111.0
+offset_bottom = 24.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = ExtResource("20_5lj7u")
@@ -2237,9 +2445,9 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -294.0
-offset_top = -407.0
+offset_top = -343.0
 offset_right = 294.0
-offset_bottom = 111.0
+offset_bottom = 47.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = ExtResource("20_5lj7u")
@@ -2293,15 +2501,16 @@ grow_vertical = 0
 theme = ExtResource("22_d5f6h")
 
 [node name="Panel4" type="Panel" parent="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/Outro"]
+visible = false
 use_parent_material = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -294.0
-offset_top = -407.0
+offset_top = -259.0
 offset_right = 294.0
-offset_bottom = 111.0
+offset_bottom = -37.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = ExtResource("20_5lj7u")
@@ -2405,6 +2614,7 @@ NextScene = "Map_Screen"
 [connection signal="Crash" from="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoro/Meteoro3/meteoro" to="Astronauta/StateMachine/Juego/Contenido/Instancia1/PhantomCamera2D2" method="set_priority" binds= [0]]
 [connection signal="Picked" from="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoro/Meteoro3/meteoro" to="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoro/Meteoro1/meteoro" method="ConvertToMeteorito"]
 [connection signal="Picked" from="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoro/Meteoro3/meteoro" to="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoro/Meteoro3/Trial" method="StopLine"]
+[connection signal="zooming" from="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoro/ZoomArea" to="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/background" method="scaleTexture"]
 [connection signal="pressed" from="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro/Panel/Button" to="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro/Panel2" method="SetVisibility" binds= [true]]
 [connection signal="pressed" from="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro/Panel2/Button" to="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro/Panel3" method="SetVisibility" binds= [true]]
 [connection signal="pressed" from="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro/Panel2/Button" to="Astronauta/StateMachine/Juego/Contenido/Instancia1/Astronauta" method="BlockMove" binds= [false]]
