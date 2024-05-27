@@ -3,6 +3,9 @@ extends Node2D
 
 @export var player : NodePath
 
+@export var RotateInEnter : bool
+var isRotating : bool
+
 @export var txt: String:
 	set(new_value):
 		if !Engine.is_editor_hint(): return
@@ -50,7 +53,28 @@ func _ready():
 func ShowDialogue(x):
 	if x.is_in_group("Player"):
 		$Panel.visible = true
+		if RotateInEnter:
+			isRotating = true
 
 func HideDialogue(x):
 	if x.is_in_group("Player"):
 		$Panel.visible = false
+#		if RotateInEnter:
+#			isRotating = false
+	
+var incruse = 0
+@export var increment : float
+func _process(delta):
+	if !RotateInEnter: return
+	
+	$sprite.rotation_degrees = $sprite.rotation_degrees + incruse
+	
+	if !isRotating :
+		if incruse <= 0: return
+		incruse -= delta * increment
+		
+	
+	if incruse >= 2.5: return
+	
+	if isRotating:
+		incruse += delta * increment

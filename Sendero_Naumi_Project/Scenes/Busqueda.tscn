@@ -1,4 +1,4 @@
-[gd_scene load_steps=137 format=3 uid="uid://ca6b1xkwwj7rp"]
+[gd_scene load_steps=138 format=3 uid="uid://ca6b1xkwwj7rp"]
 
 [ext_resource type="Script" path="res://_Scripts/Minigame_Save_Controller.gd" id="1_kdw84"]
 [ext_resource type="Texture2D" uid="uid://dbv6rcnmmb8db" path="res://Sprites/ZonaGeología/fondo_geografia.png" id="2_5bgsq"]
@@ -46,6 +46,7 @@
 [ext_resource type="Texture2D" uid="uid://o8vll30cj0bd" path="res://Sprites/ZonaGeología/angel.png" id="35_fe8vs"]
 [ext_resource type="Script" path="res://Scenes/GenericPanelController.gd" id="35_msa5i"]
 [ext_resource type="PackedScene" uid="uid://djhg7jvxtexyl" path="res://Scenes/UI_Scenes/btn_Change_Scene.tscn" id="36_u5u0v"]
+[ext_resource type="PackedScene" uid="uid://dlwmbps456ind" path="res://Scenes/Experiments/btnVolver.tscn" id="44_msv2t"]
 
 [sub_resource type="Animation" id="Animation_q6tin"]
 resource_name = "Anim_left"
@@ -165,6 +166,7 @@ shader_parameter/focus_point = Vector2(2.12, 2.075)
 shader_parameter/focus_radius = 3.0
 shader_parameter/ColorBackground = false
 shader_parameter/BackgroundColor = null
+shader_parameter/TransparentBackground = null
 shader_parameter/DrawTransparent = true
 shader_parameter/xOffset = null
 shader_parameter/yOffset = null
@@ -1397,7 +1399,6 @@ script = ExtResource("3_6yx8d")
 Consignas = ["Hey esto es una consigna"]
 
 [node name="Contenido" type="Control" parent="StateMachine/Consigna"]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -1454,6 +1455,21 @@ offset_bottom = 665.56
 grow_horizontal = 2
 grow_vertical = 0
 scale = Vector2(1.385, 1.385)
+
+[node name="CPUParticles2D" parent="StateMachine/Consigna/Contenido/Control" instance=ExtResource("16_m1kom")]
+position = Vector2(4.33209, -724.91)
+scale = Vector2(0.722022, 0.722022)
+amount = 30
+lifetime = 5.0
+emission_rect_extents = Vector2(300, 1)
+
+[node name="CPUParticles2D2" parent="StateMachine/Consigna/Contenido/Control" instance=ExtResource("16_m1kom")]
+position = Vector2(-22.3827, -723.466)
+scale = Vector2(0.722022, 0.722022)
+amount = 30
+lifetime = 5.0
+emission_rect_extents = Vector2(300, 1)
+color = Color(1, 1, 1, 1)
 
 [node name="Sprite2D6" type="Sprite2D" parent="StateMachine/Consigna/Contenido/Control"]
 position = Vector2(-5.77621, -348.736)
@@ -4017,21 +4033,6 @@ rotation = -3.80124
 scale = Vector2(0.324929, 0.269371)
 texture = ExtResource("9_vpiud")
 
-[node name="CPUParticles2D" parent="StateMachine/Consigna/Contenido/Control" instance=ExtResource("16_m1kom")]
-position = Vector2(4.33209, -724.91)
-scale = Vector2(0.722022, 0.722022)
-amount = 30
-lifetime = 5.0
-emission_rect_extents = Vector2(300, 1)
-
-[node name="CPUParticles2D2" parent="StateMachine/Consigna/Contenido/Control" instance=ExtResource("16_m1kom")]
-position = Vector2(-22.3827, -723.466)
-scale = Vector2(0.722022, 0.722022)
-amount = 30
-lifetime = 5.0
-emission_rect_extents = Vector2(300, 1)
-color = Color(1, 1, 1, 1)
-
 [node name="Juego" type="Node" parent="StateMachine" node_paths=PackedStringArray("NextState", "StateMachine")]
 script = ExtResource("5_kwitp")
 NextState = NodePath(".")
@@ -4039,6 +4040,7 @@ StateMachine = NodePath("..")
 InstanciasMinijuego = [NodePath("Contenido/Instancia1"), NodePath("Contenido/Instancia2"), NodePath("Contenido/Instancia3")]
 
 [node name="Contenido" type="Control" parent="StateMachine/Juego"]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -5396,7 +5398,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Timer" type="Timer" parent="StateMachine/Juego/Contenido/Instancia1/Consigna"]
-wait_time = 4.5
+wait_time = 2.5
 one_shot = true
 
 [node name="NubeController" type="Control" parent="StateMachine/Juego/Contenido/Instancia1"]
@@ -5694,7 +5696,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Timer" type="Timer" parent="StateMachine/Juego/Contenido/Instancia2/Consigna"]
-wait_time = 4.5
+wait_time = 2.5
 one_shot = true
 
 [node name="NubeController" type="Control" parent="StateMachine/Juego/Contenido/Instancia2"]
@@ -5994,7 +5996,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Timer" type="Timer" parent="StateMachine/Juego/Contenido/Instancia3/Consigna"]
-wait_time = 4.5
+wait_time = 2.5
 one_shot = true
 
 [node name="NubeController" type="Control" parent="StateMachine/Juego/Contenido/Instancia3"]
@@ -6200,15 +6202,15 @@ script = ExtResource("35_msa5i")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="StateMachine/Juego/Contenido/Moraleja/Panel"]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.501
-anchor_top = 0.563
-anchor_right = 0.501
-anchor_bottom = 0.563
-offset_left = -301.682
-offset_top = -176.883
-offset_right = 301.318
-offset_bottom = 177.117
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -301.5
+offset_top = -132.5
+offset_right = 301.5
+offset_bottom = 221.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/default_color = Color(1, 1, 1, 1)
@@ -6248,15 +6250,15 @@ state_machine = NodePath("../../../../..")
 [node name="correcto" type="TextureRect" parent="StateMachine/Juego/Contenido/Moraleja"]
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
-anchors_preset = -1
+anchors_preset = 8
 anchor_left = 0.5
-anchor_top = -0.124
+anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = -0.124
+anchor_bottom = 0.5
 offset_left = -251.5
-offset_top = -49.784
+offset_top = -371.0
 offset_right = 251.5
-offset_bottom = 50.216
+offset_bottom = -271.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1.03576e-05, 1.03576e-05)
@@ -6266,9 +6268,15 @@ expand_mode = 1
 
 [node name="Label" type="Label" parent="StateMachine/Juego/Contenido/Moraleja/correcto"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -156.5
+offset_top = -43.0
+offset_right = 156.5
+offset_bottom = 43.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -6283,16 +6291,7 @@ libraries = {
 "": SubResource("AnimationLibrary_hobo1")
 }
 
-[node name="btnVolver" type="Button" parent="StateMachine/Juego/Contenido"]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -119.0
-offset_top = 25.0
-offset_right = -29.0
-offset_bottom = 115.0
-grow_horizontal = 0
+[node name="btnVolver" parent="StateMachine/Juego" instance=ExtResource("44_msv2t")]
 
 [node name="Moraleja" type="Node" parent="StateMachine"]
 script = ExtResource("34_n3f0f")
@@ -6457,6 +6456,6 @@ NextScene = "Map_Screen"
 [connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia3/NubeController/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia3/Piedra_Busqueda" method="SetScale" binds= [false]]
 [connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia3/NubeController2/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia3/Piedra_Busqueda" method="SetNextAnimBool" binds= [true]]
 [connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia3/NubeController2/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia3/Piedra_Busqueda" method="SetScale" binds= [true]]
+[connection signal="pressed" from="StateMachine/Juego/Contenido/Moraleja/Panel/Button" to="." method="Set_Complete"]
 [connection signal="pressed" from="StateMachine/Juego/Contenido/Moraleja/Panel/Button" to="StateMachine/Juego/Contenido/Instancia1/Piedra_Busqueda" method="resetAllAnimation"]
 [connection signal="pressed" from="StateMachine/Juego/Contenido/Moraleja/Panel/Button" to="StateMachine/Juego/Contenido/Moraleja/Panel/Button" method="_on_pressed"]
-[connection signal="pressed" from="StateMachine/Juego/Contenido/btnVolver" to="StateMachine/Juego/Contenido/btnVolver" method="_on_pressed"]

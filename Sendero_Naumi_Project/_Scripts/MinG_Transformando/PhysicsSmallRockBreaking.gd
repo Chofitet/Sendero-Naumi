@@ -1,10 +1,13 @@
 extends RigidBody2D
 
-var BreakingSmallScene = preload("res://Scenes/Experiments/BreakingSmallRock.tscn")
 @export var instanceParent : Node2D
+@export var Preload : ResourcePreloader
+var BreakingSmallScene
 
 func _ready():
 	get_node("Area2D").area_entered.connect(_on_area_2d_body_entered)
+	if Preload:
+		BreakingSmallScene = Preload.get_resource("BreakingSmallRock")
 
 func _on_area_2d_body_entered(body):
 	if body.is_in_group("BreakingSmallTrigger"):
@@ -24,3 +27,6 @@ func SpawnOnDeath():
 
 func UnFreeze():
 	freeze = false
+
+func SetInstances(x):
+	BreakingSmallScene = x

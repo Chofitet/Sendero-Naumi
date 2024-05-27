@@ -13,7 +13,7 @@ signal Transitioned
 func _ready():
 	load_file()
 	if minigameResourseFile.StateMinigames["ToLevelNaumi"]:
-		get_tree().change_scene_to_file("res://Scenes/Naumi_Level_Up.tscn")
+		get_tree().change_scene_to_file("res://Scenes/zone_complete_event.tscn")
 
 func load_file():
 	minigameResourseFile  = ResourceLoader.load(save_file_path  + save_file_name)
@@ -24,6 +24,8 @@ func save():
 #Setea la bool is_Complete en true para una zona cuando todos sus minijuegos fueron completados
 func CheckAllTrue(Minigames):
 	load_file()
+	Zoneresource = ResourceLoader.load(save_file_path + "ZoneResource.tres")
+	if Zoneresource.StateZones[self.name]: return
 	var i = 0
 	var once = true
 	for m in Minigames:
@@ -32,14 +34,13 @@ func CheckAllTrue(Minigames):
 		else: i += 1
 		
 		if(i == len(Minigames)):
-			Zoneresource = ResourceLoader.load(save_file_path + "ZoneResource.tres")
 			if !Zoneresource.StateZones[self.name]: once = false
 			Zoneresource.StateZones[self.name] = true
 			ResourceSaver.save(Zoneresource,save_file_path + "ZoneResource.tres")
 			if !once: 
 				minigameResourseFile.Set_State_Minigame("ToLevelNaumi")
 				save()
-				get_tree().change_scene_to_file("res://Scenes/Naumi_Level_Up.tscn")
+				get_tree().change_scene_to_file("res://Scenes/zone_complete_event.tscn")
 
 #Reinicia todos las Zonas y Minijuegos
 func RestartAll():

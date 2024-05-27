@@ -1,6 +1,6 @@
 extends Area2D
 var rocks := []
-var tim
+var tim = false
 
 func Agrup(body):
 	if !tim:
@@ -14,7 +14,7 @@ func SetParent():
 	for r in rocks:
 		var i = len(rocks)
 		r.Freeze()
-		r.get_parent().remove_child(r)
+		r.reparent(self)
 		add_child(r)
 
 func time():

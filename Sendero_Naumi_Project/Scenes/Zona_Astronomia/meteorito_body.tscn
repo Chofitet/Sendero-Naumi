@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://bkkgrtyxtvwh"]
+
+[ext_resource type="Script" path="res://_Scripts/MinG_Astronauta/meteorito_body.gd" id="1_fdq5i"]
+[ext_resource type="Texture2D" uid="uid://b1al6piky5ml1" path="res://Sprites/ZonaAstronomia/meteoro - astronauta.png" id="2_ryafa"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_48e7l"]
+radius = 88.0909
+
+[node name="MeteoritoBody" type="CharacterBody2D"]
+motion_mode = 1
+script = ExtResource("1_fdq5i")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.511, 0.511)
+texture = ExtResource("2_ryafa")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_48e7l")
+disabled = true

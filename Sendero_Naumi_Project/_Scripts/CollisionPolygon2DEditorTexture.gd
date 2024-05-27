@@ -5,8 +5,31 @@ var original_points : Array
 var outlineFactor
 var collision_polygon: Polygon2D
 
+@export var _texture : Texture:
+	set(new_value):
+		_texture = new_value
+		$CollisionPolygon2D6.texture = _texture
+
+@export var _scale : Vector2 = Vector2(1,1):
+	set(new_value):
+		_scale = new_value
+		$CollisionPolygon2D6.texture_scale = _scale
+
+@export var _textureLine : Texture:
+	set(new_value):
+		_textureLine = new_value
+		$CollisionPolygon2D6/Line2D.texture = _textureLine
+
+@export var RotationTexture: float:
+	set(new_value):
+		RotationTexture = new_value
+		$CollisionPolygon2D6.texture_rotation = rad_to_deg(RotationTexture)
+
+@export var RandomRotation: bool
 
 func _ready():
+	if RandomRotation:
+		$CollisionPolygon2D6.texture_rotation = randi_range(0, 2*PI)
 	draw.connect(update_line2d)
 	for child in get_children():
 		if child is Polygon2D:

@@ -33,4 +33,7 @@ func SetGameInstance(setBool):
 
 func Set_next_Instance():
 	StateMachine.Trigger_On_Child_Transition(NextState.name)
-	
+
+func _process(delta):
+	print(Engine.get_frames_per_second())
+

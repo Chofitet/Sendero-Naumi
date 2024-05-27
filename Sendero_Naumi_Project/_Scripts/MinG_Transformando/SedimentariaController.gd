@@ -3,6 +3,7 @@ extends Sprite2D
 var timer
 @export var overlay : ColorRect
 @export var nubeAnim : AnimationPlayer
+@export var UnfreezeRocks :=[]
 var initPosition
 
 func _ready():
@@ -12,9 +13,14 @@ func _ready():
 
 func StartFall():
 	timer.start()
+	await get_tree().create_timer(1.5).timeout
+	for i in UnfreezeRocks:
+		get_node(i).UnfrezeeAll()
 
 func FinishFall():
 	get_node("Area2D").call_deferred("SetParent")
+	for i in UnfreezeRocks:
+		get_node(i).Freeze()
 	TranstaleToCenterScreen(2)
 
 

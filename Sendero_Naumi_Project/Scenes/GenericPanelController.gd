@@ -3,6 +3,7 @@ var buttons := []
 @export var timeToBtn = 1
 @export var SetVisibleFalseWithBtn : bool
 @export var timeToAppear : float
+@export var offBtnWithBtn : bool
 var timer
 signal pixels_rendered
 
@@ -14,6 +15,8 @@ func _ready():
 			btn.visible = false
 			if SetVisibleFalseWithBtn:
 				btn.pressed.connect(SetVisibility.bind(false))
+			if offBtnWithBtn:
+				btn.pressed.connect(offBtn.bind(btn))
 		if btn is Area2D:
 			btn.area_entered.connect(SetVisibilityFalseArea2D)
 	draw.connect(StartTimer)
@@ -45,3 +48,6 @@ func SetVisibilityFalseArea2D(x):
 func StartTimerToAppear():
 	await get_tree().create_timer(timeToAppear).timeout
 	visible = true
+
+func offBtn(btn):
+	btn.visible = false

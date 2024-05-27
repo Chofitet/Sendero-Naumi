@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dqyb2b0ey8ckp"]
+[gd_scene load_steps=17 format=3 uid="uid://dqyb2b0ey8ckp"]
 
 [ext_resource type="Texture2D" uid="uid://nuybqhitpej1" path="res://Sprites/Mapa/fondo_mapa.png" id="1_tohrf"]
 [ext_resource type="Texture2D" uid="uid://05mdqsdsbuqm" path="res://Sprites/Mapa/geologia_mapa.png" id="2_4r0kt"]
@@ -7,6 +7,11 @@
 [ext_resource type="LabelSettings" uid="uid://b7f8w8wf071ek" path="res://Themes/Geología/LabelSettings_Busqueda.tres" id="5_n317a"]
 [ext_resource type="Script" path="res://Scenes/GenericPanelController.gd" id="5_pobjl"]
 [ext_resource type="Script" path="res://_Scripts/ChangeScene.gd" id="7_g1gi8"]
+[ext_resource type="Texture2D" uid="uid://btclh5i3dqhfm" path="res://Sprites/UI/Icono Naumi.png" id="8_1usuw"]
+[ext_resource type="Texture2D" uid="uid://bpcc2ljyhkxfl" path="res://Sprites/Mapa/pin check - mapa.png" id="8_6ftc5"]
+[ext_resource type="StyleBox" uid="uid://b3tjes2hcm3wx" path="res://Resources/UI_Resources/StyleBoxTrasparent.tres" id="8_v4xy8"]
+[ext_resource type="Texture2D" uid="uid://blvtoxf6sl7ty" path="res://Sprites/glow.png" id="11_iajsr"]
+[ext_resource type="Texture2D" uid="uid://bgxpoofwqbfdx" path="res://Sprites/ZonaMegafauna/estrella - foodtruck.png" id="12_c2chk"]
 
 [sub_resource type="Animation" id="Animation_asulk"]
 length = 0.001
@@ -33,6 +38,30 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Panel/btnVolver/CPUParticles2D:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Panel/btnVolver:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1.475, 1.475)]
 }
 
 [sub_resource type="Animation" id="Animation_201g2"]
@@ -62,12 +91,40 @@ tracks/1/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Panel/btnVolver/CPUParticles2D:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.1, 2.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Panel/btnVolver:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(2.1, 2.4, 2.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(2, 2), Vector2(1.475, 1.475)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_tmldh"]
 _data = {
 "RESET": SubResource("Animation_asulk"),
 "zone_complete": SubResource("Animation_201g2")
 }
+
+[sub_resource type="Curve" id="Curve_mf6x6"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -3.49665, 0.0, 0, 0]
+point_count = 2
 
 [node name="Zone_Complete_Event" type="Control"]
 layout_mode = 3
@@ -106,21 +163,84 @@ stretch_mode = 4
 script = ExtResource("3_f0n8u")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Zone"]
-autoplay = "zone_complete"
 libraries = {
 "": SubResource("AnimationLibrary_tmldh")
 }
 
+[node name="Pines" type="Node2D" parent="Zone"]
+
+[node name="MegafaunaZone" type="Node2D" parent="Zone/Pines"]
+
+[node name="Sprite2D" type="Sprite2D" parent="Zone/Pines/MegafaunaZone"]
+visible = false
+position = Vector2(162.5, 155)
+scale = Vector2(0.636816, 0.636816)
+texture = ExtResource("8_6ftc5")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Zone/Pines/MegafaunaZone"]
+visible = false
+position = Vector2(277.5, 589)
+scale = Vector2(0.636816, 0.636816)
+texture = ExtResource("8_6ftc5")
+
+[node name="AstronomiaZone" type="Node2D" parent="Zone/Pines"]
+
+[node name="Sprite2D" type="Sprite2D" parent="Zone/Pines/AstronomiaZone"]
+visible = false
+position = Vector2(388.5, 211)
+scale = Vector2(0.636816, 0.636816)
+texture = ExtResource("8_6ftc5")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Zone/Pines/AstronomiaZone"]
+visible = false
+position = Vector2(399.5, 401)
+scale = Vector2(0.636816, 0.636816)
+texture = ExtResource("8_6ftc5")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Zone/Pines/AstronomiaZone"]
+visible = false
+position = Vector2(273.5, 593)
+scale = Vector2(0.636816, 0.636816)
+texture = ExtResource("8_6ftc5")
+
+[node name="Sprite2D4" type="Sprite2D" parent="Zone/Pines/AstronomiaZone"]
+visible = false
+position = Vector2(193.5, 779)
+scale = Vector2(0.636816, 0.636816)
+texture = ExtResource("8_6ftc5")
+
+[node name="GeologiaZone" type="Node2D" parent="Zone/Pines"]
+
+[node name="Sprite2D" type="Sprite2D" parent="Zone/Pines/GeologiaZone"]
+visible = false
+position = Vector2(345.5, 30.9999)
+scale = Vector2(0.636816, 0.636816)
+texture = ExtResource("8_6ftc5")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Zone/Pines/GeologiaZone"]
+visible = false
+position = Vector2(150.5, 150)
+scale = Vector2(0.636816, 0.636816)
+texture = ExtResource("8_6ftc5")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Zone/Pines/GeologiaZone"]
+visible = false
+position = Vector2(291.5, 593)
+scale = Vector2(0.636816, 0.636816)
+texture = ExtResource("8_6ftc5")
+
 [node name="Panel" type="Panel" parent="Zone"]
 visible = false
 layout_mode = 1
-anchors_preset = 5
+anchors_preset = -1
 anchor_left = 0.5
+anchor_top = -0.039
 anchor_right = 0.5
-offset_left = -545.0
-offset_top = -154.0
-offset_right = 545.0
-offset_bottom = 154.0
+anchor_bottom = -0.039
+offset_left = -583.5
+offset_top = -164.802
+offset_right = 662.5
+offset_bottom = 187.198
 grow_horizontal = 2
 scale = Vector2(0.5, 0.5)
 pivot_offset = Vector2(545, 154)
@@ -148,21 +268,56 @@ uppercase = true
 
 [node name="btnVolver" type="Button" parent="Zone/Panel"]
 layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
+anchors_preset = -1
+anchor_left = 0.527
 anchor_top = 1.0
-anchor_right = 0.5
+anchor_right = 0.527
 anchor_bottom = 1.0
-offset_left = -44.0
-offset_top = -90.0
-offset_right = 76.0
-offset_bottom = 30.0
+offset_left = -60.642
+offset_top = -72.0001
+offset_right = 79.358
+offset_bottom = 67.9999
 grow_horizontal = 2
 grow_vertical = 0
-theme = ExtResource("4_da2c4")
+scale = Vector2(1.475, 1.475)
+pivot_offset = Vector2(60.785, 69.12)
+theme_override_styles/pressed = ExtResource("8_v4xy8")
+theme_override_styles/focus = ExtResource("8_v4xy8")
+icon = ExtResource("8_1usuw")
+flat = true
 script = ExtResource("7_g1gi8")
-NextScene = "Map_Screen"
+NextScene = "Naumi_Level_Up"
 fade_time = 0.2
 smoothness = 0.1
+
+[node name="glow" type="Sprite2D" parent="Zone/Panel/btnVolver"]
+self_modulate = Color(0.8125, 0.636719, 0.292969, 1)
+show_behind_parent = true
+position = Vector2(60.339, 62.3728)
+scale = Vector2(0.813559, 0.813559)
+texture = ExtResource("11_iajsr")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Zone/Panel/btnVolver"]
+show_behind_parent = true
+position = Vector2(61.6949, 67.7965)
+scale = Vector2(1.35593, 1.35593)
+emitting = false
+amount = 12
+lifetime = 1.9
+texture = ExtResource("12_c2chk")
+emission_shape = 3
+emission_rect_extents = Vector2(36, 1)
+direction = Vector2(0, 1)
+spread = 0.0
+gravity = Vector2(0, 100)
+initial_velocity_min = 100.0
+initial_velocity_max = 100.0
+angular_velocity_min = -236.96
+angular_velocity_max = 109.37
+tangential_accel_min = 10.13
+tangential_accel_max = 27.85
+scale_amount_min = 0.1
+scale_amount_max = 0.2
+scale_amount_curve = SubResource("Curve_mf6x6")
 
 [connection signal="pressed" from="Zone/Panel/btnVolver" to="Zone/Panel/btnVolver" method="_on_pressed"]

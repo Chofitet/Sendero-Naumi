@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=3 uid="uid://de1kwjpvb1m5p"]
+
+[ext_resource type="Script" path="res://_Scripts/MinG_Transformando/PathPart.gd" id="1_h8aqs"]
+[ext_resource type="PackedScene" uid="uid://3rvhy3nlrjxy" path="res://Scenes/Zona_Megafauna/mole_particles.tscn" id="2_4tcw0"]
+[ext_resource type="Texture2D" uid="uid://cvtrs5ytlacbn" path="res://Sprites/ZonaGeología/piece4.png" id="2_cdxd0"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_m1w0l"]
+radius = 18.0278
+
+[node name="PathPart" type="RigidBody2D"]
+visible = false
+rotation = 0.0568894
+collision_layer = 2
+collision_mask = 2
+can_sleep = false
+freeze = true
+freeze_mode = 1
+script = ExtResource("1_h8aqs")
+
+[node name="Particles" parent="." instance=ExtResource("2_4tcw0")]
+rotation = 1.43001
+emitting = false
+amount = 4
+lifetime = 1.5
+one_shot = true
+explosiveness = 1.0
+emission_shape = 0
+spread = 45.0
+gravity = Vector2(0, 2000)
+initial_velocity_min = 366.18
+initial_velocity_max = 800.0
+scale_amount_min = 1.0
+scale_amount_max = 1.0
+color = Color(1, 1, 1, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+self_modulate = Color(0.265625, 0.207031, 0.234375, 1)
+texture = ExtResource("2_cdxd0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CircleShape2D_m1w0l")

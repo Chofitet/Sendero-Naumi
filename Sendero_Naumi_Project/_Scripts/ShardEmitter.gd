@@ -14,7 +14,7 @@ const SHARD = preload("res://Scenes/Experiments/Shard.tscn")
 var triangles = []
 var shards = []
 
-func _ready() -> void:
+func setShatter() -> void:
 	if get_parent() is Sprite2D:
 		var _rect = get_parent().get_rect()
 		var points = []

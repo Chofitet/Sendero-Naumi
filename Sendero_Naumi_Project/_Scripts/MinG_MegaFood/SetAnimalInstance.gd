@@ -4,8 +4,7 @@ extends Control
 @onready var Spot = $AnchorSpot/Spot
 var DragObjects :=[]
 var instanceResourse = InstanceResource.new()
-@export var stateMachine : Node
-@export var StateToChange : StateMinigame
+@export var stateMachine : Node 
 
 func _ready():
 	get_parent().Transitioned.connect(SetInstanceAnimal)
@@ -27,31 +26,63 @@ func SetCorrectPlate(instance):
 	if instance == get_node(Instances[0]).name:
 		#smilodonte
 		Spot.RigthObject = DragObjects[2]
-		resultText.text = "[b]A LOS MEGATERIOS NOS ENCANTA COMER HIERBAS!
+		resultText.text = "GRRRACIAS!
 
-Y LAS SOBRAS QUE DEJAN OTROS ANIMALES!
+CAZO TODOS LOS DÍAS CON MIS 
+GARRAS Y DIENTES DE SABLE
 
-NUESTRAS GARRAS SON SÓLO PARA DEFENDERNOS,
+PERO HOY DIJE:
 
-SOMOS HERVIBOROS Y CARROÑEROS."
+SMILO,
+TOMATE EL DÍA.
+
+Y LA VERDAD QUE NO ME ARREPIENTO
+
+CARNÍVORO 4-LIFE!"
 	elif instance == get_node(Instances[1]).name:
 		#gliptodonte
 		Spot.RigthObject = DragObjects[0]
-		resultText.text = "gliptodonte"
+		resultText.text = "LE ENCANTÓ A MI SEÑORA
+
+SUMÉ PUNTOS A LO LOCO
+
+LOS GLYPTODON SOMOS MUY 
+ESTRICTOS CON NUESTRA DIETA
+SOLO VEGETALES
+
+ASI QUE VAMOS A VENIR SEGUIDO!
+
+UN GLYPTOABRAZO"
 	elif instance == get_node(Instances[2]).name:
 		#megaterio
 		Spot.RigthObject = DragObjects[3]
-		resultText.text = "[b]A LOS MEGATERIOS NOS ENCANTA COMER HIERBAS!
+		resultText.text = "RICASO!!
+A LOS MEGATERIOS NOS ENCANTAN
+LOS VEGETALES Y LA CARROÑA 
+(LAS SOBRAS DE OTROS ANIMALES)
+¿CÓMO SABÍAS?
 
-Y LAS SOBRAS QUE DEJAN OTROS ANIMALES!
+PD: LAS GARRAS SOLO LAS USAMOS
+PARA DEFENDERNOS
 
-NUESTRAS GARRAS SON SÓLO PARA DEFENDERNOS,
+PERDON SI TE ASUSTÉ
 
-SOMOS HERVIBOROS Y CARROÑEROS."
+RECOMIENDO!"
 	elif instance == get_node(Instances[3]).name:
 		#macrauquenia
 		Spot.RigthObject = DragObjects[0]
-		resultText.text = "macrauquenia"
+		resultText.text = "ME VINO DE DIEZ LA VEGGIE MERIENDA!
+
+GRACIAS POR NO PREGUNTAR SI SOY 
+UN CAMELLO,
+
+TODOS ME DICEN LO MISMO
+
+PERO NADA QUE VER!
+NI PRIMOS SOMOS
+
+TENGO QUE IR A EXTINGUIRME AHORA,
+PERO DESPUÉS VUELVO"
 
 @onready var papercontroller = $PaperController/pivot
 @onready var RigthImg = load("res://Sprites/ZonaMegafauna/resultado - bien.png")
@@ -63,18 +94,18 @@ func SetPaperParameters(resultBool):
 	if resultBool:
 		resultSprite.texture = RigthImg
 	else: resultSprite.texture = WrongImg
-	
+
 
 func SetResultEvent():
 	$PaperController/AnimationPlayer.play("paper")
 	papercontroller.get_node("Button").button_down.connect(EndResultEvent)
 
 func EndResultEvent():
-	
-	if get_node(Instances[3]).visible == true:
-		$ButtonFin._on_pressed()
-	else:
-		stateMachine.Trigger_On_Child_Transition(StateToChange.name)
 	$PaperController/AnimationPlayer.play_backwards("paper")
+	$BlockScreen.SetVisibility(true)
+	if get_node(Instances[3]).visible:
+		$FinalPanel.SetVisibility(true)
+	else:
+		get_parent().get_parent().Trigger_On_Child_Transition("Juego")
 	
 	

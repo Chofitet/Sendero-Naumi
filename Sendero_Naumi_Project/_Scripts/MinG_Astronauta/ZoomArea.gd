@@ -3,6 +3,7 @@ var inArea
 @export var PhantomCam : PhantomCamera2D
 @export var ZoomFactor : Vector2
 @export var timeToZoom : float
+signal zooming
 
 func _ready():
 	area_entered.connect(Set_Bool_True)
@@ -11,6 +12,7 @@ func _ready():
 func Set_Bool_True(x):
 	if x.is_in_group("Player"): 
 		inArea = true
+		zooming.emit()
 
 func Set_Bool_false(x):
 	if x.is_in_group("Player"):

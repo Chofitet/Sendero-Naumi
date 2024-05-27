@@ -1,10 +1,10 @@
 [gd_scene load_steps=15 format=3 uid="uid://y2uavtfxilcv"]
 
 [ext_resource type="Script" path="res://_Scripts/MinG_Mamushka/mamushka_layer.gd" id="1_77ket"]
-[ext_resource type="Texture2D" uid="uid://bvctyxt4id4qo" path="res://Sprites/ZonaAstronomia/corteza traste - matryoshka.png" id="2_g7k75"]
-[ext_resource type="Texture2D" uid="uid://d32row7tshqb0" path="res://Sprites/ZonaAstronomia/corteza cadera - matryoshka.png" id="3_idsvd"]
-[ext_resource type="Texture2D" uid="uid://i35qq4wfk7ig" path="res://Sprites/ZonaAstronomia/corteza cabeza - matryoshka.png" id="4_vd5v2"]
-[ext_resource type="SpriteFrames" uid="uid://ccg0trgfp1e7r" path="res://Resources/mamushkasAnimatedEmotions/mamushka_Corteza_anim.tres" id="5_biq4e"]
+[ext_resource type="Texture2D" uid="uid://b1atlx1ra4nev" path="res://Sprites/ZonaAstronomia/manto superior traste - matryoshka.png" id="2_2qsk2"]
+[ext_resource type="Texture2D" uid="uid://bawvtie0lnxa6" path="res://Sprites/ZonaAstronomia/manto superior cadera - matryoshka.png" id="3_7hiys"]
+[ext_resource type="Texture2D" uid="uid://c0nbss33gavx8" path="res://Sprites/ZonaAstronomia/manto superior cabeza - matryoshka.png" id="4_07f1d"]
+[ext_resource type="SpriteFrames" uid="uid://du6ewcx4aeo10" path="res://Resources/mamushkasAnimatedEmotions/mamushka_Manto_Superior_anim.tres" id="5_xjvax"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8f5q3"]
 radius = 40.0
@@ -345,11 +345,11 @@ position = Vector2(-70, 0)
 [node name="Sprite2D" type="Sprite2D" parent="pivot/Abajo/pivotRot"]
 z_index = -1
 position = Vector2(70, 0)
-texture = ExtResource("2_g7k75")
+texture = ExtResource("2_2qsk2")
 
 [node name="Sprite2D2" type="Sprite2D" parent="pivot/Abajo/pivotRot"]
 position = Vector2(70, 0)
-texture = ExtResource("3_idsvd")
+texture = ExtResource("3_7hiys")
 
 [node name="Arriba" type="Node2D" parent="pivot"]
 
@@ -358,13 +358,16 @@ position = Vector2(-65, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="pivot/Arriba/pivotRot"]
 position = Vector2(64.978, 0)
-texture = ExtResource("4_vd5v2")
+texture = ExtResource("4_07f1d")
+
+[node name="parte2" type="Sprite2D" parent="pivot/Arriba/pivotRot/Sprite2D"]
+show_behind_parent = true
 
 [node name="emociones" type="AnimatedSprite2D" parent="pivot/Arriba/pivotRot/Sprite2D"]
 show_behind_parent = true
-position = Vector2(5.02201, 1.42924e-05)
-sprite_frames = ExtResource("5_biq4e")
+sprite_frames = ExtResource("5_xjvax")
 animation = &"idle"
+frame_progress = 0.300852
 
 [node name="Label" type="Node2D" parent="."]
 visible = false
@@ -396,7 +399,6 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 bbcode_enabled = true
-text = "[center]El Nucleo Externo son 2 km de chota sssssss dasdgfaf dsfdsfsdfsD"
 scroll_active = false
 autowrap_mode = 2
 

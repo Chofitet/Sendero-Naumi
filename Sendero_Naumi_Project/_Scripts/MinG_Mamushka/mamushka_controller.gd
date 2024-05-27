@@ -17,6 +17,7 @@ func _ready():
 		SpriteLayers[0].visible = true
 
 func AddLayer():
+	SpriteLayers[state].visible = false
 	state += 1
 	SpriteLayers[state].visible = true
 	if state == 4:
@@ -33,9 +34,13 @@ func Rotate(rot = 0, time = 0):
 	tween.tween_property(self,"rotation",rot,time)
 
 func InDraggin():
+	SpriteLayers[state].get_node("emotions").play("surprise")
 	anim.pause()
+	
 
 func MouseRealese():
+	var SL = SpriteLayers[state].get_node("emotions")
+	if SL: SL.play("idle")
 	anim.play("idle")
 
 func PlayAnimTitulo():
@@ -43,11 +48,11 @@ func PlayAnimTitulo():
 
 func FinalState():
 	ToFinal.emit()
+	$ButtonFinal.visible = false
 	$DragObject.mouse_realese.disconnect(MouseRealese)
 	anim.play("to_final")
 	z_index = 1
 	rotation = 0
 	await anim.animation_finished
-	anim.play(("opacity"))
 	Outro.visible = true
 	Outro.get_node("AnimationPlayer").Play()

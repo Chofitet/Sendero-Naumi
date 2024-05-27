@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://ck4m8k46bmha1"]
+[gd_scene load_steps=28 format=3 uid="uid://ck4m8k46bmha1"]
 
 [ext_resource type="Script" path="res://_Scripts/AdjustSeparationWithScreenSize.gd" id="2_1v6rf"]
 [ext_resource type="Script" path="res://_Scripts/ScrollController.gd" id="2_es768"]
@@ -15,6 +15,7 @@
 [ext_resource type="Script" path="res://_Scripts/Zone.gd" id="11_n2pjm"]
 [ext_resource type="Texture2D" uid="uid://b4mb0fyar87n4" path="res://Sprites/Mapa/universo_mapa.png" id="11_r0n4l"]
 [ext_resource type="Script" path="res://_Scripts/StateMachine/State_Machine.gd" id="12_2rk75"]
+[ext_resource type="Texture2D" uid="uid://ocq30h65yxis" path="res://Sprites/UI/BotonAceptarCeleste.png" id="13_48n7l"]
 [ext_resource type="Script" path="res://_Scripts/StateMachine/NoZone.gd" id="13_tgu8h"]
 [ext_resource type="Texture2D" uid="uid://lvhlr8303o1m" path="res://Sprites/Mapa/megafauna_mapa.png" id="14_jw7qj"]
 [ext_resource type="Script" path="res://_Scripts/StateMachine/MegafaunaZone.gd" id="15_y7a6y"]
@@ -24,6 +25,8 @@
 [ext_resource type="LabelSettings" uid="uid://b7f8w8wf071ek" path="res://Themes/Geología/LabelSettings_Busqueda.tres" id="18_m0o3f"]
 [ext_resource type="Texture2D" uid="uid://btclh5i3dqhfm" path="res://Sprites/UI/Icono Naumi.png" id="21_cjjb8"]
 [ext_resource type="Texture2D" uid="uid://nuybqhitpej1" path="res://Sprites/Mapa/fondo_mapa.png" id="21_ti06q"]
+[ext_resource type="Script" path="res://_Scripts/StateMachine/State.gd" id="25_jjswu"]
+[ext_resource type="Texture2D" uid="uid://dowufrhlgpfe" path="res://Sprites/UI/Boton_Volver.png" id="26_1t1rb"]
 
 [node name="Map_Screen" type="Control"]
 z_index = 1
@@ -80,7 +83,7 @@ grow_horizontal = 2
 grow_vertical = 2
 follow_focus = true
 horizontal_scroll_mode = 0
-vertical_scroll_mode = 2
+vertical_scroll_mode = 3
 script = ExtResource("2_es768")
 limit = 5.0
 anchors = [NodePath("VBoxContainer/Piso1"), NodePath("VBoxContainer/Piso2"), NodePath("VBoxContainer/Piso3/Piso3")]
@@ -310,6 +313,7 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.33, 0.33)
 expand_mode = 1
+script = ExtResource("11_n2pjm")
 
 [node name="TextureRect" type="TextureRect" parent="ScrollContainer/VBoxContainer/Piso2/AstronomiaZone"]
 layout_mode = 1
@@ -337,26 +341,11 @@ script = ExtResource("5_oybyc")
 state_to_change = NodePath("../../../../../../StateMachine/AstronomiaZone")
 state_machine = NodePath("../../../../../../StateMachine")
 
-[node name="CompleteState" type="ColorRect" parent="ScrollContainer/VBoxContainer/Piso2/AstronomiaZone"]
+[node name="check" type="Sprite2D" parent="ScrollContainer/VBoxContainer/Piso2/AstronomiaZone/TextureRect"]
 visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(1, 1, 1, 0)
-
-[node name="TextureRect" type="TextureRect" parent="ScrollContainer/VBoxContainer/Piso2/AstronomiaZone/CompleteState"]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -196.0
-offset_bottom = 204.0
-grow_horizontal = 0
-texture = ExtResource("9_t7uji")
-expand_mode = 1
+position = Vector2(493.939, 875.757)
+scale = Vector2(5.30303, 5.30303)
+texture = ExtResource("13_48n7l")
 
 [node name="GeologiaZone" type="TextureRect" parent="ScrollContainer/VBoxContainer/Piso2"]
 layout_mode = 1
@@ -407,29 +396,11 @@ script = ExtResource("5_oybyc")
 state_to_change = NodePath("../../../../../../StateMachine/GeologiaZone")
 state_machine = NodePath("../../../../../../StateMachine")
 
-[node name="CompleteState" type="ColorRect" parent="ScrollContainer/VBoxContainer/Piso2/GeologiaZone"]
+[node name="check" type="Sprite2D" parent="ScrollContainer/VBoxContainer/Piso2/GeologiaZone/TextureRect"]
 visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = 1476.0
-offset_right = 0.00012207
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(1, 1, 1, 0)
-
-[node name="TextureRect" type="TextureRect" parent="ScrollContainer/VBoxContainer/Piso2/GeologiaZone/CompleteState"]
-visible = false
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -398.0
-offset_bottom = 421.0
-grow_horizontal = 0
-texture = ExtResource("9_t7uji")
-expand_mode = 1
+position = Vector2(534.712, 885.909)
+scale = Vector2(5.30303, 5.30303)
+texture = ExtResource("13_48n7l")
 
 [node name="Piso1" type="MarginContainer" parent="ScrollContainer/VBoxContainer"]
 layout_mode = 2
@@ -459,6 +430,7 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.33, 0.33)
 expand_mode = 1
+script = ExtResource("11_n2pjm")
 
 [node name="TextureRect" type="TextureRect" parent="ScrollContainer/VBoxContainer/Piso1/Piso1/MegafaunaZone"]
 layout_mode = 1
@@ -491,26 +463,11 @@ script = ExtResource("5_oybyc")
 state_to_change = NodePath("../../../../../../../StateMachine/MegafaunaZone")
 state_machine = NodePath("../../../../../../../StateMachine")
 
-[node name="CompleteState" type="ColorRect" parent="ScrollContainer/VBoxContainer/Piso1/Piso1/MegafaunaZone"]
+[node name="check" type="Sprite2D" parent="ScrollContainer/VBoxContainer/Piso1/Piso1/MegafaunaZone/TextureRect"]
 visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(1, 1, 1, 0)
-
-[node name="TextureRect" type="TextureRect" parent="ScrollContainer/VBoxContainer/Piso1/Piso1/MegafaunaZone/CompleteState"]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -398.0
-offset_bottom = 421.0
-grow_horizontal = 0
-texture = ExtResource("9_t7uji")
-expand_mode = 1
+position = Vector2(766.848, 1184.85)
+scale = Vector2(5.30303, 5.30303)
+texture = ExtResource("13_48n7l")
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="."]
 visible = false
@@ -544,7 +501,7 @@ initial_state = NodePath("NoZone")
 
 [node name="AstronomiaZone" type="Node" parent="StateMachine" node_paths=PackedStringArray("ButtonBack")]
 script = ExtResource("16_gw1a5")
-Minigames = [NodePath("ZoomingZone/SubViewport/ZoomingZone/Astronauta")]
+Minigames = [NodePath("ZoomingZone/SubViewport/ZoomingZone/Astronauta"), NodePath("ZoomingZone/SubViewport/ZoomingZone/Calendario"), NodePath("ZoomingZone/SubViewport/ZoomingZone/DondeEstuvo"), NodePath("ZoomingZone/SubViewport/ZoomingZone/Mamushkas")]
 ButtonBack = NodePath("../../SubViewportContainer")
 
 [node name="ZoomingZone" type="SubViewportContainer" parent="StateMachine/AstronomiaZone"]
@@ -590,7 +547,7 @@ text = "3"
 label_settings = ExtResource("18_m0o3f")
 
 [node name="Calendario" parent="StateMachine/AstronomiaZone/ZoomingZone/SubViewport/ZoomingZone" instance=ExtResource("6_wq3mc")]
-position = Vector2(378.995, 1465.72)
+position = Vector2(689.36, 413.905)
 
 [node name="Label" type="Label" parent="StateMachine/AstronomiaZone/ZoomingZone/SubViewport/ZoomingZone/Calendario"]
 offset_right = 40.0
@@ -599,7 +556,7 @@ text = "1"
 label_settings = ExtResource("18_m0o3f")
 
 [node name="DondeEstuvo" parent="StateMachine/AstronomiaZone/ZoomingZone/SubViewport/ZoomingZone" instance=ExtResource("6_wq3mc")]
-position = Vector2(690.285, 398.355)
+position = Vector2(342.79, 1365.3)
 
 [node name="Label2" type="Label" parent="StateMachine/AstronomiaZone/ZoomingZone/SubViewport/ZoomingZone/DondeEstuvo"]
 offset_right = 34.0
@@ -615,10 +572,6 @@ offset_right = 34.0
 offset_bottom = 86.0
 text = "4"
 label_settings = ExtResource("18_m0o3f")
-
-[node name="ManzanaAcaramelada" parent="StateMachine/AstronomiaZone/ZoomingZone/SubViewport/ZoomingZone" instance=ExtResource("6_wq3mc")]
-visible = false
-position = Vector2(738.44, 800)
 
 [node name="Título" type="Sprite2D" parent="StateMachine/AstronomiaZone/ZoomingZone/SubViewport/ZoomingZone"]
 visible = false
@@ -812,13 +765,21 @@ z_index = 2
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -122.0
-offset_top = 27.0
-offset_right = -32.0
-offset_bottom = 117.0
+offset_left = -126.0
+offset_top = 20.0
+offset_right = 5.00012
+offset_bottom = 159.0
 grow_horizontal = 0
+scale = Vector2(0.725, 0.725)
 size_flags_horizontal = 8
 size_flags_vertical = 8
+theme_override_styles/pressed = ExtResource("7_7sb65")
+theme_override_styles/focus = ExtResource("7_7sb65")
+icon = ExtResource("26_1t1rb")
+flat = true
 script = ExtResource("5_oybyc")
 state_to_change = NodePath("../NoZone")
 state_machine = NodePath("..")
+
+[node name="Node" type="Node" parent="."]
+script = ExtResource("25_jjswu")

@@ -111,7 +111,7 @@ func CommandAppear():
 	StartComand.emit()
 	CommandText.visible = true
 	if inx_animal == 0:
-		CommandText.get_node("Label").text = "¡POR NÚMERO, POR FAVOR!"
+		CommandText.get_node("Label").text = "EN FILA POR FAVOR!"
 		await get_tree().create_timer(3).timeout
 		SetCommand(inx_animal + 1,animalsArray[inx_animal].name,true)
 		
@@ -120,7 +120,7 @@ func CommandAppear():
 		
 	
 func SetCommand(order : float, animal : String, istutorial = false):
-	CommandText.get_node("Label").text = "¡NÚMERO " + str(order) + "!" + "¡" + animal + "!"
+	CommandText.get_node("Label").text = "SIGUIENTE! " + animal + "!"
 	await get_tree().create_timer(3).timeout
 	CommandText.visible = false
 	PlayEnterAnim()

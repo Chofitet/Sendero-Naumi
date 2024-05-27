@@ -7,6 +7,11 @@ extends Node2D
 		$pivot/Arriba/pivotRot/Sprite2D.texture = ParteArriba
 		AdjustRotationPivot()
 
+@export var ParteArriba2 : Texture: 
+	set(new_value):
+		ParteArriba2 = new_value
+		$pivot/Arriba/pivotRot/Sprite2D/parte2.texture = ParteArriba2
+
 @export var ParteAbajo : Texture:
 	set(new_value):
 			ParteAbajo = new_value
@@ -34,6 +39,8 @@ extends Node2D
 var panel = load("res://Scenes/Zona_Astronomia/panelMamushka.tscn")
 @export var color : Color
 @export var panelText : String
+@export var panelText1  : String = ""
+@export var panelText2  : String = ""
 @export var offsetPanel : Vector2
 var isInArea
 var MamushkaController
@@ -92,6 +99,7 @@ func CheckRigthIsLayer(x) :
 		x.z_index = 0
 		var tween2 = get_tree().create_tween()
 		tween2.tween_property(self,"rotation",initRot,0.1).set_ease(Tween.EASE_IN_OUT)
+		await tween2.finished
 		x.OnSpot(true)
 		isAngry = true
 		await get_tree().create_timer(2).timeout
@@ -140,12 +148,14 @@ func SpawnPanel():
 	var instancePanel = panel.instantiate()
 	get_parent().add_child(instancePanel)
 	instancePanel.Connect(mamu)
-	instancePanel.position = position + Vector2(-100,-100) + offsetPanel
+	instancePanel.position = position + Vector2(-160,-160) + offsetPanel
 	var newStylebox = instancePanel.get_theme_stylebox("panel").duplicate()
 	newStylebox.bg_color = color
 	instancePanel.add_theme_stylebox_override("panel", newStylebox)
 	
-	instancePanel.get_node("RichTextLabel").text = panelText
+	instancePanel.get_node("RichTextLabel").text = panelText + "
+	" + panelText1 + "
+	"+ panelText2
 
 func SetEmotion(emotion, time = 0):
 	emotions.play(emotion)

@@ -1,0 +1,247 @@
+[gd_scene load_steps=17 format=3 uid="uid://b77gk1g1ulal5"]
+
+[ext_resource type="Script" path="res://_Scripts/Naumi_Controller.gd" id="1_mwu8k"]
+[ext_resource type="SpriteFrames" uid="uid://vahks4sl257e" path="res://Resources/NaumiSpriteFrames/N0.tres" id="2_iyxb0"]
+[ext_resource type="StyleBox" uid="uid://b3tjes2hcm3wx" path="res://Resources/UI_Resources/StyleBoxTrasparent.tres" id="3_qpxq3"]
+[ext_resource type="PackedScene" uid="uid://djhg7jvxtexyl" path="res://Scenes/UI_Scenes/btn_Change_Scene.tscn" id="4_sgwwh"]
+[ext_resource type="Script" path="res://_Scripts/PlayAnimation.gd" id="4_x4acu"]
+[ext_resource type="Texture2D" uid="uid://dnpt3mo8vtigw" path="res://Sprites/Naumi/ZZZ - idle.png" id="5_1noc2"]
+[ext_resource type="Texture2D" uid="uid://dowufrhlgpfe" path="res://Sprites/UI/Boton_Volver.png" id="6_obt1x"]
+[ext_resource type="PackedScene" uid="uid://bac1ysj2c0bok" path="res://Scenes/Experiments/hand_ui.tscn" id="7_r1x77"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_n1evj"]
+font_size = 120
+outline_size = 16
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_hvnxi"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_tl17c"]
+resource_name = "enter"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(2, 2), Vector2(1.805, 1.805)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimationPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"Play"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_rp0io"]
+resource_name = "idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1.805, 1.805), Vector2(2.2, 2.2), Vector2(1.805, 1.805)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_os5q7"]
+_data = {
+"RESET": SubResource("Animation_hvnxi"),
+"enter": SubResource("Animation_tl17c"),
+"idle": SubResource("Animation_rp0io")
+}
+
+[sub_resource type="Animation" id="Animation_nd4le"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("zzz:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("zzz:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_pe6oj"]
+resource_name = "tap_naumi"
+length = 2.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("zzz:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2, 2.1, 2.2, 2.3, 2.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(0.4, 2.46, 1),
+"update": 0,
+"values": [0.0, -0.0872665, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("zzz:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.6, 2.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_33cxl"]
+_data = {
+"RESET": SubResource("Animation_nd4le"),
+"tap_naumi": SubResource("Animation_pe6oj")
+}
+
+[node name="NaumiController" type="Node2D"]
+script = ExtResource("1_mwu8k")
+
+[node name="naumiAnim" type="AnimatedSprite2D" parent="."]
+position = Vector2(-3, -182)
+scale = Vector2(0.762, 0.762)
+sprite_frames = ExtResource("2_iyxb0")
+animation = &"evolve"
+frame = 37
+frame_progress = 1.0
+speed_scale = 2.0
+
+[node name="Button" type="Button" parent="."]
+offset_left = -302.0
+offset_top = -532.0
+offset_right = 304.0
+offset_bottom = 176.0
+theme_override_styles/focus = ExtResource("3_qpxq3")
+flat = true
+
+[node name="Label" type="Label" parent="Button"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.504
+anchor_top = 0.531
+anchor_right = 0.504
+anchor_bottom = 0.531
+offset_left = -27.28
+offset_top = -113.948
+offset_right = 26.72
+offset_bottom = 54.052
+scale = Vector2(1e-05, 1e-05)
+pivot_offset = Vector2(26.505, 86.52)
+text = "?"
+label_settings = SubResource("LabelSettings_n1evj")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Button/Label"]
+libraries = {
+"": SubResource("AnimationLibrary_os5q7")
+}
+script = ExtResource("4_x4acu")
+animation = "idle"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ButtonChangeScene" parent="CanvasLayer" instance=ExtResource("4_sgwwh")]
+visible = false
+anchors_preset = -1
+anchor_top = 0.858
+anchor_bottom = 0.858
+offset_left = 64.0
+offset_top = -74.24
+offset_right = 197.0
+offset_bottom = 64.76
+scale = Vector2(-1, 1)
+text = "
+"
+icon = ExtResource("6_obt1x")
+flat = true
+icon_alignment = 1
+NextScene = "Map_Screen"
+
+[node name="zzz" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(187, -509)
+texture = ExtResource("5_1noc2")
+hframes = 19
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+speed_scale = 0.7
+libraries = {
+"": SubResource("AnimationLibrary_33cxl")
+}
+
+[node name="handUI" parent="." instance=ExtResource("7_r1x77")]
+offset_top = -580.0
+offset_bottom = -580.0
+AnimToPlay = "idle_anim"
