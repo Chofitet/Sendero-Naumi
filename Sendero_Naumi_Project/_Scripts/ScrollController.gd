@@ -16,7 +16,7 @@ func _ready():
 	timer.timeout.connect(calculateGesture)
 	set_deferred("scroll_vertical",next_anchor)
 	var y = get_node(anchors[i]).global_position.y 
-	next_anchor = abs(get_viewport_rect().size.y*getAnchorInBackScreen() - (get_viewport_rect().size.y/2))
+	next_anchor = getAnchorInBackScreen()
 	set_deferred("scroll_vertical",next_anchor)
 	stopHold.connect(HoldingClick)
 
@@ -92,12 +92,15 @@ func find_closest_node():
 			i = 2
 	return closest_node
 
-func getAnchorInBackScreen() -> int:
-	var LastScreen = PlayerVariables.lastState
-	if LastScreen == "MegafaunaZone":
+func getAnchorInBackScreen() -> float:
+	var NumPiso = PlayerVariables.NumPiso
+	if NumPiso == 1:
 		i = 0
-		return 3
-	if LastScreen == "GeologiaZone":
+		return get_viewport_rect().size.y * 3
+	if NumPiso == 2:
 		i = 1
-		return 2
-	return 3
+		return get_viewport_rect().size.y - get_viewport_rect().size.y/5
+	if NumPiso == 3:
+		i = 2
+		return 0
+	return get_viewport_rect().size.y * 3

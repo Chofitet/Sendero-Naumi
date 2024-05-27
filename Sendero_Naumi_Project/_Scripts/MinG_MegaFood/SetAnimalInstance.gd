@@ -104,7 +104,7 @@ func EndResultEvent():
 	$PaperController/AnimationPlayer.play_backwards("paper")
 	$BlockScreen.SetVisibility(true)
 	if get_node(Instances[3]).visible:
-		$Cordon/Cortina.PlayCordonAppear()
+		$FinalPanel.SetVisibility(true)
 	else:
 		get_parent().get_parent().Trigger_On_Child_Transition("Juego")
 	

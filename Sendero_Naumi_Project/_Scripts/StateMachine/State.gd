@@ -24,6 +24,8 @@ func save():
 #Setea la bool is_Complete en true para una zona cuando todos sus minijuegos fueron completados
 func CheckAllTrue(Minigames):
 	load_file()
+	Zoneresource = ResourceLoader.load(save_file_path + "ZoneResource.tres")
+	if Zoneresource.StateZones[self.name]: return
 	var i = 0
 	var once = true
 	for m in Minigames:
@@ -32,7 +34,6 @@ func CheckAllTrue(Minigames):
 		else: i += 1
 		
 		if(i == len(Minigames)):
-			Zoneresource = ResourceLoader.load(save_file_path + "ZoneResource.tres")
 			if !Zoneresource.StateZones[self.name]: once = false
 			Zoneresource.StateZones[self.name] = true
 			ResourceSaver.save(Zoneresource,save_file_path + "ZoneResource.tres")

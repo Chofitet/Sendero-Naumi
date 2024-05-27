@@ -1399,7 +1399,6 @@ script = ExtResource("3_6yx8d")
 Consignas = ["Hey esto es una consigna"]
 
 [node name="Contenido" type="Control" parent="StateMachine/Consigna"]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -1456,6 +1455,21 @@ offset_bottom = 665.56
 grow_horizontal = 2
 grow_vertical = 0
 scale = Vector2(1.385, 1.385)
+
+[node name="CPUParticles2D" parent="StateMachine/Consigna/Contenido/Control" instance=ExtResource("16_m1kom")]
+position = Vector2(4.33209, -724.91)
+scale = Vector2(0.722022, 0.722022)
+amount = 30
+lifetime = 5.0
+emission_rect_extents = Vector2(300, 1)
+
+[node name="CPUParticles2D2" parent="StateMachine/Consigna/Contenido/Control" instance=ExtResource("16_m1kom")]
+position = Vector2(-22.3827, -723.466)
+scale = Vector2(0.722022, 0.722022)
+amount = 30
+lifetime = 5.0
+emission_rect_extents = Vector2(300, 1)
+color = Color(1, 1, 1, 1)
 
 [node name="Sprite2D6" type="Sprite2D" parent="StateMachine/Consigna/Contenido/Control"]
 position = Vector2(-5.77621, -348.736)
@@ -4019,21 +4033,6 @@ rotation = -3.80124
 scale = Vector2(0.324929, 0.269371)
 texture = ExtResource("9_vpiud")
 
-[node name="CPUParticles2D" parent="StateMachine/Consigna/Contenido/Control" instance=ExtResource("16_m1kom")]
-position = Vector2(4.33209, -724.91)
-scale = Vector2(0.722022, 0.722022)
-amount = 30
-lifetime = 5.0
-emission_rect_extents = Vector2(300, 1)
-
-[node name="CPUParticles2D2" parent="StateMachine/Consigna/Contenido/Control" instance=ExtResource("16_m1kom")]
-position = Vector2(-22.3827, -723.466)
-scale = Vector2(0.722022, 0.722022)
-amount = 30
-lifetime = 5.0
-emission_rect_extents = Vector2(300, 1)
-color = Color(1, 1, 1, 1)
-
 [node name="Juego" type="Node" parent="StateMachine" node_paths=PackedStringArray("NextState", "StateMachine")]
 script = ExtResource("5_kwitp")
 NextState = NodePath(".")
@@ -4041,6 +4040,7 @@ StateMachine = NodePath("..")
 InstanciasMinijuego = [NodePath("Contenido/Instancia1"), NodePath("Contenido/Instancia2"), NodePath("Contenido/Instancia3")]
 
 [node name="Contenido" type="Control" parent="StateMachine/Juego"]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

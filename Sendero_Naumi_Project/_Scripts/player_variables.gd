@@ -4,6 +4,7 @@ var NaumiLevel : int
 var MinigameStage = 1
 var lastState = "NoZone"
 var ToLevelNaumi = false
+var NumPiso = 0
 
 var save_file_path = "user://"
 var save_file_name = "MiniGameResource.tres"
@@ -17,6 +18,8 @@ func IncreaseMinigameStage():
 
 func SaveLastState(state):
 	load_file()
+	if lastState != "NoZone": 
+		SaveLastPiso()
 	lastState = state
 	minigameResourseFile.Set_Zone(state)
 	save()
@@ -35,3 +38,14 @@ func save():
 func SetNaumiEvolve():
 	minigameResourseFile.ToLevelNaumiFalse()
 	SaveLastState("NoZone")
+
+func SaveLastPiso():
+	load_file()
+	var x = minigameResourseFile.Get_Zone()
+	match x:
+		"MegafaunaZone": 
+			NumPiso = 1
+		"AstronomiaZone": 
+			NumPiso = 2
+		"GeologiaZone": 
+			NumPiso = 2

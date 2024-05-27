@@ -48,6 +48,7 @@ func PlayAnimTitulo():
 
 func FinalState():
 	ToFinal.emit()
+	$ButtonFinal.visible = false
 	$DragObject.mouse_realese.disconnect(MouseRealese)
 	anim.play("to_final")
 	z_index = 1

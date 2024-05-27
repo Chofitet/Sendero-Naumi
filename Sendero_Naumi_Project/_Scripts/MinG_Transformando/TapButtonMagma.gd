@@ -35,10 +35,8 @@ func Tap():
 		EarthquakeAnim.OnSmallEarthquake()
 		ActiveDesquebrajado(NumOfTouch)
 		NumOfTouch += 1
-		Input.vibrate_handheld(600)
 		HitLavaFace(0.6)
 		return
-	Input.vibrate_handheld(1500)
 	NumOfTap = 3
 	disabled = true
 	timer.start()

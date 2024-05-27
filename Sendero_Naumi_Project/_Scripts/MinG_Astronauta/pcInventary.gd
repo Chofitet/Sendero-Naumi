@@ -6,8 +6,10 @@ var _misionComplete
 @onready var fadeTexture = preload("res://addons/scene_manager/shader_patterns/diagonal.png")
 @export var StateMachine : Node
 @export var phantomCam : PhantomCamera2D
+signal InventaryGone
 
 func _ready():
+	$Panel/Button.pressed.connect(MakeFade)
 	for m in $Panel/HBoxContainer.get_children():
 		MeteorosUI.append(m.get_child(1))
 
@@ -22,12 +24,17 @@ func CheckMeteoro(index):
 	if _misionComplete:
 		CompleteMision()
 		return
+	InventaryGone.emit()
 	visible = false
 
 func CompleteMision():
 	$Panel/HBoxContainer.visible = false
 	$Panel/MisionLabel.visible = true
-	await get_tree().create_timer(4).timeout
+	await get_tree().create_timer(2).timeout
+	$Panel/Button.visible = true
+
+
+func MakeFade():
 	var instantiateFade = fade.instantiate()
 	get_parent().add_child(instantiateFade)
 	instantiateFade.init(fadeTexture,2,true)
@@ -39,8 +46,6 @@ func CompleteMision():
 	get_parent().add_child(instantiateFade2)
 	instantiateFade2.init(fadeTexture,2,false,false)
 	
-	
-
 func MisionComplete():
 	_misionComplete = true
 	pass

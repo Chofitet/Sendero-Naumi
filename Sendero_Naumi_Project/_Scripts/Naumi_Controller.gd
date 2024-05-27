@@ -31,11 +31,13 @@ func _ready():
 
 func ToLevelUp():
 	await get_tree().create_timer(2).timeout
+	$handUI.SetVisibility(true)
 	NaumiAnim.play("call")
 	btn.pressed.connect(Evolve)
 	
 func Evolve():
 	btn.pressed.disconnect(Evolve)
+	$handUI.SetVisibility(false)
 	NaumiAnim.play("evolve")
 	await NaumiAnim.animation_finished
 	btn.pressed.connect(Sleeping)

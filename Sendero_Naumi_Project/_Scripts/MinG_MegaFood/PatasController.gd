@@ -120,7 +120,7 @@ func CommandAppear():
 		
 	
 func SetCommand(order : float, animal : String, istutorial = false):
-	CommandText.get_node("Label").text = "ADELANTE " + animal + "!"
+	CommandText.get_node("Label").text = "SIGUIENTE! " + animal + "!"
 	await get_tree().create_timer(3).timeout
 	CommandText.visible = false
 	PlayEnterAnim()
