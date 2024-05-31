@@ -1,22 +1,43 @@
-[gd_scene load_steps=4 format=3 uid="uid://b4nd3esel25b6"]
+[gd_scene load_steps=12 format=3 uid="uid://b4nd3esel25b6"]
 
+[ext_resource type="Gradient" uid="uid://dd7vlv6t47cxd" path="res://Resources/Astronauta_Resources/estelaInterior.tres" id="1_dx5nb"]
 [ext_resource type="Script" path="res://_Scripts/MinG_Astronauta/TrialEffect.gd" id="1_kpop6"]
+[ext_resource type="Texture2D" uid="uid://wvr5sa0gwg5e" path="res://Sprites/ZonaAstronomia/estela meteorito - astronauta-0001.png" id="2_lqsw5"]
+[ext_resource type="Texture2D" uid="uid://bhax6ajte0vaj" path="res://Sprites/ZonaAstronomia/estela meteorito - astronauta-0002.png" id="3_3cgng"]
+[ext_resource type="Texture2D" uid="uid://cqfgkmjc6a8p6" path="res://Sprites/ZonaAstronomia/estela meteorito - astronauta-0003.png" id="4_kxpwm"]
+[ext_resource type="Texture2D" uid="uid://bdwcmeo2ejqvl" path="res://Sprites/ZonaAstronomia/estela meteorito - astronauta-0004.png" id="5_31nna"]
+[ext_resource type="Texture2D" uid="uid://bnrcwixxxj8wl" path="res://Sprites/ZonaAstronomia/estela meteorito - astronauta-0005.png" id="6_mbbfs"]
+[ext_resource type="Texture2D" uid="uid://cs8xkuge33qo2" path="res://Sprites/ZonaAstronomia/estela meteorito - astronauta-0006.png" id="7_oid0q"]
+[ext_resource type="Texture2D" uid="uid://bs75l58idlvr7" path="res://Sprites/ZonaAstronomia/estela meteorito - astronauta-0007.png" id="8_egtxx"]
+[ext_resource type="Texture2D" uid="uid://c37mjd5dov5eg" path="res://Sprites/ZonaAstronomia/estela meteorito - astronauta-0008.png" id="9_61bs7"]
 
-[sub_resource type="Curve" id="Curve_3bauk"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.210526), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="Gradient" id="Gradient_b5ybi"]
-offsets = PackedFloat32Array(0, 0.768, 1)
-colors = PackedColorArray(1, 0, 0, 1, 0.952941, 0.560784, 0, 1, 0.11, 0.11, 1, 1)
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_u5pd2"]
+frames = 8
+speed_scale = 6.0
+frame_0/texture = ExtResource("2_lqsw5")
+frame_1/texture = ExtResource("3_3cgng")
+frame_1/duration = 1.0
+frame_2/texture = ExtResource("4_kxpwm")
+frame_2/duration = 1.0
+frame_3/texture = ExtResource("5_31nna")
+frame_3/duration = 1.0
+frame_4/texture = ExtResource("6_mbbfs")
+frame_4/duration = 1.0
+frame_5/texture = ExtResource("7_oid0q")
+frame_5/duration = 1.0
+frame_6/texture = ExtResource("8_egtxx")
+frame_6/duration = 1.0
+frame_7/texture = ExtResource("9_61bs7")
+frame_7/duration = 1.0
 
 [node name="Trial" type="Line2D"]
 show_behind_parent = true
 top_level = true
-width = 60.0
-width_curve = SubResource("Curve_3bauk")
-gradient = SubResource("Gradient_b5ybi")
-begin_cap_mode = 2
+width = 250.0
+gradient = ExtResource("1_dx5nb")
+texture = SubResource("AnimatedTexture_u5pd2")
+texture_mode = 1
+joint_mode = 2
 end_cap_mode = 2
 script = ExtResource("1_kpop6")
-Max_Size = 100.0
+Max_Size = 80.0
