@@ -20,6 +20,11 @@ var collision_polygon: Polygon2D
 		_textureLine = new_value
 		$CollisionPolygon2D6/Line2D.texture = _textureLine
 
+@export var _textureLineWidth : float = 40:
+	set(new_value):
+		_textureLineWidth = new_value
+		$CollisionPolygon2D6/Line2D.width = _textureLineWidth
+
 @export var RotationTexture: float:
 	set(new_value):
 		RotationTexture = new_value

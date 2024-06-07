@@ -11,20 +11,25 @@ signal InventaryGone
 func _ready():
 	$Panel/Button.pressed.connect(MakeFade)
 	for m in $Panel/HBoxContainer.get_children():
-		MeteorosUI.append(m.get_child(1))
+		MeteorosUI.append(m.get_child(0).get_node("AnimationPlayer"))
 
 func CheckMeteoro(index):
 	visible = true
+	$Panel/AnimationPlayer.play("enterPanel")
 	var anim : AnimationPlayer = MeteorosUI[index] 
-	await  get_tree().create_timer(2).timeout
+	await  $Panel/AnimationPlayer.animation_finished
+	$Panel.clip_contents = false
 	anim.play("check")
 	await anim.animation_finished
-	computer.Setface("surprice")
-	await get_tree().create_timer(3).timeout
+	computer.Setface("smile")
+	await get_tree().create_timer(2).timeout
 	if _misionComplete:
 		CompleteMision()
 		return
 	InventaryGone.emit()
+	$Panel/AnimationPlayer.play("RESET")
+	computer.Setface("idle")
+	$Panel.clip_contents = true
 	visible = false
 
 func CompleteMision():

@@ -9,8 +9,8 @@ var isRotating : bool
 @export var txt: String:
 	set(new_value):
 		if !Engine.is_editor_hint(): return
-		txt = new_value
-		$Panel/Label.text = txt
+		#txt = new_value
+		#$Panel/Label.text = txt
 
 @export var ScaleFactorDialogue: float:
 	set(new_value):
@@ -78,3 +78,9 @@ func _process(delta):
 	
 	if isRotating:
 		incruse += delta * increment
+
+func SetVisibility(shape,x):
+	visible = x
+
+func disabledCollisionShape():
+	$Area2D/CollisionShape2D.disabled = true

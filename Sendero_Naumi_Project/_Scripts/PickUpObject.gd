@@ -27,8 +27,11 @@ func PickObject(x):
 		instance.z_index = 1
 		get_parent().get_node("Trial").DuplicyPop_back()
 		get_parent().get_node("Trial").reparent(instance)
+		get_parent().get_node("Trial2").DuplicyPop_back()
+		get_parent().get_node("Trial2").reparent(instance)
 		instance.global_position = global_position
 		instance.applyForce(x,MeteoritoTarget)
+		get_parent().queue_free()
 
 
 func _process(delta):

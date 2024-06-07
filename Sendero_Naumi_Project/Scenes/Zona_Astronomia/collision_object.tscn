@@ -1,9 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://bhvn7rj6jhh2"]
+[gd_scene load_steps=4 format=3 uid="uid://bhvn7rj6jhh2"]
 
+[ext_resource type="Script" path="res://_Scripts/MinG_Astronauta/collision_object.gd" id="1_qtpmv"]
 [ext_resource type="Texture2D" uid="uid://cjl6cx0dqgmjx" path="res://Sprites/ZonaGeología/Piedras/metamorfica - transformaciones.png" id="1_ypqc8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1i207"]
-radius = 40.6079
+radius = 41.01
 
 [node name="CollisionObject" type="RigidBody2D" groups=["movible"]]
 position = Vector2(262, 232)
@@ -11,10 +12,11 @@ collision_layer = 4
 collision_mask = 7
 contact_monitor = true
 freeze_mode = 1
+script = ExtResource("1_qtpmv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_1i207")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.170787, 0.170787)
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_ypqc8")
