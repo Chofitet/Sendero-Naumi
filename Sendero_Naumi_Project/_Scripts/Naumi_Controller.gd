@@ -48,9 +48,10 @@ func Evolve():
 
 func Sleeping():
 	btn.visible = false
-	NaumiAnim.play("sleeping")
+	NaumiAnim.play("tapped")
 	Anim.play("tap_naumi")
 	await Anim.animation_finished
+	NaumiAnim.play("sleeping")
 	btn.visible = true
 
 func SetNaumi(num):
@@ -59,6 +60,10 @@ func SetNaumi(num):
 			NaumiAnim.sprite_frames = preload("res://Resources/NaumiSpriteFrames/N0.tres")
 		1:
 			NaumiAnim.sprite_frames = preload("res://Resources/NaumiSpriteFrames/N1.tres")
+		2:
+			NaumiAnim.sprite_frames = preload("res://Resources/NaumiSpriteFrames/N2.tres")
+		3:
+			NaumiAnim.sprite_frames = preload("res://Resources/NaumiSpriteFrames/N3.tres")
 
 func NaumiState() -> int:
 	var num = 0
