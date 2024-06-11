@@ -9,6 +9,10 @@ signal pixels_rendered
 
 
 func _ready():
+	var timerbtnAnim : Timer = Timer.new()
+	add_child(timerbtnAnim)
+	timerbtnAnim.timeout.connect(AnimButton)
+	timerbtnAnim.start(1)
 	for btn in get_children():
 		if btn is Button:
 			buttons.append(btn)
@@ -20,6 +24,8 @@ func _ready():
 		if btn is Area2D:
 			btn.area_entered.connect(SetVisibilityFalseArea2D)
 	draw.connect(StartTimer)
+	
+	SetOffset()
 	
 	
 func StartTimer():
@@ -51,3 +57,25 @@ func StartTimerToAppear():
 
 func offBtn(btn):
 	btn.visible = false
+
+
+func AnimButton():
+	if !buttons : return
+	for btn in buttons:
+		btn.rotation_degrees = -10
+		await get_tree().create_timer(0.5).timeout
+		btn.rotation_degrees = 10
+		await get_tree().create_timer(0.5).timeout
+		
+#		var tween = get_tree().create_tween()
+#		tween.tween_method(BounceBtn.bind(btn),-15,15,0.5).set_ease(Tween.EASE_IN_OUT)
+#		tween.tween_method(BounceBtn.bind(btn),15,-15,0.5).set_ease(Tween.EASE_IN_OUT)
+
+func BounceBtn(value, btn):
+	btn.rotation_degrees = value
+	
+
+func SetOffset():
+	for btn in buttons:
+		if (btn != null):
+			btn.pivot_offset = Vector2(btn.size.x/2,btn.size.y/2)

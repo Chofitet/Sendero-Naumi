@@ -26,63 +26,64 @@ func SetCorrectPlate(instance):
 	if instance == get_node(Instances[0]).name:
 		#smilodonte
 		Spot.RigthObject = DragObjects[2]
-		resultText.text = "GRRRACIAS!
+		resultText.text = "[b]GRRRACIAS![/b]
 
-CAZO TODOS LOS DÍAS CON MIS 
-GARRAS Y DIENTES DE SABLE
+[b]CAZO TODOS LOS DÍAS 
+CON MIS GARRAS Y DIENTES DE SABLE[/b]
 
 PERO HOY DIJE:
 
-SMILO,
-TOMATE EL DÍA.
+'SMILO,
+TOMATE EL DÍA.'
 
 Y LA VERDAD QUE NO ME ARREPIENTO
 
-CARNÍVORO 4-LIFE!"
+[b]CARNÍVORO 4-LIFE![/b]"
 	elif instance == get_node(Instances[1]).name:
 		#gliptodonte
 		Spot.RigthObject = DragObjects[0]
-		resultText.text = "LE ENCANTÓ A MI SEÑORA
+		resultText.text = "[b]LE ENCANTÓ A MI SEÑORA!![/b]
 
-SUMÉ PUNTOS A LO LOCO
+SUMÉ PUNTOS A LO LOCO, GRACIAS
 
-LOS GLYPTODON SOMOS MUY 
-ESTRICTOS CON NUESTRA DIETA
-SOLO VEGETALES
+LOS GLYPTODONTES SOMOS MUY 
+ESTRICTOS CON NUESTRA DIETA:
+[b]SOLO VEGETALES[/b]
 
 ASI QUE VAMOS A VENIR SEGUIDO!
 
-UN GLYPTOABRAZO"
+[b]UN GLYPTOABRAZO[/b]"
 	elif instance == get_node(Instances[2]).name:
 		#megaterio
 		Spot.RigthObject = DragObjects[3]
-		resultText.text = "RICASO!!
+		resultText.text = "[b]RICASO!![/b]
+
 A LOS MEGATERIOS NOS ENCANTAN
 LOS VEGETALES Y LA CARROÑA 
 (LAS SOBRAS DE OTROS ANIMALES)
 ¿CÓMO SABÍAS?
 
 PD: LAS GARRAS SOLO LAS USAMOS
-PARA DEFENDERNOS
+PARA DEFENDERNOS.
 
-PERDON SI TE ASUSTÉ
+PERDON SI TE ASUSTÉ...
 
-RECOMIENDO!"
+[b]RECOMIENDO![/b]"
 	elif instance == get_node(Instances[3]).name:
 		#macrauquenia
 		Spot.RigthObject = DragObjects[0]
-		resultText.text = "ME VINO DE DIEZ LA VEGGIE MERIENDA!
+		resultText.text = "[b]ME VINO DE DIEZ LA VEGGIE MERIENDA![/b]
 
-GRACIAS POR NO PREGUNTAR SI SOY 
-UN CAMELLO,
+CHE, GRACIAS POR NO PREGUNTAR SI SOY 
+UN CAMELLO :D
 
-TODOS ME DICEN LO MISMO
+SIEMPRE ME PREGUNTAN ESO :(
 
 PERO NADA QUE VER!
 NI PRIMOS SOMOS
 
 TENGO QUE IR A EXTINGUIRME AHORA,
-PERO DESPUÉS VUELVO"
+PERO [b]DESPUÉS VUELVO[/b]"
 
 @onready var papercontroller = $PaperController/pivot
 @onready var RigthImg = load("res://Sprites/ZonaMegafauna/resultado - bien.png")

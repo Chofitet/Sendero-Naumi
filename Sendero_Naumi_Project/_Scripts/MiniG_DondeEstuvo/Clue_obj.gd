@@ -32,7 +32,7 @@ func _ready():
 	initScale = scale
 	initPosition = position
 	initRotation = rotation_degrees
-	button.pressed.connect(BtnPress)
+	button.button_down.connect(BtnPress)
 	if inactiveInReady:
 		BlockButton(false)
 	if EditableButton : return

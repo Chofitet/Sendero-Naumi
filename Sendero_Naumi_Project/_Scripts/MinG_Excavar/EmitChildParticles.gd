@@ -8,3 +8,7 @@ func _ready():
 func Emit():
 	for p in particles:
 		p.emitting = true
+
+func StopEmit():
+	for p in particles:
+		p.emitting = false

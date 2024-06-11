@@ -1,13 +1,16 @@
-[gd_scene load_steps=17 format=3 uid="uid://b77gk1g1ulal5"]
+[gd_scene load_steps=20 format=3 uid="uid://b77gk1g1ulal5"]
 
 [ext_resource type="Script" path="res://_Scripts/Naumi_Controller.gd" id="1_mwu8k"]
-[ext_resource type="SpriteFrames" uid="uid://vahks4sl257e" path="res://Resources/NaumiSpriteFrames/N0.tres" id="2_iyxb0"]
+[ext_resource type="SpriteFrames" uid="uid://vahks4sl257e" path="res://Resources/NaumiSpriteFrames/N0.tres" id="2_08y32"]
 [ext_resource type="StyleBox" uid="uid://b3tjes2hcm3wx" path="res://Resources/UI_Resources/StyleBoxTrasparent.tres" id="3_qpxq3"]
 [ext_resource type="PackedScene" uid="uid://djhg7jvxtexyl" path="res://Scenes/UI_Scenes/btn_Change_Scene.tscn" id="4_sgwwh"]
 [ext_resource type="Script" path="res://_Scripts/PlayAnimation.gd" id="4_x4acu"]
 [ext_resource type="Texture2D" uid="uid://dnpt3mo8vtigw" path="res://Sprites/Naumi/ZZZ - idle.png" id="5_1noc2"]
 [ext_resource type="Texture2D" uid="uid://dowufrhlgpfe" path="res://Sprites/UI/Boton_Volver.png" id="6_obt1x"]
 [ext_resource type="PackedScene" uid="uid://bac1ysj2c0bok" path="res://Scenes/Experiments/hand_ui.tscn" id="7_r1x77"]
+[ext_resource type="Texture2D" uid="uid://gc6xbaet3xpu" path="res://Sprites/Naumi/debris N0.png" id="9_3q1n3"]
+[ext_resource type="Texture2D" uid="uid://doha4bm8stes2" path="res://Sprites/Naumi/debris N1.png" id="10_hdr2s"]
+[ext_resource type="Texture2D" uid="uid://bhfi82lo718ud" path="res://Sprites/Naumi/debris N2.png" id="11_3d4e8"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_n1evj"]
 font_size = 120
@@ -170,16 +173,16 @@ _data = {
 [node name="NaumiController" type="Node2D"]
 script = ExtResource("1_mwu8k")
 
-[node name="naumiAnim" type="AnimatedSprite2D" parent="."]
-position = Vector2(-3, -182)
-scale = Vector2(0.762, 0.762)
-sprite_frames = ExtResource("2_iyxb0")
-animation = &"evolve"
-frame = 37
-frame_progress = 1.0
-speed_scale = 2.0
+[node name="pivot" type="Node2D" parent="."]
 
-[node name="Button" type="Button" parent="."]
+[node name="naumiAnim" type="AnimatedSprite2D" parent="pivot"]
+position = Vector2(0, -287)
+scale = Vector2(0.972, 0.972)
+sprite_frames = ExtResource("2_08y32")
+animation = &"sleeping"
+autoplay = "sleeping"
+
+[node name="Button" type="Button" parent="pivot"]
 offset_left = -302.0
 offset_top = -532.0
 offset_right = 304.0
@@ -187,7 +190,7 @@ offset_bottom = 176.0
 theme_override_styles/focus = ExtResource("3_qpxq3")
 flat = true
 
-[node name="Label" type="Label" parent="Button"]
+[node name="Label" type="Label" parent="pivot/Button"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.504
@@ -203,16 +206,16 @@ pivot_offset = Vector2(26.505, 86.52)
 text = "?"
 label_settings = SubResource("LabelSettings_n1evj")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Button/Label"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="pivot/Button/Label"]
 libraries = {
 "": SubResource("AnimationLibrary_os5q7")
 }
 script = ExtResource("4_x4acu")
 animation = "idle"
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="pivot"]
 
-[node name="ButtonChangeScene" parent="CanvasLayer" instance=ExtResource("4_sgwwh")]
+[node name="ButtonChangeScene" parent="pivot/CanvasLayer" instance=ExtResource("4_sgwwh")]
 visible = false
 anchors_preset = -1
 anchor_top = 0.858
@@ -229,19 +232,36 @@ flat = true
 icon_alignment = 1
 NextScene = "Map_Screen"
 
-[node name="zzz" type="Sprite2D" parent="."]
+[node name="zzz" type="Sprite2D" parent="pivot"]
 visible = false
 position = Vector2(187, -509)
 texture = ExtResource("5_1noc2")
 hframes = 19
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="pivot"]
 speed_scale = 0.7
 libraries = {
 "": SubResource("AnimationLibrary_33cxl")
 }
 
-[node name="handUI" parent="." instance=ExtResource("7_r1x77")]
+[node name="handUI" parent="pivot" instance=ExtResource("7_r1x77")]
 offset_top = -580.0
 offset_bottom = -580.0
 AnimToPlay = "idle_anim"
+
+[node name="Debris" type="Node2D" parent="."]
+
+[node name="1" type="Sprite2D" parent="Debris"]
+position = Vector2(0, -287)
+scale = Vector2(0.972, 0.972)
+texture = ExtResource("9_3q1n3")
+
+[node name="2" type="Sprite2D" parent="Debris"]
+position = Vector2(0, -287)
+scale = Vector2(0.972, 0.972)
+texture = ExtResource("10_hdr2s")
+
+[node name="3" type="Sprite2D" parent="Debris"]
+position = Vector2(0, -287)
+scale = Vector2(0.972, 0.972)
+texture = ExtResource("11_3d4e8")

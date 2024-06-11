@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=3 uid="uid://lv8sdofmjhf3"]
+[gd_scene load_steps=65 format=3 uid="uid://lv8sdofmjhf3"]
 
 [ext_resource type="Script" path="res://_Scripts/Minigame_Save_Controller.gd" id="1_f0fiw"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/StateMachineMinigames.gd" id="2_12384"]
@@ -36,6 +36,7 @@
 [ext_resource type="Texture2D" uid="uid://dbv6rcnmmb8db" path="res://Sprites/ZonaGeología/fondo_geografia.png" id="35_0j7t8"]
 [ext_resource type="Theme" uid="uid://bhum72inirq1q" path="res://Themes/Generic_UI.tres" id="36_ltn3v"]
 [ext_resource type="Texture2D" uid="uid://cj3p1ogux66b0" path="res://Sprites/ZonaGeología/Cinturon.png" id="37_3sx2u"]
+[ext_resource type="Script" path="res://_Scripts/MinG_Mamushka/panelMamushka.gd" id="38_3lkto"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/FinState.gd" id="38_m5sey"]
 [ext_resource type="Script" path="res://Scenes/GenericPanelController.gd" id="39_3rgtq"]
 [ext_resource type="PackedScene" uid="uid://djhg7jvxtexyl" path="res://Scenes/UI_Scenes/btn_Change_Scene.tscn" id="40_6qq3a"]
@@ -629,7 +630,7 @@ color = Color(0, 0, 0, 1)
 
 [node name="StateMachine" type="Node" parent="RockFighters" node_paths=PackedStringArray("initial_state")]
 script = ExtResource("2_12384")
-initial_state = NodePath("Juego")
+initial_state = NodePath("Consigna")
 
 [node name="Consigna" type="Node" parent="RockFighters/StateMachine"]
 script = ExtResource("3_cy1k7")
@@ -1447,6 +1448,7 @@ offset_top = 55.0001
 offset_right = 346.72
 offset_bottom = 547.0
 theme = ExtResource("36_ltn3v")
+script = ExtResource("39_3rgtq")
 
 [node name="cinturon" type="Sprite2D" parent="RockFighters/StateMachine/Moraleja/Contenido/Instancia1/Conteiner"]
 position = Vector2(340, -32)
@@ -1584,6 +1586,7 @@ offset_top = 55.0001
 offset_right = 346.0
 offset_bottom = 547.0
 theme = ExtResource("36_ltn3v")
+script = ExtResource("39_3rgtq")
 
 [node name="cinturon" type="Sprite2D" parent="RockFighters/StateMachine/Moraleja/Contenido/Instancia2/Conteiner"]
 position = Vector2(340, -32)
@@ -1720,6 +1723,7 @@ offset_top = 55.0001
 offset_right = 346.0
 offset_bottom = 547.0
 theme = ExtResource("36_ltn3v")
+script = ExtResource("38_3lkto")
 
 [node name="cinturon" type="Sprite2D" parent="RockFighters/StateMachine/Moraleja/Contenido/Instancia3/Conteiner"]
 position = Vector2(340, -32)

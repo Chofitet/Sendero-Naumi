@@ -1,4 +1,4 @@
-[gd_scene load_steps=76 format=3 uid="uid://cmv5m3ynk4o5y"]
+[gd_scene load_steps=77 format=3 uid="uid://cmv5m3ynk4o5y"]
 
 [ext_resource type="Script" path="res://_Scripts/Minigame_Save_Controller.gd" id="1_jl73q"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/StateMachineMinigames.gd" id="2_7aqcq"]
@@ -17,6 +17,7 @@
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/Button_Change_StateMinigame.gd" id="12_xig48"]
 [ext_resource type="Script" path="res://_Scripts/CheckInstanceState.gd" id="13_2yhkf"]
 [ext_resource type="Script" path="res://_Scripts/MinG_Calendario/SpotCalendario.gd" id="13_7w5tq"]
+[ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/Timer_State_Minigame.gd" id="13_p1cy2"]
 [ext_resource type="Script" path="res://_Scripts/MinG_Calendario/InstanceManagerCalendar.gd" id="14_81an2"]
 [ext_resource type="Shader" path="res://shaders/blur.gdshader" id="14_knqt5"]
 [ext_resource type="Script" path="res://_Scripts/MinG_Calendario/CalendarZoomController.gd" id="15_x38jw"]
@@ -629,6 +630,59 @@ offset_bottom = 45.02
 grow_horizontal = 0
 grow_vertical = 0
 
+[node name="Panel5" type="Panel" parent="Calendario/StateMachine/Consigna/Contenido"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -340.0
+offset_top = -153.0
+offset_right = 340.0
+offset_bottom = 153.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("7_g1fqq")
+script = ExtResource("8_jxksc")
+SetVisibleFalseWithBtn = true
+
+[node name="Label" type="Label" parent="Calendario/StateMachine/Consigna/Contenido/Panel5"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -293.0
+offset_top = -74.0
+offset_right = 293.0
+offset_bottom = 74.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "EN NUESTRA ULTIMA VISITA
+LE SACAMOS UNA FOTO PERO..."
+label_settings = ExtResource("9_mlbvw")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+uppercase = true
+
+[node name="Button" type="Button" parent="Calendario/StateMachine/Consigna/Contenido/Panel5"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.791
+anchor_top = 0.973
+anchor_right = 0.791
+anchor_bottom = 0.973
+offset_left = -45.182
+offset_top = -44.98
+offset_right = 44.818
+offset_bottom = 45.02
+grow_horizontal = 0
+grow_vertical = 0
+
 [node name="Panel3" type="Panel" parent="Calendario/StateMachine/Consigna/Contenido"]
 visible = false
 layout_mode = 1
@@ -660,10 +714,7 @@ offset_right = 269.0
 offset_bottom = 74.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "En nuestra última visita
-le sacamos una foto,
-Pero salió medio tapada...
-"
+text = "SALIÓ MEDIO TAPADO"
 label_settings = ExtResource("9_mlbvw")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -692,10 +743,10 @@ anchor_left = 0.5
 anchor_top = 0.149
 anchor_right = 0.5
 anchor_bottom = 0.149
-offset_left = -329.0
-offset_top = -129.72
-offset_right = 329.0
-offset_bottom = 130.28
+offset_left = -321.0
+offset_top = -142.72
+offset_right = 321.0
+offset_bottom = 117.28
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("7_g1fqq")
@@ -722,20 +773,9 @@ vertical_alignment = 1
 autowrap_mode = 2
 uppercase = true
 
-[node name="Button" type="Button" parent="Calendario/StateMachine/Consigna/Contenido/Panel4" node_paths=PackedStringArray("state_to_change", "state_machine")]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.791
-anchor_top = 0.973
-anchor_right = 0.791
-anchor_bottom = 0.973
-offset_left = -45.182
-offset_top = -44.98
-offset_right = 44.818
-offset_bottom = 45.02
-grow_horizontal = 0
-grow_vertical = 0
-script = ExtResource("12_xig48")
+[node name="Timer" type="Timer" parent="Calendario/StateMachine/Consigna/Contenido/Panel4" node_paths=PackedStringArray("state_to_change", "state_machine")]
+wait_time = 3.0
+script = ExtResource("13_p1cy2")
 state_to_change = NodePath("../../../../Juego")
 state_machine = NodePath("../../../..")
 
@@ -854,7 +894,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="CalendarZoom" type="Control" parent="Calendario/StateMachine/Juego/Contenido"]
+[node name="CalendarZoom" type="Control" parent="Calendario/StateMachine/Juego/Contenido" node_paths=PackedStringArray("PanelConsigna")]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -864,6 +904,7 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("15_x38jw")
+PanelConsigna = NodePath("../Panel4")
 
 [node name="calendarPivot" type="Node2D" parent="Calendario/StateMachine/Juego/Contenido/CalendarZoom"]
 scale = Vector2(0.377, 0.378)
@@ -1024,6 +1065,43 @@ libraries = {
 script = ExtResource("10_rk6di")
 animation = "enero_enter"
 
+[node name="Panel4" type="Panel" parent="Calendario/StateMachine/Juego/Contenido"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.149
+anchor_right = 0.5
+anchor_bottom = 0.149
+offset_left = -321.0
+offset_top = -142.72
+offset_right = 321.0
+offset_bottom = 117.28
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("7_g1fqq")
+script = ExtResource("8_jxksc")
+SetVisibleFalseWithBtn = true
+
+[node name="Label" type="Label" parent="Calendario/StateMachine/Juego/Contenido/Panel4"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -269.0
+offset_top = -74.0
+offset_right = 269.0
+offset_bottom = 74.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Ayúdanos completando las partes que no se ven!"
+label_settings = ExtResource("9_mlbvw")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+uppercase = true
+
 [node name="Panel" type="Panel" parent="Calendario/StateMachine/Juego/Contenido"]
 visible = false
 layout_mode = 1
@@ -1165,10 +1243,10 @@ anchor_left = 0.5
 anchor_top = 0.149
 anchor_right = 0.5
 anchor_bottom = 0.149
-offset_left = -335.0
-offset_top = -126.72
-offset_right = 335.0
-offset_bottom = 127.28
+offset_left = -322.0
+offset_top = -141.72
+offset_right = 322.0
+offset_bottom = 116.28
 grow_horizontal = 2
 theme = ExtResource("7_g1fqq")
 script = ExtResource("8_jxksc")
@@ -1215,10 +1293,10 @@ anchor_left = 0.5
 anchor_top = 0.149
 anchor_right = 0.5
 anchor_bottom = 0.149
-offset_left = -335.0
-offset_top = -126.72
-offset_right = 335.0
-offset_bottom = 127.28
+offset_left = -321.0
+offset_top = -143.72
+offset_right = 321.0
+offset_bottom = 116.28
 grow_horizontal = 2
 theme = ExtResource("7_g1fqq")
 script = ExtResource("8_jxksc")
@@ -1237,7 +1315,7 @@ offset_right = 260.0
 offset_bottom = 72.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "SOLO HAN EXISTIDO SEGUNDOS HASTA AHORA"
+text = "SOLO HAN EXISTIDO POR UNOS MINUTOS HASTA AHORA"
 label_settings = ExtResource("9_mlbvw")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -1265,14 +1343,13 @@ anchor_left = 0.5
 anchor_top = 0.149
 anchor_right = 0.5
 anchor_bottom = 0.149
-offset_left = -335.0
-offset_top = -126.72
-offset_right = 335.0
-offset_bottom = 127.28
+offset_left = -321.0
+offset_top = -143.72
+offset_right = 321.0
+offset_bottom = 116.28
 grow_horizontal = 2
 theme = ExtResource("7_g1fqq")
 script = ExtResource("8_jxksc")
-SetVisibleFalseWithBtn = true
 
 [node name="Label" type="Label" parent="Calendario/StateMachine/Juego/Contenido/Outro/Panel3"]
 layout_mode = 1
@@ -1555,10 +1632,12 @@ text = "
 NextScene = "Map_Screen"
 
 [connection signal="pressed" from="Calendario/StateMachine/Consigna/Contenido/Panel1/Button" to="Calendario/StateMachine/Consigna/Contenido/Panel2" method="SetVisibility" binds= [true]]
-[connection signal="pressed" from="Calendario/StateMachine/Consigna/Contenido/Panel2/Button" to="Calendario/StateMachine/Consigna/Contenido/Panel3" method="SetVisibility" binds= [true]]
-[connection signal="pressed" from="Calendario/StateMachine/Consigna/Contenido/Panel2/Button" to="Calendario/StateMachine/Consigna/Contenido/AnimationPlayer" method="PlayAnim" binds= ["in"]]
+[connection signal="pressed" from="Calendario/StateMachine/Consigna/Contenido/Panel2/Button" to="Calendario/StateMachine/Consigna/Contenido/Panel5" method="SetVisibility" binds= [true]]
+[connection signal="pressed" from="Calendario/StateMachine/Consigna/Contenido/Panel5/Button" to="Calendario/StateMachine/Consigna/Contenido/Panel3" method="SetVisibility" binds= [true]]
+[connection signal="pressed" from="Calendario/StateMachine/Consigna/Contenido/Panel5/Button" to="Calendario/StateMachine/Consigna/Contenido/AnimationPlayer" method="PlayAnim" binds= ["in"]]
 [connection signal="pressed" from="Calendario/StateMachine/Consigna/Contenido/Panel3/Button" to="Calendario/StateMachine/Consigna/Contenido/Control/calendario/pivot" method="PlayAnimChild"]
 [connection signal="pressed" from="Calendario/StateMachine/Consigna/Contenido/Panel3/Button" to="Calendario/StateMachine/Consigna/Contenido/Panel4" method="SetVisibility" binds= [true]]
+[connection signal="pressed" from="Calendario/StateMachine/Consigna/Contenido/Panel3/Button" to="Calendario/StateMachine/Consigna/Contenido/Panel4/Timer" method="StartTime" binds= [false]]
 [connection signal="Transitioned" from="Calendario/StateMachine/Juego" to="Calendario/StateMachine/Juego/Contenido/CalendarZoom" method="SetQuestionWithInstance"]
 [connection signal="ZoomOutFinished" from="Calendario/StateMachine/Juego/Contenido/CalendarZoom" to="Calendario/StateMachine/Juego/Contenido/Outro" method="SetVisible" binds= [true]]
 [connection signal="RigthAnswere" from="Calendario/StateMachine/Juego/Contenido/Spot/AnswerController" to="Calendario/StateMachine/Juego/Contenido/CalendarZoom" method="ZoomToPos" binds= [0]]
