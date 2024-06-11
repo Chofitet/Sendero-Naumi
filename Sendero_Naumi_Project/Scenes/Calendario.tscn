@@ -452,6 +452,7 @@ script = ExtResource("3_ae37j")
 Consignas = ["Hey esto es una consigna"]
 
 [node name="Contenido" type="Control" parent="Calendario/StateMachine/Consigna"]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -800,7 +801,6 @@ StateMachine = NodePath("..")
 InstanciasMinijuego = [NodePath("Contenido/Instancia1"), NodePath("Contenido/Instancia2"), NodePath("Contenido/Instancia3"), NodePath("Contenido/Instancia4"), NodePath("Contenido/Instancia5"), NodePath("Contenido/Instancia6"), NodePath("Contenido/Instancia7")]
 
 [node name="Contenido" type="Control" parent="Calendario/StateMachine/Juego"]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -894,7 +894,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="CalendarZoom" type="Control" parent="Calendario/StateMachine/Juego/Contenido"]
+[node name="CalendarZoom" type="Control" parent="Calendario/StateMachine/Juego/Contenido" node_paths=PackedStringArray("PanelConsigna")]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -904,6 +904,7 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("15_x38jw")
+PanelConsigna = NodePath("../Panel4")
 
 [node name="calendarPivot" type="Node2D" parent="Calendario/StateMachine/Juego/Contenido/CalendarZoom"]
 scale = Vector2(0.377, 0.378)
@@ -1349,7 +1350,6 @@ offset_bottom = 116.28
 grow_horizontal = 2
 theme = ExtResource("7_g1fqq")
 script = ExtResource("8_jxksc")
-SetVisibleFalseWithBtn = true
 
 [node name="Label" type="Label" parent="Calendario/StateMachine/Juego/Contenido/Outro/Panel3"]
 layout_mode = 1

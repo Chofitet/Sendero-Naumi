@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=3 uid="uid://hbmgu1q1d7os"]
+[gd_scene load_steps=67 format=3 uid="uid://hbmgu1q1d7os"]
 
 [ext_resource type="Script" path="res://_Scripts/Minigame_Save_Controller.gd" id="1_dk1kn"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/StateMachineMinigames.gd" id="2_445ba"]
@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://dj57ce5tt06yj" path="res://Sprites/UI/bubble brown.png" id="7_xojdd"]
 [ext_resource type="Script" path="res://_Scripts/MinG_MegaFood/FoodMenuController.gd" id="8_25wym"]
 [ext_resource type="Texture2D" uid="uid://cwdp1unrbqued" path="res://Sprites/ZonaMegafauna/fondo - encimera.png" id="8_al03m"]
+[ext_resource type="Script" path="res://_Scripts/PlayAnimation.gd" id="8_lpe1s"]
 [ext_resource type="Texture2D" uid="uid://dyy8kyyp1qd8c" path="res://Sprites/ZonaMegafauna/platoHerbivoro.png" id="9_1mktl"]
 [ext_resource type="PackedScene" uid="uid://ci3c3pocxiywq" path="res://Scenes/Experiments/drag_object.tscn" id="10_etwym"]
 [ext_resource type="Script" path="res://_Scripts/MinG_MegaFood/TutorialController.gd" id="11_0o25m"]
@@ -105,7 +106,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("../Panel:visible")
+tracks/3/path = NodePath("../Panel2:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -117,7 +118,7 @@ tracks/3/keys = {
 
 [sub_resource type="Animation" id="Animation_4oc8m"]
 resource_name = "arbusto_anim"
-length = 3.0
+length = 1.6
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -125,7 +126,7 @@ tracks/0/path = NodePath("arbustoR:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(1, 2.3),
+"times": PackedFloat32Array(0, 1.3),
 "transitions": PackedFloat32Array(-2, -2),
 "update": 0,
 "values": [Vector2(1777, -67), Vector2(2450, -67)]
@@ -137,7 +138,7 @@ tracks/1/path = NodePath("ArbustoL:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(1, 2.3),
+"times": PackedFloat32Array(0, 1.3),
 "transitions": PackedFloat32Array(-2, -2),
 "update": 0,
 "values": [Vector2(-522, 156), Vector2(-1097, 156)]
@@ -149,7 +150,7 @@ tracks/2/path = NodePath("ArbustoD:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(1.3, 2.3),
+"times": PackedFloat32Array(0.3, 1.3),
 "transitions": PackedFloat32Array(-2, -2),
 "update": 0,
 "values": [Vector2(29, 559), Vector2(29, 1246)]
@@ -157,11 +158,11 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("../Panel:visible")
+tracks/3/path = NodePath("../Panel2:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 2.6),
+"times": PackedFloat32Array(0, 1.6),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
@@ -497,10 +498,11 @@ scale = Vector2(3.41017, 3.41017)
 texture = ExtResource("7_q5p0y")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="FoodTruck/StateMachine/Consigna/Contenido/arbustos"]
-autoplay = "arbusto_anim"
 libraries = {
 "": SubResource("AnimationLibrary_07o5p")
 }
+script = ExtResource("8_lpe1s")
+animation = "arbusto_anim"
 
 [node name="LblConsigna" type="Label" parent="FoodTruck/StateMachine/Consigna/Contenido"]
 visible = false
@@ -527,6 +529,61 @@ autowrap_mode = 2
 wait_time = 3.0
 
 [node name="Panel" type="Panel" parent="FoodTruck/StateMachine/Consigna/Contenido"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.187
+anchor_right = 0.5
+anchor_bottom = 0.187
+offset_left = -320.0
+offset_top = -161.36
+offset_right = 320.0
+offset_bottom = 156.64
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("17_plgvp")
+script = ExtResource("7_nckvf")
+SetVisibleFalseWithBtn = true
+
+[node name="Label" type="Label" parent="FoodTruck/StateMachine/Consigna/Contenido/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.094
+anchor_top = 0.196
+anchor_right = 0.906
+anchor_bottom = 0.804
+offset_left = -16.16
+offset_top = 3.752
+offset_right = 16.16
+offset_bottom = 3.944
+grow_horizontal = 2
+grow_vertical = 2
+text = "Los animales son seres muy curiosos  pero no se comen cualquiera
+"
+label_settings = ExtResource("12_nn3tt")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+uppercase = true
+
+[node name="Button" type="Button" parent="FoodTruck/StateMachine/Consigna/Contenido/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.775
+anchor_top = 1.0
+anchor_right = 0.775
+anchor_bottom = 1.0
+offset_left = -45.0
+offset_top = -49.0
+offset_right = 45.0
+offset_bottom = 41.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource("17_plgvp")
+text = "
+"
+
+[node name="Panel2" type="Panel" parent="FoodTruck/StateMachine/Consigna/Contenido"]
 visible = false
 layout_mode = 1
 anchors_preset = -1
@@ -543,7 +600,7 @@ grow_vertical = 2
 theme = ExtResource("17_plgvp")
 script = ExtResource("7_nckvf")
 
-[node name="Label" type="Label" parent="FoodTruck/StateMachine/Consigna/Contenido/Panel"]
+[node name="Label" type="Label" parent="FoodTruck/StateMachine/Consigna/Contenido/Panel2"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.094
@@ -556,9 +613,7 @@ offset_right = 16.16
 offset_bottom = 3.944
 grow_horizontal = 2
 grow_vertical = 2
-text = "Los animales son seres muy curiosos  pero no se comen cualquiera
-
-Ayúdanos a servir
+text = "Ayúdanos a servir
 sus comidas favoritas
 "
 label_settings = ExtResource("12_nn3tt")
@@ -567,7 +622,7 @@ vertical_alignment = 1
 autowrap_mode = 2
 uppercase = true
 
-[node name="Button" type="Button" parent="FoodTruck/StateMachine/Consigna/Contenido/Panel" node_paths=PackedStringArray("state_to_change", "state_machine")]
+[node name="Button" type="Button" parent="FoodTruck/StateMachine/Consigna/Contenido/Panel2" node_paths=PackedStringArray("state_to_change", "state_machine")]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.775
@@ -966,7 +1021,7 @@ StateMachine = NodePath("../../../..")
 
 [node name="cordon" type="Sprite2D" parent="FoodTruck/StateMachine/Juego/Contenido/Cordon/Cortina"]
 position = Vector2(0, -26)
-rotation = -1.5708
+rotation = -1.72058
 scale = Vector2(0.75, 0.75)
 texture = ExtResource("16_73qbv")
 offset = Vector2(0, 160)
@@ -1543,6 +1598,7 @@ grow_vertical = 0
 text = "RECOMENDADO"
 label_settings = ExtResource("46_5e6x3")
 
+[connection signal="pressed" from="FoodTruck/StateMachine/Consigna/Contenido/Panel/Button" to="FoodTruck/StateMachine/Consigna/Contenido/arbustos/AnimationPlayer" method="Play"]
 [connection signal="Transitioned" from="FoodTruck/StateMachine/Juego" to="FoodTruck/StateMachine/Juego/Contenido/AnchorSpot/Spot" method="Reset"]
 [connection signal="Transitioned" from="FoodTruck/StateMachine/Juego" to="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer" method="Reset"]
 [connection signal="Transitioned" from="FoodTruck/StateMachine/Juego" to="FoodTruck/StateMachine/Juego/Contenido/BlockScreen" method="SetVisibility" binds= [false]]

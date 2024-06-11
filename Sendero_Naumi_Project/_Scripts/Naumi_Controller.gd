@@ -1,10 +1,11 @@
 extends Node2D
 
 @export var isEvolving : bool
-@onready var NaumiAnim = $naumiAnim
-@onready var btn = $Button
-@onready var Anim = $AnimationPlayer
+@onready var NaumiAnim = $pivot/naumiAnim
+@onready var btn = $pivot/Button
+@onready var Anim = $pivot/AnimationPlayer
 var currentState = 0
+var debris =[]
 
 var save_file_path = "user://"
 var save_file_name = "MiniGameResource.tres"
@@ -20,7 +21,9 @@ func save():
 
 func _ready():
 	
-	
+	for d in $Debris.get_children():
+		debris.append(d)
+		d.visible = false
 	
 	if isEvolving:
 		SetNaumi(NaumiState() - 1)
@@ -30,21 +33,21 @@ func _ready():
 		btn.pressed.connect(Sleeping)
 
 func ToLevelUp():
-	await get_tree().create_timer(2).timeout
-	$handUI.SetVisibility(true)
+	#await get_tree().create_timer(2).timeout
+	$pivot/handUI.SetVisibility(true)
 	NaumiAnim.play("call")
 	btn.pressed.connect(Evolve)
 	
 func Evolve():
 	btn.pressed.disconnect(Evolve)
-	$handUI.SetVisibility(false)
+	$pivot/handUI.SetVisibility(false)
 	NaumiAnim.play("evolve")
 	await NaumiAnim.animation_finished
 	btn.pressed.connect(Sleeping)
 	PlayerVariables.SetNaumiEvolve()
 	SetNaumi(NaumiState())
 	NaumiAnim.play("sleeping")
-	$CanvasLayer/ButtonChangeScene.visible = true
+	$pivot/CanvasLayer/ButtonChangeScene.visible = true
 
 func Sleeping():
 	btn.visible = false
@@ -59,10 +62,16 @@ func SetNaumi(num):
 		0:
 			NaumiAnim.sprite_frames = preload("res://Resources/NaumiSpriteFrames/N0.tres")
 		1:
+			debris[0].visible = true
 			NaumiAnim.sprite_frames = preload("res://Resources/NaumiSpriteFrames/N1.tres")
 		2:
+			debris[0].visible = true
+			debris[1].visible = true
 			NaumiAnim.sprite_frames = preload("res://Resources/NaumiSpriteFrames/N2.tres")
 		3:
+			debris[0].visible = true
+			debris[1].visible = true
+			debris[2].visible = true
 			NaumiAnim.sprite_frames = preload("res://Resources/NaumiSpriteFrames/N3.tres")
 
 func NaumiState() -> int:
