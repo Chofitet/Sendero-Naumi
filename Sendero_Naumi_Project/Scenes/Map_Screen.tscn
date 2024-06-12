@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://ck4m8k46bmha1"]
+[gd_scene load_steps=29 format=3 uid="uid://ck4m8k46bmha1"]
 
 [ext_resource type="Script" path="res://_Scripts/AdjustSeparationWithScreenSize.gd" id="2_1v6rf"]
 [ext_resource type="Script" path="res://_Scripts/ScrollController.gd" id="2_es768"]
@@ -27,6 +27,13 @@
 [ext_resource type="Texture2D" uid="uid://nuybqhitpej1" path="res://Sprites/Mapa/fondo_mapa.png" id="21_ti06q"]
 [ext_resource type="Script" path="res://_Scripts/StateMachine/State.gd" id="25_jjswu"]
 [ext_resource type="Texture2D" uid="uid://dowufrhlgpfe" path="res://Sprites/UI/Boton_Volver.png" id="26_1t1rb"]
+
+[sub_resource type="Curve2D" id="Curve2D_oumqw"]
+bake_interval = 0.01
+_data = {
+"points": PackedVector2Array(149.525, 352.255, -149.525, -352.255, 2, 3171, -146.123, 78.0493, 146.123, -78.0493, 125, 2666, 81.2357, 58.4384, -81.2357, -58.4384, 225, 2368, 95.2107, 11.5431, -95.2107, -11.5431, -65, 2526, -25.2269, 111.839, 25.2269, -111.839, -184, 2205, -102.054, 39.0576, 102.054, -39.0576, 34, 2199, -71.8155, 119.031, 71.8155, -119.031, 194, 1886, 107.635, 23.5451, -107.635, -23.5451, 172, 1540, 69.7944, 90.8168, -69.7944, -90.8168, -154, 1715, -44.5675, 82.4079, 44.5675, -82.4079, -102, 1351, -90.8168, 71.4762, 90.8168, -71.4762, 163, 1299, 15.1191, 23.9385, -15.1191, -23.9385, 206, 1140, -97.8729, -120.465, 97.8729, 120.465, 61, 1266, 115.203, -34.4768, -115.203, 34.4768, 83, 1084, -19.0703, 131.373, 19.0703, -131.373, -179, 962, 115.625, 240.528, -115.625, -240.528, 175, 648, 200.554, -18.2685, -200.554, 18.2685, 156, 116, 220.486, 18.8988, -220.486, -18.8988, -177, 303)
+}
+point_count = 18
 
 [node name="Map_Screen" type="Control"]
 z_index = 1
@@ -93,6 +100,11 @@ layout_mode = 2
 size_flags_horizontal = 6
 theme_override_constants/separation = 1280
 script = ExtResource("2_1v6rf")
+
+[node name="Path2D" type="Path2D" parent="ScrollContainer/VBoxContainer"]
+curve = SubResource("Curve2D_oumqw")
+
+[node name="Line2D" type="Line2D" parent="ScrollContainer/VBoxContainer/Path2D"]
 
 [node name="Piso3" type="MarginContainer" parent="ScrollContainer/VBoxContainer"]
 layout_mode = 2
@@ -326,6 +338,7 @@ offset_bottom = -52.662
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("11_r0n4l")
+expand_mode = 1
 
 [node name="Button_Change_State" type="Button" parent="ScrollContainer/VBoxContainer/Piso2/AstronomiaZone/TextureRect" node_paths=PackedStringArray("state_to_change", "state_machine")]
 layout_mode = 1
