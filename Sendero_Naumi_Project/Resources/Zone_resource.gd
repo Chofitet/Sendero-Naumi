@@ -4,7 +4,19 @@ class_name ZoneResource
 @export var StateZones = {
 "MegafaunaZone": false, 
 "AstronomiaZone" : false, 
-"GeologiaZone":false}
+"GeologiaZone":false,
+"MuseoHistoryZone": false,
+"CuaternarioZone":false,
+"AmbientesZone" : false,
+"ErasGeologicasZone" : false,
+"UnlockedMegafaunaZone" : false,
+"UnlockedAstronomiaZone" : false,
+"UnlockedGeologiaZone" : false,
+"UnlockedMuseoHistoryZone" : false,
+"UnlockedCuaternarioZone":false,
+"UnlockedAmbientesZone" : false,
+"UnlockedErasGeologicasZone" : false}
+
 
 func Set_State_Zone(string):
 	StateZones[string] = true

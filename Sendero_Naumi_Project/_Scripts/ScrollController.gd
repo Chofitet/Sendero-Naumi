@@ -55,6 +55,8 @@ func calculateGesture() -> void:
 		else:
 			var tween = get_tree().create_tween()
 			tween.tween_property(self,"scroll_vertical", set_next_anchor("down"),0.2).set_ease(Tween.EASE_OUT)
+	
+	SetFloorWithAnchor(i)
 
 func set_next_anchor(direction) -> float:
 	
@@ -85,22 +87,27 @@ func find_closest_node():
 			closest_node = node
 
 		if closest_node.name == "Piso1":
-			i = 0
+			SetFloorWithAnchor(0)
 		elif closest_node.name == "Piso2":
-			i = 1
+			SetFloorWithAnchor(1)
 		elif closest_node.name == "Piso3":
-			i = 2
+			SetFloorWithAnchor(2)
 	return closest_node
 
 func getAnchorInBackScreen() -> float:
 	var NumPiso = PlayerVariables.NumPiso
 	if NumPiso == 1:
-		i = 0
+		SetFloorWithAnchor(0)
 		return get_viewport_rect().size.y * 3
 	if NumPiso == 2:
-		i = 1
+		SetFloorWithAnchor(1)
 		return get_viewport_rect().size.y - get_viewport_rect().size.y/5
 	if NumPiso == 3:
-		i = 2
+		SetFloorWithAnchor(2)
 		return 0
 	return get_viewport_rect().size.y * 3
+
+
+func SetFloorWithAnchor(num):
+	i = num
+	$FloorDetector.SetActualFloor(num)
