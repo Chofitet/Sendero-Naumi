@@ -45,28 +45,8 @@ func CheckAllTrue(Minigames):
 
 #Reinicia todos las Zonas y Minijuegos
 func RestartAll():
-	
-	
-	if FileAccess.file_exists(save_file_path + "ZoneResource.tres"):
-		DirAccess.remove_absolute(save_file_path + "ZoneResource.tres")
-	if FileAccess.file_exists(save_file_path + "MiniGameResource.tres"):
-		DirAccess.remove_absolute(save_file_path + "MiniGameResource.tres")
-	if FileAccess.file_exists(save_file_path + "InstanceResource.tres"):
-		DirAccess.remove_absolute(save_file_path + "InstanceResource.tres")
-	
-	await get_tree().create_timer(0.2).timeout
-	
-	var minigameResourceFile = MiniGameResource.new()
-	var zoneResourceFile = ZoneResource.new()
-	var instanceResource = InstanceResource.new()
-	
-	ResourceSaver.save(zoneResourceFile,save_file_path + "ZoneResource.tres")
-	ResourceSaver.save(minigameResourceFile, save_file_path + "MiniGameResource.tres")
-	ResourceSaver.save(instanceResource, save_file_path + "InstanceResource.tres")
-	
-	minigameResourceFile.Set_State_Minigame("noFirstTimePlay")
-	
-	get_tree().reload_current_scene()
+	get_tree().change_scene_to_file("res://Scenes/ResetScreen.tscn")
+
 
 func ChangeButtonBackVisibility(x, button):
 	if (button == null): return

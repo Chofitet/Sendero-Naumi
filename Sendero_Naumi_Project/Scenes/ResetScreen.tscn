@@ -1,0 +1,90 @@
+[gd_scene load_steps=6 format=3 uid="uid://dooe62acmvdb8"]
+
+[ext_resource type="Script" path="res://_Scripts/ResetGame.gd" id="1_jm73u"]
+[ext_resource type="Texture2D" uid="uid://nuybqhitpej1" path="res://Sprites/Mapa/fondo_mapa.png" id="2_ng0fi"]
+[ext_resource type="Theme" uid="uid://bhum72inirq1q" path="res://Themes/Generic_UI.tres" id="3_g784o"]
+[ext_resource type="LabelSettings" uid="uid://bd2jj8jlh3vp2" path="res://Themes/Geología/LabelSetting_Generic.tres" id="4_vs6bp"]
+[ext_resource type="Texture2D" uid="uid://dyc6lr4k2lmfp" path="res://Sprites/UI/BotonAceptarGenerico.png" id="5_pae1o"]
+
+[node name="ResetScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jm73u")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_ng0fi")
+
+[node name="Panel2" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -319.0
+offset_top = -130.0
+offset_right = 319.0
+offset_bottom = 131.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_g784o")
+
+[node name="Label" type="Label" parent="Panel2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 40.0
+offset_right = -40.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Se perderá todo el progreso 
+¿Seguro que querés reiniciar el juego?"
+label_settings = ExtResource("4_vs6bp")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Yes" type="Button" parent="Panel2"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -161.0
+offset_top = -46.0
+offset_right = -79.0
+offset_bottom = 36.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "
+"
+
+[node name="No" type="Button" parent="Panel2"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 78.0
+offset_top = -51.0
+offset_right = 161.0
+offset_bottom = 29.0
+grow_vertical = 0
+text = "
+"
+icon = ExtResource("5_pae1o")
+flat = true
+
+[connection signal="pressed" from="Panel2/Yes" to="." method="ResetAll"]
+[connection signal="pressed" from="Panel2/No" to="." method="BackToMap"]
