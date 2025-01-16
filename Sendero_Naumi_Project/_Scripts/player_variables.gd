@@ -39,7 +39,12 @@ func SetNaumiEvolve():
 	minigameResourseFile.ToLevelNaumiFalse()
 	SaveLastState("NoZone")
 
-func SaveLastPiso():
+func SaveLastPiso(num = 5):
+	
+	if num != 5:
+		NumPiso = num
+		return
+	
 	load_file()
 	var x = minigameResourseFile.Get_Zone()
 	match x:

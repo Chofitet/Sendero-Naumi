@@ -14,6 +14,7 @@ var save_file_name_Zone = "ZoneResource.tres"
 var minigameResourseFile = MiniGameResource.new()
 var zoneResource = ZoneResource.new()
 @onready var timer = $Timer
+signal ButtonPress
 
 func load_file():
 	zoneResource  = ResourceLoader.load(save_file_path  + save_file_name_Zone)
@@ -118,4 +119,5 @@ func PlayRandomIdleAnim():
 	get_node(path).play("idle")
 	timer.wait_time = randf_range(5,13)
 
-	
+func ButtonPressed():
+	ButtonPress.emit()

@@ -10,6 +10,7 @@ var holdClick
 var next_anchor 
 signal stopHold
 var inGesture
+var isInputBlock
 
 func _ready():
 	timer = get_parent().get_node("TimerScroll")
@@ -21,6 +22,7 @@ func _ready():
 	stopHold.connect(HoldingClick)
 
 func _input(event: InputEvent) -> void:
+	if isInputBlock: return
 	if Input.is_action_just_pressed("TouchScreen"):
 		pressedPos = event.position
 		timer.start()
@@ -107,7 +109,10 @@ func getAnchorInBackScreen() -> float:
 		return 0
 	return get_viewport_rect().size.y * 3
 
+func SetisInputBlock(x):
+	isInputBlock = !x
 
 func SetFloorWithAnchor(num):
 	i = num
 	$FloorDetector.SetActualFloor(num)
+	PlayerVariables.SaveLastPiso(num + 1)

@@ -58,6 +58,8 @@ func StartTimerToAppear():
 func offBtn(btn):
 	btn.visible = false
 
+func Destroy():
+	queue_free()
 
 func AnimButton():
 	if !buttons : return

@@ -20,9 +20,6 @@ func ResetAll():
 	# Configurar el estado inicial del recurso de minijuegos
 	minigameResourceFile.Set_State_Minigame("noFirstTimePlay")
 
-	# Pequeño retraso para garantizar estabilidad antes de recargar la escena
-	await get_tree().create_timer(0.2).timeout
-	
 	get_tree().change_scene_to_file("res://Scenes/Map_Screen.tscn")
 	
 

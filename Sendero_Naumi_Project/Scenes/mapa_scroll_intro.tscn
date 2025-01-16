@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://buth5gc88nt3j"]
+[gd_scene load_steps=48 format=3 uid="uid://buth5gc88nt3j"]
 
 [ext_resource type="Texture2D" uid="uid://cjjoaemhep814" path="res://Sprites/mapa-detalle.png" id="1_kw7ma"]
 [ext_resource type="Texture2D" uid="uid://hf5y4ic16cqj" path="res://Sprites/Intro/intro - background.jpg" id="1_un13t"]
@@ -8,16 +8,15 @@
 [ext_resource type="Script" path="res://_Scripts/AdjustMarginWithScreenSize.gd" id="4_4e1by"]
 [ext_resource type="Texture2D" uid="uid://chqivoetkgkoj" path="res://Sprites/UI/circulo.png" id="5_8y8kv"]
 [ext_resource type="Texture2D" uid="uid://cscyymtnwxau6" path="res://Sprites/UI/titulo_concepts.png" id="5_pglwp"]
+[ext_resource type="Script" path="res://Scenes/GenericPanelController.gd" id="6_cq1tq"]
 [ext_resource type="Texture2D" uid="uid://dhx6ness36h5f" path="res://Sprites/logoChicoCirculo.png" id="6_dtbi3"]
 [ext_resource type="Texture2D" uid="uid://gn0tmol3agtp" path="res://Sprites/Mapa/ciencias_mapa.png" id="6_sqkww"]
 [ext_resource type="Texture2D" uid="uid://3sby7wb2uo0e" path="res://Sprites/Mapa/ambiente_mapa.png" id="7_6t5sw"]
 [ext_resource type="Script" path="res://_Scripts/StateMachine/Button_Change_State.gd" id="8_rb8q7"]
-[ext_resource type="Texture2D" uid="uid://dpfcw5fqtdfqj" path="res://Sprites/Naumi/N0 - idle y llamado.png" id="9_tmpi0"]
+[ext_resource type="PackedScene" uid="uid://b77gk1g1ulal5" path="res://Scenes/UI_Scenes/naumi_controller.tscn" id="9_niht1"]
 [ext_resource type="Texture2D" uid="uid://l00ov7i7v281" path="res://Sprites/Mapa/eras_geologicas_mapa.png" id="10_c3fc7"]
-[ext_resource type="Texture2D" uid="uid://dnpt3mo8vtigw" path="res://Sprites/Naumi/ZZZ - idle.png" id="10_w6hht"]
 [ext_resource type="Texture2D" uid="uid://05mdqsdsbuqm" path="res://Sprites/Mapa/geologia_mapa.png" id="11_tirda"]
 [ext_resource type="Texture2D" uid="uid://lvhlr8303o1m" path="res://Sprites/Mapa/megafauna_mapa.png" id="12_4oixe"]
-[ext_resource type="Script" path="res://_Scripts/SetVisibleChilds.gd" id="12_cc620"]
 [ext_resource type="Script" path="res://_Scripts/PlayAnimation.gd" id="15_4c0kx"]
 [ext_resource type="PackedScene" uid="uid://djhg7jvxtexyl" path="res://Scenes/UI_Scenes/btn_Change_Scene.tscn" id="16_0ow6t"]
 [ext_resource type="Texture2D" uid="uid://bpcc2ljyhkxfl" path="res://Sprites/Mapa/pin check - mapa.png" id="17_0u7nf"]
@@ -31,256 +30,8 @@
 [ext_resource type="Script" path="res://Sprites/GenericPanelController.gd" id="27_a4863"]
 [ext_resource type="Script" path="res://_Scripts/Vibration_Button.gd" id="29_imofv"]
 
-[sub_resource type="Animation" id="Animation_fuilv"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("LabelControl/Panel/Label:text")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": ["¿ESTO? ESTO ES UN NAUMI"]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("LabelControl:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("LabelControl/Panel/Button:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-
-[sub_resource type="Animation" id="Animation_deepo"]
-resource_name = "naumi_intro_anim"
-length = 6.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("LabelControl/Panel/Label:text")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(1.1),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": ["¿ESTO? 
-ESTO ES UN NAUMI"]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("LabelControl:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("LabelControl/Panel/Button:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(5.1),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-
-[sub_resource type="Animation" id="Animation_b0422"]
-resource_name = "naumi_intro_anim_2"
-length = 7.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("LabelControl/Panel/Label:text")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": ["DICEN QUE LOS NAUMIS SON CRIATURAS MUY CURIOSAS Y RESPONDEN A DESCUBRIMIENTOS ¿PODRIAS LLEVARLO EN TU VIAJE?"]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("LabelControl/Panel/ButtonChangeScene:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 6.4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("LabelControl/Panel/ButtonChangeScene2:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 6.4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("LabelControl/Panel/Button:visible")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_5k4kw"]
-_data = {
-"RESET": SubResource("Animation_fuilv"),
-"naumi_intro_anim": SubResource("Animation_deepo"),
-"naumi_intro_anim_2": SubResource("Animation_b0422")
-}
-
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wbaqp"]
 texture = ExtResource("26_4d43e")
-
-[sub_resource type="Animation" id="Animation_2bcfk"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("../Naumi:rotation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("..:rotation")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-
-[sub_resource type="Animation" id="Animation_y0cb1"]
-resource_name = "zzz"
-length = 2.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2, 2.1, 2.2, 2.3, 2.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.6, 2.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("../Naumi:rotation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.6),
-"transitions": PackedFloat32Array(0.405749, 2.46229, 1),
-"update": 0,
-"values": [0.0, -0.0872665, 0.0]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("..:rotation")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [0.0, -0.0872665, 0.0]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_q3luw"]
-_data = {
-"RESET": SubResource("Animation_2bcfk"),
-"zzz": SubResource("Animation_y0cb1")
-}
 
 [sub_resource type="LabelSettings" id="LabelSettings_wfa71"]
 font_size = 120
@@ -430,7 +181,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-272, -159)]
+"values": [Vector2(-256, -159)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -554,7 +305,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0.7, 1.7),
 "transitions": PackedFloat32Array(0.45, 1),
 "update": 0,
-"values": [Vector2(-272, -159), Vector2(-311, -223)]
+"values": [Vector2(-256, -159), Vector2(-284, -223)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -735,23 +486,13 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector2(0, 0), Vector2(-1600, 0)]
 }
-tracks/1/type = "animation"
+tracks/1/type = "method"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../../Naumi_Intro/AnimationPlayer")
+tracks/1/path = NodePath("../../Naumi_Intro/Control/Label/AnimationPlayer")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"clips": PackedStringArray(),
-"times": PackedFloat32Array()
-}
-tracks/2/type = "method"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("../../Naumi_Intro/Control/Button/Label/AnimationPlayer")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
 "times": PackedFloat32Array(1.5),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -833,42 +574,17 @@ expand_mode = 1
 [node name="SaveFirstPlay" type="Node" parent="Naumi_Intro"]
 script = ExtResource("18_6lysc")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Naumi_Intro"]
-libraries = {
-"": SubResource("AnimationLibrary_5k4kw")
-}
-script = ExtResource("15_4c0kx")
-
-[node name="LabelControl" type="ColorRect" parent="Naumi_Intro"]
+[node name="Panel1" type="Panel" parent="Naumi_Intro"]
 visible = false
-self_modulate = Color(1, 1, 1, 0)
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -334.0
-offset_top = 64.0
-offset_right = 340.0
-offset_bottom = 332.0
-grow_horizontal = 2
-color = Color(0.172549, 0.172549, 0.172549, 0.356863)
-
-[node name="Panel" type="Panel" parent="Naumi_Intro/LabelControl"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -351.0
-offset_top = -114.0
-offset_right = 351.0
-offset_bottom = 114.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 0
+offset_left = 14.0
+offset_top = 82.0
+offset_right = 713.0
+offset_bottom = 313.0
 theme = ExtResource("23_003pn")
+script = ExtResource("6_cq1tq")
 
-[node name="Label" type="Label" parent="Naumi_Intro/LabelControl/Panel"]
+[node name="Label" type="Label" parent="Naumi_Intro/Panel1"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -881,22 +597,68 @@ offset_right = 294.0
 offset_bottom = 57.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "¿ESTO? ESTO ES UN NAUMI"
+text = "¿ESTO? 
+ESTO ES UN NAUMI"
 label_settings = ExtResource("24_tj67n")
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="ButtonChangeScene" parent="Naumi_Intro/LabelControl/Panel" instance=ExtResource("16_0ow6t")]
+[node name="Button" type="Button" parent="Naumi_Intro/Panel1"]
 visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.798
+anchor_top = 0.991
+anchor_right = 0.798
+anchor_bottom = 0.991
+offset_left = -44.802
+offset_top = -45.921
+offset_right = 45.198
+offset_bottom = 44.079
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Panel2" type="Panel" parent="Naumi_Intro"]
+visible = false
+layout_mode = 0
+offset_left = 14.0
+offset_top = 82.0
+offset_right = 713.0
+offset_bottom = 313.0
+theme = ExtResource("23_003pn")
+script = ExtResource("6_cq1tq")
+timeToBtn = 3
+
+[node name="Label" type="Label" parent="Naumi_Intro/Panel2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -296.0
+offset_top = -57.0
+offset_right = 294.0
+offset_bottom = 57.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "DICEN QUE LOS NAUMIS SON CRIATURAS MUY CURIOSAS Y RESPONDEN A DESCUBRIMIENTOS ¿PODRIAS LLEVARLO EN TU VIAJE?
+"
+label_settings = ExtResource("24_tj67n")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="ButtonChangeScene" parent="Naumi_Intro/Panel2" instance=ExtResource("16_0ow6t")]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.809
 anchor_right = 0.809
-offset_left = -44.918
-offset_top = -46.0
-offset_right = 45.082
-offset_bottom = 44.0
+offset_left = -54.064
+offset_top = -59.0
+offset_right = 35.936
+offset_bottom = 31.0
 grow_horizontal = 0
 theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = SubResource("StyleBoxTexture_wbaqp")
@@ -906,16 +668,15 @@ theme_override_styles/disabled = SubResource("StyleBoxTexture_wbaqp")
 text = "SI"
 NextScene = "AdventureBegins"
 
-[node name="ButtonChangeScene2" parent="Naumi_Intro/LabelControl/Panel" instance=ExtResource("16_0ow6t")]
-visible = false
+[node name="ButtonChangeScene2" parent="Naumi_Intro/Panel2" instance=ExtResource("16_0ow6t")]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.172
 anchor_right = 0.172
-offset_left = -44.744
-offset_top = -46.0
-offset_right = 45.256
-offset_bottom = 43.9999
+offset_left = -46.228
+offset_top = -47.0
+offset_right = 43.772
+offset_bottom = 42.9999
 grow_horizontal = 0
 theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = SubResource("StyleBoxTexture_wbaqp")
@@ -924,21 +685,6 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_wbaqp")
 theme_override_styles/disabled = SubResource("StyleBoxTexture_wbaqp")
 text = "OK"
 NextScene = "AdventureBegins"
-
-[node name="Button" type="Button" parent="Naumi_Intro/LabelControl/Panel"]
-visible = false
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.798
-anchor_top = 0.991
-anchor_right = 0.798
-anchor_bottom = 0.991
-offset_left = -45.196
-offset_top = -44.948
-offset_right = 44.804
-offset_bottom = 45.052
-grow_horizontal = 0
-grow_vertical = 0
 
 [node name="Control" type="Control" parent="Naumi_Intro"]
 layout_mode = 1
@@ -951,54 +697,25 @@ offset_top = 0.559998
 offset_right = 0.160004
 offset_bottom = 0.559998
 
-[node name="Naumi" type="Sprite2D" parent="Naumi_Intro/Control"]
-position = Vector2(0, -58)
-texture = ExtResource("9_tmpi0")
-offset = Vector2(0, -200)
-hframes = 4
+[node name="NaumiController" parent="Naumi_Intro/Control" instance=ExtResource("9_niht1")]
 
-[node name="ZZZ" type="Sprite2D" parent="Naumi_Intro/Control"]
-visible = false
-position = Vector2(128, -367)
-scale = Vector2(0.866142, 0.866142)
-texture = ExtResource("10_w6hht")
-hframes = 19
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Naumi_Intro/Control/ZZZ"]
-speed_scale = 0.7
-libraries = {
-"": SubResource("AnimationLibrary_q3luw")
-}
-script = ExtResource("15_4c0kx")
-animation = "zzz"
-
-[node name="Button" type="Button" parent="Naumi_Intro/Control"]
-layout_mode = 0
-offset_left = -156.0
-offset_top = -418.0
-offset_right = 164.0
-offset_bottom = 70.0
-theme_override_styles/focus = ExtResource("17_2a5jd")
-flat = true
-script = ExtResource("12_cc620")
-
-[node name="Label" type="Label" parent="Naumi_Intro/Control/Button"]
+[node name="Label" type="Label" parent="Naumi_Intro/Control"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.504
 anchor_top = 0.531
 anchor_right = 0.504
 anchor_bottom = 0.531
-offset_left = -27.28
-offset_top = -82.128
-offset_right = 26.72
-offset_bottom = 85.872
+offset_left = -23.0
+offset_top = -281.0
+offset_right = 31.0
+offset_bottom = -113.0
 scale = Vector2(1e-05, 1e-05)
 pivot_offset = Vector2(26.505, 86.52)
 text = "?"
 label_settings = SubResource("LabelSettings_wfa71")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Naumi_Intro/Control/Button/Label"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Naumi_Intro/Control/Label"]
 libraries = {
 "": SubResource("AnimationLibrary_os5q7")
 }
@@ -1006,11 +723,12 @@ script = ExtResource("15_4c0kx")
 animation = "idle"
 
 [node name="Map_Scroll" type="Control" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = 1440.0
+offset_bottom = 2560.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -1342,9 +1060,9 @@ mouse_filter = 1
 [node name="MegafaunaZone" type="TextureRect" parent="Map_Scroll/VBoxContainer/Piso1/Piso2"]
 layout_mode = 1
 anchors_preset = -1
-offset_left = -272.0
+offset_left = -256.0
 offset_top = -159.0
-offset_right = 1269.0
+offset_right = 1285.0
 offset_bottom = 2373.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -1570,14 +1288,11 @@ texture = ExtResource("22_c1o0u")
 script = ExtResource("29_imofv")
 vibrate = 300.0
 
-[connection signal="pressed" from="Naumi_Intro/LabelControl/Panel/ButtonChangeScene" to="Naumi_Intro/SaveFirstPlay" method="FirstPlay"]
-[connection signal="pressed" from="Naumi_Intro/LabelControl/Panel/ButtonChangeScene2" to="Naumi_Intro/SaveFirstPlay" method="FirstPlay"]
-[connection signal="pressed" from="Naumi_Intro/LabelControl/Panel/Button" to="Naumi_Intro/AnimationPlayer" method="PlayAnim" binds= ["naumi_intro_anim_2"]]
-[connection signal="tree_entered" from="Naumi_Intro/Control/Naumi" to="Naumi_Intro/Control/Naumi" method="_on_tree_entered"]
-[connection signal="tree_exited" from="Naumi_Intro/Control/Naumi" to="Naumi_Intro/Control/Naumi" method="_on_tree_exited"]
-[connection signal="pressed" from="Naumi_Intro/Control/Button" to="Naumi_Intro/Control/ZZZ/AnimationPlayer" method="Play"]
-[connection signal="pressed" from="Naumi_Intro/Control/Button" to="Naumi_Intro/AnimationPlayer" method="PlayAnim" binds= ["naumi_intro_anim"]]
-[connection signal="pressed" from="Naumi_Intro/Control/Button" to="Naumi_Intro/Control/Button" method="SetVisible" binds= [false]]
+[connection signal="pressed" from="Naumi_Intro/Panel1/Button" to="Naumi_Intro/Panel1" method="queue_free"]
+[connection signal="pressed" from="Naumi_Intro/Panel1/Button" to="Naumi_Intro/Panel2" method="SetVisibility" binds= [true]]
+[connection signal="pressed" from="Naumi_Intro/Panel2/ButtonChangeScene" to="Naumi_Intro/SaveFirstPlay" method="FirstPlay"]
+[connection signal="pressed" from="Naumi_Intro/Panel2/ButtonChangeScene2" to="Naumi_Intro/SaveFirstPlay" method="FirstPlay"]
+[connection signal="ButtonPress" from="Naumi_Intro/Control/NaumiController" to="Naumi_Intro/Panel1" method="SetVisibility" binds= [true]]
 [connection signal="stopscroll" from="Map_Scroll/VBoxContainer" to="Map_Scroll/VBoxContainer/Piso1/Piso2/MegafaunaZone/AnimationPlayer" method="Play"]
 [connection signal="pressed" from="Map_Scroll/VBoxContainer/middleIslands/VBoxContainer/Piso3/Piso3/Eras_Geologicas/TextureRect/Button_Change_State" to="Map_Scroll/VBoxContainer/middleIslands/VBoxContainer/Piso3/Piso3/Eras_Geologicas/TextureRect/Button_Change_State" method="_on_pressed"]
 [connection signal="pressed" from="Map_Scroll/LabelControl/Panel/Button" to="Map_Scroll/VBoxContainer/Piso1/Piso2/MegafaunaZone/AnimationPlayer" method="PlayAnim" binds= ["chan_anim"]]

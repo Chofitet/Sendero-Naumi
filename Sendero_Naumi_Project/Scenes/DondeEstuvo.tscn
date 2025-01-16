@@ -1,4 +1,4 @@
-[gd_scene load_steps=119 format=3 uid="uid://b017ojh8vtsd6"]
+[gd_scene load_steps=129 format=3 uid="uid://b017ojh8vtsd6"]
 
 [ext_resource type="Script" path="res://_Scripts/Minigame_Save_Controller.gd" id="1_ouwf6"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/StateMachineMinigames.gd" id="2_5wf26"]
@@ -66,6 +66,7 @@
 [ext_resource type="Texture2D" uid="uid://wesa7e45yh2s" path="res://Sprites/ZonaAstronomia/luna - donde.png" id="56_7ph33"]
 [ext_resource type="StyleBox" uid="uid://dbir22cn0h3vc" path="res://Themes/LightBlueStyleBox.tres" id="56_xob8t"]
 [ext_resource type="Texture2D" uid="uid://dw7qxlr0arskr" path="res://Sprites/ZonaAstronomia/neptuno - donde.png" id="57_2milj"]
+[ext_resource type="Shader" path="res://shaders/Laser.gdshader" id="57_dbv4y"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/FinState.gd" id="58_x5nop"]
 [ext_resource type="Texture2D" uid="uid://gcawnq85pux5" path="res://Sprites/ZonaAstronomia/marte - donde.png" id="60_5k74w"]
 [ext_resource type="PackedScene" uid="uid://dlwmbps456ind" path="res://Scenes/Experiments/btnVolver.tscn" id="65_lsfn2"]
@@ -842,6 +843,47 @@ _data = {
 "inPlace": SubResource("Animation_8rmco")
 }
 
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_wohvs"]
+fractal_octaves = 10
+fractal_gain = 1.05
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_6a6ct"]
+seamless = true
+noise = SubResource("FastNoiseLite_wohvs")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_nnt2y"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_sd6mx"]
+seamless = true
+noise = SubResource("FastNoiseLite_nnt2y")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_y2l0o"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_xy7uj"]
+seamless = true
+noise = SubResource("FastNoiseLite_y2l0o")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_reufe"]
+resource_local_to_scene = true
+shader = ExtResource("57_dbv4y")
+shader_parameter/scroll1 = Vector2(-1.02, 0.4)
+shader_parameter/scroll2 = Vector2(0.38, 1.4)
+shader_parameter/speed = 0.02
+shader_parameter/xStretch = 0.21
+shader_parameter/yStretch = 0.225
+shader_parameter/laserSize = 0.736
+shader_parameter/wobbliness = 0.472
+shader_parameter/color1 = Color(0.511719, 0.425781, 0.511719, 1)
+shader_parameter/color2 = Color(0.5, 0.5, 0.609375, 1)
+shader_parameter/colorMixFactor = 5.253
+shader_parameter/glowFactor = 1.0
+shader_parameter/minAlpha = 1.0
+shader_parameter/glowArea = 0.0
+shader_parameter/GlowColor = Color(1, 1, 1, 0.968627)
+shader_parameter/NOISE_PATTERN1 = SubResource("NoiseTexture2D_6a6ct")
+shader_parameter/NOISE_PATTERN2 = SubResource("NoiseTexture2D_sd6mx")
+shader_parameter/TRANSPARENCY_VARIATION = SubResource("NoiseTexture2D_xy7uj")
+
 [sub_resource type="Curve" id="Curve_vwj1c"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.180233, 1), 0.0842104, 0.0842104, 0, 0, Vector2(0.883721, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 4
@@ -850,12 +892,54 @@ point_count = 4
 offsets = PackedFloat32Array(0.0141844, 0.269504)
 colors = PackedColorArray(0.777162, 0.920445, 1, 1, 1, 1, 1, 1)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jdlqd"]
+resource_local_to_scene = true
+shader = ExtResource("57_dbv4y")
+shader_parameter/scroll1 = Vector2(-1.02, 0.4)
+shader_parameter/scroll2 = Vector2(0.38, 1.4)
+shader_parameter/speed = 0.02
+shader_parameter/xStretch = 0.21
+shader_parameter/yStretch = 0.225
+shader_parameter/laserSize = 0.736
+shader_parameter/wobbliness = 0.472
+shader_parameter/color1 = Color(0.511719, 0.425781, 0.511719, 1)
+shader_parameter/color2 = Color(0.5, 0.5, 0.609375, 1)
+shader_parameter/colorMixFactor = 5.253
+shader_parameter/glowFactor = 1.0
+shader_parameter/minAlpha = 1.0
+shader_parameter/glowArea = 0.0
+shader_parameter/GlowColor = Color(1, 1, 1, 0.968627)
+shader_parameter/NOISE_PATTERN1 = SubResource("NoiseTexture2D_6a6ct")
+shader_parameter/NOISE_PATTERN2 = SubResource("NoiseTexture2D_sd6mx")
+shader_parameter/TRANSPARENCY_VARIATION = SubResource("NoiseTexture2D_xy7uj")
+
 [sub_resource type="Curve" id="Curve_lg1ha"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), -0.541251, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="Gradient" id="Gradient_kxyq1"]
 colors = PackedColorArray(0.419813, 0.419813, 0.419813, 1, 1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_iecp7"]
+resource_local_to_scene = true
+shader = ExtResource("57_dbv4y")
+shader_parameter/scroll1 = Vector2(-1.02, 0.4)
+shader_parameter/scroll2 = Vector2(0.38, 1.4)
+shader_parameter/speed = 0.02
+shader_parameter/xStretch = 0.21
+shader_parameter/yStretch = 0.225
+shader_parameter/laserSize = 0.736
+shader_parameter/wobbliness = 0.472
+shader_parameter/color1 = Color(0.511719, 0.425781, 0.511719, 1)
+shader_parameter/color2 = Color(0.5, 0.5, 0.609375, 1)
+shader_parameter/colorMixFactor = 5.253
+shader_parameter/glowFactor = 1.0
+shader_parameter/minAlpha = 1.0
+shader_parameter/glowArea = 0.0
+shader_parameter/GlowColor = Color(1, 1, 1, 0.968627)
+shader_parameter/NOISE_PATTERN1 = SubResource("NoiseTexture2D_6a6ct")
+shader_parameter/NOISE_PATTERN2 = SubResource("NoiseTexture2D_sd6mx")
+shader_parameter/TRANSPARENCY_VARIATION = SubResource("NoiseTexture2D_xy7uj")
 
 [sub_resource type="Gradient" id="Gradient_kukdc"]
 offsets = PackedFloat32Array(0.369748, 0.495798, 0.647059, 1)
@@ -2099,6 +2183,7 @@ correctSpot = NodePath("../../../pivotPlanets/VBoxContainer2/SpotUnir5")
 colorShader = Color(0.823529, 0.113725, 0.454902, 1)
 
 [node name="LaserRay" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/center/CheckTrue/ItemUnir2" index="0"]
+material = SubResource("ShaderMaterial_reufe")
 points = PackedVector2Array(57, 1.00002, 1, 0)
 
 [node name="Sprite2D" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/center/CheckTrue/ItemUnir2" index="1"]
@@ -2144,6 +2229,7 @@ correctSpot = NodePath("../../../pivotPlanets/VBoxContainer2/SpotUnir4")
 colorShader = Color(0, 0.427451, 0.827451, 1)
 
 [node name="LaserRay" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/center/CheckTrue/ItemUnir" index="0"]
+material = SubResource("ShaderMaterial_jdlqd")
 scale = Vector2(1.35, 1.35)
 
 [node name="Sprite2D" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/center/CheckTrue/ItemUnir" index="1"]
@@ -2225,6 +2311,7 @@ correctSpot = NodePath("../../../pivotPlanets/VBoxContainer2/SpotUnir")
 colorShader = Color(0.988235, 0.580392, 0.188235, 1)
 
 [node name="LaserRay" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/center/CheckTrue/ItemUnir3" index="0"]
+material = SubResource("ShaderMaterial_iecp7")
 scale = Vector2(1.15, 1.15)
 
 [node name="Sprite2D" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/center/CheckTrue/ItemUnir3" index="1"]
