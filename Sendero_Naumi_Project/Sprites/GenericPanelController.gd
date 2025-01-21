@@ -7,7 +7,6 @@ var buttons := []
 var timer
 signal pixels_rendered
 
-
 func _ready():
 	var timerbtnAnim : Timer = Timer.new()
 	add_child(timerbtnAnim)

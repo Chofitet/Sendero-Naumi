@@ -13,7 +13,8 @@ class_name MiniGameResource
 "Mamushkas" : false,
 "Calendario" : false,
 "noFirstTimePlay" : false,
-"lastZone": "NoZone"}
+"lastZone": "NoZone",
+"ToUnlockIlands": false}
 
 func Set_State_Minigame(string):
 	StateMinigames[string] = true

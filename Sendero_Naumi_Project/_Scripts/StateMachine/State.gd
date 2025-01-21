@@ -39,20 +39,14 @@ func CheckAllTrue(Minigames):
 			ResourceSaver.save(Zoneresource,save_file_path + "ZoneResource.tres")
 			if !once: 
 				minigameResourseFile.Set_State_Minigame("ToLevelNaumi")
+				minigameResourseFile.Set_State_Minigame("ToUnlockIlands")
 				save()
 				get_tree().change_scene_to_file("res://Scenes/zone_complete_event.tscn")
 
 #Reinicia todos las Zonas y Minijuegos
 func RestartAll():
-	minigameResourseFile.RestartMinigames()
-	Zoneresource.RestartZones()
-	var InstanceR = InstanceResource.new()
-	InstanceR. RestartIntances()
-	save()
-	ResourceSaver.save(Zoneresource,save_file_path + "ZoneResource.tres")
-	ResourceSaver.save(InstanceR, save_file_path + "InstanceResource.tres")
-	get_tree().change_scene_to_file("res://Scenes/Map_Screen.tscn")
-	
+	get_tree().change_scene_to_file("res://Scenes/ResetScreen.tscn")
+
 
 func ChangeButtonBackVisibility(x, button):
 	if (button == null): return

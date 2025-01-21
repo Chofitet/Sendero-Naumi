@@ -10,6 +10,7 @@ var holdClick
 var next_anchor 
 signal stopHold
 var inGesture
+var isInputBlock
 
 func _ready():
 	timer = get_parent().get_node("TimerScroll")
@@ -21,6 +22,7 @@ func _ready():
 	stopHold.connect(HoldingClick)
 
 func _input(event: InputEvent) -> void:
+	if isInputBlock: return
 	if Input.is_action_just_pressed("TouchScreen"):
 		pressedPos = event.position
 		timer.start()
@@ -55,6 +57,8 @@ func calculateGesture() -> void:
 		else:
 			var tween = get_tree().create_tween()
 			tween.tween_property(self,"scroll_vertical", set_next_anchor("down"),0.2).set_ease(Tween.EASE_OUT)
+	
+	SetFloorWithAnchor(i)
 
 func set_next_anchor(direction) -> float:
 	
@@ -85,22 +89,30 @@ func find_closest_node():
 			closest_node = node
 
 		if closest_node.name == "Piso1":
-			i = 0
+			SetFloorWithAnchor(0)
 		elif closest_node.name == "Piso2":
-			i = 1
+			SetFloorWithAnchor(1)
 		elif closest_node.name == "Piso3":
-			i = 2
+			SetFloorWithAnchor(2)
 	return closest_node
 
 func getAnchorInBackScreen() -> float:
 	var NumPiso = PlayerVariables.NumPiso
 	if NumPiso == 1:
-		i = 0
+		SetFloorWithAnchor(0)
 		return get_viewport_rect().size.y * 3
 	if NumPiso == 2:
-		i = 1
+		SetFloorWithAnchor(1)
 		return get_viewport_rect().size.y - get_viewport_rect().size.y/5
 	if NumPiso == 3:
-		i = 2
+		SetFloorWithAnchor(2)
 		return 0
 	return get_viewport_rect().size.y * 3
+
+func SetisInputBlock(x):
+	isInputBlock = !x
+
+func SetFloorWithAnchor(num):
+	i = num
+	$FloorDetector.SetActualFloor(num)
+	PlayerVariables.SaveLastPiso(num + 1)
