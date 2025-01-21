@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://7ypbdd5rheui"]
+[gd_scene load_steps=41 format=3 uid="uid://7ypbdd5rheui"]
 
 [ext_resource type="PackedScene" uid="uid://ci3c3pocxiywq" path="res://Scenes/Experiments/drag_object.tscn" id="1_1vclv"]
 [ext_resource type="Script" path="res://_Scripts/MinG_Mamushka/mamushka_controller.gd" id="1_vp2p0"]
@@ -15,16 +15,22 @@
 [ext_resource type="Texture2D" uid="uid://bdr53jvrjkxj3" path="res://Sprites/ZonaAstronomia/manto inferior cadera - matryoshka.png" id="6_705o7"]
 [ext_resource type="Texture2D" uid="uid://bxvsh6ftcgtqb" path="res://Sprites/ZonaAstronomia/manto inferior cabeza - matryoshka.png" id="7_kj77h"]
 [ext_resource type="SpriteFrames" uid="uid://dnjwuu7vb0tlm" path="res://Resources/mamushkasAnimatedEmotions/mamushka_Nucleo_Externo_anim.tres" id="7_ub6oe"]
+[ext_resource type="PackedScene" uid="uid://cw3ok8v4p620b" path="res://Scenes/Experiments/squiggling_sprite.tscn" id="8_5f86v"]
 [ext_resource type="Texture2D" uid="uid://bawvtie0lnxa6" path="res://Sprites/ZonaAstronomia/manto superior cadera - matryoshka.png" id="8_olphd"]
 [ext_resource type="Texture2D" uid="uid://bkrvukm6ytwwl" path="res://Sprites/ZonaAstronomia/tierra - matryoshka.png" id="8_vwifp"]
+[ext_resource type="Texture2D" uid="uid://beoef6wxjidao" path="res://Sprites/ZonaAstronomia/squiggligMamushka/nucleo internoSQUIG - matryoshka.png" id="9_cwtm3"]
 [ext_resource type="Texture2D" uid="uid://c0nbss33gavx8" path="res://Sprites/ZonaAstronomia/manto superior cabeza - matryoshka.png" id="9_goi1i"]
 [ext_resource type="SpriteFrames" uid="uid://dpg7axukfw85v" path="res://Resources/mamushkasAnimatedEmotions/mamushka_Manto_Inferior_anim.tres" id="10_byp4t"]
 [ext_resource type="Texture2D" uid="uid://d32row7tshqb0" path="res://Sprites/ZonaAstronomia/corteza cadera - matryoshka.png" id="10_pihha"]
 [ext_resource type="Texture2D" uid="uid://i35qq4wfk7ig" path="res://Sprites/ZonaAstronomia/corteza cabeza - matryoshka.png" id="11_eextx"]
 [ext_resource type="SpriteFrames" uid="uid://du6ewcx4aeo10" path="res://Resources/mamushkasAnimatedEmotions/mamushka_Manto_Superior_anim.tres" id="13_88kvf"]
 [ext_resource type="SpriteFrames" uid="uid://ccg0trgfp1e7r" path="res://Resources/mamushkasAnimatedEmotions/mamushka_Corteza_anim.tres" id="13_vk4tl"]
+[ext_resource type="Texture2D" uid="uid://blh6esweb3hx7" path="res://Sprites/ZonaAstronomia/squiggligMamushka/nucleo externoSQUIG - matryoshka.png" id="16_oualr"]
 [ext_resource type="Texture2D" uid="uid://kvjt6tm36pd8" path="res://Sprites/ZonaAstronomia/corteza tapa - matryoshka.png" id="17_as8vg"]
+[ext_resource type="Texture2D" uid="uid://duywvlttsh2do" path="res://Sprites/ZonaAstronomia/squiggligMamushka/manto inferiorSQUIG - matryoshka.png" id="20_ubh6k"]
 [ext_resource type="StyleBox" uid="uid://b3tjes2hcm3wx" path="res://Resources/UI_Resources/StyleBoxTrasparent.tres" id="20_w1fus"]
+[ext_resource type="Texture2D" uid="uid://d1y032cha025n" path="res://Sprites/ZonaAstronomia/squiggligMamushka/manto superiorSQUIG - matryoshka.png" id="24_fht3l"]
+[ext_resource type="Texture2D" uid="uid://dltoj6fway13g" path="res://Sprites/ZonaAstronomia/squiggligMamushka/cortezaSQUIG - matryoshka.png" id="29_p81g7"]
 
 [sub_resource type="Animation" id="Animation_ixei7"]
 length = 0.001
@@ -315,6 +321,11 @@ libraries = {
 "": SubResource("AnimationLibrary_v5xse")
 }
 
+[node name="SquigglingSprite" parent="Sprites/Layer0" instance=ExtResource("8_5f86v")]
+position = Vector2(0, -3)
+scale = Vector2(1, 0.96875)
+texture = ExtResource("9_cwtm3")
+
 [node name="Layer1" type="Node2D" parent="Sprites"]
 visible = false
 
@@ -331,8 +342,12 @@ autoplay = "idle"
 texture = ExtResource("5_cfk08")
 flip_h = true
 
+[node name="SquigglingSprite" parent="Sprites/Layer1" instance=ExtResource("8_5f86v")]
+position = Vector2(-1.5, 2.50001)
+scale = Vector2(1.00397, 1.00397)
+texture = ExtResource("16_oualr")
+
 [node name="Layer2" type="Node2D" parent="Sprites"]
-visible = false
 
 [node name="Sprite2D2" type="Sprite2D" parent="Sprites/Layer2"]
 texture = ExtResource("6_705o7")
@@ -345,8 +360,10 @@ autoplay = "idle"
 [node name="Sprite2D" type="Sprite2D" parent="Sprites/Layer2"]
 texture = ExtResource("7_kj77h")
 
+[node name="SquigglingSprite" parent="Sprites/Layer2/Sprite2D" instance=ExtResource("8_5f86v")]
+texture = ExtResource("20_ubh6k")
+
 [node name="Layer3" type="Node2D" parent="Sprites"]
-visible = false
 
 [node name="Sprite2D" type="Sprite2D" parent="Sprites/Layer3"]
 texture = ExtResource("8_olphd")
@@ -359,8 +376,11 @@ autoplay = "idle"
 [node name="Sprite2D2" type="Sprite2D" parent="Sprites/Layer3"]
 texture = ExtResource("9_goi1i")
 
+[node name="SquigglingSprite" parent="Sprites/Layer3/Sprite2D2" instance=ExtResource("8_5f86v")]
+position = Vector2(0, 5)
+texture = ExtResource("24_fht3l")
+
 [node name="Layer4" type="Node2D" parent="Sprites"]
-visible = false
 
 [node name="Sprite2D" type="Sprite2D" parent="Sprites/Layer4"]
 texture = ExtResource("10_pihha")
@@ -381,6 +401,10 @@ sprite_frames = ExtResource("13_vk4tl")
 animation = &"idle"
 autoplay = "idle"
 centered = false
+
+[node name="SquigglingSprite" parent="Sprites/Layer4/Sprite2D3" instance=ExtResource("8_5f86v")]
+position = Vector2(0, 5)
+texture = ExtResource("29_p81g7")
 
 [node name="DragObject" parent="." instance=ExtResource("1_1vclv")]
 PlaceInAllSpots = true
@@ -416,5 +440,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/focus = ExtResource("20_w1fus")
 flat = true
+
+[connection signal="pressed" from="ButtonFinal" to="Sprites/Layer4/Sprite2D3/SquigglingSprite" method="InactiveSquiggling"]
 
 [editable path="DragObject"]

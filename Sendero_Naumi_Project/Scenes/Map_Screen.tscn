@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://ck4m8k46bmha1"]
+[gd_scene load_steps=41 format=3 uid="uid://ck4m8k46bmha1"]
 
 [ext_resource type="Script" path="res://_Scripts/AdjustSeparationWithScreenSize.gd" id="2_1v6rf"]
 [ext_resource type="Script" path="res://_Scripts/ScrollController.gd" id="2_es768"]
@@ -20,7 +20,6 @@
 [ext_resource type="Script" path="res://_Scripts/StateMachine/NoZone.gd" id="13_tgu8h"]
 [ext_resource type="Material" uid="uid://d85j5vo26jsq" path="res://shaders/GreyScaleShader.tres" id="14_7gd3p"]
 [ext_resource type="Texture2D" uid="uid://lvhlr8303o1m" path="res://Sprites/Mapa/megafauna_mapa.png" id="14_jw7qj"]
-[ext_resource type="Texture2D" uid="uid://bctjm2l20y57p" path="res://Sprites/ZonaMegafauna/resultado - mal.png" id="15_8lxhl"]
 [ext_resource type="Script" path="res://_Scripts/StateMachine/MegafaunaZone.gd" id="15_y7a6y"]
 [ext_resource type="Script" path="res://_Scripts/StateMachine/GeologiaZone.gd" id="16_at6pn"]
 [ext_resource type="Script" path="res://_Scripts/MadeLineWithPath.gd" id="16_fmkx3"]
@@ -273,10 +272,6 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("5_isoyh")
 
-[node name="Sprite2D" type="Sprite2D" parent="ScrollContainer/VBoxContainer/Piso3/Piso3/CuaternarioZone/LockIland"]
-position = Vector2(498.409, 890.909)
-texture = ExtResource("15_8lxhl")
-
 [node name="TextureRect" type="TextureRect" parent="ScrollContainer/VBoxContainer/Piso3/Piso3/CuaternarioZone"]
 visible = false
 layout_mode = 1
@@ -338,10 +333,6 @@ offset_bottom = -3.20947
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("6_rl10m")
-
-[node name="Sprite2D" type="Sprite2D" parent="ScrollContainer/VBoxContainer/Piso3/Piso3/AmbientesZone/LockIland"]
-position = Vector2(590.909, 1127.27)
-texture = ExtResource("15_8lxhl")
 
 [node name="TextureRect" type="TextureRect" parent="ScrollContainer/VBoxContainer/Piso3/Piso3/AmbientesZone"]
 visible = false
@@ -440,10 +431,6 @@ offset_bottom = 44.83
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("7_ej8rg")
-
-[node name="Sprite2D" type="Sprite2D" parent="ScrollContainer/VBoxContainer/Piso3/Piso3/ErasGeologicasZone/LockIland"]
-position = Vector2(597.015, 1037.42)
-texture = ExtResource("15_8lxhl")
 
 [node name="TextureRect" type="TextureRect" parent="ScrollContainer/VBoxContainer/Piso3/Piso3/ErasGeologicasZone"]
 visible = false
@@ -552,10 +539,6 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("5_isoyh")
 
-[node name="Sprite2D" type="Sprite2D" parent="ScrollContainer/VBoxContainer/Piso2/MuseoHistoryZone/LockIland"]
-position = Vector2(498.409, 890.909)
-texture = ExtResource("15_8lxhl")
-
 [node name="TextureRect" type="TextureRect" parent="ScrollContainer/VBoxContainer/Piso2/MuseoHistoryZone"]
 visible = false
 layout_mode = 1
@@ -616,10 +599,6 @@ offset_bottom = -52.662
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("11_r0n4l")
-
-[node name="Sprite2D" type="Sprite2D" parent="ScrollContainer/VBoxContainer/Piso2/AstronomiaZone/LockIland"]
-position = Vector2(498.409, 890.909)
-texture = ExtResource("15_8lxhl")
 
 [node name="TextureRect" type="TextureRect" parent="ScrollContainer/VBoxContainer/Piso2/AstronomiaZone"]
 visible = false
@@ -703,10 +682,6 @@ offset_bottom = -36.1686
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("4_jbstj")
-
-[node name="Sprite2D" type="Sprite2D" parent="ScrollContainer/VBoxContainer/Piso2/GeologiaZone/LockIland"]
-position = Vector2(498.409, 890.909)
-texture = ExtResource("15_8lxhl")
 
 [node name="TextureRect" type="TextureRect" parent="ScrollContainer/VBoxContainer/Piso2/GeologiaZone"]
 visible = false
@@ -1051,6 +1026,21 @@ offset_bottom = -24.0
 grow_vertical = 0
 theme_override_font_sizes/font_size = 40
 text = "Restart"
+
+[node name="ButtonChangeScene" parent="StateMachine/NoZone" instance=ExtResource("7_1v7i5")]
+z_index = 4
+anchors_preset = 3
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -235.0
+offset_top = -102.0
+offset_right = -21.0
+offset_bottom = -18.0
+grow_horizontal = 0
+text = "Debug"
+NextScene = "prueba_letras"
+fade_time = 0.0
+smoothness = 0.0
 
 [node name="MegafaunaZone" type="Node" parent="StateMachine" node_paths=PackedStringArray("ButtonBack")]
 script = ExtResource("15_y7a6y")

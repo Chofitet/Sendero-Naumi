@@ -24,6 +24,7 @@ var inPlace : bool
 @export var AppearChild : bool = false
 @export var EditableButton : bool = false
 var ScaleOfChild
+@onready var SquigglingSprite = $SquigglingSprite
 
 func _ready():
 	if AppearChild: 
@@ -37,6 +38,8 @@ func _ready():
 		BlockButton(false)
 	if EditableButton : return
 	adjustRect()
+	
+	
 
 func adjustRect():
 	button.set_size(rect.size)
@@ -49,15 +52,16 @@ func BtnPress():
 		z_index = 2
 		ToCenter.emit()
 		MakeAnim(Vector2.ZERO, HighQualityTexture, extra_scale, angleInCenter,1, false,true)
+		SquigglingSprite.visible = false
 	elif isInCenter and !hasClue:
 		get_parent().BlockOthersClues(self,true)
 		isInCenter = false
 		z_index = 0
 		NoCenter.emit()
 		if otherPosition == null:
-			MakeAnim(initPosition, lowQualityTexture, Vector2.ONE, initRotation)
+			MakeAnim(initPosition, lowQualityTexture, Vector2.ONE, initRotation,0,false,false,true)
 		else:
-			MakeAnim(otherPosition.position, lowQualityTexture, Vector2.ONE, otherPosition.rotation_degrees)
+			MakeAnim(otherPosition.position, lowQualityTexture, Vector2.ONE, otherPosition.rotation_degrees,0,false,false,true)
 		await get_tree().create_timer(1).timeout
 		adjustRect()
 	elif isInCenter and hasClue:
@@ -67,14 +71,14 @@ func BtnPress():
 		inPlace = true
 		NoCenter.emit()
 		z_index = 0
-		MakeAnim(ToPosition, lowQualityTexture,inventary_scale, 0,0,true)
+		MakeAnim(ToPosition, lowQualityTexture,inventary_scale, 0,0,true,false,true)
 		await get_tree().create_timer(1).timeout
 		adjustRect()
 	
 	
 	
 
-func MakeAnim(pos, _texture, extra_scale : Vector2 = Vector2(1,1), rotateAngle : float = 0 , index = 0, _hasClue = false, isChildVisible = false):
+func MakeAnim(pos, _texture, extra_scale : Vector2 = Vector2(1,1), rotateAngle : float = 0 , index = 0, _hasClue = false, isChildVisible = false, squiggling = false):
 	z_index = 1
 	button.visible = false
 	var tween = get_tree().create_tween()
@@ -92,6 +96,7 @@ func MakeAnim(pos, _texture, extra_scale : Vector2 = Vector2(1,1), rotateAngle :
 	z_index = index
 	if AppearChild:
 		ShowChild(isChildVisible)
+	if squiggling: SquigglingSprite.visible = true
 
 var inFrot
 func ShowChild(isVisible):

@@ -15,6 +15,7 @@ var minigameResourseFile = MiniGameResource.new()
 var zoneResource = ZoneResource.new()
 @onready var timer = $Timer
 signal ButtonPress
+var  isIdleOncePlayed
 
 func load_file():
 	zoneResource  = ResourceLoader.load(save_file_path  + save_file_name_Zone)
@@ -34,6 +35,8 @@ func _ready():
 	else:
 		SetNaumi(NaumiState())
 		btn.pressed.connect(Sleeping)
+		
+	timer.wait_time = randf_range(6,13)
 
 func ToLevelUp():
 	$pivot/Parts/partsAnimator.play("RESET")
@@ -58,29 +61,31 @@ func Evolve():
 
 func Sleeping():
 	btn.visible = false
+	$pivot/Parts/zzz.stop()
 	NaumiAnim.play("tapped")
 	timer.timeout.disconnect(PlayRandomIdleAnim)
-	$pivot/Parts/zzz.play("tap")
 	$pivot/Parts/partsAnimator.play("tap")
-	$pivot/Parts/eye.play("tap")
-	$pivot/Parts/ear.play("tap")
-	$pivot/Parts/wing.play("tap")
+	#$pivot/Parts/eye.play("tap")
+	#$pivot/Parts/ear.play("tap")
+	#$pivot/Parts/wing.play("tap")
 	Anim.play("tap_naumi")
 	await Anim.animation_finished
-	timer.timeout.connect(PlayRandomIdleAnim)
+	$pivot/Parts/zzz.play("tap")
 	$pivot/Parts/partsAnimator.play("idle")
 	NaumiAnim.play("sleeping")
 	btn.visible = true
+	
+	if !isIdleOncePlayed:
+		timer.start()
+		timer.timeout.connect(PlayRandomIdleAnim)
 
 func SetNaumi(num):
 	match num:
 		0:
 			NaumiAnim.sprite_frames = preload("res://Resources/NaumiSpriteFrames/N0.tres")
-			$pivot/Parts/zzz.visible = true
 		1:
 			debris[0].visible = true
 			NaumiAnim.sprite_frames = preload("res://Resources/NaumiSpriteFrames/N1.tres")
-			$pivot/Parts/zzz.visible = false
 		2:
 			debris[0].visible = true
 			debris[1].visible = true
@@ -106,18 +111,26 @@ var available_indices = []
 
 func PlayRandomIdleAnim():
 	
-	if available_indices.size() == 0:
-		for p in parts:
-			available_indices.append(p)
+	var anim = $pivot/Parts/eye
+	anim.play("idle")
 	
-	var random_index = available_indices[randi_range(0, available_indices.size() - 1)]
+	await  anim.animation_finished
 	
-	available_indices.erase(random_index)
+	$pivot/Parts/zzz.play("tap")
+	isIdleOncePlayed = true
 	
-	var partsPath = "pivot/Parts/"
-	var path = partsPath + random_index
-	get_node(path).play("idle")
-	timer.wait_time = randf_range(5,13)
+#	if available_indices.size() == 0:
+#		for p in parts:
+#			available_indices.append(p)
+#
+#	var random_index = available_indices[randi_range(0, available_indices.size() - 1)]
+#
+#	available_indices.erase(random_index)
+#
+#	var partsPath = "pivot/Parts/"
+#	var path = partsPath + random_index
+#	get_node(path).play("idle")
+#	timer.wait_time = randf_range(5,13)
 
 func ButtonPressed():
 	ButtonPress.emit()
