@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=3 uid="uid://lv8sdofmjhf3"]
+[gd_scene load_steps=68 format=3 uid="uid://lv8sdofmjhf3"]
 
 [ext_resource type="Script" path="res://_Scripts/Minigame_Save_Controller.gd" id="1_f0fiw"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/StateMachineMinigames.gd" id="2_12384"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://c5p3itai046fy" path="res://Sprites/UI/boton inicio fighter_1.png" id="4_d7p6d"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/JuegoState.gd" id="5_ks8gw"]
 [ext_resource type="Texture2D" uid="uid://b5qoetxgjuq1s" path="res://Sprites/ZonaGeología/Piedras/cuarzo_dureza.png" id="6_pa2as"]
+[ext_resource type="Texture2D" uid="uid://chd4x61mdw68l" path="res://Sprites/ZonaGeología/squigglingFighter/cartelVamosSQUIG - fighter.png" id="7_7tbh4"]
 [ext_resource type="Texture2D" uid="uid://bvaflt3wlye5h" path="res://Sprites/ZonaGeología/focoLuzBlaco.png" id="7_r3atn"]
 [ext_resource type="Texture2D" uid="uid://c6qavsooil6af" path="res://Sprites/ZonaGeología/golpe_tira .png" id="7_tdkmm"]
 [ext_resource type="Texture2D" uid="uid://bvivfdfb7ekbn" path="res://Sprites/ZonaGeología/Fondo_Ladrillo.png" id="8_offts"]
@@ -31,6 +32,8 @@
 [ext_resource type="PackedScene" uid="uid://cnxkgvr1r0dny" path="res://Scenes/Zona_Geología/rock_hincha.tscn" id="24_vtm00"]
 [ext_resource type="Texture2D" uid="uid://5bjovkq3aou5" path="res://Sprites/ZonaGeología/Piedras/halita - busqueda.png" id="25_lqy04"]
 [ext_resource type="Texture2D" uid="uid://dxtycvon1bw4p" path="res://Sprites/ZonaGeología/Piedras/zoisita - busqueda.png" id="26_0j7qb"]
+[ext_resource type="PackedScene" uid="uid://cw3ok8v4p620b" path="res://Scenes/Experiments/squiggling_sprite.tscn" id="29_gfydn"]
+[ext_resource type="Texture2D" uid="uid://bv3281qs1eia2" path="res://Sprites/ZonaGeología/squigglingFighter/cartelNombreSQUIG - fighter.png" id="30_w5i6x"]
 [ext_resource type="PackedScene" uid="uid://dlwmbps456ind" path="res://Scenes/Experiments/btnVolver.tscn" id="33_l1u1j"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/MoralejaState.gd" id="34_rssk2"]
 [ext_resource type="Texture2D" uid="uid://dbv6rcnmmb8db" path="res://Sprites/ZonaGeología/fondo_geografia.png" id="35_0j7t8"]
@@ -713,6 +716,11 @@ libraries = {
 "": SubResource("AnimationLibrary_djbuf")
 }
 
+[node name="SquigglingSprite" parent="RockFighters/StateMachine/Consigna/Contenido/Button" instance=ExtResource("29_gfydn")]
+position = Vector2(160.291, 83.4353)
+scale = Vector2(0.992772, 0.972154)
+texture = ExtResource("7_7tbh4")
+
 [node name="Timer" type="Timer" parent="RockFighters/StateMachine/Consigna/Contenido"]
 wait_time = 10.3
 
@@ -1241,6 +1249,11 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
+[node name="SquigglingSprite" parent="RockFighters/StateMachine/Juego/Contenido/Consigna/RightBtn/button" instance=ExtResource("29_gfydn")]
+position = Vector2(155.627, 74.679)
+scale = Vector2(0.967688, 0.917465)
+texture = ExtResource("30_w5i6x")
+
 [node name="BigButton" type="Button" parent="RockFighters/StateMachine/Juego/Contenido/Consigna/RightBtn"]
 layout_mode = 1
 anchors_preset = 15
@@ -1306,6 +1319,11 @@ text = "DOÑA FLUORITA"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
+
+[node name="SquigglingSprite" parent="RockFighters/StateMachine/Juego/Contenido/Consigna/LeftBtn/button" instance=ExtResource("29_gfydn")]
+position = Vector2(152.85, 72.9966)
+scale = Vector2(0.951819, 0.906124)
+texture = ExtResource("30_w5i6x")
 
 [node name="BigButton" type="Button" parent="RockFighters/StateMachine/Juego/Contenido/Consigna/LeftBtn"]
 layout_mode = 1
@@ -1873,6 +1891,12 @@ texture = ExtResource("43_xay53")
 
 [connection signal="timeout" from="RockFighters/StateMachine/Consigna/Contenido/Timer" to="RockFighters/StateMachine/Consigna" method="TimeOut" flags=18]
 [connection signal="Transitioned" from="RockFighters/StateMachine/Juego" to="RockFighters/StateMachine/Juego/Contenido/Consigna/AnimationPlayer" method="Play"]
+[connection signal="animation_started" from="RockFighters/StateMachine/Juego/Contenido/Consigna/AnimationPlayer" to="RockFighters/StateMachine/Juego/Contenido/Consigna/RightBtn/button/SquigglingSprite" method="ActiveSquiggling"]
+[connection signal="animation_started" from="RockFighters/StateMachine/Juego/Contenido/Consigna/AnimationPlayer" to="RockFighters/StateMachine/Juego/Contenido/Consigna/LeftBtn/button/SquigglingSprite" method="ActiveSquiggling"]
+[connection signal="pressed" from="RockFighters/StateMachine/Juego/Contenido/Consigna/RightBtn/BigButton" to="RockFighters/StateMachine/Juego/Contenido/Consigna/RightBtn/button/SquigglingSprite" method="InactiveSquiggling"]
+[connection signal="pressed" from="RockFighters/StateMachine/Juego/Contenido/Consigna/RightBtn/BigButton" to="RockFighters/StateMachine/Juego/Contenido/Consigna/LeftBtn/button/SquigglingSprite" method="InactiveSquiggling"]
+[connection signal="pressed" from="RockFighters/StateMachine/Juego/Contenido/Consigna/LeftBtn/BigButton" to="RockFighters/StateMachine/Juego/Contenido/Consigna/RightBtn/button/SquigglingSprite" method="InactiveSquiggling"]
+[connection signal="pressed" from="RockFighters/StateMachine/Juego/Contenido/Consigna/LeftBtn/BigButton" to="RockFighters/StateMachine/Juego/Contenido/Consigna/LeftBtn/button/SquigglingSprite" method="InactiveSquiggling"]
 [connection signal="pressed" from="RockFighters/StateMachine/Fin/Contenido/Panel/ButtonChangeScene" to="RockFighters" method="Set_Complete"]
 
 [editable path="RockFighters/StateMachine/Juego/Contenido/Control/hinchada/Rock"]

@@ -15,6 +15,8 @@ signal Restart
 signal BookEvent
 var SpritePencil = preload("res://Sprites/ZonaMegafauna/pencil.png")
 var SpriteBrush = preload("res://Sprites/ZonaMegafauna/brush - excavando.png")
+var SquigglingBrush = preload("res://Sprites/ZonaMegafauna/squigglingExcavando/brushSQUIG - excavando.png")
+var SquigglingPencil = preload("res://Sprites/ZonaMegafauna/squigglingExcavando/pencilSQUIG - excavando.png")
 var Fade = preload("res://Scenes/Experiments/IndividualFade.tscn")
 var fadeTexture = preload("res://addons/scene_manager/shader_patterns/diagonal.png")
 
@@ -45,6 +47,7 @@ func _ready():
 
 func Draw():
 	$Button.visible = false
+	$pencil/SquigglingSprite.InactiveSquiggling()
 	skeleton.get_node("Label").visible = true
 	anim.play("pencil_anim")
 	fadeFactor = 1
@@ -57,15 +60,22 @@ func Draw():
 	fadeFactor2 = 0
 	isPencil = false
 	$pencil/Sprite2D.texture = SelectTexture()
+	$pencil/SquigglingSprite.texture = SelectSquiggling()
 	anim.play("Pencil_enter")
 	$Button.visible = true
 	await anim.animation_finished
+	$pencil/SquigglingSprite.ActiveSquiggling()
 	anim.play("pencil_idle")
 
 func SelectTexture() -> Texture:
 	if isPencil:
 		return SpritePencil
 	else: return SpriteBrush
+
+func SelectSquiggling() -> Texture:
+	if isPencil:
+		return SquigglingPencil
+	else: return SquigglingBrush
 
 func SelectSpriteFade() -> String:
 	if isPencil:
@@ -81,6 +91,7 @@ func DoAnim(_topo):
 	anim.play("Pencil_enter")
 	await anim.animation_finished
 	anim.play("pencil_idle")
+	$pencil/SquigglingSprite.ActiveSquiggling()
 	$Button.visible = true
 	
 
@@ -124,6 +135,7 @@ func InstanceTransition():
 func ToRestart():
 	isPencil = true
 	$pencil/Sprite2D.texture = SelectTexture()
+	$pencil/SquigglingSprite.texture = SelectSquiggling()
 	skeleton.get_node("Label").visible = false
 	BookEvent.emit(true)
 	
