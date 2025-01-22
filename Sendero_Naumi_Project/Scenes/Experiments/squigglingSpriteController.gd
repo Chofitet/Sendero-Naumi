@@ -4,8 +4,8 @@ extends Sprite2D
 func _ready():
 	visible = ActiveInBegining
 
-func InactiveSquiggling(x):
+func InactiveSquiggling():
 	visible = false
 
-func ActiveSquiggling(x):
+func ActiveSquiggling():
 	visible = true
