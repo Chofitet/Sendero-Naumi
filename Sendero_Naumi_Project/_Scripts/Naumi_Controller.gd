@@ -25,6 +25,9 @@ func save():
 	ResourceSaver.save(minigameResourseFile,save_file_path+save_file_name)
 
 func _ready():
+	if IntroNaumi:
+		btn.pressed.connect(Sleeping)
+		return
 	timer.timeout.connect(PlayRandomIdleAnim)
 	for d in $Debris.get_children():
 		debris.append(d)
@@ -34,7 +37,7 @@ func _ready():
 		SetNaumi(NaumiState() - 1)
 		ToLevelUp()
 	else:
-		if !IntroNaumi: SetNaumi(NaumiState())
+		SetNaumi(NaumiState())
 		btn.pressed.connect(Sleeping)
 		
 	timer.wait_time = randf_range(6,13)

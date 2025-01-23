@@ -5,6 +5,7 @@ extends Panel
 	set(new_value):
 		refreshData(0)
 
+@export var AppearInBeginning : bool
 @onready var label = $label
 @onready var _BotonDerecho = $BtnDerAnchor/btnDer
 @onready var _BotonIzquierda = $btnIzqAnchor/btnIzq
@@ -13,8 +14,18 @@ extends Panel
 var BotonDerecho
 var BotonIzquierdo
 var BotonCentral
-
+var anim : AnimationPlayer 
 @export var Texts : Array[TextField] 
+
+@export var Instanciate : bool:
+	set(new_value):
+		InstanciateIntermediate()
+
+@export var IntermediateEmmiterData : IntermediateData
+
+signal RigthBTNPress
+signal LeftBTNPress
+signal CenterBTNPress
 
 func refreshData(numPanel : int):
 	
@@ -38,28 +49,46 @@ func refreshData(numPanel : int):
 		
 		if btn.Place ==  ButtonPanel.place.center:
 			_BotonCentral.visible = inInEditor
-			$btnCentralAnchor/btnCentral.visible = _texture
+			$btnCentralAnchor/btnCentral/Icon.texture = _texture
 			BotonCentral = true
 		
 		if btn.Place ==  ButtonPanel.place.left:
 			_BotonIzquierda.visible = inInEditor
 			$btnIzqAnchor/btnIzq/Icon.texture = _texture
 			BotonIzquierdo = true
+			
+
+func InstanciateIntermediate():
+	
+	var instance = load("res://Scenes/Experiments/GenericPanel/IntermediateSignal.tscn").instantiate()
+	add_child(instance)
+	instance.AssingIntermediateData(IntermediateEmmiterData)
+	instance.owner = get_tree().edited_scene_root
+	
+	instance.name = "Panel(" + str(IntermediateEmmiterData.NumberOfPanel) + ") Btn(" + IntermediateData.place.keys()[IntermediateEmmiterData.Place] + ")"
+	
+	IntermediateEmmiterData = null
 	
 
 var numOfPanel : int = 0
 
 func _ready():
+	anim = $AnimationPlayer
 	_BotonDerecho.visible = false
 	_BotonIzquierda.visible = false
 	_BotonCentral.visible = false
 	pivot_offset =  Vector2(size.x/2,size.y/2)
-	label.visible_ratio = 0
+	if !Engine.is_editor_hint(): label.visible_ratio = 0
 	refreshData(0)
-	EnterPanel()
+	if AppearInBeginning: EnterPanel()
+	else: if !Engine.is_editor_hint(): visible = false
+	
+	for child in get_children():
+		if child.has_method("ConnectSignal"):
+			child.ConnectSignal()
 
 func EnterPanel():
-	var anim : AnimationPlayer = $AnimationPlayer
+	
 	anim.play("enter_panel")
 	await anim.animation_finished
 	typingAnim()
@@ -67,7 +96,7 @@ func EnterPanel():
 func typingAnim():
 	var text_length = label.text.length()
 	var duration = text_length / characters_per_second
-	
+	label.visible_ratio = 0
 	var tween = get_tree().create_tween()
 	tween.tween_property(label,"visible_ratio",1,duration)
 	
@@ -88,8 +117,13 @@ func PlayAnimation(btn):
 
 func ButtonPress(btn):
 	
-	if numOfPanel == Texts.size() - 1:
-		ExitPanel()
+	
+	_BotonDerecho.visible = false
+	_BotonCentral.visible = false
+	_BotonIzquierda.visible = false
+	if numOfPanel == Texts.size() - 1: ExitPanel()
+	else:ChangeToNextText()
+
 
 func ExitPanel():
 	$AnimationPlayer.play("exit_panel")
@@ -99,4 +133,15 @@ func ChangeToNextText():
 	var anim = $AnimationPlayer
 	anim.play("change_panel")
 	await anim.animation_finished
+	label.visible = true
 	refreshData(numOfPanel)
+	typingAnim()
+
+func rigthBTNConnect():
+	RigthBTNPress.emit(numOfPanel)
+
+func leftBTNConnect():
+	LeftBTNPress.emit(numOfPanel)
+
+func centerBTNConnect():
+	CenterBTNPress.emit(numOfPanel)
