@@ -1,12 +1,14 @@
-[gd_scene load_steps=8 format=3 uid="uid://dlwmbps456ind"]
+[gd_scene load_steps=10 format=3 uid="uid://dlwmbps456ind"]
 
 [ext_resource type="Script" path="res://_Scripts/btnVolverController.gd" id="1_5jx21"]
 [ext_resource type="StyleBox" uid="uid://b3tjes2hcm3wx" path="res://Resources/UI_Resources/StyleBoxTrasparent.tres" id="2_etp8x"]
-[ext_resource type="Texture2D" uid="uid://dyc6lr4k2lmfp" path="res://Sprites/UI/BotonAceptarGenerico.png" id="2_kbfeg"]
-[ext_resource type="Texture2D" uid="uid://csvxv5nlnof3f" path="res://Sprites/ZonaGeología/confeti.png" id="3_0flor"]
+[ext_resource type="Theme" uid="uid://dhu6swisjlh4w" path="res://Resources/UI_Resources/BlueBubblePanel.tres" id="2_rybix"]
+[ext_resource type="Texture2D" uid="uid://kgs0jfi5sn7s" path="res://Sprites/UI/pauseIcon - UI.png" id="4_en2v8"]
 [ext_resource type="LabelSettings" uid="uid://bd2jj8jlh3vp2" path="res://Themes/Geología/LabelSetting_Generic.tres" id="5_rlx4g"]
 [ext_resource type="Theme" uid="uid://cd3f88gy4eowg" path="res://Resources/UI_Resources/Pause.tres" id="5_w28da"]
 [ext_resource type="Script" path="res://_Scripts/ChangeScene.gd" id="6_yddwg"]
+[ext_resource type="PackedScene" uid="uid://cw3ok8v4p620b" path="res://Scenes/Experiments/squiggling_sprite.tscn" id="7_f062i"]
+[ext_resource type="Texture2D" uid="uid://bonm5jt23witd" path="res://Sprites/UI/SquigglingUI/botonRectangularASQUIG - UI.png" id="8_icahk"]
 
 [node name="btnVolver" type="CanvasLayer"]
 layer = 3
@@ -22,19 +24,13 @@ offset_top = 15.0
 offset_right = -18.0
 offset_bottom = 103.0
 grow_horizontal = 0
+theme = ExtResource("2_rybix")
 theme_override_styles/focus = ExtResource("2_etp8x")
-icon = ExtResource("2_kbfeg")
-flat = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Button"]
-position = Vector2(36, 45)
-scale = Vector2(1.14284, 1.14284)
-texture = ExtResource("3_0flor")
-
-[node name="Sprite2D2" type="Sprite2D" parent="Button"]
-position = Vector2(52, 45)
-scale = Vector2(1.14284, 1.14284)
-texture = ExtResource("3_0flor")
+position = Vector2(44, 44)
+scale = Vector2(0.848485, 0.848485)
+texture = ExtResource("4_en2v8")
 
 [node name="Menu" type="Control" parent="."]
 visible = false
@@ -53,7 +49,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.0901961, 0.137255, 0.0941176, 0.207843)
+color = Color(0, 0, 0, 0.466667)
 
 [node name="outside" type="Button" parent="Menu"]
 layout_mode = 1
@@ -87,12 +83,13 @@ anchor_left = 0.5
 anchor_top = 0.321
 anchor_right = 0.5
 anchor_bottom = 0.321
-offset_left = -231.0
-offset_top = -68.302
-offset_right = 231.0
-offset_bottom = 67.698
+offset_left = -219.0
+offset_top = -56.302
+offset_right = 447.0
+offset_bottom = 105.698
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(0.65, 0.65)
 
 [node name="Label" type="Label" parent="Menu/Panel/continuar"]
 layout_mode = 1
@@ -101,14 +98,20 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -11.5
-offset_right = 20.0
-offset_bottom = 11.5
+offset_left = -173.0
+offset_top = -28.6923
+offset_right = 46.0
+offset_bottom = 9.30774
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(1.655, 1.655)
 text = "VOLVER AL JUEGO"
 label_settings = ExtResource("5_rlx4g")
+
+[node name="SquigglingSprite" parent="Menu/Panel/continuar" instance=ExtResource("7_f062i")]
+position = Vector2(333.868, 81)
+scale = Vector2(0.952749, 0.936842)
+texture = ExtResource("8_icahk")
 
 [node name="VolverMapa" type="Button" parent="Menu/Panel"]
 layout_mode = 1
@@ -117,12 +120,13 @@ anchor_left = 0.5
 anchor_top = 0.728
 anchor_right = 0.5
 anchor_bottom = 0.728
-offset_left = -231.0
+offset_left = -220.0
 offset_top = -80.336
-offset_right = 231.0
-offset_bottom = 59.664
+offset_right = 447.0
+offset_bottom = 81.664
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(0.65, 0.65)
 script = ExtResource("6_yddwg")
 NextScene = "Map_Screen"
 
@@ -133,11 +137,17 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -11.5
-offset_right = 20.0
-offset_bottom = 11.5
+offset_left = -170.423
+offset_top = -28.6923
+offset_right = 42.5769
+offset_bottom = 9.30774
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(1.655, 1.655)
 text = "VOLVER AL MAPA"
 label_settings = ExtResource("5_rlx4g")
+
+[node name="SquigglingSprite" parent="Menu/Panel/VolverMapa" instance=ExtResource("7_f062i")]
+position = Vector2(333.868, 81)
+scale = Vector2(0.952749, 0.936842)
+texture = ExtResource("8_icahk")

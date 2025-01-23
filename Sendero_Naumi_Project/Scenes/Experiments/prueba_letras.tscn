@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cjldkj7ub2jeo"]
+[gd_scene load_steps=20 format=3 uid="uid://cjldkj7ub2jeo"]
 
 [ext_resource type="PackedScene" uid="uid://chcp24toqisaw" path="res://Scenes/Experiments/GenericPanel/GenericPanel.tscn" id="1_nvt1g"]
 [ext_resource type="Script" path="res://Scenes/Experiments/GenericPanel/ButtonPanelData.gd" id="3_2l5k0"]
@@ -30,7 +30,32 @@ Text = "Segundo: Francia
 (Que alguin me mate por hacer este chiste)"
 buttons = Array[ExtResource("3_2l5k0")]([SubResource("Resource_rve6q")])
 
-[sub_resource type="Resource" id="Resource_6jdjh"]
+[sub_resource type="Resource" id="Resource_leyvs"]
+script = ExtResource("3_2l5k0")
+Place = 0
+texture = ExtResource("6_0xq3l")
+
+[sub_resource type="Resource" id="Resource_v7bjh"]
+script = ExtResource("5_syd3s")
+Text = "CUANDO ESTÉS FRENTE A UNA EXPOSICIÓN
+TOCÁ SU ISLA CORRESPONDIENTE
+PARA RECORRERLA"
+buttons = Array[ExtResource("3_2l5k0")]([SubResource("Resource_leyvs")])
+
+[sub_resource type="Resource" id="Resource_pmjq7"]
+script = ExtResource("3_2l5k0")
+Place = 1
+texture = ExtResource("6_0xq3l")
+
+[sub_resource type="Resource" id="Resource_mi4r3"]
+script = ExtResource("5_syd3s")
+Text = "CORRESPONDIENTE
+PARA RECORRERLA
+CUANDO ESTÉS FRENTE A UNA EXPOSICIÓN
+TOCÁ SU ISLA "
+buttons = Array[ExtResource("3_2l5k0")]([SubResource("Resource_pmjq7")])
+
+[sub_resource type="Resource" id="Resource_xuk28"]
 script = ExtResource("3_b35ku")
 NumberOfPanel = 2
 Place = 1
@@ -71,16 +96,15 @@ layout_mode = 0
 anchors_preset = 0
 anchor_left = 0.0
 anchor_right = 0.0
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 652.0
-offset_bottom = 228.0
+offset_left = 45.0
+offset_top = 34.0
+offset_right = 697.0
+offset_bottom = 262.0
 grow_horizontal = 1
-AppearInBeginning = true
-Texts = Array[ExtResource("5_syd3s")]([SubResource("Resource_8lraa"), SubResource("Resource_w6lao")])
+Texts = Array[ExtResource("5_syd3s")]([SubResource("Resource_8lraa"), SubResource("Resource_w6lao"), SubResource("Resource_v7bjh"), SubResource("Resource_mi4r3")])
 
-[node name="Panel(2) Btn(1)" parent="Panel" instance=ExtResource("7_1nxib")]
-Data = SubResource("Resource_6jdjh")
+[node name="Panel(2) Btn(center)" parent="Panel" instance=ExtResource("7_1nxib")]
+Data = SubResource("Resource_xuk28")
 
 [node name="Panel2" parent="." instance=ExtResource("1_nvt1g")]
 layout_mode = 1
@@ -90,4 +114,4 @@ pivot_offset = Vector2(326, 284)
 AppearInBeginning = false
 Texts = Array[ExtResource("5_syd3s")]([SubResource("Resource_35wj8")])
 
-[connection signal="ButtonPress" from="Panel/Panel(2) Btn(1)" to="Panel2" method="EnterPanel"]
+[connection signal="ButtonPress" from="Panel/Panel(2) Btn(center)" to="Panel2" method="EnterPanel"]

@@ -9,3 +9,4 @@ func InactiveSquiggling():
 
 func ActiveSquiggling():
 	visible = true
+

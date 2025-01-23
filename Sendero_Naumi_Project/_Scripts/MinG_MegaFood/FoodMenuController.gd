@@ -20,7 +20,8 @@ signal isScrolling
 signal CompleteSwipe
 signal PlatesReset
 signal RealeaseDragObject
-
+signal aPlateAreDragging
+signal aPlateWasDrop
 
 func _ready():
 	AddPlatesOnAnchor()
@@ -187,3 +188,9 @@ func ChangeInitPos(plate,platePos):
 
 func SetPlate(p):
 	plateRef = p
+
+func DetectDraggingPlate():
+	aPlateAreDragging.emit()
+
+func DetectMouseRelease():
+	aPlateWasDrop.emit()

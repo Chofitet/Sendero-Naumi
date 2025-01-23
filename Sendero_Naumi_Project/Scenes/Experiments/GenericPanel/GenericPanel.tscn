@@ -1,10 +1,24 @@
-[gd_scene load_steps=15 format=3 uid="uid://chcp24toqisaw"]
+[gd_scene load_steps=22 format=3 uid="uid://chcp24toqisaw"]
 
 [ext_resource type="Theme" uid="uid://dhu6swisjlh4w" path="res://Resources/UI_Resources/BlueBubblePanel.tres" id="1_v6n5n"]
 [ext_resource type="Script" path="res://Scenes/Experiments/GenericPanel/PanelController.gd" id="2_33xng"]
+[ext_resource type="Script" path="res://Scenes/Experiments/GenericPanel/ButtonPanelData.gd" id="3_1dnnq"]
+[ext_resource type="Script" path="res://Scenes/Experiments/GenericPanel/TextFieldData.gd" id="3_1jfq8"]
 [ext_resource type="Texture2D" uid="uid://f71rhgotbkf3" path="res://Sprites/UI/reloadIcon - UI.png" id="3_jsxvn"]
 [ext_resource type="Texture2D" uid="uid://6c8ohwgh1g2j" path="res://Sprites/UI/backIcon - UI.png" id="4_phuax"]
+[ext_resource type="PackedScene" uid="uid://cw3ok8v4p620b" path="res://Scenes/Experiments/squiggling_sprite.tscn" id="5_3iga4"]
+[ext_resource type="Texture2D" uid="uid://40jkc6woc7p" path="res://Sprites/UI/SquigglingUI/botonesRedondosASQUIG - UI.png" id="6_8uutm"]
 [ext_resource type="LabelSettings" uid="uid://c8wu4hhqg284x" path="res://Resources/UI_Resources/Generic_Font.tres" id="6_yhgeb"]
+[ext_resource type="Texture2D" uid="uid://c87cim2trecu1" path="res://Sprites/UI/SquigglingUI/botonesRedondosBSQUIG - UI.png" id="7_1swfx"]
+
+[sub_resource type="Resource" id="Resource_nm5bu"]
+script = ExtResource("3_1dnnq")
+Place = 0
+
+[sub_resource type="Resource" id="Resource_lgq4e"]
+script = ExtResource("3_1jfq8")
+Text = ""
+buttons = Array[ExtResource("3_1dnnq")]([SubResource("Resource_nm5bu")])
 
 [sub_resource type="Animation" id="Animation_jxxgf"]
 length = 0.001
@@ -239,6 +253,23 @@ tracks/4/keys = {
 "update": 0,
 "values": [Vector2(-25, -27), Vector2(23, 23)]
 }
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("SquigglingSprite")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"InactiveSquiggling"
+}, {
+"args": [],
+"method": &"ActiveSquiggling"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_jahtv"]
 resource_name = "idle"
@@ -275,7 +306,8 @@ grow_horizontal = 2
 pivot_offset = Vector2(326, 114)
 theme = ExtResource("1_v6n5n")
 script = ExtResource("2_33xng")
-AppearInBeginning = null
+AppearInBeginning = true
+Texts = Array[ExtResource("3_1jfq8")]([SubResource("Resource_lgq4e")])
 
 [node name="label" type="Label" parent="."]
 layout_mode = 1
@@ -288,7 +320,6 @@ offset_right = -37.0
 offset_bottom = -56.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "primero"
 label_settings = ExtResource("6_yhgeb")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -314,7 +345,6 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="btnDer" type="Button" parent="BtnDerAnchor"]
-visible = false
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -336,21 +366,26 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -22.0
-offset_top = -22.0
-offset_right = 22.0
-offset_bottom = 22.0
+offset_left = 23.0
+offset_top = 23.0
+offset_right = 67.0
+offset_bottom = 67.0
 grow_horizontal = 2
 grow_vertical = 2
 rotation = 0.174533
 pivot_offset = Vector2(22, 22)
-texture = ExtResource("4_phuax")
 expand_mode = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="BtnDerAnchor/btnDer"]
 libraries = {
 "": SubResource("AnimationLibrary_kvjan")
 }
+
+[node name="SquigglingSprite" parent="BtnDerAnchor/btnDer" instance=ExtResource("5_3iga4")]
+position = Vector2(44, 44)
+scale = Vector2(1.05882, 1.05882)
+texture = ExtResource("6_8uutm")
+ActiveInBegining = false
 
 [node name="btnIzqAnchor" type="Control" parent="."]
 layout_mode = 1
@@ -379,6 +414,7 @@ offset_right = 45.0
 offset_bottom = 45.0
 grow_horizontal = 2
 grow_vertical = 2
+pivot_offset = Vector2(45, 45)
 
 [node name="Icon" type="TextureRect" parent="btnIzqAnchor/btnIzq"]
 layout_mode = 1
@@ -387,10 +423,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -22.0
-offset_top = -22.0
-offset_right = 22.0
-offset_bottom = 22.0
+offset_left = 23.0
+offset_top = 23.0
+offset_right = 67.0
+offset_bottom = 67.0
 grow_horizontal = 2
 grow_vertical = 2
 rotation = 0.174533
@@ -402,6 +438,13 @@ expand_mode = 1
 libraries = {
 "": SubResource("AnimationLibrary_kvjan")
 }
+
+[node name="SquigglingSprite" parent="btnIzqAnchor/btnIzq" instance=ExtResource("5_3iga4")]
+position = Vector2(-1.76471, -0.798077)
+scale = Vector2(1.03922, 1.02885)
+texture = ExtResource("7_1swfx")
+offset = Vector2(45, 45)
+ActiveInBegining = false
 
 [node name="btnCentralAnchor" type="Control" parent="."]
 layout_mode = 1
@@ -436,8 +479,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 23.0
 offset_top = 23.0
-offset_right = -23.0
-offset_bottom = -23.0
+offset_right = 67.0
+offset_bottom = 67.0
 grow_horizontal = 2
 grow_vertical = 2
 rotation = 0.174533
@@ -450,9 +493,19 @@ libraries = {
 "": SubResource("AnimationLibrary_kvjan")
 }
 
+[node name="SquigglingSprite" parent="btnCentralAnchor/btnCentral" instance=ExtResource("5_3iga4")]
+position = Vector2(-1.76471, -2.5547)
+scale = Vector2(1.03922, 1.03922)
+texture = ExtResource("6_8uutm")
+offset = Vector2(45, 45)
+ActiveInBegining = false
+
 [connection signal="pressed" from="BtnDerAnchor/btnDer" to="." method="rigthBTNConnect"]
 [connection signal="pressed" from="BtnDerAnchor/btnDer" to="." method="ButtonPress" binds= [0]]
 [connection signal="pressed" from="btnIzqAnchor/btnIzq" to="." method="leftBTNConnect"]
 [connection signal="pressed" from="btnIzqAnchor/btnIzq" to="." method="ButtonPress" binds= [1]]
 [connection signal="pressed" from="btnCentralAnchor/btnCentral" to="." method="centerBTNConnect"]
 [connection signal="pressed" from="btnCentralAnchor/btnCentral" to="." method="ButtonPress" binds= [2]]
+
+[editable path="btnIzqAnchor/btnIzq/SquigglingSprite"]
+[editable path="btnCentralAnchor/btnCentral/SquigglingSprite"]
