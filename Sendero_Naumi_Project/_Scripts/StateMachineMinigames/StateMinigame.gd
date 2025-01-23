@@ -10,7 +10,7 @@ signal Transitioned
 func Enter():
 	pass
 
-func Exit():
+func Exit(incruiseLevel = false):
 	pass
 
 func Update(_detla : float):

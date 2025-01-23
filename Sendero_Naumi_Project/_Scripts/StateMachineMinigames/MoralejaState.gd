@@ -18,7 +18,7 @@ func Enter():
 	SetMoraleja()
 	SetInstancia(true)
 
-func Exit():
+func Exit(incruiseLevel = false):
 	Content.visible = false
 	SetInstancia(false)
 	if buttons.is_empty(): return

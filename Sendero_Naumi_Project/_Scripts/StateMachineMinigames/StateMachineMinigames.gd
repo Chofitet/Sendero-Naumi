@@ -22,7 +22,7 @@ func _physics_process(delta):
 		if current_state:
 			current_state.Update(delta)
 
-func On_Child_Transition(state, new_state_name):
+func On_Child_Transition(state, new_state_name, incruiseLevel = false):
 	if state != current_state:
 		return
 	
@@ -31,11 +31,11 @@ func On_Child_Transition(state, new_state_name):
 		return
 	
 	if current_state:
-		current_state.Exit()
+		current_state.Exit(incruiseLevel)
 		
 	new_state.Enter()
 	current_state = new_state
 
-func Trigger_On_Child_Transition(new_state_name):
-	On_Child_Transition(current_state, new_state_name)
+func Trigger_On_Child_Transition(new_state_name, incruiseLevel = false):
+	On_Child_Transition(current_state, new_state_name, incruiseLevel)
 

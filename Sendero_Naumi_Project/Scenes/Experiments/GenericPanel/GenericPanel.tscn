@@ -1,24 +1,13 @@
-[gd_scene load_steps=22 format=3 uid="uid://chcp24toqisaw"]
+[gd_scene load_steps=18 format=3 uid="uid://chcp24toqisaw"]
 
 [ext_resource type="Theme" uid="uid://dhu6swisjlh4w" path="res://Resources/UI_Resources/BlueBubblePanel.tres" id="1_v6n5n"]
 [ext_resource type="Script" path="res://Scenes/Experiments/GenericPanel/PanelController.gd" id="2_33xng"]
-[ext_resource type="Script" path="res://Scenes/Experiments/GenericPanel/ButtonPanelData.gd" id="3_1dnnq"]
-[ext_resource type="Script" path="res://Scenes/Experiments/GenericPanel/TextFieldData.gd" id="3_1jfq8"]
 [ext_resource type="Texture2D" uid="uid://f71rhgotbkf3" path="res://Sprites/UI/reloadIcon - UI.png" id="3_jsxvn"]
 [ext_resource type="Texture2D" uid="uid://6c8ohwgh1g2j" path="res://Sprites/UI/backIcon - UI.png" id="4_phuax"]
 [ext_resource type="PackedScene" uid="uid://cw3ok8v4p620b" path="res://Scenes/Experiments/squiggling_sprite.tscn" id="5_3iga4"]
 [ext_resource type="Texture2D" uid="uid://40jkc6woc7p" path="res://Sprites/UI/SquigglingUI/botonesRedondosASQUIG - UI.png" id="6_8uutm"]
 [ext_resource type="LabelSettings" uid="uid://c8wu4hhqg284x" path="res://Resources/UI_Resources/Generic_Font.tres" id="6_yhgeb"]
 [ext_resource type="Texture2D" uid="uid://c87cim2trecu1" path="res://Sprites/UI/SquigglingUI/botonesRedondosBSQUIG - UI.png" id="7_1swfx"]
-
-[sub_resource type="Resource" id="Resource_nm5bu"]
-script = ExtResource("3_1dnnq")
-Place = 0
-
-[sub_resource type="Resource" id="Resource_lgq4e"]
-script = ExtResource("3_1jfq8")
-Text = ""
-buttons = Array[ExtResource("3_1dnnq")]([SubResource("Resource_nm5bu")])
 
 [sub_resource type="Animation" id="Animation_jxxgf"]
 length = 0.001
@@ -45,6 +34,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("label:visible_ratio")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
 }
 
 [sub_resource type="Animation" id="Animation_me5ce"]
@@ -101,6 +102,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("label:visible_ratio")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
 }
 
 [sub_resource type="Animation" id="Animation_bglsq"]
@@ -307,7 +320,6 @@ pivot_offset = Vector2(326, 114)
 theme = ExtResource("1_v6n5n")
 script = ExtResource("2_33xng")
 AppearInBeginning = true
-Texts = Array[ExtResource("3_1jfq8")]([SubResource("Resource_lgq4e")])
 
 [node name="label" type="Label" parent="."]
 layout_mode = 1
@@ -345,6 +357,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="btnDer" type="Button" parent="BtnDerAnchor"]
+visible = false
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0

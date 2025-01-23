@@ -20,7 +20,7 @@ func _ready():
 	button = get_node(\"ButtonChangeScene\")
 	button.pressed.connect(CheckComplete)
 	button.NextScene = name
-	
+	$Sprite2D/Label.text = str(NumOfLevel)
 	load_file()
 	if !minigameResourseFile.StateMinigames[self.name]:
 		get_node(\"AnimationPlayer\").play(\"Scale-bounce\")
