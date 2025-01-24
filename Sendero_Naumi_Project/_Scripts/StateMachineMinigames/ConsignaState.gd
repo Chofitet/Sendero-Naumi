@@ -13,7 +13,7 @@ func Enter():
 	Transitioned.emit()
 	SetConsigna()
 
-func Exit():
+func Exit(incruiseLevel = false):
 	Content.visible = false
 	Transitioned.emit()
 

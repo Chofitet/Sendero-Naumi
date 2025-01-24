@@ -22,6 +22,8 @@ var isInTime
 var GrabOffset : Vector2
 signal isDraggin
 signal mouse_realese
+signal object_realese_Rigth_Place
+signal object_realese_Wrong_Place
 
 func _ready():
 	timerHold = $Timer
@@ -63,19 +65,24 @@ func _on_button_pressed():
 	pick_up = false
 	if !PlaceInAllSpots:
 		if !spot: return
+		
 		PlaceInRightSpot()
 	else:
+		
 		PlaceInSpot()
+		
 
 func PlaceInRightSpot():
 	CheckRightSpot()
 	if (is_in_spot):
+		object_realese_Rigth_Place.emit()
 		if DesapearInPlace: 
 			object.visible = false
 		var tween = get_tree().create_tween()
 		tween = tween.tween_property(object, "global_position",spot.global_position,0.1).set_ease(Tween.EASE_OUT)
 		isInPosition = true
-	else: 
+	else:
+		object_realese_Wrong_Place.emit()
 		CancelDrag()
 
 func PlaceInSpot():

@@ -1,9 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://btnejcy6d18fh"]
+[gd_scene load_steps=15 format=3 uid="uid://btnejcy6d18fh"]
 
 [ext_resource type="Texture2D" uid="uid://bom2snkxot1ji" path="res://Sprites/Intro/loop-caida-tira.png" id="1_eiayq"]
 [ext_resource type="Script" path="res://_Scripts/EmittSubSignal.gd" id="1_sygnw"]
 [ext_resource type="StyleBox" uid="uid://b3tjes2hcm3wx" path="res://Resources/UI_Resources/StyleBoxTrasparent.tres" id="2_m1nqe"]
 [ext_resource type="Script" path="res://_Scripts/PlayAnimation.gd" id="3_d0b5b"]
+[ext_resource type="PackedScene" uid="uid://cw3ok8v4p620b" path="res://Scenes/Experiments/squiggling_sprite.tscn" id="5_24xos"]
+[ext_resource type="Texture2D" uid="uid://chilh432yan4s" path="res://Sprites/Intro/squigglingIntro/mapaIntroSQUIG - UI.png" id="6_pcy2c"]
 
 [sub_resource type="Animation" id="Animation_j440g"]
 length = 0.001
@@ -211,5 +213,13 @@ libraries = {
 "": SubResource("AnimationLibrary_tpdcg")
 }
 
+[node name="SquigglingSprite" parent="." instance=ExtResource("5_24xos")]
+position = Vector2(-40, 161)
+scale = Vector2(2.16993, 2.08696)
+texture = ExtResource("6_pcy2c")
+ActiveInBegining = false
+
+[connection signal="endAnim" from="." to="SquigglingSprite" method="ActiveSquiggling"]
 [connection signal="pressed" from="pivot/Button" to="AnimationSprite" method="Play"]
+[connection signal="pressed" from="pivot/Button" to="SquigglingSprite" method="InactiveSquiggling"]
 [connection signal="animation_finished" from="AnimationMove" to="." method="EndAnim"]

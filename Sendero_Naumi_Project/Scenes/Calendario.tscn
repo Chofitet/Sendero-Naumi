@@ -1,4 +1,4 @@
-[gd_scene load_steps=77 format=3 uid="uid://cmv5m3ynk4o5y"]
+[gd_scene load_steps=81 format=3 uid="uid://cmv5m3ynk4o5y"]
 
 [ext_resource type="Script" path="res://_Scripts/Minigame_Save_Controller.gd" id="1_jl73q"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/StateMachineMinigames.gd" id="2_7aqcq"]
@@ -57,6 +57,10 @@
 [ext_resource type="Texture2D" uid="uid://bshsdexmxl6cr" path="res://Sprites/ZonaAstronomia/Respuestas_Calendar/23,54 opcion 3 calendario.png" id="40_kcym8"]
 [ext_resource type="Texture2D" uid="uid://de3qh4wtql7nl" path="res://Sprites/ZonaAstronomia/cinta2.png" id="43_7u4sv"]
 [ext_resource type="Texture2D" uid="uid://dnqum7v0x7hy0" path="res://Sprites/ZonaAstronomia/cintas.png" id="44_oc650"]
+[ext_resource type="PackedScene" uid="uid://cw3ok8v4p620b" path="res://Scenes/Experiments/squiggling_sprite.tscn" id="51_mweh1"]
+[ext_resource type="Texture2D" uid="uid://cy825erdd8i5o" path="res://Sprites/ZonaAstronomia/squigglingCalendario/respuestaASQUIG - calendario.png" id="52_og33l"]
+[ext_resource type="Texture2D" uid="uid://ced0cvvahqlq4" path="res://Sprites/ZonaAstronomia/squigglingCalendario/respuestaBSQUIG - calendario.png" id="53_k35md"]
+[ext_resource type="Texture2D" uid="uid://c0uimvammx7fd" path="res://Sprites/ZonaAstronomia/squigglingCalendario/respuestaCSQUIG - calendario.png" id="54_7ilv3"]
 
 [sub_resource type="Animation" id="Animation_jetb7"]
 length = 0.001
@@ -1176,8 +1180,11 @@ offset_top = -136.0
 offset_right = 258.0
 offset_bottom = 136.0
 
+[node name="SquigglingSprite" parent="Calendario/StateMachine/Juego/Contenido/pivotHboxController/HBoxContainer/Date1" instance=ExtResource("51_mweh1")]
+texture = ExtResource("52_og33l")
+
 [node name="Date2" type="Sprite2D" parent="Calendario/StateMachine/Juego/Contenido/pivotHboxController/HBoxContainer"]
-position = Vector2(776.5, 324.823)
+position = Vector2(776.5, 329)
 texture = ExtResource("31_qbx0p")
 
 [node name="DragObject" parent="Calendario/StateMachine/Juego/Contenido/pivotHboxController/HBoxContainer/Date2" node_paths=PackedStringArray("spot") instance=ExtResource("24_2ql8s")]
@@ -1194,8 +1201,13 @@ offset_top = -129.0
 offset_right = 244.0
 offset_bottom = 129.0
 
+[node name="SquigglingSprite" parent="Calendario/StateMachine/Juego/Contenido/pivotHboxController/HBoxContainer/Date2" instance=ExtResource("51_mweh1")]
+position = Vector2(-2.5, 0.5)
+scale = Vector2(1.00931, 1.00281)
+texture = ExtResource("53_k35md")
+
 [node name="Date3" type="Sprite2D" parent="Calendario/StateMachine/Juego/Contenido/pivotHboxController/HBoxContainer"]
-position = Vector2(1328, 328.143)
+position = Vector2(1328, 329)
 texture = ExtResource("32_wbdsk")
 
 [node name="DragObject" parent="Calendario/StateMachine/Juego/Contenido/pivotHboxController/HBoxContainer/Date3" node_paths=PackedStringArray("spot") instance=ExtResource("24_2ql8s")]
@@ -1211,6 +1223,11 @@ offset_left = -243.0
 offset_top = -134.0
 offset_right = 243.0
 offset_bottom = 134.0
+
+[node name="SquigglingSprite" parent="Calendario/StateMachine/Juego/Contenido/pivotHboxController/HBoxContainer/Date3" instance=ExtResource("51_mweh1")]
+position = Vector2(-2.75, 2.42856)
+scale = Vector2(1.01024, 1.00883)
+texture = ExtResource("54_7ilv3")
 
 [node name="TimerScroll" type="Timer" parent="Calendario/StateMachine/Juego/Contenido/pivotHboxController"]
 wait_time = 0.2

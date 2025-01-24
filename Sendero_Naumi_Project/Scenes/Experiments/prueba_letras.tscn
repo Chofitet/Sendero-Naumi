@@ -1,37 +1,74 @@
-[gd_scene load_steps=7 format=3 uid="uid://cjldkj7ub2jeo"]
+[gd_scene load_steps=20 format=3 uid="uid://cjldkj7ub2jeo"]
 
-[ext_resource type="PackedScene" uid="uid://chcp24toqisaw" path="res://Scenes/Experiments/GenericPanel.tscn" id="1_nvt1g"]
+[ext_resource type="PackedScene" uid="uid://chcp24toqisaw" path="res://Scenes/Experiments/GenericPanel/GenericPanel.tscn" id="1_nvt1g"]
+[ext_resource type="Script" path="res://Scenes/Experiments/GenericPanel/ButtonPanelData.gd" id="3_2l5k0"]
+[ext_resource type="Script" path="res://Scenes/Experiments/GenericPanel/IntermediateData.gd" id="3_b35ku"]
+[ext_resource type="PackedScene" uid="uid://djhg7jvxtexyl" path="res://Scenes/UI_Scenes/btn_Change_Scene.tscn" id="3_xpxw5"]
+[ext_resource type="Texture2D" uid="uid://6c8ohwgh1g2j" path="res://Sprites/UI/backIcon - UI.png" id="4_3p1jk"]
+[ext_resource type="Script" path="res://Scenes/Experiments/GenericPanel/TextFieldData.gd" id="5_syd3s"]
+[ext_resource type="Texture2D" uid="uid://c2p5torstrtqm" path="res://Sprites/UI/checkIcon - UI.png" id="6_0xq3l"]
+[ext_resource type="PackedScene" uid="uid://d1jys63xrvxpo" path="res://Scenes/Experiments/GenericPanel/IntermediateSignal.tscn" id="7_1nxib"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_76vj1"]
-resource_local_to_scene = true
-font_size = 25
-outline_color = Color(0, 0, 0, 1)
-shadow_size = 4
-shadow_color = Color(0, 0, 0, 1)
-shadow_offset = Vector2(-0.06, 1)
+[sub_resource type="Resource" id="Resource_ytrvh"]
+script = ExtResource("3_2l5k0")
+Place = 0
+texture = ExtResource("4_3p1jk")
 
-[sub_resource type="LabelSettings" id="LabelSettings_8lasn"]
-resource_local_to_scene = true
-font_size = 25
-outline_size = 4
-outline_color = Color(0, 0, 0, 1)
-shadow_size = 0
-shadow_color = Color(0, 0, 0, 1)
+[sub_resource type="Resource" id="Resource_8lraa"]
+script = ExtResource("5_syd3s")
+Text = "Primero que?"
+buttons = Array[ExtResource("3_2l5k0")]([SubResource("Resource_ytrvh")])
 
-[sub_resource type="LabelSettings" id="LabelSettings_wrkx8"]
-font_size = 25
-shadow_size = 4
-shadow_color = Color(0, 0, 0, 1)
+[sub_resource type="Resource" id="Resource_rve6q"]
+script = ExtResource("3_2l5k0")
+Place = 1
+texture = ExtResource("6_0xq3l")
 
-[sub_resource type="LabelSettings" id="LabelSettings_rx32y"]
-font_size = 25
-shadow_color = Color(0, 0, 0, 1)
+[sub_resource type="Resource" id="Resource_w6lao"]
+script = ExtResource("5_syd3s")
+Text = "Segundo: Francia
+(Que alguin me mate por hacer este chiste)"
+buttons = Array[ExtResource("3_2l5k0")]([SubResource("Resource_rve6q")])
 
-[sub_resource type="LabelSettings" id="LabelSettings_q5nuk"]
-font_size = 25
-shadow_size = 6
-shadow_color = Color(0, 0, 0, 1)
-shadow_offset = Vector2(-0.765, 1)
+[sub_resource type="Resource" id="Resource_leyvs"]
+script = ExtResource("3_2l5k0")
+Place = 0
+texture = ExtResource("6_0xq3l")
+
+[sub_resource type="Resource" id="Resource_v7bjh"]
+script = ExtResource("5_syd3s")
+Text = "CUANDO ESTÉS FRENTE A UNA EXPOSICIÓN
+TOCÁ SU ISLA CORRESPONDIENTE
+PARA RECORRERLA"
+buttons = Array[ExtResource("3_2l5k0")]([SubResource("Resource_leyvs")])
+
+[sub_resource type="Resource" id="Resource_pmjq7"]
+script = ExtResource("3_2l5k0")
+Place = 1
+texture = ExtResource("6_0xq3l")
+
+[sub_resource type="Resource" id="Resource_mi4r3"]
+script = ExtResource("5_syd3s")
+Text = "CORRESPONDIENTE
+PARA RECORRERLA
+CUANDO ESTÉS FRENTE A UNA EXPOSICIÓN
+TOCÁ SU ISLA "
+buttons = Array[ExtResource("3_2l5k0")]([SubResource("Resource_pmjq7")])
+
+[sub_resource type="Resource" id="Resource_xuk28"]
+script = ExtResource("3_b35ku")
+NumberOfPanel = 2
+Place = 1
+
+[sub_resource type="Resource" id="Resource_4itp4"]
+script = ExtResource("3_2l5k0")
+Place = 2
+texture = ExtResource("4_3p1jk")
+
+[sub_resource type="Resource" id="Resource_35wj8"]
+script = ExtResource("5_syd3s")
+Text = "Wauuuuu"
+buttons = Array[ExtResource("3_2l5k0")]([SubResource("Resource_4itp4")])
 
 [node name="Prueba_Letras" type="Control"]
 layout_mode = 3
@@ -41,83 +78,40 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Panel" parent="." instance=ExtResource("1_nvt1g")]
+[node name="ButtonChangeScene" parent="." instance=ExtResource("3_xpxw5")]
 layout_mode = 1
-offset_bottom = 247.0
-pivot_offset = Vector2(326, 114.5)
+anchors_preset = 2
+anchor_left = 0.0
+anchor_right = 0.0
+offset_left = 0.0
+offset_top = -156.0
+offset_right = 58.0
+offset_bottom = 0.0
+grow_horizontal = 1
+text = "volver"
+NextScene = "Map_Screen"
 
-[node name="label" parent="Panel" index="0"]
-text = "Esto es un Naumi! 
-Podrás quedártelo mientras recorrés esta aventura ñ "
-label_settings = SubResource("LabelSettings_76vj1")
-visible_characters = 0
-visible_ratio = 0.0
+[node name="Panel" parent="." instance=ExtResource("1_nvt1g")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_right = 0.0
+offset_left = 45.0
+offset_top = 34.0
+offset_right = 697.0
+offset_bottom = 262.0
+grow_horizontal = 1
+Texts = Array[ExtResource("5_syd3s")]([SubResource("Resource_8lraa"), SubResource("Resource_w6lao"), SubResource("Resource_v7bjh"), SubResource("Resource_mi4r3")])
+
+[node name="Panel(2) Btn(center)" parent="Panel" instance=ExtResource("7_1nxib")]
+Data = SubResource("Resource_xuk28")
 
 [node name="Panel2" parent="." instance=ExtResource("1_nvt1g")]
 layout_mode = 1
-offset_left = -324.0
-offset_top = 313.0
-offset_right = 328.0
-offset_bottom = 540.0
-pivot_offset = Vector2(326, 113.5)
+offset_top = 310.0
+offset_bottom = 878.0
+pivot_offset = Vector2(326, 284)
+AppearInBeginning = false
+Texts = Array[ExtResource("5_syd3s")]([SubResource("Resource_35wj8")])
 
-[node name="label" parent="Panel2" index="0"]
-text = "Esto es un Naumi! 
-Podrás quedártelo mientras recorrés esta aventura ñ "
-label_settings = SubResource("LabelSettings_8lasn")
-visible_characters = 0
-visible_ratio = 0.0
-
-[node name="Panel3" parent="." instance=ExtResource("1_nvt1g")]
-layout_mode = 1
-offset_left = -320.0
-offset_top = 609.0
-offset_right = 332.0
-offset_bottom = 831.0
-pivot_offset = Vector2(326, 111)
-
-[node name="label" parent="Panel3" index="0"]
-text = "Esto es un Naumi! 
-Podrás quedártelo mientras recorrés esta aventura ñ "
-label_settings = SubResource("LabelSettings_wrkx8")
-visible_characters = 0
-visible_ratio = 0.0
-
-[node name="Panel4" parent="." instance=ExtResource("1_nvt1g")]
-layout_mode = 1
-offset_left = -325.0
-offset_top = 903.0
-offset_right = 327.0
-offset_bottom = 1125.0
-pivot_offset = Vector2(326, 111)
-
-[node name="label" parent="Panel4" index="0"]
-text = "Esto es un Naumi! 
-Podrás quedártelo mientras recorrés esta aventura ñ "
-label_settings = SubResource("LabelSettings_rx32y")
-visible_characters = 0
-visible_ratio = 0.0
-
-[node name="Panel5" parent="." instance=ExtResource("1_nvt1g")]
-layout_mode = 1
-offset_left = -313.0
-offset_top = 1200.0
-offset_right = 339.0
-offset_bottom = 1422.0
-pivot_offset = Vector2(326, 111)
-
-[node name="label" parent="Panel5" index="0"]
-text = "Esto es un Naumi! 
-Podrás quedártelo mientras recorrés esta aventura ñ "
-label_settings = SubResource("LabelSettings_q5nuk")
-visible_characters = 0
-visible_ratio = 0.0
-
-[node name="AnimationPlayer" parent="Panel5" index="1"]
-root_node = NodePath("../../Panel5")
-
-[editable path="Panel"]
-[editable path="Panel2"]
-[editable path="Panel3"]
-[editable path="Panel4"]
-[editable path="Panel5"]
+[connection signal="ButtonPress" from="Panel/Panel(2) Btn(center)" to="Panel2" method="EnterPanel"]

@@ -1,6 +1,7 @@
 extends Node2D
 
 @export var isEvolving : bool
+@export var IntroNaumi : bool
 @onready var NaumiAnim = $pivot/naumiAnim
 @onready var btn = $pivot/Button
 @onready var Anim = $pivot/AnimationPlayer
@@ -24,6 +25,9 @@ func save():
 	ResourceSaver.save(minigameResourseFile,save_file_path+save_file_name)
 
 func _ready():
+	if IntroNaumi:
+		btn.pressed.connect(Sleeping)
+		return
 	timer.timeout.connect(PlayRandomIdleAnim)
 	for d in $Debris.get_children():
 		debris.append(d)
@@ -82,20 +86,20 @@ func Sleeping():
 func SetNaumi(num):
 	match num:
 		0:
-			NaumiAnim.sprite_frames = preload("res://Resources/NaumiSpriteFrames/N0.tres")
+			NaumiAnim.sprite_frames = load("res://Resources/NaumiSpriteFrames/N0.tres")
 		1:
 			debris[0].visible = true
-			NaumiAnim.sprite_frames = preload("res://Resources/NaumiSpriteFrames/N1.tres")
+			NaumiAnim.sprite_frames = load("res://Resources/NaumiSpriteFrames/N1.tres")
 		2:
 			debris[0].visible = true
 			debris[1].visible = true
-			NaumiAnim.sprite_frames = preload("res://Resources/NaumiSpriteFrames/N2.tres")
+			NaumiAnim.sprite_frames = load("res://Resources/NaumiSpriteFrames/N2.tres")
 			$pivot/Parts/ear.visible = true
 		3:
 			debris[0].visible = true
 			debris[1].visible = true
 			debris[2].visible = true
-			NaumiAnim.sprite_frames = preload("res://Resources/NaumiSpriteFrames/N3.tres")
+			NaumiAnim.sprite_frames = load("res://Resources/NaumiSpriteFrames/N3.tres")
 			$pivot/Parts/ear.visible = true
 			$pivot/Parts/wing.visible = true
 

@@ -18,11 +18,11 @@ func Enter():
 	SetGameInstance(true)
 	Transitioned.emit()
 
-func Exit():
+func Exit(incruiseLevel = false):
 	Content.visible = false
 	SetGameInstance(false)
 	SetVisibilityHUD(false)
-	IncruseInstanceOfMinigame()
+	if !incruiseLevel: IncruseInstanceOfMinigame()
 
 #Muestra la instancia de minijuegos correspondiente segun lo guardado en los saves del jugador
 func SetGameInstance(setBool):

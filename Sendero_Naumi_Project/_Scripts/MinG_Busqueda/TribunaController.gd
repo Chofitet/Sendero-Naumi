@@ -10,11 +10,15 @@ var RocksTribuna :=[]
 @onready var anim = $BackgroundPivot/AnimBackground
 @onready var animMask = $Mask/AnimMask
 var animMoraleja
+var isPlayerWin
+signal PlayerLose
+var StateMachine
 
 func _ready():
 	animMoraleja = moraleja.get_node("animMoraleja")
 	anim.animation_finished.connect(DoMask)
 	animMask.animation_finished.connect(DoMoraleja)
+	StateMachine = get_parent().get_parent().get_parent()
 	get_parent().get_parent().Transitioned.connect(Reset)
 	
 	
@@ -32,13 +36,22 @@ func DoMask(x):
 	if x == "RESET": return
 	animMask.play("circle_anim")
 	if x == "Anim_left": 
-		moraleja.get_node("correcto/Label").text = "CORRECTO"
+		isPlayerWin = true
 	else : 
-		moraleja.get_node("correcto/Label").text = "INCORRECTO"
+		isPlayerWin = false
 
 func DoMoraleja(x):
 	if x == "RESET": return
+	if !isPlayerWin:
+		PlayerLose.emit()
+		return
+	
 	animMoraleja.play("AnimMoraleja")
+
+func RetryInstance():
+	Reset()
+	StateMachine.Trigger_On_Child_Transition("Juego", true)
+	
 
 func Reset():
 	ChangeTextureRocks()

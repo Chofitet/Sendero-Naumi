@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://cctger1fmyno1"]
+[gd_scene load_steps=35 format=3 uid="uid://cctger1fmyno1"]
 
 [ext_resource type="Script" path="res://_Scripts/MinG_Excavar/BookEvent.gd" id="1_nc5t3"]
 [ext_resource type="Texture2D" uid="uid://cgxynxv4wy7yi" path="res://Sprites/ZonaMegafauna/libro 1- excavacion.png" id="2_30xwc"]
@@ -18,6 +18,8 @@
 [ext_resource type="Texture2D" uid="uid://osslshvruyeq" path="res://Sprites/ZonaMegafauna/pencil.png" id="15_8o25e"]
 [ext_resource type="StyleBox" uid="uid://b3tjes2hcm3wx" path="res://Resources/UI_Resources/StyleBoxTrasparent.tres" id="16_3htw7"]
 [ext_resource type="Texture2D" uid="uid://dowufrhlgpfe" path="res://Sprites/UI/Boton_Volver.png" id="17_30xul"]
+[ext_resource type="PackedScene" uid="uid://cw3ok8v4p620b" path="res://Scenes/Experiments/squiggling_sprite.tscn" id="17_g1jyu"]
+[ext_resource type="Texture2D" uid="uid://dhh1mhpbooeku" path="res://Sprites/ZonaMegafauna/squigglingExcavando/pencilSQUIG - excavando.png" id="18_46d1n"]
 
 [sub_resource type="Animation" id="Animation_uyb4u"]
 resource_name = "Pencil_enter"
@@ -415,6 +417,13 @@ texture = ExtResource("15_8o25e")
 
 [node name="pencilPoint" type="Marker2D" parent="pencil"]
 position = Vector2(-131, 210.69)
+
+[node name="SquigglingSprite" parent="pencil" instance=ExtResource("17_g1jyu")]
+position = Vector2(-0.757105, -0.460327)
+rotation = 0.546288
+scale = Vector2(1.01553, 1)
+texture = ExtResource("18_46d1n")
+ActiveInBegining = false
 
 [node name="Button" type="Button" parent="."]
 visible = false

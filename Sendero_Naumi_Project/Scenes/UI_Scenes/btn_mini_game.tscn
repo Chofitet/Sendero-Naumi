@@ -1,26 +1,34 @@
-[gd_scene load_steps=7 format=3 uid="uid://bc062m81xnnpx"]
+[gd_scene load_steps=10 format=3 uid="uid://bc062m81xnnpx"]
 
 [ext_resource type="Texture2D" uid="uid://c5225cmvtpnmy" path="res://Sprites/Mapa/pin - mapa.png" id="1_xlje6"]
+[ext_resource type="PackedScene" uid="uid://cw3ok8v4p620b" path="res://Scenes/Experiments/squiggling_sprite.tscn" id="3_ajxde"]
 [ext_resource type="PackedScene" uid="uid://djhg7jvxtexyl" path="res://Scenes/UI_Scenes/btn_Change_Scene.tscn" id="3_j744p"]
+[ext_resource type="Texture2D" uid="uid://ctlc3c44ynrd0" path="res://Sprites/Mapa/squigglingMap/indicadorMapaSQUI - UI.png" id="4_4p5q1"]
+[ext_resource type="LabelSettings" uid="uid://b7f8w8wf071ek" path="res://Themes/Geología/LabelSettings_Busqueda.tres" id="5_4wt8w"]
 
 [sub_resource type="GDScript" id="GDScript_pfah2"]
-script/source = "extends Sprite2D
+script/source = "
+extends Sprite2D
 var save_file_path = \"user://\"
 var save_file_name = \"MiniGameResource.tres\"
 var minigameResourseFile = MiniGameResource.new()
 var instance = InstanceResource.new()
 var button
+@export var NumOfLevel : int
 
 func _ready():
 	button = get_node(\"ButtonChangeScene\")
 	button.pressed.connect(CheckComplete)
 	button.NextScene = name
-	
+	$Sprite2D/Label.text = str(NumOfLevel)
 	load_file()
 	if !minigameResourseFile.StateMinigames[self.name]:
 		get_node(\"AnimationPlayer\").play(\"Scale-bounce\")
 	elif minigameResourseFile.StateMinigames[self.name]:
-		texture = load(\"res://Sprites/Mapa/pin check - mapa.png\")
+		$Sprite2D.texture = load(\"res://Sprites/Mapa/pin check - mapa.png\")
+		var lb = $Sprite2D/Label
+		if lb != null:lb.visible = false
+		$Sprite2D/SquigglingSprite.visible = false
 
 func load_file():
 	minigameResourseFile  = ResourceLoader.load(save_file_path  + save_file_name)
@@ -34,6 +42,8 @@ func CheckComplete():
 		instance = ResourceLoader.load(save_file_path + \"InstanceResource.tres\" )
 		instance.RestartOneInstance(self.name)
 		ResourceSaver.save(instance, save_file_path + \"InstanceResource.tres\")
+		$Sprite2D/Label.visible = false
+		$Sprite2D/SquigglingSprite.visible = false
 "
 
 [sub_resource type="Animation" id="Animation_67m84"]
@@ -41,14 +51,14 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:scale")
+tracks/0/path = NodePath("Sprite2D:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(1, 1)]
+"values": [Vector2(0, -105.385)]
 }
 
 [sub_resource type="Animation" id="Animation_r4wke"]
@@ -58,14 +68,14 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:scale")
+tracks/0/path = NodePath("Sprite2D:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.6, 1.2),
-"transitions": PackedFloat32Array(1.56917, 0.594604, 1),
+"transitions": PackedFloat32Array(1, -2, 1),
 "update": 0,
-"values": [Vector2(1, 1), Vector2(1.2, 1.2), Vector2(1, 1)]
+"values": [Vector2(0, -105.385), Vector2(0, -162.385), Vector2(0, -105.385)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8t5hd"]
@@ -75,20 +85,36 @@ _data = {
 }
 
 [node name="btn_MiniGame" type="Sprite2D"]
+self_modulate = Color(1, 1, 1, 0)
 position = Vector2(-400.425, 222.385)
 texture = ExtResource("1_xlje6")
 script = SubResource("GDScript_pfah2")
 
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -105.385)
+texture = ExtResource("1_xlje6")
+
+[node name="SquigglingSprite" parent="Sprite2D" instance=ExtResource("3_ajxde")]
+texture = ExtResource("4_4p5q1")
+
+[node name="Label" type="Label" parent="Sprite2D"]
+offset_left = -16.575
+offset_top = -74.0
+offset_right = 23.425
+offset_bottom = 12.0
+text = "3"
+label_settings = ExtResource("5_4wt8w")
+
 [node name="ButtonChangeScene" parent="." instance=ExtResource("3_j744p")]
 anchors_preset = -1
-anchor_left = 0.0
+anchor_left = -0.822
 anchor_top = -0.331
-anchor_right = 1.002
-anchor_bottom = 1.326
-offset_left = -100.0
-offset_top = -100.469
-offset_right = -100.402
-offset_bottom = -100.526
+anchor_right = 2.052
+anchor_bottom = 2.466
+offset_left = -83.454
+offset_top = -181.476
+offset_right = -71.436
+offset_bottom = -102.064
 grow_vertical = 2
 text = ""
 flat = true

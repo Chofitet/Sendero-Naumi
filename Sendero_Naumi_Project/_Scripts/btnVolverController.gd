@@ -17,10 +17,12 @@ func _ready():
 
 func AppearMenu():
 	if !ispause:
+		btn.visible = false
 		menu.visible = true
 		ispause = true
 		get_tree().paused = true
 	else: 
+		btn.visible = true
 		ispause = false
 		menu.visible = false
 		get_tree().paused = false

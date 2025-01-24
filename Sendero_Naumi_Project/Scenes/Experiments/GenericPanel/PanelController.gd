@@ -1,0 +1,147 @@
+@tool
+extends Panel
+
+@export var RefreshData : bool:
+	set(new_value):
+		refreshData(0)
+
+@export var AppearInBeginning : bool
+@onready var label = $label
+@onready var _BotonDerecho = $BtnDerAnchor/btnDer
+@onready var _BotonIzquierda = $btnIzqAnchor/btnIzq
+@onready var _BotonCentral = $btnCentralAnchor/btnCentral
+@export var characters_per_second : float = 45
+var BotonDerecho
+var BotonIzquierdo
+var BotonCentral
+var anim : AnimationPlayer 
+@export var Texts : Array[TextField] 
+
+@export var Instanciate : bool:
+	set(new_value):
+		InstanciateIntermediate()
+
+@export var IntermediateEmmiterData : IntermediateData
+
+signal RigthBTNPress
+signal LeftBTNPress
+signal CenterBTNPress
+
+func refreshData(numPanel : int):
+	
+	var inInEditor = Engine.is_editor_hint()
+	
+	_BotonDerecho.visible = false
+	_BotonCentral.visible = false
+	_BotonIzquierda.visible = false
+	BotonDerecho = false
+	BotonCentral = false
+	BotonIzquierdo = false
+	
+	label.text = Texts[numPanel].Text
+	
+	for btn in Texts[numPanel].buttons:
+		var _texture = btn.texture
+		if btn.Place ==  ButtonPanel.place.rigth:
+			_BotonDerecho.visible = inInEditor
+			$BtnDerAnchor/btnDer/Icon.texture = _texture
+			BotonDerecho = true
+		
+		if btn.Place ==  ButtonPanel.place.center:
+			_BotonCentral.visible = inInEditor
+			$btnCentralAnchor/btnCentral/Icon.texture = _texture
+			BotonCentral = true
+		
+		if btn.Place ==  ButtonPanel.place.left:
+			_BotonIzquierda.visible = inInEditor
+			$btnIzqAnchor/btnIzq/Icon.texture = _texture
+			BotonIzquierdo = true
+			
+
+func InstanciateIntermediate():
+	
+	var instance = load("res://Scenes/Experiments/GenericPanel/IntermediateSignal.tscn").instantiate()
+	add_child(instance)
+	instance.AssingIntermediateData(IntermediateEmmiterData)
+	instance.owner = get_tree().edited_scene_root
+	
+	instance.name = "Panel(" + str(IntermediateEmmiterData.NumberOfPanel) + ") Btn(" + IntermediateData.place.keys()[IntermediateEmmiterData.Place] + ")"
+	
+	IntermediateEmmiterData = null
+	
+
+var numOfPanel : int = 0
+
+func _ready():
+	anim = $AnimationPlayer
+	_BotonDerecho.visible = false
+	_BotonIzquierda.visible = false
+	_BotonCentral.visible = false
+	pivot_offset =  Vector2(size.x/2,size.y/2)
+	if !Engine.is_editor_hint(): label.visible_ratio = 0
+	refreshData(0)
+	if AppearInBeginning: EnterPanel()
+	else: if !Engine.is_editor_hint(): visible = false
+	
+	for child in get_children():
+		if child.has_method("ConnectSignal"):
+			child.ConnectSignal()
+
+func EnterPanel():
+	
+	anim.play("enter_panel")
+	await anim.animation_finished
+	typingAnim()
+
+func typingAnim():
+	var text_length = label.text.length()
+	var duration = text_length / characters_per_second
+	label.visible_ratio = 0
+	var tween = get_tree().create_tween()
+	tween.tween_property(label,"visible_ratio",1,duration)
+	
+	await tween.finished
+	if BotonDerecho: PlayAnimation(_BotonDerecho)
+	if BotonIzquierdo: PlayAnimation(_BotonIzquierda)
+	if BotonCentral: PlayAnimation(_BotonCentral)
+	
+
+func PlayAnimation(btn):
+	var path : String = btn.get_path()
+	path = path + "/AnimationPlayer"
+	var animator = get_node(path)
+	animator.play("appear")
+	await animator.animation_finished
+	animator.play("idle")
+
+
+func ButtonPress(btn):
+	
+	
+	_BotonDerecho.visible = false
+	_BotonCentral.visible = false
+	_BotonIzquierda.visible = false
+	if numOfPanel == Texts.size() - 1: ExitPanel()
+	else:ChangeToNextText()
+
+
+func ExitPanel():
+	$AnimationPlayer.play("exit_panel")
+
+func ChangeToNextText():
+	numOfPanel += 1
+	var anim = $AnimationPlayer
+	anim.play("change_panel")
+	await anim.animation_finished
+	label.visible = true
+	refreshData(numOfPanel)
+	typingAnim()
+
+func rigthBTNConnect():
+	RigthBTNPress.emit(numOfPanel)
+
+func leftBTNConnect():
+	LeftBTNPress.emit(numOfPanel)
+
+func centerBTNConnect():
+	CenterBTNPress.emit(numOfPanel)

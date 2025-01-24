@@ -1,4 +1,4 @@
-[gd_scene load_steps=71 format=3 uid="uid://hbmgu1q1d7os"]
+[gd_scene load_steps=72 format=3 uid="uid://hbmgu1q1d7os"]
 
 [ext_resource type="Script" path="res://_Scripts/Minigame_Save_Controller.gd" id="1_dk1kn"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/StateMachineMinigames.gd" id="2_445ba"]
@@ -45,6 +45,7 @@
 [ext_resource type="Texture2D" uid="uid://nef70gqfgp4n" path="res://Sprites/ZonaMegafauna/pata megaterio der.png" id="35_5wb20"]
 [ext_resource type="Texture2D" uid="uid://bn0ma3jsj556o" path="res://Sprites/ZonaMegafauna/pulgar - foodtruck.png" id="36_1p62h"]
 [ext_resource type="Texture2D" uid="uid://xvar6mq8kbud" path="res://Sprites/ZonaMegafauna/pata smilodon der.png" id="36_52pby"]
+[ext_resource type="Texture2D" uid="uid://qbfds1k6hut4" path="res://Sprites/ZonaGeología/SquigglingFoodtruck/cordonSQUIG - foodtruck.png" id="36_rq7ag"]
 [ext_resource type="Texture2D" uid="uid://doa548wychbgi" path="res://Sprites/ZonaMegafauna/perfil1 - foodtruck.png" id="37_0dc1m"]
 [ext_resource type="Texture2D" uid="uid://be0iwvq5bt2l1" path="res://Sprites/ZonaMegafauna/review1 - foodtruck.png" id="37_5l05l"]
 [ext_resource type="Texture2D" uid="uid://cooqep5mssfv4" path="res://Sprites/ZonaMegafauna/perfil4 - foodtruck.png" id="37_rolar"]
@@ -231,6 +232,18 @@ tracks/3/keys = {
 "update": 0,
 "values": [Vector2(0, 0)]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("cordon:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_2tckf"]
 resource_name = "cordon_anim"
@@ -245,7 +258,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.7, 1, 1.2, 1.4),
 "transitions": PackedFloat32Array(1, 1, -2, -2, -2),
 "update": 0,
-"values": [-1.5708, -1.5708, 0.523599, -0.261799, 0.0]
+"values": [-1.76627, -1.76627, 0.523599, -0.261799, 0.0]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -282,6 +295,32 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(0, 0), Vector2(0, 103)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("cordon:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("cordon/SquigglingSprite")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(1.6),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"ActiveSquiggling"
+}]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_so3tm"]
@@ -915,6 +954,7 @@ DesapearInPlace = true
 
 [node name="SquigglingSprite" parent="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer/food1" instance=ExtResource("27_6x02k")]
 texture = ExtResource("28_jt0v7")
+ActiveInBegining = false
 
 [node name="food2" type="Sprite2D" parent="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer"]
 position = Vector2(776.5, 324.823)
@@ -927,6 +967,7 @@ DesapearInPlace = true
 
 [node name="SquigglingSprite" parent="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer/food2" instance=ExtResource("27_6x02k")]
 texture = ExtResource("29_selty")
+ActiveInBegining = false
 
 [node name="food3" type="Sprite2D" parent="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer"]
 position = Vector2(1494.5, 328.143)
@@ -939,6 +980,7 @@ DesapearInPlace = true
 
 [node name="SquigglingSprite" parent="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer/food3" instance=ExtResource("27_6x02k")]
 texture = ExtResource("31_j8vvo")
+ActiveInBegining = false
 
 [node name="food4" type="Sprite2D" parent="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer"]
 position = Vector2(2224.5, 326.429)
@@ -951,6 +993,7 @@ DesapearInPlace = true
 
 [node name="SquigglingSprite" parent="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer/food4" instance=ExtResource("27_6x02k")]
 texture = ExtResource("31_j8vvo")
+ActiveInBegining = false
 
 [node name="FinalPanel" type="Panel" parent="FoodTruck/StateMachine/Juego/Contenido"]
 visible = false
@@ -1036,11 +1079,17 @@ StateMachine = NodePath("../../../..")
 [node name="fade" type="CanvasLayer" parent="FoodTruck/StateMachine/Juego/Contenido/Cordon/Cortina"]
 
 [node name="cordon" type="Sprite2D" parent="FoodTruck/StateMachine/Juego/Contenido/Cordon/Cortina"]
+visible = false
 position = Vector2(0, -26)
 rotation = -1.5708
 scale = Vector2(0.75, 0.75)
 texture = ExtResource("16_73qbv")
 offset = Vector2(0, 160)
+
+[node name="SquigglingSprite" parent="FoodTruck/StateMachine/Juego/Contenido/Cordon/Cortina/cordon" instance=ExtResource("27_6x02k")]
+position = Vector2(1.33334, 154.667)
+texture = ExtResource("36_rq7ag")
+ActiveInBegining = false
 
 [node name="cortina" type="Sprite2D" parent="FoodTruck/StateMachine/Juego/Contenido/Cordon/Cortina"]
 position = Vector2(0, -556)
@@ -1623,11 +1672,23 @@ label_settings = ExtResource("46_5e6x3")
 [connection signal="Transitioned" from="FoodTruck/StateMachine/Juego" to="FoodTruck/StateMachine/Juego/Contenido/AnchorSpot/Spot" method="Reset"]
 [connection signal="Transitioned" from="FoodTruck/StateMachine/Juego" to="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer" method="Reset"]
 [connection signal="Transitioned" from="FoodTruck/StateMachine/Juego" to="FoodTruck/StateMachine/Juego/Contenido/BlockScreen" method="SetVisibility" binds= [false]]
+[connection signal="EndComand" from="FoodTruck/StateMachine/Juego/Contenido/PatasController" to="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer/food1/SquigglingSprite" method="ActiveSquiggling"]
+[connection signal="EndComand" from="FoodTruck/StateMachine/Juego/Contenido/PatasController" to="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer/food2/SquigglingSprite" method="ActiveSquiggling"]
+[connection signal="EndComand" from="FoodTruck/StateMachine/Juego/Contenido/PatasController" to="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer/food3/SquigglingSprite" method="ActiveSquiggling"]
+[connection signal="EndComand" from="FoodTruck/StateMachine/Juego/Contenido/PatasController" to="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer/food4/SquigglingSprite" method="ActiveSquiggling"]
 [connection signal="EndComand" from="FoodTruck/StateMachine/Juego/Contenido/PatasController" to="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer" method="stopDrag" binds= [false]]
 [connection signal="EndComand" from="FoodTruck/StateMachine/Juego/Contenido/PatasController" to="FoodTruck/StateMachine/Juego/Contenido/BlockScreen" method="SetVisibility" binds= [false]]
 [connection signal="ReorganizePlates" from="FoodTruck/StateMachine/Juego/Contenido/PatasController" to="FoodTruck/StateMachine/Juego/Contenido/AnchorSpot/Spot" method="Reset"]
 [connection signal="ReorganizePlates" from="FoodTruck/StateMachine/Juego/Contenido/PatasController" to="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer" method="ReOrganizePlates"]
+[connection signal="ReorganizePlates" from="FoodTruck/StateMachine/Juego/Contenido/PatasController" to="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer/food1/SquigglingSprite" method="ActiveSquiggling"]
+[connection signal="ReorganizePlates" from="FoodTruck/StateMachine/Juego/Contenido/PatasController" to="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer/food2/SquigglingSprite" method="ActiveSquiggling"]
+[connection signal="ReorganizePlates" from="FoodTruck/StateMachine/Juego/Contenido/PatasController" to="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer/food3/SquigglingSprite" method="ActiveSquiggling"]
+[connection signal="ReorganizePlates" from="FoodTruck/StateMachine/Juego/Contenido/PatasController" to="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer/food4/SquigglingSprite" method="ActiveSquiggling"]
 [connection signal="StartComand" from="FoodTruck/StateMachine/Juego/Contenido/PatasController" to="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer" method="stopDrag"]
+[connection signal="StartComand" from="FoodTruck/StateMachine/Juego/Contenido/PatasController" to="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer/food1/SquigglingSprite" method="InactiveSquiggling"]
+[connection signal="StartComand" from="FoodTruck/StateMachine/Juego/Contenido/PatasController" to="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer/food2/SquigglingSprite" method="InactiveSquiggling"]
+[connection signal="StartComand" from="FoodTruck/StateMachine/Juego/Contenido/PatasController" to="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer/food3/SquigglingSprite" method="InactiveSquiggling"]
+[connection signal="StartComand" from="FoodTruck/StateMachine/Juego/Contenido/PatasController" to="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer/food4/SquigglingSprite" method="InactiveSquiggling"]
 [connection signal="StartComand" from="FoodTruck/StateMachine/Juego/Contenido/PatasController" to="FoodTruck/StateMachine/Juego/Contenido/BlockScreen" method="SetVisibility" binds= [true]]
 [connection signal="StartTutorial" from="FoodTruck/StateMachine/Juego/Contenido/PatasController" to="FoodTruck/StateMachine/Juego/Contenido/Tutorial" method="CheckInTutorial"]
 [connection signal="OnSpot" from="FoodTruck/StateMachine/Juego/Contenido/AnchorSpot/Spot" to="FoodTruck/StateMachine/Juego/Contenido/PatasController" method="AddPlateAtPivot"]
@@ -1643,12 +1704,37 @@ label_settings = ExtResource("46_5e6x3")
 [connection signal="WrongAns" from="FoodTruck/StateMachine/Juego/Contenido/AnchorSpot/Spot" to="FoodTruck/StateMachine/Juego/Contenido/BlockScreen" method="SetVisibility" binds= [true]]
 [connection signal="button_down" from="FoodTruck/StateMachine/Juego/Contenido/AnchorSpot/btnResult" to="FoodTruck/StateMachine/Juego/Contenido/PatasController" method="PlayTakeAnim"]
 [connection signal="CompleteSwipe" from="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer" to="FoodTruck/StateMachine/Juego/Contenido/Tutorial" method="FirstSwipe"]
+[connection signal="CompleteSwipe" from="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer" to="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer/food1/SquigglingSprite" method="ActiveSquiggling"]
+[connection signal="CompleteSwipe" from="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer" to="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer/food2/SquigglingSprite" method="ActiveSquiggling"]
+[connection signal="CompleteSwipe" from="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer" to="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer/food3/SquigglingSprite" method="ActiveSquiggling"]
+[connection signal="CompleteSwipe" from="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer" to="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer/food4/SquigglingSprite" method="ActiveSquiggling"]
 [connection signal="PlatesReset" from="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer" to="FoodTruck/StateMachine/Juego/Contenido/BlockScreen" method="SetVisibility" binds= [false]]
+[connection signal="aPlateAreDragging" from="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer" to="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer/food1/SquigglingSprite" method="InactiveSquiggling"]
+[connection signal="aPlateAreDragging" from="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer" to="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer/food2/SquigglingSprite" method="InactiveSquiggling"]
+[connection signal="aPlateAreDragging" from="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer" to="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer/food3/SquigglingSprite" method="InactiveSquiggling"]
+[connection signal="aPlateAreDragging" from="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer" to="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer/food4/SquigglingSprite" method="InactiveSquiggling"]
+[connection signal="aPlateWasDrop" from="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer" to="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer/food1/SquigglingSprite" method="ActiveSquiggling"]
+[connection signal="aPlateWasDrop" from="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer" to="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer/food2/SquigglingSprite" method="ActiveSquiggling"]
+[connection signal="aPlateWasDrop" from="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer" to="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer/food3/SquigglingSprite" method="ActiveSquiggling"]
+[connection signal="aPlateWasDrop" from="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer" to="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer/food4/SquigglingSprite" method="ActiveSquiggling"]
 [connection signal="isScrolling" from="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer" to="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer/food1/DragObject" method="CancelDrag"]
 [connection signal="isScrolling" from="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer" to="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer/food2/DragObject" method="CancelDrag"]
 [connection signal="isScrolling" from="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer" to="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer/food3/DragObject" method="CancelDrag"]
 [connection signal="isScrolling" from="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer" to="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer/food4/DragObject" method="CancelDrag"]
+[connection signal="isDraggin" from="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer/food1/DragObject" to="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer" method="DetectDraggingPlate"]
+[connection signal="isDraggin" from="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer/food1/DragObject" to="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer/food1/SquigglingSprite" method="ActiveSquiggling"]
+[connection signal="object_realese_Wrong_Place" from="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer/food1/DragObject" to="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer" method="DetectMouseRelease"]
+[connection signal="isDraggin" from="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer/food2/DragObject" to="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer" method="DetectDraggingPlate"]
+[connection signal="isDraggin" from="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer/food2/DragObject" to="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer/food2/SquigglingSprite" method="ActiveSquiggling"]
+[connection signal="object_realese_Wrong_Place" from="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer/food2/DragObject" to="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer" method="DetectMouseRelease"]
+[connection signal="isDraggin" from="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer/food3/DragObject" to="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer" method="DetectDraggingPlate"]
+[connection signal="isDraggin" from="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer/food3/DragObject" to="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer/food3/SquigglingSprite" method="ActiveSquiggling"]
+[connection signal="object_realese_Wrong_Place" from="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer/food3/DragObject" to="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer" method="DetectMouseRelease"]
+[connection signal="isDraggin" from="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer/food4/DragObject" to="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer" method="DetectDraggingPlate"]
+[connection signal="isDraggin" from="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer/food4/DragObject" to="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer/food4/SquigglingSprite" method="ActiveSquiggling"]
+[connection signal="object_realese_Wrong_Place" from="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer/food4/DragObject" to="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer" method="DetectMouseRelease"]
 [connection signal="pressed" from="FoodTruck/StateMachine/Juego/Contenido/FinalPanel/Button" to="FoodTruck/StateMachine/Juego/Contenido/Cordon/Cortina" method="PlayCordonAppear"]
+[connection signal="button_up" from="FoodTruck/StateMachine/Juego/Contenido/Cordon/Cortina/Button" to="FoodTruck/StateMachine/Juego/Contenido/Cordon/Cortina/cordon/SquigglingSprite" method="InactiveSquiggling"]
 [connection signal="timeout" from="FoodTruck/StateMachine/Moraleja/Contenido/Timer" to="FoodTruck/StateMachine/Moraleja" method="TimeOut"]
 [connection signal="pressed" from="FoodTruck/StateMachine/Moraleja/Contenido/Instancia1/Button" to="FoodTruck/StateMachine/Moraleja/Contenido/Instancia1/Button" method="_on_pressed"]
 [connection signal="Transitioned" from="FoodTruck/StateMachine/Fin" to="FoodTruck/StateMachine/Fin/Contenido/Control/Panel2" method="StartTimerToAppear"]
