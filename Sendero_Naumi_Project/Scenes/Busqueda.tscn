@@ -1,4 +1,4 @@
-[gd_scene load_steps=147 format=3 uid="uid://ca6b1xkwwj7rp"]
+[gd_scene load_steps=156 format=3 uid="uid://ca6b1xkwwj7rp"]
 
 [ext_resource type="Script" path="res://_Scripts/Minigame_Save_Controller.gd" id="1_kdw84"]
 [ext_resource type="Texture2D" uid="uid://dbv6rcnmmb8db" path="res://Sprites/ZonaGeología/fondo_geografia.png" id="2_5bgsq"]
@@ -34,9 +34,13 @@
 [ext_resource type="Shader" path="res://shaders/blur.gdshader" id="23_o574m"]
 [ext_resource type="Texture2D" uid="uid://dqfeggjxj1qs8" path="res://Sprites/ZonaGeología/anim_busqueda_vuvuzela_up.png" id="25_c3yw3"]
 [ext_resource type="Texture2D" uid="uid://hvxr05mcm16" path="res://Sprites/ZonaGeología/anim_busqueda_idle.png" id="25_tqpjr"]
+[ext_resource type="PackedScene" uid="uid://chcp24toqisaw" path="res://Scenes/Experiments/GenericPanel/GenericPanel.tscn" id="26_1lb4u"]
 [ext_resource type="Texture2D" uid="uid://bq6v8yeukykwd" path="res://Sprites/ZonaGeología/anim_busqueda_look.png" id="26_86toq"]
 [ext_resource type="Texture2D" uid="uid://bkdrsxkhok0dg" path="res://Sprites/ZonaGeología/anim_busqueda_jump.png" id="27_m8v74"]
+[ext_resource type="Script" path="res://Scenes/Experiments/GenericPanel/ButtonPanelData.gd" id="27_ntp00"]
+[ext_resource type="Texture2D" uid="uid://f71rhgotbkf3" path="res://Sprites/UI/reloadIcon - UI.png" id="28_4rotu"]
 [ext_resource type="Texture2D" uid="uid://doj235n46aswp" path="res://Sprites/ZonaGeología/anim_busqueda_lose1.png" id="29_8ceql"]
+[ext_resource type="Script" path="res://Scenes/Experiments/GenericPanel/TextFieldData.gd" id="29_gmr1k"]
 [ext_resource type="Texture2D" uid="uid://d2faswhs5n4ag" path="res://Sprites/ZonaGeología/anim_busqueda_lose2.png" id="30_qdjaw"]
 [ext_resource type="Texture2D" uid="uid://w1b1impfh41w" path="res://Sprites/ZonaGeología/anim_busqueda_lose3.png" id="31_ppobk"]
 [ext_resource type="Texture2D" uid="uid://c8us4lo7wq0xl" path="res://Sprites/ZonaGeología/anim_busqueda_winner1.png" id="32_2j1o6"]
@@ -48,7 +52,9 @@
 [ext_resource type="PackedScene" uid="uid://djhg7jvxtexyl" path="res://Scenes/UI_Scenes/btn_Change_Scene.tscn" id="36_u5u0v"]
 [ext_resource type="PackedScene" uid="uid://dlwmbps456ind" path="res://Scenes/Experiments/btnVolver.tscn" id="44_msv2t"]
 [ext_resource type="Texture2D" uid="uid://drrio0noaq2fi" path="res://Sprites/ZonaGeología/piedra-PhotoRoom.png-PhotoRoom.png" id="47_aavg0"]
+[ext_resource type="PackedScene" uid="uid://d1jys63xrvxpo" path="res://Scenes/Experiments/GenericPanel/IntermediateSignal.tscn" id="47_d1q7o"]
 [ext_resource type="Texture2D" uid="uid://bamkhedpobw1w" path="res://Sprites/ZonaGeología/angel tira - busqueda.png" id="48_0dycw"]
+[ext_resource type="Script" path="res://Scenes/Experiments/GenericPanel/IntermediateData.gd" id="49_jaepl"]
 
 [sub_resource type="Animation" id="Animation_q6tin"]
 resource_name = "Anim_left"
@@ -1243,6 +1249,18 @@ tracks/3/keys = {
 "update": 0,
 "values": [Vector2(1e-05, 1e-05), Vector2(1e-05, 1e-05), Vector2(0.8, 0.8), Vector2(0.6, 0.6)]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_kdc0y"]
 length = 0.001
@@ -1294,12 +1312,40 @@ tracks/3/keys = {
 "update": 0,
 "values": [Vector2(1e-05, 1e-05)]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gy327"]
 _data = {
 "Nube_Appears": SubResource("Animation_ko7o5"),
 "RESET": SubResource("Animation_kdc0y")
 }
+
+[sub_resource type="Resource" id="Resource_c5efx"]
+script = ExtResource("27_ntp00")
+Place = 1
+texture = ExtResource("28_4rotu")
+
+[sub_resource type="Resource" id="Resource_2g7md"]
+script = ExtResource("29_gmr1k")
+Text = "BUSCÁ PISTAS EN LA VITRINA
+PARA SABER DONDE VA CADA MINERAL"
+buttons = Array[ExtResource("27_ntp00")]([SubResource("Resource_c5efx")])
+
+[sub_resource type="Resource" id="Resource_4hrcy"]
+script = ExtResource("49_jaepl")
+NumberOfPanel = 1
+Place = 1
 
 [sub_resource type="Animation" id="Animation_rgumh"]
 resource_name = "AnimMoraleja"
@@ -5390,7 +5436,7 @@ texture = ExtResource("8_pk5s7")
 [node name="AnimPiedra1" type="AnimatedSprite2D" parent="StateMachine/Juego/Contenido/Instancia1/Piedra_Busqueda/Piedra"]
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_b1248")
-animation = &"anim_vuvuzela_up"
+animation = &"rock_look"
 speed_scale = 1.3
 
 [node name="AnimController" type="AnimationPlayer" parent="StateMachine/Juego/Contenido/Instancia1/Piedra_Busqueda"]
@@ -6248,6 +6294,20 @@ libraries = {
 script = ExtResource("16_r2ac3")
 animation = "Nube_Appears"
 
+[node name="RetryPanel" parent="StateMachine/Juego/Contenido" instance=ExtResource("26_1lb4u")]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.672
+anchor_bottom = 0.672
+offset_top = -57.16
+offset_bottom = 170.84
+AppearInBeginning = false
+Texts = Array[ExtResource("29_gmr1k")]([SubResource("Resource_2g7md")])
+
+[node name="Panel(1) Btn(center)" parent="StateMachine/Juego/Contenido/RetryPanel" instance=ExtResource("47_d1q7o")]
+Data = SubResource("Resource_4hrcy")
+Delay = 0.3
+
 [node name="Moraleja" type="ColorRect" parent="StateMachine/Juego/Contenido"]
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
@@ -6517,6 +6577,7 @@ NextScene = "Map_Screen"
 [connection signal="Transitioned" from="StateMachine/Juego" to="StateMachine/Juego/Contenido/Instancia3/Consigna" method="StartTimer"]
 [connection signal="Transitioned" from="StateMachine/Juego" to="StateMachine/Juego/Contenido/Instancia3/NubeController/AnimationPlayer" method="Reset"]
 [connection signal="Transitioned" from="StateMachine/Juego" to="StateMachine/Juego/Contenido/Instancia3/NubeController2/AnimationPlayer" method="Reset"]
+[connection signal="PlayerLose" from="StateMachine/Juego/Contenido/Tribunas" to="StateMachine/Juego/Contenido/RetryPanel" method="EnterPanel"]
 [connection signal="EndOfGame" from="StateMachine/Juego/Contenido/Instancia1/Button" to="." method="Set_Complete"]
 [connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia1/Button" to="StateMachine/Juego/Contenido/Instancia1/Button" method="_on_pressed"]
 [connection signal="timeout" from="StateMachine/Juego/Contenido/Instancia1/Consigna/Timer" to="StateMachine/Juego/Contenido/Instancia1/NubeController/AnimationPlayer" method="Play"]
@@ -6548,6 +6609,10 @@ NextScene = "Map_Screen"
 [connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia3/NubeController/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia3/Piedra_Busqueda" method="SetNextAnimBool" binds= [false]]
 [connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia3/NubeController2/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia3/Piedra_Busqueda" method="SetScale" binds= [true]]
 [connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia3/NubeController2/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia3/Piedra_Busqueda" method="SetNextAnimBool" binds= [true]]
+[connection signal="ButtonPress" from="StateMachine/Juego/Contenido/RetryPanel/Panel(1) Btn(center)" to="StateMachine/Juego/Contenido/Tribunas" method="RetryInstance"]
+[connection signal="ButtonPress" from="StateMachine/Juego/Contenido/RetryPanel/Panel(1) Btn(center)" to="StateMachine/Juego/Contenido/Instancia1/Piedra_Busqueda" method="ResetRock"]
+[connection signal="ButtonPress" from="StateMachine/Juego/Contenido/RetryPanel/Panel(1) Btn(center)" to="StateMachine/Juego/Contenido/Instancia2/Piedra_Busqueda" method="ResetRock"]
+[connection signal="ButtonPress" from="StateMachine/Juego/Contenido/RetryPanel/Panel(1) Btn(center)" to="StateMachine/Juego/Contenido/Instancia3/Piedra_Busqueda" method="ResetRock"]
 [connection signal="pressed" from="StateMachine/Juego/Contenido/Moraleja/Panel/Button" to="." method="Set_Complete"]
 [connection signal="pressed" from="StateMachine/Juego/Contenido/Moraleja/Panel/Button" to="StateMachine/Juego/Contenido/Instancia1/Piedra_Busqueda" method="resetAllAnimation"]
 [connection signal="pressed" from="StateMachine/Juego/Contenido/Moraleja/Panel/Button" to="StateMachine/Juego/Contenido/Moraleja/Panel/Button" method="_on_pressed"]
