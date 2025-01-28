@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://ck4m8k46bmha1"]
+[gd_scene load_steps=45 format=3 uid="uid://ck4m8k46bmha1"]
 
 [ext_resource type="Script" path="res://_Scripts/AdjustSeparationWithScreenSize.gd" id="2_1v6rf"]
 [ext_resource type="Script" path="res://_Scripts/ScrollController.gd" id="2_es768"]
@@ -36,6 +36,7 @@
 [ext_resource type="Texture2D" uid="uid://c5sigus2fy273" path="res://Sprites/Mapa/squigglingMap/megafaunaSQUIG - mapa.png" id="23_2a773"]
 [ext_resource type="Script" path="res://_Scripts/StateMachine/State.gd" id="25_jjswu"]
 [ext_resource type="Texture2D" uid="uid://dowufrhlgpfe" path="res://Sprites/UI/Boton_Volver.png" id="26_1t1rb"]
+[ext_resource type="Theme" uid="uid://dhu6swisjlh4w" path="res://Resources/UI_Resources/BlueBubblePanel.tres" id="33_7s2qj"]
 
 [sub_resource type="Curve2D" id="Curve2D_8o4yl"]
 bake_interval = 0.01
@@ -1117,20 +1118,73 @@ grow_vertical = 0
 theme_override_font_sizes/font_size = 40
 text = "Restart"
 
-[node name="ButtonChangeScene" parent="StateMachine/NoZone" instance=ExtResource("7_1v7i5")]
-z_index = 4
+[node name="Debug" type="Button" parent="StateMachine/NoZone"]
+z_index = 1
 anchors_preset = 3
 anchor_left = 1.0
+anchor_top = 1.0
 anchor_right = 1.0
-offset_left = -235.0
-offset_top = -102.0
-offset_right = -21.0
-offset_bottom = -18.0
+anchor_bottom = 1.0
+offset_left = -197.0
+offset_top = -92.0
+offset_right = -22.0
+offset_bottom = -30.0
 grow_horizontal = 0
+grow_vertical = 0
 text = "Debug"
+
+[node name="PanelDebug" type="Panel" parent="StateMachine/NoZone"]
+visible = false
+z_index = 1
+anchors_preset = -1
+anchor_left = 0.516
+anchor_top = 0.523
+anchor_right = 0.516
+anchor_bottom = 0.523
+offset_left = -234.52
+offset_top = -348.44
+offset_right = 234.48
+offset_bottom = 348.56
+
+[node name="ButtonChangeScene" parent="StateMachine/NoZone/PanelDebug" instance=ExtResource("7_1v7i5")]
+z_index = 4
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.222
+anchor_bottom = 0.222
+offset_left = -103.5
+offset_top = -41.734
+offset_right = 110.5
+offset_bottom = 42.266
+grow_horizontal = 0
+text = "Test UI"
 NextScene = "prueba_letras"
 fade_time = 0.0
 smoothness = 0.0
+
+[node name="ButtonUnlockIslands" type="Button" parent="StateMachine/NoZone/PanelDebug"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.494
+anchor_top = 0.423
+anchor_right = 0.494
+anchor_bottom = 0.423
+offset_left = -64.686
+offset_top = -43.831
+offset_right = 64.314
+offset_bottom = 43.169
+text = "Unlock islas"
+
+[node name="x" type="Button" parent="StateMachine/NoZone/PanelDebug"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -65.0
+offset_bottom = 58.0
+grow_horizontal = 0
+theme = ExtResource("33_7s2qj")
+text = "X"
 
 [node name="MegafaunaZone" type="Node" parent="StateMachine" node_paths=PackedStringArray("ButtonBack")]
 script = ExtResource("15_y7a6y")
@@ -1271,5 +1325,10 @@ anchors_preset = 0
 [connection signal="inZone" from="StateMachine/AstronomiaZone" to="ScrollContainer" method="SetisInputBlock" binds= [false]]
 [connection signal="backZone" from="StateMachine/GeologiaZone" to="ScrollContainer" method="SetisInputBlock" binds= [true]]
 [connection signal="inZone" from="StateMachine/GeologiaZone" to="ScrollContainer" method="SetisInputBlock" binds= [false]]
+[connection signal="pressed" from="StateMachine/NoZone/Debug" to="StateMachine/NoZone/PanelDebug" method="set_visible" binds= [true]]
+[connection signal="pressed" from="StateMachine/NoZone/PanelDebug/ButtonUnlockIslands" to="ScrollContainer/VBoxContainer/Piso2/AstronomiaZone" method="DebugIland"]
+[connection signal="pressed" from="StateMachine/NoZone/PanelDebug/ButtonUnlockIslands" to="ScrollContainer/VBoxContainer/Piso2/GeologiaZone" method="DebugIland"]
+[connection signal="pressed" from="StateMachine/NoZone/PanelDebug/ButtonUnlockIslands" to="StateMachine/NoZone/PanelDebug" method="set_visible" binds= [false]]
+[connection signal="pressed" from="StateMachine/NoZone/PanelDebug/x" to="StateMachine/NoZone/PanelDebug" method="set_visible" binds= [false]]
 [connection signal="backZone" from="StateMachine/MegafaunaZone" to="ScrollContainer" method="SetisInputBlock" binds= [true]]
 [connection signal="inZone" from="StateMachine/MegafaunaZone" to="ScrollContainer" method="SetisInputBlock" binds= [false]]
