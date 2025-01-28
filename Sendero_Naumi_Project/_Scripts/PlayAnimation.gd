@@ -24,3 +24,4 @@ func Reset():
 func DestroyAnimInFinishAnim(x):
 	if x == DestroyInFinish:
 		queue_free()
+

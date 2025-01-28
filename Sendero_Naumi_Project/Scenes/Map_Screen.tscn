@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://ck4m8k46bmha1"]
+[gd_scene load_steps=50 format=3 uid="uid://ck4m8k46bmha1"]
 
 [ext_resource type="Script" path="res://_Scripts/AdjustSeparationWithScreenSize.gd" id="2_1v6rf"]
 [ext_resource type="Script" path="res://_Scripts/ScrollController.gd" id="2_es768"]
@@ -36,7 +36,12 @@
 [ext_resource type="Texture2D" uid="uid://c5sigus2fy273" path="res://Sprites/Mapa/squigglingMap/megafaunaSQUIG - mapa.png" id="23_2a773"]
 [ext_resource type="Script" path="res://_Scripts/StateMachine/State.gd" id="25_jjswu"]
 [ext_resource type="Texture2D" uid="uid://dowufrhlgpfe" path="res://Sprites/UI/Boton_Volver.png" id="26_1t1rb"]
+[ext_resource type="Texture2D" uid="uid://dil77na7a1kld" path="res://Sprites/Mapa/squigglingMap/durezas - mapa.png" id="31_ceq68"]
+[ext_resource type="Texture2D" uid="uid://dpsplvmhtgavl" path="res://Sprites/Mapa/squigglingMap/transformaciones - mapa.png" id="32_5k6rn"]
 [ext_resource type="Theme" uid="uid://dhu6swisjlh4w" path="res://Resources/UI_Resources/BlueBubblePanel.tres" id="33_7s2qj"]
+[ext_resource type="Texture2D" uid="uid://dgkf3fiv7o1ap" path="res://Sprites/Mapa/squigglingMap/busqueda - mapa.png" id="33_hdkxd"]
+[ext_resource type="Texture2D" uid="uid://c2d8yn44bc8bm" path="res://Sprites/Mapa/squigglingMap/comidas - mapa.png" id="38_nd2o0"]
+[ext_resource type="Texture2D" uid="uid://dj3ecbwojvib6" path="res://Sprites/Mapa/squigglingMap/topo - mapa.png" id="39_xgaa0"]
 
 [sub_resource type="Curve2D" id="Curve2D_8o4yl"]
 bake_interval = 0.01
@@ -1069,6 +1074,11 @@ text = "1
 "
 label_settings = ExtResource("18_m0o3f")
 
+[node name="SquigglingSprite" parent="StateMachine/GeologiaZone/ZoomingZone/SubViewport/ZoomingZone/RockFighters" instance=ExtResource("19_ied16")]
+position = Vector2(19.22, 160.905)
+scale = Vector2(1.02, 1.07)
+texture = ExtResource("31_ceq68")
+
 [node name="Transformando" parent="StateMachine/GeologiaZone/ZoomingZone/SubViewport/ZoomingZone" instance=ExtResource("6_wq3mc")]
 position = Vector2(514.845, 1105.81)
 NumOfLevel = 3
@@ -1082,6 +1092,11 @@ offset_bottom = 12.655
 text = "3"
 label_settings = ExtResource("18_m0o3f")
 
+[node name="SquigglingSprite" parent="StateMachine/GeologiaZone/ZoomingZone/SubViewport/ZoomingZone/Transformando" instance=ExtResource("19_ied16")]
+position = Vector2(7.415, 124.8)
+scale = Vector2(1, 1.09)
+texture = ExtResource("32_5k6rn")
+
 [node name="Busqueda" parent="StateMachine/GeologiaZone/ZoomingZone/SubViewport/ZoomingZone" instance=ExtResource("6_wq3mc")]
 position = Vector2(617.4, 35.57)
 NumOfLevel = 2
@@ -1094,6 +1109,11 @@ offset_right = 16.94
 offset_bottom = 13.99
 text = "2"
 label_settings = ExtResource("18_m0o3f")
+
+[node name="SquigglingSprite" parent="StateMachine/GeologiaZone/ZoomingZone/SubViewport/ZoomingZone/Busqueda" instance=ExtResource("19_ied16")]
+position = Vector2(37.555, 110.275)
+scale = Vector2(1.01, 1.07)
+texture = ExtResource("33_hdkxd")
 
 [node name="Título" type="Sprite2D" parent="StateMachine/GeologiaZone/ZoomingZone/SubViewport/ZoomingZone"]
 position = Vector2(477.009, -119.85)
@@ -1238,6 +1258,11 @@ offset_bottom = 13.99
 text = "2"
 label_settings = ExtResource("18_m0o3f")
 
+[node name="SquigglingSprite" parent="StateMachine/MegafaunaZone/ZoomingZone/SubViewport/ZoomingZone/FoodTruck" instance=ExtResource("19_ied16")]
+position = Vector2(-26.795, 244.75)
+scale = Vector2(1.37, 1.37)
+texture = ExtResource("38_nd2o0")
+
 [node name="Excavando" parent="StateMachine/MegafaunaZone/ZoomingZone/SubViewport/ZoomingZone" instance=ExtResource("6_wq3mc")]
 position = Vector2(497.08, 1310.83)
 NumOfLevel = 1
@@ -1250,6 +1275,11 @@ offset_right = 16.94
 offset_bottom = 13.99
 text = "1"
 label_settings = ExtResource("18_m0o3f")
+
+[node name="SquigglingSprite" parent="StateMachine/MegafaunaZone/ZoomingZone/SubViewport/ZoomingZone/Excavando" instance=ExtResource("19_ied16")]
+position = Vector2(-27.04, 107.27)
+scale = Vector2(1.375, 1.375)
+texture = ExtResource("39_xgaa0")
 
 [node name="Título" type="Sprite2D" parent="StateMachine/MegafaunaZone/ZoomingZone/SubViewport/ZoomingZone"]
 visible = false

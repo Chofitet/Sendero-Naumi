@@ -6,10 +6,12 @@ extends Panel
 		refreshData(0)
 
 @export var AppearInBeginning : bool
+@export var TimeToAppear : float
 @onready var label = $label
 @onready var _BotonDerecho = $BtnDerAnchor/btnDer
 @onready var _BotonIzquierda = $btnIzqAnchor/btnIzq
 @onready var _BotonCentral = $btnCentralAnchor/btnCentral
+var _btns =[]
 @export var characters_per_second : float = 45
 var BotonDerecho
 var BotonIzquierdo
@@ -22,6 +24,8 @@ var anim : AnimationPlayer
 		InstanciateIntermediate()
 
 @export var IntermediateEmmiterData : IntermediateData
+
+var pop = preload("res://Scenes/UI_Scenes/pop.tscn")
 
 signal RigthBTNPress
 signal LeftBTNPress
@@ -73,6 +77,9 @@ func InstanciateIntermediate():
 var numOfPanel : int = 0
 
 func _ready():
+	_btns.append(_BotonDerecho)
+	_btns.append(_BotonIzquierda)
+	_btns.append(_BotonCentral)
 	anim = $AnimationPlayer
 	_BotonDerecho.visible = false
 	_BotonIzquierda.visible = false
@@ -88,7 +95,7 @@ func _ready():
 			child.ConnectSignal()
 
 func EnterPanel():
-	
+	await  get_tree().create_timer(TimeToAppear).timeout
 	anim.play("enter_panel")
 	await anim.animation_finished
 	typingAnim()
@@ -117,6 +124,7 @@ func PlayAnimation(btn):
 
 func ButtonPress(btn):
 	
+	InstanciateButtonPOP(_btns[btn])
 	
 	_BotonDerecho.visible = false
 	_BotonCentral.visible = false
@@ -145,3 +153,8 @@ func leftBTNConnect():
 
 func centerBTNConnect():
 	CenterBTNPress.emit(numOfPanel)
+
+func InstanciateButtonPOP(btn):
+	var POPInstance = pop.instantiate()
+	get_parent().add_child(POPInstance)
+	POPInstance.global_position = btn.global_position + Vector2(45,45)

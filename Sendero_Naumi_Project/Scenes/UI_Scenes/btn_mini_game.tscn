@@ -15,6 +15,7 @@ var minigameResourseFile = MiniGameResource.new()
 var instance = InstanceResource.new()
 var button
 @export var NumOfLevel : int
+@onready var squigglyObject = $SquigglingSprite
 
 func _ready():
 	button = get_node(\"ButtonChangeScene\")
@@ -29,6 +30,7 @@ func _ready():
 		var lb = $Sprite2D/Label
 		if lb != null:lb.visible = false
 		$Sprite2D/SquigglingSprite.visible = false
+		if squigglyObject != null : squigglyObject.InactiveSquiggling()
 
 func load_file():
 	minigameResourseFile  = ResourceLoader.load(save_file_path  + save_file_name)
