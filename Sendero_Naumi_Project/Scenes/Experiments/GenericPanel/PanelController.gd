@@ -33,6 +33,8 @@ signal CenterBTNPress
 
 func refreshData(numPanel : int):
 	
+	DetectBoldText(numOfPanel)
+	
 	var inInEditor = Engine.is_editor_hint()
 	
 	_BotonDerecho.visible = false
@@ -158,3 +160,10 @@ func InstanciateButtonPOP(btn):
 	var POPInstance = pop.instantiate()
 	get_parent().add_child(POPInstance)
 	POPInstance.global_position = btn.global_position + Vector2(45,45)
+
+func DetectBoldText(numPanel):
+	
+	if  Texts[numPanel].Text.contains("[b]"):
+		label = $labelRich
+	else: label = $label
+		

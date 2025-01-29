@@ -3,6 +3,7 @@ extends Button
 
 @onready var anim = $AnimationPlayer
 
+
 @export var enterInBeggining : bool
 
 @export var noSway : bool
@@ -18,6 +19,7 @@ var pop = preload("res://Scenes/UI_Scenes/pop.tscn")
 func _ready():
 	if enterInBeggining: EnterAnim()
 	pressed.connect(ExitAnim)
+	$TextureRect.texture = Icon
 
 func EnterAnim():
 	anim.play("EnterButton")
