@@ -1,4 +1,4 @@
-[gd_scene load_steps=94 format=3 uid="uid://hbmgu1q1d7os"]
+[gd_scene load_steps=96 format=3 uid="uid://hbmgu1q1d7os"]
 
 [ext_resource type="Script" path="res://_Scripts/Minigame_Save_Controller.gd" id="1_dk1kn"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/StateMachineMinigames.gd" id="2_445ba"]
@@ -38,6 +38,7 @@
 [ext_resource type="Script" path="res://_Scripts/DetectTexture.gd" id="17_7dvpr"]
 [ext_resource type="PackedScene" uid="uid://djhg7jvxtexyl" path="res://Scenes/UI_Scenes/btn_Change_Scene.tscn" id="17_n5n07"]
 [ext_resource type="Script" path="res://Scenes/Experiments/GenericPanel/IntermediateData.gd" id="19_43356"]
+[ext_resource type="Theme" uid="uid://vengl112frfy" path="res://Resources/UI_Resources/TransparentBubblePanel.tres" id="22_pwu5t"]
 [ext_resource type="PackedScene" uid="uid://cw3ok8v4p620b" path="res://Scenes/Experiments/squiggling_sprite.tscn" id="27_6x02k"]
 [ext_resource type="PackedScene" uid="uid://bu70xltoq3ycs" path="res://Scenes/Zona_Megafauna/paper_controller.tscn" id="27_iymen"]
 [ext_resource type="Texture2D" uid="uid://byhs4lptkaxlh" path="res://Sprites/ZonaGeología/SquigglingFoodtruck/plato herbivoroSQUIG - foodtruck.png" id="28_jt0v7"]
@@ -61,6 +62,7 @@
 [ext_resource type="Texture2D" uid="uid://bgxpoofwqbfdx" path="res://Sprites/ZonaMegafauna/estrella - foodtruck.png" id="40_kui26"]
 [ext_resource type="Texture2D" uid="uid://chqivoetkgkoj" path="res://Sprites/UI/circulo.png" id="41_w22xk"]
 [ext_resource type="Texture2D" uid="uid://bgu2a8yvdx88v" path="res://Sprites/ZonaMegafauna/review3 - foodtruck.png" id="41_yshj5"]
+[ext_resource type="Texture2D" uid="uid://kb7ixs5ala8" path="res://Sprites/UI/arrowIcon - UI.png" id="43_101i6"]
 [ext_resource type="Texture2D" uid="uid://dv8qy3pocdvhs" path="res://Sprites/ZonaMegafauna/review4 - foodtruck.png" id="43_cudcr"]
 [ext_resource type="LabelSettings" uid="uid://b7f8w8wf071ek" path="res://Themes/Geología/LabelSettings_Busqueda.tres" id="46_5e6x3"]
 [ext_resource type="PackedScene" uid="uid://3rvhy3nlrjxy" path="res://Scenes/Zona_Megafauna/mole_particles.tscn" id="64_du6ac"]
@@ -198,12 +200,14 @@ Place = 0
 
 [sub_resource type="Resource" id="Resource_0xsgl"]
 script = ExtResource("16_g0euh")
-Text = "DESLIZA LOS PLATOS HACIA LOS COSTADOS PARA BUSCAR EL MENÚ CORRECTO."
+Text = "DESLIZA LOS PLATOS HACIA LOS COSTADOS
+PARA BUSCAR EL MENÚ CORRECTO."
 buttons = Array[ExtResource("14_g877f")]([])
 
 [sub_resource type="Resource" id="Resource_vcjaj"]
 script = ExtResource("16_g0euh")
-Text = "DESLIZA EL PLATO ELEGIDO A LA BANDEJA PARA ENTREGARLO."
+Text = "DESLIZA EL PLATO ELEGIDO A LA BANDEJA
+PARA ENTREGARLO."
 buttons = Array[ExtResource("14_g877f")]([])
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pj3pu"]
@@ -1030,20 +1034,21 @@ StateMachine = NodePath("../../..")
 
 [node name="DeslizaPlatos" parent="FoodTruck/StateMachine/Juego/Contenido/Tutorial" instance=ExtResource("13_3lngq")]
 layout_mode = 1
-offset_left = -317.0
+offset_left = -560.0
 offset_top = -723.0
-offset_right = 335.0
+offset_right = 578.0
 offset_bottom = -495.0
-grow_horizontal = 1
+theme = ExtResource("22_pwu5t")
 AppearInBeginning = false
 Texts = Array[ExtResource("16_g0euh")]([SubResource("Resource_0xsgl")])
 
 [node name="LlevaloBandeja" parent="FoodTruck/StateMachine/Juego/Contenido/Tutorial" instance=ExtResource("13_3lngq")]
 layout_mode = 1
-offset_left = -324.0
+offset_left = -572.0
 offset_top = -1015.0
-offset_right = 328.0
+offset_right = 576.0
 offset_bottom = -787.0
+theme = ExtResource("22_pwu5t")
 AppearInBeginning = false
 Texts = Array[ExtResource("16_g0euh")]([SubResource("Resource_vcjaj")])
 
@@ -1266,6 +1271,10 @@ offset_top = -392.0
 offset_right = 39.0
 offset_bottom = -301.0
 rotation = -1.5541
+Icon = ExtResource("43_101i6")
+
+[node name="TextureRect" parent="FoodTruck/StateMachine/Juego/Contenido/PaperController/pivot/Button" index="0"]
+texture = ExtResource("43_101i6")
 
 [node name="btnVolver" parent="FoodTruck/StateMachine/Juego" instance=ExtResource("32_qpeuc")]
 
@@ -1358,6 +1367,7 @@ script = ExtResource("4_oxiwq")
 script = ExtResource("30_7lvq3")
 
 [node name="Contenido" type="Control" parent="FoodTruck/StateMachine/Fin"]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

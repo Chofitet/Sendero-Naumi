@@ -1,4 +1,4 @@
-[gd_scene load_steps=97 format=3 uid="uid://m3gbb64llbqn"]
+[gd_scene load_steps=98 format=3 uid="uid://m3gbb64llbqn"]
 
 [ext_resource type="Script" path="res://_Scripts/Minigame_Save_Controller.gd" id="1_6uc2r"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/StateMachineMinigames.gd" id="2_4ogka"]
@@ -56,6 +56,7 @@
 [ext_resource type="Texture2D" uid="uid://drgxlowhaek75" path="res://Sprites/ZonaMegafauna/lombrizio 2 - excavacion.png" id="51_aotho"]
 [ext_resource type="Texture2D" uid="uid://rnjgjadd154s" path="res://Sprites/ZonaMegafauna/lombrizio 3 - excavacion.png" id="52_m5ot8"]
 [ext_resource type="Texture2D" uid="uid://cf0mbq1t5gwch" path="res://Sprites/ZonaMegafauna/lombrizio 4 - excavacion.png" id="53_mj87j"]
+[ext_resource type="Theme" uid="uid://vengl112frfy" path="res://Resources/UI_Resources/TransparentBubblePanel.tres" id="53_o8hdy"]
 [ext_resource type="Texture2D" uid="uid://bncai0vrfdo6t" path="res://Sprites/ZonaMegafauna/lombrizio 5 - excavacion.png" id="54_q5j0d"]
 
 [sub_resource type="Gradient" id="Gradient_wwaor"]
@@ -460,6 +461,7 @@ StateMachine = NodePath("..")
 InstanciasMinijuego = [NodePath("Contenido/Instancia1"), NodePath("Contenido/Instancia2")]
 
 [node name="Contenido" type="Control" parent="Excavando/StateMachine/Juego"]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -3344,9 +3346,12 @@ layout_mode = 1
 anchors_preset = 8
 anchor_top = 0.5
 anchor_bottom = 0.5
+offset_left = -442.0
 offset_top = -114.0
+offset_right = 442.0
 offset_bottom = 114.0
 grow_vertical = 2
+theme = ExtResource("53_o8hdy")
 AppearInBeginning = false
 Texts = Array[ExtResource("51_1rgrp")]([SubResource("Resource_akcp5")])
 
@@ -3449,6 +3454,7 @@ state_machine = NodePath("../../../..")
 script = ExtResource("19_uslqa")
 
 [node name="Contenido" type="Control" parent="Excavando/StateMachine/Fin"]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
