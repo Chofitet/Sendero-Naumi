@@ -1,4 +1,4 @@
-[gd_scene load_steps=171 format=3 uid="uid://ca6b1xkwwj7rp"]
+[gd_scene load_steps=170 format=3 uid="uid://ca6b1xkwwj7rp"]
 
 [ext_resource type="Script" path="res://_Scripts/Minigame_Save_Controller.gd" id="1_kdw84"]
 [ext_resource type="Texture2D" uid="uid://dbv6rcnmmb8db" path="res://Sprites/ZonaGeología/fondo_geografia.png" id="2_5bgsq"]
@@ -57,7 +57,6 @@
 [ext_resource type="PackedScene" uid="uid://d1jys63xrvxpo" path="res://Scenes/Experiments/GenericPanel/IntermediateSignal.tscn" id="47_d1q7o"]
 [ext_resource type="Texture2D" uid="uid://bamkhedpobw1w" path="res://Sprites/ZonaGeología/angel tira - busqueda.png" id="48_0dycw"]
 [ext_resource type="Script" path="res://Scenes/Experiments/GenericPanel/IntermediateData.gd" id="49_jaepl"]
-[ext_resource type="Script" path="res://Scenes/Experiments/GenericPanel/IntermediateSignalEmitter.gd" id="51_m5pna"]
 
 [sub_resource type="Animation" id="Animation_q6tin"]
 resource_name = "Anim_left"
@@ -6515,12 +6514,11 @@ anchor_top = 0.288
 anchor_bottom = 0.288
 offset_top = -213.64
 offset_bottom = 214.36
-pivot_offset = Vector2(326, 247)
+pivot_offset = Vector2(326, 214)
 AppearInBeginning = false
 Texts = Array[ExtResource("29_gmr1k")]([SubResource("Resource_qibnl")])
 
-[node name="Panel(1) Btn(rigth)" type="Node" parent="StateMachine/Moraleja/Contenido/PanelOutro" instance=ExtResource("47_d1q7o")]
-script = ExtResource("51_m5pna")
+[node name="Panel(1) Btn(rigth)" parent="StateMachine/Moraleja/Contenido/PanelOutro" instance=ExtResource("47_d1q7o")]
 Data = SubResource("Resource_ed0gt")
 
 [connection signal="timeout" from="StateMachine/Consigna/Contenido/Timer" to="StateMachine/Consigna" method="TimeOut"]

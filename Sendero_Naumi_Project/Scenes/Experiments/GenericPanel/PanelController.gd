@@ -62,7 +62,8 @@ func refreshData(numPanel : int):
 			_BotonIzquierda.visible = inInEditor
 			$btnIzqAnchor/btnIzq/Icon.texture = _texture
 			BotonIzquierdo = true
-			
+	
+	if Engine.is_editor_hint(): label.visible_ratio = true
 
 func InstanciateIntermediate():
 	
