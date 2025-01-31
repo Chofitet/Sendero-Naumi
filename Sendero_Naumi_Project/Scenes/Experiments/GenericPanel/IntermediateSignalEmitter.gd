@@ -6,7 +6,7 @@ signal ButtonPress
 @export var Delay : float
 
 func EmitSignal(numOfPanel):
-	if Data.NumberOfPanel - 1 == numOfPanel: 
+	if Data.NumberOfPanel  == numOfPanel - 1: 
 		print("Signal of panel " + str(Data.NumberOfPanel))
 		await get_tree().create_timer(Delay).timeout
 		ButtonPress.emit()

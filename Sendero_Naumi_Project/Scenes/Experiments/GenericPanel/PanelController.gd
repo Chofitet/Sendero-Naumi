@@ -3,7 +3,7 @@ extends Panel
 
 @export var RefreshData : bool:
 	set(new_value):
-		refreshData(0)
+		refreshData(1)
 
 @export var AppearInBeginning : bool
 @export var TimeToAppear : float
@@ -45,9 +45,9 @@ func refreshData(numPanel : int):
 	BotonCentral = false
 	BotonIzquierdo = false
 	
-	label.text = Texts[numPanel].Text
+	label.text = Texts[numPanel -1].Text
 	
-	for btn in Texts[numPanel].buttons:
+	for btn in Texts[numPanel - 1].buttons:
 		var _texture = btn.texture
 		if btn.Place ==  ButtonPanel.place.rigth:
 			_BotonDerecho.visible = inInEditor
@@ -78,7 +78,7 @@ func InstanciateIntermediate():
 	IntermediateEmmiterData = null
 	
 
-var numOfPanel : int = 0
+var numOfPanel : int = 1
 
 func _ready():
 	_btns.append(_BotonDerecho)
@@ -90,7 +90,7 @@ func _ready():
 	_BotonCentral.visible = false
 	pivot_offset =  Vector2(size.x/2,size.y/2)
 	if !Engine.is_editor_hint(): label.visible_ratio = 0
-	refreshData(0)
+	refreshData(1)
 	if AppearInBeginning: 
 		EnterPanel()
 		if !Engine.is_editor_hint(): visible= false
@@ -142,7 +142,9 @@ func ButtonPress(btn):
 	_BotonDerecho.visible = false
 	_BotonCentral.visible = false
 	_BotonIzquierda.visible = false
-	if numOfPanel == Texts.size() - 1: ExitPanel()
+	if numOfPanel  == Texts.size() : 
+		ExitPanel()
+		numOfPanel += 1
 	else:ChangeToNextText()
 
 
@@ -177,7 +179,7 @@ func InstanciateButtonPOP(btn):
 
 func DetectBoldText(numPanel):
 	
-	if  Texts[numPanel].Text.contains("[b]"):
+	if  Texts[numPanel -1].Text.contains("[b]"):
 		label = $labelRich
 	else: label = $label
 		

@@ -34,7 +34,8 @@ func RigthAnswer():
 #		return
 	RigthAnswere.emit()
 	await get_tree().create_timer(1).timeout
-	panel.visible = false
+	panel.ExitPanel()
+	
 	visible = false
 	StateMachine.Trigger_On_Child_Transition("Juego")
 	calendar.SetSlot()
@@ -62,8 +63,7 @@ func Set_Slot(txt, AnsweresTextures, correctAnswer, _isLastInstance = false):
 			spot.RigthObject = date.get_child(0)
 		i += 1
 	hBoxConteiner.Reset()
-	panel.get_child(0).text = txt
-	panel.visible = true
+	panel.get_node("label").text = txt
+	panel.EnterPanel()
 	await anim.animation_finished
-	panel.visible = true
 	anim.play("RESET")
