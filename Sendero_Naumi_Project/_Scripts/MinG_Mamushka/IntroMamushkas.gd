@@ -3,10 +3,6 @@ extends Control
 var i = 0
 signal Intro4
 
-func _ready():
-	$AnimationPlayer.play("RESET")
-	$Panel/Button.pressed.connect(NextAnim)
-	NextAnim()
 
 func NextAnim():
 	anim.play(SetAnim())
