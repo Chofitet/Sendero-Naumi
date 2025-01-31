@@ -9,13 +9,14 @@ var RocksTribuna :=[]
 @export var moraleja: ColorRect
 @onready var anim = $BackgroundPivot/AnimBackground
 @onready var animMask = $Mask/AnimMask
-var animMoraleja
 var isPlayerWin
 signal PlayerLose
 var StateMachine
+signal Moraleja1
+signal Moraleja2
+signal Moraleja3
 
 func _ready():
-	animMoraleja = moraleja.get_node("animMoraleja")
 	anim.animation_finished.connect(DoMask)
 	animMask.animation_finished.connect(DoMoraleja)
 	StateMachine = get_parent().get_parent().get_parent()
@@ -46,7 +47,13 @@ func DoMoraleja(x):
 		PlayerLose.emit()
 		return
 	
-	animMoraleja.play("AnimMoraleja")
+	
+	if get_node(Instances[0]).visible:
+		Moraleja1.emit()
+	elif get_node(Instances[1]).visible:
+		Moraleja2.emit()
+	elif get_node(Instances[2]).visible:
+		Moraleja3.emit()
 
 func RetryInstance():
 	Reset()
@@ -56,14 +63,9 @@ func RetryInstance():
 func Reset():
 	ChangeTextureRocks()
 	anim.play("RESET")
-	animMoraleja.play("RESET")
 	animMask.play("RESET")
-	moraleja.get_node("Panel/RichTextLabel").text = GetLabel()
 	$Particula/CPUParticles2D.visible = false
 	$Particula/CPUParticles2D2.visible = false
-	if get_node(Instances[2]).visible:
-		moraleja.get_node("Panel/Button").state_to_change = stateToChange
-		moraleja.get_node("Panel/Button").isEndOfGame = true
 
 func GetRocktexture()-> Texture2D:
 	if get_node(Instances[0]).visible:

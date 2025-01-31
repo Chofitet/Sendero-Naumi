@@ -1,0 +1,47 @@
+[gd_scene load_steps=8 format=3 uid="uid://dno73h5abpoun"]
+
+[ext_resource type="Texture2D" uid="uid://cqrl4ma2vkof6" path="res://Sprites/UI/SquigglingUI/botonesRedondoPopASQUIG - UI.png" id="1_2g5qq"]
+[ext_resource type="Texture2D" uid="uid://c8us4lo7wq0xl" path="res://Sprites/ZonaGeología/anim_busqueda_winner1.png" id="2_ed01h"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8jmvu"]
+atlas = ExtResource("1_2g5qq")
+region = Rect2(0, 0, 280, 280)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tj0q6"]
+atlas = ExtResource("1_2g5qq")
+region = Rect2(280, 0, 280, 280)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3khkj"]
+atlas = ExtResource("1_2g5qq")
+region = Rect2(560, 0, 280, 280)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_chbtk"]
+atlas = ExtResource("2_ed01h")
+region = Rect2(1000, 1000, 1000, 1000)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ea2qc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8jmvu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tj0q6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3khkj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_chbtk")
+}],
+"loop": false,
+"name": &"pop",
+"speed": 10.0
+}]
+
+[node name="pop" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_ea2qc")
+animation = &"pop"
+autoplay = "pop"
+frame = 3
+frame_progress = 1.0

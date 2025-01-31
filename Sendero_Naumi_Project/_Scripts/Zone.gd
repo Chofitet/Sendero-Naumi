@@ -66,3 +66,6 @@ func MakeUnlockAnim():
 func StartFlotingAnim():
 	await get_tree().create_timer(timeToStartAnim).timeout
 	$MovingIsland.play("floating")
+
+func DebugIland():
+	$IslandAnimator.play("UnlolckIsland")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=80 format=3 uid="uid://lv8sdofmjhf3"]
+[gd_scene load_steps=91 format=3 uid="uid://lv8sdofmjhf3"]
 
 [ext_resource type="Script" path="res://_Scripts/Minigame_Save_Controller.gd" id="1_f0fiw"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/StateMachineMinigames.gd" id="2_12384"]
@@ -43,16 +43,15 @@
 [ext_resource type="PackedScene" uid="uid://dlwmbps456ind" path="res://Scenes/Experiments/btnVolver.tscn" id="33_l1u1j"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/MoralejaState.gd" id="34_rssk2"]
 [ext_resource type="Texture2D" uid="uid://dbv6rcnmmb8db" path="res://Sprites/ZonaGeología/fondo_geografia.png" id="35_0j7t8"]
-[ext_resource type="Theme" uid="uid://bhum72inirq1q" path="res://Themes/Generic_UI.tres" id="36_ltn3v"]
 [ext_resource type="Texture2D" uid="uid://cj3p1ogux66b0" path="res://Sprites/ZonaGeología/Cinturon.png" id="37_3sx2u"]
-[ext_resource type="Script" path="res://_Scripts/MinG_Mamushka/panelMamushka.gd" id="38_3lkto"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/FinState.gd" id="38_m5sey"]
-[ext_resource type="Script" path="res://Scenes/GenericPanelController.gd" id="39_3rgtq"]
 [ext_resource type="PackedScene" uid="uid://djhg7jvxtexyl" path="res://Scenes/UI_Scenes/btn_Change_Scene.tscn" id="40_6qq3a"]
 [ext_resource type="PackedScene" uid="uid://da63y126gdf5f" path="res://Scenes/Zona_Geología/medal_counter.tscn" id="40_8p7gf"]
 [ext_resource type="Texture2D" uid="uid://dqx8i8skk58mn" path="res://Sprites/ZonaGeología/dureza-festejo-pareja1.png" id="41_d5ulm"]
 [ext_resource type="Texture2D" uid="uid://clicyobmomilh" path="res://Sprites/ZonaGeología/dureza-festejo-pareja3.png" id="42_wqo4t"]
 [ext_resource type="Texture2D" uid="uid://bweceq8ikkir5" path="res://Sprites/ZonaGeología/dureza-festejo-pareja2.png" id="43_xay53"]
+[ext_resource type="Texture2D" uid="uid://c2p5torstrtqm" path="res://Sprites/UI/checkIcon - UI.png" id="51_cuny6"]
+[ext_resource type="Script" path="res://Scenes/Experiments/GenericPanel/IntermediateSignalEmitter.gd" id="52_afx6l"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_01r1e"]
 texture = ExtResource("4_d7p6d")
@@ -636,6 +635,104 @@ _data = {
 "Rock_Winner": SubResource("Animation_le15c")
 }
 
+[sub_resource type="Resource" id="Resource_ylsmf"]
+script = ExtResource("21_w17j0")
+Place = 1
+texture = ExtResource("51_cuny6")
+
+[sub_resource type="Resource" id="Resource_ux77t"]
+script = ExtResource("23_5rold")
+Text = "
+[center][b]EL CUARZO
+ES MÁS DURO QUE LA FLUORITA [/b] 
+
+ES EL SEGUNDO MINERAL MÁS
+ABUNDANTE DEL PLANETA 
+
+Y ESTÁ EN EL PUESTO NÚMERO 7
+DE [b]LA ESCALA DE MOHS[/b],
+LA ESCALA QUE MIDE LA DUREZA 
+DE LOS MINERALES
+ [/center]"
+buttons = Array[ExtResource("21_w17j0")]([SubResource("Resource_ylsmf")])
+
+[sub_resource type="Resource" id="Resource_8licn"]
+script = ExtResource("26_5tsnp")
+NumberOfPanel = 1
+Place = 1
+
+[sub_resource type="Resource" id="Resource_grm6o"]
+script = ExtResource("21_w17j0")
+Place = 1
+texture = ExtResource("51_cuny6")
+
+[sub_resource type="Resource" id="Resource_pbww2"]
+script = ExtResource("23_5rold")
+Text = "
+
+[center][b]EL DIAMANTE 
+ES LA SUSTANCIA NATURAL MÁS DURA 
+DEL PLANETA TIERRA[/b] 
+
+SU GRADO DE DUREZA ES 10,
+EL MÁS ALTO EN [b]LA ESCALA DE MOHS[/b]
+
+SÓLO ALGO TAN DURO COMO UN DIAMANTE
+PUEDE RAYAR A OTRO DIAMANTE
+[/center]"
+buttons = Array[ExtResource("21_w17j0")]([SubResource("Resource_grm6o")])
+
+[sub_resource type="Resource" id="Resource_a4pap"]
+script = ExtResource("26_5tsnp")
+NumberOfPanel = 1
+Place = 1
+
+[sub_resource type="Resource" id="Resource_anyup"]
+script = ExtResource("21_w17j0")
+Place = 1
+texture = ExtResource("51_cuny6")
+
+[sub_resource type="Resource" id="Resource_jgbc0"]
+script = ExtResource("23_5rold")
+Text = "
+
+[center][b]EL TOPACIO
+SE ENCUENTRA EN EL PUESTO 8[/b]
+
+ES UNA DE LAS [b]PIEDRAS PRECIOSAS[/b]
+Y SE USA EN MAYOR PARTE PARA
+HACER JOYERÍA
+
+LOS DE COLOR NARANJA, ROJO Y ROSA
+SON LOS MÁS RAROS Y VALIOSOS[center]"
+buttons = Array[ExtResource("21_w17j0")]([SubResource("Resource_anyup")])
+
+[sub_resource type="Resource" id="Resource_xc0s5"]
+script = ExtResource("26_5tsnp")
+NumberOfPanel = 1
+Place = 1
+
+[sub_resource type="Resource" id="Resource_i2gy7"]
+script = ExtResource("21_w17j0")
+Place = 1
+texture = ExtResource("51_cuny6")
+
+[sub_resource type="Resource" id="Resource_xkqfr"]
+script = ExtResource("23_5rold")
+Text = "[center][b]¿ENCONTRASTE LA ESCALA DE MOHS
+ EN LA VITRINA DE GEOLOGÍA?[/b]
+
+ALLÍ PODÉS VER LOS 10 INTEGRANTES 
+DE LA ESCALA DE DUREZA
+
+[b]PISTA:[/b] A LA IZQUIERDA Y ATRÁS [/center]"
+buttons = Array[ExtResource("21_w17j0")]([SubResource("Resource_i2gy7")])
+
+[sub_resource type="Resource" id="Resource_fto4i"]
+script = ExtResource("26_5tsnp")
+NumberOfPanel = 1
+Place = 1
+
 [node name="RockFighters" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -871,7 +968,7 @@ grow_vertical = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="RockFighters/StateMachine/Juego/Contenido/Control"]
 position = Vector2(5, -178)
-scale = Vector2(0.928177, 0.928177)
+scale = Vector2(0.450276, 0.450276)
 texture = ExtResource("8_offts")
 flip_v = true
 
@@ -1135,7 +1232,6 @@ Texts = Array[ExtResource("23_5rold")]([SubResource("Resource_k5nkg")])
 
 [node name="Panel(1) Btn(center)" parent="RockFighters/StateMachine/Juego/Contenido/Instancia1/Control/RetryPanel" instance=ExtResource("24_0aurr")]
 Data = SubResource("Resource_p7x5i")
-Delay = null
 
 [node name="Instancia2" type="Control" parent="RockFighters/StateMachine/Juego/Contenido"]
 visible = false
@@ -1183,7 +1279,6 @@ Texts = Array[ExtResource("23_5rold")]([SubResource("Resource_k5nkg")])
 
 [node name="Panel(1) Btn(center)" parent="RockFighters/StateMachine/Juego/Contenido/Instancia2/Control/RetryPanel" instance=ExtResource("24_0aurr")]
 Data = SubResource("Resource_3vjv8")
-Delay = null
 
 [node name="Instancia3" type="Control" parent="RockFighters/StateMachine/Juego/Contenido"]
 visible = false
@@ -1232,7 +1327,6 @@ Texts = Array[ExtResource("23_5rold")]([SubResource("Resource_k5nkg")])
 
 [node name="Panel(1) Btn(center)" parent="RockFighters/StateMachine/Juego/Contenido/Instancia3/Control2/RetryPanel" instance=ExtResource("24_0aurr")]
 Data = SubResource("Resource_p4uj7")
-Delay = null
 
 [node name="Consigna" type="TextureRect" parent="RockFighters/StateMachine/Juego/Contenido"]
 layout_mode = 1
@@ -1287,10 +1381,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 974.0
-offset_top = 279.0
-offset_right = 974.0
-offset_bottom = 279.0
+offset_left = 627.5
+offset_top = 189.0
+offset_right = 627.5
+offset_bottom = 189.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -1352,10 +1446,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -274.0
-offset_top = 279.0
-offset_right = -274.0
-offset_bottom = 279.0
+offset_left = -620.5
+offset_top = 189.0
+offset_right = -620.5
+offset_bottom = 189.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -1430,7 +1524,6 @@ texture = ExtResource("22_5c02m")
 stretch_mode = 2
 
 [node name="MedalCounter" parent="RockFighters/StateMachine/Juego/Contenido" instance=ExtResource("40_8p7gf")]
-anchors_preset = 0
 offset_left = 21.0
 offset_top = 20.0
 offset_right = 406.0
@@ -1444,7 +1537,6 @@ Instancias = [null, NodePath("Contenido/Instancia1"), NodePath("Contenido/Instan
 buttons = []
 
 [node name="Contenido" type="Control" parent="RockFighters/StateMachine/Moraleja"]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -1536,69 +1628,24 @@ hframes = 14
 vframes = 5
 frame = 28
 
-[node name="Conteiner" type="Panel" parent="RockFighters/StateMachine/Moraleja/Contenido/Instancia1"]
+[node name="PanelMoraleja1" parent="RockFighters/StateMachine/Moraleja/Contenido/Instancia1" instance=ExtResource("20_culp1")]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.499
 anchor_top = 0.5
-anchor_right = 0.499
 anchor_bottom = 0.5
-offset_left = -346.28
-offset_top = 55.0001
-offset_right = 346.72
-offset_bottom = 547.0
-theme = ExtResource("36_ltn3v")
-script = ExtResource("39_3rgtq")
+offset_top = 41.9999
+offset_bottom = 579.0
+pivot_offset = Vector2(326, 268.5)
+AppearInBeginning = false
+Texts = Array[ExtResource("23_5rold")]([SubResource("Resource_ux77t")])
 
-[node name="cinturon" type="Sprite2D" parent="RockFighters/StateMachine/Moraleja/Contenido/Instancia1/Conteiner"]
-position = Vector2(340, -32)
+[node name="cinturon" type="Sprite2D" parent="RockFighters/StateMachine/Moraleja/Contenido/Instancia1/PanelMoraleja1"]
+position = Vector2(319, -27.9999)
+scale = Vector2(0.478935, 0.478935)
 texture = ExtResource("37_3sx2u")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="RockFighters/StateMachine/Moraleja/Contenido/Instancia1/Conteiner"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -292.5
-offset_top = -160.5
-offset_right = 292.5
-offset_bottom = 200.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/normal_font_size = 25
-theme_override_font_sizes/bold_font_size = 25
-bbcode_enabled = true
-text = "[center][b]EL CUARZO
-ES MÁS DURO QUE LA FLUORITA [/b] 
-
-ES EL SEGUNDO MINERAL MÁS
-ABUNDANTE DEL PLANETA 
-
-Y ESTÁ EN EL PUESTO NÚMERO 7
-DE [b]LA ESCALA DE MOHS[/b],
-LA ESCALA QUE MIDE LA DUREZA 
-DE LOS MINERALES
- [/center]"
-scroll_active = false
-
-[node name="Button" type="Button" parent="RockFighters/StateMachine/Moraleja/Contenido/Instancia1/Conteiner" node_paths=PackedStringArray("state_to_change", "state_machine")]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -45.5
-offset_top = -47.0
-offset_right = 44.5
-offset_bottom = 43.0
-grow_horizontal = 2
-grow_vertical = 0
-script = ExtResource("4_0gq0b")
-state_to_change = NodePath("../../../../../Juego")
-state_machine = NodePath("../../../../..")
+[node name="Panel(1) Btn(center)" parent="RockFighters/StateMachine/Moraleja/Contenido/Instancia1/PanelMoraleja1" instance=ExtResource("24_0aurr")]
+Data = SubResource("Resource_8licn")
 
 [node name="Instancia2" type="Control" parent="RockFighters/StateMachine/Moraleja/Contenido"]
 visible = false
@@ -1674,68 +1721,25 @@ hframes = 14
 vframes = 5
 frame = 28
 
-[node name="Conteiner" type="Panel" parent="RockFighters/StateMachine/Moraleja/Contenido/Instancia2"]
+[node name="PanelMoraleja2" parent="RockFighters/StateMachine/Moraleja/Contenido/Instancia2" instance=ExtResource("20_culp1")]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.5
+anchors_preset = 8
 anchor_top = 0.5
-anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -347.0
-offset_top = 55.0001
-offset_right = 346.0
-offset_bottom = 547.0
-theme = ExtResource("36_ltn3v")
-script = ExtResource("39_3rgtq")
+offset_top = 44.0
+offset_bottom = 568.0
+grow_vertical = 2
+AppearInBeginning = false
+Texts = Array[ExtResource("23_5rold")]([SubResource("Resource_pbww2")])
 
-[node name="cinturon" type="Sprite2D" parent="RockFighters/StateMachine/Moraleja/Contenido/Instancia2/Conteiner"]
-position = Vector2(340, -32)
+[node name="cinturon" type="Sprite2D" parent="RockFighters/StateMachine/Moraleja/Contenido/Instancia2/PanelMoraleja2"]
+position = Vector2(319, -20.9999)
+scale = Vector2(0.478935, 0.478935)
 texture = ExtResource("37_3sx2u")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="RockFighters/StateMachine/Moraleja/Contenido/Instancia2/Conteiner"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 0.543
-anchor_right = 0.5
-anchor_bottom = 0.543
-offset_left = -292.5
-offset_top = -171.156
-offset_right = 292.5
-offset_bottom = 170.844
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/normal_font_size = 25
-theme_override_font_sizes/bold_font_size = 25
-bbcode_enabled = true
-text = "[center][b]EL DIAMANTE 
-ES LA SUSTANCIA NATURAL MÁS DURA 
-DEL PLANETA TIERRA[/b] 
-
-SU GRADO DE DUREZA ES 10,
-EL MÁS ALTO EN [b]LA ESCALA DE MOHS[/b]
-
-SÓLO ALGO TAN DURO COMO UN DIAMANTE
-PUEDE RAYAR A OTRO DIAMANTE
-[/center]"
-scroll_active = false
-
-[node name="Button" type="Button" parent="RockFighters/StateMachine/Moraleja/Contenido/Instancia2/Conteiner" node_paths=PackedStringArray("state_to_change", "state_machine")]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -45.5
-offset_top = -47.0
-offset_right = 44.5
-offset_bottom = 43.0
-grow_horizontal = 2
-grow_vertical = 0
-script = ExtResource("4_0gq0b")
-state_to_change = NodePath("../../../../../Juego")
-state_machine = NodePath("../../../../..")
+[node name="Panel(1) Btn(center)" type="Node" parent="RockFighters/StateMachine/Moraleja/Contenido/Instancia2/PanelMoraleja2" instance=ExtResource("24_0aurr")]
+script = ExtResource("52_afx6l")
+Data = SubResource("Resource_a4pap")
 
 [node name="Instancia3" type="Control" parent="RockFighters/StateMachine/Moraleja/Contenido"]
 visible = false
@@ -1811,68 +1815,24 @@ hframes = 14
 vframes = 5
 frame = 28
 
-[node name="Conteiner" type="Panel" parent="RockFighters/StateMachine/Moraleja/Contenido/Instancia3"]
+[node name="PanelMoraleja3" parent="RockFighters/StateMachine/Moraleja/Contenido/Instancia3" instance=ExtResource("20_culp1")]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -347.0
-offset_top = 55.0001
-offset_right = 346.0
-offset_bottom = 547.0
-theme = ExtResource("36_ltn3v")
-script = ExtResource("38_3lkto")
+anchor_top = 0.516
+anchor_bottom = 0.516
+offset_top = 29.52
+offset_bottom = 547.52
+AppearInBeginning = false
+Texts = Array[ExtResource("23_5rold")]([SubResource("Resource_jgbc0")])
 
-[node name="cinturon" type="Sprite2D" parent="RockFighters/StateMachine/Moraleja/Contenido/Instancia3/Conteiner"]
-position = Vector2(340, -32)
+[node name="cinturon" type="Sprite2D" parent="RockFighters/StateMachine/Moraleja/Contenido/Instancia3/PanelMoraleja3"]
+position = Vector2(319, -26.9999)
+scale = Vector2(0.478935, 0.478935)
 texture = ExtResource("37_3sx2u")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="RockFighters/StateMachine/Moraleja/Contenido/Instancia3/Conteiner"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 0.543
-anchor_right = 0.5
-anchor_bottom = 0.543
-offset_left = -292.5
-offset_top = -171.156
-offset_right = 292.5
-offset_bottom = 170.844
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/normal_font_size = 25
-theme_override_font_sizes/bold_font_size = 25
-bbcode_enabled = true
-text = "[center][b]EL TOPACIO
-SE ENCUENTRA EN EL PUESTO 8[/b]
-
-ES UNA DE LAS [b]PIEDRAS PRECIOSAS[/b]
-Y SE USA EN MAYOR PARTE PARA
-HACER JOYERÍA
-
-LOS DE COLOR NARANJA, ROJO Y ROSA
-SON LOS MÁS RAROS Y VALIOSOS[center]"
-scroll_active = false
-
-[node name="Button" type="Button" parent="RockFighters/StateMachine/Moraleja/Contenido/Instancia3/Conteiner" node_paths=PackedStringArray("state_to_change", "state_machine")]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -45.5
-offset_top = -47.0
-offset_right = 44.5
-offset_bottom = 43.0
-grow_horizontal = 2
-grow_vertical = 0
-script = ExtResource("4_0gq0b")
-state_to_change = NodePath("../../../../../Fin")
-state_machine = NodePath("../../../../..")
-isEndOfGame = true
+[node name="Panel(1) Btn(center)" type="Node" parent="RockFighters/StateMachine/Moraleja/Contenido/Instancia3/PanelMoraleja3" instance=ExtResource("24_0aurr")]
+script = ExtResource("52_afx6l")
+Data = SubResource("Resource_xc0s5")
 
 [node name="Fin" type="Node" parent="RockFighters/StateMachine"]
 script = ExtResource("38_m5sey")
@@ -1886,6 +1846,16 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="ButtonChangeScene" parent="RockFighters/StateMachine/Fin/Contenido" instance=ExtResource("40_6qq3a")]
+visible = false
+layout_mode = 1
+offset_left = -45.0
+offset_top = -674.0
+offset_right = 45.0
+offset_bottom = -584.0
+text = ""
+NextScene = "Map_Screen"
+
 [node name="TextureRect" type="TextureRect" parent="RockFighters/StateMachine/Fin/Contenido"]
 layout_mode = 1
 anchors_preset = 15
@@ -1896,54 +1866,19 @@ grow_vertical = 2
 texture = ExtResource("35_0j7t8")
 stretch_mode = 1
 
-[node name="Panel" type="Panel" parent="RockFighters/StateMachine/Fin/Contenido"]
+[node name="PanelOutro" parent="RockFighters/StateMachine/Fin/Contenido" instance=ExtResource("20_culp1")]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 0.4
-anchor_right = 0.5
-anchor_bottom = 0.4
-offset_left = -305.0
-offset_top = -234.0
-offset_right = 305.0
-offset_bottom = 141.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("36_ltn3v")
-script = ExtResource("39_3rgtq")
+anchor_top = 0.363
+anchor_bottom = 0.363
+offset_top = -180.64
+offset_bottom = 189.36
+pivot_offset = Vector2(326, 185)
+AppearInBeginning = false
+Texts = Array[ExtResource("23_5rold")]([SubResource("Resource_xkqfr")])
 
-[node name="RichTextLabel" type="RichTextLabel" parent="RockFighters/StateMachine/Fin/Contenido/Panel"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -242.0
-offset_top = -118.5
-offset_right = 242.0
-offset_bottom = 143.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/normal_font_size = 25
-theme_override_font_sizes/bold_font_size = 25
-bbcode_enabled = true
-text = "[center][b]¿ENCONTRASTE LA ESCALA DE MOHS
- EN LA VITRINA DE GEOLOGÍA?[/b]
-
-ALLÍ PODÉS VER LOS 10 INTEGRANTES 
-DE LA ESCALA DE DUREZA
-
-[b]PISTA:[/b] A LA IZQUIERDA Y ATRÁS [/center]"
-
-[node name="ButtonChangeScene" parent="RockFighters/StateMachine/Fin/Contenido/Panel" instance=ExtResource("40_6qq3a")]
-layout_mode = 1
-offset_left = -45.0
-offset_top = -47.0
-offset_right = 45.0
-offset_bottom = 43.0
-text = ""
-NextScene = "Map_Screen"
+[node name="Panel(1) Btn(center)" parent="RockFighters/StateMachine/Fin/Contenido/PanelOutro" instance=ExtResource("24_0aurr")]
+Data = SubResource("Resource_fto4i")
 
 [node name="Control" type="Control" parent="RockFighters/StateMachine/Fin/Contenido"]
 layout_mode = 1
@@ -1957,7 +1892,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="RockFighters/StateMachine/Fin/Contenido/Control"]
-position = Vector2(-19, -274.5)
+position = Vector2(-19, -275.5)
 scale = Vector2(0.622882, 0.622882)
 texture = ExtResource("41_d5ulm")
 
@@ -1985,7 +1920,16 @@ texture = ExtResource("43_xay53")
 [connection signal="pressed" from="RockFighters/StateMachine/Juego/Contenido/Consigna/RightBtn/BigButton" to="RockFighters/StateMachine/Juego/Contenido/Consigna/LeftBtn/button/SquigglingSprite" method="InactiveSquiggling"]
 [connection signal="pressed" from="RockFighters/StateMachine/Juego/Contenido/Consigna/LeftBtn/BigButton" to="RockFighters/StateMachine/Juego/Contenido/Consigna/RightBtn/button/SquigglingSprite" method="InactiveSquiggling"]
 [connection signal="pressed" from="RockFighters/StateMachine/Juego/Contenido/Consigna/LeftBtn/BigButton" to="RockFighters/StateMachine/Juego/Contenido/Consigna/LeftBtn/button/SquigglingSprite" method="InactiveSquiggling"]
-[connection signal="pressed" from="RockFighters/StateMachine/Fin/Contenido/Panel/ButtonChangeScene" to="RockFighters" method="Set_Complete"]
+[connection signal="visibility_changed" from="RockFighters/StateMachine/Moraleja/Contenido/Instancia1" to="RockFighters/StateMachine/Moraleja/Contenido/Instancia1/PanelMoraleja1" method="EnterPanel"]
+[connection signal="ButtonPress" from="RockFighters/StateMachine/Moraleja/Contenido/Instancia1/PanelMoraleja1/Panel(1) Btn(center)" to="RockFighters/StateMachine" method="Trigger_On_Child_Transition" binds= ["juego"]]
+[connection signal="visibility_changed" from="RockFighters/StateMachine/Moraleja/Contenido/Instancia2" to="RockFighters/StateMachine/Moraleja/Contenido/Instancia2/PanelMoraleja2" method="EnterPanel"]
+[connection signal="ButtonPress" from="RockFighters/StateMachine/Moraleja/Contenido/Instancia2/PanelMoraleja2/Panel(1) Btn(center)" to="RockFighters/StateMachine" method="Trigger_On_Child_Transition" binds= ["juego"]]
+[connection signal="visibility_changed" from="RockFighters/StateMachine/Moraleja/Contenido/Instancia3" to="RockFighters/StateMachine/Moraleja/Contenido/Instancia3/PanelMoraleja3" method="EnterPanel"]
+[connection signal="ButtonPress" from="RockFighters/StateMachine/Moraleja/Contenido/Instancia3/PanelMoraleja3/Panel(1) Btn(center)" to="RockFighters" method="Set_Complete"]
+[connection signal="ButtonPress" from="RockFighters/StateMachine/Moraleja/Contenido/Instancia3/PanelMoraleja3/Panel(1) Btn(center)" to="RockFighters/StateMachine" method="Trigger_On_Child_Transition" binds= ["fin"]]
+[connection signal="Transitioned" from="RockFighters/StateMachine/Fin" to="RockFighters/StateMachine/Fin/Contenido/PanelOutro" method="EnterPanel"]
+[connection signal="ButtonPress" from="RockFighters/StateMachine/Fin/Contenido/PanelOutro/Panel(1) Btn(center)" to="RockFighters" method="Set_Complete"]
+[connection signal="ButtonPress" from="RockFighters/StateMachine/Fin/Contenido/PanelOutro/Panel(1) Btn(center)" to="RockFighters/StateMachine/Fin/Contenido/ButtonChangeScene" method="_on_pressed"]
 
 [editable path="RockFighters/StateMachine/Juego/Contenido/Control/hinchada/Rock"]
 [editable path="RockFighters/StateMachine/Juego/Contenido/Control/hinchada/Rock12"]

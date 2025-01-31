@@ -4,6 +4,7 @@ extends Control
 @export var FirstInstance : Control
 var Book = preload("res://Scenes/Zona_Megafauna/evento_libro.tscn")
 @export var ParentBook : Control
+var once
 
 func _ready():
 	area2d.area_entered.connect(HideTutorial)
@@ -15,7 +16,10 @@ func ShowTutorial():
 
 func HideTutorial(x):
 	if x.is_in_group("topo"):
-		visible = false
+		if once: return
+		once = true
+		$PanelTutorial.ExitPanel()
+		
 	
 
 func PreDoBookAnim():

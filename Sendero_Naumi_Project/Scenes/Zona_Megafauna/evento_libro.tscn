@@ -16,10 +16,10 @@
 [ext_resource type="Texture2D" uid="uid://bmmttxd4j1mk" path="res://Sprites/ZonaMegafauna/macrauquenia - fosil.png" id="13_gv3ek"]
 [ext_resource type="Texture2D" uid="uid://bxcul4i1itdj2" path="res://Sprites/ZonaMegafauna/macrauquenia vivo - excavacion.png" id="14_7a4em"]
 [ext_resource type="Texture2D" uid="uid://osslshvruyeq" path="res://Sprites/ZonaMegafauna/pencil.png" id="15_8o25e"]
-[ext_resource type="StyleBox" uid="uid://b3tjes2hcm3wx" path="res://Resources/UI_Resources/StyleBoxTrasparent.tres" id="16_3htw7"]
-[ext_resource type="Texture2D" uid="uid://dowufrhlgpfe" path="res://Sprites/UI/Boton_Volver.png" id="17_30xul"]
 [ext_resource type="PackedScene" uid="uid://cw3ok8v4p620b" path="res://Scenes/Experiments/squiggling_sprite.tscn" id="17_g1jyu"]
 [ext_resource type="Texture2D" uid="uid://dhh1mhpbooeku" path="res://Sprites/ZonaMegafauna/squigglingExcavando/pencilSQUIG - excavando.png" id="18_46d1n"]
+[ext_resource type="PackedScene" uid="uid://nmuyip31gkq5" path="res://Scenes/UI_Scenes/generic_button.tscn" id="19_spq1h"]
+[ext_resource type="Texture2D" uid="uid://kb7ixs5ala8" path="res://Sprites/UI/arrowIcon - UI.png" id="20_4d4f5"]
 
 [sub_resource type="Animation" id="Animation_uyb4u"]
 resource_name = "Pencil_enter"
@@ -438,17 +438,10 @@ grow_horizontal = 2
 grow_vertical = 2
 flat = true
 
-[node name="btnContinue" type="Button" parent="."]
+[node name="btnContinue" parent="." instance=ExtResource("19_spq1h")]
 visible = false
-offset_left = -66.0
-offset_top = 307.0
-offset_right = 50.0
-offset_bottom = 400.0
-theme_override_styles/focus = ExtResource("16_3htw7")
-flat = true
-
-[node name="Sprite2D" type="Sprite2D" parent="btnContinue"]
-position = Vector2(62, 46)
-rotation = 1.5708
-texture = ExtResource("17_30xul")
-flip_h = true
+offset_top = 309.0
+offset_bottom = 399.0
+rotation = -1.55081
+noSway = true
+Icon = ExtResource("20_4d4f5")

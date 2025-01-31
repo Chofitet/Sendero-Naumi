@@ -98,14 +98,19 @@ func SetPaperParameters(resultBool):
 
 
 func SetResultEvent():
-	$PaperController/AnimationPlayer.play("paper")
+	
 	papercontroller.get_node("Button").button_down.connect(EndResultEvent)
+	var  PaperAnim = $PaperController/AnimationPlayer
+	PaperAnim.play("paper")
+	await  PaperAnim.animation_finished
+	papercontroller.get_node("Button").EnterAnim()
+	
 
 func EndResultEvent():
 	$PaperController/AnimationPlayer.play_backwards("paper")
 	$BlockScreen.SetVisibility(true)
 	if get_node(Instances[3]).visible:
-		$FinalPanel.SetVisibility(true)
+		$FinalPanel.EnterPanel()
 	else:
 		get_parent().get_parent().Trigger_On_Child_Transition("Juego")
 	

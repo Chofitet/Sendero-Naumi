@@ -14,7 +14,7 @@ func CheckInTutorial():
 	if get_parent().get_node("Instancia1").visible == true:
 		isInTutorial = true
 		HboxConteiner.LockUnklockGragObjects(false)
-		DeslizaPlatosUI.visible = true
+		DeslizaPlatosUI.EnterPanel()
 	else:
 		isInTutorial = false
 		DeslizaPlatosUI.visible = false
@@ -22,20 +22,20 @@ func CheckInTutorial():
 
 func FirstSwipe():
 	if !isInTutorial or OnceSwipe: return
-	#get_parent().ConnectSetInstanceAnimalTransitioned()
-	DeslizaPlatosUI.visible = false
+	DeslizaPlatosUI.ExitPanel()
 	OnceSwipe = true
 	await get_tree().create_timer(1).timeout
-	LlevaloBandejaUI.visible = true
+	LlevaloBandejaUI.EnterPanel()
 	HboxConteiner.LockUnklockGragObjects(true)
 
 func OnSpot(x):
 	if !isInTutorial: return
-	DeslizaPlatosUI.visible = false
-	LlevaloBandejaUI.visible = false
+	LlevaloBandejaUI.ExitPanel()
 #	plate.visible = true
 #	plate.texture = x.texture
 	await  get_tree().create_timer(3).timeout
+	DeslizaPlatosUI.visible = false
+	LlevaloBandejaUI.visible = false
 #	DeslizaPlatosUI.visible = true
 #	DeslizaPlatosUI.get_node("Label").text = "EMPECEMOS"
 #	await  get_tree().create_timer(2).timeout

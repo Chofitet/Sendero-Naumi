@@ -55,7 +55,7 @@ func Draw():
 	isfading = true
 	await anim.animation_finished
 	if !isPencil: 
-		$btnContinue.visible = true
+		$btnContinue.EnterAnim()
 		return
 	fadeFactor2 = 0
 	isPencil = false
