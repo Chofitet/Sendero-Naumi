@@ -3,8 +3,10 @@ extends Sprite2D
 @export var NubeAnim : AnimationPlayer
 var animation = "Lava_fall"
 var initPosition
-var time = 2
-
+var time = 1
+var wasTransformed
+signal PanelAppear
+signal TriggerNextTransformation
 func _ready():
 	initPosition = position
 
@@ -15,7 +17,7 @@ func TranstaleToCenterScreen(animation):
 	var tween = get_tree().create_tween()
 	get_node("AnimationPlayer").play("rockTransformation")
 	tween.tween_property(self,"position",get_viewport_rect().size/2 + Vector2(0,-get_viewport_rect().size.y/2 + 340),time).set_ease(Tween.EASE_OUT)
-	await get_tree().create_timer(4.4).timeout
+	await get_tree().create_timer(2.4).timeout
 	get_node("Anim/AnimationPlayer").play("despertar_anim")
 
 func buttonpress():
@@ -26,7 +28,13 @@ func buttonpress():
 	NubeAnim.play("RESET")
 	get_parent().get_node("ButtonsInfoController").ActiveButtons()
 	RestartAll()
+	
+	if wasTransformed : return
+	wasTransformed = true
+	TriggerNextTransformation.emit()
 
+func panelAppear():
+	PanelAppear.emit()
 
 func RestartAll():
 	

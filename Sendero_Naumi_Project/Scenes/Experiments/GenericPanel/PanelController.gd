@@ -11,6 +11,7 @@ extends Panel
 @onready var _BotonDerecho = $BtnDerAnchor/btnDer
 @onready var _BotonIzquierda = $btnIzqAnchor/btnIzq
 @onready var _BotonCentral = $btnCentralAnchor/btnCentral
+@onready var SkipButton = $ButtonSkipWritting
 var _btns =[]
 @export var characters_per_second : float = 45
 var BotonDerecho
@@ -90,8 +91,11 @@ func _ready():
 	pivot_offset =  Vector2(size.x/2,size.y/2)
 	if !Engine.is_editor_hint(): label.visible_ratio = 0
 	refreshData(0)
-	if AppearInBeginning: EnterPanel()
-	else: if !Engine.is_editor_hint(): visible = false
+	if AppearInBeginning: 
+		EnterPanel()
+		if !Engine.is_editor_hint(): visible= false
+	else : if !Engine.is_editor_hint(): visible= false
+	SkipButton.pressed.connect(SkipWritting)
 	
 	for child in get_children():
 		if child.has_method("ConnectSignal"):
@@ -103,18 +107,24 @@ func EnterPanel():
 	await anim.animation_finished
 	typingAnim()
 
+var tweenWritting : Tween
 func typingAnim():
 	var text_length = label.text.length()
 	var duration = text_length / characters_per_second
 	label.visible_ratio = 0
-	var tween = get_tree().create_tween()
-	tween.tween_property(label,"visible_ratio",1,duration)
+	SkipButton.visible = true
+	tweenWritting = get_tree().create_tween()
+	tweenWritting.tween_property(label,"visible_ratio",1,duration)
 	
-	await tween.finished
+	await tweenWritting.finished
+	AppearButtonAnim()
+	SkipButton.visible = false
+	
+
+func AppearButtonAnim():
 	if BotonDerecho: PlayAnimation(_BotonDerecho)
 	if BotonIzquierdo: PlayAnimation(_BotonIzquierda)
 	if BotonCentral: PlayAnimation(_BotonCentral)
-	
 
 func PlayAnimation(btn):
 	var path : String = btn.get_path()
@@ -149,12 +159,15 @@ func ChangeToNextText():
 	typingAnim()
 
 func rigthBTNConnect():
+	await get_tree().create_timer(0.2).timeout
 	RigthBTNPress.emit(numOfPanel)
 
 func leftBTNConnect():
+	await get_tree().create_timer(0.2).timeout
 	LeftBTNPress.emit(numOfPanel)
 
 func centerBTNConnect():
+	await get_tree().create_timer(0.2).timeout
 	CenterBTNPress.emit(numOfPanel)
 
 func InstanciateButtonPOP(btn):
@@ -168,3 +181,9 @@ func DetectBoldText(numPanel):
 		label = $labelRich
 	else: label = $label
 		
+
+func SkipWritting():
+	tweenWritting.kill()
+	label.visible_ratio = 1
+	AppearButtonAnim()
+	SkipButton.visible = false

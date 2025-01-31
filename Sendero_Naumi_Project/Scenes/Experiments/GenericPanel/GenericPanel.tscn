@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://chcp24toqisaw"]
+[gd_scene load_steps=19 format=3 uid="uid://chcp24toqisaw"]
 
 [ext_resource type="Theme" uid="uid://dhu6swisjlh4w" path="res://Resources/UI_Resources/BlueBubblePanel.tres" id="1_v6n5n"]
 [ext_resource type="Script" path="res://Scenes/Experiments/GenericPanel/PanelController.gd" id="2_33xng"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://40jkc6woc7p" path="res://Sprites/UI/SquigglingUI/botonesRedondosASQUIG - UI.png" id="6_8uutm"]
 [ext_resource type="LabelSettings" uid="uid://c8wu4hhqg284x" path="res://Resources/UI_Resources/Generic_Font.tres" id="6_yhgeb"]
 [ext_resource type="Texture2D" uid="uid://c87cim2trecu1" path="res://Sprites/UI/SquigglingUI/botonesRedondosBSQUIG - UI.png" id="7_1swfx"]
+[ext_resource type="StyleBox" uid="uid://b3tjes2hcm3wx" path="res://Resources/UI_Resources/StyleBoxTrasparent.tres" id="10_gqd6s"]
 
 [sub_resource type="Animation" id="Animation_jxxgf"]
 length = 0.001
@@ -418,10 +419,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 23.0
-offset_top = 23.0
-offset_right = 67.0
-offset_bottom = 67.0
+offset_left = -22.0
+offset_top = -22.0
+offset_right = 22.0
+offset_bottom = 22.0
 grow_horizontal = 2
 grow_vertical = 2
 rotation = 0.174533
@@ -475,10 +476,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 23.0
-offset_top = 23.0
-offset_right = 67.0
-offset_bottom = 67.0
+offset_left = -22.0
+offset_top = -22.0
+offset_right = 22.0
+offset_bottom = 22.0
 grow_horizontal = 2
 grow_vertical = 2
 rotation = 0.174533
@@ -531,8 +532,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 23.0
 offset_top = 23.0
-offset_right = 67.0
-offset_bottom = 67.0
+offset_right = -23.0
+offset_bottom = -23.0
 grow_horizontal = 2
 grow_vertical = 2
 rotation = 0.174533
@@ -551,6 +552,21 @@ scale = Vector2(1.03922, 1.03922)
 texture = ExtResource("6_8uutm")
 offset = Vector2(45, 45)
 ActiveInBegining = false
+
+[node name="ButtonSkipWritting" type="Button" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = ExtResource("10_gqd6s")
+theme_override_styles/hover = ExtResource("10_gqd6s")
+theme_override_styles/pressed = ExtResource("10_gqd6s")
+theme_override_styles/disabled = ExtResource("10_gqd6s")
+theme_override_styles/focus = ExtResource("10_gqd6s")
+flat = true
 
 [connection signal="pressed" from="BtnDerAnchor/btnDer" to="." method="rigthBTNConnect"]
 [connection signal="pressed" from="BtnDerAnchor/btnDer" to="." method="ButtonPress" binds= [0]]

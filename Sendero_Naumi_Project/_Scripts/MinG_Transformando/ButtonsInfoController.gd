@@ -20,11 +20,11 @@ func DisabledButtons():
 
 func AcivePanel():
 	if LastRock:
-		panel.visible = true
+		panel.EnterPanel()
 
 func DisablePanel():
 	if LastRock:
-		panel.visible = false
+		panel.ExitPanel()
 
 func lastRock():
 	LastRock = true
