@@ -12,7 +12,6 @@ var i : int = 0
 var PanelObj
 
 func _ready():
-	Finalpanel.get_node("Button").pressed.connect(PassStateTransition)
 	PanelObj = overlay.get_child(0)
 	for O in Objects:
 		var o = get_node(O)
@@ -43,10 +42,10 @@ func AllFinded():
 	var animPanel = CenterClues.get_node("AnimationPlayer")
 	animPanel.play("appear")
 	await  animPanel.animation_finished
-	Finalpanel.visible = true
+	Finalpanel.EnterPanel()
 
 func PassStateTransition():
-	Finalpanel.visible = false
+	Finalpanel.ExitPanel()
 	var animPanel = CenterClues.get_node("AnimationPlayer")
 	animPanel.play("inPlace")
 	await  animPanel.animation_finished
@@ -69,15 +68,6 @@ func SetOverlayTrue(obj):
 	for O in Objects:
 		if get_node(O) != obj:
 			get_node(O).button.visible = false
-	if obj ==  get_node(Objects[0]): 
-		PanelObj.visible = true
-		PanelObj.get_child(0).text = "UNA BOTA CON POLVO?"
-	elif obj ==  get_node(Objects[1]):
-		PanelObj.visible = true
-		PanelObj.get_child(0).text = "UN RELOJ CON ARENA ROJA?"
-	elif obj ==  get_node(Objects[2]):
-		PanelObj.visible = true
-		PanelObj.get_child(0).text = "UN GLOBO CON NIEVE?"
 
 func SetOverlayFalse(obj):
 	overlay.visible = false
