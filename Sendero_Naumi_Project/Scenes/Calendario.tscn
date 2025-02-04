@@ -1,4 +1,4 @@
-[gd_scene load_steps=81 format=3 uid="uid://cmv5m3ynk4o5y"]
+[gd_scene load_steps=106 format=3 uid="uid://cmv5m3ynk4o5y"]
 
 [ext_resource type="Script" path="res://_Scripts/Minigame_Save_Controller.gd" id="1_jl73q"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/StateMachineMinigames.gd" id="2_7aqcq"]
@@ -20,9 +20,15 @@
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/Timer_State_Minigame.gd" id="13_p1cy2"]
 [ext_resource type="Script" path="res://_Scripts/MinG_Calendario/InstanceManagerCalendar.gd" id="14_81an2"]
 [ext_resource type="Shader" path="res://shaders/blur.gdshader" id="14_knqt5"]
+[ext_resource type="PackedScene" uid="uid://chcp24toqisaw" path="res://Scenes/Experiments/GenericPanel/GenericPanel.tscn" id="15_1ptxs"]
+[ext_resource type="PackedScene" uid="uid://d1jys63xrvxpo" path="res://Scenes/Experiments/GenericPanel/IntermediateSignal.tscn" id="15_4bh1k"]
 [ext_resource type="Script" path="res://_Scripts/MinG_Calendario/CalendarZoomController.gd" id="15_x38jw"]
+[ext_resource type="Script" path="res://Scenes/Experiments/GenericPanel/ButtonPanelData.gd" id="16_nigs6"]
 [ext_resource type="Texture2D" uid="uid://bgy7tv3s2j7ng" path="res://icon.svg" id="17_gchn0"]
 [ext_resource type="Texture2D" uid="uid://f2xwgbsx02ke" path="res://Sprites/ZonaAstronomia/DateSlot.png" id="17_gmbb7"]
+[ext_resource type="Script" path="res://Scenes/Experiments/GenericPanel/IntermediateData.gd" id="17_ocl48"]
+[ext_resource type="Texture2D" uid="uid://c2p5torstrtqm" path="res://Sprites/UI/checkIcon - UI.png" id="17_qdlk7"]
+[ext_resource type="Script" path="res://Scenes/Experiments/GenericPanel/TextFieldData.gd" id="18_66s5d"]
 [ext_resource type="Script" path="res://_Scripts/MinG_Calendario/DrawCalendar.gd" id="18_vleik"]
 [ext_resource type="PackedScene" uid="uid://7o20c7mrapyw" path="res://Scenes/Zona_Astronomia/interrogateCalendar.tscn" id="19_0vums"]
 [ext_resource type="Script" path="res://_Scripts/MinG_Calendario/AnswerController.gd" id="19_hmohx"]
@@ -52,7 +58,6 @@
 [ext_resource type="Texture2D" uid="uid://p08lujnorjjg" path="res://Sprites/ZonaAstronomia/Respuestas_Calendar/dic29 opcion 2 - calendario.png" id="36_16psf"]
 [ext_resource type="Texture2D" uid="uid://cwly3ywgu6unj" path="res://Sprites/ZonaAstronomia/Respuestas_Calendar/dic29 opcion 3 - calendario.png" id="37_bv1bu"]
 [ext_resource type="Texture2D" uid="uid://bxaa7hej6q6vs" path="res://Sprites/ZonaAstronomia/Respuestas_Calendar/23,54 opcion 1 - calendario.png" id="38_4hkyo"]
-[ext_resource type="Script" path="res://_Scripts/SetVisibleChilds.gd" id="39_3l8ms"]
 [ext_resource type="Texture2D" uid="uid://123c6iq153nb" path="res://Sprites/ZonaAstronomia/Respuestas_Calendar/23,54 opcion 2 calendario.png" id="39_7broc"]
 [ext_resource type="Texture2D" uid="uid://bshsdexmxl6cr" path="res://Sprites/ZonaAstronomia/Respuestas_Calendar/23,54 opcion 3 calendario.png" id="40_kcym8"]
 [ext_resource type="Texture2D" uid="uid://de3qh4wtql7nl" path="res://Sprites/ZonaAstronomia/cinta2.png" id="43_7u4sv"]
@@ -160,6 +165,72 @@ _data = {
 "pass": SubResource("Animation_8mica"),
 "questions": SubResource("Animation_pbd06")
 }
+
+[sub_resource type="Resource" id="Resource_omnp6"]
+script = ExtResource("16_nigs6")
+Place = 0
+texture = ExtResource("17_qdlk7")
+label = ""
+
+[sub_resource type="Resource" id="Resource_fuwyd"]
+script = ExtResource("18_66s5d")
+Text = "¿SABÍAS QUE EN EL MUSEO HAY UN CALENDARIO GIGANTE?"
+SizePanel = Vector2(0, 0)
+buttons = Array[ExtResource("16_nigs6")]([SubResource("Resource_omnp6")])
+
+[sub_resource type="Resource" id="Resource_gqjk5"]
+script = ExtResource("16_nigs6")
+Place = 0
+texture = ExtResource("17_qdlk7")
+label = ""
+
+[sub_resource type="Resource" id="Resource_fkmvq"]
+script = ExtResource("18_66s5d")
+Text = "MUESTRA CUANDO PASARÍA CADA MOMENTO DE LA HISTORIA DEL UNIVERSO 
+SI TODO HUBIERA SUCEDIDO EN UN SOLO AÑO."
+SizePanel = Vector2(0, 0)
+buttons = Array[ExtResource("16_nigs6")]([SubResource("Resource_gqjk5")])
+
+[sub_resource type="Resource" id="Resource_tubvr"]
+script = ExtResource("16_nigs6")
+Place = 0
+texture = ExtResource("17_qdlk7")
+label = ""
+
+[sub_resource type="Resource" id="Resource_y64rv"]
+script = ExtResource("18_66s5d")
+Text = "EN NUESTRA ULTIMA VISITA
+LE SACAMOS UNA FOTO PERO..."
+SizePanel = Vector2(0, 0)
+buttons = Array[ExtResource("16_nigs6")]([SubResource("Resource_tubvr")])
+
+[sub_resource type="Resource" id="Resource_hfs58"]
+script = ExtResource("17_ocl48")
+NumberOfPanel = 3
+Place = 0
+
+[sub_resource type="Resource" id="Resource_hjq0o"]
+script = ExtResource("16_nigs6")
+Place = 0
+texture = ExtResource("17_qdlk7")
+label = ""
+
+[sub_resource type="Resource" id="Resource_81ob6"]
+script = ExtResource("18_66s5d")
+Text = "SALIÓ MEDIO TAPADO"
+SizePanel = Vector2(0, 0)
+buttons = Array[ExtResource("16_nigs6")]([SubResource("Resource_hjq0o")])
+
+[sub_resource type="Resource" id="Resource_b5efl"]
+script = ExtResource("18_66s5d")
+Text = "AYÚDANOS COMPLETANDO LAS PARTES QUE NO SE VEN!"
+SizePanel = Vector2(0, 0)
+buttons = Array[ExtResource("16_nigs6")]([])
+
+[sub_resource type="Resource" id="Resource_6krua"]
+script = ExtResource("17_ocl48")
+NumberOfPanel = 1
+Place = 0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lebsb"]
 shader = ExtResource("14_knqt5")
@@ -396,6 +467,59 @@ _data = {
 "RESET": SubResource("Animation_jcupq")
 }
 
+[sub_resource type="Resource" id="Resource_v2ur4"]
+script = ExtResource("18_66s5d")
+Text = "AYÚDANOS COMPLETANDO LAS PARTES QUE NO SE VEN!"
+SizePanel = Vector2(0, 0)
+buttons = Array[ExtResource("16_nigs6")]([])
+
+[sub_resource type="Resource" id="Resource_uthvg"]
+script = ExtResource("18_66s5d")
+Text = ""
+SizePanel = Vector2(0, 0)
+buttons = Array[ExtResource("16_nigs6")]([])
+
+[sub_resource type="Resource" id="Resource_0ny5c"]
+script = ExtResource("16_nigs6")
+Place = 0
+texture = ExtResource("17_qdlk7")
+label = ""
+
+[sub_resource type="Resource" id="Resource_47d2i"]
+script = ExtResource("18_66s5d")
+Text = "LOS SERES HUMANOS SON MUY NUEVOS EN LA HISTORIA DEL UNIVERSO"
+SizePanel = Vector2(0, 0)
+buttons = Array[ExtResource("16_nigs6")]([SubResource("Resource_0ny5c")])
+
+[sub_resource type="Resource" id="Resource_jfjub"]
+script = ExtResource("16_nigs6")
+Place = 0
+texture = ExtResource("17_qdlk7")
+label = ""
+
+[sub_resource type="Resource" id="Resource_nlviq"]
+script = ExtResource("18_66s5d")
+Text = "SOLO HAN EXISTIDO POR UNOS MINUTOS HASTA AHORA"
+SizePanel = Vector2(0, 0)
+buttons = Array[ExtResource("16_nigs6")]([SubResource("Resource_jfjub")])
+
+[sub_resource type="Resource" id="Resource_u38vq"]
+script = ExtResource("16_nigs6")
+Place = 0
+texture = ExtResource("17_qdlk7")
+label = ""
+
+[sub_resource type="Resource" id="Resource_qup6w"]
+script = ExtResource("18_66s5d")
+Text = "PENSÁ CUÁNTO LOGRARON EN TAN POCO TIEMPO"
+SizePanel = Vector2(0, 0)
+buttons = Array[ExtResource("16_nigs6")]([SubResource("Resource_u38vq")])
+
+[sub_resource type="Resource" id="Resource_47igy"]
+script = ExtResource("17_ocl48")
+NumberOfPanel = 3
+Place = 0
+
 [sub_resource type="LabelSettings" id="LabelSettings_hyt1a"]
 font = ExtResource("5_bwf8h")
 font_size = 80
@@ -530,259 +654,6 @@ grow_vertical = 0
 theme_override_styles/normal = ExtResource("6_ipmqm")
 text = "tocame ;"
 
-[node name="Panel1" type="Panel" parent="Calendario/StateMachine/Consigna/Contenido"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -338.0
-offset_top = -153.0
-offset_right = 338.0
-offset_bottom = 153.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("7_g1fqq")
-script = ExtResource("8_jxksc")
-SetVisibleFalseWithBtn = true
-
-[node name="Label" type="Label" parent="Calendario/StateMachine/Consigna/Contenido/Panel1"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -238.0
-offset_top = -74.0
-offset_right = 238.0
-offset_bottom = 74.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "¿Sabías que en el museo hay un calendario gigante?"
-label_settings = ExtResource("9_mlbvw")
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 2
-uppercase = true
-
-[node name="Button" type="Button" parent="Calendario/StateMachine/Consigna/Contenido/Panel1"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.791
-anchor_top = 0.973
-anchor_right = 0.791
-anchor_bottom = 0.973
-offset_left = -45.182
-offset_top = -44.98
-offset_right = 44.818
-offset_bottom = 45.02
-grow_horizontal = 0
-grow_vertical = 0
-
-[node name="Panel2" type="Panel" parent="Calendario/StateMachine/Consigna/Contenido"]
-visible = false
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -340.0
-offset_top = -153.0
-offset_right = 340.0
-offset_bottom = 153.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("7_g1fqq")
-script = ExtResource("8_jxksc")
-SetVisibleFalseWithBtn = true
-
-[node name="Label" type="Label" parent="Calendario/StateMachine/Consigna/Contenido/Panel2"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -293.0
-offset_top = -74.0
-offset_right = 293.0
-offset_bottom = 74.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Muestra cuando pasaría cada momento de la historia del universo 
-si todo hubiera sucedido en un solo año."
-label_settings = ExtResource("9_mlbvw")
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 2
-uppercase = true
-
-[node name="Button" type="Button" parent="Calendario/StateMachine/Consigna/Contenido/Panel2"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.791
-anchor_top = 0.973
-anchor_right = 0.791
-anchor_bottom = 0.973
-offset_left = -45.182
-offset_top = -44.98
-offset_right = 44.818
-offset_bottom = 45.02
-grow_horizontal = 0
-grow_vertical = 0
-
-[node name="Panel5" type="Panel" parent="Calendario/StateMachine/Consigna/Contenido"]
-visible = false
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -340.0
-offset_top = -153.0
-offset_right = 340.0
-offset_bottom = 153.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("7_g1fqq")
-script = ExtResource("8_jxksc")
-SetVisibleFalseWithBtn = true
-
-[node name="Label" type="Label" parent="Calendario/StateMachine/Consigna/Contenido/Panel5"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -293.0
-offset_top = -74.0
-offset_right = 293.0
-offset_bottom = 74.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "EN NUESTRA ULTIMA VISITA
-LE SACAMOS UNA FOTO PERO..."
-label_settings = ExtResource("9_mlbvw")
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 2
-uppercase = true
-
-[node name="Button" type="Button" parent="Calendario/StateMachine/Consigna/Contenido/Panel5"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.791
-anchor_top = 0.973
-anchor_right = 0.791
-anchor_bottom = 0.973
-offset_left = -45.182
-offset_top = -44.98
-offset_right = 44.818
-offset_bottom = 45.02
-grow_horizontal = 0
-grow_vertical = 0
-
-[node name="Panel3" type="Panel" parent="Calendario/StateMachine/Consigna/Contenido"]
-visible = false
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 0.149
-anchor_right = 0.5
-anchor_bottom = 0.149
-offset_left = -329.0
-offset_top = -129.72
-offset_right = 329.0
-offset_bottom = 130.28
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("7_g1fqq")
-script = ExtResource("8_jxksc")
-SetVisibleFalseWithBtn = true
-
-[node name="Label" type="Label" parent="Calendario/StateMachine/Consigna/Contenido/Panel3"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -269.0
-offset_top = -74.0
-offset_right = 269.0
-offset_bottom = 74.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "SALIÓ MEDIO TAPADO"
-label_settings = ExtResource("9_mlbvw")
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 2
-uppercase = true
-
-[node name="Button" type="Button" parent="Calendario/StateMachine/Consigna/Contenido/Panel3"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.791
-anchor_top = 0.973
-anchor_right = 0.791
-anchor_bottom = 0.973
-offset_left = -45.182
-offset_top = -44.98
-offset_right = 44.818
-offset_bottom = 45.02
-grow_horizontal = 0
-grow_vertical = 0
-
-[node name="Panel4" type="Panel" parent="Calendario/StateMachine/Consigna/Contenido"]
-visible = false
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 0.149
-anchor_right = 0.5
-anchor_bottom = 0.149
-offset_left = -321.0
-offset_top = -142.72
-offset_right = 321.0
-offset_bottom = 117.28
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("7_g1fqq")
-script = ExtResource("8_jxksc")
-SetVisibleFalseWithBtn = true
-
-[node name="Label" type="Label" parent="Calendario/StateMachine/Consigna/Contenido/Panel4"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -269.0
-offset_top = -74.0
-offset_right = 269.0
-offset_bottom = 74.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Ayúdanos completando las partes que no se ven!"
-label_settings = ExtResource("9_mlbvw")
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 2
-uppercase = true
-
-[node name="Timer" type="Timer" parent="Calendario/StateMachine/Consigna/Contenido/Panel4" node_paths=PackedStringArray("state_to_change", "state_machine")]
-wait_time = 3.0
-script = ExtResource("13_p1cy2")
-state_to_change = NodePath("../../../../Juego")
-state_machine = NodePath("../../../..")
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Calendario/StateMachine/Consigna/Contenido"]
 libraries = {
 "": SubResource("AnimationLibrary_4y1fe")
@@ -797,6 +668,38 @@ offset_bottom = 8.0
 script = ExtResource("12_xig48")
 state_to_change = NodePath("../../../Juego")
 state_machine = NodePath("../../..")
+
+[node name="PanelIntro1" parent="Calendario/StateMachine/Consigna/Contenido" instance=ExtResource("15_1ptxs")]
+layout_mode = 1
+anchors_preset = 8
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -138.0
+offset_bottom = 138.0
+grow_vertical = 2
+pivot_offset = Vector2(326, 138)
+characters_per_second = 45.0
+Texts = Array[ExtResource("18_66s5d")]([SubResource("Resource_fuwyd"), SubResource("Resource_fkmvq"), SubResource("Resource_y64rv")])
+
+[node name="Panel(3) Btn(rigth)" parent="Calendario/StateMachine/Consigna/Contenido/PanelIntro1" instance=ExtResource("15_4bh1k")]
+Data = SubResource("Resource_hfs58")
+
+[node name="PanelIntro2" parent="Calendario/StateMachine/Consigna/Contenido" instance=ExtResource("15_1ptxs")]
+layout_mode = 1
+offset_top = 81.0
+offset_bottom = 309.0
+AppearInBeginning = false
+characters_per_second = 45.0
+Texts = Array[ExtResource("18_66s5d")]([SubResource("Resource_81ob6"), SubResource("Resource_b5efl")])
+
+[node name="Panel(1) Btn(rigth)" parent="Calendario/StateMachine/Consigna/Contenido/PanelIntro2" instance=ExtResource("15_4bh1k")]
+Data = SubResource("Resource_6krua")
+
+[node name="Timer" type="Timer" parent="Calendario/StateMachine/Consigna/Contenido/PanelIntro2" node_paths=PackedStringArray("state_to_change", "state_machine")]
+wait_time = 3.0
+script = ExtResource("13_p1cy2")
+state_to_change = NodePath("../../../../Juego")
+state_machine = NodePath("../../../..")
 
 [node name="Juego" type="Node" parent="Calendario/StateMachine" node_paths=PackedStringArray("NextState", "StateMachine")]
 script = ExtResource("11_xj5m7")
@@ -908,7 +811,7 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("15_x38jw")
-PanelConsigna = NodePath("../Panel4")
+PanelConsigna = NodePath("../PanelConsigna")
 
 [node name="calendarPivot" type="Node2D" parent="Calendario/StateMachine/Juego/Contenido/CalendarZoom"]
 scale = Vector2(0.377, 0.378)
@@ -1018,7 +921,7 @@ textures_Answers6 = Array[Texture]([ExtResource("38_4hkyo"), ExtResource("39_7br
 script = ExtResource("19_hmohx")
 hBoxConteiner = NodePath("../../pivotHboxController/HBoxContainer")
 StateMachine = NodePath("../../../..")
-panel = NodePath("../../Panel")
+panel = NodePath("../../PanelPreguntas")
 calendar = NodePath("../../CalendarZoom/calendarPivot/Calendar")
 
 [node name="AnswerSpot" type="Node2D" parent="Calendario/StateMachine/Juego/Contenido/Spot/AnswerController"]
@@ -1069,76 +972,20 @@ libraries = {
 script = ExtResource("10_rk6di")
 animation = "enero_enter"
 
-[node name="Panel4" type="Panel" parent="Calendario/StateMachine/Juego/Contenido"]
+[node name="PanelConsigna" parent="Calendario/StateMachine/Juego/Contenido" instance=ExtResource("15_1ptxs")]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 0.149
-anchor_right = 0.5
-anchor_bottom = 0.149
-offset_left = -321.0
-offset_top = -142.72
-offset_right = 321.0
-offset_bottom = 117.28
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("7_g1fqq")
-script = ExtResource("8_jxksc")
-SetVisibleFalseWithBtn = true
+offset_top = 82.0
+offset_bottom = 310.0
+characters_per_second = 45.0
+Texts = Array[ExtResource("18_66s5d")]([SubResource("Resource_v2ur4")])
 
-[node name="Label" type="Label" parent="Calendario/StateMachine/Juego/Contenido/Panel4"]
+[node name="PanelPreguntas" parent="Calendario/StateMachine/Juego/Contenido" instance=ExtResource("15_1ptxs")]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -269.0
-offset_top = -74.0
-offset_right = 269.0
-offset_bottom = 74.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Ayúdanos completando las partes que no se ven!"
-label_settings = ExtResource("9_mlbvw")
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 2
-uppercase = true
-
-[node name="Panel" type="Panel" parent="Calendario/StateMachine/Juego/Contenido"]
-visible = false
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 0.139
-anchor_right = 0.5
-anchor_bottom = 0.139
-offset_left = -321.0
-offset_top = -130.92
-offset_right = 321.0
-offset_bottom = 130.08
-grow_horizontal = 2
-theme = ExtResource("7_g1fqq")
-
-[node name="Label" type="Label" parent="Calendario/StateMachine/Juego/Contenido/Panel"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -222.0
-offset_top = -64.5
-offset_right = 222.0
-offset_bottom = 64.5
-grow_horizontal = 2
-grow_vertical = 2
-text = "¿QUÉ PASÓ EN ENERO?"
-label_settings = ExtResource("9_mlbvw")
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 2
+offset_top = 82.0
+offset_bottom = 310.0
+AppearInBeginning = false
+characters_per_second = 45.0
+Texts = Array[ExtResource("18_66s5d")]([SubResource("Resource_uthvg")])
 
 [node name="pivotHboxController" type="Control" parent="Calendario/StateMachine/Juego/Contenido"]
 layout_mode = 1
@@ -1243,164 +1090,32 @@ grow_horizontal = 2
 grow_vertical = 2
 flat = true
 
-[node name="Outro" type="Control" parent="Calendario/StateMachine/Juego/Contenido"]
+[node name="ButtonChangeScene" parent="Calendario/StateMachine/Juego/Contenido" instance=ExtResource("26_musmw")]
 visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("39_3l8ms")
-
-[node name="Panel" type="Panel" parent="Calendario/StateMachine/Juego/Contenido/Outro"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 0.149
-anchor_right = 0.5
-anchor_bottom = 0.149
-offset_left = -322.0
-offset_top = -141.72
-offset_right = 322.0
-offset_bottom = 116.28
-grow_horizontal = 2
-theme = ExtResource("7_g1fqq")
-script = ExtResource("8_jxksc")
-SetVisibleFalseWithBtn = true
-
-[node name="Label" type="Label" parent="Calendario/StateMachine/Juego/Contenido/Outro/Panel"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -260.0
-offset_top = -71.0
-offset_right = 260.0
-offset_bottom = 72.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "LOS SERES HUMANOS SON MUY NUEVOS EN LA HISTORIA DEL UNIVERSO"
-label_settings = ExtResource("9_mlbvw")
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 2
-
-[node name="Button" type="Button" parent="Calendario/StateMachine/Juego/Contenido/Outro/Panel"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.801
-anchor_top = 1.004
-anchor_right = 0.801
-anchor_bottom = 1.004
-offset_left = -44.67
-offset_top = -45.016
-offset_right = 45.33
-offset_bottom = 44.984
-grow_horizontal = 0
-grow_vertical = 0
-
-[node name="Panel2" type="Panel" parent="Calendario/StateMachine/Juego/Contenido/Outro"]
-visible = false
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 0.149
-anchor_right = 0.5
-anchor_bottom = 0.149
-offset_left = -321.0
-offset_top = -143.72
-offset_right = 321.0
-offset_bottom = 116.28
-grow_horizontal = 2
-theme = ExtResource("7_g1fqq")
-script = ExtResource("8_jxksc")
-SetVisibleFalseWithBtn = true
-
-[node name="Label" type="Label" parent="Calendario/StateMachine/Juego/Contenido/Outro/Panel2"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -260.0
-offset_top = -71.0
-offset_right = 260.0
-offset_bottom = 72.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "SOLO HAN EXISTIDO POR UNOS MINUTOS HASTA AHORA"
-label_settings = ExtResource("9_mlbvw")
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 2
-
-[node name="Button" type="Button" parent="Calendario/StateMachine/Juego/Contenido/Outro/Panel2"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.801
-anchor_top = 1.004
-anchor_right = 0.801
-anchor_bottom = 1.004
-offset_left = -44.67
-offset_top = -45.016
-offset_right = 45.33
-offset_bottom = 44.984
-grow_horizontal = 0
-grow_vertical = 0
-
-[node name="Panel3" type="Panel" parent="Calendario/StateMachine/Juego/Contenido/Outro"]
-visible = false
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 0.149
-anchor_right = 0.5
-anchor_bottom = 0.149
-offset_left = -321.0
-offset_top = -143.72
-offset_right = 321.0
-offset_bottom = 116.28
-grow_horizontal = 2
-theme = ExtResource("7_g1fqq")
-script = ExtResource("8_jxksc")
-
-[node name="Label" type="Label" parent="Calendario/StateMachine/Juego/Contenido/Outro/Panel3"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -260.0
-offset_top = -71.0
-offset_right = 260.0
-offset_bottom = 72.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "PENSÁ CUÁNTO LOGRARON EN TAN POCO TIEMPO"
-label_settings = ExtResource("9_mlbvw")
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 2
-
-[node name="ButtonChangeScene" parent="Calendario/StateMachine/Juego/Contenido/Outro/Panel3" instance=ExtResource("26_musmw")]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.8
 anchor_top = 1.008
 anchor_right = 0.8
 anchor_bottom = 1.008
-offset_left = -45.0
-offset_top = -45.032
-offset_right = 45.0
-offset_bottom = 44.968
+offset_left = -68.4
+offset_top = -1026.19
+offset_right = 21.6
+offset_bottom = -936.192
 grow_horizontal = 0
 text = ""
 NextScene = "Map_Screen"
+
+[node name="PanelOutro" parent="Calendario/StateMachine/Juego/Contenido" instance=ExtResource("15_1ptxs")]
+layout_mode = 1
+offset_top = 84.0
+offset_bottom = 312.0
+AppearInBeginning = false
+characters_per_second = 45.0
+Texts = Array[ExtResource("18_66s5d")]([SubResource("Resource_47d2i"), SubResource("Resource_nlviq"), SubResource("Resource_qup6w")])
+
+[node name="Panel(3) Btn(rigth)" parent="Calendario/StateMachine/Juego/Contenido/PanelOutro" instance=ExtResource("15_4bh1k")]
+Data = SubResource("Resource_47igy")
 
 [node name="btnVolver" parent="Calendario/StateMachine/Juego" instance=ExtResource("26_h6ron")]
 
@@ -1648,23 +1363,20 @@ text = "
 "
 NextScene = "Map_Screen"
 
-[connection signal="pressed" from="Calendario/StateMachine/Consigna/Contenido/Panel1/Button" to="Calendario/StateMachine/Consigna/Contenido/Panel2" method="SetVisibility" binds= [true]]
-[connection signal="pressed" from="Calendario/StateMachine/Consigna/Contenido/Panel2/Button" to="Calendario/StateMachine/Consigna/Contenido/Panel5" method="SetVisibility" binds= [true]]
-[connection signal="pressed" from="Calendario/StateMachine/Consigna/Contenido/Panel5/Button" to="Calendario/StateMachine/Consigna/Contenido/Panel3" method="SetVisibility" binds= [true]]
-[connection signal="pressed" from="Calendario/StateMachine/Consigna/Contenido/Panel5/Button" to="Calendario/StateMachine/Consigna/Contenido/AnimationPlayer" method="PlayAnim" binds= ["in"]]
-[connection signal="pressed" from="Calendario/StateMachine/Consigna/Contenido/Panel3/Button" to="Calendario/StateMachine/Consigna/Contenido/Control/calendario/pivot" method="PlayAnimChild"]
-[connection signal="pressed" from="Calendario/StateMachine/Consigna/Contenido/Panel3/Button" to="Calendario/StateMachine/Consigna/Contenido/Panel4" method="SetVisibility" binds= [true]]
-[connection signal="pressed" from="Calendario/StateMachine/Consigna/Contenido/Panel3/Button" to="Calendario/StateMachine/Consigna/Contenido/Panel4/Timer" method="StartTime" binds= [false]]
+[connection signal="ButtonPress" from="Calendario/StateMachine/Consigna/Contenido/PanelIntro1/Panel(3) Btn(rigth)" to="Calendario/StateMachine/Consigna/Contenido/PanelIntro2" method="EnterPanel"]
+[connection signal="ButtonPress" from="Calendario/StateMachine/Consigna/Contenido/PanelIntro1/Panel(3) Btn(rigth)" to="Calendario/StateMachine/Consigna/Contenido/AnimationPlayer" method="PlayAnim" binds= ["in"]]
+[connection signal="ButtonPress" from="Calendario/StateMachine/Consigna/Contenido/PanelIntro2/Panel(1) Btn(rigth)" to="Calendario/StateMachine/Consigna/Contenido/Control/calendario/pivot" method="PlayAnimChild"]
+[connection signal="ButtonPress" from="Calendario/StateMachine/Consigna/Contenido/PanelIntro2/Panel(1) Btn(rigth)" to="Calendario/StateMachine/Consigna/Contenido/PanelIntro2/Timer" method="StartTime" binds= [false]]
 [connection signal="Transitioned" from="Calendario/StateMachine/Juego" to="Calendario/StateMachine/Juego/Contenido/CalendarZoom" method="SetQuestionWithInstance"]
-[connection signal="ZoomOutFinished" from="Calendario/StateMachine/Juego/Contenido/CalendarZoom" to="Calendario/StateMachine/Juego/Contenido/Outro" method="SetVisible" binds= [true]]
+[connection signal="ZoomOutFinished" from="Calendario/StateMachine/Juego/Contenido/CalendarZoom" to="Calendario/StateMachine/Juego/Contenido/PanelOutro" method="EnterPanel"]
 [connection signal="RigthAnswere" from="Calendario/StateMachine/Juego/Contenido/Spot/AnswerController" to="Calendario/StateMachine/Juego/Contenido/CalendarZoom" method="ZoomToPos" binds= [0]]
 [connection signal="OnSpot" from="Calendario/StateMachine/Juego/Contenido/Spot/AnswerController/Spot" to="Calendario/StateMachine/Juego/Contenido/pivotHboxController/HBoxContainer" method="SetPlate"]
 [connection signal="isScrolling" from="Calendario/StateMachine/Juego/Contenido/pivotHboxController/HBoxContainer" to="Calendario/StateMachine/Juego/Contenido/pivotHboxController/HBoxContainer/Date1/DragObject" method="CancelDrag"]
 [connection signal="isScrolling" from="Calendario/StateMachine/Juego/Contenido/pivotHboxController/HBoxContainer" to="Calendario/StateMachine/Juego/Contenido/pivotHboxController/HBoxContainer/Date2/DragObject" method="CancelDrag"]
 [connection signal="isScrolling" from="Calendario/StateMachine/Juego/Contenido/pivotHboxController/HBoxContainer" to="Calendario/StateMachine/Juego/Contenido/pivotHboxController/HBoxContainer/Date3/DragObject" method="CancelDrag"]
-[connection signal="pressed" from="Calendario/StateMachine/Juego/Contenido/Outro/Panel/Button" to="Calendario/StateMachine/Juego/Contenido/Outro/Panel2" method="SetVisibility" binds= [true]]
-[connection signal="pressed" from="Calendario/StateMachine/Juego/Contenido/Outro/Panel2/Button" to="Calendario/StateMachine/Juego/Contenido/Outro/Panel3" method="SetVisibility" binds= [true]]
-[connection signal="pressed" from="Calendario/StateMachine/Juego/Contenido/Outro/Panel3/ButtonChangeScene" to="Calendario" method="Set_Complete"]
+[connection signal="pressed" from="Calendario/StateMachine/Juego/Contenido/ButtonChangeScene" to="Calendario" method="Set_Complete"]
+[connection signal="ButtonPress" from="Calendario/StateMachine/Juego/Contenido/PanelOutro/Panel(3) Btn(rigth)" to="Calendario" method="Set_Complete"]
+[connection signal="ButtonPress" from="Calendario/StateMachine/Juego/Contenido/PanelOutro/Panel(3) Btn(rigth)" to="Calendario/StateMachine/Juego/Contenido/ButtonChangeScene" method="_on_pressed"]
 [connection signal="timeout" from="Calendario/StateMachine/Moraleja/Contenido/Timer" to="Calendario/StateMachine/Moraleja" method="TimeOut" flags=18]
 [connection signal="pressed" from="Calendario/StateMachine/Moraleja/Contenido/Instancia1/Button" to="Calendario/StateMachine/Moraleja/Contenido/Instancia1/Button" method="_on_pressed" flags=18]
 [connection signal="Transitioned" from="Calendario/StateMachine/Fin" to="Calendario/StateMachine/Fin/Contenido/AnimationPlayer" method="Play"]

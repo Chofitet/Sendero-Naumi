@@ -3,20 +3,24 @@ extends Panel
 
 @export var RefreshData : bool:
 	set(new_value):
-		refreshData(0)
+		refreshData(1)
 
 @export var AppearInBeginning : bool
 @export var TimeToAppear : float
+@export var SetEnterOnce: bool
+var EnterOnce
 @onready var label = $label
 @onready var _BotonDerecho = $BtnDerAnchor/btnDer
 @onready var _BotonIzquierda = $btnIzqAnchor/btnIzq
 @onready var _BotonCentral = $btnCentralAnchor/btnCentral
+@onready var SkipButton = $ButtonSkipWritting
 var _btns =[]
-@export var characters_per_second : float = 45
+@export var characters_per_second : float = 78
 var BotonDerecho
 var BotonIzquierdo
 var BotonCentral
 var anim : AnimationPlayer 
+
 @export var Texts : Array[TextField] 
 
 @export var Instanciate : bool:
@@ -31,6 +35,7 @@ signal RigthBTNPress
 signal LeftBTNPress
 signal CenterBTNPress
 
+
 func refreshData(numPanel : int):
 	
 	DetectBoldText(numOfPanel)
@@ -44,23 +49,32 @@ func refreshData(numPanel : int):
 	BotonCentral = false
 	BotonIzquierdo = false
 	
-	label.text = Texts[numPanel].Text
+	var textData = Texts[numPanel -1]
 	
-	for btn in Texts[numPanel].buttons:
+	label.text = textData.Text
+	if textData.SizePanel != Vector2.ZERO: 
+		var tween = get_tree().create_tween()
+		tween.tween_property(self,"size",textData.SizePanel,0.3)
+	
+	for btn in textData.buttons:
 		var _texture = btn.texture
+		var string = btn.label
 		if btn.Place ==  ButtonPanel.place.rigth:
 			_BotonDerecho.visible = inInEditor
 			$BtnDerAnchor/btnDer/Icon.texture = _texture
+			$BtnDerAnchor/btnDer/Icon/Label.text = string
 			BotonDerecho = true
 		
 		if btn.Place ==  ButtonPanel.place.center:
 			_BotonCentral.visible = inInEditor
-			$btnCentralAnchor/btnCentral/Icon.texture = _texture
+			$btnCentralAnchor/btnCentral/Icon/Label.texture = _texture
+			$btnCentralAnchor/btnCentral/Icon/Label.text = string
 			BotonCentral = true
 		
 		if btn.Place ==  ButtonPanel.place.left:
 			_BotonIzquierda.visible = inInEditor
 			$btnIzqAnchor/btnIzq/Icon.texture = _texture
+			$btnIzqAnchor/btnIzq/Icon/Label.text = string
 			BotonIzquierdo = true
 	
 	if Engine.is_editor_hint(): label.visible_ratio = true
@@ -77,7 +91,7 @@ func InstanciateIntermediate():
 	IntermediateEmmiterData = null
 	
 
-var numOfPanel : int = 0
+var numOfPanel : int = 1
 
 func _ready():
 	_btns.append(_BotonDerecho)
@@ -89,32 +103,44 @@ func _ready():
 	_BotonCentral.visible = false
 	pivot_offset =  Vector2(size.x/2,size.y/2)
 	if !Engine.is_editor_hint(): label.visible_ratio = 0
-	refreshData(0)
-	if AppearInBeginning: EnterPanel()
-	else: if !Engine.is_editor_hint(): visible = false
+	refreshData(1)
+	if AppearInBeginning: 
+		EnterPanel()
+		if !Engine.is_editor_hint(): visible= false
+	else : if !Engine.is_editor_hint(): visible= false
+	SkipButton.pressed.connect(SkipWritting)
 	
 	for child in get_children():
 		if child.has_method("ConnectSignal"):
 			child.ConnectSignal()
 
 func EnterPanel():
+	if SetEnterOnce:
+		if EnterOnce: return
+		EnterOnce = true
 	await  get_tree().create_timer(TimeToAppear).timeout
 	anim.play("enter_panel")
 	await anim.animation_finished
 	typingAnim()
 
+var tweenWritting : Tween
 func typingAnim():
 	var text_length = label.text.length()
 	var duration = text_length / characters_per_second
 	label.visible_ratio = 0
-	var tween = get_tree().create_tween()
-	tween.tween_property(label,"visible_ratio",1,duration)
+	SkipButton.visible = true
+	tweenWritting = get_tree().create_tween()
+	tweenWritting.tween_property(label,"visible_ratio",1,duration)
 	
-	await tween.finished
+	await tweenWritting.finished
+	AppearButtonAnim()
+	SkipButton.visible = false
+	
+
+func AppearButtonAnim():
 	if BotonDerecho: PlayAnimation(_BotonDerecho)
 	if BotonIzquierdo: PlayAnimation(_BotonIzquierda)
 	if BotonCentral: PlayAnimation(_BotonCentral)
-	
 
 func PlayAnimation(btn):
 	var path : String = btn.get_path()
@@ -132,7 +158,9 @@ func ButtonPress(btn):
 	_BotonDerecho.visible = false
 	_BotonCentral.visible = false
 	_BotonIzquierda.visible = false
-	if numOfPanel == Texts.size() - 1: ExitPanel()
+	if numOfPanel  == Texts.size() : 
+		ExitPanel()
+		numOfPanel += 1
 	else:ChangeToNextText()
 
 
@@ -145,16 +173,21 @@ func ChangeToNextText():
 	anim.play("change_panel")
 	await anim.animation_finished
 	label.visible = true
-	refreshData(numOfPanel)
 	typingAnim()
 
+func RefreshToActualPanel():
+	refreshData(numOfPanel)
+
 func rigthBTNConnect():
+	await get_tree().create_timer(0.2).timeout
 	RigthBTNPress.emit(numOfPanel)
 
 func leftBTNConnect():
+	await get_tree().create_timer(0.2).timeout
 	LeftBTNPress.emit(numOfPanel)
 
 func centerBTNConnect():
+	await get_tree().create_timer(0.2).timeout
 	CenterBTNPress.emit(numOfPanel)
 
 func InstanciateButtonPOP(btn):
@@ -164,7 +197,13 @@ func InstanciateButtonPOP(btn):
 
 func DetectBoldText(numPanel):
 	
-	if  Texts[numPanel].Text.contains("[b]"):
+	if  Texts[numPanel -1].Text.contains("[b]"):
 		label = $labelRich
 	else: label = $label
 		
+
+func SkipWritting():
+	tweenWritting.kill()
+	label.visible_ratio = 1
+	AppearButtonAnim()
+	SkipButton.visible = false

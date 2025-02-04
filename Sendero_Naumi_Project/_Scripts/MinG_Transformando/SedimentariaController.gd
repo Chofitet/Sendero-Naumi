@@ -5,6 +5,9 @@ var timer
 @export var nubeAnim : AnimationPlayer
 @export var UnfreezeRocks :=[]
 var initPosition
+var wasTransformed
+signal PanelAppear
+signal TriggerNextTransformation
 
 func _ready():
 	initPosition = position
@@ -21,7 +24,7 @@ func FinishFall():
 	get_node("Area2D").call_deferred("SetParent")
 	for i in UnfreezeRocks:
 		get_node(i).Freeze()
-	TranstaleToCenterScreen(2)
+	TranstaleToCenterScreen(1)
 
 
 func TranstaleToCenterScreen(time):
@@ -30,7 +33,7 @@ func TranstaleToCenterScreen(time):
 	var tween = get_tree().create_tween()
 	get_node("AnimationPlayer").play("rockTransformation")
 	tween.tween_property(self,"position",get_viewport_rect().size/2 + Vector2(0,-get_viewport_rect().size.y/2 + 340),time).set_ease(Tween.EASE_OUT)
-	await get_tree().create_timer(4.4).timeout
+	await get_tree().create_timer(2.4).timeout
 	get_node("Anim/AnimationPlayer").play("anim_despertar")
 
 func buttonpress():
@@ -40,6 +43,12 @@ func buttonpress():
 	get_parent().get_node("ButtonsInfoController").ActiveButtons()
 	RestartAll()
 	
+	if wasTransformed : return
+	wasTransformed = true
+	TriggerNextTransformation.emit()
+
+func panelAppear():
+	PanelAppear.emit()
 
 func RestartAll():
 	position = initPosition

@@ -1,10 +1,41 @@
-[gd_scene load_steps=6 format=3 uid="uid://dooe62acmvdb8"]
+[gd_scene load_steps=16 format=3 uid="uid://dooe62acmvdb8"]
 
 [ext_resource type="Script" path="res://_Scripts/ResetGame.gd" id="1_jm73u"]
 [ext_resource type="Texture2D" uid="uid://nuybqhitpej1" path="res://Sprites/Mapa/fondo_mapa.png" id="2_ng0fi"]
-[ext_resource type="Theme" uid="uid://bhum72inirq1q" path="res://Themes/Generic_UI.tres" id="3_g784o"]
-[ext_resource type="LabelSettings" uid="uid://bd2jj8jlh3vp2" path="res://Themes/Geología/LabelSetting_Generic.tres" id="4_vs6bp"]
-[ext_resource type="Texture2D" uid="uid://dyc6lr4k2lmfp" path="res://Sprites/UI/BotonAceptarGenerico.png" id="5_pae1o"]
+[ext_resource type="PackedScene" uid="uid://chcp24toqisaw" path="res://Scenes/Experiments/GenericPanel/GenericPanel.tscn" id="3_o2upc"]
+[ext_resource type="Script" path="res://Scenes/Experiments/GenericPanel/ButtonPanelData.gd" id="4_d7eu2"]
+[ext_resource type="Texture2D" uid="uid://c2p5torstrtqm" path="res://Sprites/UI/checkIcon - UI.png" id="5_iau1d"]
+[ext_resource type="Texture2D" uid="uid://6c8ohwgh1g2j" path="res://Sprites/UI/backIcon - UI.png" id="6_2yki0"]
+[ext_resource type="Script" path="res://Scenes/Experiments/GenericPanel/TextFieldData.gd" id="7_o6yq5"]
+[ext_resource type="PackedScene" uid="uid://d1jys63xrvxpo" path="res://Scenes/Experiments/GenericPanel/IntermediateSignal.tscn" id="8_cm7s2"]
+[ext_resource type="Script" path="res://Scenes/Experiments/GenericPanel/IntermediateSignalEmitter.gd" id="9_binj6"]
+[ext_resource type="Script" path="res://Scenes/Experiments/GenericPanel/IntermediateData.gd" id="10_k0cnr"]
+
+[sub_resource type="Resource" id="Resource_a4m6p"]
+script = ExtResource("4_d7eu2")
+Place = 0
+texture = ExtResource("5_iau1d")
+
+[sub_resource type="Resource" id="Resource_328bl"]
+script = ExtResource("4_d7eu2")
+Place = 2
+texture = ExtResource("6_2yki0")
+
+[sub_resource type="Resource" id="Resource_g8ivg"]
+script = ExtResource("7_o6yq5")
+Text = "SE PERDERÁ TODO EL PROGRESO 
+¿SEGURO QUE QUERÉS REINICIAR EL JUEGO?"
+buttons = Array[ExtResource("4_d7eu2")]([SubResource("Resource_a4m6p"), SubResource("Resource_328bl")])
+
+[sub_resource type="Resource" id="Resource_n2foa"]
+script = ExtResource("10_k0cnr")
+NumberOfPanel = 1
+Place = 0
+
+[sub_resource type="Resource" id="Resource_18ii2"]
+script = ExtResource("10_k0cnr")
+NumberOfPanel = 1
+Place = 2
 
 [node name="ResetScreen" type="Control"]
 layout_mode = 3
@@ -24,67 +55,19 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_ng0fi")
 
-[node name="Panel2" type="Panel" parent="."]
+[node name="PanelReset" parent="." instance=ExtResource("3_o2upc")]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -319.0
-offset_top = -130.0
-offset_right = 319.0
-offset_bottom = 131.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("3_g784o")
+offset_top = 499.0
+offset_bottom = 781.0
+Texts = Array[ExtResource("7_o6yq5")]([SubResource("Resource_g8ivg")])
 
-[node name="Label" type="Label" parent="Panel2"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 40.0
-offset_right = -40.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Se perderá todo el progreso 
-¿Seguro que querés reiniciar el juego?"
-label_settings = ExtResource("4_vs6bp")
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 3
+[node name="Panel(1) Btn(rigth)" type="Node" parent="PanelReset" instance=ExtResource("8_cm7s2")]
+script = ExtResource("9_binj6")
+Data = SubResource("Resource_n2foa")
 
-[node name="Yes" type="Button" parent="Panel2"]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -161.0
-offset_top = -46.0
-offset_right = -79.0
-offset_bottom = 36.0
-grow_horizontal = 0
-grow_vertical = 0
-text = "
-"
+[node name="Panel(1) Btn(left)" type="Node" parent="PanelReset" instance=ExtResource("8_cm7s2")]
+script = ExtResource("9_binj6")
+Data = SubResource("Resource_18ii2")
 
-[node name="No" type="Button" parent="Panel2"]
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 78.0
-offset_top = -51.0
-offset_right = 161.0
-offset_bottom = 29.0
-grow_vertical = 0
-text = "
-"
-icon = ExtResource("5_pae1o")
-flat = true
-
-[connection signal="pressed" from="Panel2/Yes" to="." method="ResetAll"]
-[connection signal="pressed" from="Panel2/No" to="." method="BackToMap"]
+[connection signal="ButtonPress" from="PanelReset/Panel(1) Btn(rigth)" to="." method="ResetAll"]
+[connection signal="ButtonPress" from="PanelReset/Panel(1) Btn(left)" to="." method="BackToMap"]

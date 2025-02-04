@@ -7,12 +7,17 @@ var initPosition
 @export var overlay : ColorRect
 @export var nubeAnim : AnimationPlayer
 var anim
-var time = 2
+var time = 1
+signal PanelAppear
+signal TriggerNextTransformation
+var wasTransformed
+
 func _ready():
 	initPosition = position
 	heateffect = get_node("PiedraHeat1")
 	heateffect.self_modulate = Color(0.6,0.6,0.6,0)
 	anim = get_node("AnimCalor/AnimationPlayer")
+
 
 func _physics_process(delta):
 	if heat1:
@@ -35,9 +40,11 @@ func TranstaleToCenterScreen():
 	var tween = get_tree().create_tween()
 	get_node("AnimationPlayer").play("rockTransformation")
 	tween.tween_property(self,"position",get_viewport_rect().size/2 + Vector2(0,-get_viewport_rect().size.y/2 + 340),time).set_ease(Tween.EASE_OUT)
-	await get_tree().create_timer(4.4).timeout
+	await get_tree().create_timer(2.4).timeout
 	get_node("Anim/AnimationPlayer").play("anim_despertar")
 	
+func panelAppear():
+	PanelAppear.emit()
 
 func buttonpress():
 	time = 0
@@ -45,8 +52,10 @@ func buttonpress():
 	nubeAnim.play("RESET")
 	get_parent().get_node("metamorficaSpot").visible = true
 	get_parent().get_node("ButtonsInfoController").ActiveButtons()
-	
 	RestartAll()
+	if wasTransformed : return
+	wasTransformed = true
+	TriggerNextTransformation.emit()
 
 func AnimLoop():
 	anim.play("anim_calor2")

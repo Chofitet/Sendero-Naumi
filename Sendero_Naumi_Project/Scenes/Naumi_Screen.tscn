@@ -1,10 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://chjfb4dxiy0js"]
+[gd_scene load_steps=8 format=3 uid="uid://chjfb4dxiy0js"]
 
 [ext_resource type="Texture2D" uid="uid://hf5y4ic16cqj" path="res://Sprites/Intro/intro - background.jpg" id="1_xw6ny"]
 [ext_resource type="Texture2D" uid="uid://jd6systmhxf1" path="res://Sprites/Intro/intro - suelo.png" id="2_5xcj6"]
 [ext_resource type="PackedScene" uid="uid://b77gk1g1ulal5" path="res://Scenes/UI_Scenes/naumi_controller.tscn" id="3_fn0c6"]
 [ext_resource type="PackedScene" uid="uid://djhg7jvxtexyl" path="res://Scenes/UI_Scenes/btn_Change_Scene.tscn" id="4_s5wmx"]
 [ext_resource type="Texture2D" uid="uid://dowufrhlgpfe" path="res://Sprites/UI/Boton_Volver.png" id="5_qi66s"]
+[ext_resource type="PackedScene" uid="uid://nmuyip31gkq5" path="res://Scenes/UI_Scenes/generic_button.tscn" id="6_tcahl"]
+[ext_resource type="Texture2D" uid="uid://6c8ohwgh1g2j" path="res://Sprites/UI/backIcon - UI.png" id="7_ii5ym"]
 
 [node name="Naumi_Screen" type="Control"]
 layout_mode = 3
@@ -69,6 +71,7 @@ offset_bottom = 0.559998
 [node name="NaumiController" parent="Control" instance=ExtResource("3_fn0c6")]
 
 [node name="ButtonChangeScene" parent="." instance=ExtResource("4_s5wmx")]
+visible = false
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -86,5 +89,20 @@ text = ""
 icon = ExtResource("5_qi66s")
 flat = true
 NextScene = "Map_Screen"
+
+[node name="GenericButton" parent="." instance=ExtResource("6_tcahl")]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -107.0
+offset_top = 14.0
+offset_right = -17.0
+offset_bottom = 104.0
+grow_horizontal = 0
+enterInBeggining = true
+Icon = ExtResource("7_ii5ym")
+
+[connection signal="pressed" from="GenericButton" to="ButtonChangeScene" method="_on_pressed"]
 
 [editable path="ButtonChangeScene"]

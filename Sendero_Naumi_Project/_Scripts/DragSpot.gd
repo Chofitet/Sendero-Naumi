@@ -14,16 +14,7 @@ func _ready():
 func _input(event: InputEvent) -> void:
 	if once: return
 	if Input.is_action_just_released("TouchScreen"):
-		if objectInArea == null : return
-		OnSpot.emit(objectInArea.get_parent())
-		if objectInArea == RigthObject:
-			RightAns.emit()
-			once = true
-			print("r")
-		elif objectInArea != RigthObject:
-			WrongAns.emit()
-			once = true
-			print("w")
+		CheckAnswer()
 	
 func CheckRigthArea(x):
 	objectInArea = x
@@ -34,3 +25,15 @@ func DeletArea(x):
 func Reset():
 	once = false
 	objectInArea = null
+
+func CheckAnswer():
+	if objectInArea == null : return
+	OnSpot.emit(objectInArea.get_parent())
+	if objectInArea == RigthObject:
+		RightAns.emit()
+		once = true
+		print("r")
+	elif objectInArea != RigthObject:
+		WrongAns.emit()
+		once = true
+		print("w")

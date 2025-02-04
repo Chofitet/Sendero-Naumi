@@ -1,4 +1,4 @@
-[gd_scene load_steps=82 format=3 uid="uid://dcredgeon3w2q"]
+[gd_scene load_steps=84 format=3 uid="uid://dcredgeon3w2q"]
 
 [ext_resource type="Script" path="res://_Scripts/MinG_MegaFood/PatasController.gd" id="1_g46fd"]
 [ext_resource type="Texture2D" uid="uid://gbi1vckfb2af" path="res://Sprites/ZonaMegafauna/bandeja.png" id="2_15wck"]
@@ -31,8 +31,10 @@
 [ext_resource type="Texture2D" uid="uid://cgrh4hmdohw6b" path="res://Sprites/ZonaMegafauna/macra frames2.png" id="26_7olsn"]
 [ext_resource type="Texture2D" uid="uid://dwm2ca0gd3bgt" path="res://Sprites/ZonaMegafauna/macra frames3.png" id="27_lw7db"]
 [ext_resource type="Texture2D" uid="uid://dry3vl6yyivjs" path="res://Sprites/ZonaMegafauna/macra frames1.png" id="28_p7o3h"]
+[ext_resource type="StyleBox" uid="uid://b3tjes2hcm3wx" path="res://Resources/UI_Resources/StyleBoxTrasparent.tres" id="32_ixble"]
 [ext_resource type="PackedScene" uid="uid://chcp24toqisaw" path="res://Scenes/Experiments/GenericPanel/GenericPanel.tscn" id="32_lcdwh"]
 [ext_resource type="Script" path="res://Scenes/Experiments/GenericPanel/TextFieldData.gd" id="33_7bjpl"]
+[ext_resource type="Theme" uid="uid://dxbgpuuiuxxto" path="res://Resources/UI_Resources/shoutPanel.tres" id="34_rsd4j"]
 
 [sub_resource type="Animation" id="Animation_jfp8t"]
 resource_name = "AngryAnim"
@@ -758,12 +760,14 @@ animations = [{
 
 [sub_resource type="Resource" id="Resource_1e5mh"]
 script = ExtResource("33_7bjpl")
-Text = ""
+Text = "En fila por favor"
+SizePanel = Vector2(0, 0)
 buttons = Array[Resource("res://Scenes/Experiments/GenericPanel/ButtonPanelData.gd")]([])
 
 [sub_resource type="Resource" id="Resource_spwe1"]
 script = ExtResource("33_7bjpl")
 Text = "\"SIGUIENTE! \" + animal + \"!\""
+SizePanel = Vector2(0, 0)
 buttons = Array[Resource("res://Scenes/Experiments/GenericPanel/ButtonPanelData.gd")]([])
 
 [node name="PatasController" type="Control"]
@@ -883,13 +887,33 @@ position = Vector2(1.58972, -2.38453)
 scale = Vector2(0.998083, 1.00264)
 texture = ExtResource("17_x2x8n")
 
+[node name="Button" type="Button" parent="pivot"]
+offset_left = -572.0
+offset_top = -1076.0
+offset_right = 580.0
+offset_bottom = -236.0
+theme_override_styles/normal = ExtResource("32_ixble")
+theme_override_styles/hover = ExtResource("32_ixble")
+theme_override_styles/pressed = ExtResource("32_ixble")
+theme_override_styles/disabled = ExtResource("32_ixble")
+theme_override_styles/focus = ExtResource("32_ixble")
+flat = true
+
 [node name="Timer" type="Timer" parent="."]
 wait_time = 1.5
 
 [node name="TextoPedido" parent="." instance=ExtResource("32_lcdwh")]
 visible = false
 layout_mode = 1
-offset_top = -275.0
-offset_bottom = -47.0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_right = 0.0
+offset_left = -362.0
+offset_top = -309.0
+offset_right = 361.0
+offset_bottom = 259.0
+grow_horizontal = 1
+pivot_offset = Vector2(361.5, 284)
+theme = ExtResource("34_rsd4j")
 AppearInBeginning = false
 Texts = Array[ExtResource("33_7bjpl")]([SubResource("Resource_1e5mh"), SubResource("Resource_spwe1")])

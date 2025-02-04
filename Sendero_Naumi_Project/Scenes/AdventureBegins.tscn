@@ -1,8 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://o12fb1rdrhqt"]
+[gd_scene load_steps=6 format=3 uid="uid://o12fb1rdrhqt"]
 
 [ext_resource type="Texture2D" uid="uid://nuybqhitpej1" path="res://Sprites/Mapa/fondo_mapa.png" id="1_5oo6n"]
 [ext_resource type="PackedScene" uid="uid://biluutecl1cej" path="res://Scenes/Experiments/skip_sceen.tscn" id="1_o0fg5"]
-[ext_resource type="Theme" uid="uid://bhum72inirq1q" path="res://Themes/Generic_UI.tres" id="2_gr1an"]
+[ext_resource type="PackedScene" uid="uid://chcp24toqisaw" path="res://Scenes/Experiments/GenericPanel/GenericPanel.tscn" id="3_18js5"]
+[ext_resource type="Script" path="res://Scenes/Experiments/GenericPanel/TextFieldData.gd" id="4_vnnal"]
+
+[sub_resource type="Resource" id="Resource_v7eel"]
+script = ExtResource("4_vnnal")
+Text = "SUERTE EN TU AVENTURA"
+buttons = Array[Resource("res://Scenes/Experiments/GenericPanel/ButtonPanelData.gd")]([])
 
 [node name="AdventureBegins" type="Control"]
 layout_mode = 3
@@ -30,41 +36,25 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_5oo6n")
 
-[node name="Panel" type="Panel" parent="."]
-layout_mode = 2
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -320.0
-offset_top = -231.0
-offset_right = 320.0
-offset_bottom = 231.0
-theme = ExtResource("2_gr1an")
-
-[node name="Label" type="Label" parent="Panel"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -282.0
-offset_top = -113.0
-offset_right = 282.0
-offset_bottom = 113.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 50
-text = "SUERTE EN TU AVENTURA"
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 2
-justification_flags = 0
-
 [node name="SkipSceen" parent="." instance=ExtResource("1_o0fg5")]
 wait_time = 3.0
 isAutomatic = true
 NextScene = "Map_Screen"
 texture = "paws_pattern"
+
+[node name="Panel2" parent="." instance=ExtResource("3_18js5")]
+layout_mode = 1
+anchors_preset = 8
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -138.0
+offset_bottom = 138.0
+grow_vertical = 2
+Texts = Array[ExtResource("4_vnnal")]([SubResource("Resource_v7eel")])
+
+[node name="label" parent="Panel2" index="0"]
+text = "SUERTE EN TU AVENTURA"
+
+[editable path="Panel2"]
+[editable path="Panel2/btnIzqAnchor/btnIzq/SquigglingSprite"]
+[editable path="Panel2/btnCentralAnchor/btnCentral/SquigglingSprite"]

@@ -46,13 +46,13 @@ func ZoomToPos(index = 0):
 	tween.tween_property(CalendarPivot.get_node("Calendar"), "offset", -posToMove,1).set_ease(Tween.EASE_IN)
 	var ZoomTween = get_tree().create_tween()
 	if index != 0:
-		PanelConsigna.visible = false
+		PanelConsigna.ExitPanel()
 		if index != 6:
 			ZoomTween.tween_property(CalendarPivot.get_node("Calendar"),"scale", Vector2(12,12),1).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_EXPO)
 		else: 
 			ZoomTween.tween_property(CalendarPivot.get_node("Calendar"),"scale", Vector2(5.2,5.2),1).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_EXPO)
 	else:
-		if !gamefinished: PanelConsigna.visible = true
+		if !gamefinished: PanelConsigna.EnterPanel()
 		ZoomTween.tween_property(CalendarPivot.get_node("Calendar"),"scale", Vector2(1,1),1).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_EXPO)
 	
 	await tween.finished

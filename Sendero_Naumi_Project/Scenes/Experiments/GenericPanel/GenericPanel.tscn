@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://chcp24toqisaw"]
+[gd_scene load_steps=20 format=3 uid="uid://chcp24toqisaw"]
 
 [ext_resource type="Theme" uid="uid://dhu6swisjlh4w" path="res://Resources/UI_Resources/BlueBubblePanel.tres" id="1_v6n5n"]
 [ext_resource type="Script" path="res://Scenes/Experiments/GenericPanel/PanelController.gd" id="2_33xng"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://40jkc6woc7p" path="res://Sprites/UI/SquigglingUI/botonesRedondosASQUIG - UI.png" id="6_8uutm"]
 [ext_resource type="LabelSettings" uid="uid://c8wu4hhqg284x" path="res://Resources/UI_Resources/Generic_Font.tres" id="6_yhgeb"]
 [ext_resource type="Texture2D" uid="uid://c87cim2trecu1" path="res://Sprites/UI/SquigglingUI/botonesRedondosBSQUIG - UI.png" id="7_1swfx"]
+[ext_resource type="StyleBox" uid="uid://b3tjes2hcm3wx" path="res://Resources/UI_Resources/StyleBoxTrasparent.tres" id="10_gqd6s"]
 
 [sub_resource type="Animation" id="Animation_jxxgf"]
 length = 0.001
@@ -59,6 +60,18 @@ tracks/3/keys = {
 "update": 0,
 "values": [1.0]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("labelRich:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_me5ce"]
 resource_name = "change_panel"
@@ -86,6 +99,32 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [true, false, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("labelRich:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, false]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"RefreshToActualPanel"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_82sr6"]
@@ -164,6 +203,12 @@ _data = {
 "exit_panel": SubResource("Animation_bglsq")
 }
 
+[sub_resource type="LabelSettings" id="LabelSettings_vixmh"]
+font_size = 32
+shadow_size = 2
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(2, 1)
+
 [sub_resource type="Animation" id="Animation_6ejw5"]
 length = 0.001
 tracks/0/type = "value"
@@ -225,6 +270,18 @@ tracks/4/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(44, 44)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Icon/Label:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_phw3d"]
@@ -307,6 +364,18 @@ tracks/5/keys = {
 "method": &"ActiveSquiggling"
 }]
 }
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Icon/Label:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
 
 [sub_resource type="Animation" id="Animation_jahtv"]
 resource_name = "idle"
@@ -364,17 +433,19 @@ visible_characters_behavior = 1
 
 [node name="labelRich" type="RichTextLabel" parent="."]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
+anchors_preset = -1
+anchor_left = 0.057
+anchor_right = 0.943
 anchor_bottom = 1.0
-offset_left = 37.0
+offset_left = -0.164001
 offset_top = 56.0
-offset_right = -37.0
+offset_right = 0.164001
 offset_bottom = -56.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_v6n5n")
 bbcode_enabled = true
+scroll_active = false
 visible_characters_behavior = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -427,6 +498,18 @@ grow_vertical = 2
 rotation = 0.174533
 pivot_offset = Vector2(22, 22)
 expand_mode = 1
+
+[node name="Label" type="Label" parent="BtnDerAnchor/btnDer/Icon"]
+layout_mode = 0
+offset_left = -1.50574
+offset_top = -2.78077
+offset_right = 43.4943
+offset_bottom = 45.2192
+pivot_offset = Vector2(20, 19)
+text = "0K"
+label_settings = SubResource("LabelSettings_vixmh")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="BtnDerAnchor/btnDer"]
 libraries = {
@@ -486,6 +569,18 @@ pivot_offset = Vector2(22, 22)
 texture = ExtResource("4_phuax")
 expand_mode = 1
 
+[node name="Label" type="Label" parent="btnIzqAnchor/btnIzq/Icon"]
+layout_mode = 0
+offset_left = -1.50574
+offset_top = -2.78077
+offset_right = 38.4943
+offset_bottom = 42.2192
+pivot_offset = Vector2(20, 19)
+text = "OK"
+label_settings = SubResource("LabelSettings_vixmh")
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="btnIzqAnchor/btnIzq"]
 libraries = {
 "": SubResource("AnimationLibrary_kvjan")
@@ -499,6 +594,7 @@ offset = Vector2(45, 45)
 ActiveInBegining = false
 
 [node name="btnCentralAnchor" type="Control" parent="."]
+visible = false
 layout_mode = 1
 anchor_left = 0.5
 anchor_top = 1.003
@@ -540,6 +636,17 @@ pivot_offset = Vector2(22, 22)
 texture = ExtResource("3_jsxvn")
 expand_mode = 1
 
+[node name="Label" type="Label" parent="btnCentralAnchor/btnCentral/Icon"]
+layout_mode = 0
+offset_left = -1.50574
+offset_top = -2.78077
+offset_right = 38.4943
+offset_bottom = 42.2192
+pivot_offset = Vector2(20, 19)
+label_settings = SubResource("LabelSettings_vixmh")
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="btnCentralAnchor/btnCentral"]
 libraries = {
 "": SubResource("AnimationLibrary_kvjan")
@@ -551,6 +658,21 @@ scale = Vector2(1.03922, 1.03922)
 texture = ExtResource("6_8uutm")
 offset = Vector2(45, 45)
 ActiveInBegining = false
+
+[node name="ButtonSkipWritting" type="Button" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = ExtResource("10_gqd6s")
+theme_override_styles/hover = ExtResource("10_gqd6s")
+theme_override_styles/pressed = ExtResource("10_gqd6s")
+theme_override_styles/disabled = ExtResource("10_gqd6s")
+theme_override_styles/focus = ExtResource("10_gqd6s")
+flat = true
 
 [connection signal="pressed" from="BtnDerAnchor/btnDer" to="." method="rigthBTNConnect"]
 [connection signal="pressed" from="BtnDerAnchor/btnDer" to="." method="ButtonPress" binds= [0]]

@@ -16,18 +16,22 @@ var inputTouch
 var multitouch
 var StopDrag
 var isverticalGesture
+var isHorizontalGesture
 signal isScrolling
 signal CompleteSwipe
 signal PlatesReset
 signal RealeaseDragObject
 signal aPlateAreDragging
 signal aPlateWasDrop
+signal ServePlate
+var TouchBegginInArea
 
 func _ready():
 	AddPlatesOnAnchor()
 	inputTouch = InputEventScreenTouch.new()
 	timer = get_parent().get_node("TimerScroll")
 	timer.timeout.connect(calculateGesture)
+	timer.timeout.connect(CalculateVerticalGesture)
 	position.x = position.x + (get_viewport_rect().size.x/2 - anchors[i].global_position.x)
 	enableInteraction()
 
@@ -37,8 +41,11 @@ func AddPlatesOnAnchor():
 		if p is Sprite2D and p not in anchors:
 			anchors.append(p)
 
+var last_touch_pos = Vector2()
+
 func _input(event: InputEvent) -> void:
 	if StopDrag : return
+	
 	if event is InputEventScreenTouch:
 		if event.index != 0:
 			multitouch = true
@@ -49,6 +56,7 @@ func _input(event: InputEvent) -> void:
 		else: multitouch = false
 	
 	if Input.is_action_just_pressed("TouchScreen"):
+		if not get_global_rect().has_point(event.position):return
 		if multitouch : return
 		pressedPos = event.position
 		actualDrag = pressedPos
@@ -63,15 +71,19 @@ func _input(event: InputEvent) -> void:
 		inHold()
 		hold = false
 		isverticalGesture = false
+		isHorizontalGesture = false
 		
 	if Input.is_action_pressed("TouchScreen"):
 		if multitouch : return
 		var d 
+		if pressedPos == null : return
 		d = pressedPos - event.position
 		if abs(d.x) < abs(d.y):
 			isverticalGesture = true
 			return
-		if isverticalGesture : return
+		elif abs(d.x) > abs(d.y):
+			isHorizontalGesture = true
+		
 		if actualDrag.x != event.position.x:
 			isScrolling.emit()
 			position.x = position.x + (event.position.x - actualDrag.x)
@@ -97,6 +109,16 @@ func calculateGesture() -> void:
 		else:
 			var tween = get_tree().create_tween()
 			tween.tween_property(self,"position", Vector2(set_next_anchor("left"),position.y),0.2).set_ease(Tween.EASE_OUT)
+
+func CalculateVerticalGesture():
+	if isHorizontalGesture : return
+	if hold : return
+	var d 
+	d= releasePos - pressedPos
+	print(d)
+	if abs(d.x) < abs(d.y):
+		if d.y < 0:
+			anchors[i].get_node("DragObject").PlaceInRightSpot(true)
 
 func inHold():
 	if isverticalGesture : return
@@ -177,6 +199,7 @@ func ReOrganizePlates():
 				else:
 					ismiddleplate = true
 				indexToRemove = indexp
+	if indexToRemove == null : return
 	anchors.remove_at(indexToRemove)
 	enableInteraction()
 	PlatesReset.emit()

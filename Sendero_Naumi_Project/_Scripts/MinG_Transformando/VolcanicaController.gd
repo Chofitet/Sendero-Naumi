@@ -3,8 +3,10 @@ extends Sprite2D
 @export var NubeAnim : AnimationPlayer
 var initPosition
 var initRotation
-var time = 2
-
+var time = 1
+var wasTransformed
+signal PanelAppear
+signal TriggerNextTransformation
 func _ready():
 	initPosition =  position
 	initRotation = rotation
@@ -18,7 +20,7 @@ func TranstaleToCenterScreen(animation):
 	var tween2 = get_tree().create_tween()
 	tween.tween_property(self,"position",get_viewport_rect().size/2 + Vector2(0,-get_viewport_rect().size.y/2 + 340),time).set_ease(Tween.EASE_OUT)
 	tween2.tween_property(self,"rotation",0,2)
-	await get_tree().create_timer(4.4).timeout
+	await get_tree().create_timer(2.4).timeout
 	get_node("Anim/AnimationPlayer").play("anim_despertar")
 
 func buttonpress():
@@ -27,9 +29,14 @@ func buttonpress():
 	NubeAnim.play("RESET")
 	get_parent().get_node("VulcanicaSpot").visible = true
 	get_parent().get_node("ButtonsInfoController").ActiveButtons()
-	get_parent().get_node("EndGamePanel").visible = true
 	RestartAll()
+	
+	if wasTransformed : return
+	wasTransformed = true
+	TriggerNextTransformation.emit()
 
+func panelAppear():
+	PanelAppear.emit()
 
 func RestartAll():
 	rotation = initRotation
