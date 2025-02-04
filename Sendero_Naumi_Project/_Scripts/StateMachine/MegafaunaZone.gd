@@ -4,7 +4,7 @@ class_name MegafaunaZone
 @export var ButtonBack : SubViewportContainer 
 
 func Enter():
-	get_parent().get_node("ButtonBack").visible = true
+	get_parent().get_node("ButtonBack").EnterAnim()
 	PlayerVariables.SaveLastState(self.name)
 	inZone.emit()
 	ChangeButtonBackVisibility(true, ButtonBack)

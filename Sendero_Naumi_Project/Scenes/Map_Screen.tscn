@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://ck4m8k46bmha1"]
+[gd_scene load_steps=60 format=3 uid="uid://ck4m8k46bmha1"]
 
 [ext_resource type="Script" path="res://_Scripts/AdjustSeparationWithScreenSize.gd" id="2_1v6rf"]
 [ext_resource type="Script" path="res://_Scripts/ScrollController.gd" id="2_es768"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://bpcc2ljyhkxfl" path="res://Sprites/Mapa/pin check - mapa.png" id="9_t7uji"]
 [ext_resource type="Texture2D" uid="uid://d1oee8aqfpvio" path="res://Sprites/Mapa/megafaunaDos_mapa.png" id="10_xuo8m"]
 [ext_resource type="Script" path="res://_Scripts/AdjustMarginWithScreenSize.gd" id="11_6dn11"]
+[ext_resource type="Texture2D" uid="uid://cgp0ovvm4w16m" path="res://Sprites/Mapa/cartelConstruccion - mapa.png" id="11_8r70k"]
 [ext_resource type="Script" path="res://_Scripts/Zone.gd" id="11_n2pjm"]
 [ext_resource type="Texture2D" uid="uid://b4mb0fyar87n4" path="res://Sprites/Mapa/universo_mapa.png" id="11_r0n4l"]
 [ext_resource type="Script" path="res://_Scripts/StateMachine/State_Machine.gd" id="12_2rk75"]
@@ -32,11 +33,9 @@
 [ext_resource type="Texture2D" uid="uid://7dcpl5y0yqm4" path="res://Sprites/Mapa/squigglingMap/geologiaSQUIG - mapa.png" id="20_m0xof"]
 [ext_resource type="PackedScene" uid="uid://dbu7ogodn5h20" path="res://Scenes/Experiments/piso_unlock_arrow.tscn" id="20_n6cg8"]
 [ext_resource type="Script" path="res://_Scripts/FloorDetector.gd" id="20_o2y56"]
-[ext_resource type="Texture2D" uid="uid://btclh5i3dqhfm" path="res://Sprites/UI/Icono Naumi.png" id="21_cjjb8"]
 [ext_resource type="Texture2D" uid="uid://nuybqhitpej1" path="res://Sprites/Mapa/fondo_mapa.png" id="21_ti06q"]
 [ext_resource type="Texture2D" uid="uid://c5sigus2fy273" path="res://Sprites/Mapa/squigglingMap/megafaunaSQUIG - mapa.png" id="23_2a773"]
 [ext_resource type="Script" path="res://_Scripts/StateMachine/State.gd" id="25_jjswu"]
-[ext_resource type="Texture2D" uid="uid://dowufrhlgpfe" path="res://Sprites/UI/Boton_Volver.png" id="26_1t1rb"]
 [ext_resource type="Texture2D" uid="uid://bxa0nryy0g7yb" path="res://Sprites/Mapa/universoTitulo_mapa.png" id="28_x3np3"]
 [ext_resource type="Texture2D" uid="uid://dil77na7a1kld" path="res://Sprites/Mapa/squigglingMap/durezas - mapa.png" id="31_ceq68"]
 [ext_resource type="Texture2D" uid="uid://dpsplvmhtgavl" path="res://Sprites/Mapa/squigglingMap/transformaciones - mapa.png" id="32_5k6rn"]
@@ -50,6 +49,9 @@
 [ext_resource type="Texture2D" uid="uid://c2d8yn44bc8bm" path="res://Sprites/Mapa/squigglingMap/comidas - mapa.png" id="38_nd2o0"]
 [ext_resource type="Texture2D" uid="uid://dj3ecbwojvib6" path="res://Sprites/Mapa/squigglingMap/topo - mapa.png" id="39_xgaa0"]
 [ext_resource type="Texture2D" uid="uid://bwjlulgcqm3mx" path="res://Sprites/Mapa/megafaunaTitulo_mapa.png" id="42_ngqib"]
+[ext_resource type="PackedScene" uid="uid://nmuyip31gkq5" path="res://Scenes/UI_Scenes/generic_button.tscn" id="49_5dgeg"]
+[ext_resource type="Texture2D" uid="uid://daq0wdip7fkhp" path="res://Sprites/UI/eggIcon - UI.png" id="49_wt3wo"]
+[ext_resource type="Texture2D" uid="uid://kb7ixs5ala8" path="res://Sprites/UI/arrowIcon - UI.png" id="50_otgwf"]
 
 [sub_resource type="Curve2D" id="Curve2D_8o4yl"]
 bake_interval = 0.01
@@ -297,7 +299,12 @@ offset_top = 61.093
 offset_right = -45.4939
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("5_isoyh")
+texture = ExtResource("10_xuo8m")
+
+[node name="CartelZonaConstruccion" type="Sprite2D" parent="ScrollContainer/VBoxContainer/Piso3/Piso3/CuaternarioZone/TextureRect"]
+position = Vector2(456.714, 797.286)
+scale = Vector2(0.783033, 0.783033)
+texture = ExtResource("11_8r70k")
 
 [node name="IslandAnimator" type="AnimationPlayer" parent="ScrollContainer/VBoxContainer/Piso3/Piso3/CuaternarioZone"]
 libraries = {
@@ -383,6 +390,11 @@ flat = true
 script = ExtResource("5_oybyc")
 state_to_change = NodePath("../../../../../../../StateMachine/AstronomiaZone")
 state_machine = NodePath("../../../../../../../StateMachine")
+
+[node name="CartelZonaConstruccion" type="Sprite2D" parent="ScrollContainer/VBoxContainer/Piso3/Piso3/AmbientesZone/TextureRect"]
+position = Vector2(552.924, 997.454)
+scale = Vector2(0.783033, 0.783033)
+texture = ExtResource("11_8r70k")
 
 [node name="CompleteState" type="ColorRect" parent="ScrollContainer/VBoxContainer/Piso3/Piso3/AmbientesZone"]
 visible = false
@@ -497,6 +509,11 @@ script = ExtResource("5_oybyc")
 state_to_change = NodePath("../../../../../../../StateMachine/GeologiaZone")
 state_machine = NodePath("../../../../../../../StateMachine")
 
+[node name="CartelZonaConstruccion" type="Sprite2D" parent="ScrollContainer/VBoxContainer/Piso3/Piso3/ErasGeologicasZone/TextureRect"]
+position = Vector2(560.484, 919.242)
+scale = Vector2(0.783033, 0.783033)
+texture = ExtResource("11_8r70k")
+
 [node name="CompleteState" type="ColorRect" parent="ScrollContainer/VBoxContainer/Piso3/Piso3/ErasGeologicasZone"]
 visible = false
 layout_mode = 1
@@ -581,15 +598,22 @@ expand_mode = 1
 [node name="TextureRect" type="TextureRect" parent="ScrollContainer/VBoxContainer/Piso2/MuseoHistoryZone"]
 visible = false
 layout_mode = 1
-anchors_preset = -1
-anchor_top = -0.034
-anchor_right = 1.046
+anchors_preset = 15
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 61.093
-offset_right = -45.4939
+offset_left = -31.0
+offset_top = -3.0
+offset_right = 57.0
+offset_bottom = 2.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("5_isoyh")
+expand_mode = 1
+
+[node name="CartelZonaConstruccion" type="Sprite2D" parent="ScrollContainer/VBoxContainer/Piso2/MuseoHistoryZone/TextureRect"]
+position = Vector2(456.714, 797.286)
+scale = Vector2(0.783033, 0.783033)
+texture = ExtResource("11_8r70k")
 
 [node name="anchoHistoriaMuseoa" type="Control" parent="ScrollContainer/VBoxContainer/Piso2/MuseoHistoryZone"]
 layout_mode = 1
@@ -926,7 +950,7 @@ handle_input_locally = false
 size = Vector2i(720, 1280)
 render_target_update_mode = 0
 
-[node name="ButtonBack" type="TextureRect" parent="SubViewportContainer/SubViewport"]
+[node name="ButtonBack3" type="TextureRect" parent="SubViewportContainer/SubViewport"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -1316,56 +1340,54 @@ texture = ExtResource("39_xgaa0")
 position = Vector2(712.534, -159.985)
 texture = ExtResource("42_ngqib")
 
-[node name="ButtonNaumi" type="TextureRect" parent="StateMachine"]
+[node name="ButtonChangeScene" parent="StateMachine" instance=ExtResource("7_1v7i5")]
 visible = false
+z_index = 3
+anchors_preset = 15
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+offset_left = 597.0
+offset_top = 26.0
+offset_right = 597.0
+offset_bottom = 26.0
+grow_vertical = 2
+text = ""
+flat = true
+NextScene = "Naumi_Screen"
+
+[node name="ButtonNaumi" parent="StateMachine" instance=ExtResource("49_5dgeg")]
 z_index = 2
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -123.0
 offset_top = 26.0
-offset_right = -32.0
-offset_bottom = 117.0
+offset_right = -33.0
+offset_bottom = 116.0
 grow_horizontal = 0
-texture = ExtResource("21_cjjb8")
-expand_mode = 1
+Icon = ExtResource("49_wt3wo")
 
-[node name="ButtonChangeScene" parent="StateMachine/ButtonNaumi" instance=ExtResource("7_1v7i5")]
-z_index = 3
-layout_mode = 1
-anchors_preset = 15
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 1.0
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 0.0
-offset_bottom = 0.0
-grow_vertical = 2
-text = ""
-flat = true
-NextScene = "Naumi_Screen"
+[node name="TextureRect" parent="StateMachine/ButtonNaumi" index="0"]
+offset_left = -23.0
+offset_top = -29.0
+offset_right = 21.0
+offset_bottom = 27.0
+texture = ExtResource("49_wt3wo")
+expand_mode = 0
 
-[node name="ButtonBack" type="Button" parent="StateMachine" node_paths=PackedStringArray("state_to_change", "state_machine")]
+[node name="ButtonBack" parent="StateMachine" instance=ExtResource("49_5dgeg")]
+visible = false
 z_index = 2
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -126.0
-offset_top = 20.0
-offset_right = 5.00012
-offset_bottom = 159.0
+offset_left = -123.0
+offset_top = 23.0
+offset_right = -33.0
+offset_bottom = 113.0
 grow_horizontal = 0
-scale = Vector2(0.725, 0.725)
-size_flags_horizontal = 8
-size_flags_vertical = 8
-theme_override_styles/pressed = ExtResource("7_7sb65")
-theme_override_styles/focus = ExtResource("7_7sb65")
-icon = ExtResource("26_1t1rb")
-flat = true
-script = ExtResource("5_oybyc")
-state_to_change = NodePath("../NoZone")
-state_machine = NodePath("..")
+Icon = ExtResource("50_otgwf")
 
 [node name="Node" type="Node" parent="."]
 script = ExtResource("25_jjswu")
@@ -1385,9 +1407,14 @@ anchors_preset = 0
 [connection signal="backZone" from="StateMachine/GeologiaZone" to="ScrollContainer" method="SetisInputBlock" binds= [true]]
 [connection signal="inZone" from="StateMachine/GeologiaZone" to="ScrollContainer" method="SetisInputBlock" binds= [false]]
 [connection signal="pressed" from="StateMachine/NoZone/Debug" to="StateMachine/NoZone/PanelDebug" method="set_visible" binds= [true]]
+[connection signal="pressed" from="StateMachine/NoZone/PanelDebug/ButtonUnlockIslands" to="ScrollContainer/VBoxContainer/Piso2/MuseoHistoryZone" method="DebugIland"]
 [connection signal="pressed" from="StateMachine/NoZone/PanelDebug/ButtonUnlockIslands" to="ScrollContainer/VBoxContainer/Piso2/AstronomiaZone" method="DebugIland"]
 [connection signal="pressed" from="StateMachine/NoZone/PanelDebug/ButtonUnlockIslands" to="ScrollContainer/VBoxContainer/Piso2/GeologiaZone" method="DebugIland"]
 [connection signal="pressed" from="StateMachine/NoZone/PanelDebug/ButtonUnlockIslands" to="StateMachine/NoZone/PanelDebug" method="set_visible" binds= [false]]
 [connection signal="pressed" from="StateMachine/NoZone/PanelDebug/x" to="StateMachine/NoZone/PanelDebug" method="set_visible" binds= [false]]
 [connection signal="backZone" from="StateMachine/MegafaunaZone" to="ScrollContainer" method="SetisInputBlock" binds= [true]]
 [connection signal="inZone" from="StateMachine/MegafaunaZone" to="ScrollContainer" method="SetisInputBlock" binds= [false]]
+[connection signal="pressed" from="StateMachine/ButtonNaumi" to="StateMachine/ButtonChangeScene" method="_on_pressed"]
+[connection signal="pressed" from="StateMachine/ButtonBack" to="StateMachine" method="Trigger_On_Child_Transition" binds= ["NoZone"]]
+
+[editable path="StateMachine/ButtonNaumi"]

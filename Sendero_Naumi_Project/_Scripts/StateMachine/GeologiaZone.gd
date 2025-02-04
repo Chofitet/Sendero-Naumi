@@ -6,7 +6,7 @@ class_name GeologiaZone
 
 
 func Enter():
-	get_parent().get_node("ButtonBack").visible = true
+	get_parent().get_node("ButtonBack").EnterAnim()
 	#guarda cuál fue la última zona clikeada para que sea esta la que aparezca cuando se vuelva de algún minijuego
 	PlayerVariables.SaveLastState(self.name)
 	inZone.emit()

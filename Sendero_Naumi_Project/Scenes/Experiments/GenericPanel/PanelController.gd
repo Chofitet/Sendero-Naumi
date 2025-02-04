@@ -7,17 +7,20 @@ extends Panel
 
 @export var AppearInBeginning : bool
 @export var TimeToAppear : float
+@export var SetEnterOnce: bool
+var EnterOnce
 @onready var label = $label
 @onready var _BotonDerecho = $BtnDerAnchor/btnDer
 @onready var _BotonIzquierda = $btnIzqAnchor/btnIzq
 @onready var _BotonCentral = $btnCentralAnchor/btnCentral
 @onready var SkipButton = $ButtonSkipWritting
 var _btns =[]
-@export var characters_per_second : float = 45
+@export var characters_per_second : float = 78
 var BotonDerecho
 var BotonIzquierdo
 var BotonCentral
 var anim : AnimationPlayer 
+
 @export var Texts : Array[TextField] 
 
 @export var Instanciate : bool:
@@ -32,6 +35,7 @@ signal RigthBTNPress
 signal LeftBTNPress
 signal CenterBTNPress
 
+
 func refreshData(numPanel : int):
 	
 	DetectBoldText(numOfPanel)
@@ -45,23 +49,32 @@ func refreshData(numPanel : int):
 	BotonCentral = false
 	BotonIzquierdo = false
 	
-	label.text = Texts[numPanel -1].Text
+	var textData = Texts[numPanel -1]
 	
-	for btn in Texts[numPanel - 1].buttons:
+	label.text = textData.Text
+	if textData.SizePanel != Vector2.ZERO: 
+		var tween = get_tree().create_tween()
+		tween.tween_property(self,"size",textData.SizePanel,0.3)
+	
+	for btn in textData.buttons:
 		var _texture = btn.texture
+		var string = btn.label
 		if btn.Place ==  ButtonPanel.place.rigth:
 			_BotonDerecho.visible = inInEditor
 			$BtnDerAnchor/btnDer/Icon.texture = _texture
+			$BtnDerAnchor/btnDer/Icon/Label.text = string
 			BotonDerecho = true
 		
 		if btn.Place ==  ButtonPanel.place.center:
 			_BotonCentral.visible = inInEditor
-			$btnCentralAnchor/btnCentral/Icon.texture = _texture
+			$btnCentralAnchor/btnCentral/Icon/Label.texture = _texture
+			$btnCentralAnchor/btnCentral/Icon/Label.text = string
 			BotonCentral = true
 		
 		if btn.Place ==  ButtonPanel.place.left:
 			_BotonIzquierda.visible = inInEditor
 			$btnIzqAnchor/btnIzq/Icon.texture = _texture
+			$btnIzqAnchor/btnIzq/Icon/Label.text = string
 			BotonIzquierdo = true
 	
 	if Engine.is_editor_hint(): label.visible_ratio = true
@@ -102,6 +115,9 @@ func _ready():
 			child.ConnectSignal()
 
 func EnterPanel():
+	if SetEnterOnce:
+		if EnterOnce: return
+		EnterOnce = true
 	await  get_tree().create_timer(TimeToAppear).timeout
 	anim.play("enter_panel")
 	await anim.animation_finished
@@ -157,8 +173,10 @@ func ChangeToNextText():
 	anim.play("change_panel")
 	await anim.animation_finished
 	label.visible = true
-	refreshData(numOfPanel)
 	typingAnim()
+
+func RefreshToActualPanel():
+	refreshData(numOfPanel)
 
 func rigthBTNConnect():
 	await get_tree().create_timer(0.2).timeout

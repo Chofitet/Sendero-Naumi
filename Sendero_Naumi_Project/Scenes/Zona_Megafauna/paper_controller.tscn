@@ -1,8 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://bu70xltoq3ycs"]
+[gd_scene load_steps=9 format=3 uid="uid://bu70xltoq3ycs"]
 
 [ext_resource type="Texture2D" uid="uid://bu32wt8l3eyrh" path="res://Sprites/ZonaMegafauna/hoja - cerca.png" id="1_leavd"]
-[ext_resource type="Texture2D" uid="uid://b6ugtc435yq2f" path="res://Sprites/ZonaMegafauna/resultado - bien.png" id="2_63qyu"]
+[ext_resource type="Texture2D" uid="uid://c2ef8et3pewiy" path="res://Sprites/ZonaMegafauna/doodleMacrauquenia - foodtruck.png" id="2_lec1x"]
 [ext_resource type="PackedScene" uid="uid://nmuyip31gkq5" path="res://Scenes/UI_Scenes/generic_button.tscn" id="3_5lti1"]
+[ext_resource type="LabelSettings" uid="uid://ct2tih4ukmm36" path="res://Resources/UI_Resources/FoodtruckFonts/MacrauqueniaFont.tres" id="3_b7ojf"]
+[ext_resource type="StyleBox" uid="uid://b3tjes2hcm3wx" path="res://Resources/UI_Resources/StyleBoxTrasparent.tres" id="4_6rdpv"]
 
 [sub_resource type="Animation" id="Animation_mfn4p"]
 length = 0.001
@@ -86,34 +88,38 @@ scale = Vector2(0.701176, 0.701176)
 texture = ExtResource("1_leavd")
 
 [node name="result" type="Sprite2D" parent="pivot"]
-position = Vector2(243, -448)
+position = Vector2(225.006, -463.771)
 rotation = 0.371543
-scale = Vector2(0.361002, 0.361002)
-texture = ExtResource("2_63qyu")
+scale = Vector2(0.697744, 0.697744)
+texture = ExtResource("2_lec1x")
 
-[node name="txt" type="RichTextLabel" parent="pivot"]
+[node name="txt" type="Label" parent="pivot"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -284.0
-offset_top = -1069.0
-offset_right = 300.0
-offset_bottom = -477.0
+offset_left = -288.0
+offset_top = -1130.0
+offset_right = 325.0
+offset_bottom = -295.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/normal_font_size = 30
-theme_override_font_sizes/bold_font_size = 30
-bbcode_enabled = true
-text = "[b]A LOS MEGATERIOS NOS ENCANTA COMER HIERBAS!
+text = "ME VINO DE DIEZ LA 
+VEGGIE MERIENDA!
 
-Y LAS SOBRAS QUE DEJAN OTROS ANIMALES!
+CHE, GRACIAS POR NO PREGUNTAR 
+SI SOY UN CAMELLO :D
 
-NUESTRAS GARRAS SON SÓLO PARA DEFENDERNOS,
+SIEMPRE ME PREGUNTAN ESO :(
 
-SOMOS HERVIBOROS Y CARROÑEROS."
+PERO NADA QUE VER!
+NI PRIMOS SOMOS!!
+
+AHORA TENGO QUE IR A EXTINGUIRME,
+PERO DESPUÉS VUELVO"
+label_settings = ExtResource("3_b7ojf")
+autowrap_mode = 2
 
 [node name="Button" parent="pivot" instance=ExtResource("3_5lti1")]
 offset_top = -402.0
@@ -124,5 +130,22 @@ noSway = true
 libraries = {
 "": SubResource("AnimationLibrary_1i6yr")
 }
+
+[node name="ButtonAppearButton" type="Button" parent="."]
+visible = false
+layout_mode = 0
+offset_left = -498.0
+offset_top = -1374.0
+offset_right = 491.0
+offset_bottom = 163.0
+theme_override_styles/normal = ExtResource("4_6rdpv")
+theme_override_styles/hover = ExtResource("4_6rdpv")
+theme_override_styles/pressed = ExtResource("4_6rdpv")
+theme_override_styles/disabled = ExtResource("4_6rdpv")
+theme_override_styles/focus = ExtResource("4_6rdpv")
+flat = true
+
+[connection signal="pressed" from="ButtonAppearButton" to="pivot/Button" method="EnterAnim"]
+[connection signal="pressed" from="ButtonAppearButton" to="ButtonAppearButton" method="set_visible" binds= [false]]
 
 [editable path="pivot/Button"]

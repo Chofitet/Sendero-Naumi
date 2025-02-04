@@ -1,16 +1,15 @@
 extends State
 class_name NoZone
 @export var ButtonBack : SubViewportContainer
-@export var ButtonNaumi :  TextureRect
+@export var ButtonNaumi :  Button
 
 func _ready():
 	$Button.pressed.connect(_on_button_pressed)
 
 func Enter():
-	get_parent().get_node("ButtonBack").visible = false
 	PlayerVariables.lastState = self.name
 	ChangeButtonBackVisibility(false, ButtonBack)
-	ButtonNaumi.visible = true
+	ButtonNaumi.EnterAnim()
 
 func Exit():
 	ButtonNaumi.visible = false

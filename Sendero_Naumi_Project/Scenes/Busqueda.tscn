@@ -1203,6 +1203,7 @@ _data = {
 [sub_resource type="Resource" id="Resource_d3b6o"]
 script = ExtResource("29_gmr1k")
 Text = "¿A CUÁL TRIBUNA DEBE IR LA ZOISITA?"
+SizePanel = Vector2(0, 0)
 buttons = Array[ExtResource("27_ntp00")]([])
 
 [sub_resource type="Animation" id="Animation_ko7o5"]
@@ -1341,18 +1342,21 @@ _data = {
 [sub_resource type="Resource" id="Resource_6xi7f"]
 script = ExtResource("29_gmr1k")
 Text = "¿A CUÁL TRIBUNA DEBE IR LA HALITA?"
+SizePanel = Vector2(0, 0)
 buttons = Array[ExtResource("27_ntp00")]([])
 
 [sub_resource type="Resource" id="Resource_o7see"]
 script = ExtResource("29_gmr1k")
 Text = "¿A CUÁL TRIBUNA DEBE IR 
 EL ESPATO DE ISLANDIA?"
+SizePanel = Vector2(0, 0)
 buttons = Array[ExtResource("27_ntp00")]([])
 
 [sub_resource type="Resource" id="Resource_bncoi"]
 script = ExtResource("27_ntp00")
 Place = 1
 texture = ExtResource("12_71ymj")
+label = ""
 
 [sub_resource type="Resource" id="Resource_w63vb"]
 script = ExtResource("29_gmr1k")
@@ -1370,6 +1374,7 @@ ES UN GRUPO [b]PETROGÉNICO[/b],
 ES DECIR QUE
 [b]SON LOS MINERALES
 QUE FORMAN A LAS ROCAS[/b]"
+SizePanel = Vector2(0, 0)
 buttons = Array[ExtResource("27_ntp00")]([SubResource("Resource_bncoi")])
 
 [sub_resource type="Resource" id="Resource_i27h6"]
@@ -1381,6 +1386,7 @@ Place = 1
 script = ExtResource("27_ntp00")
 Place = 1
 texture = ExtResource("12_71ymj")
+label = ""
 
 [sub_resource type="Resource" id="Resource_dhi2j"]
 script = ExtResource("29_gmr1k")
@@ -1397,6 +1403,7 @@ Y MUCHOS SON SOLUBLES EN AGUA
 
 [b]LA MAYORÍA SON INCOLOROS[/b]
 [/center]"
+SizePanel = Vector2(0, 0)
 buttons = Array[ExtResource("27_ntp00")]([SubResource("Resource_vdwqr")])
 
 [sub_resource type="Resource" id="Resource_2w83k"]
@@ -1408,6 +1415,7 @@ Place = 1
 script = ExtResource("27_ntp00")
 Place = 1
 texture = ExtResource("12_71ymj")
+label = ""
 
 [sub_resource type="Resource" id="Resource_6fb35"]
 script = ExtResource("29_gmr1k")
@@ -1425,6 +1433,7 @@ DE LA CORTEZA TERRESTRE
 Y COLORES MUY DIVERSOS
 [b] SE DISUELVEN FACILMENTE[/b]
 EN AMBIENTES ACUOSOS ÁCIDOS [/center]"
+SizePanel = Vector2(0, 0)
 buttons = Array[ExtResource("27_ntp00")]([SubResource("Resource_h4dbo")])
 
 [sub_resource type="Resource" id="Resource_8u17p"]
@@ -1436,11 +1445,13 @@ Place = 1
 script = ExtResource("27_ntp00")
 Place = 1
 texture = ExtResource("28_4rotu")
+label = ""
 
 [sub_resource type="Resource" id="Resource_2g7md"]
 script = ExtResource("29_gmr1k")
 Text = "BUSCÁ PISTAS EN LA VITRINA
 PARA SABER DONDE VA CADA MINERAL"
+SizePanel = Vector2(0, 0)
 buttons = Array[ExtResource("27_ntp00")]([SubResource("Resource_c5efx")])
 
 [sub_resource type="Resource" id="Resource_4hrcy"]
@@ -1502,6 +1513,7 @@ animations = [{
 script = ExtResource("27_ntp00")
 Place = 0
 texture = ExtResource("12_71ymj")
+label = ""
 
 [sub_resource type="Resource" id="Resource_qibnl"]
 script = ExtResource("29_gmr1k")
@@ -1515,6 +1527,7 @@ LAS DISTINTAS FAMILIAS
 DE MINERALES?
 
 [/center]"
+SizePanel = Vector2(0, 0)
 buttons = Array[ExtResource("27_ntp00")]([SubResource("Resource_tsbe1")])
 
 [sub_resource type="Resource" id="Resource_ed0gt"]
@@ -6539,32 +6552,32 @@ Data = SubResource("Resource_ed0gt")
 [connection signal="timeout" from="StateMachine/Juego/Contenido/Instancia1/Consigna/Timer" to="StateMachine/Juego/Contenido/Instancia1/NubeController/AnimationPlayer" method="Play"]
 [connection signal="timeout" from="StateMachine/Juego/Contenido/Instancia1/Consigna/Timer" to="StateMachine/Juego/Contenido/Instancia1/NubeController2/AnimationPlayer" method="Play"]
 [connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia1/NubeController/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia1/NubeController/AnimationPlayer" method="Reset"]
-[connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia1/NubeController/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia1/Piedra_Busqueda" method="SetScale" binds= [false]]
 [connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia1/NubeController/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia1/Piedra_Busqueda" method="SetNextAnimBool" binds= [false]]
+[connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia1/NubeController/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia1/Piedra_Busqueda" method="SetScale" binds= [false]]
 [connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia1/NubeController/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia1/NubeController" method="Setvisivility" binds= [false]]
 [connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia1/NubeController2/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia1/NubeController2/AnimationPlayer" method="Reset"]
-[connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia1/NubeController2/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia1/Piedra_Busqueda" method="SetScale" binds= [true]]
 [connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia1/NubeController2/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia1/Piedra_Busqueda" method="SetNextAnimBool" binds= [true]]
+[connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia1/NubeController2/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia1/Piedra_Busqueda" method="SetScale" binds= [true]]
 [connection signal="EndOfGame" from="StateMachine/Juego/Contenido/Instancia2/Button" to="." method="Set_Complete"]
 [connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia2/Button" to="StateMachine/Juego/Contenido/Instancia2/Button" method="_on_pressed"]
 [connection signal="timeout" from="StateMachine/Juego/Contenido/Instancia2/Consigna/Timer" to="StateMachine/Juego/Contenido/Instancia2/NubeController/AnimationPlayer" method="Play"]
 [connection signal="timeout" from="StateMachine/Juego/Contenido/Instancia2/Consigna/Timer" to="StateMachine/Juego/Contenido/Instancia2/NubeController2/AnimationPlayer" method="Play"]
 [connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia2/NubeController/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia2/NubeController" method="Setvisivility"]
 [connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia2/NubeController/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia2/NubeController/AnimationPlayer" method="Reset"]
-[connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia2/NubeController/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia2/Piedra_Busqueda" method="SetScale" binds= [false]]
 [connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia2/NubeController/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia2/Piedra_Busqueda" method="SetNextAnimBool" binds= [false]]
+[connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia2/NubeController/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia2/Piedra_Busqueda" method="SetScale" binds= [false]]
 [connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia2/NubeController2/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia3/NubeController/AnimationPlayer" method="Reset"]
-[connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia2/NubeController2/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia2/Piedra_Busqueda" method="SetScale" binds= [true]]
 [connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia2/NubeController2/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia2/Piedra_Busqueda" method="SetNextAnimBool" binds= [true]]
+[connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia2/NubeController2/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia2/Piedra_Busqueda" method="SetScale" binds= [true]]
 [connection signal="EndOfGame" from="StateMachine/Juego/Contenido/Instancia3/Button" to="." method="Set_Complete"]
 [connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia3/Button" to="StateMachine/Juego/Contenido/Instancia3/Button" method="_on_pressed"]
 [connection signal="timeout" from="StateMachine/Juego/Contenido/Instancia3/Consigna/Timer" to="StateMachine/Juego/Contenido/Instancia3/NubeController/AnimationPlayer" method="Play"]
 [connection signal="timeout" from="StateMachine/Juego/Contenido/Instancia3/Consigna/Timer" to="StateMachine/Juego/Contenido/Instancia3/NubeController2/AnimationPlayer" method="Play"]
 [connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia3/NubeController/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia3/NubeController" method="Setvisivility"]
-[connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia3/NubeController/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia3/Piedra_Busqueda" method="SetScale" binds= [false]]
 [connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia3/NubeController/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia3/Piedra_Busqueda" method="SetNextAnimBool" binds= [false]]
-[connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia3/NubeController2/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia3/Piedra_Busqueda" method="SetScale" binds= [true]]
+[connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia3/NubeController/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia3/Piedra_Busqueda" method="SetScale" binds= [false]]
 [connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia3/NubeController2/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia3/Piedra_Busqueda" method="SetNextAnimBool" binds= [true]]
+[connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia3/NubeController2/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia3/Piedra_Busqueda" method="SetScale" binds= [true]]
 [connection signal="ButtonPress" from="StateMachine/Juego/Contenido/Moraleja/PanelMoraleja1/Panel(1) Btn(center)" to="StateMachine" method="Trigger_On_Child_Transition" binds= ["juego"]]
 [connection signal="ButtonPress" from="StateMachine/Juego/Contenido/Moraleja/PanelMoraleja2/Panel(1) Btn(center)" to="StateMachine" method="Trigger_On_Child_Transition" binds= ["juego"]]
 [connection signal="ButtonPress" from="StateMachine/Juego/Contenido/Moraleja/PanelMoraleja3/Panel(1) Btn(center)" to="." method="Set_Complete"]

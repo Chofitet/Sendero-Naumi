@@ -6,6 +6,7 @@ var minigameResourseFile = MiniGameResource.new()
 var Zoneresource = ZoneResource.new()
 var ActualState
 
+
 signal inZone
 signal backZone
 signal Transitioned
@@ -48,8 +49,9 @@ func RestartAll():
 	get_tree().change_scene_to_file("res://Scenes/ResetScreen.tscn")
 
 
-func ChangeButtonBackVisibility(x, button):
+func ChangeButtonBackVisibility(x, button, ):
 	if (button == null): return
+	
 	button.visible = x
 
 

@@ -1,11 +1,10 @@
-[gd_scene load_steps=174 format=3 uid="uid://b017ojh8vtsd6"]
+[gd_scene load_steps=179 format=3 uid="uid://b017ojh8vtsd6"]
 
 [ext_resource type="Script" path="res://_Scripts/Minigame_Save_Controller.gd" id="1_ouwf6"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/StateMachineMinigames.gd" id="2_5wf26"]
 [ext_resource type="Texture2D" uid="uid://nuybqhitpej1" path="res://Sprites/Mapa/fondo_mapa.png" id="2_06c4u"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/ConsignaState.gd" id="3_74cva"]
 [ext_resource type="Script" path="res://_Scripts/MiniG_DondeEstuvo/IntroControllerDondeEstuvo.gd" id="4_gu0u2"]
-[ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/Button_Change_StateMinigame.gd" id="4_j3ig5"]
 [ext_resource type="Texture2D" uid="uid://fm157t23p14m" path="res://Sprites/ZonaAstronomia/astronauta intrepido - donde.png" id="5_0i0tc"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/JuegoState.gd" id="5_8uhx2"]
 [ext_resource type="Script" path="res://_Scripts/MiniG_DondeEstuvo/Inventary.gd" id="6_5o457"]
@@ -24,7 +23,6 @@
 [ext_resource type="Texture2D" uid="uid://bp3qkeiuoh53m" path="res://Sprites/ZonaAstronomia/reloj - donde.png" id="14_2f6rp"]
 [ext_resource type="Texture2D" uid="uid://c63e52omky0ra" path="res://Sprites/ZonaAstronomia/globo - donde.png" id="14_i8rg6"]
 [ext_resource type="Theme" uid="uid://bhum72inirq1q" path="res://Themes/Generic_UI.tres" id="14_j3442"]
-[ext_resource type="Script" path="res://Scenes/GenericPanelController.gd" id="15_acmhj"]
 [ext_resource type="PackedScene" uid="uid://djhg7jvxtexyl" path="res://Scenes/UI_Scenes/btn_Change_Scene.tscn" id="15_jwaju"]
 [ext_resource type="Texture2D" uid="uid://dm5pff8fu54ls" path="res://Sprites/ZonaAstronomia/bota izq XL- donde.png" id="15_lqru8"]
 [ext_resource type="PackedScene" uid="uid://ccohf3i4e5i6n" path="res://Scenes/Zona_Astronomia/bota_particles.tscn" id="15_nrbr8"]
@@ -48,7 +46,6 @@
 [ext_resource type="Texture2D" uid="uid://d33hpx777rx06" path="res://Sprites/ZonaAstronomia/casco XL- donde.png" id="20_8hxtq"]
 [ext_resource type="PackedScene" uid="uid://d1jys63xrvxpo" path="res://Scenes/Experiments/GenericPanel/IntermediateSignal.tscn" id="20_q3u46"]
 [ext_resource type="Texture2D" uid="uid://b2wbskrgayrbh" path="res://Sprites/ZonaAstronomia/pantalon - donde.png" id="20_yoct4"]
-[ext_resource type="Script" path="res://Scenes/Experiments/GenericPanel/IntermediateSignalEmitter.gd" id="21_7ig5o"]
 [ext_resource type="Texture2D" uid="uid://clnk3ovgb26dq" path="res://Sprites/ZonaAstronomia/media - donde.png" id="21_rvd13"]
 [ext_resource type="Texture2D" uid="uid://bofomkeei7ymh" path="res://Sprites/ZonaAstronomia/pantalon XL- donde.png" id="22_cf257"]
 [ext_resource type="Script" path="res://Scenes/Experiments/GenericPanel/IntermediateData.gd" id="22_i5khy"]
@@ -79,7 +76,6 @@
 [ext_resource type="Script" path="res://_Scripts/CheckInstanceState.gd" id="54_u7brv"]
 [ext_resource type="Texture2D" uid="uid://bp0htfixseccf" path="res://Sprites/ZonaAstronomia/sol - donde.png" id="55_ucjwp"]
 [ext_resource type="Texture2D" uid="uid://wesa7e45yh2s" path="res://Sprites/ZonaAstronomia/luna - donde.png" id="56_7ph33"]
-[ext_resource type="StyleBox" uid="uid://dbir22cn0h3vc" path="res://Themes/LightBlueStyleBox.tres" id="56_xob8t"]
 [ext_resource type="Texture2D" uid="uid://dw7qxlr0arskr" path="res://Sprites/ZonaAstronomia/neptuno - donde.png" id="57_2milj"]
 [ext_resource type="Texture2D" uid="uid://c08d2yulq1gnu" path="res://Sprites/ZonaAstronomia/SquigglingDondeEstuvo/guante derSQUIG - donde.png" id="57_34w4g"]
 [ext_resource type="Shader" path="res://shaders/Laser.gdshader" id="57_dbv4y"]
@@ -93,7 +89,7 @@
 [ext_resource type="Texture2D" uid="uid://r3hlnu5wlyl3" path="res://Sprites/ZonaAstronomia/tierra - donde.png" id="72_0rl8r"]
 [ext_resource type="Texture2D" uid="uid://b74axmot14bj8" path="res://Sprites/ZonaAstronomia/jupiter - donde.png" id="74_2orhi"]
 [ext_resource type="Texture2D" uid="uid://lm8q60lp72dv" path="res://Sprites/ZonaAstronomia/urano - donde.png" id="75_h52fe"]
-[ext_resource type="LabelSettings" uid="uid://c8wu4hhqg284x" path="res://Resources/UI_Resources/Generic_Font.tres" id="82_631y2"]
+[ext_resource type="Script" path="res://Scenes/Experiments/GenericPanel/IntermediateSignalEmitter.gd" id="83_3pmfg"]
 
 [sub_resource type="Animation" id="Animation_567qw"]
 length = 0.001
@@ -178,6 +174,7 @@ fill_to = Vector2(0, 1)
 script = ExtResource("17_25bdu")
 Place = 0
 texture = ExtResource("18_3gknl")
+label = ""
 
 [sub_resource type="Resource" id="Resource_4jmx8"]
 script = ExtResource("19_5u4uq")
@@ -194,6 +191,7 @@ Place = 0
 script = ExtResource("17_25bdu")
 Place = 0
 texture = ExtResource("18_3gknl")
+label = ""
 
 [sub_resource type="Resource" id="Resource_abwqa"]
 script = ExtResource("19_5u4uq")
@@ -931,6 +929,7 @@ buttons = Array[ExtResource("17_25bdu")]([])
 script = ExtResource("17_25bdu")
 Place = 0
 texture = ExtResource("18_3gknl")
+label = ""
 
 [sub_resource type="Resource" id="Resource_spwmp"]
 script = ExtResource("19_5u4uq")
@@ -946,6 +945,7 @@ Place = 0
 script = ExtResource("17_25bdu")
 Place = 0
 texture = ExtResource("18_3gknl")
+label = ""
 
 [sub_resource type="Resource" id="Resource_pgadv"]
 script = ExtResource("19_5u4uq")
@@ -1162,10 +1162,76 @@ _data = {
 "planetEnter": SubResource("Animation_nhelu")
 }
 
+[sub_resource type="Resource" id="Resource_7dhir"]
+script = ExtResource("17_25bdu")
+Place = 0
+texture = ExtResource("18_3gknl")
+label = ""
+
+[sub_resource type="Resource" id="Resource_2f8m2"]
+script = ExtResource("19_5u4uq")
+Text = "APODADO “EL PLANETA ROJO”
+MARTE PARECE CÁLIDO 
+PERO ES MUY FRÍO.
+TIENE TORMENTAS DE TIERRA
+QUE PUEDEN DURAR MESES
+Y ENVOLVERLO POR COMPLETO
+UN DÍA EN MARTE DURA 37 MINUTOS MÁS QUE ACÁ"
+buttons = Array[ExtResource("17_25bdu")]([SubResource("Resource_7dhir")])
+
+[sub_resource type="Resource" id="Resource_j004g"]
+script = ExtResource("22_i5khy")
+NumberOfPanel = 1
+Place = 0
+
+[sub_resource type="Resource" id="Resource_lw670"]
+script = ExtResource("17_25bdu")
+Place = 0
+texture = ExtResource("18_3gknl")
+label = ""
+
+[sub_resource type="Resource" id="Resource_st847"]
+script = ExtResource("19_5u4uq")
+Text = "LA LUNA ES UN SATÉLITE
+CON UNA GRAVEDAD MUY DÉBIL,
+POR ESO LOS ASTRONAUTAS
+PARECEN REBOTAR EN ELLA Y LEVANTAN TANTO POLVO.
+HACE BILLONES DE AÑOS 
+UNA ROCA CHOCÓ CON LA
+TIERRA, FORMANDO LA LUNA."
+buttons = Array[ExtResource("17_25bdu")]([SubResource("Resource_lw670")])
+
+[sub_resource type="Resource" id="Resource_mr83w"]
+script = ExtResource("22_i5khy")
+NumberOfPanel = 1
+Place = 0
+
+[sub_resource type="Resource" id="Resource_xs5qs"]
+script = ExtResource("17_25bdu")
+Place = 0
+texture = ExtResource("18_3gknl")
+label = ""
+
+[sub_resource type="Resource" id="Resource_05oto"]
+script = ExtResource("19_5u4uq")
+Text = "SIENDO 400 VECES MÁS GRANDE QUE LA TIERRA Y CON -218 °C
+A URANO LE DICEN: 
+“EL GIGANTE DE HIELO”.
+UN AÑO ALLÍ DURA 84 AÑOS 
+EN LA TIERRA,
+¡PERO UN DÍA SOLO 17 HS!"
+buttons = Array[ExtResource("17_25bdu")]([SubResource("Resource_xs5qs")])
+
+[sub_resource type="Resource" id="Resource_i811h"]
+script = ExtResource("22_i5khy")
+NumberOfPanel = 1
+Place = 0
+
 [sub_resource type="Resource" id="Resource_s16ue"]
 script = ExtResource("17_25bdu")
 Place = 0
 texture = ExtResource("18_3gknl")
+label = ""
 
 [sub_resource type="Resource" id="Resource_37a5n"]
 script = ExtResource("19_5u4uq")
@@ -1179,6 +1245,7 @@ buttons = Array[ExtResource("17_25bdu")]([SubResource("Resource_s16ue")])
 script = ExtResource("17_25bdu")
 Place = 0
 texture = ExtResource("18_3gknl")
+label = ""
 
 [sub_resource type="Resource" id="Resource_n36gw"]
 script = ExtResource("19_5u4uq")
@@ -1393,8 +1460,7 @@ offset_bottom = 259.6
 TimeToAppear = 2.0
 Texts = Array[ExtResource("19_5u4uq")]([SubResource("Resource_4jmx8")])
 
-[node name="Panel(1) Btn(rigth)" type="Node" parent="DondeEstuvo/StateMachine/Consigna/Contenido/PanelIntro1" instance=ExtResource("20_q3u46")]
-script = ExtResource("21_7ig5o")
+[node name="Panel(1) Btn(rigth)" parent="DondeEstuvo/StateMachine/Consigna/Contenido/PanelIntro1" instance=ExtResource("20_q3u46")]
 Data = SubResource("Resource_r648i")
 
 [node name="PanelIntro2" parent="DondeEstuvo/StateMachine/Consigna/Contenido" instance=ExtResource("16_aupkq")]
@@ -1407,12 +1473,10 @@ offset_bottom = 114.2
 AppearInBeginning = false
 Texts = Array[ExtResource("19_5u4uq")]([SubResource("Resource_abwqa")])
 
-[node name="Panel(1) Btn(rigth)" type="Node" parent="DondeEstuvo/StateMachine/Consigna/Contenido/PanelIntro2" instance=ExtResource("20_q3u46")]
-script = ExtResource("21_7ig5o")
+[node name="Panel(1) Btn(rigth)" parent="DondeEstuvo/StateMachine/Consigna/Contenido/PanelIntro2" instance=ExtResource("20_q3u46")]
 Data = SubResource("Resource_jq650")
 
-[node name="Panel(1) Btn(rigth)2" type="Node" parent="DondeEstuvo/StateMachine/Consigna/Contenido/PanelIntro2" instance=ExtResource("20_q3u46")]
-script = ExtResource("21_7ig5o")
+[node name="Panel(1) Btn(rigth)2" parent="DondeEstuvo/StateMachine/Consigna/Contenido/PanelIntro2" instance=ExtResource("20_q3u46")]
 Data = SubResource("Resource_k0rkk")
 Delay = 1.5
 
@@ -2172,8 +2236,7 @@ offset_bottom = 113.4
 AppearInBeginning = false
 Texts = Array[ExtResource("19_5u4uq")]([SubResource("Resource_spwmp")])
 
-[node name="Panel(1) Btn(rigth)" type="Node" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/PanelConsigna" instance=ExtResource("20_q3u46")]
-script = ExtResource("21_7ig5o")
+[node name="Panel(1) Btn(rigth)" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/PanelConsigna" instance=ExtResource("20_q3u46")]
 Data = SubResource("Resource_bha62")
 
 [node name="Encontrado" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1" instance=ExtResource("16_aupkq")]
@@ -2184,8 +2247,7 @@ offset_bottom = 332.0
 AppearInBeginning = false
 Texts = Array[ExtResource("19_5u4uq")]([SubResource("Resource_pgadv")])
 
-[node name="Panel(1) Btn(rigth)" type="Node" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/Encontrado" instance=ExtResource("20_q3u46")]
-script = ExtResource("21_7ig5o")
+[node name="Panel(1) Btn(rigth)" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/Encontrado" instance=ExtResource("20_q3u46")]
 Data = SubResource("Resource_tqklr")
 
 [node name="Instancia2" type="Control" parent="DondeEstuvo/StateMachine/Juego/Contenido"]
@@ -2239,6 +2301,7 @@ offset_top = -111.0
 offset_right = 267.0
 offset_bottom = 112.0
 grow_vertical = 2
+pivot_offset = Vector2(267, 111.5)
 AppearInBeginning = false
 Texts = Array[ExtResource("19_5u4uq")]([SubResource("Resource_wl7ba")])
 
@@ -2569,196 +2632,83 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Panel" type="Panel" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/Panels"]
-visible = false
+[node name="PanelPivot3" type="Control" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/Panels"]
+z_index = 1
+anchors_preset = 0
+offset_top = 324.0
+offset_bottom = 324.0
+scale = Vector2(0.805, 0.805)
+
+[node name="Panel" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/Panels/PanelPivot3" instance=ExtResource("16_aupkq")]
+layout_mode = 1
+anchors_preset = 8
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -252.0
+offset_top = -186.0
+offset_right = 250.0
+offset_bottom = 196.0
+grow_vertical = 2
+AppearInBeginning = false
+Texts = Array[ExtResource("19_5u4uq")]([SubResource("Resource_2f8m2")])
+
+[node name="Panel(1) Btn(rigth)" type="Node" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/Panels/PanelPivot3/Panel" instance=ExtResource("20_q3u46")]
+script = ExtResource("83_3pmfg")
+Data = SubResource("Resource_j004g")
+
+[node name="PanelPivot2" type="Control" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/Panels"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.805, 0.805)
+
+[node name="Panel" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/Panels/PanelPivot2" instance=ExtResource("16_aupkq")]
 z_index = 1
 layout_mode = 1
 anchors_preset = 8
-anchor_left = 0.5
 anchor_top = 0.5
-anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -198.0
-offset_top = -154.0
-offset_right = 198.0
-offset_bottom = 154.0
-grow_horizontal = 2
+offset_left = -251.0
+offset_top = -191.0
+offset_right = 251.0
+offset_bottom = 191.0
 grow_vertical = 2
-theme_override_styles/panel = ExtResource("56_xob8t")
-script = ExtResource("15_acmhj")
-offBtnWithBtn = true
+pivot_offset = Vector2(256, 191)
+AppearInBeginning = false
+Texts = Array[ExtResource("19_5u4uq")]([SubResource("Resource_st847")])
 
-[node name="Label" type="Label" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/Panels/Panel"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -207.0
-offset_top = -137.0
-offset_right = 207.0
-offset_bottom = 137.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.925, 0.925)
-pivot_offset = Vector2(207, 137)
-theme_override_constants/line_spacing = 0
-theme_override_font_sizes/font_size = 21
-text = "LA LUNA ES UN SATÉLITE
-CON UNA GRAVEDAD MUY DÉBIL,
-POR ESO LOS ASTRONAUTAS
-PARECEN REBOTAR EN ELLA Y LEVANTAN TANTO POLVO.
-HACE BILLONES DE AÑOS 
-UNA ROCA CHOCÓ CON LA
-TIERRA, FORMANDO LA LUNA.
-"
-label_settings = ExtResource("82_631y2")
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 2
+[node name="Panel(1) Btn(rigth)" type="Node" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/Panels/PanelPivot2/Panel" instance=ExtResource("20_q3u46")]
+script = ExtResource("83_3pmfg")
+Data = SubResource("Resource_mr83w")
 
-[node name="Button" type="Button" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/Panels/Panel"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.938
-anchor_top = 0.961
-anchor_right = 0.938
-anchor_bottom = 0.961
-offset_left = -30.06
-offset_top = -23.988
-offset_right = 29.94
-offset_bottom = 36.012
-grow_horizontal = 0
-grow_vertical = 0
-theme = ExtResource("14_j3442")
-
-[node name="Panel2" type="Panel" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/Panels"]
-visible = false
+[node name="PanelPivot1" type="Control" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/Panels"]
 z_index = 1
+anchors_preset = 0
+offset_top = -335.0
+offset_bottom = -335.0
+scale = Vector2(0.805, 0.805)
+
+[node name="Panel" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/Panels/PanelPivot1" instance=ExtResource("16_aupkq")]
 layout_mode = 1
 anchors_preset = 8
-anchor_left = 0.5
 anchor_top = 0.5
-anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -185.0
-offset_top = -464.0
-offset_right = 185.0
-offset_bottom = -172.0
-grow_horizontal = 2
+offset_left = -246.0
+offset_top = -181.0
+offset_right = 256.0
+offset_bottom = 201.0
 grow_vertical = 2
-theme_override_styles/panel = ExtResource("56_xob8t")
-script = ExtResource("15_acmhj")
-offBtnWithBtn = true
+AppearInBeginning = false
+Texts = Array[ExtResource("19_5u4uq")]([SubResource("Resource_05oto")])
 
-[node name="Label" type="Label" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/Panels/Panel2"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -179.0
-offset_top = -137.0
-offset_right = 210.0
-offset_bottom = 154.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.925, 0.925)
-theme_override_constants/line_spacing = 0
-theme_override_font_sizes/font_size = 22
-text = "SIENDO 400 VECES MÁS GRANDE QUE LA TIERRA Y CON -218 °C
-A URANO LE DICEN: 
-“EL GIGANTE DE HIELO”.
-UN AÑO ALLÍ DURA 84 AÑOS 
-EN LA TIERRA,
-¡PERO UN DÍA SOLO 17 HS!"
-label_settings = ExtResource("82_631y2")
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 2
-
-[node name="Button" type="Button" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/Panels/Panel2"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.938
-anchor_top = 0.938
-anchor_right = 0.938
-anchor_bottom = 0.938
-offset_left = -30.06
-offset_top = -15.896
-offset_right = 29.94
-offset_bottom = 44.104
-grow_horizontal = 0
-grow_vertical = 0
-theme = ExtResource("14_j3442")
-
-[node name="Panel3" type="Panel" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/Panels"]
-visible = false
-z_index = 1
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -185.0
-offset_top = 176.0
-offset_right = 185.0
-offset_bottom = 484.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = ExtResource("56_xob8t")
-script = ExtResource("15_acmhj")
-offBtnWithBtn = true
-
-[node name="Label" type="Label" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/Panels/Panel3"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -183.0
-offset_top = -154.0
-offset_right = 213.0
-offset_bottom = 178.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.925, 0.925)
-theme_override_constants/line_spacing = 0
-theme_override_font_sizes/font_size = 22
-text = "APODADO “EL PLANETA ROJO”
-MARTE PARECE CÁLIDO 
-PERO ES MUY FRÍO.
-TIENE TORMENTAS DE TIERRA
-QUE PUEDEN DURAR MESES
-Y ENVOLVERLO POR COMPLETO
-UN DÍA EN MARTE DURA 37 MINUTOS MÁS QUE ACÁ"
-label_settings = ExtResource("82_631y2")
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 2
-
-[node name="Button" type="Button" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/Panels/Panel3" node_paths=PackedStringArray("state_to_change", "state_machine")]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.938
-anchor_top = 0.945
-anchor_right = 0.938
-anchor_bottom = 0.945
-offset_left = -30.06
-offset_top = -18.06
-offset_right = 29.94
-offset_bottom = 41.94
-grow_horizontal = 0
-grow_vertical = 0
-theme = ExtResource("14_j3442")
-script = ExtResource("4_j3ig5")
-state_to_change = NodePath("../../../../../../Fin")
-state_machine = NodePath("../../../../../..")
-isEndOfGame = true
+[node name="Panel(1) Btn(rigth)" type="Node" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/Panels/PanelPivot1/Panel" instance=ExtResource("20_q3u46")]
+script = ExtResource("83_3pmfg")
+Data = SubResource("Resource_i811h")
 
 [node name="btnVolver" parent="DondeEstuvo/StateMachine/Juego" instance=ExtResource("65_lsfn2")]
 
@@ -2954,12 +2904,12 @@ offset_left = -220.0
 offset_top = -124.0
 offset_right = 220.0
 offset_bottom = 128.0
+pivot_offset = Vector2(220, 126)
 AppearInBeginning = false
 TimeToAppear = 1.5
 Texts = Array[ExtResource("19_5u4uq")]([SubResource("Resource_37a5n"), SubResource("Resource_n36gw")])
 
-[node name="Panel(2) Btn(rigth)" type="Node" parent="DondeEstuvo/StateMachine/Fin/Contenido/center/PanelOutro" instance=ExtResource("20_q3u46")]
-script = ExtResource("21_7ig5o")
+[node name="Panel(2) Btn(rigth)" parent="DondeEstuvo/StateMachine/Fin/Contenido/center/PanelOutro" instance=ExtResource("20_q3u46")]
 Data = SubResource("Resource_82hdo")
 
 [connection signal="ButtonPress" from="DondeEstuvo/StateMachine/Consigna/Contenido/PanelIntro1/Panel(1) Btn(rigth)" to="DondeEstuvo/StateMachine/Consigna/Contenido/AnimationPlayer" method="PlayAnim" binds= ["open_Door"]]
@@ -2982,17 +2932,18 @@ Data = SubResource("Resource_82hdo")
 [connection signal="ButtonPress" from="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/PanelConsigna/Panel(1) Btn(rigth)" to="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/EnableInput" method="set_visible" binds= [false]]
 [connection signal="ButtonPress" from="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/Encontrado/Panel(1) Btn(rigth)" to="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/Inventary" method="PassStateTransition"]
 [connection signal="InstanceTrue" from="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2" to="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/pivotPlanets/AnimationPlayer" method="Play"]
+[connection signal="AllTrue" from="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/center/CheckTrue" to="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/consigna/PanelConsigna" method="ExitPanel"]
 [connection signal="AllTrue" from="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/center/CheckTrue" to="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/pivotPlanets/VBoxContainer2/SpotUnir" method="AnimToAling"]
 [connection signal="AllTrue" from="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/center/CheckTrue" to="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/pivotPlanets/VBoxContainer2/SpotUnir2" method="AnimToRigth"]
 [connection signal="AllTrue" from="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/center/CheckTrue" to="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/pivotPlanets/VBoxContainer2/SpotUnir3" method="AnimToRigth"]
 [connection signal="AllTrue" from="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/center/CheckTrue" to="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/pivotPlanets/VBoxContainer2/SpotUnir4" method="AnimToAling"]
 [connection signal="AllTrue" from="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/center/CheckTrue" to="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/pivotPlanets/VBoxContainer2/SpotUnir5" method="AnimToAling"]
-[connection signal="AllTrue" from="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/center/CheckTrue" to="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/consigna/PanelConsigna" method="ExitPanel"]
-[connection signal="PlanetsAling" from="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/pivotPlanets/VBoxContainer2/SpotUnir" to="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/Panels/Panel" method="SetVisibility" binds= [true]]
-[connection signal="pressed" from="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/Panels/Panel/Button" to="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/Panels/Panel2" method="SetVisibility" binds= [true]]
-[connection signal="pressed" from="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/Panels/Panel2/Button" to="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/Panels/Panel3" method="SetVisibility" binds= [true]]
-[connection signal="pressed" from="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/Panels/Panel3/Button" to="DondeEstuvo" method="Set_Complete"]
-[connection signal="pressed" from="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/Panels/Panel3/Button" to="DondeEstuvo/StateMachine/Fin/Contenido/center/PanelOutro" method="EnterPanel"]
+[connection signal="PlanetsAling" from="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/pivotPlanets/VBoxContainer2/SpotUnir" to="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/Panels/PanelPivot1/Panel" method="EnterPanel"]
+[connection signal="ButtonPress" from="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/Panels/PanelPivot3/Panel/Panel(1) Btn(rigth)" to="DondeEstuvo" method="Set_Complete"]
+[connection signal="ButtonPress" from="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/Panels/PanelPivot3/Panel/Panel(1) Btn(rigth)" to="DondeEstuvo/StateMachine/Fin/Contenido/center/PanelOutro" method="EnterPanel"]
+[connection signal="ButtonPress" from="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/Panels/PanelPivot3/Panel/Panel(1) Btn(rigth)" to="DondeEstuvo/StateMachine" method="Trigger_On_Child_Transition" binds= ["fin"]]
+[connection signal="ButtonPress" from="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/Panels/PanelPivot2/Panel/Panel(1) Btn(rigth)" to="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/Panels/PanelPivot3/Panel" method="EnterPanel"]
+[connection signal="ButtonPress" from="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/Panels/PanelPivot1/Panel/Panel(1) Btn(rigth)" to="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/Panels/PanelPivot2/Panel" method="EnterPanel"]
 [connection signal="pressed" from="DondeEstuvo/StateMachine/Fin/Contenido/TextureRect/ButtonChangeScene" to="DondeEstuvo" method="Set_Complete"]
 [connection signal="ButtonPress" from="DondeEstuvo/StateMachine/Fin/Contenido/center/PanelOutro/Panel(2) Btn(rigth)" to="DondeEstuvo" method="Set_Complete"]
 [connection signal="ButtonPress" from="DondeEstuvo/StateMachine/Fin/Contenido/center/PanelOutro/Panel(2) Btn(rigth)" to="DondeEstuvo/StateMachine/Fin/Contenido/TextureRect/ButtonChangeScene" method="_on_pressed"]

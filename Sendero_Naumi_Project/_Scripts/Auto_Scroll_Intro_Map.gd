@@ -3,6 +3,7 @@ var view_port_size_x
 var view_port_size_y
 @export var scrollDuration : float
 @export var LastMarginConteiner : MarginContainer
+@export var PanelIntro1 : Panel
 var once1 
 var once2
 var once3
@@ -26,17 +27,13 @@ func ScrollScreen():
 func _process(delta):
 	if position.y <= (-view_port_size_y + (view_port_size_y/4)) && !once1:
 		once1 = true
-		ControlLabel("[center]VAYA...
-¡PARECE QUE HAS ENCONTRADO ALGO ESPECIAL![/center]", false,5.5)
+		PanelIntro1.EnterPanel()
 	if  position.y <= (-view_port_size_y - 1200) && !once2:
 		once2 = true
-		ControlLabel("[center]ESTO ES [b]SENDERO NAUMI[/b]
-UNA NUEVA FORMA DE RECORRER EL MUSEO[/center]",false,7.5)
+		PanelIntro1.ChangeToNextText()
 	if position.y <= (-view_port_size_y - 3000) && !once3:
 		once3 = true
-		ControlLabel("[center]CUANDO ENCUENTRES
-ALGUNO DE ESTOS LUGARES EN EL MUSEO
-APRETALO EN EL MAPA PARA EMPEZAR A JUGAR[/center]",true,10000)
+		PanelIntro1.ChangeToNextText()
 		
 	
 func ControlLabel(txt,adjust,time):

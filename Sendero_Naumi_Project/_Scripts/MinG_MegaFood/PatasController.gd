@@ -5,6 +5,7 @@ var animalsArray : =[]
 @onready var timer = $Timer
 @onready var CommandText = $TextoPedido
 @onready var pataSuelta = $pivot/PataSuelta
+@onready var buttonTouchAnimal = $pivot/Button
 @export var SpritesPatasDer : =[]
 var isInGame
 var AnimResultFinish = false
@@ -18,6 +19,7 @@ func _ready():
 	for f in get_parent().get_node("HBoxContainer").get_children():
 		f.get_node("DragObject").isDraggin.connect(StopCallAnim.bind(true))
 	get_parent().get_node("HBoxContainer").RealeaseDragObject.connect(StopCallAnim.bind(false))
+	buttonTouchAnimal.pressed.connect(PlayCallAnim)
 
 func SetAnimalInstance(x):
 	inx_animal = x
@@ -36,6 +38,7 @@ func SetAnimalInstance(x):
 	$pivot/bandeja.visible = true
 
 func PlayEnterAnim():
+	buttonTouchAnimal.visible = false
 	timer.timeout.connect(PlayCallAnim)
 	timer.start()
 	animalsArray[inx_animal].play("idle")
@@ -43,6 +46,7 @@ func PlayEnterAnim():
 
 func PlayCallAnim():
 	if stopCall: return
+	buttonTouchAnimal.visible = false
 	animalsArray[inx_animal].play("call")
 	timer.wait_time = randf_range(4.5,5)
 	timer.stop()
@@ -52,6 +56,7 @@ func StopCallAnim(x):
 
 func PlayOutAnim():
 	if !isInGame : return
+	buttonTouchAnimal.visible = false
 	animalsArray[inx_animal].play("idle")
 	timer.timeout.disconnect(PlayCallAnim)
 	anim.play_backwards("enterAnim")
@@ -61,10 +66,12 @@ func PlayOutAnim():
 	ResultAnim()
 
 func BackToIdle():
+	buttonTouchAnimal.visible = true
 	animalsArray[inx_animal].play("idle")
 	timer.start()
 
 func WrongAns():
+	buttonTouchAnimal.visible = false
 	pataSuelta.visible = true
 	animalsArray[inx_animal].self_modulate = Color(0,0,0,0)
 	animalsArray[inx_animal].get_node("pata").visible = true
@@ -122,7 +129,8 @@ func CommandAppear():
 		
 	
 func SetCommand(order : float, animal : String, istutorial = false):
-	CommandText.get_node("label").text = "SIGUIENTE! " + animal.to_upper() + "!"
+	CommandText.get_node("label").text = "SIGUIENTE! 
+	" + animal.to_upper() + "!"
 	await get_tree().create_timer(3).timeout
 	CommandText.ExitPanel()
 	PlayEnterAnim()

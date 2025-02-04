@@ -1,4 +1,4 @@
-[gd_scene load_steps=79 format=3 uid="uid://c8i2bn43d2ke0"]
+[gd_scene load_steps=78 format=3 uid="uid://c8i2bn43d2ke0"]
 
 [ext_resource type="Script" path="res://_Scripts/Minigame_Save_Controller.gd" id="1_8wifm"]
 [ext_resource type="Texture2D" uid="uid://nuybqhitpej1" path="res://Sprites/Mapa/fondo_mapa.png" id="2_feayv"]
@@ -45,7 +45,6 @@
 [ext_resource type="Script" path="res://Scenes/Experiments/GenericPanel/ButtonPanelData.gd" id="35_875yy"]
 [ext_resource type="PackedScene" uid="uid://d1jys63xrvxpo" path="res://Scenes/Experiments/GenericPanel/IntermediateSignal.tscn" id="36_7mbwy"]
 [ext_resource type="Texture2D" uid="uid://c2p5torstrtqm" path="res://Sprites/UI/checkIcon - UI.png" id="36_rkq1v"]
-[ext_resource type="Script" path="res://Scenes/Experiments/GenericPanel/IntermediateSignalEmitter.gd" id="37_65xmn"]
 [ext_resource type="Script" path="res://Scenes/Experiments/GenericPanel/TextFieldData.gd" id="37_m4uql"]
 [ext_resource type="Script" path="res://Scenes/Experiments/GenericPanel/IntermediateData.gd" id="38_188ia"]
 [ext_resource type="SpriteFrames" uid="uid://bvixt5dbp1fob" path="res://Resources/mamushkasAnimatedEmotions/mamushka_Nucleo_Interno_anim.tres" id="39_eke6s"]
@@ -244,10 +243,12 @@ _data = {
 script = ExtResource("35_875yy")
 Place = 0
 texture = ExtResource("36_rkq1v")
+label = ""
 
 [sub_resource type="Resource" id="Resource_fj3qn"]
 script = ExtResource("37_m4uql")
 Text = "LA TIERRA ESTÁ COMPUESTA POR VARIAS CAPAS"
+SizePanel = Vector2(0, 0)
 buttons = Array[ExtResource("35_875yy")]([SubResource("Resource_87imy")])
 
 [sub_resource type="Resource" id="Resource_oh2lj"]
@@ -259,11 +260,13 @@ Place = 0
 script = ExtResource("35_875yy")
 Place = 0
 texture = ExtResource("36_rkq1v")
+label = ""
 
 [sub_resource type="Resource" id="Resource_suyxt"]
 script = ExtResource("37_m4uql")
 Text = "5000 KM DENTRO Y GIRANDO A OTRA VELOCIDAD
 ESTÁ EL NÚCLEO INTERNO"
+SizePanel = Vector2(0, 0)
 buttons = Array[ExtResource("35_875yy")]([SubResource("Resource_62sg5")])
 
 [sub_resource type="Resource" id="Resource_8bjah"]
@@ -275,10 +278,12 @@ Place = 0
 script = ExtResource("35_875yy")
 Place = 0
 texture = ExtResource("36_rkq1v")
+label = ""
 
 [sub_resource type="Resource" id="Resource_fshby"]
 script = ExtResource("37_m4uql")
 Text = "SI IMAGINAMOS LAS CAPAS COMO MAMUSHKAS"
+SizePanel = Vector2(0, 0)
 buttons = Array[ExtResource("35_875yy")]([SubResource("Resource_yx1ha")])
 
 [sub_resource type="Resource" id="Resource_lr8vc"]
@@ -290,11 +295,13 @@ Place = 0
 script = ExtResource("35_875yy")
 Place = 0
 texture = ExtResource("36_rkq1v")
+label = ""
 
 [sub_resource type="Resource" id="Resource_e0isu"]
 script = ExtResource("37_m4uql")
 Text = "DE MENOR A MAYOR
 ¿EN QUÉ ORDEN TE PARECE QUE VAN?"
+SizePanel = Vector2(0, 0)
 buttons = Array[ExtResource("35_875yy")]([SubResource("Resource_wh0xv")])
 
 [sub_resource type="Resource" id="Resource_8oe0x"]
@@ -482,22 +489,26 @@ _data = {
 script = ExtResource("35_875yy")
 Place = 0
 texture = ExtResource("36_rkq1v")
+label = ""
 
 [sub_resource type="Resource" id="Resource_akuin"]
 script = ExtResource("37_m4uql")
 Text = "LA TIERRA TIENE MÁS DE
 6 MIL KM DE PROFUNDIDAD
 Y MÁS DE 12 MIL KM DE DIÁMETRO"
+SizePanel = Vector2(0, 0)
 buttons = Array[ExtResource("35_875yy")]([SubResource("Resource_qcaun")])
 
 [sub_resource type="Resource" id="Resource_cvg2o"]
 script = ExtResource("35_875yy")
 Place = 0
 texture = ExtResource("36_rkq1v")
+label = ""
 
 [sub_resource type="Resource" id="Resource_hf8th"]
 script = ExtResource("37_m4uql")
 Text = "¿CUÁNTO PENSÁS RECORRER?"
+SizePanel = Vector2(0, 0)
 buttons = Array[ExtResource("35_875yy")]([SubResource("Resource_cvg2o")])
 
 [sub_resource type="Resource" id="Resource_rw5tw"]
@@ -789,10 +800,10 @@ layout_mode = 1
 offset_top = 45.0
 offset_bottom = 273.0
 AppearInBeginning = false
+characters_per_second = 45.0
 Texts = Array[ExtResource("37_m4uql")]([SubResource("Resource_fj3qn")])
 
-[node name="Panel(1) Btn(rigth)" type="Node" parent="Mamushkas/StateMachine/Consigna/Contenido/Intro/PanelIntro1" instance=ExtResource("36_7mbwy")]
-script = ExtResource("37_65xmn")
+[node name="Panel(1) Btn(rigth)" parent="Mamushkas/StateMachine/Consigna/Contenido/Intro/PanelIntro1" instance=ExtResource("36_7mbwy")]
 Data = SubResource("Resource_oh2lj")
 
 [node name="PanelIntro2" parent="Mamushkas/StateMachine/Consigna/Contenido/Intro" instance=ExtResource("34_rfy62")]
@@ -800,10 +811,10 @@ layout_mode = 1
 offset_top = 45.0
 offset_bottom = 273.0
 AppearInBeginning = false
+characters_per_second = 45.0
 Texts = Array[ExtResource("37_m4uql")]([SubResource("Resource_suyxt")])
 
-[node name="Panel(1) Btn(rigth)" type="Node" parent="Mamushkas/StateMachine/Consigna/Contenido/Intro/PanelIntro2" instance=ExtResource("36_7mbwy")]
-script = ExtResource("37_65xmn")
+[node name="Panel(1) Btn(rigth)" parent="Mamushkas/StateMachine/Consigna/Contenido/Intro/PanelIntro2" instance=ExtResource("36_7mbwy")]
 Data = SubResource("Resource_8bjah")
 
 [node name="PanelIntro3" parent="Mamushkas/StateMachine/Consigna/Contenido/Intro" instance=ExtResource("34_rfy62")]
@@ -811,10 +822,10 @@ layout_mode = 1
 offset_top = 45.0
 offset_bottom = 273.0
 AppearInBeginning = false
+characters_per_second = 45.0
 Texts = Array[ExtResource("37_m4uql")]([SubResource("Resource_fshby")])
 
-[node name="Panel(1) Btn(rigth)" type="Node" parent="Mamushkas/StateMachine/Consigna/Contenido/Intro/PanelIntro3" instance=ExtResource("36_7mbwy")]
-script = ExtResource("37_65xmn")
+[node name="Panel(1) Btn(rigth)" parent="Mamushkas/StateMachine/Consigna/Contenido/Intro/PanelIntro3" instance=ExtResource("36_7mbwy")]
 Data = SubResource("Resource_lr8vc")
 
 [node name="PanelIntro4" parent="Mamushkas/StateMachine/Consigna/Contenido/Intro" instance=ExtResource("34_rfy62")]
@@ -824,11 +835,12 @@ anchor_top = 0.267
 anchor_bottom = 0.267
 offset_top = 80.24
 offset_bottom = 308.24
+pivot_offset = Vector2(326, 114)
 AppearInBeginning = false
+characters_per_second = 45.0
 Texts = Array[ExtResource("37_m4uql")]([SubResource("Resource_e0isu")])
 
-[node name="Panel(1) Btn(rigth)" type="Node" parent="Mamushkas/StateMachine/Consigna/Contenido/Intro/PanelIntro4" instance=ExtResource("36_7mbwy")]
-script = ExtResource("37_65xmn")
+[node name="Panel(1) Btn(rigth)" parent="Mamushkas/StateMachine/Consigna/Contenido/Intro/PanelIntro4" instance=ExtResource("36_7mbwy")]
 Data = SubResource("Resource_8oe0x")
 
 [node name="Juego" type="Node" parent="Mamushkas/StateMachine" node_paths=PackedStringArray("NextState", "StateMachine")]
@@ -1193,15 +1205,15 @@ anchor_top = 0.212
 anchor_bottom = 0.212
 offset_top = -114.36
 offset_bottom = 113.64
+pivot_offset = Vector2(326, 114)
 AppearInBeginning = false
+characters_per_second = 45.0
 Texts = Array[ExtResource("37_m4uql")]([SubResource("Resource_akuin"), SubResource("Resource_hf8th")])
 
-[node name="Panel(1) Btn(rigth)" type="Node" parent="Mamushkas/StateMachine/Juego/Contenido/Instancia1/Outro/PanelOutro" instance=ExtResource("36_7mbwy")]
-script = ExtResource("37_65xmn")
+[node name="Panel(1) Btn(rigth)" parent="Mamushkas/StateMachine/Juego/Contenido/Instancia1/Outro/PanelOutro" instance=ExtResource("36_7mbwy")]
 Data = SubResource("Resource_rw5tw")
 
-[node name="Panel(2) Btn(rigth)" type="Node" parent="Mamushkas/StateMachine/Juego/Contenido/Instancia1/Outro/PanelOutro" instance=ExtResource("36_7mbwy")]
-script = ExtResource("37_65xmn")
+[node name="Panel(2) Btn(rigth)" parent="Mamushkas/StateMachine/Juego/Contenido/Instancia1/Outro/PanelOutro" instance=ExtResource("36_7mbwy")]
 Data = SubResource("Resource_ub5i3")
 
 [node name="btnVolver" parent="Mamushkas/StateMachine/Juego" instance=ExtResource("27_e3ccu")]

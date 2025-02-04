@@ -72,15 +72,18 @@ func _on_button_pressed():
 		PlaceInSpot()
 		
 
-func PlaceInRightSpot():
+func PlaceInRightSpot(forceSpot = false):
 	CheckRightSpot()
+	if forceSpot : is_in_spot = true
 	if (is_in_spot):
 		object_realese_Rigth_Place.emit()
-		if DesapearInPlace: 
-			object.visible = false
 		var tween = get_tree().create_tween()
 		tween = tween.tween_property(object, "global_position",spot.global_position,0.1).set_ease(Tween.EASE_OUT)
 		isInPosition = true
+		await  tween.finished
+		spot.CheckAnswer()
+		if DesapearInPlace: 
+			object.visible = false
 	else:
 		object_realese_Wrong_Place.emit()
 		CancelDrag()
