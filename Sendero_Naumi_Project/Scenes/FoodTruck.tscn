@@ -1051,9 +1051,69 @@ offset_left = -0.160004
 offset_right = -0.160004
 grow_horizontal = 1
 
-[node name="label" parent="FoodTruck/StateMachine/Juego/Contenido/PatasController/TextoPedido" index="0"]
-text = "En fila por favor"
-label_settings = ExtResource("25_agxub")
+[node name="Icon" parent="FoodTruck/StateMachine/Juego/Contenido/PatasController/TextoPedido/BtnDerAnchor/btnDer" index="0"]
+offset_left = -22.0
+offset_top = -22.0
+offset_right = 22.0
+offset_bottom = 22.0
+
+[node name="Icon" parent="FoodTruck/StateMachine/Juego/Contenido/PatasController/TextoPedido/btnIzqAnchor/btnIzq" index="0"]
+offset_left = -22.0
+offset_top = -22.0
+offset_right = 22.0
+offset_bottom = 22.0
+
+[node name="Icon" parent="FoodTruck/StateMachine/Juego/Contenido/PatasController/TextoPedido/btnCentralAnchor/btnCentral" index="0"]
+offset_right = -23.0
+offset_bottom = -23.0
+
+[node name="Icon" parent="FoodTruck/StateMachine/Juego/Contenido/PatasController/PedidoGliptodonte/BtnDerAnchor/btnDer" index="0"]
+offset_left = -22.0
+offset_top = -22.0
+offset_right = 22.0
+offset_bottom = 22.0
+
+[node name="Icon" parent="FoodTruck/StateMachine/Juego/Contenido/PatasController/PedidoGliptodonte/btnIzqAnchor/btnIzq" index="0"]
+offset_left = -22.0
+offset_top = -22.0
+offset_right = 22.0
+offset_bottom = 22.0
+
+[node name="Icon" parent="FoodTruck/StateMachine/Juego/Contenido/PatasController/PedidoGliptodonte/btnCentralAnchor/btnCentral" index="0"]
+offset_right = -23.0
+offset_bottom = -23.0
+
+[node name="Icon" parent="FoodTruck/StateMachine/Juego/Contenido/PatasController/PedidoMegaterio/BtnDerAnchor/btnDer" index="0"]
+offset_left = -22.0
+offset_top = -22.0
+offset_right = 22.0
+offset_bottom = 22.0
+
+[node name="Icon" parent="FoodTruck/StateMachine/Juego/Contenido/PatasController/PedidoMegaterio/btnIzqAnchor/btnIzq" index="0"]
+offset_left = -22.0
+offset_top = -22.0
+offset_right = 22.0
+offset_bottom = 22.0
+
+[node name="Icon" parent="FoodTruck/StateMachine/Juego/Contenido/PatasController/PedidoMegaterio/btnCentralAnchor/btnCentral" index="0"]
+offset_right = -23.0
+offset_bottom = -23.0
+
+[node name="Icon" parent="FoodTruck/StateMachine/Juego/Contenido/PatasController/PedidoMacrauquenia/BtnDerAnchor/btnDer" index="0"]
+offset_left = -22.0
+offset_top = -22.0
+offset_right = 22.0
+offset_bottom = 22.0
+
+[node name="Icon" parent="FoodTruck/StateMachine/Juego/Contenido/PatasController/PedidoMacrauquenia/btnIzqAnchor/btnIzq" index="0"]
+offset_left = -22.0
+offset_top = -22.0
+offset_right = 22.0
+offset_bottom = 22.0
+
+[node name="Icon" parent="FoodTruck/StateMachine/Juego/Contenido/PatasController/PedidoMacrauquenia/btnCentralAnchor/btnCentral" index="0"]
+offset_right = -23.0
+offset_bottom = -23.0
 
 [node name="Tutorial" type="Control" parent="FoodTruck/StateMachine/Juego/Contenido" node_paths=PackedStringArray("JuegoState", "StateMachine")]
 layout_mode = 1
@@ -1237,10 +1297,24 @@ offset_bottom = 0.0119934
 visible = true
 
 [node name="Icon" parent="FoodTruck/StateMachine/Juego/Contenido/FinalPanel/BtnDerAnchor/btnDer" index="0"]
+offset_left = -22.0
+offset_top = -22.0
+offset_right = 22.0
+offset_bottom = 22.0
 texture = ExtResource("15_x6a0g")
 
 [node name="Label" parent="FoodTruck/StateMachine/Juego/Contenido/FinalPanel/BtnDerAnchor/btnDer/Icon" index="0"]
 text = ""
+
+[node name="Icon" parent="FoodTruck/StateMachine/Juego/Contenido/FinalPanel/btnIzqAnchor/btnIzq" index="0"]
+offset_left = -22.0
+offset_top = -22.0
+offset_right = 22.0
+offset_bottom = 22.0
+
+[node name="Icon" parent="FoodTruck/StateMachine/Juego/Contenido/FinalPanel/btnCentralAnchor/btnCentral" index="0"]
+offset_right = -23.0
+offset_bottom = -23.0
 
 [node name="Panel(1) Btn(rigth)" parent="FoodTruck/StateMachine/Juego/Contenido/FinalPanel" instance=ExtResource("17_6stp3")]
 Data = SubResource("Resource_hb5v7")
@@ -1923,6 +1997,7 @@ animation = "recomendation"
 [connection signal="StartComand" from="FoodTruck/StateMachine/Juego/Contenido/PatasController" to="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer/food4/SquigglingSprite" method="InactiveSquiggling"]
 [connection signal="StartComand" from="FoodTruck/StateMachine/Juego/Contenido/PatasController" to="FoodTruck/StateMachine/Juego/Contenido/BlockScreen" method="SetVisibility" binds= [true]]
 [connection signal="StartTutorial" from="FoodTruck/StateMachine/Juego/Contenido/PatasController" to="FoodTruck/StateMachine/Juego/Contenido/Tutorial" method="CheckInTutorial"]
+[connection signal="InTutorial" from="FoodTruck/StateMachine/Juego/Contenido/Tutorial" to="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer" method="SetTutorial" binds= [true]]
 [connection signal="OnSpot" from="FoodTruck/StateMachine/Juego/Contenido/AnchorSpot/Spot" to="FoodTruck/StateMachine/Juego/Contenido/PatasController" method="AddPlateAtPivot"]
 [connection signal="OnSpot" from="FoodTruck/StateMachine/Juego/Contenido/AnchorSpot/Spot" to="FoodTruck/StateMachine/Juego/Contenido/Tutorial" method="OnSpot"]
 [connection signal="OnSpot" from="FoodTruck/StateMachine/Juego/Contenido/AnchorSpot/Spot" to="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer" method="SetPlate"]
@@ -1979,6 +2054,15 @@ animation = "recomendation"
 [editable path="FoodTruck/StateMachine/Juego/Contenido/PatasController/TextoPedido"]
 [editable path="FoodTruck/StateMachine/Juego/Contenido/PatasController/TextoPedido/btnIzqAnchor/btnIzq/SquigglingSprite"]
 [editable path="FoodTruck/StateMachine/Juego/Contenido/PatasController/TextoPedido/btnCentralAnchor/btnCentral/SquigglingSprite"]
+[editable path="FoodTruck/StateMachine/Juego/Contenido/PatasController/PedidoGliptodonte"]
+[editable path="FoodTruck/StateMachine/Juego/Contenido/PatasController/PedidoGliptodonte/btnIzqAnchor/btnIzq/SquigglingSprite"]
+[editable path="FoodTruck/StateMachine/Juego/Contenido/PatasController/PedidoGliptodonte/btnCentralAnchor/btnCentral/SquigglingSprite"]
+[editable path="FoodTruck/StateMachine/Juego/Contenido/PatasController/PedidoMegaterio"]
+[editable path="FoodTruck/StateMachine/Juego/Contenido/PatasController/PedidoMegaterio/btnIzqAnchor/btnIzq/SquigglingSprite"]
+[editable path="FoodTruck/StateMachine/Juego/Contenido/PatasController/PedidoMegaterio/btnCentralAnchor/btnCentral/SquigglingSprite"]
+[editable path="FoodTruck/StateMachine/Juego/Contenido/PatasController/PedidoMacrauquenia"]
+[editable path="FoodTruck/StateMachine/Juego/Contenido/PatasController/PedidoMacrauquenia/btnIzqAnchor/btnIzq/SquigglingSprite"]
+[editable path="FoodTruck/StateMachine/Juego/Contenido/PatasController/PedidoMacrauquenia/btnCentralAnchor/btnCentral/SquigglingSprite"]
 [editable path="FoodTruck/StateMachine/Juego/Contenido/FinalPanel"]
 [editable path="FoodTruck/StateMachine/Juego/Contenido/FinalPanel/btnIzqAnchor/btnIzq/SquigglingSprite"]
 [editable path="FoodTruck/StateMachine/Juego/Contenido/FinalPanel/btnCentralAnchor/btnCentral/SquigglingSprite"]

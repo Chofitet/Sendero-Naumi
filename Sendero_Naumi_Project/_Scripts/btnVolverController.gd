@@ -28,4 +28,5 @@ func AppearMenu():
 		get_tree().paused = false
 
 func Mapa():
+	btnMapa.self_modulate = Color.GRAY
 	get_tree().paused = false

@@ -9,12 +9,14 @@ extends Control
 signal EndTutorial
 var isInTutorial
 var OnceSwipe
+signal InTutorial
 
 func CheckInTutorial():
 	if get_parent().get_node("Instancia1").visible == true:
 		isInTutorial = true
 		HboxConteiner.LockUnklockGragObjects(false)
 		DeslizaPlatosUI.EnterPanel()
+		InTutorial.emit()
 	else:
 		isInTutorial = false
 		DeslizaPlatosUI.visible = false
