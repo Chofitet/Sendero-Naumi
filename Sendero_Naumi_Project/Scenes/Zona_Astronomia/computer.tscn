@@ -1,9 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://bfoprt6qtltqf"]
+[gd_scene load_steps=12 format=3 uid="uid://bfoprt6qtltqf"]
 
 [ext_resource type="Material" uid="uid://cor0lrtroo02k" path="res://shaders/LigthMaterial.tres" id="1_shtd5"]
 [ext_resource type="Script" path="res://_Scripts/MinG_Astronauta/ComputerController.gd" id="2_j6wgk"]
 [ext_resource type="Texture2D" uid="uid://d1lja7q5n60qg" path="res://Sprites/ZonaAstronomia/pantalla frente - astronauta.png" id="3_l06k5"]
-[ext_resource type="SpriteFrames" uid="uid://hdfufos3dte6" path="res://Resources/PC_Face_Astronauta/PC_Front.tres" id="4_g7nvs"]
+[ext_resource type="SpriteFrames" uid="uid://bhldymkg25e6g" path="res://Resources/PC_Face_Astronauta/PC_perspective.tres" id="4_e7mxr"]
 
 [sub_resource type="Animation" id="Animation_yyi4k"]
 length = 0.001
@@ -109,7 +109,7 @@ tracks/3/keys = {
 
 [sub_resource type="Animation" id="Animation_3tpop"]
 resource_name = "on_screen"
-length = 1.9
+length = 2.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -153,7 +153,7 @@ tracks/3/path = NodePath("../faceAnim:animation")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 1.6, 1.9),
+"times": PackedFloat32Array(0, 1.6, 2.2),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [&"none", &"idle", &"talk"]
@@ -165,7 +165,7 @@ tracks/4/path = NodePath("..")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(1.9),
+"times": PackedFloat32Array(2.2),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": ["talk"],
@@ -173,9 +173,76 @@ tracks/4/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_bdiwj"]
+resource_name = "on_outro"
+length = 2.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("screen:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1.5, 1.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, -0.00606061), Vector2(0.982759, 0.981818)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("screen:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.5, 1.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 4.52727), Vector2(2.08617, -4.4182)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("screen:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1.5),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../faceAnim:animation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1.6, 2.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [&"none", &"idle", &"talk"]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("..")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(2.2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"SetTalkInfinity"
+}]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_2oxsv"]
 _data = {
 "RESET": SubResource("Animation_vv5bi"),
+"on_outro": SubResource("Animation_bdiwj"),
 "on_screen": SubResource("Animation_3tpop")
 }
 
@@ -228,5 +295,5 @@ texture_filter = 1
 use_parent_material = true
 position = Vector2(0, -1)
 scale = Vector2(1.0625, 1.0625)
-sprite_frames = ExtResource("4_g7nvs")
+sprite_frames = ExtResource("4_e7mxr")
 animation = &"none"

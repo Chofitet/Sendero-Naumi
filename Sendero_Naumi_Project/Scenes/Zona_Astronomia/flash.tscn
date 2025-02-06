@@ -1,5 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://bqgviswigevy3"]
+[gd_scene load_steps=6 format=3 uid="uid://bqgviswigevy3"]
 
+[ext_resource type="Script" path="res://_Scripts/Vibration.gd" id="1_idfvh"]
 [ext_resource type="Texture2D" uid="uid://blvtoxf6sl7ty" path="res://Sprites/glow.png" id="1_kx768"]
 
 [sub_resource type="Animation" id="Animation_8c66h"]
@@ -38,9 +39,15 @@ tracks/1/path = NodePath("..")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(1),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0.1, 0.7, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
 "values": [{
+"args": [500.0],
+"method": &"doVibrate"
+}, {
+"args": [300.0],
+"method": &"doVibrate"
+}, {
 "args": [],
 "method": &"queue_free"
 }]
@@ -53,6 +60,7 @@ _data = {
 }
 
 [node name="flash" type="CanvasLayer"]
+script = ExtResource("1_idfvh")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 position = Vector2(358, 53)

@@ -13,11 +13,31 @@ func _ready():
 		$faceAnim.sprite_frames = load("res://Resources/PC_Face_Astronauta/PC_perspective.tres")
 		$Perspectiva.visible = true
 
+var auxTimer
+
 func Setface(anim):
+	face.play("idle")
+	await face.animation_finished
 	face.play(anim)
 	if anim == "talk":
-		await get_tree().create_timer(3).timeout
+		if auxTimer != null:
+			auxTimer.set_time_left(6)
+		else:
+			auxTimer = get_tree().create_timer(6)
+		await auxTimer.timeout
 		face.play("idle")
+
+func SmileAnim():
+	face.play("smile")
+	
+
+func IdleAnim():
+	face.play("idle")
+
+func SetTalkInfinity():
+	face.play("idle")
+	await face.animation_finished
+	face.play("talk")
 
 func PlayOnScreen():
 	anim.play("on_screen")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=145 format=3 uid="uid://dk066mi38cvh7"]
+[gd_scene load_steps=191 format=3 uid="uid://dk066mi38cvh7"]
 
 [ext_resource type="Script" path="res://_Scripts/Minigame_Save_Controller.gd" id="1_th4gl"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/StateMachineMinigames.gd" id="2_fl1ab"]
@@ -42,9 +42,7 @@
 [ext_resource type="Script" path="res://_Scripts/SetVisibility.gd" id="18_2s0px"]
 [ext_resource type="Texture2D" uid="uid://wsicrocifuq" path="res://Sprites/ZonaAstronomia/pegoton.png" id="18_ms2d6"]
 [ext_resource type="PackedScene" uid="uid://bfoprt6qtltqf" path="res://Scenes/Zona_Astronomia/computer.tscn" id="19_552cy"]
-[ext_resource type="StyleBox" uid="uid://cunyyfksq4kvc" path="res://Resources/UI_Resources/PanelScreen.tres" id="20_5lj7u"]
 [ext_resource type="Texture2D" uid="uid://dc45biossbhcd" path="res://Sprites/ZonaAstronomia/meteorito - astronauta.png" id="21_57l06"]
-[ext_resource type="Script" path="res://Scenes/GenericPanelController.gd" id="21_sbo2s"]
 [ext_resource type="Theme" uid="uid://bhum72inirq1q" path="res://Themes/Generic_UI.tres" id="22_d5f6h"]
 [ext_resource type="Script" path="res://_Scripts/MinG_Astronauta/ZoomArea.gd" id="22_wst5e"]
 [ext_resource type="Texture2D" uid="uid://dvgrcaeku4itd" path="res://Sprites/ZonaAstronomia/debris cajapizza - astronauta.png" id="25_c6xcq"]
@@ -88,15 +86,31 @@
 [ext_resource type="Script" path="res://_Scripts/MinG_Excavar/EmitChildParticles.gd" id="51_mjelj"]
 [ext_resource type="Texture2D" uid="uid://c6cdvsx7lksj0" path="res://Sprites/ZonaAstronomia/debris satelite - astronauta.png" id="52_aseb0"]
 [ext_resource type="Texture2D" uid="uid://cs8xkuge33qo2" path="res://Sprites/ZonaAstronomia/estela meteorito - astronauta-0006.png" id="62_cmuch"]
-[ext_resource type="PackedScene" uid="uid://bac1ysj2c0bok" path="res://Scenes/Experiments/hand_ui.tscn" id="65_p352n"]
+[ext_resource type="LabelSettings" uid="uid://dce4drsatgdve" path="res://Resources/UI_Resources/ComputerLabel.tres" id="74_d02uo"]
 [ext_resource type="Texture2D" uid="uid://bhax6ajte0vaj" path="res://Sprites/ZonaAstronomia/estela meteorito - astronauta-0002.png" id="74_uvtyl"]
+[ext_resource type="PackedScene" uid="uid://chcp24toqisaw" path="res://Scenes/Experiments/GenericPanel/GenericPanel.tscn" id="76_xvlec"]
+[ext_resource type="Theme" uid="uid://dj3vpj8d5ttyb" path="res://Resources/UI_Resources/Computer_theme.tres" id="77_hmdp2"]
+[ext_resource type="Script" path="res://Scenes/Experiments/GenericPanel/ButtonPanelData.gd" id="78_a7col"]
 [ext_resource type="Texture2D" uid="uid://bgiwtu7jv813n" path="res://Sprites/ZonaAstronomia/debris pochoclos - astronauta.png" id="79_4q3k5"]
-[ext_resource type="SpriteFrames" uid="uid://bhldymkg25e6g" path="res://Resources/PC_Face_Astronauta/PC_perspective.tres" id="80_vwhma"]
+[ext_resource type="Texture2D" uid="uid://c2p5torstrtqm" path="res://Sprites/UI/checkIcon - UI.png" id="79_dkiek"]
+[ext_resource type="Script" path="res://Scenes/Experiments/GenericPanel/TextFieldData.gd" id="80_drq41"]
+[ext_resource type="Texture2D" uid="uid://ic8sxro7q7xu" path="res://Sprites/UI/pressIcon - UI.png" id="81_4v0ip"]
 [ext_resource type="Texture2D" uid="uid://ds4h45ho56kin" path="res://PORORÓ.png" id="81_kqhjn"]
+[ext_resource type="PackedScene" uid="uid://d1jys63xrvxpo" path="res://Scenes/Experiments/GenericPanel/IntermediateSignal.tscn" id="81_mw337"]
+[ext_resource type="Texture2D" uid="uid://cx2wwtyecmbvo" path="res://Sprites/UI/PointingLine.png" id="82_4qfy2"]
 [ext_resource type="Texture2D" uid="uid://bwl4elgs4o5f1" path="res://Sprites/ZonaAstronomia/debris pochoclobolsa - astronauta.png" id="82_uj6ac"]
+[ext_resource type="Script" path="res://Scenes/Experiments/GenericPanel/IntermediateData.gd" id="83_qqo8u"]
+[ext_resource type="StyleBox" uid="uid://b3tjes2hcm3wx" path="res://Resources/UI_Resources/StyleBoxTrasparent.tres" id="97_jjlop"]
+[ext_resource type="Texture2D" uid="uid://bdwcmeo2ejqvl" path="res://Sprites/ZonaAstronomia/estela meteorito - astronauta-0004.png" id="101_invni"]
+[ext_resource type="Texture2D" uid="uid://bnrcwixxxj8wl" path="res://Sprites/ZonaAstronomia/estela meteorito - astronauta-0005.png" id="102_i0kb1"]
+[ext_resource type="Texture2D" uid="uid://wvr5sa0gwg5e" path="res://Sprites/ZonaAstronomia/estela meteorito - astronauta-0001.png" id="103_01fpy"]
+[ext_resource type="Texture2D" uid="uid://cqfgkmjc6a8p6" path="res://Sprites/ZonaAstronomia/estela meteorito - astronauta-0003.png" id="104_2fva8"]
+[ext_resource type="Texture2D" uid="uid://bs75l58idlvr7" path="res://Sprites/ZonaAstronomia/estela meteorito - astronauta-0007.png" id="105_h31kt"]
+[ext_resource type="Texture2D" uid="uid://c37mjd5dov5eg" path="res://Sprites/ZonaAstronomia/estela meteorito - astronauta-0008.png" id="106_h6vaw"]
+[ext_resource type="Script" path="res://_Scripts/PivotIntanciate.gd" id="106_tsc4i"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_baev4"]
-size = Vector2(92.4131, 196.199)
+size = Vector2(178.405, 196.199)
 
 [sub_resource type="Curve2D" id="Curve2D_auh48"]
 _data = {
@@ -200,7 +214,7 @@ tracks/7/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_ntpu7"]
@@ -297,10 +311,10 @@ tracks/7/path = NodePath("Path2D/PathFollow2D/TheGuy2/Area2D/CollisionShape2D:di
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 2.5),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [true]
+"values": [true, false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qooww"]
@@ -310,7 +324,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_drp5q"]
-size = Vector2(155.455, 62.7478)
+size = Vector2(195.532, 160.973)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_27igt"]
 size = Vector2(106.262, 478.009)
@@ -388,6 +402,10 @@ fill = 1
 fill_from = Vector2(0.483516, 0.489011)
 fill_to = Vector2(0.769231, 0.0950226)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_ux348"]
+resource_local_to_scene = true
+radius = 354.593
+
 [sub_resource type="Gradient" id="Gradient_fkwkk"]
 offsets = PackedFloat32Array(0, 0.437247, 0.611336, 0.938272, 1)
 colors = PackedColorArray(0, 0, 0, 1, 0.3008, 0.611733, 0.64, 0.603922, 0.5628, 0.63, 0.4284, 0.498039, 0.937255, 0.94902, 0.917647, 0, 1, 1, 1, 0)
@@ -397,6 +415,10 @@ gradient = SubResource("Gradient_fkwkk")
 fill = 1
 fill_from = Vector2(0.494505, 0.5)
 fill_to = Vector2(0.879121, 0.263736)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ye8in"]
+resource_local_to_scene = true
+radius = 354.593
 
 [sub_resource type="Curve" id="Curve_vuutm"]
 _data = [Vector2(0, 0.505263), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
@@ -410,6 +432,51 @@ colors = PackedColorArray(1, 1, 1, 1, 0.303233, 0.303233, 0.303233, 1, 0.301961,
 radius = 134.583
 height = 1624.86
 
+[sub_resource type="Resource" id="Resource_ly86o"]
+script = ExtResource("78_a7col")
+Place = 0
+texture = ExtResource("79_dkiek")
+label = ""
+
+[sub_resource type="Resource" id="Resource_aako0"]
+script = ExtResource("80_drq41")
+Text = "BUEN DÍA CADETE 
+REPASEMOS LA MISIÓN...
+"
+SizePanel = Vector2(540, 251)
+buttons = Array[ExtResource("78_a7col")]([SubResource("Resource_ly86o")])
+
+[sub_resource type="Resource" id="Resource_kgrfa"]
+script = ExtResource("78_a7col")
+Place = 0
+texture = ExtResource("79_dkiek")
+label = ""
+
+[sub_resource type="Resource" id="Resource_dcdne"]
+script = ExtResource("80_drq41")
+Text = "DEBES RECOLECTAR:
+3 TIPOS DE ROCAS ESPACIALES
+
+
+
+
+ 
+
+"
+SizePanel = Vector2(540, 340)
+buttons = Array[ExtResource("78_a7col")]([SubResource("Resource_kgrfa")])
+
+[sub_resource type="Resource" id="Resource_6bnnc"]
+script = ExtResource("80_drq41")
+Text = "MANTEN PRESIONADO PARA MOVERTE CON TU PROPULSOR
+
+
+
+
+"
+SizePanel = Vector2(540, 280)
+buttons = Array[ExtResource("78_a7col")]([])
+
 [sub_resource type="Curve" id="Curve_7inie"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.619289, 0.757895), 0.0, 0.0, 0, 0, Vector2(1, 0.136842), 0.0, 0.0, 0, 0]
 point_count = 3
@@ -418,14 +485,34 @@ point_count = 3
 offsets = PackedFloat32Array(0, 0.768, 1)
 colors = PackedColorArray(1, 0, 0, 1, 0.952941, 0.560784, 0, 1, 0.11, 0.11, 1, 1)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3kd6y"]
-size = Vector2(483, 239)
+[sub_resource type="Resource" id="Resource_rocxg"]
+script = ExtResource("83_qqo8u")
+NumberOfPanel = 1
+Place = 0
+
+[sub_resource type="Resource" id="Resource_dfgu1"]
+script = ExtResource("83_qqo8u")
+NumberOfPanel = 1
+Place = 0
+
+[sub_resource type="Resource" id="Resource_1w122"]
+script = ExtResource("83_qqo8u")
+NumberOfPanel = 2
+Place = 0
+
+[sub_resource type="Resource" id="Resource_p752d"]
+script = ExtResource("83_qqo8u")
+NumberOfPanel = 2
+Place = 0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_48pma"]
 size = Vector2(544, 40.1443)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ohny0"]
 size = Vector2(491, 67)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3kd6y"]
+size = Vector2(483, 265)
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_h2n3c"]
 light_mode = 1
@@ -435,6 +522,25 @@ script = ExtResource("34_cy5l0")
 duration = 1.0
 transition = 0
 ease = 2
+
+[sub_resource type="Resource" id="Resource_k0t8t"]
+script = ExtResource("80_drq41")
+Text = ""
+SizePanel = Vector2(497, 199)
+buttons = Array[ExtResource("78_a7col")]([])
+
+[sub_resource type="Resource" id="Resource_qy4jd"]
+script = ExtResource("78_a7col")
+Place = 0
+label = "YO!"
+
+[sub_resource type="Resource" id="Resource_hiuv8"]
+script = ExtResource("80_drq41")
+Text = "¡MISIÓN CUMPLIDA!
+¿QUIÉN QUIERE 
+PURURÚ ESPACIAL?"
+SizePanel = Vector2(489, 220)
+buttons = Array[ExtResource("78_a7col")]([SubResource("Resource_qy4jd")])
 
 [sub_resource type="Animation" id="Animation_ax162"]
 length = 0.001
@@ -462,6 +568,18 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector2(0, 0)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Label:visible_ratio")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
 
 [sub_resource type="Animation" id="Animation_btch4"]
 resource_name = "check"
@@ -475,7 +593,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.6, 0.8, 1),
 "transitions": PackedFloat32Array(1, 1, -2, 1),
 "update": 0,
-"values": [Vector2(2, 2), Vector2(2, 2), Vector2(0.4, 0.4), Vector2(0.8, 0.8)]
+"values": [Vector2(2, 2), Vector2(2, 2), Vector2(0.4, 0.4), Vector2(1, 1)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -487,7 +605,19 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.8),
 "transitions": PackedFloat32Array(0.5, 1),
 "update": 0,
-"values": [Vector2(0, -1000), Vector2(0, 0)]
+"values": [Vector2(0, -1000), Vector2(0, 4)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Label:visible_ratio")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.6, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_fpol8"]
@@ -496,90 +626,10 @@ _data = {
 "check": SubResource("Animation_btch4")
 }
 
-[sub_resource type="Animation" id="Animation_pa3ms"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:size")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(493, 174)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(31, 17)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-
-[sub_resource type="Animation" id="Animation_2ema7"]
-resource_name = "enterPanel"
-length = 0.3
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:size")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0, 174), Vector2(493, 174)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(524, 17), Vector2(31, 17)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_ruhu8"]
-_data = {
-"RESET": SubResource("Animation_pa3ms"),
-"enterPanel": SubResource("Animation_2ema7")
-}
+[sub_resource type="Resource" id="Resource_a5apv"]
+script = ExtResource("83_qqo8u")
+NumberOfPanel = 2
+Place = 0
 
 [sub_resource type="Resource" id="Resource_t43a6"]
 script = ExtResource("34_cy5l0")
@@ -592,6 +642,206 @@ size = Vector2(3568, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8dfup"]
 size = Vector2(4044, 322)
+
+[sub_resource type="Resource" id="Resource_k8jp4"]
+script = ExtResource("78_a7col")
+Place = 0
+texture = ExtResource("79_dkiek")
+label = ""
+
+[sub_resource type="Resource" id="Resource_3p4ow"]
+script = ExtResource("80_drq41")
+Text = "[center][b]HAY 3 TIPOS DE ROCAS ESPACIALES:[/b]
+
+[b]EL METEOROIDE[/b] ES CUALQUIER ROCA ESPACIAL QUE ESTÉ FLOTANDO EN EL ESPACIO SIN TOCAR 
+A OTRO CUERPO
+
+
+
+
+PUEDEN SER PEDAZOS DE PLANETAS, COMETAS
+O SATÉLITES."
+SizePanel = Vector2(677, 500)
+buttons = Array[ExtResource("78_a7col")]([SubResource("Resource_k8jp4")])
+
+[sub_resource type="Resource" id="Resource_riqk4"]
+script = ExtResource("78_a7col")
+Place = 0
+texture = ExtResource("79_dkiek")
+label = ""
+
+[sub_resource type="Resource" id="Resource_6eq48"]
+script = ExtResource("80_drq41")
+Text = "[center][b]AL METEORO DE NOCHE LE DICEN  
+“ESTRELLA FUGAZ”[/b]
+
+
+
+
+[b]PERO ES UN METEOROIDE[/b] QUE
+AL ENTRAR CON GRAN VELOCIDAD
+EN LA ATMÓSFERA DE UN PLANETA 
+[b]DESPRENDE UNA LARGA COLA DE LUZ 
+AL QUEMARSE EN SU CAÍDA.[/b]"
+SizePanel = Vector2(677, 500)
+buttons = Array[ExtResource("78_a7col")]([SubResource("Resource_riqk4")])
+
+[sub_resource type="Resource" id="Resource_vi21d"]
+script = ExtResource("78_a7col")
+Place = 0
+texture = ExtResource("79_dkiek")
+label = ""
+
+[sub_resource type="Resource" id="Resource_856ni"]
+script = ExtResource("80_drq41")
+Text = "[center][b]LOS METEORITOS SON ROCAS QUE LOGRARON LLEGAR DESDE EL ESPACIO EXTERIOR[/b]
+
+
+
+
+SI UN METEORO CHOCA CONTRA UN PLANETA
+SIN DESTRUIRSE POR LA VELOCIDAD O
+EL CALOR DE SU CAÍDA,
+SE GANA EL NOMBRE DE: [b]METEORITO.[/b]
+
+SE DICE QUE HAY 190 CRÁTERES
+DE METEORITOS EN LA TIERRA."
+SizePanel = Vector2(677, 579)
+buttons = Array[ExtResource("78_a7col")]([SubResource("Resource_vi21d")])
+
+[sub_resource type="Resource" id="Resource_xl068"]
+script = ExtResource("78_a7col")
+Place = 0
+texture = ExtResource("79_dkiek")
+label = ""
+
+[sub_resource type="Resource" id="Resource_tt3tg"]
+script = ExtResource("80_drq41")
+Text = "[center]LAS ROCAS ESPACIALES NOS AYUDAN A
+INVESTIGAR OTROS MUNDOS 
+¡PODES APRENDER A RECONOCERLAS EN EL MUSEO![b]"
+SizePanel = Vector2(677, 255)
+buttons = Array[ExtResource("78_a7col")]([SubResource("Resource_xl068")])
+
+[sub_resource type="Animation" id="Animation_f2ppa"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect3:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1.11, 1.04, 0.55, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TextureRect:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1.5, 1.5, 1.5, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_dec07"]
+resource_name = "halo"
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect3:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1.11, 1.04, 0.55, 1), Color(1.1098, 1.03922, 0.54902, 0.705882), Color(1.11, 1.04, 0.55, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TextureRect:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1.50196, 1.50196, 1.50196, 0.678431), Color(1.5, 1.5, 1.5, 1), Color(1.50196, 1.50196, 1.50196, 0.678431)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ts1wp"]
+_data = {
+"RESET": SubResource("Animation_f2ppa"),
+"halo": SubResource("Animation_dec07")
+}
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_k3a8v"]
+frames = 3
+speed_scale = 0.2
+frame_0/texture = ExtResource("101_invni")
+frame_0/duration = 0.2
+frame_1/texture = ExtResource("102_i0kb1")
+frame_1/duration = 0.2
+frame_2/texture = ExtResource("62_cmuch")
+frame_2/duration = 0.2
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_w3bqf"]
+frames = 3
+frame_0/texture = ExtResource("103_01fpy")
+frame_0/duration = 0.2
+frame_1/texture = ExtResource("74_uvtyl")
+frame_1/duration = 0.2
+frame_2/texture = ExtResource("104_2fva8")
+frame_2/duration = 0.2
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_sr2hm"]
+frames = 3
+frame_0/texture = ExtResource("105_h31kt")
+frame_0/duration = 0.2
+frame_1/texture = ExtResource("106_h6vaw")
+frame_1/duration = 0.2
+frame_2/texture = ExtResource("104_2fva8")
+frame_2/duration = 0.2
+
+[sub_resource type="Resource" id="Resource_raime"]
+script = ExtResource("83_qqo8u")
+NumberOfPanel = 1
+Place = 0
+
+[sub_resource type="Resource" id="Resource_cr7ab"]
+script = ExtResource("83_qqo8u")
+NumberOfPanel = 1
+Place = 0
+
+[sub_resource type="Resource" id="Resource_wlpab"]
+script = ExtResource("83_qqo8u")
+NumberOfPanel = 2
+Place = 0
+
+[sub_resource type="Resource" id="Resource_rxp65"]
+script = ExtResource("83_qqo8u")
+NumberOfPanel = 2
+Place = 0
+
+[sub_resource type="Resource" id="Resource_6comr"]
+script = ExtResource("83_qqo8u")
+NumberOfPanel = 3
+Place = 0
+
+[sub_resource type="Resource" id="Resource_oybw4"]
+script = ExtResource("83_qqo8u")
+NumberOfPanel = 4
+Place = 0
 
 [sub_resource type="Resource" id="Resource_jsqjf"]
 script = ExtResource("34_cy5l0")
@@ -721,10 +971,10 @@ stretch_mode = 1
 [node name="TextureRect2" type="TextureRect" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level"]
 self_modulate = Color(1, 1, 1, 0.364706)
 z_index = -1
-offset_left = -1991.0
-offset_top = -18402.0
-offset_right = 3910.0
-offset_bottom = 2345.0
+offset_left = 1846.0
+offset_top = -16601.0
+offset_right = 7747.0
+offset_bottom = 4146.0
 size_flags_horizontal = 4
 texture = ExtResource("6_xtgdo")
 stretch_mode = 1
@@ -1265,20 +1515,23 @@ _textureLine = ExtResource("9_fd6y6")
 
 [node name="Meteoroide" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide" instance=ExtResource("11_i2vqs")]
 position = Vector2(976, -1362)
-rotation = 282742.0
+rotation = 347223.0
 scale = Vector2(2.975, 2.975)
 _texture = ExtResource("11_x4hhq")
 
 [node name="TheGuy" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide" instance=ExtResource("35_frqpj")]
+visible = false
 position = Vector2(760, -1341)
 player = NodePath("../../../../Astronauta")
 RotateInEnter = true
-txt = ""
 increment = 50.0
 
 [node name="CollisionShape2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/TheGuy/Area2D" index="0"]
-position = Vector2(7.02368, 48.4644)
+position = Vector2(11.472, 48.4643)
 shape = SubResource("RectangleShape2D_baev4")
+
+[node name="Label" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/TheGuy/Panel" index="0"]
+text = "Tiene algo que decir"
 
 [node name="GuyWall" type="Node2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide"]
 position = Vector2(1007, -1813)
@@ -1299,27 +1552,26 @@ script = ExtResource("13_ikt7k")
 animation = "move"
 
 [node name="TheGuy2" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/GuyWall/Path2D/PathFollow2D" instance=ExtResource("35_frqpj")]
-visible = false
 position = Vector2(-3.9292, -1.60059)
 rotation = -0.270157
 player = NodePath("../../../../../../../Astronauta")
-txt = ""
 
 [node name="sprite" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/GuyWall/Path2D/PathFollow2D/TheGuy2" index="0"]
 rotation = 1.63014
 
 [node name="CollisionShape2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/GuyWall/Path2D/PathFollow2D/TheGuy2/Area2D" index="0"]
-position = Vector2(7.29767, 52.8821)
+position = Vector2(20.7855, 1.58252)
 rotation = -0.130287
 scale = Vector2(0.999999, 0.999999)
 shape = SubResource("RectangleShape2D_drp5q")
+disabled = true
 
 [node name="Panel" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/GuyWall/Path2D/PathFollow2D/TheGuy2" index="2"]
-offset_left = 153.903
-offset_top = -3.69727
-offset_right = 412.903
-offset_bottom = 70.3027
-rotation = -1.4275
+offset_left = 82.5854
+offset_top = -65.9688
+offset_right = 341.585
+offset_bottom = 8.03122
+rotation = -2.53122
 scale = Vector2(-1, 1)
 
 [node name="Label" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/GuyWall/Path2D/PathFollow2D/TheGuy2/Panel" index="0"]
@@ -1332,8 +1584,10 @@ text = "ACORDATE
 DE LA MISIÓN"
 
 [node name="Polygon2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/GuyWall/Path2D/PathFollow2D/TheGuy2/Panel" index="1"]
-position = Vector2(0.169189, -66.3002)
-scale = Vector2(1, 0.954294)
+position = Vector2(-67.5332, -3.12695)
+rotation = -1.23634
+scale = Vector2(1.11733, 0.954294)
+polygon = PackedVector2Array(17.3455, 78.248, 0, 86, 0, 53)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/GuyWall/Path2D/PathFollow2D/TheGuy2"]
 
@@ -2031,7 +2285,7 @@ Max_Size = 60.0
 
 [node name="meteoro" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoro/Meteoro1" node_paths=PackedStringArray("MeteoritoTarget") instance=ExtResource("11_i2vqs")]
 z_index = 1
-rotation = 405336.0
+rotation = 469817.0
 scale = Vector2(2.595, 2.595)
 MeteoritoTarget = NodePath("../../../Meteorito/MeteoritoAppear/targetMeteorito")
 _texture = ExtResource("17_uxw0q")
@@ -2080,7 +2334,7 @@ z_index = 1
 
 [node name="meteoro" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoro/Meteoro3" node_paths=PackedStringArray("MeteoritoTarget") instance=ExtResource("11_i2vqs")]
 z_index = 1
-rotation = 407037.0
+rotation = 471518.0
 scale = Vector2(2.595, 2.595)
 MeteoritoTarget = NodePath("../../../Meteorito/MeteoritoAppear/targetMeteorito")
 _texture = ExtResource("17_uxw0q")
@@ -2158,10 +2412,12 @@ polygon = PackedVector2Array(-3774.88, 1173.39, -3918.88, 141.392, -3780.88, -89
 [node name="TheGuy2" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoro" instance=ExtResource("35_frqpj")]
 position = Vector2(846, -6408)
 player = NodePath("../../../../Astronauta")
-txt = ""
 ScaleFactorDialogue = 5.0
 inversedDialogue = true
 DialogueDistance = Vector2(-72.21, -160.26)
+
+[node name="CollisionShape2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoro/TheGuy2/Area2D" index="0"]
+shape = SubResource("CircleShape2D_ux348")
 
 [node name="Panel" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoro/TheGuy2" index="2"]
 z_index = 2
@@ -2210,13 +2466,15 @@ stretch_mode = 5
 [node name="TheGuy3" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteorito" instance=ExtResource("35_frqpj")]
 position = Vector2(1396, -18191)
 player = NodePath("../../../../Astronauta")
-txt = ""
 ScaleFactorDialogue = 5.0
 DialogueDistance = Vector2(-11.445, -160.26)
 AstronautAngle = -2.755
 
 [node name="sprite" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteorito/TheGuy3" index="0"]
 rotation = -2.755
+
+[node name="CollisionShape2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteorito/TheGuy3/Area2D" index="0"]
+shape = SubResource("CircleShape2D_ye8in")
 
 [node name="Panel" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteorito/TheGuy3" index="2"]
 z_index = 2
@@ -2340,7 +2598,7 @@ position = Vector2(0, -6)
 [node name="exterior" type="Sprite2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController"]
 self_modulate = Color(1, 1, 1, 0)
 z_index = 1
-position = Vector2(26, 384)
+position = Vector2(22, 388)
 texture = ExtResource("9_7dd1c")
 
 [node name="AnchorMin" type="Node2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController"]
@@ -2365,114 +2623,67 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 
-[node name="Panel" type="Panel" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro"]
-visible = false
+[node name="PanelIntro" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro" instance=ExtResource("76_xvlec")]
 use_parent_material = true
 layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_left = -249.0
-offset_top = -275.0
-offset_right = 249.0
-offset_bottom = -53.0
-grow_horizontal = 2
-theme_override_styles/panel = ExtResource("20_5lj7u")
-script = ExtResource("21_sbo2s")
-SetVisibleFalseWithBtn = true
-timeToAppear = 2.5
+anchors_preset = 0
+anchor_left = 0.0
+anchor_right = 0.0
+offset_left = -270.0
+offset_top = -210.0
+offset_right = 270.0
+offset_bottom = 41.0
+grow_horizontal = 1
+pivot_offset = Vector2(270, 125.5)
+theme = ExtResource("77_hmdp2")
+TimeToAppear = 2.5
+Texts = Array[ExtResource("80_drq41")]([SubResource("Resource_aako0"), SubResource("Resource_dcdne"), SubResource("Resource_6bnnc")])
 
-[node name="Label" type="Label" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro/Panel"]
-use_parent_material = true
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -194.0
-offset_top = -61.5
-offset_right = 194.0
-offset_bottom = 61.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(0.046875, 0.917969, 0.410156, 1)
-theme_override_font_sizes/font_size = 25
+[node name="label" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro/PanelIntro" index="0"]
 text = "BUEN DÍA CADETE 
-REPASEMOS LA MISIÓN..."
-horizontal_alignment = 1
-vertical_alignment = 1
+REPASEMOS LA MISIÓN...
+"
+label_settings = ExtResource("74_d02uo")
 
-[node name="Button" type="Button" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro/Panel"]
-use_parent_material = true
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.853
-anchor_top = 1.0
-anchor_right = 0.853
-anchor_bottom = 1.0
-offset_left = -34.792
-offset_top = -37.0
-offset_right = 35.208
-offset_bottom = 33.0
-grow_horizontal = 0
-grow_vertical = 0
-pivot_offset = Vector2(35, 35)
-theme = ExtResource("22_d5f6h")
+[node name="btnDer" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro/PanelIntro/BtnDerAnchor" index="0"]
+visible = true
 
-[node name="Panel2" type="Panel" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro"]
+[node name="Icon" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro/PanelIntro/BtnDerAnchor/btnDer" index="0"]
+offset_left = -22.0
+offset_top = -22.0
+offset_right = 22.0
+offset_bottom = 22.0
+texture = ExtResource("79_dkiek")
+
+[node name="Label" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro/PanelIntro/BtnDerAnchor/btnDer/Icon" index="0"]
+text = ""
+
+[node name="Icon" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro/PanelIntro/btnIzqAnchor/btnIzq" index="0"]
+offset_left = -22.0
+offset_top = -22.0
+offset_right = 22.0
+offset_bottom = 22.0
+
+[node name="Icon" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro/PanelIntro/btnCentralAnchor/btnCentral" index="0"]
+offset_right = -23.0
+offset_bottom = -23.0
+
+[node name="HBoxContainer" type="Control" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro/PanelIntro"]
 visible = false
 use_parent_material = true
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -249.0
-offset_top = -317.0
-offset_right = 249.0
-offset_bottom = -15.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = ExtResource("20_5lj7u")
-script = ExtResource("21_sbo2s")
-SetVisibleFalseWithBtn = true
-timeToAppear = 0.3
-
-[node name="Label" type="Label" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro/Panel2"]
-use_parent_material = true
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.498
-anchor_top = 0.282
-anchor_right = 0.498
-anchor_bottom = 0.282
-offset_left = -194.072
-offset_top = -41.604
-offset_right = 193.928
-offset_bottom = 81.396
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(0.0470588, 0.921569, 0.411765, 1)
-theme_override_font_sizes/font_size = 25
-text = "DEBES RECOLECTAR:
-3 TIPOS DE ROCAS ESPACIALES"
-horizontal_alignment = 1
-autowrap_mode = 2
-uppercase = true
-
-[node name="HBoxContainer" type="Control" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro/Panel2"]
-use_parent_material = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 32.0
-offset_top = 153.0
-offset_right = -40.0
-offset_bottom = -2.0
+anchor_left = 0.533
+anchor_top = 0.666
+anchor_right = 0.533
+anchor_bottom = 0.666
+offset_left = -233.82
+offset_top = -51.796
+offset_right = 234.18
+offset_bottom = 99.204
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TextureRect" type="TextureRect" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro/Panel2/HBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro/PanelIntro/HBoxContainer"]
 use_parent_material = true
 layout_mode = 2
 offset_right = 110.0
@@ -2482,7 +2693,7 @@ pivot_offset = Vector2(55.2, 46)
 texture = ExtResource("11_x4hhq")
 expand_mode = 3
 
-[node name="TextureRect2" type="TextureRect" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro/Panel2/HBoxContainer"]
+[node name="TextureRect2" type="TextureRect" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro/PanelIntro/HBoxContainer"]
 use_parent_material = true
 layout_mode = 2
 offset_left = 154.0
@@ -2494,14 +2705,14 @@ pivot_offset = Vector2(58.195, 44.825)
 texture = ExtResource("17_uxw0q")
 expand_mode = 1
 
-[node name="halo" type="Sprite2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro/Panel2/HBoxContainer/TextureRect2"]
+[node name="halo" type="Sprite2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro/PanelIntro/HBoxContainer/TextureRect2"]
 show_behind_parent = true
 use_parent_material = true
 position = Vector2(49.7917, 40.5052)
 rotation = 0.708604
 scale = Vector2(0.61, 0.61)
 
-[node name="TextureRect2" type="TextureRect" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro/Panel2/HBoxContainer/TextureRect2/halo"]
+[node name="TextureRect2" type="TextureRect" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro/PanelIntro/HBoxContainer/TextureRect2/halo"]
 visible = false
 modulate = Color(1, 0, 0, 0.803922)
 use_parent_material = true
@@ -2512,7 +2723,7 @@ offset_bottom = 194.0
 texture = ExtResource("29_j1bju")
 expand_mode = 1
 
-[node name="TextureRect3" type="TextureRect" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro/Panel2/HBoxContainer/TextureRect2/halo"]
+[node name="TextureRect3" type="TextureRect" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro/PanelIntro/HBoxContainer/TextureRect2/halo"]
 modulate = Color(1.11, 1.04, 0.55, 1)
 use_parent_material = true
 offset_left = -127.082
@@ -2522,7 +2733,7 @@ offset_bottom = 130.993
 texture = ExtResource("29_j1bju")
 expand_mode = 1
 
-[node name="TextureRect" type="TextureRect" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro/Panel2/HBoxContainer/TextureRect2/halo"]
+[node name="TextureRect" type="TextureRect" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro/PanelIntro/HBoxContainer/TextureRect2/halo"]
 modulate = Color(1.5, 1.5, 1.5, 1)
 use_parent_material = true
 offset_left = -94.0
@@ -2532,7 +2743,7 @@ offset_bottom = 96.0
 texture = ExtResource("29_j1bju")
 expand_mode = 1
 
-[node name="Line2D3" type="Line2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro/Panel2/HBoxContainer/TextureRect2"]
+[node name="Line2D3" type="Line2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro/PanelIntro/HBoxContainer/TextureRect2"]
 show_behind_parent = true
 use_parent_material = true
 position = Vector2(44.4825, -27.1691)
@@ -2547,7 +2758,7 @@ joint_mode = 2
 begin_cap_mode = 2
 end_cap_mode = 2
 
-[node name="Line2D2" type="Line2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro/Panel2/HBoxContainer/TextureRect2"]
+[node name="Line2D2" type="Line2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro/PanelIntro/HBoxContainer/TextureRect2"]
 show_behind_parent = true
 use_parent_material = true
 position = Vector2(44.4825, -27.1691)
@@ -2562,7 +2773,7 @@ joint_mode = 2
 begin_cap_mode = 2
 end_cap_mode = 2
 
-[node name="TextureRect3" type="TextureRect" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro/Panel2/HBoxContainer"]
+[node name="TextureRect3" type="TextureRect" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro/PanelIntro/HBoxContainer"]
 use_parent_material = true
 layout_mode = 2
 offset_left = 329.0
@@ -2573,7 +2784,7 @@ pivot_offset = Vector2(46, 46)
 texture = ExtResource("21_57l06")
 expand_mode = 3
 
-[node name="CollisionPolygon2D84" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro/Panel2/HBoxContainer/TextureRect3" instance=ExtResource("7_s4reo")]
+[node name="CollisionPolygon2D84" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro/PanelIntro/HBoxContainer/TextureRect3" instance=ExtResource("7_s4reo")]
 show_behind_parent = true
 use_parent_material = true
 position = Vector2(-3.84659, -16.6622)
@@ -2584,31 +2795,31 @@ _scale = Vector2(15, 15)
 _textureLine = ExtResource("12_orsf0")
 _textureLineWidth = 5.76
 
-[node name="CollisionPolygon2D6" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro/Panel2/HBoxContainer/TextureRect3/CollisionPolygon2D84" index="0"]
+[node name="CollisionPolygon2D6" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro/PanelIntro/HBoxContainer/TextureRect3/CollisionPolygon2D84" index="0"]
 use_parent_material = true
 texture = ExtResource("11_qi82a")
 texture_scale = Vector2(15, 15)
 polygon = PackedVector2Array(-55.6702, 58.9138, -56.4451, 66.6855, -53.7154, 78.0234, -48.1821, 92.2144, -39.8081, 105.016, -27.1547, 113.612, -15.8784, 117.953, -1.76144, 120.905, 10.2651, 120.302, 15.7063, 135.31, 18.0628, 145.944, -0.0535583, 163.747, -7.02545, 156.922, -90.4219, 70.6321, -99.5748, 60.8278, -91.3401, 52.7355, -78.1788, 41.4204, -63.3432, 46.8257, -55.5962, 50.4288)
 
-[node name="Line2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro/Panel2/HBoxContainer/TextureRect3/CollisionPolygon2D84/CollisionPolygon2D6" index="0"]
+[node name="Line2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro/PanelIntro/HBoxContainer/TextureRect3/CollisionPolygon2D84/CollisionPolygon2D6" index="0"]
 use_parent_material = true
 points = PackedVector2Array(-55.6702, 58.9138, -56.4451, 66.6855, -53.7154, 78.0234, -48.1821, 92.2144, -39.8081, 105.016, -27.1547, 113.612, -15.8784, 117.953, -1.76144, 120.905, 10.2651, 120.302, 15.7063, 135.31, 18.0628, 145.944, -0.0535583, 163.747, -7.02545, 156.922, -90.4219, 70.6321, -99.5748, 60.8278, -91.3401, 52.7355, -78.1788, 41.4204, -63.3432, 46.8257, -55.5962, 50.4288, -55.6702, 58.9138)
 width = 5.76
 texture = ExtResource("12_orsf0")
 
-[node name="humo" type="Node2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro/Panel2/HBoxContainer/TextureRect3"]
+[node name="humo" type="Node2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro/PanelIntro/HBoxContainer/TextureRect3"]
 show_behind_parent = true
 use_parent_material = true
 position = Vector2(-11.1429, -11.1428)
 scale = Vector2(1.24224, 1.24224)
 
-[node name="h" type="Sprite2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro/Panel2/HBoxContainer/TextureRect3/humo"]
+[node name="h" type="Sprite2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro/PanelIntro/HBoxContainer/TextureRect3/humo"]
 self_modulate = Color(0.964706, 0.964706, 0.964706, 0.521569)
 use_parent_material = true
 position = Vector2(17, 57)
 texture = ExtResource("18_ms2d6")
 
-[node name="h2" type="Sprite2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro/Panel2/HBoxContainer/TextureRect3/humo"]
+[node name="h2" type="Sprite2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro/PanelIntro/HBoxContainer/TextureRect3/humo"]
 self_modulate = Color(0.964706, 0.964706, 0.964706, 0.258824)
 use_parent_material = true
 position = Vector2(21, 23)
@@ -2616,13 +2827,13 @@ rotation = 1.71181
 scale = Vector2(1.57281, 1.57281)
 texture = ExtResource("18_ms2d6")
 
-[node name="h12" type="Sprite2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro/Panel2/HBoxContainer/TextureRect3/humo"]
+[node name="h12" type="Sprite2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro/PanelIntro/HBoxContainer/TextureRect3/humo"]
 self_modulate = Color(0.964706, 0.964706, 0.964706, 0.521569)
 use_parent_material = true
 position = Vector2(73.5651, 56.5651)
 texture = ExtResource("18_ms2d6")
 
-[node name="h13" type="Sprite2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro/Panel2/HBoxContainer/TextureRect3/humo"]
+[node name="h13" type="Sprite2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro/PanelIntro/HBoxContainer/TextureRect3/humo"]
 self_modulate = Color(0.964706, 0.964706, 0.964706, 0.258824)
 use_parent_material = true
 position = Vector2(64, 23)
@@ -2630,7 +2841,7 @@ rotation = 1.71181
 scale = Vector2(1.57281, 1.57281)
 texture = ExtResource("18_ms2d6")
 
-[node name="h14" type="Sprite2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro/Panel2/HBoxContainer/TextureRect3/humo"]
+[node name="h14" type="Sprite2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro/PanelIntro/HBoxContainer/TextureRect3/humo"]
 self_modulate = Color(0.964706, 0.964706, 0.964706, 0.258824)
 z_index = 1
 use_parent_material = true
@@ -2639,7 +2850,7 @@ rotation = 1.71181
 scale = Vector2(1.57281, 1.57281)
 texture = ExtResource("18_ms2d6")
 
-[node name="h15" type="Sprite2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro/Panel2/HBoxContainer/TextureRect3/humo"]
+[node name="h15" type="Sprite2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro/PanelIntro/HBoxContainer/TextureRect3/humo"]
 self_modulate = Color(0.964706, 0.964706, 0.964706, 0.258824)
 z_index = 1
 use_parent_material = true
@@ -2648,7 +2859,7 @@ rotation = 1.71181
 scale = Vector2(0.918329, 0.918329)
 texture = ExtResource("18_ms2d6")
 
-[node name="h11" type="Sprite2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro/Panel2/HBoxContainer/TextureRect3/humo"]
+[node name="h11" type="Sprite2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro/PanelIntro/HBoxContainer/TextureRect3/humo"]
 self_modulate = Color(0.964706, 0.964706, 0.964706, 0.105882)
 use_parent_material = true
 position = Vector2(31, -10)
@@ -2656,154 +2867,120 @@ rotation = -0.50204
 scale = Vector2(1.57281, 1.57281)
 texture = ExtResource("18_ms2d6")
 
-[node name="Button" type="Button" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro/Panel2"]
-use_parent_material = true
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.853
-anchor_top = 1.0
-anchor_right = 0.853
-anchor_bottom = 1.0
-offset_left = -34.792
-offset_top = -37.0
-offset_right = 35.208
-offset_bottom = 33.0
-grow_horizontal = 0
-grow_vertical = 0
-theme = ExtResource("22_d5f6h")
+[node name="Panel(1) Btn(rigth)2" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro/PanelIntro" instance=ExtResource("81_mw337")]
+Data = SubResource("Resource_rocxg")
 
-[node name="Panel3" type="Panel" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro"]
+[node name="Panel(1) Btn(rigth)" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro/PanelIntro" instance=ExtResource("81_mw337")]
+Data = SubResource("Resource_dfgu1")
+Delay = 0.2
+
+[node name="Panel(2) Btn(rigth)" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro/PanelIntro" instance=ExtResource("81_mw337")]
+Data = SubResource("Resource_1w122")
+
+[node name="Panel(2) Btn(rigth)2" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro/PanelIntro" instance=ExtResource("81_mw337")]
+Data = SubResource("Resource_p752d")
+Delay = 0.4
+
+[node name="MoveExample" type="Node2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro/PanelIntro"]
 visible = false
 use_parent_material = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -248.0
-offset_top = -311.0
-offset_right = 248.0
-offset_bottom = -17.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = ExtResource("20_5lj7u")
-script = ExtResource("21_sbo2s")
-SetVisibleFalseWithBtn = true
-timeToAppear = 0.3
+position = Vector2(240, 202)
+rotation = -0.0628383
+scale = Vector2(1.37, 1.37)
 
-[node name="Label" type="Label" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro/Panel3"]
+[node name="Trial" type="Node2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro/PanelIntro/MoveExample"]
 use_parent_material = true
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.498
-anchor_top = 0.282
-anchor_right = 0.498
-anchor_bottom = 0.282
-offset_left = -216.072
-offset_top = -29.604
-offset_right = 215.928
-offset_bottom = 93.396
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(0.0470588, 0.921569, 0.411765, 1)
-theme_override_font_sizes/font_size = 25
-text = "MANTEN PRESIONADO PARA MOVERTE CON TU PROPULSOR"
-horizontal_alignment = 1
-autowrap_mode = 2
+position = Vector2(-186.131, -159.124)
 
-[node name="Area2D" type="Area2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro/Panel3" groups=["FollowCam"]]
-position = Vector2(0, 51)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro/Panel3/Area2D"]
-position = Vector2(231.5, 109.5)
-shape = SubResource("RectangleShape2D_3kd6y")
-
-[node name="Node2D" type="Node2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro/Panel3"]
+[node name="Line2D" type="Line2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro/PanelIntro/MoveExample/Trial"]
 use_parent_material = true
-position = Vector2(29, 51)
+rotation = 0.00050765
+points = PackedVector2Array(286, 159, 233.577, 144.526, 212.409, 138.686, 189.051, 135.766, 161.314, 137.226, 138.686, 141.606, 122.704, 149.573, 103.003, 164.181)
+width = 5.595
+texture = ExtResource("82_4qfy2")
+texture_mode = 1
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
 
-[node name="Sprite2D2" type="Sprite2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro/Panel3/Node2D"]
+[node name="Sprite2D2" type="Sprite2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro/PanelIntro/MoveExample"]
 self_modulate = Color(0.952941, 0.952941, 0.952941, 1)
 use_parent_material = true
-position = Vector2(320.5, 170)
+position = Vector2(134.369, 10.8759)
 scale = Vector2(0.65, 0.65)
 texture = ExtResource("18_ms2d6")
 
-[node name="Sprite2D3" type="Sprite2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro/Panel3/Node2D"]
+[node name="Sprite2D3" type="Sprite2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro/PanelIntro/MoveExample"]
 self_modulate = Color(0.952941, 0.952941, 0.952941, 1)
 use_parent_material = true
-position = Vector2(336.5, 176)
+position = Vector2(150.369, 16.8759)
 scale = Vector2(0.599998, 0.599998)
 texture = ExtResource("18_ms2d6")
 
-[node name="Sprite2D4" type="Sprite2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro/Panel3/Node2D"]
+[node name="Sprite2D4" type="Sprite2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro/PanelIntro/MoveExample"]
 self_modulate = Color(0.952941, 0.952941, 0.952941, 1)
 use_parent_material = true
-position = Vector2(351.5, 183)
+position = Vector2(165.369, 23.8759)
 scale = Vector2(0.499997, 0.499997)
 texture = ExtResource("18_ms2d6")
 
-[node name="Sprite2D5" type="Sprite2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro/Panel3/Node2D"]
+[node name="Sprite2D5" type="Sprite2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro/PanelIntro/MoveExample"]
 self_modulate = Color(0.952941, 0.952941, 0.952941, 1)
 use_parent_material = true
-position = Vector2(365.5, 189)
+position = Vector2(179.369, 29.8759)
 scale = Vector2(0.400001, 0.400001)
 texture = ExtResource("18_ms2d6")
 
-[node name="Sprite2D" type="Sprite2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro/Panel3/Node2D"]
+[node name="Sprite2D" type="Sprite2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro/PanelIntro/MoveExample"]
 use_parent_material = true
-position = Vector2(287.5, 160)
+position = Vector2(101.369, 0.875854)
 rotation = -2.84381
 scale = Vector2(0.435855, 0.435855)
 texture = ExtResource("46_qiyux")
 
-[node name="Node2D" type="Node2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro/Panel3/Node2D"]
+[node name="Node2D" type="Node2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro/PanelIntro/MoveExample"]
 use_parent_material = true
-position = Vector2(139.5, 154)
-rotation = -0.164013
+position = Vector2(-83.9416, 5.83994)
+rotation = -0.641304
+scale = Vector2(0.59, 0.59)
 
-[node name="Polygon2D" type="Polygon2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro/Panel3/Node2D/Node2D"]
+[node name="Polygon2D" type="Polygon2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro/PanelIntro/MoveExample/Node2D"]
+use_parent_material = true
 rotation = 0.323588
-color = Color(0, 0, 0, 1)
 polygon = PackedVector2Array(-3, -16, 1, -16, 1, -31, -3, -31)
 
-[node name="Polygon2D2" type="Polygon2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro/Panel3/Node2D/Node2D"]
+[node name="Polygon2D2" type="Polygon2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro/PanelIntro/MoveExample/Node2D"]
+visible = false
+use_parent_material = true
 rotation = 1.34671
-color = Color(0, 0, 0, 1)
 polygon = PackedVector2Array(-3, -16, 1, -16, 1, -31, -3, -31)
 
-[node name="Polygon2D3" type="Polygon2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro/Panel3/Node2D/Node2D"]
+[node name="Polygon2D3" type="Polygon2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro/PanelIntro/MoveExample/Node2D"]
+use_parent_material = true
 rotation = 2.26644
-color = Color(0, 0, 0, 1)
 polygon = PackedVector2Array(-3, -16, 1, -16, 1, -31, -3, -31)
 
-[node name="Polygon2D4" type="Polygon2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro/Panel3/Node2D/Node2D"]
+[node name="Polygon2D4" type="Polygon2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro/PanelIntro/MoveExample/Node2D"]
+use_parent_material = true
 rotation = 3.28598
-color = Color(0, 0, 0, 1)
 polygon = PackedVector2Array(-3, -16, 1, -16, 1, -31, -3, -31)
 
-[node name="Polygon2D5" type="Polygon2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro/Panel3/Node2D/Node2D"]
+[node name="Polygon2D5" type="Polygon2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro/PanelIntro/MoveExample/Node2D"]
+use_parent_material = true
 rotation = -1.89418
-color = Color(0, 0, 0, 1)
 polygon = PackedVector2Array(-3, -16, 1, -16, 1, -31, -3, -31)
 
-[node name="Polygon2D6" type="Polygon2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro/Panel3/Node2D/Node2D"]
+[node name="Polygon2D6" type="Polygon2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro/PanelIntro/MoveExample/Node2D"]
+use_parent_material = true
 rotation = -0.689467
-color = Color(0, 0, 0, 1)
 polygon = PackedVector2Array(-3, -16, 1, -16, 1, -31, -3, -31)
 
-[node name="handUI" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro/Panel3/Node2D/Node2D" instance=ExtResource("65_p352n")]
+[node name="hand" type="Sprite2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro/PanelIntro/MoveExample"]
 use_parent_material = true
-offset_left = -32.717
-offset_top = -1.36029
-offset_right = -32.717
-offset_bottom = -1.36029
-rotation = -1.41655
-scale = Vector2(0.54, 0.54)
-AnimToPlay = "stop"
-
-[node name="hand" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro/Panel3/Node2D/Node2D/handUI" index="0"]
-use_parent_material = true
-flip_h = true
+position = Vector2(-81.7115, -20.9824)
+rotation = 0.0885454
+scale = Vector2(0.284519, 0.284519)
+texture = ExtResource("81_4v0ip")
 
 [node name="Capsula" type="Node2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController"]
 position = Vector2(237, -248)
@@ -2856,6 +3033,13 @@ position = Vector2(-238, 209)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Capsula/TriggerInside"]
 position = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_ohny0")
+
+[node name="PanelOutArea" type="Area2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Capsula" groups=["FollowCam"]]
+position = Vector2(-472, 134)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Capsula/PanelOutArea"]
+position = Vector2(231.5, 122.5)
+shape = SubResource("RectangleShape2D_3kd6y")
 
 [node name="Astronauta" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1" node_paths=PackedStringArray("PhantomCam", "pcInventary") groups=["player"] instance=ExtResource("7_jv4gs")]
 material = SubResource("CanvasItemMaterial_h2n3c")
@@ -2926,36 +3110,56 @@ phantomCam = NodePath("../../PhantomCamera2D")
 position = Vector2(621, 159)
 scale = Vector2(0.672, 0.672)
 
-[node name="Panel" type="Panel" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/PCInventary/pcInventary"]
-visible = false
-clip_contents = true
+[node name="PanelInventory" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/PCInventary/pcInventary" instance=ExtResource("76_xvlec")]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.382
-anchor_top = 0.5
-anchor_right = 0.382
-anchor_bottom = 0.5
-offset_left = 31.0
-offset_top = 17.0
-offset_right = 524.0
-offset_bottom = 191.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = ExtResource("20_5lj7u")
+anchors_preset = 0
+anchor_left = 0.0
+anchor_right = 0.0
+offset_left = 20.0
+offset_top = 22.0
+offset_right = 517.0
+offset_bottom = 221.0
+grow_horizontal = 1
+pivot_offset = Vector2(248.5, 99.5)
+theme = ExtResource("77_hmdp2")
+AppearInBeginning = false
+Texts = Array[ExtResource("80_drq41")]([SubResource("Resource_k0t8t"), SubResource("Resource_hiuv8")])
 
-[node name="HBoxContainer" type="Control" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/PCInventary/pcInventary/Panel"]
+[node name="label" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/PCInventary/pcInventary/PanelInventory" index="0"]
+label_settings = ExtResource("74_d02uo")
+
+[node name="Icon" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/PCInventary/pcInventary/PanelInventory/BtnDerAnchor/btnDer" index="0"]
+offset_left = -22.0
+offset_top = -22.0
+offset_right = 22.0
+offset_bottom = 22.0
+
+[node name="Label" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/PCInventary/pcInventary/PanelInventory/BtnDerAnchor/btnDer/Icon" index="0"]
+text = "YO!"
+
+[node name="Icon" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/PCInventary/pcInventary/PanelInventory/btnIzqAnchor/btnIzq" index="0"]
+offset_left = -22.0
+offset_top = -22.0
+offset_right = 22.0
+offset_bottom = 22.0
+
+[node name="Icon" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/PCInventary/pcInventary/PanelInventory/btnCentralAnchor/btnCentral" index="0"]
+offset_right = -23.0
+offset_bottom = -23.0
+
+[node name="HBoxContainer" type="Control" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/PCInventary/pcInventary/PanelInventory"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 32.0
-offset_top = 41.0
+offset_top = 40.0
 offset_right = -40.0
-offset_bottom = -41.0
+offset_bottom = -42.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TextureRect" type="TextureRect" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/PCInventary/pcInventary/Panel/HBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/PCInventary/pcInventary/PanelInventory/HBoxContainer"]
 layout_mode = 2
 offset_right = 110.0
 offset_bottom = 92.0
@@ -2964,21 +3168,45 @@ pivot_offset = Vector2(55.2, 46)
 texture = ExtResource("11_x4hhq")
 expand_mode = 3
 
-[node name="pivot" type="Node2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/PCInventary/pcInventary/Panel/HBoxContainer/TextureRect"]
+[node name="pivot" type="Node2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/PCInventary/pcInventary/PanelInventory/HBoxContainer/TextureRect"]
 position = Vector2(53, 48)
 rotation = -2.31954
 
-[node name="check" type="Sprite2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/PCInventary/pcInventary/Panel/HBoxContainer/TextureRect/pivot"]
+[node name="check" type="Sprite2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/PCInventary/pcInventary/PanelInventory/HBoxContainer/TextureRect/pivot"]
 scale = Vector2(1e-05, 1e-05)
-texture = ExtResource("42_u1nrq")
+texture = ExtResource("79_dkiek")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/PCInventary/pcInventary/Panel/HBoxContainer/TextureRect/pivot"]
+[node name="checkShadow" type="Sprite2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/PCInventary/pcInventary/PanelInventory/HBoxContainer/TextureRect/pivot/check"]
+self_modulate = Color(0, 0, 0, 1)
+show_behind_parent = true
+position = Vector2(1, 4.00024)
+texture = ExtResource("79_dkiek")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/PCInventary/pcInventary/PanelInventory/HBoxContainer/TextureRect/pivot"]
 root_node = NodePath("../check")
 libraries = {
 "": SubResource("AnimationLibrary_fpol8")
 }
 
-[node name="TextureRect2" type="TextureRect" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/PCInventary/pcInventary/Panel/HBoxContainer"]
+[node name="Label" type="Label" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/PCInventary/pcInventary/PanelInventory/HBoxContainer/TextureRect/pivot"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -87.5181
+offset_top = 57.952
+offset_right = 87.4819
+offset_bottom = 92.952
+grow_horizontal = 2
+grow_vertical = 2
+text = "ATRAPADO"
+label_settings = ExtResource("74_d02uo")
+horizontal_alignment = 1
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="TextureRect2" type="TextureRect" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/PCInventary/pcInventary/PanelInventory/HBoxContainer"]
 layout_mode = 2
 offset_left = 154.0
 offset_right = 261.0
@@ -2989,28 +3217,52 @@ pivot_offset = Vector2(58.195, 44.825)
 texture = ExtResource("17_uxw0q")
 expand_mode = 1
 
-[node name="pivot" type="Node2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/PCInventary/pcInventary/Panel/HBoxContainer/TextureRect2"]
+[node name="pivot" type="Node2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/PCInventary/pcInventary/PanelInventory/HBoxContainer/TextureRect2"]
 position = Vector2(49.7917, 40.5052)
 rotation = 0.708604
 scale = Vector2(1.07, 1.07)
 
-[node name="check" type="Sprite2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/PCInventary/pcInventary/Panel/HBoxContainer/TextureRect2/pivot"]
+[node name="check" type="Sprite2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/PCInventary/pcInventary/PanelInventory/HBoxContainer/TextureRect2/pivot"]
 scale = Vector2(1e-05, 1e-05)
-texture = ExtResource("42_u1nrq")
+texture = ExtResource("79_dkiek")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/PCInventary/pcInventary/Panel/HBoxContainer/TextureRect2/pivot"]
+[node name="checkShadow" type="Sprite2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/PCInventary/pcInventary/PanelInventory/HBoxContainer/TextureRect2/pivot/check"]
+self_modulate = Color(0, 0, 0, 1)
+show_behind_parent = true
+position = Vector2(1, 4.00024)
+texture = ExtResource("79_dkiek")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/PCInventary/pcInventary/PanelInventory/HBoxContainer/TextureRect2/pivot"]
 root_node = NodePath("../check")
 libraries = {
 "": SubResource("AnimationLibrary_fpol8")
 }
 
-[node name="halo" type="Sprite2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/PCInventary/pcInventary/Panel/HBoxContainer/TextureRect2"]
+[node name="Label" type="Label" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/PCInventary/pcInventary/PanelInventory/HBoxContainer/TextureRect2/pivot"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -80.3215
+offset_top = 56.0493
+offset_right = 94.6785
+offset_bottom = 91.0493
+grow_horizontal = 2
+grow_vertical = 2
+text = "ATRAPADO"
+label_settings = ExtResource("74_d02uo")
+horizontal_alignment = 1
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="halo" type="Sprite2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/PCInventary/pcInventary/PanelInventory/HBoxContainer/TextureRect2"]
 show_behind_parent = true
 position = Vector2(49.7917, 40.5052)
 rotation = 0.708604
 scale = Vector2(0.61, 0.61)
 
-[node name="TextureRect2" type="TextureRect" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/PCInventary/pcInventary/Panel/HBoxContainer/TextureRect2/halo"]
+[node name="TextureRect2" type="TextureRect" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/PCInventary/pcInventary/PanelInventory/HBoxContainer/TextureRect2/halo"]
 visible = false
 modulate = Color(1, 0, 0, 0.803922)
 offset_left = -195.0
@@ -3020,7 +3272,7 @@ offset_bottom = 194.0
 texture = ExtResource("29_j1bju")
 expand_mode = 1
 
-[node name="TextureRect3" type="TextureRect" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/PCInventary/pcInventary/Panel/HBoxContainer/TextureRect2/halo"]
+[node name="TextureRect3" type="TextureRect" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/PCInventary/pcInventary/PanelInventory/HBoxContainer/TextureRect2/halo"]
 modulate = Color(1.11, 1.04, 0.55, 1)
 offset_left = -127.082
 offset_top = -131.007
@@ -3029,7 +3281,7 @@ offset_bottom = 130.993
 texture = ExtResource("29_j1bju")
 expand_mode = 1
 
-[node name="TextureRect" type="TextureRect" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/PCInventary/pcInventary/Panel/HBoxContainer/TextureRect2/halo"]
+[node name="TextureRect" type="TextureRect" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/PCInventary/pcInventary/PanelInventory/HBoxContainer/TextureRect2/halo"]
 modulate = Color(1.5, 1.5, 1.5, 1)
 offset_left = -94.0
 offset_top = -93.0
@@ -3038,7 +3290,7 @@ offset_bottom = 96.0
 texture = ExtResource("29_j1bju")
 expand_mode = 1
 
-[node name="Line2D3" type="Line2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/PCInventary/pcInventary/Panel/HBoxContainer/TextureRect2"]
+[node name="Line2D3" type="Line2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/PCInventary/pcInventary/PanelInventory/HBoxContainer/TextureRect2"]
 show_behind_parent = true
 position = Vector2(44.4825, -27.1691)
 rotation = 0.707108
@@ -3052,7 +3304,7 @@ joint_mode = 2
 begin_cap_mode = 2
 end_cap_mode = 2
 
-[node name="Line2D2" type="Line2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/PCInventary/pcInventary/Panel/HBoxContainer/TextureRect2"]
+[node name="Line2D2" type="Line2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/PCInventary/pcInventary/PanelInventory/HBoxContainer/TextureRect2"]
 show_behind_parent = true
 position = Vector2(44.4825, -27.1691)
 rotation = 0.707108
@@ -3066,7 +3318,7 @@ joint_mode = 2
 begin_cap_mode = 2
 end_cap_mode = 2
 
-[node name="TextureRect3" type="TextureRect" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/PCInventary/pcInventary/Panel/HBoxContainer"]
+[node name="TextureRect3" type="TextureRect" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/PCInventary/pcInventary/PanelInventory/HBoxContainer"]
 layout_mode = 2
 offset_left = 329.0
 offset_right = 421.0
@@ -3076,21 +3328,45 @@ pivot_offset = Vector2(46, 46)
 texture = ExtResource("21_57l06")
 expand_mode = 3
 
-[node name="pivot" type="Node2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/PCInventary/pcInventary/Panel/HBoxContainer/TextureRect3"]
+[node name="pivot" type="Node2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/PCInventary/pcInventary/PanelInventory/HBoxContainer/TextureRect3"]
 position = Vector2(43.5155, 48.4845)
 scale = Vector2(1.24224, 1.24224)
 
-[node name="check" type="Sprite2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/PCInventary/pcInventary/Panel/HBoxContainer/TextureRect3/pivot"]
+[node name="check" type="Sprite2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/PCInventary/pcInventary/PanelInventory/HBoxContainer/TextureRect3/pivot"]
 scale = Vector2(1e-05, 1e-05)
-texture = ExtResource("42_u1nrq")
+texture = ExtResource("79_dkiek")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/PCInventary/pcInventary/Panel/HBoxContainer/TextureRect3/pivot"]
+[node name="checkShadow" type="Sprite2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/PCInventary/pcInventary/PanelInventory/HBoxContainer/TextureRect3/pivot/check"]
+self_modulate = Color(0, 0, 0, 1)
+show_behind_parent = true
+position = Vector2(1, 4.00024)
+texture = ExtResource("79_dkiek")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/PCInventary/pcInventary/PanelInventory/HBoxContainer/TextureRect3/pivot"]
 root_node = NodePath("../check")
 libraries = {
 "": SubResource("AnimationLibrary_fpol8")
 }
 
-[node name="CollisionPolygon2D84" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/PCInventary/pcInventary/Panel/HBoxContainer/TextureRect3" instance=ExtResource("7_s4reo")]
+[node name="Label" type="Label" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/PCInventary/pcInventary/PanelInventory/HBoxContainer/TextureRect3/pivot"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -87.5167
+offset_top = 51.952
+offset_right = 87.4833
+offset_bottom = 86.952
+grow_horizontal = 2
+grow_vertical = 2
+text = "ATRAPADO"
+label_settings = ExtResource("74_d02uo")
+horizontal_alignment = 1
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="CollisionPolygon2D84" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/PCInventary/pcInventary/PanelInventory/HBoxContainer/TextureRect3" instance=ExtResource("7_s4reo")]
 show_behind_parent = true
 position = Vector2(-3.84659, -16.6622)
 scale = Vector2(1.07596, 1.07596)
@@ -3100,36 +3376,36 @@ _scale = Vector2(15, 15)
 _textureLine = ExtResource("12_orsf0")
 _textureLineWidth = 5.76
 
-[node name="humo" type="Node2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/PCInventary/pcInventary/Panel/HBoxContainer/TextureRect3"]
+[node name="humo" type="Node2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/PCInventary/pcInventary/PanelInventory/HBoxContainer/TextureRect3"]
 show_behind_parent = true
 position = Vector2(-11.1429, -11.1428)
 scale = Vector2(1.24224, 1.24224)
 
-[node name="h" type="Sprite2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/PCInventary/pcInventary/Panel/HBoxContainer/TextureRect3/humo"]
+[node name="h" type="Sprite2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/PCInventary/pcInventary/PanelInventory/HBoxContainer/TextureRect3/humo"]
 self_modulate = Color(0.964706, 0.964706, 0.964706, 0.521569)
 position = Vector2(17, 57)
 texture = ExtResource("18_ms2d6")
 
-[node name="h2" type="Sprite2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/PCInventary/pcInventary/Panel/HBoxContainer/TextureRect3/humo"]
+[node name="h2" type="Sprite2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/PCInventary/pcInventary/PanelInventory/HBoxContainer/TextureRect3/humo"]
 self_modulate = Color(0.964706, 0.964706, 0.964706, 0.258824)
 position = Vector2(21, 23)
 rotation = 1.71181
 scale = Vector2(1.57281, 1.57281)
 texture = ExtResource("18_ms2d6")
 
-[node name="h12" type="Sprite2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/PCInventary/pcInventary/Panel/HBoxContainer/TextureRect3/humo"]
+[node name="h12" type="Sprite2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/PCInventary/pcInventary/PanelInventory/HBoxContainer/TextureRect3/humo"]
 self_modulate = Color(0.964706, 0.964706, 0.964706, 0.521569)
 position = Vector2(73.5651, 56.5651)
 texture = ExtResource("18_ms2d6")
 
-[node name="h13" type="Sprite2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/PCInventary/pcInventary/Panel/HBoxContainer/TextureRect3/humo"]
+[node name="h13" type="Sprite2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/PCInventary/pcInventary/PanelInventory/HBoxContainer/TextureRect3/humo"]
 self_modulate = Color(0.964706, 0.964706, 0.964706, 0.258824)
 position = Vector2(64, 23)
 rotation = 1.71181
 scale = Vector2(1.57281, 1.57281)
 texture = ExtResource("18_ms2d6")
 
-[node name="h14" type="Sprite2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/PCInventary/pcInventary/Panel/HBoxContainer/TextureRect3/humo"]
+[node name="h14" type="Sprite2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/PCInventary/pcInventary/PanelInventory/HBoxContainer/TextureRect3/humo"]
 self_modulate = Color(0.964706, 0.964706, 0.964706, 0.258824)
 z_index = 1
 position = Vector2(53, 60)
@@ -3137,7 +3413,7 @@ rotation = 1.71181
 scale = Vector2(1.57281, 1.57281)
 texture = ExtResource("18_ms2d6")
 
-[node name="h15" type="Sprite2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/PCInventary/pcInventary/Panel/HBoxContainer/TextureRect3/humo"]
+[node name="h15" type="Sprite2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/PCInventary/pcInventary/PanelInventory/HBoxContainer/TextureRect3/humo"]
 self_modulate = Color(0.964706, 0.964706, 0.964706, 0.258824)
 z_index = 1
 position = Vector2(31, 32)
@@ -3145,35 +3421,35 @@ rotation = 1.71181
 scale = Vector2(0.918329, 0.918329)
 texture = ExtResource("18_ms2d6")
 
-[node name="h11" type="Sprite2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/PCInventary/pcInventary/Panel/HBoxContainer/TextureRect3/humo"]
+[node name="h11" type="Sprite2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/PCInventary/pcInventary/PanelInventory/HBoxContainer/TextureRect3/humo"]
 self_modulate = Color(0.964706, 0.964706, 0.964706, 0.105882)
 position = Vector2(31, -10)
 rotation = -0.50204
 scale = Vector2(1.57281, 1.57281)
 texture = ExtResource("18_ms2d6")
 
-[node name="h3" type="Sprite2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/PCInventary/pcInventary/Panel/HBoxContainer/TextureRect3/humo"]
+[node name="h3" type="Sprite2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/PCInventary/pcInventary/PanelInventory/HBoxContainer/TextureRect3/humo"]
 visible = false
 self_modulate = Color(0.964706, 0.964706, 0.964706, 0.521569)
 position = Vector2(31.4444, 16.4443)
 rotation = 2.62153
 texture = ExtResource("18_ms2d6")
 
-[node name="h4" type="Sprite2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/PCInventary/pcInventary/Panel/HBoxContainer/TextureRect3/humo"]
+[node name="h4" type="Sprite2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/PCInventary/pcInventary/PanelInventory/HBoxContainer/TextureRect3/humo"]
 visible = false
 self_modulate = Color(0.964706, 0.964706, 0.964706, 0.521569)
 position = Vector2(62.4443, 15.4443)
 rotation = 2.62153
 texture = ExtResource("18_ms2d6")
 
-[node name="h5" type="Sprite2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/PCInventary/pcInventary/Panel/HBoxContainer/TextureRect3/humo"]
+[node name="h5" type="Sprite2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/PCInventary/pcInventary/PanelInventory/HBoxContainer/TextureRect3/humo"]
 visible = false
 self_modulate = Color(0.964706, 0.964706, 0.964706, 0.521569)
 position = Vector2(76.4443, 18.4443)
 rotation = 1.29802
 texture = ExtResource("18_ms2d6")
 
-[node name="h6" type="Sprite2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/PCInventary/pcInventary/Panel/HBoxContainer/TextureRect3/humo"]
+[node name="h6" type="Sprite2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/PCInventary/pcInventary/PanelInventory/HBoxContainer/TextureRect3/humo"]
 visible = false
 self_modulate = Color(0.964706, 0.964706, 0.964706, 0.521569)
 position = Vector2(87.4443, 19.4443)
@@ -3181,7 +3457,7 @@ rotation = 1.29802
 scale = Vector2(0.858636, 0.858636)
 texture = ExtResource("18_ms2d6")
 
-[node name="h7" type="Sprite2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/PCInventary/pcInventary/Panel/HBoxContainer/TextureRect3/humo"]
+[node name="h7" type="Sprite2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/PCInventary/pcInventary/PanelInventory/HBoxContainer/TextureRect3/humo"]
 visible = false
 self_modulate = Color(0.835294, 0.835294, 0.835294, 0.478431)
 position = Vector2(87.4443, -4.55566)
@@ -3189,7 +3465,7 @@ rotation = 1.29802
 scale = Vector2(0.87, 0.87)
 texture = ExtResource("18_ms2d6")
 
-[node name="h8" type="Sprite2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/PCInventary/pcInventary/Panel/HBoxContainer/TextureRect3/humo"]
+[node name="h8" type="Sprite2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/PCInventary/pcInventary/PanelInventory/HBoxContainer/TextureRect3/humo"]
 visible = false
 self_modulate = Color(0.835294, 0.835294, 0.835294, 0.478431)
 position = Vector2(65.4443, -14.5557)
@@ -3197,7 +3473,7 @@ rotation = 1.29802
 scale = Vector2(0.87, 0.87)
 texture = ExtResource("18_ms2d6")
 
-[node name="h9" type="Sprite2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/PCInventary/pcInventary/Panel/HBoxContainer/TextureRect3/humo"]
+[node name="h9" type="Sprite2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/PCInventary/pcInventary/PanelInventory/HBoxContainer/TextureRect3/humo"]
 visible = false
 self_modulate = Color(0.835294, 0.835294, 0.835294, 0.478431)
 position = Vector2(42.4443, -17.5557)
@@ -3205,7 +3481,7 @@ rotation = 1.29802
 scale = Vector2(0.87, 0.87)
 texture = ExtResource("18_ms2d6")
 
-[node name="h10" type="Sprite2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/PCInventary/pcInventary/Panel/HBoxContainer/TextureRect3/humo"]
+[node name="h10" type="Sprite2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/PCInventary/pcInventary/PanelInventory/HBoxContainer/TextureRect3/humo"]
 visible = false
 self_modulate = Color(0.835294, 0.835294, 0.835294, 0.478431)
 position = Vector2(19.4443, -5.55566)
@@ -3213,46 +3489,8 @@ rotation = 1.29802
 scale = Vector2(0.87, 0.87)
 texture = ExtResource("18_ms2d6")
 
-[node name="MisionLabel" type="Label" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/PCInventary/pcInventary/Panel"]
-visible = false
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -220.5
-offset_top = -63.0
-offset_right = 220.5
-offset_bottom = 64.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(0.0470588, 0.921569, 0.411765, 1)
-theme_override_font_sizes/font_size = 25
-text = "¡MISIÓN CUMPLIDA!
-¿QUIÉN QUIERE 
-PURURÚ ESPACIAL?"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Button" type="Button" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/PCInventary/pcInventary/Panel"]
-visible = false
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.882
-anchor_top = 0.747
-anchor_right = 0.882
-anchor_bottom = 0.747
-offset_left = -34.826
-offset_top = -34.978
-offset_right = 35.174
-offset_bottom = 35.022
-theme = ExtResource("22_d5f6h")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/PCInventary/pcInventary/Panel"]
-libraries = {
-"": SubResource("AnimationLibrary_ruhu8")
-}
+[node name="Panel(2) Btn(rigth)" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/PCInventary/pcInventary/PanelInventory" instance=ExtResource("81_mw337")]
+Data = SubResource("Resource_a5apv")
 
 [node name="PhantomCamera2D2" type="Node2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1"]
 position = Vector2(914, -8420)
@@ -3358,60 +3596,57 @@ visible = true
 
 [node name="faceAnim" parent="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/Computer" index="2"]
 position = Vector2(0, -8)
-sprite_frames = ExtResource("80_vwhma")
 
-[node name="Outro" type="Control" parent="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior"]
-material = ExtResource("17_ybe5w")
-layout_mode = 3
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -343.5
-offset_top = -590.0
-offset_right = -343.5
-offset_bottom = -590.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Panel" type="Panel" parent="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/Outro"]
+[node name="ButtonChangeScene" parent="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior" instance=ExtResource("7_xf3bk")]
 visible = false
-use_parent_material = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -267.0
-offset_top = -325.0
-offset_right = 267.0
-offset_bottom = 137.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = ExtResource("20_5lj7u")
-script = ExtResource("21_sbo2s")
-SetVisibleFalseWithBtn = true
-timeToAppear = 1.0
-
-[node name="Label" type="RichTextLabel" parent="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/Outro/Panel"]
-use_parent_material = true
-layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 0.558
-anchor_right = 0.5
-anchor_bottom = 0.558
-offset_left = -263.0
-offset_top = -227.796
-offset_right = 264.0
-offset_bottom = 143.204
+anchor_left = 0.855
+anchor_right = 0.855
+offset_left = -403.945
+offset_top = -1096.0
+offset_right = -333.945
+offset_bottom = -1026.0
+grow_horizontal = 0
+theme = ExtResource("22_d5f6h")
+text = ""
+NextScene = "Map_Screen"
+
+[node name="ButtonParticle" type="Button" parent="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior"]
+anchors_preset = -1
+anchor_left = -0.272
+anchor_top = -0.411
+anchor_right = 1.253
+anchor_bottom = 1.0
+offset_left = -329.752
+offset_top = -691.896
+offset_right = -329.727
+offset_bottom = -67.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/default_color = Color(0.0470588, 0.921569, 0.411765, 1)
-theme_override_colors/font_selected_color = Color(0.0470588, 0.921569, 0.411765, 1)
-theme_override_font_sizes/normal_font_size = 22
-theme_override_font_sizes/bold_font_size = 22
-bbcode_enabled = true
+theme_override_styles/normal = ExtResource("97_jjlop")
+theme_override_styles/hover = ExtResource("97_jjlop")
+theme_override_styles/pressed = ExtResource("97_jjlop")
+theme_override_styles/disabled = ExtResource("97_jjlop")
+theme_override_styles/focus = ExtResource("97_jjlop")
+flat = true
+
+[node name="PanelOutro" parent="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior" instance=ExtResource("76_xvlec")]
+anchors_preset = 8
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -681.0
+offset_top = -963.0
+offset_right = -4.0
+offset_bottom = -463.0
+grow_vertical = 2
+pivot_offset = Vector2(338.5, 250)
+theme = ExtResource("77_hmdp2")
+AppearInBeginning = false
+TimeToAppear = 2.2
+Texts = Array[ExtResource("80_drq41")]([SubResource("Resource_3p4ow"), SubResource("Resource_6eq48"), SubResource("Resource_856ni"), SubResource("Resource_tt3tg")])
+
+[node name="labelRich" parent="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/PanelOutro" index="1"]
+theme_override_colors/default_color = Color(0.046875, 0.917969, 0.410156, 1)
 text = "[center][b]HAY 3 TIPOS DE ROCAS ESPACIALES:[/b]
 
 [b]EL METEOROIDE[/b] ES CUALQUIER ROCA ESPACIAL QUE ESTÉ FLOTANDO EN EL ESPACIO SIN TOCAR 
@@ -3420,151 +3655,63 @@ A OTRO CUERPO
 
 
 
-
 PUEDEN SER PEDAZOS DE PLANETAS, COMETAS
-O SATÉLITES.
+O SATÉLITES."
 
-"
-scroll_active = false
-autowrap_mode = 2
+[node name="btnDer" parent="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/PanelOutro/BtnDerAnchor" index="0"]
+visible = true
 
-[node name="Button" type="Button" parent="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/Outro/Panel"]
-use_parent_material = true
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.853
-anchor_top = 1.0
-anchor_right = 0.853
-anchor_bottom = 1.0
-offset_left = -34.792
-offset_top = -37.0
-offset_right = 35.208
-offset_bottom = 33.0
-grow_horizontal = 0
-grow_vertical = 0
-theme = ExtResource("22_d5f6h")
+[node name="Icon" parent="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/PanelOutro/BtnDerAnchor/btnDer" index="0"]
+offset_left = -22.0
+offset_top = -22.0
+offset_right = 22.0
+offset_bottom = 22.0
+texture = ExtResource("79_dkiek")
 
-[node name="TextureRect" type="TextureRect" parent="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/Outro/Panel"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.497
-anchor_top = 0.541
-anchor_right = 0.497
-anchor_bottom = 0.541
-offset_left = -55.3979
-offset_top = -39.9421
-offset_right = 55.0021
-offset_bottom = 52.0579
-rotation = 2.3193
-pivot_offset = Vector2(55.2, 46)
+[node name="Label" parent="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/PanelOutro/BtnDerAnchor/btnDer/Icon" index="0"]
+text = ""
+
+[node name="Icon" parent="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/PanelOutro/btnIzqAnchor/btnIzq" index="0"]
+offset_left = -22.0
+offset_top = -22.0
+offset_right = 22.0
+offset_bottom = 22.0
+
+[node name="Icon" parent="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/PanelOutro/btnCentralAnchor/btnCentral" index="0"]
+offset_right = -23.0
+offset_bottom = -23.0
+
+[node name="meteoroide" type="Node2D" parent="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/PanelOutro" node_paths=PackedStringArray("CenterObject")]
+position = Vector2(338, 298)
+script = ExtResource("11_712vn")
+selfRotation = 0.5
+CenterObject = NodePath(".")
+
+[node name="Sprite2D" type="Sprite2D" parent="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/PanelOutro/meteoroide"]
+scale = Vector2(0.336842, 0.336842)
 texture = ExtResource("11_x4hhq")
-expand_mode = 3
 
-[node name="pivot" type="Node2D" parent="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/Outro/Panel/TextureRect"]
-position = Vector2(53, 48)
-rotation = -2.31954
-
-[node name="check" type="Sprite2D" parent="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/Outro/Panel/TextureRect/pivot"]
-scale = Vector2(1e-05, 1e-05)
-texture = ExtResource("42_u1nrq")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/Outro/Panel/TextureRect/pivot"]
-root_node = NodePath("../check")
-libraries = {
-"": SubResource("AnimationLibrary_fpol8")
-}
-
-[node name="Panel2" type="Panel" parent="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/Outro"]
+[node name="Meteoro" type="Node2D" parent="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/PanelOutro"]
 visible = false
-use_parent_material = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -267.0
-offset_top = -361.0
-offset_right = 267.0
-offset_bottom = 104.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = ExtResource("20_5lj7u")
-script = ExtResource("21_sbo2s")
-SetVisibleFalseWithBtn = true
-timeToAppear = 0.3
 
-[node name="Label" type="RichTextLabel" parent="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/Outro/Panel2"]
-use_parent_material = true
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -278.0
-offset_top = -199.5
-offset_right = 279.0
-offset_bottom = 175.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/default_color = Color(0.0470588, 0.921569, 0.411765, 1)
-theme_override_colors/font_selected_color = Color(0.0470588, 0.921569, 0.411765, 1)
-theme_override_font_sizes/normal_font_size = 22
-theme_override_font_sizes/bold_font_size = 22
-bbcode_enabled = true
-text = "[center][b]AL METEORO DE NOCHE LE DICEN  
-“ESTRELLA FUGAZ”[/b]
-
-
-
-
-
-[b]PERO ES UN METEOROIDE[/b] QUE
-AL ENTRAR CON GRAN VELOCIDAD
-EN LA ATMÓSFERA DE UN PLANETA 
-[b]DESPRENDE UNA LARGA COLA DE LUZ 
-AL QUEMARSE EN SU CAÍDA.[/b]"
-autowrap_mode = 2
-
-[node name="Button" type="Button" parent="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/Outro/Panel2"]
-use_parent_material = true
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.853
-anchor_top = 1.0
-anchor_right = 0.853
-anchor_bottom = 1.0
-offset_left = -34.792
-offset_top = -37.0
-offset_right = 35.208
-offset_bottom = 33.0
-grow_horizontal = 0
-grow_vertical = 0
-theme = ExtResource("22_d5f6h")
-
-[node name="TextureRect2" type="TextureRect" parent="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/Outro/Panel2"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.491
-anchor_top = 0.794
-anchor_right = 0.491
-anchor_bottom = 0.794
-offset_left = -45.194
-offset_top = -240.21
-offset_right = 61.806
-offset_bottom = -157.21
+[node name="TextureRect2" type="TextureRect" parent="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/PanelOutro/Meteoro"]
+offset_left = 288.0
+offset_top = 154.0
+offset_right = 395.0
+offset_bottom = 237.0
 rotation = -0.707108
 scale = Vector2(0.91, 0.91)
 pivot_offset = Vector2(58.195, 44.825)
 texture = ExtResource("17_uxw0q")
 expand_mode = 1
 
-[node name="halo" type="Sprite2D" parent="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/Outro/Panel2/TextureRect2"]
+[node name="halo" type="Sprite2D" parent="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/PanelOutro/Meteoro/TextureRect2"]
 show_behind_parent = true
 position = Vector2(49.7917, 40.5052)
 rotation = 0.708604
 scale = Vector2(0.61, 0.61)
 
-[node name="TextureRect2" type="TextureRect" parent="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/Outro/Panel2/TextureRect2/halo"]
+[node name="TextureRect2" type="TextureRect" parent="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/PanelOutro/Meteoro/TextureRect2/halo"]
 visible = false
 modulate = Color(1, 0, 0, 0.803922)
 offset_left = -195.0
@@ -3574,7 +3721,7 @@ offset_bottom = 194.0
 texture = ExtResource("29_j1bju")
 expand_mode = 1
 
-[node name="TextureRect3" type="TextureRect" parent="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/Outro/Panel2/TextureRect2/halo"]
+[node name="TextureRect3" type="TextureRect" parent="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/PanelOutro/Meteoro/TextureRect2/halo"]
 modulate = Color(1.11, 1.04, 0.55, 1)
 offset_left = -127.082
 offset_top = -131.007
@@ -3583,7 +3730,7 @@ offset_bottom = 130.993
 texture = ExtResource("29_j1bju")
 expand_mode = 1
 
-[node name="TextureRect" type="TextureRect" parent="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/Outro/Panel2/TextureRect2/halo"]
+[node name="TextureRect" type="TextureRect" parent="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/PanelOutro/Meteoro/TextureRect2/halo"]
 modulate = Color(1.5, 1.5, 1.5, 1)
 offset_left = -94.0
 offset_top = -93.0
@@ -3592,7 +3739,14 @@ offset_bottom = 96.0
 texture = ExtResource("29_j1bju")
 expand_mode = 1
 
-[node name="Line2D3" type="Line2D" parent="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/Outro/Panel2/TextureRect2"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/PanelOutro/Meteoro/TextureRect2/halo"]
+autoplay = "halo"
+speed_scale = 0.2
+libraries = {
+"": SubResource("AnimationLibrary_ts1wp")
+}
+
+[node name="Line2D3" type="Line2D" parent="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/PanelOutro/Meteoro/TextureRect2"]
 show_behind_parent = true
 position = Vector2(44.4825, -27.1691)
 rotation = 0.707108
@@ -3600,159 +3754,134 @@ points = PackedVector2Array(50.3872, 11.9512, 60.2774, -4.53229, 82.2554, -13.32
 width = 62.455
 width_curve = SubResource("Curve_7inie")
 gradient = SubResource("Gradient_b5ybi")
-texture = ExtResource("62_cmuch")
-texture_mode = 1
+texture = SubResource("AnimatedTexture_k3a8v")
+texture_mode = 2
 joint_mode = 2
 begin_cap_mode = 2
 end_cap_mode = 2
 
-[node name="Line2D2" type="Line2D" parent="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/Outro/Panel2/TextureRect2"]
+[node name="Line2D2" type="Line2D" parent="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/PanelOutro/Meteoro/TextureRect2"]
 show_behind_parent = true
 position = Vector2(44.4825, -27.1691)
 rotation = 0.707108
-points = PackedVector2Array(50.3872, 11.9512, 60.2774, -4.53229, 82.2554, -13.3235, 111.926, -16.6202, 122.915, 11.9512, 126.211, 38.3248, 99.8378, 75.6875)
+points = PackedVector2Array(50.3872, 11.9512, 63.574, -2.33441, 82.2554, -13.3235, 111.926, -16.6202, 122.915, 11.9512, 126.211, 38.3248, 99.8378, 75.6875)
 width = 62.455
 width_curve = SubResource("Curve_7inie")
 gradient = SubResource("Gradient_b5ybi")
-texture = ExtResource("74_uvtyl")
-texture_mode = 1
+texture = SubResource("AnimatedTexture_w3bqf")
+texture_mode = 2
 joint_mode = 2
 begin_cap_mode = 2
 end_cap_mode = 2
 
-[node name="Panel3" type="Panel" parent="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/Outro"]
-visible = false
-use_parent_material = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -294.0
-offset_top = -343.0
-offset_right = 294.0
-offset_bottom = 202.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = ExtResource("20_5lj7u")
-script = ExtResource("21_sbo2s")
-SetVisibleFalseWithBtn = true
-timeToAppear = 0.3
+[node name="Line2D4" type="Line2D" parent="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/PanelOutro/Meteoro/TextureRect2"]
+show_behind_parent = true
+position = Vector2(44.4825, -27.1691)
+rotation = 0.707108
+points = PackedVector2Array(50.3872, 11.9512, 62.4751, -4.53223, 82.2554, -13.3235, 111.926, -16.6202, 122.915, 11.9512, 126.211, 38.3248, 99.8378, 75.6875)
+width = 62.455
+width_curve = SubResource("Curve_7inie")
+gradient = SubResource("Gradient_b5ybi")
+texture = SubResource("AnimatedTexture_sr2hm")
+texture_mode = 2
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
 
-[node name="Label" type="RichTextLabel" parent="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/Outro/Panel3"]
-use_parent_material = true
-layout_mode = 1
+[node name="Meteorito" type="Node2D" parent="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/PanelOutro"]
+visible = false
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/PanelOutro/Meteorito"]
+position = Vector2(343, 220)
+rotation = -2.00031
+scale = Vector2(3.99682, 3.99682)
+amount = 128
+lifetime = 2.0
+texture = ExtResource("18_ms2d6")
+spread = 20.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 1.0
+initial_velocity_max = 5.0
+radial_accel_min = -27.16
+radial_accel_max = 44.45
+scale_amount_min = 0.5
+scale_amount_max = 2.0
+scale_amount_curve = SubResource("Curve_vuutm")
+color_ramp = SubResource("Gradient_502ld")
+
+[node name="TextureRect3" type="TextureRect" parent="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/PanelOutro/Meteorito"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -277.0
-offset_top = -222.5
-offset_right = 277.0
-offset_bottom = 229.5
+offset_left = 290.0
+offset_top = 154.0
+offset_right = 382.0
+offset_bottom = 246.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/default_color = Color(0.0470588, 0.921569, 0.411765, 1)
-theme_override_colors/font_selected_color = Color(0.0470588, 0.921569, 0.411765, 1)
-theme_override_font_sizes/normal_font_size = 22
-theme_override_font_sizes/bold_font_size = 22
-bbcode_enabled = true
-text = "[center][b]LOS METEORITOS SON ROCAS QUE LOGRARON LLEGAR DESDE EL ESPACIO EXTERIOR[/b]
-
-
-
-
-
-SI UN METEORO CHOCA CONTRA UN PLANETA
-SIN DESTRUIRSE POR LA VELOCIDAD O
-EL CALOR DE SU CAÍDA,
-SE GANA EL NOMBRE DE: [b]METEORITO.[/b]
-
-SE DICE QUE HAY 190 CRÁTERES
-DE METEORITOS EN LA TIERRA."
-autowrap_mode = 2
-
-[node name="Button" type="Button" parent="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/Outro/Panel3"]
-use_parent_material = true
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.853
-anchor_top = 1.0
-anchor_right = 0.853
-anchor_bottom = 1.0
-offset_left = -34.792
-offset_top = -37.0
-offset_right = 35.208
-offset_bottom = 33.0
-grow_horizontal = 0
-grow_vertical = 0
-theme = ExtResource("22_d5f6h")
-
-[node name="TextureRect3" type="TextureRect" parent="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/Outro/Panel3"]
-layout_mode = 0
-offset_left = 249.0
-offset_top = 153.0
-offset_right = 341.0
-offset_bottom = 245.0
 scale = Vector2(0.805, 0.805)
 pivot_offset = Vector2(46, 46)
 texture = ExtResource("21_57l06")
 expand_mode = 3
 
-[node name="pivot" type="Node2D" parent="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/Outro/Panel3/TextureRect3"]
+[node name="pivot" type="Node2D" parent="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/PanelOutro/Meteorito/TextureRect3"]
 position = Vector2(43.5155, 48.4845)
 scale = Vector2(1.24224, 1.24224)
 
-[node name="check" type="Sprite2D" parent="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/Outro/Panel3/TextureRect3/pivot"]
+[node name="check" type="Sprite2D" parent="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/PanelOutro/Meteorito/TextureRect3/pivot"]
 scale = Vector2(1e-05, 1e-05)
 texture = ExtResource("42_u1nrq")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/Outro/Panel3/TextureRect3/pivot"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/PanelOutro/Meteorito/TextureRect3/pivot"]
 root_node = NodePath("../check")
 libraries = {
 "": SubResource("AnimationLibrary_fpol8")
 }
 
-[node name="CollisionPolygon2D84" parent="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/Outro/Panel3/TextureRect3" instance=ExtResource("7_s4reo")]
+[node name="CollisionPolygon2D84" parent="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/PanelOutro/Meteorito/TextureRect3" instance=ExtResource("7_s4reo")]
 show_behind_parent = true
 position = Vector2(-3.84659, -16.6622)
 scale = Vector2(1.07596, 1.07596)
-polygon = PackedVector2Array(-55.6702, 58.9138, -56.4451, 66.6855, -53.7154, 78.0234, -48.1821, 92.2144, -39.8081, 105.016, -27.1547, 113.612, -15.8784, 117.953, -1.76144, 120.905, 10.2651, 120.302, 15.7063, 135.31, 18.0628, 145.944, -0.0535583, 163.747, -7.02545, 156.922, -90.4219, 70.6321, -99.5748, 60.8278, -91.3401, 52.7355, -78.1788, 41.4204, -63.3432, 46.8257, -55.5962, 50.4288)
+polygon = PackedVector2Array(-55.6702, 58.9138, -56.4451, 66.6855, -53.7154, 78.0234, -48.1821, 92.2144, -39.8081, 105.016, -27.1547, 113.612, -15.8784, 117.953, -1.76144, 120.905, 10.2651, 120.302, 15.7063, 135.31, 18.0628, 145.944, -4.21356, 172.691, -15.557, 162.795, -98.9364, 81.2435, -109.456, 70.5385, -91.3401, 52.7355, -78.1788, 41.4204, -63.3432, 46.8257, -55.5962, 50.4288)
 _texture = ExtResource("11_qi82a")
 _scale = Vector2(15, 15)
 _textureLine = ExtResource("12_orsf0")
 _textureLineWidth = 5.76
 
-[node name="humo" type="Node2D" parent="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/Outro/Panel3/TextureRect3"]
+[node name="humo" type="Node2D" parent="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/PanelOutro/Meteorito/TextureRect3"]
 show_behind_parent = true
 position = Vector2(-11.1429, -11.1428)
 scale = Vector2(1.24224, 1.24224)
 
-[node name="h" type="Sprite2D" parent="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/Outro/Panel3/TextureRect3/humo"]
+[node name="h" type="Sprite2D" parent="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/PanelOutro/Meteorito/TextureRect3/humo"]
 self_modulate = Color(0.964706, 0.964706, 0.964706, 0.521569)
 position = Vector2(17, 57)
 texture = ExtResource("18_ms2d6")
 
-[node name="h2" type="Sprite2D" parent="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/Outro/Panel3/TextureRect3/humo"]
+[node name="h2" type="Sprite2D" parent="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/PanelOutro/Meteorito/TextureRect3/humo"]
+visible = false
 self_modulate = Color(0.964706, 0.964706, 0.964706, 0.258824)
 position = Vector2(21, 23)
 rotation = 1.71181
 scale = Vector2(1.57281, 1.57281)
 texture = ExtResource("18_ms2d6")
 
-[node name="h12" type="Sprite2D" parent="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/Outro/Panel3/TextureRect3/humo"]
+[node name="h12" type="Sprite2D" parent="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/PanelOutro/Meteorito/TextureRect3/humo"]
 self_modulate = Color(0.964706, 0.964706, 0.964706, 0.521569)
 position = Vector2(73.5651, 56.5651)
 texture = ExtResource("18_ms2d6")
 
-[node name="h13" type="Sprite2D" parent="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/Outro/Panel3/TextureRect3/humo"]
+[node name="h13" type="Sprite2D" parent="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/PanelOutro/Meteorito/TextureRect3/humo"]
+visible = false
 self_modulate = Color(0.964706, 0.964706, 0.964706, 0.258824)
 position = Vector2(64, 23)
 rotation = 1.71181
 scale = Vector2(1.57281, 1.57281)
 texture = ExtResource("18_ms2d6")
 
-[node name="h14" type="Sprite2D" parent="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/Outro/Panel3/TextureRect3/humo"]
+[node name="h14" type="Sprite2D" parent="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/PanelOutro/Meteorito/TextureRect3/humo"]
 self_modulate = Color(0.964706, 0.964706, 0.964706, 0.258824)
 z_index = 1
 position = Vector2(53, 60)
@@ -3760,7 +3889,8 @@ rotation = 1.71181
 scale = Vector2(1.57281, 1.57281)
 texture = ExtResource("18_ms2d6")
 
-[node name="h15" type="Sprite2D" parent="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/Outro/Panel3/TextureRect3/humo"]
+[node name="h15" type="Sprite2D" parent="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/PanelOutro/Meteorito/TextureRect3/humo"]
+visible = false
 self_modulate = Color(0.964706, 0.964706, 0.964706, 0.258824)
 z_index = 1
 position = Vector2(31, 32)
@@ -3768,35 +3898,36 @@ rotation = 1.71181
 scale = Vector2(0.918329, 0.918329)
 texture = ExtResource("18_ms2d6")
 
-[node name="h11" type="Sprite2D" parent="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/Outro/Panel3/TextureRect3/humo"]
+[node name="h11" type="Sprite2D" parent="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/PanelOutro/Meteorito/TextureRect3/humo"]
+visible = false
 self_modulate = Color(0.964706, 0.964706, 0.964706, 0.105882)
 position = Vector2(31, -10)
 rotation = -0.50204
 scale = Vector2(1.57281, 1.57281)
 texture = ExtResource("18_ms2d6")
 
-[node name="h3" type="Sprite2D" parent="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/Outro/Panel3/TextureRect3/humo"]
+[node name="h3" type="Sprite2D" parent="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/PanelOutro/Meteorito/TextureRect3/humo"]
 visible = false
 self_modulate = Color(0.964706, 0.964706, 0.964706, 0.521569)
 position = Vector2(31.4444, 16.4443)
 rotation = 2.62153
 texture = ExtResource("18_ms2d6")
 
-[node name="h4" type="Sprite2D" parent="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/Outro/Panel3/TextureRect3/humo"]
+[node name="h4" type="Sprite2D" parent="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/PanelOutro/Meteorito/TextureRect3/humo"]
 visible = false
 self_modulate = Color(0.964706, 0.964706, 0.964706, 0.521569)
 position = Vector2(62.4443, 15.4443)
 rotation = 2.62153
 texture = ExtResource("18_ms2d6")
 
-[node name="h5" type="Sprite2D" parent="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/Outro/Panel3/TextureRect3/humo"]
+[node name="h5" type="Sprite2D" parent="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/PanelOutro/Meteorito/TextureRect3/humo"]
 visible = false
 self_modulate = Color(0.964706, 0.964706, 0.964706, 0.521569)
 position = Vector2(76.4443, 18.4443)
 rotation = 1.29802
 texture = ExtResource("18_ms2d6")
 
-[node name="h6" type="Sprite2D" parent="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/Outro/Panel3/TextureRect3/humo"]
+[node name="h6" type="Sprite2D" parent="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/PanelOutro/Meteorito/TextureRect3/humo"]
 visible = false
 self_modulate = Color(0.964706, 0.964706, 0.964706, 0.521569)
 position = Vector2(87.4443, 19.4443)
@@ -3804,7 +3935,7 @@ rotation = 1.29802
 scale = Vector2(0.858636, 0.858636)
 texture = ExtResource("18_ms2d6")
 
-[node name="h7" type="Sprite2D" parent="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/Outro/Panel3/TextureRect3/humo"]
+[node name="h7" type="Sprite2D" parent="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/PanelOutro/Meteorito/TextureRect3/humo"]
 visible = false
 self_modulate = Color(0.835294, 0.835294, 0.835294, 0.478431)
 position = Vector2(87.4443, -4.55566)
@@ -3812,7 +3943,7 @@ rotation = 1.29802
 scale = Vector2(0.87, 0.87)
 texture = ExtResource("18_ms2d6")
 
-[node name="h8" type="Sprite2D" parent="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/Outro/Panel3/TextureRect3/humo"]
+[node name="h8" type="Sprite2D" parent="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/PanelOutro/Meteorito/TextureRect3/humo"]
 visible = false
 self_modulate = Color(0.835294, 0.835294, 0.835294, 0.478431)
 position = Vector2(65.4443, -14.5557)
@@ -3820,7 +3951,7 @@ rotation = 1.29802
 scale = Vector2(0.87, 0.87)
 texture = ExtResource("18_ms2d6")
 
-[node name="h9" type="Sprite2D" parent="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/Outro/Panel3/TextureRect3/humo"]
+[node name="h9" type="Sprite2D" parent="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/PanelOutro/Meteorito/TextureRect3/humo"]
 visible = false
 self_modulate = Color(0.835294, 0.835294, 0.835294, 0.478431)
 position = Vector2(42.4443, -17.5557)
@@ -3828,7 +3959,7 @@ rotation = 1.29802
 scale = Vector2(0.87, 0.87)
 texture = ExtResource("18_ms2d6")
 
-[node name="h10" type="Sprite2D" parent="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/Outro/Panel3/TextureRect3/humo"]
+[node name="h10" type="Sprite2D" parent="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/PanelOutro/Meteorito/TextureRect3/humo"]
 visible = false
 self_modulate = Color(0.835294, 0.835294, 0.835294, 0.478431)
 position = Vector2(19.4443, -5.55566)
@@ -3836,61 +3967,25 @@ rotation = 1.29802
 scale = Vector2(0.87, 0.87)
 texture = ExtResource("18_ms2d6")
 
-[node name="Panel4" type="Panel" parent="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/Outro"]
-visible = false
-use_parent_material = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -294.0
-offset_top = -259.0
-offset_right = 294.0
-offset_bottom = -37.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = ExtResource("20_5lj7u")
-script = ExtResource("21_sbo2s")
-SetVisibleFalseWithBtn = true
-timeToAppear = 0.3
+[node name="Panel(1) Btn(rigth)" parent="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/PanelOutro" instance=ExtResource("81_mw337")]
+Data = SubResource("Resource_raime")
 
-[node name="Label" type="Label" parent="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/Outro/Panel4"]
-use_parent_material = true
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -277.0
-offset_top = -247.0
-offset_right = 277.0
-offset_bottom = 247.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(0.0470588, 0.921569, 0.411765, 1)
-theme_override_constants/line_spacing = 0
-theme_override_font_sizes/font_size = 22
-text = "LAS ROCAS ESPACIALES NOS AYUDAN A
-INVESTIGAR OTROS MUNDOS 
-¡PODES APRENDER A RECONOCERLAS EN EL MUSEO!"
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 2
+[node name="Panel(1) Btn(rigth)2" parent="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/PanelOutro" instance=ExtResource("81_mw337")]
+Data = SubResource("Resource_cr7ab")
+Delay = 0.4
 
-[node name="ButtonChangeScene" parent="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/Outro/Panel4" instance=ExtResource("7_xf3bk")]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.855
-anchor_right = 0.855
-offset_left = -35.24
-offset_top = -37.0
-offset_right = 34.76
-offset_bottom = 33.0
-grow_horizontal = 0
-theme = ExtResource("22_d5f6h")
-text = ""
-NextScene = "Map_Screen"
+[node name="Panel(2) Btn(rigth)" parent="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/PanelOutro" instance=ExtResource("81_mw337")]
+Data = SubResource("Resource_wlpab")
+
+[node name="Panel(2) Btn(rigth)2" parent="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/PanelOutro" instance=ExtResource("81_mw337")]
+Data = SubResource("Resource_rxp65")
+Delay = 0.4
+
+[node name="Panel(3) Btn(rigth)" parent="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/PanelOutro" instance=ExtResource("81_mw337")]
+Data = SubResource("Resource_6comr")
+
+[node name="Panel(4) Btn(rigth)" parent="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/PanelOutro" instance=ExtResource("81_mw337")]
+Data = SubResource("Resource_oybw4")
 
 [node name="AstronautaPivot" type="Node2D" parent="Astronauta/StateMachine/Fin/Contenido/Center/Nave"]
 position = Vector2(-134, 411)
@@ -3909,6 +4004,11 @@ texture = ExtResource("46_qiyux")
 script = ExtResource("11_712vn")
 selfRotation = -1.0
 CenterObject = NodePath("../AstronautaPivot")
+
+[node name="PivotIntanciate" type="Node2D" parent="Astronauta/StateMachine/Fin/Contenido/Center/Nave/Astronauta"]
+position = Vector2(-52.8371, 0)
+script = ExtResource("106_tsc4i")
+scene = ExtResource("15_2uk6t")
 
 [node name="Node2D" type="Node2D" parent="Astronauta/StateMachine/Fin/Contenido/Center/Nave" node_paths=PackedStringArray("CenterObject")]
 position = Vector2(-82, 500)
@@ -4678,7 +4778,6 @@ text = "Continue"
 NextScene = "Map_Screen"
 
 [connection signal="pressed" from="Astronauta/StateMachine/Consigna/Contenido/Button" to="Astronauta/StateMachine/Consigna/Contenido/Button" method="_on_pressed" flags=18]
-[connection signal="Transitioned" from="Astronauta/StateMachine/Juego" to="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro/Panel" method="StartTimerToAppear"]
 [connection signal="Transitioned" from="Astronauta/StateMachine/Juego" to="Astronauta/StateMachine/Juego/Contenido/Instancia1/Camera2D" method="Enable" binds= [true]]
 [connection signal="Picked" from="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/Meteoroide" to="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/GuyWall/Path2D/PathFollow2D/TheGuy2" method="disabledCollisionShape"]
 [connection signal="area_entered" from="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/Area2D" to="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/TheGuy" method="SetVisibility" binds= [false]]
@@ -4701,27 +4800,36 @@ NextScene = "Map_Screen"
 [connection signal="Picked" from="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoro/Meteoro3/meteoro" to="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoro/Meteoro3/halo" method="Setvisivility" binds= [false]]
 [connection signal="zooming" from="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoro/ZoomArea" to="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/background" method="scaleTexture"]
 [connection signal="Picked" from="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteorito/MeteoritoAppear/meteorito" to="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteorito/MeteoritoAppear/particle" method="StopEmit"]
-[connection signal="pressed" from="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro/Panel/Button" to="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/interior/Computer" method="Setface" binds= ["talk"]]
-[connection signal="pressed" from="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro/Panel/Button" to="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro/Panel2" method="SetVisibility" binds= [true]]
-[connection signal="pressed" from="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro/Panel2/Button" to="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro/Panel3/Node2D/Node2D/handUI" method="IdleAnim"]
-[connection signal="pressed" from="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro/Panel2/Button" to="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/interior/Computer" method="Setface" binds= ["talk"]]
-[connection signal="pressed" from="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro/Panel2/Button" to="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro/Panel3" method="SetVisibility" binds= [true]]
-[connection signal="pressed" from="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro/Panel2/Button" to="Astronauta/StateMachine/Juego/Contenido/Instancia1/Astronauta" method="BlockMove" binds= [false]]
+[connection signal="ButtonPress" from="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro/PanelIntro/Panel(1) Btn(rigth)2" to="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/interior/Computer" method="Setface" binds= ["talk"]]
+[connection signal="ButtonPress" from="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro/PanelIntro/Panel(1) Btn(rigth)" to="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro/PanelIntro/HBoxContainer" method="set_visible" binds= [true]]
+[connection signal="ButtonPress" from="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro/PanelIntro/Panel(2) Btn(rigth)" to="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/interior/Computer" method="Setface" binds= ["talk"]]
+[connection signal="ButtonPress" from="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro/PanelIntro/Panel(2) Btn(rigth)" to="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro/PanelIntro/HBoxContainer" method="set_visible" binds= [false]]
+[connection signal="ButtonPress" from="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro/PanelIntro/Panel(2) Btn(rigth)2" to="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro/PanelIntro/MoveExample" method="set_visible" binds= [true]]
+[connection signal="ButtonPress" from="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro/PanelIntro/Panel(2) Btn(rigth)2" to="Astronauta/StateMachine/Juego/Contenido/Instancia1/Astronauta" method="BlockMove" binds= [false]]
+[connection signal="openCapsula" from="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Capsula" to="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/interior/Computer" method="IdleAnim"]
+[connection signal="openCapsula" from="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Capsula" to="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro/PanelIntro" method="ExitPanel"]
 [connection signal="AllCollect" from="Astronauta/StateMachine/Juego/Contenido/Instancia1/Astronauta" to="Astronauta/StateMachine/Juego/Contenido/Instancia1/PCInventary/pcInventary" method="MisionComplete"]
 [connection signal="InventaryGone" from="Astronauta/StateMachine/Juego/Contenido/Instancia1/PCInventary/pcInventary" to="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/GuyWall/Path2D/PathFollow2D/AnimationPlayer" method="Play"]
+[connection signal="ButtonPress" from="Astronauta/StateMachine/Juego/Contenido/Instancia1/PCInventary/pcInventary/PanelInventory/Panel(2) Btn(rigth)" to="Astronauta" method="Set_Complete"]
+[connection signal="ButtonPress" from="Astronauta/StateMachine/Juego/Contenido/Instancia1/PCInventary/pcInventary/PanelInventory/Panel(2) Btn(rigth)" to="Astronauta/StateMachine/Juego/Contenido/Instancia1/PCInventary/pcInventary" method="MakeFade"]
+[connection signal="ButtonPress" from="Astronauta/StateMachine/Juego/Contenido/Instancia1/PCInventary/pcInventary/PanelInventory/Panel(2) Btn(rigth)" to="Astronauta/StateMachine/Juego/Contenido/Instancia1/PCInventary/pcInventary/Computer" method="IdleAnim"]
 [connection signal="area_entered" from="Astronauta/StateMachine/Juego/Contenido/Instancia1/PhantomCamera2D2/Area2D" to="Astronauta/StateMachine/Juego/Contenido/Instancia1/PhantomCamera2D" method="Set_BlockFirstPart"]
 [connection signal="area_entered" from="Astronauta/StateMachine/Juego/Contenido/Instancia1/PhantomCamera2D2/Area2D" to="Astronauta/StateMachine/Juego/Contenido/Instancia1/PhantomCamera2D2/UpWall" method="Set_Collider_Position"]
 [connection signal="area_entered" from="Astronauta/StateMachine/Juego/Contenido/Instancia1/PhantomCamera2D2/Area2D" to="Astronauta/StateMachine/Juego/Contenido/Instancia1/PhantomCamera2D2/Downwall" method="Set_Collider_Position"]
 [connection signal="Transitioned" from="Astronauta/StateMachine/Fin" to="Astronauta" method="Set_Complete"]
 [connection signal="Transitioned" from="Astronauta/StateMachine/Fin" to="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/Computer" method="PlayOnScreen"]
-[connection signal="Transitioned" from="Astronauta/StateMachine/Fin" to="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/Outro/Panel" method="StartTimerToAppear"]
-[connection signal="pressed" from="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/Outro/Panel/Button" to="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/Computer" method="Setface" binds= ["talk"]]
-[connection signal="pressed" from="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/Outro/Panel/Button" to="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/Outro/Panel2" method="SetVisibility" binds= [true]]
-[connection signal="pressed" from="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/Outro/Panel2/Button" to="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/Computer" method="Setface" binds= ["talk"]]
-[connection signal="pressed" from="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/Outro/Panel2/Button" to="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/Outro/Panel3" method="SetVisibility" binds= [true]]
-[connection signal="pressed" from="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/Outro/Panel3/Button" to="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/Computer" method="Setface" binds= ["talk"]]
-[connection signal="pressed" from="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/Outro/Panel3/Button" to="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/Outro/Panel4" method="SetVisibility" binds= [true]]
-[connection signal="pressed" from="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/Outro/Panel4/ButtonChangeScene" to="Astronauta" method="Set_Complete"]
+[connection signal="Transitioned" from="Astronauta/StateMachine/Fin" to="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/PanelOutro" method="EnterPanel"]
+[connection signal="pressed" from="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/ButtonChangeScene" to="Astronauta" method="Set_Complete"]
+[connection signal="pressed" from="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/ButtonParticle" to="Astronauta/StateMachine/Fin/Contenido/Center/Nave/Astronauta/PivotIntanciate" method="Instanciate"]
+[connection signal="ButtonPress" from="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/PanelOutro/Panel(1) Btn(rigth)" to="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/Computer" method="SetTalkInfinity"]
+[connection signal="ButtonPress" from="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/PanelOutro/Panel(1) Btn(rigth)" to="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/PanelOutro/meteoroide" method="set_visible" binds= [false]]
+[connection signal="ButtonPress" from="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/PanelOutro/Panel(1) Btn(rigth)2" to="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/PanelOutro/Meteoro" method="set_visible" binds= [true]]
+[connection signal="ButtonPress" from="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/PanelOutro/Panel(2) Btn(rigth)" to="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/Computer" method="SetTalkInfinity"]
+[connection signal="ButtonPress" from="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/PanelOutro/Panel(2) Btn(rigth)" to="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/PanelOutro/Meteoro" method="set_visible" binds= [false]]
+[connection signal="ButtonPress" from="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/PanelOutro/Panel(2) Btn(rigth)2" to="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/PanelOutro/Meteorito" method="set_visible" binds= [true]]
+[connection signal="ButtonPress" from="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/PanelOutro/Panel(3) Btn(rigth)" to="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/Computer" method="SetTalkInfinity"]
+[connection signal="ButtonPress" from="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/PanelOutro/Panel(3) Btn(rigth)" to="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/PanelOutro/Meteorito" method="set_visible" binds= [false]]
+[connection signal="ButtonPress" from="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/PanelOutro/Panel(4) Btn(rigth)" to="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/ButtonChangeScene" method="_on_pressed"]
 
 [editable path="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/TheGuy"]
 [editable path="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/GuyWall/Path2D/PathFollow2D/TheGuy2"]
@@ -4772,6 +4880,14 @@ NextScene = "Map_Screen"
 [editable path="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteorito/TheGuy3"]
 [editable path="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteorito/CollisionObject12"]
 [editable path="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/interior/Computer"]
-[editable path="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro/Panel2/HBoxContainer/TextureRect3/CollisionPolygon2D84"]
-[editable path="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro/Panel3/Node2D/Node2D/handUI"]
+[editable path="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro/PanelIntro"]
+[editable path="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro/PanelIntro/btnIzqAnchor/btnIzq/SquigglingSprite"]
+[editable path="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro/PanelIntro/btnCentralAnchor/btnCentral/SquigglingSprite"]
+[editable path="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro/PanelIntro/HBoxContainer/TextureRect3/CollisionPolygon2D84"]
+[editable path="Astronauta/StateMachine/Juego/Contenido/Instancia1/PCInventary/pcInventary/PanelInventory"]
+[editable path="Astronauta/StateMachine/Juego/Contenido/Instancia1/PCInventary/pcInventary/PanelInventory/btnIzqAnchor/btnIzq/SquigglingSprite"]
+[editable path="Astronauta/StateMachine/Juego/Contenido/Instancia1/PCInventary/pcInventary/PanelInventory/btnCentralAnchor/btnCentral/SquigglingSprite"]
 [editable path="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/Computer"]
+[editable path="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/PanelOutro"]
+[editable path="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/PanelOutro/btnIzqAnchor/btnIzq/SquigglingSprite"]
+[editable path="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/PanelOutro/btnCentralAnchor/btnCentral/SquigglingSprite"]

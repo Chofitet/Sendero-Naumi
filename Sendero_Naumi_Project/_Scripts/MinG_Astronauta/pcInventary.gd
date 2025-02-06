@@ -6,39 +6,38 @@ var _misionComplete
 @onready var fadeTexture = preload("res://addons/scene_manager/shader_patterns/diagonal.png")
 @export var StateMachine : Node
 @export var phantomCam : PhantomCamera2D
+@onready var PanelInventory = $PanelInventory
 signal InventaryGone
 
 func _ready():
-	$Panel/Button.pressed.connect(MakeFade)
-	for m in $Panel/HBoxContainer.get_children():
+	for m in $PanelInventory/HBoxContainer.get_children():
 		MeteorosUI.append(m.get_child(0).get_node("AnimationPlayer"))
 
 func CheckMeteoro(index):
 	visible = true
-	$Panel/AnimationPlayer.play("enterPanel")
+	PanelInventory.EnterPanel()
 	var anim : AnimationPlayer = MeteorosUI[index] 
-	await  $Panel/AnimationPlayer.animation_finished
-	$Panel.clip_contents = false
+	await  get_tree().create_timer(0.4).timeout
 	anim.play("check")
 	await anim.animation_finished
-	computer.Setface("smile")
+	computer.SmileAnim()
 	await get_tree().create_timer(2).timeout
 	if _misionComplete:
 		CompleteMision()
 		return
 	InventaryGone.emit()
-	$Panel/AnimationPlayer.play("RESET")
+	PanelInventory.ExitPanel()
+	await get_tree().create_timer(0.4).timeout
 	computer.Setface("idle")
-	$Panel.clip_contents = true
 	visible = false
 
 func CompleteMision():
-	$Panel/HBoxContainer.visible = false
-	$Panel/MisionLabel.visible = true
-	await get_tree().create_timer(2).timeout
-	$Panel/Button.visible = true
+	$PanelInventory/HBoxContainer.visible = false
+	PanelInventory.ChangeToNextText()
+	computer.Setface("talk")
 
 
+## llamarlo con boton 
 func MakeFade():
 	var instantiateFade = fade.instantiate()
 	get_parent().add_child(instantiateFade)
