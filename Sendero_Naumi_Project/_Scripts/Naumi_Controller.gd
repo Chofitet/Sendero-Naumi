@@ -60,7 +60,7 @@ func Evolve():
 	PlayerVariables.SetNaumiEvolve()
 	SetNaumi(NaumiState())
 	NaumiAnim.play("sleeping")
-	$pivot/CanvasLayer/ButtonChangeScene.visible = true
+	$pivot/CanvasLayer/ButtonChangeScene.EnterAnim()
 	$pivot/Parts/partsAnimator.play("idle")
 
 func Sleeping():

@@ -1,4 +1,4 @@
-[gd_scene load_steps=84 format=3 uid="uid://dcredgeon3w2q"]
+[gd_scene load_steps=104 format=3 uid="uid://dcredgeon3w2q"]
 
 [ext_resource type="Script" path="res://_Scripts/MinG_MegaFood/PatasController.gd" id="1_g46fd"]
 [ext_resource type="Texture2D" uid="uid://gbi1vckfb2af" path="res://Sprites/ZonaMegafauna/bandeja.png" id="2_15wck"]
@@ -35,6 +35,11 @@
 [ext_resource type="PackedScene" uid="uid://chcp24toqisaw" path="res://Scenes/Experiments/GenericPanel/GenericPanel.tscn" id="32_lcdwh"]
 [ext_resource type="Script" path="res://Scenes/Experiments/GenericPanel/TextFieldData.gd" id="33_7bjpl"]
 [ext_resource type="Theme" uid="uid://dxbgpuuiuxxto" path="res://Resources/UI_Resources/shoutPanel.tres" id="34_rsd4j"]
+[ext_resource type="Script" path="res://Scenes/Experiments/GenericPanel/ButtonPanelData.gd" id="35_r4fek"]
+[ext_resource type="Texture2D" uid="uid://c2p5torstrtqm" path="res://Sprites/UI/checkIcon - UI.png" id="36_swmk1"]
+[ext_resource type="PackedScene" uid="uid://d1jys63xrvxpo" path="res://Scenes/Experiments/GenericPanel/IntermediateSignal.tscn" id="38_1xuog"]
+[ext_resource type="LabelSettings" uid="uid://dplv12ok5d6a5" path="res://Resources/UI_Resources/ShoutLabel.tres" id="38_mtoec"]
+[ext_resource type="Script" path="res://Scenes/Experiments/GenericPanel/IntermediateData.gd" id="40_yu7sk"]
 
 [sub_resource type="Animation" id="Animation_jfp8t"]
 resource_name = "AngryAnim"
@@ -325,7 +330,7 @@ tracks/2/path = NodePath("papel/SquigglingSprite")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(1.6),
+"times": PackedFloat32Array(0.8),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
@@ -370,6 +375,56 @@ _data = {
 "enterAnim": SubResource("Animation_rvryq"),
 "result": SubResource("Animation_rm5b2"),
 "take": SubResource("Animation_sy63e")
+}
+
+[sub_resource type="Animation" id="Animation_d5tyn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("papel:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_nj75i"]
+resource_name = "take"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("papel:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 0.5),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 2500)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("papel/SquigglingSprite")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"InactiveSquiggling"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_j1crj"]
+_data = {
+"RESET": SubResource("Animation_d5tyn"),
+"take": SubResource("Animation_nj75i")
 }
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_npygg"]
@@ -758,32 +813,108 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Resource" id="Resource_jebus"]
+script = ExtResource("35_r4fek")
+Place = 0
+texture = ExtResource("36_swmk1")
+label = ""
+
 [sub_resource type="Resource" id="Resource_1e5mh"]
 script = ExtResource("33_7bjpl")
 Text = "En fila por favor"
 SizePanel = Vector2(0, 0)
-buttons = Array[Resource("res://Scenes/Experiments/GenericPanel/ButtonPanelData.gd")]([])
+buttons = Array[ExtResource("35_r4fek")]([SubResource("Resource_jebus")])
+
+[sub_resource type="Resource" id="Resource_a15rw"]
+script = ExtResource("35_r4fek")
+Place = 0
+texture = ExtResource("36_swmk1")
+label = ""
 
 [sub_resource type="Resource" id="Resource_spwe1"]
 script = ExtResource("33_7bjpl")
-Text = "\"SIGUIENTE! \" + animal + \"!\""
+Text = "SIGUIENTE!
+SMILODONTE!"
 SizePanel = Vector2(0, 0)
-buttons = Array[Resource("res://Scenes/Experiments/GenericPanel/ButtonPanelData.gd")]([])
+buttons = Array[ExtResource("35_r4fek")]([SubResource("Resource_a15rw")])
 
-[node name="PatasController" type="Control"]
+[sub_resource type="Resource" id="Resource_jxgso"]
+script = ExtResource("40_yu7sk")
+NumberOfPanel = 2
+Place = 0
+
+[sub_resource type="Resource" id="Resource_mieyc"]
+script = ExtResource("35_r4fek")
+Place = 0
+texture = ExtResource("36_swmk1")
+label = ""
+
+[sub_resource type="Resource" id="Resource_h10mq"]
+script = ExtResource("33_7bjpl")
+Text = "SIGUIENTE! 
+GLIPTODONTE!"
+SizePanel = Vector2(0, 0)
+buttons = Array[ExtResource("35_r4fek")]([SubResource("Resource_mieyc")])
+
+[sub_resource type="Resource" id="Resource_s0txn"]
+script = ExtResource("40_yu7sk")
+NumberOfPanel = 1
+Place = 0
+
+[sub_resource type="Resource" id="Resource_schp7"]
+script = ExtResource("35_r4fek")
+Place = 0
+texture = ExtResource("36_swmk1")
+label = ""
+
+[sub_resource type="Resource" id="Resource_6po01"]
+script = ExtResource("33_7bjpl")
+Text = "SIGUIENTE!
+MEGATERIO!"
+SizePanel = Vector2(0, 0)
+buttons = Array[ExtResource("35_r4fek")]([SubResource("Resource_schp7")])
+
+[sub_resource type="Resource" id="Resource_bw25d"]
+script = ExtResource("40_yu7sk")
+NumberOfPanel = 1
+Place = 0
+
+[sub_resource type="Resource" id="Resource_ionm1"]
+script = ExtResource("35_r4fek")
+Place = 0
+texture = ExtResource("36_swmk1")
+label = ""
+
+[sub_resource type="Resource" id="Resource_es3gq"]
+script = ExtResource("33_7bjpl")
+Text = "SIGUIENTE! MACRAUQUENIA!"
+SizePanel = Vector2(0, 0)
+buttons = Array[ExtResource("35_r4fek")]([SubResource("Resource_ionm1")])
+
+[sub_resource type="Resource" id="Resource_jly2k"]
+script = ExtResource("40_yu7sk")
+NumberOfPanel = 1
+Place = 0
+
+[node name="PatasController" type="Control" node_paths=PackedStringArray("Panels")]
 layout_mode = 3
 anchors_preset = 0
 grow_horizontal = 2
 script = ExtResource("1_g46fd")
 SpritesPatasDer = [ExtResource("6_nqg1u"), ExtResource("10_1jw0u"), ExtResource("8_pus57"), ExtResource("13_oc55n")]
+Panels = [NodePath("TextoPedido"), NodePath("PedidoGliptodonte"), NodePath("PedidoMegaterio"), NodePath("PedidoMacrauquenia")]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_tj4kr")
 }
 
+[node name="AnimPaper" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_j1crj")
+}
+
 [node name="papel" type="Sprite2D" parent="."]
-position = Vector2(0, -1000)
 texture = ExtResource("6_incmm")
 
 [node name="SquigglingSprite" parent="papel" instance=ExtResource("7_47rn0")]
@@ -916,4 +1047,168 @@ grow_horizontal = 1
 pivot_offset = Vector2(361.5, 284)
 theme = ExtResource("34_rsd4j")
 AppearInBeginning = false
+RepitingPanel = null
 Texts = Array[ExtResource("33_7bjpl")]([SubResource("Resource_1e5mh"), SubResource("Resource_spwe1")])
+
+[node name="label" parent="TextoPedido" index="0"]
+text = "En fila por favor"
+label_settings = ExtResource("38_mtoec")
+
+[node name="BtnDerAnchor" parent="TextoPedido" index="3"]
+anchor_left = 0.788
+anchor_top = 0.773
+anchor_right = 0.788
+anchor_bottom = 0.773
+offset_left = 0.27594
+offset_top = -0.0640259
+offset_right = 0.27594
+offset_bottom = -0.0640259
+
+[node name="btnDer" parent="TextoPedido/BtnDerAnchor" index="0"]
+visible = true
+
+[node name="Icon" parent="TextoPedido/BtnDerAnchor/btnDer" index="0"]
+texture = ExtResource("36_swmk1")
+
+[node name="Label" parent="TextoPedido/BtnDerAnchor/btnDer/Icon" index="0"]
+text = ""
+
+[node name="Panel(2) Btn(rigth)" parent="TextoPedido" instance=ExtResource("38_1xuog")]
+Data = SubResource("Resource_jxgso")
+
+[node name="PedidoGliptodonte" parent="." instance=ExtResource("32_lcdwh")]
+visible = false
+layout_mode = 1
+offset_left = -350.0
+offset_top = -320.0
+offset_right = 350.0
+offset_bottom = 266.0
+pivot_offset = Vector2(350, 293)
+theme = ExtResource("34_rsd4j")
+AppearInBeginning = false
+RepitingPanel = null
+Texts = Array[ExtResource("33_7bjpl")]([SubResource("Resource_h10mq")])
+
+[node name="label" parent="PedidoGliptodonte" index="0"]
+text = "SIGUIENTE! 
+GLIPTODONTE!"
+label_settings = ExtResource("38_mtoec")
+
+[node name="BtnDerAnchor" parent="PedidoGliptodonte" index="3"]
+anchor_left = 0.786
+anchor_top = 0.792
+anchor_right = 0.786
+anchor_bottom = 0.792
+offset_left = -0.200012
+offset_top = -0.11203
+offset_right = -0.200012
+offset_bottom = -0.11203
+
+[node name="btnDer" parent="PedidoGliptodonte/BtnDerAnchor" index="0"]
+visible = true
+
+[node name="Icon" parent="PedidoGliptodonte/BtnDerAnchor/btnDer" index="0"]
+texture = ExtResource("36_swmk1")
+
+[node name="Label" parent="PedidoGliptodonte/BtnDerAnchor/btnDer/Icon" index="0"]
+text = ""
+
+[node name="Panel(1) Btn(rigth)" parent="PedidoGliptodonte" instance=ExtResource("38_1xuog")]
+Data = SubResource("Resource_s0txn")
+
+[node name="PedidoMegaterio" parent="." instance=ExtResource("32_lcdwh")]
+visible = false
+layout_mode = 1
+offset_left = -347.0
+offset_top = -321.0
+offset_right = 348.0
+offset_bottom = 264.0
+pivot_offset = Vector2(347.5, 292.5)
+theme = ExtResource("34_rsd4j")
+AppearInBeginning = false
+RepitingPanel = null
+Texts = Array[ExtResource("33_7bjpl")]([SubResource("Resource_6po01")])
+
+[node name="label" parent="PedidoMegaterio" index="0"]
+text = "SIGUIENTE!
+MEGATERIO!"
+label_settings = ExtResource("38_mtoec")
+
+[node name="BtnDerAnchor" parent="PedidoMegaterio" index="3"]
+anchor_left = 0.793
+anchor_top = 0.791
+anchor_right = 0.793
+anchor_bottom = 0.791
+offset_left = -0.135071
+offset_top = 0.264984
+offset_right = -0.135071
+offset_bottom = 0.264984
+
+[node name="btnDer" parent="PedidoMegaterio/BtnDerAnchor" index="0"]
+visible = true
+
+[node name="Icon" parent="PedidoMegaterio/BtnDerAnchor/btnDer" index="0"]
+texture = ExtResource("36_swmk1")
+
+[node name="Label" parent="PedidoMegaterio/BtnDerAnchor/btnDer/Icon" index="0"]
+text = ""
+
+[node name="Panel(1) Btn(rigth)" parent="PedidoMegaterio" instance=ExtResource("38_1xuog")]
+Data = SubResource("Resource_bw25d")
+
+[node name="PedidoMacrauquenia" parent="." instance=ExtResource("32_lcdwh")]
+visible = false
+layout_mode = 1
+offset_left = -346.0
+offset_top = -317.0
+offset_right = 347.0
+offset_bottom = 263.0
+pivot_offset = Vector2(346.5, 290)
+theme = ExtResource("34_rsd4j")
+AppearInBeginning = false
+RepitingPanel = null
+Texts = Array[ExtResource("33_7bjpl")]([SubResource("Resource_es3gq")])
+
+[node name="label" parent="PedidoMacrauquenia" index="0"]
+text = "SIGUIENTE! MACRAUQUENIA!"
+label_settings = ExtResource("38_mtoec")
+
+[node name="BtnDerAnchor" parent="PedidoMacrauquenia" index="3"]
+anchor_left = 0.788
+anchor_top = 0.795
+anchor_right = 0.788
+anchor_bottom = 0.795
+offset_left = -0.0841064
+offset_top = -0.100006
+offset_right = -0.0841064
+offset_bottom = -0.100006
+
+[node name="btnDer" parent="PedidoMacrauquenia/BtnDerAnchor" index="0"]
+visible = true
+
+[node name="Icon" parent="PedidoMacrauquenia/BtnDerAnchor/btnDer" index="0"]
+texture = ExtResource("36_swmk1")
+
+[node name="Label" parent="PedidoMacrauquenia/BtnDerAnchor/btnDer/Icon" index="0"]
+text = ""
+
+[node name="Panel(1) Btn(rigth)" parent="PedidoMacrauquenia" instance=ExtResource("38_1xuog")]
+Data = SubResource("Resource_jly2k")
+
+[connection signal="ButtonPress" from="TextoPedido/Panel(2) Btn(rigth)" to="." method="passNextInstance"]
+[connection signal="ButtonPress" from="PedidoGliptodonte/Panel(1) Btn(rigth)" to="." method="passNextInstance"]
+[connection signal="ButtonPress" from="PedidoMegaterio/Panel(1) Btn(rigth)" to="." method="passNextInstance"]
+[connection signal="ButtonPress" from="PedidoMacrauquenia/Panel(1) Btn(rigth)" to="." method="passNextInstance"]
+
+[editable path="TextoPedido"]
+[editable path="TextoPedido/btnIzqAnchor/btnIzq/SquigglingSprite"]
+[editable path="TextoPedido/btnCentralAnchor/btnCentral/SquigglingSprite"]
+[editable path="PedidoGliptodonte"]
+[editable path="PedidoGliptodonte/btnIzqAnchor/btnIzq/SquigglingSprite"]
+[editable path="PedidoGliptodonte/btnCentralAnchor/btnCentral/SquigglingSprite"]
+[editable path="PedidoMegaterio"]
+[editable path="PedidoMegaterio/btnIzqAnchor/btnIzq/SquigglingSprite"]
+[editable path="PedidoMegaterio/btnCentralAnchor/btnCentral/SquigglingSprite"]
+[editable path="PedidoMacrauquenia"]
+[editable path="PedidoMacrauquenia/btnIzqAnchor/btnIzq/SquigglingSprite"]
+[editable path="PedidoMacrauquenia/btnCentralAnchor/btnCentral/SquigglingSprite"]

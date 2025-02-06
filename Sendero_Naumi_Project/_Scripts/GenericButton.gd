@@ -8,6 +8,8 @@ extends Button
 
 @export var noSway : bool
 
+@export var noSquiggling : bool
+
 var pop = preload("res://Scenes/UI_Scenes/pop.tscn")
 
 @export var Icon : Texture:
@@ -20,6 +22,7 @@ func _ready():
 	if enterInBeggining: EnterAnim()
 	pressed.connect(ExitAnim)
 	$TextureRect.texture = Icon
+	if noSquiggling: $SquigglingSprite.queue_free()
 
 func EnterAnim():
 	anim.play("EnterButton")

@@ -3,10 +3,10 @@ extends Control
 var animalsArray : =[]
 @onready var anim = $AnimationPlayer
 @onready var timer = $Timer
-@onready var CommandText = $TextoPedido
 @onready var pataSuelta = $pivot/PataSuelta
 @onready var buttonTouchAnimal = $pivot/Button
 @export var SpritesPatasDer : =[]
+@export var Panels : Array[Panel]
 var isInGame
 var AnimResultFinish = false
 var stopCall
@@ -96,7 +96,7 @@ func ResultAnim():
 	$pivot/bandeja.visible = false
 	$pivot/plate.texture = null
 	anim.play("result")
-	await  get_tree().create_timer(1.6).timeout
+	await  get_tree().create_timer(0.8).timeout
 	AnimResultFinish = true
 
 
@@ -109,30 +109,24 @@ func AddPlateAtPivot(plate):
 
 func PlayTakeAnim():
 	if !AnimResultFinish : return
-	anim.play("take")
+	var animPaper = $AnimPaper
+	animPaper.play("take")
 	AnimResultFinish = false
-	await  anim.animation_finished
+	await  animPaper.animation_finished
 	get_parent().SetResultEvent()
 	
 func CommandAppear():
 	StartComand.emit()
-	CommandText.EnterPanel()
 	if inx_animal == 0:
-		CommandText.get_node("label").text = "EN FILA POR FAVOR!"
-		await get_tree().create_timer(3).timeout
-		CommandText.ChangeToNextText()
-		await get_tree().create_timer(0.5).timeout
-		SetCommand(inx_animal + 1,animalsArray[inx_animal].name,true)
-		
+		istutorial = true
+		Panels[inx_animal].EnterPanel()
 	else:
-		SetCommand(inx_animal + 1,animalsArray[inx_animal].name)
-		
-	
-func SetCommand(order : float, animal : String, istutorial = false):
-	CommandText.get_node("label").text = "SIGUIENTE! 
-	" + animal.to_upper() + "!"
-	await get_tree().create_timer(3).timeout
-	CommandText.ExitPanel()
+		istutorial = false
+		Panels[inx_animal].EnterPanel()
+
+var istutorial
+
+func passNextInstance():
 	PlayEnterAnim()
 	EndComand.emit()
 	if istutorial:

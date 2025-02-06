@@ -25,6 +25,7 @@ signal aPlateAreDragging
 signal aPlateWasDrop
 signal ServePlate
 var TouchBegginInArea
+var isInTutorial
 
 func _ready():
 	AddPlatesOnAnchor()
@@ -78,12 +79,13 @@ func _input(event: InputEvent) -> void:
 		var d 
 		if pressedPos == null : return
 		d = pressedPos - event.position
+		if not get_global_rect().has_point(event.position) : inGesture = false
 		if abs(d.x) < abs(d.y):
 			isverticalGesture = true
 			return
 		elif abs(d.x) > abs(d.y):
 			isHorizontalGesture = true
-		
+		if isDraggingAPplate: return
 		if actualDrag.x != event.position.x:
 			isScrolling.emit()
 			position.x = position.x + (event.position.x - actualDrag.x)
@@ -111,6 +113,7 @@ func calculateGesture() -> void:
 			tween.tween_property(self,"position", Vector2(set_next_anchor("left"),position.y),0.2).set_ease(Tween.EASE_OUT)
 
 func CalculateVerticalGesture():
+	if isInTutorial : return
 	if isHorizontalGesture : return
 	if hold : return
 	var d 
@@ -121,9 +124,10 @@ func CalculateVerticalGesture():
 			anchors[i].get_node("DragObject").PlaceInRightSpot(true)
 
 func inHold():
-	if isverticalGesture : return
 	if !hold: return
 	if inGesture : return
+	if isDraggingAPplate : return
+	
 	var holdVector
 	holdVector = pressedPos.x - releasePos.x
 	if (abs(holdVector) > limitHold):
@@ -149,6 +153,7 @@ func set_next_anchor(direction):
 			next_anchor = position.x + (get_viewport_rect().size.x/2 - anchors[i].global_position.x)
 	enableInteraction()
 	CompleteSwipe.emit()
+	SetTutorial(false)
 	return next_anchor
 
 func enableInteraction():
@@ -212,8 +217,14 @@ func ChangeInitPos(plate,platePos):
 func SetPlate(p):
 	plateRef = p
 
+var isDraggingAPplate
 func DetectDraggingPlate():
 	aPlateAreDragging.emit()
+	isDraggingAPplate = true
 
 func DetectMouseRelease():
 	aPlateWasDrop.emit()
+	isDraggingAPplate = false
+
+func SetTutorial(x):
+	isInTutorial = x
