@@ -8,12 +8,14 @@ extends Panel
 @export var AppearInBeginning : bool
 @export var TimeToAppear : float
 @export var SetEnterOnce: bool
+@export var RepitingPanel : bool
 var EnterOnce
 @onready var label = $label
 @onready var _BotonDerecho = $BtnDerAnchor/btnDer
 @onready var _BotonIzquierda = $btnIzqAnchor/btnIzq
 @onready var _BotonCentral = $btnCentralAnchor/btnCentral
 @onready var SkipButton = $ButtonSkipWritting
+
 var _btns =[]
 @export var characters_per_second : float = 78
 var BotonDerecho
@@ -38,6 +40,8 @@ signal CenterBTNPress
 
 func refreshData(numPanel : int):
 	
+	
+	
 	DetectBoldText(numOfPanel)
 	
 	var inInEditor = Engine.is_editor_hint()
@@ -48,8 +52,12 @@ func refreshData(numPanel : int):
 	BotonDerecho = false
 	BotonCentral = false
 	BotonIzquierdo = false
+	var textData
 	
-	var textData = Texts[numPanel -1]
+	if RepitingPanel: 
+		textData = Texts[0]
+	else:
+		textData = Texts[numPanel -1]
 	
 	label.text = textData.Text
 	if textData.SizePanel != Vector2.ZERO: 
@@ -67,7 +75,7 @@ func refreshData(numPanel : int):
 		
 		if btn.Place ==  ButtonPanel.place.center:
 			_BotonCentral.visible = inInEditor
-			$btnCentralAnchor/btnCentral/Icon/Label.texture = _texture
+			$btnCentralAnchor/btnCentral/Icon.texture = _texture
 			$btnCentralAnchor/btnCentral/Icon/Label.text = string
 			BotonCentral = true
 		
@@ -150,7 +158,7 @@ func PlayAnimation(btn):
 	await animator.animation_finished
 	animator.play("idle")
 
-
+var once = false 
 func ButtonPress(btn):
 	
 	InstanciateButtonPOP(_btns[btn])
@@ -158,8 +166,10 @@ func ButtonPress(btn):
 	_BotonDerecho.visible = false
 	_BotonCentral.visible = false
 	_BotonIzquierda.visible = false
-	if numOfPanel  == Texts.size() : 
+	if numOfPanel  == Texts.size() or RepitingPanel: 
 		ExitPanel()
+		if once : return
+		if RepitingPanel: once = true
 		numOfPanel += 1
 	else:ChangeToNextText()
 
@@ -196,7 +206,7 @@ func InstanciateButtonPOP(btn):
 	POPInstance.global_position = btn.global_position + Vector2(45,45)
 
 func DetectBoldText(numPanel):
-	
+	if Texts.size() < numPanel -1: return
 	if  Texts[numPanel -1].Text.contains("[b]"):
 		label = $labelRich
 	else: label = $label

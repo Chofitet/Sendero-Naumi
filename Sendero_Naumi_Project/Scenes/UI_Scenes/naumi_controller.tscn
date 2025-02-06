@@ -1,4 +1,4 @@
-[gd_scene load_steps=73 format=3 uid="uid://b77gk1g1ulal5"]
+[gd_scene load_steps=75 format=3 uid="uid://b77gk1g1ulal5"]
 
 [ext_resource type="Script" path="res://_Scripts/Naumi_Controller.gd" id="1_mwu8k"]
 [ext_resource type="Texture2D" uid="uid://cpm5a413kke7u" path="res://Sprites/Naumi/N2 - idle.png" id="2_3ucl7"]
@@ -14,6 +14,8 @@
 [ext_resource type="Texture2D" uid="uid://gc6xbaet3xpu" path="res://Sprites/Naumi/debris N0.png" id="9_3q1n3"]
 [ext_resource type="Texture2D" uid="uid://doha4bm8stes2" path="res://Sprites/Naumi/debris N1.png" id="10_hdr2s"]
 [ext_resource type="Texture2D" uid="uid://bhfi82lo718ud" path="res://Sprites/Naumi/debris N2.png" id="11_3d4e8"]
+[ext_resource type="PackedScene" uid="uid://nmuyip31gkq5" path="res://Scenes/UI_Scenes/generic_button.tscn" id="11_j8x1v"]
+[ext_resource type="Texture2D" uid="uid://kb7ixs5ala8" path="res://Sprites/UI/arrowIcon - UI.png" id="12_ojujq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yuks3"]
 atlas = ExtResource("3_kjpwh")
@@ -704,7 +706,7 @@ animation = "idle"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="pivot"]
 
-[node name="ButtonChangeScene" parent="pivot/CanvasLayer" instance=ExtResource("4_sgwwh")]
+[node name="Button" parent="pivot/CanvasLayer" instance=ExtResource("4_sgwwh")]
 visible = false
 anchors_preset = -1
 anchor_top = 0.858
@@ -720,6 +722,17 @@ icon = ExtResource("6_obt1x")
 flat = true
 icon_alignment = 1
 NextScene = "Map_Screen"
+
+[node name="ButtonChangeScene" parent="pivot/CanvasLayer" instance=ExtResource("11_j8x1v")]
+visible = false
+offset_left = 313.0
+offset_top = 1045.0
+offset_right = 403.0
+offset_bottom = 1135.0
+Icon = ExtResource("12_ojujq")
+
+[node name="TextureRect" parent="pivot/CanvasLayer/ButtonChangeScene" index="0"]
+texture = ExtResource("12_ojujq")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="pivot"]
 speed_scale = 0.7
@@ -755,3 +768,6 @@ one_shot = true
 autostart = true
 
 [connection signal="pressed" from="pivot/Button" to="." method="ButtonPressed"]
+[connection signal="pressed" from="pivot/CanvasLayer/ButtonChangeScene" to="pivot/CanvasLayer/Button" method="_on_pressed"]
+
+[editable path="pivot/CanvasLayer/ButtonChangeScene"]
