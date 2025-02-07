@@ -208,6 +208,7 @@ func InstanciateButtonPOP(btn):
 func DetectBoldText(numPanel):
 	if Texts.size() < numPanel -1: return
 	if  Texts[numPanel -1].Text.contains("[b]"):
+		label.text = ""
 		label = $labelRich
 	else: label = $label
 		

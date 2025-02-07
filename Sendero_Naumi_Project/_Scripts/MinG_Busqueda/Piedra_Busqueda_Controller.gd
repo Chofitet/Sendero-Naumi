@@ -92,6 +92,9 @@ func LoopLoseAnim():
 	timerLoopLook.wait_time=3
 	timerLoopLook.start()
 
+func LoseCryAnim():
+	anim.play("rock_lose_3")
+
 func AnimBackground():
 	animBackground.play(animFlip)
 	
