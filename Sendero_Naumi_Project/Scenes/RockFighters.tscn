@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://chd4x61mdw68l" path="res://Sprites/ZonaGeología/squigglingFighter/cartelVamosSQUIG - fighter.png" id="7_7tbh4"]
 [ext_resource type="Texture2D" uid="uid://bvaflt3wlye5h" path="res://Sprites/ZonaGeología/focoLuzBlaco.png" id="7_r3atn"]
 [ext_resource type="Texture2D" uid="uid://c6qavsooil6af" path="res://Sprites/ZonaGeología/golpe_tira .png" id="7_tdkmm"]
-[ext_resource type="Texture2D" uid="uid://bvivfdfb7ekbn" path="res://Sprites/ZonaGeología/Fondo_Ladrillo.png" id="8_offts"]
+[ext_resource type="Texture2D" uid="uid://j8us4tqmnni5" path="res://Sprites/ZonaGeología/fondoLadrillo - durezas.png" id="11_2k4io"]
 [ext_resource type="Texture2D" uid="uid://blsk5fxd3ydja" path="res://Sprites/ZonaGeología/Nombre_Fighter.png" id="11_44jl1"]
 [ext_resource type="Texture2D" uid="uid://cs7w5oevvpe4m" path="res://Sprites/ZonaGeología/Piedras/topacio_dureza.png" id="12_i8jde"]
 [ext_resource type="Texture2D" uid="uid://b7poe0ethot51" path="res://Sprites/ZonaGeología/Piedras/flurita_dureza.png" id="13_imic4"]
@@ -43,13 +43,13 @@
 [ext_resource type="PackedScene" uid="uid://dlwmbps456ind" path="res://Scenes/Experiments/btnVolver.tscn" id="33_l1u1j"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/MoralejaState.gd" id="34_rssk2"]
 [ext_resource type="Texture2D" uid="uid://dbv6rcnmmb8db" path="res://Sprites/ZonaGeología/fondo_geografia.png" id="35_0j7t8"]
-[ext_resource type="Texture2D" uid="uid://cj3p1ogux66b0" path="res://Sprites/ZonaGeología/Cinturon.png" id="37_3sx2u"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/FinState.gd" id="38_m5sey"]
 [ext_resource type="PackedScene" uid="uid://djhg7jvxtexyl" path="res://Scenes/UI_Scenes/btn_Change_Scene.tscn" id="40_6qq3a"]
 [ext_resource type="PackedScene" uid="uid://da63y126gdf5f" path="res://Scenes/Zona_Geología/medal_counter.tscn" id="40_8p7gf"]
 [ext_resource type="Texture2D" uid="uid://dqx8i8skk58mn" path="res://Sprites/ZonaGeología/dureza-festejo-pareja1.png" id="41_d5ulm"]
 [ext_resource type="Texture2D" uid="uid://clicyobmomilh" path="res://Sprites/ZonaGeología/dureza-festejo-pareja3.png" id="42_wqo4t"]
 [ext_resource type="Texture2D" uid="uid://bweceq8ikkir5" path="res://Sprites/ZonaGeología/dureza-festejo-pareja2.png" id="43_xay53"]
+[ext_resource type="Texture2D" uid="uid://ckgstqui4n4ld" path="res://Sprites/ZonaGeología/cinturonVictoria - durezas.png" id="46_ypyfl"]
 [ext_resource type="Texture2D" uid="uid://c2p5torstrtqm" path="res://Sprites/UI/checkIcon - UI.png" id="51_cuny6"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_01r1e"]
@@ -283,6 +283,7 @@ script = ExtResource("21_w17j0")
 Place = 1
 texture = ExtResource("22_gnf5b")
 label = ""
+dontPassPanel = false
 
 [sub_resource type="Resource" id="Resource_k5nkg"]
 script = ExtResource("23_5rold")
@@ -641,6 +642,7 @@ script = ExtResource("21_w17j0")
 Place = 1
 texture = ExtResource("51_cuny6")
 label = ""
+dontPassPanel = false
 
 [sub_resource type="Resource" id="Resource_ux77t"]
 script = ExtResource("23_5rold")
@@ -669,6 +671,7 @@ script = ExtResource("21_w17j0")
 Place = 1
 texture = ExtResource("51_cuny6")
 label = ""
+dontPassPanel = false
 
 [sub_resource type="Resource" id="Resource_pbww2"]
 script = ExtResource("23_5rold")
@@ -697,6 +700,7 @@ script = ExtResource("21_w17j0")
 Place = 1
 texture = ExtResource("51_cuny6")
 label = ""
+dontPassPanel = false
 
 [sub_resource type="Resource" id="Resource_jgbc0"]
 script = ExtResource("23_5rold")
@@ -724,6 +728,7 @@ script = ExtResource("21_w17j0")
 Place = 1
 texture = ExtResource("51_cuny6")
 label = ""
+dontPassPanel = false
 
 [sub_resource type="Resource" id="Resource_xkqfr"]
 script = ExtResource("23_5rold")
@@ -955,6 +960,7 @@ StateMachine = NodePath("..")
 InstanciasMinijuego = [NodePath("Contenido/Instancia1"), NodePath("Contenido/Instancia2"), NodePath("Contenido/Instancia3")]
 
 [node name="Contenido" type="Control" parent="RockFighters/StateMachine/Juego"]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -976,9 +982,9 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="RockFighters/StateMachine/Juego/Contenido/Control"]
-position = Vector2(5, -178)
-scale = Vector2(0.450276, 0.450276)
-texture = ExtResource("8_offts")
+position = Vector2(5, -173)
+scale = Vector2(0.549259, 0.549259)
+texture = ExtResource("11_2k4io")
 flip_v = true
 
 [node name="ColorRect" type="ColorRect" parent="RockFighters/StateMachine/Juego/Contenido/Control"]
@@ -1195,7 +1201,6 @@ libraries = {
 }
 
 [node name="Instancia1" type="Control" parent="RockFighters/StateMachine/Juego/Contenido"]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1285,7 +1290,6 @@ offset_top = 94.0001
 offset_bottom = 322.0
 pivot_offset = Vector2(326, 114)
 AppearInBeginning = false
-RepitingPanel = false
 characters_per_second = 45.0
 Texts = Array[ExtResource("23_5rold")]([SubResource("Resource_k5nkg")])
 
@@ -1335,7 +1339,6 @@ offset_top = 94.0001
 offset_bottom = 322.0
 pivot_offset = Vector2(326, 114)
 AppearInBeginning = false
-RepitingPanel = false
 characters_per_second = 45.0
 Texts = Array[ExtResource("23_5rold")]([SubResource("Resource_k5nkg")])
 
@@ -1395,10 +1398,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 974.0
-offset_top = 279.0
-offset_right = 974.0
-offset_bottom = 279.0
+offset_left = 627.5
+offset_top = 189.0
+offset_right = 627.5
+offset_bottom = 189.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -1460,10 +1463,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -274.0
-offset_top = 279.0
-offset_right = -274.0
-offset_bottom = 279.0
+offset_left = -620.5
+offset_top = 189.0
+offset_right = -620.5
+offset_bottom = 189.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -1551,6 +1554,7 @@ Instancias = [null, NodePath("Contenido/Instancia1"), NodePath("Contenido/Instan
 buttons = []
 
 [node name="Contenido" type="Control" parent="RockFighters/StateMachine/Moraleja"]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -1651,14 +1655,13 @@ offset_top = 41.9999
 offset_bottom = 579.0
 pivot_offset = Vector2(326, 268.5)
 AppearInBeginning = false
-RepitingPanel = false
 characters_per_second = 45.0
 Texts = Array[ExtResource("23_5rold")]([SubResource("Resource_ux77t")])
 
 [node name="cinturon" type="Sprite2D" parent="RockFighters/StateMachine/Moraleja/Contenido/Instancia1/PanelMoraleja1"]
 position = Vector2(319, -27.9999)
-scale = Vector2(0.478935, 0.478935)
-texture = ExtResource("37_3sx2u")
+scale = Vector2(0.592593, 0.592593)
+texture = ExtResource("46_ypyfl")
 
 [node name="Panel(1) Btn(center)" parent="RockFighters/StateMachine/Moraleja/Contenido/Instancia1/PanelMoraleja1" instance=ExtResource("24_0aurr")]
 Data = SubResource("Resource_8licn")
@@ -1747,14 +1750,13 @@ offset_bottom = 568.0
 grow_vertical = 2
 pivot_offset = Vector2(326, 262)
 AppearInBeginning = false
-RepitingPanel = false
 characters_per_second = 45.0
 Texts = Array[ExtResource("23_5rold")]([SubResource("Resource_pbww2")])
 
 [node name="cinturon" type="Sprite2D" parent="RockFighters/StateMachine/Moraleja/Contenido/Instancia2/PanelMoraleja2"]
 position = Vector2(319, -20.9999)
-scale = Vector2(0.478935, 0.478935)
-texture = ExtResource("37_3sx2u")
+scale = Vector2(0.592593, 0.592593)
+texture = ExtResource("46_ypyfl")
 
 [node name="Panel(1) Btn(center)" parent="RockFighters/StateMachine/Moraleja/Contenido/Instancia2/PanelMoraleja2" instance=ExtResource("24_0aurr")]
 Data = SubResource("Resource_a4pap")
@@ -1842,14 +1844,13 @@ offset_top = 29.52
 offset_bottom = 547.52
 pivot_offset = Vector2(326, 259)
 AppearInBeginning = false
-RepitingPanel = false
 characters_per_second = 45.0
 Texts = Array[ExtResource("23_5rold")]([SubResource("Resource_jgbc0")])
 
 [node name="cinturon" type="Sprite2D" parent="RockFighters/StateMachine/Moraleja/Contenido/Instancia3/PanelMoraleja3"]
 position = Vector2(319, -26.9999)
-scale = Vector2(0.478935, 0.478935)
-texture = ExtResource("37_3sx2u")
+scale = Vector2(0.592593, 0.592593)
+texture = ExtResource("46_ypyfl")
 
 [node name="Panel(1) Btn(center)" parent="RockFighters/StateMachine/Moraleja/Contenido/Instancia3/PanelMoraleja3" instance=ExtResource("24_0aurr")]
 Data = SubResource("Resource_xc0s5")
@@ -1895,7 +1896,6 @@ offset_top = -180.64
 offset_bottom = 189.36
 pivot_offset = Vector2(326, 185)
 AppearInBeginning = false
-RepitingPanel = false
 characters_per_second = 45.0
 Texts = Array[ExtResource("23_5rold")]([SubResource("Resource_xkqfr")])
 

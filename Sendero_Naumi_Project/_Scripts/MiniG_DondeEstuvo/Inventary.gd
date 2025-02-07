@@ -10,6 +10,7 @@ var i : int = 0
 @onready var offset = get_parent().get_node("ScreenCenter")
 @onready var overlay = get_parent().get_node("Overlay")
 var PanelObj
+signal AllPicked
 
 func _ready():
 	PanelObj = overlay.get_child(0)
@@ -22,13 +23,12 @@ func _ready():
 func SetInventarySpot(obj):
 	Spots[i].modulate = colorUI
 	var spotOffset = Vector2(Spots[i].size.x / 2 + 20, Spots[i].size.y /2 + 20)
-	print(Spots[i].size.x)
-	print(spotOffset)
 	obj.ToPosition = Spots[i].get_node("center").global_position
 	obj.z_index = 1
 	i += 1
 	if i == Objects.size():
 		AllFinded()
+		AllPicked.emit()
 
 func AllFinded():
 	get_parent().get_node("ScreenCenter/Clues").BlockOthersClues(self,false)
