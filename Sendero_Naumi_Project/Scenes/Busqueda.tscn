@@ -1,4 +1,4 @@
-[gd_scene load_steps=177 format=3 uid="uid://ca6b1xkwwj7rp"]
+[gd_scene load_steps=185 format=3 uid="uid://ca6b1xkwwj7rp"]
 
 [ext_resource type="Script" path="res://_Scripts/Minigame_Save_Controller.gd" id="1_kdw84"]
 [ext_resource type="Texture2D" uid="uid://dbv6rcnmmb8db" path="res://Sprites/ZonaGeología/fondo_geografia.png" id="2_5bgsq"]
@@ -1246,7 +1246,7 @@ buttons = Array[ExtResource("27_ntp00")]([])
 
 [sub_resource type="Animation" id="Animation_ko7o5"]
 resource_name = "Nube_Appears"
-length = 1.5
+length = 2.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -1299,6 +1299,130 @@ tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/path = NodePath(".:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("nubeC1:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("nubeC2:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("nubeC3:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("nube:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("nube/ButtonGanador:disabled")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(1.4),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_yrnje"]
+resource_name = "Nube_Disappear"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("nube:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("nubeC1:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("nubeC2:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("nubeC3:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("nube/ButtonGanador:disabled")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -1370,11 +1494,318 @@ tracks/4/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("nube:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("nubeC1:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("nubeC2:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("nubeC3:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("nube/ButtonGanador:disabled")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_cba2c"]
+resource_name = "Nube_Disappear_Delay"
+length = 1.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("nube:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.8, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("nubeC1:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.8, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("nubeC2:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.8, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("nubeC3:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.8, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("nube/ButtonGanador:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("nube:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.55, 0.55), Vector2(0.488889, 0.488889)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gy327"]
 _data = {
 "Nube_Appears": SubResource("Animation_ko7o5"),
+"Nube_Disappear": SubResource("Animation_yrnje"),
+"Nube_Disappear_Delay": SubResource("Animation_cba2c"),
 "RESET": SubResource("Animation_kdc0y")
+}
+
+[sub_resource type="Curve" id="Curve_jahjp"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_2qa43"]
+offsets = PackedFloat32Array(0, 0.458753, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="Curve" id="Curve_7gbji"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Animation" id="Animation_wsf3j"]
+resource_name = "Disappear"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CPUParticles2D:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CPUParticles2D2:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CPUParticles2D3:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CPUParticles2D4:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CPUParticles2D5:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CPUParticles2D6:emitting")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_58lp6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CPUParticles2D:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CPUParticles2D2:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CPUParticles2D3:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CPUParticles2D4:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CPUParticles2D5:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CPUParticles2D6:emitting")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kp8pq"]
+_data = {
+"Disappear": SubResource("Animation_wsf3j"),
+"RESET": SubResource("Animation_58lp6")
 }
 
 [sub_resource type="Resource" id="Resource_6xi7f"]
@@ -3156,6 +3587,22 @@ offset_bottom = -36.0
 text = "[center]¿A CUÁL TRIBUNA DEBE IR LA [b]ZOISITA[/b]
 PARA ENCONTRAR A SU FAMILIA?"
 
+[node name="Icon" parent="StateMachine/Juego/Contenido/Instancia1/Consigna/consignaPanel/BtnDerAnchor/btnDer" index="0"]
+offset_left = -22.0
+offset_top = -22.0
+offset_right = 22.0
+offset_bottom = 22.0
+
+[node name="Icon" parent="StateMachine/Juego/Contenido/Instancia1/Consigna/consignaPanel/btnIzqAnchor/btnIzq" index="0"]
+offset_left = -22.0
+offset_top = -22.0
+offset_right = 22.0
+offset_bottom = 22.0
+
+[node name="Icon" parent="StateMachine/Juego/Contenido/Instancia1/Consigna/consignaPanel/btnCentralAnchor/btnCentral" index="0"]
+offset_right = -23.0
+offset_bottom = -23.0
+
 [node name="NubeController" type="Control" parent="StateMachine/Juego/Contenido/Instancia1"]
 layout_mode = 1
 anchor_left = 0.5
@@ -3185,7 +3632,11 @@ offset_bottom = -50.9546
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 80
 theme_override_styles/focus = ExtResource("18_5rso6")
 text = "SULFATOS"
@@ -3215,6 +3666,148 @@ libraries = {
 }
 script = ExtResource("16_r2ac3")
 animation = "Nube_Appears"
+
+[node name="DisappearParticles" type="Node2D" parent="StateMachine/Juego/Contenido/Instancia1/NubeController"]
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="StateMachine/Juego/Contenido/Instancia1/NubeController/DisappearParticles"]
+position = Vector2(177, 207)
+emitting = false
+lifetime = 1.5
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("42_6jl13")
+emission_shape = 1
+emission_sphere_radius = 120.15
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 60.0
+initial_velocity_max = 70.0
+angular_velocity_min = -73.12
+angular_velocity_max = 118.13
+angle_min = -112.5
+angle_max = 174.4
+scale_amount_min = 0.5
+scale_amount_max = 0.5
+scale_amount_curve = SubResource("Curve_jahjp")
+color_ramp = SubResource("Gradient_2qa43")
+
+[node name="CPUParticles2D2" type="CPUParticles2D" parent="StateMachine/Juego/Contenido/Instancia1/NubeController/DisappearParticles"]
+position = Vector2(222, 178)
+emitting = false
+lifetime = 1.5
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("43_u4ofi")
+emission_shape = 1
+emission_sphere_radius = 71.75
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 60.0
+initial_velocity_max = 70.0
+angular_velocity_min = -73.12
+angular_velocity_max = 118.13
+angle_min = -112.5
+angle_max = 174.4
+scale_amount_min = 0.5
+scale_amount_max = 0.5
+scale_amount_curve = SubResource("Curve_7gbji")
+color_ramp = SubResource("Gradient_2qa43")
+
+[node name="CPUParticles2D3" type="CPUParticles2D" parent="StateMachine/Juego/Contenido/Instancia1/NubeController/DisappearParticles"]
+position = Vector2(182, 202)
+emitting = false
+amount = 16
+lifetime = 1.5
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("44_yw0ai")
+emission_shape = 1
+emission_sphere_radius = 128.0
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 60.0
+initial_velocity_max = 70.0
+angular_velocity_min = -73.12
+angular_velocity_max = 118.13
+angle_min = -112.5
+angle_max = 174.4
+scale_amount_min = 0.5
+scale_amount_max = 0.5
+scale_amount_curve = SubResource("Curve_7gbji")
+color_ramp = SubResource("Gradient_2qa43")
+
+[node name="CPUParticles2D4" type="CPUParticles2D" parent="StateMachine/Juego/Contenido/Instancia1/NubeController/DisappearParticles"]
+position = Vector2(289, 383)
+emitting = false
+lifetime = 1.5
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("42_6jl13")
+emission_shape = 1
+emission_sphere_radius = 32.5
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 60.0
+initial_velocity_max = 70.0
+angular_velocity_min = -73.12
+angular_velocity_max = 118.13
+angle_min = -112.5
+angle_max = 174.4
+scale_amount_min = 0.2
+scale_amount_max = 0.2
+scale_amount_curve = SubResource("Curve_jahjp")
+color_ramp = SubResource("Gradient_2qa43")
+
+[node name="CPUParticles2D5" type="CPUParticles2D" parent="StateMachine/Juego/Contenido/Instancia1/NubeController/DisappearParticles"]
+position = Vector2(272, 476)
+emitting = false
+lifetime = 1.5
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("43_u4ofi")
+emission_shape = 1
+emission_sphere_radius = 13.55
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 60.0
+initial_velocity_max = 70.0
+angular_velocity_min = -73.12
+angular_velocity_max = 118.13
+angle_min = -112.5
+angle_max = 174.4
+scale_amount_min = 0.2
+scale_amount_max = 0.2
+scale_amount_curve = SubResource("Curve_jahjp")
+color_ramp = SubResource("Gradient_2qa43")
+
+[node name="CPUParticles2D6" type="CPUParticles2D" parent="StateMachine/Juego/Contenido/Instancia1/NubeController/DisappearParticles"]
+position = Vector2(220, 531)
+emitting = false
+lifetime = 1.5
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("44_yw0ai")
+emission_shape = 1
+emission_sphere_radius = 5.25
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 60.0
+initial_velocity_max = 70.0
+angular_velocity_min = -73.12
+angular_velocity_max = 118.13
+angle_min = -112.5
+angle_max = 174.4
+scale_amount_min = 0.2
+scale_amount_max = 0.2
+scale_amount_curve = SubResource("Curve_jahjp")
+color_ramp = SubResource("Gradient_2qa43")
+
+[node name="DisappearAnimator" type="AnimationPlayer" parent="StateMachine/Juego/Contenido/Instancia1/NubeController/DisappearParticles"]
+libraries = {
+"": SubResource("AnimationLibrary_kp8pq")
+}
+script = ExtResource("16_r2ac3")
+animation = "Disappear"
 
 [node name="NubeController2" type="Control" parent="StateMachine/Juego/Contenido/Instancia1"]
 layout_mode = 1
@@ -3248,7 +3841,11 @@ grow_vertical = 2
 scale = Vector2(-1, 1)
 pivot_offset = Vector2(202, 0)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 80
 theme_override_styles/focus = ExtResource("18_5rso6")
 text = "SILICATOS"
@@ -3278,6 +3875,148 @@ libraries = {
 }
 script = ExtResource("16_r2ac3")
 animation = "Nube_Appears"
+
+[node name="DisappearParticles" type="Node2D" parent="StateMachine/Juego/Contenido/Instancia1/NubeController2"]
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="StateMachine/Juego/Contenido/Instancia1/NubeController2/DisappearParticles"]
+position = Vector2(177, 207)
+emitting = false
+lifetime = 1.5
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("42_6jl13")
+emission_shape = 1
+emission_sphere_radius = 120.15
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 60.0
+initial_velocity_max = 70.0
+angular_velocity_min = -73.12
+angular_velocity_max = 118.13
+angle_min = -112.5
+angle_max = 174.4
+scale_amount_min = 0.5
+scale_amount_max = 0.5
+scale_amount_curve = SubResource("Curve_jahjp")
+color_ramp = SubResource("Gradient_2qa43")
+
+[node name="CPUParticles2D2" type="CPUParticles2D" parent="StateMachine/Juego/Contenido/Instancia1/NubeController2/DisappearParticles"]
+position = Vector2(222, 178)
+emitting = false
+lifetime = 1.5
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("43_u4ofi")
+emission_shape = 1
+emission_sphere_radius = 71.75
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 60.0
+initial_velocity_max = 70.0
+angular_velocity_min = -73.12
+angular_velocity_max = 118.13
+angle_min = -112.5
+angle_max = 174.4
+scale_amount_min = 0.5
+scale_amount_max = 0.5
+scale_amount_curve = SubResource("Curve_7gbji")
+color_ramp = SubResource("Gradient_2qa43")
+
+[node name="CPUParticles2D3" type="CPUParticles2D" parent="StateMachine/Juego/Contenido/Instancia1/NubeController2/DisappearParticles"]
+position = Vector2(182, 202)
+emitting = false
+amount = 16
+lifetime = 1.5
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("44_yw0ai")
+emission_shape = 1
+emission_sphere_radius = 128.0
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 60.0
+initial_velocity_max = 70.0
+angular_velocity_min = -73.12
+angular_velocity_max = 118.13
+angle_min = -112.5
+angle_max = 174.4
+scale_amount_min = 0.5
+scale_amount_max = 0.5
+scale_amount_curve = SubResource("Curve_7gbji")
+color_ramp = SubResource("Gradient_2qa43")
+
+[node name="CPUParticles2D4" type="CPUParticles2D" parent="StateMachine/Juego/Contenido/Instancia1/NubeController2/DisappearParticles"]
+position = Vector2(289, 383)
+emitting = false
+lifetime = 1.5
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("42_6jl13")
+emission_shape = 1
+emission_sphere_radius = 32.5
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 60.0
+initial_velocity_max = 70.0
+angular_velocity_min = -73.12
+angular_velocity_max = 118.13
+angle_min = -112.5
+angle_max = 174.4
+scale_amount_min = 0.2
+scale_amount_max = 0.2
+scale_amount_curve = SubResource("Curve_jahjp")
+color_ramp = SubResource("Gradient_2qa43")
+
+[node name="CPUParticles2D5" type="CPUParticles2D" parent="StateMachine/Juego/Contenido/Instancia1/NubeController2/DisappearParticles"]
+position = Vector2(272, 476)
+emitting = false
+lifetime = 1.5
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("43_u4ofi")
+emission_shape = 1
+emission_sphere_radius = 13.55
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 60.0
+initial_velocity_max = 70.0
+angular_velocity_min = -73.12
+angular_velocity_max = 118.13
+angle_min = -112.5
+angle_max = 174.4
+scale_amount_min = 0.2
+scale_amount_max = 0.2
+scale_amount_curve = SubResource("Curve_jahjp")
+color_ramp = SubResource("Gradient_2qa43")
+
+[node name="CPUParticles2D6" type="CPUParticles2D" parent="StateMachine/Juego/Contenido/Instancia1/NubeController2/DisappearParticles"]
+position = Vector2(220, 531)
+emitting = false
+lifetime = 1.5
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("44_yw0ai")
+emission_shape = 1
+emission_sphere_radius = 5.25
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 60.0
+initial_velocity_max = 70.0
+angular_velocity_min = -73.12
+angular_velocity_max = 118.13
+angle_min = -112.5
+angle_max = 174.4
+scale_amount_min = 0.2
+scale_amount_max = 0.2
+scale_amount_curve = SubResource("Curve_jahjp")
+color_ramp = SubResource("Gradient_2qa43")
+
+[node name="DisappearAnimator" type="AnimationPlayer" parent="StateMachine/Juego/Contenido/Instancia1/NubeController2/DisappearParticles"]
+libraries = {
+"": SubResource("AnimationLibrary_kp8pq")
+}
+script = ExtResource("16_r2ac3")
+animation = "Disappear"
 
 [node name="Instancia2" type="Control" parent="StateMachine/Juego/Contenido"]
 visible = false
@@ -3400,6 +4139,22 @@ offset_bottom = -30.0
 text = "[center]¿A CUÁL TRIBUNA DEBE IR LA [b]HALITA[/b]
 PARA ENCONTRAR A SU FAMILIA?"
 
+[node name="Icon" parent="StateMachine/Juego/Contenido/Instancia2/Consigna/consignaPanel/BtnDerAnchor/btnDer" index="0"]
+offset_left = -22.0
+offset_top = -22.0
+offset_right = 22.0
+offset_bottom = 22.0
+
+[node name="Icon" parent="StateMachine/Juego/Contenido/Instancia2/Consigna/consignaPanel/btnIzqAnchor/btnIzq" index="0"]
+offset_left = -22.0
+offset_top = -22.0
+offset_right = 22.0
+offset_bottom = 22.0
+
+[node name="Icon" parent="StateMachine/Juego/Contenido/Instancia2/Consigna/consignaPanel/btnCentralAnchor/btnCentral" index="0"]
+offset_right = -23.0
+offset_bottom = -23.0
+
 [node name="NubeController" type="Control" parent="StateMachine/Juego/Contenido/Instancia2"]
 layout_mode = 1
 anchor_left = 0.5
@@ -3429,7 +4184,11 @@ offset_bottom = -44.8182
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 80
 theme_override_styles/focus = ExtResource("18_5rso6")
 text = "OXIDOS"
@@ -3459,6 +4218,148 @@ libraries = {
 }
 script = ExtResource("16_r2ac3")
 animation = "Nube_Appears"
+
+[node name="DisappearParticles" type="Node2D" parent="StateMachine/Juego/Contenido/Instancia2/NubeController"]
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="StateMachine/Juego/Contenido/Instancia2/NubeController/DisappearParticles"]
+position = Vector2(177, 207)
+emitting = false
+lifetime = 1.5
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("42_6jl13")
+emission_shape = 1
+emission_sphere_radius = 120.15
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 60.0
+initial_velocity_max = 70.0
+angular_velocity_min = -73.12
+angular_velocity_max = 118.13
+angle_min = -112.5
+angle_max = 174.4
+scale_amount_min = 0.5
+scale_amount_max = 0.5
+scale_amount_curve = SubResource("Curve_jahjp")
+color_ramp = SubResource("Gradient_2qa43")
+
+[node name="CPUParticles2D2" type="CPUParticles2D" parent="StateMachine/Juego/Contenido/Instancia2/NubeController/DisappearParticles"]
+position = Vector2(222, 178)
+emitting = false
+lifetime = 1.5
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("43_u4ofi")
+emission_shape = 1
+emission_sphere_radius = 71.75
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 60.0
+initial_velocity_max = 70.0
+angular_velocity_min = -73.12
+angular_velocity_max = 118.13
+angle_min = -112.5
+angle_max = 174.4
+scale_amount_min = 0.5
+scale_amount_max = 0.5
+scale_amount_curve = SubResource("Curve_7gbji")
+color_ramp = SubResource("Gradient_2qa43")
+
+[node name="CPUParticles2D3" type="CPUParticles2D" parent="StateMachine/Juego/Contenido/Instancia2/NubeController/DisappearParticles"]
+position = Vector2(182, 202)
+emitting = false
+amount = 16
+lifetime = 1.5
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("44_yw0ai")
+emission_shape = 1
+emission_sphere_radius = 128.0
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 60.0
+initial_velocity_max = 70.0
+angular_velocity_min = -73.12
+angular_velocity_max = 118.13
+angle_min = -112.5
+angle_max = 174.4
+scale_amount_min = 0.5
+scale_amount_max = 0.5
+scale_amount_curve = SubResource("Curve_7gbji")
+color_ramp = SubResource("Gradient_2qa43")
+
+[node name="CPUParticles2D4" type="CPUParticles2D" parent="StateMachine/Juego/Contenido/Instancia2/NubeController/DisappearParticles"]
+position = Vector2(289, 383)
+emitting = false
+lifetime = 1.5
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("42_6jl13")
+emission_shape = 1
+emission_sphere_radius = 32.5
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 60.0
+initial_velocity_max = 70.0
+angular_velocity_min = -73.12
+angular_velocity_max = 118.13
+angle_min = -112.5
+angle_max = 174.4
+scale_amount_min = 0.2
+scale_amount_max = 0.2
+scale_amount_curve = SubResource("Curve_jahjp")
+color_ramp = SubResource("Gradient_2qa43")
+
+[node name="CPUParticles2D5" type="CPUParticles2D" parent="StateMachine/Juego/Contenido/Instancia2/NubeController/DisappearParticles"]
+position = Vector2(272, 476)
+emitting = false
+lifetime = 1.5
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("43_u4ofi")
+emission_shape = 1
+emission_sphere_radius = 13.55
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 60.0
+initial_velocity_max = 70.0
+angular_velocity_min = -73.12
+angular_velocity_max = 118.13
+angle_min = -112.5
+angle_max = 174.4
+scale_amount_min = 0.2
+scale_amount_max = 0.2
+scale_amount_curve = SubResource("Curve_jahjp")
+color_ramp = SubResource("Gradient_2qa43")
+
+[node name="CPUParticles2D6" type="CPUParticles2D" parent="StateMachine/Juego/Contenido/Instancia2/NubeController/DisappearParticles"]
+position = Vector2(220, 531)
+emitting = false
+lifetime = 1.5
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("44_yw0ai")
+emission_shape = 1
+emission_sphere_radius = 5.25
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 60.0
+initial_velocity_max = 70.0
+angular_velocity_min = -73.12
+angular_velocity_max = 118.13
+angle_min = -112.5
+angle_max = 174.4
+scale_amount_min = 0.2
+scale_amount_max = 0.2
+scale_amount_curve = SubResource("Curve_jahjp")
+color_ramp = SubResource("Gradient_2qa43")
+
+[node name="DisappearAnimator" type="AnimationPlayer" parent="StateMachine/Juego/Contenido/Instancia2/NubeController/DisappearParticles"]
+libraries = {
+"": SubResource("AnimationLibrary_kp8pq")
+}
+script = ExtResource("16_r2ac3")
+animation = "Disappear"
 
 [node name="NubeController2" type="Control" parent="StateMachine/Juego/Contenido/Instancia2"]
 layout_mode = 1
@@ -3492,7 +4393,11 @@ grow_vertical = 2
 scale = Vector2(-1, 1)
 pivot_offset = Vector2(202, 0)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 80
 theme_override_styles/focus = ExtResource("18_5rso6")
 text = "HALOGENURO"
@@ -3522,6 +4427,148 @@ libraries = {
 }
 script = ExtResource("16_r2ac3")
 animation = "Nube_Appears"
+
+[node name="DisappearParticles" type="Node2D" parent="StateMachine/Juego/Contenido/Instancia2/NubeController2"]
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="StateMachine/Juego/Contenido/Instancia2/NubeController2/DisappearParticles"]
+position = Vector2(177, 207)
+emitting = false
+lifetime = 1.5
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("42_6jl13")
+emission_shape = 1
+emission_sphere_radius = 120.15
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 60.0
+initial_velocity_max = 70.0
+angular_velocity_min = -73.12
+angular_velocity_max = 118.13
+angle_min = -112.5
+angle_max = 174.4
+scale_amount_min = 0.5
+scale_amount_max = 0.5
+scale_amount_curve = SubResource("Curve_jahjp")
+color_ramp = SubResource("Gradient_2qa43")
+
+[node name="CPUParticles2D2" type="CPUParticles2D" parent="StateMachine/Juego/Contenido/Instancia2/NubeController2/DisappearParticles"]
+position = Vector2(222, 178)
+emitting = false
+lifetime = 1.5
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("43_u4ofi")
+emission_shape = 1
+emission_sphere_radius = 71.75
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 60.0
+initial_velocity_max = 70.0
+angular_velocity_min = -73.12
+angular_velocity_max = 118.13
+angle_min = -112.5
+angle_max = 174.4
+scale_amount_min = 0.5
+scale_amount_max = 0.5
+scale_amount_curve = SubResource("Curve_7gbji")
+color_ramp = SubResource("Gradient_2qa43")
+
+[node name="CPUParticles2D3" type="CPUParticles2D" parent="StateMachine/Juego/Contenido/Instancia2/NubeController2/DisappearParticles"]
+position = Vector2(182, 202)
+emitting = false
+amount = 16
+lifetime = 1.5
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("44_yw0ai")
+emission_shape = 1
+emission_sphere_radius = 128.0
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 60.0
+initial_velocity_max = 70.0
+angular_velocity_min = -73.12
+angular_velocity_max = 118.13
+angle_min = -112.5
+angle_max = 174.4
+scale_amount_min = 0.5
+scale_amount_max = 0.5
+scale_amount_curve = SubResource("Curve_7gbji")
+color_ramp = SubResource("Gradient_2qa43")
+
+[node name="CPUParticles2D4" type="CPUParticles2D" parent="StateMachine/Juego/Contenido/Instancia2/NubeController2/DisappearParticles"]
+position = Vector2(289, 383)
+emitting = false
+lifetime = 1.5
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("42_6jl13")
+emission_shape = 1
+emission_sphere_radius = 32.5
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 60.0
+initial_velocity_max = 70.0
+angular_velocity_min = -73.12
+angular_velocity_max = 118.13
+angle_min = -112.5
+angle_max = 174.4
+scale_amount_min = 0.2
+scale_amount_max = 0.2
+scale_amount_curve = SubResource("Curve_jahjp")
+color_ramp = SubResource("Gradient_2qa43")
+
+[node name="CPUParticles2D5" type="CPUParticles2D" parent="StateMachine/Juego/Contenido/Instancia2/NubeController2/DisappearParticles"]
+position = Vector2(272, 476)
+emitting = false
+lifetime = 1.5
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("43_u4ofi")
+emission_shape = 1
+emission_sphere_radius = 13.55
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 60.0
+initial_velocity_max = 70.0
+angular_velocity_min = -73.12
+angular_velocity_max = 118.13
+angle_min = -112.5
+angle_max = 174.4
+scale_amount_min = 0.2
+scale_amount_max = 0.2
+scale_amount_curve = SubResource("Curve_jahjp")
+color_ramp = SubResource("Gradient_2qa43")
+
+[node name="CPUParticles2D6" type="CPUParticles2D" parent="StateMachine/Juego/Contenido/Instancia2/NubeController2/DisappearParticles"]
+position = Vector2(220, 531)
+emitting = false
+lifetime = 1.5
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("44_yw0ai")
+emission_shape = 1
+emission_sphere_radius = 5.25
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 60.0
+initial_velocity_max = 70.0
+angular_velocity_min = -73.12
+angular_velocity_max = 118.13
+angle_min = -112.5
+angle_max = 174.4
+scale_amount_min = 0.2
+scale_amount_max = 0.2
+scale_amount_curve = SubResource("Curve_jahjp")
+color_ramp = SubResource("Gradient_2qa43")
+
+[node name="DisappearAnimator" type="AnimationPlayer" parent="StateMachine/Juego/Contenido/Instancia2/NubeController2/DisappearParticles"]
+libraries = {
+"": SubResource("AnimationLibrary_kp8pq")
+}
+script = ExtResource("16_r2ac3")
+animation = "Disappear"
 
 [node name="Instancia3" type="Control" parent="StateMachine/Juego/Contenido"]
 visible = false
@@ -3646,6 +4693,22 @@ text = "
 [center]¿A CUÁL TRIBUNA DEBE IR EL [b]ESPATO DE ISLANDIA[/b]
 PARA ENCONTRAR A SU FAMILIA?"
 
+[node name="Icon" parent="StateMachine/Juego/Contenido/Instancia3/Consigna/consignaPanel/BtnDerAnchor/btnDer" index="0"]
+offset_left = -22.0
+offset_top = -22.0
+offset_right = 22.0
+offset_bottom = 22.0
+
+[node name="Icon" parent="StateMachine/Juego/Contenido/Instancia3/Consigna/consignaPanel/btnIzqAnchor/btnIzq" index="0"]
+offset_left = -22.0
+offset_top = -22.0
+offset_right = 22.0
+offset_bottom = 22.0
+
+[node name="Icon" parent="StateMachine/Juego/Contenido/Instancia3/Consigna/consignaPanel/btnCentralAnchor/btnCentral" index="0"]
+offset_right = -23.0
+offset_bottom = -23.0
+
 [node name="NubeController" type="Control" parent="StateMachine/Juego/Contenido/Instancia3"]
 layout_mode = 1
 anchor_left = 0.5
@@ -3675,7 +4738,11 @@ offset_bottom = -38.7727
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 80
 theme_override_styles/focus = ExtResource("18_5rso6")
 text = "SULFUROS"
@@ -3705,6 +4772,148 @@ libraries = {
 }
 script = ExtResource("16_r2ac3")
 animation = "Nube_Appears"
+
+[node name="DisappearParticles" type="Node2D" parent="StateMachine/Juego/Contenido/Instancia3/NubeController"]
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="StateMachine/Juego/Contenido/Instancia3/NubeController/DisappearParticles"]
+position = Vector2(177, 207)
+emitting = false
+lifetime = 1.5
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("42_6jl13")
+emission_shape = 1
+emission_sphere_radius = 120.15
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 60.0
+initial_velocity_max = 70.0
+angular_velocity_min = -73.12
+angular_velocity_max = 118.13
+angle_min = -112.5
+angle_max = 174.4
+scale_amount_min = 0.5
+scale_amount_max = 0.5
+scale_amount_curve = SubResource("Curve_jahjp")
+color_ramp = SubResource("Gradient_2qa43")
+
+[node name="CPUParticles2D2" type="CPUParticles2D" parent="StateMachine/Juego/Contenido/Instancia3/NubeController/DisappearParticles"]
+position = Vector2(222, 178)
+emitting = false
+lifetime = 1.5
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("43_u4ofi")
+emission_shape = 1
+emission_sphere_radius = 71.75
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 60.0
+initial_velocity_max = 70.0
+angular_velocity_min = -73.12
+angular_velocity_max = 118.13
+angle_min = -112.5
+angle_max = 174.4
+scale_amount_min = 0.5
+scale_amount_max = 0.5
+scale_amount_curve = SubResource("Curve_7gbji")
+color_ramp = SubResource("Gradient_2qa43")
+
+[node name="CPUParticles2D3" type="CPUParticles2D" parent="StateMachine/Juego/Contenido/Instancia3/NubeController/DisappearParticles"]
+position = Vector2(182, 202)
+emitting = false
+amount = 16
+lifetime = 1.5
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("44_yw0ai")
+emission_shape = 1
+emission_sphere_radius = 128.0
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 60.0
+initial_velocity_max = 70.0
+angular_velocity_min = -73.12
+angular_velocity_max = 118.13
+angle_min = -112.5
+angle_max = 174.4
+scale_amount_min = 0.5
+scale_amount_max = 0.5
+scale_amount_curve = SubResource("Curve_7gbji")
+color_ramp = SubResource("Gradient_2qa43")
+
+[node name="CPUParticles2D4" type="CPUParticles2D" parent="StateMachine/Juego/Contenido/Instancia3/NubeController/DisappearParticles"]
+position = Vector2(289, 383)
+emitting = false
+lifetime = 1.5
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("42_6jl13")
+emission_shape = 1
+emission_sphere_radius = 32.5
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 60.0
+initial_velocity_max = 70.0
+angular_velocity_min = -73.12
+angular_velocity_max = 118.13
+angle_min = -112.5
+angle_max = 174.4
+scale_amount_min = 0.2
+scale_amount_max = 0.2
+scale_amount_curve = SubResource("Curve_jahjp")
+color_ramp = SubResource("Gradient_2qa43")
+
+[node name="CPUParticles2D5" type="CPUParticles2D" parent="StateMachine/Juego/Contenido/Instancia3/NubeController/DisappearParticles"]
+position = Vector2(272, 476)
+emitting = false
+lifetime = 1.5
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("43_u4ofi")
+emission_shape = 1
+emission_sphere_radius = 13.55
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 60.0
+initial_velocity_max = 70.0
+angular_velocity_min = -73.12
+angular_velocity_max = 118.13
+angle_min = -112.5
+angle_max = 174.4
+scale_amount_min = 0.2
+scale_amount_max = 0.2
+scale_amount_curve = SubResource("Curve_jahjp")
+color_ramp = SubResource("Gradient_2qa43")
+
+[node name="CPUParticles2D6" type="CPUParticles2D" parent="StateMachine/Juego/Contenido/Instancia3/NubeController/DisappearParticles"]
+position = Vector2(220, 531)
+emitting = false
+lifetime = 1.5
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("44_yw0ai")
+emission_shape = 1
+emission_sphere_radius = 5.25
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 60.0
+initial_velocity_max = 70.0
+angular_velocity_min = -73.12
+angular_velocity_max = 118.13
+angle_min = -112.5
+angle_max = 174.4
+scale_amount_min = 0.2
+scale_amount_max = 0.2
+scale_amount_curve = SubResource("Curve_jahjp")
+color_ramp = SubResource("Gradient_2qa43")
+
+[node name="DisappearAnimator" type="AnimationPlayer" parent="StateMachine/Juego/Contenido/Instancia3/NubeController/DisappearParticles"]
+libraries = {
+"": SubResource("AnimationLibrary_kp8pq")
+}
+script = ExtResource("16_r2ac3")
+animation = "Disappear"
 
 [node name="NubeController2" type="Control" parent="StateMachine/Juego/Contenido/Instancia3"]
 layout_mode = 1
@@ -3738,7 +4947,11 @@ grow_vertical = 2
 scale = Vector2(-1, 1)
 pivot_offset = Vector2(202, 0)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 80
 theme_override_styles/focus = ExtResource("18_5rso6")
 text = "CARBONATOS"
@@ -3768,6 +4981,148 @@ libraries = {
 }
 script = ExtResource("16_r2ac3")
 animation = "Nube_Appears"
+
+[node name="DisappearParticles" type="Node2D" parent="StateMachine/Juego/Contenido/Instancia3/NubeController2"]
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="StateMachine/Juego/Contenido/Instancia3/NubeController2/DisappearParticles"]
+position = Vector2(177, 207)
+emitting = false
+lifetime = 1.5
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("42_6jl13")
+emission_shape = 1
+emission_sphere_radius = 120.15
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 60.0
+initial_velocity_max = 70.0
+angular_velocity_min = -73.12
+angular_velocity_max = 118.13
+angle_min = -112.5
+angle_max = 174.4
+scale_amount_min = 0.5
+scale_amount_max = 0.5
+scale_amount_curve = SubResource("Curve_jahjp")
+color_ramp = SubResource("Gradient_2qa43")
+
+[node name="CPUParticles2D2" type="CPUParticles2D" parent="StateMachine/Juego/Contenido/Instancia3/NubeController2/DisappearParticles"]
+position = Vector2(222, 178)
+emitting = false
+lifetime = 1.5
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("43_u4ofi")
+emission_shape = 1
+emission_sphere_radius = 71.75
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 60.0
+initial_velocity_max = 70.0
+angular_velocity_min = -73.12
+angular_velocity_max = 118.13
+angle_min = -112.5
+angle_max = 174.4
+scale_amount_min = 0.5
+scale_amount_max = 0.5
+scale_amount_curve = SubResource("Curve_7gbji")
+color_ramp = SubResource("Gradient_2qa43")
+
+[node name="CPUParticles2D3" type="CPUParticles2D" parent="StateMachine/Juego/Contenido/Instancia3/NubeController2/DisappearParticles"]
+position = Vector2(182, 202)
+emitting = false
+amount = 16
+lifetime = 1.5
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("44_yw0ai")
+emission_shape = 1
+emission_sphere_radius = 128.0
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 60.0
+initial_velocity_max = 70.0
+angular_velocity_min = -73.12
+angular_velocity_max = 118.13
+angle_min = -112.5
+angle_max = 174.4
+scale_amount_min = 0.5
+scale_amount_max = 0.5
+scale_amount_curve = SubResource("Curve_7gbji")
+color_ramp = SubResource("Gradient_2qa43")
+
+[node name="CPUParticles2D4" type="CPUParticles2D" parent="StateMachine/Juego/Contenido/Instancia3/NubeController2/DisappearParticles"]
+position = Vector2(289, 383)
+emitting = false
+lifetime = 1.5
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("42_6jl13")
+emission_shape = 1
+emission_sphere_radius = 32.5
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 60.0
+initial_velocity_max = 70.0
+angular_velocity_min = -73.12
+angular_velocity_max = 118.13
+angle_min = -112.5
+angle_max = 174.4
+scale_amount_min = 0.2
+scale_amount_max = 0.2
+scale_amount_curve = SubResource("Curve_jahjp")
+color_ramp = SubResource("Gradient_2qa43")
+
+[node name="CPUParticles2D5" type="CPUParticles2D" parent="StateMachine/Juego/Contenido/Instancia3/NubeController2/DisappearParticles"]
+position = Vector2(272, 476)
+emitting = false
+lifetime = 1.5
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("43_u4ofi")
+emission_shape = 1
+emission_sphere_radius = 13.55
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 60.0
+initial_velocity_max = 70.0
+angular_velocity_min = -73.12
+angular_velocity_max = 118.13
+angle_min = -112.5
+angle_max = 174.4
+scale_amount_min = 0.2
+scale_amount_max = 0.2
+scale_amount_curve = SubResource("Curve_jahjp")
+color_ramp = SubResource("Gradient_2qa43")
+
+[node name="CPUParticles2D6" type="CPUParticles2D" parent="StateMachine/Juego/Contenido/Instancia3/NubeController2/DisappearParticles"]
+position = Vector2(220, 531)
+emitting = false
+lifetime = 1.5
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("44_yw0ai")
+emission_shape = 1
+emission_sphere_radius = 5.25
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 60.0
+initial_velocity_max = 70.0
+angular_velocity_min = -73.12
+angular_velocity_max = 118.13
+angle_min = -112.5
+angle_max = 174.4
+scale_amount_min = 0.2
+scale_amount_max = 0.2
+scale_amount_curve = SubResource("Curve_jahjp")
+color_ramp = SubResource("Gradient_2qa43")
+
+[node name="DisappearAnimator" type="AnimationPlayer" parent="StateMachine/Juego/Contenido/Instancia3/NubeController2/DisappearParticles"]
+libraries = {
+"": SubResource("AnimationLibrary_kp8pq")
+}
+script = ExtResource("16_r2ac3")
+animation = "Disappear"
 
 [node name="Moraleja" type="ColorRect" parent="StateMachine/Juego/Contenido"]
 self_modulate = Color(1, 1, 1, 0)
@@ -4055,33 +5410,50 @@ Data = SubResource("Resource_ed0gt")
 [connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia1/Button" to="StateMachine/Juego/Contenido/Instancia1/Button" method="_on_pressed"]
 [connection signal="timeout" from="StateMachine/Juego/Contenido/Instancia1/Consigna/Timer" to="StateMachine/Juego/Contenido/Instancia1/NubeController/AnimationPlayer" method="Play"]
 [connection signal="timeout" from="StateMachine/Juego/Contenido/Instancia1/Consigna/Timer" to="StateMachine/Juego/Contenido/Instancia1/NubeController2/AnimationPlayer" method="Play"]
-[connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia1/NubeController/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia1/NubeController/AnimationPlayer" method="Reset"]
-[connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia1/NubeController/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia1/Piedra_Busqueda" method="SetScale" binds= [false]]
+[connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia1/NubeController/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia1/Consigna/consignaPanel" method="ExitPanel"]
+[connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia1/NubeController/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia1/NubeController2/DisappearParticles/DisappearAnimator" method="Play"]
 [connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia1/NubeController/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia1/Piedra_Busqueda" method="SetNextAnimBool" binds= [false]]
-[connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia1/NubeController/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia1/NubeController" method="Setvisivility" binds= [false]]
-[connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia1/NubeController2/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia1/NubeController2/AnimationPlayer" method="Reset"]
-[connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia1/NubeController2/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia1/Piedra_Busqueda" method="SetScale" binds= [true]]
+[connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia1/NubeController/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia1/Piedra_Busqueda" method="SetScale" binds= [false]]
+[connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia1/NubeController/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia1/NubeController/AnimationPlayer" method="play" binds= ["Nube_Disappear_Delay"]]
+[connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia1/NubeController/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia1/NubeController2/AnimationPlayer" method="PlayAnim" binds= ["Nube_Disappear"]]
+[connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia1/NubeController2/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia1/Consigna/consignaPanel" method="ExitPanel"]
+[connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia1/NubeController2/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia1/NubeController/DisappearParticles/DisappearAnimator" method="Play"]
 [connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia1/NubeController2/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia1/Piedra_Busqueda" method="SetNextAnimBool" binds= [true]]
+[connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia1/NubeController2/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia1/Piedra_Busqueda" method="SetScale" binds= [true]]
+[connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia1/NubeController2/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia1/NubeController/AnimationPlayer" method="PlayAnim" binds= ["Nube_Disappear"]]
+[connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia1/NubeController2/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia1/NubeController2/AnimationPlayer" method="play" binds= ["Nube_Disappear_Delay"]]
 [connection signal="EndOfGame" from="StateMachine/Juego/Contenido/Instancia2/Button" to="." method="Set_Complete"]
 [connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia2/Button" to="StateMachine/Juego/Contenido/Instancia2/Button" method="_on_pressed"]
 [connection signal="timeout" from="StateMachine/Juego/Contenido/Instancia2/Consigna/Timer" to="StateMachine/Juego/Contenido/Instancia2/NubeController/AnimationPlayer" method="Play"]
 [connection signal="timeout" from="StateMachine/Juego/Contenido/Instancia2/Consigna/Timer" to="StateMachine/Juego/Contenido/Instancia2/NubeController2/AnimationPlayer" method="Play"]
-[connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia2/NubeController/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia2/NubeController" method="Setvisivility"]
-[connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia2/NubeController/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia2/NubeController/AnimationPlayer" method="Reset"]
-[connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia2/NubeController/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia2/Piedra_Busqueda" method="SetScale" binds= [false]]
+[connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia2/NubeController/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia2/Consigna/consignaPanel" method="ExitPanel"]
+[connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia2/NubeController/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia2/NubeController2/DisappearParticles/DisappearAnimator" method="Play"]
 [connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia2/NubeController/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia2/Piedra_Busqueda" method="SetNextAnimBool" binds= [false]]
-[connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia2/NubeController2/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia3/NubeController/AnimationPlayer" method="Reset"]
-[connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia2/NubeController2/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia2/Piedra_Busqueda" method="SetScale" binds= [true]]
+[connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia2/NubeController/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia2/Piedra_Busqueda" method="SetScale" binds= [false]]
+[connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia2/NubeController/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia2/NubeController/AnimationPlayer" method="PlayAnim" binds= ["Nube_Disappear_Delay"]]
+[connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia2/NubeController/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia2/NubeController2/AnimationPlayer" method="PlayAnim" binds= ["Nube_Disappear"]]
+[connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia2/NubeController2/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia2/Consigna/consignaPanel" method="ExitPanel"]
+[connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia2/NubeController2/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia2/NubeController/DisappearParticles/DisappearAnimator" method="Play"]
 [connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia2/NubeController2/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia2/Piedra_Busqueda" method="SetNextAnimBool" binds= [true]]
+[connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia2/NubeController2/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia2/Piedra_Busqueda" method="SetScale" binds= [true]]
+[connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia2/NubeController2/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia2/NubeController/AnimationPlayer" method="PlayAnim" binds= ["Nube_Disappear"]]
+[connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia2/NubeController2/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia2/NubeController2/AnimationPlayer" method="PlayAnim" binds= ["Nube_Disappear_Delay"]]
 [connection signal="EndOfGame" from="StateMachine/Juego/Contenido/Instancia3/Button" to="." method="Set_Complete"]
 [connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia3/Button" to="StateMachine/Juego/Contenido/Instancia3/Button" method="_on_pressed"]
 [connection signal="timeout" from="StateMachine/Juego/Contenido/Instancia3/Consigna/Timer" to="StateMachine/Juego/Contenido/Instancia3/NubeController/AnimationPlayer" method="Play"]
 [connection signal="timeout" from="StateMachine/Juego/Contenido/Instancia3/Consigna/Timer" to="StateMachine/Juego/Contenido/Instancia3/NubeController2/AnimationPlayer" method="Play"]
-[connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia3/NubeController/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia3/NubeController" method="Setvisivility"]
-[connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia3/NubeController/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia3/Piedra_Busqueda" method="SetScale" binds= [false]]
+[connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia3/NubeController/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia3/Consigna/consignaPanel" method="ExitPanel"]
+[connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia3/NubeController/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia3/NubeController2/DisappearParticles/DisappearAnimator" method="Play"]
 [connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia3/NubeController/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia3/Piedra_Busqueda" method="SetNextAnimBool" binds= [false]]
-[connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia3/NubeController2/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia3/Piedra_Busqueda" method="SetScale" binds= [true]]
+[connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia3/NubeController/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia3/Piedra_Busqueda" method="SetScale" binds= [false]]
+[connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia3/NubeController/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia3/NubeController/AnimationPlayer" method="PlayAnim" binds= ["Nube_Disappear_Delay"]]
+[connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia3/NubeController/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia3/NubeController2/AnimationPlayer" method="PlayAnim" binds= ["Nube_Disappear"]]
+[connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia3/NubeController2/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia3/Consigna/consignaPanel" method="ExitPanel"]
+[connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia3/NubeController2/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia3/NubeController/DisappearParticles/DisappearAnimator" method="Play"]
 [connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia3/NubeController2/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia3/Piedra_Busqueda" method="SetNextAnimBool" binds= [true]]
+[connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia3/NubeController2/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia3/Piedra_Busqueda" method="SetScale" binds= [true]]
+[connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia3/NubeController2/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia3/NubeController/AnimationPlayer" method="PlayAnim" binds= ["Nube_Disappear"]]
+[connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia3/NubeController2/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia3/NubeController2/AnimationPlayer" method="PlayAnim" binds= ["Nube_Disappear_Delay"]]
 [connection signal="ButtonPress" from="StateMachine/Juego/Contenido/Moraleja/PanelMoraleja1/Panel(1) Btn(center)" to="StateMachine" method="Trigger_On_Child_Transition" binds= ["juego"]]
 [connection signal="ButtonPress" from="StateMachine/Juego/Contenido/Moraleja/PanelMoraleja2/Panel(1) Btn(center)" to="StateMachine" method="Trigger_On_Child_Transition" binds= ["juego"]]
 [connection signal="ButtonPress" from="StateMachine/Juego/Contenido/Moraleja/PanelMoraleja3/Panel(1) Btn(center)" to="." method="Set_Complete"]
