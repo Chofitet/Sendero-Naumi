@@ -86,7 +86,7 @@ func BtnPress():
 		inPlace = true
 		NoCenter.emit()
 		z_index = 0
-		MakeAnim(ToPosition, lowQualityTexture,inventary_scale, 0,0,true,false,true)
+		MakeAnim(ToPosition, lowQualityTexture,inventary_scale, 0,0,true,false,false)
 		await get_tree().create_timer(0.4).timeout
 		adjustRect(true)
 		get_parent().FinalAnim()

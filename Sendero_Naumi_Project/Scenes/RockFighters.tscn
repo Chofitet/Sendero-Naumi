@@ -1,4 +1,4 @@
-[gd_scene load_steps=90 format=3 uid="uid://lv8sdofmjhf3"]
+[gd_scene load_steps=91 format=3 uid="uid://lv8sdofmjhf3"]
 
 [ext_resource type="Script" path="res://_Scripts/Minigame_Save_Controller.gd" id="1_f0fiw"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/StateMachineMinigames.gd" id="2_12384"]
@@ -39,6 +39,7 @@
 [ext_resource type="Texture2D" uid="uid://dxtycvon1bw4p" path="res://Sprites/ZonaGeología/Piedras/zoisita - busqueda.png" id="26_0j7qb"]
 [ext_resource type="Script" path="res://Scenes/Experiments/GenericPanel/IntermediateData.gd" id="26_5tsnp"]
 [ext_resource type="PackedScene" uid="uid://cw3ok8v4p620b" path="res://Scenes/Experiments/squiggling_sprite.tscn" id="29_gfydn"]
+[ext_resource type="LabelSettings" uid="uid://b7f8w8wf071ek" path="res://Themes/Geología/LabelSettings_Busqueda.tres" id="30_ravel"]
 [ext_resource type="Texture2D" uid="uid://bv3281qs1eia2" path="res://Sprites/ZonaGeología/squigglingFighter/cartelNombreSQUIG - fighter.png" id="30_w5i6x"]
 [ext_resource type="PackedScene" uid="uid://dlwmbps456ind" path="res://Scenes/Experiments/btnVolver.tscn" id="33_l1u1j"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/MoralejaState.gd" id="34_rssk2"]
@@ -287,8 +288,10 @@ dontPassPanel = false
 
 [sub_resource type="Resource" id="Resource_k5nkg"]
 script = ExtResource("23_5rold")
-Text = "BUSCÁ PISTAS EN LA VITRINA
-PARA SABER CUAL ES EL MINERAL MÁS DURO"
+Text = "
+
+LA EXPOSICIÓN DE GEOLOGÍA
+TIENE LAS RESPUESTAS"
 SizePanel = Vector2(0, 0)
 buttons = Array[ExtResource("21_w17j0")]([SubResource("Resource_m3bm4")])
 
@@ -312,90 +315,90 @@ font_size = 40
 
 [sub_resource type="Animation" id="Animation_dtboa"]
 resource_name = "EnterAnim"
-length = 2.5
+length = 2.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:scale")
+tracks/0/path = NodePath("VS:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.4, 0.8, 0.9, 1),
-"transitions": PackedFloat32Array(1, 1, 3.36358, 1, 1),
-"update": 0,
-"values": [Vector2(1e-05, 1e-05), Vector2(1e-05, 1e-05), Vector2(1, 1), Vector2(1.055, 1.055), Vector2(1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:pivot_offset")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(361.355, 59.885)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("VS:scale")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 2.1, 2.4),
+"times": PackedFloat32Array(0, 0.5, 0.8),
 "transitions": PackedFloat32Array(1, 1.93187, 1),
 "update": 0,
 "values": [Vector2(0, 0), Vector2(0, 0), Vector2(1, 1)]
 }
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("RightBtn:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(1.6, 1.9, 2.1),
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RightBtn:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.5),
 "transitions": PackedFloat32Array(2, -0.5, 1),
 "update": 0,
 "values": [Vector2(974, 279), Vector2(503, 279), Vector2(546, 279)]
 }
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("LeftBtn:position")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(1.6, 1.9, 2.1),
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("LeftBtn:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.5),
 "transitions": PackedFloat32Array(2, -0.5, 1),
 "update": 0,
 "values": [Vector2(-274, 279), Vector2(172, 279), Vector2(132, 279)]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("RightBtn:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("LeftBtn:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("RightBtn:visible")
+tracks/5/path = NodePath("ConsignaTexture:visible")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 1.6),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(1.5),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false, true]
+"values": [true]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("LeftBtn:visible")
+tracks/6/path = NodePath("ConsignaTexture:scale")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0, 1.6),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
+"times": PackedFloat32Array(1.5, 1.8, 2),
+"transitions": PackedFloat32Array(1, -2, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1.2, 1.2), Vector2(1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_knxec"]
@@ -403,7 +406,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:scale")
+tracks/0/path = NodePath("VS:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -415,43 +418,43 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("VS:scale")
+tracks/1/path = NodePath("RightBtn:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(1, 1)]
+"values": [Vector2(974, 279)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("RightBtn:position")
+tracks/2/path = NodePath("LeftBtn:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(974, 279)]
+"values": [Vector2(-274, 279)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("LeftBtn:position")
+tracks/3/path = NodePath("RightBtn:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-274, 279)]
+"update": 1,
+"values": [false]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("RightBtn:visible")
+tracks/4/path = NodePath("LeftBtn:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -463,7 +466,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("LeftBtn:visible")
+tracks/5/path = NodePath("ConsignaTexture:visible")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -471,6 +474,18 @@ tracks/5/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("ConsignaTexture:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_nyamy"]
@@ -960,7 +975,6 @@ StateMachine = NodePath("..")
 InstanciasMinijuego = [NodePath("Contenido/Instancia1"), NodePath("Contenido/Instancia2"), NodePath("Contenido/Instancia3")]
 
 [node name="Contenido" type="Control" parent="RockFighters/StateMachine/Juego"]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -1201,6 +1215,7 @@ libraries = {
 }
 
 [node name="Instancia1" type="Control" parent="RockFighters/StateMachine/Juego/Contenido"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1238,15 +1253,31 @@ RetryPanel = NodePath("RetryPanel")
 [node name="RetryPanel" parent="RockFighters/StateMachine/Juego/Contenido/Instancia1/Control" instance=ExtResource("20_culp1")]
 z_index = 1
 layout_mode = 1
-offset_top = 94.0001
-offset_bottom = 322.0
-pivot_offset = Vector2(326, 114)
+offset_top = 63.0
+offset_bottom = 404.0
+pivot_offset = Vector2(326, 170.5)
 AppearInBeginning = false
 RepitingPanel = true
 Texts = Array[ExtResource("23_5rold")]([SubResource("Resource_k5nkg")])
 
 [node name="Panel(1) Btn(center)" parent="RockFighters/StateMachine/Juego/Contenido/Instancia1/Control/RetryPanel" instance=ExtResource("24_0aurr")]
 Data = SubResource("Resource_p7x5i")
+
+[node name="Label" type="Label" parent="RockFighters/StateMachine/Juego/Contenido/Instancia1/Control/RetryPanel"]
+modulate = Color(1, 0.27451, 0.207843, 1)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -102.0
+offset_top = 35.0001
+offset_right = 119.0
+offset_bottom = 134.0
+grow_horizontal = 2
+text = "UPS!"
+label_settings = ExtResource("30_ravel")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Instancia2" type="Control" parent="RockFighters/StateMachine/Juego/Contenido"]
 visible = false
@@ -1286,15 +1317,31 @@ RetryPanel = NodePath("RetryPanel")
 [node name="RetryPanel" parent="RockFighters/StateMachine/Juego/Contenido/Instancia2/Control" instance=ExtResource("20_culp1")]
 z_index = 1
 layout_mode = 1
-offset_top = 94.0001
-offset_bottom = 322.0
-pivot_offset = Vector2(326, 114)
+offset_top = 68.0
+offset_bottom = 413.0
+pivot_offset = Vector2(326, 172.5)
 AppearInBeginning = false
 characters_per_second = 45.0
 Texts = Array[ExtResource("23_5rold")]([SubResource("Resource_k5nkg")])
 
 [node name="Panel(1) Btn(center)" parent="RockFighters/StateMachine/Juego/Contenido/Instancia2/Control/RetryPanel" instance=ExtResource("24_0aurr")]
 Data = SubResource("Resource_3vjv8")
+
+[node name="Label" type="Label" parent="RockFighters/StateMachine/Juego/Contenido/Instancia2/Control/RetryPanel"]
+modulate = Color(1, 0.27451, 0.207843, 1)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -102.0
+offset_top = 35.0001
+offset_right = 119.0
+offset_bottom = 134.0
+grow_horizontal = 2
+text = "UPS!"
+label_settings = ExtResource("30_ravel")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Instancia3" type="Control" parent="RockFighters/StateMachine/Juego/Contenido"]
 visible = false
@@ -1335,15 +1382,31 @@ RetryPanel = NodePath("RetryPanel")
 [node name="RetryPanel" parent="RockFighters/StateMachine/Juego/Contenido/Instancia3/Control2" instance=ExtResource("20_culp1")]
 z_index = 1
 layout_mode = 1
-offset_top = 94.0001
-offset_bottom = 322.0
-pivot_offset = Vector2(326, 114)
+offset_top = 66.0
+offset_bottom = 411.0
+pivot_offset = Vector2(326, 172.5)
 AppearInBeginning = false
 characters_per_second = 45.0
 Texts = Array[ExtResource("23_5rold")]([SubResource("Resource_k5nkg")])
 
 [node name="Panel(1) Btn(center)" parent="RockFighters/StateMachine/Juego/Contenido/Instancia3/Control2/RetryPanel" instance=ExtResource("24_0aurr")]
 Data = SubResource("Resource_p4uj7")
+
+[node name="Label" type="Label" parent="RockFighters/StateMachine/Juego/Contenido/Instancia3/Control2/RetryPanel"]
+modulate = Color(1, 0.27451, 0.207843, 1)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -102.0
+offset_top = 35.0001
+offset_right = 119.0
+offset_bottom = 134.0
+grow_horizontal = 2
+text = "UPS!"
+label_settings = ExtResource("30_ravel")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Consigna" type="TextureRect" parent="RockFighters/StateMachine/Juego/Contenido"]
 layout_mode = 1
@@ -1358,10 +1421,9 @@ offset_right = 346.84
 offset_bottom = -88.0
 grow_horizontal = 2
 pivot_offset = Vector2(361.355, 59.885)
-texture = ExtResource("21_1l5kd")
 expand_mode = 1
 
-[node name="Consigna" type="Label" parent="RockFighters/StateMachine/Juego/Contenido/Consigna"]
+[node name="ConsignaTexture" type="TextureRect" parent="RockFighters/StateMachine/Juego/Contenido/Consigna"]
 visible = false
 layout_mode = 1
 anchors_preset = 8
@@ -1369,10 +1431,27 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -299.0
-offset_top = -43.0
-offset_right = 299.0
-offset_bottom = 43.0
+offset_left = -344.0
+offset_top = -89.5
+offset_right = 344.0
+offset_bottom = 89.5
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(344, 89)
+texture = ExtResource("21_1l5kd")
+
+[node name="Consigna" type="Label" parent="RockFighters/StateMachine/Juego/Contenido/Consigna/ConsignaTexture"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 28.0
+offset_top = 26.0
+offset_right = 626.0
+offset_bottom = 112.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)

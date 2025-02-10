@@ -8,6 +8,7 @@ func BlockOthersClues(x, boleean):
 		if c != x:
 			c.BlockButton(boleean)
 			print(c.name)
+			if c.inPlace: continue
 			c.SetSquiggling(boleean)
 
 	if boleean:
