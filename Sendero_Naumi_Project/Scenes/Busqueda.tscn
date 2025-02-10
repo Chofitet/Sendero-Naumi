@@ -1,4 +1,4 @@
-[gd_scene load_steps=185 format=3 uid="uid://ca6b1xkwwj7rp"]
+[gd_scene load_steps=191 format=3 uid="uid://ca6b1xkwwj7rp"]
 
 [ext_resource type="Script" path="res://_Scripts/Minigame_Save_Controller.gd" id="1_kdw84"]
 [ext_resource type="Texture2D" uid="uid://dbv6rcnmmb8db" path="res://Sprites/ZonaGeología/fondo_geografia.png" id="2_5bgsq"]
@@ -12,8 +12,10 @@
 [ext_resource type="Texture2D" uid="uid://c00mjaml7ck2l" path="res://Sprites/ZonaGeología/fondo - busqueda.jpg" id="7_p8l5p"]
 [ext_resource type="Texture2D" uid="uid://cm685ijc4nuf6" path="res://Sprites/ZonaGeología/tribuna_busqueda.png" id="8_b68wy"]
 [ext_resource type="Texture2D" uid="uid://dxtycvon1bw4p" path="res://Sprites/ZonaGeología/Piedras/zoisita - busqueda.png" id="8_pk5s7"]
+[ext_resource type="Texture2D" uid="uid://pbsmrv44kn5i" path="res://Sprites/ZonaGeología/ConfetiCeleste - busqueda.png" id="9_py0y4"]
 [ext_resource type="LabelSettings" uid="uid://c8wu4hhqg284x" path="res://Resources/UI_Resources/Generic_Font.tres" id="10_b8c5l"]
 [ext_resource type="PackedScene" uid="uid://cnxkgvr1r0dny" path="res://Scenes/Zona_Geología/rock_hincha.tscn" id="10_co8hb"]
+[ext_resource type="Texture2D" uid="uid://b80o704jva0pq" path="res://Sprites/ZonaGeología/Confeti - Busqueda.png" id="10_smmn5"]
 [ext_resource type="Texture2D" uid="uid://csvxv5nlnof3f" path="res://Sprites/ZonaGeología/confeti.png" id="11_8eo6w"]
 [ext_resource type="PackedScene" uid="uid://nmuyip31gkq5" path="res://Scenes/UI_Scenes/generic_button.tscn" id="11_jkhul"]
 [ext_resource type="Texture2D" uid="uid://c2p5torstrtqm" path="res://Sprites/UI/checkIcon - UI.png" id="12_71ymj"]
@@ -33,6 +35,8 @@
 [ext_resource type="Texture2D" uid="uid://hvxr05mcm16" path="res://Sprites/ZonaGeología/anim_busqueda_idle.png" id="25_tqpjr"]
 [ext_resource type="PackedScene" uid="uid://chcp24toqisaw" path="res://Scenes/Experiments/GenericPanel/GenericPanel.tscn" id="26_1lb4u"]
 [ext_resource type="Texture2D" uid="uid://bq6v8yeukykwd" path="res://Sprites/ZonaGeología/anim_busqueda_look.png" id="26_86toq"]
+[ext_resource type="Texture2D" uid="uid://dgykrr1b1qwkl" path="res://Sprites/ZonaGeología/cartelFondoIzq - busqueda.png" id="26_h26uv"]
+[ext_resource type="Texture2D" uid="uid://fe42tnhrk28s" path="res://Sprites/ZonaGeología/cartelFondoDer - busqueda.png" id="26_p5qle"]
 [ext_resource type="Texture2D" uid="uid://bkdrsxkhok0dg" path="res://Sprites/ZonaGeología/anim_busqueda_jump.png" id="27_m8v74"]
 [ext_resource type="Script" path="res://Scenes/Experiments/GenericPanel/ButtonPanelData.gd" id="27_ntp00"]
 [ext_resource type="Texture2D" uid="uid://f71rhgotbkf3" path="res://Sprites/UI/reloadIcon - UI.png" id="28_4rotu"]
@@ -43,6 +47,7 @@
 [ext_resource type="Texture2D" uid="uid://c8us4lo7wq0xl" path="res://Sprites/ZonaGeología/anim_busqueda_winner1.png" id="32_2j1o6"]
 [ext_resource type="Texture2D" uid="uid://dl2abg7kx6fuy" path="res://Sprites/ZonaGeología/anim_busqueda_winner2.png" id="33_lioep"]
 [ext_resource type="Texture2D" uid="uid://7vfv8ivwf4uu" path="res://Sprites/ZonaGeología/vuvuloop-tira.png" id="33_wvxt7"]
+[ext_resource type="Script" path="res://_Scripts/CheckInstanceState.gd" id="34_ci8js"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/MoralejaState.gd" id="34_n3f0f"]
 [ext_resource type="Texture2D" uid="uid://o8vll30cj0bd" path="res://Sprites/ZonaGeología/angel.png" id="35_fe8vs"]
 [ext_resource type="Script" path="res://Scenes/GenericPanelController.gd" id="35_msa5i"]
@@ -58,6 +63,7 @@
 [ext_resource type="Texture2D" uid="uid://drrio0noaq2fi" path="res://Sprites/ZonaGeología/piedra-PhotoRoom.png-PhotoRoom.png" id="47_aavg0"]
 [ext_resource type="PackedScene" uid="uid://d1jys63xrvxpo" path="res://Scenes/Experiments/GenericPanel/IntermediateSignal.tscn" id="47_d1q7o"]
 [ext_resource type="Texture2D" uid="uid://bamkhedpobw1w" path="res://Sprites/ZonaGeología/angel tira - busqueda.png" id="48_0dycw"]
+[ext_resource type="Texture2D" uid="uid://blvtoxf6sl7ty" path="res://Sprites/glow.png" id="49_8o1br"]
 [ext_resource type="Script" path="res://Scenes/Experiments/GenericPanel/IntermediateData.gd" id="49_jaepl"]
 
 [sub_resource type="Resource" id="Resource_rb360"]
@@ -70,7 +76,6 @@ dontPassPanel = false
 [sub_resource type="Resource" id="Resource_uk4p0"]
 script = ExtResource("29_gmr1k")
 Text = "ALGUNAS ROCAS 
-
 LLEGARON TARDE A LA CANCHA"
 SizePanel = Vector2(0, 0)
 buttons = Array[ExtResource("27_ntp00")]([SubResource("Resource_rb360")])
@@ -85,7 +90,6 @@ dontPassPanel = false
 [sub_resource type="Resource" id="Resource_3c0ty"]
 script = ExtResource("29_gmr1k")
 Text = "AYUDALAS A ENCONTRAR LA TRIBUNA
-
 DONDE ESTÁN SUS FAMILIAS"
 SizePanel = Vector2(0, 0)
 buttons = Array[ExtResource("27_ntp00")]([SubResource("Resource_jqsas")])
@@ -1434,7 +1438,7 @@ tracks/4/keys = {
 
 [sub_resource type="Animation" id="Animation_cba2c"]
 resource_name = "Nube_Disappear_Delay"
-length = 1.3
+length = 2.6
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -1442,7 +1446,7 @@ tracks/0/path = NodePath("nube:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.8, 1),
+"times": PackedFloat32Array(2.3, 2.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
@@ -1454,7 +1458,7 @@ tracks/1/path = NodePath("nubeC1:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.8, 1),
+"times": PackedFloat32Array(2.3, 2.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
@@ -1466,7 +1470,7 @@ tracks/2/path = NodePath("nubeC2:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0.8, 1),
+"times": PackedFloat32Array(2.3, 2.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
@@ -1478,7 +1482,7 @@ tracks/3/path = NodePath("nubeC3:modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0.8, 1),
+"times": PackedFloat32Array(2.3, 2.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
@@ -1506,6 +1510,30 @@ tracks/5/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(0.55, 0.55), Vector2(0.488889, 0.488889)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Glow:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.2, 2.3, 2.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(0.984314, 0.933333, 0.65098, 0), Color(0.984314, 0.933333, 0.65098, 1), Color(0.984314, 0.933333, 0.65098, 1), Color(0.984314, 0.933333, 0.65098, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("nube/SquigglingSprite:self_modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.2, 2.4, 2.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.980392, 0.870588, 0.0392157, 1), Color(0.980392, 0.870588, 0.0392157, 1), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_kdc0y"]
@@ -1629,6 +1657,30 @@ tracks/9/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Glow:modulate")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.984314, 0.933333, 0.65098, 0)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("nube/SquigglingSprite:self_modulate")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gy327"]
@@ -2051,7 +2103,6 @@ script = ExtResource("3_6yx8d")
 Consignas = ["Hey esto es una consigna"]
 
 [node name="Contenido" type="Control" parent="StateMachine/Consigna"]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -2098,13 +2149,13 @@ anchors_preset = 0
 [node name="Control" type="Control" parent="StateMachine/Consigna/Contenido"]
 layout_mode = 1
 anchor_left = 0.5
-anchor_top = 0.248
+anchor_top = 0.768
 anchor_right = 0.5
-anchor_bottom = 0.248
+anchor_bottom = 0.768
 offset_left = 6.10352e-05
-offset_top = 665.56
+offset_top = -0.0400391
 offset_right = 6.10352e-05
-offset_bottom = 665.56
+offset_bottom = -0.0400391
 grow_horizontal = 2
 grow_vertical = 0
 scale = Vector2(1.385, 1.385)
@@ -2128,17 +2179,22 @@ scale = Vector2(0.451823, 0.451823)
 texture = ExtResource("13_jxxqx")
 
 [node name="CPUParticles2D" parent="StateMachine/Consigna/Contenido/Control" instance=ExtResource("16_m1kom")]
-position = Vector2(4.33209, -724.91)
+position = Vector2(4.33209, -853.43)
 scale = Vector2(0.722022, 0.722022)
 amount = 30
-lifetime = 5.0
+lifetime = 6.0
+preprocess = 6.0
+texture = ExtResource("9_py0y4")
 emission_rect_extents = Vector2(300, 1)
+color = Color(1, 1, 1, 1)
 
 [node name="CPUParticles2D2" parent="StateMachine/Consigna/Contenido/Control" instance=ExtResource("16_m1kom")]
-position = Vector2(-22.3827, -723.466)
+position = Vector2(-22.3827, -851.986)
 scale = Vector2(0.722022, 0.722022)
 amount = 30
-lifetime = 5.0
+lifetime = 6.0
+preprocess = 6.0
+texture = ExtResource("10_smmn5")
 emission_rect_extents = Vector2(300, 1)
 color = Color(1, 1, 1, 1)
 
@@ -2218,8 +2274,8 @@ layout_mode = 1
 anchors_preset = -1
 anchor_top = 0.246
 anchor_bottom = 0.246
-offset_top = -111.88
-offset_bottom = 164.12
+offset_top = -86.88
+offset_bottom = 139.12
 pivot_offset = Vector2(326, 138)
 Texts = Array[ExtResource("29_gmr1k")]([SubResource("Resource_uk4p0"), SubResource("Resource_3c0ty")])
 
@@ -2233,6 +2289,7 @@ StateMachine = NodePath("..")
 InstanciasMinijuego = [NodePath("Contenido/Instancia1"), NodePath("Contenido/Instancia2"), NodePath("Contenido/Instancia3")]
 
 [node name="Contenido" type="Control" parent="StateMachine/Juego"]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -2305,6 +2362,54 @@ position = Vector2(-648, 87)
 rotation = 3.14159
 scale = Vector2(0.872, -0.981)
 texture = ExtResource("8_b68wy")
+
+[node name="CartelDer" type="Node2D" parent="StateMachine/Juego/Contenido/Tribunas/BackgroundPivot"]
+position = Vector2(385.225, -580)
+
+[node name="cartel" type="Sprite2D" parent="StateMachine/Juego/Contenido/Tribunas/BackgroundPivot/CartelDer"]
+position = Vector2(101, 0)
+scale = Vector2(0.562323, 0.562323)
+texture = ExtResource("26_p5qle")
+
+[node name="Label" type="Label" parent="StateMachine/Juego/Contenido/Tribunas/BackgroundPivot/CartelDer"]
+offset_left = -211.155
+offset_top = 2.9745
+offset_right = 232.845
+offset_bottom = 147.975
+rotation = -0.033787
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "SULFATOS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CartelIzq" type="Node2D" parent="StateMachine/Juego/Contenido/Tribunas/BackgroundPivot"]
+position = Vector2(-528.225, -583)
+rotation = 3.14159
+scale = Vector2(1, -1)
+
+[node name="cartel" type="Sprite2D" parent="StateMachine/Juego/Contenido/Tribunas/BackgroundPivot/CartelIzq"]
+position = Vector2(-41, 6)
+scale = Vector2(0.562323, 0.562323)
+texture = ExtResource("26_h26uv")
+flip_h = true
+
+[node name="Label" type="Label" parent="StateMachine/Juego/Contenido/Tribunas/BackgroundPivot/CartelIzq"]
+offset_left = 203.925
+offset_top = -8.33829
+offset_right = 647.925
+offset_bottom = 136.662
+rotation = -0.0324629
+scale = Vector2(-1, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "SILICATOS"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="TribunaRigth" type="Control" parent="StateMachine/Juego/Contenido/Tribunas/BackgroundPivot"]
 visible = false
@@ -2895,95 +3000,95 @@ self_modulate = Color(0, 1, 1, 1)
 position = Vector2(-212, -17)
 rotation = 1.49131
 skew = -0.109956
-texture = ExtResource("11_8eo6w")
+texture = ExtResource("9_py0y4")
 
 [node name="Confeti2" type="Sprite2D" parent="StateMachine/Juego/Contenido/Tribunas/BackgroundPivot/TribunaLeft/confeti"]
 position = Vector2(-89, -10)
 rotation = 0.587114
 skew = 0.254818
-texture = ExtResource("11_8eo6w")
+texture = ExtResource("10_smmn5")
 
 [node name="Confeti3" type="Sprite2D" parent="StateMachine/Juego/Contenido/Tribunas/BackgroundPivot/TribunaLeft/confeti"]
 position = Vector2(184, 12)
 rotation = -1.5252
-texture = ExtResource("11_8eo6w")
+texture = ExtResource("10_smmn5")
 
 [node name="Confeti12" type="Sprite2D" parent="StateMachine/Juego/Contenido/Tribunas/BackgroundPivot/TribunaLeft/confeti"]
 self_modulate = Color(0, 1, 1, 1)
 position = Vector2(-149, -8)
 rotation = -1.45248
-texture = ExtResource("11_8eo6w")
+texture = ExtResource("10_smmn5")
 
 [node name="Confeti73" type="Sprite2D" parent="StateMachine/Juego/Contenido/Tribunas/BackgroundPivot/TribunaLeft/confeti"]
 self_modulate = Color(0, 1, 1, 1)
 position = Vector2(-218, 162)
 rotation = -1.45248
-texture = ExtResource("11_8eo6w")
+texture = ExtResource("10_smmn5")
 
 [node name="Confeti17" type="Sprite2D" parent="StateMachine/Juego/Contenido/Tribunas/BackgroundPivot/TribunaLeft/confeti"]
 self_modulate = Color(0, 1, 1, 1)
 position = Vector2(-158.464, 632.031)
 rotation = -0.606801
 skew = -0.109956
-texture = ExtResource("11_8eo6w")
+texture = ExtResource("10_smmn5")
 
 [node name="Confeti18" type="Sprite2D" parent="StateMachine/Juego/Contenido/Tribunas/BackgroundPivot/TribunaLeft/confeti"]
 position = Vector2(-35.4636, 639.031)
 rotation = -0.826495
 skew = 0.254818
-texture = ExtResource("11_8eo6w")
+texture = ExtResource("10_smmn5")
 
 [node name="Confeti19" type="Sprite2D" parent="StateMachine/Juego/Contenido/Tribunas/BackgroundPivot/TribunaLeft/confeti"]
 self_modulate = Color(0, 1, 1, 1)
 position = Vector2(-95.4636, 641.031)
 rotation = -2.86609
-texture = ExtResource("11_8eo6w")
+texture = ExtResource("10_smmn5")
 
 [node name="Confeti20" type="Sprite2D" parent="StateMachine/Juego/Contenido/Tribunas/BackgroundPivot/TribunaLeft/confeti"]
 self_modulate = Color(0, 1, 1, 1)
 position = Vector2(21.2745, 524.417)
 rotation = -1.14178
 skew = -0.109956
-texture = ExtResource("11_8eo6w")
+texture = ExtResource("10_smmn5")
 
 [node name="Confeti21" type="Sprite2D" parent="StateMachine/Juego/Contenido/Tribunas/BackgroundPivot/TribunaLeft/confeti"]
 position = Vector2(144.275, 531.417)
 rotation = -2.04598
 skew = 0.254818
-texture = ExtResource("11_8eo6w")
+texture = ExtResource("10_smmn5")
 
 [node name="Confeti22" type="Sprite2D" parent="StateMachine/Juego/Contenido/Tribunas/BackgroundPivot/TribunaLeft/confeti"]
 self_modulate = Color(0, 1, 1, 1)
 position = Vector2(84.2746, 533.417)
 rotation = -4.08557
-texture = ExtResource("11_8eo6w")
+texture = ExtResource("10_smmn5")
 
 [node name="Confeti13" type="Sprite2D" parent="StateMachine/Juego/Contenido/Tribunas/BackgroundPivot/TribunaLeft/confeti"]
 position = Vector2(7, -3)
 rotation = -1.31265
 scale = Vector2(1, 0.794018)
-texture = ExtResource("11_8eo6w")
+texture = ExtResource("10_smmn5")
 
 [node name="Confeti11" type="Sprite2D" parent="StateMachine/Juego/Contenido/Tribunas/BackgroundPivot/TribunaLeft/confeti"]
 self_modulate = Color(0, 1, 1, 1)
 position = Vector2(257, 211)
 rotation = -1.57079
 skew = -0.18326
-texture = ExtResource("11_8eo6w")
+texture = ExtResource("10_smmn5")
 
 [node name="Confeti16" type="Sprite2D" parent="StateMachine/Juego/Contenido/Tribunas/BackgroundPivot/TribunaLeft/confeti"]
 position = Vector2(272, 243)
 rotation = -2.14045
 scale = Vector2(1.20536, 1)
 skew = -0.18326
-texture = ExtResource("11_8eo6w")
+texture = ExtResource("10_smmn5")
 
 [node name="Confeti4" type="Sprite2D" parent="StateMachine/Juego/Contenido/Tribunas/BackgroundPivot/TribunaLeft/confeti"]
 position = Vector2(212, -128)
 rotation = -1.43227
 scale = Vector2(0.736747, 0.953089)
 skew = -0.226893
-texture = ExtResource("11_8eo6w")
+texture = ExtResource("10_smmn5")
 
 [node name="Confeti9" type="Sprite2D" parent="StateMachine/Juego/Contenido/Tribunas/BackgroundPivot/TribunaLeft/confeti"]
 self_modulate = Color(0, 1, 1, 1)
@@ -2991,14 +3096,14 @@ position = Vector2(476, -118)
 rotation = -1.1163
 scale = Vector2(0.736747, 0.953089)
 skew = -0.226893
-texture = ExtResource("11_8eo6w")
+texture = ExtResource("10_smmn5")
 
 [node name="Confeti10" type="Sprite2D" parent="StateMachine/Juego/Contenido/Tribunas/BackgroundPivot/TribunaLeft/confeti"]
 position = Vector2(512, 38)
 rotation = -1.20469
 scale = Vector2(0.736747, 0.953089)
 skew = -0.226893
-texture = ExtResource("11_8eo6w")
+texture = ExtResource("10_smmn5")
 
 [node name="Confeti5" type="Sprite2D" parent="StateMachine/Juego/Contenido/Tribunas/BackgroundPivot/TribunaLeft/confeti"]
 self_modulate = Color(0, 1, 1, 1)
@@ -3006,75 +3111,75 @@ position = Vector2(-127, -143)
 rotation = -1.43227
 scale = Vector2(0.6138, 0.953089)
 skew = -0.226893
-texture = ExtResource("11_8eo6w")
+texture = ExtResource("10_smmn5")
 
 [node name="Confeti6" type="Sprite2D" parent="StateMachine/Juego/Contenido/Tribunas/BackgroundPivot/TribunaLeft/confeti"]
 position = Vector2(-210, 134)
 rotation = -1.43227
 scale = Vector2(0.736747, 0.953089)
 skew = -0.226893
-texture = ExtResource("11_8eo6w")
+texture = ExtResource("10_smmn5")
 
 [node name="Confeti59" type="Sprite2D" parent="StateMachine/Juego/Contenido/Tribunas/BackgroundPivot/TribunaLeft/confeti"]
 position = Vector2(-165, -21.0001)
 rotation = -1.43227
 scale = Vector2(0.736747, 0.953089)
 skew = -0.226893
-texture = ExtResource("11_8eo6w")
+texture = ExtResource("10_smmn5")
 
 [node name="Confeti61" type="Sprite2D" parent="StateMachine/Juego/Contenido/Tribunas/BackgroundPivot/TribunaLeft/confeti"]
 self_modulate = Color(0, 1, 1, 1)
 position = Vector2(325.536, 239.689)
 rotation = 1.49131
 skew = -0.109956
-texture = ExtResource("11_8eo6w")
+texture = ExtResource("10_smmn5")
 
 [node name="Confeti62" type="Sprite2D" parent="StateMachine/Juego/Contenido/Tribunas/BackgroundPivot/TribunaLeft/confeti"]
 position = Vector2(448.536, 246.689)
 rotation = 0.587114
 skew = 0.254818
-texture = ExtResource("11_8eo6w")
+texture = ExtResource("10_smmn5")
 
 [node name="Confeti76" type="Sprite2D" parent="StateMachine/Juego/Contenido/Tribunas/BackgroundPivot/TribunaLeft/confeti"]
 position = Vector2(217.682, 239.261)
 rotation = -0.102047
 scale = Vector2(1.60852, 0.990931)
 skew = 0.254818
-texture = ExtResource("11_8eo6w")
+texture = ExtResource("10_smmn5")
 
 [node name="Confeti63" type="Sprite2D" parent="StateMachine/Juego/Contenido/Tribunas/BackgroundPivot/TribunaLeft/confeti"]
 self_modulate = Color(0, 1, 1, 1)
 position = Vector2(388.536, 248.689)
 rotation = -1.45248
-texture = ExtResource("11_8eo6w")
+texture = ExtResource("10_smmn5")
 
 [node name="Confeti64" type="Sprite2D" parent="StateMachine/Juego/Contenido/Tribunas/BackgroundPivot/TribunaLeft/confeti"]
 position = Vector2(372.536, 235.689)
 rotation = -1.43227
 scale = Vector2(0.736747, 0.953089)
 skew = -0.226893
-texture = ExtResource("11_8eo6w")
+texture = ExtResource("10_smmn5")
 
 [node name="Confeti66" type="Sprite2D" parent="StateMachine/Juego/Contenido/Tribunas/BackgroundPivot/TribunaLeft/confeti"]
 position = Vector2(-92.2807, -141.878)
 rotation = 0.850142
 scale = Vector2(0.554066, 0.594133)
 skew = 0.254818
-texture = ExtResource("11_8eo6w")
+texture = ExtResource("10_smmn5")
 
 [node name="Confeti67" type="Sprite2D" parent="StateMachine/Juego/Contenido/Tribunas/BackgroundPivot/TribunaLeft/confeti"]
 self_modulate = Color(0, 1, 1, 1)
 position = Vector2(-163.164, -143.617)
 rotation = -1.45248
 scale = Vector2(0.601929, 1)
-texture = ExtResource("11_8eo6w")
+texture = ExtResource("10_smmn5")
 
 [node name="Confeti68" type="Sprite2D" parent="StateMachine/Juego/Contenido/Tribunas/BackgroundPivot/TribunaLeft/confeti"]
 position = Vector2(-197.16, -148.851)
 rotation = -1.43227
 scale = Vector2(0.40526, 0.953089)
 skew = -0.226893
-texture = ExtResource("11_8eo6w")
+texture = ExtResource("10_smmn5")
 
 [node name="Confeti69" type="Sprite2D" parent="StateMachine/Juego/Contenido/Tribunas/BackgroundPivot/TribunaLeft/confeti"]
 self_modulate = Color(0, 1, 1, 1)
@@ -3082,27 +3187,27 @@ position = Vector2(265, -125)
 rotation = 1.49131
 scale = Vector2(0.85124, 0.925695)
 skew = -0.109956
-texture = ExtResource("11_8eo6w")
+texture = ExtResource("10_smmn5")
 
 [node name="Confeti70" type="Sprite2D" parent="StateMachine/Juego/Contenido/Tribunas/BackgroundPivot/TribunaLeft/confeti"]
 position = Vector2(507, -115)
 rotation = 0.587114
 scale = Vector2(0.700771, 0.52179)
 skew = 0.254818
-texture = ExtResource("11_8eo6w")
+texture = ExtResource("10_smmn5")
 
 [node name="Confeti71" type="Sprite2D" parent="StateMachine/Juego/Contenido/Tribunas/BackgroundPivot/TribunaLeft/confeti"]
 self_modulate = Color(0, 1, 1, 1)
 position = Vector2(342, -120)
 rotation = -1.45248
-texture = ExtResource("11_8eo6w")
+texture = ExtResource("10_smmn5")
 
 [node name="Confeti72" type="Sprite2D" parent="StateMachine/Juego/Contenido/Tribunas/BackgroundPivot/TribunaLeft/confeti"]
 position = Vector2(310.536, -126.311)
 rotation = -1.43227
 scale = Vector2(0.736747, 0.953089)
 skew = -0.226893
-texture = ExtResource("11_8eo6w")
+texture = ExtResource("10_smmn5")
 
 [node name="Confeti14" type="Sprite2D" parent="StateMachine/Juego/Contenido/Tribunas/BackgroundPivot/TribunaLeft/confeti"]
 self_modulate = Color(0, 1, 1, 1)
@@ -3110,21 +3215,21 @@ position = Vector2(-174, 163)
 rotation = -0.867429
 scale = Vector2(0.736747, 0.953089)
 skew = -0.0802851
-texture = ExtResource("11_8eo6w")
+texture = ExtResource("10_smmn5")
 
 [node name="Confeti60" type="Sprite2D" parent="StateMachine/Juego/Contenido/Tribunas/BackgroundPivot/TribunaLeft/confeti"]
 position = Vector2(135, 15.9999)
 rotation = -3.60264
 scale = Vector2(0.736747, 0.953089)
 skew = -0.0802851
-texture = ExtResource("11_8eo6w")
+texture = ExtResource("10_smmn5")
 
 [node name="Confeti29" type="Sprite2D" parent="StateMachine/Juego/Contenido/Tribunas/BackgroundPivot/TribunaLeft/confeti"]
 position = Vector2(-185.838, 494.689)
 rotation = -2.17996
 scale = Vector2(0.736747, 0.953089)
 skew = -0.226893
-texture = ExtResource("11_8eo6w")
+texture = ExtResource("10_smmn5")
 
 [node name="Confeti30" type="Sprite2D" parent="StateMachine/Juego/Contenido/Tribunas/BackgroundPivot/TribunaLeft/confeti"]
 self_modulate = Color(0, 1, 1, 1)
@@ -3132,21 +3237,21 @@ position = Vector2(-149.837, 523.689)
 rotation = -1.61512
 scale = Vector2(0.736747, 0.953089)
 skew = -0.0802851
-texture = ExtResource("11_8eo6w")
+texture = ExtResource("10_smmn5")
 
 [node name="Confeti31" type="Sprite2D" parent="StateMachine/Juego/Contenido/Tribunas/BackgroundPivot/TribunaLeft/confeti"]
 position = Vector2(-228.838, 511.689)
 rotation = -3.10388
 scale = Vector2(0.736747, 0.953089)
 skew = -0.0802851
-texture = ExtResource("11_8eo6w")
+texture = ExtResource("10_smmn5")
 
 [node name="Confeti32" type="Sprite2D" parent="StateMachine/Juego/Contenido/Tribunas/BackgroundPivot/TribunaLeft/confeti"]
 position = Vector2(84.6498, 467.843)
 rotation = -1.36857
 scale = Vector2(0.736747, 0.953089)
 skew = -0.226893
-texture = ExtResource("11_8eo6w")
+texture = ExtResource("10_smmn5")
 
 [node name="Confeti33" type="Sprite2D" parent="StateMachine/Juego/Contenido/Tribunas/BackgroundPivot/TribunaLeft/confeti"]
 self_modulate = Color(0, 1, 1, 1)
@@ -3154,14 +3259,14 @@ position = Vector2(120.65, 496.844)
 rotation = -0.803733
 scale = Vector2(0.736747, 0.953089)
 skew = -0.0802851
-texture = ExtResource("11_8eo6w")
+texture = ExtResource("10_smmn5")
 
 [node name="Confeti34" type="Sprite2D" parent="StateMachine/Juego/Contenido/Tribunas/BackgroundPivot/TribunaLeft/confeti"]
 position = Vector2(41.6497, 484.844)
 rotation = -2.2925
 scale = Vector2(0.736747, 0.953089)
 skew = -0.0802851
-texture = ExtResource("11_8eo6w")
+texture = ExtResource("10_smmn5")
 
 [node name="Confeti7" type="Sprite2D" parent="StateMachine/Juego/Contenido/Tribunas/BackgroundPivot/TribunaLeft/confeti"]
 self_modulate = Color(0, 1, 1, 1)
@@ -3169,7 +3274,7 @@ position = Vector2(174, 217)
 rotation = -0.953042
 scale = Vector2(0.736747, 0.953089)
 skew = -0.226893
-texture = ExtResource("11_8eo6w")
+texture = ExtResource("10_smmn5")
 
 [node name="Confeti75" type="Sprite2D" parent="StateMachine/Juego/Contenido/Tribunas/BackgroundPivot/TribunaLeft/confeti"]
 self_modulate = Color(0, 1, 1, 1)
@@ -3177,21 +3282,21 @@ position = Vector2(425, 276)
 rotation = -1.72139
 scale = Vector2(0.736747, 0.953089)
 skew = -0.226893
-texture = ExtResource("11_8eo6w")
+texture = ExtResource("10_smmn5")
 
 [node name="Confeti23" type="Sprite2D" parent="StateMachine/Juego/Contenido/Tribunas/BackgroundPivot/TribunaLeft/confeti"]
 self_modulate = Color(0, 1, 1, 1)
 position = Vector2(-84.6101, 535.96)
 rotation = -1.57079
 skew = -0.18326
-texture = ExtResource("11_8eo6w")
+texture = ExtResource("10_smmn5")
 
 [node name="Confeti24" type="Sprite2D" parent="StateMachine/Juego/Contenido/Tribunas/BackgroundPivot/TribunaLeft/confeti"]
 position = Vector2(-69.6101, 567.96)
 rotation = -2.14045
 scale = Vector2(1.20536, 1)
 skew = -0.18326
-texture = ExtResource("11_8eo6w")
+texture = ExtResource("10_smmn5")
 
 [node name="Confeti25" type="Sprite2D" parent="StateMachine/Juego/Contenido/Tribunas/BackgroundPivot/TribunaLeft/confeti"]
 self_modulate = Color(0, 1, 1, 1)
@@ -3199,21 +3304,21 @@ position = Vector2(-167.61, 541.96)
 rotation = -0.953042
 scale = Vector2(0.736747, 0.953089)
 skew = -0.226893
-texture = ExtResource("11_8eo6w")
+texture = ExtResource("10_smmn5")
 
 [node name="Confeti26" type="Sprite2D" parent="StateMachine/Juego/Contenido/Tribunas/BackgroundPivot/TribunaLeft/confeti"]
 self_modulate = Color(0, 1, 1, 1)
 position = Vector2(113.39, 602.96)
 rotation = -4.07729
 skew = -0.18326
-texture = ExtResource("11_8eo6w")
+texture = ExtResource("10_smmn5")
 
 [node name="Confeti27" type="Sprite2D" parent="StateMachine/Juego/Contenido/Tribunas/BackgroundPivot/TribunaLeft/confeti"]
 position = Vector2(128.39, 634.96)
 rotation = -4.64694
 scale = Vector2(1.20536, 1)
 skew = -0.18326
-texture = ExtResource("11_8eo6w")
+texture = ExtResource("10_smmn5")
 
 [node name="Confeti28" type="Sprite2D" parent="StateMachine/Juego/Contenido/Tribunas/BackgroundPivot/TribunaLeft/confeti"]
 self_modulate = Color(0, 1, 1, 1)
@@ -3221,35 +3326,35 @@ position = Vector2(30.3899, 608.96)
 rotation = -3.45953
 scale = Vector2(0.736747, 0.953089)
 skew = -0.226893
-texture = ExtResource("11_8eo6w")
+texture = ExtResource("10_smmn5")
 
 [node name="Confeti35" type="Sprite2D" parent="StateMachine/Juego/Contenido/Tribunas/BackgroundPivot/TribunaLeft/confeti"]
 self_modulate = Color(0, 1, 1, 1)
 position = Vector2(-208.61, 371.96)
 rotation = -1.57079
 skew = -0.18326
-texture = ExtResource("11_8eo6w")
+texture = ExtResource("10_smmn5")
 
 [node name="Confeti36" type="Sprite2D" parent="StateMachine/Juego/Contenido/Tribunas/BackgroundPivot/TribunaLeft/confeti"]
 position = Vector2(-193.61, 403.96)
 rotation = -2.14045
 scale = Vector2(1.20536, 1)
 skew = -0.18326
-texture = ExtResource("11_8eo6w")
+texture = ExtResource("10_smmn5")
 
 [node name="Confeti38" type="Sprite2D" parent="StateMachine/Juego/Contenido/Tribunas/BackgroundPivot/TribunaLeft/confeti"]
 self_modulate = Color(0, 1, 1, 1)
 position = Vector2(-10.6102, 438.96)
 rotation = -4.07729
 skew = -0.18326
-texture = ExtResource("11_8eo6w")
+texture = ExtResource("10_smmn5")
 
 [node name="Confeti39" type="Sprite2D" parent="StateMachine/Juego/Contenido/Tribunas/BackgroundPivot/TribunaLeft/confeti"]
 position = Vector2(4.38971, 470.96)
 rotation = -4.64694
 scale = Vector2(1.20536, 1)
 skew = -0.18326
-texture = ExtResource("11_8eo6w")
+texture = ExtResource("10_smmn5")
 
 [node name="Confeti40" type="Sprite2D" parent="StateMachine/Juego/Contenido/Tribunas/BackgroundPivot/TribunaLeft/confeti"]
 self_modulate = Color(0, 1, 1, 1)
@@ -3257,14 +3362,14 @@ position = Vector2(-93.6101, 444.96)
 rotation = -3.45953
 scale = Vector2(0.736747, 0.953089)
 skew = -0.226893
-texture = ExtResource("11_8eo6w")
+texture = ExtResource("10_smmn5")
 
 [node name="Confeti37" type="Sprite2D" parent="StateMachine/Juego/Contenido/Tribunas/BackgroundPivot/TribunaLeft/confeti"]
 position = Vector2(215.125, 608.689)
 rotation = -2.17996
 scale = Vector2(0.736747, 0.953089)
 skew = -0.226893
-texture = ExtResource("11_8eo6w")
+texture = ExtResource("10_smmn5")
 
 [node name="Confeti41" type="Sprite2D" parent="StateMachine/Juego/Contenido/Tribunas/BackgroundPivot/TribunaLeft/confeti"]
 self_modulate = Color(0, 1, 1, 1)
@@ -3272,21 +3377,21 @@ position = Vector2(251.125, 637.689)
 rotation = -1.61512
 scale = Vector2(0.736747, 0.953089)
 skew = -0.0802851
-texture = ExtResource("11_8eo6w")
+texture = ExtResource("10_smmn5")
 
 [node name="Confeti42" type="Sprite2D" parent="StateMachine/Juego/Contenido/Tribunas/BackgroundPivot/TribunaLeft/confeti"]
 position = Vector2(172.125, 625.689)
 rotation = -3.10388
 scale = Vector2(0.736747, 0.953089)
 skew = -0.0802851
-texture = ExtResource("11_8eo6w")
+texture = ExtResource("10_smmn5")
 
 [node name="Confeti43" type="Sprite2D" parent="StateMachine/Juego/Contenido/Tribunas/BackgroundPivot/TribunaLeft/confeti"]
 position = Vector2(485.612, 581.843)
 rotation = -1.36857
 scale = Vector2(0.736747, 0.953089)
 skew = -0.226893
-texture = ExtResource("11_8eo6w")
+texture = ExtResource("10_smmn5")
 
 [node name="Confeti44" type="Sprite2D" parent="StateMachine/Juego/Contenido/Tribunas/BackgroundPivot/TribunaLeft/confeti"]
 self_modulate = Color(0, 1, 1, 1)
@@ -3294,7 +3399,7 @@ position = Vector2(-231, 592)
 rotation = -0.803733
 scale = Vector2(0.736747, 0.953089)
 skew = -0.0802851
-texture = ExtResource("11_8eo6w")
+texture = ExtResource("10_smmn5")
 
 [node name="Confeti58" type="Sprite2D" parent="StateMachine/Juego/Contenido/Tribunas/BackgroundPivot/TribunaLeft/confeti"]
 self_modulate = Color(0, 1, 1, 1)
@@ -3302,28 +3407,28 @@ position = Vector2(255, 565)
 rotation = -0.803733
 scale = Vector2(0.736747, 0.953089)
 skew = -0.0802851
-texture = ExtResource("11_8eo6w")
+texture = ExtResource("10_smmn5")
 
 [node name="Confeti45" type="Sprite2D" parent="StateMachine/Juego/Contenido/Tribunas/BackgroundPivot/TribunaLeft/confeti"]
 position = Vector2(442.612, 598.843)
 rotation = -2.2925
 scale = Vector2(0.736747, 0.953089)
 skew = -0.0802851
-texture = ExtResource("11_8eo6w")
+texture = ExtResource("10_smmn5")
 
 [node name="Confeti46" type="Sprite2D" parent="StateMachine/Juego/Contenido/Tribunas/BackgroundPivot/TribunaLeft/confeti"]
 self_modulate = Color(0, 1, 1, 1)
 position = Vector2(316.352, 649.96)
 rotation = -1.57079
 skew = -0.18326
-texture = ExtResource("11_8eo6w")
+texture = ExtResource("10_smmn5")
 
 [node name="Confeti47" type="Sprite2D" parent="StateMachine/Juego/Contenido/Tribunas/BackgroundPivot/TribunaLeft/confeti"]
 position = Vector2(331.352, 681.96)
 rotation = -2.14045
 scale = Vector2(1.20536, 1)
 skew = -0.18326
-texture = ExtResource("11_8eo6w")
+texture = ExtResource("10_smmn5")
 
 [node name="Confeti48" type="Sprite2D" parent="StateMachine/Juego/Contenido/Tribunas/BackgroundPivot/TribunaLeft/confeti"]
 self_modulate = Color(0, 1, 1, 1)
@@ -3331,21 +3436,21 @@ position = Vector2(233.352, 655.96)
 rotation = -0.953042
 scale = Vector2(0.736747, 0.953089)
 skew = -0.226893
-texture = ExtResource("11_8eo6w")
+texture = ExtResource("10_smmn5")
 
 [node name="Confeti49" type="Sprite2D" parent="StateMachine/Juego/Contenido/Tribunas/BackgroundPivot/TribunaLeft/confeti"]
 self_modulate = Color(0, 1, 1, 1)
 position = Vector2(514.352, 716.96)
 rotation = -4.07729
 skew = -0.18326
-texture = ExtResource("11_8eo6w")
+texture = ExtResource("10_smmn5")
 
 [node name="Confeti50" type="Sprite2D" parent="StateMachine/Juego/Contenido/Tribunas/BackgroundPivot/TribunaLeft/confeti"]
 position = Vector2(529.352, 748.96)
 rotation = -4.64694
 scale = Vector2(1.20536, 1)
 skew = -0.18326
-texture = ExtResource("11_8eo6w")
+texture = ExtResource("10_smmn5")
 
 [node name="Confeti51" type="Sprite2D" parent="StateMachine/Juego/Contenido/Tribunas/BackgroundPivot/TribunaLeft/confeti"]
 self_modulate = Color(0, 1, 1, 1)
@@ -3353,42 +3458,42 @@ position = Vector2(431.352, 722.96)
 rotation = -3.45953
 scale = Vector2(0.736747, 0.953089)
 skew = -0.226893
-texture = ExtResource("11_8eo6w")
+texture = ExtResource("10_smmn5")
 
 [node name="Confeti52" type="Sprite2D" parent="StateMachine/Juego/Contenido/Tribunas/BackgroundPivot/TribunaLeft/confeti"]
 self_modulate = Color(0, 1, 1, 1)
 position = Vector2(192.352, 485.96)
 rotation = -1.57079
 skew = -0.18326
-texture = ExtResource("11_8eo6w")
+texture = ExtResource("10_smmn5")
 
 [node name="Confeti53" type="Sprite2D" parent="StateMachine/Juego/Contenido/Tribunas/BackgroundPivot/TribunaLeft/confeti"]
 position = Vector2(207.352, 517.96)
 rotation = -2.14045
 scale = Vector2(1.20536, 1)
 skew = -0.18326
-texture = ExtResource("11_8eo6w")
+texture = ExtResource("10_smmn5")
 
 [node name="Confeti54" type="Sprite2D" parent="StateMachine/Juego/Contenido/Tribunas/BackgroundPivot/TribunaLeft/confeti"]
 self_modulate = Color(0, 1, 1, 1)
 position = Vector2(390.352, 552.96)
 rotation = -4.07729
 skew = -0.18326
-texture = ExtResource("11_8eo6w")
+texture = ExtResource("10_smmn5")
 
 [node name="Confeti55" type="Sprite2D" parent="StateMachine/Juego/Contenido/Tribunas/BackgroundPivot/TribunaLeft/confeti"]
 position = Vector2(405.352, 584.96)
 rotation = -4.64694
 scale = Vector2(1.20536, 1)
 skew = -0.18326
-texture = ExtResource("11_8eo6w")
+texture = ExtResource("10_smmn5")
 
 [node name="Confeti57" type="Sprite2D" parent="StateMachine/Juego/Contenido/Tribunas/BackgroundPivot/TribunaLeft/confeti"]
 position = Vector2(48.0001, 567)
 rotation = -4.64694
 scale = Vector2(1.20536, 1)
 skew = -0.18326
-texture = ExtResource("11_8eo6w")
+texture = ExtResource("10_smmn5")
 
 [node name="Confeti56" type="Sprite2D" parent="StateMachine/Juego/Contenido/Tribunas/BackgroundPivot/TribunaLeft/confeti"]
 self_modulate = Color(0, 1, 1, 1)
@@ -3396,7 +3501,7 @@ position = Vector2(307.352, 558.96)
 rotation = -3.45953
 scale = Vector2(0.736747, 0.953089)
 skew = -0.226893
-texture = ExtResource("11_8eo6w")
+texture = ExtResource("10_smmn5")
 
 [node name="Confeti8" type="Sprite2D" parent="StateMachine/Juego/Contenido/Tribunas/BackgroundPivot/TribunaLeft/confeti"]
 self_modulate = Color(0, 1, 1, 1)
@@ -3404,7 +3509,7 @@ position = Vector2(96, 8)
 rotation = -2.18158
 scale = Vector2(0.736747, 0.953089)
 skew = -0.226893
-texture = ExtResource("11_8eo6w")
+texture = ExtResource("10_smmn5")
 
 [node name="Rock" parent="StateMachine/Juego/Contenido/Tribunas/BackgroundPivot/TribunaLeft" instance=ExtResource("10_co8hb")]
 _texture = ExtResource("8_pk5s7")
@@ -3443,11 +3548,14 @@ grow_vertical = 2
 z_index = 1
 position = Vector2(4, -596)
 emitting = false
+texture = ExtResource("9_py0y4")
+color = Color(1, 1, 1, 1)
 
 [node name="CPUParticles2D2" parent="StateMachine/Juego/Contenido/Tribunas/Particula" instance=ExtResource("16_m1kom")]
 z_index = 1
 position = Vector2(4, -596)
 emitting = false
+texture = ExtResource("10_smmn5")
 color = Color(1, 1, 1, 1)
 
 [node name="Mask" type="TextureRect" parent="StateMachine/Juego/Contenido/Tribunas"]
@@ -3467,13 +3575,15 @@ libraries = {
 }
 
 [node name="Instancia1" type="Control" parent="StateMachine/Juego/Contenido"]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = 1.0
+offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("34_ci8js")
 
 [node name="Button" type="Button" parent="StateMachine/Juego/Contenido/Instancia1" node_paths=PackedStringArray("state_machine")]
 visible = false
@@ -3531,7 +3641,7 @@ texture = ExtResource("8_pk5s7")
 [node name="AnimPiedra1" type="AnimatedSprite2D" parent="StateMachine/Juego/Contenido/Instancia1/Piedra_Busqueda/Piedra"]
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_b1248")
-animation = &"rock_lose_2"
+animation = &"anim_vuvuzela_up"
 speed_scale = 1.3
 
 [node name="AnimController" type="AnimationPlayer" parent="StateMachine/Juego/Contenido/Instancia1/Piedra_Busqueda"]
@@ -3587,6 +3697,22 @@ offset_bottom = -36.0
 text = "[center]¿A CUÁL TRIBUNA DEBE IR LA [b]ZOISITA[/b]
 PARA ENCONTRAR A SU FAMILIA?"
 
+[node name="Icon" parent="StateMachine/Juego/Contenido/Instancia1/Consigna/consignaPanel/BtnDerAnchor/btnDer" index="0"]
+offset_left = -22.0
+offset_top = -22.0
+offset_right = 22.0
+offset_bottom = 22.0
+
+[node name="Icon" parent="StateMachine/Juego/Contenido/Instancia1/Consigna/consignaPanel/btnIzqAnchor/btnIzq" index="0"]
+offset_left = -22.0
+offset_top = -22.0
+offset_right = 22.0
+offset_bottom = 22.0
+
+[node name="Icon" parent="StateMachine/Juego/Contenido/Instancia1/Consigna/consignaPanel/btnCentralAnchor/btnCentral" index="0"]
+offset_right = -23.0
+offset_bottom = -23.0
+
 [node name="NubeController" type="Control" parent="StateMachine/Juego/Contenido/Instancia1"]
 layout_mode = 1
 anchor_left = 0.5
@@ -3597,6 +3723,12 @@ offset_left = -3.0
 offset_top = -263.04
 offset_right = 358.0
 offset_bottom = 262.96
+
+[node name="Glow" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia1/NubeController"]
+modulate = Color(0.984314, 0.933333, 0.65098, 0)
+position = Vector2(175, 216)
+scale = Vector2(1.72667, 1.50667)
+texture = ExtResource("49_8o1br")
 
 [node name="nube" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia1/NubeController"]
 position = Vector2(182, 188)
@@ -3656,7 +3788,7 @@ animation = "Nube_Appears"
 [node name="CPUParticles2D" type="CPUParticles2D" parent="StateMachine/Juego/Contenido/Instancia1/NubeController/DisappearParticles"]
 position = Vector2(177, 207)
 emitting = false
-lifetime = 1.5
+lifetime = 0.8
 one_shot = true
 explosiveness = 1.0
 texture = ExtResource("42_6jl13")
@@ -3678,7 +3810,7 @@ color_ramp = SubResource("Gradient_2qa43")
 [node name="CPUParticles2D2" type="CPUParticles2D" parent="StateMachine/Juego/Contenido/Instancia1/NubeController/DisappearParticles"]
 position = Vector2(222, 178)
 emitting = false
-lifetime = 1.5
+lifetime = 0.8
 one_shot = true
 explosiveness = 1.0
 texture = ExtResource("43_u4ofi")
@@ -3701,7 +3833,7 @@ color_ramp = SubResource("Gradient_2qa43")
 position = Vector2(182, 202)
 emitting = false
 amount = 16
-lifetime = 1.5
+lifetime = 0.8
 one_shot = true
 explosiveness = 1.0
 texture = ExtResource("44_yw0ai")
@@ -3723,7 +3855,7 @@ color_ramp = SubResource("Gradient_2qa43")
 [node name="CPUParticles2D4" type="CPUParticles2D" parent="StateMachine/Juego/Contenido/Instancia1/NubeController/DisappearParticles"]
 position = Vector2(289, 383)
 emitting = false
-lifetime = 1.5
+lifetime = 0.8
 one_shot = true
 explosiveness = 1.0
 texture = ExtResource("42_6jl13")
@@ -3745,7 +3877,7 @@ color_ramp = SubResource("Gradient_2qa43")
 [node name="CPUParticles2D5" type="CPUParticles2D" parent="StateMachine/Juego/Contenido/Instancia1/NubeController/DisappearParticles"]
 position = Vector2(272, 476)
 emitting = false
-lifetime = 1.5
+lifetime = 0.8
 one_shot = true
 explosiveness = 1.0
 texture = ExtResource("43_u4ofi")
@@ -3767,7 +3899,7 @@ color_ramp = SubResource("Gradient_2qa43")
 [node name="CPUParticles2D6" type="CPUParticles2D" parent="StateMachine/Juego/Contenido/Instancia1/NubeController/DisappearParticles"]
 position = Vector2(220, 531)
 emitting = false
-lifetime = 1.5
+lifetime = 0.8
 one_shot = true
 explosiveness = 1.0
 texture = ExtResource("44_yw0ai")
@@ -3804,6 +3936,12 @@ offset_top = -263.04
 offset_right = 360.88
 offset_bottom = 262.96
 scale = Vector2(-1, 1)
+
+[node name="Glow" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia1/NubeController2"]
+modulate = Color(0.984314, 0.933333, 0.65098, 0)
+position = Vector2(175, 216)
+scale = Vector2(1.72667, 1.50667)
+texture = ExtResource("49_8o1br")
 
 [node name="nube" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia1/NubeController2"]
 position = Vector2(182, 188)
@@ -3865,7 +4003,7 @@ animation = "Nube_Appears"
 [node name="CPUParticles2D" type="CPUParticles2D" parent="StateMachine/Juego/Contenido/Instancia1/NubeController2/DisappearParticles"]
 position = Vector2(177, 207)
 emitting = false
-lifetime = 1.5
+lifetime = 0.8
 one_shot = true
 explosiveness = 1.0
 texture = ExtResource("42_6jl13")
@@ -3887,7 +4025,7 @@ color_ramp = SubResource("Gradient_2qa43")
 [node name="CPUParticles2D2" type="CPUParticles2D" parent="StateMachine/Juego/Contenido/Instancia1/NubeController2/DisappearParticles"]
 position = Vector2(222, 178)
 emitting = false
-lifetime = 1.5
+lifetime = 0.8
 one_shot = true
 explosiveness = 1.0
 texture = ExtResource("43_u4ofi")
@@ -3910,7 +4048,7 @@ color_ramp = SubResource("Gradient_2qa43")
 position = Vector2(182, 202)
 emitting = false
 amount = 16
-lifetime = 1.5
+lifetime = 0.8
 one_shot = true
 explosiveness = 1.0
 texture = ExtResource("44_yw0ai")
@@ -3932,7 +4070,7 @@ color_ramp = SubResource("Gradient_2qa43")
 [node name="CPUParticles2D4" type="CPUParticles2D" parent="StateMachine/Juego/Contenido/Instancia1/NubeController2/DisappearParticles"]
 position = Vector2(289, 383)
 emitting = false
-lifetime = 1.5
+lifetime = 0.8
 one_shot = true
 explosiveness = 1.0
 texture = ExtResource("42_6jl13")
@@ -3954,7 +4092,7 @@ color_ramp = SubResource("Gradient_2qa43")
 [node name="CPUParticles2D5" type="CPUParticles2D" parent="StateMachine/Juego/Contenido/Instancia1/NubeController2/DisappearParticles"]
 position = Vector2(272, 476)
 emitting = false
-lifetime = 1.5
+lifetime = 0.8
 one_shot = true
 explosiveness = 1.0
 texture = ExtResource("43_u4ofi")
@@ -3976,7 +4114,7 @@ color_ramp = SubResource("Gradient_2qa43")
 [node name="CPUParticles2D6" type="CPUParticles2D" parent="StateMachine/Juego/Contenido/Instancia1/NubeController2/DisappearParticles"]
 position = Vector2(220, 531)
 emitting = false
-lifetime = 1.5
+lifetime = 0.8
 one_shot = true
 explosiveness = 1.0
 texture = ExtResource("44_yw0ai")
@@ -4010,6 +4148,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("34_ci8js")
 
 [node name="Button" type="Button" parent="StateMachine/Juego/Contenido/Instancia2" node_paths=PackedStringArray("state_machine")]
 visible = false
@@ -4123,6 +4262,22 @@ offset_bottom = -30.0
 text = "[center]¿A CUÁL TRIBUNA DEBE IR LA [b]HALITA[/b]
 PARA ENCONTRAR A SU FAMILIA?"
 
+[node name="Icon" parent="StateMachine/Juego/Contenido/Instancia2/Consigna/consignaPanel/BtnDerAnchor/btnDer" index="0"]
+offset_left = -22.0
+offset_top = -22.0
+offset_right = 22.0
+offset_bottom = 22.0
+
+[node name="Icon" parent="StateMachine/Juego/Contenido/Instancia2/Consigna/consignaPanel/btnIzqAnchor/btnIzq" index="0"]
+offset_left = -22.0
+offset_top = -22.0
+offset_right = 22.0
+offset_bottom = 22.0
+
+[node name="Icon" parent="StateMachine/Juego/Contenido/Instancia2/Consigna/consignaPanel/btnCentralAnchor/btnCentral" index="0"]
+offset_right = -23.0
+offset_bottom = -23.0
+
 [node name="NubeController" type="Control" parent="StateMachine/Juego/Contenido/Instancia2"]
 layout_mode = 1
 anchor_left = 0.5
@@ -4133,6 +4288,12 @@ offset_left = -3.0
 offset_top = -263.04
 offset_right = 358.0
 offset_bottom = 262.96
+
+[node name="Glow" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia2/NubeController"]
+modulate = Color(0.984314, 0.933333, 0.65098, 0)
+position = Vector2(175, 216)
+scale = Vector2(1.72667, 1.50667)
+texture = ExtResource("49_8o1br")
 
 [node name="nube" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia2/NubeController"]
 position = Vector2(182, 188)
@@ -4192,7 +4353,7 @@ animation = "Nube_Appears"
 [node name="CPUParticles2D" type="CPUParticles2D" parent="StateMachine/Juego/Contenido/Instancia2/NubeController/DisappearParticles"]
 position = Vector2(177, 207)
 emitting = false
-lifetime = 1.5
+lifetime = 0.8
 one_shot = true
 explosiveness = 1.0
 texture = ExtResource("42_6jl13")
@@ -4214,7 +4375,7 @@ color_ramp = SubResource("Gradient_2qa43")
 [node name="CPUParticles2D2" type="CPUParticles2D" parent="StateMachine/Juego/Contenido/Instancia2/NubeController/DisappearParticles"]
 position = Vector2(222, 178)
 emitting = false
-lifetime = 1.5
+lifetime = 0.8
 one_shot = true
 explosiveness = 1.0
 texture = ExtResource("43_u4ofi")
@@ -4237,7 +4398,7 @@ color_ramp = SubResource("Gradient_2qa43")
 position = Vector2(182, 202)
 emitting = false
 amount = 16
-lifetime = 1.5
+lifetime = 0.8
 one_shot = true
 explosiveness = 1.0
 texture = ExtResource("44_yw0ai")
@@ -4259,7 +4420,7 @@ color_ramp = SubResource("Gradient_2qa43")
 [node name="CPUParticles2D4" type="CPUParticles2D" parent="StateMachine/Juego/Contenido/Instancia2/NubeController/DisappearParticles"]
 position = Vector2(289, 383)
 emitting = false
-lifetime = 1.5
+lifetime = 0.8
 one_shot = true
 explosiveness = 1.0
 texture = ExtResource("42_6jl13")
@@ -4281,7 +4442,7 @@ color_ramp = SubResource("Gradient_2qa43")
 [node name="CPUParticles2D5" type="CPUParticles2D" parent="StateMachine/Juego/Contenido/Instancia2/NubeController/DisappearParticles"]
 position = Vector2(272, 476)
 emitting = false
-lifetime = 1.5
+lifetime = 0.8
 one_shot = true
 explosiveness = 1.0
 texture = ExtResource("43_u4ofi")
@@ -4303,7 +4464,7 @@ color_ramp = SubResource("Gradient_2qa43")
 [node name="CPUParticles2D6" type="CPUParticles2D" parent="StateMachine/Juego/Contenido/Instancia2/NubeController/DisappearParticles"]
 position = Vector2(220, 531)
 emitting = false
-lifetime = 1.5
+lifetime = 0.8
 one_shot = true
 explosiveness = 1.0
 texture = ExtResource("44_yw0ai")
@@ -4340,6 +4501,12 @@ offset_top = -263.04
 offset_right = 360.88
 offset_bottom = 262.96
 scale = Vector2(-1, 1)
+
+[node name="Glow" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia2/NubeController2"]
+modulate = Color(0.984314, 0.933333, 0.65098, 0)
+position = Vector2(175, 216)
+scale = Vector2(1.72667, 1.50667)
+texture = ExtResource("49_8o1br")
 
 [node name="nube" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia2/NubeController2"]
 position = Vector2(182, 188)
@@ -4401,7 +4568,7 @@ animation = "Nube_Appears"
 [node name="CPUParticles2D" type="CPUParticles2D" parent="StateMachine/Juego/Contenido/Instancia2/NubeController2/DisappearParticles"]
 position = Vector2(177, 207)
 emitting = false
-lifetime = 1.5
+lifetime = 0.8
 one_shot = true
 explosiveness = 1.0
 texture = ExtResource("42_6jl13")
@@ -4423,7 +4590,7 @@ color_ramp = SubResource("Gradient_2qa43")
 [node name="CPUParticles2D2" type="CPUParticles2D" parent="StateMachine/Juego/Contenido/Instancia2/NubeController2/DisappearParticles"]
 position = Vector2(222, 178)
 emitting = false
-lifetime = 1.5
+lifetime = 0.8
 one_shot = true
 explosiveness = 1.0
 texture = ExtResource("43_u4ofi")
@@ -4446,7 +4613,7 @@ color_ramp = SubResource("Gradient_2qa43")
 position = Vector2(182, 202)
 emitting = false
 amount = 16
-lifetime = 1.5
+lifetime = 0.8
 one_shot = true
 explosiveness = 1.0
 texture = ExtResource("44_yw0ai")
@@ -4468,7 +4635,7 @@ color_ramp = SubResource("Gradient_2qa43")
 [node name="CPUParticles2D4" type="CPUParticles2D" parent="StateMachine/Juego/Contenido/Instancia2/NubeController2/DisappearParticles"]
 position = Vector2(289, 383)
 emitting = false
-lifetime = 1.5
+lifetime = 0.8
 one_shot = true
 explosiveness = 1.0
 texture = ExtResource("42_6jl13")
@@ -4490,7 +4657,7 @@ color_ramp = SubResource("Gradient_2qa43")
 [node name="CPUParticles2D5" type="CPUParticles2D" parent="StateMachine/Juego/Contenido/Instancia2/NubeController2/DisappearParticles"]
 position = Vector2(272, 476)
 emitting = false
-lifetime = 1.5
+lifetime = 0.8
 one_shot = true
 explosiveness = 1.0
 texture = ExtResource("43_u4ofi")
@@ -4512,7 +4679,7 @@ color_ramp = SubResource("Gradient_2qa43")
 [node name="CPUParticles2D6" type="CPUParticles2D" parent="StateMachine/Juego/Contenido/Instancia2/NubeController2/DisappearParticles"]
 position = Vector2(220, 531)
 emitting = false
-lifetime = 1.5
+lifetime = 0.8
 one_shot = true
 explosiveness = 1.0
 texture = ExtResource("44_yw0ai")
@@ -4546,6 +4713,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("34_ci8js")
 
 [node name="Button" type="Button" parent="StateMachine/Juego/Contenido/Instancia3" node_paths=PackedStringArray("state_machine")]
 visible = false
@@ -4661,6 +4829,22 @@ text = "
 [center]¿A CUÁL TRIBUNA DEBE IR EL [b]ESPATO DE ISLANDIA[/b]
 PARA ENCONTRAR A SU FAMILIA?"
 
+[node name="Icon" parent="StateMachine/Juego/Contenido/Instancia3/Consigna/consignaPanel/BtnDerAnchor/btnDer" index="0"]
+offset_left = -22.0
+offset_top = -22.0
+offset_right = 22.0
+offset_bottom = 22.0
+
+[node name="Icon" parent="StateMachine/Juego/Contenido/Instancia3/Consigna/consignaPanel/btnIzqAnchor/btnIzq" index="0"]
+offset_left = -22.0
+offset_top = -22.0
+offset_right = 22.0
+offset_bottom = 22.0
+
+[node name="Icon" parent="StateMachine/Juego/Contenido/Instancia3/Consigna/consignaPanel/btnCentralAnchor/btnCentral" index="0"]
+offset_right = -23.0
+offset_bottom = -23.0
+
 [node name="NubeController" type="Control" parent="StateMachine/Juego/Contenido/Instancia3"]
 layout_mode = 1
 anchor_left = 0.5
@@ -4671,6 +4855,12 @@ offset_left = -3.0
 offset_top = -263.04
 offset_right = 358.0
 offset_bottom = 262.96
+
+[node name="Glow" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia3/NubeController"]
+modulate = Color(0.984314, 0.933333, 0.65098, 0)
+position = Vector2(175, 216)
+scale = Vector2(1.72667, 1.50667)
+texture = ExtResource("49_8o1br")
 
 [node name="nube" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia3/NubeController"]
 position = Vector2(182, 188)
@@ -4730,7 +4920,7 @@ animation = "Nube_Appears"
 [node name="CPUParticles2D" type="CPUParticles2D" parent="StateMachine/Juego/Contenido/Instancia3/NubeController/DisappearParticles"]
 position = Vector2(177, 207)
 emitting = false
-lifetime = 1.5
+lifetime = 0.8
 one_shot = true
 explosiveness = 1.0
 texture = ExtResource("42_6jl13")
@@ -4752,7 +4942,7 @@ color_ramp = SubResource("Gradient_2qa43")
 [node name="CPUParticles2D2" type="CPUParticles2D" parent="StateMachine/Juego/Contenido/Instancia3/NubeController/DisappearParticles"]
 position = Vector2(222, 178)
 emitting = false
-lifetime = 1.5
+lifetime = 0.8
 one_shot = true
 explosiveness = 1.0
 texture = ExtResource("43_u4ofi")
@@ -4775,7 +4965,7 @@ color_ramp = SubResource("Gradient_2qa43")
 position = Vector2(182, 202)
 emitting = false
 amount = 16
-lifetime = 1.5
+lifetime = 0.8
 one_shot = true
 explosiveness = 1.0
 texture = ExtResource("44_yw0ai")
@@ -4797,7 +4987,7 @@ color_ramp = SubResource("Gradient_2qa43")
 [node name="CPUParticles2D4" type="CPUParticles2D" parent="StateMachine/Juego/Contenido/Instancia3/NubeController/DisappearParticles"]
 position = Vector2(289, 383)
 emitting = false
-lifetime = 1.5
+lifetime = 0.8
 one_shot = true
 explosiveness = 1.0
 texture = ExtResource("42_6jl13")
@@ -4819,7 +5009,7 @@ color_ramp = SubResource("Gradient_2qa43")
 [node name="CPUParticles2D5" type="CPUParticles2D" parent="StateMachine/Juego/Contenido/Instancia3/NubeController/DisappearParticles"]
 position = Vector2(272, 476)
 emitting = false
-lifetime = 1.5
+lifetime = 0.8
 one_shot = true
 explosiveness = 1.0
 texture = ExtResource("43_u4ofi")
@@ -4841,7 +5031,7 @@ color_ramp = SubResource("Gradient_2qa43")
 [node name="CPUParticles2D6" type="CPUParticles2D" parent="StateMachine/Juego/Contenido/Instancia3/NubeController/DisappearParticles"]
 position = Vector2(220, 531)
 emitting = false
-lifetime = 1.5
+lifetime = 0.8
 one_shot = true
 explosiveness = 1.0
 texture = ExtResource("44_yw0ai")
@@ -4878,6 +5068,12 @@ offset_top = -263.04
 offset_right = 360.88
 offset_bottom = 262.96
 scale = Vector2(-1, 1)
+
+[node name="Glow" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia3/NubeController2"]
+modulate = Color(0.984314, 0.933333, 0.65098, 0)
+position = Vector2(175, 216)
+scale = Vector2(1.72667, 1.50667)
+texture = ExtResource("49_8o1br")
 
 [node name="nube" type="Sprite2D" parent="StateMachine/Juego/Contenido/Instancia3/NubeController2"]
 position = Vector2(182, 188)
@@ -4939,7 +5135,7 @@ animation = "Nube_Appears"
 [node name="CPUParticles2D" type="CPUParticles2D" parent="StateMachine/Juego/Contenido/Instancia3/NubeController2/DisappearParticles"]
 position = Vector2(177, 207)
 emitting = false
-lifetime = 1.5
+lifetime = 0.8
 one_shot = true
 explosiveness = 1.0
 texture = ExtResource("42_6jl13")
@@ -4961,7 +5157,7 @@ color_ramp = SubResource("Gradient_2qa43")
 [node name="CPUParticles2D2" type="CPUParticles2D" parent="StateMachine/Juego/Contenido/Instancia3/NubeController2/DisappearParticles"]
 position = Vector2(222, 178)
 emitting = false
-lifetime = 1.5
+lifetime = 0.8
 one_shot = true
 explosiveness = 1.0
 texture = ExtResource("43_u4ofi")
@@ -4984,7 +5180,7 @@ color_ramp = SubResource("Gradient_2qa43")
 position = Vector2(182, 202)
 emitting = false
 amount = 16
-lifetime = 1.5
+lifetime = 0.8
 one_shot = true
 explosiveness = 1.0
 texture = ExtResource("44_yw0ai")
@@ -5006,7 +5202,7 @@ color_ramp = SubResource("Gradient_2qa43")
 [node name="CPUParticles2D4" type="CPUParticles2D" parent="StateMachine/Juego/Contenido/Instancia3/NubeController2/DisappearParticles"]
 position = Vector2(289, 383)
 emitting = false
-lifetime = 1.5
+lifetime = 0.8
 one_shot = true
 explosiveness = 1.0
 texture = ExtResource("42_6jl13")
@@ -5028,7 +5224,7 @@ color_ramp = SubResource("Gradient_2qa43")
 [node name="CPUParticles2D5" type="CPUParticles2D" parent="StateMachine/Juego/Contenido/Instancia3/NubeController2/DisappearParticles"]
 position = Vector2(272, 476)
 emitting = false
-lifetime = 1.5
+lifetime = 0.8
 one_shot = true
 explosiveness = 1.0
 texture = ExtResource("43_u4ofi")
@@ -5050,7 +5246,7 @@ color_ramp = SubResource("Gradient_2qa43")
 [node name="CPUParticles2D6" type="CPUParticles2D" parent="StateMachine/Juego/Contenido/Instancia3/NubeController2/DisappearParticles"]
 position = Vector2(220, 531)
 emitting = false
-lifetime = 1.5
+lifetime = 0.8
 one_shot = true
 explosiveness = 1.0
 texture = ExtResource("44_yw0ai")
@@ -5145,7 +5341,6 @@ Data = SubResource("Resource_2w83k")
 Delay = 0.3
 
 [node name="Label" type="Label" parent="StateMachine/Juego/Contenido/Moraleja/PanelMoraleja2"]
-self_modulate = Color(0.52549, 0.956863, 0.254902, 1)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -5181,7 +5376,6 @@ Data = SubResource("Resource_8u17p")
 Delay = 0.3
 
 [node name="Label" type="Label" parent="StateMachine/Juego/Contenido/Moraleja/PanelMoraleja3"]
-self_modulate = Color(0.52549, 0.956863, 0.254902, 1)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -5364,46 +5558,50 @@ Data = SubResource("Resource_ed0gt")
 [connection signal="timeout" from="StateMachine/Juego/Contenido/Instancia1/Consigna/Timer" to="StateMachine/Juego/Contenido/Instancia1/NubeController2/AnimationPlayer" method="Play"]
 [connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia1/NubeController/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia1/Consigna/consignaPanel" method="ExitPanel"]
 [connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia1/NubeController/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia1/NubeController2/DisappearParticles/DisappearAnimator" method="Play"]
-[connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia1/NubeController/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia1/Piedra_Busqueda" method="SetScale" binds= [false]]
 [connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia1/NubeController/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia1/Piedra_Busqueda" method="SetNextAnimBool" binds= [false]]
+[connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia1/NubeController/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia1/Piedra_Busqueda" method="SetScale" binds= [false]]
 [connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia1/NubeController/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia1/NubeController/AnimationPlayer" method="play" binds= ["Nube_Disappear_Delay"]]
 [connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia1/NubeController/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia1/NubeController2/AnimationPlayer" method="PlayAnim" binds= ["Nube_Disappear"]]
 [connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia1/NubeController2/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia1/Consigna/consignaPanel" method="ExitPanel"]
 [connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia1/NubeController2/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia1/NubeController/DisappearParticles/DisappearAnimator" method="Play"]
-[connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia1/NubeController2/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia1/Piedra_Busqueda" method="SetScale" binds= [true]]
 [connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia1/NubeController2/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia1/Piedra_Busqueda" method="SetNextAnimBool" binds= [true]]
+[connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia1/NubeController2/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia1/Piedra_Busqueda" method="SetScale" binds= [true]]
 [connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia1/NubeController2/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia1/NubeController/AnimationPlayer" method="PlayAnim" binds= ["Nube_Disappear"]]
 [connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia1/NubeController2/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia1/NubeController2/AnimationPlayer" method="play" binds= ["Nube_Disappear_Delay"]]
+[connection signal="InstanceTrue" from="StateMachine/Juego/Contenido/Instancia2" to="StateMachine/Juego/Contenido/Tribunas/BackgroundPivot/CartelDer/Label" method="set_text" binds= ["ÓXIDOS"]]
+[connection signal="InstanceTrue" from="StateMachine/Juego/Contenido/Instancia2" to="StateMachine/Juego/Contenido/Tribunas/BackgroundPivot/CartelIzq/Label" method="set_text" binds= ["HALOGENUROS "]]
 [connection signal="EndOfGame" from="StateMachine/Juego/Contenido/Instancia2/Button" to="." method="Set_Complete"]
 [connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia2/Button" to="StateMachine/Juego/Contenido/Instancia2/Button" method="_on_pressed"]
 [connection signal="timeout" from="StateMachine/Juego/Contenido/Instancia2/Consigna/Timer" to="StateMachine/Juego/Contenido/Instancia2/NubeController/AnimationPlayer" method="Play"]
 [connection signal="timeout" from="StateMachine/Juego/Contenido/Instancia2/Consigna/Timer" to="StateMachine/Juego/Contenido/Instancia2/NubeController2/AnimationPlayer" method="Play"]
 [connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia2/NubeController/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia2/Consigna/consignaPanel" method="ExitPanel"]
 [connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia2/NubeController/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia2/NubeController2/DisappearParticles/DisappearAnimator" method="Play"]
-[connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia2/NubeController/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia2/Piedra_Busqueda" method="SetScale" binds= [false]]
 [connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia2/NubeController/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia2/Piedra_Busqueda" method="SetNextAnimBool" binds= [false]]
+[connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia2/NubeController/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia2/Piedra_Busqueda" method="SetScale" binds= [false]]
 [connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia2/NubeController/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia2/NubeController/AnimationPlayer" method="PlayAnim" binds= ["Nube_Disappear_Delay"]]
 [connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia2/NubeController/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia2/NubeController2/AnimationPlayer" method="PlayAnim" binds= ["Nube_Disappear"]]
 [connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia2/NubeController2/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia2/Consigna/consignaPanel" method="ExitPanel"]
 [connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia2/NubeController2/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia2/NubeController/DisappearParticles/DisappearAnimator" method="Play"]
-[connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia2/NubeController2/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia2/Piedra_Busqueda" method="SetScale" binds= [true]]
 [connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia2/NubeController2/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia2/Piedra_Busqueda" method="SetNextAnimBool" binds= [true]]
+[connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia2/NubeController2/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia2/Piedra_Busqueda" method="SetScale" binds= [true]]
 [connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia2/NubeController2/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia2/NubeController/AnimationPlayer" method="PlayAnim" binds= ["Nube_Disappear"]]
 [connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia2/NubeController2/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia2/NubeController2/AnimationPlayer" method="PlayAnim" binds= ["Nube_Disappear_Delay"]]
+[connection signal="InstanceTrue" from="StateMachine/Juego/Contenido/Instancia3" to="StateMachine/Juego/Contenido/Tribunas/BackgroundPivot/CartelDer/Label" method="set_text" binds= ["SULFUROS"]]
+[connection signal="InstanceTrue" from="StateMachine/Juego/Contenido/Instancia3" to="StateMachine/Juego/Contenido/Tribunas/BackgroundPivot/CartelIzq/Label" method="set_text" binds= ["CARBONATOS"]]
 [connection signal="EndOfGame" from="StateMachine/Juego/Contenido/Instancia3/Button" to="." method="Set_Complete"]
 [connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia3/Button" to="StateMachine/Juego/Contenido/Instancia3/Button" method="_on_pressed"]
 [connection signal="timeout" from="StateMachine/Juego/Contenido/Instancia3/Consigna/Timer" to="StateMachine/Juego/Contenido/Instancia3/NubeController/AnimationPlayer" method="Play"]
 [connection signal="timeout" from="StateMachine/Juego/Contenido/Instancia3/Consigna/Timer" to="StateMachine/Juego/Contenido/Instancia3/NubeController2/AnimationPlayer" method="Play"]
 [connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia3/NubeController/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia3/Consigna/consignaPanel" method="ExitPanel"]
 [connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia3/NubeController/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia3/NubeController2/DisappearParticles/DisappearAnimator" method="Play"]
-[connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia3/NubeController/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia3/Piedra_Busqueda" method="SetScale" binds= [false]]
 [connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia3/NubeController/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia3/Piedra_Busqueda" method="SetNextAnimBool" binds= [false]]
+[connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia3/NubeController/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia3/Piedra_Busqueda" method="SetScale" binds= [false]]
 [connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia3/NubeController/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia3/NubeController/AnimationPlayer" method="PlayAnim" binds= ["Nube_Disappear_Delay"]]
 [connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia3/NubeController/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia3/NubeController2/AnimationPlayer" method="PlayAnim" binds= ["Nube_Disappear"]]
 [connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia3/NubeController2/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia3/Consigna/consignaPanel" method="ExitPanel"]
 [connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia3/NubeController2/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia3/NubeController/DisappearParticles/DisappearAnimator" method="Play"]
-[connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia3/NubeController2/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia3/Piedra_Busqueda" method="SetScale" binds= [true]]
 [connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia3/NubeController2/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia3/Piedra_Busqueda" method="SetNextAnimBool" binds= [true]]
+[connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia3/NubeController2/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia3/Piedra_Busqueda" method="SetScale" binds= [true]]
 [connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia3/NubeController2/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia3/NubeController/AnimationPlayer" method="PlayAnim" binds= ["Nube_Disappear"]]
 [connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia3/NubeController2/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia3/NubeController2/AnimationPlayer" method="PlayAnim" binds= ["Nube_Disappear_Delay"]]
 [connection signal="ButtonPress" from="StateMachine/Juego/Contenido/Moraleja/PanelMoraleja1/Panel(1) Btn(center)" to="StateMachine" method="Trigger_On_Child_Transition" binds= ["juego"]]
