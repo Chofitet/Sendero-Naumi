@@ -46,4 +46,5 @@ func BlockAnim():
 	anim.play("Rock_Block")
 	timer.start()
 
-
+func PlayIdle():
+	anim.play("Rock_Idle")

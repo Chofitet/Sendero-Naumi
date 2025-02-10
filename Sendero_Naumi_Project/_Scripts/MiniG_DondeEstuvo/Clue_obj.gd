@@ -25,8 +25,10 @@ var inPlace : bool
 @export var EditableButton : bool = false
 var ScaleOfChild
 @onready var SquigglingSprite = $SquigglingSprite
+@onready var SquigglingSpriteBig = $SquigglingSpriteBig
 
 func _ready():
+	SquigglingSpriteBig.visible = false
 	if AppearChild: 
 		move_child(get_node("FrontTexture"),0)
 		ScaleOfChild = get_node("FrontTexture").scale
@@ -37,13 +39,18 @@ func _ready():
 	if inactiveInReady:
 		BlockButton(false)
 	if EditableButton : return
-	adjustRect()
+	adjustRect(true)
 	
 	
 
-func adjustRect():
+func adjustRect(isexpand = false):
 	button.set_size(rect.size)
 	button.set_position(rect.position)
+	button.pivot_offset = rect.size/2
+	if !isexpand:
+		button.scale = Vector2(30,30)
+	else :
+		button.scale = Vector2.ONE
 
 func BtnPress():
 	if !isInCenter:
@@ -53,8 +60,14 @@ func BtnPress():
 		ToCenter.emit()
 		MakeAnim(Vector2.ZERO, HighQualityTexture, extra_scale, angleInCenter,1, false,true)
 		SquigglingSprite.visible = false
+		await get_tree().create_timer(0.4).timeout
+		SquigglingSpriteBig.visible = true
+		get_parent().FinalAnim()
+		get_parent().BlockOthersClues(self,false)
+		adjustRect()
 	elif isInCenter and !hasClue:
 		get_parent().BlockOthersClues(self,true)
+		SquigglingSpriteBig.visible = false
 		isInCenter = false
 		z_index = 0
 		NoCenter.emit()
@@ -62,24 +75,28 @@ func BtnPress():
 			MakeAnim(initPosition, lowQualityTexture, Vector2.ONE, initRotation,0,false,false,true)
 		else:
 			MakeAnim(otherPosition.position, lowQualityTexture, Vector2.ONE, otherPosition.rotation_degrees,0,false,false,true)
-		await get_tree().create_timer(1).timeout
-		adjustRect()
+		await get_tree().create_timer(0.4).timeout
+		get_parent().FinalAnim()
+		adjustRect(true)
 	elif isInCenter and hasClue:
 		get_parent().BlockOthersClues(self,true)
+		SquigglingSpriteBig.visible = false
 		isInCenter = false
 		if !inPlace: ToInventary.emit()
 		inPlace = true
 		NoCenter.emit()
 		z_index = 0
-		MakeAnim(ToPosition, lowQualityTexture,inventary_scale, 0,0,true,false,true)
-		await get_tree().create_timer(1).timeout
-		adjustRect()
+		MakeAnim(ToPosition, lowQualityTexture,inventary_scale, 0,0,true,false,false)
+		await get_tree().create_timer(0.4).timeout
+		adjustRect(true)
+		get_parent().FinalAnim()
 	
 	
 	
 
 func MakeAnim(pos, _texture, extra_scale : Vector2 = Vector2(1,1), rotateAngle : float = 0 , index = 0, _hasClue = false, isChildVisible = false, squiggling = false):
 	z_index = 1
+	get_parent().StartAnim()
 	button.visible = false
 	var tween = get_tree().create_tween()
 	tween.tween_property(self,"position",pos,AnimatedSpeed)
@@ -96,7 +113,8 @@ func MakeAnim(pos, _texture, extra_scale : Vector2 = Vector2(1,1), rotateAngle :
 	z_index = index
 	if AppearChild:
 		ShowChild(isChildVisible)
-	if squiggling: SquigglingSprite.visible = true
+	if squiggling: 
+		SquigglingSprite.visible = true
 
 var inFrot
 func ShowChild(isVisible):
@@ -137,3 +155,7 @@ func CalculateScaleVector(_texture) -> Vector2:
 
 func BlockButton(x):
 	button.visible = x
+
+func SetSquiggling(x):
+	if x: SquigglingSprite.ActiveSquiggling()
+	else: SquigglingSprite.InactiveSquiggling()

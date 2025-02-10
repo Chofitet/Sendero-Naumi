@@ -53,9 +53,12 @@ func JumpAnim():
 
 func SetNextAnimBool(Bool):
 	for v in SetVisibility:
-		get_node(v).visible = false
+		#get_node(v).visible = false
+		pass
 	isWinner = Bool
 	isnextAnim = true
+	anim.stop()
+	anim.play("anim_vuvuzela_up")
 
 func EndAnim():
 	if isWinner:
@@ -91,6 +94,9 @@ func LoopLoseAnim():
 	isLose = true
 	timerLoopLook.wait_time=3
 	timerLoopLook.start()
+
+func LoseCryAnim():
+	anim.play("rock_lose_3")
 
 func AnimBackground():
 	animBackground.play(animFlip)

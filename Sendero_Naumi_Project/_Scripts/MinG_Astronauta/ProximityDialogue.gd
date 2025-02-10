@@ -6,6 +6,8 @@ extends Node2D
 @export var RotateInEnter : bool
 var isRotating : bool
 
+var isInactiveDialogue
+
 @export var txt: String:
 	set(new_value):
 		if !Engine.is_editor_hint(): return
@@ -51,6 +53,7 @@ func _ready():
 	$Area2D.area_exited.connect(HideDialogue)
 
 func ShowDialogue(x):
+	if isInactiveDialogue: return
 	if x.is_in_group("Player"):
 		$Panel.visible = true
 		if RotateInEnter:
@@ -84,3 +87,8 @@ func SetVisibility(shape,x):
 
 func disabledCollisionShape():
 	$Area2D/CollisionShape2D.disabled = true
+	
+ 
+func InactiveDialogue():
+	isInactiveDialogue = true
+	

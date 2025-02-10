@@ -15,6 +15,7 @@ var EnterOnce
 @onready var _BotonIzquierda = $btnIzqAnchor/btnIzq
 @onready var _BotonCentral = $btnCentralAnchor/btnCentral
 @onready var SkipButton = $ButtonSkipWritting
+var btnDontPassPanel
 
 var _btns =[]
 @export var characters_per_second : float = 78
@@ -40,7 +41,7 @@ signal CenterBTNPress
 
 func refreshData(numPanel : int):
 	
-	
+	btnDontPassPanel = false
 	
 	DetectBoldText(numOfPanel)
 	
@@ -72,7 +73,7 @@ func refreshData(numPanel : int):
 			$BtnDerAnchor/btnDer/Icon.texture = _texture
 			$BtnDerAnchor/btnDer/Icon/Label.text = string
 			BotonDerecho = true
-		
+			
 		if btn.Place ==  ButtonPanel.place.center:
 			_BotonCentral.visible = inInEditor
 			$btnCentralAnchor/btnCentral/Icon.texture = _texture
@@ -84,7 +85,9 @@ func refreshData(numPanel : int):
 			$btnIzqAnchor/btnIzq/Icon.texture = _texture
 			$btnIzqAnchor/btnIzq/Icon/Label.text = string
 			BotonIzquierdo = true
-	
+			
+		if btn.dontPassPanel: btnDontPassPanel = true
+		
 	if Engine.is_editor_hint(): label.visible_ratio = true
 
 func InstanciateIntermediate():
@@ -166,6 +169,9 @@ func ButtonPress(btn):
 	_BotonDerecho.visible = false
 	_BotonCentral.visible = false
 	_BotonIzquierda.visible = false
+	if btnDontPassPanel : 
+		numOfPanel += 1
+		return
 	if numOfPanel  == Texts.size() or RepitingPanel: 
 		ExitPanel()
 		if once : return
@@ -208,6 +214,7 @@ func InstanciateButtonPOP(btn):
 func DetectBoldText(numPanel):
 	if Texts.size() < numPanel -1: return
 	if  Texts[numPanel -1].Text.contains("[b]"):
+		label.text = ""
 		label = $labelRich
 	else: label = $label
 		
