@@ -20,10 +20,13 @@ var isPressing
 var Meteoros :=[]
 signal AllCollect
 var isBlock = true
+signal collision
+@onready var Collision_Timer : Timer = $Timer
 
 func _ready():
 	$Area2D.area_entered.connect(GetPickUpObjects)
 	$Area2D.area_entered.connect(SetSelfCamFollow)
+	Collision_Timer.timeout.connect(RestartCollisionDetector)
 
 func _physics_process(delta):
 	Move(delta)
@@ -48,6 +51,8 @@ func _input(event: InputEvent) -> void:
 		isPressing = false
 		direction = Vector2.ZERO
 
+var last_collider 
+
 func Move(delta):
 	if !isPressing:
 		Apply_Friction(friction * delta)
@@ -69,10 +74,22 @@ func Move(delta):
 			if c.get_collider().is_in_group("movible"):
 				c.get_collider().apply_central_impulse(-c.get_normal() * 80)
 			else:
+				
 				var collision_info = move_and_collide(velocity * delta)
 				if collision_info:
 					velocity = velocity.bounce(collision_info.get_normal())
-					
+				
+				if last_collider == null:
+					Collision_Timer.start()
+					last_collider = c.get_collider()
+					collision_count += 1
+					collision.emit(str(collision_count),1)
+					print(collision_count)
+
+
+func RestartCollisionDetector():
+	last_collider = null
+
 func Apply_Friction(amount):
 	if velocity.length() > amount:
 		velocity -= velocity.normalized() * amount
@@ -88,6 +105,8 @@ func RotateToDirectionSmoothly(delta):
 
 func _get_follow_node_direction() -> Vector2:
 	return direction
+
+var collision_count = 0
 
 func GetPickUpObjects(x):
 	if x.is_in_group("meteoro"):
