@@ -1,9 +1,10 @@
-[gd_scene load_steps=25 format=3 uid="uid://b00ok4g2p2vql"]
+[gd_scene load_steps=26 format=3 uid="uid://b00ok4g2p2vql"]
 
 [ext_resource type="Texture2D" uid="uid://bom2snkxot1ji" path="res://Sprites/Intro/loop-caida-tira.png" id="1_rx1cn"]
 [ext_resource type="Texture2D" uid="uid://hf5y4ic16cqj" path="res://Sprites/Intro/intro - background.jpg" id="1_xm8pn"]
 [ext_resource type="Texture2D" uid="uid://jd6systmhxf1" path="res://Sprites/Intro/intro - suelo.png" id="2_2edvn"]
 [ext_resource type="Script" path="res://_Scripts/Map_fall_sprite.gd" id="2_bkqej"]
+[ext_resource type="SpriteFrames" uid="uid://d1pa1pyf7ou2b" path="res://Animations/mapa_fall_intro.tres" id="3_iq20j"]
 [ext_resource type="PackedScene" uid="uid://biluutecl1cej" path="res://Scenes/Experiments/skip_sceen.tscn" id="3_wlutv"]
 [ext_resource type="StyleBox" uid="uid://b3tjes2hcm3wx" path="res://Resources/UI_Resources/StyleBoxTrasparent.tres" id="3_x6oit"]
 [ext_resource type="Texture2D" uid="uid://cjjoaemhep814" path="res://Sprites/mapa-detalle.png" id="4_q3m1c"]
@@ -381,6 +382,12 @@ grow_horizontal = 2
 grow_vertical = 0
 texture = ExtResource("2_2edvn")
 expand_mode = 1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(361, 466)
+scale = Vector2(1.52533, 1.52533)
+sprite_frames = ExtResource("3_iq20j")
+animation = &"caida"
 
 [node name="Map_fall_sprite" type="Sprite2D" parent="."]
 visible = false
