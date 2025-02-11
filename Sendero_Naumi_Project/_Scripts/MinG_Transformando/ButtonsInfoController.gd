@@ -9,11 +9,13 @@ func _ready():
 	
 
 func ActiveButtons():
+	if !LastRock: return
 	for b in Buttons:
 		get_node(b).visible = true
 	AcivePanel()
 
 func DisabledButtons():
+	if !LastRock: return
 	for b in Buttons:
 		get_node(b).visible = false
 	DisablePanel()

@@ -60,10 +60,14 @@ func refreshData(numPanel : int):
 	else:
 		textData = Texts[numPanel -1]
 	
+	
 	label.text = textData.Text
 	if textData.SizePanel != Vector2.ZERO: 
 		var tween = get_tree().create_tween()
 		tween.tween_property(self,"size",textData.SizePanel,0.3)
+	if textData.Position != Vector2.ZERO:
+		var tween = get_tree().create_tween()
+		tween.tween_property(self,"position",textData.Position,0.3)
 	
 	for btn in textData.buttons:
 		var _texture = btn.texture

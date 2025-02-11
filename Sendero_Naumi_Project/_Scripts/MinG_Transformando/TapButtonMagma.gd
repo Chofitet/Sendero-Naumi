@@ -9,8 +9,8 @@ var texturelava
 var initTexture
 var initScale 
 var textureLavaChica
-@export var lavaFace : Sprite2D
-@export var nextLavaFace : Sprite2D
+@export var lavaFace : AnimatedSprite2D
+@export var nextLavaFace : AnimatedSprite2D
 @export var ParentRock : Node2D
 @export var PartsToBreak : int
 var NumOfPart = 0
@@ -18,14 +18,14 @@ var PartsOfPath := []
 var NumOfTouch = 0
 
 func _ready():
-	initScale = lavaFace.get_parent().scale
-	nextLavaFace.visible = false
+	#initScale = lavaFace.get_parent().scale
+	#nextLavaFace.visible = false
 	texturelava = load("res://Sprites/ZonaGeología/face 2.png")
 	textureLavaChica = load("res://Sprites/ZonaGeología/face 2 chica.png")
 	timer = get_node("Timer")
 	timer.timeout.connect(EmitEarthquake)
 	self.pressed.connect(Tap)
-	initTexture = lavaFace.texture
+	#initTexture = lavaFace.texture
 	for p in $resquebrajado.get_children():
 		PartsOfPath.append(p)
 		NumOfPart +=1
@@ -35,28 +35,23 @@ func Tap():
 		EarthquakeAnim.OnSmallEarthquake()
 		ActiveDesquebrajado(NumOfTouch)
 		NumOfTouch += 1
-		HitLavaFace(0.6)
+		HitLavaFace(0.6, "idle")
 		return
 	NumOfTap = 3
 	disabled = true
 	timer.start()
-	HitLavaFace(1.5)
+	HitLavaFace(1.5, "out")
 	$Bloqueo.visible = false
 	$patch.visible = false
+	$SquigglingSprite.InactiveSquiggling()
 	for p in PartsOfPath:
 		p.Explote(ParentRock)
 	BeforeEarthquake.emit()
 
-func HitLavaFace(time):
-	if name == "TapButton1":
-			lavaFace.texture = texturelava
-	else:
-		lavaFace.texture = textureLavaChica
+func HitLavaFace(time, anim):
+	lavaFace.play("tap")
 	await get_tree().create_timer(time).timeout
-	if name == "TapButton1":
-		lavaFace.texture = load("res://Sprites/ZonaGeología/face 1.png")
-	else:
-		lavaFace.texture = load("res://Sprites/ZonaGeología/face 3.png")
+	lavaFace.play(anim)
 
 func ActiveDesquebrajado(numTouch):
 	var num = roundi(NumOfPart / PartsToBreak)
@@ -80,6 +75,7 @@ func ChangeLavaFace():
 func SetTrueVisibility():
 	disabled = false
 	$Glow.visible = true
+	$SquigglingSprite.ActiveSquiggling()
 
 func TransparentPatch(num):
 	var tween = get_tree().create_tween()
