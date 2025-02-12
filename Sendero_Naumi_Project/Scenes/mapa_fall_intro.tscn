@@ -1,149 +1,19 @@
-[gd_scene load_steps=26 format=3 uid="uid://b00ok4g2p2vql"]
+[gd_scene load_steps=21 format=3 uid="uid://b00ok4g2p2vql"]
 
-[ext_resource type="Texture2D" uid="uid://bom2snkxot1ji" path="res://Sprites/Intro/loop-caida-tira.png" id="1_rx1cn"]
 [ext_resource type="Texture2D" uid="uid://hf5y4ic16cqj" path="res://Sprites/Intro/intro - background.jpg" id="1_xm8pn"]
 [ext_resource type="Texture2D" uid="uid://jd6systmhxf1" path="res://Sprites/Intro/intro - suelo.png" id="2_2edvn"]
-[ext_resource type="Script" path="res://_Scripts/Map_fall_sprite.gd" id="2_bkqej"]
 [ext_resource type="SpriteFrames" uid="uid://d1pa1pyf7ou2b" path="res://Animations/mapa_fall_intro.tres" id="3_iq20j"]
 [ext_resource type="PackedScene" uid="uid://biluutecl1cej" path="res://Scenes/Experiments/skip_sceen.tscn" id="3_wlutv"]
 [ext_resource type="StyleBox" uid="uid://b3tjes2hcm3wx" path="res://Resources/UI_Resources/StyleBoxTrasparent.tres" id="3_x6oit"]
 [ext_resource type="Texture2D" uid="uid://cjjoaemhep814" path="res://Sprites/mapa-detalle.png" id="4_q3m1c"]
+[ext_resource type="Script" path="res://_Scripts/mapArriveSpot.gd" id="4_u6txa"]
 [ext_resource type="Script" path="res://_Scripts/PlayAnimation.gd" id="5_3difv"]
-[ext_resource type="PackedScene" uid="uid://btnejcy6d18fh" path="res://Scenes/Experiments/anim_map.tscn" id="7_aobht"]
 [ext_resource type="Texture2D" uid="uid://chqivoetkgkoj" path="res://Sprites/UI/circulo.png" id="10_fkwv8"]
 [ext_resource type="Texture2D" uid="uid://dhx6ness36h5f" path="res://Sprites/logoChicoCirculo.png" id="11_88s5v"]
+[ext_resource type="PackedScene" uid="uid://cw3ok8v4p620b" path="res://Scenes/Experiments/squiggling_sprite.tscn" id="12_bs1t8"]
 [ext_resource type="PackedScene" uid="uid://bac1ysj2c0bok" path="res://Scenes/Experiments/hand_ui.tscn" id="12_lhlbh"]
 [ext_resource type="PackedScene" uid="uid://djhg7jvxtexyl" path="res://Scenes/UI_Scenes/btn_Change_Scene.tscn" id="12_n3dw3"]
-
-[sub_resource type="Animation" id="Animation_fleps"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../mapArriveSpot/Mapa:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Button:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-
-[sub_resource type="Animation" id="Animation_w7vql"]
-resource_name = "map_anim"
-length = 2.4
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.2),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4, 5, 7, 8, 9, 10, 11, 12]
-}
-
-[sub_resource type="Animation" id="Animation_sy2cx"]
-resource_name = "map_arrive_anim"
-length = 1.4
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [14, 15, 16, 17, 18, 19, 20]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Button:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1.4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-
-[sub_resource type="Animation" id="Animation_xrwbe"]
-resource_name = "map_up_anim"
-length = 5.4
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [21, 22, 23, 24, 25, 26, 27]
-}
-tracks/1/type = "animation"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../mapArriveSpot/Mapa/AnimationPlayer")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"clips": PackedStringArray("map_enter"),
-"times": PackedFloat32Array(1.4)
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("../mapArriveSpot/Mapa:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(-0.2, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_yk36o"]
-_data = {
-"RESET": SubResource("Animation_fleps"),
-"map_anim": SubResource("Animation_w7vql"),
-"map_arrive_anim": SubResource("Animation_sy2cx"),
-"map_up_anim": SubResource("Animation_xrwbe")
-}
+[ext_resource type="Texture2D" uid="uid://chilh432yan4s" path="res://Sprites/Intro/squigglingIntro/mapaIntroSQUIG - UI.png" id="13_q1dat"]
 
 [sub_resource type="Animation" id="Animation_klold"]
 length = 0.001
@@ -183,22 +53,10 @@ tracks/2/keys = {
 "update": 1,
 "values": [false]
 }
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("../AnimMap:visible")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
 
 [sub_resource type="Animation" id="Animation_e8t3g"]
 resource_name = "map_enter"
-length = 5.0
+length = 3.9
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -206,10 +64,10 @@ tracks/0/path = NodePath(".:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(1.1, 5),
+"times": PackedFloat32Array(0, 3.9),
 "transitions": PackedFloat32Array(3.73213, 1),
 "update": 0,
-"values": [0.0, -3.14159]
+"values": [-0.0302691, -3.14159]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -218,10 +76,10 @@ tracks/1/path = NodePath(".:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(1.1, 5),
+"times": PackedFloat32Array(0, 3.9),
 "transitions": PackedFloat32Array(9, 1),
 "update": 0,
-"values": [Vector2(0.258547, 0.258547), Vector2(20, 20)]
+"values": [Vector2(0.195, 0.184746), Vector2(20, 20)]
 }
 tracks/2/type = "method"
 tracks/2/imported = false
@@ -230,7 +88,7 @@ tracks/2/path = NodePath("../../SkipSceen")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(4.6),
+"times": PackedFloat32Array(3.5),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
@@ -244,22 +102,10 @@ tracks/3/path = NodePath(".:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 1.1),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false, true]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("../AnimMap:visible")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 1.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
+"values": [true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_smvwa"]
@@ -283,31 +129,31 @@ tracks/0/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
-tracks/1/type = "method"
+tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../AnimMap")
+tracks/1/path = NodePath("../Label:self_modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(6.4),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"StartAnim"
-}]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("../Label:self_modulate")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
 "times": PackedFloat32Array(0.3, 2, 4.4, 6.4),
 "transitions": PackedFloat32Array(1, 1.3, 0.3, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("..")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"playAnimMap"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_7m1eg"]
@@ -383,46 +229,6 @@ grow_vertical = 0
 texture = ExtResource("2_2edvn")
 expand_mode = 1
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(361, 466)
-scale = Vector2(1.52533, 1.52533)
-sprite_frames = ExtResource("3_iq20j")
-animation = &"caida"
-
-[node name="Map_fall_sprite" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(362, -20)
-scale = Vector2(0.256, 0.256)
-texture = ExtResource("1_rx1cn")
-hframes = 7
-vframes = 4
-script = ExtResource("2_bkqej")
-duration = 4.8
-
-[node name="Button" type="Button" parent="Map_fall_sprite"]
-visible = false
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -1416.02
-offset_top = 2785.16
-offset_right = -1105.02
-offset_bottom = 2971.16
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/focus = ExtResource("3_x6oit")
-flat = true
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Map_fall_sprite"]
-autoplay = "map_anim"
-libraries = {
-"": SubResource("AnimationLibrary_yk36o")
-}
-script = ExtResource("5_3difv")
-animation = "map_up_anim"
-
 [node name="SkipSceen" parent="." instance=ExtResource("3_wlutv")]
 wait_time = 5.0
 NextScene = "mapa_scroll_intro"
@@ -440,13 +246,17 @@ offset_top = -0.600037
 offset_bottom = -0.600037
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("4_u6txa")
 
-[node name="AnimMap" parent="mapArriveSpot" instance=ExtResource("7_aobht")]
-scale = Vector2(0.35, 0.35)
+[node name="MapAnim" type="AnimatedSprite2D" parent="mapArriveSpot"]
+position = Vector2(1, -391)
+scale = Vector2(1.52533, 1.52533)
+sprite_frames = ExtResource("3_iq20j")
+animation = &"caida"
 
 [node name="Mapa" type="Sprite2D" parent="mapArriveSpot"]
 visible = false
-position = Vector2(-18, -283)
+position = Vector2(-24, -229)
 scale = Vector2(0.258547, 0.258547)
 texture = ExtResource("4_q3m1c")
 
@@ -499,6 +309,25 @@ vertical_alignment = 1
 [node name="handUI" parent="mapArriveSpot" instance=ExtResource("12_lhlbh")]
 AnimToPlay = "idle_anim"
 
+[node name="Button" type="Button" parent="mapArriveSpot"]
+layout_mode = 0
+offset_left = -152.0
+offset_top = -119.0
+offset_right = 149.0
+offset_bottom = 135.0
+theme_override_styles/normal = ExtResource("3_x6oit")
+theme_override_styles/hover = ExtResource("3_x6oit")
+theme_override_styles/pressed = ExtResource("3_x6oit")
+theme_override_styles/disabled = ExtResource("3_x6oit")
+theme_override_styles/focus = ExtResource("3_x6oit")
+flat = true
+
+[node name="SquigglingSprite" parent="mapArriveSpot" instance=ExtResource("12_bs1t8")]
+position = Vector2(-14, 56)
+scale = Vector2(0.753623, 0.753623)
+texture = ExtResource("13_q1dat")
+ActiveInBegining = false
+
 [node name="ButtonChangeScene" parent="." instance=ExtResource("12_n3dw3")]
 layout_mode = 1
 anchors_preset = 0
@@ -515,7 +344,4 @@ grow_vertical = 1
 text = "Skip"
 NextScene = "Map_Screen"
 
-[connection signal="pressed" from="Map_fall_sprite/Button" to="Map_fall_sprite/AnimationPlayer" method="Play"]
-[connection signal="endAnim" from="mapArriveSpot/AnimMap" to="mapArriveSpot/handUI" method="SetVisibility" binds= [true]]
-[connection signal="trigger" from="mapArriveSpot/AnimMap" to="mapArriveSpot/Mapa/AnimationPlayer" method="Play"]
-[connection signal="trigger" from="mapArriveSpot/AnimMap" to="mapArriveSpot/handUI" method="SetVisibility" binds= [false]]
+[connection signal="button_down" from="mapArriveSpot/Button" to="mapArriveSpot/MapAnim" method="play" binds= ["agarrado"]]
