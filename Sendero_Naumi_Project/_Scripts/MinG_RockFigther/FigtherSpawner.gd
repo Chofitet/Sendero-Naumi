@@ -39,9 +39,6 @@ func SpawnFighters():
 func PassInstance():
 	if !playerWinner:
 		RetryPanel.EnterPanel()
-		if isLeftWinner:
-			LeftRock.PlayIdle()
-		else: RigthRock.PlayIdle()
 		return
 	LeftRock.queue_free()
 	RigthRock.queue_free()
@@ -53,6 +50,7 @@ func Figth(btnLeftPressed):
 	Overlay1.Anim()
 	Overlay2.Anim()
 	AnimatorUI.play_backwards("EnterAnim")
+	
 
 func RetryLevel():
 	if LeftRock == null : return

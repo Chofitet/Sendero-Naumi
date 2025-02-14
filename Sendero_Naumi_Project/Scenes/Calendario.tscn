@@ -1,8 +1,9 @@
-[gd_scene load_steps=106 format=3 uid="uid://cmv5m3ynk4o5y"]
+[gd_scene load_steps=113 format=3 uid="uid://cmv5m3ynk4o5y"]
 
 [ext_resource type="Script" path="res://_Scripts/Minigame_Save_Controller.gd" id="1_jl73q"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/StateMachineMinigames.gd" id="2_7aqcq"]
 [ext_resource type="Texture2D" uid="uid://b1y8qh1nn5max" path="res://Sprites/ZonaAstronomia/fondo_mapa.png" id="2_ga0bv"]
+[ext_resource type="Texture2D" uid="uid://nuybqhitpej1" path="res://Sprites/Mapa/fondo_mapa.png" id="3_83r7u"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/ConsignaState.gd" id="3_ae37j"]
 [ext_resource type="Texture2D" uid="uid://chxhqu3ppiequ" path="res://Sprites/ZonaAstronomia/calendario2.png" id="4_kye7v"]
 [ext_resource type="Texture2D" uid="uid://p1hitsdt3rfl" path="res://Sprites/ZonaAstronomia/foto - calendario.png" id="5_7guea"]
@@ -11,7 +12,9 @@
 [ext_resource type="StyleBox" uid="uid://5oga2arj2sv0" path="res://Resources/UI_Resources/PanelSimple.tres" id="6_ipmqm"]
 [ext_resource type="Theme" uid="uid://bhum72inirq1q" path="res://Themes/Generic_UI.tres" id="7_g1fqq"]
 [ext_resource type="Script" path="res://Scenes/GenericPanelController.gd" id="8_jxksc"]
+[ext_resource type="Texture2D" uid="uid://div62pk2a1fak" path="res://Sprites/ZonaAstronomia/memoria - calendario.png" id="9_leb4x"]
 [ext_resource type="LabelSettings" uid="uid://bd2jj8jlh3vp2" path="res://Themes/Geología/LabelSetting_Generic.tres" id="9_mlbvw"]
+[ext_resource type="Shader" path="res://shaders/WobblyGrid.gdshader" id="9_ppfba"]
 [ext_resource type="Script" path="res://_Scripts/PlayAnimation.gd" id="10_rk6di"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/JuegoState.gd" id="11_xj5m7"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/Button_Change_StateMinigame.gd" id="12_xig48"]
@@ -66,6 +69,23 @@
 [ext_resource type="Texture2D" uid="uid://cy825erdd8i5o" path="res://Sprites/ZonaAstronomia/squigglingCalendario/respuestaASQUIG - calendario.png" id="52_og33l"]
 [ext_resource type="Texture2D" uid="uid://ced0cvvahqlq4" path="res://Sprites/ZonaAstronomia/squigglingCalendario/respuestaBSQUIG - calendario.png" id="53_k35md"]
 [ext_resource type="Texture2D" uid="uid://c0uimvammx7fd" path="res://Sprites/ZonaAstronomia/squigglingCalendario/respuestaCSQUIG - calendario.png" id="54_7ilv3"]
+[ext_resource type="Theme" uid="uid://vengl112frfy" path="res://Resources/UI_Resources/TransparentBubblePanel.tres" id="55_7pksd"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xwgrb"]
+shader = ExtResource("9_ppfba")
+shader_parameter/waveAmplitude = 0.013
+shader_parameter/correctVertex = true
+shader_parameter/waveFrequency = 10.0
+shader_parameter/verticalWave = false
+shader_parameter/keepTransparency = true
+shader_parameter/useTime = true
+shader_parameter/waveSpeed = 1.0
+shader_parameter/progress = 0.0
+shader_parameter/firstHalf = 0.5
+shader_parameter/secondHalf = 0.5
+shader_parameter/freezeFirstHalf = false
+shader_parameter/freezeSecondHalf = false
+shader_parameter/alpha = 0.0
 
 [sub_resource type="Animation" id="Animation_jetb7"]
 length = 0.001
@@ -92,6 +112,54 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(1e-05, 1e-05)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Control/calendario/calendarioSilueta:material:shader_parameter/alpha")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Control/calendario/calendarioSilueta:material:shader_parameter/waveAmplitude")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.013]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Control/calendario/calendarioSilueta:material:shader_parameter/waveFrequency")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [10.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Control/calendario/calendarioSilueta:material:shader_parameter/waveSpeed")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
 }
 
 [sub_resource type="Animation" id="Animation_8hayf"]
@@ -157,9 +225,62 @@ tracks/1/keys = {
 resource_name = "questions"
 length = 1.2
 
+[sub_resource type="Animation" id="Animation_bbp38"]
+resource_name = "fadeMemoria"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/calendario/calendarioSilueta:material:shader_parameter/alpha")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control/calendario/calendarioSilueta:material:shader_parameter/waveAmplitude")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [0.1, 0.013]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Control/calendario/calendarioSilueta:material:shader_parameter/waveFrequency")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [20.0, 10.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Control/calendario/calendarioSilueta:material:shader_parameter/waveSpeed")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [20.0, 1.0]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4y1fe"]
 _data = {
 "RESET": SubResource("Animation_jetb7"),
+"fadeMemoria": SubResource("Animation_bbp38"),
 "in": SubResource("Animation_8hayf"),
 "out": SubResource("Animation_37jri"),
 "pass": SubResource("Animation_8mica"),
@@ -175,10 +296,16 @@ dontPassPanel = false
 
 [sub_resource type="Resource" id="Resource_fuwyd"]
 script = ExtResource("18_66s5d")
-Text = "¿SABÍAS QUE EN EL MUSEO HAY UN CALENDARIO GIGANTE?"
+Text = "¿SABÍAS QUE EN EL MUSEO
+HAY UN CALENDARIO GIGANTE?"
 SizePanel = Vector2(0, 0)
 Position = Vector2(0, 0)
 buttons = Array[ExtResource("16_nigs6")]([SubResource("Resource_omnp6")])
+
+[sub_resource type="Resource" id="Resource_hfs58"]
+script = ExtResource("17_ocl48")
+NumberOfPanel = 1
+Place = 0
 
 [sub_resource type="Resource" id="Resource_gqjk5"]
 script = ExtResource("16_nigs6")
@@ -189,9 +316,10 @@ dontPassPanel = false
 
 [sub_resource type="Resource" id="Resource_fkmvq"]
 script = ExtResource("18_66s5d")
-Text = "MUESTRA CUANDO PASARÍA CADA MOMENTO DE LA HISTORIA DEL UNIVERSO 
-SI TODO HUBIERA SUCEDIDO EN UN SOLO AÑO."
-SizePanel = Vector2(0, 0)
+Text = "MUESTRA CUÁNDO PASARÍA CADA EVENTO
+DE LA HISTORIA DEL UNIVERSO
+SI TODO HUBIERA SUCEDIDO EN UN MISMO AÑO."
+SizePanel = Vector2(682, 228)
 Position = Vector2(0, 0)
 buttons = Array[ExtResource("16_nigs6")]([SubResource("Resource_gqjk5")])
 
@@ -204,16 +332,11 @@ dontPassPanel = false
 
 [sub_resource type="Resource" id="Resource_y64rv"]
 script = ExtResource("18_66s5d")
-Text = "EN NUESTRA ULTIMA VISITA
-LE SACAMOS UNA FOTO PERO..."
-SizePanel = Vector2(0, 0)
+Text = "EN NUESTRA ÚLTIMA VISITA
+LE SACAMOS UNA FOTO"
+SizePanel = Vector2(682, 228)
 Position = Vector2(0, 0)
 buttons = Array[ExtResource("16_nigs6")]([SubResource("Resource_tubvr")])
-
-[sub_resource type="Resource" id="Resource_hfs58"]
-script = ExtResource("17_ocl48")
-NumberOfPanel = 3
-Place = 0
 
 [sub_resource type="Resource" id="Resource_hjq0o"]
 script = ExtResource("16_nigs6")
@@ -224,21 +347,28 @@ dontPassPanel = false
 
 [sub_resource type="Resource" id="Resource_81ob6"]
 script = ExtResource("18_66s5d")
-Text = "SALIÓ MEDIO TAPADO"
-SizePanel = Vector2(0, 0)
+Text = "PERO SALIÓ MEDIO TAPADA."
+SizePanel = Vector2(682, 228)
 Position = Vector2(0, 0)
 buttons = Array[ExtResource("16_nigs6")]([SubResource("Resource_hjq0o")])
 
 [sub_resource type="Resource" id="Resource_b5efl"]
 script = ExtResource("18_66s5d")
-Text = "AYÚDANOS COMPLETANDO LAS PARTES QUE NO SE VEN!"
-SizePanel = Vector2(0, 0)
-Position = Vector2(0, 0)
+Text = "AYUDANOS A CORREGIR
+LAS PARTES QUE NO SE VEN!"
+SizePanel = Vector2(930, 228)
+Position = Vector2(-103, 0)
+PanelTheme = ExtResource("55_7pksd")
 buttons = Array[ExtResource("16_nigs6")]([])
+
+[sub_resource type="Resource" id="Resource_ko3kd"]
+script = ExtResource("17_ocl48")
+NumberOfPanel = 2
+Place = 0
 
 [sub_resource type="Resource" id="Resource_6krua"]
 script = ExtResource("17_ocl48")
-NumberOfPanel = 1
+NumberOfPanel = 3
 Place = 0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lebsb"]
@@ -344,7 +474,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-256, -109)]
+"values": [Vector2(-273, 125)]
 }
 
 [sub_resource type="Animation" id="Animation_pigvw"]
@@ -372,7 +502,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0.6, 0.9, 1, 1.3),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(-706, -104), Vector2(-196, -104), Vector2(-256, -109), Vector2(-256, -109)]
+"values": [Vector2(-706, 125), Vector2(-196, 125), Vector2(-273, 125), Vector2(-273, 125)]
 }
 
 [sub_resource type="Animation" id="Animation_irdj5"]
@@ -478,14 +608,15 @@ _data = {
 
 [sub_resource type="Resource" id="Resource_v2ur4"]
 script = ExtResource("18_66s5d")
-Text = "AYÚDANOS COMPLETANDO LAS PARTES QUE NO SE VEN!"
+Text = "AYUDANOS A CORREGIR
+LAS PARTES QUE NO SE VEN!"
 SizePanel = Vector2(0, 0)
-Position = Vector2(0, 0)
+Position = Vector2(-103, 0)
 buttons = Array[ExtResource("16_nigs6")]([])
 
 [sub_resource type="Resource" id="Resource_uthvg"]
 script = ExtResource("18_66s5d")
-Text = ""
+Text = "[b]"
 SizePanel = Vector2(0, 0)
 Position = Vector2(0, 0)
 buttons = Array[ExtResource("16_nigs6")]([])
@@ -574,6 +705,18 @@ texture = ExtResource("2_ga0bv")
 expand_mode = 1
 stretch_mode = 1
 
+[node name="TextureRect2" type="TextureRect" parent="Calendario/Control"]
+self_modulate = Color(1, 1, 1, 0.266667)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_83r7u")
+expand_mode = 1
+stretch_mode = 1
+
 [node name="ColorRect" type="ColorRect" parent="Calendario/Control"]
 visible = false
 layout_mode = 1
@@ -597,7 +740,6 @@ script = ExtResource("3_ae37j")
 Consignas = ["Hey esto es una consigna"]
 
 [node name="Contenido" type="Control" parent="Calendario/StateMachine/Consigna"]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -616,9 +758,18 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="calendario" type="Node2D" parent="Calendario/StateMachine/Consigna/Contenido/Control"]
+position = Vector2(0, 1215)
+rotation = 0.000822353
+
+[node name="calendarioSilueta" type="Sprite2D" parent="Calendario/StateMachine/Consigna/Contenido/Control/calendario"]
+material = SubResource("ShaderMaterial_xwgrb")
+position = Vector2(-0.999146, -1215)
+rotation = -0.000822353
+scale = Vector2(0.495176, 0.495176)
+texture = ExtResource("9_leb4x")
 
 [node name="pivot" type="Node2D" parent="Calendario/StateMachine/Consigna/Contenido/Control/calendario"]
-position = Vector2(514, -159)
+position = Vector2(514, -1375)
 rotation = -1.8675
 script = ExtResource("5_viqf2")
 Anim = "appear"
@@ -691,31 +842,41 @@ layout_mode = 1
 anchors_preset = 8
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_left = -326.0
+offset_left = -334.0
 offset_top = -138.0
-offset_right = 326.0
+offset_right = 334.0
 offset_bottom = 138.0
 grow_vertical = 2
-pivot_offset = Vector2(326, 138)
+pivot_offset = Vector2(334, 138)
 characters_per_second = 45.0
-Texts = Array[ExtResource("18_66s5d")]([SubResource("Resource_fuwyd"), SubResource("Resource_fkmvq"), SubResource("Resource_y64rv")])
+Texts = Array[ExtResource("18_66s5d")]([SubResource("Resource_fuwyd")])
 
-[node name="Panel(3) Btn(rigth)" parent="Calendario/StateMachine/Consigna/Contenido/PanelIntro1" instance=ExtResource("15_4bh1k")]
+[node name="Panel(1) Btn(rigth)" parent="Calendario/StateMachine/Consigna/Contenido/PanelIntro1" instance=ExtResource("15_4bh1k")]
 Data = SubResource("Resource_hfs58")
 
 [node name="PanelIntro2" parent="Calendario/StateMachine/Consigna/Contenido" instance=ExtResource("15_1ptxs")]
 layout_mode = 1
-offset_top = 81.0
-offset_bottom = 309.0
+anchors_preset = -1
+anchor_left = 0.501
+anchor_top = 0.157
+anchor_right = 0.501
+anchor_bottom = 0.157
+offset_left = -340.72
+offset_top = -113.96
+offset_right = 341.28
+offset_bottom = 114.04
 AppearInBeginning = false
 characters_per_second = 45.0
-Texts = Array[ExtResource("18_66s5d")]([SubResource("Resource_81ob6"), SubResource("Resource_b5efl")])
+Texts = Array[ExtResource("18_66s5d")]([SubResource("Resource_fkmvq"), SubResource("Resource_y64rv"), SubResource("Resource_81ob6"), SubResource("Resource_b5efl")])
 
-[node name="Panel(1) Btn(rigth)" parent="Calendario/StateMachine/Consigna/Contenido/PanelIntro2" instance=ExtResource("15_4bh1k")]
+[node name="Panel(2) Btn(rigth)" parent="Calendario/StateMachine/Consigna/Contenido/PanelIntro2" instance=ExtResource("15_4bh1k")]
+Data = SubResource("Resource_ko3kd")
+
+[node name="Panel(3) Btn(rigth)" parent="Calendario/StateMachine/Consigna/Contenido/PanelIntro2" instance=ExtResource("15_4bh1k")]
 Data = SubResource("Resource_6krua")
 
 [node name="Timer" type="Timer" parent="Calendario/StateMachine/Consigna/Contenido/PanelIntro2" node_paths=PackedStringArray("state_to_change", "state_machine")]
-wait_time = 3.0
+wait_time = 2.0
 script = ExtResource("13_p1cy2")
 state_to_change = NodePath("../../../../Juego")
 state_machine = NodePath("../../../..")
@@ -727,6 +888,7 @@ StateMachine = NodePath("..")
 InstanciasMinijuego = [NodePath("Contenido/Instancia1"), NodePath("Contenido/Instancia2"), NodePath("Contenido/Instancia3"), NodePath("Contenido/Instancia4"), NodePath("Contenido/Instancia5"), NodePath("Contenido/Instancia6"), NodePath("Contenido/Instancia7")]
 
 [node name="Contenido" type="Control" parent="Calendario/StateMachine/Juego"]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -956,13 +1118,14 @@ flip_h = true
 
 [node name="cinta2" type="Sprite2D" parent="Calendario/StateMachine/Juego/Contenido/Spot/AnswerController/AnswerSpot"]
 position = Vector2(1000, -148)
-rotation = 5.34435
+rotation = 4.20005
 scale = Vector2(0.990679, 0.975307)
 texture = ExtResource("43_7u4sv")
 
 [node name="Cintas" type="Sprite2D" parent="Calendario/StateMachine/Juego/Contenido/Spot/AnswerController/AnswerSpot"]
 visible = false
 position = Vector2(13, -1)
+scale = Vector2(0.995952, 0.995951)
 texture = ExtResource("44_oc650")
 
 [node name="Spot" type="Area2D" parent="Calendario/StateMachine/Juego/Contenido/Spot/AnswerController" node_paths=PackedStringArray("RigthObject") groups=["spot"]]
@@ -983,6 +1146,29 @@ libraries = {
 "": SubResource("AnimationLibrary_lqutb")
 }
 
+[node name="DateeXAMPLE" type="Sprite2D" parent="Calendario/StateMachine/Juego/Contenido/Spot/AnswerController"]
+visible = false
+texture = ExtResource("26_4iu1w")
+
+[node name="DragObject" parent="Calendario/StateMachine/Juego/Contenido/Spot/AnswerController/DateeXAMPLE" node_paths=PackedStringArray("spot") instance=ExtResource("24_2ql8s")]
+spot = NodePath("../../Spot")
+holdTime = 0.2
+DesapearInPlace = true
+
+[node name="CollisionShape2D" parent="Calendario/StateMachine/Juego/Contenido/Spot/AnswerController/DateeXAMPLE/DragObject" index="0"]
+shape = ExtResource("27_ft40d")
+
+[node name="Button" parent="Calendario/StateMachine/Juego/Contenido/Spot/AnswerController/DateeXAMPLE/DragObject" index="1"]
+offset_left = -243.0
+offset_top = -129.0
+offset_right = 244.0
+offset_bottom = 129.0
+
+[node name="SquigglingSprite" parent="Calendario/StateMachine/Juego/Contenido/Spot/AnswerController/DateeXAMPLE" instance=ExtResource("51_mweh1")]
+position = Vector2(-2.5, 0.5)
+scale = Vector2(1.00931, 1.00281)
+texture = ExtResource("53_k35md")
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Calendario/StateMachine/Juego/Contenido/Spot"]
 root_node = NodePath("../../pivotHboxController")
 libraries = {
@@ -993,18 +1179,56 @@ animation = "enero_enter"
 
 [node name="PanelConsigna" parent="Calendario/StateMachine/Juego/Contenido" instance=ExtResource("15_1ptxs")]
 layout_mode = 1
-offset_top = 82.0
-offset_bottom = 310.0
+anchors_preset = -1
+anchor_top = 0.157
+anchor_bottom = 0.157
+offset_left = -463.0
+offset_top = -112.96
+offset_right = 463.0
+offset_bottom = 113.04
+grow_vertical = 2
+pivot_offset = Vector2(463, 113)
+theme = ExtResource("55_7pksd")
 characters_per_second = 45.0
 Texts = Array[ExtResource("18_66s5d")]([SubResource("Resource_v2ur4")])
 
 [node name="PanelPreguntas" parent="Calendario/StateMachine/Juego/Contenido" instance=ExtResource("15_1ptxs")]
 layout_mode = 1
-offset_top = 82.0
-offset_bottom = 310.0
+anchors_preset = -1
+anchor_top = 0.155
+anchor_bottom = 0.155
+offset_left = -465.0
+offset_top = -113.4
+offset_right = 465.0
+offset_bottom = 114.6
+grow_vertical = 2
+pivot_offset = Vector2(465, 114)
+theme = ExtResource("55_7pksd")
 AppearInBeginning = false
 characters_per_second = 45.0
 Texts = Array[ExtResource("18_66s5d")]([SubResource("Resource_uthvg")])
+
+[node name="label" parent="Calendario/StateMachine/Juego/Contenido/PanelPreguntas" index="0"]
+text = ""
+
+[node name="labelRich" parent="Calendario/StateMachine/Juego/Contenido/PanelPreguntas" index="1"]
+text = "[b]"
+
+[node name="Icon" parent="Calendario/StateMachine/Juego/Contenido/PanelPreguntas/BtnDerAnchor/btnDer" index="0"]
+offset_left = -22.0
+offset_top = -22.0
+offset_right = 22.0
+offset_bottom = 22.0
+
+[node name="Icon" parent="Calendario/StateMachine/Juego/Contenido/PanelPreguntas/btnIzqAnchor/btnIzq" index="0"]
+offset_left = -22.0
+offset_top = -22.0
+offset_right = 22.0
+offset_bottom = 22.0
+
+[node name="Icon" parent="Calendario/StateMachine/Juego/Contenido/PanelPreguntas/btnCentralAnchor/btnCentral" index="0"]
+offset_right = -23.0
+offset_bottom = -23.0
 
 [node name="pivotHboxController" type="Control" parent="Calendario/StateMachine/Juego/Contenido"]
 layout_mode = 1
@@ -1126,6 +1350,7 @@ text = ""
 NextScene = "Map_Screen"
 
 [node name="PanelOutro" parent="Calendario/StateMachine/Juego/Contenido" instance=ExtResource("15_1ptxs")]
+visible = false
 layout_mode = 1
 offset_top = 84.0
 offset_bottom = 312.0
@@ -1382,17 +1607,35 @@ text = "
 "
 NextScene = "Map_Screen"
 
-[connection signal="ButtonPress" from="Calendario/StateMachine/Consigna/Contenido/PanelIntro1/Panel(3) Btn(rigth)" to="Calendario/StateMachine/Consigna/Contenido/PanelIntro2" method="EnterPanel"]
-[connection signal="ButtonPress" from="Calendario/StateMachine/Consigna/Contenido/PanelIntro1/Panel(3) Btn(rigth)" to="Calendario/StateMachine/Consigna/Contenido/AnimationPlayer" method="PlayAnim" binds= ["in"]]
-[connection signal="ButtonPress" from="Calendario/StateMachine/Consigna/Contenido/PanelIntro2/Panel(1) Btn(rigth)" to="Calendario/StateMachine/Consigna/Contenido/Control/calendario/pivot" method="PlayAnimChild"]
-[connection signal="ButtonPress" from="Calendario/StateMachine/Consigna/Contenido/PanelIntro2/Panel(1) Btn(rigth)" to="Calendario/StateMachine/Consigna/Contenido/PanelIntro2/Timer" method="StartTime" binds= [false]]
+[connection signal="ButtonPress" from="Calendario/StateMachine/Consigna/Contenido/PanelIntro1/Panel(1) Btn(rigth)" to="Calendario/StateMachine/Consigna/Contenido/PanelIntro2" method="EnterPanel"]
+[connection signal="ButtonPress" from="Calendario/StateMachine/Consigna/Contenido/PanelIntro1/Panel(1) Btn(rigth)" to="Calendario/StateMachine/Consigna/Contenido/AnimationPlayer" method="play" binds= ["fadeMemoria"]]
+[connection signal="ButtonPress" from="Calendario/StateMachine/Consigna/Contenido/PanelIntro2/Panel(2) Btn(rigth)" to="Calendario/StateMachine/Consigna/Contenido/AnimationPlayer" method="PlayAnim" binds= ["in"]]
+[connection signal="ButtonPress" from="Calendario/StateMachine/Consigna/Contenido/PanelIntro2/Panel(3) Btn(rigth)" to="Calendario/StateMachine/Consigna/Contenido/Control/calendario/pivot" method="PlayAnimChild"]
+[connection signal="ButtonPress" from="Calendario/StateMachine/Consigna/Contenido/PanelIntro2/Panel(3) Btn(rigth)" to="Calendario/StateMachine/Consigna/Contenido/PanelIntro2" method="UseAlternativeTheme" binds= [true]]
+[connection signal="ButtonPress" from="Calendario/StateMachine/Consigna/Contenido/PanelIntro2/Panel(3) Btn(rigth)" to="Calendario/StateMachine/Consigna/Contenido/PanelIntro2/Timer" method="StartTime" binds= [false]]
 [connection signal="Transitioned" from="Calendario/StateMachine/Juego" to="Calendario/StateMachine/Juego/Contenido/CalendarZoom" method="SetQuestionWithInstance"]
 [connection signal="ZoomOutFinished" from="Calendario/StateMachine/Juego/Contenido/CalendarZoom" to="Calendario/StateMachine/Juego/Contenido/PanelOutro" method="EnterPanel"]
 [connection signal="RigthAnswere" from="Calendario/StateMachine/Juego/Contenido/Spot/AnswerController" to="Calendario/StateMachine/Juego/Contenido/CalendarZoom" method="ZoomToPos" binds= [0]]
+[connection signal="ultimateInstance" from="Calendario/StateMachine/Juego/Contenido/Spot/AnswerController" to="Calendario" method="Set_Complete"]
 [connection signal="OnSpot" from="Calendario/StateMachine/Juego/Contenido/Spot/AnswerController/Spot" to="Calendario/StateMachine/Juego/Contenido/pivotHboxController/HBoxContainer" method="SetPlate"]
+[connection signal="aPlateAreDragging" from="Calendario/StateMachine/Juego/Contenido/pivotHboxController/HBoxContainer" to="Calendario/StateMachine/Juego/Contenido/pivotHboxController/HBoxContainer/Date1/SquigglingSprite" method="InactiveSquiggling"]
+[connection signal="aPlateAreDragging" from="Calendario/StateMachine/Juego/Contenido/pivotHboxController/HBoxContainer" to="Calendario/StateMachine/Juego/Contenido/pivotHboxController/HBoxContainer/Date2/SquigglingSprite" method="InactiveSquiggling"]
+[connection signal="aPlateAreDragging" from="Calendario/StateMachine/Juego/Contenido/pivotHboxController/HBoxContainer" to="Calendario/StateMachine/Juego/Contenido/pivotHboxController/HBoxContainer/Date3/SquigglingSprite" method="InactiveSquiggling"]
+[connection signal="aPlateWasDrop" from="Calendario/StateMachine/Juego/Contenido/pivotHboxController/HBoxContainer" to="Calendario/StateMachine/Juego/Contenido/pivotHboxController/HBoxContainer/Date1/SquigglingSprite" method="ActiveSquiggling"]
+[connection signal="aPlateWasDrop" from="Calendario/StateMachine/Juego/Contenido/pivotHboxController/HBoxContainer" to="Calendario/StateMachine/Juego/Contenido/pivotHboxController/HBoxContainer/Date2/SquigglingSprite" method="ActiveSquiggling"]
+[connection signal="aPlateWasDrop" from="Calendario/StateMachine/Juego/Contenido/pivotHboxController/HBoxContainer" to="Calendario/StateMachine/Juego/Contenido/pivotHboxController/HBoxContainer/Date3/SquigglingSprite" method="ActiveSquiggling"]
 [connection signal="isScrolling" from="Calendario/StateMachine/Juego/Contenido/pivotHboxController/HBoxContainer" to="Calendario/StateMachine/Juego/Contenido/pivotHboxController/HBoxContainer/Date1/DragObject" method="CancelDrag"]
 [connection signal="isScrolling" from="Calendario/StateMachine/Juego/Contenido/pivotHboxController/HBoxContainer" to="Calendario/StateMachine/Juego/Contenido/pivotHboxController/HBoxContainer/Date2/DragObject" method="CancelDrag"]
 [connection signal="isScrolling" from="Calendario/StateMachine/Juego/Contenido/pivotHboxController/HBoxContainer" to="Calendario/StateMachine/Juego/Contenido/pivotHboxController/HBoxContainer/Date3/DragObject" method="CancelDrag"]
+[connection signal="isDraggin" from="Calendario/StateMachine/Juego/Contenido/pivotHboxController/HBoxContainer/Date1/DragObject" to="Calendario/StateMachine/Juego/Contenido/pivotHboxController/HBoxContainer" method="DetectDraggingPlate"]
+[connection signal="isDraggin" from="Calendario/StateMachine/Juego/Contenido/pivotHboxController/HBoxContainer/Date1/DragObject" to="Calendario/StateMachine/Juego/Contenido/pivotHboxController/HBoxContainer/Date1/SquigglingSprite" method="ActiveSquiggling"]
+[connection signal="object_realese_Wrong_Place" from="Calendario/StateMachine/Juego/Contenido/pivotHboxController/HBoxContainer/Date1/DragObject" to="Calendario/StateMachine/Juego/Contenido/pivotHboxController/HBoxContainer" method="DetectMouseRelease"]
+[connection signal="isDraggin" from="Calendario/StateMachine/Juego/Contenido/pivotHboxController/HBoxContainer/Date2/DragObject" to="Calendario/StateMachine/Juego/Contenido/pivotHboxController/HBoxContainer" method="DetectDraggingPlate"]
+[connection signal="isDraggin" from="Calendario/StateMachine/Juego/Contenido/pivotHboxController/HBoxContainer/Date2/DragObject" to="Calendario/StateMachine/Juego/Contenido/pivotHboxController/HBoxContainer/Date2/SquigglingSprite" method="ActiveSquiggling"]
+[connection signal="object_realese_Wrong_Place" from="Calendario/StateMachine/Juego/Contenido/pivotHboxController/HBoxContainer/Date2/DragObject" to="Calendario/StateMachine/Juego/Contenido/pivotHboxController/HBoxContainer" method="DetectMouseRelease"]
+[connection signal="isDraggin" from="Calendario/StateMachine/Juego/Contenido/pivotHboxController/HBoxContainer/Date3/DragObject" to="Calendario/StateMachine/Juego/Contenido/pivotHboxController/HBoxContainer" method="DetectDraggingPlate"]
+[connection signal="isDraggin" from="Calendario/StateMachine/Juego/Contenido/pivotHboxController/HBoxContainer/Date3/DragObject" to="Calendario/StateMachine/Juego/Contenido/pivotHboxController/HBoxContainer/Date3/SquigglingSprite" method="ActiveSquiggling"]
+[connection signal="object_realese_Wrong_Place" from="Calendario/StateMachine/Juego/Contenido/pivotHboxController/HBoxContainer/Date3/DragObject" to="Calendario/StateMachine/Juego/Contenido/pivotHboxController/HBoxContainer" method="DetectMouseRelease"]
 [connection signal="pressed" from="Calendario/StateMachine/Juego/Contenido/ButtonChangeScene" to="Calendario" method="Set_Complete"]
 [connection signal="ButtonPress" from="Calendario/StateMachine/Juego/Contenido/PanelOutro/Panel(3) Btn(rigth)" to="Calendario" method="Set_Complete"]
 [connection signal="ButtonPress" from="Calendario/StateMachine/Juego/Contenido/PanelOutro/Panel(3) Btn(rigth)" to="Calendario/StateMachine/Juego/Contenido/ButtonChangeScene" method="_on_pressed"]
@@ -1402,6 +1645,10 @@ NextScene = "Map_Screen"
 [connection signal="Transitioned" from="Calendario/StateMachine/Fin" to="Calendario/StateMachine/Fin/Contenido/Panel4" method="StartTimerToAppear"]
 [connection signal="pressed" from="Calendario/StateMachine/Fin/Contenido/Panel4/ButtonChangeScene" to="Calendario" method="Set_Complete"]
 
+[editable path="Calendario/StateMachine/Juego/Contenido/Spot/AnswerController/DateeXAMPLE/DragObject"]
+[editable path="Calendario/StateMachine/Juego/Contenido/PanelPreguntas"]
+[editable path="Calendario/StateMachine/Juego/Contenido/PanelPreguntas/btnIzqAnchor/btnIzq/SquigglingSprite"]
+[editable path="Calendario/StateMachine/Juego/Contenido/PanelPreguntas/btnCentralAnchor/btnCentral/SquigglingSprite"]
 [editable path="Calendario/StateMachine/Juego/Contenido/pivotHboxController/HBoxContainer/Date1/DragObject"]
 [editable path="Calendario/StateMachine/Juego/Contenido/pivotHboxController/HBoxContainer/Date2/DragObject"]
 [editable path="Calendario/StateMachine/Juego/Contenido/pivotHboxController/HBoxContainer/Date3/DragObject"]

@@ -24,7 +24,6 @@ func FinishFall():
 	get_node("Area2D").call_deferred("SetParent")
 	for i in UnfreezeRocks:
 		get_node(i).Freeze()
-	TranstaleToCenterScreen(1)
 
 
 func TranstaleToCenterScreen(time):

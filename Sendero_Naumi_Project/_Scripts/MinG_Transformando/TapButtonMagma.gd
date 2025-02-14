@@ -73,6 +73,7 @@ func ChangeLavaFace():
 	nextLavaFace.get_node("AnimationPlayer").play("lava_face_anim_back")
 
 func SetTrueVisibility():
+	await get_tree().create_timer(1.2).timeout
 	disabled = false
 	$Glow.visible = true
 	$SquigglingSprite.ActiveSquiggling()

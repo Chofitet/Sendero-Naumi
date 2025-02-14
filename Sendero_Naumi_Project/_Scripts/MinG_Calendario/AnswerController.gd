@@ -9,7 +9,8 @@ extends Node2D
 @export var calendar : Sprite2D
 signal RigthAnswere
 var isLastInstance
-var AnswerTexture 
+var AnswerTexture
+signal ultimateInstance
 
 func _process(delta):
 	pass
@@ -37,6 +38,8 @@ func RigthAnswer():
 	panel.ExitPanel()
 	
 	visible = false
+	if AnswerTexture == null: return
+	if isLastInstance: ultimateInstance.emit()
 	StateMachine.Trigger_On_Child_Transition("Juego")
 	calendar.SetSlot()
 	answer.texture = null
@@ -63,7 +66,7 @@ func Set_Slot(txt, AnsweresTextures, correctAnswer, _isLastInstance = false):
 			spot.RigthObject = date.get_child(0)
 		i += 1
 	hBoxConteiner.Reset()
-	panel.get_node("label").text = txt
+	panel.get_node("labelRich").text = txt
 	panel.EnterPanel()
 	await anim.animation_finished
 	anim.play("RESET")

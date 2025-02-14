@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dqyb2b0ey8ckp"]
+[gd_scene load_steps=38 format=3 uid="uid://dqyb2b0ey8ckp"]
 
 [ext_resource type="Texture2D" uid="uid://nuybqhitpej1" path="res://Sprites/Mapa/fondo_mapa.png" id="1_tohrf"]
 [ext_resource type="Texture2D" uid="uid://05mdqsdsbuqm" path="res://Sprites/Mapa/geologia_mapa.png" id="2_4r0kt"]
@@ -11,78 +11,52 @@
 [ext_resource type="Texture2D" uid="uid://bpcc2ljyhkxfl" path="res://Sprites/Mapa/pin check - mapa.png" id="8_6ftc5"]
 [ext_resource type="StyleBox" uid="uid://b3tjes2hcm3wx" path="res://Resources/UI_Resources/StyleBoxTrasparent.tres" id="8_v4xy8"]
 [ext_resource type="Texture2D" uid="uid://blvtoxf6sl7ty" path="res://Sprites/glow.png" id="11_iajsr"]
+[ext_resource type="Theme" uid="uid://dhu6swisjlh4w" path="res://Resources/UI_Resources/BlueBubblePanel.tres" id="11_twlej"]
+[ext_resource type="Script" path="res://Scenes/Experiments/GenericPanel/ButtonPanelData.gd" id="12_fai1k"]
 [ext_resource type="PackedScene" uid="uid://dy85sx5vt48am" path="res://Scenes/Experiments/stars_particles.tscn" id="12_jhtup"]
+[ext_resource type="Script" path="res://Scenes/Experiments/GenericPanel/PanelController.gd" id="12_v4jlj"]
+[ext_resource type="Texture2D" uid="uid://daq0wdip7fkhp" path="res://Sprites/UI/eggIcon - UI.png" id="13_h38ty"]
+[ext_resource type="Script" path="res://Scenes/Experiments/GenericPanel/TextFieldData.gd" id="14_xro7r"]
+[ext_resource type="LabelSettings" uid="uid://c8wu4hhqg284x" path="res://Resources/UI_Resources/Generic_Font.tres" id="16_rcf4m"]
+[ext_resource type="PackedScene" uid="uid://cw3ok8v4p620b" path="res://Scenes/Experiments/squiggling_sprite.tscn" id="17_slr2m"]
+[ext_resource type="PackedScene" uid="uid://d1jys63xrvxpo" path="res://Scenes/Experiments/GenericPanel/IntermediateSignal.tscn" id="17_u304q"]
+[ext_resource type="Texture2D" uid="uid://40jkc6woc7p" path="res://Sprites/UI/SquigglingUI/botonesRedondosASQUIG - UI.png" id="18_k8ff3"]
+[ext_resource type="Script" path="res://Scenes/Experiments/GenericPanel/IntermediateData.gd" id="19_n7ev0"]
+[ext_resource type="Texture2D" uid="uid://6c8ohwgh1g2j" path="res://Sprites/UI/backIcon - UI.png" id="19_pq350"]
+[ext_resource type="Texture2D" uid="uid://c87cim2trecu1" path="res://Sprites/UI/SquigglingUI/botonesRedondosBSQUIG - UI.png" id="20_21x5c"]
 
-[sub_resource type="Animation" id="Animation_asulk"]
+[sub_resource type="Resource" id="Resource_giep5"]
+script = ExtResource("12_fai1k")
+Place = 1
+texture = ExtResource("13_h38ty")
+label = ""
+dontPassPanel = false
+
+[sub_resource type="Resource" id="Resource_w7u63"]
+script = ExtResource("14_xro7r")
+Text = "ZONA COMPLETADA"
+SizePanel = Vector2(0, 0)
+Position = Vector2(0, 0)
+buttons = Array[ExtResource("12_fai1k")]([SubResource("Resource_giep5")])
+
+[sub_resource type="Animation" id="Animation_jxxgf"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Panel:scale")
+tracks/0/path = NodePath(".:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0.5, 0.5)]
+"values": [Vector2(1, 1)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Panel:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Panel/btnVolver/StarsParticles:emitting")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Panel/btnVolver:scale")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1.475, 1.475)]
-}
-
-[sub_resource type="Animation" id="Animation_201g2"]
-resource_name = "zone_complete"
-length = 3.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Panel:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.5, 0.9, 1.1),
-"transitions": PackedFloat32Array(1, 0.277393, 1),
-"update": 0,
-"values": [Vector2(1e-05, 1e-05), Vector2(0.6, 0.6), Vector2(0.5, 0.5)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Panel:visible")
+tracks/1/path = NodePath("label:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -94,33 +68,395 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Panel/btnVolver/StarsParticles:emitting")
+tracks/2/path = NodePath("label:visible_ratio")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0.1, 2.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Panel/btnVolver:scale")
+tracks/3/path = NodePath("labelRich:visible_ratio")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(2.1, 2.4, 2.6),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(1e-05, 1e-05), Vector2(2, 2), Vector2(1.475, 1.475)]
+"values": [1.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("labelRich:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_tmldh"]
-_data = {
-"RESET": SubResource("Animation_asulk"),
-"zone_complete": SubResource("Animation_201g2")
+[sub_resource type="Animation" id="Animation_me5ce"]
+resource_name = "change_panel"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.4),
+"transitions": PackedFloat32Array(1, -2, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.3, 0.3), Vector2(1, 1)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("label:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("labelRich:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, false]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"RefreshToActualPanel"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_82sr6"]
+resource_name = "enter_panel"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, -0.5, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(1, 1), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("label:visible_ratio")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("labelRich:visible_ratio")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_bglsq"]
+resource_name = "exit_panel"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.1, 1.1), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_q21f0"]
+_data = {
+"RESET": SubResource("Animation_jxxgf"),
+"change_panel": SubResource("Animation_me5ce"),
+"enter_panel": SubResource("Animation_82sr6"),
+"exit_panel": SubResource("Animation_bglsq")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_vixmh"]
+font_size = 32
+shadow_size = 2
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(2, 1)
+
+[sub_resource type="Animation" id="Animation_6ejw5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-45, -45)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(90, 90)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Icon:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.174533]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Icon:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(23, 23)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Icon:size")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(44, 44)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Icon/Label:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("extraContent:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_phw3d"]
+resource_name = "appear"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-45, -45)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(90, 90)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Icon:size")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(44, 44)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Icon:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-25, -27), Vector2(23, 23)]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("SquigglingSprite")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"InactiveSquiggling"
+}, {
+"args": [],
+"method": &"ActiveSquiggling"
+}]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Icon/Label:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("extraContent:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(44, 44)]
+}
+
+[sub_resource type="Animation" id="Animation_jahtv"]
+resource_name = "idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Icon:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [-0.174533, 0.174533]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kvjan"]
+_data = {
+"RESET": SubResource("Animation_6ejw5"),
+"appear": SubResource("Animation_phw3d"),
+"idle": SubResource("Animation_jahtv")
+}
+
+[sub_resource type="Resource" id="Resource_407o8"]
+script = ExtResource("19_n7ev0")
+NumberOfPanel = 1
+Place = 1
 
 [node name="Zone_Complete_Event" type="Control"]
 layout_mode = 3
@@ -158,10 +494,29 @@ expand_mode = 1
 stretch_mode = 4
 script = ExtResource("3_f0n8u")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Zone"]
-libraries = {
-"": SubResource("AnimationLibrary_tmldh")
-}
+[node name="btnVolver" type="Button" parent="Zone"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.527
+anchor_top = 1.0
+anchor_right = 0.527
+anchor_bottom = 1.0
+offset_left = 5.78851
+offset_top = -1065.88
+offset_right = 145.789
+offset_bottom = -925.879
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(1e-05, 1e-05)
+pivot_offset = Vector2(60.785, 69.12)
+theme_override_styles/pressed = ExtResource("8_v4xy8")
+theme_override_styles/focus = ExtResource("8_v4xy8")
+icon = ExtResource("8_1usuw")
+flat = true
+script = ExtResource("7_g1gi8")
+NextScene = "Naumi_Level_Up"
+fade_time = 0.2
+smoothness = 0.1
 
 [node name="Pines" type="Node2D" parent="Zone"]
 
@@ -169,13 +524,13 @@ libraries = {
 
 [node name="Sprite2D" type="Sprite2D" parent="Zone/Pines/MegafaunaZone"]
 visible = false
-position = Vector2(162.5, 155)
+position = Vector2(273.5, 108)
 scale = Vector2(0.636816, 0.636816)
 texture = ExtResource("8_6ftc5")
 
 [node name="Sprite2D2" type="Sprite2D" parent="Zone/Pines/MegafaunaZone"]
 visible = false
-position = Vector2(277.5, 589)
+position = Vector2(227.5, 500)
 scale = Vector2(0.636816, 0.636816)
 texture = ExtResource("8_6ftc5")
 
@@ -183,25 +538,25 @@ texture = ExtResource("8_6ftc5")
 
 [node name="Sprite2D" type="Sprite2D" parent="Zone/Pines/AstronomiaZone"]
 visible = false
-position = Vector2(388.5, 211)
+position = Vector2(151.5, -65)
 scale = Vector2(0.636816, 0.636816)
 texture = ExtResource("8_6ftc5")
 
 [node name="Sprite2D2" type="Sprite2D" parent="Zone/Pines/AstronomiaZone"]
 visible = false
-position = Vector2(399.5, 401)
+position = Vector2(484.5, 77)
 scale = Vector2(0.636816, 0.636816)
 texture = ExtResource("8_6ftc5")
 
 [node name="Sprite2D3" type="Sprite2D" parent="Zone/Pines/AstronomiaZone"]
 visible = false
-position = Vector2(273.5, 593)
+position = Vector2(398.5, 686)
 scale = Vector2(0.636816, 0.636816)
 texture = ExtResource("8_6ftc5")
 
 [node name="Sprite2D4" type="Sprite2D" parent="Zone/Pines/AstronomiaZone"]
 visible = false
-position = Vector2(193.5, 779)
+position = Vector2(96.5, 451)
 scale = Vector2(0.636816, 0.636816)
 texture = ExtResource("8_6ftc5")
 
@@ -209,24 +564,23 @@ texture = ExtResource("8_6ftc5")
 
 [node name="Sprite2D" type="Sprite2D" parent="Zone/Pines/GeologiaZone"]
 visible = false
-position = Vector2(345.5, 30.9999)
+position = Vector2(155.5, 86.9999)
 scale = Vector2(0.636816, 0.636816)
 texture = ExtResource("8_6ftc5")
 
 [node name="Sprite2D2" type="Sprite2D" parent="Zone/Pines/GeologiaZone"]
 visible = false
-position = Vector2(150.5, 150)
+position = Vector2(344.5, -74)
 scale = Vector2(0.636816, 0.636816)
 texture = ExtResource("8_6ftc5")
 
 [node name="Sprite2D3" type="Sprite2D" parent="Zone/Pines/GeologiaZone"]
 visible = false
-position = Vector2(291.5, 593)
+position = Vector2(289.5, 523)
 scale = Vector2(0.636816, 0.636816)
 texture = ExtResource("8_6ftc5")
 
 [node name="Panel" type="Panel" parent="Zone"]
-visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -238,7 +592,7 @@ offset_top = -164.802
 offset_right = 662.5
 offset_bottom = 187.198
 grow_horizontal = 2
-scale = Vector2(0.5, 0.5)
+scale = Vector2(1e-05, 1e-05)
 pivot_offset = Vector2(545, 154)
 theme = ExtResource("4_da2c4")
 script = ExtResource("5_pobjl")
@@ -262,37 +616,330 @@ horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
-[node name="btnVolver" type="Button" parent="Zone/Panel"]
+[node name="PanelCompletada" type="Panel" parent="Zone"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -320.0
+offset_top = -113.0
+offset_right = 332.0
+offset_bottom = 115.0
+grow_horizontal = 2
+pivot_offset = Vector2(326, 114)
+theme = ExtResource("11_twlej")
+script = ExtResource("12_v4jlj")
+Texts = Array[ExtResource("14_xro7r")]([SubResource("Resource_w7u63")])
+
+[node name="label" type="Label" parent="Zone/PanelCompletada"]
+use_parent_material = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 37.0
+offset_top = 56.0
+offset_right = -37.0
+offset_bottom = -56.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "ZONA COMPLETADA"
+label_settings = ExtResource("16_rcf4m")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+visible_characters_behavior = 1
+
+[node name="labelRich" type="RichTextLabel" parent="Zone/PanelCompletada"]
+use_parent_material = true
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.527
-anchor_top = 1.0
-anchor_right = 0.527
+anchor_left = 0.057
+anchor_right = 0.943
 anchor_bottom = 1.0
-offset_left = -60.642
-offset_top = -72.0001
-offset_right = 79.358
-offset_bottom = 67.9999
+offset_left = -0.164001
+offset_top = 56.0
+offset_right = 0.164001
+offset_bottom = -56.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("11_twlej")
+bbcode_enabled = true
+scroll_active = false
+visible_characters_behavior = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Zone/PanelCompletada"]
+libraries = {
+"": SubResource("AnimationLibrary_q21f0")
+}
+
+[node name="BtnDerAnchor" type="Control" parent="Zone/PanelCompletada"]
+use_parent_material = true
+layout_mode = 1
+anchor_left = 0.839
+anchor_top = 1.0
+anchor_right = 0.839
+anchor_bottom = 1.0
+offset_left = -0.0280151
+offset_top = -3.0
+offset_right = -0.0280151
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="btnDer" type="Button" parent="Zone/PanelCompletada/BtnDerAnchor"]
+visible = false
+use_parent_material = true
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -45.0
+offset_top = -45.0
+offset_right = 45.0
+offset_bottom = 45.0
+grow_horizontal = 0
+grow_vertical = 0
+pivot_offset = Vector2(45, 45)
+
+[node name="Icon" type="TextureRect" parent="Zone/PanelCompletada/BtnDerAnchor/btnDer"]
+use_parent_material = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 23.0
+offset_top = 23.0
+offset_right = 67.0
+offset_bottom = 67.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.174533
+pivot_offset = Vector2(22, 22)
+texture = ExtResource("13_h38ty")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="Zone/PanelCompletada/BtnDerAnchor/btnDer/Icon"]
+use_parent_material = true
+layout_mode = 0
+offset_left = -1.50574
+offset_top = -2.78077
+offset_right = 43.4943
+offset_bottom = 45.2192
+pivot_offset = Vector2(20, 19)
+label_settings = SubResource("LabelSettings_vixmh")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Zone/PanelCompletada/BtnDerAnchor/btnDer"]
+libraries = {
+"": SubResource("AnimationLibrary_kvjan")
+}
+
+[node name="SquigglingSprite" parent="Zone/PanelCompletada/BtnDerAnchor/btnDer" instance=ExtResource("17_slr2m")]
+use_parent_material = true
+position = Vector2(44, 44)
+scale = Vector2(1.05882, 1.05882)
+texture = ExtResource("18_k8ff3")
+ActiveInBegining = false
+
+[node name="extraContent" type="Node2D" parent="Zone/PanelCompletada/BtnDerAnchor/btnDer"]
+
+[node name="btnIzqAnchor" type="Control" parent="Zone/PanelCompletada"]
+use_parent_material = true
+layout_mode = 1
+anchor_left = 0.144
+anchor_top = 1.0
+anchor_right = 0.144
+anchor_bottom = 1.0
+offset_left = 0.111992
+offset_top = -2.0
+offset_right = 0.111992
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="btnIzq" type="Button" parent="Zone/PanelCompletada/btnIzqAnchor"]
+visible = false
+use_parent_material = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -45.0
+offset_top = -45.0
+offset_right = 45.0
+offset_bottom = 45.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(45, 45)
+
+[node name="Icon" type="TextureRect" parent="Zone/PanelCompletada/btnIzqAnchor/btnIzq"]
+use_parent_material = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 23.0
+offset_top = 23.0
+offset_right = 67.0
+offset_bottom = 67.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.174533
+pivot_offset = Vector2(22, 22)
+texture = ExtResource("19_pq350")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="Zone/PanelCompletada/btnIzqAnchor/btnIzq/Icon"]
+use_parent_material = true
+layout_mode = 0
+offset_left = -1.50574
+offset_top = -2.78077
+offset_right = 38.4943
+offset_bottom = 42.2192
+pivot_offset = Vector2(20, 19)
+text = "OK"
+label_settings = SubResource("LabelSettings_vixmh")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Zone/PanelCompletada/btnIzqAnchor/btnIzq"]
+libraries = {
+"": SubResource("AnimationLibrary_kvjan")
+}
+
+[node name="SquigglingSprite" parent="Zone/PanelCompletada/btnIzqAnchor/btnIzq" instance=ExtResource("17_slr2m")]
+use_parent_material = true
+position = Vector2(-1.76471, -0.798077)
+scale = Vector2(1.03922, 1.02885)
+texture = ExtResource("20_21x5c")
+offset = Vector2(45, 45)
+ActiveInBegining = false
+
+[node name="extraContent" type="Node2D" parent="Zone/PanelCompletada/btnIzqAnchor/btnIzq"]
+
+[node name="btnCentralAnchor" type="Control" parent="Zone/PanelCompletada"]
+use_parent_material = true
+layout_mode = 1
+anchor_left = 0.5
+anchor_top = 1.003
+anchor_right = 0.5
+anchor_bottom = 1.003
+offset_top = 0.105988
+offset_bottom = 0.105988
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="btnCentral" type="Button" parent="Zone/PanelCompletada/btnCentralAnchor"]
+use_parent_material = true
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -45.0
+offset_top = -45.0
+offset_right = 45.0
+offset_bottom = 45.0
 grow_horizontal = 2
 grow_vertical = 0
-scale = Vector2(1.475, 1.475)
-pivot_offset = Vector2(60.785, 69.12)
-theme_override_styles/pressed = ExtResource("8_v4xy8")
-theme_override_styles/focus = ExtResource("8_v4xy8")
-icon = ExtResource("8_1usuw")
-flat = true
-script = ExtResource("7_g1gi8")
-NextScene = "Naumi_Level_Up"
-fade_time = 0.2
-smoothness = 0.1
 
-[node name="glow" type="Sprite2D" parent="Zone/Panel/btnVolver"]
+[node name="Icon" type="TextureRect" parent="Zone/PanelCompletada/btnCentralAnchor/btnCentral"]
+use_parent_material = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 23.0
+offset_top = 23.0
+offset_right = 67.0
+offset_bottom = 67.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.174533
+scale = Vector2(0.94, 1.175)
+pivot_offset = Vector2(22, 22)
+texture = ExtResource("13_h38ty")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="Zone/PanelCompletada/btnCentralAnchor/btnCentral/Icon"]
+use_parent_material = true
+layout_mode = 0
+offset_left = -1.50574
+offset_top = -2.78077
+offset_right = 38.4943
+offset_bottom = 42.2192
+pivot_offset = Vector2(20, 19)
+label_settings = SubResource("LabelSettings_vixmh")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Zone/PanelCompletada/btnCentralAnchor/btnCentral"]
+libraries = {
+"": SubResource("AnimationLibrary_kvjan")
+}
+
+[node name="SquigglingSprite" parent="Zone/PanelCompletada/btnCentralAnchor/btnCentral" instance=ExtResource("17_slr2m")]
+use_parent_material = true
+position = Vector2(-1.76471, -2.5547)
+scale = Vector2(1.03922, 1.03922)
+texture = ExtResource("18_k8ff3")
+offset = Vector2(45, 45)
+ActiveInBegining = false
+
+[node name="extraContent" type="Node2D" parent="Zone/PanelCompletada/btnCentralAnchor/btnCentral"]
+show_behind_parent = true
+
+[node name="glow" type="Sprite2D" parent="Zone/PanelCompletada/btnCentralAnchor/btnCentral/extraContent"]
 self_modulate = Color(0.8125, 0.636719, 0.292969, 1)
 show_behind_parent = true
-position = Vector2(60.339, 62.3728)
-scale = Vector2(0.813559, 0.813559)
+position = Vector2(3, -0.789978)
+scale = Vector2(0.633333, 0.633333)
 texture = ExtResource("11_iajsr")
 
-[node name="StarsParticles" parent="Zone/Panel/btnVolver" instance=ExtResource("12_jhtup")]
+[node name="StarsParticles" parent="Zone/PanelCompletada/btnCentralAnchor/btnCentral/extraContent" instance=ExtResource("12_jhtup")]
+position = Vector2(2.00003, 3.21004)
+rotation = 0.0611025
+scale = Vector2(0.633, 0.633)
+emitting = true
 
-[connection signal="pressed" from="Zone/Panel/btnVolver" to="Zone/Panel/btnVolver" method="_on_pressed"]
+[node name="ButtonSkipWritting" type="Button" parent="Zone/PanelCompletada"]
+visible = false
+use_parent_material = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = ExtResource("8_v4xy8")
+theme_override_styles/hover = ExtResource("8_v4xy8")
+theme_override_styles/pressed = ExtResource("8_v4xy8")
+theme_override_styles/disabled = ExtResource("8_v4xy8")
+theme_override_styles/focus = ExtResource("8_v4xy8")
+flat = true
+
+[node name="Panel(1) Btn(center)" parent="Zone/PanelCompletada" instance=ExtResource("17_u304q")]
+Data = SubResource("Resource_407o8")
+
+[connection signal="pressed" from="Zone/btnVolver" to="Zone/btnVolver" method="_on_pressed"]
+[connection signal="pressed" from="Zone/PanelCompletada/BtnDerAnchor/btnDer" to="Zone/PanelCompletada" method="rigthBTNConnect" flags=18]
+[connection signal="pressed" from="Zone/PanelCompletada/BtnDerAnchor/btnDer" to="Zone/PanelCompletada" method="ButtonPress" flags=18 binds= [0]]
+[connection signal="pressed" from="Zone/PanelCompletada/btnIzqAnchor/btnIzq" to="Zone/PanelCompletada" method="leftBTNConnect" flags=18]
+[connection signal="pressed" from="Zone/PanelCompletada/btnIzqAnchor/btnIzq" to="Zone/PanelCompletada" method="ButtonPress" flags=18 binds= [1]]
+[connection signal="pressed" from="Zone/PanelCompletada/btnCentralAnchor/btnCentral" to="Zone/PanelCompletada" method="centerBTNConnect" flags=18]
+[connection signal="pressed" from="Zone/PanelCompletada/btnCentralAnchor/btnCentral" to="Zone/PanelCompletada" method="ButtonPress" flags=18 binds= [2]]
+[connection signal="ButtonPress" from="Zone/PanelCompletada/Panel(1) Btn(center)" to="Zone/btnVolver" method="_on_pressed"]
+
+[editable path="Zone/PanelCompletada/btnIzqAnchor/btnIzq/SquigglingSprite"]
+[editable path="Zone/PanelCompletada/btnCentralAnchor/btnCentral/SquigglingSprite"]

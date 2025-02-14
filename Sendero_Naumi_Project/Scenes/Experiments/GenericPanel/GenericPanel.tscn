@@ -1,9 +1,10 @@
-[gd_scene load_steps=20 format=3 uid="uid://chcp24toqisaw"]
+[gd_scene load_steps=21 format=3 uid="uid://chcp24toqisaw"]
 
 [ext_resource type="Theme" uid="uid://dhu6swisjlh4w" path="res://Resources/UI_Resources/BlueBubblePanel.tres" id="1_v6n5n"]
 [ext_resource type="Script" path="res://Scenes/Experiments/GenericPanel/PanelController.gd" id="2_33xng"]
 [ext_resource type="Texture2D" uid="uid://f71rhgotbkf3" path="res://Sprites/UI/reloadIcon - UI.png" id="3_jsxvn"]
 [ext_resource type="Texture2D" uid="uid://6c8ohwgh1g2j" path="res://Sprites/UI/backIcon - UI.png" id="4_phuax"]
+[ext_resource type="Texture2D" uid="uid://c2p5torstrtqm" path="res://Sprites/UI/checkIcon - UI.png" id="4_x6bwo"]
 [ext_resource type="PackedScene" uid="uid://cw3ok8v4p620b" path="res://Scenes/Experiments/squiggling_sprite.tscn" id="5_3iga4"]
 [ext_resource type="Texture2D" uid="uid://40jkc6woc7p" path="res://Sprites/UI/SquigglingUI/botonesRedondosASQUIG - UI.png" id="6_8uutm"]
 [ext_resource type="LabelSettings" uid="uid://c8wu4hhqg284x" path="res://Resources/UI_Resources/Generic_Font.tres" id="6_yhgeb"]
@@ -283,6 +284,18 @@ tracks/5/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("extraContent:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_phw3d"]
 resource_name = "appear"
@@ -376,6 +389,18 @@ tracks/6/keys = {
 "update": 1,
 "values": [false, true]
 }
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("extraContent:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(44, 44)]
+}
 
 [sub_resource type="Animation" id="Animation_jahtv"]
 resource_name = "idle"
@@ -413,7 +438,6 @@ pivot_offset = Vector2(326, 114)
 theme = ExtResource("1_v6n5n")
 script = ExtResource("2_33xng")
 AppearInBeginning = true
-Texts = Array[Resource("res://Scenes/Experiments/GenericPanel/TextFieldData.gd")]([null])
 
 [node name="label" type="Label" parent="."]
 use_parent_material = true
@@ -427,6 +451,7 @@ offset_right = -37.0
 offset_bottom = -56.0
 grow_horizontal = 2
 grow_vertical = 2
+text = "CC"
 label_settings = ExtResource("6_yhgeb")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -503,6 +528,7 @@ grow_horizontal = 2
 grow_vertical = 2
 rotation = 0.174533
 pivot_offset = Vector2(22, 22)
+texture = ExtResource("4_x6bwo")
 expand_mode = 1
 
 [node name="Label" type="Label" parent="BtnDerAnchor/btnDer/Icon"]
@@ -513,7 +539,6 @@ offset_top = -2.78077
 offset_right = 43.4943
 offset_bottom = 45.2192
 pivot_offset = Vector2(20, 19)
-text = "0K"
 label_settings = SubResource("LabelSettings_vixmh")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -529,6 +554,8 @@ position = Vector2(44, 44)
 scale = Vector2(1.05882, 1.05882)
 texture = ExtResource("6_8uutm")
 ActiveInBegining = false
+
+[node name="extraContent" type="Node2D" parent="BtnDerAnchor/btnDer"]
 
 [node name="btnIzqAnchor" type="Control" parent="."]
 use_parent_material = true
@@ -606,6 +633,8 @@ texture = ExtResource("7_1swfx")
 offset = Vector2(45, 45)
 ActiveInBegining = false
 
+[node name="extraContent" type="Node2D" parent="btnIzqAnchor/btnIzq"]
+
 [node name="btnCentralAnchor" type="Control" parent="."]
 use_parent_material = true
 layout_mode = 1
@@ -675,6 +704,8 @@ scale = Vector2(1.03922, 1.03922)
 texture = ExtResource("6_8uutm")
 offset = Vector2(45, 45)
 ActiveInBegining = false
+
+[node name="extraContent" type="Node2D" parent="btnCentralAnchor/btnCentral"]
 
 [node name="ButtonSkipWritting" type="Button" parent="."]
 visible = false

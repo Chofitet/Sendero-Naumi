@@ -41,6 +41,9 @@ func finishAnim():
 				p.visible = false
 		await get_tree().create_timer(3).timeout
 		get_parent().PassInstance()
+	else:
+		await get_tree().create_timer(1.3).timeout
+		PlayIdle()
 
 func BlockAnim():
 	anim.play("Rock_Block")

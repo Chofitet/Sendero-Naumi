@@ -9,6 +9,7 @@ extends Panel
 @export var TimeToAppear : float
 @export var SetEnterOnce: bool
 @export var RepitingPanel : bool
+var isAlternetiveTheme
 var EnterOnce
 @onready var label = $label
 @onready var _BotonDerecho = $BtnDerAnchor/btnDer
@@ -60,14 +61,22 @@ func refreshData(numPanel : int):
 	else:
 		textData = Texts[numPanel -1]
 	
+	if textData.PanelTheme != null:
+		set_theme(textData.PanelTheme)
 	
 	label.text = textData.Text
 	if textData.SizePanel != Vector2.ZERO: 
 		var tween = get_tree().create_tween()
 		tween.tween_property(self,"size",textData.SizePanel,0.3)
+		
 	if textData.Position != Vector2.ZERO:
+		var auxVector = textData.Position
+		if textData.Position.x == 0:
+			auxVector.x = position.x
+		if textData.Position.y == 0:
+			auxVector.y = position.y
 		var tween = get_tree().create_tween()
-		tween.tween_property(self,"position",textData.Position,0.3)
+		tween.tween_property(self,"position",auxVector,0.3)
 	
 	for btn in textData.buttons:
 		var _texture = btn.texture
@@ -197,6 +206,7 @@ func ChangeToNextText():
 
 func RefreshToActualPanel():
 	refreshData(numOfPanel)
+
 
 func rigthBTNConnect():
 	await get_tree().create_timer(0.2).timeout

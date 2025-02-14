@@ -19,4 +19,8 @@ func TriggerInFall(x):
 
 func OffPhysics():
 	Freeze()
-	
+
+func vibing():
+	$AnimationPlayer.play("vibing")
+	var actualcolor = $Sprite2D.modulate
+	$Sprite2D.modulate.v = actualcolor.v + 0.2 

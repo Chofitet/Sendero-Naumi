@@ -12,6 +12,7 @@ func _ready():
 func playAnimMap():
 	animMap.play("caida")
 	await  animMap.animation_finished
+	await  get_tree().create_timer(0.7).timeout
 	squiggling.ActiveSquiggling()
 	btn.visible = true
 	handUI.SetVisibility(true)
@@ -22,5 +23,6 @@ func TakeMap():
 	handUI.SetVisibility(false)
 	animMap.play("agarrado")
 	await animMap.animation_finished
-	animMap.visible = false
 	animMapBig.play("map_enter")
+	await  get_tree().create_timer(0.1).timeout
+	animMap.visible = false

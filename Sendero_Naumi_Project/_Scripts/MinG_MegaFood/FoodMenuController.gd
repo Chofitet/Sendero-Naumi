@@ -228,3 +228,4 @@ func DetectMouseRelease():
 
 func SetTutorial(x):
 	isInTutorial = x
+
