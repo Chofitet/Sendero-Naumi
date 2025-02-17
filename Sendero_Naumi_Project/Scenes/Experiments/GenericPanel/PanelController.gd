@@ -19,7 +19,7 @@ var EnterOnce
 var btnDontPassPanel
 
 var _btns =[]
-@export var characters_per_second : float = 78
+var Characters_per_second : float = 78
 var BotonDerecho
 var BotonIzquierdo
 var BotonCentral
@@ -150,7 +150,7 @@ func EnterPanel():
 var tweenWritting : Tween
 func typingAnim():
 	var text_length = label.text.length()
-	var duration = text_length / characters_per_second
+	var duration = text_length / Characters_per_second
 	label.visible_ratio = 0
 	SkipButton.visible = true
 	tweenWritting = get_tree().create_tween()

@@ -4,6 +4,7 @@ var anchors := []
 @export var limitGesture : float
 @export var limitHold : float
 @export var limitunderHolf : float
+@export var ResetPlatesIndex : bool
 var timer
 var pressedPos
 var inGesture
@@ -178,6 +179,11 @@ func Reset():
 		f.get_node("DragObject").ResetPosition()
 	AddPlatesOnAnchor()
 	StopDrag = false
+	if ResetPlatesIndex:
+		i = 1
+		plateRef = anchors[1]
+	DetectMouseRelease()
+	enableInteraction()
 
 func LockUnklockGragObjects(x):
 	for f in get_children():

@@ -20,20 +20,25 @@ var playerWinner
 signal PlayerLost
 
 func _ready():
-	get_parent().InstanceTrue.connect(SpawnFighters)
+	get_parent().InstanceTrue.connect(SpawnFighters.bind(true))
 	RigthBtn.get_child(1).pressed.connect(Figth.bind(false))
 	LeftBtn.get_child(1).pressed.connect(Figth.bind(true))
+	SpawnFighters(false)
 
-func SpawnFighters():
+func SpawnFighters(playEnterAnim):
+	if LeftRock != null:
+		RigthRock.EnterAnim()
+		LeftRock.EnterAnim()
+		return
 	LeftRock = instance.instantiate()
 	RigthRock = instance.instantiate()
 	add_child(LeftRock)
 	LeftRock.position.x = 0
-	LeftRock.init(LeftTexture,-1,LeftBtn.get_child(1),isLeftWinner,RigthRock)
+	LeftRock.init(LeftTexture,-1,LeftBtn.get_child(1),isLeftWinner,RigthRock,playEnterAnim)
 	LeftBtn.get_child(0).get_child(0).text = LeftName
 	add_child(RigthRock)
 	RigthRock.position.x = 0
-	RigthRock.init(RigthTexture,1,RigthBtn.get_child(1),!isLeftWinner,LeftRock,PiedraScale,PiedraOffset)
+	RigthRock.init(RigthTexture,1,RigthBtn.get_child(1),!isLeftWinner,LeftRock,playEnterAnim,PiedraScale,PiedraOffset)
 	RigthBtn.get_child(0).get_child(0).text = RigthName
 
 func PassInstance():

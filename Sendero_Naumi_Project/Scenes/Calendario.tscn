@@ -1,4 +1,4 @@
-[gd_scene load_steps=113 format=3 uid="uid://cmv5m3ynk4o5y"]
+[gd_scene load_steps=119 format=3 uid="uid://cmv5m3ynk4o5y"]
 
 [ext_resource type="Script" path="res://_Scripts/Minigame_Save_Controller.gd" id="1_jl73q"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/StateMachineMinigames.gd" id="2_7aqcq"]
@@ -41,14 +41,17 @@
 [ext_resource type="Script" path="res://_Scripts/MinG_MegaFood/FoodMenuController.gd" id="22_xt0by"]
 [ext_resource type="PackedScene" uid="uid://ci3c3pocxiywq" path="res://Scenes/Experiments/drag_object.tscn" id="24_2ql8s"]
 [ext_resource type="Texture2D" uid="uid://by0ctb1h2pxn5" path="res://Sprites/ZonaAstronomia/Respuestas_Calendar/agosto opcion 1 - calendario.png" id="24_j2bdy"]
+[ext_resource type="Texture2D" uid="uid://cgxynxv4wy7yi" path="res://Sprites/ZonaMegafauna/libro 1- excavacion.png" id="25_657eo"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/MoralejaState.gd" id="25_hvcd6"]
 [ext_resource type="Texture2D" uid="uid://dpla3wgiwegsf" path="res://Sprites/ZonaAstronomia/Respuestas_Calendar/agosto opcion 2 - calendario.png" id="25_s5mj2"]
 [ext_resource type="Texture2D" uid="uid://bgj8cc021rpak" path="res://Sprites/ZonaAstronomia/Respuestas_Calendar/agosto opcion 3 - calendario.png" id="26_4iu1w"]
+[ext_resource type="Texture2D" uid="uid://b1umtmfvn2b6o" path="res://Sprites/ZonaGeología/medal - RockFighter.png" id="26_5y7uc"]
 [ext_resource type="PackedScene" uid="uid://dlwmbps456ind" path="res://Scenes/Experiments/btnVolver.tscn" id="26_h6ron"]
 [ext_resource type="PackedScene" uid="uid://djhg7jvxtexyl" path="res://Scenes/UI_Scenes/btn_Change_Scene.tscn" id="26_musmw"]
 [ext_resource type="Shape2D" uid="uid://dpk0w7c8hcphr" path="res://Resources/calendarDragRectangle.tres" id="27_ft40d"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/FinState.gd" id="27_sayi7"]
 [ext_resource type="Texture2D" uid="uid://dae8bbxdvu2fb" path="res://Sprites/ZonaAstronomia/Respuestas_Calendar/dic21 opcion 1 - calendario.png" id="29_5pxra"]
+[ext_resource type="Texture2D" uid="uid://be0iwvq5bt2l1" path="res://Sprites/ZonaMegafauna/review1 - foodtruck.png" id="29_o30ul"]
 [ext_resource type="Texture2D" uid="uid://drw1phpjs6nkh" path="res://Sprites/ZonaAstronomia/Respuestas_Calendar/dic21 opcion 2 - calendario.png" id="30_fndxc"]
 [ext_resource type="Texture2D" uid="uid://c6yewuh4jponf" path="res://Sprites/ZonaAstronomia/cinta.png" id="30_rg26j"]
 [ext_resource type="Texture2D" uid="uid://duvkopdgkhhv7" path="res://Sprites/ZonaAstronomia/Respuestas_Calendar/dic21 opcion 3 - calendario.png" id="31_eeagm"]
@@ -162,6 +165,58 @@ tracks/5/keys = {
 "values": [1.0]
 }
 
+[sub_resource type="Animation" id="Animation_bbp38"]
+resource_name = "fadeMemoria"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/calendario/calendarioSilueta:material:shader_parameter/alpha")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control/calendario/calendarioSilueta:material:shader_parameter/waveAmplitude")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [0.1, 0.013]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Control/calendario/calendarioSilueta:material:shader_parameter/waveFrequency")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [20.0, 10.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Control/calendario/calendarioSilueta:material:shader_parameter/waveSpeed")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [20.0, 1.0]
+}
+
 [sub_resource type="Animation" id="Animation_8hayf"]
 resource_name = "in"
 tracks/0/type = "value"
@@ -224,58 +279,6 @@ tracks/1/keys = {
 [sub_resource type="Animation" id="Animation_pbd06"]
 resource_name = "questions"
 length = 1.2
-
-[sub_resource type="Animation" id="Animation_bbp38"]
-resource_name = "fadeMemoria"
-length = 1.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Control/calendario/calendarioSilueta:material:shader_parameter/alpha")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.5),
-"transitions": PackedFloat32Array(2, 1),
-"update": 0,
-"values": [0.0, 1.0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Control/calendario/calendarioSilueta:material:shader_parameter/waveAmplitude")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1.5),
-"transitions": PackedFloat32Array(0.5, 1),
-"update": 0,
-"values": [0.1, 0.013]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Control/calendario/calendarioSilueta:material:shader_parameter/waveFrequency")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 1.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [20.0, 10.0]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Control/calendario/calendarioSilueta:material:shader_parameter/waveSpeed")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 1.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [20.0, 1.0]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4y1fe"]
 _data = {
@@ -395,6 +398,163 @@ shader_parameter/TransparentBackground = null
 shader_parameter/DrawTransparent = true
 shader_parameter/xOffset = null
 shader_parameter/yOffset = null
+
+[sub_resource type="Animation" id="Animation_2dhle"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("libro:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CalendarZoom:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("libro/cinta3:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(195.335, -22.6257)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("libro/cinta2:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-7.54187, -343.156)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("libro/cinta1:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-198.352, -158.38)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CalendarZoom:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_o3gjq"]
+resource_name = "set_libro"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("libro:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CalendarZoom:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.735, 0.735)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("libro/cinta3:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.8, 1.1, 1.2),
+"transitions": PackedFloat32Array(1, -2, 1),
+"update": 0,
+"values": [Vector2(390.67, -22.6257), Vector2(190.056, -23.3799), Vector2(195.335, -22.6257)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("libro/cinta2:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.8, 1.1, 1.2),
+"transitions": PackedFloat32Array(1, -2, 1),
+"update": 0,
+"values": [Vector2(375.587, -545.279), Vector2(-27.1509, -327.318), Vector2(-7.54187, -343.156)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("libro/cinta1:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.8, 1.1, 1.2),
+"transitions": PackedFloat32Array(1, -2, 1),
+"update": 0,
+"values": [Vector2(-331.09, -158.38), Vector2(-182.513, -158.38), Vector2(-198.352, -158.38)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CalendarZoom:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -72)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_klh4w"]
+_data = {
+"RESET": SubResource("Animation_2dhle"),
+"set_libro": SubResource("Animation_o3gjq")
+}
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b042c"]
 size = Vector2(140, 130)
@@ -630,7 +790,8 @@ dontPassPanel = false
 
 [sub_resource type="Resource" id="Resource_47d2i"]
 script = ExtResource("18_66s5d")
-Text = "LOS SERES HUMANOS SON MUY NUEVOS EN LA HISTORIA DEL UNIVERSO"
+Text = "LOS SERES HUMANOS SON MUY NUEVOS
+EN LA HISTORIA DEL UNIVERSO"
 SizePanel = Vector2(0, 0)
 Position = Vector2(0, 0)
 buttons = Array[ExtResource("16_nigs6")]([SubResource("Resource_0ny5c")])
@@ -644,7 +805,8 @@ dontPassPanel = false
 
 [sub_resource type="Resource" id="Resource_nlviq"]
 script = ExtResource("18_66s5d")
-Text = "SOLO HAN EXISTIDO POR UNOS MINUTOS HASTA AHORA"
+Text = "SOLO HAN EXISTIDO POR UNOS MINUTOS
+HASTA AHORA"
 SizePanel = Vector2(0, 0)
 Position = Vector2(0, 0)
 buttons = Array[ExtResource("16_nigs6")]([SubResource("Resource_jfjub")])
@@ -658,7 +820,8 @@ dontPassPanel = false
 
 [sub_resource type="Resource" id="Resource_qup6w"]
 script = ExtResource("18_66s5d")
-Text = "PENSÁ CUÁNTO LOGRARON EN TAN POCO TIEMPO"
+Text = "PENSÁ CUÁNTO LOGRARON
+EN TAN POCO TIEMPO"
 SizePanel = Vector2(0, 0)
 Position = Vector2(0, 0)
 buttons = Array[ExtResource("16_nigs6")]([SubResource("Resource_u38vq")])
@@ -839,34 +1002,34 @@ state_machine = NodePath("../../..")
 
 [node name="PanelIntro1" parent="Calendario/StateMachine/Consigna/Contenido" instance=ExtResource("15_1ptxs")]
 layout_mode = 1
-anchors_preset = 8
-anchor_top = 0.5
-anchor_bottom = 0.5
+anchors_preset = -1
+anchor_top = 0.38
+anchor_bottom = 0.38
 offset_left = -334.0
-offset_top = -138.0
+offset_top = -137.4
 offset_right = 334.0
-offset_bottom = 138.0
+offset_bottom = 138.6
 grow_vertical = 2
 pivot_offset = Vector2(334, 138)
-characters_per_second = 45.0
 Texts = Array[ExtResource("18_66s5d")]([SubResource("Resource_fuwyd")])
 
 [node name="Panel(1) Btn(rigth)" parent="Calendario/StateMachine/Consigna/Contenido/PanelIntro1" instance=ExtResource("15_4bh1k")]
 Data = SubResource("Resource_hfs58")
 
 [node name="PanelIntro2" parent="Calendario/StateMachine/Consigna/Contenido" instance=ExtResource("15_1ptxs")]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.501
 anchor_top = 0.157
 anchor_right = 0.501
 anchor_bottom = 0.157
-offset_left = -340.72
-offset_top = -113.96
-offset_right = 341.28
-offset_bottom = 114.04
+offset_left = 380.72
+offset_top = 287.96
+offset_right = 1062.72
+offset_bottom = 515.96
+pivot_offset = Vector2(341, 114)
 AppearInBeginning = false
-characters_per_second = 45.0
 Texts = Array[ExtResource("18_66s5d")]([SubResource("Resource_fkmvq"), SubResource("Resource_y64rv"), SubResource("Resource_81ob6"), SubResource("Resource_b5efl")])
 
 [node name="Panel(2) Btn(rigth)" parent="Calendario/StateMachine/Consigna/Contenido/PanelIntro2" instance=ExtResource("15_4bh1k")]
@@ -888,7 +1051,6 @@ StateMachine = NodePath("..")
 InstanciasMinijuego = [NodePath("Contenido/Instancia1"), NodePath("Contenido/Instancia2"), NodePath("Contenido/Instancia3"), NodePath("Contenido/Instancia4"), NodePath("Contenido/Instancia5"), NodePath("Contenido/Instancia6"), NodePath("Contenido/Instancia7")]
 
 [node name="Contenido" type="Control" parent="Calendario/StateMachine/Juego"]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -982,7 +1144,66 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="CalendarZoom" type="Control" parent="Calendario/StateMachine/Juego/Contenido" node_paths=PackedStringArray("PanelConsigna")]
+[node name="CenterPivot" type="Control" parent="Calendario/StateMachine/Juego/Contenido"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="libro" type="Sprite2D" parent="Calendario/StateMachine/Juego/Contenido/CenterPivot"]
+visible = false
+position = Vector2(0, 154)
+scale = Vector2(1.32593, 1.32593)
+texture = ExtResource("25_657eo")
+
+[node name="texto2" type="Sprite2D" parent="Calendario/StateMachine/Juego/Contenido/CenterPivot/libro"]
+position = Vector2(132.737, 181.006)
+rotation = 0.342908
+scale = Vector2(0.31615, 0.31615)
+texture = ExtResource("26_5y7uc")
+
+[node name="Cinta" type="Sprite2D" parent="Calendario/StateMachine/Juego/Contenido/CenterPivot/libro/texto2"]
+position = Vector2(-0.126831, -291.252)
+rotation = -0.585226
+scale = Vector2(0.788488, 0.788488)
+texture = ExtResource("30_rg26j")
+
+[node name="Cinta2" type="Sprite2D" parent="Calendario/StateMachine/Juego/Contenido/CenterPivot/libro/texto2"]
+position = Vector2(14.1553, -293.818)
+rotation = 0.559801
+scale = Vector2(0.788488, 0.788488)
+texture = ExtResource("43_7u4sv")
+
+[node name="texto" type="Sprite2D" parent="Calendario/StateMachine/Juego/Contenido/CenterPivot/libro"]
+position = Vector2(-72.4023, 132.737)
+texture = ExtResource("29_o30ul")
+
+[node name="cinta1" type="Sprite2D" parent="Calendario/StateMachine/Juego/Contenido/CenterPivot/libro"]
+z_index = 1
+position = Vector2(-198.352, -158.38)
+rotation = 1.51411
+scale = Vector2(0.246826, 0.246826)
+texture = ExtResource("43_7u4sv")
+
+[node name="cinta2" type="Sprite2D" parent="Calendario/StateMachine/Juego/Contenido/CenterPivot/libro"]
+z_index = 1
+position = Vector2(-7.54187, -343.156)
+rotation = 0.0873492
+scale = Vector2(0.246826, 0.246826)
+texture = ExtResource("30_rg26j")
+
+[node name="cinta3" type="Sprite2D" parent="Calendario/StateMachine/Juego/Contenido/CenterPivot/libro"]
+z_index = 1
+position = Vector2(195.335, -22.6257)
+rotation = 1.95109
+scale = Vector2(0.246826, 0.246826)
+texture = ExtResource("30_rg26j")
+
+[node name="CalendarZoom" type="Control" parent="Calendario/StateMachine/Juego/Contenido/CenterPivot" node_paths=PackedStringArray("PanelConsigna")]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -992,12 +1213,12 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("15_x38jw")
-PanelConsigna = NodePath("../PanelConsigna")
+PanelConsigna = NodePath("../../PanelConsigna")
 
-[node name="calendarPivot" type="Node2D" parent="Calendario/StateMachine/Juego/Contenido/CalendarZoom"]
+[node name="calendarPivot" type="Node2D" parent="Calendario/StateMachine/Juego/Contenido/CenterPivot/CalendarZoom"]
 scale = Vector2(0.377, 0.378)
 
-[node name="Calendar" type="Sprite2D" parent="Calendario/StateMachine/Juego/Contenido/CalendarZoom/calendarPivot"]
+[node name="Calendar" type="Sprite2D" parent="Calendario/StateMachine/Juego/Contenido/CenterPivot/CalendarZoom/calendarPivot"]
 material = SubResource("ShaderMaterial_lebsb")
 scale = Vector2(1, 1.001)
 texture = ExtResource("5_7guea")
@@ -1006,34 +1227,34 @@ SlotPos = Vector2(10.057, -6.28)
 Slotscale = Vector2(0.515, 0.515)
 OffsetA = Vector2(-102.105, -102.535)
 
-[node name="center" type="Marker2D" parent="Calendario/StateMachine/Juego/Contenido/CalendarZoom/calendarPivot/Calendar"]
+[node name="center" type="Marker2D" parent="Calendario/StateMachine/Juego/Contenido/CenterPivot/CalendarZoom/calendarPivot/Calendar"]
 scale = Vector2(1, 0.998)
 
-[node name="EneroPos" type="Marker2D" parent="Calendario/StateMachine/Juego/Contenido/CalendarZoom/calendarPivot/Calendar"]
+[node name="EneroPos" type="Marker2D" parent="Calendario/StateMachine/Juego/Contenido/CenterPivot/CalendarZoom/calendarPivot/Calendar"]
 position = Vector2(-811.671, -412.286)
 scale = Vector2(1, 0.998)
 
-[node name="AgostoPos" type="Marker2D" parent="Calendario/StateMachine/Juego/Contenido/CalendarZoom/calendarPivot/Calendar"]
+[node name="AgostoPos" type="Marker2D" parent="Calendario/StateMachine/Juego/Contenido/CenterPivot/CalendarZoom/calendarPivot/Calendar"]
 position = Vector2(-602.122, 5.28577)
 scale = Vector2(1, 0.998)
 
-[node name="21DiciembrePos" type="Marker2D" parent="Calendario/StateMachine/Juego/Contenido/CalendarZoom/calendarPivot/Calendar"]
+[node name="21DiciembrePos" type="Marker2D" parent="Calendario/StateMachine/Juego/Contenido/CenterPivot/CalendarZoom/calendarPivot/Calendar"]
 position = Vector2(283.82, -192.929)
 scale = Vector2(1.002, 1)
 
-[node name="25DiciembrePos" type="Marker2D" parent="Calendario/StateMachine/Juego/Contenido/CalendarZoom/calendarPivot/Calendar"]
+[node name="25DiciembrePos" type="Marker2D" parent="Calendario/StateMachine/Juego/Contenido/CenterPivot/CalendarZoom/calendarPivot/Calendar"]
 position = Vector2(-84.8806, -95.1429)
 scale = Vector2(1, 0.998)
 
-[node name="29DiciembrePos" type="Marker2D" parent="Calendario/StateMachine/Juego/Contenido/CalendarZoom/calendarPivot/Calendar"]
+[node name="29DiciembrePos" type="Marker2D" parent="Calendario/StateMachine/Juego/Contenido/CenterPivot/CalendarZoom/calendarPivot/Calendar"]
 position = Vector2(-458.886, 5.28572)
 scale = Vector2(1, 0.998)
 
-[node name="31DiciembrePos2" type="Marker2D" parent="Calendario/StateMachine/Juego/Contenido/CalendarZoom/calendarPivot/Calendar"]
+[node name="31DiciembrePos2" type="Marker2D" parent="Calendario/StateMachine/Juego/Contenido/CenterPivot/CalendarZoom/calendarPivot/Calendar"]
 position = Vector2(655.172, -192.929)
 scale = Vector2(1, 0.998)
 
-[node name="Circulo" type="TextureRect" parent="Calendario/StateMachine/Juego/Contenido/CalendarZoom/calendarPivot/Calendar"]
+[node name="Circulo" type="TextureRect" parent="Calendario/StateMachine/Juego/Contenido/CenterPivot/CalendarZoom/calendarPivot/Calendar"]
 material = SubResource("ShaderMaterial_rtru6")
 anchors_preset = -1
 anchor_left = 0.488
@@ -1047,35 +1268,40 @@ offset_bottom = 2831.85
 grow_horizontal = 2
 texture = ExtResource("17_gchn0")
 
-[node name="background" type="Sprite2D" parent="Calendario/StateMachine/Juego/Contenido/CalendarZoom/calendarPivot/Calendar"]
+[node name="background" type="Sprite2D" parent="Calendario/StateMachine/Juego/Contenido/CenterPivot/CalendarZoom/calendarPivot/Calendar"]
 self_modulate = Color(0, 0, 0, 1)
 show_behind_parent = true
 texture = ExtResource("5_7guea")
 
-[node name="Buttons" type="Node2D" parent="Calendario/StateMachine/Juego/Contenido/CalendarZoom"]
+[node name="Buttons" type="Node2D" parent="Calendario/StateMachine/Juego/Contenido/CenterPivot/CalendarZoom"]
 scale = Vector2(1.23912, 1.23912)
 
-[node name="Interrogate" parent="Calendario/StateMachine/Juego/Contenido/CalendarZoom/Buttons" instance=ExtResource("19_0vums")]
+[node name="Interrogate" parent="Calendario/StateMachine/Juego/Contenido/CenterPivot/CalendarZoom/Buttons" instance=ExtResource("19_0vums")]
 position = Vector2(-251.792, -186.423)
 
-[node name="Interrogate2" parent="Calendario/StateMachine/Juego/Contenido/CalendarZoom/Buttons" instance=ExtResource("19_0vums")]
+[node name="Interrogate2" parent="Calendario/StateMachine/Juego/Contenido/CenterPivot/CalendarZoom/Buttons" instance=ExtResource("19_0vums")]
 position = Vector2(-183.195, -48.4215)
 
-[node name="Interrogate3" parent="Calendario/StateMachine/Juego/Contenido/CalendarZoom/Buttons" instance=ExtResource("19_0vums")]
+[node name="Interrogate3" parent="Calendario/StateMachine/Juego/Contenido/CenterPivot/CalendarZoom/Buttons" instance=ExtResource("19_0vums")]
 position = Vector2(85.5447, -118.633)
 
-[node name="Interrogate4" parent="Calendario/StateMachine/Juego/Contenido/CalendarZoom/Buttons" instance=ExtResource("19_0vums")]
+[node name="Interrogate4" parent="Calendario/StateMachine/Juego/Contenido/CenterPivot/CalendarZoom/Buttons" instance=ExtResource("19_0vums")]
 position = Vector2(-26.6319, -78.2814)
 
-[node name="Interrogate5" parent="Calendario/StateMachine/Juego/Contenido/CalendarZoom/Buttons" instance=ExtResource("19_0vums")]
+[node name="Interrogate5" parent="Calendario/StateMachine/Juego/Contenido/CenterPivot/CalendarZoom/Buttons" instance=ExtResource("19_0vums")]
 position = Vector2(-138.001, -46.0003)
 
-[node name="Interrogate6" parent="Calendario/StateMachine/Juego/Contenido/CalendarZoom/Buttons" instance=ExtResource("19_0vums")]
+[node name="Interrogate6" parent="Calendario/StateMachine/Juego/Contenido/CenterPivot/CalendarZoom/Buttons" instance=ExtResource("19_0vums")]
 position = Vector2(164.633, -125.089)
 
-[node name="Interrogate7" parent="Calendario/StateMachine/Juego/Contenido/CalendarZoom/Buttons" instance=ExtResource("19_0vums")]
+[node name="Interrogate7" parent="Calendario/StateMachine/Juego/Contenido/CenterPivot/CalendarZoom/Buttons" instance=ExtResource("19_0vums")]
 visible = false
 position = Vector2(135.58, -66.9831)
+
+[node name="OutroAnim" type="AnimationPlayer" parent="Calendario/StateMachine/Juego/Contenido/CenterPivot"]
+libraries = {
+"": SubResource("AnimationLibrary_klh4w")
+}
 
 [node name="Spot" type="Control" parent="Calendario/StateMachine/Juego/Contenido"]
 layout_mode = 1
@@ -1103,7 +1329,7 @@ script = ExtResource("19_hmohx")
 hBoxConteiner = NodePath("../../pivotHboxController/HBoxContainer")
 StateMachine = NodePath("../../../..")
 panel = NodePath("../../PanelPreguntas")
-calendar = NodePath("../../CalendarZoom/calendarPivot/Calendar")
+calendar = NodePath("../../CenterPivot/CalendarZoom/calendarPivot/Calendar")
 
 [node name="AnswerSpot" type="Node2D" parent="Calendario/StateMachine/Juego/Contenido/Spot/AnswerController"]
 
@@ -1182,14 +1408,13 @@ layout_mode = 1
 anchors_preset = -1
 anchor_top = 0.157
 anchor_bottom = 0.157
-offset_left = -463.0
-offset_top = -112.96
-offset_right = 463.0
-offset_bottom = 113.04
+offset_left = -103.0
+offset_top = 288.96
+offset_right = 823.0
+offset_bottom = 514.96
 grow_vertical = 2
 pivot_offset = Vector2(463, 113)
 theme = ExtResource("55_7pksd")
-characters_per_second = 45.0
 Texts = Array[ExtResource("18_66s5d")]([SubResource("Resource_v2ur4")])
 
 [node name="PanelPreguntas" parent="Calendario/StateMachine/Juego/Contenido" instance=ExtResource("15_1ptxs")]
@@ -1205,7 +1430,6 @@ grow_vertical = 2
 pivot_offset = Vector2(465, 114)
 theme = ExtResource("55_7pksd")
 AppearInBeginning = false
-characters_per_second = 45.0
 Texts = Array[ExtResource("18_66s5d")]([SubResource("Resource_uthvg")])
 
 [node name="label" parent="Calendario/StateMachine/Juego/Contenido/PanelPreguntas" index="0"]
@@ -1213,22 +1437,6 @@ text = ""
 
 [node name="labelRich" parent="Calendario/StateMachine/Juego/Contenido/PanelPreguntas" index="1"]
 text = "[b]"
-
-[node name="Icon" parent="Calendario/StateMachine/Juego/Contenido/PanelPreguntas/BtnDerAnchor/btnDer" index="0"]
-offset_left = -22.0
-offset_top = -22.0
-offset_right = 22.0
-offset_bottom = 22.0
-
-[node name="Icon" parent="Calendario/StateMachine/Juego/Contenido/PanelPreguntas/btnIzqAnchor/btnIzq" index="0"]
-offset_left = -22.0
-offset_top = -22.0
-offset_right = 22.0
-offset_bottom = 22.0
-
-[node name="Icon" parent="Calendario/StateMachine/Juego/Contenido/PanelPreguntas/btnCentralAnchor/btnCentral" index="0"]
-offset_right = -23.0
-offset_bottom = -23.0
 
 [node name="pivotHboxController" type="Control" parent="Calendario/StateMachine/Juego/Contenido"]
 layout_mode = 1
@@ -1251,6 +1459,7 @@ script = ExtResource("22_xt0by")
 limitGesture = 100.0
 limitHold = 300.0
 limitunderHolf = 20.0
+ResetPlatesIndex = true
 
 [node name="Date1" type="Sprite2D" parent="Calendario/StateMachine/Juego/Contenido/pivotHboxController/HBoxContainer"]
 position = Vector2(228, 329)
@@ -1350,12 +1559,18 @@ text = ""
 NextScene = "Map_Screen"
 
 [node name="PanelOutro" parent="Calendario/StateMachine/Juego/Contenido" instance=ExtResource("15_1ptxs")]
-visible = false
 layout_mode = 1
-offset_top = 84.0
-offset_bottom = 312.0
+anchors_preset = -1
+anchor_left = 0.508
+anchor_top = 0.36
+anchor_right = 0.508
+anchor_bottom = 0.36
+offset_left = -325.76
+offset_top = -376.8
+offset_right = 326.24
+offset_bottom = -148.8
+pivot_offset = Vector2(326, 114)
 AppearInBeginning = false
-characters_per_second = 45.0
 Texts = Array[ExtResource("18_66s5d")]([SubResource("Resource_47d2i"), SubResource("Resource_nlviq"), SubResource("Resource_qup6w")])
 
 [node name="Panel(3) Btn(rigth)" parent="Calendario/StateMachine/Juego/Contenido/PanelOutro" instance=ExtResource("15_4bh1k")]
@@ -1613,9 +1828,10 @@ NextScene = "Map_Screen"
 [connection signal="ButtonPress" from="Calendario/StateMachine/Consigna/Contenido/PanelIntro2/Panel(3) Btn(rigth)" to="Calendario/StateMachine/Consigna/Contenido/Control/calendario/pivot" method="PlayAnimChild"]
 [connection signal="ButtonPress" from="Calendario/StateMachine/Consigna/Contenido/PanelIntro2/Panel(3) Btn(rigth)" to="Calendario/StateMachine/Consigna/Contenido/PanelIntro2" method="UseAlternativeTheme" binds= [true]]
 [connection signal="ButtonPress" from="Calendario/StateMachine/Consigna/Contenido/PanelIntro2/Panel(3) Btn(rigth)" to="Calendario/StateMachine/Consigna/Contenido/PanelIntro2/Timer" method="StartTime" binds= [false]]
-[connection signal="Transitioned" from="Calendario/StateMachine/Juego" to="Calendario/StateMachine/Juego/Contenido/CalendarZoom" method="SetQuestionWithInstance"]
-[connection signal="ZoomOutFinished" from="Calendario/StateMachine/Juego/Contenido/CalendarZoom" to="Calendario/StateMachine/Juego/Contenido/PanelOutro" method="EnterPanel"]
-[connection signal="RigthAnswere" from="Calendario/StateMachine/Juego/Contenido/Spot/AnswerController" to="Calendario/StateMachine/Juego/Contenido/CalendarZoom" method="ZoomToPos" binds= [0]]
+[connection signal="Transitioned" from="Calendario/StateMachine/Juego" to="Calendario/StateMachine/Juego/Contenido/CenterPivot/CalendarZoom" method="SetQuestionWithInstance"]
+[connection signal="OutroAnim" from="Calendario/StateMachine/Juego/Contenido/CenterPivot/CalendarZoom" to="Calendario/StateMachine/Juego/Contenido/CenterPivot/OutroAnim" method="play" binds= ["set_libro"]]
+[connection signal="ZoomOutFinished" from="Calendario/StateMachine/Juego/Contenido/CenterPivot/CalendarZoom" to="Calendario/StateMachine/Juego/Contenido/PanelOutro" method="EnterPanel"]
+[connection signal="RigthAnswere" from="Calendario/StateMachine/Juego/Contenido/Spot/AnswerController" to="Calendario/StateMachine/Juego/Contenido/CenterPivot/CalendarZoom" method="ZoomToPos" binds= [0]]
 [connection signal="ultimateInstance" from="Calendario/StateMachine/Juego/Contenido/Spot/AnswerController" to="Calendario" method="Set_Complete"]
 [connection signal="OnSpot" from="Calendario/StateMachine/Juego/Contenido/Spot/AnswerController/Spot" to="Calendario/StateMachine/Juego/Contenido/pivotHboxController/HBoxContainer" method="SetPlate"]
 [connection signal="aPlateAreDragging" from="Calendario/StateMachine/Juego/Contenido/pivotHboxController/HBoxContainer" to="Calendario/StateMachine/Juego/Contenido/pivotHboxController/HBoxContainer/Date1/SquigglingSprite" method="InactiveSquiggling"]

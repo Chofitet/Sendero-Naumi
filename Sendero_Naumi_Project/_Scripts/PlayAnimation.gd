@@ -2,12 +2,15 @@ extends AnimationPlayer
 @export var animation : String
 @export var DestroyInFinish : String
 @export var AnimationsOrder : Array[String] 
+@export var preloadAnim : String
 var index = 0
 
 func _ready():
 	animation_finished.connect(DestroyAnimInFinishAnim)
 	if AnimationsOrder.size() != 0:
 		animation_finished.connect(PlayNextAnim)
+	
+	AnimationPreCarga()
 
 func Play():
 	play(animation)
@@ -38,3 +41,9 @@ func SkipActualAnim():
 	stop()
 	play(AnimationsOrder[index])
 	index += 1
+
+func AnimationPreCarga():
+	if preloadAnim == "": return
+	play(preloadAnim)
+	seek(current_animation_length, true)
+	stop()

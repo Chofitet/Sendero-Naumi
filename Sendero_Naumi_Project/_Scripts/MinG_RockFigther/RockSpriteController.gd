@@ -10,7 +10,7 @@ var timer
 var btnvolver
 signal fight
 
-func init(_texture,isflip, btn, _isWinner, otherRock, VectorScale = Vector2(0.639,0.639), offset = Vector2.ZERO):
+func init(_texture,isflip, btn, _isWinner, otherRock, playEnterAnim = true, VectorScale = Vector2(0.639,0.639), offset = Vector2.ZERO):
 	$Parts/Piedra.texture = _texture
 	$Parts/Piedra.scale = VectorScale
 	$Parts/Piedra.offset = offset
@@ -22,11 +22,18 @@ func init(_texture,isflip, btn, _isWinner, otherRock, VectorScale = Vector2(0.63
 	timer = get_node("Timer")
 	timer.timeout.connect(finishAnim)
 	shardEmitter = get_node("Parts/Piedra/ShardEmitter")
-	anim = $AnimPiedra 
+	anim = $AnimPiedra
+	anim.play("Rock_Idle") 
+	if playEnterAnim:
+		anim.play("EnterAnim")
+		await anim.animation_finished
+		anim.play("Rock_Idle")
+	
+
+func EnterAnim():
 	anim.play("EnterAnim")
 	await anim.animation_finished
 	anim.play("Rock_Idle")
-
 
 func Fight(): 
 	anim.play("Rock_Punch")

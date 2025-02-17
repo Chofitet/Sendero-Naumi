@@ -1,4 +1,4 @@
-[gd_scene load_steps=100 format=3 uid="uid://lv8sdofmjhf3"]
+[gd_scene load_steps=101 format=3 uid="uid://lv8sdofmjhf3"]
 
 [ext_resource type="Script" path="res://_Scripts/Minigame_Save_Controller.gd" id="1_f0fiw"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/StateMachineMinigames.gd" id="2_12384"]
@@ -52,6 +52,7 @@
 [ext_resource type="PackedScene" uid="uid://da63y126gdf5f" path="res://Scenes/Zona_Geología/medal_counter.tscn" id="40_8p7gf"]
 [ext_resource type="Texture2D" uid="uid://dqx8i8skk58mn" path="res://Sprites/ZonaGeología/dureza-festejo-pareja1.png" id="41_d5ulm"]
 [ext_resource type="Texture2D" uid="uid://clicyobmomilh" path="res://Sprites/ZonaGeología/dureza-festejo-pareja3.png" id="42_wqo4t"]
+[ext_resource type="ButtonGroup" uid="uid://cbu7gk50bap8v" path="res://Resources/ButtonGroupFigther.tres" id="43_p1yif"]
 [ext_resource type="Texture2D" uid="uid://bweceq8ikkir5" path="res://Sprites/ZonaGeología/dureza-festejo-pareja2.png" id="43_xay53"]
 [ext_resource type="Texture2D" uid="uid://ckgstqui4n4ld" path="res://Sprites/ZonaGeología/cinturonVictoria - durezas.png" id="46_ypyfl"]
 [ext_resource type="Texture2D" uid="uid://c2p5torstrtqm" path="res://Sprites/UI/checkIcon - UI.png" id="51_cuny6"]
@@ -514,50 +515,26 @@ tracks/6/keys = {
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("RightBtn/button:disabled")
+tracks/7/path = NodePath("RightBtn/BigButton:visible")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(0, 2),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 1.9, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [true, false]
+"values": [false, false, true]
 }
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("RightBtn/BigButton:disabled")
+tracks/8/path = NodePath("LeftBtn/BigButton:visible")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
-"times": PackedFloat32Array(0, 2),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 1.9, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [true, false]
-}
-tracks/9/type = "value"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("LeftBtn/button:disabled")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
-"times": PackedFloat32Array(0, 2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/10/type = "value"
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath("LeftBtn/BigButton:disabled")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/keys = {
-"times": PackedFloat32Array(0, 2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
+"values": [false, false, true]
 }
 
 [sub_resource type="Animation" id="Animation_knxec"]
@@ -649,50 +626,26 @@ tracks/6/keys = {
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("RightBtn/button:disabled")
+tracks/7/path = NodePath("RightBtn/BigButton:visible")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [false]
 }
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("RightBtn/BigButton:disabled")
+tracks/8/path = NodePath("LeftBtn/BigButton:visible")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
-}
-tracks/9/type = "value"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("LeftBtn/button:disabled")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/10/type = "value"
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath("LeftBtn/BigButton:disabled")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
+"values": [false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_nyamy"]
@@ -1230,7 +1183,6 @@ StateMachine = NodePath("..")
 InstanciasMinijuego = [NodePath("Contenido/Instancia1"), NodePath("Contenido/Instancia2"), NodePath("Contenido/Instancia3")]
 
 [node name="Contenido" type="Control" parent="RockFighters/StateMachine/Juego"]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -1721,6 +1673,7 @@ libraries = {
 }
 script = ExtResource("17_r375b")
 animation = "EnterAnim"
+preloadAnim = "EnterAnim"
 
 [node name="RightBtn" type="Control" parent="RockFighters/StateMachine/Juego/Contenido/Consigna"]
 visible = false
@@ -1731,10 +1684,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 974.0
-offset_top = 279.0
-offset_right = 974.0
-offset_bottom = 279.0
+offset_left = 627.5
+offset_top = 189.0
+offset_right = 627.5
+offset_bottom = 189.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -1775,6 +1728,7 @@ scale = Vector2(0.967688, 0.917465)
 texture = ExtResource("30_w5i6x")
 
 [node name="BigButton" type="Button" parent="RockFighters/StateMachine/Juego/Contenido/Consigna/RightBtn"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1782,11 +1736,12 @@ anchor_bottom = 1.0
 offset_left = -173.0
 offset_top = -101.0
 offset_right = 168.0
-offset_bottom = 449.0
+offset_bottom = 598.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/focus = ExtResource("19_ao7ck")
-disabled = true
+toggle_mode = true
+button_group = ExtResource("43_p1yif")
 flat = true
 
 [node name="LeftBtn" type="Control" parent="RockFighters/StateMachine/Juego/Contenido/Consigna"]
@@ -1798,10 +1753,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -274.0
-offset_top = 279.0
-offset_right = -274.0
-offset_bottom = 279.0
+offset_left = -620.5
+offset_top = 189.0
+offset_right = -620.5
+offset_bottom = 189.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -1848,6 +1803,7 @@ scale = Vector2(0.951819, 0.906124)
 texture = ExtResource("30_w5i6x")
 
 [node name="BigButton" type="Button" parent="RockFighters/StateMachine/Juego/Contenido/Consigna/LeftBtn"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1855,11 +1811,12 @@ anchor_bottom = 1.0
 offset_left = -173.0
 offset_top = -101.0
 offset_right = 168.0
-offset_bottom = 449.0
+offset_bottom = 599.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/focus = ExtResource("19_ao7ck")
-disabled = true
+toggle_mode = true
+button_group = ExtResource("43_p1yif")
 flat = true
 
 [node name="VS" type="TextureRect" parent="RockFighters/StateMachine/Juego/Contenido/Consigna"]
@@ -2088,7 +2045,6 @@ offset_bottom = 568.0
 grow_vertical = 2
 pivot_offset = Vector2(326, 262)
 AppearInBeginning = false
-characters_per_second = 45.0
 Texts = Array[ExtResource("23_5rold")]([SubResource("Resource_neabq")])
 
 [node name="cinturon" type="Sprite2D" parent="RockFighters/StateMachine/Moraleja/Contenido/Instancia2/PanelMoraleja2"]
@@ -2242,7 +2198,6 @@ offset_top = -180.64
 offset_bottom = 246.36
 pivot_offset = Vector2(326, 213.5)
 AppearInBeginning = false
-characters_per_second = 45.0
 Texts = Array[ExtResource("23_5rold")]([SubResource("Resource_xkqfr")])
 
 [node name="Panel(1) Btn(center)" parent="RockFighters/StateMachine/Fin/Contenido/PanelOutro" instance=ExtResource("24_0aurr")]

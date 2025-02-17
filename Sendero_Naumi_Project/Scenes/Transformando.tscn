@@ -2476,10 +2476,10 @@ tracks/16/path = NodePath("HumoParticulasAdelante:emitting")
 tracks/16/interp = 1
 tracks/16/loop_wrap = true
 tracks/16/keys = {
-"times": PackedFloat32Array(1.6),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 1.6),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [false]
+"values": [true, false]
 }
 tracks/17/type = "value"
 tracks/17/imported = false
@@ -2488,10 +2488,10 @@ tracks/17/path = NodePath("HumoParticulasAtras:emitting")
 tracks/17/interp = 1
 tracks/17/loop_wrap = true
 tracks/17/keys = {
-"times": PackedFloat32Array(1.6),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 1.6),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [false]
+"values": [true, false]
 }
 tracks/18/type = "value"
 tracks/18/imported = false
@@ -2529,7 +2529,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../HumoParticulasAtras:emitting")
+tracks/1/path = NodePath("../HumoParticulasAdelante:emitting")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -2541,13 +2541,13 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("../HumoParticulasAdelante:emitting")
+tracks/2/path = NodePath("../HumoParticulasAtras:emitting")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
+"update": 1,
 "values": [false]
 }
 
@@ -2583,26 +2583,26 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("../HumoParticulasAtras:emitting")
+tracks/2/path = NodePath("../HumoParticulasAdelante:emitting")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(3),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 3.6),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [true]
+"values": [false, true]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("../HumoParticulasAdelante:emitting")
+tracks/3/path = NodePath("../HumoParticulasAtras:emitting")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(4.1),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [true]
+"times": PackedFloat32Array(0, 3.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
 }
 
 [sub_resource type="Animation" id="Animation_t1ix0"]
@@ -2991,10 +2991,10 @@ tracks/5/path = NodePath("MoleParticles:emitting")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(6.6),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(6.6, 8),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [true]
+"values": [true, false]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
@@ -3003,10 +3003,10 @@ tracks/6/path = NodePath("MoleParticles3:emitting")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(6.6),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(6.6, 8),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [true]
+"values": [true, false]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
@@ -3015,10 +3015,10 @@ tracks/7/path = NodePath("MoleParticles2:emitting")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(6.6),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(6.6, 7.8),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [true]
+"values": [true, false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_cmi3y"]
@@ -3472,10 +3472,9 @@ QUE SE ENCUENTRA BAJO LA TIERRA[/b]
 ENTRE 850 A 1200 GRADOS!
 
 [b]CUANDO EL MAGMA SE ENFRÍA[/b]
-MUY LENTAMENTE,
-[b]SE PONE SÓLIDO[/b]
+MUY LENTAMENTE [b]SE PONE SÓLIDO[b]
 Y SE CONVIERTE EN UNA 
-[b]ROCA ÍGNEA PLUTÓNICA[/b][/center]"
+[font_size={40}][b]ROCA ÍGNEA PLUTÓNICA[/b]"
 SizePanel = Vector2(0, 0)
 Position = Vector2(0, 0)
 buttons = Array[ExtResource("11_kf813")]([SubResource("Resource_0jyvg")])
@@ -3503,7 +3502,7 @@ AL ESTAR FUERA DE LA TIERRA
 [b]CUANDO LA LAVA SE ENFRÍA
 Y SE PONE SÓLIDA[/b]
 SE CONVIERTE EN UNA 
-[b]ROCA ÍGNEA VOLCÁNICA[/b][/center]"
+[font_size={40}][b]ROCA ÍGNEA VOLCÁNICA[/b]"
 SizePanel = Vector2(0, 0)
 Position = Vector2(0, 0)
 buttons = Array[ExtResource("11_kf813")]([SubResource("Resource_idxqt")])
@@ -3522,7 +3521,8 @@ dontPassPanel = false
 
 [sub_resource type="Resource" id="Resource_tw2wj"]
 script = ExtResource("13_r3rxi")
-Text = "TRANSFORMASTE TODAS LAS PIEDRAS"
+Text = "FELICITACIONES! 
+TRANSFORMASTE TODAS LAS ROCAS"
 SizePanel = Vector2(0, 0)
 Position = Vector2(0, 0)
 buttons = Array[ExtResource("11_kf813")]([SubResource("Resource_dl14k")])
@@ -3876,7 +3876,6 @@ offset_right = 312.0
 offset_bottom = -373.52
 rotation = 0.206461
 pivot_offset = Vector2(291, 114)
-characters_per_second = 45.0
 Texts = Array[ExtResource("13_r3rxi")]([SubResource("Resource_u3ass")])
 
 [node name="roca" type="Sprite2D" parent="Transformando/StateMachine/Consigna/Contenido/PanelIntro1"]
@@ -3911,7 +3910,6 @@ offset_bottom = 112.84
 rotation = -0.114277
 pivot_offset = Vector2(291, 114)
 AppearInBeginning = false
-characters_per_second = 45.0
 Texts = Array[ExtResource("13_r3rxi")]([SubResource("Resource_ve6u1")])
 
 [node name="roca" type="Sprite2D" parent="Transformando/StateMachine/Consigna/Contenido/PanelIntro2"]
@@ -3941,7 +3939,6 @@ offset_bottom = 1098.0
 rotation = 0.209569
 pivot_offset = Vector2(291, 114)
 AppearInBeginning = false
-characters_per_second = 45.0
 Texts = Array[ExtResource("13_r3rxi")]([SubResource("Resource_2sd3i")])
 
 [node name="roca" type="Sprite2D" parent="Transformando/StateMachine/Consigna/Contenido/PanelIntro3"]
@@ -7769,10 +7766,9 @@ QUE SE ENCUENTRA BAJO LA TIERRA[/b]
 ENTRE 850 A 1200 GRADOS!
 
 [b]CUANDO EL MAGMA SE ENFRÍA[/b]
-MUY LENTAMENTE,
-[b]SE PONE SÓLIDO[/b]
+MUY LENTAMENTE [b]SE PONE SÓLIDO[b]
 Y SE CONVIERTE EN UNA 
-[b]ROCA ÍGNEA PLUTÓNICA[/b][/center]"
+[font_size={40}][b]ROCA ÍGNEA PLUTÓNICA[/b]"
 
 [node name="btnCentral" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Paneles/PanelPlutonica/btnCentralAnchor" index="0"]
 visible = true
@@ -7808,7 +7804,7 @@ AL ESTAR FUERA DE LA TIERRA
 [b]CUANDO LA LAVA SE ENFRÍA
 Y SE PONE SÓLIDA[/b]
 SE CONVIERTE EN UNA 
-[b]ROCA ÍGNEA VOLCÁNICA[/b][/center]"
+[font_size={40}][b]ROCA ÍGNEA VOLCÁNICA[/b]"
 
 [node name="btnCentral" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Paneles/PanelVolcanica/btnCentralAnchor" index="0"]
 visible = true
@@ -7834,7 +7830,6 @@ offset_bottom = -154.0
 grow_vertical = 0
 AppearInBeginning = false
 RepitingPanel = true
-characters_per_second = 45.0
 Texts = Array[ExtResource("13_r3rxi")]([SubResource("Resource_tw2wj")])
 
 [node name="Panel(1) Btn(center)" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/PanelEnd" instance=ExtResource("16_ss078")]
@@ -7900,7 +7895,6 @@ offset_bottom = 388.0
 grow_vertical = 2
 pivot_offset = Vector2(326, 388)
 AppearInBeginning = false
-characters_per_second = 45.0
 Texts = Array[ExtResource("13_r3rxi")]([SubResource("Resource_qevm7")])
 
 [node name="Control" type="Control" parent="Transformando/StateMachine/Moraleja/Contenido/PanelOutro"]

@@ -4,16 +4,17 @@ extends Control
 @export var PanelConsigna : Panel
 var Positions :=[]
 var QButtons :=[]
-@onready var InstanceController = get_parent()
+@onready var InstanceController = get_parent().get_parent()
 var OffsetSpot
 var gamefinished
 signal ZoomFinished
 signal ZoomOutFinished
+signal OutroAnim
 
 func _ready():
 	for p in $calendarPivot/Calendar.get_children():
 		Positions.append(p)
-	OffsetSpot = get_parent().get_node("Spot").global_position - global_position
+	OffsetSpot = get_parent().get_parent().get_node("Spot").global_position - global_position
 	var i = 1
 	for q in $Buttons.get_children():
 		QButtons.append(q)
@@ -25,7 +26,6 @@ func SetQuestionWithInstance():
 	for i in range(0,InstanceController.get_num_instance()):
 		QButtons[i].visible = false
 	QButtons[InstanceController.get_num_instance()].get_node("anim").play("blink")
-	print("dadfgds" + str(InstanceController.get_num_instance()))
 
 func ZoomToPos(index = 0):
 	$Buttons.visible = false
@@ -41,6 +41,7 @@ func ZoomToPos(index = 0):
 		$calendarPivot/Calendar.material.set_shader_parameter("focus_radius", 0.034)
 	if index == 6: $calendarPivot/Calendar.material.set_shader_parameter("focus_radius", 0.077)
 	await get_tree().create_timer(0.3).timeout
+	if index == 0 : if gamefinished: OutroAnim.emit()
 	var posToMove = Positions[index].position 
 	var tween = get_tree().create_tween()
 	tween.tween_property(CalendarPivot.get_node("Calendar"), "offset", -posToMove,1).set_ease(Tween.EASE_IN)

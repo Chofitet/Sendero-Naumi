@@ -12,7 +12,7 @@ var isfocusing : bool
 var index
 
 func _ready():
-	get_parent().get_node("CalendarZoom").ZoomFinished.connect(UpdateWithInstance)
+	get_parent().get_node("CenterPivot").get_node("CalendarZoom").ZoomFinished.connect(UpdateWithInstance)
 
 func UpdateWithInstance():
 	var LabelAnswers

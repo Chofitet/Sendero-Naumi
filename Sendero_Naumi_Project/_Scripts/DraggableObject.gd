@@ -136,7 +136,6 @@ func ResetPosition():
 	object.visible = true
 	object.position = initial_spot
 	lastPosition = initial_spot
-	print(initial_spot)
 	isInPosition = false
 	is_in_spot = false
 
