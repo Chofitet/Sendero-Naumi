@@ -23,13 +23,8 @@ func _ready():
 	get_parent().InstanceTrue.connect(SpawnFighters.bind(true))
 	RigthBtn.get_child(1).pressed.connect(Figth.bind(false))
 	LeftBtn.get_child(1).pressed.connect(Figth.bind(true))
-	SpawnFighters(false)
 
 func SpawnFighters(playEnterAnim):
-	if LeftRock != null:
-		RigthRock.EnterAnim()
-		LeftRock.EnterAnim()
-		return
 	LeftRock = instance.instantiate()
 	RigthRock = instance.instantiate()
 	add_child(LeftRock)

@@ -28,15 +28,18 @@ func init(_texture,isflip, btn, _isWinner, otherRock, playEnterAnim = true, Vect
 		anim.play("EnterAnim")
 		await anim.animation_finished
 		anim.play("Rock_Idle")
+		PlayAnimOfParts("Rock_Idle")
 	
 
 func EnterAnim():
 	anim.play("EnterAnim")
 	await anim.animation_finished
 	anim.play("Rock_Idle")
+	PlayAnimOfParts("Rock_Idle")
 
 func Fight(): 
 	anim.play("Rock_Punch")
+	PlayAnimOfParts("Rock_Punch")
 	fight.emit()
 	timer.start()
 
@@ -54,7 +57,14 @@ func finishAnim():
 
 func BlockAnim():
 	anim.play("Rock_Block")
+	PlayAnimOfParts("Rock_Block")
 	timer.start()
 
 func PlayIdle():
 	anim.play("Rock_Idle")
+	PlayAnimOfParts("Rock_Idle")
+
+func PlayAnimOfParts(anim):
+	for p in $Parts.get_children():
+		if p is AnimatedSprite2D:
+			p.play(anim)

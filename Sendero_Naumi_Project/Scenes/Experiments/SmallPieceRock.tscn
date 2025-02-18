@@ -72,7 +72,7 @@ _data = {
 "vibing": SubResource("Animation_qgvb8")
 }
 
-[node name="SmallPieceRock" type="RigidBody2D"]
+[node name="SmallPieceRock" type="RigidBody2D" groups=["rock"]]
 z_index = -1
 physics_material_override = SubResource("PhysicsMaterial_jt8is")
 gravity_scale = 0.8
@@ -87,12 +87,11 @@ scale = Vector2(0.0341026, 0.0384615)
 texture = ExtResource("1_ysejh")
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 2.2
+wait_time = 1.2
 one_shot = true
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." groups=["rock"]]
 monitoring = false
-monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_8i23v")

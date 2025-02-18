@@ -1,4 +1,4 @@
-[gd_scene load_steps=220 format=3 uid="uid://cndqno434rnuu"]
+[gd_scene load_steps=222 format=3 uid="uid://cndqno434rnuu"]
 
 [ext_resource type="Script" path="res://_Scripts/Minigame_Save_Controller.gd" id="1_aaeor"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/StateMachineMinigames.gd" id="2_0bmn1"]
@@ -47,6 +47,7 @@
 [ext_resource type="Texture2D" uid="uid://0lu4k8jagkum" path="res://Sprites/ZonaGeología/Piedras/volcanica - transformaciones.png" id="32_bldxx"]
 [ext_resource type="Texture2D" uid="uid://bnchpislbl3s" path="res://Sprites/ZonaGeología/Parche 1.png" id="33_5dlx2"]
 [ext_resource type="Script" path="res://_Scripts/SetVisibleChilds.gd" id="33_a03qu"]
+[ext_resource type="Script" path="res://_Scripts/MinG_RockFigther/RockDetector.gd" id="33_rd7qh"]
 [ext_resource type="Texture2D" uid="uid://b4xnthtnr2j0u" path="res://Sprites/ZonaGeología/Piedras/prevolcanica - transformaciones.png" id="33_t4nqu"]
 [ext_resource type="Texture2D" uid="uid://cvtrs5ytlacbn" path="res://Sprites/ZonaGeología/piece4.png" id="35_wvi4y"]
 [ext_resource type="Texture2D" uid="uid://6eb55jjytgxt" path="res://Sprites/ZonaGeología/piece5.png" id="36_dgbo2"]
@@ -956,7 +957,10 @@ _data = {
 point_count = 3
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7ls2j"]
-size = Vector2(352.267, 78.8486)
+size = Vector2(352.267, 100.914)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t1vcv"]
+size = Vector2(346, 98)
 
 [sub_resource type="Animation" id="Animation_v6wdy"]
 length = 0.001
@@ -4056,7 +4060,6 @@ scale = Vector2(0.999843, 0.999843)
 skew = -0.00138235
 rest = Transform2D(1, 0, 0, 1, 32, 0)
 editor_settings/show_bone_gizmo = false
-metadata/_local_pose_override_enabled_ = true
 
 [node name="Bone3" type="Bone2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Lava_Fall/PathFollow2D/Node2D/Lava snake/Skeleton2D/Bone1/Bone2"]
 position = Vector2(28.2843, -0.121915)
@@ -4064,7 +4067,6 @@ rotation = -0.00147328
 scale = Vector2(0.999829, 0.999829)
 rest = Transform2D(1, 0, 0, 1, 32, 0)
 editor_settings/show_bone_gizmo = false
-metadata/_local_pose_override_enabled_ = true
 
 [node name="ColorRect" type="ColorRect" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Lava_Fall/PathFollow2D/Node2D/Lava snake/Skeleton2D/Bone1/Bone2/Bone3"]
 offset_left = 5.0
@@ -4189,7 +4191,6 @@ scale = Vector2(0.999843, 0.999843)
 skew = -0.00134373
 rest = Transform2D(1, 0, 0, 1, 32, 0)
 editor_settings/show_bone_gizmo = false
-metadata/_local_pose_override_enabled_ = true
 
 [node name="Bone3" type="Bone2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/LavaFallVolcanica/PathFollow2D/Node2D/Lava snake/Skeleton2D/Bone1/Bone2"]
 position = Vector2(28.2843, -0.121915)
@@ -4197,7 +4198,6 @@ rotation = -0.00283671
 scale = Vector2(0.999829, 0.999829)
 rest = Transform2D(1, 0, 0, 1, 32, 0)
 editor_settings/show_bone_gizmo = false
-metadata/_local_pose_override_enabled_ = true
 
 [node name="ColorRect" type="ColorRect" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/LavaFallVolcanica/PathFollow2D/Node2D/Lava snake/Skeleton2D/Bone1/Bone2/Bone3"]
 offset_left = 5.0
@@ -5216,9 +5216,18 @@ position = Vector2(443, 345)
 rotation = 0.44175
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Area2D" groups=["BreakingSmallTrigger"]]
-position = Vector2(-18.116, -10.2378)
+position = Vector2(-7.09363, -10.7202)
 rotation = -1.61454
 shape = SubResource("RectangleShape2D_7ls2j")
+
+[node name="AreaFrezeeRocks" type="Area2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control"]
+position = Vector2(627, 451)
+monitorable = false
+script = ExtResource("33_rd7qh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/AreaFrezeeRocks"]
+position = Vector2(8, 0)
+shape = SubResource("RectangleShape2D_t1vcv")
 
 [node name="TextureRect" type="TextureRect" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control"]
 layout_mode = 1

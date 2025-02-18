@@ -1,9 +1,9 @@
 extends RigidBody2D
 @onready var timer = $Timer
 @onready var area2d = $Area2D
+var inPit
 
 func _ready():
-	pass
 	area2d.area_entered.connect(TriggerInFall)
 	timer.timeout.connect(OffPhysics)
 
@@ -11,6 +11,7 @@ func Freeze():
 	freeze = true
 
 func UnFreeze():
+	if inPit: return
 	freeze = false
 
 func TriggerInFall(x):
@@ -19,8 +20,13 @@ func TriggerInFall(x):
 
 func OffPhysics():
 	Freeze()
+	inPit = true
 
 func vibing():
 	$AnimationPlayer.play("vibing")
 	var actualcolor = $Sprite2D.modulate
 	$Sprite2D.modulate.v = actualcolor.v + 0.2 
+
+func StartTimer():
+	timer.start()
+	
