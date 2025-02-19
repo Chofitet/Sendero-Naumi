@@ -4,6 +4,8 @@ extends Control
 @export var FirstInstance : Control
 var Book = preload("res://Scenes/Zona_Megafauna/evento_libro.tscn")
 @export var ParentBook : Control
+signal hideTutorial
+signal showTutorial
 var once
 
 func _ready():
@@ -12,13 +14,13 @@ func _ready():
 
 func ShowTutorial():
 	if FirstInstance.visible:
-		visible = true
+		showTutorial.emit()
 
 func HideTutorial(x):
 	if x.is_in_group("topo"):
 		if once: return
 		once = true
-		$PanelTutorial.ExitPanel()
+		hideTutorial.emit()
 		
 	
 

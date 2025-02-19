@@ -1,16 +1,13 @@
-[gd_scene load_steps=16 format=3 uid="uid://cm3bhrmlsfqxm"]
+[gd_scene load_steps=15 format=3 uid="uid://cm3bhrmlsfqxm"]
 
 [ext_resource type="Script" path="res://_Scripts/MinG_RockFigther/RockSpriteController.gd" id="1_0fan5"]
-[ext_resource type="SpriteFrames" uid="uid://d4kgmngixgmvj" path="res://Resources/FigthterPartesFrames/BrazoDerecho.tres" id="3_j31x1"]
+[ext_resource type="SpriteFrames" uid="uid://d4kgmngixgmvj" path="res://Resources/FigthterPartesFrames/BrazoDerechoSprite.tres" id="2_hfbyb"]
+[ext_resource type="SpriteFrames" uid="uid://ftj3qlitfex6" path="res://Resources/FigthterPartesFrames/PiernaIzquierdaSprite.tres" id="3_0tp4j"]
+[ext_resource type="SpriteFrames" uid="uid://bcvpllhe7o4uh" path="res://Resources/FigthterPartesFrames/PiernaDerechaSprite.tres" id="3_gsnkr"]
 [ext_resource type="Texture2D" uid="uid://b5qoetxgjuq1s" path="res://Sprites/ZonaGeología/Piedras/cuarzo_dureza.png" id="3_o1jx5"]
 [ext_resource type="PackedScene" uid="uid://byauyjvexvbuc" path="res://Scenes/Experiments/ShardEmitter.tscn" id="4_1kf35"]
-[ext_resource type="SpriteFrames" uid="uid://bcvpllhe7o4uh" path="res://Resources/FigthterPartesFrames/BrazoIzquierdo.tres" id="4_s2uhk"]
 [ext_resource type="Script" path="res://_Scripts/PlayAnimation.gd" id="5_x25mk"]
-[ext_resource type="SpriteFrames" uid="uid://ftj3qlitfex6" path="res://Resources/FigthterPartesFrames/PiernaIzquierda.tres" id="7_tvwnb"]
-[ext_resource type="SpriteFrames" uid="uid://dkhdkh1muoigh" path="res://Resources/FigthterPartesFrames/PiernaDerecha.tres" id="8_sp7gp"]
-
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_jsqgf"]
-light_mode = 1
+[ext_resource type="SpriteFrames" uid="uid://dkhdkh1muoigh" path="res://Resources/FigthterPartesFrames/BrazoIzquierdoSprite.tres" id="7_050uu"]
 
 [sub_resource type="Animation" id="Animation_74hn4"]
 resource_name = "EnterAnim"
@@ -150,7 +147,6 @@ _data = {
 }
 
 [node name="PiedraLuchador" type="Control"]
-material = SubResource("CanvasItemMaterial_jsqgf")
 layout_mode = 3
 anchor_left = 0.5
 anchor_top = 0.649
@@ -179,16 +175,16 @@ hframes = 14
 vframes = 5
 
 [node name="BrazoDerAnim" type="AnimatedSprite2D" parent="Parts"]
-position = Vector2(174.34, 155.832)
+position = Vector2(178.34, 155.832)
 scale = Vector2(1.162, 1.162)
-sprite_frames = ExtResource("3_j31x1")
-animation = &"Rock_Idle"
+sprite_frames = ExtResource("2_hfbyb")
+animation = &"Rock_Punch"
 
 [node name="PiernaDerAnim" type="AnimatedSprite2D" parent="Parts"]
 position = Vector2(166.259, 124.565)
 scale = Vector2(1.138, 1.138)
-sprite_frames = ExtResource("4_s2uhk")
-animation = &"Rock_Idle"
+sprite_frames = ExtResource("3_gsnkr")
+animation = &"Rock_Punch"
 
 [node name="Piedra" type="Sprite2D" parent="Parts"]
 use_parent_material = true
@@ -203,16 +199,14 @@ threshhold = 50.0
 [node name="PiernaIzqAnim" type="AnimatedSprite2D" parent="Parts"]
 position = Vector2(159.181, 131.625)
 scale = Vector2(1.138, 1.138)
-sprite_frames = ExtResource("7_tvwnb")
+sprite_frames = ExtResource("3_0tp4j")
 animation = &"Rock_Idle"
 
 [node name="BrazoIzqAnim" type="AnimatedSprite2D" parent="Parts"]
-position = Vector2(160.497, 141.711)
+position = Vector2(167.497, 141.711)
 scale = Vector2(1.138, 1.138)
-sprite_frames = ExtResource("8_sp7gp")
+sprite_frames = ExtResource("7_050uu")
 animation = &"Rock_Punch"
-frame = 8
-frame_progress = 1.0
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 3.2

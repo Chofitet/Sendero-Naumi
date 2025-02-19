@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://ck4m8k46bmha1"]
+[gd_scene load_steps=62 format=3 uid="uid://ck4m8k46bmha1"]
 
 [ext_resource type="Script" path="res://_Scripts/AdjustSeparationWithScreenSize.gd" id="2_1v6rf"]
 [ext_resource type="Script" path="res://_Scripts/ScrollController.gd" id="2_es768"]
@@ -52,6 +52,31 @@
 [ext_resource type="PackedScene" uid="uid://nmuyip31gkq5" path="res://Scenes/UI_Scenes/generic_button.tscn" id="49_5dgeg"]
 [ext_resource type="Texture2D" uid="uid://daq0wdip7fkhp" path="res://Sprites/UI/eggIcon - UI.png" id="49_wt3wo"]
 [ext_resource type="Texture2D" uid="uid://kb7ixs5ala8" path="res://Sprites/UI/arrowIcon - UI.png" id="50_otgwf"]
+
+[sub_resource type="Shader" id="Shader_hsi5r"]
+code = "shader_type canvas_item;
+
+uniform float squiggle_intensity : hint_range(0.0, 10.0) = 1.0; // Intensidad del efecto
+uniform float speed : hint_range(0.0, 5.0) = 1.0; // Velocidad del efecto
+uniform float frequency : hint_range(0.0, 20.0) = 10.0; // Frecuencia de las ondulaciones
+
+void fragment() {
+    vec2 uv = UV;
+
+    // Añade una ondulación basada en el tiempo
+    float time = TIME * speed;
+    uv.x += sin(uv.y * frequency + time) * squiggle_intensity * 0.01;
+    uv.y += cos(uv.x * frequency + time) * squiggle_intensity * 0.01;
+
+    // Muestra la textura del sprite con las ondulaciones aplicadas
+    COLOR = texture(TEXTURE, uv) * texture(TEXTURE, UV).a;
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1luy6"]
+shader = SubResource("Shader_hsi5r")
+shader_parameter/squiggle_intensity = 0.108
+shader_parameter/speed = 0.892
+shader_parameter/frequency = 20.0
 
 [sub_resource type="Curve2D" id="Curve2D_8o4yl"]
 bake_interval = 0.01
@@ -176,7 +201,8 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.65098, 0.784314, 1, 1)
 
-[node name="TextureRect2" type="TextureRect" parent="."]
+[node name="SpaceTexture" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_1luy6")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -186,18 +212,6 @@ grow_vertical = 2
 texture = ExtResource("21_ti06q")
 expand_mode = 1
 stretch_mode = 1
-
-[node name="Anchor" type="Control" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
 
 [node name="TimerScroll" type="Timer" parent="."]
 wait_time = 0.2
@@ -1035,7 +1049,7 @@ scale = Vector2(1.06, 1.06)
 texture = ExtResource("32_opqms")
 
 [node name="Calendario" parent="StateMachine/AstronomiaZone/ZoomingZone/SubViewport/ZoomingZone" instance=ExtResource("6_wq3mc")]
-position = Vector2(281.84, 113.265)
+position = Vector2(281.84, 89.025)
 NumOfLevel = 1
 
 [node name="Label2" type="Label" parent="StateMachine/AstronomiaZone/ZoomingZone/SubViewport/ZoomingZone/Calendario"]
@@ -1048,12 +1062,12 @@ text = "1"
 label_settings = ExtResource("18_m0o3f")
 
 [node name="SquigglingSprite" parent="StateMachine/AstronomiaZone/ZoomingZone/SubViewport/ZoomingZone/Calendario" instance=ExtResource("19_ied16")]
-position = Vector2(7.265, 122.835)
+position = Vector2(7.265, 147.195)
 scale = Vector2(1.05, 1.05)
 texture = ExtResource("33_bfyu4")
 
 [node name="DondeEstuvo" parent="StateMachine/AstronomiaZone/ZoomingZone/SubViewport/ZoomingZone" instance=ExtResource("6_wq3mc")]
-position = Vector2(904.82, 333.63)
+position = Vector2(904.82, 314.415)
 NumOfLevel = 2
 
 [node name="Label2" type="Label" parent="StateMachine/AstronomiaZone/ZoomingZone/SubViewport/ZoomingZone/DondeEstuvo"]
@@ -1066,7 +1080,7 @@ text = "2"
 label_settings = ExtResource("18_m0o3f")
 
 [node name="SquigglingSprite" parent="StateMachine/AstronomiaZone/ZoomingZone/SubViewport/ZoomingZone/DondeEstuvo" instance=ExtResource("19_ied16")]
-position = Vector2(-19.06, 153.235)
+position = Vector2(-19.06, 171.675)
 scale = Vector2(1.065, 1.065)
 texture = ExtResource("34_sfh6v")
 
@@ -1175,7 +1189,7 @@ scale = Vector2(0.74, 0.796)
 texture = ExtResource("32_5k6rn")
 
 [node name="Busqueda" parent="StateMachine/GeologiaZone/ZoomingZone/SubViewport/ZoomingZone" instance=ExtResource("6_wq3mc")]
-position = Vector2(617.4, 35.57)
+position = Vector2(617.4, 11.995)
 NumOfLevel = 2
 
 [node name="Label2" type="Label" parent="StateMachine/GeologiaZone/ZoomingZone/SubViewport/ZoomingZone/Busqueda"]
@@ -1188,7 +1202,7 @@ text = "2"
 label_settings = ExtResource("18_m0o3f")
 
 [node name="SquigglingSprite" parent="StateMachine/GeologiaZone/ZoomingZone/SubViewport/ZoomingZone/Busqueda" instance=ExtResource("19_ied16")]
-position = Vector2(31.295, 109.31)
+position = Vector2(31.295, 133.52)
 scale = Vector2(1.005, 1.096)
 texture = ExtResource("33_hdkxd")
 

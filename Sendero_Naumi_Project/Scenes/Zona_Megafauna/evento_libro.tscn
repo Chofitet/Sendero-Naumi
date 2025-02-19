@@ -1,20 +1,10 @@
-[gd_scene load_steps=35 format=3 uid="uid://cctger1fmyno1"]
+[gd_scene load_steps=18 format=3 uid="uid://cctger1fmyno1"]
 
 [ext_resource type="Script" path="res://_Scripts/MinG_Excavar/BookEvent.gd" id="1_nc5t3"]
 [ext_resource type="Texture2D" uid="uid://cgxynxv4wy7yi" path="res://Sprites/ZonaMegafauna/libro 1- excavacion.png" id="2_30xwc"]
 [ext_resource type="Texture2D" uid="uid://8qjqj804xiyb" path="res://Sprites/ZonaMegafauna/nariz - excavacion.png" id="3_y0fc2"]
 [ext_resource type="Texture2D" uid="uid://cnji2kc1gn3es" path="res://Sprites/ZonaMegafauna/pata - excavacion.png" id="4_u7on6"]
-[ext_resource type="Shader" path="res://shaders/FadeTexture.gdshader" id="5_xfm8b"]
-[ext_resource type="Texture2D" uid="uid://bxqyeawcu8e62" path="res://Sprites/ZonaMegafauna/megaterio fosil 2 - excavacion.png" id="6_wkycv"]
-[ext_resource type="Texture2D" uid="uid://vchumiux3vli" path="res://addons/scene_manager/shader_patterns/vertical.png" id="7_iqs8x"]
-[ext_resource type="Texture2D" uid="uid://c6arlslp4nw7u" path="res://Sprites/ZonaMegafauna/megaterio vivo - excavacion.png" id="8_k6uir"]
-[ext_resource type="Script" path="res://_Scripts/MinG_Excavar/WriteTextAnim.gd" id="9_s73q6"]
-[ext_resource type="Texture2D" uid="uid://cstk0imupyt5a" path="res://Sprites/ZonaMegafauna/smilodon fosil - excavacion.png" id="9_vsuwf"]
-[ext_resource type="Texture2D" uid="uid://ccwnkf0y2w1lg" path="res://Sprites/ZonaMegafauna/smilodon vivo - excavacion.png" id="10_owbqi"]
-[ext_resource type="Texture2D" uid="uid://dkkyhv72i3ud8" path="res://Sprites/ZonaMegafauna/gliptodon fosil - excavacion.png" id="11_p7j6h"]
-[ext_resource type="Texture2D" uid="uid://w61ju0tr0aq8" path="res://Sprites/ZonaMegafauna/gliptodon vivo - excavacion.png" id="12_48fmq"]
-[ext_resource type="Texture2D" uid="uid://bmmttxd4j1mk" path="res://Sprites/ZonaMegafauna/macrauquenia - fosil.png" id="13_gv3ek"]
-[ext_resource type="Texture2D" uid="uid://bxcul4i1itdj2" path="res://Sprites/ZonaMegafauna/macrauquenia vivo - excavacion.png" id="14_7a4em"]
+[ext_resource type="FontFile" uid="uid://c1vvwdmforgtm" path="res://Resources/UI_Resources/Fonts/Naturaly.otf" id="5_wllcw"]
 [ext_resource type="Texture2D" uid="uid://osslshvruyeq" path="res://Sprites/ZonaMegafauna/pencil.png" id="15_8o25e"]
 [ext_resource type="PackedScene" uid="uid://cw3ok8v4p620b" path="res://Scenes/Experiments/squiggling_sprite.tscn" id="17_g1jyu"]
 [ext_resource type="Texture2D" uid="uid://dhh1mhpbooeku" path="res://Sprites/ZonaMegafauna/squigglingExcavando/pencilSQUIG - excavando.png" id="18_46d1n"]
@@ -87,6 +77,18 @@ tracks/3/keys = {
 "update": 0,
 "values": [Vector2(1, 1)]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("overlay:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_cdjbv"]
 resource_name = "book_enter"
@@ -101,6 +103,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(2, 0.5, 1),
 "update": 0,
 "values": [Vector2(0, 1443), Vector2(0, -100), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("overlay:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
 }
 
 [sub_resource type="Animation" id="Animation_02nwt"]
@@ -157,74 +171,40 @@ _data = {
 "pencil_idle": SubResource("Animation_cx6o4")
 }
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_iivr6"]
-shader = ExtResource("5_xfm8b")
-shader_parameter/cutoff = 1.0
-shader_parameter/smoothness = 0.1
-shader_parameter/inverted = true
-shader_parameter/custom_texture = ExtResource("6_wkycv")
-shader_parameter/mask_texture = ExtResource("7_iqs8x")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ubqmg"]
-shader = ExtResource("5_xfm8b")
-shader_parameter/cutoff = 1.0
-shader_parameter/smoothness = 0.1
-shader_parameter/inverted = true
-shader_parameter/custom_texture = ExtResource("8_k6uir")
-shader_parameter/mask_texture = ExtResource("7_iqs8x")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_q8vls"]
-shader = ExtResource("5_xfm8b")
-shader_parameter/cutoff = 1.0
-shader_parameter/smoothness = 0.07
-shader_parameter/inverted = true
-shader_parameter/custom_texture = ExtResource("9_vsuwf")
-shader_parameter/mask_texture = ExtResource("7_iqs8x")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_25dtb"]
-shader = ExtResource("5_xfm8b")
-shader_parameter/cutoff = 1.0
-shader_parameter/smoothness = 0.1
-shader_parameter/inverted = true
-shader_parameter/custom_texture = ExtResource("10_owbqi")
-shader_parameter/mask_texture = ExtResource("7_iqs8x")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_yso4i"]
-shader = ExtResource("5_xfm8b")
-shader_parameter/cutoff = 1.0
-shader_parameter/smoothness = 0.1
-shader_parameter/inverted = true
-shader_parameter/custom_texture = ExtResource("11_p7j6h")
-shader_parameter/mask_texture = ExtResource("7_iqs8x")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_1kl48"]
-shader = ExtResource("5_xfm8b")
-shader_parameter/cutoff = 1.0
-shader_parameter/smoothness = 0.1
-shader_parameter/inverted = true
-shader_parameter/custom_texture = ExtResource("12_48fmq")
-shader_parameter/mask_texture = ExtResource("7_iqs8x")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_oi7lm"]
-shader = ExtResource("5_xfm8b")
-shader_parameter/cutoff = 1.0
-shader_parameter/smoothness = 0.1
-shader_parameter/inverted = true
-shader_parameter/custom_texture = ExtResource("13_gv3ek")
-shader_parameter/mask_texture = ExtResource("7_iqs8x")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_3oxlb"]
-shader = ExtResource("5_xfm8b")
-shader_parameter/cutoff = 1.0
-shader_parameter/smoothness = 0.1
-shader_parameter/inverted = true
-shader_parameter/custom_texture = ExtResource("14_7a4em")
-shader_parameter/mask_texture = ExtResource("7_iqs8x")
+[sub_resource type="LabelSettings" id="LabelSettings_je1ui"]
+font = ExtResource("5_wllcw")
+font_size = 65
+font_color = Color(0.176471, 0.121569, 0.0627451, 1)
 
 [node name="EventoLibro" type="Node2D"]
 z_index = 2
 position = Vector2(0, -288)
 script = ExtResource("1_nc5t3")
+
+[node name="DisableInput" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1085.0
+offset_top = -1612.0
+offset_right = 1085.0
+offset_bottom = 1612.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0)
+
+[node name="overlay" type="ColorRect" parent="."]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1085.0
+offset_top = -1612.0
+offset_right = 1085.0
+offset_bottom = 1612.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.521569)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -251,146 +231,8 @@ scale = Vector2(0.481242, 0.481242)
 texture = ExtResource("4_u7on6")
 
 [node name="animales" type="Node2D" parent="LibroController/libro"]
-position = Vector2(0, -1003.59)
+position = Vector2(0, 14.3575)
 scale = Vector2(0.717875, 0.717875)
-
-[node name="megaterio" type="Node2D" parent="LibroController/libro/animales"]
-visible = false
-position = Vector2(0, 1391)
-scale = Vector2(0.999998, 0.999998)
-
-[node name="bones" type="Sprite2D" parent="LibroController/libro/animales/megaterio"]
-material = SubResource("ShaderMaterial_iivr6")
-position = Vector2(-11, -0.000366211)
-rotation = -0.204534
-scale = Vector2(0.374242, 0.374242)
-texture = ExtResource("6_wkycv")
-
-[node name="vivo" type="Sprite2D" parent="LibroController/libro/animales/megaterio"]
-material = SubResource("ShaderMaterial_ubqmg")
-position = Vector2(-29.5001, 9.50098)
-scale = Vector2(1.3605, 1.31678)
-texture = ExtResource("8_k6uir")
-
-[node name="Label" type="Label" parent="LibroController/libro/animales/megaterio" node_paths=PackedStringArray("pencil")]
-visible = false
-offset_left = 111.0
-offset_top = -236.0
-offset_right = 298.0
-offset_bottom = -86.0
-theme_override_colors/font_color = Color(0.176471, 0.121569, 0.0627451, 1)
-theme_override_font_sizes/font_size = 30
-text = "PEREZOSO
-GIGANTE
-TERRESTRE
-
-"
-horizontal_alignment = 1
-autowrap_mode = 2
-clip_text = true
-uppercase = true
-script = ExtResource("9_s73q6")
-pencil = NodePath("../../../../../pencil/pencilPoint")
-
-[node name="smilodonte" type="Node2D" parent="LibroController/libro/animales"]
-visible = false
-position = Vector2(-4.99999, 1346)
-scale = Vector2(0.999998, 0.999998)
-
-[node name="bones" type="Sprite2D" parent="LibroController/libro/animales/smilodonte"]
-material = SubResource("ShaderMaterial_q8vls")
-position = Vector2(-18.6985, -1.00024)
-scale = Vector2(0.615622, 0.612186)
-texture = ExtResource("9_vsuwf")
-flip_h = true
-
-[node name="vivo" type="Sprite2D" parent="LibroController/libro/animales/smilodonte"]
-modulate = Color(0.219608, 0.219608, 0.219608, 1)
-material = SubResource("ShaderMaterial_25dtb")
-position = Vector2(-15.5001, 48.501)
-scale = Vector2(1.32037, 1.20588)
-texture = ExtResource("10_owbqi")
-flip_h = true
-
-[node name="Label" type="Label" parent="LibroController/libro/animales/smilodonte" node_paths=PackedStringArray("pencil")]
-visible = false
-offset_left = -265.0
-offset_top = -247.0
-offset_right = -10.0
-offset_bottom = -96.9996
-theme_override_colors/font_color = Color(0.176471, 0.121569, 0.0627451, 1)
-theme_override_font_sizes/font_size = 30
-text = "Felino dientes de sable"
-autowrap_mode = 2
-clip_text = true
-uppercase = true
-script = ExtResource("9_s73q6")
-pencil = NodePath("../../../../../pencil/pencilPoint")
-
-[node name="glyptodon" type="Node2D" parent="LibroController/libro/animales"]
-visible = false
-position = Vector2(-4.99999, 1346)
-scale = Vector2(0.999998, 0.999998)
-
-[node name="bones" type="Sprite2D" parent="LibroController/libro/animales/glyptodon"]
-material = SubResource("ShaderMaterial_yso4i")
-position = Vector2(8.34222, -3.5)
-scale = Vector2(0.698551, 0.708422)
-texture = ExtResource("11_p7j6h")
-
-[node name="vivo" type="Sprite2D" parent="LibroController/libro/animales/glyptodon"]
-modulate = Color(0.219608, 0.219608, 0.219608, 1)
-material = SubResource("ShaderMaterial_1kl48")
-position = Vector2(1.96823, 62)
-scale = Vector2(1.36002, 1.38203)
-texture = ExtResource("12_48fmq")
-
-[node name="Label" type="Label" parent="LibroController/libro/animales/glyptodon" node_paths=PackedStringArray("pencil")]
-visible = false
-offset_left = -274.0
-offset_top = -242.0
-offset_right = 42.0
-offset_bottom = -150.0
-theme_override_colors/font_color = Color(0.176471, 0.121569, 0.0627451, 1)
-theme_override_font_sizes/font_size = 30
-text = "Pariente extinto del armadillo"
-autowrap_mode = 2
-clip_text = true
-uppercase = true
-script = ExtResource("9_s73q6")
-pencil = NodePath("../../../../../pencil/pencilPoint")
-
-[node name="macrauquenia" type="Node2D" parent="LibroController/libro/animales"]
-visible = false
-position = Vector2(-4.99999, 1346)
-scale = Vector2(0.999998, 0.999998)
-
-[node name="bones" type="Sprite2D" parent="LibroController/libro/animales/macrauquenia"]
-material = SubResource("ShaderMaterial_oi7lm")
-position = Vector2(0, 21.7996)
-scale = Vector2(0.612314, 0.612314)
-texture = ExtResource("13_gv3ek")
-
-[node name="vivo" type="Sprite2D" parent="LibroController/libro/animales/macrauquenia"]
-modulate = Color(0.219608, 0.219608, 0.219608, 1)
-material = SubResource("ShaderMaterial_3oxlb")
-position = Vector2(-1, 74.7998)
-scale = Vector2(1.15462, 1.15462)
-texture = ExtResource("14_7a4em")
-
-[node name="Label" type="Label" parent="LibroController/libro/animales/macrauquenia" node_paths=PackedStringArray("pencil")]
-offset_left = -259.0
-offset_top = -233.0
-offset_right = 30.0
-offset_bottom = -143.0
-theme_override_colors/font_color = Color(0.176471, 0.121569, 0.0627451, 1)
-theme_override_font_sizes/font_size = 30
-text = "Trompudo pelín plim pludo "
-autowrap_mode = 2
-clip_text = true
-uppercase = true
-script = ExtResource("9_s73q6")
-pencil = NodePath("../../../../../pencil/pencilPoint")
 
 [node name="Label" type="Label" parent="LibroController/libro"]
 anchors_preset = 8
@@ -405,8 +247,8 @@ offset_bottom = -758.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.176471, 0.121569, 0.0627451, 1)
-theme_override_font_sizes/font_size = 50
 text = "macrauquenia"
+label_settings = SubResource("LabelSettings_je1ui")
 horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
@@ -419,7 +261,7 @@ rotation = 0.546402
 texture = ExtResource("15_8o25e")
 
 [node name="pencilPoint" type="Marker2D" parent="pencil"]
-position = Vector2(-131, 210.69)
+position = Vector2(-110, 177.69)
 
 [node name="SquigglingSprite" parent="pencil" instance=ExtResource("17_g1jyu")]
 position = Vector2(-0.757105, -0.460327)

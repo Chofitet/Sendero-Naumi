@@ -16,6 +16,7 @@ const BLACK: Color = Color(0, 0, 0)
 @onready var _patterns: Dictionary = {}
 @onready var _reserved_keys: Array = ["back", "null", "ignore", "refresh",
 	"reload", "restart", "exit", "quit"]
+var BlockInput = preload("res://Scenes/Experiments/block_input.tscn")
 var _load_scene: String = ""
 var _load_progress: Array = []
 var _recorded_scene: String = ""
@@ -328,6 +329,8 @@ func get_scene(key: String) -> PackedScene:
 # changes current scene to the next scene
 func change_scene(scene, fade_out_options: Options, fade_in_options: Options, general_options: GeneralOptions) -> void:
 	if (scene is PackedScene || scene is Node || (typeof(scene) == TYPE_STRING && safe_validate_scene(scene) && !_in_transition)):
+		var blockInput = BlockInput.instantiate()
+		get_tree().root.add_child(blockInput)
 		_first_time = false
 		_set_in_transition()
 		_set_clickable(general_options.clickable)
@@ -338,6 +341,7 @@ func change_scene(scene, fade_out_options: Options, fade_in_options: Options, ge
 		if _change_scene(scene, general_options.add_to_back):
 			if !(scene is Node):
 				await get_tree().node_added
+				get_tree().root.move_child(blockInput, get_tree().root.get_child_count() - 1)
 			scene_changed.emit()
 		if _timeout(general_options.timeout):
 			await get_tree().create_timer(general_options.timeout).timeout
@@ -346,6 +350,7 @@ func change_scene(scene, fade_out_options: Options, fade_in_options: Options, ge
 		if _fade_in(fade_in_options.fade_speed):
 			await _animation_player.animation_finished
 			fade_in_finished.emit()
+		blockInput.queue_free()
 		_set_clickable(true)
 		_set_out_transition()
 

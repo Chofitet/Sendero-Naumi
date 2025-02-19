@@ -1,0 +1,170 @@
+[gd_scene load_steps=15 format=3 uid="uid://xkto3us07o67"]
+
+[ext_resource type="Script" path="res://_Scripts/MinG_Excavar/AnimalDrawController.gd" id="1_0ckde"]
+[ext_resource type="Shader" path="res://shaders/FadeTexture.gdshader" id="2_8w2oq"]
+[ext_resource type="Texture2D" uid="uid://dkkyhv72i3ud8" path="res://Sprites/ZonaMegafauna/gliptodon fosil - excavacion.png" id="3_24ivi"]
+[ext_resource type="Texture2D" uid="uid://vchumiux3vli" path="res://addons/scene_manager/shader_patterns/vertical.png" id="4_c54fm"]
+[ext_resource type="Texture2D" uid="uid://w61ju0tr0aq8" path="res://Sprites/ZonaMegafauna/gliptodon vivo - excavacion.png" id="5_fq8ig"]
+[ext_resource type="Script" path="res://_Scripts/MinG_Excavar/WriteTextAnim.gd" id="6_gbwpy"]
+[ext_resource type="LabelSettings" uid="uid://cjocydh87vyqy" path="res://Resources/UI_Resources/Topo_Font.tres" id="6_o7kft"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ytnlk"]
+resource_local_to_scene = true
+shader = ExtResource("2_8w2oq")
+shader_parameter/cutoff = 1.0
+shader_parameter/smoothness = 0.1
+shader_parameter/inverted = true
+shader_parameter/custom_texture = ExtResource("3_24ivi")
+shader_parameter/mask_texture = ExtResource("4_c54fm")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3ipg2"]
+resource_local_to_scene = true
+shader = ExtResource("2_8w2oq")
+shader_parameter/cutoff = 1.0
+shader_parameter/smoothness = 0.1
+shader_parameter/inverted = true
+shader_parameter/custom_texture = ExtResource("5_fq8ig")
+shader_parameter/mask_texture = ExtResource("4_c54fm")
+
+[sub_resource type="Animation" id="Animation_n15n3"]
+resource_name = "FadeBones"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Bones:material:shader_parameter/cutoff")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_rl5gt"]
+resource_name = "FadeLive"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Live:material:shader_parameter/cutoff")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_ad8ef"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Bones:material:shader_parameter/cutoff")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Live:material:shader_parameter/cutoff")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+
+[sub_resource type="Animation" id="Animation_bbpwy"]
+resource_name = "completed"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Bones:material:shader_parameter/cutoff")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Live:material:shader_parameter/cutoff")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Label:size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(316, 117)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hnw4x"]
+_data = {
+"FadeBones": SubResource("Animation_n15n3"),
+"FadeLive": SubResource("Animation_rl5gt"),
+"RESET": SubResource("Animation_ad8ef"),
+"completed": SubResource("Animation_bbpwy")
+}
+
+[node name="GliptodonteDraw" type="Node2D"]
+script = ExtResource("1_0ckde")
+_name = "megaterio"
+
+[node name="Bones" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_ytnlk")
+position = Vector2(0, -83)
+scale = Vector2(0.685832, 0.685832)
+texture = ExtResource("3_24ivi")
+
+[node name="Live" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_3ipg2")
+position = Vector2(-3, 9)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("5_fq8ig")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_hnw4x")
+}
+
+[node name="Label" type="Label" parent="."]
+offset_left = -274.0
+offset_top = -325.0
+offset_right = 42.0
+offset_bottom = -324.0
+theme_override_colors/font_color = Color(0.176471, 0.121569, 0.0627451, 1)
+theme_override_font_sizes/font_size = 30
+text = "Pariente extinto 
+del armadillo"
+label_settings = ExtResource("6_o7kft")
+autowrap_mode = 2
+clip_text = true
+uppercase = true
+script = ExtResource("6_gbwpy")

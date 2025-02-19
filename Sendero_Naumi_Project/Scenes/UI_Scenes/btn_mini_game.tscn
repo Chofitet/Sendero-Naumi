@@ -1,10 +1,12 @@
-[gd_scene load_steps=10 format=3 uid="uid://bc062m81xnnpx"]
+[gd_scene load_steps=13 format=3 uid="uid://bc062m81xnnpx"]
 
 [ext_resource type="Texture2D" uid="uid://c5225cmvtpnmy" path="res://Sprites/Mapa/pin - mapa.png" id="1_xlje6"]
 [ext_resource type="PackedScene" uid="uid://cw3ok8v4p620b" path="res://Scenes/Experiments/squiggling_sprite.tscn" id="3_ajxde"]
 [ext_resource type="PackedScene" uid="uid://djhg7jvxtexyl" path="res://Scenes/UI_Scenes/btn_Change_Scene.tscn" id="3_j744p"]
 [ext_resource type="Texture2D" uid="uid://ctlc3c44ynrd0" path="res://Sprites/Mapa/squigglingMap/indicadorMapaSQUI - UI.png" id="4_4p5q1"]
 [ext_resource type="LabelSettings" uid="uid://b7f8w8wf071ek" path="res://Themes/Geología/LabelSettings_Busqueda.tres" id="5_4wt8w"]
+[ext_resource type="Texture2D" uid="uid://bjvyukuc37c4h" path="res://Sprites/Mapa/check - mapa.png" id="5_eqrpr"]
+[ext_resource type="Texture2D" uid="uid://cqrl4ma2vkof6" path="res://Sprites/UI/SquigglingUI/botonesRedondoPopASQUIG - UI.png" id="6_e6tgk"]
 
 [sub_resource type="GDScript" id="GDScript_pfah2"]
 script/source = "
@@ -16,6 +18,7 @@ var instance = InstanceResource.new()
 var button
 @export var NumOfLevel : int
 @onready var squigglyObject = $SquigglingSprite
+var isWaitingForAnimComplete
 
 func _ready():
 	button = get_node(\"ButtonChangeScene\")
@@ -26,17 +29,27 @@ func _ready():
 	if !minigameResourseFile.StateMinigames[self.name]:
 		get_node(\"AnimationPlayer\").play(\"Scale-bounce\")
 	elif minigameResourseFile.StateMinigames[self.name]:
-		$Sprite2D.texture = load(\"res://Sprites/Mapa/pin check - mapa.png\")
-		var lb = $Sprite2D/Label
-		if lb != null:lb.visible = false
+		if minigameResourseFile.StateMinigames[\"LastMiniGameComplete\"]== self.name:
+			isWaitingForAnimComplete = true
+		else:
+			$Sprite2D.texture = load(\"res://Sprites/Mapa/pin check - mapa.png\")
+			var lb = $Sprite2D/Label
+			if lb != null:lb.visible = false
 		$Sprite2D/SquigglingSprite.visible = false
 		if squigglyObject != null : squigglyObject.InactiveSquiggling()
 
 func load_file():
 	minigameResourseFile  = ResourceLoader.load(save_file_path  + save_file_name)
 
+func save():
+	ResourceSaver.save(minigameResourseFile,save_file_path  + save_file_name)
+	
 func OnZone():
-	pass
+	if isWaitingForAnimComplete:
+		isWaitingForAnimComplete = false
+		minigameResourseFile.Set_Last_Minigame(\"\")
+		get_node(\"AnimationPlayer\").play(\"completed\")
+		save()
 
 
 func CheckComplete():
@@ -62,6 +75,90 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector2(0, -105.385)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D/pop:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D/pop:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D/tilde:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ButtonChangeScene:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Sprite2D/Label:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Sprite2D/tilde:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Sprite2D:scale")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_r4wke"]
 resource_name = "Scale-bounce"
@@ -80,10 +177,111 @@ tracks/0/keys = {
 "values": [Vector2(0, -105.385), Vector2(0, -162.385), Vector2(0, -105.385)]
 }
 
+[sub_resource type="Animation" id="Animation_mlvwx"]
+resource_name = "completed"
+length = 1.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.6),
+"transitions": PackedFloat32Array(2, -2, 1),
+"update": 0,
+"values": [Vector2(0, -1800.39), Vector2(0, -27.385), Vector2(0, -105.385)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D/tilde:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D/pop:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D/pop:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.7, 0.8, 1.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ButtonChangeScene:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Sprite2D/Label:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Sprite2D/tilde:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.8, 0.9, 1.1),
+"transitions": PackedFloat32Array(2, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1.2, 1.2), Vector2(1, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Sprite2D:scale")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 0.5, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 1), Vector2(1, 0.775), Vector2(1, 1.2), Vector2(1, 1)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8t5hd"]
 _data = {
 "RESET": SubResource("Animation_67m84"),
-"Scale-bounce": SubResource("Animation_r4wke")
+"Scale-bounce": SubResource("Animation_r4wke"),
+"completed": SubResource("Animation_mlvwx")
 }
 
 [node name="btn_MiniGame" type="Sprite2D"]
@@ -100,12 +298,25 @@ texture = ExtResource("1_xlje6")
 texture = ExtResource("4_4p5q1")
 
 [node name="Label" type="Label" parent="Sprite2D"]
-offset_left = -16.575
-offset_top = -74.0
-offset_right = 23.425
-offset_bottom = 12.0
+offset_left = -17.575
+offset_top = -81.0
+offset_right = 22.425
+offset_bottom = 18.0
 text = "3"
 label_settings = ExtResource("5_4wt8w")
+
+[node name="tilde" type="Sprite2D" parent="Sprite2D"]
+visible = false
+position = Vector2(0, -31)
+texture = ExtResource("5_eqrpr")
+
+[node name="pop" type="Sprite2D" parent="Sprite2D"]
+visible = false
+modulate = Color(0.222656, 0.707031, 0.289063, 1)
+position = Vector2(1.42499, -29)
+scale = Vector2(0.95, 0.95)
+texture = ExtResource("6_e6tgk")
+hframes = 3
 
 [node name="ButtonChangeScene" parent="." instance=ExtResource("3_j744p")]
 anchors_preset = -1
@@ -120,6 +331,9 @@ offset_bottom = -102.064
 grow_vertical = 2
 text = ""
 flat = true
+fade_time = 0.6
+texture = "vertical"
+smoothness = 0.2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

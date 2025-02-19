@@ -3,6 +3,7 @@ extends AnimationPlayer
 @export var DestroyInFinish : String
 @export var AnimationsOrder : Array[String] 
 @export var preloadAnim : String
+@export var GroupOfCollision : String
 var index = 0
 
 func _ready():
@@ -47,3 +48,6 @@ func AnimationPreCarga():
 	play(preloadAnim)
 	seek(current_animation_length, true)
 	stop()
+
+func PlayFromCollision(x, anim):
+	if x.is_in_group(GroupOfCollision): play(anim)

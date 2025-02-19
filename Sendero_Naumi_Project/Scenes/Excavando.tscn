@@ -1,4 +1,4 @@
-[gd_scene load_steps=98 format=3 uid="uid://m3gbb64llbqn"]
+[gd_scene load_steps=122 format=3 uid="uid://m3gbb64llbqn"]
 
 [ext_resource type="Script" path="res://_Scripts/Minigame_Save_Controller.gd" id="1_6uc2r"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/StateMachineMinigames.gd" id="2_4ogka"]
@@ -39,13 +39,18 @@
 [ext_resource type="Texture2D" uid="uid://badkgjv7fmia5" path="res://Sprites/ZonaAstronomia/dirtEdge.png" id="23_7bnse"]
 [ext_resource type="Texture2D" uid="uid://qr3vaw28ffvl" path="res://Sprites/ZonaMegafauna/telefono - excavacion.png" id="23_gvrd4"]
 [ext_resource type="Texture2D" uid="uid://36q5wobmimet" path="res://Sprites/ZonaMegafauna/gliptodon pozo - excavacion.png" id="23_snvhs"]
+[ext_resource type="Script" path="res://_Scripts/FollowMove.gd" id="24_ldq5q"]
 [ext_resource type="Script" path="res://_Scripts/CheckInstanceState.gd" id="24_r51bh"]
 [ext_resource type="Script" path="res://Scenes/Zona_Megafauna/FillEdgesWithTextures.gd" id="24_rkt5g"]
 [ext_resource type="Texture2D" uid="uid://cafqe8j1ico82" path="res://Sprites/ZonaMegafauna/tele - excavacion.png" id="24_t2do4"]
 [ext_resource type="Texture2D" uid="uid://bf8u12qywvsci" path="res://Sprites/ZonaMegafauna/silla - excavacion.png" id="25_35po4"]
+[ext_resource type="Texture2D" uid="uid://dbo1d47e1yahr" path="res://Sprites/UI/thoughtBubbleD - UI.png" id="25_ic6bn"]
 [ext_resource type="Texture2D" uid="uid://dpoqiaakqjxnl" path="res://Sprites/ZonaMegafauna/macrauquenia pozo - excavacion.png" id="25_wsswo"]
+[ext_resource type="Texture2D" uid="uid://cdqxx6yqex8vo" path="res://Sprites/UI/thoughtBubbleA - UI.png" id="26_kmnqk"]
+[ext_resource type="Script" path="res://_Scripts/PlayAnimation.gd" id="27_giwlu"]
 [ext_resource type="Script" path="res://_Scripts/MinG_Excavar/Camera2DTopo.gd" id="37_luhad"]
 [ext_resource type="PackedScene" uid="uid://dlwmbps456ind" path="res://Scenes/Experiments/btnVolver.tscn" id="38_0b8dm"]
+[ext_resource type="Texture2D" uid="uid://wsicrocifuq" path="res://Sprites/ZonaAstronomia/pegoton.png" id="41_h1he0"]
 [ext_resource type="Script" path="res://_Scripts/MinG_Excavar/TutorialExcavando.gd" id="42_o38rj"]
 [ext_resource type="PackedScene" uid="uid://cxjhvsdei4u8q" path="res://Scenes/Experiments/CollisionPolygon2DMaker.tscn" id="45_sbax0"]
 [ext_resource type="Texture2D" uid="uid://bdu2ssuthqhuo" path="res://Sprites/manito topinho tiras - excavacion.png" id="46_vplk7"]
@@ -58,6 +63,13 @@
 [ext_resource type="Texture2D" uid="uid://cf0mbq1t5gwch" path="res://Sprites/ZonaMegafauna/lombrizio 4 - excavacion.png" id="53_mj87j"]
 [ext_resource type="Theme" uid="uid://vengl112frfy" path="res://Resources/UI_Resources/TransparentBubblePanel.tres" id="53_o8hdy"]
 [ext_resource type="Texture2D" uid="uid://bncai0vrfdo6t" path="res://Sprites/ZonaMegafauna/lombrizio 5 - excavacion.png" id="54_q5j0d"]
+[ext_resource type="Script" path="res://_Scripts/MinG_Excavar/ExcavandoInventaryController.gd" id="55_yyx2g"]
+[ext_resource type="Texture2D" uid="uid://d2v26qrp7dei5" path="res://Sprites/ZonaGeología/objetivoIncognito - excavacion.png" id="56_3m8dj"]
+[ext_resource type="Texture2D" uid="uid://w61ju0tr0aq8" path="res://Sprites/ZonaMegafauna/gliptodon vivo - excavacion.png" id="57_xs0ue"]
+[ext_resource type="Texture2D" uid="uid://bxcul4i1itdj2" path="res://Sprites/ZonaMegafauna/macrauquenia vivo - excavacion.png" id="58_436tp"]
+[ext_resource type="StyleBox" uid="uid://b3tjes2hcm3wx" path="res://Resources/UI_Resources/StyleBoxTrasparent.tres" id="58_agxcw"]
+[ext_resource type="Texture2D" uid="uid://bq43qlicq3ljs" path="res://Sprites/ZonaMegafauna/objetivoSmilodon - excavacion.png" id="60_r568v"]
+[ext_resource type="Texture2D" uid="uid://2n5igtsrrrbj" path="res://Sprites/ZonaMegafauna/objetivoMegaterio - excavacion.png" id="63_uwvpi"]
 
 [sub_resource type="Gradient" id="Gradient_wwaor"]
 offsets = PackedFloat32Array(0, 0.51751, 1)
@@ -77,16 +89,29 @@ dontPassPanel = false
 
 [sub_resource type="Resource" id="Resource_bo72e"]
 script = ExtResource("51_1rgrp")
-Text = "EL MUNDO TIENE MUCHO POR DESCUBRIR
-
-AYUDA A ROCO TOPO A COMPLETAR SU ENCICLOPEDIA DE LA MEGAFAUNA"
+Text = "EL MUNDO TIENE MUCHO POR DESCUBRIR"
 SizePanel = Vector2(0, 0)
 Position = Vector2(0, 0)
 buttons = Array[ExtResource("14_g3h66")]([SubResource("Resource_vyckf")])
 
+[sub_resource type="Resource" id="Resource_yswdt"]
+script = ExtResource("14_g3h66")
+Place = 0
+texture = ExtResource("15_nl7ad")
+label = ""
+dontPassPanel = false
+
+[sub_resource type="Resource" id="Resource_8nn8v"]
+script = ExtResource("51_1rgrp")
+Text = "AYUDA A ROCO TOPO A COMPLETAR SU 
+ENCICLOPEDIA DE LA MEGAFAUNA"
+SizePanel = Vector2(0, 0)
+Position = Vector2(0, 0)
+buttons = Array[ExtResource("14_g3h66")]([SubResource("Resource_yswdt")])
+
 [sub_resource type="Resource" id="Resource_3dgjk"]
 script = ExtResource("16_upu2w")
-NumberOfPanel = 1
+NumberOfPanel = 2
 Place = 0
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_j7ivs"]
@@ -154,12 +179,81 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_xfnj2"]
 radius = 149.216
 
+[sub_resource type="Animation" id="Animation_52wgi"]
+resource_name = "out_Nube"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Nube2:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.437037, 0.437037), Vector2(1e-05, 1e-05)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Nube:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.641509, 0.641509), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_21eaa"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Nube2:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.437037, 0.437037)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Nube:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.641509, 0.641509)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xrjey"]
+_data = {
+"RESET": SubResource("Animation_21eaa"),
+"out_Nube": SubResource("Animation_52wgi")
+}
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_x16bw"]
 radius = 1.5
 
 [sub_resource type="Gradient" id="Gradient_dkd33"]
 offsets = PackedFloat32Array(0, 0.504425, 1)
 colors = PackedColorArray(0.34902, 0.152941, 0, 1, 0.35, 0.35, 0.35, 1, 0.640625, 0.5625, 0.441406, 1)
+
+[sub_resource type="Curve" id="Curve_581s6"]
+_data = [Vector2(0, 0.505263), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_0d6p6"]
+offsets = PackedFloat32Array(0, 0.458738, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.0169903, 1, 1, 1, 0)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_umb6f"]
 size = Vector2(1020, 1241)
@@ -230,6 +324,43 @@ buttons = Array[ExtResource("14_g3h66")]([])
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m5e66"]
 size = Vector2(678, 320)
 
+[sub_resource type="Animation" id="Animation_2p5jn"]
+resource_name = "appearIcon"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Icon:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_8rj0q"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Icon:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_g6tsi"]
+_data = {
+"RESET": SubResource("Animation_8rj0q"),
+"appearIcon": SubResource("Animation_2p5jn")
+}
+
 [sub_resource type="Gradient" id="Gradient_gx12n"]
 offsets = PackedFloat32Array(0.538012, 0.672515)
 colors = PackedColorArray(0.431373, 0.364706, 0.294118, 1, 0.196078, 0.14902, 0.152941, 1)
@@ -248,17 +379,30 @@ dontPassPanel = false
 
 [sub_resource type="Resource" id="Resource_nftsl"]
 script = ExtResource("51_1rgrp")
-Text = "EL MUNDO TIENE MUCHO POR DESCUBRIR,
-Y AHORA TE TOCA A TI
-
-¿QUÉ MEJOR QUE COMPARTIR LA AVENTURA?"
+Text = "EL MUNDO ESTÁ LLENO DE SECRETOS 
+POR DESCUBRIR.
+AHORA LES TOCA A USTEDES."
 SizePanel = Vector2(0, 0)
 Position = Vector2(0, 0)
 buttons = Array[ExtResource("14_g3h66")]([SubResource("Resource_hn4ky")])
 
+[sub_resource type="Resource" id="Resource_e7dtv"]
+script = ExtResource("14_g3h66")
+Place = 0
+texture = ExtResource("15_nl7ad")
+label = ""
+dontPassPanel = false
+
+[sub_resource type="Resource" id="Resource_lp4n5"]
+script = ExtResource("51_1rgrp")
+Text = "¿QUÉ MEJOR QUE COMPARTIR LA AVENTURA?"
+SizePanel = Vector2(0, 0)
+Position = Vector2(0, 0)
+buttons = Array[ExtResource("14_g3h66")]([SubResource("Resource_e7dtv")])
+
 [sub_resource type="Resource" id="Resource_x17eo"]
 script = ExtResource("16_upu2w")
-NumberOfPanel = 1
+NumberOfPanel = 2
 Place = 0
 
 [node name="Excavando" type="Control"]
@@ -303,6 +447,7 @@ script = ExtResource("3_nk4vw")
 Consignas = ["Guiá al topo para encontrar los fósiles"]
 
 [node name="Contenido" type="Control" parent="Excavando/StateMachine/Consigna"]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -455,13 +600,13 @@ texture = ExtResource("6_xhxme")
 [node name="Intro1" parent="Excavando/StateMachine/Consigna/Contenido" instance=ExtResource("50_vtwbx")]
 layout_mode = 1
 offset_left = -325.0
-offset_top = 32.0
+offset_top = 52.0
 offset_right = 327.0
-offset_bottom = 319.0
+offset_bottom = 299.0
 pivot_offset = Vector2(326, 143.5)
-Texts = Array[ExtResource("51_1rgrp")]([SubResource("Resource_bo72e")])
+Texts = Array[ExtResource("51_1rgrp")]([SubResource("Resource_bo72e"), SubResource("Resource_8nn8v")])
 
-[node name="Panel(1) Btn(rigth)" parent="Excavando/StateMachine/Consigna/Contenido/Intro1" instance=ExtResource("14_f234f")]
+[node name="Panel(2) Btn(rigth)" parent="Excavando/StateMachine/Consigna/Contenido/Intro1" instance=ExtResource("14_f234f")]
 Data = SubResource("Resource_3dgjk")
 
 [node name="Juego" type="Node" parent="Excavando/StateMachine" node_paths=PackedStringArray("NextState", "StateMachine")]
@@ -471,7 +616,6 @@ StateMachine = NodePath("..")
 InstanciasMinijuego = [NodePath("Contenido/Instancia1"), NodePath("Contenido/Instancia2")]
 
 [node name="Contenido" type="Control" parent="Excavando/StateMachine/Juego"]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -599,6 +743,48 @@ shape = SubResource("CircleShape2D_xfnj2")
 [node name="Timer" type="Timer" parent="Excavando/StateMachine/Juego/Contenido/background/CanvasGroup/TopoController"]
 wait_time = 0.2
 
+[node name="BurbujaPensamiento" type="Node2D" parent="Excavando/StateMachine/Juego/Contenido/background/CanvasGroup" node_paths=PackedStringArray("target")]
+z_index = 1
+position = Vector2(179, 529)
+script = ExtResource("24_ldq5q")
+target = NodePath("../TopoController")
+
+[node name="Nube" type="Sprite2D" parent="Excavando/StateMachine/Juego/Contenido/background/CanvasGroup/BurbujaPensamiento"]
+position = Vector2(80, -51)
+scale = Vector2(0.641509, 0.641509)
+texture = ExtResource("25_ic6bn")
+
+[node name="Nube2" type="Sprite2D" parent="Excavando/StateMachine/Juego/Contenido/background/CanvasGroup/BurbujaPensamiento"]
+position = Vector2(212, -178)
+scale = Vector2(0.437037, 0.437037)
+texture = ExtResource("26_kmnqk")
+
+[node name="Label" type="Label" parent="Excavando/StateMachine/Juego/Contenido/background/CanvasGroup/BurbujaPensamiento/Nube2"]
+anchors_preset = -1
+anchor_left = 0.497
+anchor_top = 0.543
+anchor_right = 0.497
+anchor_bottom = 0.543
+offset_left = -712.343
+offset_top = -396.22
+offset_right = -12.343
+offset_bottom = -135.22
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 45
+text = "YO TE SIGO
+VOS SEÑALÁ
+(no hace falta que sea cerca)"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Excavando/StateMachine/Juego/Contenido/background/CanvasGroup/BurbujaPensamiento"]
+libraries = {
+"": SubResource("AnimationLibrary_xrjey")
+}
+script = ExtResource("27_giwlu")
+GroupOfCollision = "topo"
+
 [node name="Instancia1" type="Control" parent="Excavando/StateMachine/Juego/Contenido"]
 visible = false
 layout_mode = 1
@@ -718,7 +904,7 @@ script = ExtResource("13_l1my3")
 position = Vector2(15.9103, -306.833)
 rotation = 0.40507
 emitting = false
-amount = 10
+amount = 18
 lifetime = 1.5
 one_shot = true
 explosiveness = 1.0
@@ -727,8 +913,8 @@ spread = 45.0
 gravity = Vector2(0, 2000)
 initial_velocity_min = 366.18
 initial_velocity_max = 800.0
-scale_amount_min = 1.4
-scale_amount_max = 1.6
+scale_amount_min = 1.6
+scale_amount_max = 1.8
 color = Color(1, 1, 1, 1)
 color_initial_ramp = SubResource("Gradient_dkd33")
 
@@ -736,7 +922,7 @@ color_initial_ramp = SubResource("Gradient_dkd33")
 position = Vector2(70.3481, -267.512)
 rotation = 0.40507
 emitting = false
-amount = 10
+amount = 18
 lifetime = 1.5
 one_shot = true
 explosiveness = 1.0
@@ -745,8 +931,8 @@ spread = 45.0
 gravity = Vector2(0, 2000)
 initial_velocity_min = 366.18
 initial_velocity_max = 800.0
-scale_amount_min = 1.4
-scale_amount_max = 1.6
+scale_amount_min = 1.6
+scale_amount_max = 1.8
 color = Color(1, 1, 1, 1)
 color_initial_ramp = SubResource("Gradient_dkd33")
 
@@ -754,7 +940,7 @@ color_initial_ramp = SubResource("Gradient_dkd33")
 position = Vector2(70.3066, -210.41)
 rotation = 0.40507
 emitting = false
-amount = 10
+amount = 18
 lifetime = 1.5
 one_shot = true
 explosiveness = 1.0
@@ -763,10 +949,65 @@ spread = 45.0
 gravity = Vector2(0, 2000)
 initial_velocity_min = 366.18
 initial_velocity_max = 800.0
-scale_amount_min = 1.4
-scale_amount_max = 1.6
+scale_amount_min = 1.6
+scale_amount_max = 1.8
 color = Color(1, 1, 1, 1)
 color_initial_ramp = SubResource("Gradient_dkd33")
+
+[node name="Polvo2" type="CPUParticles2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Objetos/cajaFuerte/particles"]
+position = Vector2(43.6172, -267.657)
+rotation = 4.09948
+scale = Vector2(12.7104, 12.7104)
+emitting = false
+amount = 32
+lifetime = 3.0
+one_shot = true
+explosiveness = 1.0
+local_coords = true
+texture = ExtResource("41_h1he0")
+emission_shape = 3
+emission_rect_extents = Vector2(5, 3)
+direction = Vector2(0, 1)
+spread = 20.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 5.0
+initial_velocity_max = 5.0
+radial_accel_min = -27.16
+radial_accel_max = 44.45
+scale_amount_min = 0.1
+scale_amount_max = 0.5
+scale_amount_curve = SubResource("Curve_581s6")
+color = Color(0.498039, 0.333333, 0.262745, 1)
+color_ramp = SubResource("Gradient_0d6p6")
+hue_variation_min = 0.45
+hue_variation_max = 1.0
+
+[node name="Polvo3" type="CPUParticles2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Objetos/cajaFuerte/particles"]
+position = Vector2(100.018, -166.59)
+rotation = 4.09948
+scale = Vector2(12.7104, 12.7104)
+emitting = false
+lifetime = 3.0
+one_shot = true
+explosiveness = 1.0
+local_coords = true
+texture = ExtResource("41_h1he0")
+emission_shape = 1
+emission_sphere_radius = 1.0
+direction = Vector2(0, 1)
+spread = 20.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 5.0
+initial_velocity_max = 5.0
+radial_accel_min = -27.16
+radial_accel_max = 44.45
+scale_amount_min = 0.1
+scale_amount_max = 0.5
+scale_amount_curve = SubResource("Curve_581s6")
+color = Color(0.498039, 0.333333, 0.262745, 1)
+color_ramp = SubResource("Gradient_0d6p6")
+hue_variation_min = 0.45
+hue_variation_max = 1.0
 
 [node name="cotorno" type="Polygon2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Objetos/cajaFuerte"]
 show_behind_parent = true
@@ -818,7 +1059,7 @@ script = ExtResource("13_l1my3")
 position = Vector2(-180.445, 78.5769)
 rotation = 1.78915
 emitting = false
-amount = 10
+amount = 18
 lifetime = 1.5
 one_shot = true
 explosiveness = 1.0
@@ -827,8 +1068,8 @@ spread = 45.0
 gravity = Vector2(0, 2000)
 initial_velocity_min = 366.18
 initial_velocity_max = 800.0
-scale_amount_min = 1.4
-scale_amount_max = 1.6
+scale_amount_min = 1.6
+scale_amount_max = 1.8
 color = Color(1, 1, 1, 1)
 color_initial_ramp = SubResource("Gradient_dkd33")
 
@@ -836,7 +1077,7 @@ color_initial_ramp = SubResource("Gradient_dkd33")
 position = Vector2(194.437, 23.1133)
 rotation = 1.39143
 emitting = false
-amount = 10
+amount = 18
 lifetime = 1.5
 one_shot = true
 explosiveness = 1.0
@@ -845,8 +1086,8 @@ spread = 45.0
 gravity = Vector2(0, 2000)
 initial_velocity_min = 366.18
 initial_velocity_max = 800.0
-scale_amount_min = 1.4
-scale_amount_max = 1.6
+scale_amount_min = 1.6
+scale_amount_max = 1.8
 color = Color(1, 1, 1, 1)
 color_initial_ramp = SubResource("Gradient_dkd33")
 
@@ -854,7 +1095,7 @@ color_initial_ramp = SubResource("Gradient_dkd33")
 position = Vector2(211.963, 67.4434)
 rotation = 0.40507
 emitting = false
-amount = 10
+amount = 18
 lifetime = 1.5
 one_shot = true
 explosiveness = 1.0
@@ -863,10 +1104,122 @@ spread = 45.0
 gravity = Vector2(0, 2000)
 initial_velocity_min = 366.18
 initial_velocity_max = 800.0
-scale_amount_min = 1.4
-scale_amount_max = 1.6
+scale_amount_min = 1.6
+scale_amount_max = 1.8
 color = Color(1, 1, 1, 1)
 color_initial_ramp = SubResource("Gradient_dkd33")
+
+[node name="Polvo" type="CPUParticles2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Objetos/telefono/particles"]
+position = Vector2(-126.648, 1.8833)
+rotation = 2.36455
+scale = Vector2(12.7104, 12.7104)
+emitting = false
+amount = 16
+lifetime = 3.0
+one_shot = true
+explosiveness = 1.0
+local_coords = true
+texture = ExtResource("41_h1he0")
+emission_shape = 3
+emission_rect_extents = Vector2(10.875, 1)
+direction = Vector2(0, 1)
+spread = 20.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 5.0
+initial_velocity_max = 5.0
+radial_accel_min = -27.16
+radial_accel_max = 44.45
+scale_amount_min = 0.1
+scale_amount_max = 0.5
+scale_amount_curve = SubResource("Curve_581s6")
+color = Color(0.498039, 0.333333, 0.262745, 1)
+color_ramp = SubResource("Gradient_0d6p6")
+hue_variation_min = 0.45
+hue_variation_max = 1.0
+
+[node name="Polvo3" type="CPUParticles2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Objetos/telefono/particles"]
+position = Vector2(64.9729, -44.6942)
+rotation = 3.9441
+scale = Vector2(12.7104, 12.7104)
+emitting = false
+amount = 16
+lifetime = 3.0
+one_shot = true
+explosiveness = 1.0
+local_coords = true
+texture = ExtResource("41_h1he0")
+emission_shape = 3
+emission_rect_extents = Vector2(10.875, 1)
+direction = Vector2(0, 1)
+spread = 20.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 5.0
+initial_velocity_max = 5.0
+radial_accel_min = -27.16
+radial_accel_max = 44.45
+scale_amount_min = 0.1
+scale_amount_max = 0.5
+scale_amount_curve = SubResource("Curve_581s6")
+color = Color(0.498039, 0.333333, 0.262745, 1)
+color_ramp = SubResource("Gradient_0d6p6")
+hue_variation_min = 0.45
+hue_variation_max = 1.0
+
+[node name="Polvo2" type="CPUParticles2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Objetos/telefono/particles"]
+position = Vector2(185.991, 43.0646)
+rotation = 3.08961
+scale = Vector2(12.7104, 12.7104)
+emitting = false
+amount = 16
+lifetime = 3.0
+one_shot = true
+explosiveness = 1.0
+local_coords = true
+texture = ExtResource("41_h1he0")
+emission_shape = 1
+emission_sphere_radius = 2.0
+direction = Vector2(0, 1)
+spread = 20.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 5.0
+initial_velocity_max = 5.0
+radial_accel_min = -27.16
+radial_accel_max = 44.45
+scale_amount_min = 0.1
+scale_amount_max = 0.5
+scale_amount_curve = SubResource("Curve_581s6")
+color = Color(0.498039, 0.333333, 0.262745, 1)
+color_ramp = SubResource("Gradient_0d6p6")
+hue_variation_min = 0.45
+hue_variation_max = 1.0
+
+[node name="Polvo4" type="CPUParticles2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Objetos/telefono/particles"]
+position = Vector2(-181.85, 75.244)
+rotation = 3.08961
+scale = Vector2(12.7104, 12.7104)
+emitting = false
+amount = 16
+lifetime = 3.0
+one_shot = true
+explosiveness = 1.0
+local_coords = true
+texture = ExtResource("41_h1he0")
+emission_shape = 1
+emission_sphere_radius = 2.0
+direction = Vector2(0, 1)
+spread = 20.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 5.0
+initial_velocity_max = 5.0
+radial_accel_min = -27.16
+radial_accel_max = 44.45
+scale_amount_min = 0.1
+scale_amount_max = 0.5
+scale_amount_curve = SubResource("Curve_581s6")
+color = Color(0.498039, 0.333333, 0.262745, 1)
+color_ramp = SubResource("Gradient_0d6p6")
+hue_variation_min = 0.45
+hue_variation_max = 1.0
 
 [node name="contorno" type="Polygon2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Objetos/telefono"]
 show_behind_parent = true
@@ -952,7 +1305,7 @@ script = ExtResource("13_l1my3")
 position = Vector2(87.0958, -302.775)
 rotation = 1.3849
 emitting = false
-amount = 10
+amount = 18
 lifetime = 1.5
 one_shot = true
 explosiveness = 1.0
@@ -961,8 +1314,8 @@ spread = 45.0
 gravity = Vector2(0, 2000)
 initial_velocity_min = 366.18
 initial_velocity_max = 800.0
-scale_amount_min = 1.4
-scale_amount_max = 1.6
+scale_amount_min = 1.6
+scale_amount_max = 1.8
 color = Color(1, 1, 1, 1)
 color_initial_ramp = SubResource("Gradient_dkd33")
 
@@ -970,7 +1323,7 @@ color_initial_ramp = SubResource("Gradient_dkd33")
 position = Vector2(8.73608, -278.216)
 rotation = 0.393276
 emitting = false
-amount = 10
+amount = 18
 lifetime = 1.5
 one_shot = true
 explosiveness = 1.0
@@ -979,8 +1332,8 @@ spread = 45.0
 gravity = Vector2(0, 2000)
 initial_velocity_min = 366.18
 initial_velocity_max = 800.0
-scale_amount_min = 1.4
-scale_amount_max = 1.6
+scale_amount_min = 1.6
+scale_amount_max = 1.8
 color = Color(1, 1, 1, 1)
 color_initial_ramp = SubResource("Gradient_dkd33")
 
@@ -988,7 +1341,7 @@ color_initial_ramp = SubResource("Gradient_dkd33")
 position = Vector2(56.3521, -256.653)
 rotation = -1.48896
 emitting = false
-amount = 10
+amount = 18
 lifetime = 1.5
 one_shot = true
 explosiveness = 1.0
@@ -997,10 +1350,66 @@ spread = 45.0
 gravity = Vector2(0, 2000)
 initial_velocity_min = 366.18
 initial_velocity_max = 800.0
-scale_amount_min = 1.4
-scale_amount_max = 1.6
+scale_amount_min = 1.6
+scale_amount_max = 1.8
 color = Color(1, 1, 1, 1)
 color_initial_ramp = SubResource("Gradient_dkd33")
+
+[node name="Polvo2" type="CPUParticles2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Objetos/tele/particles"]
+position = Vector2(62.5436, -264.554)
+rotation = 3.08961
+scale = Vector2(12.7104, 12.7104)
+emitting = false
+amount = 32
+lifetime = 3.0
+one_shot = true
+explosiveness = 1.0
+local_coords = true
+texture = ExtResource("41_h1he0")
+emission_shape = 1
+emission_sphere_radius = 10.0
+direction = Vector2(0, 1)
+spread = 20.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 5.0
+initial_velocity_max = 5.0
+radial_accel_min = -27.16
+radial_accel_max = 44.45
+scale_amount_min = 0.1
+scale_amount_max = 0.5
+scale_amount_curve = SubResource("Curve_581s6")
+color = Color(0.498039, 0.333333, 0.262745, 1)
+color_ramp = SubResource("Gradient_0d6p6")
+hue_variation_min = 0.45
+hue_variation_max = 1.0
+
+[node name="Polvo3" type="CPUParticles2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Objetos/tele/particles"]
+position = Vector2(-11.7526, -136.438)
+rotation = 3.08961
+scale = Vector2(12.7104, 12.7104)
+emitting = false
+amount = 32
+lifetime = 3.0
+one_shot = true
+explosiveness = 1.0
+local_coords = true
+texture = ExtResource("41_h1he0")
+emission_shape = 1
+emission_sphere_radius = 4.0
+direction = Vector2(0, 1)
+spread = 20.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 5.0
+initial_velocity_max = 5.0
+radial_accel_min = -27.16
+radial_accel_max = 44.45
+scale_amount_min = 0.1
+scale_amount_max = 0.5
+scale_amount_curve = SubResource("Curve_581s6")
+color = Color(0.498039, 0.333333, 0.262745, 1)
+color_ramp = SubResource("Gradient_0d6p6")
+hue_variation_min = 0.45
+hue_variation_max = 1.0
 
 [node name="contorno" type="Polygon2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Objetos/tele"]
 show_behind_parent = true
@@ -1114,7 +1523,7 @@ script = ExtResource("13_l1my3")
 position = Vector2(80.9615, -362.865)
 rotation = 1.3849
 emitting = false
-amount = 10
+amount = 18
 lifetime = 1.5
 one_shot = true
 explosiveness = 1.0
@@ -1123,8 +1532,8 @@ spread = 45.0
 gravity = Vector2(0, 2000)
 initial_velocity_min = 366.18
 initial_velocity_max = 800.0
-scale_amount_min = 1.4
-scale_amount_max = 1.6
+scale_amount_min = 1.6
+scale_amount_max = 1.8
 color = Color(1, 1, 1, 1)
 color_initial_ramp = SubResource("Gradient_dkd33")
 
@@ -1132,7 +1541,7 @@ color_initial_ramp = SubResource("Gradient_dkd33")
 position = Vector2(-3.91943, -279.676)
 rotation = 0.393276
 emitting = false
-amount = 10
+amount = 18
 lifetime = 1.5
 one_shot = true
 explosiveness = 1.0
@@ -1141,8 +1550,8 @@ spread = 45.0
 gravity = Vector2(0, 2000)
 initial_velocity_min = 366.18
 initial_velocity_max = 800.0
-scale_amount_min = 1.4
-scale_amount_max = 1.6
+scale_amount_min = 1.6
+scale_amount_max = 1.8
 color = Color(1, 1, 1, 1)
 color_initial_ramp = SubResource("Gradient_dkd33")
 
@@ -1150,7 +1559,7 @@ color_initial_ramp = SubResource("Gradient_dkd33")
 position = Vector2(70.6931, -281.071)
 rotation = -1.48896
 emitting = false
-amount = 10
+amount = 18
 lifetime = 1.5
 one_shot = true
 explosiveness = 1.0
@@ -1159,10 +1568,66 @@ spread = 45.0
 gravity = Vector2(0, 2000)
 initial_velocity_min = 366.18
 initial_velocity_max = 800.0
-scale_amount_min = 1.4
-scale_amount_max = 1.6
+scale_amount_min = 1.6
+scale_amount_max = 1.8
 color = Color(1, 1, 1, 1)
 color_initial_ramp = SubResource("Gradient_dkd33")
+
+[node name="Polvo2" type="CPUParticles2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Objetos/silla/particles"]
+position = Vector2(31.6354, -235.992)
+rotation = 3.08961
+scale = Vector2(12.7104, 12.7104)
+emitting = false
+amount = 32
+lifetime = 3.0
+one_shot = true
+explosiveness = 1.0
+local_coords = true
+texture = ExtResource("41_h1he0")
+emission_shape = 1
+emission_sphere_radius = 6.0
+direction = Vector2(0, 1)
+spread = 20.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 5.0
+initial_velocity_max = 5.0
+radial_accel_min = -27.16
+radial_accel_max = 44.45
+scale_amount_min = 0.1
+scale_amount_max = 0.5
+scale_amount_curve = SubResource("Curve_581s6")
+color = Color(0.498039, 0.333333, 0.262745, 1)
+color_ramp = SubResource("Gradient_0d6p6")
+hue_variation_min = 0.45
+hue_variation_max = 1.0
+
+[node name="Polvo3" type="CPUParticles2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Objetos/silla/particles"]
+position = Vector2(73.0941, -355.547)
+rotation = 2.11338
+scale = Vector2(12.7104, 12.7104)
+emitting = false
+amount = 32
+lifetime = 3.0
+one_shot = true
+explosiveness = 1.0
+local_coords = true
+texture = ExtResource("41_h1he0")
+emission_shape = 3
+emission_rect_extents = Vector2(4, 1)
+direction = Vector2(0, 1)
+spread = 20.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 5.0
+initial_velocity_max = 5.0
+radial_accel_min = -27.16
+radial_accel_max = 44.45
+scale_amount_min = 0.1
+scale_amount_max = 0.5
+scale_amount_curve = SubResource("Curve_581s6")
+color = Color(0.498039, 0.333333, 0.262745, 1)
+color_ramp = SubResource("Gradient_0d6p6")
+hue_variation_min = 0.45
+hue_variation_max = 1.0
 
 [node name="contorno" type="Polygon2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Objetos/silla"]
 show_behind_parent = true
@@ -1186,6 +1651,7 @@ topoController = NodePath("../../../background/CanvasGroup/TopoController")
 script = ExtResource("7_io4up")
 
 [node name="smilodonte" type="Sprite2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/HuesoController/CheckAllTrue"]
+modulate = Color(0.498039, 0.498039, 0.498039, 1)
 position = Vector2(57, -327)
 rotation = -0.153828
 scale = Vector2(0.472511, 0.472511)
@@ -1482,7 +1948,7 @@ position = Vector2(79.0002, -225)
 rotation = -4.71035
 emitting = false
 amount = 10
-lifetime = 1.5
+lifetime = 3.0
 one_shot = true
 explosiveness = 1.0
 emission_shape = 0
@@ -1495,7 +1961,92 @@ scale_amount_max = 2.6
 color = Color(1, 1, 1, 1)
 color_initial_ramp = SubResource("Gradient_dkd33")
 
+[node name="Polvo" type="CPUParticles2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/HuesoController/CheckAllTrue/smilodonte/particles"]
+position = Vector2(105, -387.001)
+rotation = 3.08961
+scale = Vector2(12.7104, 12.7104)
+emitting = false
+amount = 120
+lifetime = 3.0
+one_shot = true
+explosiveness = 1.0
+local_coords = true
+texture = ExtResource("41_h1he0")
+emission_shape = 1
+emission_sphere_radius = 10.0
+direction = Vector2(0, 1)
+spread = 20.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 5.0
+initial_velocity_max = 5.0
+radial_accel_min = -27.16
+radial_accel_max = 44.45
+scale_amount_min = 0.1
+scale_amount_max = 0.5
+scale_amount_curve = SubResource("Curve_581s6")
+color = Color(0.498039, 0.333333, 0.262745, 1)
+color_ramp = SubResource("Gradient_0d6p6")
+hue_variation_min = 0.45
+hue_variation_max = 1.0
+
+[node name="Polvo2" type="CPUParticles2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/HuesoController/CheckAllTrue/smilodonte/particles"]
+position = Vector2(30.0002, -280)
+rotation = 3.08961
+scale = Vector2(12.7104, 12.7104)
+emitting = false
+amount = 120
+lifetime = 3.0
+one_shot = true
+explosiveness = 1.0
+local_coords = true
+texture = ExtResource("41_h1he0")
+emission_shape = 1
+emission_sphere_radius = 10.0
+direction = Vector2(0, 1)
+spread = 20.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 5.0
+initial_velocity_max = 5.0
+radial_accel_min = -27.16
+radial_accel_max = 44.45
+scale_amount_min = 0.1
+scale_amount_max = 0.5
+scale_amount_curve = SubResource("Curve_581s6")
+color = Color(0.498039, 0.333333, 0.262745, 1)
+color_ramp = SubResource("Gradient_0d6p6")
+hue_variation_min = 0.45
+hue_variation_max = 1.0
+
+[node name="Polvo3" type="CPUParticles2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/HuesoController/CheckAllTrue/smilodonte/particles"]
+position = Vector2(-69.9999, -188)
+rotation = 3.08961
+scale = Vector2(12.7104, 12.7104)
+emitting = false
+amount = 120
+lifetime = 3.0
+one_shot = true
+explosiveness = 1.0
+local_coords = true
+texture = ExtResource("41_h1he0")
+emission_shape = 1
+emission_sphere_radius = 2.0
+direction = Vector2(0, 1)
+spread = 20.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 5.0
+initial_velocity_max = 5.0
+radial_accel_min = -27.16
+radial_accel_max = 44.45
+scale_amount_min = 0.1
+scale_amount_max = 0.5
+scale_amount_curve = SubResource("Curve_581s6")
+color = Color(0.498039, 0.333333, 0.262745, 1)
+color_ramp = SubResource("Gradient_0d6p6")
+hue_variation_min = 0.45
+hue_variation_max = 1.0
+
 [node name="glyptodon" type="Sprite2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/HuesoController/CheckAllTrue"]
+modulate = Color(0.498039, 0.498039, 0.498039, 1)
 position = Vector2(-170, 374)
 scale = Vector2(0.455852, 0.455852)
 texture = ExtResource("19_ryw8i")
@@ -1799,7 +2350,64 @@ scale_amount_max = 2.6
 color = Color(1, 1, 1, 1)
 color_initial_ramp = SubResource("Gradient_dkd33")
 
+[node name="Polvo" type="CPUParticles2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/HuesoController/CheckAllTrue/glyptodon/particles"]
+position = Vector2(119.356, -310.446)
+rotation = 3.08961
+scale = Vector2(12.7104, 12.7104)
+emitting = false
+amount = 120
+lifetime = 3.0
+one_shot = true
+explosiveness = 1.0
+local_coords = true
+texture = ExtResource("41_h1he0")
+emission_shape = 1
+emission_sphere_radius = 10.0
+direction = Vector2(0, 1)
+spread = 20.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 5.0
+initial_velocity_max = 5.0
+radial_accel_min = -27.16
+radial_accel_max = 44.45
+scale_amount_min = 0.1
+scale_amount_max = 0.5
+scale_amount_curve = SubResource("Curve_581s6")
+color = Color(0.498039, 0.333333, 0.262745, 1)
+color_ramp = SubResource("Gradient_0d6p6")
+hue_variation_min = 0.45
+hue_variation_max = 1.0
+
+[node name="Polvo2" type="CPUParticles2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/HuesoController/CheckAllTrue/glyptodon/particles"]
+position = Vector2(10.5335, -301.964)
+rotation = 3.08961
+scale = Vector2(12.7104, 12.7104)
+emitting = false
+amount = 120
+lifetime = 3.0
+one_shot = true
+explosiveness = 1.0
+local_coords = true
+texture = ExtResource("41_h1he0")
+emission_shape = 1
+emission_sphere_radius = 10.0
+direction = Vector2(0, 1)
+spread = 20.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 5.0
+initial_velocity_max = 5.0
+radial_accel_min = -27.16
+radial_accel_max = 44.45
+scale_amount_min = 0.1
+scale_amount_max = 0.5
+scale_amount_curve = SubResource("Curve_581s6")
+color = Color(0.498039, 0.333333, 0.262745, 1)
+color_ramp = SubResource("Gradient_0d6p6")
+hue_variation_min = 0.45
+hue_variation_max = 1.0
+
 [node name="macrauquenia" type="Sprite2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/HuesoController/CheckAllTrue"]
+modulate = Color(0.498039, 0.498039, 0.498039, 1)
 position = Vector2(-61, 1389)
 scale = Vector2(0.585677, 0.585677)
 texture = ExtResource("22_8jam6")
@@ -2202,6 +2810,62 @@ scale_amount_max = 2.6
 color = Color(1, 1, 1, 1)
 color_initial_ramp = SubResource("Gradient_dkd33")
 
+[node name="Polvo" type="CPUParticles2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/HuesoController/CheckAllTrue/macrauquenia/particles"]
+position = Vector2(100.807, -333.565)
+rotation = 3.08961
+scale = Vector2(12.7104, 12.7104)
+emitting = false
+amount = 120
+lifetime = 3.0
+one_shot = true
+explosiveness = 1.0
+local_coords = true
+texture = ExtResource("41_h1he0")
+emission_shape = 1
+emission_sphere_radius = 10.0
+direction = Vector2(0, 1)
+spread = 20.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 5.0
+initial_velocity_max = 5.0
+radial_accel_min = -27.16
+radial_accel_max = 44.45
+scale_amount_min = 0.1
+scale_amount_max = 0.5
+scale_amount_curve = SubResource("Curve_581s6")
+color = Color(0.498039, 0.333333, 0.262745, 1)
+color_ramp = SubResource("Gradient_0d6p6")
+hue_variation_min = 0.45
+hue_variation_max = 1.0
+
+[node name="Polvo2" type="CPUParticles2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/HuesoController/CheckAllTrue/macrauquenia/particles"]
+position = Vector2(-8.01599, -325.084)
+rotation = 3.08961
+scale = Vector2(12.7104, 12.7104)
+emitting = false
+amount = 120
+lifetime = 3.0
+one_shot = true
+explosiveness = 1.0
+local_coords = true
+texture = ExtResource("41_h1he0")
+emission_shape = 1
+emission_sphere_radius = 10.0
+direction = Vector2(0, 1)
+spread = 20.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 5.0
+initial_velocity_max = 5.0
+radial_accel_min = -27.16
+radial_accel_max = 44.45
+scale_amount_min = 0.1
+scale_amount_max = 0.5
+scale_amount_curve = SubResource("Curve_581s6")
+color = Color(0.498039, 0.333333, 0.262745, 1)
+color_ramp = SubResource("Gradient_0d6p6")
+hue_variation_min = 0.45
+hue_variation_max = 1.0
+
 [node name="AreaMoveCam" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center"]
 z_index = 1
 position = Vector2(0, 905)
@@ -2512,10 +3176,10 @@ scale = Vector2(2.11635, 2.11635)
 script = ExtResource("13_l1my3")
 
 [node name="MoleParticles" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/Objetos/steve/particles" instance=ExtResource("16_olaoq")]
-position = Vector2(92.7419, -286.93)
+position = Vector2(92.8973, -307.515)
 rotation = 1.32294
 emitting = false
-amount = 10
+amount = 18
 lifetime = 1.5
 one_shot = true
 explosiveness = 1.0
@@ -2524,8 +3188,8 @@ spread = 45.0
 gravity = Vector2(0, 2000)
 initial_velocity_min = 226.65
 initial_velocity_max = 300.0
-scale_amount_min = 1.4
-scale_amount_max = 1.6
+scale_amount_min = 2.0
+scale_amount_max = 2.2
 color = Color(1, 1, 1, 1)
 color_initial_ramp = SubResource("Gradient_dkd33")
 
@@ -2533,7 +3197,7 @@ color_initial_ramp = SubResource("Gradient_dkd33")
 position = Vector2(16.1545, -253.538)
 rotation = -0.011721
 emitting = false
-amount = 10
+amount = 18
 lifetime = 1.5
 one_shot = true
 explosiveness = 1.0
@@ -2542,16 +3206,16 @@ spread = 45.0
 gravity = Vector2(0, 2000)
 initial_velocity_min = 226.65
 initial_velocity_max = 300.0
-scale_amount_min = 1.4
-scale_amount_max = 1.6
+scale_amount_min = 2.0
+scale_amount_max = 2.2
 color = Color(1, 1, 1, 1)
 color_initial_ramp = SubResource("Gradient_dkd33")
 
 [node name="MoleParticles3" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/Objetos/steve/particles" instance=ExtResource("16_olaoq")]
-position = Vector2(76.3961, -256.662)
+position = Vector2(83.6246, -250.133)
 rotation = -1.92159
 emitting = false
-amount = 10
+amount = 18
 lifetime = 1.5
 one_shot = true
 explosiveness = 1.0
@@ -2560,10 +3224,38 @@ spread = 45.0
 gravity = Vector2(0, 2000)
 initial_velocity_min = 226.65
 initial_velocity_max = 300.0
-scale_amount_min = 1.4
-scale_amount_max = 1.6
+scale_amount_min = 2.0
+scale_amount_max = 2.2
 color = Color(1, 1, 1, 1)
 color_initial_ramp = SubResource("Gradient_dkd33")
+
+[node name="Polvo2" type="CPUParticles2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/Objetos/steve/particles"]
+position = Vector2(57.2373, -266.124)
+rotation = 3.08961
+scale = Vector2(12.7104, 12.7104)
+emitting = false
+amount = 64
+lifetime = 3.0
+one_shot = true
+explosiveness = 1.0
+local_coords = true
+texture = ExtResource("41_h1he0")
+emission_shape = 1
+emission_sphere_radius = 7.0
+direction = Vector2(0, 1)
+spread = 20.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 5.0
+initial_velocity_max = 5.0
+radial_accel_min = -27.16
+radial_accel_max = 44.45
+scale_amount_min = 0.1
+scale_amount_max = 0.5
+scale_amount_curve = SubResource("Curve_581s6")
+color = Color(0.498039, 0.333333, 0.262745, 1)
+color_ramp = SubResource("Gradient_0d6p6")
+hue_variation_min = 0.45
+hue_variation_max = 1.0
 
 [node name="HuesoController" type="Node2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center" node_paths=PackedStringArray("ParentBook", "Statemachine", "topoController")]
 position = Vector2(74, 1526.04)
@@ -2576,6 +3268,7 @@ topoController = NodePath("../../../background/CanvasGroup/TopoController")
 script = ExtResource("7_io4up")
 
 [node name="megaterio" type="Sprite2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue"]
+modulate = Color(0.498039, 0.498039, 0.498039, 1)
 position = Vector2(-78, -17)
 scale = Vector2(0.57963, 0.57963)
 texture = ExtResource("14_0qvux")
@@ -3137,6 +3830,202 @@ scale_amount_max = 2.6
 color = Color(1, 1, 1, 1)
 color_initial_ramp = SubResource("Gradient_dkd33")
 
+[node name="Polvo2" type="CPUParticles2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/megaterio/particles"]
+position = Vector2(50.9997, -35.04)
+rotation = 1.7619
+scale = Vector2(12.7104, 12.7104)
+emitting = false
+amount = 120
+lifetime = 3.0
+one_shot = true
+explosiveness = 1.0
+local_coords = true
+texture = ExtResource("41_h1he0")
+emission_shape = 3
+emission_rect_extents = Vector2(26, 6)
+direction = Vector2(0, 1)
+spread = 20.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 5.0
+initial_velocity_max = 5.0
+radial_accel_min = -27.16
+radial_accel_max = 44.45
+scale_amount_min = 0.1
+scale_amount_max = 0.5
+scale_amount_curve = SubResource("Curve_581s6")
+color = Color(0.498039, 0.333333, 0.262745, 1)
+color_ramp = SubResource("Gradient_0d6p6")
+hue_variation_min = 0.45
+hue_variation_max = 1.0
+
+[node name="Polvo3" type="CPUParticles2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/megaterio/particles"]
+position = Vector2(-196, -93.04)
+rotation = 3.91816
+scale = Vector2(12.7104, 12.7104)
+emitting = false
+amount = 32
+lifetime = 3.0
+one_shot = true
+explosiveness = 1.0
+local_coords = true
+texture = ExtResource("41_h1he0")
+emission_shape = 3
+emission_rect_extents = Vector2(16, 4)
+direction = Vector2(0, 1)
+spread = 20.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 5.0
+initial_velocity_max = 5.0
+radial_accel_min = -27.16
+radial_accel_max = 44.45
+scale_amount_min = 0.1
+scale_amount_max = 0.5
+scale_amount_curve = SubResource("Curve_581s6")
+color = Color(0.498039, 0.333333, 0.262745, 1)
+color_ramp = SubResource("Gradient_0d6p6")
+hue_variation_min = 0.45
+hue_variation_max = 1.0
+
+[node name="Polvo4" type="CPUParticles2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/megaterio/particles"]
+position = Vector2(-77.0002, -241.04)
+rotation = 4.42534
+scale = Vector2(12.7104, 12.7104)
+emitting = false
+amount = 32
+lifetime = 3.0
+one_shot = true
+explosiveness = 1.0
+local_coords = true
+texture = ExtResource("41_h1he0")
+emission_shape = 3
+emission_rect_extents = Vector2(16, 4)
+direction = Vector2(0, 1)
+spread = 20.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 5.0
+initial_velocity_max = 5.0
+radial_accel_min = -27.16
+radial_accel_max = 44.45
+scale_amount_min = 0.1
+scale_amount_max = 0.5
+scale_amount_curve = SubResource("Curve_581s6")
+color = Color(0.498039, 0.333333, 0.262745, 1)
+color_ramp = SubResource("Gradient_0d6p6")
+hue_variation_min = 0.45
+hue_variation_max = 1.0
+
+[node name="Polvo5" type="CPUParticles2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/megaterio/particles"]
+position = Vector2(-70.0002, 314.959)
+rotation = 4.88235
+scale = Vector2(12.7104, 12.7104)
+emitting = false
+amount = 32
+lifetime = 3.0
+one_shot = true
+explosiveness = 1.0
+local_coords = true
+texture = ExtResource("41_h1he0")
+emission_shape = 3
+emission_rect_extents = Vector2(16, 4)
+direction = Vector2(0, 1)
+spread = 20.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 5.0
+initial_velocity_max = 5.0
+radial_accel_min = -27.16
+radial_accel_max = 44.45
+scale_amount_min = 0.1
+scale_amount_max = 0.5
+scale_amount_curve = SubResource("Curve_581s6")
+color = Color(0.498039, 0.333333, 0.262745, 1)
+color_ramp = SubResource("Gradient_0d6p6")
+hue_variation_min = 0.45
+hue_variation_max = 1.0
+
+[node name="Polvo6" type="CPUParticles2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/megaterio/particles"]
+position = Vector2(-209, 134.96)
+rotation = 5.0558
+scale = Vector2(12.7104, 12.7104)
+emitting = false
+amount = 32
+lifetime = 3.0
+one_shot = true
+explosiveness = 1.0
+local_coords = true
+texture = ExtResource("41_h1he0")
+emission_shape = 3
+emission_rect_extents = Vector2(8, 4)
+direction = Vector2(0, 1)
+spread = 20.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 5.0
+initial_velocity_max = 5.0
+radial_accel_min = -27.16
+radial_accel_max = 44.45
+scale_amount_min = 0.1
+scale_amount_max = 0.5
+scale_amount_curve = SubResource("Curve_581s6")
+color = Color(0.498039, 0.333333, 0.262745, 1)
+color_ramp = SubResource("Gradient_0d6p6")
+hue_variation_min = 0.45
+hue_variation_max = 1.0
+
+[node name="Polvo8" type="CPUParticles2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/megaterio/particles"]
+position = Vector2(-209, 134.96)
+rotation = 5.0558
+scale = Vector2(12.7104, 12.7104)
+emitting = false
+amount = 32
+lifetime = 3.0
+one_shot = true
+explosiveness = 1.0
+local_coords = true
+texture = ExtResource("41_h1he0")
+emission_shape = 3
+emission_rect_extents = Vector2(8, 4)
+direction = Vector2(0, 1)
+spread = 20.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 5.0
+initial_velocity_max = 5.0
+radial_accel_min = -27.16
+radial_accel_max = 44.45
+scale_amount_min = 0.1
+scale_amount_max = 0.5
+scale_amount_curve = SubResource("Curve_581s6")
+color = Color(0.498039, 0.333333, 0.262745, 1)
+color_ramp = SubResource("Gradient_0d6p6")
+hue_variation_min = 0.45
+hue_variation_max = 1.0
+
+[node name="Polvo7" type="CPUParticles2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/megaterio/particles"]
+position = Vector2(73.9997, 253.96)
+rotation = 6.25422
+scale = Vector2(12.7104, 12.7104)
+emitting = false
+amount = 16
+lifetime = 3.0
+one_shot = true
+explosiveness = 1.0
+local_coords = true
+texture = ExtResource("41_h1he0")
+emission_shape = 3
+emission_rect_extents = Vector2(8, 2)
+direction = Vector2(0, 1)
+spread = 20.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 5.0
+initial_velocity_max = 5.0
+radial_accel_min = -27.16
+radial_accel_max = 44.45
+scale_amount_min = 0.1
+scale_amount_max = 0.5
+scale_amount_curve = SubResource("Curve_581s6")
+color = Color(0.498039, 0.333333, 0.262745, 1)
+color_ramp = SubResource("Gradient_0d6p6")
+hue_variation_min = 0.45
+hue_variation_max = 1.0
+
 [node name="Rocas" type="Node2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center"]
 z_index = 1
 position = Vector2(0, 1552.04)
@@ -3322,22 +4211,10 @@ position = Vector2(0, 905)
 position = Vector2(0, 179)
 shape = SubResource("RectangleShape2D_phcit")
 
-[node name="LibroCanvas" type="CanvasLayer" parent="Excavando/StateMachine/Juego/Contenido"]
-
-[node name="animLibro" type="Control" parent="Excavando/StateMachine/Juego/Contenido/LibroCanvas"]
-layout_mode = 3
-anchor_left = 0.5
-anchor_top = 0.787
-anchor_right = 0.5
-anchor_bottom = 0.787
-offset_top = 0.639893
-offset_bottom = 0.639893
-grow_horizontal = 2
-grow_vertical = 0
-
 [node name="Tutorial" type="CanvasLayer" parent="Excavando/StateMachine/Juego/Contenido"]
 
 [node name="Tutorial" type="Control" parent="Excavando/StateMachine/Juego/Contenido/Tutorial" node_paths=PackedStringArray("FirstInstance", "ParentBook")]
+visible = false
 layout_mode = 3
 anchor_left = 0.5
 anchor_top = 0.627
@@ -3352,6 +4229,7 @@ FirstInstance = NodePath("../../Instancia1")
 ParentBook = NodePath("../../LibroCanvas/animLibro")
 
 [node name="PanelTutorial" parent="Excavando/StateMachine/Juego/Contenido/Tutorial/Tutorial" instance=ExtResource("50_vtwbx")]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_top = 0.5
@@ -3370,6 +4248,152 @@ Texts = Array[ExtResource("51_1rgrp")]([SubResource("Resource_akcp5")])
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Tutorial/Tutorial/Area2D"]
 shape = SubResource("RectangleShape2D_m5e66")
+
+[node name="Inventary" type="Control" parent="Excavando/StateMachine/Juego/Contenido/Tutorial" node_paths=PackedStringArray("ParentBook", "topoController")]
+z_index = 1
+layout_mode = 3
+anchors_preset = 0
+offset_left = 14.0
+offset_top = 13.0
+offset_right = 460.0
+offset_bottom = 138.0
+script = ExtResource("55_yyx2g")
+ParentBook = NodePath("../../LibroCanvas/animLibro")
+topoController = NodePath("../../background/CanvasGroup/TopoController")
+SmilodonteTexture = ExtResource("60_r568v")
+GliptodonteTexture = ExtResource("57_xs0ue")
+MacrauqueniaTexture = ExtResource("58_436tp")
+MegaterioTexture = ExtResource("63_uwvpi")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Excavando/StateMachine/Juego/Contenido/Tutorial/Inventary"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 32
+
+[node name="obj1" type="TextureRect" parent="Excavando/StateMachine/Juego/Contenido/Tutorial/Inventary/HBoxContainer"]
+visible = false
+layout_mode = 2
+texture = ExtResource("56_3m8dj")
+expand_mode = 3
+
+[node name="Icon" type="TextureRect" parent="Excavando/StateMachine/Juego/Contenido/Tutorial/Inventary/HBoxContainer/obj1"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+
+[node name="Button" type="Button" parent="Excavando/StateMachine/Juego/Contenido/Tutorial/Inventary/HBoxContainer/obj1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = ExtResource("58_agxcw")
+theme_override_styles/hover = ExtResource("58_agxcw")
+theme_override_styles/pressed = ExtResource("58_agxcw")
+theme_override_styles/disabled = ExtResource("58_agxcw")
+theme_override_styles/focus = ExtResource("58_agxcw")
+disabled = true
+flat = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Excavando/StateMachine/Juego/Contenido/Tutorial/Inventary/HBoxContainer/obj1"]
+libraries = {
+"": SubResource("AnimationLibrary_g6tsi")
+}
+
+[node name="obj2" type="TextureRect" parent="Excavando/StateMachine/Juego/Contenido/Tutorial/Inventary/HBoxContainer"]
+visible = false
+layout_mode = 2
+texture = ExtResource("56_3m8dj")
+expand_mode = 3
+
+[node name="Icon" type="TextureRect" parent="Excavando/StateMachine/Juego/Contenido/Tutorial/Inventary/HBoxContainer/obj2"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+
+[node name="Button" type="Button" parent="Excavando/StateMachine/Juego/Contenido/Tutorial/Inventary/HBoxContainer/obj2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = ExtResource("58_agxcw")
+theme_override_styles/hover = ExtResource("58_agxcw")
+theme_override_styles/pressed = ExtResource("58_agxcw")
+theme_override_styles/disabled = ExtResource("58_agxcw")
+theme_override_styles/focus = ExtResource("58_agxcw")
+disabled = true
+flat = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Excavando/StateMachine/Juego/Contenido/Tutorial/Inventary/HBoxContainer/obj2"]
+libraries = {
+"": SubResource("AnimationLibrary_g6tsi")
+}
+
+[node name="obj3" type="TextureRect" parent="Excavando/StateMachine/Juego/Contenido/Tutorial/Inventary/HBoxContainer"]
+visible = false
+layout_mode = 2
+texture = ExtResource("56_3m8dj")
+expand_mode = 3
+
+[node name="Icon" type="TextureRect" parent="Excavando/StateMachine/Juego/Contenido/Tutorial/Inventary/HBoxContainer/obj3"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+
+[node name="Button" type="Button" parent="Excavando/StateMachine/Juego/Contenido/Tutorial/Inventary/HBoxContainer/obj3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = ExtResource("58_agxcw")
+theme_override_styles/hover = ExtResource("58_agxcw")
+theme_override_styles/pressed = ExtResource("58_agxcw")
+theme_override_styles/disabled = ExtResource("58_agxcw")
+theme_override_styles/focus = ExtResource("58_agxcw")
+disabled = true
+flat = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Excavando/StateMachine/Juego/Contenido/Tutorial/Inventary/HBoxContainer/obj3"]
+libraries = {
+"": SubResource("AnimationLibrary_g6tsi")
+}
+
+[node name="LibroCanvas" type="CanvasLayer" parent="Excavando/StateMachine/Juego/Contenido"]
+
+[node name="animLibro" type="Control" parent="Excavando/StateMachine/Juego/Contenido/LibroCanvas"]
+layout_mode = 3
+anchor_left = 0.5
+anchor_top = 0.787
+anchor_right = 0.5
+anchor_bottom = 0.787
+offset_top = 0.639893
+offset_bottom = 0.639893
+grow_horizontal = 2
+grow_vertical = 0
 
 [node name="btnVolver" parent="Excavando/StateMachine/Juego" instance=ExtResource("38_0b8dm")]
 
@@ -3519,34 +4543,45 @@ texture = SubResource("GradientTexture2D_t3x58")
 
 [node name="OutroPanel" parent="Excavando/StateMachine/Fin/Contenido" instance=ExtResource("50_vtwbx")]
 layout_mode = 1
-offset_top = 83.0
-offset_bottom = 367.0
+offset_top = 105.0
+offset_bottom = 345.0
 pivot_offset = Vector2(326, 142)
 AppearInBeginning = false
-Texts = Array[ExtResource("51_1rgrp")]([SubResource("Resource_nftsl")])
+Texts = Array[ExtResource("51_1rgrp")]([SubResource("Resource_nftsl"), SubResource("Resource_lp4n5")])
 
-[node name="Panel(1) Btn(rigth)" parent="Excavando/StateMachine/Fin/Contenido/OutroPanel" instance=ExtResource("14_f234f")]
+[node name="Panel(2) Btn(rigth)" parent="Excavando/StateMachine/Fin/Contenido/OutroPanel" instance=ExtResource("14_f234f")]
 Data = SubResource("Resource_x17eo")
 
+[connection signal="StateToUpdate" from="Excavando/StateMachine" to="Excavando/StateMachine/Juego/Contenido/Tutorial/Inventary" method="Disanable"]
 [connection signal="pressed" from="Excavando/StateMachine/Consigna/Contenido/Button" to="Excavando/StateMachine/Consigna/Contenido/Button" method="_on_pressed" flags=18]
 [connection signal="timeout" from="Excavando/StateMachine/Consigna/Contenido/Timer" to="Excavando/StateMachine/Consigna" method="TimeOut" flags=18]
-[connection signal="ButtonPress" from="Excavando/StateMachine/Consigna/Contenido/Intro1/Panel(1) Btn(rigth)" to="Excavando/StateMachine" method="Trigger_On_Child_Transition" binds= ["juego"]]
+[connection signal="ButtonPress" from="Excavando/StateMachine/Consigna/Contenido/Intro1/Panel(2) Btn(rigth)" to="Excavando/StateMachine" method="Trigger_On_Child_Transition" binds= ["juego"]]
 [connection signal="Transitioned" from="Excavando/StateMachine/Juego" to="Excavando/StateMachine/Juego/Contenido/Tutorial/Tutorial" method="ShowTutorial"]
 [connection signal="Transitioned" from="Excavando/StateMachine/Juego" to="Excavando/StateMachine/Juego/Contenido/background/CanvasGroup/TopoController" method="EnableDisaneable" binds= [true, true]]
+[connection signal="Transitioned" from="Excavando/StateMachine/Juego" to="Excavando/StateMachine/Juego/Contenido/background/CanvasGroup/BurbujaPensamiento" method="set_visible" binds= [false]]
 [connection signal="InstanceTrue" from="Excavando/StateMachine/Juego/Contenido/Instancia1" to="Excavando/StateMachine/Juego/Contenido/Tutorial/Tutorial/PanelTutorial" method="EnterPanel"]
+[connection signal="InstanceTrue" from="Excavando/StateMachine/Juego/Contenido/Instancia1" to="Excavando/StateMachine/Juego/Contenido/background/CanvasGroup/BurbujaPensamiento" method="set_visible" binds= [true]]
+[connection signal="InstanceTrue" from="Excavando/StateMachine/Juego/Contenido/Instancia1" to="Excavando/StateMachine/Juego/Contenido/Tutorial/Inventary" method="SetInstance" binds= [0]]
 [connection signal="AllSpots" from="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Objetos/cajaFuerte" to="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Objetos/cajaFuerte/particles" method="Emit"]
 [connection signal="AllSpots" from="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Objetos/telefono" to="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Objetos/telefono/particles" method="Emit"]
 [connection signal="AllSpots" from="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Objetos/tele" to="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Objetos/tele/particles" method="Emit"]
 [connection signal="AllSpots" from="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Objetos/silla" to="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Objetos/silla/particles" method="Emit"]
+[connection signal="AppearIcon" from="Excavando/StateMachine/Juego/Contenido/Instancia1/center/HuesoController" to="Excavando/StateMachine/Juego/Contenido/Tutorial/Inventary" method="AppearIcon"]
+[connection signal="ConnectInventaryBTN" from="Excavando/StateMachine/Juego/Contenido/Instancia1/center/HuesoController" to="Excavando/StateMachine/Juego/Contenido/Tutorial/Inventary" method="SetSkeletonFind"]
 [connection signal="area_entered" from="Excavando/StateMachine/Juego/Contenido/Instancia1/center/AreaMoveCam" to="Excavando/StateMachine/Camera2D" method="SetOnAreaDown" binds= [true]]
 [connection signal="area_exited" from="Excavando/StateMachine/Juego/Contenido/Instancia1/center/AreaMoveCam" to="Excavando/StateMachine/Camera2D" method="SetOnAreaDown" binds= [false]]
+[connection signal="InstanceTrue" from="Excavando/StateMachine/Juego/Contenido/Instancia2" to="Excavando/StateMachine/Juego/Contenido/Tutorial/Inventary" method="SetInstance" binds= [1]]
 [connection signal="AllSpots" from="Excavando/StateMachine/Juego/Contenido/Instancia2/center/Objetos/steve" to="Excavando/StateMachine/Juego/Contenido/Instancia2/center/Objetos/steve/particles" method="Emit"]
+[connection signal="AppearIcon" from="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController" to="Excavando/StateMachine/Juego/Contenido/Tutorial/Inventary" method="AppearIcon"]
+[connection signal="ConnectInventaryBTN" from="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController" to="Excavando/StateMachine/Juego/Contenido/Tutorial/Inventary" method="SetSkeletonFind"]
 [connection signal="area_entered" from="Excavando/StateMachine/Juego/Contenido/Instancia2/center/AreaMoveCam" to="Excavando/StateMachine/Camera2D" method="SetOnAreaDown" binds= [true]]
 [connection signal="area_exited" from="Excavando/StateMachine/Juego/Contenido/Instancia2/center/AreaMoveCam" to="Excavando/StateMachine/Camera2D" method="SetOnAreaDown" binds= [false]]
+[connection signal="hideTutorial" from="Excavando/StateMachine/Juego/Contenido/Tutorial/Tutorial" to="Excavando/StateMachine/Juego/Contenido/background/CanvasGroup/BurbujaPensamiento/AnimationPlayer" method="PlayAnim" binds= ["out_Nube"]]
+[connection signal="showTutorial" from="Excavando/StateMachine/Juego/Contenido/Tutorial/Tutorial" to="Excavando/StateMachine/Juego/Contenido/background/CanvasGroup/BurbujaPensamiento" method="set_visible" binds= [true]]
 [connection signal="timeout" from="Excavando/StateMachine/Moraleja/Contenido/Timer" to="Excavando/StateMachine/Moraleja" method="TimeOut" flags=18]
 [connection signal="pressed" from="Excavando/StateMachine/Moraleja/Contenido/Instancia1/Button" to="Excavando/StateMachine/Moraleja/Contenido/Instancia1/Button" method="_on_pressed" flags=18]
 [connection signal="Transitioned" from="Excavando/StateMachine/Fin" to="Excavando/StateMachine/Camera2D" method="RestartPos"]
 [connection signal="Transitioned" from="Excavando/StateMachine/Fin" to="Excavando/StateMachine/Fin/Contenido/OutroPanel" method="EnterPanel"]
 [connection signal="pressed" from="Excavando/StateMachine/Fin/Contenido/ButtonChangeScene" to="Excavando" method="Set_Complete"]
-[connection signal="ButtonPress" from="Excavando/StateMachine/Fin/Contenido/OutroPanel/Panel(1) Btn(rigth)" to="Excavando" method="Set_Complete"]
-[connection signal="ButtonPress" from="Excavando/StateMachine/Fin/Contenido/OutroPanel/Panel(1) Btn(rigth)" to="Excavando/StateMachine/Fin/Contenido/ButtonChangeScene" method="_on_pressed"]
+[connection signal="ButtonPress" from="Excavando/StateMachine/Fin/Contenido/OutroPanel/Panel(2) Btn(rigth)" to="Excavando" method="Set_Complete"]
+[connection signal="ButtonPress" from="Excavando/StateMachine/Fin/Contenido/OutroPanel/Panel(2) Btn(rigth)" to="Excavando/StateMachine/Fin/Contenido/ButtonChangeScene" method="_on_pressed"]
