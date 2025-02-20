@@ -63,7 +63,7 @@ func calculateGesture() -> void:
 func set_next_anchor(direction) -> float:
 	
 	if("up" == direction):
-		if (i != 2):
+		if (i != 3):
 			i += 1
 			var t = (get_viewport_rect().size.y/2) 
 			var r = get_node(anchors[i]).position.y
@@ -94,20 +94,25 @@ func find_closest_node():
 			SetFloorWithAnchor(1)
 		elif closest_node.name == "Piso3":
 			SetFloorWithAnchor(2)
+		elif closest_node.name == "Piso4":
+			SetFloorWithAnchor(3)
 	return closest_node
 
 func getAnchorInBackScreen() -> float:
 	var NumPiso = PlayerVariables.NumPiso
 	if NumPiso == 1:
 		SetFloorWithAnchor(0)
-		return get_viewport_rect().size.y * 3
+		return get_viewport_rect().size.y * 4
 	if NumPiso == 2:
 		SetFloorWithAnchor(1)
-		return get_viewport_rect().size.y - get_viewport_rect().size.y/5
+		return get_viewport_rect().size.y * 2 - get_viewport_rect().size.y/3
 	if NumPiso == 3:
 		SetFloorWithAnchor(2)
+		return get_viewport_rect().size.y - get_viewport_rect().size.y/5
+	if NumPiso == 4:
+		SetFloorWithAnchor(3)
 		return 0
-	return get_viewport_rect().size.y * 3
+	return get_viewport_rect().size.y * 4
 
 func SetisInputBlock(x):
 	isInputBlock = !x

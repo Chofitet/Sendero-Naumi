@@ -1,0 +1,8 @@
+extends VBoxContainer
+
+
+
+func _ready():
+	var screen_size = Vector2(get_viewport_rect().size.x,get_viewport_rect().size.y)
+	set_size(screen_size)
+	position = -1 * screen_size/2
