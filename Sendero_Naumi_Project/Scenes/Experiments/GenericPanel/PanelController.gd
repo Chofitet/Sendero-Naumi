@@ -6,6 +6,7 @@ extends Panel
 		refreshData(1)
 
 @export var AppearInBeginning : bool
+@export var ExistingInBeginning : bool
 @export var TimeToAppear : float
 @export var SetEnterOnce: bool
 @export var RepitingPanel : bool
@@ -132,11 +133,20 @@ func _ready():
 		EnterPanel()
 		if !Engine.is_editor_hint(): visible= false
 	else : if !Engine.is_editor_hint(): visible= false
+	
 	SkipButton.pressed.connect(SkipWritting)
 	
 	for child in get_children():
 		if child.has_method("ConnectSignal"):
 			child.ConnectSignal()
+	
+	if ExistingInBeginning:
+		anim.play("enter_panel")
+		anim.seek(0.4)
+		await get_tree().create_timer(0.001).timeout
+		label.visible_ratio = 1
+		label.visible = true
+		AppearButtonAnim()
 
 func EnterPanel():
 	if SetEnterOnce:

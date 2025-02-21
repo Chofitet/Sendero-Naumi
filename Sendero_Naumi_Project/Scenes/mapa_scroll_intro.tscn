@@ -1,11 +1,9 @@
-[gd_scene load_steps=98 format=3 uid="uid://buth5gc88nt3j"]
+[gd_scene load_steps=128 format=3 uid="uid://buth5gc88nt3j"]
 
 [ext_resource type="Texture2D" uid="uid://cjjoaemhep814" path="res://Sprites/mapa-detalle.png" id="1_kw7ma"]
 [ext_resource type="Texture2D" uid="uid://hf5y4ic16cqj" path="res://Sprites/Intro/intro - background.jpg" id="1_un13t"]
 [ext_resource type="Texture2D" uid="uid://nuybqhitpej1" path="res://Sprites/Mapa/fondo_mapa.png" id="1_wa0ye"]
-[ext_resource type="Script" path="res://_Scripts/Auto_Scroll_Intro_Map.gd" id="2_n60vv"]
 [ext_resource type="Texture2D" uid="uid://jd6systmhxf1" path="res://Sprites/Intro/intro - suelo.png" id="2_uf5dd"]
-[ext_resource type="Script" path="res://_Scripts/AdjustMarginWithScreenSize.gd" id="4_4e1by"]
 [ext_resource type="Texture2D" uid="uid://chqivoetkgkoj" path="res://Sprites/UI/circulo.png" id="5_8y8kv"]
 [ext_resource type="Texture2D" uid="uid://cscyymtnwxau6" path="res://Sprites/UI/titulo_concepts.png" id="5_pglwp"]
 [ext_resource type="Texture2D" uid="uid://dhx6ness36h5f" path="res://Sprites/logoChicoCirculo.png" id="6_dtbi3"]
@@ -22,22 +20,29 @@
 [ext_resource type="PackedScene" uid="uid://bac1ysj2c0bok" path="res://Scenes/Experiments/hand_ui.tscn" id="15_2xluc"]
 [ext_resource type="Script" path="res://_Scripts/PlayAnimation.gd" id="15_4c0kx"]
 [ext_resource type="PackedScene" uid="uid://djhg7jvxtexyl" path="res://Scenes/UI_Scenes/btn_Change_Scene.tscn" id="16_0ow6t"]
-[ext_resource type="Texture2D" uid="uid://bpcc2ljyhkxfl" path="res://Sprites/Mapa/pin check - mapa.png" id="17_0u7nf"]
 [ext_resource type="StyleBox" uid="uid://b3tjes2hcm3wx" path="res://Resources/UI_Resources/StyleBoxTrasparent.tres" id="17_2a5jd"]
 [ext_resource type="Script" path="res://SetFirstPlay.gd" id="18_6lysc"]
+[ext_resource type="Material" uid="uid://muj2sfgakm5s" path="res://shaders/GalaxyWiggle.tres" id="19_e2cgu"]
 [ext_resource type="Texture2D" uid="uid://c5225cmvtpnmy" path="res://Sprites/Mapa/pin - mapa.png" id="20_fn5ys"]
 [ext_resource type="Texture2D" uid="uid://bq38efwktyuua" path="res://Sprites/UI/exclamacion2.png" id="22_c1o0u"]
 [ext_resource type="Texture2D" uid="uid://dyc6lr4k2lmfp" path="res://Sprites/UI/BotonAceptarGenerico.png" id="26_4d43e"]
 [ext_resource type="Script" path="res://_Scripts/Vibration_Button.gd" id="29_imofv"]
+[ext_resource type="Script" path="res://_Scripts/SetSizeEqualScreen.gd" id="31_yb326"]
 [ext_resource type="Script" path="res://Scenes/Experiments/GenericPanel/TextFieldData.gd" id="32_xf8jp"]
+[ext_resource type="Script" path="res://Scenes/SinePosition.gd" id="33_dsrhk"]
 [ext_resource type="Script" path="res://Scenes/Experiments/GenericPanel/ButtonPanelData.gd" id="33_xvgkx"]
 [ext_resource type="PackedScene" uid="uid://chcp24toqisaw" path="res://Scenes/Experiments/GenericPanel/GenericPanel.tscn" id="34_kpbhv"]
+[ext_resource type="LabelSettings" uid="uid://b7f8w8wf071ek" path="res://Themes/Geología/LabelSettings_Busqueda.tres" id="34_o7baw"]
 [ext_resource type="Texture2D" uid="uid://c2p5torstrtqm" path="res://Sprites/UI/checkIcon - UI.png" id="34_rt28l"]
 [ext_resource type="PackedScene" uid="uid://d1jys63xrvxpo" path="res://Scenes/Experiments/GenericPanel/IntermediateSignal.tscn" id="35_s6ot8"]
+[ext_resource type="Texture2D" uid="uid://d1oee8aqfpvio" path="res://Sprites/Mapa/megafaunaDos_mapa.png" id="35_w34gu"]
+[ext_resource type="Texture2D" uid="uid://b4mb0fyar87n4" path="res://Sprites/Mapa/universo_mapa.png" id="36_hins2"]
+[ext_resource type="Texture2D" uid="uid://8e4j1255vh8b" path="res://Sprites/Mapa/camino - mapa.png" id="36_k1vcc"]
+[ext_resource type="Script" path="res://_Scripts/Zone.gd" id="37_1vdg7"]
 [ext_resource type="Script" path="res://Scenes/Experiments/GenericPanel/IntermediateData.gd" id="37_aloy4"]
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wbaqp"]
-texture = ExtResource("26_4d43e")
+[ext_resource type="Texture2D" uid="uid://ocq30h65yxis" path="res://Sprites/UI/BotonAceptarCeleste.png" id="39_pcs77"]
+[ext_resource type="PackedScene" uid="uid://cw3ok8v4p620b" path="res://Scenes/Experiments/squiggling_sprite.tscn" id="40_n2ixu"]
+[ext_resource type="Texture2D" uid="uid://c5sigus2fy273" path="res://Sprites/Mapa/squigglingMap/megafaunaSQUIG - mapa.png" id="41_nsoyl"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6ap07"]
 atlas = ExtResource("10_q4dk5")
@@ -406,12 +411,12 @@ _data = {
 "tap_naumi": SubResource("Animation_pe6oj")
 }
 
-[sub_resource type="LabelSettings" id="LabelSettings_wfa71"]
-font_size = 120
-outline_size = 16
+[sub_resource type="LabelSettings" id="LabelSettings_uexs6"]
+font_size = 180
+outline_size = 23
 outline_color = Color(0, 0, 0, 1)
 
-[sub_resource type="Animation" id="Animation_v13qk"]
+[sub_resource type="Animation" id="Animation_wflro"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -426,9 +431,9 @@ tracks/0/keys = {
 "values": [Vector2(0, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_qpub6"]
+[sub_resource type="Animation" id="Animation_a14vy"]
 resource_name = "enter"
-length = 0.5
+length = 0.6
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -436,10 +441,10 @@ tracks/0/path = NodePath(".:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.4, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0.2, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, -2, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(2, 2), Vector2(1.805, 1.805)]
+"values": [Vector2(0, 0), Vector2(1.2, 1.2), Vector2(1, 1)]
 }
 tracks/1/type = "method"
 tracks/1/imported = false
@@ -448,7 +453,7 @@ tracks/1/path = NodePath("AnimationPlayer")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.5),
+"times": PackedFloat32Array(0.6),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
@@ -456,7 +461,7 @@ tracks/1/keys = {
 }]
 }
 
-[sub_resource type="Animation" id="Animation_v2vwd"]
+[sub_resource type="Animation" id="Animation_2qfkf"]
 resource_name = "idle"
 loop_mode = 1
 tracks/0/type = "value"
@@ -466,17 +471,17 @@ tracks/0/path = NodePath(".:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(-2, -2),
 "update": 0,
-"values": [Vector2(1.805, 1.805), Vector2(2.2, 2.2), Vector2(1.805, 1.805)]
+"values": [Vector2(1, 1), Vector2(1.2, 1.2)]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_qn0q2"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7eyiw"]
 _data = {
-"RESET": SubResource("Animation_v13qk"),
-"enter": SubResource("Animation_qpub6"),
-"idle": SubResource("Animation_v2vwd")
+"RESET": SubResource("Animation_wflro"),
+"enter": SubResource("Animation_a14vy"),
+"idle": SubResource("Animation_2qfkf")
 }
 
 [sub_resource type="Resource" id="Resource_1pchg"]
@@ -523,6 +528,16 @@ script = ExtResource("37_aloy4")
 NumberOfPanel = 2
 Place = 2
 
+[sub_resource type="Resource" id="Resource_yqxqo"]
+script = ExtResource("37_aloy4")
+NumberOfPanel = 2
+Place = 0
+
+[sub_resource type="Resource" id="Resource_y741g"]
+script = ExtResource("37_aloy4")
+NumberOfPanel = 2
+Place = 2
+
 [sub_resource type="Animation" id="Animation_tbfkl"]
 length = 0.001
 tracks/0/type = "value"
@@ -540,7 +555,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_pimfn"]
 resource_name = "Title_enter"
-length = 2.5
+length = 0.8
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -553,25 +568,68 @@ tracks/0/keys = {
 "update": 0,
 "values": [1.5708, -0.0872665, 0.0872665, 0.0]
 }
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../../..")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(2.5),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"ScrollScreen"
-}]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_p6ptu"]
 _data = {
 "RESET": SubResource("Animation_tbfkl"),
 "Title_enter": SubResource("Animation_pimfn")
+}
+
+[sub_resource type="Resource" id="Resource_b2mvn"]
+script = ExtResource("33_xvgkx")
+Place = 0
+texture = ExtResource("34_rt28l")
+label = ""
+dontPassPanel = false
+
+[sub_resource type="Resource" id="Resource_b4vf1"]
+script = ExtResource("32_xf8jp")
+Text = "HOLA"
+SizePanel = Vector2(0, 0)
+Position = Vector2(0, 0)
+buttons = Array[ExtResource("33_xvgkx")]([SubResource("Resource_b2mvn")])
+
+[sub_resource type="Resource" id="Resource_0q5ql"]
+script = ExtResource("37_aloy4")
+NumberOfPanel = 1
+Place = 0
+
+[sub_resource type="Animation" id="Animation_3ncyx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:pivot_offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_8tq0d"]
+resource_name = "floating"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:pivot_offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -38.205)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_00mo8"]
+_data = {
+"RESET": SubResource("Animation_3ncyx"),
+"floating": SubResource("Animation_8tq0d")
 }
 
 [sub_resource type="Animation" id="Animation_ysvb4"]
@@ -598,7 +656,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-256, -159)]
+"values": [Vector2(-256, -366)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -627,46 +685,34 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("animal spot3:scale")
+tracks/4/path = NodePath("Button:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1e-05, 1e-05)]
+"update": 1,
+"values": [false]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("../../../../Button:visible")
+tracks/5/path = NodePath("../../../../Control/chan:scale")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"update": 0,
+"values": [Vector2(1e-05, 1e-05)]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("../../../../Control/chan:scale")
+tracks/6/path = NodePath("../../../../Control/chan:visible")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1e-05, 1e-05)]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("../../../../Control/chan:visible")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -675,7 +721,7 @@ tracks/7/keys = {
 
 [sub_resource type="Animation" id="Animation_1vwuu"]
 resource_name = "Zone_anim"
-length = 8.0
+length = 2.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -683,7 +729,7 @@ tracks/0/path = NodePath(".:size")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.7, 1.7),
+"times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(0.450625, 1),
 "update": 0,
 "values": [Vector2(1541, 2532), Vector2(1778, 2921)]
@@ -695,10 +741,10 @@ tracks/1/path = NodePath(".:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.7, 1.7),
+"times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(0.45, 1),
 "update": 0,
-"values": [Vector2(-256, -159), Vector2(-284, -223)]
+"values": [Vector2(-256, -366), Vector2(-284, -444)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -707,10 +753,10 @@ tracks/2/path = NodePath("animal spot:scale")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0.7, 1.7, 2, 2.2),
+"times": PackedFloat32Array(0, 1, 1.3, 1.5),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(1e-05, 1e-05), Vector2(1e-05, 1e-05), Vector2(2.2, 2.2), Vector2(2, 2)]
+"values": [Vector2(1e-05, 1e-05), Vector2(1e-05, 1e-05), Vector2(2.2, 2.2), Vector2(1.8, 1.8)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -719,31 +765,19 @@ tracks/3/path = NodePath("animal spot2:scale")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0.7, 2.2, 2.5, 2.7),
+"times": PackedFloat32Array(0, 1.5, 1.8, 2),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(1e-05, 1e-05), Vector2(1e-05, 1e-05), Vector2(2.2, 2.2), Vector2(2, 2)]
+"values": [Vector2(1e-05, 1e-05), Vector2(1e-05, 1e-05), Vector2(2.2, 2.2), Vector2(1.8, 1.8)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("animal spot3:scale")
+tracks/4/path = NodePath("Button:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0.7, 2.7, 3, 3.2),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(1e-05, 1e-05), Vector2(1e-05, 1e-05), Vector2(2.2, 2.2), Vector2(2, 2)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("../../../../Button:visible")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0, 3.2),
+"times": PackedFloat32Array(0, 2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
@@ -793,7 +827,7 @@ tracks/2/keys = {
 tracks/3/type = "method"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("../../../../PanelIntro2")
+tracks/3/path = NodePath("../../../../PanelIntro4")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -812,31 +846,252 @@ _data = {
 "chan_anim": SubResource("Animation_hch7n")
 }
 
+[sub_resource type="Animation" id="Animation_lwbap"]
+resource_name = "1erFade"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Title:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.6),
+"transitions": PackedFloat32Array(1, -2, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 50), Vector2(0, -1800)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Piso3:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, -2, 1),
+"update": 0,
+"values": [Vector2(0, 2200), Vector2(0, -50), Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../TextureRect2:material:shader_parameter/offset")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.1, 0.8),
+"transitions": PackedFloat32Array(-2, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 1800)]
+}
+
+[sub_resource type="Animation" id="Animation_0giqn"]
+resource_name = "2doFade"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Piso3:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.6),
+"transitions": PackedFloat32Array(1, -2, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 50), Vector2(0, -1800)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Piso2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, -2, 1),
+"update": 0,
+"values": [Vector2(0, 2200), Vector2(0, -50), Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../TextureRect2:material:shader_parameter/offset")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.2, 0.8),
+"transitions": PackedFloat32Array(-2, 1),
+"update": 0,
+"values": [Vector2(0, 1800), Vector2(0, 3600)]
+}
+
+[sub_resource type="Animation" id="Animation_1x3ux"]
+resource_name = "3erFade"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Piso2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.6),
+"transitions": PackedFloat32Array(1, -2, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 50), Vector2(0, -1800)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Piso1:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, -2, 1),
+"update": 0,
+"values": [Vector2(0, 2200), Vector2(0, -50), Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../TextureRect2:material:shader_parameter/offset")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.2, 0.8),
+"transitions": PackedFloat32Array(-2, 1),
+"update": 0,
+"values": [Vector2(0, 3600), Vector2(0, 5400)]
+}
+
+[sub_resource type="Animation" id="Animation_4i7sj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Title:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Piso3:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 2200)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Piso2:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 2200)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Piso1:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 2200)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../TextureRect2:material:shader_parameter/offset")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0aep1"]
+_data = {
+"1erFade": SubResource("Animation_lwbap"),
+"2doFade": SubResource("Animation_0giqn"),
+"3erFade": SubResource("Animation_1x3ux"),
+"RESET": SubResource("Animation_4i7sj")
+}
+
+[sub_resource type="Resource" id="Resource_2er3h"]
+script = ExtResource("33_xvgkx")
+Place = 0
+texture = ExtResource("34_rt28l")
+label = ""
+dontPassPanel = false
+
 [sub_resource type="Resource" id="Resource_padbb"]
 script = ExtResource("32_xf8jp")
 Text = "[center]VAYA...
 ¡PARECE QUE HAS ENCONTRADO ALGO ESPECIAL![b]"
 SizePanel = Vector2(0, 0)
 Position = Vector2(0, 0)
-buttons = Array[ExtResource("33_xvgkx")]([])
+buttons = Array[ExtResource("33_xvgkx")]([SubResource("Resource_2er3h")])
 
-[sub_resource type="Resource" id="Resource_pjmsv"]
+[sub_resource type="Resource" id="Resource_hcme3"]
+script = ExtResource("37_aloy4")
+NumberOfPanel = 1
+Place = 0
+
+[sub_resource type="Resource" id="Resource_0n5wp"]
+script = ExtResource("33_xvgkx")
+Place = 0
+texture = ExtResource("34_rt28l")
+label = ""
+dontPassPanel = false
+
+[sub_resource type="Resource" id="Resource_valvm"]
 script = ExtResource("32_xf8jp")
-Text = "[center]ESTO ES [b]SENDERO NAUMI[/b]
-UNA NUEVA FORMA DE RECORRER 
-EL MUSEO"
+Text = "[center]ESTO ES [b]SENDERO NAUMI[/b] "
 SizePanel = Vector2(0, 0)
 Position = Vector2(0, 0)
-buttons = Array[ExtResource("33_xvgkx")]([])
+buttons = Array[ExtResource("33_xvgkx")]([SubResource("Resource_0n5wp")])
 
-[sub_resource type="Resource" id="Resource_q8mys"]
+[sub_resource type="Resource" id="Resource_db634"]
+script = ExtResource("37_aloy4")
+NumberOfPanel = 1
+Place = 0
+
+[sub_resource type="Resource" id="Resource_dcasx"]
+script = ExtResource("33_xvgkx")
+Place = 0
+texture = ExtResource("34_rt28l")
+label = ""
+dontPassPanel = false
+
+[sub_resource type="Resource" id="Resource_vqgf4"]
 script = ExtResource("32_xf8jp")
-Text = "[center]CUANDO ENCUENTRES
-ALGUNO DE ESTOS LUGARES EN EL MUSEO
-APRETALO EN EL MAPA PARA EMPEZAR A JUGAR[b]"
+Text = "CUANDO ESTES EN FRENTE DE UNA EXPOSICIÓN
+TOCA SU ISLA PARA COMENZAR A RECORRERLA"
 SizePanel = Vector2(0, 0)
 Position = Vector2(0, 0)
-buttons = Array[ExtResource("33_xvgkx")]([])
+buttons = Array[ExtResource("33_xvgkx")]([SubResource("Resource_dcasx")])
+
+[sub_resource type="Resource" id="Resource_gmlfr"]
+script = ExtResource("37_aloy4")
+NumberOfPanel = 1
+Place = 0
 
 [sub_resource type="Resource" id="Resource_mflrq"]
 script = ExtResource("33_xvgkx")
@@ -859,6 +1114,23 @@ script = ExtResource("37_aloy4")
 NumberOfPanel = 1
 Place = 0
 
+[sub_resource type="Resource" id="Resource_ww3xx"]
+script = ExtResource("37_aloy4")
+NumberOfPanel = 1
+Place = 0
+
+[sub_resource type="Resource" id="Resource_pn1me"]
+script = ExtResource("32_xf8jp")
+Text = "SUERTE EN TU AVENTURA"
+SizePanel = Vector2(0, 0)
+Position = Vector2(0, 0)
+buttons = Array[ExtResource("33_xvgkx")]([])
+
+[sub_resource type="Resource" id="Resource_6keyb"]
+script = ExtResource("37_aloy4")
+NumberOfPanel = 1
+Place = 0
+
 [sub_resource type="Animation" id="Animation_u46we"]
 resource_name = "Label"
 tracks/0/type = "value"
@@ -876,32 +1148,17 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_2vuxp"]
 resource_name = "Map_Slice"
-length = 9.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("..:position")
+tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(2.46229, 1),
+"transitions": PackedFloat32Array(2.46, 1),
 "update": 0,
 "values": [Vector2(0, 0), Vector2(-1600, 0)]
-}
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../../Naumi_Intro/Control/Label/AnimationPlayer")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(1.5),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": ["enter"],
-"method": &"PlayAnim"
-}]
 }
 
 [sub_resource type="Animation" id="Animation_6tr83"]
@@ -909,7 +1166,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("..:position")
+tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -925,6 +1182,9 @@ _data = {
 "Map_Slice": SubResource("Animation_2vuxp"),
 "RESET": SubResource("Animation_6tr83")
 }
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wbaqp"]
+texture = ExtResource("26_4d43e")
 
 [node name="Mapa_Scroll_Intro" type="Control"]
 layout_mode = 3
@@ -942,36 +1202,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ButtonChangeScene" parent="Naumi_Intro" instance=ExtResource("16_0ow6t")]
-visible = false
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.809
-anchor_right = 0.809
-offset_left = -57.053
-offset_top = -1026.0
-offset_right = 32.947
-offset_bottom = -936.0
-grow_horizontal = 0
-theme_override_font_sizes/font_size = 30
-theme_override_styles/normal = SubResource("StyleBoxTexture_wbaqp")
-theme_override_styles/hover = SubResource("StyleBoxTexture_wbaqp")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_wbaqp")
-theme_override_styles/disabled = SubResource("StyleBoxTexture_wbaqp")
-text = "SI"
-NextScene = "AdventureBegins"
-
 [node name="TextureRect" type="TextureRect" parent="Naumi_Intro"]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 0.387
-anchor_right = 0.5
-anchor_bottom = 0.387
-offset_left = -451.0
-offset_top = -802.36
-offset_right = 451.0
-offset_bottom = 801.64
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_un13t")
@@ -1083,25 +1318,20 @@ wait_time = 1e+06
 one_shot = true
 autostart = true
 
-[node name="Label" type="Label" parent="Naumi_Intro/Control"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.504
-anchor_top = 0.531
-anchor_right = 0.504
-anchor_bottom = 0.531
-offset_left = -23.0
-offset_top = -281.0
-offset_right = 31.0
-offset_bottom = -113.0
+[node name="LabelNaumi" type="Label" parent="Naumi_Intro/Control"]
+layout_mode = 0
+offset_left = -35.0
+offset_top = -312.0
+offset_right = 47.0
+offset_bottom = -63.0
 scale = Vector2(1e-05, 1e-05)
-pivot_offset = Vector2(26.505, 86.52)
+pivot_offset = Vector2(41, 124)
 text = "?"
-label_settings = SubResource("LabelSettings_wfa71")
+label_settings = SubResource("LabelSettings_uexs6")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Naumi_Intro/Control/Label"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Naumi_Intro/Control/LabelNaumi"]
 libraries = {
-"": SubResource("AnimationLibrary_qn0q2")
+"": SubResource("AnimationLibrary_7eyiw")
 }
 script = ExtResource("15_4c0kx")
 animation = "idle"
@@ -1120,13 +1350,21 @@ Data = SubResource("Resource_m3hqb")
 [node name="Panel(2) Btn(left)" parent="Naumi_Intro/PanelNaumi1" instance=ExtResource("35_s6ot8")]
 Data = SubResource("Resource_vt584")
 
+[node name="Panel(2) Btn(rigth)2" parent="Naumi_Intro/PanelNaumi1" instance=ExtResource("35_s6ot8")]
+Data = SubResource("Resource_yqxqo")
+Delay = 3.0
+
+[node name="Panel(2) Btn(left)2" parent="Naumi_Intro/PanelNaumi1" instance=ExtResource("35_s6ot8")]
+Data = SubResource("Resource_y741g")
+Delay = 3.0
+
 [node name="Map_Scroll" type="Control" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 2160.0
-offset_bottom = 3840.0
+offset_right = 720.0
+offset_bottom = 1280.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -1138,9 +1376,10 @@ texture = ExtResource("1_kw7ma")
 [node name="Polygon2D" type="Polygon2D" parent="Map_Scroll"]
 texture_repeat = 2
 texture = ExtResource("1_wa0ye")
-polygon = PackedVector2Array(738, -35, 775, -4, 793, -44, 823, 74, 793, 178, 745, 254, 772, 321, 807, 406, 863, 434, 868, 523, 833, 550, 849, 610, 815, 693, 751, 701, 713, 770, 828, 947, 825, 1030, 786, 1063, 813, 1237, 837, 1244, 808, 1285, 724, 1339, 610, 1322)
+polygon = PackedVector2Array(724, -34, 719, -71, 790, -73, 827, -17, 834, 49, 839, 87, 808, 202, 766, 262, 771, 287, 790, 290, 828, 391, 871, 407, 888, 477, 884, 528, 854, 559, 855, 580, 868, 586, 873, 624, 843, 669, 840, 695, 821, 728, 802, 738, 769, 725, 742, 769, 726, 784, 757, 816, 776, 840, 794, 859, 813, 877, 830, 914, 847, 926, 865, 947, 867, 969, 853, 995, 847, 1056, 812, 1070, 819, 1139, 839, 1142, 839, 1170, 831, 1180, 837, 1188, 825, 1200, 826, 1225, 858, 1221, 862, 1258, 854, 1290, 822, 1314, 776, 1352, 610, 1322)
 
 [node name="TextureRect2" type="TextureRect" parent="Map_Scroll"]
+material = ExtResource("19_e2cgu")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1148,41 +1387,52 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_wa0ye")
+expand_mode = 1
 stretch_mode = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Map_Scroll" node_paths=PackedStringArray("LastMarginConteiner", "PanelIntro1")]
-layout_mode = 2
-anchor_left = 0.5
-anchor_right = 0.5
-offset_bottom = 6484.0
-size_flags_horizontal = 6
-theme_override_constants/separation = 640
-script = ExtResource("2_n60vv")
-scrollDuration = 28.0
-LastMarginConteiner = NodePath("Piso1")
-PanelIntro1 = NodePath("../PanelIntro1")
-
-[node name="Titulo" type="MarginContainer" parent="Map_Scroll/VBoxContainer"]
-layout_mode = 2
-theme_override_constants/margin_top = 640
-script = ExtResource("4_4e1by")
-margin = "margin_top"
-
-[node name="Control" type="Control" parent="Map_Scroll/VBoxContainer/Titulo"]
-layout_mode = 2
-size_flags_horizontal = 4
-
-[node name="TextureRect" type="TextureRect" parent="Map_Scroll/VBoxContainer/Titulo/Control"]
+[node name="CenterAnchor" type="Control" parent="Map_Scroll"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -331.0
-offset_top = -379.0
-offset_right = 331.0
-offset_bottom = -98.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="Control" parent="Map_Scroll/CenterAnchor"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ExpandingConteiner" type="Control" parent="Map_Scroll/CenterAnchor/Title"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -472.0
+offset_top = -328.5
+offset_right = 472.0
+offset_bottom = 328.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("31_yb326")
+
+[node name="TextureRect" type="TextureRect" parent="Map_Scroll/CenterAnchor/Title/ExpandingConteiner"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -350.0
+offset_top = -384.0
+offset_right = 407.0
 grow_horizontal = 2
 grow_vertical = 2
 rotation = 1.5708
@@ -1191,60 +1441,94 @@ texture = ExtResource("5_pglwp")
 expand_mode = 5
 stretch_mode = 4
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Map_Scroll/VBoxContainer/Titulo/Control/TextureRect"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Map_Scroll/CenterAnchor/Title/ExpandingConteiner/TextureRect"]
 autoplay = "Title_enter"
 libraries = {
 "": SubResource("AnimationLibrary_p6ptu")
 }
 
-[node name="LOGO" type="Sprite2D" parent="Map_Scroll/VBoxContainer/Titulo/Control/TextureRect"]
+[node name="LOGO" type="Sprite2D" parent="Map_Scroll/CenterAnchor/Title/ExpandingConteiner/TextureRect"]
 visible = false
 position = Vector2(337, 454.5)
 scale = Vector2(0.264, 0.264)
 texture = ExtResource("5_8y8kv")
 
-[node name="LOGO" type="Sprite2D" parent="Map_Scroll/VBoxContainer/Titulo/Control/TextureRect/LOGO"]
+[node name="LOGO" type="Sprite2D" parent="Map_Scroll/CenterAnchor/Title/ExpandingConteiner/TextureRect/LOGO"]
 clip_children = 2
 scale = Vector2(0.954545, 0.954545)
 texture = ExtResource("5_8y8kv")
 
-[node name="LogoChicoCirculo" type="Sprite2D" parent="Map_Scroll/VBoxContainer/Titulo/Control/TextureRect/LOGO/LOGO"]
+[node name="LogoChicoCirculo" type="Sprite2D" parent="Map_Scroll/CenterAnchor/Title/ExpandingConteiner/TextureRect/LOGO/LOGO"]
 scale = Vector2(0.622881, 0.622881)
 texture = ExtResource("6_dtbi3")
 
-[node name="middleIslands" type="MarginContainer" parent="Map_Scroll/VBoxContainer"]
-layout_mode = 2
-theme_override_constants/margin_top = 1000
-theme_override_constants/margin_bottom = 1000
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Map_Scroll/VBoxContainer/middleIslands"]
-layout_mode = 2
-
-[node name="Piso3" type="MarginContainer" parent="Map_Scroll/VBoxContainer/middleIslands/VBoxContainer"]
-layout_mode = 2
-theme_override_constants/margin_top = 0
-theme_override_constants/margin_bottom = 1920
-
-[node name="Piso3" type="Control" parent="Map_Scroll/VBoxContainer/middleIslands/VBoxContainer/Piso3"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-focus_neighbor_bottom = NodePath("../../Piso2/Piso2")
-mouse_filter = 1
-
-[node name="Zona_Cuaterario" type="TextureRect" parent="Map_Scroll/VBoxContainer/middleIslands/VBoxContainer/Piso3/Piso3"]
+[node name="Control" type="Control" parent="Map_Scroll/CenterAnchor/Title/ExpandingConteiner/TextureRect"]
 layout_mode = 1
-anchors_preset = -1
+anchor_left = 0.473
+anchor_top = 1.0
+anchor_right = 0.473
+anchor_bottom = 1.0
+offset_left = 0.370972
+offset_top = 137.982
+offset_right = 0.370972
+offset_bottom = 137.982
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.6, 0.6)
+
+[node name="Panel" parent="Map_Scroll/CenterAnchor/Title/ExpandingConteiner/TextureRect/Control" instance=ExtResource("34_kpbhv")]
+layout_mode = 1
+anchors_preset = 8
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -243.0
+offset_top = -127.5
+offset_right = 243.0
+offset_bottom = 127.5
+grow_vertical = 2
+pivot_offset = Vector2(243, 127.5)
+TimeToAppear = 2.0
+Texts = Array[ExtResource("32_xf8jp")]([SubResource("Resource_b4vf1")])
+
+[node name="label" parent="Map_Scroll/CenterAnchor/Title/ExpandingConteiner/TextureRect/Control/Panel" index="0"]
+offset_left = -94.0
+offset_top = 9.38452
+offset_right = -168.0
+offset_bottom = -102.615
+scale = Vector2(1.667, 1.667)
+text = "HOLA"
+
+[node name="BtnDerAnchor" parent="Map_Scroll/CenterAnchor/Title/ExpandingConteiner/TextureRect/Control/Panel" index="3"]
+scale = Vector2(1.667, 1.667)
+
+[node name="btnDer" parent="Map_Scroll/CenterAnchor/Title/ExpandingConteiner/TextureRect/Control/Panel/BtnDerAnchor" index="0"]
+visible = true
+
+[node name="Panel(1) Btn(rigth)" parent="Map_Scroll/CenterAnchor/Title/ExpandingConteiner/TextureRect/Control/Panel" instance=ExtResource("35_s6ot8")]
+Data = SubResource("Resource_0q5ql")
+
+[node name="Piso3" type="Control" parent="Map_Scroll/CenterAnchor"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 2200.0
+offset_bottom = 2200.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CuaternarioZone" type="Control" parent="Map_Scroll/CenterAnchor/Piso3"]
+layout_mode = 1
+anchors_preset = 0
 offset_left = -338.0
-offset_top = 326.0
+offset_top = -42.0
 offset_right = 651.0
-offset_bottom = 2123.0
+offset_bottom = 1755.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.35, 0.35)
-expand_mode = 1
 
-[node name="TextureRect" type="TextureRect" parent="Map_Scroll/VBoxContainer/middleIslands/VBoxContainer/Piso3/Piso3/Zona_Cuaterario"]
+[node name="TextureRect" type="TextureRect" parent="Map_Scroll/CenterAnchor/Piso3/CuaternarioZone"]
 layout_mode = 1
 anchors_preset = -1
 anchor_top = -0.034
@@ -1254,70 +1538,355 @@ offset_top = 61.093
 offset_right = -45.4939
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("6_sqkww")
+texture = ExtResource("35_w34gu")
 
-[node name="Ambientes" type="TextureRect" parent="Map_Scroll/VBoxContainer/middleIslands/VBoxContainer/Piso3/Piso3"]
+[node name="MovingIsland" type="AnimationPlayer" parent="Map_Scroll/CenterAnchor/Piso3/CuaternarioZone"]
+autoplay = "floating"
+speed_scale = 0.07
+libraries = {
+"": SubResource("AnimationLibrary_00mo8")
+}
+
+[node name="AmbientesZone" type="Control" parent="Map_Scroll/CenterAnchor/Piso3"]
 layout_mode = 1
-anchors_preset = -1
 anchor_left = 0.29
 anchor_top = 0.205
 anchor_right = 0.29
 anchor_bottom = 0.205
 offset_left = -339.0
-offset_top = -813.0
+offset_top = -656.0
 offset_right = 720.0
-offset_bottom = 1003.0
+offset_bottom = 1160.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.33, 0.33)
-expand_mode = 1
 
-[node name="TextureRect" type="TextureRect" parent="Map_Scroll/VBoxContainer/middleIslands/VBoxContainer/Piso3/Piso3/Ambientes"]
+[node name="TextureRect" type="TextureRect" parent="Map_Scroll/CenterAnchor/Piso3/AmbientesZone"]
 layout_mode = 1
 anchors_preset = -1
 anchor_top = -0.029
 anchor_right = 1.0
 anchor_bottom = 1.029
-offset_left = -10.5
-offset_top = 0.665039
-offset_right = 10.5
-offset_bottom = -0.662964
+offset_top = 52.664
+offset_bottom = -52.662
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("7_6t5sw")
 
-[node name="Eras_Geologicas" type="TextureRect" parent="Map_Scroll/VBoxContainer/middleIslands/VBoxContainer/Piso3/Piso3"]
+[node name="MovingIsland" type="AnimationPlayer" parent="Map_Scroll/CenterAnchor/Piso3/AmbientesZone"]
+autoplay = "floating"
+speed_scale = 0.06
+libraries = {
+"": SubResource("AnimationLibrary_00mo8")
+}
+
+[node name="ErasGeologicasZone" type="Control" parent="Map_Scroll/CenterAnchor/Piso3"]
 layout_mode = 1
-anchors_preset = -1
 anchor_left = 0.586
 anchor_top = 0.5
 anchor_right = 0.586
 anchor_bottom = 0.5
-offset_left = -13.9999
-offset_top = -229.0
-offset_right = 1039.0
-offset_bottom = 1501.0
+offset_left = 20.0001
+offset_top = -283.0
+offset_right = 1073.0
+offset_bottom = 1447.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.33, 0.33)
-expand_mode = 1
 
-[node name="TextureRect" type="TextureRect" parent="Map_Scroll/VBoxContainer/middleIslands/VBoxContainer/Piso3/Piso3/Eras_Geologicas"]
+[node name="TextureRect" type="TextureRect" parent="Map_Scroll/CenterAnchor/Piso3/ErasGeologicasZone"]
 layout_mode = 1
 anchors_preset = -1
 anchor_top = -0.055
 anchor_right = 1.013
 anchor_bottom = 1.055
-offset_left = 6.10352e-05
-offset_top = 95.15
-offset_right = -13.689
-offset_bottom = -95.1501
+offset_left = -12.0
+offset_top = 0.150002
+offset_right = 9.31116
+offset_bottom = -0.149902
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("10_c3fc7")
 
-[node name="Button_Change_State" type="Button" parent="Map_Scroll/VBoxContainer/middleIslands/VBoxContainer/Piso3/Piso3/Eras_Geologicas/TextureRect"]
+[node name="MovingIsland" type="AnimationPlayer" parent="Map_Scroll/CenterAnchor/Piso3/ErasGeologicasZone"]
+autoplay = "floating"
+speed_scale = 0.07
+libraries = {
+"": SubResource("AnimationLibrary_00mo8")
+}
+
+[node name="Piso2" type="Control" parent="Map_Scroll/CenterAnchor"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 2200.0
+offset_bottom = 2200.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="UniversoZone" type="Control" parent="Map_Scroll/CenterAnchor/Piso2"]
+layout_mode = 1
+anchors_preset = 0
+offset_left = -338.0
+offset_top = -42.0
+offset_right = 651.0
+offset_bottom = 1755.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.35, 0.35)
+
+[node name="TextureRect" type="TextureRect" parent="Map_Scroll/CenterAnchor/Piso2/UniversoZone"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = -0.034
+anchor_right = 1.046
+anchor_bottom = 1.0
+offset_left = -22.0014
+offset_top = 61.098
+offset_right = -24.4926
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("36_hins2")
+expand_mode = 5
+
+[node name="MovingIsland" type="AnimationPlayer" parent="Map_Scroll/CenterAnchor/Piso2/UniversoZone"]
+autoplay = "floating"
+speed_scale = 0.07
+libraries = {
+"": SubResource("AnimationLibrary_00mo8")
+}
+
+[node name="GeologiaZone" type="Control" parent="Map_Scroll/CenterAnchor/Piso2"]
+layout_mode = 1
+anchor_left = 0.586
+anchor_top = 0.5
+anchor_right = 0.586
+anchor_bottom = 0.5
+offset_left = 20.0001
+offset_top = -283.0
+offset_right = 1073.0
+offset_bottom = 1447.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.33, 0.33)
+
+[node name="TextureRect" type="TextureRect" parent="Map_Scroll/CenterAnchor/Piso2/GeologiaZone"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = -0.055
+anchor_right = 1.013
+anchor_bottom = 1.055
+offset_left = -12.0
+offset_top = 0.150002
+offset_right = 9.31116
+offset_bottom = -0.149902
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("11_tirda")
+expand_mode = 3
+
+[node name="MovingIsland" type="AnimationPlayer" parent="Map_Scroll/CenterAnchor/Piso2/GeologiaZone"]
+autoplay = "floating"
+speed_scale = 0.07
+libraries = {
+"": SubResource("AnimationLibrary_00mo8")
+}
+
+[node name="HistoriaMuseosZone" type="Control" parent="Map_Scroll/CenterAnchor/Piso2"]
+layout_mode = 1
+anchor_left = 0.29
+anchor_top = 0.205
+anchor_right = 0.29
+anchor_bottom = 0.205
+offset_left = -339.0
+offset_top = -656.0
+offset_right = 720.0
+offset_bottom = 1160.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.33, 0.33)
+
+[node name="TextureRect" type="TextureRect" parent="Map_Scroll/CenterAnchor/Piso2/HistoriaMuseosZone"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = -0.029
+anchor_right = 1.0
+anchor_bottom = 1.029
+offset_top = 52.664
+offset_bottom = -52.662
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_sqkww")
+expand_mode = 5
+
+[node name="MovingIsland" type="AnimationPlayer" parent="Map_Scroll/CenterAnchor/Piso2/HistoriaMuseosZone"]
+autoplay = "floating"
+speed_scale = 0.06
+libraries = {
+"": SubResource("AnimationLibrary_00mo8")
+}
+
+[node name="Piso1" type="Control" parent="Map_Scroll/CenterAnchor"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = 2200.0
+offset_bottom = 2200.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ExpandingCoteiner" type="Control" parent="Map_Scroll/CenterAnchor/Piso1"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MegafaunaZone" type="TextureRect" parent="Map_Scroll/CenterAnchor/Piso1/ExpandingCoteiner"]
+layout_mode = 1
+anchors_preset = -1
+offset_left = -256.0
+offset_top = -366.0
+offset_right = 1285.0
+offset_bottom = 2166.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.33, 0.33)
+expand_mode = 5
+
+[node name="TextureRect" type="TextureRect" parent="Map_Scroll/CenterAnchor/Piso1/ExpandingCoteiner/MegafaunaZone"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -99.0
+offset_top = 33.0
+offset_right = 75.3396
+offset_bottom = -123.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("12_4oixe")
+expand_mode = 3
+
+[node name="animal spot" type="Sprite2D" parent="Map_Scroll/CenterAnchor/Piso1/ExpandingCoteiner/MegafaunaZone"]
+position = Vector2(618.182, 1660.61)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("20_fn5ys")
+script = ExtResource("33_dsrhk")
+StartOnBeginning = true
+amplitude = 40.0
+
+[node name="Label" type="Label" parent="Map_Scroll/CenterAnchor/Piso1/ExpandingCoteiner/MegafaunaZone/animal spot"]
+offset_left = -17.575
+offset_top = -81.0
+offset_right = 22.425
+offset_bottom = 18.0
+text = "1"
+label_settings = ExtResource("34_o7baw")
+
+[node name="animal spot2" type="Sprite2D" parent="Map_Scroll/CenterAnchor/Piso1/ExpandingCoteiner/MegafaunaZone"]
+position = Vector2(800, 375.758)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("20_fn5ys")
+script = ExtResource("33_dsrhk")
+amplitude = 40.0
+
+[node name="Label" type="Label" parent="Map_Scroll/CenterAnchor/Piso1/ExpandingCoteiner/MegafaunaZone/animal spot2"]
+offset_left = -17.575
+offset_top = -81.0
+offset_right = 22.425
+offset_bottom = 18.0
+text = "2"
+label_settings = ExtResource("34_o7baw")
+
+[node name="animal spot3" type="Sprite2D" parent="Map_Scroll/CenterAnchor/Piso1/ExpandingCoteiner/MegafaunaZone"]
+position = Vector2(1624.24, 512.121)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("20_fn5ys")
+
+[node name="MegafaunaAnimator" type="AnimationPlayer" parent="Map_Scroll/CenterAnchor/Piso1/ExpandingCoteiner/MegafaunaZone"]
+libraries = {
+"": SubResource("AnimationLibrary_fh205")
+}
+script = ExtResource("15_4c0kx")
+animation = "Zone_anim"
+
+[node name="Button" type="Button" parent="Map_Scroll/CenterAnchor/Piso1/ExpandingCoteiner/MegafaunaZone"]
 visible = false
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/focus = ExtResource("17_2a5jd")
+text = "
+"
+
+[node name="FadeAnimation" type="AnimationPlayer" parent="Map_Scroll/CenterAnchor"]
+libraries = {
+"": SubResource("AnimationLibrary_0aep1")
+}
+
+[node name="fakeMap" type="Control" parent="Map_Scroll"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Line2D" type="Line2D" parent="Map_Scroll/fakeMap"]
+position = Vector2(-4, -3744)
+points = PackedVector2Array(368.533, 4448.68, 368.532, 4448.68, 368.532, 4448.67, 368.531, 4448.67, 368.53, 4448.66, 368.529, 4448.65, 368.527, 4448.64, 368.525, 4448.62, 368.523, 4448.61, 368.521, 4448.59, 368.518, 4448.57, 368.516, 4448.55, 368.513, 4448.53, 368.51, 4448.5, 368.506, 4448.48, 368.503, 4448.45, 368.499, 4448.42, 368.495, 4448.39, 368.491, 4448.36, 368.486, 4448.32, 368.481, 4448.29, 368.476, 4448.25, 368.471, 4448.21, 368.466, 4448.17, 368.46, 4448.12, 368.455, 4448.08, 368.449, 4448.03, 368.442, 4447.98, 368.436, 4447.93, 368.429, 4447.88, 368.423, 4447.82, 368.416, 4447.77, 368.408, 4447.71, 368.401, 4447.65, 368.393, 4447.59, 368.385, 4447.53, 368.378, 4447.46, 368.369, 4447.4, 368.361, 4447.33, 368.352, 4447.26, 368.344, 4447.19, 368.335, 4447.12, 368.325, 4447.04, 368.316, 4446.97, 368.307, 4446.89, 368.297, 4446.81, 368.287, 4446.73, 368.277, 4446.65, 368.267, 4446.56, 368.256, 4446.47, 368.245, 4446.39, 368.235, 4446.3, 368.224, 4446.21, 368.213, 4446.11, 368.201, 4446.02, 368.19, 4445.92, 368.178, 4445.82, 368.166, 4445.72, 368.154, 4445.62, 368.142, 4445.52, 368.13, 4445.42, 368.117, 4445.31, 368.105, 4445.2, 368.092, 4445.09, 368.079, 4444.98, 368.066, 4444.87, 368.052, 4444.75, 368.039, 4444.64, 368.025, 4444.52, 368.011, 4444.4, 367.998, 4444.28, 367.983, 4444.16, 367.969, 4444.03, 367.955, 4443.91, 367.94, 4443.78, 367.926, 4443.65, 367.911, 4443.52, 367.896, 4443.39, 367.881, 4443.26, 367.866, 4443.12, 367.85, 4442.98, 367.835, 4442.85, 367.819, 4442.71, 367.803, 4442.56, 367.787, 4442.42, 367.771, 4442.28, 367.755, 4442.13, 367.739, 4441.98, 367.722, 4441.83, 367.706, 4441.68, 367.689, 4441.53, 367.672, 4441.38, 367.655, 4441.22, 367.638, 4441.06, 367.621, 4440.9, 367.604, 4440.74, 367.586, 4440.58, 367.569, 4440.42, 367.551, 4440.25, 367.533, 4440.09, 367.515, 4439.92, 367.497, 4439.75, 367.479, 4439.58, 367.461, 4439.4, 367.443, 4439.23, 367.424, 4439.05, 367.406, 4438.88, 367.387, 4438.7, 367.368, 4438.52, 367.349, 4438.34, 367.33, 4438.15, 367.311, 4437.97, 367.292, 4437.78, 367.273, 4437.59, 367.254, 4437.4, 367.234, 4437.21, 367.215, 4437.02, 367.195, 4436.83, 367.175, 4436.63, 367.155, 4436.44, 367.135, 4436.24, 367.115, 4436.04, 367.095, 4435.84, 367.075, 4435.63, 367.055, 4435.43, 367.035, 4435.23, 367.014, 4435.02, 366.994, 4434.81, 366.973, 4434.6, 366.953, 4434.39, 366.932, 4434.18, 366.911, 4433.96, 366.89, 4433.75, 366.869, 4433.53, 366.848, 4433.31, 366.827, 4433.09, 366.806, 4432.87, 366.785, 4432.65, 366.763, 4432.42, 366.742, 4432.19, 366.721, 4431.97, 366.699, 4431.74, 366.678, 4431.51, 366.656, 4431.28, 366.635, 4431.04, 366.613, 4430.81, 366.591, 4430.57, 366.569, 4430.34, 366.547, 4430.1, 366.526, 4429.86, 366.504, 4429.62, 366.482, 4429.37, 366.46, 4429.13, 366.437, 4428.89, 366.415, 4428.64, 366.393, 4428.39, 366.371, 4428.14, 366.349, 4427.89, 366.326, 4427.64, 366.304, 4427.38, 366.282, 4427.13, 366.259, 4426.87, 366.237, 4426.61, 366.214, 4426.35, 366.192, 4426.09, 366.169, 4425.83, 366.147, 4425.57, 366.124, 4425.3, 366.102, 4425.04, 366.079, 4424.77, 366.056, 4424.5, 366.034, 4424.23, 366.011, 4423.96, 365.988, 4423.69, 365.965, 4423.41, 365.943, 4423.14, 365.92, 4422.86, 365.897, 4422.58, 365.874, 4422.31, 365.851, 4422.02, 365.828, 4421.74, 365.806, 4421.46, 365.783, 4421.17, 365.76, 4420.89, 365.737, 4420.6, 365.714, 4420.31, 365.691, 4420.02, 365.668, 4419.73, 365.646, 4419.44, 365.623, 4419.15, 365.6, 4418.85, 365.577, 4418.56, 365.554, 4418.26, 365.531, 4417.96, 365.508, 4417.66, 365.486, 4417.36, 365.463, 4417.05, 365.44, 4416.75, 365.417, 4416.45, 365.394, 4416.14, 365.372, 4415.83, 365.349, 4415.52, 365.326, 4415.21, 365.303, 4414.9, 365.281, 4414.59, 365.258, 4414.28, 365.235, 4413.96, 365.213, 4413.64, 365.19, 4413.33, 365.167, 4413.01, 365.145, 4412.69, 365.122, 4412.37, 365.1, 4412.04, 365.077, 4411.72, 365.055, 4411.39, 365.033, 4411.07, 365.01, 4410.74, 364.988, 4410.41, 364.966, 4410.08, 364.943, 4409.75, 364.921, 4409.42, 364.899, 4409.09, 364.877, 4408.75, 364.855, 4408.42, 364.833, 4408.08, 364.811, 4407.74, 364.789, 4407.4, 364.767, 4407.06, 364.745, 4406.72, 364.723, 4406.38, 364.702, 4406.03, 364.68, 4405.69, 364.658, 4405.34, 364.637, 4404.99, 364.615, 4404.64, 364.594, 4404.29, 364.572, 4403.94, 364.551, 4403.59, 364.53, 4403.24, 364.509, 4402.88, 364.487, 4402.53, 364.466, 4402.17, 364.446, 4401.81, 364.425, 4401.45, 364.404, 4401.09, 364.383, 4400.73, 364.362, 4400.37, 364.342, 4400, 364.321, 4399.64, 364.301, 4399.27, 364.28, 4398.91, 364.26, 4398.54, 364.24, 4398.17, 364.22, 4397.8, 364.2, 4397.43, 364.18, 4397.05, 364.16, 4396.68, 364.14, 4396.3, 364.12, 4395.93, 364.101, 4395.55, 364.081, 4395.17, 364.062, 4394.79, 364.042, 4394.41, 364.023, 4394.03, 364.004, 4393.65, 363.985, 4393.27, 363.966, 4392.88, 363.947, 4392.5, 363.928, 4392.11, 363.91, 4391.72, 363.891, 4391.33, 363.873, 4390.94, 363.855, 4390.55, 363.836, 4390.16, 363.818, 4389.77, 363.8, 4389.37, 363.783, 4388.98, 363.765, 4388.58, 363.747, 4388.18, 363.73, 4387.78, 363.712, 4387.39, 363.695, 4386.99, 363.678, 4386.58, 363.661, 4386.18, 363.644, 4385.78, 363.627, 4385.37, 363.61, 4384.97, 363.594, 4384.56, 363.577, 4384.15, 363.561, 4383.74, 363.545, 4383.33, 363.529, 4382.92, 363.513, 4382.51, 363.497, 4382.1, 363.482, 4381.69, 363.466, 4381.27, 363.451, 4380.86, 363.436, 4380.44, 363.421, 4380.02, 363.406, 4379.6, 363.391, 4379.18, 363.376, 4378.76, 363.362, 4378.34, 363.348, 4377.92, 363.334, 4377.49, 363.32, 4377.07, 363.306, 4376.65, 363.292, 4376.22, 363.278, 4375.79, 363.265, 4375.36, 363.252, 4374.93, 363.239, 4374.5, 363.226, 4374.07, 363.213, 4373.64, 363.2, 4373.21, 363.188, 4372.77, 363.176, 4372.34, 363.163, 4371.9, 363.152, 4371.46, 363.14, 4371.03, 363.128, 4370.59, 363.117, 4370.15, 363.105, 4369.71, 363.094, 4369.27, 363.083, 4368.82, 363.073, 4368.38, 363.062, 4367.94, 363.052, 4367.49, 363.042, 4367.05, 363.032, 4366.6, 363.022, 4366.15, 363.012, 4365.7, 363.003, 4365.25, 362.993, 4364.8, 362.984, 4364.35, 362.975, 4363.9, 362.967, 4363.45, 362.958, 4362.99, 362.95, 4362.54, 362.942, 4362.08, 362.934, 4361.62, 362.926, 4361.17, 362.918, 4360.71, 362.911, 4360.25, 362.904, 4359.79, 362.897, 4359.33, 362.89, 4358.87, 362.884, 4358.4, 362.877, 4357.94, 362.871, 4357.47, 362.865, 4357.01, 362.86, 4356.54, 362.854, 4356.08, 362.849, 4355.61, 362.844, 4355.14, 362.839, 4354.67, 362.834, 4354.2, 362.83, 4353.73, 362.826, 4353.26, 362.822, 4352.78, 362.818, 4352.31, 362.814, 4351.84, 362.811, 4351.36, 362.808, 4350.89, 362.805, 4350.41, 362.802, 4349.93, 362.8, 4349.45, 362.798, 4348.97, 362.796, 4348.49, 362.794, 4348.01, 362.793, 4347.53, 362.792, 4347.05, 362.791, 4346.56, 362.79, 4346.08, 362.789, 4345.6, 362.789, 4345.11, 362.789, 4344.63, 362.789, 4344.14, 362.79, 4343.65, 362.79, 4343.16, 362.791, 4342.67, 362.792, 4342.18, 362.794, 4341.69, 362.796, 4341.2, 362.797, 4340.71, 362.8, 4340.21, 362.802, 4339.72, 362.805, 4339.23, 362.808, 4338.73, 362.811, 4338.23, 362.815, 4337.74, 362.818, 4337.24, 362.822, 4336.74, 362.827, 4336.24, 362.831, 4335.74, 362.836, 4335.24, 362.841, 4334.74, 362.846, 4334.24, 362.852, 4333.74, 362.858, 4333.23, 362.864, 4332.73, 362.87, 4332.22, 362.877, 4331.72, 362.884, 4331.21, 362.891, 4330.71, 362.899, 4330.2, 362.907, 4329.69, 362.915, 4329.18, 362.923, 4328.67, 362.932, 4328.16, 362.941, 4327.65, 362.95, 4327.14, 362.96, 4326.63, 362.969, 4326.11, 362.98, 4325.6, 362.99, 4325.09, 363.001, 4324.57, 363.012, 4324.06, 363.023, 4323.54, 363.034, 4323.02, 363.046, 4322.5, 363.059, 4321.99, 363.071, 4321.47, 363.084, 4320.95, 363.097, 4320.43, 363.11, 4319.91, 363.124, 4319.39, 363.138, 4318.86, 363.152, 4318.34, 363.167, 4317.82, 363.182, 4317.29, 363.197, 4316.77, 363.213, 4316.24, 363.229, 4315.72, 363.245, 4315.19, 363.261, 4314.67, 363.278, 4314.14, 363.295, 4313.61, 363.313, 4313.08, 363.331, 4312.55, 363.349, 4312.02, 363.367, 4311.49, 363.386, 4310.96, 363.405, 4310.43, 363.425, 4309.9, 363.444, 4309.36, 363.465, 4308.83, 363.485, 4308.29, 363.506, 4307.76, 363.527, 4307.22, 363.548, 4306.69, 363.57, 4306.15, 363.592, 4305.62, 363.615, 4305.08, 363.638, 4304.54, 363.661, 4304, 363.684, 4303.46, 363.708, 4302.92, 363.732, 4302.38, 363.757, 4301.84, 363.782, 4301.3, 363.807, 4300.76, 363.833, 4300.21, 363.859, 4299.67, 363.885, 4299.13, 363.912, 4298.58, 363.939, 4298.04, 363.966, 4297.5, 363.994, 4296.95, 364.022, 4296.4, 364.05, 4295.86, 364.079, 4295.31, 364.108, 4294.76, 364.138, 4294.21, 364.168, 4293.67, 364.198, 4293.12, 364.229, 4292.57, 364.26, 4292.02, 364.291, 4291.46, 364.323, 4290.91, 364.355, 4290.36, 364.388, 4289.81, 364.421, 4289.26, 364.454, 4288.7, 364.488, 4288.15, 364.522, 4287.6, 364.556, 4287.04, 364.591, 4286.49, 364.626, 4285.93, 364.662, 4285.38, 364.698, 4284.82, 364.734, 4284.26, 364.771, 4283.71, 364.808, 4283.15, 364.846, 4282.59, 364.884, 4282.03, 364.922, 4281.47, 364.961, 4280.91, 365, 4280.35, 365.04, 4279.79, 365.08, 4279.23, 365.12, 4278.67, 365.161, 4278.11, 365.202, 4277.55, 365.244, 4276.98, 365.286, 4276.42, 365.328, 4275.86, 365.371, 4275.29, 365.414, 4274.73, 365.458, 4274.17, 365.502, 4273.6, 365.546, 4273.03, 365.591, 4272.47, 365.637, 4271.9, 365.682, 4271.34, 365.729, 4270.77, 365.775, 4270.2, 365.822, 4269.63, 365.87, 4269.07, 365.917, 4268.5, 365.966, 4267.93, 366.014, 4267.36, 366.064, 4266.79, 366.113, 4266.22, 366.163, 4265.65, 366.214, 4265.08, 366.264, 4264.51, 366.316, 4263.94, 366.368, 4263.37, 366.42, 4262.79, 366.472, 4262.22, 366.525, 4261.65, 366.579, 4261.07, 366.633, 4260.5, 366.687, 4259.93, 366.742, 4259.35, 366.797, 4258.78, 366.853, 4258.2, 366.909, 4257.63, 366.966, 4257.05, 367.023, 4256.48, 367.081, 4255.9, 367.139, 4255.32, 367.197, 4254.75, 367.256, 4254.17, 367.316, 4253.59, 367.375, 4253.02, 367.436, 4252.44, 367.497, 4251.86, 367.558, 4251.28, 367.62, 4250.7, 367.682, 4250.12, 367.744, 4249.54, 367.807, 4248.96, 367.871, 4248.38, 367.935, 4247.8, 368, 4247.22, 368.065, 4246.64, 368.13, 4246.06, 368.196, 4245.48, 368.263, 4244.9, 368.33, 4244.32, 368.397, 4243.73, 368.465, 4243.15, 368.533, 4242.57, 368.602, 4241.99, 368.671, 4241.4, 368.741, 4240.82, 368.812, 4240.24, 368.883, 4239.65, 368.954, 4239.07, 369.026, 4238.48, 369.098, 4237.9, 369.171, 4237.31, 369.244, 4236.73, 369.318, 4236.14, 369.392, 4235.56, 369.467, 4234.97, 369.542, 4234.39, 369.618, 4233.8, 369.694, 4233.21, 369.771, 4232.63, 369.849, 4232.04, 369.926, 4231.45, 370.005, 4230.87, 370.084, 4230.28, 370.163, 4229.69, 370.243, 4229.1, 370.323, 4228.52, 370.404, 4227.93, 370.486, 4227.34, 370.567, 4226.75, 370.65, 4226.16, 370.733, 4225.57, 370.817, 4224.98, 370.901, 4224.4, 370.985, 4223.81, 371.07, 4223.22, 371.156, 4222.63, 371.242, 4222.04, 371.329, 4221.45, 371.416, 4220.86, 371.504, 4220.27, 371.592, 4219.68, 371.681, 4219.09, 371.77, 4218.5, 371.86, 4217.9, 371.95, 4217.31, 372.041, 4216.72, 372.133, 4216.13, 372.225, 4215.54, 372.318, 4214.95, 372.411, 4214.36, 372.505, 4213.76, 372.599, 4213.17, 372.694, 4212.58, 372.789, 4211.99, 372.885, 4211.4, 372.981, 4210.8, 373.078, 4210.21, 373.176, 4209.62, 373.274, 4209.03, 373.373, 4208.43, 373.472, 4207.84, 373.572, 4207.25, 373.672, 4206.65, 373.773, 4206.06, 373.875, 4205.47, 373.977, 4204.88, 374.079, 4204.28, 374.183, 4203.69, 374.286, 4203.1, 374.391, 4202.5, 374.496, 4201.91, 374.601, 4201.31, 374.707, 4200.72, 374.814, 4200.13, 374.921, 4199.53, 375.029, 4198.94, 375.137, 4198.35, 375.246, 4197.75, 375.356, 4197.16, 375.466, 4196.56, 375.577, 4195.97, 375.688, 4195.38, 375.8, 4194.78, 375.913, 4194.19, 376.026, 4193.59, 376.139, 4193, 376.254, 4192.4, 376.368, 4191.81, 376.484, 4191.22, 376.6, 4190.62, 376.717, 4190.03, 376.834, 4189.43, 376.952, 4188.84, 377.07, 4188.24, 377.189, 4187.65, 377.309, 4187.06, 377.429, 4186.46, 377.55, 4185.87, 377.672, 4185.27, 377.794, 4184.68, 377.917, 4184.08, 378.04, 4183.49, 378.164, 4182.9, 378.289, 4182.3, 378.414, 4181.71, 378.54, 4181.11, 378.666, 4180.52, 378.793, 4179.93, 378.921, 4179.33, 379.049, 4178.74, 379.178, 4178.14, 379.308, 4177.55, 379.438, 4176.96, 379.569, 4176.36, 379.7, 4175.77, 379.832, 4175.18, 379.965, 4174.58, 380.098, 4173.99, 380.232, 4173.4, 380.367, 4172.8, 380.502, 4172.21, 380.638, 4171.62, 380.774, 4171.02, 380.912, 4170.43, 381.049, 4169.84, 381.188, 4169.24, 381.327, 4168.65, 381.467, 4168.06, 381.607, 4167.47, 381.748, 4166.87, 381.89, 4166.28, 382.032, 4165.69, 382.175, 4165.1, 382.319, 4164.5, 382.463, 4163.91, 382.608, 4163.32, 382.754, 4162.73, 382.9, 4162.14, 383.047, 4161.55, 383.195, 4160.95, 383.343, 4160.36, 383.492, 4159.77, 383.642, 4159.18, 383.792, 4158.59, 383.943, 4158, 384.095, 4157.41, 384.247, 4156.82, 384.4, 4156.23, 384.553, 4155.64, 384.708, 4155.05, 384.863, 4154.46, 385.018, 4153.87, 385.175, 4153.28, 385.332, 4152.69, 385.49, 4152.1, 385.648, 4151.51, 385.807, 4150.92, 385.967, 4150.33, 386.127, 4149.75, 386.288, 4149.16, 386.45, 4148.57, 386.613, 4147.98, 386.776, 4147.39, 386.94, 4146.81, 387.104, 4146.22, 387.27, 4145.63, 387.436, 4145.04, 387.603, 4144.46, 387.77, 4143.87, 387.938, 4143.29, 388.107, 4142.7, 388.276, 4142.11, 388.447, 4141.53, 388.617, 4140.94, 388.789, 4140.36, 388.961, 4139.77, 389.134, 4139.19, 389.308, 4138.6, 389.483, 4138.02, 389.658, 4137.44, 389.834, 4136.85, 390.01, 4136.27, 390.188, 4135.68, 390.366, 4135.1, 390.545, 4134.52, 390.724, 4133.94, 390.904, 4133.35, 391.085, 4132.77, 391.267, 4132.19, 391.449, 4131.61, 391.632, 4131.03, 391.816, 4130.45, 392.001, 4129.87, 392.186, 4129.28, 392.372, 4128.71, 392.559, 4128.12, 392.746, 4127.54, 392.935, 4126.97, 393.124, 4126.39, 393.313, 4125.81, 393.504, 4125.23, 393.695, 4124.65, 393.887, 4124.07, 394.08, 4123.5, 394.273, 4122.92, 394.467, 4122.34, 394.662, 4121.77, 394.858, 4121.19, 395.055, 4120.61, 395.252, 4120.04, 395.45, 4119.46, 395.648, 4118.89, 395.848, 4118.31, 396.048, 4117.74, 396.249, 4117.16, 396.451, 4116.59, 396.653, 4116.02, 396.857, 4115.44, 397.061, 4114.87, 397.266, 4114.3, 397.471, 4113.73, 397.677, 4113.16, 397.885, 4112.58, 398.092, 4112.01, 398.301, 4111.44, 398.511, 4110.87, 398.721, 4110.3, 398.932, 4109.73, 399.143, 4109.16, 399.356, 4108.6, 399.569, 4108.03, 399.783, 4107.46, 399.998, 4106.89, 400.214, 4106.32, 400.43, 4105.76, 400.648, 4105.19, 400.866, 4104.63, 401.084, 4104.06, 401.304, 4103.49, 401.524, 4102.93, 401.746, 4102.36, 401.968, 4101.8, 402.19, 4101.24, 402.414, 4100.67, 402.638, 4100.11, 402.863, 4099.55, 403.089, 4098.99, 403.316, 4098.43, 403.544, 4097.86, 403.772, 4097.3, 404.001, 4096.74, 404.231, 4096.18, 404.462, 4095.62, 404.694, 4095.07, 404.926, 4094.51, 405.159, 4093.95, 405.393, 4093.39, 405.628, 4092.83, 405.864, 4092.28, 406.1, 4091.72, 406.338, 4091.17, 406.576, 4090.61, 406.815, 4090.06, 407.055, 4089.5, 407.295, 4088.95, 407.537, 4088.39, 407.779, 4087.84, 408.022, 4087.29, 408.266, 4086.74, 408.511, 4086.19, 408.756, 4085.63, 409.003, 4085.08, 409.25, 4084.53, 409.498, 4083.99, 409.747, 4083.44, 409.997, 4082.89, 410.247, 4082.34, 410.499, 4081.79, 410.751, 4081.25, 411.004, 4080.7, 411.258, 4080.15, 411.513, 4079.61, 411.768, 4079.06, 412.025, 4078.52, 412.282, 4077.97, 412.54, 4077.43, 412.799, 4076.89, 413.059, 4076.35, 413.32, 4075.8, 413.582, 4075.26, 413.844, 4074.72, 414.107, 4074.18, 414.372, 4073.64, 414.637, 4073.1, 414.903, 4072.56, 415.169, 4072.03, 415.437, 4071.49, 415.706, 4070.95, 415.975, 4070.42, 416.245, 4069.88, 416.516, 4069.35, 416.788, 4068.81, 417.061, 4068.28, 417.335, 4067.74, 417.609, 4067.21, 417.885, 4066.68, 418.161, 4066.15, 418.439, 4065.62, 418.717, 4065.09, 418.996, 4064.56, 419.276, 4064.03, 419.556, 4063.5, 419.838, 4062.97, 420.121, 4062.44, 420.404, 4061.92, 420.688, 4061.39, 420.974, 4060.86, 421.26, 4060.34, 421.547, 4059.82, 421.835, 4059.29, 422.123, 4058.77, 422.413, 4058.25, 422.704, 4057.72, 422.995, 4057.2, 423.287, 4056.68, 423.581, 4056.16, 423.875, 4055.64, 424.17, 4055.12, 424.466, 4054.61, 424.763, 4054.09, 425.061, 4053.57, 425.359, 4053.06, 425.659, 4052.54, 425.96, 4052.03, 426.261, 4051.51, 426.564, 4051, 426.867, 4050.49, 427.171, 4049.97, 427.476, 4049.46, 427.782, 4048.95, 428.089, 4048.44, 428.397, 4047.93, 428.706, 4047.42, 429.016, 4046.92, 429.326, 4046.41, 429.638, 4045.9, 429.951, 4045.4, 430.264, 4044.89, 430.578, 4044.39, 430.894, 4043.88, 431.21, 4043.38, 431.527, 4042.88, 431.845, 4042.38, 432.164, 4041.88, 432.484, 4041.38, 432.805, 4040.88, 433.127, 4040.38, 433.45, 4039.88, 433.774, 4039.38, 434.099, 4038.89, 434.424, 4038.39, 434.751, 4037.89, 435.079, 4037.4, 435.407, 4036.91, 435.737, 4036.41, 436.067, 4035.92, 436.399, 4035.43, 436.731, 4034.94, 437.064, 4034.45, 437.398, 4033.96, 437.734, 4033.47, 438.07, 4032.99, 438.407, 4032.5, 438.745, 4032.01, 439.084, 4031.53, 439.424, 4031.04, 439.765, 4030.56, 440.107, 4030.08, 440.45, 4029.59, 440.794, 4029.11, 441.139, 4028.63, 441.485, 4028.15, 441.832, 4027.67, 442.18, 4027.2, 442.529, 4026.72, 442.878, 4026.24, 443.229, 4025.77, 443.581, 4025.29, 443.934, 4024.82, 444.287, 4024.34, 444.642, 4023.87, 444.998, 4023.4, 445.354, 4022.93, 445.712, 4022.46, 446.071, 4021.99, 446.43, 4021.52, 446.791, 4021.05, 447.153, 4020.59, 447.515, 4020.12, 447.879, 4019.66, 448.244, 4019.19, 448.609, 4018.73, 448.976, 4018.27, 449.344, 4017.81, 449.712, 4017.35, 450.082, 4016.89, 450.453, 4016.43, 450.824, 4015.97, 451.197, 4015.51, 451.571, 4015.05, 451.945, 4014.6, 452.321, 4014.14, 452.698, 4013.69, 453.076, 4013.24, 453.454, 4012.79, 453.834, 4012.33, 454.215, 4011.88, 454.597, 4011.44, 454.98, 4010.99, 455.364, 4010.54, 455.749, 4010.09, 456.134, 4009.65, 456.521, 4009.2, 456.909, 4008.76, 457.298, 4008.32, 457.689, 4007.87, 458.08, 4007.43, 458.472, 4006.99, 458.865, 4006.55, 459.259, 4006.11, 459.654, 4005.68, 460.051, 4005.24, 460.448, 4004.81, 460.846, 4004.37, 461.246, 4003.94, 461.646, 4003.5, 462.047, 4003.07, 462.45, 4002.64, 462.854, 4002.21, 463.258, 4001.78, 463.664, 4001.35, 464.071, 4000.93, 464.478, 4000.5, 464.887, 4000.08, 465.297, 3999.65, 465.708, 3999.23, 466.12, 3998.81, 466.533, 3998.39, 466.947, 3997.97, 467.362, 3997.55, 467.779, 3997.13, 468.196, 3996.71, 468.614, 3996.29, 469.034, 3995.88, 469.454, 3995.46, 469.876, 3995.05, 470.299, 3994.64, 470.722, 3994.23, 471.147, 3993.82, 471.573, 3993.41, 472, 3993, 472.426, 3992.59, 472.851, 3992.19, 473.272, 3991.78, 473.692, 3991.37, 474.11, 3990.97, 474.525, 3990.56, 474.938, 3990.16, 475.349, 3989.75, 475.758, 3989.35, 476.164, 3988.95, 476.568, 3988.55, 476.97, 3988.15, 477.37, 3987.74, 477.768, 3987.34, 478.163, 3986.94, 478.557, 3986.54, 478.948, 3986.15, 479.337, 3985.75, 479.724, 3985.35, 480.109, 3984.95, 480.491, 3984.55, 480.872, 3984.16, 481.25, 3983.76, 481.626, 3983.37, 482, 3982.97, 482.372, 3982.58, 482.742, 3982.18, 483.109, 3981.79, 483.475, 3981.4, 483.838, 3981.01, 484.2, 3980.61, 484.559, 3980.22, 484.916, 3979.83, 485.271, 3979.44, 485.624, 3979.05, 485.975, 3978.66, 486.324, 3978.27, 486.67, 3977.89, 487.015, 3977.5, 487.358, 3977.11, 487.698, 3976.73, 488.036, 3976.34, 488.373, 3975.95, 488.707, 3975.57, 489.039, 3975.18, 489.37, 3974.8, 489.698, 3974.42, 490.024, 3974.03, 490.348, 3973.65, 490.67, 3973.27, 490.99, 3972.89, 491.308, 3972.51, 491.624, 3972.12, 491.938, 3971.74, 492.25, 3971.36, 492.56, 3970.99, 492.868, 3970.61, 493.174, 3970.23, 493.478, 3969.85, 493.78, 3969.47, 494.081, 3969.1, 494.379, 3968.72, 494.675, 3968.35, 494.969, 3967.97, 495.261, 3967.59, 495.551, 3967.22, 495.84, 3966.85, 496.126, 3966.47, 496.41, 3966.1, 496.693, 3965.73, 496.973, 3965.36, 497.252, 3964.98, 497.529, 3964.61, 497.803, 3964.24, 498.076, 3963.87, 498.347, 3963.5, 498.616, 3963.14, 498.883, 3962.77, 499.148, 3962.4, 499.412, 3962.03, 499.673, 3961.66, 499.932, 3961.3, 500.19, 3960.93, 500.446, 3960.56, 500.7, 3960.2, 500.952, 3959.83, 501.202, 3959.47, 501.45, 3959.11, 501.696, 3958.74, 501.941, 3958.38, 502.183, 3958.02, 502.424, 3957.66, 502.663, 3957.29, 502.9, 3956.93, 503.136, 3956.57, 503.369, 3956.21, 503.601, 3955.85, 503.831, 3955.49, 504.059, 3955.13, 504.285, 3954.77, 504.509, 3954.42, 504.732, 3954.06, 504.952, 3953.7, 505.171, 3953.34, 505.389, 3952.99, 505.604, 3952.63, 505.818, 3952.28, 506.029, 3951.92, 506.24, 3951.57, 506.448, 3951.21, 506.654, 3950.86, 506.859, 3950.51, 507.062, 3950.16, 507.263, 3949.8, 507.463, 3949.45, 507.661, 3949.1, 507.857, 3948.75, 508.051, 3948.4, 508.243, 3948.05, 508.434, 3947.7, 508.623, 3947.35, 508.811, 3947, 508.996, 3946.65, 509.18, 3946.31, 509.362, 3945.96, 509.543, 3945.61, 509.722, 3945.26, 509.899, 3944.92, 510.074, 3944.57, 510.248, 3944.23, 510.42, 3943.88, 510.59, 3943.54, 510.759, 3943.19, 510.926, 3942.85, 511.092, 3942.51, 511.255, 3942.16, 511.417, 3941.82, 511.578, 3941.48, 511.737, 3941.14, 511.894, 3940.8, 512.049, 3940.46, 512.203, 3940.12, 512.355, 3939.78, 512.506, 3939.44, 512.655, 3939.1, 512.802, 3938.76, 512.948, 3938.42, 513.092, 3938.08, 513.234, 3937.75, 513.375, 3937.41, 513.515, 3937.07, 513.652, 3936.74, 513.789, 3936.4, 513.923, 3936.06, 514.056, 3935.73, 514.188, 3935.39, 514.317, 3935.06, 514.446, 3934.73, 514.572, 3934.39, 514.698, 3934.06, 514.821, 3933.73, 514.943, 3933.4, 515.064, 3933.06, 515.182, 3932.73, 515.3, 3932.4, 515.416, 3932.07, 515.53, 3931.74, 515.643, 3931.41, 515.754, 3931.08, 515.864, 3930.75, 515.972, 3930.42, 516.079, 3930.1, 516.184, 3929.77, 516.288, 3929.44, 516.39, 3929.11, 516.491, 3928.79, 516.59, 3928.46, 516.688, 3928.13, 516.785, 3927.81, 516.879, 3927.48, 516.973, 3927.16, 517.065, 3926.83, 517.155, 3926.51, 517.244, 3926.19, 517.332, 3925.86, 517.418, 3925.54, 517.503, 3925.22, 517.586, 3924.9, 517.667, 3924.57, 517.748, 3924.25, 517.827, 3923.93, 517.904, 3923.61, 517.98, 3923.29, 518.055, 3922.97, 518.128, 3922.65, 518.2, 3922.33, 518.271, 3922.01, 518.34, 3921.69, 518.407, 3921.38, 518.474, 3921.06, 518.539, 3920.74, 518.602, 3920.42, 518.664, 3920.11, 518.725, 3919.79, 518.784, 3919.47, 518.842, 3919.16, 518.899, 3918.84, 518.954, 3918.53, 519.008, 3918.21, 519.061, 3917.9, 519.112, 3917.59, 519.162, 3917.27, 519.211, 3916.96, 519.258, 3916.65, 519.304, 3916.33, 519.349, 3916.02, 519.392, 3915.71, 519.434, 3915.4, 519.475, 3915.09, 519.514, 3914.78, 519.552, 3914.47, 519.589, 3914.16, 519.624, 3913.85, 519.659, 3913.54, 519.692, 3913.23, 519.723, 3912.92, 519.754, 3912.61, 519.783, 3912.3, 519.811, 3912, 519.837, 3911.69, 519.863, 3911.38, 519.887, 3911.07, 519.909, 3910.77, 519.931, 3910.46, 519.951, 3910.16, 519.971, 3909.85, 519.988, 3909.55, 520.005, 3909.24, 520.021, 3908.94, 520.035, 3908.63, 520.048, 3908.33, 520.06, 3908.03, 520.07, 3907.72, 520.08, 3907.42, 520.088, 3907.12, 520.095, 3906.82, 520.1, 3906.51, 520.105, 3906.21, 520.109, 3905.91, 520.111, 3905.61, 520.112, 3905.31, 520.112, 3905.01, 520.111, 3904.71, 520.108, 3904.41, 520.105, 3904.11, 520.1, 3903.81, 520.094, 3903.51, 520.087, 3903.22, 520.079, 3902.92, 520.07, 3902.62, 520.059, 3902.32, 520.048, 3902.03, 520.035, 3901.73, 520.021, 3901.43, 520.007, 3901.14, 519.991, 3900.84, 519.974, 3900.55, 519.955, 3900.25, 519.936, 3899.96, 519.916, 3899.66, 519.894, 3899.37, 519.872, 3899.07, 519.848, 3898.78, 519.823, 3898.48, 519.798, 3898.19, 519.771, 3897.9, 519.743, 3897.61, 519.714, 3897.31, 519.684, 3897.02, 519.653, 3896.73, 519.621, 3896.44, 519.588, 3896.15, 519.554, 3895.86, 519.518, 3895.57, 519.482, 3895.28, 519.445, 3894.99, 519.407, 3894.7, 519.367, 3894.41, 519.327, 3894.12, 519.286, 3893.83, 519.244, 3893.54, 519.2, 3893.25, 519.156, 3892.96, 519.111, 3892.68, 519.064, 3892.39, 519.017, 3892.1, 518.969, 3891.82, 518.92, 3891.53, 518.87, 3891.24, 518.818, 3890.96, 518.766, 3890.67, 518.713, 3890.39, 518.659, 3890.1, 518.604, 3889.82, 518.549, 3889.53, 518.492, 3889.25, 518.434, 3888.96, 518.375, 3888.68, 518.316, 3888.4, 518.255, 3888.11, 518.194, 3887.83, 518.131, 3887.55, 518.068, 3887.26, 518.004, 3886.98, 517.939, 3886.7, 517.873, 3886.42, 517.806, 3886.14, 517.738, 3885.85, 517.67, 3885.57, 517.6, 3885.29, 517.53, 3885.01, 517.459, 3884.73, 517.387, 3884.45, 517.314, 3884.17, 517.24, 3883.89, 517.165, 3883.61, 517.09, 3883.33, 517.013, 3883.06, 516.936, 3882.78, 516.858, 3882.5, 516.779, 3882.22, 516.699, 3881.94, 516.619, 3881.67, 516.538, 3881.39, 516.455, 3881.11, 516.372, 3880.83, 516.289, 3880.56, 516.204, 3880.28, 516.119, 3880.01, 516.033, 3879.73, 515.946, 3879.45, 515.858, 3879.18, 515.769, 3878.9, 515.68, 3878.63, 515.59, 3878.35, 515.499, 3878.08, 515.408, 3877.81, 515.315, 3877.53, 515.222, 3877.26, 515.128, 3876.98, 515.034, 3876.71, 514.938, 3876.44, 514.842, 3876.17, 514.745, 3875.89, 514.648, 3875.62, 514.549, 3875.35, 514.45, 3875.08, 514.351, 3874.8, 514.25, 3874.53, 514.149, 3874.26, 514.047, 3873.99, 513.945, 3873.72, 513.841, 3873.45, 513.738, 3873.18, 513.633, 3872.91, 513.528, 3872.64, 513.422, 3872.37, 513.315, 3872.1, 513.208, 3871.83, 513.1, 3871.56, 512.991, 3871.29, 512.882, 3871.02, 512.772, 3870.76, 512.661, 3870.49, 512.55, 3870.22, 512.438, 3869.95, 512.325, 3869.68, 512.212, 3869.42, 512.098, 3869.15, 511.984, 3868.88, 511.869, 3868.61, 511.753, 3868.35, 511.637, 3868.08, 511.52, 3867.82, 511.403, 3867.55, 511.285, 3867.28, 511.166, 3867.02, 511.047, 3866.75, 510.927, 3866.49, 510.806, 3866.22, 510.685, 3865.96, 510.564, 3865.69, 510.442, 3865.43, 510.319, 3865.16, 510.196, 3864.9, 510.072, 3864.64, 509.948, 3864.37, 509.823, 3864.11, 509.697, 3863.84, 509.571, 3863.58, 509.445, 3863.32, 509.318, 3863.06, 509.19, 3862.79, 509.062, 3862.53, 508.933, 3862.27, 508.804, 3862.01, 508.675, 3861.74, 508.544, 3861.48, 508.414, 3861.22, 508.283, 3860.96, 508.151, 3860.7, 508.019, 3860.44, 507.886, 3860.18, 507.753, 3859.92, 507.62, 3859.66, 507.486, 3859.4, 507.351, 3859.14, 507.216, 3858.87, 507.081, 3858.61, 506.945, 3858.36, 506.809, 3858.1, 506.672, 3857.84, 506.535, 3857.58, 506.397, 3857.32, 506.259, 3857.06, 506.121, 3856.8, 505.982, 3856.54, 505.842, 3856.28, 505.703, 3856.03, 505.562, 3855.77, 505.422, 3855.51, 505.281, 3855.25, 505.139, 3854.99, 504.998, 3854.74, 504.855, 3854.48, 504.713, 3854.22, 504.57, 3853.96, 504.427, 3853.71, 504.283, 3853.45, 504.139, 3853.2, 503.995, 3852.94, 503.85, 3852.68, 503.705, 3852.43, 503.559, 3852.17, 503.414, 3851.91, 503.267, 3851.66, 503.121, 3851.4, 502.974, 3851.15, 502.827, 3850.89, 502.679, 3850.64, 502.532, 3850.38, 502.383, 3850.13, 502.235, 3849.87, 502.086, 3849.62, 501.937, 3849.36, 501.788, 3849.11, 501.638, 3848.86, 501.488, 3848.6, 501.338, 3848.35, 501.188, 3848.09, 501.037, 3847.84, 500.886, 3847.59, 500.734, 3847.33, 500.583, 3847.08, 500.431, 3846.83, 500.279, 3846.57, 500.126, 3846.32, 499.974, 3846.07, 499.821, 3845.82, 499.668, 3845.56, 499.515, 3845.31, 499.361, 3845.06, 499.207, 3844.81, 499.053, 3844.55, 498.899, 3844.3, 498.744, 3844.05, 498.59, 3843.8, 498.435, 3843.55, 498.28, 3843.3, 498.125, 3843.04, 497.969, 3842.79, 497.813, 3842.54, 497.658, 3842.29, 497.502, 3842.04, 497.345, 3841.79, 497.189, 3841.54, 497.032, 3841.29, 496.876, 3841.04, 496.719, 3840.79, 496.562, 3840.54, 496.405, 3840.29, 496.247, 3840.04, 496.09, 3839.79, 495.932, 3839.54, 495.774, 3839.29, 495.617, 3839.04, 495.459, 3838.79, 495.301, 3838.54, 495.142, 3838.29, 494.984, 3838.04, 494.825, 3837.79, 494.667, 3837.54, 494.508, 3837.29, 494.349, 3837.04, 494.191, 3836.79, 494.032, 3836.55, 493.873, 3836.3, 493.714, 3836.05, 493.554, 3835.8, 493.395, 3835.55, 493.236, 3835.3, 493.077, 3835.06, 492.917, 3834.81, 492.758, 3834.56, 492.598, 3834.31, 492.438, 3834.06, 492.279, 3833.82, 492.119, 3833.57, 491.96, 3833.32, 491.8, 3833.07, 491.64, 3832.83, 491.48, 3832.58, 491.32, 3832.33, 491.161, 3832.08, 491.001, 3831.84, 490.841, 3831.59, 490.681, 3831.34, 490.522, 3831.1, 490.362, 3830.85, 490.202, 3830.6, 490.042, 3830.36, 489.883, 3830.11, 489.723, 3829.86, 489.563, 3829.62, 489.404, 3829.37, 489.244, 3829.12, 489.084, 3828.88, 488.925, 3828.63, 488.766, 3828.38, 488.606, 3828.14, 488.447, 3827.89, 488.288, 3827.65, 488.128, 3827.4, 487.969, 3827.15, 487.81, 3826.91, 487.651, 3826.66, 487.492, 3826.42, 487.334, 3826.17, 487.175, 3825.92, 487.016, 3825.68, 486.858, 3825.43, 486.7, 3825.19, 486.541, 3824.94, 486.383, 3824.7, 486.225, 3824.45, 486.067, 3824.21, 485.909, 3823.96, 485.752, 3823.71, 485.594, 3823.47, 485.437, 3823.22, 485.28, 3822.98, 485.123, 3822.73, 484.966, 3822.49, 484.809, 3822.24, 484.653, 3822, 484.496, 3821.75, 484.34, 3821.51, 484.184, 3821.26, 484.028, 3821.02, 483.872, 3820.77, 483.717, 3820.53, 483.561, 3820.28, 483.406, 3820.04, 483.251, 3819.8, 483.097, 3819.55, 482.942, 3819.31, 482.788, 3819.06, 482.634, 3818.82, 482.48, 3818.57, 482.326, 3818.33, 482.173, 3818.08, 482.02, 3817.84, 481.867, 3817.59, 481.714, 3817.35, 481.562, 3817.11, 481.41, 3816.86, 481.258, 3816.62, 481.106, 3816.37, 480.955, 3816.13, 480.804, 3815.88, 480.653, 3815.64, 480.502, 3815.39, 480.352, 3815.15, 480.202, 3814.91, 480.052, 3814.66, 479.903, 3814.42, 479.754, 3814.17, 479.605, 3813.93, 479.456, 3813.68, 479.308, 3813.44, 479.16, 3813.2, 479.013, 3812.95, 478.866, 3812.71, 478.719, 3812.46, 478.572, 3812.22, 478.426, 3811.97, 478.28, 3811.73, 478.135, 3811.49, 477.989, 3811.24, 477.845, 3811, 477.7, 3810.75, 477.556, 3810.51, 477.412, 3810.27, 477.269, 3810.02, 477.126, 3809.78, 476.983, 3809.53, 476.841, 3809.29, 476.699, 3809.04, 476.558, 3808.8, 476.417, 3808.55, 476.276, 3808.31, 476.136, 3808.07, 475.996, 3807.82, 475.857, 3807.58, 475.718, 3807.33, 475.579, 3807.09, 475.441, 3806.84, 475.303, 3806.6, 475.166, 3806.36, 475.029, 3806.11, 474.893, 3805.87, 474.757, 3805.62, 474.621, 3805.38, 474.486, 3805.13, 474.352, 3804.89, 474.217, 3804.64, 474.084, 3804.4, 473.951, 3804.15, 473.818, 3803.91, 473.686, 3803.66, 473.554, 3803.42, 473.423, 3803.17, 473.292, 3802.93, 473.162, 3802.69, 473.032, 3802.44, 472.903, 3802.2, 472.774, 3801.95, 472.646, 3801.71, 472.518, 3801.46, 472.391, 3801.22, 472.264, 3800.97, 472.138, 3800.72, 472.013, 3800.48, 471.888, 3800.23, 471.763, 3799.99, 471.639, 3799.74, 471.516, 3799.5, 471.393, 3799.25, 471.271, 3799.01, 471.149, 3798.76, 471.028, 3798.52, 470.908, 3798.27, 470.788, 3798.02, 470.668, 3797.78, 470.55, 3797.53, 470.431, 3797.29, 470.314, 3797.04, 470.197, 3796.8, 470.08, 3796.55, 469.965, 3796.3, 469.85, 3796.06, 469.735, 3795.81, 469.621, 3795.56, 469.508, 3795.32, 469.395, 3795.07, 469.283, 3794.83, 469.172, 3794.58, 469.061, 3794.33, 468.951, 3794.09, 468.841, 3793.84, 468.733, 3793.59, 468.625, 3793.35, 468.517, 3793.1, 468.41, 3792.85, 468.304, 3792.61, 468.199, 3792.36, 468.094, 3792.11, 467.99, 3791.86, 467.887, 3791.62, 467.784, 3791.37, 467.682, 3791.12, 467.581, 3790.87, 467.48, 3790.63, 467.38, 3790.38, 467.281, 3790.13, 467.183, 3789.88, 467.085, 3789.64, 466.988, 3789.39, 466.892, 3789.14, 466.796, 3788.89, 466.702, 3788.64, 466.608, 3788.39, 466.514, 3788.15, 466.422, 3787.9, 466.33, 3787.65, 466.239, 3787.4, 466.149, 3787.15, 466.059, 3786.9, 465.971, 3786.65, 465.883, 3786.4, 465.796, 3786.16, 465.709, 3785.91, 465.624, 3785.66, 465.539, 3785.41, 465.455, 3785.16, 465.372, 3784.91, 465.29, 3784.66, 465.208, 3784.41, 465.128, 3784.16, 465.048, 3783.91, 464.969, 3783.66, 464.89, 3783.41, 464.813, 3783.16, 464.737, 3782.91, 464.661, 3782.66, 464.586, 3782.41, 464.512, 3782.16, 464.439, 3781.9, 464.367, 3781.65, 464.295, 3781.4, 464.225, 3781.15, 464.155, 3780.9, 464.086, 3780.65, 464.018, 3780.4, 463.951, 3780.15, 463.885, 3779.89, 463.82, 3779.64, 463.756, 3779.39, 463.692, 3779.14, 463.63, 3778.89, 463.568, 3778.63, 463.507, 3778.38, 463.448, 3778.13, 463.389, 3777.88, 463.331, 3777.62, 463.274, 3777.37, 463.218, 3777.12, 463.163, 3776.86, 463.109, 3776.61, 463.055, 3776.36, 463.003, 3776.1, 462.952, 3775.85, 462.901, 3775.6, 462.852, 3775.34, 462.804, 3775.09, 462.756, 3774.83, 462.71, 3774.58, 462.664, 3774.32, 462.62, 3774.07, 462.576, 3773.81, 462.534, 3773.56, 462.492, 3773.3, 462.452, 3773.05, 462.412, 3772.79, 462.374, 3772.54, 462.337, 3772.28, 462.3, 3772.03, 462.265, 3771.77, 462.23, 3771.52, 462.197, 3771.26, 462.165, 3771, 462.134, 3770.75, 462.103, 3770.49, 462.074, 3770.23, 462.046, 3769.98, 462.019, 3769.72, 461.993, 3769.46, 461.968, 3769.2, 461.945, 3768.95, 461.922, 3768.69, 461.9, 3768.43, 461.88, 3768.17, 461.86, 3767.91, 461.842, 3767.66, 461.824, 3767.4, 461.808, 3767.14, 461.793, 3766.88, 461.779, 3766.62, 461.766, 3766.36, 461.755, 3766.1, 461.744, 3765.84, 461.734, 3765.58, 461.726, 3765.32, 461.719, 3765.06, 461.713, 3764.8, 461.708, 3764.54, 461.704, 3764.28, 461.702, 3764.02, 461.7, 3763.76, 461.7, 3763.5, 461.701, 3763.24, 461.703, 3762.98, 461.706, 3762.72, 461.71, 3762.45, 461.716, 3762.19, 461.723, 3761.93, 461.731, 3761.67, 461.74, 3761.41, 461.75, 3761.14, 461.762, 3760.88, 461.775, 3760.62, 461.788, 3760.35, 461.804, 3760.09, 461.82, 3759.83, 461.838, 3759.56, 461.857, 3759.3, 461.877, 3759.04, 461.898, 3758.77, 461.921, 3758.51, 461.945, 3758.24, 461.97, 3757.98, 461.996, 3757.71, 462.024, 3757.45, 462.052, 3757.18, 462.083, 3756.92, 462.114, 3756.65, 462.147, 3756.39, 462.181, 3756.12, 462.216, 3755.85, 462.253, 3755.59, 462.29, 3755.32, 462.33, 3755.05, 462.37, 3754.78, 462.412, 3754.52, 462.455, 3754.25, 462.499, 3753.98, 462.545, 3753.71, 462.592, 3753.45, 462.64, 3753.18, 462.69, 3752.91, 462.741, 3752.64, 462.793, 3752.37, 462.847, 3752.1, 462.902, 3751.83, 462.959, 3751.56, 463.016, 3751.29, 463.076, 3751.02, 463.136, 3750.75, 463.198, 3750.48, 463.261, 3750.21, 463.326, 3749.94, 463.392, 3749.67, 463.459, 3749.4, 463.528, 3749.13, 463.598, 3748.85, 463.67, 3748.58, 463.743, 3748.31, 463.817, 3748.04, 463.893, 3747.76, 463.97, 3747.49, 464.049, 3747.22, 464.129, 3746.94, 464.21, 3746.67, 464.293, 3746.4, 464.378, 3746.12, 464.464, 3745.85, 464.551, 3745.57, 464.64, 3745.3, 464.73, 3745.02, 464.821, 3744.75, 464.915, 3744.47, 465.009, 3744.2, 465.105, 3743.92, 465.203, 3743.65, 465.302, 3743.37, 465.402, 3743.09, 465.504, 3742.82, 465.608, 3742.54, 465.713, 3742.26, 465.819, 3741.98, 465.927, 3741.71, 466.037, 3741.43, 466.148, 3741.15, 466.26, 3740.87, 466.374, 3740.59, 466.49, 3740.31, 466.607, 3740.03, 466.726, 3739.75, 466.846, 3739.47, 466.967, 3739.19, 467.091, 3738.91, 467.216, 3738.63, 467.342, 3738.35, 467.47, 3738.07, 467.599, 3737.79, 467.731, 3737.51, 467.863, 3737.22, 467.998, 3736.94, 468.133, 3736.66, 468.271, 3736.38, 468.41, 3736.09, 468.55, 3735.81, 468.693, 3735.53, 468.836, 3735.24, 468.982, 3734.96, 469.129, 3734.68, 469.278, 3734.39, 469.428, 3734.11, 469.58, 3733.82, 469.733, 3733.54, 469.888, 3733.25, 470.045, 3732.96, 470.204, 3732.68, 470.364, 3732.39, 470.526, 3732.1, 470.689, 3731.82, 470.854, 3731.53, 471.021, 3731.24, 471.189, 3730.95, 471.359, 3730.67, 471.531, 3730.38, 471.704, 3730.09, 471.88, 3729.8, 472.056, 3729.51, 472.235, 3729.22, 472.415, 3728.93, 472.597, 3728.64, 472.781, 3728.35, 472.966, 3728.06, 473.153, 3727.77, 473.342, 3727.48, 473.532, 3727.19, 473.724, 3726.89, 473.918, 3726.6, 474.114, 3726.31, 474.311, 3726.02, 474.511, 3725.72, 474.711, 3725.43, 474.914, 3725.14, 475.118, 3724.84, 475.325, 3724.55, 475.533, 3724.25, 475.742, 3723.96, 475.954, 3723.66, 476.167, 3723.37, 476.382, 3723.07, 476.599, 3722.78, 476.818, 3722.48, 477.038, 3722.18, 477.26, 3721.89, 477.484, 3721.59, 477.71, 3721.29, 477.938, 3720.99, 478.167, 3720.7, 478.399, 3720.4, 478.632, 3720.1, 478.867, 3719.8, 479.103, 3719.5, 479.342, 3719.2, 479.583, 3718.9, 479.825, 3718.6, 480.069, 3718.3, 480.315, 3718, 480.563, 3717.7, 480.813, 3717.4, 481.064, 3717.09, 481.318, 3716.79, 481.573, 3716.49, 481.83, 3716.19, 482.09, 3715.88, 482.351, 3715.58, 482.613, 3715.27, 482.878, 3714.97, 483.145, 3714.67, 483.414, 3714.36, 483.684, 3714.06, 483.957, 3713.75, 484.231, 3713.44, 484.507, 3713.14, 484.785, 3712.83, 485.066, 3712.52, 485.348, 3712.22, 485.632, 3711.91, 485.918, 3711.6, 486.206, 3711.29, 486.495, 3710.99, 486.787, 3710.68, 487.081, 3710.37, 487.377, 3710.06, 487.675, 3709.75, 487.974, 3709.44, 488.276, 3709.13, 488.58, 3708.82, 488.885, 3708.5, 489.193, 3708.19, 489.503, 3707.88, 489.814, 3707.57, 490.128, 3707.26, 490.443, 3706.94, 490.761, 3706.63, 491.081, 3706.32, 491.402, 3706, 491.726, 3705.69, 492.052, 3705.37, 492.38, 3705.06, 492.71, 3704.74, 493.042, 3704.43, 493.375, 3704.11, 493.711, 3703.79, 494.049, 3703.48, 494.39, 3703.16, 494.732, 3702.84, 495.076, 3702.52, 495.422, 3702.2, 495.771, 3701.89, 496.121, 3701.57, 496.474, 3701.25, 496.828, 3700.93, 497.185, 3700.61, 497.544, 3700.29, 497.905, 3699.97, 498.268, 3699.64, 498.633, 3699.32, 499, 3699, 499.366, 3698.68, 499.729, 3698.36, 500.088, 3698.04, 500.442, 3697.72, 500.793, 3697.4, 501.141, 3697.08, 501.484, 3696.76, 501.823, 3696.45, 502.159, 3696.13, 502.491, 3695.82, 502.819, 3695.51, 503.144, 3695.19, 503.464, 3694.88, 503.781, 3694.57, 504.094, 3694.26, 504.403, 3693.95, 504.709, 3693.64, 505.011, 3693.33, 505.309, 3693.03, 505.603, 3692.72, 505.894, 3692.42, 506.181, 3692.11, 506.464, 3691.81, 506.743, 3691.51, 507.019, 3691.2, 507.291, 3690.9, 507.56, 3690.6, 507.825, 3690.3, 508.086, 3690, 508.343, 3689.7, 508.597, 3689.41, 508.847, 3689.11, 509.094, 3688.81, 509.337, 3688.52, 509.576, 3688.23, 509.812, 3687.93, 510.044, 3687.64, 510.273, 3687.35, 510.498, 3687.06, 510.719, 3686.77, 510.937, 3686.48, 511.152, 3686.19, 511.362, 3685.9, 511.57, 3685.61, 511.773, 3685.33, 511.973, 3685.04, 512.17, 3684.76, 512.363, 3684.47, 512.553, 3684.19, 512.739, 3683.91, 512.921, 3683.62, 513.1, 3683.34, 513.276, 3683.06, 513.448, 3682.78, 513.617, 3682.5, 513.782, 3682.23, 513.944, 3681.95, 514.102, 3681.67, 514.257, 3681.4, 514.408, 3681.12, 514.556, 3680.85, 514.701, 3680.57, 514.842, 3680.3, 514.98, 3680.03, 515.115, 3679.76, 515.246, 3679.49, 515.373, 3679.21, 515.497, 3678.95, 515.618, 3678.68, 515.736, 3678.41, 515.85, 3678.14, 515.961, 3677.88, 516.069, 3677.61, 516.173, 3677.34, 516.274, 3677.08, 516.372, 3676.82, 516.466, 3676.55, 516.557, 3676.29, 516.645, 3676.03, 516.729, 3675.77, 516.81, 3675.51, 516.888, 3675.25, 516.963, 3674.99, 517.034, 3674.73, 517.102, 3674.48, 517.167, 3674.22, 517.229, 3673.96, 517.288, 3673.71, 517.343, 3673.45, 517.395, 3673.2, 517.444, 3672.95, 517.49, 3672.69, 517.532, 3672.44, 517.571, 3672.19, 517.608, 3671.94, 517.641, 3671.69, 517.67, 3671.44, 517.697, 3671.19, 517.721, 3670.94, 517.741, 3670.7, 517.758, 3670.45, 517.773, 3670.2, 517.784, 3669.96, 517.792, 3669.71, 517.797, 3669.47, 517.798, 3669.23, 517.797, 3668.98, 517.793, 3668.74, 517.785, 3668.5, 517.775, 3668.26, 517.761, 3668.02, 517.745, 3667.78, 517.725, 3667.54, 517.703, 3667.3, 517.677, 3667.07, 517.648, 3666.83, 517.616, 3666.59, 517.582, 3666.36, 517.544, 3666.12, 517.504, 3665.89, 517.46, 3665.65, 517.413, 3665.42, 517.364, 3665.19, 517.311, 3664.96, 517.256, 3664.73, 517.197, 3664.49, 517.136, 3664.26, 517.072, 3664.04, 517.005, 3663.81, 516.935, 3663.58, 516.862, 3663.35, 516.786, 3663.12, 516.707, 3662.9, 516.625, 3662.67, 516.541, 3662.45, 516.454, 3662.22, 516.363, 3662, 516.27, 3661.77, 516.174, 3661.55, 516.076, 3661.33, 515.974, 3661.11, 515.87, 3660.89, 515.762, 3660.67, 515.652, 3660.45, 515.54, 3660.23, 515.424, 3660.01, 515.306, 3659.79, 515.185, 3659.57, 515.061, 3659.36, 514.934, 3659.14, 514.804, 3658.92, 514.672, 3658.71, 514.537, 3658.49, 514.4, 3658.28, 514.259, 3658.07, 514.116, 3657.85, 513.97, 3657.64, 513.822, 3657.43, 513.671, 3657.22, 513.517, 3657.01, 513.36, 3656.8, 513.201, 3656.59, 513.039, 3656.38, 512.875, 3656.17, 512.707, 3655.96, 512.537, 3655.75, 512.365, 3655.54, 512.19, 3655.34, 512.012, 3655.13, 511.832, 3654.93, 511.649, 3654.72, 511.463, 3654.52, 511.275, 3654.31, 511.084, 3654.11, 510.891, 3653.91, 510.695, 3653.71, 510.497, 3653.5, 510.296, 3653.3, 510.092, 3653.1, 509.886, 3652.9, 509.678, 3652.7, 509.466, 3652.5, 509.253, 3652.3, 509.037, 3652.11, 508.818, 3651.91, 508.597, 3651.71, 508.373, 3651.51, 508.147, 3651.32, 507.919, 3651.12, 507.688, 3650.93, 507.454, 3650.73, 507.218, 3650.54, 506.98, 3650.34, 506.739, 3650.15, 506.496, 3649.96, 506.25, 3649.77, 506.002, 3649.57, 505.751, 3649.38, 505.499, 3649.19, 505.243, 3649, 504.986, 3648.81, 504.726, 3648.62, 504.463, 3648.43, 504.198, 3648.25, 503.931, 3648.06, 503.662, 3647.87, 503.39, 3647.68, 503.116, 3647.5, 502.839, 3647.31, 502.561, 3647.13, 502.28, 3646.94, 501.996, 3646.76, 501.71, 3646.57, 501.422, 3646.39, 501.132, 3646.2, 500.84, 3646.02, 500.545, 3645.84, 500.248, 3645.66, 499.949, 3645.48, 499.647, 3645.29, 499.343, 3645.11, 499.037, 3644.93, 498.729, 3644.75, 498.419, 3644.57, 498.106, 3644.4, 497.791, 3644.22, 497.474, 3644.04, 497.155, 3643.86, 496.834, 3643.68, 496.51, 3643.51, 496.184, 3643.33, 495.857, 3643.15, 495.527, 3642.98, 495.194, 3642.8, 494.86, 3642.63, 494.524, 3642.45, 494.185, 3642.28, 493.845, 3642.11, 493.502, 3641.93, 493.157, 3641.76, 492.81, 3641.59, 492.461, 3641.42, 492.11, 3641.25, 491.757, 3641.07, 491.402, 3640.9, 491.045, 3640.73, 490.685, 3640.56, 490.324, 3640.39, 489.961, 3640.22, 489.595, 3640.06, 489.228, 3639.89, 488.859, 3639.72, 488.487, 3639.55, 488.114, 3639.38, 487.739, 3639.22, 487.361, 3639.05, 486.982, 3638.89, 486.601, 3638.72, 486.218, 3638.55, 485.833, 3638.39, 485.446, 3638.22, 485.057, 3638.06, 484.666, 3637.9, 484.273, 3637.73, 483.878, 3637.57, 483.481, 3637.41, 483.083, 3637.24, 482.682, 3637.08, 482.28, 3636.92, 481.876, 3636.76, 481.47, 3636.6, 481.062, 3636.44, 480.652, 3636.28, 480.241, 3636.11, 479.827, 3635.96, 479.412, 3635.8, 478.995, 3635.64, 478.576, 3635.48, 478.155, 3635.32, 477.733, 3635.16, 477.309, 3635, 476.883, 3634.85, 476.455, 3634.69, 476.025, 3634.53, 475.594, 3634.38, 475.161, 3634.22, 474.726, 3634.06, 474.289, 3633.91, 473.851, 3633.75, 473.411, 3633.6, 472.969, 3633.44, 472.526, 3633.29, 472.08, 3633.14, 471.634, 3632.98, 471.185, 3632.83, 470.735, 3632.68, 470.283, 3632.52, 469.829, 3632.37, 469.374, 3632.22, 468.917, 3632.07, 468.459, 3631.91, 467.998, 3631.76, 467.537, 3631.61, 467.073, 3631.46, 466.608, 3631.31, 466.142, 3631.16, 465.673, 3631.01, 465.204, 3630.86, 464.732, 3630.71, 464.259, 3630.56, 463.785, 3630.41, 463.309, 3630.27, 462.831, 3630.12, 462.352, 3629.97, 461.871, 3629.82, 461.389, 3629.67, 460.905, 3629.53, 460.42, 3629.38, 459.933, 3629.23, 459.445, 3629.09, 458.955, 3628.94, 458.464, 3628.79, 457.971, 3628.65, 457.477, 3628.5, 456.981, 3628.36, 456.484, 3628.21, 455.985, 3628.07, 455.485, 3627.92, 454.984, 3627.78, 454.481, 3627.64, 453.976, 3627.49, 453.471, 3627.35, 452.964, 3627.2, 452.455, 3627.06, 451.945, 3626.92, 451.434, 3626.78, 450.921, 3626.63, 450.407, 3626.49, 449.892, 3626.35, 449.375, 3626.21, 448.857, 3626.07, 448.337, 3625.92, 447.816, 3625.78, 447.294, 3625.64, 446.771, 3625.5, 446.246, 3625.36, 445.72, 3625.22, 445.193, 3625.08, 444.664, 3624.94, 444.134, 3624.8, 443.603, 3624.66, 443.071, 3624.52, 442.537, 3624.38, 442.002, 3624.24, 441.466, 3624.11, 440.929, 3623.97, 440.39, 3623.83, 439.85, 3623.69, 439.309, 3623.55, 438.767, 3623.42, 438.223, 3623.28, 437.679, 3623.14, 437.133, 3623, 436.586, 3622.87, 436.038, 3622.73, 435.488, 3622.59, 434.938, 3622.46, 434.386, 3622.32, 433.833, 3622.18, 433.28, 3622.05, 432.725, 3621.91, 432.168, 3621.78, 431.611, 3621.64, 431.053, 3621.5, 430.493, 3621.37, 429.933, 3621.23, 429.371, 3621.1, 428.809, 3620.96, 428.245, 3620.83, 427.68, 3620.69, 427.114, 3620.56, 426.547, 3620.43, 425.979, 3620.29, 425.41, 3620.16, 424.84, 3620.02, 424.269, 3619.89, 423.697, 3619.76, 423.124, 3619.62, 422.551, 3619.49, 421.976, 3619.36, 421.4, 3619.22, 420.823, 3619.09, 420.245, 3618.96, 419.666, 3618.82, 419.086, 3618.69, 418.506, 3618.56, 417.924, 3618.43, 417.341, 3618.3, 416.758, 3618.16, 416.174, 3618.03, 415.588, 3617.9, 415.002, 3617.77, 414.415, 3617.64, 413.827, 3617.5, 413.238, 3617.37, 412.649, 3617.24, 412.058, 3617.11, 411.467, 3616.98, 410.875, 3616.85, 410.282, 3616.72, 409.688, 3616.58, 409.093, 3616.45, 408.498, 3616.32, 407.901, 3616.19, 407.304, 3616.06, 406.706, 3615.93, 406.108, 3615.8, 405.508, 3615.67, 404.908, 3615.54, 404.307, 3615.41, 403.705, 3615.28, 403.103, 3615.15, 402.5, 3615.02, 401.896, 3614.89, 401.291, 3614.76, 400.686, 3614.63, 400.08, 3614.5, 399.473, 3614.37, 398.865, 3614.24, 398.257, 3614.11, 397.648, 3613.98, 397.039, 3613.85, 396.429, 3613.72, 395.818, 3613.59, 395.206, 3613.46, 394.594, 3613.33, 393.981, 3613.2, 393.368, 3613.07, 392.754, 3612.94, 392.139, 3612.81, 391.524, 3612.69, 390.908, 3612.56, 390.292, 3612.43, 389.675, 3612.3, 389.057, 3612.17, 388.439, 3612.04, 387.821, 3611.91, 387.201, 3611.78, 386.582, 3611.65, 385.961, 3611.52, 385.34, 3611.39, 384.719, 3611.26, 384.097, 3611.14, 383.475, 3611.01, 382.852, 3610.88, 382.228, 3610.75, 381.605, 3610.62, 380.98, 3610.49, 380.355, 3610.36, 379.73, 3610.23, 379.104, 3610.1, 378.478, 3609.97, 377.852, 3609.85, 377.224, 3609.72, 376.597, 3609.59, 375.969, 3609.46, 375.341, 3609.33, 374.712, 3609.2, 374.083, 3609.07, 373.453, 3608.94, 372.823, 3608.81, 372.193, 3608.68, 371.563, 3608.55, 370.932, 3608.42, 370.3, 3608.29, 369.668, 3608.17, 369.036, 3608.04, 368.404, 3607.91, 367.771, 3607.78, 367.138, 3607.65, 366.505, 3607.52, 365.871, 3607.39, 365.238, 3607.26, 364.603, 3607.13, 363.969, 3607, 363.334, 3606.87, 362.699, 3606.74, 362.064, 3606.61, 361.428, 3606.48, 360.793, 3606.35, 360.157, 3606.22, 359.52, 3606.09, 358.884, 3605.96, 358.247, 3605.83, 357.611, 3605.7, 356.974, 3605.57, 356.336, 3605.44, 355.699, 3605.31, 355.061, 3605.18, 354.424, 3605.05, 353.786, 3604.91, 353.148, 3604.78, 352.509, 3604.65, 351.871, 3604.52, 351.233, 3604.39, 350.594, 3604.26, 349.955, 3604.13, 349.316, 3604, 348.678, 3603.86, 348.038, 3603.73, 347.399, 3603.6, 346.76, 3603.47, 346.121, 3603.34, 345.482, 3603.21, 344.842, 3603.07, 344.203, 3602.94, 343.563, 3602.81, 342.924, 3602.68, 342.284, 3602.54, 341.645, 3602.41, 341.005, 3602.28, 340.366, 3602.15, 339.726, 3602.01, 339.087, 3601.88, 338.447, 3601.75, 337.808, 3601.61, 337.168, 3601.48, 336.529, 3601.34, 335.889, 3601.21, 335.25, 3601.08, 334.611, 3600.94, 333.972, 3600.81, 333.333, 3600.67, 332.694, 3600.54, 332.055, 3600.41, 331.416, 3600.27, 330.777, 3600.14, 330.139, 3600, 329.5, 3599.86, 328.862, 3599.73, 328.223, 3599.59, 327.585, 3599.46, 326.947, 3599.32, 326.31, 3599.19, 325.672, 3599.05, 325.035, 3598.91, 324.397, 3598.78, 323.76, 3598.64, 323.124, 3598.5, 322.487, 3598.37, 321.85, 3598.23, 321.214, 3598.09, 320.578, 3597.95, 319.942, 3597.82, 319.307, 3597.68, 318.672, 3597.54, 318.037, 3597.4, 317.402, 3597.26, 316.767, 3597.12, 316.133, 3596.99, 315.499, 3596.85, 314.866, 3596.71, 314.232, 3596.57, 313.599, 3596.43, 312.967, 3596.29, 312.334, 3596.15, 311.702, 3596.01, 311.07, 3595.87, 310.439, 3595.73, 309.808, 3595.59, 309.177, 3595.45, 308.547, 3595.3, 307.917, 3595.16, 307.288, 3595.02, 306.658, 3594.88, 306.03, 3594.74, 305.401, 3594.59, 304.773, 3594.45, 304.146, 3594.31, 303.519, 3594.17, 302.892, 3594.02, 302.266, 3593.88, 301.64, 3593.74, 301.015, 3593.59, 300.39, 3593.45, 299.766, 3593.3, 299.142, 3593.16, 298.518, 3593.01, 297.895, 3592.87, 297.273, 3592.72, 296.651, 3592.58, 296.03, 3592.43, 295.409, 3592.28, 294.788, 3592.14, 294.168, 3591.99, 293.549, 3591.84, 292.93, 3591.7, 292.312, 3591.55, 291.695, 3591.4, 291.078, 3591.25, 290.461, 3591.11, 289.845, 3590.96, 289.23, 3590.81, 288.615, 3590.66, 288.001, 3590.51, 287.388, 3590.36, 286.775, 3590.21, 286.163, 3590.06, 285.552, 3589.91, 284.941, 3589.76, 284.33, 3589.61, 283.721, 3589.46, 283.112, 3589.31, 282.504, 3589.15, 281.896, 3589, 281.289, 3588.85, 280.683, 3588.7, 280.078, 3588.54, 279.473, 3588.39, 278.869, 3588.24, 278.266, 3588.08, 277.663, 3587.93, 277.062, 3587.77, 276.461, 3587.62, 275.86, 3587.46, 275.261, 3587.31, 274.662, 3587.15, 274.064, 3587, 273.467, 3586.84, 272.871, 3586.68, 272.275, 3586.53, 271.68, 3586.37, 271.086, 3586.21, 270.493, 3586.05, 269.901, 3585.89, 269.31, 3585.74, 268.719, 3585.58, 268.129, 3585.42, 267.54, 3585.26, 266.953, 3585.1, 266.365, 3584.94, 265.779, 3584.78, 265.194, 3584.61, 264.609, 3584.45, 264.026, 3584.29, 263.443, 3584.13, 262.862, 3583.97, 262.281, 3583.8, 261.701, 3583.64, 261.122, 3583.48, 260.544, 3583.31, 259.967, 3583.15, 259.391, 3582.98, 258.816, 3582.82, 258.242, 3582.65, 257.669, 3582.49, 257.097, 3582.32, 256.526, 3582.16, 255.956, 3581.99, 255.387, 3581.82, 254.819, 3581.65, 254.252, 3581.49, 253.686, 3581.32, 253.121, 3581.15, 252.558, 3580.98, 251.995, 3580.81, 251.433, 3580.64, 250.872, 3580.47, 250.313, 3580.3, 249.755, 3580.13, 249.197, 3579.96, 248.641, 3579.79, 248.086, 3579.61, 247.532, 3579.44, 246.979, 3579.27, 246.427, 3579.09, 245.877, 3578.92, 245.327, 3578.75, 244.779, 3578.57, 244.232, 3578.4, 243.686, 3578.22, 243.141, 3578.04, 242.598, 3577.87, 242.056, 3577.69, 241.514, 3577.51, 240.974, 3577.34, 240.436, 3577.16, 239.898, 3576.98, 239.362, 3576.8, 238.827, 3576.62, 238.293, 3576.44, 237.761, 3576.26, 237.23, 3576.08, 236.7, 3575.9, 236.171, 3575.72, 235.643, 3575.54, 235.117, 3575.35, 234.592, 3575.17, 234.069, 3574.99, 233.547, 3574.8, 233.026, 3574.62, 232.506, 3574.44, 231.988, 3574.25, 231.471, 3574.06, 230.956, 3573.88, 230.442, 3573.69, 229.929, 3573.51, 229.417, 3573.32, 228.907, 3573.13, 228.399, 3572.94, 227.892, 3572.75, 227.386, 3572.56, 226.881, 3572.37, 226.378, 3572.18, 225.877, 3571.99, 225.377, 3571.8, 224.878, 3571.61, 224.381, 3571.42, 223.885, 3571.23, 223.391, 3571.03, 222.898, 3570.84, 222.406, 3570.64, 221.916, 3570.45, 221.428, 3570.25, 220.941, 3570.06, 220.456, 3569.86, 219.972, 3569.67, 219.489, 3569.47, 219.009, 3569.27, 218.529, 3569.07, 218.052, 3568.88, 217.575, 3568.68, 217.101, 3568.48, 216.628, 3568.28, 216.156, 3568.08, 215.686, 3567.87, 215.218, 3567.67, 214.751, 3567.47, 214.286, 3567.27, 213.823, 3567.06, 213.361, 3566.86, 212.901, 3566.66, 212.442, 3566.45, 211.985, 3566.25, 211.53, 3566.04, 211.076, 3565.83, 210.624, 3565.63, 210.174, 3565.42, 209.725, 3565.21, 209.278, 3565, 208.833, 3564.79, 208.389, 3564.58, 207.947, 3564.37, 207.507, 3564.16, 207.068, 3563.95, 206.632, 3563.74, 206.197, 3563.53, 205.764, 3563.31, 205.332, 3563.1, 204.902, 3562.89, 204.474, 3562.67, 204.048, 3562.46, 203.624, 3562.24, 203.201, 3562.02, 202.78, 3561.81, 202.361, 3561.59, 201.944, 3561.37, 201.529, 3561.15, 201.115, 3560.93, 200.704, 3560.71, 200.294, 3560.49, 199.886, 3560.27, 199.48, 3560.05, 199.075, 3559.83, 198.673, 3559.61, 198.272, 3559.38, 197.874, 3559.16, 197.477, 3558.93, 197.082, 3558.71, 196.689, 3558.48, 196.298, 3558.26, 195.909, 3558.03, 195.522, 3557.8, 195.136, 3557.58, 194.753, 3557.35, 194.372, 3557.12, 193.992, 3556.89, 193.615, 3556.66, 193.239, 3556.43, 192.866, 3556.19, 192.494, 3555.96, 192.125, 3555.73, 191.757, 3555.49, 191.392, 3555.26, 191.028, 3555.03, 190.667, 3554.79, 190.308, 3554.55, 189.95, 3554.32, 189.595, 3554.08, 189.242, 3553.84, 188.891, 3553.6, 188.541, 3553.36, 188.194, 3553.12, 187.849, 3552.88, 187.507, 3552.64, 187.166, 3552.4, 186.827, 3552.16, 186.491, 3551.91, 186.156, 3551.67, 185.824, 3551.43, 185.494, 3551.18, 185.166, 3550.93, 184.84, 3550.69, 184.516, 3550.44, 184.195, 3550.19, 183.875, 3549.94, 183.558, 3549.7, 183.243, 3549.45, 182.931, 3549.2, 182.62, 3548.94, 182.312, 3548.69, 182.005, 3548.44, 181.702, 3548.19, 181.4, 3547.93, 181.1, 3547.68, 180.803, 3547.42, 180.508, 3547.17, 180.216, 3546.91, 179.925, 3546.65, 179.637, 3546.4, 179.351, 3546.14, 179.068, 3545.88, 178.787, 3545.62, 178.508, 3545.36, 178.231, 3545.09, 177.957, 3544.83, 177.685, 3544.57, 177.415, 3544.31, 177.148, 3544.04, 176.883, 3543.78, 176.62, 3543.51, 176.36, 3543.25, 176.102, 3542.98, 175.847, 3542.71, 175.594, 3542.44, 175.343, 3542.17, 175.095, 3541.9, 174.849, 3541.63, 174.606, 3541.36, 174.365, 3541.09, 174.126, 3540.81, 173.89, 3540.54, 173.656, 3540.27, 173.425, 3539.99, 173.196, 3539.72, 172.97, 3539.44, 172.746, 3539.16, 172.525, 3538.88, 172.306, 3538.61, 172.09, 3538.33, 171.876, 3538.05, 171.665, 3537.76, 171.456, 3537.48, 171.25, 3537.2, 171.046, 3536.92, 170.845, 3536.63, 170.646, 3536.35, 170.45, 3536.06, 170.257, 3535.78, 170.066, 3535.49, 169.878, 3535.2, 169.692, 3534.91, 169.509, 3534.62, 169.328, 3534.33, 169.15, 3534.04, 168.975, 3533.75, 168.802, 3533.46, 168.632, 3533.16, 168.465, 3532.87, 168.3, 3532.58, 168.138, 3532.28, 167.979, 3531.98, 167.822, 3531.69, 167.668, 3531.39, 167.517, 3531.09, 167.368, 3530.79, 167.222, 3530.49, 167.079, 3530.19, 166.938, 3529.89, 166.8, 3529.58, 166.665, 3529.28, 166.533, 3528.98, 166.403, 3528.67, 166.276, 3528.36, 166.152, 3528.06, 166.031, 3527.75, 165.912, 3527.44, 165.796, 3527.13, 165.683, 3526.82, 165.573, 3526.51, 165.466, 3526.2, 165.361, 3525.89, 165.26, 3525.57, 165.161, 3525.26, 165.064, 3524.94, 164.971, 3524.63, 164.881, 3524.31, 164.793, 3523.99, 164.709, 3523.68, 164.627, 3523.36, 164.548, 3523.04, 164.472, 3522.72, 164.399, 3522.39, 164.328, 3522.07, 164.261, 3521.75, 164.197, 3521.42, 164.135, 3521.1, 164.076, 3520.77, 164.021, 3520.45, 163.968, 3520.12, 163.918, 3519.79, 163.872, 3519.46, 163.828, 3519.13, 163.787, 3518.8, 163.749, 3518.47, 163.714, 3518.13, 163.682, 3517.8, 163.653, 3517.47, 163.628, 3517.13, 163.605, 3516.79, 163.585, 3516.46, 163.568, 3516.12, 163.554, 3515.78, 163.544, 3515.44, 163.536, 3515.1, 163.532, 3514.76, 163.53, 3514.41, 163.532, 3514.07, 163.536, 3513.73, 163.544, 3513.38, 163.555, 3513.04, 163.569, 3512.69, 163.586, 3512.34, 163.606, 3511.99, 163.63, 3511.64, 163.656, 3511.29, 163.686, 3510.94, 163.719, 3510.59, 163.755, 3510.23, 163.794, 3509.88, 163.836, 3509.52, 163.881, 3509.17)
+width = 50.0
+texture = ExtResource("36_k1vcc")
+texture_mode = 1
+sharp_limit = 49.96
+round_precision = 32
+
+[node name="MegafaunaZone" type="TextureRect" parent="Map_Scroll/fakeMap"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -328.0
+offset_right = 1291.0
+offset_bottom = 1824.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.33, 0.33)
+script = ExtResource("37_1vdg7")
+
+[node name="MovingIsland" type="AnimationPlayer" parent="Map_Scroll/fakeMap/MegafaunaZone"]
+autoplay = "floating"
+speed_scale = 0.1
+libraries = {
+"": SubResource("AnimationLibrary_00mo8")
+}
+
+[node name="TextureRect" type="TextureRect" parent="Map_Scroll/fakeMap/MegafaunaZone"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("12_4oixe")
+
+[node name="Button_Change_State" type="Button" parent="Map_Scroll/fakeMap/MegafaunaZone/TextureRect"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.112
@@ -1330,176 +1899,34 @@ offset_bottom = -0.00012207
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
+theme_override_styles/focus = ExtResource("17_2a5jd")
 flat = true
 script = ExtResource("8_rb8q7")
 
-[node name="CompleteState" type="ColorRect" parent="Map_Scroll/VBoxContainer/middleIslands/VBoxContainer/Piso3/Piso3/Eras_Geologicas"]
+[node name="check" type="Sprite2D" parent="Map_Scroll/fakeMap/MegafaunaZone/TextureRect"]
 visible = false
+position = Vector2(766.848, 1184.85)
+scale = Vector2(5.30303, 5.30303)
+texture = ExtResource("39_pcs77")
+
+[node name="anchorMegafauna" type="Control" parent="Map_Scroll/fakeMap/MegafaunaZone/TextureRect"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(1, 1, 1, 0)
+anchor_left = 0.499
+anchor_top = 0.48
+anchor_right = 0.499
+anchor_bottom = 0.48
+offset_left = -0.677673
+offset_top = -0.595093
+offset_right = -0.677673
+offset_bottom = -0.595093
 
-[node name="TextureRect" type="TextureRect" parent="Map_Scroll/VBoxContainer/middleIslands/VBoxContainer/Piso3/Piso3/Eras_Geologicas/CompleteState"]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -398.0
-offset_bottom = 421.0
-grow_horizontal = 0
-texture = ExtResource("17_0u7nf")
-expand_mode = 1
-
-[node name="Piso2" type="MarginContainer" parent="Map_Scroll/VBoxContainer/middleIslands/VBoxContainer"]
-layout_mode = 2
-theme_override_constants/margin_bottom = 0
-
-[node name="Piso2" type="Control" parent="Map_Scroll/VBoxContainer/middleIslands/VBoxContainer/Piso2"]
-layout_mode = 2
-size_flags_horizontal = 4
-focus_neighbor_top = NodePath("../../Piso3/Piso3")
-focus_neighbor_bottom = NodePath("../../../../Piso1/Piso2")
-mouse_filter = 1
-
-[node name="Zona_Paleontología" type="TextureRect" parent="Map_Scroll/VBoxContainer/middleIslands/VBoxContainer/Piso2/Piso2"]
-layout_mode = 1
-anchors_preset = -1
-offset_left = 2.0
-offset_top = 295.0
-offset_right = 991.0
-offset_bottom = 2092.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.35, 0.35)
-expand_mode = 1
-
-[node name="TextureRect" type="TextureRect" parent="Map_Scroll/VBoxContainer/middleIslands/VBoxContainer/Piso2/Piso2/Zona_Paleontología"]
-layout_mode = 1
-anchors_preset = -1
-anchor_top = -0.034
-anchor_right = 1.046
-anchor_bottom = 1.0
-offset_top = 61.093
-offset_right = -45.4939
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("6_sqkww")
-
-[node name="AstronomiaZone" type="TextureRect" parent="Map_Scroll/VBoxContainer/middleIslands/VBoxContainer/Piso2/Piso2"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.29
-anchor_top = 0.205
-anchor_right = 0.29
-anchor_bottom = 0.205
-offset_left = -339.0
-offset_top = -321.0
-offset_right = 720.0
-offset_bottom = 1495.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.33, 0.33)
-expand_mode = 1
-
-[node name="TextureRect" type="TextureRect" parent="Map_Scroll/VBoxContainer/middleIslands/VBoxContainer/Piso2/Piso2/AstronomiaZone"]
-layout_mode = 1
-anchors_preset = -1
-anchor_top = -0.029
-anchor_right = 1.0
-anchor_bottom = 1.029
-offset_top = 52.664
-offset_bottom = -52.662
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("10_c3fc7")
-
-[node name="GeologiaZone" type="TextureRect" parent="Map_Scroll/VBoxContainer/middleIslands/VBoxContainer/Piso2/Piso2"]
-layout_mode = 1
-anchors_preset = -1
-offset_left = -29.0
-offset_top = -915.0
-offset_right = 1130.0
-offset_bottom = 989.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.33, 0.33)
-expand_mode = 1
-
-[node name="TextureRect" type="TextureRect" parent="Map_Scroll/VBoxContainer/middleIslands/VBoxContainer/Piso2/Piso2/GeologiaZone"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = -0.493
-anchor_top = -0.626
-anchor_right = 1.013
-anchor_bottom = 1.597
-offset_left = 519.129
-offset_top = 1082.98
-offset_right = -13.689
-offset_bottom = -1032.81
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("11_tirda")
-
-[node name="Piso1" type="MarginContainer" parent="Map_Scroll/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 8
-theme_override_constants/margin_top = 0
-
-[node name="Piso2" type="Control" parent="Map_Scroll/VBoxContainer/Piso1"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 8
-focus_neighbor_bottom = NodePath("../../middleIslands/VBoxContainer/Piso2/Piso2")
-mouse_filter = 1
-
-[node name="MegafaunaZone" type="TextureRect" parent="Map_Scroll/VBoxContainer/Piso1/Piso2"]
-layout_mode = 1
-anchors_preset = -1
-offset_left = -256.0
-offset_top = -159.0
-offset_right = 1285.0
-offset_bottom = 2373.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.33, 0.33)
-expand_mode = 1
-
-[node name="TextureRect" type="TextureRect" parent="Map_Scroll/VBoxContainer/Piso1/Piso2/MegafaunaZone"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("12_4oixe")
-
-[node name="animal spot" type="Sprite2D" parent="Map_Scroll/VBoxContainer/Piso1/Piso2/MegafaunaZone"]
-position = Vector2(1496.97, 2048.48)
-scale = Vector2(1e-05, 1e-05)
-texture = ExtResource("20_fn5ys")
-
-[node name="animal spot2" type="Sprite2D" parent="Map_Scroll/VBoxContainer/Piso1/Piso2/MegafaunaZone"]
-position = Vector2(824.242, 903.029)
-scale = Vector2(1e-05, 1e-05)
-texture = ExtResource("20_fn5ys")
-
-[node name="animal spot3" type="Sprite2D" parent="Map_Scroll/VBoxContainer/Piso1/Piso2/MegafaunaZone"]
-position = Vector2(1624.24, 512.121)
-scale = Vector2(1e-05, 1e-05)
-texture = ExtResource("20_fn5ys")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Map_Scroll/VBoxContainer/Piso1/Piso2/MegafaunaZone"]
-libraries = {
-"": SubResource("AnimationLibrary_fh205")
-}
-script = ExtResource("15_4c0kx")
-animation = "Zone_anim"
+[node name="SquigglingSprite" parent="Map_Scroll/fakeMap/MegafaunaZone/TextureRect" instance=ExtResource("40_n2ixu")]
+position = Vector2(742.424, 1086.36)
+scale = Vector2(1.52953, 1.5364)
+texture = ExtResource("41_nsoyl")
 
 [node name="PanelIntro1" parent="Map_Scroll" instance=ExtResource("34_kpbhv")]
+visible = false
 layout_mode = 1
 offset_left = -331.0
 offset_top = 84.0
@@ -1507,9 +1934,42 @@ offset_right = 331.0
 offset_bottom = 312.0
 pivot_offset = Vector2(331, 114)
 AppearInBeginning = false
-Texts = Array[ExtResource("32_xf8jp")]([SubResource("Resource_padbb"), SubResource("Resource_pjmsv"), SubResource("Resource_q8mys")])
+TimeToAppear = 1.5
+Texts = Array[ExtResource("32_xf8jp")]([SubResource("Resource_padbb")])
+
+[node name="Panel(1) Btn(rigth)" parent="Map_Scroll/PanelIntro1" instance=ExtResource("35_s6ot8")]
+Data = SubResource("Resource_hcme3")
 
 [node name="PanelIntro2" parent="Map_Scroll" instance=ExtResource("34_kpbhv")]
+visible = false
+layout_mode = 1
+offset_left = -332.0
+offset_top = 85.0
+offset_bottom = 313.0
+pivot_offset = Vector2(332, 114)
+AppearInBeginning = false
+TimeToAppear = 1.5
+Texts = Array[ExtResource("32_xf8jp")]([SubResource("Resource_valvm")])
+
+[node name="Panel(1) Btn(rigth)" parent="Map_Scroll/PanelIntro2" instance=ExtResource("35_s6ot8")]
+Data = SubResource("Resource_db634")
+
+[node name="PanelIntro3" parent="Map_Scroll" instance=ExtResource("34_kpbhv")]
+visible = false
+layout_mode = 1
+offset_left = -338.0
+offset_top = 84.0
+offset_bottom = 312.0
+pivot_offset = Vector2(335, 114)
+AppearInBeginning = false
+TimeToAppear = 1.5
+Texts = Array[ExtResource("32_xf8jp")]([SubResource("Resource_vqgf4")])
+
+[node name="Panel(1) Btn(rigth)" parent="Map_Scroll/PanelIntro3" instance=ExtResource("35_s6ot8")]
+Data = SubResource("Resource_gmlfr")
+
+[node name="PanelIntro4" parent="Map_Scroll" instance=ExtResource("34_kpbhv")]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 0.498
@@ -1519,57 +1979,58 @@ offset_bottom = 114.56
 AppearInBeginning = false
 Texts = Array[ExtResource("32_xf8jp")]([SubResource("Resource_0ivls")])
 
-[node name="Panel(1) Btn(rigth)" parent="Map_Scroll/PanelIntro2" instance=ExtResource("35_s6ot8")]
+[node name="Panel(1) Btn(rigth)" parent="Map_Scroll/PanelIntro4" instance=ExtResource("35_s6ot8")]
 Data = SubResource("Resource_jxebd")
 
-[node name="Button" type="Button" parent="Map_Scroll"]
-visible = false
-self_modulate = Color(1, 1, 1, 0)
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -538.0
-offset_top = -806.0
-offset_right = 538.0
-offset_bottom = 887.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/focus = ExtResource("17_2a5jd")
-text = "
-"
+[node name="Panel(1) Btn(rigth)2" parent="Map_Scroll/PanelIntro4" instance=ExtResource("35_s6ot8")]
+Data = SubResource("Resource_ww3xx")
+Delay = 1.0
 
-[node name="LabelControl2" type="ColorRect" parent="Map_Scroll"]
+[node name="PanelSuerte" parent="Map_Scroll" instance=ExtResource("34_kpbhv")]
 visible = false
 layout_mode = 1
 anchors_preset = 8
-anchor_left = 0.5
 anchor_top = 0.5
-anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -324.5
-offset_top = -125.5
-offset_right = 324.5
-offset_bottom = 125.5
-grow_horizontal = 2
+offset_left = -326.0
+offset_top = -180.0
+offset_right = 326.0
+offset_bottom = 48.0
 grow_vertical = 2
-color = Color(0, 0, 0, 0)
+AppearInBeginning = false
+TimeToAppear = 1.5
+Texts = Array[ExtResource("32_xf8jp")]([SubResource("Resource_pn1me")])
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Map_Scroll/LabelControl2"]
+[node name="Panel(1) Btn(rigth)" parent="Map_Scroll/PanelSuerte" instance=ExtResource("35_s6ot8")]
+Data = SubResource("Resource_6keyb")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Map_Scroll"]
 libraries = {
 "": SubResource("AnimationLibrary_xofdi")
 }
 script = ExtResource("15_4c0kx")
 
-[node name="Panel" type="Panel" parent="Map_Scroll"]
+[node name="ButtonChangeScene" parent="Map_Scroll" instance=ExtResource("16_0ow6t")]
 visible = false
-layout_mode = 0
-offset_left = 679.0
-offset_top = 1090.0
-offset_right = 733.0
-offset_bottom = 4343.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.809
+anchor_right = 0.809
+offset_left = 1542.95
+offset_top = -1026.0
+offset_right = 1632.95
+offset_bottom = -936.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxTexture_wbaqp")
+theme_override_styles/hover = SubResource("StyleBoxTexture_wbaqp")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_wbaqp")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_wbaqp")
+text = "SI"
+NextScene = "Map_Screen"
+fade_time = 0.0
+texture = ""
+color = Color(0, 0, 0, 0)
 
 [node name="Control" type="Control" parent="Map_Scroll"]
 layout_mode = 1
@@ -1589,18 +2050,38 @@ texture = ExtResource("22_c1o0u")
 script = ExtResource("29_imofv")
 vibrate = 300.0
 
-[connection signal="pressed" from="Naumi_Intro/ButtonChangeScene" to="Naumi_Intro/SaveFirstPlay" method="FirstPlay"]
 [connection signal="pressed" from="Naumi_Intro/Control/NaumiController/pivot/Button" to="Naumi_Intro/Control/NaumiController" method="ButtonPressed" flags=18]
 [connection signal="pressed" from="Naumi_Intro/Control/NaumiController/pivot/Button" to="Naumi_Intro/PanelNaumi1" method="EnterPanel"]
-[connection signal="pressed" from="Naumi_Intro/Control/NaumiController/pivot/Button" to="Naumi_Intro/Control/Label" method="set_visible" binds= [false]]
+[connection signal="pressed" from="Naumi_Intro/Control/NaumiController/pivot/Button" to="Naumi_Intro/Control/LabelNaumi" method="set_visible" binds= [false]]
 [connection signal="tree_exiting" from="Naumi_Intro/Control/NaumiController/pivot/Button" to="Naumi_Intro/Control/NaumiController/pivot/Button/Label" method="set_visible" binds= [false]]
-[connection signal="ButtonPress" from="Naumi_Intro/PanelNaumi1/Panel(2) Btn(rigth)" to="Naumi_Intro/ButtonChangeScene" method="_on_pressed"]
 [connection signal="ButtonPress" from="Naumi_Intro/PanelNaumi1/Panel(2) Btn(rigth)" to="Naumi_Intro/SaveFirstPlay" method="FirstPlay"]
-[connection signal="ButtonPress" from="Naumi_Intro/PanelNaumi1/Panel(2) Btn(left)" to="Naumi_Intro/ButtonChangeScene" method="_on_pressed"]
+[connection signal="ButtonPress" from="Naumi_Intro/PanelNaumi1/Panel(2) Btn(rigth)" to="Map_Scroll/PanelSuerte" method="EnterPanel"]
+[connection signal="ButtonPress" from="Naumi_Intro/PanelNaumi1/Panel(2) Btn(rigth)" to="Map_Scroll/CenterAnchor" method="set_visible" binds= [false]]
+[connection signal="ButtonPress" from="Naumi_Intro/PanelNaumi1/Panel(2) Btn(rigth)" to="Map_Scroll/CenterAnchor/FadeAnimation" method="play" binds= ["RESET"]]
+[connection signal="ButtonPress" from="Naumi_Intro/PanelNaumi1/Panel(2) Btn(rigth)" to="Map_Scroll/fakeMap" method="set_visible" binds= [true]]
+[connection signal="ButtonPress" from="Naumi_Intro/PanelNaumi1/Panel(2) Btn(rigth)" to="Map_Scroll/AnimationPlayer" method="play_backwards" binds= ["Map_Slice"]]
 [connection signal="ButtonPress" from="Naumi_Intro/PanelNaumi1/Panel(2) Btn(left)" to="Naumi_Intro/SaveFirstPlay" method="FirstPlay"]
-[connection signal="stopscroll" from="Map_Scroll/VBoxContainer" to="Map_Scroll/VBoxContainer/Piso1/Piso2/MegafaunaZone/AnimationPlayer" method="Play"]
-[connection signal="pressed" from="Map_Scroll/VBoxContainer/middleIslands/VBoxContainer/Piso3/Piso3/Eras_Geologicas/TextureRect/Button_Change_State" to="Map_Scroll/VBoxContainer/middleIslands/VBoxContainer/Piso3/Piso3/Eras_Geologicas/TextureRect/Button_Change_State" method="_on_pressed"]
-[connection signal="ButtonPress" from="Map_Scroll/PanelIntro2/Panel(1) Btn(rigth)" to="Map_Scroll/LabelControl2/AnimationPlayer" method="PlayAnim" binds= ["Map_Slice"]]
-[connection signal="pressed" from="Map_Scroll/Button" to="Map_Scroll/PanelIntro1" method="ExitPanel"]
-[connection signal="pressed" from="Map_Scroll/Button" to="Map_Scroll/VBoxContainer/Piso1/Piso2/MegafaunaZone/AnimationPlayer" method="PlayAnim" binds= ["chan_anim"]]
-[connection signal="pressed" from="Map_Scroll/Button" to="Map_Scroll/Button" method="set_visible" binds= [false]]
+[connection signal="ButtonPress" from="Naumi_Intro/PanelNaumi1/Panel(2) Btn(left)" to="Map_Scroll/PanelSuerte" method="EnterPanel"]
+[connection signal="ButtonPress" from="Naumi_Intro/PanelNaumi1/Panel(2) Btn(left)" to="Map_Scroll/CenterAnchor" method="set_visible" binds= [false]]
+[connection signal="ButtonPress" from="Naumi_Intro/PanelNaumi1/Panel(2) Btn(left)" to="Map_Scroll/CenterAnchor/FadeAnimation" method="play" binds= ["RESET"]]
+[connection signal="ButtonPress" from="Naumi_Intro/PanelNaumi1/Panel(2) Btn(left)" to="Map_Scroll/AnimationPlayer" method="play_backwards" binds= ["Map_Slice"]]
+[connection signal="ButtonPress" from="Naumi_Intro/PanelNaumi1/Panel(2) Btn(rigth)2" to="Map_Scroll/ButtonChangeScene" method="_on_pressed"]
+[connection signal="ButtonPress" from="Naumi_Intro/PanelNaumi1/Panel(2) Btn(left)2" to="Map_Scroll/ButtonChangeScene" method="_on_pressed"]
+[connection signal="ButtonPress" from="Map_Scroll/CenterAnchor/Title/ExpandingConteiner/TextureRect/Control/Panel/Panel(1) Btn(rigth)" to="Map_Scroll/PanelIntro1" method="EnterPanel"]
+[connection signal="ButtonPress" from="Map_Scroll/CenterAnchor/Title/ExpandingConteiner/TextureRect/Control/Panel/Panel(1) Btn(rigth)" to="Map_Scroll/CenterAnchor/FadeAnimation" method="play" binds= ["1erFade"]]
+[connection signal="pressed" from="Map_Scroll/CenterAnchor/Piso1/ExpandingCoteiner/MegafaunaZone/Button" to="Map_Scroll/CenterAnchor/Piso1/ExpandingCoteiner/MegafaunaZone/MegafaunaAnimator" method="play" binds= ["chan_anim"]]
+[connection signal="pressed" from="Map_Scroll/CenterAnchor/Piso1/ExpandingCoteiner/MegafaunaZone/Button" to="Map_Scroll/CenterAnchor/Piso1/ExpandingCoteiner/MegafaunaZone/Button" method="set_visible" binds= [false]]
+[connection signal="ButtonPress" from="Map_Scroll/PanelIntro1/Panel(1) Btn(rigth)" to="Map_Scroll/PanelIntro2" method="EnterPanel"]
+[connection signal="ButtonPress" from="Map_Scroll/PanelIntro1/Panel(1) Btn(rigth)" to="Map_Scroll/CenterAnchor/FadeAnimation" method="play" binds= ["2doFade"]]
+[connection signal="ButtonPress" from="Map_Scroll/PanelIntro2/Panel(1) Btn(rigth)" to="Map_Scroll/PanelIntro3" method="EnterPanel"]
+[connection signal="ButtonPress" from="Map_Scroll/PanelIntro2/Panel(1) Btn(rigth)" to="Map_Scroll/CenterAnchor/FadeAnimation" method="play" binds= ["3erFade"]]
+[connection signal="ButtonPress" from="Map_Scroll/PanelIntro3/Panel(1) Btn(rigth)" to="Map_Scroll/CenterAnchor/Piso1/ExpandingCoteiner/MegafaunaZone/MegafaunaAnimator" method="play" binds= ["Zone_anim"]]
+[connection signal="ButtonPress" from="Map_Scroll/PanelIntro4/Panel(1) Btn(rigth)" to="Map_Scroll/AnimationPlayer" method="PlayAnim" binds= ["Map_Slice"]]
+[connection signal="ButtonPress" from="Map_Scroll/PanelIntro4/Panel(1) Btn(rigth)2" to="Naumi_Intro/Control/LabelNaumi/AnimationPlayer" method="PlayAnim" binds= ["enter"]]
+[connection signal="ButtonPress" from="Map_Scroll/PanelIntro4/Panel(1) Btn(rigth)2" to="Map_Scroll/CenterAnchor" method="set_visible" binds= [false]]
+[connection signal="ButtonPress" from="Map_Scroll/PanelSuerte/Panel(1) Btn(rigth)" to="Map_Scroll/ButtonChangeScene" method="_on_pressed"]
+[connection signal="pressed" from="Map_Scroll/ButtonChangeScene" to="Naumi_Intro/SaveFirstPlay" method="FirstPlay"]
+
+[editable path="Map_Scroll/CenterAnchor/Title/ExpandingConteiner/TextureRect/Control/Panel"]
+[editable path="Map_Scroll/CenterAnchor/Title/ExpandingConteiner/TextureRect/Control/Panel/btnIzqAnchor/btnIzq/SquigglingSprite"]
+[editable path="Map_Scroll/CenterAnchor/Title/ExpandingConteiner/TextureRect/Control/Panel/btnCentralAnchor/btnCentral/SquigglingSprite"]

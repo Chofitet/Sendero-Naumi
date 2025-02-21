@@ -8,7 +8,6 @@ extends Node2D
 var currentState = 0
 var debris =[]
 var parts =["eye","ear","wing"] 
-
 var save_file_path = "user://"
 var save_file_name = "MiniGameResource.tres"
 var save_file_name_Zone = "ZoneResource.tres"
@@ -102,6 +101,7 @@ func SetNaumi(num):
 			NaumiAnim.sprite_frames = load("res://Resources/NaumiSpriteFrames/N3.tres")
 			$pivot/Parts/ear.visible = true
 			$pivot/Parts/wing.visible = true
+			$pivot/CanvasLayer/Button.NextScene = "Credits"
 
 func NaumiState() -> int:
 	var num = 0
