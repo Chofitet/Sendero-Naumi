@@ -1,7 +1,8 @@
-[gd_scene load_steps=78 format=3 uid="uid://c8i2bn43d2ke0"]
+[gd_scene load_steps=79 format=3 uid="uid://c8i2bn43d2ke0"]
 
 [ext_resource type="Script" path="res://_Scripts/Minigame_Save_Controller.gd" id="1_8wifm"]
 [ext_resource type="Texture2D" uid="uid://nuybqhitpej1" path="res://Sprites/Mapa/fondo_mapa.png" id="2_feayv"]
+[ext_resource type="Material" uid="uid://muj2sfgakm5s" path="res://shaders/GalaxyWiggle.tres" id="2_wypsj"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/StateMachineMinigames.gd" id="3_adlxq"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/ConsignaState.gd" id="4_cjbo7"]
 [ext_resource type="Texture2D" uid="uid://cctu3otg3du6u" path="res://Sprites/ZonaAstronomia/corteza orbe - matryoshka.png" id="6_jln3r"]
@@ -562,8 +563,8 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.72549, 1, 1, 1)
 
-[node name="TextureRect" type="TextureRect" parent="Mamushkas/Control"]
-z_index = -1
+[node name="SpaceTexture" type="TextureRect" parent="Mamushkas/Control"]
+material = ExtResource("2_wypsj")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -571,6 +572,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_feayv")
+expand_mode = 1
 stretch_mode = 1
 
 [node name="StateMachine" type="Node" parent="Mamushkas" node_paths=PackedStringArray("initial_state")]
@@ -812,7 +814,6 @@ layout_mode = 1
 offset_top = 45.0
 offset_bottom = 273.0
 AppearInBeginning = false
-characters_per_second = 45.0
 Texts = Array[ExtResource("37_m4uql")]([SubResource("Resource_fj3qn")])
 
 [node name="Panel(1) Btn(rigth)" parent="Mamushkas/StateMachine/Consigna/Contenido/Intro/PanelIntro1" instance=ExtResource("36_7mbwy")]
@@ -823,7 +824,6 @@ layout_mode = 1
 offset_top = 45.0
 offset_bottom = 273.0
 AppearInBeginning = false
-characters_per_second = 45.0
 Texts = Array[ExtResource("37_m4uql")]([SubResource("Resource_suyxt")])
 
 [node name="Panel(1) Btn(rigth)" parent="Mamushkas/StateMachine/Consigna/Contenido/Intro/PanelIntro2" instance=ExtResource("36_7mbwy")]
@@ -834,7 +834,6 @@ layout_mode = 1
 offset_top = 45.0
 offset_bottom = 273.0
 AppearInBeginning = false
-characters_per_second = 45.0
 Texts = Array[ExtResource("37_m4uql")]([SubResource("Resource_fshby")])
 
 [node name="Panel(1) Btn(rigth)" parent="Mamushkas/StateMachine/Consigna/Contenido/Intro/PanelIntro3" instance=ExtResource("36_7mbwy")]
@@ -849,7 +848,6 @@ offset_top = 80.24
 offset_bottom = 308.24
 pivot_offset = Vector2(326, 114)
 AppearInBeginning = false
-characters_per_second = 45.0
 Texts = Array[ExtResource("37_m4uql")]([SubResource("Resource_e0isu")])
 
 [node name="Panel(1) Btn(rigth)" parent="Mamushkas/StateMachine/Consigna/Contenido/Intro/PanelIntro4" instance=ExtResource("36_7mbwy")]
@@ -1219,7 +1217,6 @@ offset_top = -114.36
 offset_bottom = 113.64
 pivot_offset = Vector2(326, 114)
 AppearInBeginning = false
-characters_per_second = 45.0
 Texts = Array[ExtResource("37_m4uql")]([SubResource("Resource_akuin"), SubResource("Resource_hf8th")])
 
 [node name="Panel(1) Btn(rigth)" parent="Mamushkas/StateMachine/Juego/Contenido/Instancia1/Outro/PanelOutro" instance=ExtResource("36_7mbwy")]

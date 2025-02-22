@@ -15,6 +15,7 @@ var minigameResourseFile = MiniGameResource.new()
 var zoneResource = ZoneResource.new()
 @onready var timer = $Timer
 signal ButtonPress
+signal ToContinue
 var  isIdleOncePlayed
 
 func load_file():
@@ -102,6 +103,11 @@ func SetNaumi(num):
 			$pivot/Parts/ear.visible = true
 			$pivot/Parts/wing.visible = true
 			$pivot/CanvasLayer/Button.NextScene = "Credits"
+			minigameResourseFile = ResourceLoader.load(save_file_path+save_file_name)
+			if minigameResourseFile.StateMinigames["PassCredits"] : 
+				ToContinue.emit()
+				minigameResourseFile.StateMinigames["PassCredits"] = false
+				save()
 
 func NaumiState() -> int:
 	var num = 0

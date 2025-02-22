@@ -1,8 +1,9 @@
-[gd_scene load_steps=119 format=3 uid="uid://cmv5m3ynk4o5y"]
+[gd_scene load_steps=120 format=3 uid="uid://cmv5m3ynk4o5y"]
 
 [ext_resource type="Script" path="res://_Scripts/Minigame_Save_Controller.gd" id="1_jl73q"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/StateMachineMinigames.gd" id="2_7aqcq"]
 [ext_resource type="Texture2D" uid="uid://b1y8qh1nn5max" path="res://Sprites/ZonaAstronomia/fondo_mapa.png" id="2_ga0bv"]
+[ext_resource type="Material" uid="uid://muj2sfgakm5s" path="res://shaders/GalaxyWiggle.tres" id="3_4xigg"]
 [ext_resource type="Texture2D" uid="uid://nuybqhitpej1" path="res://Sprites/Mapa/fondo_mapa.png" id="3_83r7u"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/ConsignaState.gd" id="3_ae37j"]
 [ext_resource type="Texture2D" uid="uid://chxhqu3ppiequ" path="res://Sprites/ZonaAstronomia/calendario2.png" id="4_kye7v"]
@@ -868,8 +869,8 @@ texture = ExtResource("2_ga0bv")
 expand_mode = 1
 stretch_mode = 1
 
-[node name="TextureRect2" type="TextureRect" parent="Calendario/Control"]
-self_modulate = Color(1, 1, 1, 0.266667)
+[node name="SpaceTexture" type="TextureRect" parent="Calendario/Control"]
+material = ExtResource("3_4xigg")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1022,9 +1023,9 @@ anchors_preset = 8
 anchor_top = 0.5
 anchor_bottom = 0.5
 offset_left = -341.0
-offset_top = -552.0
+offset_top = -555.0
 offset_right = 341.0
-offset_bottom = -324.0
+offset_bottom = -327.0
 grow_vertical = 2
 pivot_offset = Vector2(341, 114)
 AppearInBeginning = false
@@ -1407,9 +1408,9 @@ anchors_preset = 8
 anchor_top = 0.5
 anchor_bottom = 0.5
 offset_left = -463.0
-offset_top = -555.0
+offset_top = -554.0
 offset_right = 463.0
-offset_bottom = -329.0
+offset_bottom = -328.0
 grow_vertical = 2
 pivot_offset = Vector2(463, 113)
 theme = ExtResource("55_7pksd")
@@ -1435,6 +1436,22 @@ text = ""
 
 [node name="labelRich" parent="Calendario/StateMachine/Juego/Contenido/PanelPreguntas" index="1"]
 text = "[b]"
+
+[node name="Icon" parent="Calendario/StateMachine/Juego/Contenido/PanelPreguntas/BtnDerAnchor/btnDer" index="0"]
+offset_left = -22.0
+offset_top = -22.0
+offset_right = 22.0
+offset_bottom = 22.0
+
+[node name="Icon" parent="Calendario/StateMachine/Juego/Contenido/PanelPreguntas/btnIzqAnchor/btnIzq" index="0"]
+offset_left = -22.0
+offset_top = -22.0
+offset_right = 22.0
+offset_bottom = 22.0
+
+[node name="Icon" parent="Calendario/StateMachine/Juego/Contenido/PanelPreguntas/btnCentralAnchor/btnCentral" index="0"]
+offset_right = -23.0
+offset_bottom = -23.0
 
 [node name="pivotHboxController" type="Control" parent="Calendario/StateMachine/Juego/Contenido"]
 layout_mode = 1

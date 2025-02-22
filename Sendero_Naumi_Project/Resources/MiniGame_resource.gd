@@ -16,7 +16,8 @@ class_name MiniGameResource
 "noFirstTimePlay" : false,
 "lastZone": "NoZone",
 "ToUnlockIlands": false,
-"FirstTimeInMap": false}
+"FirstTimeInMap": false,
+"PassCredits": false}
 
 func Set_State_Minigame(string):
 	StateMinigames[string] = true

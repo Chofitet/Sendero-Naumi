@@ -1,9 +1,4 @@
-@tool
 extends Control
-
-@export var refreshScreen : bool:
-	set(value):
-		resizeScreen()
 
 func _ready():
 	resizeScreen()

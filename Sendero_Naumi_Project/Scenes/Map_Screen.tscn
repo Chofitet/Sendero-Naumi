@@ -1,4 +1,4 @@
-[gd_scene load_steps=102 format=3 uid="uid://ck4m8k46bmha1"]
+[gd_scene load_steps=101 format=3 uid="uid://ck4m8k46bmha1"]
 
 [ext_resource type="Material" uid="uid://muj2sfgakm5s" path="res://shaders/GalaxyWiggle.tres" id="1_2gsu4"]
 [ext_resource type="Script" path="res://_Scripts/AdjustSeparationWithScreenSize.gd" id="2_1v6rf"]
@@ -71,7 +71,6 @@
 [ext_resource type="Texture2D" uid="uid://c2d8yn44bc8bm" path="res://Sprites/Mapa/squigglingMap/comidas - mapa.png" id="38_nd2o0"]
 [ext_resource type="Texture2D" uid="uid://dj3ecbwojvib6" path="res://Sprites/Mapa/squigglingMap/topo - mapa.png" id="39_xgaa0"]
 [ext_resource type="Texture2D" uid="uid://bwjlulgcqm3mx" path="res://Sprites/Mapa/megafaunaTitulo_mapa.png" id="42_ngqib"]
-[ext_resource type="Script" path="res://Scenes/Experiments/GenericPanel/IntermediateSignalEmitter.gd" id="45_122ho"]
 [ext_resource type="PackedScene" uid="uid://nmuyip31gkq5" path="res://Scenes/UI_Scenes/generic_button.tscn" id="49_5dgeg"]
 [ext_resource type="PackedScene" uid="uid://chcp24toqisaw" path="res://Scenes/Experiments/GenericPanel/GenericPanel.tscn" id="49_torm6"]
 [ext_resource type="Texture2D" uid="uid://daq0wdip7fkhp" path="res://Sprites/UI/eggIcon - UI.png" id="49_wt3wo"]
@@ -338,10 +337,10 @@ layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer/VBoxContainer/Piso4/Piso4"]
 layout_mode = 0
-offset_left = -359.0
-offset_top = -638.0
-offset_right = 364.0
-offset_bottom = 643.0
+offset_left = -358.0
+offset_top = -639.0
+offset_right = 358.0
+offset_bottom = 640.0
 theme_override_constants/separation = -95
 script = ExtResource("8_0wy31")
 
@@ -352,11 +351,12 @@ size_flags_stretch_ratio = 0.1
 
 [node name="Logo" type="Control" parent="ScrollContainer/VBoxContainer/Piso4/Piso4/VBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.74
 
 [node name="LogoPivot" type="Node2D" parent="ScrollContainer/VBoxContainer/Piso4/Piso4/VBoxContainer/Logo"]
-position = Vector2(365, 224)
+position = Vector2(4, 224)
 script = ExtResource("19_gfm26")
 StartOnBeginning = true
 amplitude = 7.0
@@ -403,20 +403,22 @@ size_flags_vertical = 3
 size_flags_stretch_ratio = 0.82
 
 [node name="TitlePivot" type="Node2D" parent="ScrollContainer/VBoxContainer/Piso4/Piso4/VBoxContainer/Title"]
-position = Vector2(-1142, 26)
+position = Vector2(353, 283)
 script = ExtResource("19_gfm26")
 StartOnBeginning = true
 amplitude = 8.0
 frequency = 0.2
 
 [node name="Title" type="TextureRect" parent="ScrollContainer/VBoxContainer/Piso4/Piso4/VBoxContainer/Title/TitlePivot"]
-anchors_preset = 5
+anchors_preset = 8
 anchor_left = 0.5
+anchor_top = 0.5
 anchor_right = 0.5
-offset_left = 1169.0
-offset_top = -26.0
-offset_right = 1892.0
-offset_bottom = 369.0
+anchor_bottom = 0.5
+offset_left = -324.0
+offset_top = -257.0
+offset_right = 399.0
+offset_bottom = 138.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 3
@@ -1090,8 +1092,23 @@ text = "PROXIMAMENTE"
 [node name="btnDer" parent="ScrollContainer/VBoxContainer/Piso2/MuseoHistoryZone/TextureRect/PanelProximamente/Panel/BtnDerAnchor" index="0"]
 visible = true
 
-[node name="Panel(1) Btn(rigth)" type="Node" parent="ScrollContainer/VBoxContainer/Piso2/MuseoHistoryZone/TextureRect/PanelProximamente/Panel" instance=ExtResource("80_b1np3")]
-script = ExtResource("45_122ho")
+[node name="Icon" parent="ScrollContainer/VBoxContainer/Piso2/MuseoHistoryZone/TextureRect/PanelProximamente/Panel/BtnDerAnchor/btnDer" index="0"]
+offset_left = -22.0
+offset_top = -22.0
+offset_right = 22.0
+offset_bottom = 22.0
+
+[node name="Icon" parent="ScrollContainer/VBoxContainer/Piso2/MuseoHistoryZone/TextureRect/PanelProximamente/Panel/btnIzqAnchor/btnIzq" index="0"]
+offset_left = -22.0
+offset_top = -22.0
+offset_right = 22.0
+offset_bottom = 22.0
+
+[node name="Icon" parent="ScrollContainer/VBoxContainer/Piso2/MuseoHistoryZone/TextureRect/PanelProximamente/Panel/btnCentralAnchor/btnCentral" index="0"]
+offset_right = -23.0
+offset_bottom = -23.0
+
+[node name="Panel(1) Btn(rigth)" parent="ScrollContainer/VBoxContainer/Piso2/MuseoHistoryZone/TextureRect/PanelProximamente/Panel" instance=ExtResource("80_b1np3")]
 Data = SubResource("Resource_5peow")
 
 [node name="anchoHistoriaMuseoa" type="Control" parent="ScrollContainer/VBoxContainer/Piso2/MuseoHistoryZone"]
