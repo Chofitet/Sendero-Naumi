@@ -19,6 +19,12 @@ func StartFall():
 	await get_tree().create_timer(1.5).timeout
 	for i in UnfreezeRocks:
 		get_node(i).UnfrezeeAll()
+	await  get_tree().create_timer(2).timeout
+	print("30 fps")
+	Engine.set_physics_ticks_per_second(30)
+	await  get_tree().create_timer(2).timeout
+	print("60 fps")
+	Engine.set_physics_ticks_per_second(60)
 
 func FinishFall():
 	get_node("Area2D").call_deferred("SetParent")

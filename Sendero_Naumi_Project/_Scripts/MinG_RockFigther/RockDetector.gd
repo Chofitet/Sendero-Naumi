@@ -6,4 +6,5 @@ func _ready():
 
 func RockEnter(x):
 	if x.is_in_group("rock"):
-		x.get_parent().StartTimer()
+		var rock = x.get_parent()
+		rock.StartTimer()

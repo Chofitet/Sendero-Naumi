@@ -16,7 +16,7 @@ func _process(delta):
 	pass
 
 func _ready():
-	spot.OnSpot.connect(get_Answer)
+	spot.ObjectArriveSpot.connect(get_Answer)
 	spot.RightAns.connect(RigthAnswer)
 	spot.WrongAns.connect(WrongAnswer)
 

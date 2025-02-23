@@ -1019,13 +1019,13 @@ Data = SubResource("Resource_hfs58")
 
 [node name="PanelIntro2" parent="Calendario/StateMachine/Consigna/Contenido" instance=ExtResource("15_1ptxs")]
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = -1
 anchor_top = 0.5
 anchor_bottom = 0.5
 offset_left = -341.0
-offset_top = -555.0
+offset_top = -554.0
 offset_right = 341.0
-offset_bottom = -327.0
+offset_bottom = -326.0
 grow_vertical = 2
 pivot_offset = Vector2(341, 114)
 AppearInBeginning = false
@@ -1371,29 +1371,6 @@ libraries = {
 "": SubResource("AnimationLibrary_lqutb")
 }
 
-[node name="DateeXAMPLE" type="Sprite2D" parent="Calendario/StateMachine/Juego/Contenido/Spot/AnswerController"]
-visible = false
-texture = ExtResource("26_4iu1w")
-
-[node name="DragObject" parent="Calendario/StateMachine/Juego/Contenido/Spot/AnswerController/DateeXAMPLE" node_paths=PackedStringArray("spot") instance=ExtResource("24_2ql8s")]
-spot = NodePath("../../Spot")
-holdTime = 0.2
-DesapearInPlace = true
-
-[node name="CollisionShape2D" parent="Calendario/StateMachine/Juego/Contenido/Spot/AnswerController/DateeXAMPLE/DragObject" index="0"]
-shape = ExtResource("27_ft40d")
-
-[node name="Button" parent="Calendario/StateMachine/Juego/Contenido/Spot/AnswerController/DateeXAMPLE/DragObject" index="1"]
-offset_left = -243.0
-offset_top = -129.0
-offset_right = 244.0
-offset_bottom = 129.0
-
-[node name="SquigglingSprite" parent="Calendario/StateMachine/Juego/Contenido/Spot/AnswerController/DateeXAMPLE" instance=ExtResource("51_mweh1")]
-position = Vector2(-2.5, 0.5)
-scale = Vector2(1.00931, 1.00281)
-texture = ExtResource("53_k35md")
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Calendario/StateMachine/Juego/Contenido/Spot"]
 root_node = NodePath("../../pivotHboxController")
 libraries = {
@@ -1404,13 +1381,13 @@ animation = "enero_enter"
 
 [node name="PanelConsigna" parent="Calendario/StateMachine/Juego/Contenido" instance=ExtResource("15_1ptxs")]
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = -1
 anchor_top = 0.5
 anchor_bottom = 0.5
 offset_left = -463.0
-offset_top = -554.0
+offset_top = -559.0
 offset_right = 463.0
-offset_bottom = -328.0
+offset_bottom = -333.0
 grow_vertical = 2
 pivot_offset = Vector2(463, 113)
 theme = ExtResource("55_7pksd")
@@ -1419,12 +1396,12 @@ Texts = Array[ExtResource("18_66s5d")]([SubResource("Resource_v2ur4")])
 [node name="PanelPreguntas" parent="Calendario/StateMachine/Juego/Contenido" instance=ExtResource("15_1ptxs")]
 layout_mode = 1
 anchors_preset = -1
-anchor_top = 0.155
-anchor_bottom = 0.155
+anchor_top = 0.5
+anchor_bottom = 0.5
 offset_left = -465.0
-offset_top = -113.4
+offset_top = -555.0
 offset_right = 465.0
-offset_bottom = 114.6
+offset_bottom = -327.0
 grow_vertical = 2
 pivot_offset = Vector2(465, 114)
 theme = ExtResource("55_7pksd")
@@ -1436,22 +1413,6 @@ text = ""
 
 [node name="labelRich" parent="Calendario/StateMachine/Juego/Contenido/PanelPreguntas" index="1"]
 text = "[b]"
-
-[node name="Icon" parent="Calendario/StateMachine/Juego/Contenido/PanelPreguntas/BtnDerAnchor/btnDer" index="0"]
-offset_left = -22.0
-offset_top = -22.0
-offset_right = 22.0
-offset_bottom = 22.0
-
-[node name="Icon" parent="Calendario/StateMachine/Juego/Contenido/PanelPreguntas/btnIzqAnchor/btnIzq" index="0"]
-offset_left = -22.0
-offset_top = -22.0
-offset_right = 22.0
-offset_bottom = 22.0
-
-[node name="Icon" parent="Calendario/StateMachine/Juego/Contenido/PanelPreguntas/btnCentralAnchor/btnCentral" index="0"]
-offset_right = -23.0
-offset_bottom = -23.0
 
 [node name="pivotHboxController" type="Control" parent="Calendario/StateMachine/Juego/Contenido"]
 layout_mode = 1
@@ -1876,7 +1837,6 @@ NextScene = "Map_Screen"
 [connection signal="Transitioned" from="Calendario/StateMachine/Fin" to="Calendario/StateMachine/Fin/Contenido/Panel4" method="StartTimerToAppear"]
 [connection signal="pressed" from="Calendario/StateMachine/Fin/Contenido/Panel4/ButtonChangeScene" to="Calendario" method="Set_Complete"]
 
-[editable path="Calendario/StateMachine/Juego/Contenido/Spot/AnswerController/DateeXAMPLE/DragObject"]
 [editable path="Calendario/StateMachine/Juego/Contenido/PanelPreguntas"]
 [editable path="Calendario/StateMachine/Juego/Contenido/PanelPreguntas/btnIzqAnchor/btnIzq/SquigglingSprite"]
 [editable path="Calendario/StateMachine/Juego/Contenido/PanelPreguntas/btnCentralAnchor/btnCentral/SquigglingSprite"]

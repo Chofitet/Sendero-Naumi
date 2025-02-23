@@ -30,3 +30,6 @@ func vibing():
 func StartTimer():
 	timer.start()
 	
+
+func ChangeMask():
+	set_collision_mask(1)

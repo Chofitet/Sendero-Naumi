@@ -3,12 +3,14 @@ extends Node2D
 @onready var checkTrue = $CheckAllTrue
 @onready var anim = $AnimationPlayer
 var Book = preload("res://Scenes/Zona_Megafauna/evento_libro.tscn")
+var smilodonte = preload("res://Scenes/Zona_Megafauna/Smilodonte_Draw.tscn")
 @export var ParentBook : Control
 @export var Statemachine : Node
 @export var topoController : CharacterBody2D
 signal ConnectInventaryBTN
 signal AppearIcon
 var isPassInstance
+var InstanceOnce
 
 func _ready():
 	for i in checkTrue.get_children():
@@ -34,6 +36,9 @@ func DoDiscoverAnim(x):
 	checkTrue.CheckTrue()
 	if isPassInstance:
 		instance.IsPassingInstance(Statemachine)
+	await get_tree().create_timer(1).timeout
+	PreInstanceShader()
+	InstanceOnce = true
 	
 
 func EmitAppearIconSignal():
@@ -41,3 +46,8 @@ func EmitAppearIconSignal():
 
 func LastInstance():
 	isPassInstance = true
+
+func PreInstanceShader():
+	if InstanceOnce : return
+	var instance = smilodonte.instantiate()
+	add_child(instance)

@@ -419,7 +419,8 @@ dontPassPanel = false
 
 [sub_resource type="Resource" id="Resource_4oo6c"]
 script = ExtResource("16_g0euh")
-Text = "BUEN TRABAJO!"
+Text = "
+[center][b][font_size={40}]¡BUEN TRABAJO!"
 SizePanel = Vector2(0, 0)
 Position = Vector2(0, 0)
 buttons = Array[ExtResource("14_g877f")]([SubResource("Resource_rivg6")])
@@ -912,8 +913,15 @@ wait_time = 3.0
 
 [node name="Intro1" parent="FoodTruck/StateMachine/Consigna/Contenido" instance=ExtResource("13_3lngq")]
 layout_mode = 1
-offset_top = 118.0
-offset_bottom = 346.0
+anchors_preset = -1
+anchor_left = 0.508
+anchor_top = 0.347
+anchor_right = 0.508
+anchor_bottom = 0.347
+offset_left = -325.76
+offset_top = -326.16
+offset_right = 326.24
+offset_bottom = -98.16
 Texts = Array[ExtResource("16_g0euh")]([SubResource("Resource_4rfxl")])
 
 [node name="Panel(1) Btn(rigth)" parent="FoodTruck/StateMachine/Consigna/Contenido/Intro1" instance=ExtResource("17_6stp3")]
@@ -925,8 +933,11 @@ Delay = 1.6
 
 [node name="Intro2" parent="FoodTruck/StateMachine/Consigna/Contenido" instance=ExtResource("13_3lngq")]
 layout_mode = 1
-offset_top = 119.0
-offset_bottom = 347.0
+anchors_preset = -1
+anchor_top = 0.359
+anchor_bottom = 0.359
+offset_top = -340.52
+offset_bottom = -112.52
 AppearInBeginning = false
 Texts = Array[ExtResource("16_g0euh")]([SubResource("Resource_f6tx0")])
 
@@ -940,6 +951,7 @@ StateMachine = NodePath("..")
 InstanciasMinijuego = [NodePath("Contenido/Instancia1"), NodePath("Contenido/Instancia2"), NodePath("Contenido/Instancia3"), NodePath("Contenido/Instancia4"), NodePath("Contenido/Instancia5"), NodePath("Contenido/Instancia6")]
 
 [node name="Contenido" type="Control" parent="FoodTruck/StateMachine/Juego"]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -1882,8 +1894,8 @@ anchors_preset = -1
 anchor_top = 0.211
 anchor_bottom = 0.211
 offset_top = -7.032
-offset_bottom = 216.968
-pivot_offset = Vector2(326, 112)
+offset_bottom = 233.968
+pivot_offset = Vector2(326, 120.5)
 AppearInBeginning = false
 TimeToAppear = 5.0
 Texts = Array[ExtResource("16_g0euh")]([SubResource("Resource_4oo6c"), SubResource("Resource_sq0sj")])
@@ -1926,7 +1938,7 @@ animation = "recomendation"
 [connection signal="StartComand" from="FoodTruck/StateMachine/Juego/Contenido/PatasController" to="FoodTruck/StateMachine/Juego/Contenido/BlockScreen" method="SetVisibility" binds= [true]]
 [connection signal="StartTutorial" from="FoodTruck/StateMachine/Juego/Contenido/PatasController" to="FoodTruck/StateMachine/Juego/Contenido/Tutorial" method="CheckInTutorial"]
 [connection signal="InTutorial" from="FoodTruck/StateMachine/Juego/Contenido/Tutorial" to="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer" method="SetTutorial" binds= [true]]
-[connection signal="OnSpot" from="FoodTruck/StateMachine/Juego/Contenido/AnchorSpot/Spot" to="FoodTruck/StateMachine/Juego/Contenido/PatasController" method="AddPlateAtPivot"]
+[connection signal="ObjectArriveSpot" from="FoodTruck/StateMachine/Juego/Contenido/AnchorSpot/Spot" to="FoodTruck/StateMachine/Juego/Contenido/PatasController" method="AddPlateAtPivot"]
 [connection signal="OnSpot" from="FoodTruck/StateMachine/Juego/Contenido/AnchorSpot/Spot" to="FoodTruck/StateMachine/Juego/Contenido/Tutorial" method="OnSpot"]
 [connection signal="OnSpot" from="FoodTruck/StateMachine/Juego/Contenido/AnchorSpot/Spot" to="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer" method="SetPlate"]
 [connection signal="RightAns" from="FoodTruck/StateMachine/Juego/Contenido/AnchorSpot/Spot" to="FoodTruck/StateMachine/Juego/Contenido/PatasController" method="PlayOutAnim"]
@@ -1970,7 +1982,6 @@ animation = "recomendation"
 [connection signal="object_realese_Wrong_Place" from="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer/food4/DragObject" to="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer" method="DetectMouseRelease"]
 [connection signal="ButtonPress" from="FoodTruck/StateMachine/Juego/Contenido/FinalPanel/Panel(1) Btn(rigth)" to="FoodTruck" method="Set_Complete"]
 [connection signal="ButtonPress" from="FoodTruck/StateMachine/Juego/Contenido/FinalPanel/Panel(1) Btn(rigth)" to="FoodTruck/StateMachine/Juego/Contenido/Cordon/Cortina/AnimationPlayer" method="play" binds= ["cordon_anim"]]
-[connection signal="button_up" from="FoodTruck/StateMachine/Juego/Contenido/Cordon/Cortina/Button" to="FoodTruck/StateMachine/Juego/Contenido/Cordon/Cortina/cordon/SquigglingSprite" method="InactiveSquiggling"]
 [connection signal="timeout" from="FoodTruck/StateMachine/Moraleja/Contenido/Timer" to="FoodTruck/StateMachine/Moraleja" method="TimeOut"]
 [connection signal="pressed" from="FoodTruck/StateMachine/Moraleja/Contenido/Instancia1/Button" to="FoodTruck/StateMachine/Moraleja/Contenido/Instancia1/Button" method="_on_pressed"]
 [connection signal="Transitioned" from="FoodTruck/StateMachine/Fin" to="FoodTruck/StateMachine/Fin/Contenido/Control/OutroPanel" method="EnterPanel"]

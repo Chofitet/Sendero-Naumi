@@ -2,6 +2,7 @@ extends Node2D
 @export var Pos : Marker2D
 @export var StateMachine : Node
 var once : bool
+signal arrive
 
 func _ready():
 	$Button.Down.connect(AnimatedToPos)
@@ -13,9 +14,11 @@ func AnimatedToPos():
 	var tween = get_tree().create_tween()
 	tween.tween_property(self,"global_position", Pos.global_position, 1).set_ease(Tween.EASE_OUT_IN)
 	await tween.finished
+	$cordon/SquigglingSprite.InactiveSquiggling()
 	instanciateFade()
 
 func instanciateFade():
+	arrive.emit()
 	var fadeInstance = load("res://Scenes/Experiments/IndividualFade.tscn")
 	var texture = load("res://addons/scene_manager/shader_patterns/diagonal.png")
 	var instance = fadeInstance.instantiate()

@@ -902,12 +902,12 @@ script = ExtResource("26_5tsnp")
 NumberOfPanel = 1
 Place = 1
 
-[sub_resource type="Gradient" id="Gradient_pa0y7"]
+[sub_resource type="Gradient" id="Gradient_cyjm0"]
 offsets = PackedFloat32Array(0, 0.490385, 1)
-colors = PackedColorArray(0.309804, 0.262745, 0.25098, 1, 0, 0, 0, 0.0216346, 0.309804, 0.262745, 0.25098, 1)
+colors = PackedColorArray(0.0627451, 0.0470588, 0.0431373, 1, 0, 0, 0, 0.0216346, 0.0627451, 0.0470588, 0.0431373, 1)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_5hrtw"]
-gradient = SubResource("Gradient_pa0y7")
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_qeym3"]
+gradient = SubResource("Gradient_cyjm0")
 fill_from = Vector2(1, 1)
 
 [sub_resource type="Resource" id="Resource_i2gy7"]
@@ -1836,10 +1836,14 @@ texture = ExtResource("22_5c02m")
 stretch_mode = 2
 
 [node name="MedalCounter" parent="RockFighters/StateMachine/Juego/Contenido" instance=ExtResource("40_8p7gf")]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.106
+anchor_bottom = 0.106
 offset_left = 21.0
-offset_top = 20.0
+offset_top = -115.68
 offset_right = 406.0
-offset_bottom = 105.0
+offset_bottom = -30.68
 
 [node name="btnVolver" parent="RockFighters/StateMachine/Juego" instance=ExtResource("33_l1u1j")]
 
@@ -2178,14 +2182,14 @@ grow_vertical = 2
 texture = ExtResource("35_0j7t8")
 stretch_mode = 1
 
-[node name="Gradiente" type="TextureRect" parent="RockFighters/StateMachine/Fin/Contenido"]
+[node name="Gradiente2" type="TextureRect" parent="RockFighters/StateMachine/Fin/Contenido"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = SubResource("GradientTexture2D_5hrtw")
+texture = SubResource("GradientTexture2D_qeym3")
 
 [node name="PanelOutro" parent="RockFighters/StateMachine/Fin/Contenido" instance=ExtResource("20_culp1")]
 layout_mode = 1
@@ -2193,7 +2197,7 @@ anchors_preset = -1
 anchor_top = 0.363
 anchor_bottom = 0.363
 offset_top = -180.64
-offset_bottom = 246.36
+offset_bottom = 206.36
 pivot_offset = Vector2(326, 213.5)
 AppearInBeginning = false
 Texts = Array[ExtResource("23_5rold")]([SubResource("Resource_xkqfr")])

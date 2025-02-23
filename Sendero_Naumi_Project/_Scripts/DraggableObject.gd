@@ -24,6 +24,7 @@ signal isDraggin
 signal mouse_realese
 signal object_realese_Rigth_Place
 signal object_realese_Wrong_Place
+signal ArriveToSpot
 
 func _ready():
 	timerHold = $Timer
@@ -82,6 +83,7 @@ func PlaceInRightSpot(forceSpot = false):
 		isInPosition = true
 		await  tween.finished
 		spot.CheckAnswer()
+		ArriveToSpot.emit()
 		if DesapearInPlace: 
 			object.visible = false
 	else:
