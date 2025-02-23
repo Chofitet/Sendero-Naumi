@@ -14,6 +14,8 @@ func _ready():
 	btnContinuar.pressed.connect(AppearMenu)
 	btnOutside.pressed.connect(AppearMenu)
 	btnMapa.pressed.connect(Mapa)
+	PlayerVariables.InactivePause.connect(InactiveButton)
+	PlayerVariables.ActivePause.connect(ActiveButton)
 
 func AppearMenu():
 	if !ispause:
@@ -30,3 +32,9 @@ func AppearMenu():
 func Mapa():
 	btnMapa.self_modulate = Color.GRAY
 	get_tree().paused = false
+
+func InactiveButton():
+	btn.visible = false
+
+func ActiveButton():
+	btn.visible = true

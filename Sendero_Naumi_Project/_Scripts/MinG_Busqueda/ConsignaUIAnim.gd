@@ -10,6 +10,7 @@ func _ready():
 	initposition = position
 
 func StartTimer():
+	PlayerVariables.EmitActivePause()
 	$consignaPanel.EnterPanel()
 	position = initposition
 	visible = true

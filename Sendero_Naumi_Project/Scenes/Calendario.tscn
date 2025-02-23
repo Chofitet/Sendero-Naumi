@@ -1020,12 +1020,12 @@ Data = SubResource("Resource_hfs58")
 [node name="PanelIntro2" parent="Calendario/StateMachine/Consigna/Contenido" instance=ExtResource("15_1ptxs")]
 layout_mode = 1
 anchors_preset = -1
-anchor_top = 0.5
-anchor_bottom = 0.5
+anchor_top = 0.357
+anchor_bottom = 0.357
 offset_left = -341.0
-offset_top = -554.0
+offset_top = -375.96
 offset_right = 341.0
-offset_bottom = -326.0
+offset_bottom = -147.96
 grow_vertical = 2
 pivot_offset = Vector2(341, 114)
 AppearInBeginning = false
@@ -1218,6 +1218,7 @@ PanelConsigna = NodePath("../../PanelConsigna")
 scale = Vector2(0.377, 0.378)
 
 [node name="Calendar" type="Sprite2D" parent="Calendario/StateMachine/Juego/Contenido/CenterPivot/CalendarZoom/calendarPivot"]
+self_modulate = Color(1, 1, 1, 0)
 material = SubResource("ShaderMaterial_lebsb")
 scale = Vector2(1, 1.001)
 texture = ExtResource("5_7guea")
@@ -1382,12 +1383,12 @@ animation = "enero_enter"
 [node name="PanelConsigna" parent="Calendario/StateMachine/Juego/Contenido" instance=ExtResource("15_1ptxs")]
 layout_mode = 1
 anchors_preset = -1
-anchor_top = 0.5
-anchor_bottom = 0.5
+anchor_top = 0.364
+anchor_bottom = 0.364
 offset_left = -463.0
-offset_top = -559.0
+offset_top = -382.92
 offset_right = 463.0
-offset_bottom = -333.0
+offset_bottom = -156.92
 grow_vertical = 2
 pivot_offset = Vector2(463, 113)
 theme = ExtResource("55_7pksd")
@@ -1396,12 +1397,12 @@ Texts = Array[ExtResource("18_66s5d")]([SubResource("Resource_v2ur4")])
 [node name="PanelPreguntas" parent="Calendario/StateMachine/Juego/Contenido" instance=ExtResource("15_1ptxs")]
 layout_mode = 1
 anchors_preset = -1
-anchor_top = 0.5
-anchor_bottom = 0.5
+anchor_top = 0.348
+anchor_bottom = 0.348
 offset_left = -465.0
-offset_top = -555.0
+offset_top = -360.44
 offset_right = 465.0
-offset_bottom = -327.0
+offset_bottom = -132.44
 grow_vertical = 2
 pivot_offset = Vector2(465, 114)
 theme = ExtResource("55_7pksd")
@@ -1533,6 +1534,9 @@ offset_bottom = -936.192
 grow_horizontal = 0
 text = ""
 NextScene = "Map_Screen"
+fade_time = 0.6
+texture = "vertical"
+smoothness = 0.2
 
 [node name="PanelOutro" parent="Calendario/StateMachine/Juego/Contenido" instance=ExtResource("15_1ptxs")]
 layout_mode = 1
@@ -1673,6 +1677,9 @@ offset_right = 207.0
 offset_bottom = -51.0
 text = "Continue"
 NextScene = "Map_Screen"
+fade_time = 0.6
+texture = "vertica"
+smoothness = 0.2
 
 [node name="Control" type="Control" parent="Calendario/StateMachine/Fin/Contenido"]
 layout_mode = 1
@@ -1797,6 +1804,9 @@ grow_horizontal = 0
 text = "
 "
 NextScene = "Map_Screen"
+fade_time = 0.6
+texture = "vertical"
+smoothness = 0.2
 
 [connection signal="ButtonPress" from="Calendario/StateMachine/Consigna/Contenido/PanelIntro1/Panel(1) Btn(rigth)" to="Calendario/StateMachine/Consigna/Contenido/PanelIntro2" method="EnterPanel"]
 [connection signal="ButtonPress" from="Calendario/StateMachine/Consigna/Contenido/PanelIntro1/Panel(1) Btn(rigth)" to="Calendario/StateMachine/Consigna/Contenido/AnimationPlayer" method="play" binds= ["fadeMemoria"]]

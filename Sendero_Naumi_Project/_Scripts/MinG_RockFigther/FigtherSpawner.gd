@@ -25,6 +25,7 @@ func _ready():
 	LeftBtn.get_child(1).pressed.connect(Figth.bind(true))
 
 func SpawnFighters(playEnterAnim):
+	PlayerVariables.EmitActivePause()
 	LeftRock = instance.instantiate()
 	RigthRock = instance.instantiate()
 	add_child(LeftRock)
@@ -38,6 +39,7 @@ func SpawnFighters(playEnterAnim):
 
 func PassInstance():
 	if !playerWinner:
+		PlayerVariables.EmitActivePause()
 		RetryPanel.EnterPanel()
 		return
 	LeftRock.queue_free()
@@ -45,6 +47,7 @@ func PassInstance():
 	stateMachine.Trigger_On_Child_Transition("Moraleja")
 
 func Figth(btnLeftPressed):
+	PlayerVariables.EmitInactivePause()
 	if btnLeftPressed == isLeftWinner: playerWinner = true
 	else: playerWinner = false
 	Overlay1.Anim()

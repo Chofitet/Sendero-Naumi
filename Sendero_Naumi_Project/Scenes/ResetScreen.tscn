@@ -1,30 +1,37 @@
-[gd_scene load_steps=16 format=3 uid="uid://dooe62acmvdb8"]
+[gd_scene load_steps=17 format=3 uid="uid://dooe62acmvdb8"]
 
 [ext_resource type="Script" path="res://_Scripts/ResetGame.gd" id="1_jm73u"]
 [ext_resource type="Texture2D" uid="uid://nuybqhitpej1" path="res://Sprites/Mapa/fondo_mapa.png" id="2_ng0fi"]
+[ext_resource type="Material" uid="uid://muj2sfgakm5s" path="res://shaders/GalaxyWiggle.tres" id="2_u26hr"]
 [ext_resource type="PackedScene" uid="uid://chcp24toqisaw" path="res://Scenes/Experiments/GenericPanel/GenericPanel.tscn" id="3_o2upc"]
 [ext_resource type="Script" path="res://Scenes/Experiments/GenericPanel/ButtonPanelData.gd" id="4_d7eu2"]
 [ext_resource type="Texture2D" uid="uid://c2p5torstrtqm" path="res://Sprites/UI/checkIcon - UI.png" id="5_iau1d"]
 [ext_resource type="Texture2D" uid="uid://6c8ohwgh1g2j" path="res://Sprites/UI/backIcon - UI.png" id="6_2yki0"]
 [ext_resource type="Script" path="res://Scenes/Experiments/GenericPanel/TextFieldData.gd" id="7_o6yq5"]
 [ext_resource type="PackedScene" uid="uid://d1jys63xrvxpo" path="res://Scenes/Experiments/GenericPanel/IntermediateSignal.tscn" id="8_cm7s2"]
-[ext_resource type="Script" path="res://Scenes/Experiments/GenericPanel/IntermediateSignalEmitter.gd" id="9_binj6"]
 [ext_resource type="Script" path="res://Scenes/Experiments/GenericPanel/IntermediateData.gd" id="10_k0cnr"]
+[ext_resource type="PackedScene" uid="uid://djhg7jvxtexyl" path="res://Scenes/UI_Scenes/btn_Change_Scene.tscn" id="11_046uo"]
 
 [sub_resource type="Resource" id="Resource_a4m6p"]
 script = ExtResource("4_d7eu2")
 Place = 0
 texture = ExtResource("5_iau1d")
+label = ""
+dontPassPanel = false
 
 [sub_resource type="Resource" id="Resource_328bl"]
 script = ExtResource("4_d7eu2")
 Place = 2
 texture = ExtResource("6_2yki0")
+label = ""
+dontPassPanel = false
 
 [sub_resource type="Resource" id="Resource_g8ivg"]
 script = ExtResource("7_o6yq5")
 Text = "SE PERDERÁ TODO EL PROGRESO 
 ¿SEGURO QUE QUERÉS REINICIAR EL JUEGO?"
+SizePanel = Vector2(0, 0)
+Position = Vector2(0, 0)
 buttons = Array[ExtResource("4_d7eu2")]([SubResource("Resource_a4m6p"), SubResource("Resource_328bl")])
 
 [sub_resource type="Resource" id="Resource_n2foa"]
@@ -46,7 +53,8 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_jm73u")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="SpaceTexture" type="TextureRect" parent="."]
+material = ExtResource("2_u26hr")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -54,20 +62,31 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_ng0fi")
+expand_mode = 1
+stretch_mode = 1
 
 [node name="PanelReset" parent="." instance=ExtResource("3_o2upc")]
 layout_mode = 1
 offset_top = 499.0
 offset_bottom = 781.0
+pivot_offset = Vector2(326, 141)
 Texts = Array[ExtResource("7_o6yq5")]([SubResource("Resource_g8ivg")])
 
-[node name="Panel(1) Btn(rigth)" type="Node" parent="PanelReset" instance=ExtResource("8_cm7s2")]
-script = ExtResource("9_binj6")
+[node name="Panel(1) Btn(rigth)" parent="PanelReset" instance=ExtResource("8_cm7s2")]
 Data = SubResource("Resource_n2foa")
 
-[node name="Panel(1) Btn(left)" type="Node" parent="PanelReset" instance=ExtResource("8_cm7s2")]
-script = ExtResource("9_binj6")
+[node name="Panel(1) Btn(left)" parent="PanelReset" instance=ExtResource("8_cm7s2")]
 Data = SubResource("Resource_18ii2")
 
+[node name="ButtonChangeScene" parent="." instance=ExtResource("11_046uo")]
+visible = false
+layout_mode = 0
+anchors_preset = 0
+NextScene = "Map_Screen"
+fade_time = 0.6
+texture = "vertical"
+smoothness = 0.2
+
 [connection signal="ButtonPress" from="PanelReset/Panel(1) Btn(rigth)" to="." method="ResetAll"]
-[connection signal="ButtonPress" from="PanelReset/Panel(1) Btn(left)" to="." method="BackToMap"]
+[connection signal="ButtonPress" from="PanelReset/Panel(1) Btn(rigth)" to="ButtonChangeScene" method="_on_pressed"]
+[connection signal="ButtonPress" from="PanelReset/Panel(1) Btn(left)" to="ButtonChangeScene" method="_on_pressed"]

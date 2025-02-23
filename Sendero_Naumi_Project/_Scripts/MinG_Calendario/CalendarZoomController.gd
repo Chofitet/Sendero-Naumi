@@ -59,7 +59,9 @@ func ZoomToPos(index = 0):
 	await tween.finished
 	if index == 0 : 
 		$Buttons.visible = true
-		if gamefinished: ZoomOutFinished.emit()
+		if gamefinished: 
+			ZoomOutFinished.emit()
+			PlayerVariables.EmitInactivePause()
 	else: 
 		ZoomFinished.emit()
 

@@ -11,7 +11,8 @@ var _isOut
 
 func _ready():
 	canvas_modulate.color = Color(0,0,0,1)
-	pass
+	await get_tree().create_timer(0.1).timeout
+	PlayerVariables.EmitInactivePause()
 
 func _process(delta):
 	if _isOut: return

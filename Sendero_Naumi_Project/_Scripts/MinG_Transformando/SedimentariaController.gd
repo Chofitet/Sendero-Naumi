@@ -21,7 +21,7 @@ func StartFall():
 		get_node(i).UnfrezeeAll()
 	await  get_tree().create_timer(2).timeout
 	print("30 fps")
-	Engine.set_physics_ticks_per_second(30)
+	Engine.set_physics_ticks_per_second(40)
 	await  get_tree().create_timer(2).timeout
 	print("60 fps")
 	Engine.set_physics_ticks_per_second(60)
@@ -33,6 +33,7 @@ func FinishFall():
 
 
 func TranstaleToCenterScreen(time):
+	PlayerVariables.EmitInactivePause()
 	visible = true
 	overlay.visible = true
 	var tween = get_tree().create_tween()
@@ -51,6 +52,7 @@ func buttonpress():
 	if wasTransformed : return
 	wasTransformed = true
 	TriggerNextTransformation.emit()
+	PlayerVariables.EmitActivePause()
 
 func panelAppear():
 	PanelAppear.emit()

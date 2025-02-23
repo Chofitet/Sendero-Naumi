@@ -128,6 +128,7 @@ func restartAll():
 	
 
 func InstanceTransition():
+	PlayerVariables.EmitInactivePause()
 	var instance = Fade.instantiate()
 	get_parent().get_parent().add_child(instance)
 	instance.init(fadeTexture,2,true)
@@ -138,6 +139,7 @@ func InstanceTransition():
 	get_parent().get_parent().add_child(instance2)
 	instance2.init(fadeTexture,2,false,false)
 	queue_free()
+	PlayerVariables.EmitActivePause()
 
 func ToRestart():
 	skeleton.queue_free()

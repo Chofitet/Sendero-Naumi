@@ -447,6 +447,7 @@ script = ExtResource("3_nk4vw")
 Consignas = ["Guiá al topo para encontrar los fósiles"]
 
 [node name="Contenido" type="Control" parent="Excavando/StateMachine/Consigna"]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -622,7 +623,6 @@ StateMachine = NodePath("..")
 InstanciasMinijuego = [NodePath("Contenido/Instancia1"), NodePath("Contenido/Instancia2")]
 
 [node name="Contenido" type="Control" parent="Excavando/StateMachine/Juego"]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -698,7 +698,8 @@ z_index = 1
 position = Vector2(179.303, 528)
 scale = Vector2(1.01109, 0.996175)
 motion_mode = 1
-wall_min_slide_angle = 0.0174533
+wall_min_slide_angle = 0.10472
+safe_margin = 1.0
 script = ExtResource("14_2g78w")
 initPos = NodePath("../FirstPos")
 SecondPos = NodePath("../SecondPos")
@@ -4519,6 +4520,9 @@ offset_bottom = -827.0
 grow_horizontal = 0
 text = ""
 NextScene = "Map_Screen"
+fade_time = 0.6
+texture = "vertical"
+smoothness = 0.2
 
 [node name="ColorRect" type="ColorRect" parent="Excavando/StateMachine/Fin/Contenido"]
 layout_mode = 1
@@ -4555,7 +4559,9 @@ layout_mode = 1
 anchors_preset = 8
 anchor_top = 0.5
 anchor_bottom = 0.5
+offset_left = -326.0
 offset_top = -535.0
+offset_right = 326.0
 offset_bottom = -295.0
 grow_vertical = 2
 pivot_offset = Vector2(326, 120)

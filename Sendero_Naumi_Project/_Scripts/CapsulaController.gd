@@ -29,5 +29,6 @@ func OpenCapsula(x):
 
 func OutPanel(x):
 	if !x.is_in_group("Player"): return
+	PlayerVariables.EmitActivePause()
 	openCapsula.emit()
 	PanelOut.area_entered.disconnect(OutPanel)

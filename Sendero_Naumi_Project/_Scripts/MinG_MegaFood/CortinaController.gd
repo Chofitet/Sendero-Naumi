@@ -22,6 +22,7 @@ func instanciateFade():
 	var fadeInstance = load("res://Scenes/Experiments/IndividualFade.tscn")
 	var texture = load("res://addons/scene_manager/shader_patterns/diagonal.png")
 	var instance = fadeInstance.instantiate()
+	PlayerVariables.EmitInactivePause()
 	$fade.add_child(instance)
 	instance.init(texture,2,true)
 	await get_tree().create_timer(2).timeout

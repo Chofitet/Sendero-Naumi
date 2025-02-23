@@ -8,7 +8,15 @@ func ResetAll():
 	var minigameResourceFile = MiniGameResource.new()
 	var zoneResourceFile = ZoneResource.new()
 	var instanceResource = InstanceResource.new()
-
+	
+	minigameResourceFile.take_over_path(save_file_path + "MiniGameResource.tres")
+	zoneResourceFile.take_over_path(save_file_path + "ZoneResource.tres")
+	instanceResource.take_over_path(save_file_path + "InstanceResource.tres")
+#	minigameResourceFile = ResourceLoader.load(save_file_path + "MiniGameResource.tres")
+#	zoneResourceFile = ResourceLoader.load(save_file_path + "ZoneResource.tres")
+#	instanceResource =  ResourceLoader.load(save_file_path + "InstanceResource.tres")
+	
+	minigameResourceFile.Set_State_Minigame("noFirstTimePlay")
 	# Sobrescribir (o crear) los archivos con los nuevos recursos
 	if ResourceSaver.save(zoneResourceFile, save_file_path + "ZoneResource.tres") != OK:
 		push_error("Error al guardar ZoneResource")
@@ -17,11 +25,7 @@ func ResetAll():
 	if ResourceSaver.save(instanceResource, save_file_path + "InstanceResource.tres") != OK:
 		push_error("Error al guardar InstanceResource")
 
-	# Configurar el estado inicial del recurso de minijuegos
-	minigameResourceFile.Set_State_Minigame("noFirstTimePlay")
-
-	get_tree().change_scene_to_file("res://Scenes/Map_Screen.tscn")
 	
 
-func BackToMap():
-	get_tree().change_scene_to_file("res://Scenes/Map_Screen.tscn")
+	
+

@@ -1,4 +1,4 @@
-[gd_scene load_steps=101 format=3 uid="uid://ck4m8k46bmha1"]
+[gd_scene load_steps=102 format=3 uid="uid://ck4m8k46bmha1"]
 
 [ext_resource type="Material" uid="uid://muj2sfgakm5s" path="res://shaders/GalaxyWiggle.tres" id="1_2gsu4"]
 [ext_resource type="Script" path="res://_Scripts/AdjustSeparationWithScreenSize.gd" id="2_1v6rf"]
@@ -25,6 +25,7 @@
 [ext_resource type="Texture2D" uid="uid://b4mb0fyar87n4" path="res://Sprites/Mapa/universo_mapa.png" id="11_r0n4l"]
 [ext_resource type="Script" path="res://_Scripts/StateMachine/State_Machine.gd" id="12_2rk75"]
 [ext_resource type="Texture2D" uid="uid://cakw5ub13ddym" path="res://Sprites/UI/thoughtBubbleB - UI.png" id="12_28ebg"]
+[ext_resource type="Texture2D" uid="uid://f71rhgotbkf3" path="res://Sprites/UI/reloadIcon - UI.png" id="12_su1kk"]
 [ext_resource type="Texture2D" uid="uid://cdqxx6yqex8vo" path="res://Sprites/UI/thoughtBubbleA - UI.png" id="13_i8u20"]
 [ext_resource type="Script" path="res://_Scripts/StateMachine/NoZone.gd" id="13_tgu8h"]
 [ext_resource type="Material" uid="uid://d85j5vo26jsq" path="res://shaders/GreyScaleShader.tres" id="14_7gd3p"]
@@ -70,10 +71,10 @@
 [ext_resource type="Texture2D" uid="uid://c2d8yn44bc8bm" path="res://Sprites/Mapa/squigglingMap/comidas - mapa.png" id="38_nd2o0"]
 [ext_resource type="Texture2D" uid="uid://dj3ecbwojvib6" path="res://Sprites/Mapa/squigglingMap/topo - mapa.png" id="39_xgaa0"]
 [ext_resource type="Texture2D" uid="uid://bwjlulgcqm3mx" path="res://Sprites/Mapa/megafaunaTitulo_mapa.png" id="42_ngqib"]
-[ext_resource type="Texture2D" uid="uid://b1umtmfvn2b6o" path="res://Sprites/ZonaGeología/medal - RockFighter.png" id="47_e1soy"]
 [ext_resource type="PackedScene" uid="uid://nmuyip31gkq5" path="res://Scenes/UI_Scenes/generic_button.tscn" id="49_5dgeg"]
 [ext_resource type="PackedScene" uid="uid://chcp24toqisaw" path="res://Scenes/Experiments/GenericPanel/GenericPanel.tscn" id="49_torm6"]
 [ext_resource type="Texture2D" uid="uid://daq0wdip7fkhp" path="res://Sprites/UI/eggIcon - UI.png" id="49_wt3wo"]
+[ext_resource type="Texture2D" uid="uid://bjvyukuc37c4h" path="res://Sprites/Mapa/check - mapa.png" id="50_flo3f"]
 [ext_resource type="Texture2D" uid="uid://kb7ixs5ala8" path="res://Sprites/UI/arrowIcon - UI.png" id="50_otgwf"]
 [ext_resource type="Script" path="res://Scenes/Experiments/GenericPanel/TextFieldData.gd" id="50_qkjuw"]
 [ext_resource type="Texture2D" uid="uid://st7bqvoiqdsm" path="res://Sprites/creditsExample.png" id="71_lb5as"]
@@ -334,6 +335,7 @@ margin = "margin_top"
 
 [node name="Piso4" type="Control" parent="ScrollContainer/VBoxContainer/Piso4"]
 layout_mode = 2
+mouse_filter = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer/VBoxContainer/Piso4/Piso4"]
 layout_mode = 0
@@ -349,11 +351,37 @@ layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.1
 
+[node name="ButtonChangeScene" parent="ScrollContainer/VBoxContainer/Piso4/Piso4/VBoxContainer/separacion3" instance=ExtResource("7_1v7i5")]
+visible = false
+layout_mode = 0
+anchors_preset = 0
+NextScene = "ResetScreen"
+fade_time = 0.6
+texture = "vertical"
+smoothness = 0.2
+
+[node name="GenericButton" parent="ScrollContainer/VBoxContainer/Piso4/Piso4/VBoxContainer/separacion3" instance=ExtResource("49_5dgeg")]
+layout_mode = 1
+offset_left = 21.0
+offset_top = 23.0
+offset_right = 111.0
+offset_bottom = 113.0
+enterInBeggining = true
+noSquiggling = true
+Icon = ExtResource("12_su1kk")
+
+[node name="TextureRect" parent="ScrollContainer/VBoxContainer/Piso4/Piso4/VBoxContainer/separacion3/GenericButton" index="0"]
+texture = ExtResource("12_su1kk")
+
+[node name="SquigglingSprite" parent="ScrollContainer/VBoxContainer/Piso4/Piso4/VBoxContainer/separacion3/GenericButton" index="1"]
+visible = false
+
 [node name="Logo" type="Control" parent="ScrollContainer/VBoxContainer/Piso4/Piso4/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.74
+mouse_filter = 1
 
 [node name="LogoPivot" type="Node2D" parent="ScrollContainer/VBoxContainer/Piso4/Piso4/VBoxContainer/Logo"]
 position = Vector2(4, 224)
@@ -396,11 +424,13 @@ label_settings = SubResource("LabelSettings_2wfc2")
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.0
+mouse_filter = 1
 
 [node name="Title" type="Control" parent="ScrollContainer/VBoxContainer/Piso4/Piso4/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.82
+mouse_filter = 1
 
 [node name="TitlePivot" type="Node2D" parent="ScrollContainer/VBoxContainer/Piso4/Piso4/VBoxContainer/Title"]
 position = Vector2(353, 283)
@@ -434,6 +464,7 @@ size_flags_stretch_ratio = 0.0
 [node name="Team" type="Control" parent="ScrollContainer/VBoxContainer/Piso4/Piso4/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+mouse_filter = 1
 
 [node name="Seba" type="Control" parent="ScrollContainer/VBoxContainer/Piso4/Piso4/VBoxContainer/Team"]
 layout_mode = 1
@@ -445,6 +476,7 @@ offset_top = 58.0
 offset_right = -27.0
 offset_bottom = 291.0
 grow_horizontal = 2
+mouse_filter = 1
 
 [node name="nube" type="Node2D" parent="ScrollContainer/VBoxContainer/Piso4/Piso4/VBoxContainer/Team/Seba"]
 position = Vector2(168, 115)
@@ -544,6 +576,7 @@ offset_top = 95.0
 offset_right = 348.0
 offset_bottom = 328.0
 grow_horizontal = 2
+mouse_filter = 1
 
 [node name="nube" type="Node2D" parent="ScrollContainer/VBoxContainer/Piso4/Piso4/VBoxContainer/Team/Sofi"]
 position = Vector2(168, 115)
@@ -614,6 +647,7 @@ offset_top = 279.024
 offset_right = 149.0
 offset_bottom = 512.024
 grow_horizontal = 2
+mouse_filter = 1
 
 [node name="nube" type="Node2D" parent="ScrollContainer/VBoxContainer/Piso4/Piso4/VBoxContainer/Team/Joaco"]
 position = Vector2(168, 115)
@@ -676,6 +710,7 @@ label_settings = SubResource("LabelSettings_lrjux")
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.1
+mouse_filter = 1
 
 [node name="Piso3" type="Control" parent="ScrollContainer/VBoxContainer"]
 layout_mode = 2
@@ -1351,9 +1386,8 @@ state_machine = NodePath("../../../../../../StateMachine")
 [node name="check" type="Sprite2D" parent="ScrollContainer/VBoxContainer/Piso2/AstronomiaZone/TextureRect"]
 visible = false
 position = Vector2(545.454, 875.757)
-rotation = -0.206368
-scale = Vector2(1.07132, 1.07132)
-texture = ExtResource("47_e1soy")
+scale = Vector2(5.49498, 5.49498)
+texture = ExtResource("50_flo3f")
 
 [node name="SquigglingSprite" parent="ScrollContainer/VBoxContainer/Piso2/AstronomiaZone/TextureRect" instance=ExtResource("19_ied16")]
 position = Vector2(510.606, 901.515)
@@ -1453,10 +1487,9 @@ state_machine = NodePath("../../../../../../StateMachine")
 
 [node name="check" type="Sprite2D" parent="ScrollContainer/VBoxContainer/Piso2/GeologiaZone/TextureRect"]
 visible = false
-position = Vector2(543.742, 723.081)
-rotation = 0.258852
-scale = Vector2(1.2457, 1.2457)
-texture = ExtResource("47_e1soy")
+position = Vector2(543.742, 780.658)
+scale = Vector2(5.49495, 5.49495)
+texture = ExtResource("50_flo3f")
 
 [node name="SquigglingSprite" parent="ScrollContainer/VBoxContainer/Piso2/GeologiaZone/TextureRect" instance=ExtResource("19_ied16")]
 position = Vector2(540.771, 888.016)
@@ -1558,9 +1591,8 @@ state_machine = NodePath("../../../../../../../StateMachine")
 [node name="check" type="Sprite2D" parent="ScrollContainer/VBoxContainer/Piso1/Piso1/MegafaunaZone/TextureRect"]
 visible = false
 position = Vector2(766.848, 1048.48)
-rotation = 0.248394
-scale = Vector2(1.4071, 1.4071)
-texture = ExtResource("47_e1soy")
+scale = Vector2(6.54555, 6.54555)
+texture = ExtResource("50_flo3f")
 
 [node name="anchorMegafauna" type="Control" parent="ScrollContainer/VBoxContainer/Piso1/Piso1/MegafaunaZone/TextureRect"]
 layout_mode = 1
@@ -1854,19 +1886,6 @@ script = ExtResource("13_tgu8h")
 ButtonBack = NodePath("../../SubViewportContainer")
 ButtonNaumi = NodePath("../ButtonNaumi")
 
-[node name="Button" type="Button" parent="StateMachine/NoZone"]
-z_index = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 27.0
-offset_top = -108.0
-offset_right = 247.0
-offset_bottom = -24.0
-grow_vertical = 0
-theme_override_font_sizes/font_size = 40
-text = "Restart"
-
 [node name="Debug" type="Button" parent="StateMachine/NoZone"]
 z_index = 1
 anchors_preset = 3
@@ -2151,6 +2170,7 @@ Texts = Array[ExtResource("50_qkjuw")]([SubResource("Resource_fr8qp")])
 [node name="Panel(1) Btn(rigth)" parent="AdventurePanel/AdventurePanel/PanelSuerte" instance=ExtResource("80_b1np3")]
 Data = SubResource("Resource_uuqo0")
 
+[connection signal="pressed" from="ScrollContainer/VBoxContainer/Piso4/Piso4/VBoxContainer/separacion3/GenericButton" to="ScrollContainer/VBoxContainer/Piso4/Piso4/VBoxContainer/separacion3/ButtonChangeScene" method="_on_pressed"]
 [connection signal="pressed" from="ScrollContainer/VBoxContainer/Piso3/CuaternarioZone/TextureRect/btnProximamente" to="ScrollContainer/VBoxContainer/Piso3/CuaternarioZone/TextureRect/PanelProximamente/Panel" method="EnterPanel"]
 [connection signal="pressed" from="ScrollContainer/VBoxContainer/Piso3/CuaternarioZone/TextureRect/btnProximamente" to="ScrollContainer/VBoxContainer/Piso3/CuaternarioZone/TextureRect/btnProximamente" method="set_visible" binds= [false]]
 [connection signal="ButtonPress" from="ScrollContainer/VBoxContainer/Piso3/CuaternarioZone/TextureRect/PanelProximamente/Panel/Panel(1) Btn(rigth)" to="ScrollContainer/VBoxContainer/Piso3/CuaternarioZone/TextureRect/btnProximamente" method="set_visible" binds= [true]]
@@ -2188,6 +2208,7 @@ Data = SubResource("Resource_uuqo0")
 [connection signal="pressed" from="StateMachine/ButtonBack" to="StateMachine" method="Trigger_On_Child_Transition" binds= ["NoZone"]]
 [connection signal="ButtonPress" from="AdventurePanel/AdventurePanel/PanelSuerte/Panel(1) Btn(rigth)" to="AdventurePanel" method="set_visible" binds= [false]]
 
+[editable path="ScrollContainer/VBoxContainer/Piso4/Piso4/VBoxContainer/separacion3/GenericButton"]
 [editable path="ScrollContainer/VBoxContainer/Piso3/CuaternarioZone/TextureRect/PanelProximamente/Panel"]
 [editable path="ScrollContainer/VBoxContainer/Piso3/CuaternarioZone/TextureRect/PanelProximamente/Panel/btnIzqAnchor/btnIzq/SquigglingSprite"]
 [editable path="ScrollContainer/VBoxContainer/Piso3/CuaternarioZone/TextureRect/PanelProximamente/Panel/btnCentralAnchor/btnCentral/SquigglingSprite"]

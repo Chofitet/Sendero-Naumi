@@ -52,6 +52,7 @@ func JumpAnim():
 	anim.play("rock_jump")
 
 func SetNextAnimBool(Bool):
+	PlayerVariables.EmitInactivePause()
 	for v in SetVisibility:
 		#get_node(v).visible = false
 		pass
@@ -96,6 +97,7 @@ func LoopLoseAnim():
 	timerLoopLook.start()
 
 func LoseCryAnim():
+	PlayerVariables.EmitActivePause()
 	anim.play("rock_lose_3")
 
 func AnimBackground():
@@ -113,7 +115,6 @@ func PlayAnimatedSprite(x):
 	animationSprite.play(x)
 
 func ResetRock():
-	
 	timerLoopLook.timeout.connect(LookAnim)
 	timerLoopLook.wait_time=6
 	timerLoopLook.start()
@@ -127,3 +128,4 @@ func ResetRock():
 	anim.play("RESET")
 	await  get_tree().create_timer(0.1).timeout
 	anim.play("rock_look")
+	

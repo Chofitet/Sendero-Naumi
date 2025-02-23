@@ -35,6 +35,7 @@ func Heat1():
 	z_index = 2
 
 func TranstaleToCenterScreen():
+	PlayerVariables.EmitInactivePause()
 	visible = true
 	overlay.visible = true
 	var tween = get_tree().create_tween()
@@ -47,6 +48,7 @@ func panelAppear():
 	PanelAppear.emit()
 
 func buttonpress():
+	
 	time = 0
 	overlay.visible = false
 	nubeAnim.play("RESET")
@@ -56,6 +58,7 @@ func buttonpress():
 	if wasTransformed : return
 	wasTransformed = true
 	TriggerNextTransformation.emit()
+	PlayerVariables.EmitActivePause()
 
 func AnimLoop():
 	anim.play("anim_calor2")
