@@ -23,7 +23,7 @@ func DoDiscoverAnim(x):
 	topoController.ConnectBook(instance)
 	instance.DrawFinish.connect(EmitAppearIconSignal)
 	x.get_node("particles").Emit()
-	x.modulate = Color.WHITE
+	x.self_modulate = Color.WHITE
 	x.z_index = 2
 	var initScale = x.scale
 	var tween = get_tree().create_tween()

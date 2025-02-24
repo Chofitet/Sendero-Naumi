@@ -5,7 +5,7 @@ var verticalValue
 @onready var line = $Line2D
 @export var AnchorsIslands :=[Control]
 @export var HasAnchors : bool
-var NumOfPoint  = [0,3,4,6,11,12,13] 
+@export var NumOfPoint  = [0,3,4,6,11,12,13] 
 
 func _ready():
 	if Engine.is_editor_hint() : return
