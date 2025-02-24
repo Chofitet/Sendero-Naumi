@@ -12,7 +12,9 @@ func _ready():
 func playAnimMap():
 	animMap.play("caida")
 	await  animMap.animation_finished
-	await  get_tree().create_timer(0.7).timeout
+	await  get_tree().create_timer(0.5).timeout
+	$presenta/DotsAnim/AnimationPlayer.play("dot_wave")
+	await  get_tree().create_timer(0.2).timeout
 	squiggling.ActiveSquiggling()
 	btn.visible = true
 	handUI.SetVisibility(true)

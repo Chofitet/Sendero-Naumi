@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://b00ok4g2p2vql"]
+[gd_scene load_steps=26 format=3 uid="uid://b00ok4g2p2vql"]
 
 [ext_resource type="Texture2D" uid="uid://hf5y4ic16cqj" path="res://Sprites/Intro/intro - background.jpg" id="1_xm8pn"]
 [ext_resource type="Texture2D" uid="uid://jd6systmhxf1" path="res://Sprites/Intro/intro - suelo.png" id="2_2edvn"]
@@ -8,8 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://cjjoaemhep814" path="res://Sprites/mapa-detalle.png" id="4_q3m1c"]
 [ext_resource type="Script" path="res://_Scripts/mapArriveSpot.gd" id="4_u6txa"]
 [ext_resource type="Script" path="res://_Scripts/PlayAnimation.gd" id="5_3difv"]
-[ext_resource type="Texture2D" uid="uid://chqivoetkgkoj" path="res://Sprites/UI/circulo.png" id="10_fkwv8"]
-[ext_resource type="Texture2D" uid="uid://dhx6ness36h5f" path="res://Sprites/logoChicoCirculo.png" id="11_88s5v"]
+[ext_resource type="Texture2D" uid="uid://bue1ojwaaxod4" path="res://Sprites/logoCircleColor.png" id="8_2lckt"]
 [ext_resource type="PackedScene" uid="uid://cw3ok8v4p620b" path="res://Scenes/Experiments/squiggling_sprite.tscn" id="12_bs1t8"]
 [ext_resource type="PackedScene" uid="uid://bac1ysj2c0bok" path="res://Scenes/Experiments/hand_ui.tscn" id="12_lhlbh"]
 [ext_resource type="PackedScene" uid="uid://djhg7jvxtexyl" path="res://Scenes/UI_Scenes/btn_Change_Scene.tscn" id="12_n3dw3"]
@@ -116,7 +115,7 @@ _data = {
 
 [sub_resource type="Animation" id="Animation_eyv2g"]
 resource_name = "Fade_out_logo"
-length = 15.0
+length = 8.7
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -158,14 +157,14 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("../Label2:self_modulate")
+tracks/3/path = NodePath("../presenta:modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(8, 8.7, 10.7, 11.6),
-"transitions": PackedFloat32Array(1, 1, 0.3, 1),
+"times": PackedFloat32Array(8, 8.7),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_7m1eg"]
@@ -197,7 +196,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("../Label2:self_modulate")
+tracks/2/path = NodePath("../presenta:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -207,8 +206,25 @@ tracks/2/keys = {
 "values": [Color(1, 1, 1, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_5xlrt"]
+resource_name = "DisappearPresenta"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../presenta:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_edlyj"]
 _data = {
+"DisappearPresenta": SubResource("Animation_5xlrt"),
 "Fade_out_logo": SubResource("Animation_eyv2g"),
 "RESET": SubResource("Animation_7m1eg")
 }
@@ -224,6 +240,116 @@ font_size = 35
 font_color = Color(0.988235, 0.941176, 0.866667, 1)
 outline_size = 18
 outline_color = Color(0.0352941, 0.0941176, 0.0941176, 1)
+
+[sub_resource type="Animation" id="Animation_3yrlo"]
+resource_name = "dot_wave"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, -2, 1),
+"update": 0,
+"values": [Vector2(0, -12), Vector2(0, -20), Vector2(0, -12)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Label2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1, 0.3, 0.5),
+"transitions": PackedFloat32Array(1, -2, 1),
+"update": 0,
+"values": [Vector2(0, -12), Vector2(0, -20), Vector2(0, -12)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Label3:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, -2, 1),
+"update": 0,
+"values": [Vector2(0, -12), Vector2(0, -20), Vector2(0, -12)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_vbmic"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -12)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Label2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -12)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Label3:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -12)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mqhkq"]
+_data = {
+"RESET": SubResource("Animation_vbmic"),
+"dot_wave": SubResource("Animation_3yrlo")
+}
 
 [node name="Mapa_Fall_Intro" type="Control"]
 layout_mode = 3
@@ -306,16 +432,8 @@ animation = "map_enter"
 [node name="LOGO" type="Sprite2D" parent="mapArriveSpot"]
 clip_children = 2
 position = Vector2(0, -607)
-scale = Vector2(0.37, 0.37)
-texture = ExtResource("10_fkwv8")
-
-[node name="LOGO" type="Sprite2D" parent="mapArriveSpot/LOGO"]
-scale = Vector2(0.989189, 0.989189)
-texture = ExtResource("10_fkwv8")
-
-[node name="LogoChicoCirculo" type="Sprite2D" parent="mapArriveSpot/LOGO/LOGO"]
-scale = Vector2(0.625962, 0.629346)
-texture = ExtResource("11_88s5v")
+scale = Vector2(0.232817, 0.232817)
+texture = ExtResource("8_2lckt")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="mapArriveSpot/LOGO"]
 autoplay = "Fade_out_logo"
@@ -343,17 +461,17 @@ label_settings = SubResource("LabelSettings_m04ay")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label2" type="Label" parent="mapArriveSpot"]
+[node name="presenta" type="Label" parent="mapArriveSpot"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -238.0
-offset_top = -329.0
-offset_right = 238.0
-offset_bottom = -277.0
+offset_left = -96.0
+offset_top = -345.0
+offset_right = 96.0
+offset_bottom = -293.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.0351563, 0.09375, 0.09375, 1)
@@ -363,10 +481,74 @@ label_settings = SubResource("LabelSettings_qf1bv")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="DotsAnim" type="Control" parent="mapArriveSpot/presenta"]
+visible = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = -39.0
+offset_right = 43.0
+offset_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Label" type="Label" parent="mapArriveSpot/presenta/DotsAnim"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -52.0
+offset_right = 40.0
+grow_vertical = 0
+text = "."
+label_settings = SubResource("LabelSettings_qf1bv")
+
+[node name="Label2" type="Label" parent="mapArriveSpot/presenta/DotsAnim"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -52.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "."
+label_settings = SubResource("LabelSettings_qf1bv")
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="mapArriveSpot/presenta/DotsAnim"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -52.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "."
+label_settings = SubResource("LabelSettings_qf1bv")
+horizontal_alignment = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="mapArriveSpot/presenta/DotsAnim"]
+speed_scale = 0.6
+libraries = {
+"": SubResource("AnimationLibrary_mqhkq")
+}
+
 [node name="handUI" parent="mapArriveSpot" instance=ExtResource("12_lhlbh")]
 AnimToPlay = "idle_anim"
 
 [node name="Button" type="Button" parent="mapArriveSpot"]
+visible = false
 layout_mode = 0
 offset_left = -152.0
 offset_top = -119.0
@@ -402,3 +584,4 @@ text = "Skip"
 NextScene = "Map_Screen"
 
 [connection signal="button_down" from="mapArriveSpot/Button" to="mapArriveSpot/MapAnim" method="play" binds= ["agarrado"]]
+[connection signal="button_down" from="mapArriveSpot/Button" to="mapArriveSpot/LOGO/AnimationPlayer" method="play" binds= ["DisappearPresenta"]]

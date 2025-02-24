@@ -70,3 +70,11 @@ func StartFlotingAnim():
 
 func DebugIland():
 	$IslandAnimator.play("UnlolckIsland")
+
+func OutFloor():
+	$block.visible = true
+	
+
+func inFloor():
+	MakeUnlockAnim()
+	$block.visible = false
