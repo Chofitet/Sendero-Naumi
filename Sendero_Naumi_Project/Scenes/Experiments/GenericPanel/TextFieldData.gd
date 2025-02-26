@@ -9,3 +9,5 @@ class_name TextField
 @export var buttons : Array[ButtonPanel] :
 	set(new_value):
 		buttons = new_value
+
+@export var NumOfContent = 0

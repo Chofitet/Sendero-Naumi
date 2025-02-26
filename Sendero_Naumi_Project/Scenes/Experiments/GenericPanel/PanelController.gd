@@ -18,6 +18,7 @@ var EnterOnce
 @onready var _BotonCentral = $btnCentralAnchor/btnCentral
 @onready var SkipButton = $ButtonSkipWritting
 var btnDontPassPanel
+var content =[]
 
 var _btns =[]
 var Characters_per_second : float = 78
@@ -42,6 +43,7 @@ signal CenterBTNPress
 
 
 func refreshData(numPanel : int):
+	
 	
 	btnDontPassPanel = false
 	
@@ -102,6 +104,18 @@ func refreshData(numPanel : int):
 			
 		if btn.dontPassPanel: btnDontPassPanel = true
 		
+	
+	for cont in get_children():
+		if cont.name.contains("content"):
+			content.append(cont)
+			cont.visible = false
+			cont.modulate.a = 0
+	
+	if textData.NumOfContent != 0:
+		var tween = get_tree().create_tween()
+		tween.tween_property(content[textData.NumOfContent - 1],"modulate",Color.WHITE,0.5)
+		content[textData.NumOfContent - 1].visible = true
+	
 	if Engine.is_editor_hint(): label.visible_ratio = true
 
 func InstanciateIntermediate():
@@ -126,6 +140,9 @@ func _ready():
 	_BotonDerecho.visible = false
 	_BotonIzquierda.visible = false
 	_BotonCentral.visible = false
+	
+	
+
 	pivot_offset =  Vector2(size.x/2,size.y/2)
 	if !Engine.is_editor_hint(): label.visible_ratio = 0
 	refreshData(1)
