@@ -17,6 +17,7 @@ var minigameResourseFile = MiniGameResource.new()
 var instance = InstanceResource.new()
 var button
 @export var NumOfLevel : int
+var pop = preload(\"res://Scenes/UI_Scenes/pop.tscn\")
 @onready var squigglyObject = $SquigglingSprite
 var isWaitingForAnimComplete
 
@@ -53,6 +54,9 @@ func OnZone():
 
 
 func CheckComplete():
+	var instancepop = pop.instantiate()
+	$Sprite2D.add_child(instancepop) 
+	instancepop.global_position = $Sprite2D.global_position + Vector2(0,-29)
 	if minigameResourseFile.StateMinigames[self.name]:
 		instance = ResourceLoader.load(save_file_path + \"InstanceResource.tres\" )
 		instance.RestartOneInstance(self.name)
@@ -179,7 +183,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_mlvwx"]
 resource_name = "completed"
-length = 1.1
+length = 1.6
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -187,7 +191,7 @@ tracks/0/path = NodePath("Sprite2D:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 0.6),
+"times": PackedFloat32Array(0.5, 1, 1.1),
 "transitions": PackedFloat32Array(2, -2, 1),
 "update": 0,
 "values": [Vector2(0, -1800.39), Vector2(0, -27.385), Vector2(0, -105.385)]
@@ -199,7 +203,7 @@ tracks/1/path = NodePath("Sprite2D/tilde:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.7, 0.8),
+"times": PackedFloat32Array(1.2, 1.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
@@ -211,7 +215,7 @@ tracks/2/path = NodePath("Sprite2D/pop:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0.8, 0.9, 1),
+"times": PackedFloat32Array(1.3, 1.4, 1.5),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [0, 1, 2]
@@ -223,7 +227,7 @@ tracks/3/path = NodePath("Sprite2D/pop:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0.7, 0.8, 1.1),
+"times": PackedFloat32Array(1.2, 1.3, 1.6),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [false, true, false]
@@ -235,7 +239,7 @@ tracks/4/path = NodePath("ButtonChangeScene:disabled")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 1.1),
+"times": PackedFloat32Array(0.5, 1.6),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -247,7 +251,7 @@ tracks/5/path = NodePath("Sprite2D/Label:visible")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0.7, 0.8),
+"times": PackedFloat32Array(1.2, 1.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -259,7 +263,7 @@ tracks/6/path = NodePath("Sprite2D/tilde:scale")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0.8, 0.9, 1.1),
+"times": PackedFloat32Array(1.3, 1.4, 1.6),
 "transitions": PackedFloat32Array(2, 1, 1),
 "update": 0,
 "values": [Vector2(0, 0), Vector2(1.2, 1.2), Vector2(1, 1)]
@@ -271,7 +275,7 @@ tracks/7/path = NodePath("Sprite2D:scale")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(0, 0.4, 0.5, 0.6, 0.7),
+"times": PackedFloat32Array(0.5, 0.9, 1, 1.1, 1.2),
 "transitions": PackedFloat32Array(1, 1, 1, 0.5, 1),
 "update": 0,
 "values": [Vector2(1, 1), Vector2(1, 1), Vector2(1, 0.775), Vector2(1, 1.2), Vector2(1, 1)]

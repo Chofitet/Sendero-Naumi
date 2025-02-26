@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://b00ok4g2p2vql"]
+[gd_scene load_steps=29 format=3 uid="uid://b00ok4g2p2vql"]
 
 [ext_resource type="Texture2D" uid="uid://hf5y4ic16cqj" path="res://Sprites/Intro/intro - background.jpg" id="1_xm8pn"]
 [ext_resource type="Texture2D" uid="uid://jd6systmhxf1" path="res://Sprites/Intro/intro - suelo.png" id="2_2edvn"]
@@ -13,6 +13,9 @@
 [ext_resource type="PackedScene" uid="uid://bac1ysj2c0bok" path="res://Scenes/Experiments/hand_ui.tscn" id="12_lhlbh"]
 [ext_resource type="PackedScene" uid="uid://djhg7jvxtexyl" path="res://Scenes/UI_Scenes/btn_Change_Scene.tscn" id="12_n3dw3"]
 [ext_resource type="Texture2D" uid="uid://chilh432yan4s" path="res://Sprites/Intro/squigglingIntro/mapaIntroSQUIG - UI.png" id="13_q1dat"]
+[ext_resource type="Script" path="res://_Scripts/SkipLogic.gd" id="14_6a3v3"]
+[ext_resource type="PackedScene" uid="uid://nmuyip31gkq5" path="res://Scenes/UI_Scenes/generic_button.tscn" id="15_cg38x"]
+[ext_resource type="Texture2D" uid="uid://kb7ixs5ala8" path="res://Sprites/UI/arrowIcon - UI.png" id="16_bsblw"]
 
 [sub_resource type="Animation" id="Animation_klold"]
 length = 0.001
@@ -411,10 +414,11 @@ grow_vertical = 2
 script = ExtResource("4_u6txa")
 
 [node name="MapAnim" type="AnimatedSprite2D" parent="mapArriveSpot"]
+visible = false
 position = Vector2(1, -391)
 scale = Vector2(1.52533, 1.52533)
 sprite_frames = ExtResource("3_iq20j")
-animation = &"caida"
+animation = &"agarrado"
 
 [node name="Mapa" type="Sprite2D" parent="mapArriveSpot"]
 visible = false
@@ -586,5 +590,21 @@ grow_vertical = 1
 text = "Skip"
 NextScene = "Map_Screen"
 
+[node name="ButtonSkip" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 0
+script = ExtResource("14_6a3v3")
+
+[node name="GenericButton" parent="ButtonSkip" instance=ExtResource("15_cg38x")]
+visible = false
+layout_mode = 0
+offset_left = 15.0
+offset_top = 10.0
+offset_right = 105.0
+offset_bottom = 100.0
+rotation = 3.14159
+Icon = ExtResource("16_bsblw")
+
 [connection signal="button_down" from="mapArriveSpot/Button" to="mapArriveSpot/MapAnim" method="play" binds= ["agarrado"]]
 [connection signal="button_down" from="mapArriveSpot/Button" to="mapArriveSpot/LOGO/AnimationPlayer" method="play" binds= ["DisappearPresenta"]]
+[connection signal="pressed" from="ButtonSkip/GenericButton" to="ButtonChangeScene" method="_on_pressed"]

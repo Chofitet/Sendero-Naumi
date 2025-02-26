@@ -37,4 +37,4 @@ func ExitAnim():
 func InstanciateButtonPOP():
 	var POPInstance = pop.instantiate()
 	get_parent().add_child(POPInstance)
-	POPInstance.global_position = global_position + Vector2(45,45)
+	POPInstance.global_position = global_position + Vector2(45,45) * scale

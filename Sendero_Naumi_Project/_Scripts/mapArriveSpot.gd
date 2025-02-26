@@ -10,6 +10,7 @@ func _ready():
 	btn.button_down.connect(TakeMap)
 
 func playAnimMap():
+	animMap.visible = true
 	animMap.play("caida")
 	await  animMap.animation_finished
 	await  get_tree().create_timer(0.7).timeout

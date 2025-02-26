@@ -537,6 +537,34 @@ tracks/8/keys = {
 "update": 1,
 "values": [false, false, true]
 }
+tracks/9/type = "method"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("RightBtn/button/SquigglingSprite")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"ActiveSquiggling"
+}]
+}
+tracks/10/type = "method"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("LeftBtn/button/SquigglingSprite")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"ActiveSquiggling"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_knxec"]
 length = 0.001
@@ -2246,8 +2274,6 @@ texture = ExtResource("43_xay53")
 [connection signal="ButtonPress" from="RockFighters/StateMachine/Juego/Contenido/Instancia2/Control/RetryPanel/Panel(1) Btn(center)" to="RockFighters/StateMachine/Juego/Contenido/Instancia2/Control" method="RetryLevel"]
 [connection signal="InstanceTrue" from="RockFighters/StateMachine/Juego/Contenido/Instancia3" to="RockFighters/StateMachine/Juego/Contenido/MedalCounter" method="AddWinnedMedal" binds= [3]]
 [connection signal="ButtonPress" from="RockFighters/StateMachine/Juego/Contenido/Instancia3/Control2/RetryPanel/Panel(1) Btn(center)" to="RockFighters/StateMachine/Juego/Contenido/Instancia3/Control2" method="RetryLevel"]
-[connection signal="animation_started" from="RockFighters/StateMachine/Juego/Contenido/Consigna/AnimationPlayer" to="RockFighters/StateMachine/Juego/Contenido/Consigna/RightBtn/button/SquigglingSprite" method="ActiveSquiggling"]
-[connection signal="animation_started" from="RockFighters/StateMachine/Juego/Contenido/Consigna/AnimationPlayer" to="RockFighters/StateMachine/Juego/Contenido/Consigna/LeftBtn/button/SquigglingSprite" method="ActiveSquiggling"]
 [connection signal="pressed" from="RockFighters/StateMachine/Juego/Contenido/Consigna/RightBtn/BigButton" to="RockFighters/StateMachine/Juego/Contenido/Consigna/RightBtn/button/SquigglingSprite" method="InactiveSquiggling"]
 [connection signal="pressed" from="RockFighters/StateMachine/Juego/Contenido/Consigna/RightBtn/BigButton" to="RockFighters/StateMachine/Juego/Contenido/Consigna/LeftBtn/button/SquigglingSprite" method="InactiveSquiggling"]
 [connection signal="pressed" from="RockFighters/StateMachine/Juego/Contenido/Consigna/LeftBtn/BigButton" to="RockFighters/StateMachine/Juego/Contenido/Consigna/RightBtn/button/SquigglingSprite" method="InactiveSquiggling"]
