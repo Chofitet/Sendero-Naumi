@@ -1,0 +1,38 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://muj2sfgakm5s"]
+
+[sub_resource type="Shader" id="Shader_hsi5r"]
+code = "shader_type canvas_item;
+
+uniform float squiggle_intensity : hint_range(0.0, 10.0) = 1.0; // Intensidad del efecto
+uniform float speed : hint_range(0.0, 5.0) = 1.0; // Velocidad del efecto
+uniform float frequency : hint_range(0.0, 20.0) = 10.0; // Frecuencia de las ondulaciones
+
+uniform vec2 motion = vec2(0.0);
+uniform float scale = 1.0;
+uniform vec2 offset = vec2(0.0);
+
+void vertex(){
+	UV = (VERTEX + offset + TIME * motion) * TEXTURE_PIXEL_SIZE * (1.0/scale);
+}
+
+void fragment() {
+    vec2 uv = UV;
+
+    // Añade una ondulación basada en el tiempo
+    float time = TIME * speed;
+    uv.x += sin(uv.y * frequency + time) * squiggle_intensity * 0.01;
+    uv.y += cos(uv.x * frequency + time) * squiggle_intensity * 0.01;
+
+    // Muestra la textura del sprite con las ondulaciones aplicadas
+    COLOR = texture(TEXTURE, uv) * texture(TEXTURE, UV).a;
+}
+"
+
+[resource]
+shader = SubResource("Shader_hsi5r")
+shader_parameter/squiggle_intensity = 0.108
+shader_parameter/speed = 0.892
+shader_parameter/frequency = 20.0
+shader_parameter/motion = Vector2(0, 3)
+shader_parameter/scale = 1.0
+shader_parameter/offset = Vector2(0, 0)

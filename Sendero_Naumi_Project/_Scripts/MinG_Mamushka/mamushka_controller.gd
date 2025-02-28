@@ -47,6 +47,7 @@ func PlayAnimTitulo():
 	$Sprites/Layer0/titulo/AnimationPlayer.play("titulo_anim")
 
 func FinalState():
+	PlayerVariables.EmitInactivePause()
 	ToFinal.emit()
 	$ButtonFinal.visible = false
 	$DragObject.mouse_realese.disconnect(MouseRealese)

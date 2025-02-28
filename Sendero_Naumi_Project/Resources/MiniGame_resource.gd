@@ -12,9 +12,12 @@ class_name MiniGameResource
 "ManzanaAcaramelada": false,
 "Mamushkas" : false,
 "Calendario" : false,
+"LastMiniGameComplete" : "",
 "noFirstTimePlay" : false,
 "lastZone": "NoZone",
-"ToUnlockIlands": false}
+"ToUnlockIlands": false,
+"FirstTimeInMap": false,
+"PassCredits": false}
 
 func Set_State_Minigame(string):
 	StateMinigames[string] = true
@@ -31,3 +34,9 @@ func Get_Zone() -> String:
 
 func ToLevelNaumiFalse():
 	StateMinigames["ToLevelNaumi"] = false
+
+func Set_Last_Minigame(string):
+	StateMinigames["LastMiniGameComplete"] = string
+
+func Set_FirstTimeInMap(x):
+	StateMinigames["FirstTimeInMap"] = x

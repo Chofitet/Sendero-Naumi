@@ -9,7 +9,7 @@ var DrawDic31 = false
 var cintapng = load("res://Sprites/ZonaAstronomia/cintas.png")
 @onready var background = $background
 
-@onready var InstanceReference = get_parent().get_parent().get_parent()
+@onready var InstanceReference = get_parent().get_parent().get_parent().get_parent()
 
 func _ready():
 	InstanceReference.get_parent().Transitioned.connect(SetSlot)

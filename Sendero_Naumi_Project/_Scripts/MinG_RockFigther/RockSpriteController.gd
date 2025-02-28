@@ -10,7 +10,7 @@ var timer
 var btnvolver
 signal fight
 
-func init(_texture,isflip, btn, _isWinner, otherRock, VectorScale = Vector2(0.639,0.639), offset = Vector2.ZERO):
+func init(_texture,isflip, btn, _isWinner, otherRock, playEnterAnim = true, VectorScale = Vector2(0.639,0.639), offset = Vector2.ZERO):
 	$Parts/Piedra.texture = _texture
 	$Parts/Piedra.scale = VectorScale
 	$Parts/Piedra.offset = offset
@@ -22,14 +22,24 @@ func init(_texture,isflip, btn, _isWinner, otherRock, VectorScale = Vector2(0.63
 	timer = get_node("Timer")
 	timer.timeout.connect(finishAnim)
 	shardEmitter = get_node("Parts/Piedra/ShardEmitter")
-	anim = $AnimPiedra 
+	anim = $AnimPiedra
+	anim.play("Rock_Idle") 
+	if playEnterAnim:
+		anim.play("EnterAnim")
+		await anim.animation_finished
+		anim.play("Rock_Idle")
+		PlayAnimOfParts("Rock_Idle")
+	
+
+func EnterAnim():
 	anim.play("EnterAnim")
 	await anim.animation_finished
 	anim.play("Rock_Idle")
-
+	PlayAnimOfParts("Rock_Idle")
 
 func Fight(): 
 	anim.play("Rock_Punch")
+	PlayAnimOfParts("Rock_Punch")
 	fight.emit()
 	timer.start()
 
@@ -41,10 +51,20 @@ func finishAnim():
 				p.visible = false
 		await get_tree().create_timer(3).timeout
 		get_parent().PassInstance()
+	else:
+		await get_tree().create_timer(1.3).timeout
+		PlayIdle()
 
 func BlockAnim():
 	anim.play("Rock_Block")
+	PlayAnimOfParts("Rock_Block")
 	timer.start()
 
 func PlayIdle():
 	anim.play("Rock_Idle")
+	PlayAnimOfParts("Rock_Idle")
+
+func PlayAnimOfParts(anim):
+	for p in $Parts.get_children():
+		if p is AnimatedSprite2D:
+			p.play(anim)

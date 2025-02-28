@@ -29,6 +29,7 @@ func SetInventarySpot(obj):
 	if i == Objects.size():
 		AllFinded()
 		AllPicked.emit()
+		PlayerVariables.EmitInactivePause()
 
 func AllFinded():
 	get_parent().get_node("ScreenCenter/Clues").BlockOthersClues(self,false)
@@ -50,6 +51,7 @@ func PassStateTransition():
 	animPanel.play("inPlace")
 	await  animPanel.animation_finished
 	StateMachine.Trigger_On_Child_Transition("Juego")
+	PlayerVariables.EmitActivePause()
 
 func instanciateFade():
 	var fadeInstance = load("res://Scenes/Experiments/IndividualFade.tscn")

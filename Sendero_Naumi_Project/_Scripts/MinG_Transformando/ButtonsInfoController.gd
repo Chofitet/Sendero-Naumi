@@ -30,3 +30,4 @@ func DisablePanel():
 
 func lastRock():
 	LastRock = true
+	ActiveButtons()

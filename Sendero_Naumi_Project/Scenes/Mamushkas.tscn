@@ -1,7 +1,8 @@
-[gd_scene load_steps=78 format=3 uid="uid://c8i2bn43d2ke0"]
+[gd_scene load_steps=79 format=3 uid="uid://c8i2bn43d2ke0"]
 
 [ext_resource type="Script" path="res://_Scripts/Minigame_Save_Controller.gd" id="1_8wifm"]
 [ext_resource type="Texture2D" uid="uid://nuybqhitpej1" path="res://Sprites/Mapa/fondo_mapa.png" id="2_feayv"]
+[ext_resource type="Material" uid="uid://muj2sfgakm5s" path="res://shaders/GalaxyWiggle.tres" id="2_wypsj"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/StateMachineMinigames.gd" id="3_adlxq"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/ConsignaState.gd" id="4_cjbo7"]
 [ext_resource type="Texture2D" uid="uid://cctu3otg3du6u" path="res://Sprites/ZonaAstronomia/corteza orbe - matryoshka.png" id="6_jln3r"]
@@ -252,6 +253,7 @@ Text = "LA TIERRA ESTÁ COMPUESTA POR VARIAS CAPAS"
 SizePanel = Vector2(0, 0)
 Position = Vector2(0, 0)
 buttons = Array[ExtResource("35_875yy")]([SubResource("Resource_87imy")])
+NumOfContent = 0
 
 [sub_resource type="Resource" id="Resource_oh2lj"]
 script = ExtResource("38_188ia")
@@ -272,6 +274,7 @@ ESTÁ EL NÚCLEO INTERNO"
 SizePanel = Vector2(0, 0)
 Position = Vector2(0, 0)
 buttons = Array[ExtResource("35_875yy")]([SubResource("Resource_62sg5")])
+NumOfContent = 0
 
 [sub_resource type="Resource" id="Resource_8bjah"]
 script = ExtResource("38_188ia")
@@ -291,6 +294,7 @@ Text = "SI IMAGINAMOS LAS CAPAS COMO MAMUSHKAS"
 SizePanel = Vector2(0, 0)
 Position = Vector2(0, 0)
 buttons = Array[ExtResource("35_875yy")]([SubResource("Resource_yx1ha")])
+NumOfContent = 0
 
 [sub_resource type="Resource" id="Resource_lr8vc"]
 script = ExtResource("38_188ia")
@@ -311,6 +315,7 @@ Text = "DE MENOR A MAYOR
 SizePanel = Vector2(0, 0)
 Position = Vector2(0, 0)
 buttons = Array[ExtResource("35_875yy")]([SubResource("Resource_wh0xv")])
+NumOfContent = 0
 
 [sub_resource type="Resource" id="Resource_8oe0x"]
 script = ExtResource("38_188ia")
@@ -508,6 +513,7 @@ Y MÁS DE 12 MIL KM DE DIÁMETRO"
 SizePanel = Vector2(0, 0)
 Position = Vector2(0, 0)
 buttons = Array[ExtResource("35_875yy")]([SubResource("Resource_qcaun")])
+NumOfContent = 0
 
 [sub_resource type="Resource" id="Resource_cvg2o"]
 script = ExtResource("35_875yy")
@@ -522,6 +528,7 @@ Text = "¿CUÁNTO PENSÁS RECORRER?"
 SizePanel = Vector2(0, 0)
 Position = Vector2(0, 0)
 buttons = Array[ExtResource("35_875yy")]([SubResource("Resource_cvg2o")])
+NumOfContent = 0
 
 [sub_resource type="Resource" id="Resource_rw5tw"]
 script = ExtResource("38_188ia")
@@ -562,8 +569,9 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.72549, 1, 1, 1)
 
-[node name="TextureRect" type="TextureRect" parent="Mamushkas/Control"]
+[node name="SpaceTexture" type="TextureRect" parent="Mamushkas/Control"]
 z_index = -1
+material = ExtResource("2_wypsj")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -571,6 +579,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_feayv")
+expand_mode = 1
 stretch_mode = 1
 
 [node name="StateMachine" type="Node" parent="Mamushkas" node_paths=PackedStringArray("initial_state")]
@@ -809,10 +818,15 @@ state_machine = NodePath("../../../..")
 
 [node name="PanelIntro1" parent="Mamushkas/StateMachine/Consigna/Contenido/Intro" instance=ExtResource("34_rfy62")]
 layout_mode = 1
-offset_top = 45.0
-offset_bottom = 273.0
+anchors_preset = 8
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -326.0
+offset_top = -595.0
+offset_right = 326.0
+offset_bottom = -367.0
+grow_vertical = 2
 AppearInBeginning = false
-characters_per_second = 45.0
 Texts = Array[ExtResource("37_m4uql")]([SubResource("Resource_fj3qn")])
 
 [node name="Panel(1) Btn(rigth)" parent="Mamushkas/StateMachine/Consigna/Contenido/Intro/PanelIntro1" instance=ExtResource("36_7mbwy")]
@@ -820,10 +834,15 @@ Data = SubResource("Resource_oh2lj")
 
 [node name="PanelIntro2" parent="Mamushkas/StateMachine/Consigna/Contenido/Intro" instance=ExtResource("34_rfy62")]
 layout_mode = 1
-offset_top = 45.0
-offset_bottom = 273.0
+anchors_preset = 8
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -326.0
+offset_top = -595.0
+offset_right = 326.0
+offset_bottom = -367.0
+grow_vertical = 2
 AppearInBeginning = false
-characters_per_second = 45.0
 Texts = Array[ExtResource("37_m4uql")]([SubResource("Resource_suyxt")])
 
 [node name="Panel(1) Btn(rigth)" parent="Mamushkas/StateMachine/Consigna/Contenido/Intro/PanelIntro2" instance=ExtResource("36_7mbwy")]
@@ -831,10 +850,15 @@ Data = SubResource("Resource_8bjah")
 
 [node name="PanelIntro3" parent="Mamushkas/StateMachine/Consigna/Contenido/Intro" instance=ExtResource("34_rfy62")]
 layout_mode = 1
-offset_top = 45.0
-offset_bottom = 273.0
+anchors_preset = 8
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -326.0
+offset_top = -595.0
+offset_right = 326.0
+offset_bottom = -367.0
+grow_vertical = 2
 AppearInBeginning = false
-characters_per_second = 45.0
 Texts = Array[ExtResource("37_m4uql")]([SubResource("Resource_fshby")])
 
 [node name="Panel(1) Btn(rigth)" parent="Mamushkas/StateMachine/Consigna/Contenido/Intro/PanelIntro3" instance=ExtResource("36_7mbwy")]
@@ -849,7 +873,6 @@ offset_top = 80.24
 offset_bottom = 308.24
 pivot_offset = Vector2(326, 114)
 AppearInBeginning = false
-characters_per_second = 45.0
 Texts = Array[ExtResource("37_m4uql")]([SubResource("Resource_e0isu")])
 
 [node name="Panel(1) Btn(rigth)" parent="Mamushkas/StateMachine/Consigna/Contenido/Intro/PanelIntro4" instance=ExtResource("36_7mbwy")]
@@ -1043,6 +1066,9 @@ offset_right = 207.0
 offset_bottom = -51.0
 text = "Continue"
 NextScene = "Map_Screen"
+fade_time = 0.6
+texture = "vertical"
+smoothness = 0.2
 
 [node name="Tierra Capas" type="Control" parent="Mamushkas/StateMachine/Juego/Contenido/Instancia1/Outro"]
 layout_mode = 1
@@ -1219,7 +1245,6 @@ offset_top = -114.36
 offset_bottom = 113.64
 pivot_offset = Vector2(326, 114)
 AppearInBeginning = false
-characters_per_second = 45.0
 Texts = Array[ExtResource("37_m4uql")]([SubResource("Resource_akuin"), SubResource("Resource_hf8th")])
 
 [node name="Panel(1) Btn(rigth)" parent="Mamushkas/StateMachine/Juego/Contenido/Instancia1/Outro/PanelOutro" instance=ExtResource("36_7mbwy")]

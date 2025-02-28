@@ -12,6 +12,7 @@ func _ready():
 	initRotation = rotation
 
 func TranstaleToCenterScreen(animation):
+	PlayerVariables.EmitInactivePause()
 	visible = true
 	z_index = 2
 	overlay.visible = true

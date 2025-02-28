@@ -20,39 +20,40 @@ var playerWinner
 signal PlayerLost
 
 func _ready():
-	get_parent().InstanceTrue.connect(SpawnFighters)
+	get_parent().InstanceTrue.connect(SpawnFighters.bind(true))
 	RigthBtn.get_child(1).pressed.connect(Figth.bind(false))
 	LeftBtn.get_child(1).pressed.connect(Figth.bind(true))
 
-func SpawnFighters():
+func SpawnFighters(playEnterAnim):
+	PlayerVariables.EmitActivePause()
 	LeftRock = instance.instantiate()
 	RigthRock = instance.instantiate()
 	add_child(LeftRock)
 	LeftRock.position.x = 0
-	LeftRock.init(LeftTexture,-1,LeftBtn.get_child(1),isLeftWinner,RigthRock)
+	LeftRock.init(LeftTexture,-1,LeftBtn.get_child(1),isLeftWinner,RigthRock,playEnterAnim)
 	LeftBtn.get_child(0).get_child(0).text = LeftName
 	add_child(RigthRock)
 	RigthRock.position.x = 0
-	RigthRock.init(RigthTexture,1,RigthBtn.get_child(1),!isLeftWinner,LeftRock,PiedraScale,PiedraOffset)
+	RigthRock.init(RigthTexture,1,RigthBtn.get_child(1),!isLeftWinner,LeftRock,playEnterAnim,PiedraScale,PiedraOffset)
 	RigthBtn.get_child(0).get_child(0).text = RigthName
 
 func PassInstance():
 	if !playerWinner:
+		PlayerVariables.EmitActivePause()
 		RetryPanel.EnterPanel()
-		if isLeftWinner:
-			LeftRock.PlayIdle()
-		else: RigthRock.PlayIdle()
 		return
 	LeftRock.queue_free()
 	RigthRock.queue_free()
 	stateMachine.Trigger_On_Child_Transition("Moraleja")
 
 func Figth(btnLeftPressed):
+	PlayerVariables.EmitInactivePause()
 	if btnLeftPressed == isLeftWinner: playerWinner = true
 	else: playerWinner = false
 	Overlay1.Anim()
 	Overlay2.Anim()
 	AnimatorUI.play_backwards("EnterAnim")
+	
 
 func RetryLevel():
 	if LeftRock == null : return

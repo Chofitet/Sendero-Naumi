@@ -2,6 +2,7 @@ extends Node
 var current_state : StateMinigame
 var states : Dictionary = {}
 signal StateUpdate
+signal StateToUpdate
 @export var initial_state : StateMinigame
 
 func _ready():
@@ -38,5 +39,5 @@ func On_Child_Transition(state, new_state_name, incruiseLevel = false):
 
 func Trigger_On_Child_Transition(new_state_name, incruiseLevel = false):
 	On_Child_Transition(current_state, new_state_name, incruiseLevel)
-
+	StateToUpdate.emit(new_state_name)
 

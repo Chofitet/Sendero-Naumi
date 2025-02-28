@@ -4,7 +4,8 @@ class_name NoZone
 @export var ButtonNaumi :  Button
 
 func _ready():
-	$Button.pressed.connect(_on_button_pressed)
+	#$Button.pressed.connect(_on_button_pressed)
+	pass
 
 func Enter():
 	PlayerVariables.lastState = self.name

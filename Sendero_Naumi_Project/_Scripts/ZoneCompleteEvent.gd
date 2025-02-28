@@ -23,4 +23,5 @@ func ShowPines():
 			for subp in p.get_children():
 				await get_tree().create_timer(0.7).timeout
 				subp.visible = true
-	$AnimationPlayer.play("zone_complete")
+	
+	$PanelCompletada.EnterPanel()

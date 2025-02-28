@@ -23,5 +23,3 @@ func checkHotSpots():
 		AllSpots.emit()
 		if change_z_index != 0:
 			z_index = change_z_index
-
-

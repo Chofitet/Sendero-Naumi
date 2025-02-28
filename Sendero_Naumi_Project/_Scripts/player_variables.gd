@@ -1,5 +1,7 @@
 extends Node
 
+signal InactivePause
+signal ActivePause
 var NaumiLevel : int
 var MinigameStage = 1
 var lastState = "NoZone"
@@ -54,3 +56,9 @@ func SaveLastPiso(num = 5):
 			NumPiso = 2
 		"GeologiaZone": 
 			NumPiso = 2
+
+func EmitInactivePause():
+	InactivePause.emit()
+	
+func EmitActivePause():
+	ActivePause.emit()

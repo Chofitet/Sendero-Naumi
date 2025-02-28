@@ -7,12 +7,10 @@ signal ButtonPress
 
 func EmitSignal(numOfPanel):
 	if Data.NumberOfPanel  == numOfPanel - 1: 
-		print("Signal of panel " + str(Data.NumberOfPanel))
 		await get_tree().create_timer(Delay).timeout
 		ButtonPress.emit()
 
 func ConnectSignal():
-	print("Signal connected")
 	get_parent().connect(Data.Get_Signal(),EmitSignal)
 
 

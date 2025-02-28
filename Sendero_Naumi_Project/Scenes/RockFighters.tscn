@@ -1,4 +1,4 @@
-[gd_scene load_steps=89 format=3 uid="uid://lv8sdofmjhf3"]
+[gd_scene load_steps=102 format=3 uid="uid://lv8sdofmjhf3"]
 
 [ext_resource type="Script" path="res://_Scripts/Minigame_Save_Controller.gd" id="1_f0fiw"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/StateMachineMinigames.gd" id="2_12384"]
@@ -10,10 +10,13 @@
 [ext_resource type="Texture2D" uid="uid://chd4x61mdw68l" path="res://Sprites/ZonaGeología/squigglingFighter/cartelVamosSQUIG - fighter.png" id="7_7tbh4"]
 [ext_resource type="Texture2D" uid="uid://bvaflt3wlye5h" path="res://Sprites/ZonaGeología/focoLuzBlaco.png" id="7_r3atn"]
 [ext_resource type="Texture2D" uid="uid://c6qavsooil6af" path="res://Sprites/ZonaGeología/golpe_tira .png" id="7_tdkmm"]
+[ext_resource type="LabelSettings" uid="uid://c8wu4hhqg284x" path="res://Resources/UI_Resources/Generic_Font.tres" id="9_7ccl3"]
 [ext_resource type="Texture2D" uid="uid://j8us4tqmnni5" path="res://Sprites/ZonaGeología/fondoLadrillo - durezas.png" id="11_2k4io"]
 [ext_resource type="Texture2D" uid="uid://blsk5fxd3ydja" path="res://Sprites/ZonaGeología/Nombre_Fighter.png" id="11_44jl1"]
 [ext_resource type="Texture2D" uid="uid://cs7w5oevvpe4m" path="res://Sprites/ZonaGeología/Piedras/topacio_dureza.png" id="12_i8jde"]
 [ext_resource type="Texture2D" uid="uid://b7poe0ethot51" path="res://Sprites/ZonaGeología/Piedras/flurita_dureza.png" id="13_imic4"]
+[ext_resource type="PackedScene" uid="uid://nmuyip31gkq5" path="res://Scenes/UI_Scenes/generic_button.tscn" id="13_rd5p2"]
+[ext_resource type="Texture2D" uid="uid://kb7ixs5ala8" path="res://Sprites/UI/arrowIcon - UI.png" id="14_wkaoh"]
 [ext_resource type="Texture2D" uid="uid://cnjb8mxdursmc" path="res://Sprites/ZonaGeología/cartel corazon.png" id="14_wtv3b"]
 [ext_resource type="Texture2D" uid="uid://b01q38uc638rp" path="res://Sprites/ZonaGeología/Piedras/apatita_dureza.png" id="15_d4cfw"]
 [ext_resource type="Theme" uid="uid://cqe37y1kc0id5" path="res://Themes/Geología/RockFighters.tres" id="15_g1ws0"]
@@ -49,8 +52,10 @@
 [ext_resource type="PackedScene" uid="uid://da63y126gdf5f" path="res://Scenes/Zona_Geología/medal_counter.tscn" id="40_8p7gf"]
 [ext_resource type="Texture2D" uid="uid://dqx8i8skk58mn" path="res://Sprites/ZonaGeología/dureza-festejo-pareja1.png" id="41_d5ulm"]
 [ext_resource type="Texture2D" uid="uid://clicyobmomilh" path="res://Sprites/ZonaGeología/dureza-festejo-pareja3.png" id="42_wqo4t"]
+[ext_resource type="ButtonGroup" uid="uid://cbu7gk50bap8v" path="res://Resources/ButtonGroupFigther.tres" id="43_p1yif"]
 [ext_resource type="Texture2D" uid="uid://bweceq8ikkir5" path="res://Sprites/ZonaGeología/dureza-festejo-pareja2.png" id="43_xay53"]
 [ext_resource type="Texture2D" uid="uid://ckgstqui4n4ld" path="res://Sprites/ZonaGeología/cinturonVictoria - durezas.png" id="46_ypyfl"]
+[ext_resource type="Texture2D" uid="uid://sjes41q2s71y" path="res://Sprites/ZonaGeología/fondoVictoria.png" id="49_045d7"]
 [ext_resource type="Texture2D" uid="uid://c2p5torstrtqm" path="res://Sprites/UI/checkIcon - UI.png" id="51_cuny6"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_01r1e"]
@@ -96,7 +101,6 @@ _data = {
 
 [sub_resource type="Animation" id="Animation_hl4o1"]
 resource_name = "Intro_Reflectores"
-length = 11.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -197,10 +201,117 @@ tracks/3/keys = {
 "values": [false]
 }
 
+[sub_resource type="Animation" id="Animation_lib6m"]
+resource_name = "finish"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../GenericButton")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"EnterAnim"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_481y5"]
+resource_name = "intro2"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("2Luz:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(3),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("1Luz:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_hg27n"]
+resource_name = "intro3"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("3Luz:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("2Luz:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_wntto"]
+resource_name = "intro 4"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("3Luz:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../GenericButton")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"EnterAnim"
+}]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vfwyg"]
 _data = {
 "Intro_Reflectores": SubResource("Animation_hl4o1"),
-"RESET": SubResource("Animation_flp5j")
+"RESET": SubResource("Animation_flp5j"),
+"finish": SubResource("Animation_lib6m"),
+"intro2": SubResource("Animation_481y5"),
+"intro3": SubResource("Animation_hg27n"),
+"intro4": SubResource("Animation_wntto")
 }
 
 [sub_resource type="Animation" id="Animation_gsqmi"]
@@ -290,8 +401,9 @@ dontPassPanel = false
 script = ExtResource("23_5rold")
 Text = "
 
-LA EXPOSICIÓN DE GEOLOGÍA
-TIENE LAS RESPUESTAS"
+
+[center]INVESTIGÁ LA [b]EXPOSICIÓN DE GEOLOGÍA[/b] 
+PARA ENCONTRAR LA RESPUESTA[/center]"
 SizePanel = Vector2(0, 0)
 Position = Vector2(0, 0)
 buttons = Array[ExtResource("21_w17j0")]([SubResource("Resource_m3bm4")])
@@ -401,6 +513,58 @@ tracks/6/keys = {
 "update": 0,
 "values": [Vector2(0, 0), Vector2(1.2, 1.2), Vector2(1, 1)]
 }
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("RightBtn/BigButton:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 1.9, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, false, true]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("LeftBtn/BigButton:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 1.9, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, false, true]
+}
+tracks/9/type = "method"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("RightBtn/button/SquigglingSprite")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"ActiveSquiggling"
+}]
+}
+tracks/10/type = "method"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("LeftBtn/button/SquigglingSprite")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"ActiveSquiggling"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_knxec"]
 length = 0.001
@@ -487,6 +651,30 @@ tracks/6/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(1, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("RightBtn/BigButton:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("LeftBtn/BigButton:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_nyamy"]
@@ -683,6 +871,31 @@ script = ExtResource("26_5tsnp")
 NumberOfPanel = 1
 Place = 1
 
+[sub_resource type="Resource" id="Resource_xeibc"]
+script = ExtResource("21_w17j0")
+Place = 1
+texture = ExtResource("51_cuny6")
+label = ""
+dontPassPanel = false
+
+[sub_resource type="Resource" id="Resource_neabq"]
+script = ExtResource("23_5rold")
+Text = "
+
+[center][b]EL DIAMANTE 
+ES LA SUSTANCIA NATURAL MÁS DURA 
+DEL PLANETA TIERRA[/b] 
+
+SU GRADO DE DUREZA ES 10,
+EL MÁS ALTO EN [b]LA ESCALA DE MOHS[/b]
+
+SÓLO ALGO TAN DURO COMO UN DIAMANTE
+PUEDE RAYAR A OTRO DIAMANTE
+[/center]"
+SizePanel = Vector2(0, 0)
+Position = Vector2(0, 0)
+buttons = Array[ExtResource("21_w17j0")]([SubResource("Resource_xeibc")])
+
 [sub_resource type="Resource" id="Resource_a4pap"]
 script = ExtResource("26_5tsnp")
 NumberOfPanel = 1
@@ -716,6 +929,14 @@ buttons = Array[ExtResource("21_w17j0")]([SubResource("Resource_anyup")])
 script = ExtResource("26_5tsnp")
 NumberOfPanel = 1
 Place = 1
+
+[sub_resource type="Gradient" id="Gradient_cyjm0"]
+offsets = PackedFloat32Array(0, 0.490385, 1)
+colors = PackedColorArray(0.0627451, 0.0470588, 0.0431373, 1, 0, 0, 0, 0.0216346, 0.0627451, 0.0470588, 0.0431373, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_qeym3"]
+gradient = SubResource("Gradient_cyjm0")
+fill_from = Vector2(1, 1)
 
 [sub_resource type="Resource" id="Resource_i2gy7"]
 script = ExtResource("21_w17j0")
@@ -779,13 +1000,56 @@ script = ExtResource("3_cy1k7")
 Consignas = ["Hey esto es una consigna"]
 
 [node name="Contenido" type="Control" parent="RockFighters/StateMachine/Consigna"]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Button" type="Button" parent="RockFighters/StateMachine/Consigna/Contenido" node_paths=PackedStringArray("state_to_change", "state_machine")]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.761
+anchor_right = 0.5
+anchor_bottom = 0.761
+offset_left = -169.05
+offset_top = -86.1801
+offset_right = 152.95
+offset_bottom = 78.8199
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.025, 1.025)
+pivot_offset = Vector2(161, 82)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxTexture_01r1e")
+theme_override_styles/hover = SubResource("StyleBoxTexture_01r1e")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_01r1e")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_01r1e")
+theme_override_styles/focus = SubResource("StyleBoxTexture_01r1e")
+text = "
+"
+script = ExtResource("4_0gq0b")
+state_to_change = NodePath("../../../Juego")
+state_machine = NodePath("../../..")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="RockFighters/StateMachine/Consigna/Contenido/Button"]
+autoplay = "anim"
+speed_scale = 0.5
+libraries = {
+"": SubResource("AnimationLibrary_djbuf")
+}
+
+[node name="SquigglingSprite" parent="RockFighters/StateMachine/Consigna/Contenido/Button" instance=ExtResource("29_gfydn")]
+position = Vector2(160.291, 83.4353)
+scale = Vector2(0.992772, 0.972154)
+texture = ExtResource("7_7tbh4")
 
 [node name="LblConsigna" type="Label" parent="RockFighters/StateMachine/Consigna/Contenido"]
 layout_mode = 1
@@ -816,50 +1080,6 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.0431373, 0.00784314, 0, 1)
 
-[node name="Button" type="Button" parent="RockFighters/StateMachine/Consigna/Contenido" node_paths=PackedStringArray("state_to_change", "state_machine")]
-visible = false
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 0.761
-anchor_right = 0.5
-anchor_bottom = 0.761
-offset_left = -161.0
-offset_top = -82.0801
-offset_right = 161.0
-offset_bottom = 82.9199
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(1.025, 1.025)
-pivot_offset = Vector2(161, 82)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
-theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 40
-theme_override_styles/normal = SubResource("StyleBoxTexture_01r1e")
-theme_override_styles/hover = SubResource("StyleBoxTexture_01r1e")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_01r1e")
-theme_override_styles/disabled = SubResource("StyleBoxTexture_01r1e")
-theme_override_styles/focus = SubResource("StyleBoxTexture_01r1e")
-text = "¡VAMOS!
-"
-script = ExtResource("4_0gq0b")
-state_to_change = NodePath("../../../Juego")
-state_machine = NodePath("../../..")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="RockFighters/StateMachine/Consigna/Contenido/Button"]
-autoplay = "anim"
-speed_scale = 0.5
-libraries = {
-"": SubResource("AnimationLibrary_djbuf")
-}
-
-[node name="SquigglingSprite" parent="RockFighters/StateMachine/Consigna/Contenido/Button" instance=ExtResource("29_gfydn")]
-position = Vector2(160.291, 83.4353)
-scale = Vector2(0.992772, 0.972154)
-texture = ExtResource("7_7tbh4")
-
 [node name="Timer" type="Timer" parent="RockFighters/StateMachine/Consigna/Contenido"]
 wait_time = 10.3
 
@@ -885,12 +1105,13 @@ scale = Vector2(0.632, 0.121)
 texture = ExtResource("19_hel6a")
 
 [node name="Label" type="Label" parent="RockFighters/StateMachine/Consigna/Contenido/Control/1Luz"]
+z_index = 1
 offset_left = -175.0
 offset_top = -355.0
 offset_right = 226.0
 offset_bottom = -281.0
-theme_override_font_sizes/font_size = 25
 text = "DICEN QUE ALGUNOS MINERALES"
+label_settings = ExtResource("9_7ccl3")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -905,10 +1126,14 @@ visible = false
 position = Vector2(-15, 0)
 
 [node name="Label" type="RichTextLabel" parent="RockFighters/StateMachine/Consigna/Contenido/Control/2Luz"]
+z_index = 1
 offset_left = -114.0
 offset_top = -231.0
 offset_right = 287.0
 offset_bottom = -193.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_outline_size = 2
 theme_override_font_sizes/normal_font_size = 25
 theme_override_font_sizes/bold_font_size = 25
 bbcode_enabled = true
@@ -926,12 +1151,14 @@ visible = false
 position = Vector2(-15, 0)
 
 [node name="Label" type="Label" parent="RockFighters/StateMachine/Consigna/Contenido/Control/3Luz"]
+z_index = 1
 offset_left = -237.0
 offset_top = -149.0
 offset_right = 288.0
 offset_bottom = -75.0
 theme_override_font_sizes/font_size = 25
 text = "SÓLO HAY UNA FORMA DE COMPROBARLO"
+label_settings = ExtResource("9_7ccl3")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -947,6 +1174,36 @@ autoplay = "Intro_Reflectores"
 libraries = {
 "": SubResource("AnimationLibrary_vfwyg")
 }
+script = ExtResource("17_r375b")
+AnimationsOrder = Array[String](["intro2", "intro3", "intro4", "finish"])
+
+[node name="Button" type="Button" parent="RockFighters/StateMachine/Consigna/Contenido/Control"]
+layout_mode = 0
+offset_left = -608.0
+offset_top = -1297.0
+offset_right = 605.0
+offset_bottom = 654.0
+theme_override_styles/normal = ExtResource("19_ao7ck")
+theme_override_styles/hover = ExtResource("19_ao7ck")
+theme_override_styles/pressed = ExtResource("19_ao7ck")
+theme_override_styles/disabled = ExtResource("19_ao7ck")
+theme_override_styles/focus = ExtResource("19_ao7ck")
+flat = true
+
+[node name="GenericButton" parent="RockFighters/StateMachine/Consigna/Contenido" instance=ExtResource("13_rd5p2")]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.488
+anchor_top = 0.76
+anchor_right = 0.488
+anchor_bottom = 0.76
+offset_left = -45.36
+offset_top = -44.8
+offset_right = 44.64
+offset_bottom = 45.2
+rotation = 3.13639
+Icon = ExtResource("14_wkaoh")
 
 [node name="Juego" type="Node" parent="RockFighters/StateMachine" node_paths=PackedStringArray("NextState", "StateMachine")]
 script = ExtResource("5_ks8gw")
@@ -1301,7 +1558,7 @@ offset_top = 68.0
 offset_bottom = 413.0
 pivot_offset = Vector2(326, 172.5)
 AppearInBeginning = false
-characters_per_second = 45.0
+RepitingPanel = true
 Texts = Array[ExtResource("23_5rold")]([SubResource("Resource_k5nkg")])
 
 [node name="Panel(1) Btn(center)" parent="RockFighters/StateMachine/Juego/Contenido/Instancia2/Control/RetryPanel" instance=ExtResource("24_0aurr")]
@@ -1366,7 +1623,7 @@ offset_top = 66.0
 offset_bottom = 411.0
 pivot_offset = Vector2(326, 172.5)
 AppearInBeginning = false
-characters_per_second = 45.0
+RepitingPanel = true
 Texts = Array[ExtResource("23_5rold")]([SubResource("Resource_k5nkg")])
 
 [node name="Panel(1) Btn(center)" parent="RockFighters/StateMachine/Juego/Contenido/Instancia3/Control2/RetryPanel" instance=ExtResource("24_0aurr")]
@@ -1447,10 +1704,10 @@ libraries = {
 }
 script = ExtResource("17_r375b")
 animation = "EnterAnim"
+preloadAnim = "EnterAnim"
 
 [node name="RightBtn" type="Control" parent="RockFighters/StateMachine/Juego/Contenido/Consigna"]
 visible = false
-self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1475,6 +1732,7 @@ grow_horizontal = 2
 grow_vertical = 0
 rotation = 0.135014
 theme = ExtResource("15_g1ws0")
+disabled = true
 
 [node name="Label" type="Label" parent="RockFighters/StateMachine/Juego/Contenido/Consigna/RightBtn/button"]
 layout_mode = 1
@@ -1500,6 +1758,7 @@ scale = Vector2(0.967688, 0.917465)
 texture = ExtResource("30_w5i6x")
 
 [node name="BigButton" type="Button" parent="RockFighters/StateMachine/Juego/Contenido/Consigna/RightBtn"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1507,15 +1766,16 @@ anchor_bottom = 1.0
 offset_left = -173.0
 offset_top = -101.0
 offset_right = 168.0
-offset_bottom = 449.0
+offset_bottom = 598.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/focus = ExtResource("19_ao7ck")
+toggle_mode = true
+button_group = ExtResource("43_p1yif")
 flat = true
 
 [node name="LeftBtn" type="Control" parent="RockFighters/StateMachine/Juego/Contenido/Consigna"]
 visible = false
-self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1544,6 +1804,7 @@ grow_horizontal = 2
 grow_vertical = 0
 rotation = -0.226893
 theme = ExtResource("15_g1ws0")
+disabled = true
 text = "
 "
 
@@ -1571,6 +1832,7 @@ scale = Vector2(0.951819, 0.906124)
 texture = ExtResource("30_w5i6x")
 
 [node name="BigButton" type="Button" parent="RockFighters/StateMachine/Juego/Contenido/Consigna/LeftBtn"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1578,10 +1840,12 @@ anchor_bottom = 1.0
 offset_left = -173.0
 offset_top = -101.0
 offset_right = 168.0
-offset_bottom = 449.0
+offset_bottom = 599.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/focus = ExtResource("19_ao7ck")
+toggle_mode = true
+button_group = ExtResource("43_p1yif")
 flat = true
 
 [node name="VS" type="TextureRect" parent="RockFighters/StateMachine/Juego/Contenido/Consigna"]
@@ -1600,10 +1864,14 @@ texture = ExtResource("22_5c02m")
 stretch_mode = 2
 
 [node name="MedalCounter" parent="RockFighters/StateMachine/Juego/Contenido" instance=ExtResource("40_8p7gf")]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.106
+anchor_bottom = 0.106
 offset_left = 21.0
-offset_top = 20.0
+offset_top = -115.68
 offset_right = 406.0
-offset_bottom = 105.0
+offset_bottom = -30.68
 
 [node name="btnVolver" parent="RockFighters/StateMachine/Juego" instance=ExtResource("33_l1u1j")]
 
@@ -1654,9 +1922,8 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="circulo" type="Sprite2D" parent="RockFighters/StateMachine/Moraleja/Contenido/Instancia1/Control"]
-self_modulate = Color(0.180392, 0.694118, 0.74902, 1)
-scale = Vector2(0.65, 0.65)
-texture = ExtResource("19_hel6a")
+scale = Vector2(0.54022, 0.54022)
+texture = ExtResource("49_045d7")
 
 [node name="PARTS" type="Node2D" parent="RockFighters/StateMachine/Moraleja/Contenido/Instancia1/Control"]
 position = Vector2(0, -17)
@@ -1747,9 +2014,8 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="circulo" type="Sprite2D" parent="RockFighters/StateMachine/Moraleja/Contenido/Instancia2/Control"]
-self_modulate = Color(0.180392, 0.694118, 0.74902, 1)
-scale = Vector2(0.65, 0.65)
-texture = ExtResource("19_hel6a")
+scale = Vector2(0.54022, 0.54022)
+texture = ExtResource("49_045d7")
 
 [node name="PARTS" type="Node2D" parent="RockFighters/StateMachine/Moraleja/Contenido/Instancia2/Control"]
 position = Vector2(0, -17)
@@ -1810,7 +2076,7 @@ offset_bottom = 568.0
 grow_vertical = 2
 pivot_offset = Vector2(326, 262)
 AppearInBeginning = false
-characters_per_second = 45.0
+Texts = Array[ExtResource("23_5rold")]([SubResource("Resource_neabq")])
 
 [node name="cinturon" type="Sprite2D" parent="RockFighters/StateMachine/Moraleja/Contenido/Instancia2/PanelMoraleja2"]
 position = Vector2(319, -20.9999)
@@ -1843,9 +2109,8 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="circulo" type="Sprite2D" parent="RockFighters/StateMachine/Moraleja/Contenido/Instancia3/Control"]
-self_modulate = Color(0.180392, 0.694118, 0.74902, 1)
-scale = Vector2(0.65, 0.65)
-texture = ExtResource("19_hel6a")
+scale = Vector2(0.54022, 0.54022)
+texture = ExtResource("49_045d7")
 
 [node name="PARTS" type="Node2D" parent="RockFighters/StateMachine/Moraleja/Contenido/Instancia3/Control"]
 position = Vector2(0, -17)
@@ -1934,6 +2199,9 @@ offset_right = 45.0
 offset_bottom = -584.0
 text = ""
 NextScene = "Map_Screen"
+fade_time = 0.6
+texture = "vertical"
+smoothness = 0.2
 
 [node name="TextureRect" type="TextureRect" parent="RockFighters/StateMachine/Fin/Contenido"]
 layout_mode = 1
@@ -1945,16 +2213,24 @@ grow_vertical = 2
 texture = ExtResource("35_0j7t8")
 stretch_mode = 1
 
+[node name="Gradiente2" type="TextureRect" parent="RockFighters/StateMachine/Fin/Contenido"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_qeym3")
+
 [node name="PanelOutro" parent="RockFighters/StateMachine/Fin/Contenido" instance=ExtResource("20_culp1")]
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 0.363
 anchor_bottom = 0.363
 offset_top = -180.64
-offset_bottom = 189.36
-pivot_offset = Vector2(326, 185)
+offset_bottom = 206.36
+pivot_offset = Vector2(326, 193.5)
 AppearInBeginning = false
-characters_per_second = 45.0
 Texts = Array[ExtResource("23_5rold")]([SubResource("Resource_xkqfr")])
 
 [node name="Panel(1) Btn(center)" parent="RockFighters/StateMachine/Fin/Contenido/PanelOutro" instance=ExtResource("24_0aurr")]
@@ -1972,22 +2248,25 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="RockFighters/StateMachine/Fin/Contenido/Control"]
-position = Vector2(-19, -275.5)
-scale = Vector2(0.622882, 0.622882)
+position = Vector2(-19, -272.5)
+rotation = 0.0287133
+scale = Vector2(0.587922, 0.587922)
 texture = ExtResource("41_d5ulm")
 
 [node name="Sprite2D3" type="Sprite2D" parent="RockFighters/StateMachine/Fin/Contenido/Control"]
-position = Vector2(79, 546.5)
-scale = Vector2(0.541336, 0.541336)
+position = Vector2(69, 546.5)
+scale = Vector2(0.49609, 0.49609)
 texture = ExtResource("42_wqo4t")
 
 [node name="Sprite2D2" type="Sprite2D" parent="RockFighters/StateMachine/Fin/Contenido/Control"]
-position = Vector2(-70, 452.5)
+position = Vector2(-70, 462.5)
 rotation = -0.156286
-scale = Vector2(0.690909, 0.690909)
+scale = Vector2(0.65992, 0.65992)
 texture = ExtResource("43_xay53")
 
 [connection signal="timeout" from="RockFighters/StateMachine/Consigna/Contenido/Timer" to="RockFighters/StateMachine/Consigna" method="TimeOut" flags=18]
+[connection signal="pressed" from="RockFighters/StateMachine/Consigna/Contenido/Control/Button" to="RockFighters/StateMachine/Consigna/Contenido/Control/AnimationPlayer" method="SkipActualAnim"]
+[connection signal="pressed" from="RockFighters/StateMachine/Consigna/Contenido/GenericButton" to="RockFighters/StateMachine/Consigna/Contenido/Button" method="_on_pressed"]
 [connection signal="Transitioned" from="RockFighters/StateMachine/Juego" to="RockFighters/StateMachine/Juego/Contenido/Consigna/AnimationPlayer" method="Play"]
 [connection signal="InstanceTrue" from="RockFighters/StateMachine/Juego/Contenido/Instancia1" to="RockFighters/StateMachine/Juego/Contenido/MedalCounter" method="AddWinnedMedal" binds= [1]]
 [connection signal="ButtonPress" from="RockFighters/StateMachine/Juego/Contenido/Instancia1/Control/RetryPanel/Panel(1) Btn(center)" to="RockFighters/StateMachine/Juego/Contenido/Instancia1/Control" method="RetryLevel"]
@@ -1995,8 +2274,6 @@ texture = ExtResource("43_xay53")
 [connection signal="ButtonPress" from="RockFighters/StateMachine/Juego/Contenido/Instancia2/Control/RetryPanel/Panel(1) Btn(center)" to="RockFighters/StateMachine/Juego/Contenido/Instancia2/Control" method="RetryLevel"]
 [connection signal="InstanceTrue" from="RockFighters/StateMachine/Juego/Contenido/Instancia3" to="RockFighters/StateMachine/Juego/Contenido/MedalCounter" method="AddWinnedMedal" binds= [3]]
 [connection signal="ButtonPress" from="RockFighters/StateMachine/Juego/Contenido/Instancia3/Control2/RetryPanel/Panel(1) Btn(center)" to="RockFighters/StateMachine/Juego/Contenido/Instancia3/Control2" method="RetryLevel"]
-[connection signal="animation_started" from="RockFighters/StateMachine/Juego/Contenido/Consigna/AnimationPlayer" to="RockFighters/StateMachine/Juego/Contenido/Consigna/RightBtn/button/SquigglingSprite" method="ActiveSquiggling"]
-[connection signal="animation_started" from="RockFighters/StateMachine/Juego/Contenido/Consigna/AnimationPlayer" to="RockFighters/StateMachine/Juego/Contenido/Consigna/LeftBtn/button/SquigglingSprite" method="ActiveSquiggling"]
 [connection signal="pressed" from="RockFighters/StateMachine/Juego/Contenido/Consigna/RightBtn/BigButton" to="RockFighters/StateMachine/Juego/Contenido/Consigna/RightBtn/button/SquigglingSprite" method="InactiveSquiggling"]
 [connection signal="pressed" from="RockFighters/StateMachine/Juego/Contenido/Consigna/RightBtn/BigButton" to="RockFighters/StateMachine/Juego/Contenido/Consigna/LeftBtn/button/SquigglingSprite" method="InactiveSquiggling"]
 [connection signal="pressed" from="RockFighters/StateMachine/Juego/Contenido/Consigna/LeftBtn/BigButton" to="RockFighters/StateMachine/Juego/Contenido/Consigna/RightBtn/button/SquigglingSprite" method="InactiveSquiggling"]

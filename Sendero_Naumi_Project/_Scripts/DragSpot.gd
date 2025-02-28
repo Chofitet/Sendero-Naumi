@@ -6,6 +6,7 @@ signal RightAns
 signal WrongAns
 var once
 signal OnSpot
+signal ObjectArriveSpot
 
 func _ready():
 	area_entered.connect(CheckRigthArea)
@@ -29,6 +30,7 @@ func Reset():
 func CheckAnswer():
 	if objectInArea == null : return
 	OnSpot.emit(objectInArea.get_parent())
+	objectInArea.ArriveToSpot.connect(ObjectArriveToSpot)
 	if objectInArea == RigthObject:
 		RightAns.emit()
 		once = true
@@ -37,3 +39,7 @@ func CheckAnswer():
 		WrongAns.emit()
 		once = true
 		print("w")
+
+func ObjectArriveToSpot():
+	ObjectArriveSpot.emit(objectInArea.get_parent())
+	objectInArea.ArriveToSpot.disconnect(ObjectArriveToSpot)

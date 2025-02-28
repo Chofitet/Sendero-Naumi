@@ -1,4 +1,4 @@
-[gd_scene load_steps=203 format=3 uid="uid://cndqno434rnuu"]
+[gd_scene load_steps=222 format=3 uid="uid://cndqno434rnuu"]
 
 [ext_resource type="Script" path="res://_Scripts/Minigame_Save_Controller.gd" id="1_aaeor"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/StateMachineMinigames.gd" id="2_0bmn1"]
@@ -47,11 +47,11 @@
 [ext_resource type="Texture2D" uid="uid://0lu4k8jagkum" path="res://Sprites/ZonaGeología/Piedras/volcanica - transformaciones.png" id="32_bldxx"]
 [ext_resource type="Texture2D" uid="uid://bnchpislbl3s" path="res://Sprites/ZonaGeología/Parche 1.png" id="33_5dlx2"]
 [ext_resource type="Script" path="res://_Scripts/SetVisibleChilds.gd" id="33_a03qu"]
+[ext_resource type="Script" path="res://_Scripts/MinG_RockFigther/RockDetector.gd" id="33_rd7qh"]
 [ext_resource type="Texture2D" uid="uid://b4xnthtnr2j0u" path="res://Sprites/ZonaGeología/Piedras/prevolcanica - transformaciones.png" id="33_t4nqu"]
 [ext_resource type="Texture2D" uid="uid://cvtrs5ytlacbn" path="res://Sprites/ZonaGeología/piece4.png" id="35_wvi4y"]
 [ext_resource type="Texture2D" uid="uid://6eb55jjytgxt" path="res://Sprites/ZonaGeología/piece5.png" id="36_dgbo2"]
 [ext_resource type="PackedScene" uid="uid://cw3ok8v4p620b" path="res://Scenes/Experiments/squiggling_sprite.tscn" id="36_udq17"]
-[ext_resource type="Texture2D" uid="uid://chqivoetkgkoj" path="res://Sprites/UI/circulo.png" id="37_8l3iv"]
 [ext_resource type="Texture2D" uid="uid://b23ut238rl2g" path="res://Sprites/ZonaGeología/piece6.png" id="37_rnvsv"]
 [ext_resource type="Texture2D" uid="uid://bw7osutxejygx" path="res://Sprites/ZonaGeología/SquigglingTransformando/montañaInicioSQUIG - transformaciones.png" id="37_tfxti"]
 [ext_resource type="Texture2D" uid="uid://dr2m7w30uo8h1" path="res://Sprites/ZonaGeología/piece7.png" id="38_eq5km"]
@@ -79,7 +79,16 @@
 [ext_resource type="Texture2D" uid="uid://c8ceefxac67m2" path="res://Sprites/ZonaGeología/SquigglingTransformando/lavaPocketDSQUIG - transformaciones.png" id="60_cyph4"]
 [ext_resource type="PackedScene" uid="uid://djhg7jvxtexyl" path="res://Scenes/UI_Scenes/btn_Change_Scene.tscn" id="60_e25mp"]
 [ext_resource type="Environment" uid="uid://qu2t3xojw2xb" path="res://Resources/TransformandoEnvironment.tres" id="61_f0bbx"]
+[ext_resource type="Texture2D" uid="uid://dbo1d47e1yahr" path="res://Sprites/UI/thoughtBubbleD - UI.png" id="63_nbhyb"]
 [ext_resource type="Texture2D" uid="uid://wsicrocifuq" path="res://Sprites/ZonaAstronomia/pegoton.png" id="64_iikat"]
+[ext_resource type="Texture2D" uid="uid://bk1kvmutfgghs" path="res://Sprites/UI/thoughtBubbleC - UI.png" id="64_itiaf"]
+[ext_resource type="Texture2D" uid="uid://cakw5ub13ddym" path="res://Sprites/UI/thoughtBubbleB - UI.png" id="65_qprba"]
+[ext_resource type="Texture2D" uid="uid://cdqxx6yqex8vo" path="res://Sprites/UI/thoughtBubbleA - UI.png" id="66_k43vj"]
+[ext_resource type="PackedScene" uid="uid://3rvhy3nlrjxy" path="res://Scenes/Zona_Megafauna/mole_particles.tscn" id="68_elu88"]
+[ext_resource type="Texture2D" uid="uid://bqw7otwitgwvp" path="res://Sprites/ZonaGeología/plutonicaBorde - transformaciones.png" id="79_7rkfu"]
+[ext_resource type="Texture2D" uid="uid://bi404gffnm4fa" path="res://Sprites/ZonaGeología/volcanicaBorde - transformaciones.png" id="80_0et78"]
+[ext_resource type="Texture2D" uid="uid://cwtyol8okf464" path="res://Sprites/ZonaGeología/metamorficaBorde - transformaciones.png" id="82_nlcfg"]
+[ext_resource type="Texture2D" uid="uid://dh5v3dj8pw838" path="res://Sprites/ZonaGeología/sedimentariaBorde - transformaciones.png" id="84_uvuqw"]
 
 [sub_resource type="Resource" id="Resource_r6m8s"]
 script = ExtResource("11_kf813")
@@ -134,6 +143,11 @@ Position = Vector2(0, 0)
 buttons = Array[ExtResource("11_kf813")]([SubResource("Resource_s7hfo")])
 
 [sub_resource type="Resource" id="Resource_cg5yw"]
+script = ExtResource("18_madym")
+NumberOfPanel = 1
+Place = 0
+
+[sub_resource type="Resource" id="Resource_r05t1"]
 script = ExtResource("18_madym")
 NumberOfPanel = 1
 Place = 0
@@ -250,6 +264,10 @@ enabled = true
 modification_count = 1
 modifications/0 = SubResource("SkeletonModification2DTwoBoneIK_mbmh3")
 
+[sub_resource type="Gradient" id="Gradient_66ce5"]
+offsets = PackedFloat32Array(0, 0.921739, 0.982609)
+colors = PackedColorArray(1, 1, 1, 0.53, 0.666667, 0.666667, 0.666667, 0.278431, 0.301961, 0.301961, 0.301961, 0)
+
 [sub_resource type="Animation" id="Animation_c6llx"]
 resource_name = "Lava_fall"
 length = 11.7
@@ -354,38 +372,50 @@ tracks/7/keys = {
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("../Preplutonica/HumoParticulasAdelante:emitting")
+tracks/8/path = NodePath("../TapButton3/patch2:self_modulate")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
-"times": PackedFloat32Array(10.7),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/9/type = "value"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("../Preplutonica/HumoParticulasAtras:emitting")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
-"times": PackedFloat32Array(10.7),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/10/type = "value"
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath("../TapButton3/patch2:self_modulate")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/keys = {
 "times": PackedFloat32Array(3.1, 4.1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(0.564706, 0.564706, 0.564706, 0)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("PathFollow2D/Node2D/Lava snake/Skeleton2D/polygons/Polygon2D:modulate")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(4.8, 10, 11.7),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.9, 0.9, 0.9, 1), Color(0.8, 0.8, 0.8, 1)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("PathFollow2D/Node2D/Lava snake/Skeleton2D/polygons/Polygon2D2:modulate")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(4.8, 9.9, 11.7),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.849275, 0.849275, 0.849275, 1), Color(0.8, 0.8, 0.8, 1)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("PathFollow2D/Node2D/Lava snake/Skeleton2D/polygons/Polygon2D3:modulate")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(4.8, 9.9, 11.7),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.849275, 0.849275, 0.849275, 1), Color(0.8, 0.8, 0.8, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_k2klx"]
@@ -477,34 +507,46 @@ tracks/6/keys = {
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("../Preplutonica/HumoParticulasAdelante:emitting")
+tracks/7/path = NodePath("../TapButton3/patch2:self_modulate")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
 }
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("../Preplutonica/HumoParticulasAtras:emitting")
+tracks/8/path = NodePath("PathFollow2D/Node2D/Lava snake/Skeleton2D/polygons/Polygon2D:modulate")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
 }
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("../TapButton3/patch2:self_modulate")
+tracks/9/path = NodePath("PathFollow2D/Node2D/Lava snake/Skeleton2D/polygons/Polygon2D2:modulate")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("PathFollow2D/Node2D/Lava snake/Skeleton2D/polygons/Polygon2D3:modulate")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -534,6 +576,14 @@ joint_two_bone2d_node = NodePath("Bone1/Bone2/Bone3")
 enabled = true
 modification_count = 1
 modifications/0 = SubResource("SkeletonModification2DTwoBoneIK_1v47h")
+
+[sub_resource type="Curve" id="Curve_1byn1"]
+_data = [Vector2(0, 0.505263), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_vn7px"]
+offsets = PackedFloat32Array(0, 0.921739, 0.982609)
+colors = PackedColorArray(1, 1, 1, 1, 0.301961, 0.301961, 0.301961, 0.172549, 0.301961, 0.301961, 0.301961, 0)
 
 [sub_resource type="Animation" id="Animation_dck0v"]
 length = 0.001
@@ -612,7 +662,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("../Volcanica/HumoParticulasAtras:emitting")
+tracks/6/path = NodePath("PathFollow2D/Node2D/Lava snake/Skeleton2D/polygons/HumoParticulasAtras:emitting")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -624,10 +674,34 @@ tracks/6/keys = {
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("../Volcanica/HumoParticulasAdelante:emitting")
+tracks/7/path = NodePath("PathFollow2D/Node2D/Lava snake/Skeleton2D/polygons/HumoParticulasAdelante:emitting")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("HumoVolcan:emitting")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("MoleParticles:emitting")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -700,11 +774,11 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("../Volcanica/HumoParticulasAtras:emitting")
+tracks/5/path = NodePath("PathFollow2D/Node2D/Lava snake/Skeleton2D/polygons/HumoParticulasAtras:emitting")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(5.9),
+"times": PackedFloat32Array(0.4),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
@@ -712,11 +786,35 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("../Volcanica/HumoParticulasAdelante:emitting")
+tracks/6/path = NodePath("PathFollow2D/Node2D/Lava snake/Skeleton2D/polygons/HumoParticulasAdelante:emitting")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(5.9),
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("HumoVolcan:emitting")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("MoleParticles:emitting")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
@@ -727,6 +825,10 @@ _data = {
 "RESET": SubResource("Animation_dck0v"),
 "lava_fall": SubResource("Animation_rju6l")
 }
+
+[sub_resource type="Gradient" id="Gradient_ngxtp"]
+offsets = PackedFloat32Array(0, 0.504425, 1)
+colors = PackedColorArray(0.34902, 0.152941, 0, 1, 0.35, 0.35, 0.35, 1, 0.640625, 0.5625, 0.441406, 1)
 
 [sub_resource type="Curve2D" id="Curve2D_0sshs"]
 _data = {
@@ -855,7 +957,10 @@ _data = {
 point_count = 3
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7ls2j"]
-size = Vector2(352.267, 78.8486)
+size = Vector2(352.267, 100.914)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t1vcv"]
+size = Vector2(346, 98)
 
 [sub_resource type="Animation" id="Animation_v6wdy"]
 length = 0.001
@@ -978,71 +1083,61 @@ tracks/3/path = NodePath("../TapButton1:disabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 4),
+"times": PackedFloat32Array(0, 5.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
 }
-tracks/4/type = "animation"
+tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("LavaFace/LavaFace/AnimationPlayer")
+tracks/4/path = NodePath("FirstTouch:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"clips": PackedStringArray("lava_face_anim_back"),
-"times": PackedFloat32Array(3.9)
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("FirstTouch:visible")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
 }
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("LavaFace:visible")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("LavaFace:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
 "times": PackedFloat32Array(0, 4),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
 }
-tracks/7/type = "method"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("../TapButton1/SquigglingSprite")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(4),
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../TapButton1/SquigglingSprite")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(5.1),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
 "method": &"ActiveSquiggling"
 }]
 }
-tracks/8/type = "method"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("LavaFace/LavaFace/AnimationPlayer")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
-"times": PackedFloat32Array(6),
+tracks/7/type = "method"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("LavaFace/LavaFace/AnimationPlayer")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(3.9),
 "transitions": PackedFloat32Array(1),
 "values": [{
-"args": ["idle_anim", -1, 1.0, false],
-"method": &"play"
+"args": ["lava_face_anim_back"],
+"method": &"PlayAnim"
 }]
 }
 
@@ -1399,7 +1494,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(0.023005, 0.022)]
+"values": [Vector2(0, 0), Vector2(0.4, 0.383)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -1411,7 +1506,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0.3, 0.6),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(0.04, 0.039)]
+"values": [Vector2(0, 0), Vector2(0.6, 0.585)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -1423,7 +1518,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0.6, 0.9),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(0.07, 0.075)]
+"values": [Vector2(0, 0), Vector2(0.7, 0.75)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -1473,7 +1568,7 @@ tracks/6/keys = {
 "times": PackedFloat32Array(0.9, 1.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(1e-05, 1e-05), Vector2(0.08, 0.08)]
+"values": [Vector2(1e-05, 1e-05), Vector2(0.6, 0.6)]
 }
 
 [sub_resource type="Animation" id="Animation_wwcjb"]
@@ -1489,7 +1584,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(0.024, 0.024)]
+"values": [Vector2(0, 0), Vector2(0.5, 0.5)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -1501,7 +1596,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0.3, 0.6),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(0.050005, 0.05)]
+"values": [Vector2(0, 0), Vector2(0.8, 0.8)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -1513,7 +1608,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0.6, 0.9),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(0.07, 0.07)]
+"values": [Vector2(0, 0), Vector2(0.8, 0.8)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -1563,7 +1658,7 @@ tracks/6/keys = {
 "times": PackedFloat32Array(0.9, 1.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(1e-05, 1e-05), Vector2(0.08, 0.08)]
+"values": [Vector2(1e-05, 1e-05), Vector2(0.6, 0.6)]
 }
 
 [sub_resource type="Animation" id="Animation_23lmq"]
@@ -1579,7 +1674,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(0.024, 0.024)]
+"values": [Vector2(0, 0), Vector2(0.754718, 0.754718)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -1588,10 +1683,10 @@ tracks/1/path = NodePath("nubeMetamórfica/2:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(0, 0), Vector2(0.06, 0.06)]
+"values": [Vector2(0, 0), Vector2(0, 0), Vector2(0.722892, 0.722892), Vector2(1.13208, 1.13208)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -1603,7 +1698,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.6, 0.9),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(0, 0), Vector2(0.07, 0.07)]
+"values": [Vector2(0, 0), Vector2(0, 0), Vector2(1.06024, 1.06024)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -1653,7 +1748,7 @@ tracks/6/keys = {
 "times": PackedFloat32Array(1.1, 1.4),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(1e-05, 1e-05), Vector2(0.08, 0.08)]
+"values": [Vector2(1e-05, 1e-05), Vector2(0.784314, 0.784314)]
 }
 
 [sub_resource type="Animation" id="Animation_6750k"]
@@ -1669,7 +1764,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(0.026, 0.024)]
+"values": [Vector2(0, 0), Vector2(0.5, 0.461)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -1681,7 +1776,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0.3, 0.6),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(0.04, 0.041)]
+"values": [Vector2(0, 0), Vector2(0.7, 0.717)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -1693,7 +1788,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0.6, 0.9),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(0.06, 0.058)]
+"values": [Vector2(0, 0), Vector2(0.7, 0.677)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -1731,7 +1826,7 @@ tracks/5/keys = {
 "times": PackedFloat32Array(0.9, 1.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(1e-05, 1e-05), Vector2(0.07, 0.07)]
+"values": [Vector2(1e-05, 1e-05), Vector2(0.5, 0.5)]
 }
 
 [sub_resource type="Animation" id="Animation_8wsl7"]
@@ -2063,26 +2158,122 @@ tracks/7/keys = {
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("HumoParticulasAtras:emitting")
+tracks/8/path = NodePath("sssss/lavaDerretida:self_modulate")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"update": 0,
+"values": [Color(1, 1, 1, 0.423529)]
 }
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("HumoParticulasAdelante:emitting")
+tracks/9/path = NodePath("sssss/lavaDerretida:position")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(11.25, -46.25)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("sssss/lavaDerretida:scale")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1.21945, 1.21945)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("AnimCalor:self_modulate")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("PiedraHeat:show_behind_parent")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("PiedraHeat1:self_modulate")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 0.847059, 0.639216, 1)]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("sssss:visible")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("HumoParticulasAdelante:emitting")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [false]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("HumoParticulasAtras:emitting")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("PiedraHeat:visible")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_ic8kr"]
@@ -2095,14 +2286,14 @@ tracks/0/path = NodePath(".:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1, 2.3, 2.5, 2.7),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 1, 2.4, 2.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(0.2, 0.2), Vector2(0.8, 0.8), Vector2(0.8, 0.8), Vector2(1e-05, 1e-05), Vector2(0.8, 0.8)]
+"values": [Vector2(0.2, 0.2), Vector2(0.8, 0.8), Vector2(0.8, 0.8), Vector2(0.6, 0.6)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
-tracks/1/enabled = true
+tracks/1/enabled = false
 tracks/1/path = NodePath(".:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
@@ -2131,10 +2322,10 @@ tracks/3/path = NodePath("PiedraHeat:self_modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 1, 2.3, 2.5),
+"times": PackedFloat32Array(0, 1.6, 2.4, 4),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 0.54902, 0.584314), Color(1, 1, 1, 0)]
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 0.54902, 1), Color(1, 1, 0.54902, 0)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -2155,10 +2346,10 @@ tracks/5/path = NodePath("PiedraHeat1:visible")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 2.5),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 2.5, 4),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [true, false]
+"values": [true, true, false]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
@@ -2201,23 +2392,119 @@ tracks/8/keys = {
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("HumoParticulasAtras:emitting")
+tracks/9/path = NodePath("sssss/lavaDerretida:self_modulate")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
-"times": PackedFloat32Array(1),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"times": PackedFloat32Array(0, 1.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.423529)]
 }
 tracks/10/type = "value"
 tracks/10/imported = false
 tracks/10/enabled = true
-tracks/10/path = NodePath("HumoParticulasAdelante:emitting")
+tracks/10/path = NodePath("sssss/lavaDerretida:position")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
-"times": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 2.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(11.25, -160), Vector2(7.8866, 330)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("sssss/lavaDerretida:scale")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 2.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1.21945, 1.21945), Vector2(2.49661, 1.21945)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("AnimCalor:self_modulate")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(1.6, 2.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("PiedraHeat:show_behind_parent")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(2.4, 2.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("PiedraHeat1:self_modulate")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(2.5, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 0.847059, 0.639216, 1), Color(1, 0.847059, 0.639216, 0)]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("sssss:visible")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("HumoParticulasAdelante:emitting")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0, 1.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [true, false]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("HumoParticulasAtras:emitting")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0, 1.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("PiedraHeat:visible")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(4),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
@@ -2228,18 +2515,6 @@ _data = {
 "RESET": SubResource("Animation_y63yp"),
 "rockTransformation": SubResource("Animation_ic8kr")
 }
-
-[sub_resource type="Curve" id="Curve_1byn1"]
-_data = [Vector2(0, 0.505263), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="Gradient" id="Gradient_vn7px"]
-offsets = PackedFloat32Array(0, 0.921739, 0.982609)
-colors = PackedColorArray(1, 1, 1, 1, 0.301961, 0.301961, 0.301961, 0.172549, 0.301961, 0.301961, 0.301961, 0)
-
-[sub_resource type="Gradient" id="Gradient_66ce5"]
-offsets = PackedFloat32Array(0, 0.921739, 0.982609)
-colors = PackedColorArray(1, 1, 1, 0.53, 0.666667, 0.666667, 0.666667, 0.278431, 0.301961, 0.301961, 0.301961, 0)
 
 [sub_resource type="Animation" id="Animation_a1p50"]
 length = 0.001
@@ -2258,7 +2533,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../HumoParticulasAtras:emitting")
+tracks/1/path = NodePath("../HumoParticulasAdelante:emitting")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -2270,7 +2545,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("../HumoParticulasAdelante:emitting")
+tracks/2/path = NodePath("../HumoParticulasAtras:emitting")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -2312,26 +2587,26 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("../HumoParticulasAtras:emitting")
+tracks/2/path = NodePath("../HumoParticulasAdelante:emitting")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(3),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 3.6),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [true]
+"values": [false, true]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("../HumoParticulasAdelante:emitting")
+tracks/3/path = NodePath("../HumoParticulasAtras:emitting")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(4.1),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 3.1),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [true]
+"values": [false, true]
 }
 
 [sub_resource type="Animation" id="Animation_t1ix0"]
@@ -2524,6 +2799,43 @@ custom_solver_bias = 1.0
 radius = 30.0
 height = 112.0
 
+[sub_resource type="Animation" id="Animation_q8een"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_flwpk"]
+resource_name = "shake"
+length = 8.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8, 1.2, 1.6, 2, 2.4, 2.8, 3.2, 3.6, 4, 4.2, 4.4, 4.6, 4.8, 5, 5.2, 5.4, 5.6, 5.8, 6, 6.2, 6.4, 6.6, 6.8, 7, 7.2, 7.4, 7.6, 7.8, 8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.0872665, 0.0, 0.0872665, 0.0, -0.0872665, 0.0, 0.0872665, 0.0, -0.0872665, 0.0, -0.0872665, 0.0, 0.0872665, 0.0, -0.0872665, 0.0, 0.0872665, 0.0, -0.0872665, 0.0, 0.0872665, 0.0, -0.0872665, 0.0, 0.0872665, 0.0, -0.0872665, 0.0, 0.0872665, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ntoys"]
+_data = {
+"RESET": SubResource("Animation_q8een"),
+"shake": SubResource("Animation_flwpk")
+}
+
 [sub_resource type="Animation" id="Animation_an01r"]
 length = 0.001
 tracks/0/type = "value"
@@ -2574,10 +2886,46 @@ tracks/3/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("MoleParticles:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("MoleParticles3:emitting")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("MoleParticles2:emitting")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_ty3yj"]
 resource_name = "rockTransformation"
-length = 6.0
+length = 24.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -2585,10 +2933,10 @@ tracks/0/path = NodePath(".:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2, 2.1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(-2, -1.9, -1.8, -1.7, -1.6, -1.5, -1.4, -1.3, -1.2, -1.1, -1, -0.9, -0.8, -0.7, -0.6, -0.5, -0.4, -0.3, -0.2, -0.1, 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2, 2.1, 2.2, 2.3, 2.4, 2.5, 2.6, 2.7, 2.8, 2.9, 3, 3.1, 3.2, 3.3, 3.4, 3.5, 3.6, 3.7, 3.8, 3.9, 4, 4.1, 4.2, 4.3, 4.4, 4.5, 4.6, 4.7, 4.8, 4.9, 5, 5.1, 5.2, 5.3, 5.4, 5.5, 5.6, 5.7, 5.8, 5.9, 6, 6.1, 6.2, 6.3, 6.4, 6.5, 6.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [0.0, -0.261799, 0.0, 0.261799, 0.0, -0.349066, 0.0, 0.349066, 0.0, -0.436332, 0.0, 0.436332, 0.0]
+"values": [0.0, -0.0872665, 0.0, 0.0872665, 0.0, -0.0872665, 0.0, 0.0872665, 0.0, -0.0872665, 0.0, -0.0872665, 0.0, 0.0872665, 0.0, -0.0872665, 0.0, 0.0872665, 0.0, -0.0872665, 0.0, -0.0872665, 0.0, 0.0872665, 0.0, -0.0872665, 0.0, 0.0872665, 0.0, -0.0872665, 0.0, -0.0872665, 0.0, 0.0872665, 0.0, -0.0872665, 0.0, 0.0872665, 0.0, -0.0872665, 0.0, -0.0872665, 0.0, 0.0872665, 0.0, -0.0872665, 0.0, 0.0872665, 0.0, -0.0872665, 0.0, -0.0872665, 0.0, 0.0872665, 0.0, -0.0872665, 0.0, 0.0872665, 0.0, -0.0872665, 0.0, -0.0872665, 0.0, 0.0872665, 0.0, -0.0872665, 0.0, 0.0872665, 0.0, -0.0872665, 0.0, -0.0872665, 0.0, 0.0872665, 0.0, -0.0872665, 0.0, 0.0872665, 0.0, -0.0872665, 0.0, -0.0872665, 0.0, 0.0872665, 0.0, -0.0872665, 0.0]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -2597,10 +2945,10 @@ tracks/1/path = NodePath(".:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 1, 1.8, 2, 2.2),
+"times": PackedFloat32Array(0, 4.1, 6.6, 6.8, 7),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(1, 1), Vector2(3, 3), Vector2(3, 3), Vector2(1e-05, 1e-05), Vector2(2.5, 2.5)]
+"values": [Vector2(1, 1), Vector2(3, 3), Vector2(3, 3), Vector2(3, 0), Vector2(2.5, 2.5)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -2609,7 +2957,7 @@ tracks/2/path = NodePath("sedimentariaTrans:texture")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(1, 2),
+"times": PackedFloat32Array(6.6, 6.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [null, ExtResource("21_tqyrq")]
@@ -2621,7 +2969,7 @@ tracks/3/path = NodePath("sedimentariaTrans:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 2),
+"times": PackedFloat32Array(0, 6.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
@@ -2633,12 +2981,48 @@ tracks/4/path = NodePath(".")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(2.6),
+"times": PackedFloat32Array(11.3),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
 "method": &"panelAppear"
 }]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("MoleParticles:emitting")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(6.6, 8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("MoleParticles3:emitting")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(6.6, 8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("MoleParticles2:emitting")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(6.6, 7.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_cmi3y"]
@@ -2754,6 +3138,30 @@ tracks/2/keys = {
 "update": 0,
 "values": [Color(2.00392, 1, 1, 0)]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("HumoTransformacion:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("LavaFace:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_oygt2"]
 resource_name = "rockTransformation"
@@ -2765,54 +3173,42 @@ tracks/0/path = NodePath(".:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1, 1.8, 2, 2.2),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0.156566, 0.156566), Vector2(0.7, 0.7), Vector2(0.7, 0.7), Vector2(0, 0), Vector2(0.7, 0.7)]
+"values": [Vector2(0.156566, 0.156566), Vector2(0.7, 0.7)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath(".:rotation")
+tracks/1/path = NodePath("PlutonicaTrans:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2, 2.1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Color(0.647059, 0.521569, 0.611765, 1), 0.0, -0.261799, 0.0, 0.261799, 0.0, -0.349066, 0.0, 0.349066, 0.0, -0.436332, 0.0, 0.436332, 0.0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("PlutonicaTrans:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
 "times": PackedFloat32Array(1.1, 2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
 }
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath(".:self_modulate")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.5, 2),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Color(2.01, 1, 1, 1), Color(2.01, 1, 1, 1), Color(0.258824, 0.258824, 0.258824, 1)]
 }
-tracks/4/type = "method"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath(".")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
 "times": PackedFloat32Array(2.8),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -2820,29 +3216,41 @@ tracks/4/keys = {
 "method": &"panelAppear"
 }]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("HumoTransformacion:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(2),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("HumoParticulasAtras:emitting")
+tracks/5/path = NodePath(".:rotation")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0.9),
+"times": PackedFloat32Array(1),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"update": 0,
+"values": [0.0]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("HumoParticulasAdelante:emitting")
+tracks/6/path = NodePath("LavaFace:visible")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0.9),
+"times": PackedFloat32Array(2),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_empi5"]
@@ -2919,6 +3327,10 @@ _data = {
 "despertar_anim": SubResource("Animation_2qxtm"),
 "idle_despertar": SubResource("Animation_3bikf")
 }
+
+[sub_resource type="Gradient" id="Gradient_00m6q"]
+offsets = PackedFloat32Array(0, 0.458738, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.0169903, 1, 1, 1, 0)
 
 [sub_resource type="Animation" id="Animation_j40xn"]
 length = 0.001
@@ -3064,10 +3476,9 @@ QUE SE ENCUENTRA BAJO LA TIERRA[/b]
 ENTRE 850 A 1200 GRADOS!
 
 [b]CUANDO EL MAGMA SE ENFRÍA[/b]
-MUY LENTAMENTE,
-[b]SE PONE SÓLIDO[/b]
+MUY LENTAMENTE [b]SE PONE SÓLIDO[b]
 Y SE CONVIERTE EN UNA 
-[b]ROCA ÍGNEA PLUTÓNICA[/b][/center]"
+[font_size={40}][b]ROCA ÍGNEA PLUTÓNICA[/b]"
 SizePanel = Vector2(0, 0)
 Position = Vector2(0, 0)
 buttons = Array[ExtResource("11_kf813")]([SubResource("Resource_0jyvg")])
@@ -3095,7 +3506,7 @@ AL ESTAR FUERA DE LA TIERRA
 [b]CUANDO LA LAVA SE ENFRÍA
 Y SE PONE SÓLIDA[/b]
 SE CONVIERTE EN UNA 
-[b]ROCA ÍGNEA VOLCÁNICA[/b][/center]"
+[font_size={40}][b]ROCA ÍGNEA VOLCÁNICA[/b]"
 SizePanel = Vector2(0, 0)
 Position = Vector2(0, 0)
 buttons = Array[ExtResource("11_kf813")]([SubResource("Resource_idxqt")])
@@ -3114,7 +3525,8 @@ dontPassPanel = false
 
 [sub_resource type="Resource" id="Resource_tw2wj"]
 script = ExtResource("13_r3rxi")
-Text = "TRANSFORMASTE TODAS LAS PIEDRAS"
+Text = "[center][b][font_size={40}]¡FELICITACIONES![/font_size][/b]
+TRANSFORMASTE TODAS LAS ROCAS"
 SizePanel = Vector2(0, 0)
 Position = Vector2(0, 0)
 buttons = Array[ExtResource("11_kf813")]([SubResource("Resource_dl14k")])
@@ -3123,6 +3535,14 @@ buttons = Array[ExtResource("11_kf813")]([SubResource("Resource_dl14k")])
 script = ExtResource("18_madym")
 NumberOfPanel = 1
 Place = 1
+
+[sub_resource type="Gradient" id="Gradient_cyjm0"]
+offsets = PackedFloat32Array(0, 0.490385, 1)
+colors = PackedColorArray(0.0627451, 0.0470588, 0.0431373, 1, 0, 0, 0, 0.0216346, 0.0627451, 0.0470588, 0.0431373, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_u84ex"]
+gradient = SubResource("Gradient_cyjm0")
+fill_from = Vector2(1, 1)
 
 [sub_resource type="Resource" id="Resource_7rj6s"]
 script = ExtResource("11_kf813")
@@ -3173,7 +3593,23 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 1, 2),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [1.0, 1.3, 1.0]
+"values": [1.0, 1.5, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_dc24n"]
+resource_name = "Intensity"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:environment:glow_intensity")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [2.91]
 }
 
 [sub_resource type="Animation" id="Animation_vsvih"]
@@ -3188,12 +3624,13 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [1.0]
+"values": [1.5]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7sg1k"]
 _data = {
 "Blink": SubResource("Animation_nss2d"),
+"Intensity": SubResource("Animation_dc24n"),
 "RESET": SubResource("Animation_vsvih")
 }
 
@@ -3432,6 +3869,7 @@ rotation = -2.18931
 texture = ExtResource("32_bldxx")
 
 [node name="PanelIntro1" parent="Transformando/StateMachine/Consigna/Contenido" instance=ExtResource("10_2d6bp")]
+modulate = Color(0.85, 0.85, 0.85, 1)
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 0.559
@@ -3442,10 +3880,10 @@ offset_right = 312.0
 offset_bottom = -373.52
 rotation = 0.206461
 pivot_offset = Vector2(291, 114)
-characters_per_second = 45.0
 Texts = Array[ExtResource("13_r3rxi")]([SubResource("Resource_u3ass")])
 
 [node name="roca" type="Sprite2D" parent="Transformando/StateMachine/Consigna/Contenido/PanelIntro1"]
+self_modulate = Color(0.757813, 0.726563, 0.5625, 1)
 position = Vector2(294.183, 282.301)
 rotation = 3.03271
 scale = Vector2(0.302884, -0.302884)
@@ -3462,6 +3900,7 @@ flip_h = true
 Data = SubResource("Resource_1bcrq")
 
 [node name="PanelIntro2" parent="Transformando/StateMachine/Consigna/Contenido" instance=ExtResource("10_2d6bp")]
+modulate = Color(0.85, 0.85, 0.85, 1)
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.528
@@ -3475,10 +3914,10 @@ offset_bottom = 112.84
 rotation = -0.114277
 pivot_offset = Vector2(291, 114)
 AppearInBeginning = false
-characters_per_second = 45.0
 Texts = Array[ExtResource("13_r3rxi")]([SubResource("Resource_ve6u1")])
 
 [node name="roca" type="Sprite2D" parent="Transformando/StateMachine/Consigna/Contenido/PanelIntro2"]
+self_modulate = Color(0.464844, 0.472656, 0.492188, 1)
 position = Vector2(278.401, 277.25)
 rotation = 0.196501
 scale = Vector2(0.303, 0.303)
@@ -3495,6 +3934,7 @@ flip_h = true
 Data = SubResource("Resource_40nie")
 
 [node name="PanelIntro3" parent="Transformando/StateMachine/Consigna/Contenido" instance=ExtResource("10_2d6bp")]
+modulate = Color(0.85, 0.85, 0.85, 1)
 layout_mode = 1
 offset_left = -305.0
 offset_top = 870.0
@@ -3503,10 +3943,10 @@ offset_bottom = 1098.0
 rotation = 0.209569
 pivot_offset = Vector2(291, 114)
 AppearInBeginning = false
-characters_per_second = 45.0
 Texts = Array[ExtResource("13_r3rxi")]([SubResource("Resource_2sd3i")])
 
 [node name="roca" type="Sprite2D" parent="Transformando/StateMachine/Consigna/Contenido/PanelIntro3"]
+self_modulate = Color(0.701961, 0.501961, 0.439216, 1)
 position = Vector2(275.465, 280.579)
 rotation = 3.03677
 scale = Vector2(0.302884, -0.302884)
@@ -3521,6 +3961,10 @@ flip_h = true
 
 [node name="Panel(1) Btn(rigth)" parent="Transformando/StateMachine/Consigna/Contenido/PanelIntro3" instance=ExtResource("16_ss078")]
 Data = SubResource("Resource_cg5yw")
+
+[node name="Panel(1) Btn(rigth)2" parent="Transformando/StateMachine/Consigna/Contenido/PanelIntro3" instance=ExtResource("16_ss078")]
+Data = SubResource("Resource_r05t1")
+Delay = 0.2
 
 [node name="Juego" type="Node" parent="Transformando/StateMachine" node_paths=PackedStringArray("NextState", "StateMachine")]
 script = ExtResource("5_twmif")
@@ -3604,18 +4048,19 @@ modification_stack = SubResource("SkeletonModificationStack2D_opoja")
 
 [node name="Bone1" type="Bone2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Lava_Fall/PathFollow2D/Node2D/Lava snake/Skeleton2D"]
 position = Vector2(-96, -6)
-scale = Vector2(0.999829, 0.999833)
-skew = -0.000193
+scale = Vector2(0.999827, 0.999831)
+skew = -0.000194311
 rest = Transform2D(1, 0, 0, 1, 0, 0)
 editor_settings/show_bone_gizmo = false
 
 [node name="Bone2" type="Bone2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Lava_Fall/PathFollow2D/Node2D/Lava snake/Skeleton2D/Bone1"]
 position = Vector2(32, 0)
-rotation = 0.0811145
+rotation = 0.0811144
 scale = Vector2(0.999843, 0.999843)
-skew = -0.0013572
+skew = -0.00138235
 rest = Transform2D(1, 0, 0, 1, 32, 0)
 editor_settings/show_bone_gizmo = false
+metadata/_local_pose_override_enabled_ = true
 
 [node name="Bone3" type="Bone2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Lava_Fall/PathFollow2D/Node2D/Lava snake/Skeleton2D/Bone1/Bone2"]
 position = Vector2(28.2843, -0.121915)
@@ -3623,6 +4068,7 @@ rotation = -0.00147328
 scale = Vector2(0.999829, 0.999829)
 rest = Transform2D(1, 0, 0, 1, 32, 0)
 editor_settings/show_bone_gizmo = false
+metadata/_local_pose_override_enabled_ = true
 
 [node name="ColorRect" type="ColorRect" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Lava_Fall/PathFollow2D/Node2D/Lava snake/Skeleton2D/Bone1/Bone2/Bone3"]
 offset_left = 5.0
@@ -3652,6 +4098,7 @@ color = Color(0.832031, 0, 0, 1)
 [node name="Polygon2D" type="Polygon2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Lava_Fall/PathFollow2D/Node2D/Lava snake/Skeleton2D/polygons"]
 position = Vector2(31, -8)
 scale = Vector2(1.0625, 1)
+color = Color(1.18, 2, 2, 1)
 texture = ExtResource("27_tqoby")
 skeleton = NodePath("../..")
 polygon = PackedVector2Array(0, 0, 32, 0, 32, 16, 0, 16, 8, 0, 8, 16, 24, 0, 24, 16)
@@ -3662,6 +4109,7 @@ internal_vertex_count = 4
 
 [node name="Polygon2D2" type="Polygon2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Lava_Fall/PathFollow2D/Node2D/Lava snake/Skeleton2D/polygons"]
 position = Vector2(64, -8)
+color = Color(10, 10, 10, 1)
 texture = ExtResource("27_tqoby")
 skeleton = NodePath("../..")
 polygon = PackedVector2Array(0, 0, 0, 16, 24, 16, 28, 12.4375, 29.25, 8.0625, 27.75, 3.25, 24, 0, 8, 0, 8, 16, 16, 0, 16, 16)
@@ -3684,6 +4132,24 @@ position = Vector2(-3.27245, 9.22012)
 
 [node name="punta" type="Node2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Lava_Fall/PathFollow2D/Node2D/Lava snake/Targets"]
 position = Vector2(0.513062, -11.2644)
+
+[node name="HumoParticulasAdelante" type="CPUParticles2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Lava_Fall/PathFollow2D/Node2D/Lava snake"]
+position = Vector2(-76.5913, -21.7503)
+rotation = 2.73892
+scale = Vector2(12.7104, 12.7104)
+texture = ExtResource("64_iikat")
+emission_shape = 3
+emission_rect_extents = Vector2(3.205, 1)
+direction = Vector2(0, 1)
+spread = 1.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 5.0
+initial_velocity_max = 7.0
+radial_accel_min = -27.16
+radial_accel_max = 44.45
+damping_min = 61.523
+damping_max = 100.0
+color_ramp = SubResource("Gradient_66ce5")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Lava_Fall"]
 speed_scale = 1.3
@@ -3716,7 +4182,7 @@ modification_stack = SubResource("SkeletonModificationStack2D_cc7e6")
 [node name="Bone1" type="Bone2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/LavaFallVolcanica/PathFollow2D/Node2D/Lava snake/Skeleton2D"]
 position = Vector2(-95.79, -6)
 scale = Vector2(0.999837, 0.99981)
-skew = -0.000254512
+skew = -0.000262856
 rest = Transform2D(1, 0, 0, 1, 0, 0)
 editor_settings/show_bone_gizmo = false
 
@@ -3727,6 +4193,7 @@ scale = Vector2(0.999843, 0.999843)
 skew = -0.00134373
 rest = Transform2D(1, 0, 0, 1, 32, 0)
 editor_settings/show_bone_gizmo = false
+metadata/_local_pose_override_enabled_ = true
 
 [node name="Bone3" type="Bone2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/LavaFallVolcanica/PathFollow2D/Node2D/Lava snake/Skeleton2D/Bone1/Bone2"]
 position = Vector2(28.2843, -0.121915)
@@ -3734,6 +4201,7 @@ rotation = -0.00283671
 scale = Vector2(0.999829, 0.999829)
 rest = Transform2D(1, 0, 0, 1, 32, 0)
 editor_settings/show_bone_gizmo = false
+metadata/_local_pose_override_enabled_ = true
 
 [node name="ColorRect" type="ColorRect" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/LavaFallVolcanica/PathFollow2D/Node2D/Lava snake/Skeleton2D/Bone1/Bone2/Bone3"]
 offset_left = 5.0
@@ -3751,9 +4219,10 @@ rotation = 0.00174533
 color = Color(0.832031, 0, 0, 1)
 
 [node name="ColorRect" type="ColorRect" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/LavaFallVolcanica/PathFollow2D/Node2D/Lava snake/Skeleton2D/Bone1"]
-offset_top = 8.0
-offset_right = 35.0
-offset_bottom = 41.0
+offset_left = -5.58846
+offset_top = 7.72884
+offset_right = 29.4115
+offset_bottom = 40.7288
 rotation = -0.267035
 color = Color(0.832031, 0, 0, 1)
 
@@ -3789,6 +4258,48 @@ uv = PackedVector2Array(24, 0, 32, 0, 32, 16, 24, 16, 8, 16, 0, 16, 16, 8, 18.16
 polygons = [PackedInt32Array(5, 3, 0, 7, 6), PackedInt32Array(3, 2, 1, 0)]
 bones = ["Bone1", PackedFloat32Array(1, 1, 1, 1, 1, 1, 0.56, 1), "Bone1/Bone2", PackedFloat32Array(0, 1, 1, 0, 0, 0, 0, 0), "Bone1/Bone2/Bone3", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0)]
 
+[node name="HumoParticulasAtras" type="CPUParticles2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/LavaFallVolcanica/PathFollow2D/Node2D/Lava snake/Skeleton2D/polygons"]
+show_behind_parent = true
+position = Vector2(-39.617, -1.0156)
+rotation = 4.92872
+scale = Vector2(12.7104, 12.7104)
+emitting = false
+amount = 80
+lifetime = 2.5
+texture = ExtResource("64_iikat")
+emission_shape = 3
+emission_rect_extents = Vector2(0, 1)
+direction = Vector2(1.505, 0)
+spread = 37.75
+gravity = Vector2(0, 0)
+initial_velocity_min = 1.0
+initial_velocity_max = 1.0
+radial_accel_min = -27.16
+radial_accel_max = 44.45
+scale_amount_min = 1.5
+scale_amount_max = 1.5
+scale_amount_curve = SubResource("Curve_1byn1")
+color_ramp = SubResource("Gradient_vn7px")
+
+[node name="HumoParticulasAdelante" type="CPUParticles2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/LavaFallVolcanica/PathFollow2D/Node2D/Lava snake/Skeleton2D/polygons"]
+position = Vector2(-39.9373, -7.48747)
+rotation = -7.7131
+scale = Vector2(12.7104, 12.7104)
+emitting = false
+amount = 5
+texture = ExtResource("64_iikat")
+emission_shape = 3
+emission_rect_extents = Vector2(0, 2)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 1.0
+initial_velocity_max = 1.0
+radial_accel_min = -27.16
+radial_accel_max = 44.45
+scale_amount_min = 1.5
+scale_amount_max = 1.5
+color_ramp = SubResource("Gradient_66ce5")
+
 [node name="Targets" type="Node2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/LavaFallVolcanica/PathFollow2D/Node2D/Lava snake"]
 position = Vector2(-3.27245, 9.22012)
 
@@ -3802,6 +4313,47 @@ libraries = {
 }
 script = ExtResource("28_glfmw")
 animation = "lava_fall"
+
+[node name="HumoVolcan" type="CPUParticles2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/LavaFallVolcanica"]
+show_behind_parent = true
+position = Vector2(87, 145)
+rotation = -1.23763
+scale = Vector2(12.7104, 12.7104)
+emitting = false
+amount = 120
+lifetime = 5.0
+texture = ExtResource("64_iikat")
+spread = 15.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 1.0
+initial_velocity_max = 2.0
+radial_accel_min = -27.16
+radial_accel_max = 44.45
+scale_amount_min = 1.3
+scale_amount_max = 1.5
+scale_amount_curve = SubResource("Curve_1byn1")
+color_ramp = SubResource("Gradient_vn7px")
+
+[node name="MoleParticles" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/LavaFallVolcanica" instance=ExtResource("68_elu88")]
+position = Vector2(85, 144)
+rotation = 0.41781
+emitting = false
+amount = 20
+lifetime = 2.0
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("11_d535g")
+emission_shape = 1
+emission_sphere_radius = 18.43
+direction = Vector2(0, -1)
+gravity = Vector2(0, 800)
+initial_velocity_min = 392.85
+initial_velocity_max = 482.06
+scale_amount_min = 0.01
+scale_amount_max = 0.02
+color = Color(1, 1, 1, 1)
+color_initial_ramp = SubResource("Gradient_ngxtp")
+metadata/_edit_group_ = true
 
 [node name="Tramo2" type="Control" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control"]
 z_index = -1
@@ -3926,7 +4478,7 @@ freeze = true
 metadata/_edit_group_ = true
 
 [node name="SmallPieceRock4" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/rockInstances" instance=ExtResource("21_kkj7f")]
-modulate = Color(0.464844, 0.472656, 0.492188, 1)
+modulate = Color(0.3008, 0.30624, 0.32, 1)
 position = Vector2(-735, -714)
 freeze = true
 metadata/_edit_group_ = true
@@ -4668,9 +5220,18 @@ position = Vector2(443, 345)
 rotation = 0.44175
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Area2D" groups=["BreakingSmallTrigger"]]
-position = Vector2(-18.116, -10.2378)
+position = Vector2(-7.09363, -10.7202)
 rotation = -1.61454
 shape = SubResource("RectangleShape2D_7ls2j")
+
+[node name="AreaFrezeeRocks" type="Area2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control"]
+position = Vector2(627, 451)
+monitorable = false
+script = ExtResource("33_rd7qh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/AreaFrezeeRocks"]
+position = Vector2(8, 0)
+shape = SubResource("RectangleShape2D_t1vcv")
 
 [node name="TextureRect" type="TextureRect" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control"]
 layout_mode = 1
@@ -4857,7 +5418,7 @@ z_index = 1
 position = Vector2(0, 17)
 scale = Vector2(0.651, 0.651)
 sprite_frames = SubResource("SpriteFrames_oho6g")
-animation = &"idle"
+animation = &"enter"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Cueva/LavaFace/LavaFace"]
 autoplay = "idle_anim"
@@ -4881,6 +5442,7 @@ offset_bottom = 529.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/focus = ExtResource("18_52khh")
+disabled = true
 flat = true
 script = ExtResource("33_a03qu")
 
@@ -4929,115 +5491,115 @@ position = Vector2(703.409, 172)
 position = Vector2(-203.409, -77)
 rotation = -1.5671
 _texture = ExtResource("35_wvi4y")
-color = Color(0.411765, 0.352941, 0.415686, 1)
+color = Color(0.378906, 0.15625, 0.15625, 1)
 
 [node name="PathPart2" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton1/resquebrajado" instance=ExtResource("16_wf1k4")]
 position = Vector2(-187.409, -54)
 rotation = 1.53541
 _texture = ExtResource("35_wvi4y")
-color = Color(0.411765, 0.352941, 0.415686, 1)
+color = Color(0.262745, 0.0980392, 0.0980392, 1)
 
 [node name="PathPart3" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton1/resquebrajado" instance=ExtResource("16_wf1k4")]
 position = Vector2(-159.409, -61)
 rotation = 3.27038
 _texture = ExtResource("36_dgbo2")
-color = Color(0.411765, 0.352941, 0.415686, 1)
+color = Color(0.368627, 0.254902, 0.254902, 1)
 
 [node name="PathPart4" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton1/resquebrajado" instance=ExtResource("16_wf1k4")]
 position = Vector2(-121.409, -48)
 rotation = 0.466274
 _texture = ExtResource("37_rnvsv")
-color = Color(0.411765, 0.352941, 0.415686, 1)
+color = Color(0.262745, 0.0980392, 0.0980392, 1)
 
 [node name="PathPart5" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton1/resquebrajado" instance=ExtResource("16_wf1k4")]
-position = Vector2(-118.409, -28)
+position = Vector2(-117.409, -28)
 rotation = 0.0209919
 _texture = ExtResource("38_eq5km")
-color = Color(0.411765, 0.352941, 0.415686, 1)
+color = Color(0.378906, 0.15625, 0.15625, 1)
 
 [node name="PathPart6" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton1/resquebrajado" instance=ExtResource("16_wf1k4")]
 position = Vector2(-94.4086, -12)
 rotation = -3.85222
 _texture = ExtResource("37_rnvsv")
-color = Color(0.411765, 0.352941, 0.415686, 1)
+color = Color(0.262745, 0.0980392, 0.0980392, 1)
 
 [node name="PathPart7" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton1/resquebrajado" instance=ExtResource("16_wf1k4")]
 position = Vector2(-62.4086, -15)
 rotation = -3.85222
 _texture = ExtResource("35_wvi4y")
-color = Color(0.411765, 0.352941, 0.415686, 1)
+color = Color(0.368627, 0.254902, 0.254902, 1)
 
 [node name="PathPart9" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton1/resquebrajado" instance=ExtResource("16_wf1k4")]
 position = Vector2(-69.4086, 5)
 rotation = -1.77518
 _texture = ExtResource("37_rnvsv")
-color = Color(0.411765, 0.352941, 0.415686, 1)
+color = Color(0.378906, 0.15625, 0.15625, 1)
 
 [node name="PathPart10" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton1/resquebrajado" instance=ExtResource("16_wf1k4")]
 position = Vector2(-38.4086, 1)
 rotation = -1.46296
 _texture = ExtResource("38_eq5km")
-color = Color(0.411765, 0.352941, 0.415686, 1)
+color = Color(0.368627, 0.254902, 0.254902, 1)
 
 [node name="PathPart15" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton1/resquebrajado" instance=ExtResource("16_wf1k4")]
 position = Vector2(-16.4086, 0)
 rotation = -0.145705
 _texture = ExtResource("35_wvi4y")
-color = Color(0.411765, 0.352941, 0.415686, 1)
+color = Color(0.378906, 0.15625, 0.15625, 1)
 
 [node name="PathPart14" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton1/resquebrajado" instance=ExtResource("16_wf1k4")]
 position = Vector2(1.59143, -9)
 rotation = 2.19207
 _texture = ExtResource("37_rnvsv")
-color = Color(0.411765, 0.352941, 0.415686, 1)
+color = Color(0.378906, 0.15625, 0.15625, 1)
 
 [node name="PathPart11" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton1/resquebrajado" instance=ExtResource("16_wf1k4")]
 position = Vector2(33.5914, -22)
 rotation = -0.217407
 _texture = ExtResource("37_rnvsv")
-color = Color(0.411765, 0.352941, 0.415686, 1)
+color = Color(0.368627, 0.254902, 0.254902, 1)
 
 [node name="PathPart12" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton1/resquebrajado" instance=ExtResource("16_wf1k4")]
 position = Vector2(34.5914, -1)
 rotation = -2.17788
 _texture = ExtResource("35_wvi4y")
-color = Color(0.411765, 0.352941, 0.415686, 1)
+color = Color(0.378906, 0.15625, 0.15625, 1)
 
 [node name="PathPart13" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton1/resquebrajado" instance=ExtResource("16_wf1k4")]
 position = Vector2(58.5914, -26)
 rotation = 2.19207
 _texture = ExtResource("37_rnvsv")
-color = Color(0.411765, 0.352941, 0.415686, 1)
+color = Color(0.378906, 0.15625, 0.15625, 1)
 
 [node name="PathPart16" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton1/resquebrajado" instance=ExtResource("16_wf1k4")]
 position = Vector2(50.5914, -51)
 rotation = 0.553945
 _texture = ExtResource("35_wvi4y")
-color = Color(0.411765, 0.352941, 0.415686, 1)
+color = Color(0.368627, 0.254902, 0.254902, 1)
 
 [node name="PathPart17" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton1/resquebrajado" instance=ExtResource("16_wf1k4")]
 position = Vector2(81.5914, -59)
 rotation = 2.04837
 _texture = ExtResource("38_eq5km")
-color = Color(0.411765, 0.352941, 0.415686, 1)
+color = Color(0.262745, 0.0980392, 0.0980392, 1)
 
 [node name="PathPart18" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton1/resquebrajado" instance=ExtResource("16_wf1k4")]
 position = Vector2(71.5914, -82)
 rotation = -6.42889
 _texture = ExtResource("37_rnvsv")
-color = Color(0.411765, 0.352941, 0.415686, 1)
+color = Color(0.378906, 0.15625, 0.15625, 1)
 
 [node name="PathPart19" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton1/resquebrajado" instance=ExtResource("16_wf1k4")]
 position = Vector2(91.5914, -98)
 rotation = -4.14662
 _texture = ExtResource("35_wvi4y")
-color = Color(0.411765, 0.352941, 0.415686, 1)
+color = Color(0.378906, 0.15625, 0.15625, 1)
 
 [node name="PathPart20" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton1/resquebrajado" instance=ExtResource("16_wf1k4")]
 position = Vector2(67.5914, -113)
 rotation = -6.17456
 _texture = ExtResource("35_wvi4y")
-color = Color(0.411765, 0.352941, 0.415686, 1)
+color = Color(0.378906, 0.15625, 0.15625, 1)
 
 [node name="PathPart21" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton1/resquebrajado" instance=ExtResource("16_wf1k4")]
 position = Vector2(37.5914, -135)
@@ -5049,7 +5611,7 @@ color = Color(0.647059, 0.521569, 0.611765, 1)
 position = Vector2(100.591, -133)
 rotation = -1.63111
 _texture = ExtResource("36_dgbo2")
-color = Color(0.647059, 0.521569, 0.611765, 1)
+color = Color(0.658824, 0.45098, 0.52549, 1)
 
 [node name="PathPart22" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton1/resquebrajado" instance=ExtResource("16_wf1k4")]
 position = Vector2(73.5914, -149)
@@ -5061,13 +5623,13 @@ color = Color(0.647059, 0.521569, 0.611765, 1)
 position = Vector2(-4.40857, -138)
 rotation = -3.04947
 _texture = ExtResource("37_rnvsv")
-color = Color(0.647059, 0.521569, 0.611765, 1)
+color = Color(0.443137, 0.368627, 0.45098, 1)
 
 [node name="PathPart24" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton1/resquebrajado" instance=ExtResource("16_wf1k4")]
 position = Vector2(-18.4086, -160)
 rotation = -5.78702
 _texture = ExtResource("38_eq5km")
-color = Color(0.647059, 0.521569, 0.611765, 1)
+color = Color(0.658824, 0.45098, 0.52549, 1)
 
 [node name="PathPart26" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton1/resquebrajado" instance=ExtResource("16_wf1k4")]
 position = Vector2(41.5914, -158)
@@ -5085,13 +5647,13 @@ color = Color(0.647059, 0.521569, 0.611765, 1)
 position = Vector2(-23.4086, -191)
 rotation = -6.40294
 _texture = ExtResource("36_dgbo2")
-color = Color(0.647059, 0.521569, 0.611765, 1)
+color = Color(0.443137, 0.368627, 0.45098, 1)
 
 [node name="PathPart29" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton1/resquebrajado" instance=ExtResource("16_wf1k4")]
 position = Vector2(-18.4086, -213)
 rotation = -4.43353
 _texture = ExtResource("35_wvi4y")
-color = Color(0.647059, 0.521569, 0.611765, 1)
+color = Color(0.658824, 0.45098, 0.52549, 1)
 
 [node name="PathPart30" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton1/resquebrajado" instance=ExtResource("16_wf1k4")]
 position = Vector2(15.5914, -201)
@@ -5109,7 +5671,7 @@ color = Color(0.647059, 0.521569, 0.611765, 1)
 position = Vector2(67.5914, -180)
 rotation = -1.59362
 _texture = ExtResource("36_dgbo2")
-color = Color(0.647059, 0.521569, 0.611765, 1)
+color = Color(0.658824, 0.45098, 0.52549, 1)
 
 [node name="PathPart33" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton1/resquebrajado" instance=ExtResource("16_wf1k4")]
 position = Vector2(113.592, -182)
@@ -5127,7 +5689,7 @@ color = Color(0.647059, 0.521569, 0.611765, 1)
 position = Vector2(41.5914, -213)
 rotation = -0.472066
 _texture = ExtResource("37_rnvsv")
-color = Color(0.647059, 0.521569, 0.611765, 1)
+color = Color(0.443137, 0.368627, 0.45098, 1)
 
 [node name="PathPart36" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton1/resquebrajado" instance=ExtResource("16_wf1k4")]
 position = Vector2(69.5914, -212)
@@ -5139,13 +5701,13 @@ color = Color(0.647059, 0.521569, 0.611765, 1)
 position = Vector2(101.591, -214)
 rotation = 3.25543
 _texture = ExtResource("35_wvi4y")
-color = Color(0.647059, 0.521569, 0.611765, 1)
+color = Color(0.658824, 0.45098, 0.52549, 1)
 
 [node name="PathPart38" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton1/resquebrajado" instance=ExtResource("16_wf1k4")]
 position = Vector2(16.5914, -230)
 rotation = 2.65714
 _texture = ExtResource("37_rnvsv")
-color = Color(0.647059, 0.521569, 0.611765, 1)
+color = Color(0.443137, 0.368627, 0.45098, 1)
 
 [node name="PathPart39" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton1/resquebrajado" instance=ExtResource("16_wf1k4")]
 position = Vector2(75.5914, -238)
@@ -5222,7 +5784,7 @@ z_index = 2
 position = Vector2(107, -29)
 rotation = -2.8765
 _texture = ExtResource("35_wvi4y")
-color = Color(0.647059, 0.521569, 0.611765, 1)
+color = Color(0.658824, 0.45098, 0.52549, 1)
 
 [node name="PathPart2" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton2/resquebrajado" instance=ExtResource("16_wf1k4")]
 position = Vector2(133, -38)
@@ -5240,7 +5802,7 @@ color = Color(0.647059, 0.521569, 0.611765, 1)
 position = Vector2(134, -98)
 rotation = 1.4721
 _texture = ExtResource("38_eq5km")
-color = Color(0.647059, 0.521569, 0.611765, 1)
+color = Color(0.658824, 0.45098, 0.52549, 1)
 
 [node name="PathPart5" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton2/resquebrajado" instance=ExtResource("16_wf1k4")]
 position = Vector2(112, -95)
@@ -5258,61 +5820,61 @@ color = Color(0.647059, 0.521569, 0.611765, 1)
 position = Vector2(128, -146)
 rotation = 5.84411
 _texture = ExtResource("35_wvi4y")
-color = Color(0.537255, 0.380392, 0.388235, 1)
+color = Color(0.309804, 0.180392, 0.192157, 1)
 
 [node name="PathPart8" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton2/resquebrajado" instance=ExtResource("16_wf1k4")]
 position = Vector2(106, -158)
 rotation = 7.58593
 _texture = ExtResource("36_dgbo2")
-color = Color(0.537255, 0.380392, 0.388235, 1)
+color = Color(0.427451, 0.258824, 0.270588, 1)
 
 [node name="PathPart9" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton2/resquebrajado" instance=ExtResource("16_wf1k4")]
 position = Vector2(96, -198)
 rotation = 8.18816
 _texture = ExtResource("35_wvi4y")
-color = Color(0.537255, 0.380392, 0.388235, 1)
+color = Color(0.309804, 0.180392, 0.192157, 1)
 
 [node name="PathPart10" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton2/resquebrajado" instance=ExtResource("16_wf1k4")]
 position = Vector2(85, -184)
 rotation = 10.3631
 _texture = ExtResource("37_rnvsv")
-color = Color(0.537255, 0.380392, 0.388235, 1)
+color = Color(0.427451, 0.258824, 0.270588, 1)
 
 [node name="PathPart11" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton2/resquebrajado" instance=ExtResource("16_wf1k4")]
 position = Vector2(54, -204)
 rotation = 12.7362
 _texture = ExtResource("38_eq5km")
-color = Color(0.537255, 0.380392, 0.388235, 1)
+color = Color(0.427451, 0.258824, 0.270588, 1)
 
 [node name="PathPart12" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton2/resquebrajado" instance=ExtResource("16_wf1k4")]
 position = Vector2(23, -201)
 rotation = 11.3592
 _texture = ExtResource("37_rnvsv")
-color = Color(0.537255, 0.380392, 0.388235, 1)
+color = Color(0.309804, 0.180392, 0.192157, 1)
 
 [node name="PathPart13" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton2/resquebrajado" instance=ExtResource("16_wf1k4")]
 position = Vector2(2, -175)
 rotation = 9.5542
 _texture = ExtResource("37_rnvsv")
-color = Color(0.537255, 0.380392, 0.388235, 1)
+color = Color(0.427451, 0.258824, 0.270588, 1)
 
 [node name="PathPart14" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton2/resquebrajado" instance=ExtResource("16_wf1k4")]
 position = Vector2(-16, -185)
 rotation = 7.14095
 _texture = ExtResource("35_wvi4y")
-color = Color(0.537255, 0.380392, 0.388235, 1)
+color = Color(0.427451, 0.258824, 0.270588, 1)
 
 [node name="PathPart15" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton2/resquebrajado" instance=ExtResource("16_wf1k4")]
 position = Vector2(-43, -161)
 rotation = 8.36357
 _texture = ExtResource("37_rnvsv")
-color = Color(0.537255, 0.380392, 0.388235, 1)
+color = Color(0.427451, 0.258824, 0.270588, 1)
 
 [node name="PathPart16" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton2/resquebrajado" instance=ExtResource("16_wf1k4")]
 position = Vector2(-26, -152)
 rotation = 9.82621
 _texture = ExtResource("35_wvi4y")
-color = Color(0.537255, 0.380392, 0.388235, 1)
+color = Color(0.309804, 0.180392, 0.192157, 1)
 
 [node name="PathPart18" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton2/resquebrajado" instance=ExtResource("16_wf1k4")]
 position = Vector2(-29, -123)
@@ -5330,7 +5892,7 @@ color = Color(0.647059, 0.521569, 0.611765, 1)
 position = Vector2(-63, -154)
 rotation = 14.071
 _texture = ExtResource("38_eq5km")
-color = Color(0.537255, 0.380392, 0.388235, 1)
+color = Color(0.427451, 0.258824, 0.270588, 1)
 
 [node name="PathPart29" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton2/resquebrajado" instance=ExtResource("16_wf1k4")]
 position = Vector2(-94, -152)
@@ -5342,7 +5904,7 @@ color = Color(0.647059, 0.521569, 0.611765, 1)
 position = Vector2(-90, -132)
 rotation = 13.9189
 _texture = ExtResource("35_wvi4y")
-color = Color(0.647059, 0.521569, 0.611765, 1)
+color = Color(0.439216, 0.294118, 0.388235, 1)
 
 [node name="PathPart19" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton2/resquebrajado" instance=ExtResource("16_wf1k4")]
 position = Vector2(-42, -91)
@@ -5354,7 +5916,7 @@ color = Color(0.647059, 0.521569, 0.611765, 1)
 position = Vector2(-82, -69)
 rotation = 20.5023
 _texture = ExtResource("36_dgbo2")
-color = Color(0.647059, 0.521569, 0.611765, 1)
+color = Color(0.439216, 0.294118, 0.388235, 1)
 
 [node name="PathPart20" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton2/resquebrajado" instance=ExtResource("16_wf1k4")]
 position = Vector2(-132, -118)
@@ -5384,7 +5946,7 @@ color = Color(0.647059, 0.521569, 0.611765, 1)
 position = Vector2(-176, -118)
 rotation = 25.8316
 _texture = ExtResource("35_wvi4y")
-color = Color(0.647059, 0.521569, 0.611765, 1)
+color = Color(0.439216, 0.294118, 0.388235, 1)
 
 [node name="PathPart32" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton2/resquebrajado" instance=ExtResource("16_wf1k4")]
 position = Vector2(-170, -99)
@@ -5396,7 +5958,7 @@ color = Color(0.647059, 0.521569, 0.611765, 1)
 position = Vector2(-167, -26)
 rotation = 19.62
 _texture = ExtResource("37_rnvsv")
-color = Color(0.647059, 0.521569, 0.611765, 1)
+color = Color(0.443137, 0.380392, 0.47451, 1)
 
 [node name="PathPart25" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton2/resquebrajado" instance=ExtResource("16_wf1k4")]
 position = Vector2(-191, -12)
@@ -5414,7 +5976,7 @@ color = Color(0.647059, 0.521569, 0.611765, 1)
 position = Vector2(-225, -49)
 rotation = 21.4783
 _texture = ExtResource("37_rnvsv")
-color = Color(0.647059, 0.521569, 0.611765, 1)
+color = Color(0.439216, 0.294118, 0.388235, 1)
 
 [node name="PathPart26" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton2/resquebrajado" instance=ExtResource("16_wf1k4")]
 position = Vector2(-207, -31)
@@ -5426,37 +5988,37 @@ color = Color(0.647059, 0.521569, 0.611765, 1)
 position = Vector2(-237, -14)
 rotation = 18.2421
 _texture = ExtResource("35_wvi4y")
-color = Color(0.647059, 0.521569, 0.611765, 1)
+color = Color(0.443137, 0.380392, 0.47451, 1)
 
 [node name="PathPart36" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton2/resquebrajado" instance=ExtResource("16_wf1k4")]
 position = Vector2(-250, 23)
 rotation = 17.7069
 _texture = ExtResource("38_eq5km")
-color = Color(0.647059, 0.521569, 0.611765, 1)
+color = Color(0.439216, 0.294118, 0.388235, 1)
 
 [node name="PathPart37" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton2/resquebrajado" instance=ExtResource("16_wf1k4")]
 position = Vector2(-284, 42)
 rotation = 15.5312
 _texture = ExtResource("37_rnvsv")
-color = Color(0.411765, 0.352941, 0.415686, 1)
+color = Color(0.378906, 0.15625, 0.15625, 1)
 
 [node name="PathPart38" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton2/resquebrajado" instance=ExtResource("16_wf1k4")]
 position = Vector2(-307, 37)
 rotation = 13.407
 _texture = ExtResource("35_wvi4y")
-color = Color(0.411765, 0.352941, 0.415686, 1)
+color = Color(0.289063, 0.1875, 0.191406, 1)
 
 [node name="PathPart39" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton2/resquebrajado" instance=ExtResource("16_wf1k4")]
 position = Vector2(-340, 20)
 rotation = 9.51441
 _texture = ExtResource("36_dgbo2")
-color = Color(0.411765, 0.352941, 0.415686, 1)
+color = Color(0.378906, 0.15625, 0.15625, 1)
 
 [node name="PathPart40" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton2/resquebrajado" instance=ExtResource("16_wf1k4")]
 position = Vector2(-381, -13)
 rotation = 10.0531
 _texture = ExtResource("38_eq5km")
-color = Color(0.647059, 0.521569, 0.611765, 1)
+color = Color(0.764706, 0.658824, 0.733333, 1)
 
 [node name="PathPart41" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton2/resquebrajado" instance=ExtResource("16_wf1k4")]
 position = Vector2(-360, -22)
@@ -5480,7 +6042,7 @@ color = Color(0.647059, 0.521569, 0.611765, 1)
 position = Vector2(-392, -38)
 rotation = 6.40563
 _texture = ExtResource("37_rnvsv")
-color = Color(0.647059, 0.521569, 0.611765, 1)
+color = Color(0.443137, 0.380392, 0.47451, 1)
 
 [node name="PathPart45" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton2/resquebrajado" instance=ExtResource("16_wf1k4")]
 position = Vector2(-468, -48)
@@ -5504,7 +6066,7 @@ color = Color(0.647059, 0.521569, 0.611765, 1)
 position = Vector2(-439, -61)
 rotation = 1.71573
 _texture = ExtResource("37_rnvsv")
-color = Color(0.647059, 0.521569, 0.611765, 1)
+color = Color(0.764706, 0.658824, 0.733333, 1)
 
 [node name="PathPart49" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton2/resquebrajado" instance=ExtResource("16_wf1k4")]
 position = Vector2(-472, -72)
@@ -5516,19 +6078,19 @@ color = Color(0.647059, 0.521569, 0.611765, 1)
 position = Vector2(-469, -95)
 rotation = 3.59557
 _texture = ExtResource("37_rnvsv")
-color = Color(0.647059, 0.521569, 0.611765, 1)
+color = Color(0.443137, 0.380392, 0.47451, 1)
 
 [node name="PathPart51" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton2/resquebrajado" instance=ExtResource("16_wf1k4")]
 position = Vector2(-429, -97)
 rotation = 4.98973
 _texture = ExtResource("36_dgbo2")
-color = Color(0.647059, 0.521569, 0.611765, 1)
+color = Color(0.443137, 0.380392, 0.47451, 1)
 
 [node name="PathPart52" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton2/resquebrajado" instance=ExtResource("16_wf1k4")]
 position = Vector2(-396, -86)
 rotation = 7.05959
 _texture = ExtResource("37_rnvsv")
-color = Color(0.647059, 0.521569, 0.611765, 1)
+color = Color(0.764706, 0.658824, 0.733333, 1)
 
 [node name="PathPart53" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton2/resquebrajado" instance=ExtResource("16_wf1k4")]
 position = Vector2(-365, -81)
@@ -5552,7 +6114,7 @@ color = Color(0.647059, 0.521569, 0.611765, 1)
 position = Vector2(-397, -114)
 rotation = 1.00236
 _texture = ExtResource("37_rnvsv")
-color = Color(0.647059, 0.521569, 0.611765, 1)
+color = Color(0.764706, 0.658824, 0.733333, 1)
 
 [node name="PathPart57" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton2/resquebrajado" instance=ExtResource("16_wf1k4")]
 position = Vector2(-463, -126)
@@ -5576,7 +6138,7 @@ color = Color(0.647059, 0.521569, 0.611765, 1)
 position = Vector2(-402, -155)
 rotation = 4.56289
 _texture = ExtResource("35_wvi4y")
-color = Color(0.647059, 0.521569, 0.611765, 1)
+color = Color(0.764706, 0.658824, 0.733333, 1)
 
 [node name="PathPart61" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton2/resquebrajado" instance=ExtResource("16_wf1k4")]
 position = Vector2(-383, -138)
@@ -5594,7 +6156,7 @@ color = Color(0.647059, 0.521569, 0.611765, 1)
 position = Vector2(-354, -128)
 rotation = 7.33544
 _texture = ExtResource("35_wvi4y")
-color = Color(0.647059, 0.521569, 0.611765, 1)
+color = Color(0.764706, 0.658824, 0.733333, 1)
 
 [node name="PathPart64" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton2/resquebrajado" instance=ExtResource("16_wf1k4")]
 position = Vector2(-354, -128)
@@ -5713,7 +6275,7 @@ color = Color(0.647059, 0.521569, 0.611765, 1)
 position = Vector2(9, 285)
 rotation = -7.64209
 _texture = ExtResource("37_rnvsv")
-color = Color(0.647059, 0.521569, 0.611765, 1)
+color = Color(0.533333, 0.431373, 0.47451, 1)
 
 [node name="PathPart3" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton3/resquebrajado" instance=ExtResource("16_wf1k4")]
 position = Vector2(-11, 249)
@@ -5725,7 +6287,7 @@ color = Color(0.647059, 0.521569, 0.611765, 1)
 position = Vector2(21, 244)
 rotation = -9.42618
 _texture = ExtResource("35_wvi4y")
-color = Color(0.647059, 0.521569, 0.611765, 1)
+color = Color(0.533333, 0.431373, 0.47451, 1)
 
 [node name="PathPart5" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton3/resquebrajado" instance=ExtResource("16_wf1k4")]
 position = Vector2(1, 232)
@@ -5743,7 +6305,7 @@ color = Color(0.647059, 0.521569, 0.611765, 1)
 position = Vector2(-31, 220)
 rotation = -9.55912
 _texture = ExtResource("37_rnvsv")
-color = Color(0.647059, 0.521569, 0.611765, 1)
+color = Color(0.533333, 0.431373, 0.47451, 1)
 
 [node name="PathPart8" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton3/resquebrajado" instance=ExtResource("16_wf1k4")]
 position = Vector2(-43, 192)
@@ -5755,211 +6317,211 @@ color = Color(0.647059, 0.521569, 0.611765, 1)
 position = Vector2(5, 162)
 rotation = -8.14804
 _texture = ExtResource("37_rnvsv")
-color = Color(0.647059, 0.521569, 0.611765, 1)
+color = Color(0.533333, 0.431373, 0.47451, 1)
 
 [node name="PathPart10" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton3/resquebrajado" instance=ExtResource("16_wf1k4")]
 position = Vector2(9, 143)
 rotation = -10.4358
 _texture = ExtResource("35_wvi4y")
-color = Color(0.537255, 0.380392, 0.388235, 1)
+color = Color(0.454902, 0.235294, 0.298039, 1)
 
 [node name="PathPart11" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton3/resquebrajado" instance=ExtResource("16_wf1k4")]
 position = Vector2(-42, 146)
 rotation = -11.5322
 _texture = ExtResource("36_dgbo2")
-color = Color(0.647059, 0.521569, 0.611765, 1)
+color = Color(0.533333, 0.431373, 0.47451, 1)
 
 [node name="PathPart12" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton3/resquebrajado" instance=ExtResource("16_wf1k4")]
 position = Vector2(12, 104)
 rotation = -14.0989
 _texture = ExtResource("38_eq5km")
-color = Color(0.537255, 0.380392, 0.388235, 1)
+color = Color(0.427451, 0.258824, 0.270588, 1)
 
 [node name="PathPart13" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton3/resquebrajado" instance=ExtResource("16_wf1k4")]
 position = Vector2(-36, 104)
 rotation = -12.3643
 _texture = ExtResource("35_wvi4y")
-color = Color(0.537255, 0.380392, 0.388235, 1)
+color = Color(0.427451, 0.258824, 0.270588, 1)
 
 [node name="PathPart14" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton3/resquebrajado" instance=ExtResource("16_wf1k4")]
 position = Vector2(-43, 74)
 rotation = -14.5547
 _texture = ExtResource("37_rnvsv")
-color = Color(0.537255, 0.380392, 0.388235, 1)
+color = Color(0.372549, 0.223529, 0.231373, 1)
 
 [node name="PathPart15" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton3/resquebrajado" instance=ExtResource("16_wf1k4")]
 position = Vector2(12, 66)
 rotation = -17.3009
 _texture = ExtResource("37_rnvsv")
-color = Color(0.537255, 0.380392, 0.388235, 1)
+color = Color(0.454902, 0.235294, 0.298039, 1)
 
 [node name="PathPart16" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton3/resquebrajado" instance=ExtResource("16_wf1k4")]
 position = Vector2(-43, 53)
 rotation = -16.8243
 _texture = ExtResource("35_wvi4y")
-color = Color(0.537255, 0.380392, 0.388235, 1)
+color = Color(0.427451, 0.258824, 0.270588, 1)
 
 [node name="PathPart17" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton3/resquebrajado" instance=ExtResource("16_wf1k4")]
 position = Vector2(-16, 50)
 rotation = -18.2114
 _texture = ExtResource("36_dgbo2")
-color = Color(0.537255, 0.380392, 0.388235, 1)
+color = Color(0.454902, 0.235294, 0.298039, 1)
 
 [node name="PathPart18" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton3/resquebrajado" instance=ExtResource("16_wf1k4")]
 position = Vector2(-73, 29)
 rotation = -16.6281
 _texture = ExtResource("35_wvi4y")
-color = Color(0.537255, 0.380392, 0.388235, 1)
+color = Color(0.427451, 0.258824, 0.270588, 1)
 
 [node name="PathPart19" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton3/resquebrajado" instance=ExtResource("16_wf1k4")]
 position = Vector2(17, 43)
 rotation = -18.2293
 _texture = ExtResource("37_rnvsv")
-color = Color(0.537255, 0.380392, 0.388235, 1)
+color = Color(0.427451, 0.258824, 0.270588, 1)
 
 [node name="PathPart20" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton3/resquebrajado" instance=ExtResource("16_wf1k4")]
 position = Vector2(33, 28)
 rotation = -18.1851
 _texture = ExtResource("38_eq5km")
-color = Color(0.537255, 0.380392, 0.388235, 1)
+color = Color(0.427451, 0.258824, 0.270588, 1)
 
 [node name="PathPart21" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton3/resquebrajado" instance=ExtResource("16_wf1k4")]
 position = Vector2(-43, 26)
 rotation = -21.5756
 _texture = ExtResource("37_rnvsv")
-color = Color(0.537255, 0.380392, 0.388235, 1)
+color = Color(0.427451, 0.258824, 0.270588, 1)
 
 [node name="PathPart22" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton3/resquebrajado" instance=ExtResource("16_wf1k4")]
 position = Vector2(2, 19)
 rotation = -22.0495
 _texture = ExtResource("35_wvi4y")
-color = Color(0.537255, 0.380392, 0.388235, 1)
+color = Color(0.427451, 0.258824, 0.270588, 1)
 
 [node name="PathPart23" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton3/resquebrajado" instance=ExtResource("16_wf1k4")]
 position = Vector2(74, 22)
 rotation = -20.4193
 _texture = ExtResource("36_dgbo2")
-color = Color(0.537255, 0.380392, 0.388235, 1)
+color = Color(0.372549, 0.223529, 0.231373, 1)
 
 [node name="PathPart24" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton3/resquebrajado" instance=ExtResource("16_wf1k4")]
 position = Vector2(48, 9)
 rotation = -21.3256
 _texture = ExtResource("37_rnvsv")
-color = Color(0.537255, 0.380392, 0.388235, 1)
+color = Color(0.427451, 0.258824, 0.270588, 1)
 
 [node name="PathPart25" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton3/resquebrajado" instance=ExtResource("16_wf1k4")]
 position = Vector2(-92, 4)
 rotation = -19.6777
 _texture = ExtResource("37_rnvsv")
-color = Color(0.537255, 0.380392, 0.388235, 1)
+color = Color(0.454902, 0.235294, 0.298039, 1)
 
 [node name="PathPart26" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton3/resquebrajado" instance=ExtResource("16_wf1k4")]
 position = Vector2(-69, 0)
 rotation = -19.6588
 _texture = ExtResource("35_wvi4y")
-color = Color(0.537255, 0.380392, 0.388235, 1)
+color = Color(0.427451, 0.258824, 0.270588, 1)
 
 [node name="PathPart27" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton3/resquebrajado" instance=ExtResource("16_wf1k4")]
 position = Vector2(-39, 3)
 rotation = -21.588
 _texture = ExtResource("35_wvi4y")
-color = Color(0.537255, 0.380392, 0.388235, 1)
+color = Color(0.372549, 0.223529, 0.231373, 1)
 
 [node name="PathPart28" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton3/resquebrajado" instance=ExtResource("16_wf1k4")]
 position = Vector2(-14, 3)
 rotation = -23.2449
 _texture = ExtResource("38_eq5km")
-color = Color(0.537255, 0.380392, 0.388235, 1)
+color = Color(0.427451, 0.258824, 0.270588, 1)
 
 [node name="PathPart29" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton3/resquebrajado" instance=ExtResource("16_wf1k4")]
 position = Vector2(-57, -15)
 rotation = -23.7549
 _texture = ExtResource("37_rnvsv")
-color = Color(0.537255, 0.380392, 0.388235, 1)
+color = Color(0.427451, 0.258824, 0.270588, 1)
 
 [node name="PathPart30" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton3/resquebrajado" instance=ExtResource("16_wf1k4")]
 position = Vector2(-81, -31)
 rotation = -24.3915
 _texture = ExtResource("35_wvi4y")
-color = Color(0.537255, 0.380392, 0.388235, 1)
+color = Color(0.372549, 0.223529, 0.231373, 1)
 
 [node name="PathPart31" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton3/resquebrajado" instance=ExtResource("16_wf1k4")]
 position = Vector2(-51, -50)
 rotation = -25.033
 _texture = ExtResource("36_dgbo2")
-color = Color(0.537255, 0.380392, 0.388235, 1)
+color = Color(0.454902, 0.235294, 0.298039, 1)
 
 [node name="PathPart32" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton3/resquebrajado" instance=ExtResource("16_wf1k4")]
 position = Vector2(-26, -28)
 rotation = -22.363
 _texture = ExtResource("37_rnvsv")
-color = Color(0.537255, 0.380392, 0.388235, 1)
+color = Color(0.427451, 0.258824, 0.270588, 1)
 
 [node name="PathPart33" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton3/resquebrajado" instance=ExtResource("16_wf1k4")]
 position = Vector2(58, -12)
 rotation = -26.4001
 _texture = ExtResource("35_wvi4y")
-color = Color(0.537255, 0.380392, 0.388235, 1)
+color = Color(0.427451, 0.258824, 0.270588, 1)
 
 [node name="PathPart34" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton3/resquebrajado" instance=ExtResource("16_wf1k4")]
 position = Vector2(28, -6)
 rotation = -25.0161
 _texture = ExtResource("37_rnvsv")
-color = Color(0.537255, 0.380392, 0.388235, 1)
+color = Color(0.427451, 0.258824, 0.270588, 1)
 
 [node name="PathPart35" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton3/resquebrajado" instance=ExtResource("16_wf1k4")]
 position = Vector2(5, -27)
 rotation = -22.5837
 _texture = ExtResource("35_wvi4y")
-color = Color(0.537255, 0.380392, 0.388235, 1)
+color = Color(0.454902, 0.235294, 0.298039, 1)
 
 [node name="PathPart36" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton3/resquebrajado" instance=ExtResource("16_wf1k4")]
 position = Vector2(32, -44)
 rotation = -23.9944
 _texture = ExtResource("36_dgbo2")
-color = Color(0.537255, 0.380392, 0.388235, 1)
+color = Color(0.372549, 0.223529, 0.231373, 1)
 
 [node name="PathPart37" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton3/resquebrajado" instance=ExtResource("16_wf1k4")]
 position = Vector2(57, -45)
 rotation = -23.523
 _texture = ExtResource("38_eq5km")
-color = Color(0.537255, 0.380392, 0.388235, 1)
+color = Color(0.427451, 0.258824, 0.270588, 1)
 
 [node name="PathPart38" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton3/resquebrajado" instance=ExtResource("16_wf1k4")]
 position = Vector2(40, -76)
 rotation = -23.7728
 _texture = ExtResource("35_wvi4y")
-color = Color(0.443137, 0.282353, 0.239216, 1)
+color = Color(0.628906, 0.476563, 0.371094, 1)
 
 [node name="PathPart39" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton3/resquebrajado" instance=ExtResource("16_wf1k4")]
 position = Vector2(11, -63)
 rotation = -22.5323
 _texture = ExtResource("35_wvi4y")
-color = Color(0.537255, 0.380392, 0.388235, 1)
+color = Color(0.427451, 0.258824, 0.270588, 1)
 
 [node name="PathPart40" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton3/resquebrajado" instance=ExtResource("16_wf1k4")]
 position = Vector2(-13, -69)
 rotation = -18.1253
 _texture = ExtResource("36_dgbo2")
-color = Color(0.537255, 0.380392, 0.388235, 1)
+color = Color(0.454902, 0.235294, 0.298039, 1)
 
 [node name="PathPart41" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton3/resquebrajado" instance=ExtResource("16_wf1k4")]
 position = Vector2(-37, -66)
 rotation = -16.734
 _texture = ExtResource("35_wvi4y")
-color = Color(0.537255, 0.380392, 0.388235, 1)
+color = Color(0.427451, 0.258824, 0.270588, 1)
 
 [node name="PathPart42" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton3/resquebrajado" instance=ExtResource("16_wf1k4")]
 position = Vector2(-37, -99)
 rotation = -13.7839
 _texture = ExtResource("37_rnvsv")
-color = Color(0.537255, 0.380392, 0.388235, 1)
+color = Color(0.454902, 0.235294, 0.298039, 1)
 
 [node name="PathPart43" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton3/resquebrajado" instance=ExtResource("16_wf1k4")]
 position = Vector2(-12, -96)
 rotation = -11.8087
 _texture = ExtResource("37_rnvsv")
-color = Color(0.537255, 0.380392, 0.388235, 1)
+color = Color(0.427451, 0.258824, 0.270588, 1)
 
 [node name="LavaFace" type="Control" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton3"]
 layout_mode = 1
@@ -6052,37 +6614,37 @@ position = Vector2(24, -322)
 position = Vector2(31, 275)
 rotation = -3.03994
 _texture = ExtResource("35_wvi4y")
-color = Color(0.569776, 0.392737, 0.352569, 1)
+color = Color(0.628906, 0.476563, 0.371094, 1)
 
 [node name="PathPart2" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton4/resquebrajado" instance=ExtResource("16_wf1k4")]
 position = Vector2(33, 239)
 rotation = -4.32217
 _texture = ExtResource("37_rnvsv")
-color = Color(0.569776, 0.392737, 0.352569, 1)
+color = Color(0.635294, 0.403922, 0.294118, 1)
 
 [node name="PathPart3" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton4/resquebrajado" instance=ExtResource("16_wf1k4")]
 position = Vector2(37, 213)
 rotation = -4.34506
 _texture = ExtResource("35_wvi4y")
-color = Color(0.569776, 0.392737, 0.352569, 1)
+color = Color(0.628906, 0.476563, 0.371094, 1)
 
 [node name="PathPart4" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton4/resquebrajado" instance=ExtResource("16_wf1k4")]
 position = Vector2(43, 176)
 rotation = -5.21386
 _texture = ExtResource("36_dgbo2")
-color = Color(0.569776, 0.392737, 0.352569, 1)
+color = Color(0.607843, 0.572549, 0.568627, 1)
 
 [node name="PathPart5" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton4/resquebrajado" instance=ExtResource("16_wf1k4")]
 position = Vector2(20, 174)
 rotation = -4.78168
 _texture = ExtResource("38_eq5km")
-color = Color(0.569776, 0.392737, 0.352569, 1)
+color = Color(0.807843, 0.662745, 0.560784, 1)
 
 [node name="PathPart6" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton4/resquebrajado" instance=ExtResource("16_wf1k4")]
 position = Vector2(34, 136)
 rotation = -7.69348
 _texture = ExtResource("37_rnvsv")
-color = Color(0.569776, 0.392737, 0.352569, 1)
+color = Color(0.882353, 0.772549, 0.701961, 1)
 
 [node name="LavaFace" type="Control" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton4"]
 layout_mode = 1
@@ -6147,6 +6709,7 @@ grow_vertical = 2
 color = Color(0, 0, 0, 0.682353)
 
 [node name="Nube" type="Control" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control"]
+modulate = Color(0.85098, 0.85098, 0.85098, 1)
 z_index = 1
 layout_mode = 1
 anchor_left = 0.487
@@ -6175,26 +6738,27 @@ grow_vertical = 2
 [node name="1" type="Sprite2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Nube/nubeMetamórfica"]
 self_modulate = Color(0.8, 0.8, 0.8, 1)
 position = Vector2(-11, 98)
+rotation = -1.23129
 scale = Vector2(1e-05, 1e-05)
-texture = ExtResource("37_8l3iv")
+texture = ExtResource("63_nbhyb")
 
 [node name="2" type="Sprite2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Nube/nubeMetamórfica"]
 self_modulate = Color(0.8, 0.8, 0.8, 1)
 position = Vector2(-53, 7)
 scale = Vector2(1e-05, 1e-05)
-texture = ExtResource("37_8l3iv")
+texture = ExtResource("63_nbhyb")
 
 [node name="3" type="Sprite2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Nube/nubeMetamórfica"]
 self_modulate = Color(0.8, 0.8, 0.8, 1)
-position = Vector2(-63, -144)
+position = Vector2(-63, -124)
 scale = Vector2(1e-05, 1e-05)
-texture = ExtResource("37_8l3iv")
+texture = ExtResource("64_itiaf")
 
 [node name="4" type="Sprite2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Nube/nubeMetamórfica"]
 self_modulate = Color(0.8, 0.8, 0.8, 1)
 position = Vector2(-44, -283)
 scale = Vector2(1e-05, 1e-05)
-texture = ExtResource("37_8l3iv")
+texture = ExtResource("65_qprba")
 
 [node name="nubeSedimentaria" type="Control" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Nube"]
 layout_mode = 1
@@ -6211,26 +6775,28 @@ grow_vertical = 2
 [node name="1" type="Sprite2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Nube/nubeSedimentaria"]
 self_modulate = Color(0.768627, 0.8, 0.8, 1)
 position = Vector2(175, -167)
+rotation = -1.86293
 scale = Vector2(1e-05, 1e-05)
-texture = ExtResource("37_8l3iv")
+texture = ExtResource("63_nbhyb")
 
 [node name="2" type="Sprite2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Nube/nubeSedimentaria"]
 self_modulate = Color(0.77, 0.8, 0.8, 1)
 position = Vector2(119, -194)
+rotation = 2.34257
 scale = Vector2(1e-05, 1e-05)
-texture = ExtResource("37_8l3iv")
+texture = ExtResource("63_nbhyb")
 
 [node name="3" type="Sprite2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Nube/nubeSedimentaria"]
 self_modulate = Color(0.77, 0.8, 0.8, 1)
 position = Vector2(58, -236)
 scale = Vector2(1e-05, 1e-05)
-texture = ExtResource("37_8l3iv")
+texture = ExtResource("64_itiaf")
 
 [node name="4" type="Sprite2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Nube/nubeSedimentaria"]
 self_modulate = Color(0.77, 0.8, 0.8, 1)
 position = Vector2(1, -306)
 scale = Vector2(1e-05, 1e-05)
-texture = ExtResource("37_8l3iv")
+texture = ExtResource("65_qprba")
 
 [node name="nubePlutonica" type="Control" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Nube"]
 layout_mode = 1
@@ -6248,25 +6814,26 @@ grow_vertical = 2
 self_modulate = Color(0.8, 0.8, 0.8, 1)
 position = Vector2(62, -61)
 scale = Vector2(1e-05, 1e-05)
-texture = ExtResource("37_8l3iv")
+texture = ExtResource("63_nbhyb")
 
 [node name="2" type="Sprite2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Nube/nubePlutonica"]
 self_modulate = Color(0.8, 0.8, 0.8, 1)
 position = Vector2(31, -102)
+rotation = 1.56465
 scale = Vector2(1e-05, 1e-05)
-texture = ExtResource("37_8l3iv")
+texture = ExtResource("63_nbhyb")
 
 [node name="3" type="Sprite2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Nube/nubePlutonica"]
 self_modulate = Color(0.8, 0.8, 0.8, 1)
 position = Vector2(4, -180)
 scale = Vector2(1e-05, 1e-05)
-texture = ExtResource("37_8l3iv")
+texture = ExtResource("64_itiaf")
 
 [node name="4" type="Sprite2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Nube/nubePlutonica"]
 self_modulate = Color(0.8, 0.8, 0.8, 1)
 position = Vector2(-7, -277)
 scale = Vector2(1e-05, 1e-05)
-texture = ExtResource("37_8l3iv")
+texture = ExtResource("65_qprba")
 
 [node name="nubeVolcanina" type="Control" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Nube"]
 layout_mode = 1
@@ -6284,25 +6851,26 @@ grow_vertical = 2
 self_modulate = Color(0.8, 0.8, 0.8, 1)
 position = Vector2(-66, -470)
 scale = Vector2(1e-05, 1e-05)
-texture = ExtResource("37_8l3iv")
+texture = ExtResource("63_nbhyb")
 
 [node name="2" type="Sprite2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Nube/nubeVolcanina"]
 self_modulate = Color(0.8, 0.8, 0.8, 1)
 position = Vector2(21, -510)
+rotation = -1.26707
 scale = Vector2(1e-05, 1e-05)
-texture = ExtResource("37_8l3iv")
+texture = ExtResource("63_nbhyb")
 
 [node name="3" type="Sprite2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Nube/nubeVolcanina"]
 self_modulate = Color(0.8, 0.8, 0.8, 1)
 position = Vector2(108, -457)
 scale = Vector2(1e-05, 1e-05)
-texture = ExtResource("37_8l3iv")
+texture = ExtResource("64_itiaf")
 
 [node name="4" type="Sprite2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Nube/nubeVolcanina"]
 self_modulate = Color(0.8, 0.8, 0.8, 1)
 position = Vector2(54, -360)
 scale = Vector2(1e-05, 1e-05)
-texture = ExtResource("37_8l3iv")
+texture = ExtResource("65_qprba")
 
 [node name="NubeGrande" type="Control" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Nube"]
 modulate = Color(0.772549, 0.772549, 0.772549, 1)
@@ -6317,141 +6885,10 @@ grow_vertical = 2
 scale = Vector2(1e-05, 1e-05)
 pivot_offset = Vector2(0, -358.555)
 
-[node name="Nube1" type="Sprite2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Nube/NubeGrande"]
-self_modulate = Color(0.8, 0.8, 0.8, 1)
-position = Vector2(-158, -413)
-scale = Vector2(0.306, 0.306)
-texture = ExtResource("37_8l3iv")
-
-[node name="Nube19" type="Sprite2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Nube/NubeGrande"]
-self_modulate = Color(0.8, 0.8, 0.8, 1)
-position = Vector2(30, -307)
-scale = Vector2(0.39, 0.402)
-texture = ExtResource("37_8l3iv")
-
-[node name="Nube2" type="Sprite2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Nube/NubeGrande"]
-self_modulate = Color(0.8, 0.8, 0.8, 1)
-position = Vector2(-219, -253)
-scale = Vector2(0.192, 0.192)
-texture = ExtResource("37_8l3iv")
-
-[node name="Nube3" type="Sprite2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Nube/NubeGrande"]
-self_modulate = Color(0.8, 0.8, 0.8, 1)
-position = Vector2(-187, -135)
-scale = Vector2(0.194, 0.196337)
-texture = ExtResource("37_8l3iv")
-
-[node name="Nube21" type="Sprite2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Nube/NubeGrande"]
-self_modulate = Color(0.8, 0.8, 0.8, 1)
-position = Vector2(-80, -146)
-scale = Vector2(0.122, 0.14)
-texture = ExtResource("37_8l3iv")
-
-[node name="Nube4" type="Sprite2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Nube/NubeGrande"]
-visible = false
-self_modulate = Color(0.8, 0.8, 0.8, 1)
-position = Vector2(-234, 59)
-scale = Vector2(0.214, 0.214)
-texture = ExtResource("37_8l3iv")
-
-[node name="Nube5" type="Sprite2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Nube/NubeGrande"]
-visible = false
-self_modulate = Color(0.8, 0.8, 0.8, 1)
-position = Vector2(-257, 176)
-scale = Vector2(0.138, 0.138)
-texture = ExtResource("37_8l3iv")
-
-[node name="Nube6" type="Sprite2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Nube/NubeGrande"]
-visible = false
-self_modulate = Color(0.8, 0.8, 0.8, 1)
-position = Vector2(-196, 303)
-scale = Vector2(0.284, 0.284)
-texture = ExtResource("37_8l3iv")
-
-[node name="Nube7" type="Sprite2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Nube/NubeGrande"]
-visible = false
-self_modulate = Color(0.8, 0.8, 0.8, 1)
-position = Vector2(-197, 477)
-scale = Vector2(0.282, 0.282)
-texture = ExtResource("37_8l3iv")
-
-[node name="Nube8" type="Sprite2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Nube/NubeGrande"]
-visible = false
-self_modulate = Color(0.8, 0.8, 0.8, 1)
-position = Vector2(-10, 483)
-scale = Vector2(0.214, 0.214)
-texture = ExtResource("37_8l3iv")
-
-[node name="Nube9" type="Sprite2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Nube/NubeGrande"]
-visible = false
-self_modulate = Color(0.8, 0.8, 0.8, 1)
-position = Vector2(212, 479)
-scale = Vector2(0.254, 0.254)
-texture = ExtResource("37_8l3iv")
-
-[node name="Nube11" type="Sprite2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Nube/NubeGrande"]
-visible = false
-self_modulate = Color(0.8, 0.8, 0.8, 1)
-position = Vector2(267, 348)
-scale = Vector2(0.172, 0.172)
-texture = ExtResource("37_8l3iv")
-
-[node name="Nube12" type="Sprite2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Nube/NubeGrande"]
-visible = false
-self_modulate = Color(0.8, 0.8, 0.8, 1)
-position = Vector2(183, 209)
-scale = Vector2(0.296, 0.296)
-texture = ExtResource("37_8l3iv")
-
-[node name="Nube13" type="Sprite2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Nube/NubeGrande"]
-visible = false
-self_modulate = Color(0.8, 0.8, 0.8, 1)
-position = Vector2(195, 52)
-scale = Vector2(0.236, 0.236)
-texture = ExtResource("37_8l3iv")
-
-[node name="Nube14" type="Sprite2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Nube/NubeGrande"]
-self_modulate = Color(0.8, 0.8, 0.8, 1)
-position = Vector2(57, -165)
-scale = Vector2(0.305, 0.23)
-texture = ExtResource("37_8l3iv")
-
-[node name="Nube15" type="Sprite2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Nube/NubeGrande"]
-self_modulate = Color(0.8, 0.8, 0.8, 1)
-position = Vector2(208, -264)
-scale = Vector2(0.214, 0.214)
-texture = ExtResource("37_8l3iv")
-
-[node name="Nube20" type="Sprite2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Nube/NubeGrande"]
-self_modulate = Color(0.8, 0.8, 0.8, 1)
-position = Vector2(222, -134)
-scale = Vector2(0.166, 0.15)
-texture = ExtResource("37_8l3iv")
-
-[node name="Nube16" type="Sprite2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Nube/NubeGrande"]
-self_modulate = Color(0.8, 0.8, 0.8, 1)
-position = Vector2(227, -401)
-scale = Vector2(0.236, 0.236)
-texture = ExtResource("37_8l3iv")
-
-[node name="Nube17" type="Sprite2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Nube/NubeGrande"]
-self_modulate = Color(0.8, 0.8, 0.8, 1)
-position = Vector2(140, -492)
-scale = Vector2(0.196, 0.196)
-texture = ExtResource("37_8l3iv")
-
-[node name="Nube18" type="Sprite2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Nube/NubeGrande"]
-self_modulate = Color(0.8, 0.8, 0.8, 1)
-position = Vector2(-19, -483)
-scale = Vector2(0.224, 0.224)
-texture = ExtResource("37_8l3iv")
-
-[node name="Nube10" type="Sprite2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Nube/NubeGrande"]
-visible = false
-self_modulate = Color(0.8, 0.8, 0.8, 1)
-position = Vector2(93, 512)
-scale = Vector2(0.088, 0.088)
-texture = ExtResource("37_8l3iv")
+[node name="Sprite2D" type="Sprite2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Nube/NubeGrande"]
+position = Vector2(10, -316)
+scale = Vector2(1.01111, 1.01111)
+texture = ExtResource("66_k43vj")
 
 [node name="AnimationNube" type="AnimationPlayer" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Nube"]
 libraries = {
@@ -6468,6 +6905,19 @@ script = ExtResource("16_im4xr")
 overlay = NodePath("../Overlay")
 nubeAnim = NodePath("../Nube/AnimationNube")
 
+[node name="sssss" type="Sprite2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Metamorfica"]
+visible = false
+self_modulate = Color(1, 0, 0, 1)
+clip_children = 2
+texture = ExtResource("11_d535g")
+
+[node name="lavaDerretida" type="Sprite2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Metamorfica/sssss"]
+self_modulate = Color(1, 1, 1, 0.423529)
+position = Vector2(11.25, -46.25)
+rotation = -1.55975
+scale = Vector2(1.21945, 1.21945)
+texture = ExtResource("21_13nxm")
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Metamorfica"]
 libraries = {
 "": SubResource("AnimationLibrary_aa5q8")
@@ -6477,11 +6927,6 @@ libraries = {
 self_modulate = Color(1, 0.847059, 0.639216, 1)
 position = Vector2(-15, -15)
 scale = Vector2(1.02919, 1.02919)
-texture = ExtResource("20_f4tn4")
-
-[node name="PiedraHeat" type="Sprite2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Metamorfica"]
-self_modulate = Color(0.332881, 0.332881, 0.332881, 0)
-position = Vector2(0, -1)
 texture = ExtResource("20_f4tn4")
 
 [node name="HumoParticulasAtras" type="CPUParticles2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Metamorfica"]
@@ -6581,6 +7026,12 @@ libraries = {
 }
 script = ExtResource("28_glfmw")
 
+[node name="PiedraHeat" type="Sprite2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Metamorfica"]
+self_modulate = Color(0.332881, 0.332881, 0.332881, 0)
+position = Vector2(0, -0.999939)
+scale = Vector2(3.125, 3.125)
+texture = ExtResource("39_ryerp")
+
 [node name="metamorficaSpot" type="TextureRect" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control"]
 visible = false
 layout_mode = 1
@@ -6632,22 +7083,6 @@ position = Vector2(45, 42)
 scale = Vector2(0.170787, 0.170786)
 texture = ExtResource("21_13nxm")
 
-[node name="anim" type="Sprite2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/metamorficaSpot"]
-visible = false
-self_modulate = Color(0, 0, 0, 1)
-position = Vector2(47, 36)
-scale = Vector2(0.456, 0.456)
-texture = ExtResource("27_bw70x")
-hframes = 11
-vframes = 4
-frame = 43
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/metamorficaSpot/anim"]
-autoplay = "idle_metamorfica"
-libraries = {
-"": SubResource("AnimationLibrary_j3tjm")
-}
-
 [node name="Button" type="Button" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/metamorficaSpot"]
 layout_mode = 1
 anchors_preset = -1
@@ -6661,6 +7096,21 @@ offset_right = 72.987
 offset_bottom = 62.032
 theme_override_styles/focus = ExtResource("18_52khh")
 flat = true
+
+[node name="anim" type="Sprite2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/metamorficaSpot/Button"]
+self_modulate = Color(0, 0, 0, 1)
+position = Vector2(74, 60)
+scale = Vector2(0.456, 0.456)
+texture = ExtResource("27_bw70x")
+hframes = 11
+vframes = 4
+frame = 43
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/metamorficaSpot/Button/anim"]
+autoplay = "idle_metamorfica"
+libraries = {
+"": SubResource("AnimationLibrary_j3tjm")
+}
 
 [node name="Sedimentaria" type="Sprite2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control" node_paths=PackedStringArray("overlay", "nubeAnim")]
 self_modulate = Color(0.8, 0.8, 1, 1)
@@ -6682,11 +7132,18 @@ position = Vector2(1, 1)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_6goou")
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Sedimentaria/Area2D"]
+speed_scale = 4.0
+libraries = {
+"": SubResource("AnimationLibrary_ntoys")
+}
+
 [node name="SedimentariaTime" type="Timer" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Sedimentaria"]
 wait_time = 7.0
 one_shot = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Sedimentaria"]
+speed_scale = 4.0
 libraries = {
 "": SubResource("AnimationLibrary_cmi3y")
 }
@@ -6725,6 +7182,70 @@ libraries = {
 script = ExtResource("28_glfmw")
 animation = "idle_despertar"
 
+[node name="MoleParticles" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Sedimentaria" instance=ExtResource("68_elu88")]
+position = Vector2(0, 4.33331)
+rotation = 0.0476387
+emitting = false
+amount = 10
+lifetime = 5.0
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("11_d535g")
+emission_shape = 1
+emission_sphere_radius = 18.43
+direction = Vector2(0, -1)
+gravity = Vector2(0, 800)
+initial_velocity_min = 392.85
+initial_velocity_max = 482.06
+scale_amount_min = 0.06
+scale_amount_max = 0.07
+color = Color(1, 1, 1, 1)
+color_initial_ramp = SubResource("Gradient_ngxtp")
+metadata/_edit_group_ = true
+
+[node name="MoleParticles3" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Sedimentaria" instance=ExtResource("68_elu88")]
+position = Vector2(47.6056, -4.86943)
+rotation = 0.0476387
+emitting = false
+amount = 10
+lifetime = 5.0
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("11_d535g")
+emission_shape = 1
+emission_sphere_radius = 19.03
+direction = Vector2(0, -1)
+gravity = Vector2(0, 800)
+initial_velocity_min = 397.55
+initial_velocity_max = 482.05
+scale_amount_min = 0.06
+scale_amount_max = 0.07
+color = Color(1, 1, 1, 1)
+color_initial_ramp = SubResource("Gradient_ngxtp")
+metadata/_edit_group_ = true
+
+[node name="MoleParticles2" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Sedimentaria" instance=ExtResource("68_elu88")]
+position = Vector2(-39.8853, -14.5315)
+rotation = 0.0476387
+emitting = false
+amount = 10
+lifetime = 5.0
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("11_d535g")
+emission_shape = 1
+emission_sphere_radius = 17.55
+direction = Vector2(0, -1)
+gravity = Vector2(0, 800)
+initial_velocity_min = 416.32
+initial_velocity_max = 482.05
+angular_velocity_max = 238.18
+scale_amount_min = 0.06
+scale_amount_max = 0.07
+color = Color(1, 1, 1, 1)
+color_initial_ramp = SubResource("Gradient_ngxtp")
+metadata/_edit_group_ = true
+
 [node name="sedimentariaSpot" type="Sprite2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control"]
 visible = false
 self_modulate = Color(1, 1, 1, 0.984314)
@@ -6751,23 +7272,6 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="anim" type="Sprite2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/sedimentariaSpot"]
-visible = false
-modulate = Color(0, 0, 0, 1)
-self_modulate = Color(0.8, 0.8, 0.8, 1)
-position = Vector2(-43.0918, 0)
-scale = Vector2(2.90564, 2.90564)
-texture = ExtResource("27_bw70x")
-hframes = 11
-vframes = 4
-frame = 43
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/sedimentariaSpot/anim"]
-autoplay = "idle_sedimentaria"
-libraries = {
-"": SubResource("AnimationLibrary_j3tjm")
-}
-
 [node name="Button" type="Button" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/sedimentariaSpot"]
 anchors_preset = -1
 anchor_left = 0.519
@@ -6781,6 +7285,22 @@ offset_bottom = 45.9
 size_flags_horizontal = 4
 theme_override_styles/focus = ExtResource("18_52khh")
 flat = true
+
+[node name="anim" type="Sprite2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/sedimentariaSpot/Button"]
+modulate = Color(0, 0, 0, 1)
+self_modulate = Color(0.8, 0.8, 0.8, 1)
+position = Vector2(319.908, 254)
+scale = Vector2(2.90564, 2.90564)
+texture = ExtResource("27_bw70x")
+hframes = 11
+vframes = 4
+frame = 43
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/sedimentariaSpot/Button/anim"]
+autoplay = "idle_sedimentaria"
+libraries = {
+"": SubResource("AnimationLibrary_j3tjm")
+}
 
 [node name="sedimentariaSpot2" type="Sprite2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/sedimentariaSpot"]
 scale = Vector2(0.932729, 0.909091)
@@ -6840,46 +7360,29 @@ libraries = {
 script = ExtResource("28_glfmw")
 animation = "despertar_anim"
 
-[node name="HumoParticulasAtras" type="CPUParticles2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Preplutonica"]
-show_behind_parent = true
-position = Vector2(28.5483, -33.71)
-rotation = 4.88836
+[node name="HumoTransformacion" type="CPUParticles2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Preplutonica"]
+position = Vector2(5.71429, -4.28571)
+rotation = 3.08961
 scale = Vector2(12.7104, 12.7104)
 emitting = false
-amount = 80
-lifetime = 2.5
+amount = 120
+lifetime = 2.0
+one_shot = true
+explosiveness = 1.0
 local_coords = true
 texture = ExtResource("64_iikat")
+emission_shape = 1
+emission_sphere_radius = 30.0
+direction = Vector2(0, 1)
 spread = 20.0
 gravity = Vector2(0, 0)
 initial_velocity_min = 5.0
 initial_velocity_max = 5.0
 radial_accel_min = -27.16
 radial_accel_max = 44.45
-scale_amount_curve = SubResource("Curve_1byn1")
-color_ramp = SubResource("Gradient_vn7px")
-
-[node name="HumoParticulasAdelante" type="CPUParticles2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Preplutonica"]
-position = Vector2(0, 63.8706)
-rotation = -3.29889
-scale = Vector2(12.7104, 12.7104)
-emitting = false
-amount = 5
-local_coords = true
-texture = ExtResource("64_iikat")
-emission_shape = 4
-emission_points = PackedVector2Array(0, 0, 10, 0, -10, 0, 0, 10)
-emission_colors = PackedColorArray()
-direction = Vector2(0, 1)
-spread = 0.0
-gravity = Vector2(0, 0)
-initial_velocity_min = 10.0
-initial_velocity_max = 10.0
-radial_accel_min = -27.16
-radial_accel_max = 44.45
 scale_amount_min = 0.5
-scale_amount_max = 0.5
-color_ramp = SubResource("Gradient_66ce5")
+scale_amount_curve = SubResource("Curve_1byn1")
+color_ramp = SubResource("Gradient_00m6q")
 
 [node name="plutonicaSpot" type="Sprite2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control"]
 visible = false
@@ -6914,22 +7417,6 @@ position = Vector2(0, -2.93286)
 scale = Vector2(0.90642, 0.895524)
 texture = ExtResource("30_4817p")
 
-[node name="anim" type="Sprite2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/plutonicaSpot"]
-visible = false
-self_modulate = Color(0, 0, 0, 1)
-position = Vector2(-5.93726, 2.93262)
-scale = Vector2(2.52957, 2.52957)
-texture = ExtResource("27_bw70x")
-hframes = 11
-vframes = 4
-frame = 43
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/plutonicaSpot/anim"]
-autoplay = "idle_plutonica"
-libraries = {
-"": SubResource("AnimationLibrary_j3tjm")
-}
-
 [node name="Button" type="Button" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/plutonicaSpot"]
 anchors_preset = -1
 anchor_left = 0.53
@@ -6943,15 +7430,30 @@ offset_bottom = 69.253
 theme_override_styles/focus = ExtResource("18_52khh")
 flat = true
 
+[node name="anim" type="Sprite2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/plutonicaSpot/Button"]
+self_modulate = Color(0, 0, 0, 1)
+position = Vector2(374.034, 246.359)
+scale = Vector2(2.52957, 2.52957)
+texture = ExtResource("27_bw70x")
+hframes = 11
+vframes = 4
+frame = 43
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/plutonicaSpot/Button/anim"]
+autoplay = "idle_plutonica"
+libraries = {
+"": SubResource("AnimationLibrary_j3tjm")
+}
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/plutonicaSpot"]
 libraries = {
 "": SubResource("AnimationLibrary_empi5")
 }
 
 [node name="Volcanica" type="Sprite2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control" node_paths=PackedStringArray("overlay", "NubeAnim")]
-self_modulate = Color(1, 1, 1, 0)
+self_modulate = Color(2.00392, 1, 1, 0)
 z_index = 1
-position = Vector2(244, 249)
+position = Vector2(237, 241)
 rotation = 1.06465
 scale = Vector2(0.156566, 0.156566)
 texture = ExtResource("33_t4nqu")
@@ -7005,46 +7507,57 @@ libraries = {
 script = ExtResource("28_glfmw")
 animation = "despertar_idle"
 
-[node name="HumoParticulasAtras" type="CPUParticles2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Volcanica"]
-show_behind_parent = true
-position = Vector2(28.5483, -33.71)
-rotation = 4.29508
+[node name="LavaFace" type="AnimatedSprite2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Volcanica"]
+visible = false
+self_modulate = Color(0.8, 0.8, 0.8, 1)
+position = Vector2(4.77052, 15.0945)
+scale = Vector2(1.76818, 1.76819)
+sprite_frames = ExtResource("49_ra5my")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.0065654
+offset = Vector2(-9.385, 92.495)
+
+[node name="HumoTransformacion" type="CPUParticles2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Volcanica"]
+position = Vector2(5.71429, -4.28571)
+rotation = 3.08961
 scale = Vector2(12.7104, 12.7104)
 emitting = false
-amount = 80
-lifetime = 2.5
+amount = 120
+lifetime = 2.0
+one_shot = true
+explosiveness = 1.0
 local_coords = true
 texture = ExtResource("64_iikat")
+emission_shape = 1
+emission_sphere_radius = 30.0
+direction = Vector2(0, 1)
 spread = 20.0
 gravity = Vector2(0, 0)
 initial_velocity_min = 5.0
 initial_velocity_max = 5.0
 radial_accel_min = -27.16
 radial_accel_max = 44.45
-scale_amount_curve = SubResource("Curve_1byn1")
-color_ramp = SubResource("Gradient_vn7px")
-
-[node name="HumoParticulasAdelante" type="CPUParticles2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Volcanica"]
-position = Vector2(20.5249, 55.1934)
-rotation = -3.55206
-scale = Vector2(12.7104, 12.7104)
-emitting = false
-amount = 5
-local_coords = true
-texture = ExtResource("64_iikat")
-emission_shape = 4
-emission_points = PackedVector2Array(0, 0, 10, 0, -10, 0, 0, 10)
-emission_colors = PackedColorArray()
-direction = Vector2(0, 1)
-spread = 0.0
-gravity = Vector2(0, 0)
-initial_velocity_min = 10.0
-initial_velocity_max = 10.0
-radial_accel_min = -27.16
-radial_accel_max = 44.45
 scale_amount_min = 0.5
-scale_amount_max = 0.5
-color_ramp = SubResource("Gradient_66ce5")
+scale_amount_curve = SubResource("Curve_1byn1")
+color_ramp = SubResource("Gradient_00m6q")
+
+[node name="Anim2" type="Sprite2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Volcanica"]
+self_modulate = Color(0.8, 0.8, 0.8, 1)
+z_index = 1
+position = Vector2(-7.77771, 8.88889)
+scale = Vector2(2.29111, 2.29111)
+texture = ExtResource("48_6k4b4")
+hframes = 12
+vframes = 4
+frame = 8
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Volcanica/Anim2"]
+libraries = {
+"": SubResource("AnimationLibrary_24g1x")
+}
+script = ExtResource("28_glfmw")
+animation = "despertar_idle"
 
 [node name="VulcanicaSpot" type="Sprite2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control"]
 visible = false
@@ -7072,25 +7585,6 @@ position = Vector2(-0.00012207, 0)
 scale = Vector2(0.926829, 0.926829)
 texture = ExtResource("32_bldxx")
 
-[node name="Anim" type="Sprite2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/VulcanicaSpot"]
-visible = false
-self_modulate = Color(0, 0, 0, 1)
-position = Vector2(28.1249, -32.8125)
-rotation = -0.261016
-scale = Vector2(2.22909, 2.22909)
-texture = ExtResource("48_6k4b4")
-hframes = 12
-vframes = 4
-frame = 8
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/VulcanicaSpot/Anim"]
-autoplay = "despertar_idle"
-libraries = {
-"": SubResource("AnimationLibrary_24g1x")
-}
-script = ExtResource("28_glfmw")
-animation = "despertar_idle"
-
 [node name="Button" type="Button" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/VulcanicaSpot"]
 anchors_preset = -1
 anchor_left = 0.5
@@ -7104,6 +7598,34 @@ offset_bottom = -4.00005
 size_flags_horizontal = 4
 theme_override_styles/focus = ExtResource("18_52khh")
 flat = true
+
+[node name="Anim" type="Sprite2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/VulcanicaSpot/Button"]
+self_modulate = Color(0, 0, 0, 1)
+position = Vector2(329.125, 146.188)
+rotation = -0.261016
+scale = Vector2(2.22909, 2.22909)
+texture = ExtResource("48_6k4b4")
+hframes = 12
+vframes = 4
+frame = 8
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/VulcanicaSpot/Button/Anim"]
+autoplay = "despertar_idle"
+libraries = {
+"": SubResource("AnimationLibrary_24g1x")
+}
+script = ExtResource("28_glfmw")
+animation = "despertar_idle"
+
+[node name="LavaFace" type="AnimatedSprite2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/VulcanicaSpot"]
+self_modulate = Color(0.8, 0.8, 0.8, 1)
+position = Vector2(7.85657, 5.1152)
+rotation = -0.229244
+scale = Vector2(1.57827, 1.57827)
+sprite_frames = ExtResource("49_ra5my")
+animation = &"static"
+autoplay = "static"
+offset = Vector2(-9.385, 92.495)
 
 [node name="ButtonsInfoController" type="Node" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control" node_paths=PackedStringArray("panel")]
 script = ExtResource("46_iftno")
@@ -7148,11 +7670,11 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Paneles" type="Control" parent="Transformando/StateMachine/Juego/Contenido/Instancia1"]
+modulate = Color(0.8, 0.8, 0.8, 1)
 z_index = 2
 layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
+anchor_top = 0.45
+anchor_bottom = 0.45
 grow_vertical = 2
 
 [node name="PanelSedimentaria" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Paneles" instance=ExtResource("10_2d6bp")]
@@ -7168,6 +7690,7 @@ offset_bottom = 578.0
 grow_horizontal = 1
 pivot_offset = Vector2(326, 303)
 AppearInBeginning = false
+RepitingPanel = true
 Texts = Array[ExtResource("13_r3rxi")]([SubResource("Resource_7uqoc")])
 
 [node name="labelRich" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Paneles/PanelSedimentaria" index="1"]
@@ -7184,25 +7707,10 @@ HASTA UN MILLÓN DE AÑOS
 ASÍ NACEN LAS
 [font_size={40}][b]ROCAS SEDIMENTARIAS[/b]"
 
-[node name="Icon" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Paneles/PanelSedimentaria/BtnDerAnchor/btnDer" index="0"]
-offset_left = -22.0
-offset_top = -22.0
-offset_right = 22.0
-offset_bottom = 22.0
-texture = ExtResource("12_j8o53")
-
-[node name="Icon" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Paneles/PanelSedimentaria/btnIzqAnchor/btnIzq" index="0"]
-offset_left = -22.0
-offset_top = -22.0
-offset_right = 22.0
-offset_bottom = 22.0
-
 [node name="btnCentral" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Paneles/PanelSedimentaria/btnCentralAnchor" index="0"]
 visible = true
 
 [node name="Icon" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Paneles/PanelSedimentaria/btnCentralAnchor/btnCentral" index="0"]
-offset_right = -23.0
-offset_bottom = -23.0
 texture = ExtResource("12_j8o53")
 
 [node name="Panel(1) Btn(center)" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Paneles/PanelSedimentaria" instance=ExtResource("16_ss078")]
@@ -7217,6 +7725,7 @@ offset_right = 689.0
 offset_bottom = 475.0
 pivot_offset = Vector2(326, 251.5)
 AppearInBeginning = false
+RepitingPanel = true
 Texts = Array[ExtResource("13_r3rxi")]([SubResource("Resource_aw4l0")])
 
 [node name="labelRich" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Paneles/PanelMetamorfica" index="1"]
@@ -7232,24 +7741,10 @@ SE CONVIERTE EN UNA
 
 "
 
-[node name="Icon" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Paneles/PanelMetamorfica/BtnDerAnchor/btnDer" index="0"]
-offset_left = -22.0
-offset_top = -22.0
-offset_right = 22.0
-offset_bottom = 22.0
-
-[node name="Icon" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Paneles/PanelMetamorfica/btnIzqAnchor/btnIzq" index="0"]
-offset_left = -22.0
-offset_top = -22.0
-offset_right = 22.0
-offset_bottom = 22.0
-
 [node name="btnCentral" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Paneles/PanelMetamorfica/btnCentralAnchor" index="0"]
 visible = true
 
 [node name="Icon" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Paneles/PanelMetamorfica/btnCentralAnchor/btnCentral" index="0"]
-offset_right = -23.0
-offset_bottom = -23.0
 texture = ExtResource("12_j8o53")
 
 [node name="Panel(1) Btn(center)" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Paneles/PanelMetamorfica" instance=ExtResource("16_ss078")]
@@ -7264,6 +7759,7 @@ offset_right = 690.0
 offset_bottom = 484.0
 pivot_offset = Vector2(326, 254.5)
 AppearInBeginning = false
+RepitingPanel = true
 Texts = Array[ExtResource("13_r3rxi")]([SubResource("Resource_iv4x2")])
 
 [node name="labelRich" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Paneles/PanelPlutonica" index="1"]
@@ -7274,29 +7770,14 @@ QUE SE ENCUENTRA BAJO LA TIERRA[/b]
 ENTRE 850 A 1200 GRADOS!
 
 [b]CUANDO EL MAGMA SE ENFRÍA[/b]
-MUY LENTAMENTE,
-[b]SE PONE SÓLIDO[/b]
+MUY LENTAMENTE [b]SE PONE SÓLIDO[b]
 Y SE CONVIERTE EN UNA 
-[b]ROCA ÍGNEA PLUTÓNICA[/b][/center]"
-
-[node name="Icon" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Paneles/PanelPlutonica/BtnDerAnchor/btnDer" index="0"]
-offset_left = -22.0
-offset_top = -22.0
-offset_right = 22.0
-offset_bottom = 22.0
-
-[node name="Icon" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Paneles/PanelPlutonica/btnIzqAnchor/btnIzq" index="0"]
-offset_left = -22.0
-offset_top = -22.0
-offset_right = 22.0
-offset_bottom = 22.0
+[font_size={40}][b]ROCA ÍGNEA PLUTÓNICA[/b]"
 
 [node name="btnCentral" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Paneles/PanelPlutonica/btnCentralAnchor" index="0"]
 visible = true
 
 [node name="Icon" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Paneles/PanelPlutonica/btnCentralAnchor/btnCentral" index="0"]
-offset_right = -23.0
-offset_bottom = -23.0
 texture = ExtResource("12_j8o53")
 
 [node name="Panel(1) Btn(center)" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Paneles/PanelPlutonica" instance=ExtResource("16_ss078")]
@@ -7311,6 +7792,7 @@ offset_right = 689.0
 offset_bottom = 459.0
 pivot_offset = Vector2(326, 241.5)
 AppearInBeginning = false
+RepitingPanel = true
 Texts = Array[ExtResource("13_r3rxi")]([SubResource("Resource_dyytj")])
 
 [node name="labelRich" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Paneles/PanelVolcanica" index="1"]
@@ -7323,26 +7805,12 @@ AL ESTAR FUERA DE LA TIERRA
 [b]CUANDO LA LAVA SE ENFRÍA
 Y SE PONE SÓLIDA[/b]
 SE CONVIERTE EN UNA 
-[b]ROCA ÍGNEA VOLCÁNICA[/b][/center]"
-
-[node name="Icon" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Paneles/PanelVolcanica/BtnDerAnchor/btnDer" index="0"]
-offset_left = -22.0
-offset_top = -22.0
-offset_right = 22.0
-offset_bottom = 22.0
-
-[node name="Icon" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Paneles/PanelVolcanica/btnIzqAnchor/btnIzq" index="0"]
-offset_left = -22.0
-offset_top = -22.0
-offset_right = 22.0
-offset_bottom = 22.0
+[font_size={40}][b]ROCA ÍGNEA VOLCÁNICA[/b]"
 
 [node name="btnCentral" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Paneles/PanelVolcanica/btnCentralAnchor" index="0"]
 visible = true
 
 [node name="Icon" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Paneles/PanelVolcanica/btnCentralAnchor/btnCentral" index="0"]
-offset_right = -23.0
-offset_bottom = -23.0
 texture = ExtResource("12_j8o53")
 
 [node name="Panel(1) Btn(center)" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Paneles/PanelVolcanica" instance=ExtResource("16_ss078")]
@@ -7350,6 +7818,7 @@ Data = SubResource("Resource_6mc8f")
 
 [node name="PanelEnd" parent="Transformando/StateMachine/Juego/Contenido/Instancia1" instance=ExtResource("10_2d6bp")]
 visible = false
+modulate = Color(0.8, 0.8, 0.8, 1)
 z_index = 2
 layout_mode = 1
 anchors_preset = 7
@@ -7358,10 +7827,11 @@ anchor_bottom = 1.0
 offset_left = -326.0
 offset_top = -382.0
 offset_right = 326.0
-offset_bottom = -154.0
+offset_bottom = -162.0
 grow_vertical = 0
+pivot_offset = Vector2(326, 110)
 AppearInBeginning = false
-characters_per_second = 45.0
+RepitingPanel = true
 Texts = Array[ExtResource("13_r3rxi")]([SubResource("Resource_tw2wj")])
 
 [node name="Panel(1) Btn(center)" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/PanelEnd" instance=ExtResource("16_ss078")]
@@ -7394,6 +7864,9 @@ offset_right = 45.0
 offset_bottom = -254.0
 text = ""
 NextScene = "Map_Screen"
+fade_time = 0.6
+texture = "vertical"
+smoothness = 0.2
 
 [node name="TextureRect" type="TextureRect" parent="Transformando/StateMachine/Moraleja/Contenido"]
 layout_mode = 1
@@ -7405,7 +7878,17 @@ grow_vertical = 2
 texture = ExtResource("54_kgmgn")
 stretch_mode = 1
 
+[node name="Gradiente" type="TextureRect" parent="Transformando/StateMachine/Moraleja/Contenido"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_u84ex")
+
 [node name="PanelOutro" parent="Transformando/StateMachine/Moraleja/Contenido" instance=ExtResource("10_2d6bp")]
+modulate = Color(0.85, 0.85, 0.85, 1)
 layout_mode = 1
 anchors_preset = 8
 anchor_top = 0.5
@@ -7417,7 +7900,6 @@ offset_bottom = 388.0
 grow_vertical = 2
 pivot_offset = Vector2(326, 388)
 AppearInBeginning = false
-characters_per_second = 45.0
 Texts = Array[ExtResource("13_r3rxi")]([SubResource("Resource_qevm7")])
 
 [node name="Control" type="Control" parent="Transformando/StateMachine/Moraleja/Contenido/PanelOutro"]
@@ -7446,6 +7928,11 @@ scale = Vector2(1.65251, 1.64972)
 skew = -0.000600576
 texture = ExtResource("58_5llw6")
 
+[node name="BORDE" type="Sprite2D" parent="Transformando/StateMachine/Moraleja/Contenido/PanelOutro/Control/ArDer"]
+position = Vector2(2.10052, 5.21622)
+scale = Vector2(1.01293, 1.01459)
+texture = ExtResource("79_7rkfu")
+
 [node name="Control2" type="Control" parent="Transformando/StateMachine/Moraleja/Contenido/PanelOutro"]
 anchors_preset = 0
 offset_right = 40.0
@@ -7462,6 +7949,21 @@ position = Vector2(34, 28)
 scale = Vector2(0.613333, 0.613333)
 texture = ExtResource("32_bldxx")
 
+[node name="BORDE" type="Sprite2D" parent="Transformando/StateMachine/Moraleja/Contenido/PanelOutro/Control2/AbjDer"]
+position = Vector2(34.7464, 28.7745)
+scale = Vector2(0.61782, 0.618832)
+texture = ExtResource("80_0et78")
+
+[node name="LavaFace" type="AnimatedSprite2D" parent="Transformando/StateMachine/Moraleja/Contenido/PanelOutro/Control2/AbjDer"]
+self_modulate = Color(0.8, 0.8, 0.8, 1)
+position = Vector2(15.6618, 29.1634)
+rotation = -0.229244
+scale = Vector2(1.06226, 1.06226)
+sprite_frames = ExtResource("49_ra5my")
+animation = &"tap"
+autoplay = "static"
+offset = Vector2(-9.385, 92.495)
+
 [node name="AbjIzq" type="Sprite2D" parent="Transformando/StateMachine/Moraleja/Contenido/PanelOutro/Control2"]
 position = Vector2(111, 838)
 scale = Vector2(0.610738, 0.610738)
@@ -7472,6 +7974,12 @@ position = Vector2(13, 1)
 rotation = -1.57692
 scale = Vector2(0.671955, 0.671955)
 texture = ExtResource("21_13nxm")
+
+[node name="BORDE" type="Sprite2D" parent="Transformando/StateMachine/Moraleja/Contenido/PanelOutro/Control2/AbjIzq"]
+position = Vector2(4.23416, 1.7029)
+rotation = -1.55779
+scale = Vector2(0.676035, 0.672699)
+texture = ExtResource("82_nlcfg")
 
 [node name="ArIzq" type="Sprite2D" parent="Transformando/StateMachine/Moraleja/Contenido/PanelOutro/Control2"]
 position = Vector2(161, -104)
@@ -7485,6 +7993,12 @@ position = Vector2(-39.6411, 118.449)
 rotation = 0.057376
 scale = Vector2(1.69658, 1.69658)
 texture = ExtResource("57_cbncc")
+
+[node name="BORDE" type="Sprite2D" parent="Transformando/StateMachine/Moraleja/Contenido/PanelOutro/Control2/ArIzq"]
+position = Vector2(0.256545, -0.553246)
+scale = Vector2(1.00528, 0.990427)
+texture = ExtResource("84_uvuqw")
+flip_h = true
 
 [node name="Panel(1) Btn(center)" parent="Transformando/StateMachine/Moraleja/Contenido/PanelOutro" instance=ExtResource("16_ss078")]
 Data = SubResource("Resource_b6ori")
@@ -7502,6 +8016,7 @@ script = ExtResource("28_glfmw")
 [connection signal="ButtonPress" from="Transformando/StateMachine/Consigna/Contenido/PanelIntro1/Panel(1) Btn(rigth)" to="Transformando/StateMachine/Consigna/Contenido/PanelIntro2" method="EnterPanel"]
 [connection signal="ButtonPress" from="Transformando/StateMachine/Consigna/Contenido/PanelIntro2/Panel(1) Btn(rigth)" to="Transformando/StateMachine/Consigna/Contenido/PanelIntro3" method="EnterPanel"]
 [connection signal="ButtonPress" from="Transformando/StateMachine/Consigna/Contenido/PanelIntro3/Panel(1) Btn(rigth)" to="Transformando/StateMachine" method="Trigger_On_Child_Transition" binds= ["juego"]]
+[connection signal="ButtonPress" from="Transformando/StateMachine/Consigna/Contenido/PanelIntro3/Panel(1) Btn(rigth)2" to="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Cueva/FirstTouch" method="set_disabled" binds= [false]]
 [connection signal="animation_finished" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Lava_Fall/AnimationPlayer" to="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Preplutonica" method="TranstaleToCenterScreen"]
 [connection signal="animation_finished" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/LavaFallVolcanica/AnimationPlayer" to="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Volcanica" method="TranstaleToCenterScreen"]
 [connection signal="CompletePath" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Tramo2/Path2D/PathFollow2D" to="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Metamorfica" method="TranstaleToCenterScreen"]
@@ -7515,7 +8030,6 @@ script = ExtResource("28_glfmw")
 [connection signal="CompletePath" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Tramo4/Path2D/PathFollow2D" to="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton3" method="TransparentPatch" binds= [1]]
 [connection signal="CompletePath" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Tramo1/Path2D/PathFollow2D" to="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton1" method="ChangeLavaFace"]
 [connection signal="CompletePath" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Tramo1/Path2D/PathFollow2D" to="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton2" method="SetTrueVisibility"]
-[connection signal="CompletePath" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Tramo1/Path2D/PathFollow2D" to="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton2/SquigglingSprite" method="ActiveSquiggling"]
 [connection signal="CompletePath" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Tramo1/Path2D/PathFollow2D" to="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/ButtonsInfoController" method="ActiveButtons"]
 [connection signal="CompletePath" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Tramo1/Path2D/PathFollow2D" to="Transformando/StateMachine/WorldEnvironment/WordAnimEnviroment" method="Play"]
 [connection signal="animation_finished" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Cueva/LavaFace/LavaFace/AnimationPlayer" to="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Cueva/LavaFace/LavaFace/AnimationPlayer" method="Play"]
@@ -7569,6 +8083,7 @@ script = ExtResource("28_glfmw")
 [connection signal="PanelAppear" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Sedimentaria" to="Transformando/StateMachine/Juego/Contenido/Instancia1/Paneles/PanelSedimentaria" method="EnterPanel"]
 [connection signal="TriggerNextTransformation" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Sedimentaria" to="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Cueva/AnimationPlayer" method="Play"]
 [connection signal="TriggerNextTransformation" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Sedimentaria" to="Transformando/StateMachine/Juego/Contenido/rockParent" method="UnfrezeeAll"]
+[connection signal="MoveToCenter" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Sedimentaria/Area2D" to="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Sedimentaria" method="TranstaleToCenterScreen"]
 [connection signal="body_entered" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Sedimentaria/Area2D" to="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Sedimentaria/Area2D" method="Agrup"]
 [connection signal="body_exited" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Sedimentaria/Area2D" to="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Sedimentaria/Area2D" method="Ungrup"]
 [connection signal="timeout" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Sedimentaria/SedimentariaTime" to="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Sedimentaria/Area2D" method="time"]

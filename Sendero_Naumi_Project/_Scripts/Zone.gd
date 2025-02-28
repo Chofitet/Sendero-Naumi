@@ -1,7 +1,7 @@
 extends TextureRect
 
 @export var timeToStartAnim : float
-
+@export var NotAvailableZone: bool
 var save_file_path = "user://"
 var save_file_name = "ZoneResource.tres"
 var minigame_file_name = "MiniGameResource.tres"
@@ -20,6 +20,7 @@ func  _ready():
 	Set_Complete()
 	UnlockZone()
 	StartFlotingAnim()
+	
 
 func Set_Complete():
 	for z in ZoneResourseFile.StateZones.keys():
@@ -69,3 +70,11 @@ func StartFlotingAnim():
 
 func DebugIland():
 	$IslandAnimator.play("UnlolckIsland")
+
+func OutFloor():
+	$block.visible = true
+	
+
+func inFloor():
+	MakeUnlockAnim()
+	$block.visible = false

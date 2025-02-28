@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://chjfb4dxiy0js"]
+[gd_scene load_steps=17 format=3 uid="uid://chjfb4dxiy0js"]
 
 [ext_resource type="Texture2D" uid="uid://hf5y4ic16cqj" path="res://Sprites/Intro/intro - background.jpg" id="1_xw6ny"]
 [ext_resource type="Texture2D" uid="uid://jd6systmhxf1" path="res://Sprites/Intro/intro - suelo.png" id="2_5xcj6"]
@@ -7,6 +7,32 @@
 [ext_resource type="Texture2D" uid="uid://dowufrhlgpfe" path="res://Sprites/UI/Boton_Volver.png" id="5_qi66s"]
 [ext_resource type="PackedScene" uid="uid://nmuyip31gkq5" path="res://Scenes/UI_Scenes/generic_button.tscn" id="6_tcahl"]
 [ext_resource type="Texture2D" uid="uid://kb7ixs5ala8" path="res://Sprites/UI/arrowIcon - UI.png" id="7_yiukw"]
+[ext_resource type="PackedScene" uid="uid://chcp24toqisaw" path="res://Scenes/Experiments/GenericPanel/GenericPanel.tscn" id="8_qbqxm"]
+[ext_resource type="Script" path="res://Scenes/Experiments/GenericPanel/ButtonPanelData.gd" id="9_fn7ld"]
+[ext_resource type="Texture2D" uid="uid://c2p5torstrtqm" path="res://Sprites/UI/checkIcon - UI.png" id="10_s8q8h"]
+[ext_resource type="Script" path="res://Scenes/Experiments/GenericPanel/TextFieldData.gd" id="11_17owp"]
+[ext_resource type="PackedScene" uid="uid://d1jys63xrvxpo" path="res://Scenes/Experiments/GenericPanel/IntermediateSignal.tscn" id="12_wivqn"]
+[ext_resource type="Script" path="res://Scenes/Experiments/GenericPanel/IntermediateData.gd" id="14_l4mu4"]
+
+[sub_resource type="Resource" id="Resource_6vwyt"]
+script = ExtResource("9_fn7ld")
+Place = 0
+texture = ExtResource("10_s8q8h")
+label = ""
+dontPassPanel = false
+
+[sub_resource type="Resource" id="Resource_3alfx"]
+script = ExtResource("11_17owp")
+Text = "CONTINUARÁ"
+SizePanel = Vector2(0, 0)
+Position = Vector2(0, 0)
+buttons = Array[ExtResource("9_fn7ld")]([SubResource("Resource_6vwyt")])
+NumOfContent = 0
+
+[sub_resource type="Resource" id="Resource_fk4pf"]
+script = ExtResource("14_l4mu4")
+NumberOfPanel = 1
+Place = 0
 
 [node name="Naumi_Screen" type="Control"]
 layout_mode = 3
@@ -89,6 +115,9 @@ text = ""
 icon = ExtResource("5_qi66s")
 flat = true
 NextScene = "Map_Screen"
+fade_time = 0.6
+texture = "vertical"
+smoothness = 0.2
 
 [node name="GenericButton" parent="." instance=ExtResource("6_tcahl")]
 layout_mode = 1
@@ -104,6 +133,36 @@ enterInBeggining = true
 noSquiggling = true
 Icon = ExtResource("7_yiukw")
 
+[node name="ToContinue" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" parent="ToContinue" instance=ExtResource("8_qbqxm")]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -326.0
+offset_top = -114.0
+offset_right = 326.0
+offset_bottom = 114.0
+grow_vertical = 2
+AppearInBeginning = false
+Texts = Array[ExtResource("11_17owp")]([SubResource("Resource_3alfx")])
+
+[node name="Panel(1) Btn(rigth)" parent="ToContinue/Panel" instance=ExtResource("12_wivqn")]
+Data = SubResource("Resource_fk4pf")
+Delay = 0.2
+
+[connection signal="ToContinue" from="Control/NaumiController" to="ToContinue/Panel" method="EnterPanel"]
+[connection signal="ToContinue" from="Control/NaumiController" to="ToContinue" method="set_visible" binds= [true]]
 [connection signal="pressed" from="GenericButton" to="ButtonChangeScene" method="_on_pressed"]
+[connection signal="ButtonPress" from="ToContinue/Panel/Panel(1) Btn(rigth)" to="ToContinue" method="set_visible" binds= [false]]
 
 [editable path="ButtonChangeScene"]

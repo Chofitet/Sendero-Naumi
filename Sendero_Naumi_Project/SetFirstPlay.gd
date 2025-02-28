@@ -12,4 +12,5 @@ func save():
 func FirstPlay():
 	load_file()
 	minigameResourseFile.Set_State_Minigame("noFirstTimePlay")
+	minigameResourseFile.Set_FirstTimeInMap(true)
 	save()

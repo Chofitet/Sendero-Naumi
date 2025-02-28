@@ -11,6 +11,7 @@ func _ready():
 	initPosition = position
 
 func TranstaleToCenterScreen(animation):
+	PlayerVariables.EmitInactivePause()
 	visible = true
 	z_index = 2
 	overlay.visible = true
@@ -32,6 +33,7 @@ func buttonpress():
 	if wasTransformed : return
 	wasTransformed = true
 	TriggerNextTransformation.emit()
+	PlayerVariables.EmitActivePause()
 
 func panelAppear():
 	PanelAppear.emit()
