@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://chcp24toqisaw"]
+[gd_scene load_steps=25 format=3 uid="uid://chcp24toqisaw"]
 
 [ext_resource type="Theme" uid="uid://dhu6swisjlh4w" path="res://Resources/UI_Resources/BlueBubblePanel.tres" id="1_v6n5n"]
 [ext_resource type="Script" path="res://Scenes/Experiments/GenericPanel/PanelController.gd" id="2_33xng"]
@@ -10,6 +10,9 @@
 [ext_resource type="LabelSettings" uid="uid://c8wu4hhqg284x" path="res://Resources/UI_Resources/Generic_Font.tres" id="6_yhgeb"]
 [ext_resource type="Texture2D" uid="uid://c87cim2trecu1" path="res://Sprites/UI/SquigglingUI/botonesRedondosBSQUIG - UI.png" id="7_1swfx"]
 [ext_resource type="StyleBox" uid="uid://b3tjes2hcm3wx" path="res://Resources/UI_Resources/StyleBoxTrasparent.tres" id="10_gqd6s"]
+[ext_resource type="Script" path="res://addons/resonate/sound_manager/sound_bank.gd" id="12_1qk3k"]
+[ext_resource type="Script" path="res://addons/resonate/sound_manager/sound_event_resource.gd" id="13_p34bg"]
+[ext_resource type="AudioStream" uid="uid://bhiapiyn32b0e" path="res://Sounds/UI/UI_mixdown2.ogg" id="13_u7usf"]
 
 [sub_resource type="Animation" id="Animation_jxxgf"]
 length = 0.001
@@ -425,6 +428,14 @@ _data = {
 "idle": SubResource("Animation_jahtv")
 }
 
+[sub_resource type="Resource" id="Resource_3w43a"]
+script = ExtResource("13_p34bg")
+name = "touch"
+bus = ""
+volume = 0.0
+pitch = 1.0
+streams = Array[AudioStream]([ExtResource("13_u7usf")])
+
 [node name="Panel" type="Panel"]
 anchors_preset = 5
 anchor_left = 0.5
@@ -723,6 +734,11 @@ theme_override_styles/pressed = ExtResource("10_gqd6s")
 theme_override_styles/disabled = ExtResource("10_gqd6s")
 theme_override_styles/focus = ExtResource("10_gqd6s")
 flat = true
+
+[node name="SoundBank" type="Node" parent="."]
+script = ExtResource("12_1qk3k")
+label = "UI"
+events = Array[ExtResource("13_p34bg")]([SubResource("Resource_3w43a")])
 
 [connection signal="pressed" from="BtnDerAnchor/btnDer" to="." method="rigthBTNConnect"]
 [connection signal="pressed" from="BtnDerAnchor/btnDer" to="." method="ButtonPress" binds= [0]]

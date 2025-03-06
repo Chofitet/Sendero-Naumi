@@ -203,7 +203,7 @@ func PlayAnimation(btn):
 
 var once = false 
 func ButtonPress(btn):
-	
+	SoundManager.play("UI","touch")
 	InstanciateButtonPOP(_btns[btn])
 	
 	_BotonDerecho.visible = false
@@ -218,6 +218,7 @@ func ButtonPress(btn):
 		if RepitingPanel: once = true
 		numOfPanel += 1
 	else:ChangeToNextText()
+	
 
 
 func ExitPanel():

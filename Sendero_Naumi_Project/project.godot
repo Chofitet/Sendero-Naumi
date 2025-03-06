@@ -16,12 +16,22 @@ config/quit_on_go_back=false
 config/features=PackedStringArray("4.1", "Mobile")
 config/icon="res://icon.svg"
 
+[audio]
+
+manager/sound/bus="Sound"
+manager/sound/pool_1D_size=16
+manager/sound/pool_2D_size=16
+manager/sound/pool_3D_size=16
+manager/sound/max_polyphony=32
+manager/music/bus="Music"
+
 [autoload]
 
 PlayerVariables="*res://_Scripts/player_variables.gd"
 SceneManager="*res://addons/scene_manager/scene_manager.tscn"
 Scenes="*res://addons/scene_manager/scenes.gd"
-SoundManager="*res://_Scripts/SoundManager.gd"
+SoundManager="*res://addons/resonate/sound_manager/sound_manager.gd"
+MusicManager="*res://addons/resonate/music_manager/music_manager.gd"
 
 [debug]
 
@@ -32,7 +42,7 @@ file_logging/max_log_files=10
 
 window/size/viewport_width=720
 window/size/viewport_height=1280
-window/size/window_width_override=486
+window/size/window_width_override=480
 window/size/window_height_override=1080
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"
@@ -44,7 +54,7 @@ project/assembly_name="Sendero_Naumi_Project"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/phantom_camera/plugin.cfg", "res://addons/scene_manager/plugin.cfg")
+enabled=PackedStringArray("res://addons/phantom_camera/plugin.cfg", "res://addons/resonate/plugin.cfg", "res://addons/scene_manager/plugin.cfg")
 
 [input]
 

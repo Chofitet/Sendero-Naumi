@@ -78,3 +78,5 @@ func OutFloor():
 func inFloor():
 	MakeUnlockAnim()
 	$block.visible = false
+	
+
