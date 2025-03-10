@@ -69,12 +69,12 @@ func ZoomToPos(index = 0):
 func FocusCircle(index):
 	var tween = get_tree().create_tween()
 	if index == 0 : 
-		tween.tween_method(TweenInsedeFocusCircle,0.034,0.3,0.95)
+		tween.tween_method(TweenInsedeFocusCircle,0.012,0.3,0.95)
 	else:
 		Circle.visible = true
 		Circle.material.set_shader_parameter("focus_point", get_Circle_Offset(index))
 		if index == 6:
-			tween.tween_method(TweenFocusParameter,0.6,0.034,1).set_ease(Tween.EASE_IN)
+			tween.tween_method(TweenFocusParameter,0.6,0.027,1).set_ease(Tween.EASE_IN)
 		else:
 			tween.tween_method(TweenFocusParameter,0.6,0.01,1).set_ease(Tween.EASE_IN)
 		await tween.finished
@@ -89,12 +89,12 @@ func TweenFocusParameter(value):
 func get_Circle_Offset(index) -> Vector2:
 	match index:
 		0: return Vector2(2,2)
-		1: return Vector2(0.312,0.365)
-		2: return Vector2(0.346,0.429)
-		3: return Vector2(0.478,0.399)
-		4: return Vector2(0.423,0.414)
-		5: return Vector2(0.367,0.429)
-		6: return Vector2(0.534,0.395)
+		1: return Vector2(0.354,0.414)
+		2: return Vector2(0.39,0.488)
+		3: return Vector2(0.547,0.453)
+		4: return Vector2(0.482,0.47)
+		5: return Vector2(0.416,0.489)
+		6: return Vector2(0.614,0.448)
 		
 	return Vector2.ZERO
 

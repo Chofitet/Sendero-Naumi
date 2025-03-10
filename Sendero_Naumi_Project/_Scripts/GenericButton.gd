@@ -12,6 +12,7 @@ extends Button
 
 var pop = preload("res://Scenes/UI_Scenes/pop.tscn")
 
+
 @export var Icon : Texture:
 	set(value):
 		Icon = value
@@ -38,3 +39,6 @@ func InstanciateButtonPOP():
 	var POPInstance = pop.instantiate()
 	get_parent().add_child(POPInstance)
 	POPInstance.global_position = global_position + Vector2(45,45) * scale
+	SoundManager.play("UI","touch")
+	await  get_tree().create_timer(2).timeout
+	

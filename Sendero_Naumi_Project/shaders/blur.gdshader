@@ -51,7 +51,7 @@ void fragment() {
 		}
 		else if (TransparentBackground)
 		{
-			COLOR = color * vec4(1,1,1,0.3);
+			COLOR = color * vec4(1,1,1,0.15);
 		}
 		else{
 			COLOR = (color_up + color_down + color_left + color_right) / 4.0;
