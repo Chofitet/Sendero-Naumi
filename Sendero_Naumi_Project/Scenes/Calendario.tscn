@@ -1,4 +1,4 @@
-[gd_scene load_steps=120 format=3 uid="uid://cmv5m3ynk4o5y"]
+[gd_scene load_steps=117 format=3 uid="uid://cmv5m3ynk4o5y"]
 
 [ext_resource type="Script" path="res://_Scripts/Minigame_Save_Controller.gd" id="1_jl73q"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/StateMachineMinigames.gd" id="2_7aqcq"]
@@ -6,9 +6,7 @@
 [ext_resource type="Material" uid="uid://muj2sfgakm5s" path="res://shaders/GalaxyWiggle.tres" id="3_4xigg"]
 [ext_resource type="Texture2D" uid="uid://nuybqhitpej1" path="res://Sprites/Mapa/fondo_mapa.png" id="3_83r7u"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/ConsignaState.gd" id="3_ae37j"]
-[ext_resource type="Texture2D" uid="uid://chxhqu3ppiequ" path="res://Sprites/ZonaAstronomia/calendario2.png" id="4_kye7v"]
 [ext_resource type="Texture2D" uid="uid://p1hitsdt3rfl" path="res://Sprites/ZonaAstronomia/foto - calendario.png" id="5_7guea"]
-[ext_resource type="FontFile" uid="uid://c4mm3of2mc8o5" path="res://addons/phantom_camera/fonts/Nunito-Black.ttf" id="5_bwf8h"]
 [ext_resource type="Script" path="res://_Scripts/PlayChildAnim.gd" id="5_viqf2"]
 [ext_resource type="StyleBox" uid="uid://5oga2arj2sv0" path="res://Resources/UI_Resources/PanelSimple.tres" id="6_ipmqm"]
 [ext_resource type="Theme" uid="uid://bhum72inirq1q" path="res://Themes/Generic_UI.tres" id="7_g1fqq"]
@@ -120,14 +118,14 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Control/calendario/calendarioSilueta:material:shader_parameter/alpha")
+tracks/2/path = NodePath("Control/calendario/pivot/question2:scale")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [0.0]
+"values": [Vector2(1e-05, 1e-05)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -842,13 +840,6 @@ script = ExtResource("17_ocl48")
 NumberOfPanel = 3
 Place = 0
 
-[sub_resource type="LabelSettings" id="LabelSettings_hyt1a"]
-font = ExtResource("5_bwf8h")
-font_size = 80
-outline_size = 25
-outline_color = Color(0, 0, 0, 1)
-shadow_size = 10
-
 [node name="Calendario" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -1030,12 +1021,12 @@ Data = SubResource("Resource_hfs58")
 [node name="PanelIntro2" parent="Calendario/StateMachine/Consigna/Contenido" instance=ExtResource("15_1ptxs")]
 layout_mode = 1
 anchors_preset = -1
-anchor_top = 0.375
-anchor_bottom = 0.375
+anchor_top = 0.383
+anchor_bottom = 0.383
 offset_left = -341.0
-offset_top = -398.0
+offset_top = -404.24
 offset_right = 341.0
-offset_bottom = -170.0
+offset_bottom = -176.24
 grow_vertical = 2
 pivot_offset = Vector2(341, 114)
 AppearInBeginning = false
@@ -1394,12 +1385,12 @@ animation = "enero_enter"
 [node name="PanelConsigna" parent="Calendario/StateMachine/Juego/Contenido" instance=ExtResource("15_1ptxs")]
 layout_mode = 1
 anchors_preset = -1
-anchor_top = 0.374
-anchor_bottom = 0.374
+anchor_top = 0.387
+anchor_bottom = 0.387
 offset_left = -463.0
-offset_top = -398.72
+offset_top = -411.36
 offset_right = 463.0
-offset_bottom = -172.72
+offset_bottom = -185.36
 grow_vertical = 2
 pivot_offset = Vector2(463, 113)
 theme = ExtResource("55_7pksd")
@@ -1702,74 +1693,8 @@ offset_bottom = -51.0
 text = "Continue"
 NextScene = "Map_Screen"
 fade_time = 0.6
-texture = "vertica"
+texture = "vertical"
 smoothness = 0.2
-
-[node name="Control" type="Control" parent="Calendario/StateMachine/Fin/Contenido"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="calendario" type="Node2D" parent="Calendario/StateMachine/Fin/Contenido/Control"]
-
-[node name="pivot" type="Node2D" parent="Calendario/StateMachine/Fin/Contenido/Control/calendario"]
-position = Vector2(514, -159)
-rotation = -1.8675
-
-[node name="CalendarioZoom" type="Sprite2D" parent="Calendario/StateMachine/Fin/Contenido/Control/calendario/pivot"]
-position = Vector2(-485, 159)
-rotation = -0.27238
-scale = Vector2(0.846422, 0.984685)
-texture = ExtResource("4_kye7v")
-
-[node name="question" type="Label" parent="Calendario/StateMachine/Fin/Contenido/Control/calendario/pivot"]
-offset_left = -860.0
-offset_top = 7.0
-offset_right = -803.0
-offset_bottom = 175.0
-scale = Vector2(1e-05, 1e-05)
-pivot_offset = Vector2(26.86, 82.39)
-theme_override_font_sizes/font_size = 90
-text = "?"
-label_settings = SubResource("LabelSettings_hyt1a")
-
-[node name="question2" type="Label" parent="Calendario/StateMachine/Fin/Contenido/Control/calendario/pivot"]
-offset_left = -727.0
-offset_top = 293.0
-offset_right = -670.0
-offset_bottom = 461.0
-scale = Vector2(1e-05, 1e-05)
-pivot_offset = Vector2(26.72, 82.1)
-theme_override_font_sizes/font_size = 90
-text = "?"
-label_settings = SubResource("LabelSettings_hyt1a")
-
-[node name="question3" type="Label" parent="Calendario/StateMachine/Fin/Contenido/Control/calendario/pivot"]
-offset_left = -552.0
-offset_top = 107.0
-offset_right = -495.0
-offset_bottom = 275.0
-scale = Vector2(1e-05, 1e-05)
-pivot_offset = Vector2(27.99, 75.7)
-theme_override_font_sizes/font_size = 90
-text = "?"
-label_settings = SubResource("LabelSettings_hyt1a")
-
-[node name="question4" type="Label" parent="Calendario/StateMachine/Fin/Contenido/Control/calendario/pivot"]
-offset_left = -354.0
-offset_top = -44.0
-offset_right = -297.0
-offset_bottom = 124.0
-scale = Vector2(1e-05, 1e-05)
-pivot_offset = Vector2(26.405, 82.125)
-theme_override_font_sizes/font_size = 90
-text = "?"
-label_settings = SubResource("LabelSettings_hyt1a")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Calendario/StateMachine/Fin/Contenido"]
 libraries = {
