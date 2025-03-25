@@ -21,7 +21,7 @@ func ShowPines():
 	for p in $Pines.get_children():
 		if p.name == PlayerVariables.lastState:
 			for subp in p.get_children():
-				await get_tree().create_timer(0.7).timeout
-				subp.visible = true
+				await get_tree().create_timer(0.9).timeout
+				subp.get_node("AnimationPlayer").play("aparicion")
 	
 	$PanelCompletada.EnterPanel()

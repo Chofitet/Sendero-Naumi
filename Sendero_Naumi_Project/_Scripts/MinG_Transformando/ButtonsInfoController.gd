@@ -8,11 +8,11 @@ func _ready():
 		get_node(b).pressed.connect(DisabledButtons)
 	
 
-func ActiveButtons():
+func ActiveButtons(x = false):
 	if !LastRock: return
 	for b in Buttons:
 		get_node(b).visible = true
-	AcivePanel()
+	if !x :AcivePanel()
 
 func DisabledButtons():
 	if !LastRock: return
@@ -22,12 +22,14 @@ func DisabledButtons():
 
 func AcivePanel():
 	if LastRock:
+		if panel == null: return
 		panel.EnterPanel()
 
 func DisablePanel():
 	if LastRock:
+		if panel == null: return
 		panel.ExitPanel()
 
 func lastRock():
 	LastRock = true
-	ActiveButtons()
+	ActiveButtons(true)

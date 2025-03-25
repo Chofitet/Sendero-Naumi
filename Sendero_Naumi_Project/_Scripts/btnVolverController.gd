@@ -22,15 +22,18 @@ func AppearMenu():
 		btn.visible = false
 		menu.visible = true
 		ispause = true
+		SoundManager.pause_Sound(true)
 		get_tree().paused = true
 	else: 
 		btn.visible = true
 		ispause = false
 		menu.visible = false
+		SoundManager.pause_Sound(false)
 		get_tree().paused = false
 
 func Mapa():
 	btnMapa.self_modulate = Color.GRAY
+	SoundManager.remove_all_sounds()
 	get_tree().paused = false
 
 func InactiveButton():

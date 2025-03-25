@@ -1,6 +1,7 @@
 extends Line2D
 
 @export var Lava : Sprite2D
+@export var numTramo : int
 var isDrawing
 var i = 0
 
@@ -14,3 +15,6 @@ func _physics_process(delta):
 
 func ActivateLava():
 	isDrawing = true
+	if numTramo == 0 : return
+	var stringTramo = "tramo" + str(numTramo)
+	SoundManager.play("lava",stringTramo)

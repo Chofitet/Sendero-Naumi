@@ -448,6 +448,7 @@ Place = 0
 texture = ExtResource("79_dkiek")
 label = ""
 dontPassPanel = false
+exitPanel = false
 
 [sub_resource type="Resource" id="Resource_aako0"]
 script = ExtResource("80_drq41")
@@ -466,6 +467,7 @@ Place = 0
 texture = ExtResource("79_dkiek")
 label = ""
 dontPassPanel = false
+exitPanel = false
 
 [sub_resource type="Resource" id="Resource_dcdne"]
 script = ExtResource("80_drq41")
@@ -558,6 +560,7 @@ script = ExtResource("78_a7col")
 Place = 0
 label = "YO!"
 dontPassPanel = false
+exitPanel = false
 
 [sub_resource type="Resource" id="Resource_hiuv8"]
 script = ExtResource("80_drq41")
@@ -700,6 +703,7 @@ Place = 0
 texture = ExtResource("79_dkiek")
 label = ""
 dontPassPanel = false
+exitPanel = false
 
 [sub_resource type="Resource" id="Resource_sn0ra"]
 script = ExtResource("80_drq41")
@@ -715,6 +719,7 @@ Place = 0
 texture = ExtResource("79_dkiek")
 label = ""
 dontPassPanel = false
+exitPanel = false
 
 [sub_resource type="Resource" id="Resource_3p4ow"]
 script = ExtResource("80_drq41")
@@ -737,6 +742,7 @@ Place = 0
 texture = ExtResource("79_dkiek")
 label = ""
 dontPassPanel = false
+exitPanel = false
 
 [sub_resource type="Resource" id="Resource_6eq48"]
 script = ExtResource("80_drq41")
@@ -762,6 +768,7 @@ Place = 0
 texture = ExtResource("79_dkiek")
 label = ""
 dontPassPanel = false
+exitPanel = false
 
 [sub_resource type="Resource" id="Resource_856ni"]
 script = ExtResource("80_drq41")
@@ -788,6 +795,7 @@ Place = 0
 texture = ExtResource("79_dkiek")
 label = ""
 dontPassPanel = false
+exitPanel = false
 
 [sub_resource type="Resource" id="Resource_tt3tg"]
 script = ExtResource("80_drq41")
@@ -1596,7 +1604,7 @@ _textureLine = ExtResource("9_fd6y6")
 
 [node name="Meteoroide" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide" instance=ExtResource("11_i2vqs")]
 position = Vector2(976, -1362)
-rotation = 373690.0
+rotation = 373913.0
 scale = Vector2(2.975, 2.975)
 _texture = ExtResource("11_x4hhq")
 
@@ -2374,7 +2382,7 @@ Max_Size = 60.0
 
 [node name="meteoro" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoro/Meteoro1" node_paths=PackedStringArray("MeteoritoTarget") instance=ExtResource("11_i2vqs")]
 z_index = 1
-rotation = 496284.0
+rotation = 496507.0
 scale = Vector2(2.595, 2.595)
 MeteoritoTarget = NodePath("../../../Meteorito/MeteoritoAppear/targetMeteorito")
 _texture = ExtResource("17_uxw0q")
@@ -2423,7 +2431,7 @@ z_index = 1
 
 [node name="meteoro" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoro/Meteoro3" node_paths=PackedStringArray("MeteoritoTarget") instance=ExtResource("11_i2vqs")]
 z_index = 1
-rotation = 497985.0
+rotation = 498208.0
 scale = Vector2(2.595, 2.595)
 MeteoritoTarget = NodePath("../../../Meteorito/MeteoritoAppear/targetMeteorito")
 _texture = ExtResource("17_uxw0q")
@@ -2754,6 +2762,7 @@ grow_horizontal = 1
 pivot_offset = Vector2(270, 125.5)
 theme = ExtResource("77_hmdp2")
 TimeToAppear = 2.5
+instanceAndButtonExit = Vector2(0, 0)
 Texts = Array[ExtResource("80_drq41")]([SubResource("Resource_aako0"), SubResource("Resource_dcdne"), SubResource("Resource_6bnnc")])
 
 [node name="label" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro/PanelIntro" index="0"]
@@ -2761,9 +2770,6 @@ text = "BUEN DÍA CADETE
 REPASEMOS LA MISIÓN...
 "
 label_settings = ExtResource("74_d02uo")
-
-[node name="btnDer" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro/PanelIntro/BtnDerAnchor" index="0"]
-visible = true
 
 [node name="content1" type="Control" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro/PanelIntro"]
 visible = false
@@ -3222,10 +3228,14 @@ grow_horizontal = 1
 pivot_offset = Vector2(248.5, 99.5)
 theme = ExtResource("77_hmdp2")
 AppearInBeginning = false
+instanceAndButtonExit = Vector2(0, 0)
 Texts = Array[ExtResource("80_drq41")]([SubResource("Resource_k0t8t"), SubResource("Resource_hiuv8")])
 
 [node name="label" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/PCInventary/pcInventary/PanelInventory" index="0"]
 label_settings = ExtResource("74_d02uo")
+
+[node name="btnDer" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/PCInventary/pcInventary/PanelInventory/BtnDerAnchor" index="0"]
+visible = false
 
 [node name="Label" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/PCInventary/pcInventary/PanelInventory/BtnDerAnchor/btnDer/Icon" index="0"]
 text = "YO!"
@@ -3723,14 +3733,12 @@ pivot_offset = Vector2(338.5, 74)
 theme = ExtResource("77_hmdp2")
 AppearInBeginning = false
 TimeToAppear = 2.2
+instanceAndButtonExit = Vector2(0, 0)
 Texts = Array[ExtResource("80_drq41")]([SubResource("Resource_sn0ra"), SubResource("Resource_3p4ow"), SubResource("Resource_6eq48"), SubResource("Resource_856ni"), SubResource("Resource_tt3tg")])
 
 [node name="labelRich" parent="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/PanelOutro" index="1"]
 theme_override_colors/default_color = Color(0.046875, 0.917969, 0.410156, 1)
 text = "[center][b]HAY 3 TIPOS DE ROCAS ESPACIALES[/b]"
-
-[node name="btnDer" parent="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/PanelOutro/BtnDerAnchor" index="0"]
-visible = true
 
 [node name="content1" type="Node2D" parent="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/PanelOutro" node_paths=PackedStringArray("CenterObject")]
 visible = false

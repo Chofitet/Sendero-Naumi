@@ -7,6 +7,7 @@ var time = 1
 var wasTransformed
 signal PanelAppear
 signal TriggerNextTransformation
+@export var spot : Sprite2D
 func _ready():
 	initPosition =  position
 	initRotation = rotation
@@ -27,18 +28,34 @@ func TranstaleToCenterScreen(animation):
 func buttonpress():
 	time = 0
 	overlay.visible = false
-	NubeAnim.play("RESET")
-	get_parent().get_node("VulcanicaSpot").visible = true
-	get_parent().get_node("ButtonsInfoController").ActiveButtons()
-	RestartAll()
 	
-	if wasTransformed : return
+	get_parent().get_node("ButtonsInfoController").ActiveButtons()
+	#RestartAll()
+	
+	if wasTransformed : 
+		NubeAnim.play("RESET")
+		NubeAnim.play("disappear")
+		RestartAll()
+		return
+	
+	MoveToSpot()
 	wasTransformed = true
 	TriggerNextTransformation.emit()
 
 func panelAppear():
 	PanelAppear.emit()
 
+func MoveToSpot():
+	var tween = get_tree().create_tween()
+	tween.tween_property(self,"global_position",spot.global_position, 0.3)
+	var tween2 = get_tree().create_tween()
+	tween2.tween_property(self,"scale",Vector2(0.24,0.24),0.3)
+	var tween3 = get_tree().create_tween()
+	tween3.tween_property(self,"rotation",deg_to_rad(62), 0.3)
+	await tween.finished
+	get_parent().get_node("VulcanicaSpot").visible = true
+	RestartAll()
+	
 func RestartAll():
 	rotation = initRotation
 	position = initPosition

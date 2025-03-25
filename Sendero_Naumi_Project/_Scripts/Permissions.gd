@@ -4,9 +4,11 @@ var save_file_path = "user://"
 var save_file_name_minigame = "MiniGameResource.tres"
 var save_file_name_zone = "ZoneResource.tres"
 var save_file_name_Instances = "InstanceResource.tres"
+var save_file_name_Volume_Settings = "VolumeSettings.tres"
 var minigameResourceFile = MiniGameResource.new()
 var zoneResourceFile = ZoneResource.new()
 var instanceResource = InstanceResource.new()
+var volumeSettings = VolumeSettings.new()
 
 func load_file(file, path):
 	file  = ResourceLoader.load(save_file_path  + path)
@@ -27,6 +29,11 @@ func _ready():
 		load_file(instanceResource,save_file_name_Instances)
 	else: 
 		save(instanceResource,save_file_name_Instances)
+	
+	if ResourceLoader.exists(save_file_path + save_file_name_Volume_Settings):
+		load_file(volumeSettings,save_file_name_Volume_Settings)
+	else:
+		save(volumeSettings,save_file_name_Volume_Settings)
 	
 	PlayerVariables.SetLastZoneBeforeQuit()
 	CheckFirsPlayTime()

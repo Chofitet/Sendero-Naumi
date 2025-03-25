@@ -490,6 +490,7 @@ Place = 0
 texture = ExtResource("34_rt28l")
 label = ""
 dontPassPanel = false
+exitPanel = false
 
 [sub_resource type="Resource" id="Resource_ecmyo"]
 script = ExtResource("32_xf8jp")
@@ -505,12 +506,14 @@ script = ExtResource("33_xvgkx")
 Place = 0
 label = "OK"
 dontPassPanel = false
+exitPanel = false
 
 [sub_resource type="Resource" id="Resource_q33wl"]
 script = ExtResource("33_xvgkx")
 Place = 2
 label = "SI"
 dontPassPanel = false
+exitPanel = false
 
 [sub_resource type="Resource" id="Resource_lds2q"]
 script = ExtResource("32_xf8jp")
@@ -621,6 +624,7 @@ Place = 0
 texture = ExtResource("34_rt28l")
 label = ""
 dontPassPanel = false
+exitPanel = false
 
 [sub_resource type="Resource" id="Resource_b4vf1"]
 script = ExtResource("32_xf8jp")
@@ -636,6 +640,7 @@ Place = 0
 texture = ExtResource("34_rt28l")
 label = ""
 dontPassPanel = false
+exitPanel = false
 
 [sub_resource type="Resource" id="Resource_mew4v"]
 script = ExtResource("32_xf8jp")
@@ -1350,6 +1355,7 @@ Place = 0
 texture = ExtResource("34_rt28l")
 label = ""
 dontPassPanel = false
+exitPanel = false
 
 [sub_resource type="Resource" id="Resource_padbb"]
 script = ExtResource("32_xf8jp")
@@ -1371,6 +1377,7 @@ Place = 0
 texture = ExtResource("34_rt28l")
 label = ""
 dontPassPanel = false
+exitPanel = false
 
 [sub_resource type="Resource" id="Resource_valvm"]
 script = ExtResource("32_xf8jp")
@@ -1391,6 +1398,7 @@ Place = 0
 texture = ExtResource("34_rt28l")
 label = ""
 dontPassPanel = false
+exitPanel = false
 
 [sub_resource type="Resource" id="Resource_vqgf4"]
 script = ExtResource("32_xf8jp")
@@ -1412,6 +1420,7 @@ Place = 0
 texture = ExtResource("34_rt28l")
 label = ""
 dontPassPanel = false
+exitPanel = false
 
 [sub_resource type="Resource" id="Resource_0ivls"]
 script = ExtResource("32_xf8jp")
@@ -1657,36 +1666,22 @@ offset_top = 65.0
 offset_bottom = 293.0
 AppearInBeginning = false
 SetEnterOnce = true
+instanceAndButtonExit = null
 Texts = Array[ExtResource("32_xf8jp")]([SubResource("Resource_ecmyo"), SubResource("Resource_lds2q")])
 
 [node name="label" parent="Naumi_Intro/PanelNaumi1" index="0"]
 text = "¿ESTO? 
 ESTO ES UN NAUMI"
 
-[node name="btnDer" parent="Naumi_Intro/PanelNaumi1/BtnDerAnchor" index="0"]
-visible = true
-
 [node name="Icon" parent="Naumi_Intro/PanelNaumi1/BtnDerAnchor/btnDer" index="0"]
-offset_left = -22.0
-offset_top = -22.0
-offset_right = 22.0
-offset_bottom = 22.0
 pivot_offset = Vector2(23.545, 22.54)
 
 [node name="Icon" parent="Naumi_Intro/PanelNaumi1/btnIzqAnchor/btnIzq" index="0"]
-offset_left = -22.0
-offset_top = -22.0
-offset_right = 22.0
-offset_bottom = 22.0
 pivot_offset = Vector2(19.98, 22)
 texture = null
 
 [node name="Label" parent="Naumi_Intro/PanelNaumi1/btnIzqAnchor/btnIzq/Icon" index="0"]
 text = "SI"
-
-[node name="Icon" parent="Naumi_Intro/PanelNaumi1/btnCentralAnchor/btnCentral" index="0"]
-offset_right = -23.0
-offset_bottom = -23.0
 
 [node name="Panel(2) Btn(rigth)" parent="Naumi_Intro/PanelNaumi1" instance=ExtResource("35_s6ot8")]
 Data = SubResource("Resource_m3hqb")
@@ -1707,6 +1702,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = 1440.0
+offset_bottom = 2560.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -1880,6 +1877,7 @@ offset_bottom = 128.0
 grow_vertical = 2
 pivot_offset = Vector2(205, 127.5)
 TimeToAppear = 3.0
+instanceAndButtonExit = null
 Texts = Array[ExtResource("32_xf8jp")]([SubResource("Resource_b4vf1"), SubResource("Resource_mew4v")])
 
 [node name="label" parent="Map_Scroll/CenterAnchor/Title/ExpandingConteiner/TextureRect/Control/Panel" index="0"]
@@ -1897,25 +1895,6 @@ text = "HOLA!  :)"
 
 [node name="BtnDerAnchor" parent="Map_Scroll/CenterAnchor/Title/ExpandingConteiner/TextureRect/Control/Panel" index="3"]
 scale = Vector2(1.667, 1.667)
-
-[node name="btnDer" parent="Map_Scroll/CenterAnchor/Title/ExpandingConteiner/TextureRect/Control/Panel/BtnDerAnchor" index="0"]
-visible = true
-
-[node name="Icon" parent="Map_Scroll/CenterAnchor/Title/ExpandingConteiner/TextureRect/Control/Panel/BtnDerAnchor/btnDer" index="0"]
-offset_left = -22.0
-offset_top = -22.0
-offset_right = 22.0
-offset_bottom = 22.0
-
-[node name="Icon" parent="Map_Scroll/CenterAnchor/Title/ExpandingConteiner/TextureRect/Control/Panel/btnIzqAnchor/btnIzq" index="0"]
-offset_left = -22.0
-offset_top = -22.0
-offset_right = 22.0
-offset_bottom = 22.0
-
-[node name="Icon" parent="Map_Scroll/CenterAnchor/Title/ExpandingConteiner/TextureRect/Control/Panel/btnCentralAnchor/btnCentral" index="0"]
-offset_right = -23.0
-offset_bottom = -23.0
 
 [node name="Panel(2) Btn(rigth)" parent="Map_Scroll/CenterAnchor/Title/ExpandingConteiner/TextureRect/Control/Panel" instance=ExtResource("35_s6ot8")]
 Data = SubResource("Resource_0q5ql")
@@ -2361,6 +2340,7 @@ offset_bottom = 312.0
 pivot_offset = Vector2(331, 114)
 AppearInBeginning = false
 TimeToAppear = 1.0
+instanceAndButtonExit = null
 Texts = Array[ExtResource("32_xf8jp")]([SubResource("Resource_padbb")])
 
 [node name="Panel(1) Btn(rigth)" parent="Map_Scroll/PanelIntro1" instance=ExtResource("35_s6ot8")]
@@ -2375,6 +2355,7 @@ offset_bottom = 313.0
 pivot_offset = Vector2(332, 114)
 AppearInBeginning = false
 TimeToAppear = 1.0
+instanceAndButtonExit = null
 Texts = Array[ExtResource("32_xf8jp")]([SubResource("Resource_valvm")])
 
 [node name="Panel(1) Btn(rigth)" parent="Map_Scroll/PanelIntro2" instance=ExtResource("35_s6ot8")]
@@ -2389,6 +2370,7 @@ offset_bottom = 312.0
 pivot_offset = Vector2(335, 114)
 AppearInBeginning = false
 TimeToAppear = 1.0
+instanceAndButtonExit = null
 Texts = Array[ExtResource("32_xf8jp")]([SubResource("Resource_vqgf4")])
 
 [node name="Panel(1) Btn(rigth)" parent="Map_Scroll/PanelIntro3" instance=ExtResource("35_s6ot8")]
@@ -2403,6 +2385,7 @@ anchor_bottom = 0.498
 offset_top = -113.44
 offset_bottom = 114.56
 AppearInBeginning = false
+instanceAndButtonExit = null
 Texts = Array[ExtResource("32_xf8jp")]([SubResource("Resource_0ivls")])
 
 [node name="Panel(1) Btn(rigth)" parent="Map_Scroll/PanelIntro4" instance=ExtResource("35_s6ot8")]
@@ -2425,6 +2408,7 @@ offset_bottom = 48.0
 grow_vertical = 2
 AppearInBeginning = false
 TimeToAppear = 1.0
+instanceAndButtonExit = null
 Texts = Array[ExtResource("32_xf8jp")]([SubResource("Resource_pn1me")])
 
 [node name="Panel(1) Btn(rigth)" parent="Map_Scroll/PanelSuerte" instance=ExtResource("35_s6ot8")]

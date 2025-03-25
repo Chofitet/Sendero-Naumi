@@ -24,6 +24,7 @@ signal isDraggin
 signal mouse_realese
 signal object_realese_Rigth_Place
 signal object_realese_Wrong_Place
+signal BackToInitialPos
 signal ArriveToSpot
 
 func _ready():
@@ -118,6 +119,8 @@ func CancelDrag():
 	var tween = get_tree().create_tween()
 	tween = tween.tween_property(object, "position",lastPosition,tweenTime).set_ease(Tween.EASE_OUT)
 	isInPosition = false
+	await tween.finished
+	BackToInitialPos.emit()
 
 func TimeToDrag():
 	var tween = get_tree().create_tween()

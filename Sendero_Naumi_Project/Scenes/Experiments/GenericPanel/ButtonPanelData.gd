@@ -5,6 +5,7 @@ class_name ButtonPanel
 @export var texture : Texture
 @export var label : String
 @export var dontPassPanel : bool
+@export var exitPanel : bool
 
 enum place {
 	rigth,

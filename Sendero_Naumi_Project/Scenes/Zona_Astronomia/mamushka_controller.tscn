@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://7ypbdd5rheui"]
+[gd_scene load_steps=50 format=3 uid="uid://7ypbdd5rheui"]
 
 [ext_resource type="PackedScene" uid="uid://ci3c3pocxiywq" path="res://Scenes/Experiments/drag_object.tscn" id="1_1vclv"]
 [ext_resource type="Script" path="res://_Scripts/MinG_Mamushka/mamushka_controller.gd" id="1_vp2p0"]
@@ -31,6 +31,12 @@
 [ext_resource type="StyleBox" uid="uid://b3tjes2hcm3wx" path="res://Resources/UI_Resources/StyleBoxTrasparent.tres" id="20_w1fus"]
 [ext_resource type="Texture2D" uid="uid://d1y032cha025n" path="res://Sprites/ZonaAstronomia/squiggligMamushka/manto superiorSQUIG - matryoshka.png" id="24_fht3l"]
 [ext_resource type="Texture2D" uid="uid://dltoj6fway13g" path="res://Sprites/ZonaAstronomia/squiggligMamushka/cortezaSQUIG - matryoshka.png" id="29_p81g7"]
+[ext_resource type="AudioStream" uid="uid://dcbfj71gc0tef" path="res://Sounds/Mamushka/Mamushka - Azul se va.ogg" id="31_jr7u6"]
+[ext_resource type="Script" path="res://addons/resonate/sound_manager/sound_bank.gd" id="32_16r6s"]
+[ext_resource type="Script" path="res://_Scripts/SoundEventTrigger.gd" id="33_ocau2"]
+[ext_resource type="Script" path="res://addons/resonate/sound_manager/sound_event_resource.gd" id="33_rgfut"]
+[ext_resource type="AudioStream" uid="uid://dp61tycwl8d5m" path="res://Sounds/Mamushka/Mamushka - Agarro Mamushka.ogg" id="34_v5e4e"]
+[ext_resource type="AudioStream" uid="uid://b3bqw28kn4ldt" path="res://Sounds/Mamushka/Mamushka - Soltada al aire.ogg" id="37_5ib4q"]
 
 [sub_resource type="Animation" id="Animation_ixei7"]
 length = 0.001
@@ -256,6 +262,35 @@ tracks/4/keys = {
 "update": 1,
 "values": [false, true]
 }
+tracks/5/type = "audio"
+tracks/5/imported = false
+tracks/5/enabled = false
+tracks/5/path = NodePath("Node/AudioStreamPlayer2D")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("31_jr7u6")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/5/use_blend = true
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Node")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["final"],
+"method": &"PlayEvent"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7p0wm"]
 _data = {
@@ -264,6 +299,33 @@ _data = {
 "opacity": SubResource("Animation_8qvhm"),
 "to_final": SubResource("Animation_cyvqp")
 }
+
+[sub_resource type="Resource" id="Resource_84i0i"]
+script = ExtResource("33_rgfut")
+name = "grab"
+bus = "agarrarMamushka"
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([ExtResource("34_v5e4e")])
+
+[sub_resource type="Resource" id="Resource_mjebb"]
+script = ExtResource("33_rgfut")
+name = "drop"
+bus = "soltarMamushka"
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([ExtResource("37_5ib4q")])
+
+[sub_resource type="Resource" id="Resource_vtbuw"]
+script = ExtResource("33_rgfut")
+name = "final"
+bus = "azulSeVaMamushka"
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([ExtResource("31_jr7u6")])
 
 [node name="mamushkaController" type="Node2D"]
 script = ExtResource("1_vp2p0")
@@ -441,6 +503,17 @@ grow_vertical = 2
 theme_override_styles/focus = ExtResource("20_w1fus")
 flat = true
 
+[node name="Node" type="Node" parent="."]
+script = ExtResource("33_ocau2")
+
+[node name="SoundBank" type="Node" parent="Node"]
+script = ExtResource("32_16r6s")
+label = "mamushkaController"
+events = Array[ExtResource("33_rgfut")]([SubResource("Resource_84i0i"), SubResource("Resource_mjebb"), SubResource("Resource_vtbuw")])
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Node"]
+
+[connection signal="BackToInitialPos" from="DragObject" to="." method="DropSound"]
 [connection signal="pressed" from="ButtonFinal" to="Sprites/Layer4/Sprite2D3/SquigglingSprite" method="InactiveSquiggling"]
 
 [editable path="DragObject"]

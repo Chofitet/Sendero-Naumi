@@ -36,7 +36,6 @@ var _3d_players: Array[PooledAudioStreamPlayer3D] = []
 var _event_table: Dictionary = {}
 var _event_table_hash: int
 
-
 # ------------------------------------------------------------------------------
 # Lifecycle methods
 # ------------------------------------------------------------------------------
@@ -353,7 +352,7 @@ func _create_events(p_events: Array[SoundEventResource]) -> Dictionary:
 			"name": event.name,
 			"bus": event.bus,
 			"volume": event.volume,
-			"pitch": event.pitch,
+			"RandomPitch": event.RandomPitch,
 			"streams": event.streams,
 		}
 		
@@ -372,7 +371,7 @@ func _get_bus(p_bank_bus: String, p_event_bus: String) -> String:
 		_settings.SOUND_BANK_BUS_SETTING_DEFAULT)
 
 
-func _instance_manual(p_bank_label: String, p_event_name: String, p_reserved: bool = false, p_bus: String = "", p_poly: bool = false, p_attachment = null) -> Variant:
+func _instance_manual(p_bank_label: String, p_event_name: String, p_reserved: bool = false, p_bus: String = "", p_poly: bool = false, p_attachment = null, to_position : float = 0) -> Variant:
 	if not has_loaded:
 		push_error("Resonate - The event [%s] on bank [%s] can't be instanced as the SoundManager has not loaded yet. Use the [loaded] signal/event to determine when it is ready." % [p_event_name, p_bank_label])
 		return _get_null_player(p_attachment)
@@ -400,7 +399,7 @@ func _instance_manual(p_bank_label: String, p_event_name: String, p_reserved: bo
 		
 	var bus = p_bus if p_bus != "" else _get_bus(bank.bus, event.bus)
 	
-	player.configure(event.streams, p_reserved, bus, p_poly, event.volume, event.pitch, bank.mode)
+	player.configure(event.streams, p_reserved, bus, p_poly, event.volume, randf_range(event.RandomPitch.x,event.RandomPitch.y), bank.mode)
 	player.attach_to(p_attachment)
 	
 	return player
@@ -491,3 +490,12 @@ func _on_player_finished(p_player: Node) -> void:
 		
 	pools_updated.emit()
 	updated.emit()
+
+func pause_Sound(isPause : bool):
+	for sound in _1d_players:
+		sound.stream_paused = isPause
+
+func remove_all_sounds():
+	for sound in _1d_players:
+		sound.stream_paused = true
+		sound.stream = null

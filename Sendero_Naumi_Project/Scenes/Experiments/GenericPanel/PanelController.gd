@@ -26,6 +26,7 @@ var BotonDerecho
 var BotonIzquierdo
 var BotonCentral
 var anim : AnimationPlayer 
+@export var instanceAndButtonExit : Vector2
 
 @export var Texts : Array[TextField] 
 
@@ -54,6 +55,9 @@ func refreshData(numPanel : int):
 	_BotonDerecho.visible = false
 	_BotonCentral.visible = false
 	_BotonIzquierda.visible = false
+	ResetButtonAnimation(_BotonDerecho)
+	ResetButtonAnimation(_BotonIzquierda)
+	ResetButtonAnimation(_BotonCentral)
 	BotonDerecho = false
 	BotonCentral = false
 	BotonIzquierdo = false
@@ -112,9 +116,12 @@ func refreshData(numPanel : int):
 			cont.modulate.a = 0
 	
 	if textData.NumOfContent != 0:
+		var cont = content[textData.NumOfContent - 1]
 		var tween = get_tree().create_tween()
-		tween.tween_property(content[textData.NumOfContent - 1],"modulate",Color.WHITE,0.5)
-		content[textData.NumOfContent - 1].visible = true
+		tween.tween_property(cont,"modulate",Color.WHITE,0.5)
+		cont.visible = true
+		for contchild in cont.get_children():
+			if contchild is AnimationPlayer: contchild.play("content")
 	
 	if Engine.is_editor_hint(): label.visible_ratio = true
 
@@ -166,6 +173,9 @@ func _ready():
 		AppearButtonAnim()
 
 func EnterPanel():
+	ResetButtonAnimation(_BotonDerecho)
+	ResetButtonAnimation(_BotonIzquierda)
+	ResetButtonAnimation(_BotonCentral)
 	if SetEnterOnce:
 		if EnterOnce: return
 		EnterOnce = true
@@ -201,10 +211,17 @@ func PlayAnimation(btn):
 	await animator.animation_finished
 	animator.play("idle")
 
+func ResetButtonAnimation(btn):
+	var path : String = btn.get_path()
+	path = path + "/AnimationPlayer"
+	var animator = get_node(path)
+	animator.play("RESET")
+
 var once = false 
 func ButtonPress(btn):
 	SoundManager.play("UI","touch")
 	InstanciateButtonPOP(_btns[btn])
+	
 	
 	_BotonDerecho.visible = false
 	_BotonCentral.visible = false
@@ -217,6 +234,9 @@ func ButtonPress(btn):
 		if once : return
 		if RepitingPanel: once = true
 		numOfPanel += 1
+	elif instanceAndButtonExit == Vector2(numOfPanel,btn): 
+		numOfPanel += 1
+		ExitPanel()
 	else:ChangeToNextText()
 	
 
@@ -266,3 +286,7 @@ func SkipWritting():
 	label.visible_ratio = 1
 	AppearButtonAnim()
 	SkipButton.visible = false
+
+var toExitPanel
+func HoldExitPanel():
+	toExitPanel = true

@@ -4,6 +4,7 @@ var SpriteLayers :=[]
 @export var Outro : Control
 @onready var anim = $AnimationPlayer
 signal ToFinal
+var isDropInAir
 
 func _ready():
 	anim.play("idle")
@@ -35,6 +36,8 @@ func Rotate(rot = 0, time = 0):
 
 func InDraggin():
 	SpriteLayers[state].get_node("emotions").play("surprise")
+	SoundManager.play("mamushkaController","grab")
+	isDropInAir = true
 	anim.pause()
 	
 
@@ -42,6 +45,7 @@ func MouseRealese():
 	var SL = SpriteLayers[state].get_node("emotions")
 	if SL: SL.play("idle")
 	anim.play("idle")
+	
 
 func PlayAnimTitulo():
 	$Sprites/Layer0/titulo/AnimationPlayer.play("titulo_anim")
@@ -57,3 +61,10 @@ func FinalState():
 	await anim.animation_finished
 	Outro.visible = true
 	Outro.get_node("AnimationPlayer").Play()
+
+func NotDropInAir():
+	isDropInAir = false
+
+func DropSound():
+	if !isDropInAir: return
+	SoundManager.play("mamushkaController","drop")

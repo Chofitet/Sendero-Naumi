@@ -1,6 +1,7 @@
 @tool
 extends Node2D
 @onready var initRot = rotation
+@export var Colortxt : String
 @export var ParteArriba : Texture: 
 	set(new_value):
 		ParteArriba = new_value
@@ -61,12 +62,14 @@ func MamushkaControllerEnter(x):
 	isInArea = true
 	anim.play("Open")
 	MamushkaController = x.get_parent()
+	SoundManager.play("MamushkaLayer", Colortxt + "Open")
 
 func MamushkaControllerExit(x):
 	x.mouse_realese.disconnect(MouseRealese)
 	isInArea = false
 	MamushkaController = null
 	anim.play("Close")
+	SoundManager.play("MamushkaLayer", Colortxt + "CloseEmpy")
 	await anim.animation_finished
 	if ismouse:
 		anim.play("idle")
@@ -77,8 +80,10 @@ func MouseRealese():
 func CheckRigthIsLayer(x) :
 	x.z_index = -1
 	x.OnSpot(false)
+	x.NotDropInAir()
 	if x.CheckRight() == NumOfLayer:
 		anim.play("Close")
+		SoundManager.play("MamushkaLayer", Colortxt + "CloseRight")
 		await anim.animation_finished
 		x.z_index = 0
 		AddToMamushkaController(x)
@@ -92,6 +97,7 @@ func CheckRigthIsLayer(x) :
 		x.visible = false
 		await tween.finished
 		x.get_node("DragObject").CancelDrag()
+		SoundManager.play("MamushkaLayer", Colortxt + "CloseWrong")
 		anim.play("spit")
 		x.visible = true
 		area2D.get_node("CollisionShape2D").disabled = false

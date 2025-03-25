@@ -138,6 +138,7 @@ func _refresh() -> bool:
 # checks different states of scene and make actual transitions happen
 func _change_scene(scene, add_to_back: bool) -> bool:
 	if scene is PackedScene:
+		SoundManager.remove_all_sounds()
 		get_tree().change_scene_to_packed(scene)
 		var path: String = scene.resource_path
 		var found_key: String = ""

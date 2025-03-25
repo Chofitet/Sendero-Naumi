@@ -5,7 +5,6 @@ var active
 var progressRatio = 0.0
 signal CompletePath
 var once
-
 func _ready():
 	get_node("Lava/AnimationPlayer").play("lava")
 
