@@ -16,7 +16,7 @@ func ResetAll():
 #	zoneResourceFile = ResourceLoader.load(save_file_path + "ZoneResource.tres")
 #	instanceResource =  ResourceLoader.load(save_file_path + "InstanceResource.tres")
 	
-	minigameResourceFile.Set_State_Minigame("noFirstTimePlay")
+	minigameResourceFile.Set_State_Minigame("MarkAsPlayed")
 	# Sobrescribir (o crear) los archivos con los nuevos recursos
 	if ResourceSaver.save(zoneResourceFile, save_file_path + "ZoneResource.tres") != OK:
 		push_error("Error al guardar ZoneResource")
@@ -25,7 +25,4 @@ func ResetAll():
 	if ResourceSaver.save(instanceResource, save_file_path + "InstanceResource.tres") != OK:
 		push_error("Error al guardar InstanceResource")
 
-	
-
-	
 

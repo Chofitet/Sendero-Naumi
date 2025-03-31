@@ -32,6 +32,7 @@ func SpawnFighters(playEnterAnim):
 	LeftRock.position.x = 0
 	LeftRock.init(LeftTexture,-1,LeftBtn.get_child(1),isLeftWinner,RigthRock,playEnterAnim)
 	LeftBtn.get_child(0).get_child(0).text = LeftName
+	await  get_tree().create_timer(1.1).timeout
 	add_child(RigthRock)
 	RigthRock.position.x = 0
 	RigthRock.init(RigthTexture,1,RigthBtn.get_child(1),!isLeftWinner,LeftRock,playEnterAnim,PiedraScale,PiedraOffset)
@@ -41,10 +42,12 @@ func PassInstance():
 	if !playerWinner:
 		PlayerVariables.EmitActivePause()
 		RetryPanel.EnterPanel()
+		SoundManager.play("level", "ups")
 		return
 	LeftRock.queue_free()
 	RigthRock.queue_free()
 	stateMachine.Trigger_On_Child_Transition("Moraleja")
+	SoundManager.play("level", "correct")
 
 func Figth(btnLeftPressed):
 	PlayerVariables.EmitInactivePause()

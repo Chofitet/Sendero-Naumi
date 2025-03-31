@@ -4317,6 +4317,33 @@ _data = {
 "despertar_idle": SubResource("Animation_ej8h0")
 }
 
+[sub_resource type="Animation" id="Animation_fags0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.45098, 0.45098, 0.45098, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
 [sub_resource type="Animation" id="Animation_jgeim"]
 resource_name = "inactive"
 length = 0.3
@@ -4343,33 +4370,6 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
-}
-
-[sub_resource type="Animation" id="Animation_fags0"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0.45098, 0.45098, 0.45098, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:disabled")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_37sw3"]
@@ -4921,7 +4921,6 @@ offset_right = 312.0
 offset_bottom = -373.52
 rotation = 0.206461
 pivot_offset = Vector2(291, 114)
-instanceAndButtonExit = Vector2(0, 0)
 Texts = Array[ExtResource("13_r3rxi")]([SubResource("Resource_u3ass")])
 
 [node name="roca" type="Sprite2D" parent="Transformando/StateMachine/Consigna/Contenido/PanelIntro1"]
@@ -4956,7 +4955,6 @@ offset_bottom = 112.84
 rotation = -0.114277
 pivot_offset = Vector2(291, 114)
 AppearInBeginning = false
-instanceAndButtonExit = Vector2(0, 0)
 Texts = Array[ExtResource("13_r3rxi")]([SubResource("Resource_ve6u1")])
 
 [node name="roca" type="Sprite2D" parent="Transformando/StateMachine/Consigna/Contenido/PanelIntro2"]
@@ -4986,7 +4984,6 @@ offset_bottom = 1098.0
 rotation = 0.209569
 pivot_offset = Vector2(291, 114)
 AppearInBeginning = false
-instanceAndButtonExit = Vector2(0, 0)
 Texts = Array[ExtResource("13_r3rxi")]([SubResource("Resource_2sd3i")])
 
 [node name="roca" type="Sprite2D" parent="Transformando/StateMachine/Consigna/Contenido/PanelIntro3"]
@@ -5104,6 +5101,7 @@ scale = Vector2(0.999843, 0.999843)
 skew = -0.00138235
 rest = Transform2D(1, 0, 0, 1, 32, 0)
 editor_settings/show_bone_gizmo = false
+metadata/_local_pose_override_enabled_ = true
 
 [node name="Bone3" type="Bone2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Lava_Fall/PathFollow2D/Node2D/Lava snake/Skeleton2D/Bone1/Bone2"]
 position = Vector2(28.2843, -0.121915)
@@ -5111,6 +5109,7 @@ rotation = -0.00147328
 scale = Vector2(0.999829, 0.999829)
 rest = Transform2D(1, 0, 0, 1, 32, 0)
 editor_settings/show_bone_gizmo = false
+metadata/_local_pose_override_enabled_ = true
 
 [node name="ColorRect" type="ColorRect" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Lava_Fall/PathFollow2D/Node2D/Lava snake/Skeleton2D/Bone1/Bone2/Bone3"]
 offset_left = 5.0
@@ -5235,6 +5234,7 @@ scale = Vector2(0.999843, 0.999843)
 skew = -0.00134373
 rest = Transform2D(1, 0, 0, 1, 32, 0)
 editor_settings/show_bone_gizmo = false
+metadata/_local_pose_override_enabled_ = true
 
 [node name="Bone3" type="Bone2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/LavaFallVolcanica/PathFollow2D/Node2D/Lava snake/Skeleton2D/Bone1/Bone2"]
 position = Vector2(28.2843, -0.121915)
@@ -5242,6 +5242,7 @@ rotation = -0.00283671
 scale = Vector2(0.999829, 0.999829)
 rest = Transform2D(1, 0, 0, 1, 32, 0)
 editor_settings/show_bone_gizmo = false
+metadata/_local_pose_override_enabled_ = true
 
 [node name="ColorRect" type="ColorRect" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/LavaFallVolcanica/PathFollow2D/Node2D/Lava snake/Skeleton2D/Bone1/Bone2/Bone3"]
 offset_left = 5.0
@@ -8957,6 +8958,7 @@ grow_horizontal = 0
 grow_vertical = 2
 
 [node name="GenericButton" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/buttonSalir" instance=ExtResource("105_sueh6")]
+visible = false
 modulate = Color(0.45098, 0.45098, 0.45098, 1)
 layout_mode = 0
 offset_left = -46.0
@@ -8998,7 +9000,6 @@ grow_horizontal = 1
 pivot_offset = Vector2(326, 303)
 AppearInBeginning = false
 RepitingPanel = true
-instanceAndButtonExit = Vector2(0, 0)
 Texts = Array[ExtResource("13_r3rxi")]([SubResource("Resource_7uqoc")])
 
 [node name="labelRich" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Paneles/PanelSedimentaria" index="1"]
@@ -9014,9 +9015,6 @@ HASTA UN MILLÓN DE AÑOS
 
 ASÍ NACEN LAS
 [font_size={40}][b]ROCAS SEDIMENTARIAS[/b]"
-
-[node name="btnDer" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Paneles/PanelSedimentaria/BtnDerAnchor" index="0"]
-visible = false
 
 [node name="btnCentral" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Paneles/PanelSedimentaria/btnCentralAnchor" index="0"]
 visible = true
@@ -9037,7 +9035,6 @@ offset_bottom = 475.0
 pivot_offset = Vector2(326, 251.5)
 AppearInBeginning = false
 RepitingPanel = true
-instanceAndButtonExit = Vector2(0, 0)
 Texts = Array[ExtResource("13_r3rxi")]([SubResource("Resource_aw4l0")])
 
 [node name="labelRich" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Paneles/PanelMetamorfica" index="1"]
@@ -9052,9 +9049,6 @@ SE CONVIERTE EN UNA
 [font_size={40}][b]ROCA METAMORFICA[/b]
 
 "
-
-[node name="btnDer" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Paneles/PanelMetamorfica/BtnDerAnchor" index="0"]
-visible = false
 
 [node name="btnCentral" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Paneles/PanelMetamorfica/btnCentralAnchor" index="0"]
 visible = true
@@ -9075,7 +9069,6 @@ offset_bottom = 484.0
 pivot_offset = Vector2(326, 254.5)
 AppearInBeginning = false
 RepitingPanel = true
-instanceAndButtonExit = Vector2(0, 0)
 Texts = Array[ExtResource("13_r3rxi")]([SubResource("Resource_iv4x2")])
 
 [node name="labelRich" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Paneles/PanelPlutonica" index="1"]
@@ -9089,9 +9082,6 @@ ENTRE 850 A 1200 GRADOS!
 MUY LENTAMENTE [b]SE PONE SÓLIDO[b]
 Y SE CONVIERTE EN UNA 
 [font_size={40}][b]ROCA ÍGNEA PLUTÓNICA[/b]"
-
-[node name="btnDer" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Paneles/PanelPlutonica/BtnDerAnchor" index="0"]
-visible = false
 
 [node name="btnCentral" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Paneles/PanelPlutonica/btnCentralAnchor" index="0"]
 visible = true
@@ -9112,7 +9102,6 @@ offset_bottom = 459.0
 pivot_offset = Vector2(326, 241.5)
 AppearInBeginning = false
 RepitingPanel = true
-instanceAndButtonExit = Vector2(0, 0)
 Texts = Array[ExtResource("13_r3rxi")]([SubResource("Resource_dyytj")])
 
 [node name="labelRich" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Paneles/PanelVolcanica" index="1"]
@@ -9127,9 +9116,6 @@ Y SE PONE SÓLIDA[/b]
 SE CONVIERTE EN UNA 
 [font_size={40}][b]ROCA ÍGNEA VOLCÁNICA[/b]"
 
-[node name="btnDer" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Paneles/PanelVolcanica/BtnDerAnchor" index="0"]
-visible = false
-
 [node name="btnCentral" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Paneles/PanelVolcanica/btnCentralAnchor" index="0"]
 visible = true
 
@@ -9140,21 +9126,19 @@ texture = ExtResource("12_j8o53")
 Data = SubResource("Resource_6mc8f")
 
 [node name="PanelEnd" parent="Transformando/StateMachine/Juego/Contenido/Instancia1" instance=ExtResource("10_2d6bp")]
-visible = false
 modulate = Color(0.8, 0.8, 0.8, 1)
 z_index = 2
 layout_mode = 1
 anchors_preset = -1
-anchor_top = 0.774
-anchor_bottom = 0.774
-offset_left = 21.0
-offset_top = 864.0
-offset_right = 699.0
-offset_bottom = 1086.0
-grow_vertical = 0
+anchor_top = 0.773
+anchor_bottom = 0.773
+offset_left = -338.0
+offset_top = -111.44
+offset_right = 340.0
+offset_bottom = 110.56
+grow_vertical = 2
 pivot_offset = Vector2(339, 111)
 AppearInBeginning = false
-instanceAndButtonExit = Vector2(0, 0)
 Texts = Array[ExtResource("13_r3rxi")]([SubResource("Resource_tw2wj"), SubResource("Resource_emx5b"), SubResource("Resource_0g46w")])
 
 [node name="Panel(1) Btn(rigth)" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/PanelEnd" instance=ExtResource("16_ss078")]
@@ -9261,7 +9245,6 @@ offset_bottom = 388.0
 grow_vertical = 2
 pivot_offset = Vector2(326, 388)
 AppearInBeginning = false
-instanceAndButtonExit = Vector2(0, 0)
 Texts = Array[ExtResource("13_r3rxi")]([SubResource("Resource_qevm7")])
 
 [node name="Control" type="Control" parent="Transformando/StateMachine/Moraleja/Contenido/PanelOutro"]
@@ -9449,8 +9432,8 @@ AudioBuses = Array[String](["VolumenTransformaciones", "avalancha", "sedimentari
 [connection signal="PanelAppear" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Metamorfica" to="Transformando/StateMachine/Juego/Contenido/Instancia1/Paneles/PanelMetamorfica" method="EnterPanel"]
 [connection signal="TriggerNextTransformation" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Metamorfica" to="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton2" method="ChangeLavaFace"]
 [connection signal="TriggerNextTransformation" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Metamorfica" to="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton3" method="SetTrueVisibility"]
-[connection signal="TriggerNextTransformation" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Metamorfica" to="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/LavaSounds" method="PlayEvent" binds= ["lavaAparece", 1.1]]
 [connection signal="TriggerNextTransformation" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Metamorfica" to="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/LavaSounds" method="PlayLoopEvent" binds= ["lavaLoop"]]
+[connection signal="TriggerNextTransformation" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Metamorfica" to="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/LavaSounds" method="PlayEvent" binds= ["lavaAparece", 1.1]]
 [connection signal="pressed" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/metamorficaSpot/Button" to="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Nube/AnimationNube" method="PlayAnim" binds= ["Nube_metamorfica"]]
 [connection signal="PanelAppear" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Sedimentaria" to="Transformando/StateMachine/Juego/Contenido/Instancia1/Paneles/PanelSedimentaria" method="EnterPanel"]
 [connection signal="TriggerNextTransformation" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Sedimentaria" to="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Cueva/AnimationPlayer" method="Play"]
@@ -9464,8 +9447,8 @@ AudioBuses = Array[String](["VolumenTransformaciones", "avalancha", "sedimentari
 [connection signal="PanelAppear" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Preplutonica" to="Transformando/StateMachine/Juego/Contenido/Instancia1/Paneles/PanelPlutonica" method="EnterPanel"]
 [connection signal="TriggerNextTransformation" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Preplutonica" to="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton3" method="ChangeLavaFace"]
 [connection signal="TriggerNextTransformation" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Preplutonica" to="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton4" method="SetTrueVisibility"]
-[connection signal="TriggerNextTransformation" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Preplutonica" to="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/LavaSounds" method="PlayEvent" binds= ["lavaAparece", 1.1]]
 [connection signal="TriggerNextTransformation" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Preplutonica" to="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/LavaSounds" method="PlayLoopEvent" binds= ["lavaLoop"]]
+[connection signal="TriggerNextTransformation" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Preplutonica" to="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/LavaSounds" method="PlayEvent" binds= ["lavaAparece", 1.1]]
 [connection signal="pressed" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/plutonicaSpot/Button" to="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Nube/AnimationNube" method="PlayAnim" binds= ["Nube_Plutonica"]]
 [connection signal="PanelAppear" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Volcanica" to="Transformando/StateMachine/Juego/Contenido/Instancia1/Paneles/PanelVolcanica" method="EnterPanel"]
 [connection signal="TriggerNextTransformation" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Volcanica" to="Transformando/StateMachine/Juego/Contenido/Instancia1/PanelEnd" method="EnterPanel"]

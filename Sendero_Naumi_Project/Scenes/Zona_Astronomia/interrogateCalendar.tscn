@@ -1,5 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://7o20c7mrapyw"]
+[gd_scene load_steps=9 format=3 uid="uid://7o20c7mrapyw"]
 
+[ext_resource type="Texture2D" uid="uid://cqrl4ma2vkof6" path="res://Sprites/UI/SquigglingUI/botonesRedondoPopASQUIG - UI.png" id="2_cwpxe"]
 [ext_resource type="StyleBox" uid="uid://b3tjes2hcm3wx" path="res://Resources/UI_Resources/StyleBoxTrasparent.tres" id="2_w6p4f"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_07vhn"]
@@ -69,6 +70,42 @@ tracks/4/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Label:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("pop:frame")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("pop:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_3rytp"]
@@ -164,11 +201,53 @@ tracks/4/keys = {
 "values": [Color(0.941406, 0.339844, 0.0859375, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_l4uvg"]
+resource_name = "tap"
+length = 0.3
+step = 0.03
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.06, 0.09),
+"transitions": PackedFloat32Array(2, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.5, 1.5), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("pop:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.03, 0.06),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("pop:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.09),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_tqidq"]
 _data = {
 "RESET": SubResource("Animation_enhj8"),
 "appear": SubResource("Animation_3rytp"),
-"blink": SubResource("Animation_cswwp")
+"blink": SubResource("Animation_cswwp"),
+"tap": SubResource("Animation_l4uvg")
 }
 
 [node name="Interrogate" type="Node2D"]
@@ -178,7 +257,8 @@ position = Vector2(-251.792, -134.773)
 offset_left = -12.0
 offset_top = -41.0
 offset_right = 24.0
-offset_bottom = 45.0
+offset_bottom = 58.0
+pivot_offset = Vector2(17.5, 49.195)
 text = "?"
 label_settings = SubResource("LabelSettings_07vhn")
 
@@ -196,3 +276,10 @@ speed_scale = 0.3
 libraries = {
 "": SubResource("AnimationLibrary_tqidq")
 }
+
+[node name="pop" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(2.79201, 5.77299)
+scale = Vector2(0.719943, 0.719943)
+texture = ExtResource("2_cwpxe")
+hframes = 3

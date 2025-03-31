@@ -48,6 +48,8 @@ func PlayCallAnim():
 	if stopCall: return
 	buttonTouchAnimal.visible = false
 	animalsArray[inx_animal].play("call")
+	$ReclamoTriggerSound.PlayEvent(animalsArray[inx_animal].name, 0.1,true)
+	#SoundManager.play("reclamo",animalsArray[inx_animal].name)
 	timer.wait_time = randf_range(4.5,5)
 	timer.stop()
 
@@ -56,6 +58,8 @@ func StopCallAnim(x):
 
 func PlayOutAnim():
 	if !isInGame : return
+	$ReclamoTriggerSound.StopSoundsInCuttableQueue()
+	SoundManager.play("correcto",animalsArray[inx_animal].name)
 	buttonTouchAnimal.visible = false
 	animalsArray[inx_animal].play("idle")
 	timer.timeout.disconnect(PlayCallAnim)
@@ -71,6 +75,7 @@ func BackToIdle():
 	timer.start()
 
 func WrongAns():
+	$ReclamoTriggerSound.StopSoundsInCuttableQueue()
 	buttonTouchAnimal.visible = false
 	pataSuelta.visible = true
 	animalsArray[inx_animal].self_modulate = Color(0,0,0,0)

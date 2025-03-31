@@ -10,6 +10,7 @@ extends Button
 var Fade_in
 var Fade_out
 var General_Option
+var delay = 0
 
 func _ready():
 	Fade_in = SceneManager.create_options(fade_time, texture, smoothness, is_inverted)
@@ -20,6 +21,7 @@ func _ready():
 		pressed.connect(_on_pressed)
 	
 func _on_pressed():
+	await get_tree().create_timer(delay).timeout
 	SceneManager.change_scene(NextScene, Fade_in , Fade_out, General_Option )
 
 func SetVisibility(x):

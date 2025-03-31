@@ -131,6 +131,7 @@ func _set_offset_cam(x, delta, time):
 func _set_zoom_cam(vector,time):
 	if vector == Vector2.ONE: inZoom = false
 	else: 
+		if !inZoom : SoundManager.play("general", "cave")
 		enterPosition = get_follow_target_node().position.x
 		inZoom = true
 	var tween = get_tree().create_tween()

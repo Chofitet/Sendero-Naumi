@@ -1,4 +1,4 @@
-[gd_scene load_steps=188 format=3 uid="uid://b017ojh8vtsd6"]
+[gd_scene load_steps=202 format=3 uid="uid://b017ojh8vtsd6"]
 
 [ext_resource type="Script" path="res://_Scripts/Minigame_Save_Controller.gd" id="1_ouwf6"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/StateMachineMinigames.gd" id="2_5wf26"]
@@ -42,11 +42,15 @@
 [ext_resource type="Texture2D" uid="uid://cd27gi6cyrqkl" path="res://Sprites/ZonaAstronomia/campera XL- donde.png" id="19_7rvr1"]
 [ext_resource type="PackedScene" uid="uid://btwjusl4scgqt" path="res://Scenes/Zona_Astronomia/spot_unir.tscn" id="19_8egw1"]
 [ext_resource type="Texture2D" uid="uid://dtgctdtbo4u3c" path="res://Sprites/ZonaAstronomia/jetpack - donde.png" id="19_33dpm"]
+[ext_resource type="Script" path="res://_Scripts/SoundEventTrigger.gd" id="19_cddff"]
 [ext_resource type="PackedScene" uid="uid://d12v5d1clta2q" path="res://Scenes/Zona_Astronomia/reloj_particles.tscn" id="19_mvjee"]
 [ext_resource type="Texture2D" uid="uid://d33hpx777rx06" path="res://Sprites/ZonaAstronomia/casco XL- donde.png" id="20_8hxtq"]
+[ext_resource type="Script" path="res://addons/resonate/sound_manager/sound_bank.gd" id="20_kk2vv"]
 [ext_resource type="PackedScene" uid="uid://d1jys63xrvxpo" path="res://Scenes/Experiments/GenericPanel/IntermediateSignal.tscn" id="20_q3u46"]
 [ext_resource type="Texture2D" uid="uid://b2wbskrgayrbh" path="res://Sprites/ZonaAstronomia/pantalon - donde.png" id="20_yoct4"]
+[ext_resource type="Script" path="res://addons/resonate/sound_manager/sound_event_resource.gd" id="21_2k2rl"]
 [ext_resource type="Texture2D" uid="uid://bofomkeei7ymh" path="res://Sprites/ZonaAstronomia/pantalon XL- donde.png" id="22_cf257"]
+[ext_resource type="AudioStream" uid="uid://b5lu8ihjgywol" path="res://Sounds/Donde Estuvo/Donde Estuvo - Puerta.ogg" id="22_gbsl0"]
 [ext_resource type="Script" path="res://Scenes/Experiments/GenericPanel/IntermediateData.gd" id="22_i5khy"]
 [ext_resource type="Texture2D" uid="uid://gkmnxt7668y2" path="res://Sprites/ZonaAstronomia/locker estante - donde.png" id="22_ymh0l"]
 [ext_resource type="Texture2D" uid="uid://cnd3vkysc48do" path="res://Sprites/ZonaAstronomia/guante izq XL- donde.png" id="24_7duko"]
@@ -61,6 +65,7 @@
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/MoralejaState.gd" id="33_wluhy"]
 [ext_resource type="Texture2D" uid="uid://kcsn1nsja45k" path="res://Sprites/ZonaAstronomia/SquigglingDondeEstuvo/bota derBigSQUIG - donde.png" id="36_0unl4"]
 [ext_resource type="Texture2D" uid="uid://btkrqmg7dmrsv" path="res://Sprites/ZonaAstronomia/SquigglingDondeEstuvo/relojSQUIG - donde.png" id="36_olfnq"]
+[ext_resource type="AudioStream" uid="uid://buwjrwhqq5stp" path="res://Sounds/Donde Estuvo/Donde Estuvo - Bota Cae PAntalon.ogg" id="38_t7d1t"]
 [ext_resource type="Texture2D" uid="uid://bykrskeg711xs" path="res://Sprites/ZonaAstronomia/SquigglingDondeEstuvo/bota izqBigSQUIG - donde.png" id="40_h26cy"]
 [ext_resource type="Texture2D" uid="uid://bk16ctxhrloy7" path="res://Sprites/ZonaAstronomia/SquigglingDondeEstuvo/globoSQUIG - donde.png" id="41_hoir5"]
 [ext_resource type="Texture2D" uid="uid://0phk814ttp11" path="res://Sprites/ZonaAstronomia/SquigglingDondeEstuvo/pantalonSQUIG - donde.png" id="44_wuj2q"]
@@ -93,10 +98,14 @@
 [ext_resource type="Script" path="res://_Scripts/MinG_Astronauta/RotateArround.gd" id="69_73jyr"]
 [ext_resource type="Texture2D" uid="uid://c32qpehikvkq4" path="res://Sprites/ZonaAstronomia/mercurio - donde.png" id="70_ydolt"]
 [ext_resource type="Texture2D" uid="uid://u75klppxeirg" path="res://Sprites/ZonaAstronomia/venus - donde.png" id="71_1yhgj"]
+[ext_resource type="AudioStream" uid="uid://bb43fmpn0gea4" path="res://Sounds/Donde Estuvo/Donde Estuvo - Guante 2 Cae.ogg" id="71_7wo7q"]
 [ext_resource type="Texture2D" uid="uid://dm33nve6pkkt8" path="res://Sprites/ZonaAstronomia/SquigglingDondeEstuvo/guante izqBigSQUIG - donde.png" id="71_q1f4o"]
 [ext_resource type="Texture2D" uid="uid://r3hlnu5wlyl3" path="res://Sprites/ZonaAstronomia/tierra - donde.png" id="72_0rl8r"]
 [ext_resource type="Texture2D" uid="uid://b74axmot14bj8" path="res://Sprites/ZonaAstronomia/jupiter - donde.png" id="74_2orhi"]
 [ext_resource type="Texture2D" uid="uid://lm8q60lp72dv" path="res://Sprites/ZonaAstronomia/urano - donde.png" id="75_h52fe"]
+[ext_resource type="AudioStream" uid="uid://b5vnl01rlssd8" path="res://Sounds/Donde Estuvo/Donde Estuvo - Cucaracha Puerta.ogg" id="79_h31ey"]
+[ext_resource type="AudioStream" uid="uid://b14uc1slt0ia8" path="res://Sounds/Donde Estuvo/Donde Estuvo - Cucaracha Piso.ogg" id="80_lrhg8"]
+[ext_resource type="PackedScene" uid="uid://c8dodmo3saxdr" path="res://Scenes/Experiments/sound_debug.tscn" id="106_h6qvq"]
 
 [sub_resource type="Shader" id="Shader_a3sab"]
 code = "shader_type canvas_item;
@@ -178,6 +187,20 @@ tracks/1/keys = {
 "method": &"EnterPanel"
 }]
 }
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../IntroSounds")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["door", 0.0],
+"method": &"PlayEvent"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_iumpp"]
 _data = {
@@ -220,6 +243,7 @@ Place = 0
 texture = ExtResource("18_3gknl")
 label = ""
 dontPassPanel = false
+exitPanel = false
 
 [sub_resource type="Resource" id="Resource_4jmx8"]
 script = ExtResource("19_5u4uq")
@@ -241,6 +265,7 @@ Place = 0
 texture = ExtResource("18_3gknl")
 label = ""
 dontPassPanel = false
+exitPanel = false
 
 [sub_resource type="Resource" id="Resource_abwqa"]
 script = ExtResource("19_5u4uq")
@@ -260,6 +285,15 @@ Place = 0
 script = ExtResource("22_i5khy")
 NumberOfPanel = 1
 Place = 0
+
+[sub_resource type="Resource" id="Resource_a573f"]
+script = ExtResource("21_2k2rl")
+name = "door"
+bus = "puerta"
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([ExtResource("22_gbsl0")])
 
 [sub_resource type="Curve2D" id="Curve2D_m5pj6"]
 _data = {
@@ -319,6 +353,20 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0.0, 1.0]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../../SoundsEmitter")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["cucaPiso", 0.0],
+"method": &"PlayEvent"
+}]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_luoa5"]
@@ -412,7 +460,7 @@ tracks/5/keys = {
 
 [sub_resource type="Animation" id="Animation_ua7wr"]
 resource_name = "fall"
-length = 1.1
+length = 1.6
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -500,6 +548,35 @@ tracks/6/keys = {
 }, {
 "args": [true],
 "method": &"BlockButton"
+}]
+}
+tracks/7/type = "audio"
+tracks/7/imported = false
+tracks/7/enabled = false
+tracks/7/path = NodePath("../../SoundsEmitter/AudioStreamPlayer")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("38_t7d1t")
+}],
+"times": PackedFloat32Array(0.5)
+}
+tracks/7/use_blend = true
+tracks/8/type = "method"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../../SoundsEmitter")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["boot2fall", 0.0],
+"method": &"PlayEvent"
 }]
 }
 
@@ -695,6 +772,35 @@ tracks/4/keys = {
 "update": 0,
 "values": [Vector2(201.429, 691.143), Vector2(213.571, 661.143), Vector2(225.714, 672.572)]
 }
+tracks/5/type = "audio"
+tracks/5/imported = false
+tracks/5/enabled = false
+tracks/5/path = NodePath("../../SoundsEmitter/AudioStreamPlayer")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("71_7wo7q")
+}],
+"times": PackedFloat32Array(0.5)
+}
+tracks/5/use_blend = true
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../../SoundsEmitter")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["glove2fall", 0.0],
+"method": &"PlayEvent"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wrfk7"]
 _data = {
@@ -762,12 +868,62 @@ tracks/1/keys = {
 "update": 0,
 "values": [0.0, 0.3003, 0.3003, 1.0]
 }
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../SoundsEmitter")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["cucaPuerta", 0.0],
+"method": &"PlayEvent"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5dbje"]
 _data = {
 "RESET": SubResource("Animation_5mlwi"),
 "cuca": SubResource("Animation_hr6af")
 }
+
+[sub_resource type="Resource" id="Resource_k56xx"]
+script = ExtResource("21_2k2rl")
+name = "cucaPuerta"
+bus = "cucarachaPuerta"
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([ExtResource("79_h31ey")])
+
+[sub_resource type="Resource" id="Resource_watgg"]
+script = ExtResource("21_2k2rl")
+name = "cucaPiso"
+bus = "cucarachaPiso"
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([ExtResource("80_lrhg8")])
+
+[sub_resource type="Resource" id="Resource_pa5ot"]
+script = ExtResource("21_2k2rl")
+name = "glove2fall"
+bus = "guanteCae"
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([ExtResource("71_7wo7q")])
+
+[sub_resource type="Resource" id="Resource_0m5hg"]
+script = ExtResource("21_2k2rl")
+name = "boot2fall"
+bus = "botaCae"
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([ExtResource("38_t7d1t")])
 
 [sub_resource type="Animation" id="Animation_yogp1"]
 length = 0.001
@@ -1009,6 +1165,7 @@ Place = 0
 texture = ExtResource("18_3gknl")
 label = ""
 dontPassPanel = false
+exitPanel = false
 
 [sub_resource type="Resource" id="Resource_spwmp"]
 script = ExtResource("19_5u4uq")
@@ -1030,6 +1187,7 @@ Place = 0
 texture = ExtResource("18_3gknl")
 label = ""
 dontPassPanel = false
+exitPanel = false
 
 [sub_resource type="Resource" id="Resource_pgadv"]
 script = ExtResource("19_5u4uq")
@@ -1258,6 +1416,7 @@ Place = 0
 texture = ExtResource("18_3gknl")
 label = ""
 dontPassPanel = true
+exitPanel = false
 
 [sub_resource type="Resource" id="Resource_2f8m2"]
 script = ExtResource("19_5u4uq")
@@ -1284,6 +1443,7 @@ Place = 0
 texture = ExtResource("18_3gknl")
 label = ""
 dontPassPanel = true
+exitPanel = false
 
 [sub_resource type="Resource" id="Resource_st847"]
 script = ExtResource("19_5u4uq")
@@ -1311,6 +1471,7 @@ Place = 0
 texture = ExtResource("18_3gknl")
 label = ""
 dontPassPanel = true
+exitPanel = false
 
 [sub_resource type="Resource" id="Resource_05oto"]
 script = ExtResource("19_5u4uq")
@@ -1337,6 +1498,7 @@ Place = 0
 texture = ExtResource("18_3gknl")
 label = ""
 dontPassPanel = false
+exitPanel = false
 
 [sub_resource type="Resource" id="Resource_37a5n"]
 script = ExtResource("19_5u4uq")
@@ -1355,6 +1517,7 @@ Place = 0
 texture = ExtResource("18_3gknl")
 label = ""
 dontPassPanel = false
+exitPanel = false
 
 [sub_resource type="Resource" id="Resource_n36gw"]
 script = ExtResource("19_5u4uq")
@@ -1411,7 +1574,6 @@ script = ExtResource("3_74cva")
 Consignas = ["Hey esto es una consigna"]
 
 [node name="Contenido" type="Control" parent="DondeEstuvo/StateMachine/Consigna" node_paths=PackedStringArray("StateMachine")]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -1592,6 +1754,14 @@ Data = SubResource("Resource_jq650")
 [node name="Panel(1) Btn(rigth)2" parent="DondeEstuvo/StateMachine/Consigna/Contenido/PanelIntro2" instance=ExtResource("20_q3u46")]
 Data = SubResource("Resource_k0rkk")
 Delay = 1.5
+
+[node name="IntroSounds" type="Node" parent="DondeEstuvo/StateMachine/Consigna/Contenido"]
+script = ExtResource("19_cddff")
+
+[node name="SoundBank" type="Node" parent="DondeEstuvo/StateMachine/Consigna/Contenido/IntroSounds"]
+script = ExtResource("20_kk2vv")
+label = "intro"
+events = Array[ExtResource("21_2k2rl")]([SubResource("Resource_a573f")])
 
 [node name="Juego" type="Node" parent="DondeEstuvo/StateMachine" node_paths=PackedStringArray("NextState", "StateMachine")]
 script = ExtResource("5_8uhx2")
@@ -1796,6 +1966,7 @@ texture = ExtResource("10_odq7q")
 HighQualityTexture = ExtResource("13_bbeo2")
 hasClue = true
 angleInCenter = 20.0
+ObjectName = "Boot2"
 AppearChild = true
 
 [node name="FrontTexture" type="Node2D" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/ScreenCenter/Clues/Clue_bota_der"]
@@ -1919,6 +2090,7 @@ texture = ExtResource("14_2f6rp")
 HighQualityTexture = ExtResource("18_ibfaq")
 hasClue = true
 angleInCenter = 13.0
+ObjectName = "Hourglass"
 inventary_scale = Vector2(1.3, 1.3)
 AppearChild = true
 
@@ -1964,6 +2136,7 @@ texture = ExtResource("14_i8rg6")
 HighQualityTexture = ExtResource("32_n8qqk")
 hasClue = true
 angleInCenter = -5.0
+ObjectName = "Globe"
 inventary_scale = Vector2(1.3, 1.3)
 AppearChild = true
 
@@ -2038,6 +2211,7 @@ position = Vector2(-244.5, 245.429)
 texture = ExtResource("20_yoct4")
 HighQualityTexture = ExtResource("22_cf257")
 angleInCenter = -20.0
+ObjectName = "Pants"
 
 [node name="SquigglingSprite" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/ScreenCenter/Clues/Clue_pantalon" instance=ExtResource("31_uhkxy")]
 texture = ExtResource("44_wuj2q")
@@ -2052,6 +2226,7 @@ position = Vector2(-234.286, -71.7142)
 texture = ExtResource("16_vo578")
 HighQualityTexture = ExtResource("19_7rvr1")
 angleInCenter = -20.0
+ObjectName = "Jacket"
 
 [node name="SquigglingSprite" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/ScreenCenter/Clues/Clue_campera" instance=ExtResource("31_uhkxy")]
 texture = ExtResource("47_mxi3i")
@@ -2067,6 +2242,7 @@ position = Vector2(130, 314.286)
 texture = ExtResource("19_33dpm")
 HighQualityTexture = ExtResource("26_h5quh")
 angleInCenter = 10.0
+ObjectName = "Jetpack"
 
 [node name="SquigglingSprite" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/ScreenCenter/Clues/Clue_jetpack" instance=ExtResource("31_uhkxy")]
 texture = ExtResource("50_741ox")
@@ -2115,6 +2291,7 @@ rotation = 0.311291
 texture = ExtResource("18_cu56d")
 HighQualityTexture = ExtResource("25_tiqyx")
 angleInCenter = 20.0
+ObjectName = "Glove1"
 EditableButton = true
 
 [node name="Button" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/ScreenCenter/Clues/Clue_guante_izq" index="0"]
@@ -2138,6 +2315,7 @@ position = Vector2(110, -557.143)
 texture = ExtResource("15_p6mcc")
 HighQualityTexture = ExtResource("20_8hxtq")
 angleInCenter = -10.0
+ObjectName = "Helmet"
 otherPosition = NodePath("../../CascoPos2")
 
 [node name="SquigglingSprite" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/ScreenCenter/Clues/Clue_casco" instance=ExtResource("31_uhkxy")]
@@ -2186,6 +2364,16 @@ DestroyInFinish = "cuca"
 
 [node name="CascoPos2" type="Marker2D" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/ScreenCenter"]
 position = Vector2(-224.286, -557.143)
+
+[node name="SoundsEmitter" type="Node" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/ScreenCenter"]
+script = ExtResource("19_cddff")
+
+[node name="SoundBank" type="Node" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/ScreenCenter/SoundsEmitter"]
+script = ExtResource("20_kk2vv")
+label = "instance1"
+events = Array[ExtResource("21_2k2rl")]([SubResource("Resource_k56xx"), SubResource("Resource_watgg"), SubResource("Resource_pa5ot"), SubResource("Resource_0m5hg")])
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/ScreenCenter/SoundsEmitter"]
 
 [node name="SpaceTexture" type="TextureRect" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1"]
 visible = false
@@ -2335,6 +2523,7 @@ libraries = {
 }
 
 [node name="PanelRelojArena" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/CenterClues" instance=ExtResource("16_aupkq")]
+visible = false
 layout_mode = 1
 offset_top = 324.0
 offset_bottom = 552.0
@@ -2342,6 +2531,7 @@ AppearInBeginning = false
 Texts = Array[ExtResource("19_5u4uq")]([SubResource("Resource_bi8fh")])
 
 [node name="PanelGloboDeNieve" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/CenterClues" instance=ExtResource("16_aupkq")]
+visible = false
 layout_mode = 1
 offset_top = 326.0
 offset_bottom = 554.0
@@ -2349,6 +2539,7 @@ AppearInBeginning = false
 Texts = Array[ExtResource("19_5u4uq")]([SubResource("Resource_75u4j")])
 
 [node name="PanelBota" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/CenterClues" instance=ExtResource("16_aupkq")]
+visible = false
 layout_mode = 1
 offset_top = 326.0
 offset_bottom = 554.0
@@ -3101,6 +3292,9 @@ Texts = Array[ExtResource("19_5u4uq")]([SubResource("Resource_37a5n"), SubResour
 
 [node name="Panel(2) Btn(rigth)" parent="DondeEstuvo/StateMachine/Fin/Contenido/center/PanelOutro" instance=ExtResource("20_q3u46")]
 Data = SubResource("Resource_82hdo")
+
+[node name="Sound Debug" parent="DondeEstuvo" instance=ExtResource("106_h6qvq")]
+AudioBuses = Array[String](["VolumenDondeEstuvo", "puerta", "casco", "guante1", "guante2", "guanteCae", "globoNieve", "jetpack", "campera", "pantalon", "bota2", "botaCae", "reloj", "cucarachaPiso", "cucarachaPuerta"])
 
 [connection signal="ButtonPress" from="DondeEstuvo/StateMachine/Consigna/Contenido/PanelIntro1/Panel(1) Btn(rigth)" to="DondeEstuvo/StateMachine/Consigna/Contenido/AnimationPlayer" method="PlayAnim" binds= ["open_Door"]]
 [connection signal="ButtonPress" from="DondeEstuvo/StateMachine/Consigna/Contenido/PanelIntro2/Panel(1) Btn(rigth)" to="DondeEstuvo/StateMachine/Consigna/Contenido" method="PassSecondPanel"]

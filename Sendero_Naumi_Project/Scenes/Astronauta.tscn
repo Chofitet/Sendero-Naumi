@@ -1,4 +1,4 @@
-[gd_scene load_steps=198 format=3 uid="uid://dk066mi38cvh7"]
+[gd_scene load_steps=204 format=3 uid="uid://dk066mi38cvh7"]
 
 [ext_resource type="Script" path="res://_Scripts/Minigame_Save_Controller.gd" id="1_th4gl"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/StateMachineMinigames.gd" id="2_fl1ab"]
@@ -104,6 +104,10 @@
 [ext_resource type="Texture2D" uid="uid://cx2wwtyecmbvo" path="res://Sprites/UI/PointingLine.png" id="82_4qfy2"]
 [ext_resource type="Texture2D" uid="uid://bwl4elgs4o5f1" path="res://Sprites/ZonaAstronomia/debris pochoclobolsa - astronauta.png" id="82_uj6ac"]
 [ext_resource type="Script" path="res://Scenes/Experiments/GenericPanel/IntermediateData.gd" id="83_qqo8u"]
+[ext_resource type="Script" path="res://addons/resonate/sound_manager/sound_bank.gd" id="90_h0bcv"]
+[ext_resource type="Script" path="res://addons/resonate/sound_manager/sound_event_resource.gd" id="91_abtif"]
+[ext_resource type="AudioStream" uid="uid://d4e5th885frti" path="res://Sounds/Astronauta/Astronauta - Nave Abre.ogg" id="92_oltgp"]
+[ext_resource type="AudioStream" uid="uid://dmh8dd625182d" path="res://Sounds/Astronauta/Astronauta- Sali de la cueva.ogg" id="101_gmib4"]
 [ext_resource type="Texture2D" uid="uid://bdwcmeo2ejqvl" path="res://Sprites/ZonaAstronomia/estela meteorito - astronauta-0004.png" id="101_invni"]
 [ext_resource type="Texture2D" uid="uid://bnrcwixxxj8wl" path="res://Sprites/ZonaAstronomia/estela meteorito - astronauta-0005.png" id="102_i0kb1"]
 [ext_resource type="Texture2D" uid="uid://wvr5sa0gwg5e" path="res://Sprites/ZonaAstronomia/estela meteorito - astronauta-0001.png" id="103_01fpy"]
@@ -538,6 +542,15 @@ size = Vector2(491, 67)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3kd6y"]
 size = Vector2(483, 244)
 
+[sub_resource type="Resource" id="Resource_jy8c7"]
+script = ExtResource("91_abtif")
+name = "open"
+bus = ""
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([ExtResource("92_oltgp")])
+
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_h2n3c"]
 light_mode = 1
 
@@ -696,6 +709,15 @@ size = Vector2(3568, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8dfup"]
 size = Vector2(4044, 322)
+
+[sub_resource type="Resource" id="Resource_u2fry"]
+script = ExtResource("91_abtif")
+name = "cave"
+bus = ""
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([ExtResource("101_gmib4")])
 
 [sub_resource type="Resource" id="Resource_52pth"]
 script = ExtResource("78_a7col")
@@ -1604,7 +1626,7 @@ _textureLine = ExtResource("9_fd6y6")
 
 [node name="Meteoroide" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide" instance=ExtResource("11_i2vqs")]
 position = Vector2(976, -1362)
-rotation = 373913.0
+rotation = 384463.0
 scale = Vector2(2.975, 2.975)
 _texture = ExtResource("11_x4hhq")
 
@@ -2382,7 +2404,7 @@ Max_Size = 60.0
 
 [node name="meteoro" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoro/Meteoro1" node_paths=PackedStringArray("MeteoritoTarget") instance=ExtResource("11_i2vqs")]
 z_index = 1
-rotation = 496507.0
+rotation = 507057.0
 scale = Vector2(2.595, 2.595)
 MeteoritoTarget = NodePath("../../../Meteorito/MeteoritoAppear/targetMeteorito")
 _texture = ExtResource("17_uxw0q")
@@ -2431,7 +2453,7 @@ z_index = 1
 
 [node name="meteoro" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoro/Meteoro3" node_paths=PackedStringArray("MeteoritoTarget") instance=ExtResource("11_i2vqs")]
 z_index = 1
-rotation = 498208.0
+rotation = 508758.0
 scale = Vector2(2.595, 2.595)
 MeteoritoTarget = NodePath("../../../Meteorito/MeteoritoAppear/targetMeteorito")
 _texture = ExtResource("17_uxw0q")
@@ -2762,7 +2784,6 @@ grow_horizontal = 1
 pivot_offset = Vector2(270, 125.5)
 theme = ExtResource("77_hmdp2")
 TimeToAppear = 2.5
-instanceAndButtonExit = Vector2(0, 0)
 Texts = Array[ExtResource("80_drq41")]([SubResource("Resource_aako0"), SubResource("Resource_dcdne"), SubResource("Resource_6bnnc")])
 
 [node name="label" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro/PanelIntro" index="0"]
@@ -2770,6 +2791,9 @@ text = "BUEN DÍA CADETE
 REPASEMOS LA MISIÓN...
 "
 label_settings = ExtResource("74_d02uo")
+
+[node name="btnDer" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro/PanelIntro/BtnDerAnchor" index="0"]
+visible = true
 
 [node name="content1" type="Control" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro/PanelIntro"]
 visible = false
@@ -3146,6 +3170,13 @@ position = Vector2(-472, 186)
 position = Vector2(231.5, 112)
 shape = SubResource("RectangleShape2D_3kd6y")
 
+[node name="NaveSounds" type="Node" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController"]
+
+[node name="SoundBank" type="Node" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/NaveSounds"]
+script = ExtResource("90_h0bcv")
+label = "nave"
+events = Array[ExtResource("91_abtif")]([SubResource("Resource_jy8c7")])
+
 [node name="Astronauta" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1" node_paths=PackedStringArray("PhantomCam", "pcInventary") groups=["player"] instance=ExtResource("7_jv4gs")]
 material = SubResource("CanvasItemMaterial_h2n3c")
 position = Vector2(247, 1123)
@@ -3228,14 +3259,10 @@ grow_horizontal = 1
 pivot_offset = Vector2(248.5, 99.5)
 theme = ExtResource("77_hmdp2")
 AppearInBeginning = false
-instanceAndButtonExit = Vector2(0, 0)
 Texts = Array[ExtResource("80_drq41")]([SubResource("Resource_k0t8t"), SubResource("Resource_hiuv8")])
 
 [node name="label" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/PCInventary/pcInventary/PanelInventory" index="0"]
 label_settings = ExtResource("74_d02uo")
-
-[node name="btnDer" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/PCInventary/pcInventary/PanelInventory/BtnDerAnchor" index="0"]
-visible = false
 
 [node name="Label" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/PCInventary/pcInventary/PanelInventory/BtnDerAnchor/btnDer/Icon" index="0"]
 text = "YO!"
@@ -3635,6 +3662,13 @@ script = ExtResource("40_het88")
 position = Vector2(0, 162)
 shape = SubResource("RectangleShape2D_8dfup")
 
+[node name="GeneralSounds" type="Node" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1"]
+
+[node name="SoundBank" type="Node" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/GeneralSounds"]
+script = ExtResource("90_h0bcv")
+label = "general"
+events = Array[ExtResource("91_abtif")]([SubResource("Resource_u2fry")])
+
 [node name="HUD" parent="Astronauta/StateMachine/Juego" instance=ExtResource("25_oyvyl")]
 
 [node name="Fin" type="Node" parent="Astronauta/StateMachine"]
@@ -3724,21 +3758,23 @@ anchor_left = 0.483
 anchor_top = 0.083
 anchor_right = 0.483
 anchor_bottom = 0.083
-offset_left = -668.297
-offset_top = -238.712
-offset_right = 8.703
-offset_bottom = -90.712
+offset_left = -350.0
+offset_top = -167.0
+offset_right = 327.0
+offset_bottom = -19.0
 grow_vertical = 2
 pivot_offset = Vector2(338.5, 74)
 theme = ExtResource("77_hmdp2")
 AppearInBeginning = false
 TimeToAppear = 2.2
-instanceAndButtonExit = Vector2(0, 0)
 Texts = Array[ExtResource("80_drq41")]([SubResource("Resource_sn0ra"), SubResource("Resource_3p4ow"), SubResource("Resource_6eq48"), SubResource("Resource_856ni"), SubResource("Resource_tt3tg")])
 
 [node name="labelRich" parent="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/PanelOutro" index="1"]
 theme_override_colors/default_color = Color(0.046875, 0.917969, 0.410156, 1)
 text = "[center][b]HAY 3 TIPOS DE ROCAS ESPACIALES[/b]"
+
+[node name="btnDer" parent="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/PanelOutro/BtnDerAnchor" index="0"]
+visible = true
 
 [node name="content1" type="Node2D" parent="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/PanelOutro" node_paths=PackedStringArray("CenterObject")]
 visible = false

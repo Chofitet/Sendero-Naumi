@@ -49,10 +49,10 @@ func finishAnim():
 		for p in get_node("Parts").get_children():
 			if p.name != "Piedra":
 				p.visible = false
-		await get_tree().create_timer(3).timeout
+		await get_tree().create_timer(2).timeout
 		get_parent().PassInstance()
 	else:
-		await get_tree().create_timer(1.3).timeout
+		await get_tree().create_timer(1).timeout
 		PlayIdle()
 
 func BlockAnim():

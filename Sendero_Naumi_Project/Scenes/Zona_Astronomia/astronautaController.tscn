@@ -1,8 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://dtbscg5vj1osr"]
+[gd_scene load_steps=15 format=3 uid="uid://dtbscg5vj1osr"]
 
 [ext_resource type="Script" path="res://_Scripts/MinG_Astronauta/AstronautaMove.gd" id="1_jndun"]
 [ext_resource type="Texture2D" uid="uid://wsicrocifuq" path="res://Sprites/ZonaAstronomia/pegoton.png" id="2_bsf0e"]
 [ext_resource type="Texture2D" uid="uid://ca20spuu3q5ks" path="res://Sprites/ZonaAstronomia/astronauta - astronauta.png" id="2_pun23"]
+[ext_resource type="Script" path="res://addons/resonate/sound_manager/sound_bank.gd" id="4_crc4j"]
+[ext_resource type="Script" path="res://addons/resonate/sound_manager/sound_event_resource.gd" id="5_tdk0u"]
+[ext_resource type="AudioStream" uid="uid://dqcaojxwc4rqr" path="res://Sounds/Astronauta/Astronauta - Agarra.ogg" id="6_3sp2p"]
+[ext_resource type="AudioStream" uid="uid://cyymyxgxh6uko" path="res://Sounds/Astronauta/Astronauta - Pedo.ogg" id="7_03t52"]
+[ext_resource type="AudioStream" uid="uid://b53uwrpmfowjw" path="res://Sounds/Astronauta/Astronauta - JP.ogg" id="8_8y5ag"]
 
 [sub_resource type="Curve" id="Curve_xbool"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -14,6 +19,33 @@ colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_83hx5"]
 radius = 67.0
 height = 138.0
+
+[sub_resource type="Resource" id="Resource_me78c"]
+script = ExtResource("5_tdk0u")
+name = "pickUp"
+bus = ""
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([ExtResource("6_3sp2p")])
+
+[sub_resource type="Resource" id="Resource_h4aau"]
+script = ExtResource("5_tdk0u")
+name = "fart"
+bus = ""
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([ExtResource("7_03t52")])
+
+[sub_resource type="Resource" id="Resource_nl8te"]
+script = ExtResource("5_tdk0u")
+name = "jetpack"
+bus = ""
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([ExtResource("8_8y5ag")])
 
 [node name="Astronauta" type="CharacterBody2D"]
 position = Vector2(363, 639)
@@ -71,3 +103,10 @@ shape = SubResource("CapsuleShape2D_83hx5")
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.2
 one_shot = true
+
+[node name="SoundEmmiter" type="Node" parent="."]
+
+[node name="SoundBank" type="Node" parent="SoundEmmiter"]
+script = ExtResource("4_crc4j")
+label = "astronauta"
+events = Array[ExtResource("5_tdk0u")]([SubResource("Resource_me78c"), SubResource("Resource_h4aau"), SubResource("Resource_nl8te")])

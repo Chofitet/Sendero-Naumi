@@ -10,6 +10,7 @@ var gamefinished
 signal ZoomFinished
 signal ZoomOutFinished
 signal OutroAnim
+var pop = preload("res://Scenes/UI_Scenes/pop.tscn")
 
 func _ready():
 	for p in $calendarPivot/Calendar.get_children():
@@ -28,6 +29,12 @@ func SetQuestionWithInstance():
 	QButtons[InstanceController.get_num_instance()].get_node("anim").play("blink")
 
 func ZoomToPos(index = 0):
+	for q in $Buttons.get_children():
+		if q != QButtons[index-1]: 
+			q.visible = false
+			continue
+		q.get_node("anim").play("tap")
+	await get_tree().create_timer(0.5).timeout
 	$Buttons.visible = false
 	if index != 0:
 		QButtons[index-1].visible = false

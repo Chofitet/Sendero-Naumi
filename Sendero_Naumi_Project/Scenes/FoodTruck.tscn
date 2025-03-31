@@ -1,4 +1,4 @@
-[gd_scene load_steps=108 format=3 uid="uid://hbmgu1q1d7os"]
+[gd_scene load_steps=114 format=3 uid="uid://hbmgu1q1d7os"]
 
 [ext_resource type="Script" path="res://_Scripts/Minigame_Save_Controller.gd" id="1_dk1kn"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/StateMachineMinigames.gd" id="2_445ba"]
@@ -17,6 +17,7 @@
 [ext_resource type="Script" path="res://_Scripts/MinG_MegaFood/FoodMenuController.gd" id="8_25wym"]
 [ext_resource type="Texture2D" uid="uid://cwdp1unrbqued" path="res://Sprites/ZonaMegafauna/fondo - encimera.png" id="8_al03m"]
 [ext_resource type="Script" path="res://_Scripts/PlayAnimation.gd" id="8_lpe1s"]
+[ext_resource type="AudioStream" uid="uid://d4fpo2r4unhia" path="res://Sounds/Foodtruck/FoodTruck - Arbustoss.ogg" id="8_p4st5"]
 [ext_resource type="Texture2D" uid="uid://dyy8kyyp1qd8c" path="res://Sprites/ZonaMegafauna/platoHerbivoro.png" id="9_1mktl"]
 [ext_resource type="PackedScene" uid="uid://ci3c3pocxiywq" path="res://Scenes/Experiments/drag_object.tscn" id="10_etwym"]
 [ext_resource type="Script" path="res://_Scripts/MinG_MegaFood/TutorialController.gd" id="11_0o25m"]
@@ -74,7 +75,10 @@
 [ext_resource type="Texture2D" uid="uid://bgu2a8yvdx88v" path="res://Sprites/ZonaMegafauna/review3 - foodtruck.png" id="41_yshj5"]
 [ext_resource type="Texture2D" uid="uid://kb7ixs5ala8" path="res://Sprites/UI/arrowIcon - UI.png" id="43_101i6"]
 [ext_resource type="Texture2D" uid="uid://dv8qy3pocdvhs" path="res://Sprites/ZonaMegafauna/review4 - foodtruck.png" id="43_cudcr"]
+[ext_resource type="Script" path="res://addons/resonate/sound_manager/sound_bank.gd" id="45_vkjsw"]
 [ext_resource type="LabelSettings" uid="uid://b7f8w8wf071ek" path="res://Themes/Geología/LabelSettings_Busqueda.tres" id="46_5e6x3"]
+[ext_resource type="Script" path="res://addons/resonate/sound_manager/sound_event_resource.gd" id="46_ocuar"]
+[ext_resource type="AudioStream" uid="uid://1at35revksmy" path="res://Sounds/Foodtruck/FoodTruck - Agarro Plato.ogg" id="47_bi4ka"]
 [ext_resource type="PackedScene" uid="uid://3rvhy3nlrjxy" path="res://Scenes/Zona_Megafauna/mole_particles.tscn" id="64_du6ac"]
 
 [sub_resource type="Gradient" id="Gradient_crw6p"]
@@ -124,6 +128,18 @@ tracks/2/keys = {
 "update": 0,
 "values": [Vector2(29, 559)]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../background/Sprite2D:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.613982, 0.613982)]
+}
 
 [sub_resource type="Animation" id="Animation_4oc8m"]
 resource_name = "arbusto_anim"
@@ -164,6 +180,33 @@ tracks/2/keys = {
 "update": 0,
 "values": [Vector2(29, 559), Vector2(29, 1246)]
 }
+tracks/3/type = "audio"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AnimationPlayer/AudioStreamPlayer")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("8_p4st5")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/3/use_blend = true
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../background/Sprite2D:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1.6),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [Vector2(0.613982, 0.613982), Vector2(0.6679, 0.6679)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_07o5p"]
 _data = {
@@ -177,6 +220,7 @@ Place = 0
 texture = ExtResource("15_x6a0g")
 label = ""
 dontPassPanel = false
+exitPanel = false
 
 [sub_resource type="Resource" id="Resource_4rfxl"]
 script = ExtResource("16_g0euh")
@@ -203,6 +247,7 @@ Place = 0
 texture = ExtResource("15_x6a0g")
 label = ""
 dontPassPanel = false
+exitPanel = false
 
 [sub_resource type="Resource" id="Resource_f6tx0"]
 script = ExtResource("16_g0euh")
@@ -239,12 +284,31 @@ NumOfContent = 0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pj3pu"]
 size = Vector2(140, 130)
 
+[sub_resource type="Resource" id="Resource_y0e4d"]
+script = ExtResource("46_ocuar")
+name = "drag"
+bus = ""
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([ExtResource("47_bi4ka")])
+
+[sub_resource type="Resource" id="Resource_f440k"]
+script = ExtResource("46_ocuar")
+name = "tap"
+bus = ""
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([ExtResource("47_bi4ka")])
+
 [sub_resource type="Resource" id="Resource_7vpae"]
 script = ExtResource("14_g877f")
 Place = 0
 texture = ExtResource("15_x6a0g")
 label = ""
 dontPassPanel = false
+exitPanel = false
 
 [sub_resource type="Resource" id="Resource_kvod2"]
 script = ExtResource("16_g0euh")
@@ -421,6 +485,7 @@ Place = 0
 texture = ExtResource("15_x6a0g")
 label = ""
 dontPassPanel = false
+exitPanel = false
 
 [sub_resource type="Resource" id="Resource_4oo6c"]
 script = ExtResource("16_g0euh")
@@ -437,6 +502,7 @@ Place = 0
 texture = ExtResource("15_x6a0g")
 label = ""
 dontPassPanel = false
+exitPanel = false
 
 [sub_resource type="Resource" id="Resource_sq0sj"]
 script = ExtResource("16_g0euh")
@@ -830,7 +896,7 @@ color = Color(0.324219, 0.371094, 0.273438, 1)
 
 [node name="Sprite2D" type="Sprite2D" parent="FoodTruck/StateMachine/Consigna/Contenido/background"]
 position = Vector2(10, -627)
-scale = Vector2(0.6679, 0.6679)
+scale = Vector2(0.613982, 0.613982)
 texture = ExtResource("4_d2g47")
 
 [node name="arbustos" type="Control" parent="FoodTruck/StateMachine/Consigna/Contenido"]
@@ -893,6 +959,8 @@ libraries = {
 }
 script = ExtResource("8_lpe1s")
 animation = "arbusto_anim"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="FoodTruck/StateMachine/Consigna/Contenido/arbustos/AnimationPlayer"]
 
 [node name="LblConsigna" type="Label" parent="FoodTruck/StateMachine/Consigna/Contenido"]
 visible = false
@@ -1184,6 +1252,8 @@ texture = ExtResource("9_1mktl")
 spot = NodePath("../../../AnchorSpot/Spot")
 holdTime = 0.2
 DesapearInPlace = true
+DragSound = "drag"
+TapSound = "tap"
 
 [node name="SquigglingSprite" parent="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer/food1" instance=ExtResource("27_6x02k")]
 texture = ExtResource("28_jt0v7")
@@ -1197,6 +1267,8 @@ texture = ExtResource("11_ty4hw")
 spot = NodePath("../../../AnchorSpot/Spot")
 holdTime = 0.2
 DesapearInPlace = true
+DragSound = "drag"
+TapSound = "tap"
 
 [node name="SquigglingSprite" parent="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer/food2" instance=ExtResource("27_6x02k")]
 texture = ExtResource("29_selty")
@@ -1210,6 +1282,8 @@ texture = ExtResource("12_yqdj4")
 spot = NodePath("../../../AnchorSpot/Spot")
 holdTime = 0.2
 DesapearInPlace = true
+DragSound = "drag"
+TapSound = "tap"
 
 [node name="SquigglingSprite" parent="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer/food3" instance=ExtResource("27_6x02k")]
 texture = ExtResource("31_j8vvo")
@@ -1223,10 +1297,19 @@ texture = ExtResource("13_o6dmd")
 spot = NodePath("../../../AnchorSpot/Spot")
 holdTime = 0.2
 DesapearInPlace = true
+DragSound = "drag"
+TapSound = "tap"
 
 [node name="SquigglingSprite" parent="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer/food4" instance=ExtResource("27_6x02k")]
 texture = ExtResource("31_j8vvo")
 ActiveInBegining = false
+
+[node name="DragSound" type="Node" parent="FoodTruck/StateMachine/Juego/Contenido"]
+
+[node name="SoundBank" type="Node" parent="FoodTruck/StateMachine/Juego/Contenido/DragSound"]
+script = ExtResource("45_vkjsw")
+label = "DragObject"
+events = Array[ExtResource("46_ocuar")]([SubResource("Resource_y0e4d"), SubResource("Resource_f440k")])
 
 [node name="FinalPanel" parent="FoodTruck/StateMachine/Juego/Contenido" instance=ExtResource("13_3lngq")]
 visible = false

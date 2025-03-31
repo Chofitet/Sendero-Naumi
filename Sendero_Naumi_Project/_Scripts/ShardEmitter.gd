@@ -87,6 +87,7 @@ func shatter() -> void:
 		s.apply_central_impulse(direction * impulse)
 		s.get_node("CollisionPolygon2D").disabled = false
 		s.show()
+		s.scale = Vector2(0.1,0.1)
 	$DeleteTimer.start(lifetime)
 
 

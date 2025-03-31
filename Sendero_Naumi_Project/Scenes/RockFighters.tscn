@@ -1,4 +1,4 @@
-[gd_scene load_steps=102 format=3 uid="uid://lv8sdofmjhf3"]
+[gd_scene load_steps=121 format=3 uid="uid://lv8sdofmjhf3"]
 
 [ext_resource type="Script" path="res://_Scripts/Minigame_Save_Controller.gd" id="1_f0fiw"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/StateMachineMinigames.gd" id="2_12384"]
@@ -15,13 +15,17 @@
 [ext_resource type="Texture2D" uid="uid://blsk5fxd3ydja" path="res://Sprites/ZonaGeología/Nombre_Fighter.png" id="11_44jl1"]
 [ext_resource type="Texture2D" uid="uid://cs7w5oevvpe4m" path="res://Sprites/ZonaGeología/Piedras/topacio_dureza.png" id="12_i8jde"]
 [ext_resource type="Texture2D" uid="uid://b7poe0ethot51" path="res://Sprites/ZonaGeología/Piedras/flurita_dureza.png" id="13_imic4"]
+[ext_resource type="Script" path="res://_Scripts/SoundEventTrigger.gd" id="13_jihfb"]
 [ext_resource type="PackedScene" uid="uid://nmuyip31gkq5" path="res://Scenes/UI_Scenes/generic_button.tscn" id="13_rd5p2"]
+[ext_resource type="Script" path="res://addons/resonate/sound_manager/sound_bank.gd" id="14_klu0k"]
 [ext_resource type="Texture2D" uid="uid://kb7ixs5ala8" path="res://Sprites/UI/arrowIcon - UI.png" id="14_wkaoh"]
 [ext_resource type="Texture2D" uid="uid://cnjb8mxdursmc" path="res://Sprites/ZonaGeología/cartel corazon.png" id="14_wtv3b"]
 [ext_resource type="Texture2D" uid="uid://b01q38uc638rp" path="res://Sprites/ZonaGeología/Piedras/apatita_dureza.png" id="15_d4cfw"]
+[ext_resource type="Script" path="res://addons/resonate/sound_manager/sound_event_resource.gd" id="15_ddtfa"]
 [ext_resource type="Theme" uid="uid://cqe37y1kc0id5" path="res://Themes/Geología/RockFighters.tres" id="15_g1ws0"]
 [ext_resource type="Texture2D" uid="uid://cjl6cx0dqgmjx" path="res://Sprites/ZonaGeología/Piedras/metamorfica - transformaciones.png" id="15_k3qko"]
 [ext_resource type="Script" path="res://_Scripts/CheckInstanceState.gd" id="15_ypyq6"]
+[ext_resource type="AudioStream" uid="uid://cjacf8opiqpdg" path="res://Sounds/Fighter/Fighter - Luz.ogg" id="16_embgs"]
 [ext_resource type="Texture2D" uid="uid://dqlibyc57d0m8" path="res://Sprites/ZonaGeología/Piedras/diamante_dureza.png" id="16_t0483"]
 [ext_resource type="Texture2D" uid="uid://bbxmqnw28hvfq" path="res://Sprites/ZonaGeología/Piedras/yeso_dureza.png" id="17_cmsbk"]
 [ext_resource type="Texture2D" uid="uid://c0eheyqa50cjr" path="res://Sprites/ZonaGeología/anim_busqueda_tribuna.png" id="17_lbatr"]
@@ -54,9 +58,14 @@
 [ext_resource type="Texture2D" uid="uid://clicyobmomilh" path="res://Sprites/ZonaGeología/dureza-festejo-pareja3.png" id="42_wqo4t"]
 [ext_resource type="ButtonGroup" uid="uid://cbu7gk50bap8v" path="res://Resources/ButtonGroupFigther.tres" id="43_p1yif"]
 [ext_resource type="Texture2D" uid="uid://bweceq8ikkir5" path="res://Sprites/ZonaGeología/dureza-festejo-pareja2.png" id="43_xay53"]
+[ext_resource type="AudioStream" uid="uid://qmrpnhgrvde8" path="res://Sounds/Fighter/Fighter - Nombre Aparece.ogg" id="45_1wgsj"]
 [ext_resource type="Texture2D" uid="uid://ckgstqui4n4ld" path="res://Sprites/ZonaGeología/cinturonVictoria - durezas.png" id="46_ypyfl"]
 [ext_resource type="Texture2D" uid="uid://sjes41q2s71y" path="res://Sprites/ZonaGeología/fondoVictoria.png" id="49_045d7"]
 [ext_resource type="Texture2D" uid="uid://c2p5torstrtqm" path="res://Sprites/UI/checkIcon - UI.png" id="51_cuny6"]
+[ext_resource type="AudioStream" uid="uid://bo5a63kn3ep5i" path="res://Sounds/Fighter/Fighter - Correcto.ogg" id="51_xtajk"]
+[ext_resource type="AudioStream" uid="uid://16mfoqf1ni1e" path="res://Sounds/Fighter/Fighter - UPS.ogg" id="52_s1uhh"]
+[ext_resource type="AudioStream" uid="uid://dkc3yvijsfkep" path="res://Sounds/Fighter/Fighter - Campana.ogg" id="53_rx4qw"]
+[ext_resource type="AudioStream" uid="uid://dnsa77gvsqv8f" path="res://Sounds/Fighter/Fighter - Pantalla Finalll.ogg" id="54_q0khs"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_01r1e"]
 texture = ExtResource("4_d7p6d")
@@ -149,6 +158,20 @@ tracks/3/keys = {
 "update": 1,
 "values": [false, true]
 }
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = false
+tracks/4/path = NodePath("IntroSounds")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["luz", 0.0],
+"method": &"PlayEvent"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_flp5j"]
 length = 0.001
@@ -217,6 +240,20 @@ tracks/0/keys = {
 "method": &"EnterAnim"
 }]
 }
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/path = NodePath("IntroSounds")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["luz", 0.0],
+"method": &"PlayEvent"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_481y5"]
 resource_name = "intro2"
@@ -244,6 +281,20 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("IntroSounds")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["luz", 0.0],
+"method": &"PlayEvent"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_hg27n"]
@@ -273,6 +324,20 @@ tracks/1/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("IntroSounds")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["luz", 0.0],
+"method": &"PlayEvent"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_wntto"]
 resource_name = "intro 4"
@@ -296,11 +361,25 @@ tracks/1/path = NodePath("../GenericButton")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(3),
+"times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
 "method": &"EnterAnim"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("IntroSounds")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["luz", 0.0],
+"method": &"PlayEvent"
 }]
 }
 
@@ -313,6 +392,15 @@ _data = {
 "intro3": SubResource("Animation_hg27n"),
 "intro4": SubResource("Animation_wntto")
 }
+
+[sub_resource type="Resource" id="Resource_quatn"]
+script = ExtResource("15_ddtfa")
+name = "luz"
+bus = ""
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([ExtResource("16_embgs")])
 
 [sub_resource type="Animation" id="Animation_gsqmi"]
 length = 0.001
@@ -396,6 +484,7 @@ Place = 1
 texture = ExtResource("22_gnf5b")
 label = ""
 dontPassPanel = false
+exitPanel = false
 
 [sub_resource type="Resource" id="Resource_k5nkg"]
 script = ExtResource("23_5rold")
@@ -407,6 +496,7 @@ PARA ENCONTRAR LA RESPUESTA[/center]"
 SizePanel = Vector2(0, 0)
 Position = Vector2(0, 0)
 buttons = Array[ExtResource("21_w17j0")]([SubResource("Resource_m3bm4")])
+NumOfContent = 0
 
 [sub_resource type="Resource" id="Resource_p7x5i"]
 script = ExtResource("26_5tsnp")
@@ -436,10 +526,10 @@ tracks/0/path = NodePath("VS:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 0.8),
-"transitions": PackedFloat32Array(1, 1.93187, 1),
+"times": PackedFloat32Array(0, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1.93187, 1, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(0, 0), Vector2(1, 1)]
+"values": [Vector2(0, 0), Vector2(0, 0), Vector2(1.2, 1.2), Vector2(1, 1)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -513,37 +603,13 @@ tracks/6/keys = {
 "update": 0,
 "values": [Vector2(0, 0), Vector2(1.2, 1.2), Vector2(1, 1)]
 }
-tracks/7/type = "value"
+tracks/7/type = "method"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("RightBtn/BigButton:visible")
+tracks/7/path = NodePath("RightBtn/button/SquigglingSprite")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(0, 1.9, 2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [false, false, true]
-}
-tracks/8/type = "value"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("LeftBtn/BigButton:visible")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
-"times": PackedFloat32Array(0, 1.9, 2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [false, false, true]
-}
-tracks/9/type = "method"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("RightBtn/button/SquigglingSprite")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -551,18 +617,57 @@ tracks/9/keys = {
 "method": &"ActiveSquiggling"
 }]
 }
-tracks/10/type = "method"
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath("LeftBtn/button/SquigglingSprite")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/keys = {
+tracks/8/type = "method"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("LeftBtn/button/SquigglingSprite")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
 "method": &"ActiveSquiggling"
+}]
+}
+tracks/9/type = "audio"
+tracks/9/imported = false
+tracks/9/enabled = false
+tracks/9/path = NodePath("AnimationPlayer/AudioStreamPlayer")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("45_1wgsj")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("53_rx4qw")
+}],
+"times": PackedFloat32Array(0.3, 2)
+}
+tracks/9/use_blend = true
+tracks/10/type = "method"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("../LevelSound")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 0.3, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"values": [{
+"args": [false],
+"method": &"SetMute"
+}, {
+"args": ["vs", 0.0],
+"method": &"PlayEvent"
+}, {
+"args": [true],
+"method": &"SetMute"
 }]
 }
 
@@ -662,7 +767,7 @@ tracks/7/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [true]
 }
 tracks/8/type = "value"
 tracks/8/imported = false
@@ -674,14 +779,309 @@ tracks/8/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_j21c2"]
+resource_name = "consigna"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ConsignaTexture:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ConsignaTexture:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.5),
+"transitions": PackedFloat32Array(1, -2, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(1.2, 1.2), Vector2(1, 1)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("RightBtn/button/SquigglingSprite")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"ActiveSquiggling"
+}]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("LeftBtn/button/SquigglingSprite")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"ActiveSquiggling"
+}]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("RightBtn/BigButton:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("LeftBtn/BigButton:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_e24mv"]
+resource_name = "EnterLeft"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LeftBtn:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.5),
+"transitions": PackedFloat32Array(2, -0.5, 1),
+"update": 0,
+"values": [Vector2(-274, 279), Vector2(172, 279), Vector2(132, 279)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LeftBtn:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("LeftBtn/BigButton:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
 "values": [false]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AnimationPlayer")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.7),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["vs"],
+"method": &"PlayAnim"
+}]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("LeftBtn/button/SquigglingSprite")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"InactiveSquiggling"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_i8b4d"]
+resource_name = "EnterRigth"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RightBtn:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.5),
+"transitions": PackedFloat32Array(2, -0.5, 1),
+"update": 0,
+"values": [Vector2(974, 279), Vector2(503, 279), Vector2(546, 279)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RightBtn:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("LeftBtn/BigButton:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AnimationPlayer")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.7),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["consigna"],
+"method": &"PlayAnim"
+}]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("RightBtn/button/SquigglingSprite")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"InactiveSquiggling"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_b6u4p"]
+resource_name = "vs"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VS:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1.2, 1.2), Vector2(1, 1)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimationPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["enterRigth"],
+"method": &"PlayAnim"
+}]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_nyamy"]
 _data = {
 "EnterAnim": SubResource("Animation_dtboa"),
-"RESET": SubResource("Animation_knxec")
+"RESET": SubResource("Animation_knxec"),
+"consigna": SubResource("Animation_j21c2"),
+"enterLeft": SubResource("Animation_e24mv"),
+"enterRigth": SubResource("Animation_i8b4d"),
+"vs": SubResource("Animation_b6u4p")
 }
+
+[sub_resource type="Resource" id="Resource_rqmad"]
+script = ExtResource("15_ddtfa")
+name = "correct"
+bus = ""
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([ExtResource("51_xtajk")])
+
+[sub_resource type="Resource" id="Resource_3tlr2"]
+script = ExtResource("15_ddtfa")
+name = "ups"
+bus = ""
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([ExtResource("52_s1uhh")])
+
+[sub_resource type="Resource" id="Resource_1eccu"]
+script = ExtResource("15_ddtfa")
+name = "campana"
+bus = ""
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([ExtResource("53_rx4qw")])
+
+[sub_resource type="Resource" id="Resource_26n8a"]
+script = ExtResource("15_ddtfa")
+name = "vs"
+bus = ""
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([ExtResource("45_1wgsj")])
+
+[sub_resource type="Resource" id="Resource_gg0um"]
+script = ExtResource("15_ddtfa")
+name = "final"
+bus = ""
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([ExtResource("54_q0khs")])
 
 [sub_resource type="Animation" id="Animation_yo27a"]
 length = 0.001
@@ -847,6 +1247,7 @@ Place = 1
 texture = ExtResource("51_cuny6")
 label = ""
 dontPassPanel = false
+exitPanel = false
 
 [sub_resource type="Resource" id="Resource_ux77t"]
 script = ExtResource("23_5rold")
@@ -865,6 +1266,7 @@ DE LOS MINERALES
 SizePanel = Vector2(0, 0)
 Position = Vector2(0, 0)
 buttons = Array[ExtResource("21_w17j0")]([SubResource("Resource_ylsmf")])
+NumOfContent = 0
 
 [sub_resource type="Resource" id="Resource_8licn"]
 script = ExtResource("26_5tsnp")
@@ -877,6 +1279,7 @@ Place = 1
 texture = ExtResource("51_cuny6")
 label = ""
 dontPassPanel = false
+exitPanel = false
 
 [sub_resource type="Resource" id="Resource_neabq"]
 script = ExtResource("23_5rold")
@@ -895,6 +1298,7 @@ PUEDE RAYAR A OTRO DIAMANTE
 SizePanel = Vector2(0, 0)
 Position = Vector2(0, 0)
 buttons = Array[ExtResource("21_w17j0")]([SubResource("Resource_xeibc")])
+NumOfContent = 0
 
 [sub_resource type="Resource" id="Resource_a4pap"]
 script = ExtResource("26_5tsnp")
@@ -907,6 +1311,7 @@ Place = 1
 texture = ExtResource("51_cuny6")
 label = ""
 dontPassPanel = false
+exitPanel = false
 
 [sub_resource type="Resource" id="Resource_jgbc0"]
 script = ExtResource("23_5rold")
@@ -924,6 +1329,7 @@ SON LOS MÁS RAROS Y VALIOSOS[center]"
 SizePanel = Vector2(0, 0)
 Position = Vector2(0, 0)
 buttons = Array[ExtResource("21_w17j0")]([SubResource("Resource_anyup")])
+NumOfContent = 0
 
 [sub_resource type="Resource" id="Resource_xc0s5"]
 script = ExtResource("26_5tsnp")
@@ -944,6 +1350,7 @@ Place = 1
 texture = ExtResource("51_cuny6")
 label = ""
 dontPassPanel = false
+exitPanel = false
 
 [sub_resource type="Resource" id="Resource_xkqfr"]
 script = ExtResource("23_5rold")
@@ -957,6 +1364,7 @@ DE LA ESCALA DE DUREZA
 SizePanel = Vector2(0, 0)
 Position = Vector2(0, 0)
 buttons = Array[ExtResource("21_w17j0")]([SubResource("Resource_i2gy7")])
+NumOfContent = 0
 
 [sub_resource type="Resource" id="Resource_fto4i"]
 script = ExtResource("26_5tsnp")
@@ -1189,6 +1597,14 @@ theme_override_styles/pressed = ExtResource("19_ao7ck")
 theme_override_styles/disabled = ExtResource("19_ao7ck")
 theme_override_styles/focus = ExtResource("19_ao7ck")
 flat = true
+
+[node name="IntroSounds" type="Node" parent="RockFighters/StateMachine/Consigna/Contenido/Control"]
+script = ExtResource("13_jihfb")
+
+[node name="SoundBank" type="Node" parent="RockFighters/StateMachine/Consigna/Contenido/Control/IntroSounds"]
+script = ExtResource("14_klu0k")
+label = "intro"
+events = Array[ExtResource("15_ddtfa")]([SubResource("Resource_quatn")])
 
 [node name="GenericButton" parent="RockFighters/StateMachine/Consigna/Contenido" instance=ExtResource("13_rd5p2")]
 visible = false
@@ -1703,8 +2119,10 @@ libraries = {
 "": SubResource("AnimationLibrary_nyamy")
 }
 script = ExtResource("17_r375b")
-animation = "EnterAnim"
+animation = "enterLeft"
 preloadAnim = "EnterAnim"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="RockFighters/StateMachine/Juego/Contenido/Consigna/AnimationPlayer"]
 
 [node name="RightBtn" type="Control" parent="RockFighters/StateMachine/Juego/Contenido/Consigna"]
 visible = false
@@ -1758,7 +2176,6 @@ scale = Vector2(0.967688, 0.917465)
 texture = ExtResource("30_w5i6x")
 
 [node name="BigButton" type="Button" parent="RockFighters/StateMachine/Juego/Contenido/Consigna/RightBtn"]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1832,7 +2249,6 @@ scale = Vector2(0.951819, 0.906124)
 texture = ExtResource("30_w5i6x")
 
 [node name="BigButton" type="Button" parent="RockFighters/StateMachine/Juego/Contenido/Consigna/LeftBtn"]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1872,6 +2288,14 @@ offset_left = 21.0
 offset_top = -115.68
 offset_right = 406.0
 offset_bottom = -30.68
+
+[node name="LevelSound" type="Node" parent="RockFighters/StateMachine/Juego/Contenido"]
+script = ExtResource("13_jihfb")
+
+[node name="SoundBank" type="Node" parent="RockFighters/StateMachine/Juego/Contenido/LevelSound"]
+script = ExtResource("14_klu0k")
+label = "level"
+events = Array[ExtResource("15_ddtfa")]([SubResource("Resource_rqmad"), SubResource("Resource_3tlr2"), SubResource("Resource_1eccu"), SubResource("Resource_26n8a"), SubResource("Resource_gg0um")])
 
 [node name="btnVolver" parent="RockFighters/StateMachine/Juego" instance=ExtResource("33_l1u1j")]
 
@@ -2233,6 +2657,23 @@ pivot_offset = Vector2(326, 193.5)
 AppearInBeginning = false
 Texts = Array[ExtResource("23_5rold")]([SubResource("Resource_xkqfr")])
 
+[node name="labelRich" parent="RockFighters/StateMachine/Fin/Contenido/PanelOutro" index="1"]
+offset_top = 71.0
+offset_bottom = -71.0
+text = "[center][b]¿ENCONTRASTE LA ESCALA DE MOHS
+ EN LA VITRINA DE GEOLOGÍA?[/b]
+
+ALLÍ PODÉS VER LOS 10 INTEGRANTES 
+DE LA ESCALA DE DUREZA
+
+[b]PISTA:[/b] A LA IZQUIERDA Y ATRÁS [/center]"
+
+[node name="btnCentral" parent="RockFighters/StateMachine/Fin/Contenido/PanelOutro/btnCentralAnchor" index="0"]
+visible = true
+
+[node name="Icon" parent="RockFighters/StateMachine/Fin/Contenido/PanelOutro/btnCentralAnchor/btnCentral" index="0"]
+texture = ExtResource("51_cuny6")
+
 [node name="Panel(1) Btn(center)" parent="RockFighters/StateMachine/Fin/Contenido/PanelOutro" instance=ExtResource("24_0aurr")]
 Data = SubResource("Resource_fto4i")
 
@@ -2286,6 +2727,7 @@ texture = ExtResource("43_xay53")
 [connection signal="ButtonPress" from="RockFighters/StateMachine/Moraleja/Contenido/Instancia3/PanelMoraleja3/Panel(1) Btn(center)" to="RockFighters" method="Set_Complete"]
 [connection signal="ButtonPress" from="RockFighters/StateMachine/Moraleja/Contenido/Instancia3/PanelMoraleja3/Panel(1) Btn(center)" to="RockFighters/StateMachine" method="Trigger_On_Child_Transition" binds= ["fin"]]
 [connection signal="Transitioned" from="RockFighters/StateMachine/Fin" to="RockFighters/StateMachine/Fin/Contenido/PanelOutro" method="EnterPanel"]
+[connection signal="Transitioned" from="RockFighters/StateMachine/Fin" to="RockFighters/StateMachine/Juego/Contenido/LevelSound" method="PlayEvent" binds= ["final"]]
 [connection signal="ButtonPress" from="RockFighters/StateMachine/Fin/Contenido/PanelOutro/Panel(1) Btn(center)" to="RockFighters" method="Set_Complete"]
 [connection signal="ButtonPress" from="RockFighters/StateMachine/Fin/Contenido/PanelOutro/Panel(1) Btn(center)" to="RockFighters/StateMachine/Fin/Contenido/ButtonChangeScene" method="_on_pressed"]
 
@@ -2294,3 +2736,6 @@ texture = ExtResource("43_xay53")
 [editable path="RockFighters/StateMachine/Juego/Contenido/Control/hinchada/Rock13"]
 [editable path="RockFighters/StateMachine/Juego/Contenido/Control/hinchada/Rock3"]
 [editable path="RockFighters/StateMachine/Juego/Contenido/Control/hinchada/Rock10"]
+[editable path="RockFighters/StateMachine/Fin/Contenido/PanelOutro"]
+[editable path="RockFighters/StateMachine/Fin/Contenido/PanelOutro/btnIzqAnchor/btnIzq/SquigglingSprite"]
+[editable path="RockFighters/StateMachine/Fin/Contenido/PanelOutro/btnCentralAnchor/btnCentral/SquigglingSprite"]

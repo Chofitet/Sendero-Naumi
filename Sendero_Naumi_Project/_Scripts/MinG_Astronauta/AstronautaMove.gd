@@ -22,6 +22,7 @@ signal AllCollect
 var isBlock = true
 signal collision
 @onready var Collision_Timer : Timer = $Timer
+var SoundJP
 
 func _ready():
 	$Area2D.area_entered.connect(GetPickUpObjects)
@@ -36,6 +37,10 @@ func _input(event: InputEvent) -> void:
 		if isBlock: return
 		sprite.texture = texturePropulsion
 		particles.emitting = true
+		SoundManager.play("astronauta","fart")
+		if SoundJP == null :
+			SoundJP = SoundManager.instance_poly("astronauta", "jetpack")
+			SoundJP.trigger()
 		var particleInstance = particleCircle.instantiate()
 		sprite.add_child(particleInstance)
 		particleInstance.rotation = direction.angle()
@@ -45,6 +50,9 @@ func _input(event: InputEvent) -> void:
 		target_position= event.position
 		isPressing = true
 	if  Input.is_action_just_released("TouchScreen"):
+		if SoundJP != null: 
+			SoundJP.release()
+			SoundJP = null
 		if isBlock: return
 		sprite.texture = textureIdle
 		particles.emitting = false
@@ -110,7 +118,7 @@ var collision_count = 0
 
 func GetPickUpObjects(x):
 	if x.is_in_group("meteoro"):
-		
+		SoundManager.play("astronauta","pickUp")
 		if Meteoros.find(x.name) == -1:
 			Meteoros.append(x.name)
 			pcInventary.CheckMeteoro(GetMeteoroIndex(x))

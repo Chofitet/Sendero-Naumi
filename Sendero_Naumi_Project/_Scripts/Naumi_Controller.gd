@@ -144,3 +144,10 @@ func PlayRandomIdleAnim():
 
 func ButtonPressed():
 	ButtonPress.emit()
+
+signal buttonPressedOnce
+var once
+
+func ButtonPressedOnce():
+	if !once: buttonPressedOnce.emit()
+	once = true

@@ -30,5 +30,20 @@ class_name VolumeSettings
 	"volcanica":0,
 	"tramo1":0,
 	"caraAparece":0,
-	"nubeRecuerdo":0
+	"nubeRecuerdo":0,
+	"VolumenDondeEstuvo" : 0,
+	"puerta": 0,
+	"casco": 0,
+	"guante1": 0,
+	"guante2": 0,
+	"guanteCae": 0,
+	"globoNieve": 0,
+	"jetpack": 0,
+	"campera": 0,
+	"pantalon": 0,
+	"bota2": 0,
+	"botaCae": 0,
+	"reloj": 0,
+	"cucarachaPiso": 0,
+	"cucarachaPuerta": 0
 	}

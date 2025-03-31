@@ -12,6 +12,7 @@ var initRotation
 @export var AnimatedSpeed : float = 0.3
 @export var hasClue : bool
 @export var angleInCenter : float
+@export var ObjectName : String
 var ToPosition : Vector2 = Vector2.ONE
 var isInCenter : bool = false
 @export var extra_scale : Vector2 = Vector2(1,1)
@@ -59,6 +60,7 @@ func BtnPress():
 		z_index = 2
 		ToCenter.emit()
 		MakeAnim(Vector2.ZERO, HighQualityTexture, extra_scale, angleInCenter,1, false,true)
+		makeSound("take")
 		SquigglingSprite.visible = false
 		await get_tree().create_timer(0.4).timeout
 		SquigglingSpriteBig.visible = true
@@ -75,6 +77,7 @@ func BtnPress():
 			MakeAnim(initPosition, lowQualityTexture, Vector2.ONE, initRotation,0,false,false,true)
 		else:
 			MakeAnim(otherPosition.position, lowQualityTexture, Vector2.ONE, otherPosition.rotation_degrees,0,false,false,true)
+		makeSound("leave")
 		await get_tree().create_timer(0.4).timeout
 		get_parent().FinalAnim()
 		adjustRect(true)
@@ -82,6 +85,7 @@ func BtnPress():
 		get_parent().BlockOthersClues(self,true)
 		SquigglingSpriteBig.visible = false
 		isInCenter = false
+		makeSound("leave")
 		if !inPlace: ToInventary.emit()
 		inPlace = true
 		NoCenter.emit()
@@ -91,8 +95,10 @@ func BtnPress():
 		adjustRect(true)
 		get_parent().FinalAnim()
 	
-	
-	
+
+func makeSound(action : String):
+	var label = action + ObjectName
+	SoundManager.play("clue",label)
 
 func MakeAnim(pos, _texture, extra_scale : Vector2 = Vector2(1,1), rotateAngle : float = 0 , index = 0, _hasClue = false, isChildVisible = false, squiggling = false):
 	z_index = 1

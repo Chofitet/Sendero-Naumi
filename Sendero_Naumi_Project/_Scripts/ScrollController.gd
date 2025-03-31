@@ -36,6 +36,7 @@ func _input(event: InputEvent) -> void:
 
 func HoldingClick():
 	if inGesture : return
+	SoundManager.play("map","hold")
 	var tween = get_tree().create_tween()
 	tween.tween_property(self,"scroll_vertical", find_closest_node().position.y - (get_viewport_rect().size.y/2) ,0.3).set_ease(Tween.EASE_IN_OUT)
 
@@ -44,6 +45,7 @@ func calculateGesture() -> void:
 	if holdClick: return
 	var d := releasePos - pressedPos
 	if (abs(d.y) < limit) : return
+	SoundManager.play("map","swipe")
 	if abs(d.x) > abs(d.y):
 		if d.x < 0:
 			print("left")

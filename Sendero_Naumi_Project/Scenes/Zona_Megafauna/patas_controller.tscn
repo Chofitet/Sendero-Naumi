@@ -1,4 +1,4 @@
-[gd_scene load_steps=104 format=3 uid="uid://dcredgeon3w2q"]
+[gd_scene load_steps=117 format=3 uid="uid://dcredgeon3w2q"]
 
 [ext_resource type="Script" path="res://_Scripts/MinG_MegaFood/PatasController.gd" id="1_g46fd"]
 [ext_resource type="Texture2D" uid="uid://gbi1vckfb2af" path="res://Sprites/ZonaMegafauna/bandeja.png" id="2_15wck"]
@@ -34,12 +34,17 @@
 [ext_resource type="StyleBox" uid="uid://b3tjes2hcm3wx" path="res://Resources/UI_Resources/StyleBoxTrasparent.tres" id="32_ixble"]
 [ext_resource type="PackedScene" uid="uid://chcp24toqisaw" path="res://Scenes/Experiments/GenericPanel/GenericPanel.tscn" id="32_lcdwh"]
 [ext_resource type="Script" path="res://Scenes/Experiments/GenericPanel/TextFieldData.gd" id="33_7bjpl"]
+[ext_resource type="AudioStream" uid="uid://bxqfl8khd757t" path="res://Sounds/Foodtruck/FoodTruck - Gliptotapa Tapita.ogg" id="33_bb367"]
 [ext_resource type="Theme" uid="uid://dxbgpuuiuxxto" path="res://Resources/UI_Resources/shoutPanel.tres" id="34_rsd4j"]
 [ext_resource type="Script" path="res://Scenes/Experiments/GenericPanel/ButtonPanelData.gd" id="35_r4fek"]
 [ext_resource type="Texture2D" uid="uid://c2p5torstrtqm" path="res://Sprites/UI/checkIcon - UI.png" id="36_swmk1"]
 [ext_resource type="PackedScene" uid="uid://d1jys63xrvxpo" path="res://Scenes/Experiments/GenericPanel/IntermediateSignal.tscn" id="38_1xuog"]
 [ext_resource type="LabelSettings" uid="uid://dplv12ok5d6a5" path="res://Resources/UI_Resources/ShoutLabel.tres" id="38_mtoec"]
 [ext_resource type="Script" path="res://Scenes/Experiments/GenericPanel/IntermediateData.gd" id="40_yu7sk"]
+[ext_resource type="Script" path="res://addons/resonate/sound_manager/sound_bank.gd" id="41_ysn4k"]
+[ext_resource type="Script" path="res://addons/resonate/sound_manager/sound_event_resource.gd" id="42_lforj"]
+[ext_resource type="AudioStream" uid="uid://d0fid7tr6unly" path="res://Sounds/Foodtruck/FoodTruck - Smilo Comida.ogg" id="43_oxbml"]
+[ext_resource type="Script" path="res://_Scripts/SoundEventTrigger.gd" id="45_ct7gc"]
 
 [sub_resource type="Animation" id="Animation_jfp8t"]
 resource_name = "AngryAnim"
@@ -519,6 +524,18 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_v7kak"]
+atlas = ExtResource("14_ecf4w")
+region = Rect2(1499, 0, 1499, 1319)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y3tgi"]
+atlas = ExtResource("14_ecf4w")
+region = Rect2(0, 0, 1499, 1319)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uc32v"]
+atlas = ExtResource("15_ybf6q")
+region = Rect2(1499, 0, 1499, 1319)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_fpmcc"]
 atlas = ExtResource("14_ecf4w")
 region = Rect2(0, 0, 1499, 1319)
@@ -546,6 +563,38 @@ region = Rect2(1499, 0, 1499, 1319)
 [sub_resource type="SpriteFrames" id="SpriteFrames_s0yl6"]
 animations = [{
 "frames": [{
+"duration": 10.0,
+"texture": SubResource("AtlasTexture_v7kak")
+}, {
+"duration": 10.0,
+"texture": SubResource("AtlasTexture_y3tgi")
+}, {
+"duration": 10.0,
+"texture": SubResource("AtlasTexture_uc32v")
+}, {
+"duration": 4.0,
+"texture": SubResource("AtlasTexture_y3tgi")
+}, {
+"duration": 9.0,
+"texture": SubResource("AtlasTexture_v7kak")
+}, {
+"duration": 10.0,
+"texture": SubResource("AtlasTexture_uc32v")
+}, {
+"duration": 20.0,
+"texture": SubResource("AtlasTexture_y3tgi")
+}, {
+"duration": 10.0,
+"texture": SubResource("AtlasTexture_v7kak")
+}, {
+"duration": 5.0,
+"texture": SubResource("AtlasTexture_y3tgi")
+}],
+"loop": false,
+"name": &"call",
+"speed": 64.0
+}, {
+"frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_fpmcc")
 }, {
@@ -571,7 +620,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_rd874")
 }],
 "loop": false,
-"name": &"call",
+"name": &"callOriginal",
 "speed": 6.0
 }, {
 "frames": [{
@@ -813,12 +862,138 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Animation" id="Animation_86hps"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("frames2:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("frames2:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("frames3:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("frames3:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_jceq1"]
+resource_name = "tapa_tapita"
+length = 3.33334
+step = 0.015625
+tracks/0/type = "audio"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AudioStreamPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("33_bb367")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/0/use_blend = true
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("frames2:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.171875, 0.546875, 0.6875, 1.03125, 1.17188),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [1, 0, 1, 1, 1, 0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("frames2:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.328125, 0.546875, 0.6875, 0.84375, 1.04688),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, false, true, false, true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("frames3:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.328125, 0.546875, 0.6875, 0.84375, 1.04688),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true, false, true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("frames3:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.328125, 0.484375, 0.6875, 1.03125, 1.17188),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [1, 0, 1, 1, 0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tm30l"]
+_data = {
+"RESET": SubResource("Animation_86hps"),
+"tapa_tapita": SubResource("Animation_jceq1")
+}
+
 [sub_resource type="Resource" id="Resource_jebus"]
 script = ExtResource("35_r4fek")
 Place = 0
 texture = ExtResource("36_swmk1")
 label = ""
 dontPassPanel = false
+exitPanel = false
 
 [sub_resource type="Resource" id="Resource_1e5mh"]
 script = ExtResource("33_7bjpl")
@@ -826,6 +1001,7 @@ Text = "En fila por favor"
 SizePanel = Vector2(0, 0)
 Position = Vector2(0, 0)
 buttons = Array[ExtResource("35_r4fek")]([SubResource("Resource_jebus")])
+NumOfContent = 0
 
 [sub_resource type="Resource" id="Resource_a15rw"]
 script = ExtResource("35_r4fek")
@@ -833,6 +1009,7 @@ Place = 0
 texture = ExtResource("36_swmk1")
 label = ""
 dontPassPanel = false
+exitPanel = false
 
 [sub_resource type="Resource" id="Resource_spwe1"]
 script = ExtResource("33_7bjpl")
@@ -841,6 +1018,7 @@ SMILODONTE!"
 SizePanel = Vector2(0, 0)
 Position = Vector2(0, 0)
 buttons = Array[ExtResource("35_r4fek")]([SubResource("Resource_a15rw")])
+NumOfContent = 0
 
 [sub_resource type="Resource" id="Resource_jxgso"]
 script = ExtResource("40_yu7sk")
@@ -853,6 +1031,7 @@ Place = 0
 texture = ExtResource("36_swmk1")
 label = ""
 dontPassPanel = false
+exitPanel = false
 
 [sub_resource type="Resource" id="Resource_h10mq"]
 script = ExtResource("33_7bjpl")
@@ -861,6 +1040,7 @@ GLIPTODONTE!"
 SizePanel = Vector2(0, 0)
 Position = Vector2(0, 0)
 buttons = Array[ExtResource("35_r4fek")]([SubResource("Resource_mieyc")])
+NumOfContent = 0
 
 [sub_resource type="Resource" id="Resource_s0txn"]
 script = ExtResource("40_yu7sk")
@@ -873,6 +1053,7 @@ Place = 0
 texture = ExtResource("36_swmk1")
 label = ""
 dontPassPanel = false
+exitPanel = false
 
 [sub_resource type="Resource" id="Resource_6po01"]
 script = ExtResource("33_7bjpl")
@@ -881,6 +1062,7 @@ MEGATERIO!"
 SizePanel = Vector2(0, 0)
 Position = Vector2(0, 0)
 buttons = Array[ExtResource("35_r4fek")]([SubResource("Resource_schp7")])
+NumOfContent = 0
 
 [sub_resource type="Resource" id="Resource_bw25d"]
 script = ExtResource("40_yu7sk")
@@ -893,6 +1075,7 @@ Place = 0
 texture = ExtResource("36_swmk1")
 label = ""
 dontPassPanel = false
+exitPanel = false
 
 [sub_resource type="Resource" id="Resource_es3gq"]
 script = ExtResource("33_7bjpl")
@@ -900,11 +1083,30 @@ Text = "SIGUIENTE! MACRAUQUENIA!"
 SizePanel = Vector2(0, 0)
 Position = Vector2(0, 0)
 buttons = Array[ExtResource("35_r4fek")]([SubResource("Resource_ionm1")])
+NumOfContent = 0
 
 [sub_resource type="Resource" id="Resource_jly2k"]
 script = ExtResource("40_yu7sk")
 NumberOfPanel = 1
 Place = 0
+
+[sub_resource type="Resource" id="Resource_u4css"]
+script = ExtResource("42_lforj")
+name = "Smilodon"
+bus = ""
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([ExtResource("43_oxbml")])
+
+[sub_resource type="Resource" id="Resource_na3j6"]
+script = ExtResource("42_lforj")
+name = "Gliptodon"
+bus = ""
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([ExtResource("33_bb367")])
 
 [node name="PatasController" type="Control" node_paths=PackedStringArray("Panels")]
 layout_mode = 3
@@ -983,12 +1185,13 @@ scale = Vector2(0.998083, 1.00264)
 texture = ExtResource("11_p56iy")
 
 [node name="Gliptodon" type="AnimatedSprite2D" parent="pivot"]
-visible = false
 position = Vector2(-14, -522)
 scale = Vector2(0.629047, 0.629047)
 sprite_frames = SubResource("SpriteFrames_s0yl6")
 animation = &"call"
 autoplay = "idle"
+frame = 8
+frame_progress = 1.0
 
 [node name="pata" type="Sprite2D" parent="pivot/Gliptodon"]
 visible = false
@@ -1002,6 +1205,7 @@ scale = Vector2(0.94, 0.94)
 texture = ExtResource("7_bkdyf")
 
 [node name="Megaterio" type="AnimatedSprite2D" parent="pivot"]
+visible = false
 position = Vector2(13, -565)
 scale = Vector2(0.629047, 0.629047)
 sprite_frames = SubResource("SpriteFrames_lcn4g")
@@ -1039,6 +1243,25 @@ theme_override_styles/pressed = ExtResource("32_ixble")
 theme_override_styles/disabled = ExtResource("32_ixble")
 theme_override_styles/focus = ExtResource("32_ixble")
 flat = true
+
+[node name="GliptoAnimTiming" type="Node2D" parent="pivot"]
+visible = false
+
+[node name="frames2" type="Sprite2D" parent="pivot/GliptoAnimTiming"]
+texture = ExtResource("14_ecf4w")
+hframes = 2
+
+[node name="frames3" type="Sprite2D" parent="pivot/GliptoAnimTiming"]
+texture = ExtResource("15_ybf6q")
+hframes = 2
+frame = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="pivot/GliptoAnimTiming"]
+libraries = {
+"": SubResource("AnimationLibrary_tm30l")
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="pivot/GliptoAnimTiming"]
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 1.5
@@ -1176,6 +1399,19 @@ visible = true
 
 [node name="Panel(1) Btn(rigth)" parent="PedidoMacrauquenia" instance=ExtResource("38_1xuog")]
 Data = SubResource("Resource_jly2k")
+
+[node name="SoundsCorrecto" type="Node" parent="."]
+script = ExtResource("41_ysn4k")
+label = "correcto"
+events = Array[ExtResource("42_lforj")]([SubResource("Resource_u4css")])
+
+[node name="ReclamoTriggerSound" type="Node" parent="."]
+script = ExtResource("45_ct7gc")
+
+[node name="SoundsReclamo" type="Node" parent="ReclamoTriggerSound"]
+script = ExtResource("41_ysn4k")
+label = "reclamo"
+events = Array[ExtResource("42_lforj")]([SubResource("Resource_na3j6")])
 
 [connection signal="ButtonPress" from="TextoPedido/Panel(2) Btn(rigth)" to="." method="passNextInstance"]
 [connection signal="ButtonPress" from="PedidoGliptodonte/Panel(1) Btn(rigth)" to="." method="passNextInstance"]

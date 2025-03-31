@@ -17,6 +17,8 @@ var AskSpot
 @export var LimitRectangleArea : bool
 @export var BoundsRectangleClamp : Vector2
 @export var tweenTime : float = 0.1
+@export var DragSound : String
+@export var TapSound : String
 var timerHold
 var isInTime
 var GrabOffset : Vector2
@@ -62,6 +64,7 @@ func _on_button_pressed():
 	CalculateGrabOffset()
 	pick_up = true
 	timerHold.start()
+	if TapSound != "":SoundManager.play("DragObject", TapSound)
 	await  mouse_realese
 	isInTime = false
 	pick_up = false
@@ -123,6 +126,7 @@ func CancelDrag():
 	BackToInitialPos.emit()
 
 func TimeToDrag():
+	#if DragSound != "":SoundManager.play("drag", DragSound)
 	var tween = get_tree().create_tween()
 	#tween = tween.tween_property(object, "global_position",get_global_mouse_position(),0.1).set_ease(Tween.EASE_OUT)
 	await tween
