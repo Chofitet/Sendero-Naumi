@@ -51,6 +51,7 @@ func PassInstance():
 
 func Figth(btnLeftPressed):
 	PlayerVariables.EmitInactivePause()
+	SoundManager.play("level","eleccion")
 	if btnLeftPressed == isLeftWinner: playerWinner = true
 	else: playerWinner = false
 	Overlay1.Anim()

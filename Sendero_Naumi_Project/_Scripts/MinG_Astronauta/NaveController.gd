@@ -33,6 +33,7 @@ func DawnSpace(x):
 	exterior.self_modulate = Color(1,1,1,x)
 
 func IsOut():
+	$NaveSounds.PlayLoopEvent("respiracion")
 	$interior.material = null
 	exterior.self_modulate = Color(1,1,1,1)
 	_isOut = true

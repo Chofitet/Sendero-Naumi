@@ -63,7 +63,7 @@ func PlayOutAnim():
 	buttonTouchAnimal.visible = false
 	animalsArray[inx_animal].play("idle")
 	timer.timeout.disconnect(PlayCallAnim)
-	anim.play_backwards("enterAnim")
+	anim.play("ExitAnim")
 	await anim.animation_finished
 	anim.play("RESET")
 	isInGame = false
@@ -115,6 +115,7 @@ func AddPlateAtPivot(plate):
 func PlayTakeAnim():
 	if !AnimResultFinish : return
 	var animPaper = $AnimPaper
+	SoundManager.play("generales","agarroPropina")
 	animPaper.play("take")
 	AnimResultFinish = false
 	await  animPaper.animation_finished

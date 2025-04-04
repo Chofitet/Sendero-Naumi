@@ -7,6 +7,7 @@ var isFinalInstance
 var SpriteFade
 var isInstancing
 var isPencil = true
+var label = "pencil"
 var topo
 signal Restart
 signal BookEvent
@@ -54,6 +55,8 @@ func Draw():
 	$Button.visible = false
 	$pencil/SquigglingSprite.InactiveSquiggling()
 	anim.play("pencil_anim")
+	$libroSounds.PlayEvent(label + "Exit",2.5)
+	SoundManager.play("libro", label)
 	if isPencil: skeleton.StartFadeBone()
 	else: skeleton.StartFadeLive()
 	await anim.animation_finished
@@ -65,6 +68,7 @@ func Draw():
 	$pencil/Sprite2D.texture = SelectTexture()
 	$pencil/SquigglingSprite.texture = SelectSquiggling()
 	anim.play("Pencil_enter")
+	$libroSounds.PlayEvent(label + "Enter",0.1)
 	$Button.visible = true
 	await anim.animation_finished
 	$pencil/SquigglingSprite.ActiveSquiggling()
@@ -79,7 +83,9 @@ func InstanceDraw(setCompleted = false):
 func SelectTexture() -> Texture:
 	if isPencil:
 		return SpritePencil
-	else: return SpriteBrush
+	else:
+		label = "brush"
+		return SpriteBrush
 
 func SelectSquiggling() -> Texture:
 	if isPencil:
@@ -97,8 +103,10 @@ func DoAnim(_topo, time = 1.5):
 	Restart.emit(false)
 	await get_tree().create_timer(time).timeout
 	anim.play("book_enter")
+	$libroSounds.PlayEvent("bookEnter",0.5)
 	await anim.animation_finished
 	anim.play("Pencil_enter")
+	$libroSounds.PlayEvent(label + "Enter",0.1)
 	await anim.animation_finished
 	InstanceDraw()
 	anim.play("pencil_idle")
@@ -111,15 +119,18 @@ func ShowCompletedAnimal(_topo):
 	BookEvent.emit(false)
 	Restart.emit(false)
 	anim.play("book_enter")
+	$libroSounds.PlayEvent("bookEnter",0.5)
 	await anim.animation_finished
 	$btnContinue.EnterAnim()
 	
 
 func restartAll():
+	label = "pencil"
 	topo.EnableDisaneable(true)
 	$btnContinue.visible = false
 	if isInstancing: InstanceTransition()
 	anim.play_backwards("book_enter")
+	$libroSounds.PlayEvent("bookExit",0.6)
 	await anim.animation_finished
 	ToRestart()
 	if !isInstancing:

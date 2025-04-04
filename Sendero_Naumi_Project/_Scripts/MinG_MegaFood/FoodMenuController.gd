@@ -100,7 +100,7 @@ func calculateGesture() -> void:
 	isScrolling.emit()
 	var d 
 	d= releasePos - pressedPos
-	if (abs(d.x) < limitGesture) : 
+	if (abs(d.x) < limitGesture) :
 		next_anchor = position.x + (get_viewport_rect().size.x/2 - anchors[i].global_position.x)
 		var tween = get_tree().create_tween()
 		tween.tween_property(self,"position", Vector2(next_anchor,position.y),0.15).set_ease(Tween.EASE_OUT)
@@ -122,13 +122,13 @@ func CalculateVerticalGesture():
 	print(d)
 	if abs(d.x) < abs(d.y):
 		if d.y < 0:
+			SoundManager.play("DragObject","swipe") 
 			anchors[i].get_node("DragObject").PlaceInRightSpot(true)
 
 func inHold():
 	if !hold: return
 	if inGesture : return
 	if isDraggingAPplate : return
-	
 	var holdVector
 	holdVector = pressedPos.x - releasePos.x
 	if (abs(holdVector) > limitHold):
@@ -148,10 +148,12 @@ func set_next_anchor(direction):
 		if (i != anchors.size()-1):
 			i += 1
 			next_anchor = position.x + (get_viewport_rect().size.x/2 - anchors[i].global_position.x)
+			SoundManager.play("DragObject", "swipe")
 	if("left" == direction):
 		if (i != 0):
 			i -= 1
 			next_anchor = position.x + (get_viewport_rect().size.x/2 - anchors[i].global_position.x)
+			SoundManager.play("DragObject", "swipe")
 	enableInteraction()
 	CompleteSwipe.emit()
 	SetTutorial(false)

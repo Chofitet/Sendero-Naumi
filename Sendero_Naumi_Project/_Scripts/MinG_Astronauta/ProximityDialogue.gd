@@ -6,7 +6,7 @@ extends Node2D
 @export var RotateInEnter : bool
 var isRotating : bool
 
-var isInactiveDialogue
+@export var isInactiveDialogue : bool
 
 @export var txt: String:
 	set(new_value):
@@ -55,6 +55,7 @@ func _ready():
 func ShowDialogue(x):
 	if isInactiveDialogue: return
 	if x.is_in_group("Player"):
+		SoundManager.play("guy","dialogo")
 		$Panel.visible = true
 		if RotateInEnter:
 			isRotating = true
@@ -91,4 +92,6 @@ func disabledCollisionShape():
  
 func InactiveDialogue():
 	isInactiveDialogue = true
-	
+
+func ActiveDialogue():
+	isInactiveDialogue = false

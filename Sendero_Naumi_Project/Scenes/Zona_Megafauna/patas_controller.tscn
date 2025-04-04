@@ -1,4 +1,4 @@
-[gd_scene load_steps=117 format=3 uid="uid://dcredgeon3w2q"]
+[gd_scene load_steps=133 format=3 uid="uid://dcredgeon3w2q"]
 
 [ext_resource type="Script" path="res://_Scripts/MinG_MegaFood/PatasController.gd" id="1_g46fd"]
 [ext_resource type="Texture2D" uid="uid://gbi1vckfb2af" path="res://Sprites/ZonaMegafauna/bandeja.png" id="2_15wck"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://b4fjgta8xopxn" path="res://Sprites/ZonaMegafauna/pata smilodon.png" id="6_nqg1u"]
 [ext_resource type="PackedScene" uid="uid://cw3ok8v4p620b" path="res://Scenes/Experiments/squiggling_sprite.tscn" id="7_47rn0"]
 [ext_resource type="Texture2D" uid="uid://o00lvwkrmxos" path="res://Sprites/ZonaMegafauna/coraza glipto.png" id="7_bkdyf"]
+[ext_resource type="AudioStream" uid="uid://cvkkev4qx8sh3" path="res://Sounds/Foodtruck/FoodTruck - Bandeja LLega.ogg" id="7_y08d2"]
 [ext_resource type="Texture2D" uid="uid://cmaw828mxsv1i" path="res://Sprites/ZonaGeología/SquigglingFoodtruck/notitaPagoSQUIG - foodtruck.png" id="8_p4wob"]
 [ext_resource type="Texture2D" uid="uid://dtnlxun7i0pay" path="res://Sprites/ZonaMegafauna/pata megaterio.png" id="8_pus57"]
 [ext_resource type="Texture2D" uid="uid://cm61ouygk6w2g" path="res://Sprites/ZonaMegafauna/smilo frames2.png" id="9_npf50"]
@@ -45,6 +46,13 @@
 [ext_resource type="Script" path="res://addons/resonate/sound_manager/sound_event_resource.gd" id="42_lforj"]
 [ext_resource type="AudioStream" uid="uid://d0fid7tr6unly" path="res://Sounds/Foodtruck/FoodTruck - Smilo Comida.ogg" id="43_oxbml"]
 [ext_resource type="Script" path="res://_Scripts/SoundEventTrigger.gd" id="45_ct7gc"]
+[ext_resource type="AudioStream" uid="uid://rw068n82ucdt" path="res://Sounds/Foodtruck/FoodTruck - Megaterio Correcto.ogg" id="45_dfy1j"]
+[ext_resource type="AudioStream" uid="uid://bi2ibnaanmy5h" path="res://Sounds/Foodtruck/FoodTruck - Megaterio Uñas.ogg" id="47_8va3s"]
+[ext_resource type="AudioStream" uid="uid://cnuhj4m2v7up0" path="res://Sounds/Foodtruck/FoodTruck- Plato Incorrecto.ogg" id="48_p28v7"]
+[ext_resource type="AudioStream" uid="uid://cr150uo5hrpsw" path="res://Sounds/Foodtruck/FoodTruck - Agarro Propina.ogg" id="49_xggah"]
+[ext_resource type="AudioStream" uid="uid://b0aus6mqusjrc" path="res://Sounds/Foodtruck/FoodTruck - Dejan Propina.ogg" id="50_o6h40"]
+[ext_resource type="AudioStream" uid="uid://crx8h1nwmjeii" path="res://Sounds/Foodtruck/FoodTruck - Dejo de Leer Servilleta.ogg" id="51_lpgh8"]
+[ext_resource type="AudioStream" uid="uid://ctg73h4axew5u" path="res://Sounds/Foodtruck/FoodTruck - Se llevan la comida.ogg" id="52_dr6eg"]
 
 [sub_resource type="Animation" id="Animation_jfp8t"]
 resource_name = "AngryAnim"
@@ -96,6 +104,51 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(5, 7), Vector2(5, 3)]
+}
+
+[sub_resource type="Animation" id="Animation_qhfem"]
+resource_name = "ExitAnim"
+length = 2.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("pivot:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1.5, 1.7, 2.3),
+"transitions": PackedFloat32Array(2, -0.5, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 100), Vector2(0, -1000)]
+}
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("52_dr6eg")
+}],
+"times": PackedFloat32Array(1.5)
+}
+tracks/1/use_blend = true
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = false
+tracks/2/path = NodePath("GeneralSounds")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["bandejaSeVa", 0.0, false],
+"method": &"PlayEvent"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_wvc11"]
@@ -284,6 +337,35 @@ tracks/4/keys = {
 "update": 1,
 "values": [null]
 }
+tracks/5/type = "audio"
+tracks/5/imported = false
+tracks/5/enabled = false
+tracks/5/path = NodePath("AudioStreamPlayer")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("48_p28v7")
+}],
+"times": PackedFloat32Array(0.4)
+}
+tracks/5/use_blend = true
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("GeneralSounds")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["incorrecto", 0.0, false],
+"method": &"PlayEvent"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_rvryq"]
 resource_name = "enterAnim"
@@ -300,6 +382,21 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector2(0, -1000), Vector2(0, 100), Vector2(0, 0)]
 }
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("7_y08d2")
+}],
+"times": PackedFloat32Array(0.3)
+}
+tracks/1/use_blend = true
 
 [sub_resource type="Animation" id="Animation_rm5b2"]
 resource_name = "result"
@@ -342,6 +439,35 @@ tracks/2/keys = {
 "method": &"ActiveSquiggling"
 }]
 }
+tracks/3/type = "audio"
+tracks/3/imported = false
+tracks/3/enabled = false
+tracks/3/path = NodePath("AudioStreamPlayer")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("50_o6h40")
+}],
+"times": PackedFloat32Array(0.2)
+}
+tracks/3/use_blend = true
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("GeneralSounds")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["dejanPropina", 0.0, false],
+"method": &"PlayEvent"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_sy63e"]
 resource_name = "take"
@@ -371,10 +497,40 @@ tracks/1/keys = {
 "method": &"InactiveSquiggling"
 }]
 }
+tracks/2/type = "audio"
+tracks/2/imported = false
+tracks/2/enabled = false
+tracks/2/path = NodePath("AudioStreamPlayer")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("49_xggah")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/2/use_blend = true
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = false
+tracks/3/path = NodePath("GeneralSounds")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["agarroPropina", 0.0, false],
+"method": &"PlayEvent"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_tj4kr"]
 _data = {
 "AngryAnim": SubResource("Animation_jfp8t"),
+"ExitAnim": SubResource("Animation_qhfem"),
 "RESET": SubResource("Animation_wvc11"),
 "WrongAnim": SubResource("Animation_7wajt"),
 "enterAnim": SubResource("Animation_rvryq"),
@@ -1099,6 +1255,15 @@ pitch = 1.0
 RandomPitch = Vector2(1, 1)
 streams = Array[AudioStream]([ExtResource("43_oxbml")])
 
+[sub_resource type="Resource" id="Resource_u4bee"]
+script = ExtResource("42_lforj")
+name = "Megaterio"
+bus = ""
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([ExtResource("45_dfy1j")])
+
 [sub_resource type="Resource" id="Resource_na3j6"]
 script = ExtResource("42_lforj")
 name = "Gliptodon"
@@ -1107,6 +1272,60 @@ volume = 0.0
 pitch = 1.0
 RandomPitch = Vector2(1, 1)
 streams = Array[AudioStream]([ExtResource("33_bb367")])
+
+[sub_resource type="Resource" id="Resource_gycy8"]
+script = ExtResource("42_lforj")
+name = "Megaterio"
+bus = ""
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([ExtResource("47_8va3s")])
+
+[sub_resource type="Resource" id="Resource_4jxxp"]
+script = ExtResource("42_lforj")
+name = "incorrecto"
+bus = ""
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([ExtResource("48_p28v7")])
+
+[sub_resource type="Resource" id="Resource_tbtw6"]
+script = ExtResource("42_lforj")
+name = "agarroPropina"
+bus = ""
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([ExtResource("49_xggah")])
+
+[sub_resource type="Resource" id="Resource_vuied"]
+script = ExtResource("42_lforj")
+name = "dejanPropina"
+bus = ""
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([ExtResource("50_o6h40")])
+
+[sub_resource type="Resource" id="Resource_aohlb"]
+script = ExtResource("42_lforj")
+name = "dejoServilleta"
+bus = ""
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([ExtResource("51_lpgh8")])
+
+[sub_resource type="Resource" id="Resource_hhprv"]
+script = ExtResource("42_lforj")
+name = "bandejaSeVa"
+bus = ""
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([ExtResource("52_dr6eg")])
 
 [node name="PatasController" type="Control" node_paths=PackedStringArray("Panels")]
 layout_mode = 3
@@ -1403,7 +1622,7 @@ Data = SubResource("Resource_jly2k")
 [node name="SoundsCorrecto" type="Node" parent="."]
 script = ExtResource("41_ysn4k")
 label = "correcto"
-events = Array[ExtResource("42_lforj")]([SubResource("Resource_u4css")])
+events = Array[ExtResource("42_lforj")]([SubResource("Resource_u4css"), SubResource("Resource_u4bee")])
 
 [node name="ReclamoTriggerSound" type="Node" parent="."]
 script = ExtResource("45_ct7gc")
@@ -1411,7 +1630,17 @@ script = ExtResource("45_ct7gc")
 [node name="SoundsReclamo" type="Node" parent="ReclamoTriggerSound"]
 script = ExtResource("41_ysn4k")
 label = "reclamo"
-events = Array[ExtResource("42_lforj")]([SubResource("Resource_na3j6")])
+events = Array[ExtResource("42_lforj")]([SubResource("Resource_na3j6"), SubResource("Resource_gycy8")])
+
+[node name="GeneralSounds" type="Node" parent="."]
+script = ExtResource("45_ct7gc")
+
+[node name="SoundBank" type="Node" parent="GeneralSounds"]
+script = ExtResource("41_ysn4k")
+label = "generales"
+events = Array[ExtResource("42_lforj")]([SubResource("Resource_4jxxp"), SubResource("Resource_tbtw6"), SubResource("Resource_vuied"), SubResource("Resource_aohlb"), SubResource("Resource_hhprv")])
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 
 [connection signal="ButtonPress" from="TextoPedido/Panel(2) Btn(rigth)" to="." method="passNextInstance"]
 [connection signal="ButtonPress" from="PedidoGliptodonte/Panel(1) Btn(rigth)" to="." method="passNextInstance"]

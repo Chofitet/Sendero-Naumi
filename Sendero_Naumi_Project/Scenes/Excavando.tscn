@@ -1,4 +1,4 @@
-[gd_scene load_steps=122 format=3 uid="uid://m3gbb64llbqn"]
+[gd_scene load_steps=131 format=3 uid="uid://m3gbb64llbqn"]
 
 [ext_resource type="Script" path="res://_Scripts/Minigame_Save_Controller.gd" id="1_6uc2r"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/StateMachineMinigames.gd" id="2_4ogka"]
@@ -39,15 +39,20 @@
 [ext_resource type="Texture2D" uid="uid://badkgjv7fmia5" path="res://Sprites/ZonaAstronomia/dirtEdge.png" id="23_7bnse"]
 [ext_resource type="Texture2D" uid="uid://qr3vaw28ffvl" path="res://Sprites/ZonaMegafauna/telefono - excavacion.png" id="23_gvrd4"]
 [ext_resource type="Texture2D" uid="uid://36q5wobmimet" path="res://Sprites/ZonaMegafauna/gliptodon pozo - excavacion.png" id="23_snvhs"]
+[ext_resource type="Script" path="res://_Scripts/SoundEventTrigger.gd" id="24_deahb"]
 [ext_resource type="Script" path="res://_Scripts/FollowMove.gd" id="24_ldq5q"]
 [ext_resource type="Script" path="res://_Scripts/CheckInstanceState.gd" id="24_r51bh"]
 [ext_resource type="Script" path="res://Scenes/Zona_Megafauna/FillEdgesWithTextures.gd" id="24_rkt5g"]
 [ext_resource type="Texture2D" uid="uid://cafqe8j1ico82" path="res://Sprites/ZonaMegafauna/tele - excavacion.png" id="24_t2do4"]
 [ext_resource type="Texture2D" uid="uid://bf8u12qywvsci" path="res://Sprites/ZonaMegafauna/silla - excavacion.png" id="25_35po4"]
 [ext_resource type="Texture2D" uid="uid://dbo1d47e1yahr" path="res://Sprites/UI/thoughtBubbleD - UI.png" id="25_ic6bn"]
+[ext_resource type="Script" path="res://addons/resonate/sound_manager/sound_bank.gd" id="25_vt8k4"]
 [ext_resource type="Texture2D" uid="uid://dpoqiaakqjxnl" path="res://Sprites/ZonaMegafauna/macrauquenia pozo - excavacion.png" id="25_wsswo"]
+[ext_resource type="Script" path="res://addons/resonate/sound_manager/sound_event_resource.gd" id="26_1d07x"]
 [ext_resource type="Texture2D" uid="uid://cdqxx6yqex8vo" path="res://Sprites/UI/thoughtBubbleA - UI.png" id="26_kmnqk"]
 [ext_resource type="Script" path="res://_Scripts/PlayAnimation.gd" id="27_giwlu"]
+[ext_resource type="AudioStream" uid="uid://n0lanfbkfjgk" path="res://Sounds/Topo/Topo - Dirijo Topo.ogg" id="27_trofj"]
+[ext_resource type="AudioStream" uid="uid://biupejuigrc5r" path="res://Sounds/Topo/Topo - Toco Topo.ogg" id="28_plyo4"]
 [ext_resource type="Script" path="res://_Scripts/MinG_Excavar/Camera2DTopo.gd" id="37_luhad"]
 [ext_resource type="PackedScene" uid="uid://dlwmbps456ind" path="res://Scenes/Experiments/btnVolver.tscn" id="38_0b8dm"]
 [ext_resource type="Texture2D" uid="uid://wsicrocifuq" path="res://Sprites/ZonaAstronomia/pegoton.png" id="41_h1he0"]
@@ -63,6 +68,7 @@
 [ext_resource type="Texture2D" uid="uid://cf0mbq1t5gwch" path="res://Sprites/ZonaMegafauna/lombrizio 4 - excavacion.png" id="53_mj87j"]
 [ext_resource type="Theme" uid="uid://vengl112frfy" path="res://Resources/UI_Resources/TransparentBubblePanel.tres" id="53_o8hdy"]
 [ext_resource type="Texture2D" uid="uid://bncai0vrfdo6t" path="res://Sprites/ZonaMegafauna/lombrizio 5 - excavacion.png" id="54_q5j0d"]
+[ext_resource type="AudioStream" uid="uid://bfo5ba65dlule" path="res://Sounds/Topo/Topo - Fosil Explota.ogg" id="55_w3a1a"]
 [ext_resource type="Script" path="res://_Scripts/MinG_Excavar/ExcavandoInventaryController.gd" id="55_yyx2g"]
 [ext_resource type="Texture2D" uid="uid://d2v26qrp7dei5" path="res://Sprites/ZonaGeología/objetivoIncognito - excavacion.png" id="56_3m8dj"]
 [ext_resource type="StyleBox" uid="uid://b3tjes2hcm3wx" path="res://Resources/UI_Resources/StyleBoxTrasparent.tres" id="58_agxcw"]
@@ -183,6 +189,24 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_xfnj2"]
 radius = 149.216
 
+[sub_resource type="Resource" id="Resource_72yr0"]
+script = ExtResource("26_1d07x")
+name = "dirijoTopo"
+bus = ""
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([ExtResource("27_trofj")])
+
+[sub_resource type="Resource" id="Resource_l6sj0"]
+script = ExtResource("26_1d07x")
+name = "tocoTopo"
+bus = ""
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([ExtResource("28_plyo4")])
+
 [sub_resource type="Animation" id="Animation_21eaa"]
 length = 0.001
 tracks/0/type = "value"
@@ -258,6 +282,15 @@ point_count = 2
 [sub_resource type="Gradient" id="Gradient_0d6p6"]
 offsets = PackedFloat32Array(0, 0.458738, 1)
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.0169903, 1, 1, 1, 0)
+
+[sub_resource type="Resource" id="Resource_3jeh8"]
+script = ExtResource("26_1d07x")
+name = "explota"
+bus = ""
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([ExtResource("55_w3a1a")])
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_umb6f"]
 size = Vector2(1020, 1241)
@@ -620,7 +653,6 @@ offset_right = 327.0
 offset_bottom = -341.0
 grow_vertical = 2
 pivot_offset = Vector2(326, 123.5)
-instanceAndButtonExit = Vector2(0, 0)
 Texts = Array[ExtResource("51_1rgrp")]([SubResource("Resource_bo72e"), SubResource("Resource_8nn8v")])
 
 [node name="Panel(2) Btn(rigth)" parent="Excavando/StateMachine/Consigna/Contenido/Intro1" instance=ExtResource("14_f234f")]
@@ -762,6 +794,14 @@ shape = SubResource("CircleShape2D_xfnj2")
 
 [node name="Timer" type="Timer" parent="Excavando/StateMachine/Juego/Contenido/background/CanvasGroup/TopoController"]
 wait_time = 0.2
+
+[node name="TopoSounds" type="Node" parent="Excavando/StateMachine/Juego/Contenido/background/CanvasGroup/TopoController"]
+script = ExtResource("24_deahb")
+
+[node name="SoundBank" type="Node" parent="Excavando/StateMachine/Juego/Contenido/background/CanvasGroup/TopoController/TopoSounds"]
+script = ExtResource("25_vt8k4")
+label = "topo"
+events = Array[ExtResource("26_1d07x")]([SubResource("Resource_72yr0"), SubResource("Resource_l6sj0")])
 
 [node name="BurbujaPensamiento" type="Node2D" parent="Excavando/StateMachine/Juego/Contenido/background/CanvasGroup" node_paths=PackedStringArray("target")]
 z_index = 1
@@ -2893,6 +2933,13 @@ color_ramp = SubResource("Gradient_0d6p6")
 hue_variation_min = 0.45
 hue_variation_max = 1.0
 
+[node name="fosilSound" type="Node" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/HuesoController"]
+
+[node name="SoundBank" type="Node" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/HuesoController/fosilSound"]
+script = ExtResource("25_vt8k4")
+label = "fosil"
+events = Array[ExtResource("26_1d07x")]([SubResource("Resource_3jeh8")])
+
 [node name="AreaMoveCam" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center"]
 z_index = 1
 position = Vector2(0, 905)
@@ -4276,7 +4323,6 @@ grow_vertical = 2
 pivot_offset = Vector2(442, 114)
 theme = ExtResource("53_o8hdy")
 AppearInBeginning = false
-instanceAndButtonExit = Vector2(0, 0)
 Texts = Array[ExtResource("51_1rgrp")]([SubResource("Resource_akcp5")])
 
 [node name="Area2D" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Tutorial/Tutorial"]
@@ -4592,7 +4638,6 @@ offset_bottom = -295.0
 grow_vertical = 2
 pivot_offset = Vector2(326, 120)
 AppearInBeginning = false
-instanceAndButtonExit = Vector2(0, 0)
 Texts = Array[ExtResource("51_1rgrp")]([SubResource("Resource_nftsl"), SubResource("Resource_lp4n5")])
 
 [node name="Panel(2) Btn(rigth)" parent="Excavando/StateMachine/Fin/Contenido/OutroPanel" instance=ExtResource("14_f234f")]

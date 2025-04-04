@@ -64,7 +64,7 @@ func _on_button_pressed():
 	CalculateGrabOffset()
 	pick_up = true
 	timerHold.start()
-	if TapSound != "":SoundManager.play("DragObject", TapSound)
+	SoundManager.play("DragObject", "tap")
 	await  mouse_realese
 	isInTime = false
 	pick_up = false
@@ -88,6 +88,7 @@ func PlaceInRightSpot(forceSpot = false):
 		await  tween.finished
 		spot.CheckAnswer()
 		ArriveToSpot.emit()
+		SoundManager.play("DragObject", "inPlace")
 		if DesapearInPlace: 
 			object.visible = false
 	else:
@@ -126,7 +127,7 @@ func CancelDrag():
 	BackToInitialPos.emit()
 
 func TimeToDrag():
-	#if DragSound != "":SoundManager.play("drag", DragSound)
+	#SoundManager.play("drag", "drag")
 	var tween = get_tree().create_tween()
 	#tween = tween.tween_property(object, "global_position",get_global_mouse_position(),0.1).set_ease(Tween.EASE_OUT)
 	await tween

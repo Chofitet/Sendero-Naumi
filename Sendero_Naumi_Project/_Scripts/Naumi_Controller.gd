@@ -17,6 +17,7 @@ var zoneResource = ZoneResource.new()
 signal ButtonPress
 signal ToContinue
 var  isIdleOncePlayed
+@onready var soundTrigger = $NaumiSounds
 
 func load_file():
 	zoneResource  = ResourceLoader.load(save_file_path  + save_file_name_Zone)
@@ -69,6 +70,8 @@ func Sleeping():
 	NaumiAnim.play("tapped")
 	timer.timeout.disconnect(PlayRandomIdleAnim)
 	$pivot/Parts/partsAnimator.play("tap")
+	soundTrigger.StopSoundsInCuttableQueue()
+	soundTrigger.PlayEvent("tap",0,true)
 	#$pivot/Parts/eye.play("tap")
 	#$pivot/Parts/ear.play("tap")
 	#$pivot/Parts/wing.play("tap")

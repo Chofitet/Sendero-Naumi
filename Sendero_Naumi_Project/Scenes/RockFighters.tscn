@@ -1,4 +1,4 @@
-[gd_scene load_steps=121 format=3 uid="uid://lv8sdofmjhf3"]
+[gd_scene load_steps=123 format=3 uid="uid://lv8sdofmjhf3"]
 
 [ext_resource type="Script" path="res://_Scripts/Minigame_Save_Controller.gd" id="1_f0fiw"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/StateMachineMinigames.gd" id="2_12384"]
@@ -66,6 +66,7 @@
 [ext_resource type="AudioStream" uid="uid://16mfoqf1ni1e" path="res://Sounds/Fighter/Fighter - UPS.ogg" id="52_s1uhh"]
 [ext_resource type="AudioStream" uid="uid://dkc3yvijsfkep" path="res://Sounds/Fighter/Fighter - Campana.ogg" id="53_rx4qw"]
 [ext_resource type="AudioStream" uid="uid://dnsa77gvsqv8f" path="res://Sounds/Fighter/Fighter - Pantalla Finalll.ogg" id="54_q0khs"]
+[ext_resource type="AudioStream" uid="uid://cku3l8i4tte4c" path="res://Sounds/Fighter/Fighter - Eleccion.ogg" id="55_n66i7"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_01r1e"]
 texture = ExtResource("4_d7p6d")
@@ -1082,6 +1083,15 @@ volume = 0.0
 pitch = 1.0
 RandomPitch = Vector2(1, 1)
 streams = Array[AudioStream]([ExtResource("54_q0khs")])
+
+[sub_resource type="Resource" id="Resource_ctms1"]
+script = ExtResource("15_ddtfa")
+name = "eleccion"
+bus = ""
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([ExtResource("55_n66i7")])
 
 [sub_resource type="Animation" id="Animation_yo27a"]
 length = 0.001
@@ -2295,7 +2305,7 @@ script = ExtResource("13_jihfb")
 [node name="SoundBank" type="Node" parent="RockFighters/StateMachine/Juego/Contenido/LevelSound"]
 script = ExtResource("14_klu0k")
 label = "level"
-events = Array[ExtResource("15_ddtfa")]([SubResource("Resource_rqmad"), SubResource("Resource_3tlr2"), SubResource("Resource_1eccu"), SubResource("Resource_26n8a"), SubResource("Resource_gg0um")])
+events = Array[ExtResource("15_ddtfa")]([SubResource("Resource_rqmad"), SubResource("Resource_3tlr2"), SubResource("Resource_1eccu"), SubResource("Resource_26n8a"), SubResource("Resource_gg0um"), SubResource("Resource_ctms1")])
 
 [node name="btnVolver" parent="RockFighters/StateMachine/Juego" instance=ExtResource("33_l1u1j")]
 

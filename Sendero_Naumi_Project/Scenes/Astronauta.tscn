@@ -1,4 +1,4 @@
-[gd_scene load_steps=204 format=3 uid="uid://dk066mi38cvh7"]
+[gd_scene load_steps=215 format=3 uid="uid://dk066mi38cvh7"]
 
 [ext_resource type="Script" path="res://_Scripts/Minigame_Save_Controller.gd" id="1_th4gl"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/StateMachineMinigames.gd" id="2_fl1ab"]
@@ -90,6 +90,7 @@
 [ext_resource type="Script" path="res://_Scripts/MinG_Astronauta/ProximityDialogue.gd" id="61_dn7t5"]
 [ext_resource type="Texture2D" uid="uid://cs8xkuge33qo2" path="res://Sprites/ZonaAstronomia/estela meteorito - astronauta-0006.png" id="62_cmuch"]
 [ext_resource type="Texture2D" uid="uid://do3f5jjo24370" path="res://Sprites/ZonaAstronomia/otronauta relax - astronauta.png" id="62_t3ec7"]
+[ext_resource type="Script" path="res://_Scripts/VolumeBusController.gd" id="64_a3qlb"]
 [ext_resource type="LabelSettings" uid="uid://dce4drsatgdve" path="res://Resources/UI_Resources/ComputerLabel.tres" id="74_d02uo"]
 [ext_resource type="Texture2D" uid="uid://bhax6ajte0vaj" path="res://Sprites/ZonaAstronomia/estela meteorito - astronauta-0002.png" id="74_uvtyl"]
 [ext_resource type="PackedScene" uid="uid://chcp24toqisaw" path="res://Scenes/Experiments/GenericPanel/GenericPanel.tscn" id="76_xvlec"]
@@ -107,14 +108,20 @@
 [ext_resource type="Script" path="res://addons/resonate/sound_manager/sound_bank.gd" id="90_h0bcv"]
 [ext_resource type="Script" path="res://addons/resonate/sound_manager/sound_event_resource.gd" id="91_abtif"]
 [ext_resource type="AudioStream" uid="uid://d4e5th885frti" path="res://Sounds/Astronauta/Astronauta - Nave Abre.ogg" id="92_oltgp"]
+[ext_resource type="AudioStream" uid="uid://bylynv28q8yin" path="res://Sounds/Astronauta/Astronauta - Astronauta en el espacio Loop.ogg" id="95_bg7ni"]
+[ext_resource type="Script" path="res://_Scripts/SoundEventTrigger.gd" id="101_14e4n"]
 [ext_resource type="AudioStream" uid="uid://dmh8dd625182d" path="res://Sounds/Astronauta/Astronauta- Sali de la cueva.ogg" id="101_gmib4"]
 [ext_resource type="Texture2D" uid="uid://bdwcmeo2ejqvl" path="res://Sprites/ZonaAstronomia/estela meteorito - astronauta-0004.png" id="101_invni"]
 [ext_resource type="Texture2D" uid="uid://bnrcwixxxj8wl" path="res://Sprites/ZonaAstronomia/estela meteorito - astronauta-0005.png" id="102_i0kb1"]
 [ext_resource type="Texture2D" uid="uid://wvr5sa0gwg5e" path="res://Sprites/ZonaAstronomia/estela meteorito - astronauta-0001.png" id="103_01fpy"]
 [ext_resource type="Texture2D" uid="uid://cqfgkmjc6a8p6" path="res://Sprites/ZonaAstronomia/estela meteorito - astronauta-0003.png" id="104_2fva8"]
+[ext_resource type="AudioStream" uid="uid://dqcaojxwc4rqr" path="res://Sounds/Astronauta/Astronauta - Agarra.ogg" id="105_2onsm"]
 [ext_resource type="Texture2D" uid="uid://bs75l58idlvr7" path="res://Sprites/ZonaAstronomia/estela meteorito - astronauta-0007.png" id="105_h31kt"]
+[ext_resource type="AudioStream" uid="uid://dhrvchs23chca" path="res://Sounds/Astronauta/Astronauta - Choque con Meteoro.ogg" id="106_72sbn"]
 [ext_resource type="Texture2D" uid="uid://c37mjd5dov5eg" path="res://Sprites/ZonaAstronomia/estela meteorito - astronauta-0008.png" id="106_h6vaw"]
 [ext_resource type="Script" path="res://_Scripts/PivotIntanciate.gd" id="106_tsc4i"]
+[ext_resource type="AudioStream" uid="uid://cyymyxgxh6uko" path="res://Sounds/Astronauta/Astronauta - Pedo.ogg" id="116_yonfx"]
+[ext_resource type="PackedScene" uid="uid://c8dodmo3saxdr" path="res://Scenes/Experiments/sound_debug.tscn" id="120_avde6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_baev4"]
 size = Vector2(178.405, 196.199)
@@ -322,6 +329,20 @@ tracks/7/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
+}
+tracks/8/type = "method"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Path2D/PathFollow2D/TheGuy2")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(2.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"ActiveDialogue"
+}]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qooww"]
@@ -551,6 +572,15 @@ pitch = 1.0
 RandomPitch = Vector2(1, 1)
 streams = Array[AudioStream]([ExtResource("92_oltgp")])
 
+[sub_resource type="Resource" id="Resource_qgyc1"]
+script = ExtResource("91_abtif")
+name = "respiracion"
+bus = "astronautaRespiracion"
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([ExtResource("95_bg7ni")])
+
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_h2n3c"]
 light_mode = 1
 
@@ -713,11 +743,29 @@ size = Vector2(4044, 322)
 [sub_resource type="Resource" id="Resource_u2fry"]
 script = ExtResource("91_abtif")
 name = "cave"
-bus = ""
+bus = "salidaCueva"
 volume = 0.0
 pitch = 1.0
 RandomPitch = Vector2(1, 1)
 streams = Array[AudioStream]([ExtResource("101_gmib4")])
+
+[sub_resource type="Resource" id="Resource_0nosf"]
+script = ExtResource("91_abtif")
+name = "agarrar"
+bus = "agarrar"
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([ExtResource("105_2onsm")])
+
+[sub_resource type="Resource" id="Resource_tkmsq"]
+script = ExtResource("91_abtif")
+name = "chocar"
+bus = "choqueMeteoro"
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([ExtResource("106_72sbn")])
 
 [sub_resource type="Resource" id="Resource_52pth"]
 script = ExtResource("78_a7col")
@@ -953,6 +1001,15 @@ Place = 0
 script = ExtResource("83_qqo8u")
 NumberOfPanel = 5
 Place = 0
+
+[sub_resource type="Resource" id="Resource_qxjao"]
+script = ExtResource("91_abtif")
+name = "fart"
+bus = "pedo"
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([ExtResource("116_yonfx")])
 
 [sub_resource type="Resource" id="Resource_jsqjf"]
 script = ExtResource("34_cy5l0")
@@ -1626,7 +1683,7 @@ _textureLine = ExtResource("9_fd6y6")
 
 [node name="Meteoroide" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide" instance=ExtResource("11_i2vqs")]
 position = Vector2(976, -1362)
-rotation = 384463.0
+rotation = 423706.0
 scale = Vector2(2.975, 2.975)
 _texture = ExtResource("11_x4hhq")
 
@@ -1635,6 +1692,7 @@ visible = false
 position = Vector2(760, -1341)
 player = NodePath("../../../../Astronauta")
 RotateInEnter = true
+isInactiveDialogue = true
 increment = 50.0
 
 [node name="CollisionShape2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/TheGuy/Area2D" index="0"]
@@ -1666,6 +1724,7 @@ animation = "move"
 position = Vector2(-3.9292, -1.60059)
 rotation = -0.270157
 player = NodePath("../../../../../../../Astronauta")
+isInactiveDialogue = true
 
 [node name="sprite" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/GuyWall/Path2D/PathFollow2D/TheGuy2" index="0"]
 rotation = 1.63014
@@ -2404,7 +2463,7 @@ Max_Size = 60.0
 
 [node name="meteoro" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoro/Meteoro1" node_paths=PackedStringArray("MeteoritoTarget") instance=ExtResource("11_i2vqs")]
 z_index = 1
-rotation = 507057.0
+rotation = 554865.0
 scale = Vector2(2.595, 2.595)
 MeteoritoTarget = NodePath("../../../Meteorito/MeteoritoAppear/targetMeteorito")
 _texture = ExtResource("17_uxw0q")
@@ -2453,7 +2512,7 @@ z_index = 1
 
 [node name="meteoro" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoro/Meteoro3" node_paths=PackedStringArray("MeteoritoTarget") instance=ExtResource("11_i2vqs")]
 z_index = 1
-rotation = 508758.0
+rotation = 556566.0
 scale = Vector2(2.595, 2.595)
 MeteoritoTarget = NodePath("../../../Meteorito/MeteoritoAppear/targetMeteorito")
 _texture = ExtResource("17_uxw0q")
@@ -2585,6 +2644,10 @@ autowrap_mode = 2
 position = Vector2(0, 7.06396)
 color = Color(0.859375, 0.859375, 0.859375, 1)
 polygon = PackedVector2Array(17, 74, 0, 86, 0, 53)
+
+[node name="VolumeController" type="Node" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoro"]
+script = ExtResource("64_a3qlb")
+BusName = "astronautaSegundaParte"
 
 [node name="Meteorito" type="Node2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales"]
 position = Vector2(-183, 3257)
@@ -3171,11 +3234,12 @@ position = Vector2(231.5, 112)
 shape = SubResource("RectangleShape2D_3kd6y")
 
 [node name="NaveSounds" type="Node" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController"]
+script = ExtResource("101_14e4n")
 
 [node name="SoundBank" type="Node" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/NaveSounds"]
 script = ExtResource("90_h0bcv")
 label = "nave"
-events = Array[ExtResource("91_abtif")]([SubResource("Resource_jy8c7")])
+events = Array[ExtResource("91_abtif")]([SubResource("Resource_jy8c7"), SubResource("Resource_qgyc1")])
 
 [node name="Astronauta" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1" node_paths=PackedStringArray("PhantomCam", "pcInventary") groups=["player"] instance=ExtResource("7_jv4gs")]
 material = SubResource("CanvasItemMaterial_h2n3c")
@@ -3245,6 +3309,7 @@ phantomCam = NodePath("../../PhantomCamera2D")
 [node name="Computer" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/PCInventary/pcInventary" instance=ExtResource("19_552cy")]
 position = Vector2(621, 159)
 scale = Vector2(0.672, 0.672)
+isMuteInStart = true
 
 [node name="PanelInventory" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/PCInventary/pcInventary" instance=ExtResource("76_xvlec")]
 layout_mode = 1
@@ -3663,11 +3728,12 @@ position = Vector2(0, 162)
 shape = SubResource("RectangleShape2D_8dfup")
 
 [node name="GeneralSounds" type="Node" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1"]
+script = ExtResource("101_14e4n")
 
 [node name="SoundBank" type="Node" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/GeneralSounds"]
 script = ExtResource("90_h0bcv")
 label = "general"
-events = Array[ExtResource("91_abtif")]([SubResource("Resource_u2fry")])
+events = Array[ExtResource("91_abtif")]([SubResource("Resource_u2fry"), SubResource("Resource_0nosf"), SubResource("Resource_tkmsq")])
 
 [node name="HUD" parent="Astronauta/StateMachine/Juego" instance=ExtResource("25_oyvyl")]
 
@@ -3717,6 +3783,7 @@ texture = ExtResource("30_8apus")
 [node name="Computer" parent="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior" instance=ExtResource("19_552cy")]
 position = Vector2(105, 127)
 isPerspective = true
+isMuteInStart = true
 
 [node name="faceAnim" parent="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/Computer" index="2"]
 position = Vector2(0, -8)
@@ -4088,6 +4155,14 @@ Data = SubResource("Resource_6comr")
 
 [node name="Panel(5) Btn(rigth)" parent="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/PanelOutro" instance=ExtResource("81_mw337")]
 Data = SubResource("Resource_oybw4")
+
+[node name="outroSound" type="Node" parent="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior"]
+script = ExtResource("101_14e4n")
+
+[node name="SoundBank" type="Node" parent="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/outroSound"]
+script = ExtResource("90_h0bcv")
+label = "outro"
+events = Array[ExtResource("91_abtif")]([SubResource("Resource_qxjao")])
 
 [node name="AstronautaPivot" type="Node2D" parent="Astronauta/StateMachine/Fin/Contenido/Center/Nave"]
 position = Vector2(-134, 411)
@@ -4876,12 +4951,18 @@ fade_time = 0.6
 texture = "vertical"
 smoothness = 0.2
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Sound Debug" parent="CanvasLayer" instance=ExtResource("120_avde6")]
+AudioBuses = Array[String](["VolumenAstronauta", "jetPack", "pedo", "astronautaRespiracion", "agarrar", "golpe", "salidaCueva", "otrosAstronautas", "CHIPA", "choqueMeteoro"])
+
 [connection signal="pressed" from="Astronauta/StateMachine/Consigna/Contenido/Button" to="Astronauta/StateMachine/Consigna/Contenido/Button" method="_on_pressed" flags=18]
 [connection signal="Transitioned" from="Astronauta/StateMachine/Juego" to="Astronauta/StateMachine/Juego/Contenido/Instancia1/Camera2D" method="Enable" binds= [true]]
 [connection signal="Picked" from="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/Meteoroide" to="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/GuyWall/Path2D/PathFollow2D/TheGuy2" method="disabledCollisionShape"]
 [connection signal="area_entered" from="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/Area2D" to="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/TheGuy" method="SetVisibility" binds= [false]]
 [connection signal="area_entered" from="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/Area2D" to="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/GuyWall/Path2D/PathFollow2D/TheGuy2" method="SetVisibility" binds= [true]]
 [connection signal="Crash" from="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoro/Meteoro1/meteoro" to="Astronauta/StateMachine/Juego/Contenido/Instancia1/PhantomCamera2D2/UpWall" method="SetActiveCollision"]
+[connection signal="Crash" from="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoro/Meteoro1/meteoro" to="Astronauta/StateMachine/Juego/Contenido/Instancia1/GeneralSounds" method="StopLoopSound"]
 [connection signal="Crash" from="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoro/Meteoro1/meteoro" to="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoro/vibration" method="doVibrate" binds= [500.0, 0.0]]
 [connection signal="Crash" from="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoro/Meteoro1/meteoro" to="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoro/Meteoro1/halo" method="Setvisivility" binds= [false]]
 [connection signal="Crash" from="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoro/Meteoro1/meteoro" to="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoro/TheGuy2/Panel/LabelMeteoro" method="set_text" binds= ["SUERTE CON RECURSOS HUMANOS"]]
@@ -4892,6 +4973,7 @@ smoothness = 0.2
 [connection signal="Picked" from="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoro/Meteoro1/meteoro" to="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoro/Meteoro3/meteoro" method="ConvertToMeteorito"]
 [connection signal="Picked" from="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoro/Meteoro1/meteoro" to="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoro/Meteoro1/halo" method="Setvisivility" binds= [false]]
 [connection signal="Crash" from="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoro/Meteoro3/meteoro" to="Astronauta/StateMachine/Juego/Contenido/Instancia1/PhantomCamera2D2/UpWall" method="SetActiveCollision"]
+[connection signal="Crash" from="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoro/Meteoro3/meteoro" to="Astronauta/StateMachine/Juego/Contenido/Instancia1/GeneralSounds" method="StopLoopSound"]
 [connection signal="Crash" from="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoro/Meteoro3/meteoro" to="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoro/vibration" method="doVibrate" binds= [500.0]]
 [connection signal="Crash" from="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoro/Meteoro3/meteoro" to="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoro/Meteoro3/halo" method="Setvisivility" binds= [false]]
 [connection signal="Crash" from="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoro/Meteoro3/meteoro" to="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoro/TheGuy2/Panel/LabelMeteoro" method="set_text" binds= ["SUERTE CON RECURSOS HUMANOS"]]
@@ -4911,6 +4993,8 @@ smoothness = 0.2
 [connection signal="openCapsula" from="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Capsula" to="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro/PanelIntro" method="ExitPanel"]
 [connection signal="AllCollect" from="Astronauta/StateMachine/Juego/Contenido/Instancia1/Astronauta" to="Astronauta/StateMachine/Juego/Contenido/Instancia1/PCInventary/pcInventary" method="MisionComplete"]
 [connection signal="collision" from="Astronauta/StateMachine/Juego/Contenido/Instancia1/Astronauta" to="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/GuyWall/Path2D/PathFollow2D/TheGuy2/Panel/Label" method="SetLabel"]
+[connection signal="OutCave" from="Astronauta/StateMachine/Juego/Contenido/Instancia1/PhantomCamera2D" to="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoro/VolumeController" method="SetVolume" binds= [-15.0]]
+[connection signal="OutCave" from="Astronauta/StateMachine/Juego/Contenido/Instancia1/PhantomCamera2D" to="Astronauta/StateMachine/Juego/Contenido/Instancia1/GeneralSounds" method="PlayLoopEvent" binds= ["cave"]]
 [connection signal="InventaryGone" from="Astronauta/StateMachine/Juego/Contenido/Instancia1/PCInventary/pcInventary" to="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/GuyWall/Path2D/PathFollow2D/AnimationPlayer" method="Play"]
 [connection signal="ButtonPress" from="Astronauta/StateMachine/Juego/Contenido/Instancia1/PCInventary/pcInventary/PanelInventory/Panel(2) Btn(rigth)" to="Astronauta" method="Set_Complete"]
 [connection signal="ButtonPress" from="Astronauta/StateMachine/Juego/Contenido/Instancia1/PCInventary/pcInventary/PanelInventory/Panel(2) Btn(rigth)" to="Astronauta/StateMachine/Juego/Contenido/Instancia1/PCInventary/pcInventary" method="MakeFade"]
@@ -4920,10 +5004,13 @@ smoothness = 0.2
 [connection signal="area_entered" from="Astronauta/StateMachine/Juego/Contenido/Instancia1/PhantomCamera2D2/Area2D" to="Astronauta/StateMachine/Juego/Contenido/Instancia1/PhantomCamera2D2/UpWall" method="Set_Collider_Position"]
 [connection signal="area_entered" from="Astronauta/StateMachine/Juego/Contenido/Instancia1/PhantomCamera2D2/Area2D" to="Astronauta/StateMachine/Juego/Contenido/Instancia1/PhantomCamera2D2/Downwall" method="Set_Collider_Position"]
 [connection signal="Transitioned" from="Astronauta/StateMachine/Fin" to="Astronauta" method="Set_Complete"]
+[connection signal="Transitioned" from="Astronauta/StateMachine/Fin" to="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/NaveSounds" method="StopLoopSound"]
 [connection signal="Transitioned" from="Astronauta/StateMachine/Fin" to="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/Computer" method="PlayOnScreen"]
 [connection signal="Transitioned" from="Astronauta/StateMachine/Fin" to="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/PanelOutro" method="EnterPanel"]
 [connection signal="pressed" from="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/ButtonChangeScene" to="Astronauta" method="Set_Complete"]
 [connection signal="pressed" from="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/ButtoParticle" to="Astronauta/StateMachine/Fin/Contenido/Center/Nave/Astronauta/PivotIntanciate" method="Instanciate"]
+[connection signal="pressed" from="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/ButtoParticle" to="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/outroSound" method="PlayEvent" binds= ["fart"]]
+[connection signal="ButtonPress" from="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/PanelOutro/Panel(1) Btn(rigth)" to="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/Computer" method="SetTalkInfinity"]
 [connection signal="ButtonPress" from="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/PanelOutro/Panel(2) Btn(rigth)3" to="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/Computer" method="SetTalkInfinity"]
 [connection signal="ButtonPress" from="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/PanelOutro/Panel(3) Btn(rigth)2" to="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/Computer" method="SetTalkInfinity"]
 [connection signal="ButtonPress" from="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/PanelOutro/Panel(4) Btn(rigth)2" to="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/Computer" method="SetTalkInfinity"]

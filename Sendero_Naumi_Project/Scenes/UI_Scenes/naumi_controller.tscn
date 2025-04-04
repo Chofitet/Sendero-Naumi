@@ -1,4 +1,4 @@
-[gd_scene load_steps=75 format=3 uid="uid://b77gk1g1ulal5"]
+[gd_scene load_steps=80 format=3 uid="uid://b77gk1g1ulal5"]
 
 [ext_resource type="Script" path="res://_Scripts/Naumi_Controller.gd" id="1_mwu8k"]
 [ext_resource type="Texture2D" uid="uid://cpm5a413kke7u" path="res://Sprites/Naumi/N2 - idle.png" id="2_3ucl7"]
@@ -16,6 +16,10 @@
 [ext_resource type="Texture2D" uid="uid://bhfi82lo718ud" path="res://Sprites/Naumi/debris N2.png" id="11_3d4e8"]
 [ext_resource type="PackedScene" uid="uid://nmuyip31gkq5" path="res://Scenes/UI_Scenes/generic_button.tscn" id="11_j8x1v"]
 [ext_resource type="Texture2D" uid="uid://kb7ixs5ala8" path="res://Sprites/UI/arrowIcon - UI.png" id="12_ojujq"]
+[ext_resource type="Script" path="res://_Scripts/SoundEventTrigger.gd" id="17_s846q"]
+[ext_resource type="Script" path="res://addons/resonate/sound_manager/sound_bank.gd" id="18_51gl5"]
+[ext_resource type="Script" path="res://addons/resonate/sound_manager/sound_event_resource.gd" id="19_a0ibf"]
+[ext_resource type="AudioStream" uid="uid://cdrg0wy6og1eg" path="res://Sounds/Intro/Mapa de Intro - Toco Naumi.ogg" id="20_yyqnf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yuks3"]
 atlas = ExtResource("3_kjpwh")
@@ -623,6 +627,15 @@ _data = {
 "tap_naumi": SubResource("Animation_pe6oj")
 }
 
+[sub_resource type="Resource" id="Resource_6hwmy"]
+script = ExtResource("19_a0ibf")
+name = "tap"
+bus = ""
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([ExtResource("20_yyqnf")])
+
 [node name="NaumiController" type="Node2D"]
 script = ExtResource("1_mwu8k")
 
@@ -639,7 +652,7 @@ animation = &"static"
 [node name="ear" type="AnimatedSprite2D" parent="pivot/Parts"]
 visible = false
 position = Vector2(47, -97)
-rotation = 0.02618
+rotation = -0.0320571
 sprite_frames = SubResource("SpriteFrames_4keiw")
 animation = &"tap"
 autoplay = "static"
@@ -648,7 +661,7 @@ offset = Vector2(-47.155, 96.75)
 [node name="wing" type="AnimatedSprite2D" parent="pivot/Parts"]
 visible = false
 position = Vector2(-124, 46)
-rotation = 0.0338799
+rotation = -0.0523599
 sprite_frames = SubResource("SpriteFrames_hyunu")
 animation = &"tap"
 autoplay = "static"
@@ -778,6 +791,14 @@ texture = ExtResource("11_3d4e8")
 wait_time = 6.0
 one_shot = true
 autostart = true
+
+[node name="NaumiSounds" type="Node" parent="."]
+script = ExtResource("17_s846q")
+
+[node name="SoundBank" type="Node" parent="NaumiSounds"]
+script = ExtResource("18_51gl5")
+label = "naumi"
+events = Array[ExtResource("19_a0ibf")]([SubResource("Resource_6hwmy")])
 
 [connection signal="pressed" from="pivot/Button" to="." method="ButtonPressed"]
 [connection signal="pressed" from="pivot/Button" to="." method="ButtonPressedOnce"]

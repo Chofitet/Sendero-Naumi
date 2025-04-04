@@ -36,6 +36,7 @@ func _input(event: InputEvent) -> void:
 		timer.start()
 		line.add_point(global_position - line.global_position)
 		if isStoped: return
+		SoundManager.play("topo","dirijoTopo")
 		particles.emitting = true
 		topo.get_node("topo").play("move")
 	if Input.is_action_pressed("TouchScreen"):

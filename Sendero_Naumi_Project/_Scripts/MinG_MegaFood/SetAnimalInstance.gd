@@ -118,6 +118,7 @@ func SetResultEvent():
 	
 
 func EndResultEvent():
+	SoundManager.play("level","leavePaper")
 	$PaperController/AnimationPlayer.play_backwards("paper")
 	$BlockScreen.SetVisibility(true)
 	if get_node(Instances[3]).visible:

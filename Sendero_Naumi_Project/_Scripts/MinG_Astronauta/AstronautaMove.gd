@@ -23,6 +23,7 @@ var isBlock = true
 signal collision
 @onready var Collision_Timer : Timer = $Timer
 var SoundJP
+var breatheSound
 
 func _ready():
 	$Area2D.area_entered.connect(GetPickUpObjects)
@@ -90,6 +91,7 @@ func Move(delta):
 				if last_collider == null:
 					Collision_Timer.start()
 					last_collider = c.get_collider()
+					SoundManager.play("astronauta","hit")
 					collision_count += 1
 					collision.emit(str(collision_count),1)
 					print(collision_count)
@@ -118,7 +120,7 @@ var collision_count = 0
 
 func GetPickUpObjects(x):
 	if x.is_in_group("meteoro"):
-		SoundManager.play("astronauta","pickUp")
+		#SoundManager.play("astronauta","pickUp")
 		if Meteoros.find(x.name) == -1:
 			Meteoros.append(x.name)
 			pcInventary.CheckMeteoro(GetMeteoroIndex(x))

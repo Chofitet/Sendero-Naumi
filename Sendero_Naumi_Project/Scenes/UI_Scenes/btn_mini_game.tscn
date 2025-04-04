@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bc062m81xnnpx"]
+[gd_scene load_steps=21 format=3 uid="uid://bc062m81xnnpx"]
 
 [ext_resource type="Texture2D" uid="uid://c5225cmvtpnmy" path="res://Sprites/Mapa/pin - mapa.png" id="1_xlje6"]
 [ext_resource type="PackedScene" uid="uid://cw3ok8v4p620b" path="res://Scenes/Experiments/squiggling_sprite.tscn" id="3_ajxde"]
@@ -8,7 +8,9 @@
 [ext_resource type="Texture2D" uid="uid://bjvyukuc37c4h" path="res://Sprites/Mapa/check - mapa.png" id="5_eqrpr"]
 [ext_resource type="Texture2D" uid="uid://cqrl4ma2vkof6" path="res://Sprites/UI/SquigglingUI/botonesRedondoPopASQUIG - UI.png" id="6_e6tgk"]
 [ext_resource type="Script" path="res://addons/resonate/sound_manager/sound_bank.gd" id="8_isahl"]
+[ext_resource type="AudioStream" uid="uid://c4kbr2hi1kpf6" path="res://Sounds/UI/UI - Pointer Desciende.ogg" id="8_w3ise"]
 [ext_resource type="Script" path="res://addons/resonate/sound_manager/sound_event_resource.gd" id="9_3cyjq"]
+[ext_resource type="Script" path="res://_Scripts/SoundEventTrigger.gd" id="9_mrjkc"]
 [ext_resource type="AudioStream" uid="uid://baka3skx6074t" path="res://Sounds/UI/UI BUTTON Tilde.ogg" id="10_k4o40"]
 
 [sub_resource type="GDScript" id="GDScript_pfah2"]
@@ -313,6 +315,35 @@ tracks/7/keys = {
 "update": 0,
 "values": [Vector2(1, 1), Vector2(1, 1), Vector2(1, 0.775), Vector2(1, 1.2), Vector2(1, 1)]
 }
+tracks/8/type = "audio"
+tracks/8/imported = false
+tracks/8/enabled = false
+tracks/8/path = NodePath("AudioStreamPlayer")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("8_w3ise")
+}],
+"times": PackedFloat32Array(0.9)
+}
+tracks/8/use_blend = true
+tracks/9/type = "method"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("SoundEmitter")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0.9),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["complete", 0.0, false],
+"method": &"PlayEvent"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_aaw5x"]
 resource_name = "tap"
@@ -383,6 +414,15 @@ pitch = 1.0
 RandomPitch = Vector2(1, 1)
 streams = Array[AudioStream]([ExtResource("10_k4o40")])
 
+[sub_resource type="Resource" id="Resource_hswoa"]
+script = ExtResource("9_3cyjq")
+name = "complete"
+bus = ""
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([ExtResource("8_w3ise")])
+
 [node name="btn_MiniGame" type="Sprite2D"]
 self_modulate = Color(1, 1, 1, 0)
 position = Vector2(-400.425, 222.385)
@@ -446,7 +486,12 @@ libraries = {
 "": SubResource("AnimationLibrary_8t5hd")
 }
 
-[node name="SoundBank" type="Node" parent="."]
+[node name="SoundEmitter" type="Node" parent="."]
+script = ExtResource("9_mrjkc")
+
+[node name="SoundBank" type="Node" parent="SoundEmitter"]
 script = ExtResource("8_isahl")
 label = "ui"
-events = Array[ExtResource("9_3cyjq")]([SubResource("Resource_jybqe")])
+events = Array[ExtResource("9_3cyjq")]([SubResource("Resource_jybqe"), SubResource("Resource_hswoa")])
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

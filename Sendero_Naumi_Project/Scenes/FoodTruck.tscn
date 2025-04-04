@@ -1,4 +1,4 @@
-[gd_scene load_steps=114 format=3 uid="uid://hbmgu1q1d7os"]
+[gd_scene load_steps=134 format=3 uid="uid://hbmgu1q1d7os"]
 
 [ext_resource type="Script" path="res://_Scripts/Minigame_Save_Controller.gd" id="1_dk1kn"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/StateMachineMinigames.gd" id="2_445ba"]
@@ -79,7 +79,15 @@
 [ext_resource type="LabelSettings" uid="uid://b7f8w8wf071ek" path="res://Themes/Geología/LabelSettings_Busqueda.tres" id="46_5e6x3"]
 [ext_resource type="Script" path="res://addons/resonate/sound_manager/sound_event_resource.gd" id="46_ocuar"]
 [ext_resource type="AudioStream" uid="uid://1at35revksmy" path="res://Sounds/Foodtruck/FoodTruck - Agarro Plato.ogg" id="47_bi4ka"]
+[ext_resource type="AudioStream" uid="uid://uewu4yxhihea" path="res://Sounds/Calendario/Calendario - Swipe Opcion.ogg" id="48_epl4y"]
+[ext_resource type="AudioStream" uid="uid://crtoecs36f4ls" path="res://Sounds/Foodtruck/FoodTruck - Plato en Bandeja.ogg" id="49_g1phu"]
+[ext_resource type="AudioStream" uid="uid://cjeal1bpcjk1l" path="res://Sounds/Foodtruck/FoodTruck - Piolin aparece.ogg" id="55_kjsc0"]
+[ext_resource type="AudioStream" uid="uid://qnecavl47443" path="res://Sounds/Foodtruck/FoodTruck - Tocar Piolin para cerrar.ogg" id="57_k3kus"]
+[ext_resource type="AudioStream" uid="uid://5h0jaalw26fx" path="res://Sounds/Foodtruck/FoodTruck - Cierra el Foodtruck.ogg" id="58_cg73o"]
+[ext_resource type="AudioStream" uid="uid://nipmvc6o585y" path="res://Sounds/Foodtruck/FoodTruck - Intento de Cerrar.ogg" id="59_ow6ee"]
+[ext_resource type="Script" path="res://_Scripts/SoundEventTrigger.gd" id="59_t38pt"]
 [ext_resource type="PackedScene" uid="uid://3rvhy3nlrjxy" path="res://Scenes/Zona_Megafauna/mole_particles.tscn" id="64_du6ac"]
+[ext_resource type="AudioStream" uid="uid://crx8h1nwmjeii" path="res://Sounds/Foodtruck/FoodTruck - Dejo de Leer Servilleta.ogg" id="65_xy0hf"]
 
 [sub_resource type="Gradient" id="Gradient_crw6p"]
 offsets = PackedFloat32Array(0, 0.51751, 1)
@@ -182,7 +190,7 @@ tracks/2/keys = {
 }
 tracks/3/type = "audio"
 tracks/3/imported = false
-tracks/3/enabled = true
+tracks/3/enabled = false
 tracks/3/path = NodePath("AnimationPlayer/AudioStreamPlayer")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
@@ -206,6 +214,20 @@ tracks/4/keys = {
 "transitions": PackedFloat32Array(2, 1),
 "update": 0,
 "values": [Vector2(0.613982, 0.613982), Vector2(0.6679, 0.6679)]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../IntroSound")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["arbustos", 0.0, false],
+"method": &"PlayEvent"
+}]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_07o5p"]
@@ -263,6 +285,51 @@ script = ExtResource("19_43356")
 NumberOfPanel = 1
 Place = 0
 
+[sub_resource type="Resource" id="Resource_s76v7"]
+script = ExtResource("46_ocuar")
+name = "arbustos"
+bus = ""
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([ExtResource("8_p4st5")])
+
+[sub_resource type="Animation" id="Animation_vus76"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_g0kn5"]
+resource_name = "fadeOut"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 0.886275)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4vbvs"]
+_data = {
+"RESET": SubResource("Animation_vus76"),
+"fadeOut": SubResource("Animation_g0kn5")
+}
+
 [sub_resource type="Resource" id="Resource_0xsgl"]
 script = ExtResource("16_g0euh")
 Text = "DESLIZA LOS PLATOS HACIA LOS COSTADOS
@@ -284,15 +351,6 @@ NumOfContent = 0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pj3pu"]
 size = Vector2(140, 130)
 
-[sub_resource type="Resource" id="Resource_y0e4d"]
-script = ExtResource("46_ocuar")
-name = "drag"
-bus = ""
-volume = 0.0
-pitch = 1.0
-RandomPitch = Vector2(1, 1)
-streams = Array[AudioStream]([ExtResource("47_bi4ka")])
-
 [sub_resource type="Resource" id="Resource_f440k"]
 script = ExtResource("46_ocuar")
 name = "tap"
@@ -301,6 +359,24 @@ volume = 0.0
 pitch = 1.0
 RandomPitch = Vector2(1, 1)
 streams = Array[AudioStream]([ExtResource("47_bi4ka")])
+
+[sub_resource type="Resource" id="Resource_vkorl"]
+script = ExtResource("46_ocuar")
+name = "swipe"
+bus = ""
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([ExtResource("48_epl4y")])
+
+[sub_resource type="Resource" id="Resource_v4g5w"]
+script = ExtResource("46_ocuar")
+name = "inPlace"
+bus = ""
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([ExtResource("49_g1phu")])
 
 [sub_resource type="Resource" id="Resource_7vpae"]
 script = ExtResource("14_g877f")
@@ -323,6 +399,15 @@ NumOfContent = 0
 script = ExtResource("19_43356")
 NumberOfPanel = 1
 Place = 0
+
+[sub_resource type="Resource" id="Resource_pex78"]
+script = ExtResource("16_g0euh")
+Text = "¡DE UN TIRÓN!
+¡CON FUERZA!"
+SizePanel = Vector2(0, 0)
+Position = Vector2(0, 0)
+buttons = Array[ExtResource("14_g877f")]([])
+NumOfContent = 0
 
 [sub_resource type="Animation" id="Animation_t84p4"]
 length = 0.001
@@ -386,10 +471,46 @@ tracks/4/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("cordon:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.75, 0.75)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("cordon:skew")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("cordon:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-2.2769, -14.3946)]
+}
 
 [sub_resource type="Animation" id="Animation_2tckf"]
 resource_name = "cordon_anim"
-length = 1.6
+length = 2.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -464,12 +585,151 @@ tracks/5/keys = {
 "method": &"ActiveSquiggling"
 }]
 }
+tracks/6/type = "audio"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("AnimationPlayer/AudioStreamPlayer")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("55_kjsc0")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/6/use_blend = true
+tracks/7/type = "method"
+tracks/7/imported = false
+tracks/7/enabled = false
+tracks/7/path = NodePath("../../LevelSound")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["aparecePiolin", 0.0, false],
+"method": &"PlayEvent"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_hgw1a"]
+resource_name = "cordon_try"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3),
+"transitions": PackedFloat32Array(1, 2, 1),
+"update": 0,
+"values": [Vector2(0, 103), Vector2(0, 131), Vector2(0, 103)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("cordon:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.4, 0.6, 0.7),
+"transitions": PackedFloat32Array(2, -2, -2, -2, 1),
+"update": 0,
+"values": [0.0, 0.193732, -0.129154, 0.0174533, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = false
+tracks/2/path = NodePath("cordon:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.4, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0.75, 0.75), Vector2(0.75, 0.676083), Vector2(0.75, 0.6904), Vector2(0.75, 0.75)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = false
+tracks/3/path = NodePath("cordon:skew")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.4, 0.7),
+"transitions": PackedFloat32Array(2, -2, -2, 1),
+"update": 0,
+"values": [0.0, 0.258309, -0.0959931, 0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = false
+tracks/4/path = NodePath("cordon:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.4, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -26), Vector2(-2.2769, -14.3946), Vector2(1.2282, -16.5434), Vector2(0, -26)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_so3tm"]
 _data = {
 "RESET": SubResource("Animation_t84p4"),
-"cordon_anim": SubResource("Animation_2tckf")
+"cordon_anim": SubResource("Animation_2tckf"),
+"cordon_try": SubResource("Animation_hgw1a")
 }
+
+[sub_resource type="Resource" id="Resource_0olqq"]
+script = ExtResource("46_ocuar")
+name = "tap"
+bus = ""
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([ExtResource("57_k3kus")])
+
+[sub_resource type="Resource" id="Resource_b13o4"]
+script = ExtResource("46_ocuar")
+name = "close"
+bus = ""
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([ExtResource("58_cg73o")])
+
+[sub_resource type="Resource" id="Resource_s0ge1"]
+script = ExtResource("46_ocuar")
+name = "tryClose"
+bus = ""
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([ExtResource("59_ow6ee")])
+
+[sub_resource type="Resource" id="Resource_wbpwt"]
+script = ExtResource("46_ocuar")
+name = "aparecePiolin"
+bus = ""
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([ExtResource("55_kjsc0")])
+
+[sub_resource type="Resource" id="Resource_2tb6s"]
+script = ExtResource("46_ocuar")
+name = "leavePaper"
+bus = ""
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([ExtResource("65_xy0hf")])
 
 [sub_resource type="Gradient" id="Gradient_msw5o"]
 offsets = PackedFloat32Array(0.025641, 1)
@@ -788,6 +1048,7 @@ script = ExtResource("3_snobg")
 Consignas = ["Dale a cada animal la comida correspondiente a su dieta", "Dale a cada animal la comida correspondiente a su dieta"]
 
 [node name="Contenido" type="Control" parent="FoodTruck/StateMachine/Consigna"]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -1019,6 +1280,14 @@ Texts = Array[ExtResource("16_g0euh")]([SubResource("Resource_f6tx0")])
 [node name="Panel(1) Btn(rigth)" parent="FoodTruck/StateMachine/Consigna/Contenido/Intro2" instance=ExtResource("17_6stp3")]
 Data = SubResource("Resource_q6kte")
 
+[node name="IntroSound" type="Node" parent="FoodTruck/StateMachine/Consigna/Contenido"]
+script = ExtResource("59_t38pt")
+
+[node name="SoundBank" type="Node" parent="FoodTruck/StateMachine/Consigna/Contenido/IntroSound"]
+script = ExtResource("45_vkjsw")
+label = "intro"
+events = Array[ExtResource("46_ocuar")]([SubResource("Resource_s76v7")])
+
 [node name="Juego" type="Node" parent="FoodTruck/StateMachine" node_paths=PackedStringArray("NextState", "StateMachine")]
 script = ExtResource("5_ykya6")
 NextState = NodePath(".")
@@ -1026,7 +1295,6 @@ StateMachine = NodePath("..")
 InstanciasMinijuego = [NodePath("Contenido/Instancia1"), NodePath("Contenido/Instancia2"), NodePath("Contenido/Instancia3"), NodePath("Contenido/Instancia4"), NodePath("Contenido/Instancia5"), NodePath("Contenido/Instancia6")]
 
 [node name="Contenido" type="Control" parent="FoodTruck/StateMachine/Juego"]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -1084,6 +1352,20 @@ texture = ExtResource("11_ygtxt")
 
 [node name="CortinaPos" type="Marker2D" parent="FoodTruck/StateMachine/Juego/Contenido/Mesada"]
 position = Vector2(0, 302)
+
+[node name="fadeToBlack" type="ColorRect" parent="FoodTruck/StateMachine/Juego/Contenido/Mesada"]
+z_index = 2
+layout_mode = 0
+offset_left = -789.5
+offset_top = 291.0
+offset_right = 789.5
+offset_bottom = 1947.0
+color = Color(0, 0, 0, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="FoodTruck/StateMachine/Juego/Contenido/Mesada/fadeToBlack"]
+libraries = {
+"": SubResource("AnimationLibrary_4vbvs")
+}
 
 [node name="Instancia1" type="Control" parent="FoodTruck/StateMachine/Juego/Contenido"]
 visible = false
@@ -1309,7 +1591,7 @@ ActiveInBegining = false
 [node name="SoundBank" type="Node" parent="FoodTruck/StateMachine/Juego/Contenido/DragSound"]
 script = ExtResource("45_vkjsw")
 label = "DragObject"
-events = Array[ExtResource("46_ocuar")]([SubResource("Resource_y0e4d"), SubResource("Resource_f440k")])
+events = Array[ExtResource("46_ocuar")]([SubResource("Resource_f440k"), SubResource("Resource_vkorl"), SubResource("Resource_v4g5w")])
 
 [node name="FinalPanel" parent="FoodTruck/StateMachine/Juego/Contenido" instance=ExtResource("13_3lngq")]
 visible = false
@@ -1349,6 +1631,37 @@ visible = true
 [node name="Panel(1) Btn(rigth)" parent="FoodTruck/StateMachine/Juego/Contenido/FinalPanel" instance=ExtResource("17_6stp3")]
 Data = SubResource("Resource_hb5v7")
 
+[node name="FuerzaPanel" parent="FoodTruck/StateMachine/Juego/Contenido" instance=ExtResource("13_3lngq")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.503
+anchor_top = 0.388
+anchor_right = 0.503
+anchor_bottom = 0.388
+offset_left = -363.32
+offset_top = -261.64
+offset_right = 359.68
+offset_bottom = 286.36
+pivot_offset = Vector2(361.5, 274)
+theme = ExtResource("40_l8mwg")
+AppearInBeginning = false
+Texts = Array[ExtResource("16_g0euh")]([SubResource("Resource_pex78")])
+
+[node name="label" parent="FoodTruck/StateMachine/Juego/Contenido/FuerzaPanel" index="0"]
+text = "¡DE UN TIRÓN!
+¡CON FUERZA!"
+label_settings = ExtResource("25_agxub")
+
+[node name="BtnDerAnchor" parent="FoodTruck/StateMachine/Juego/Contenido/FuerzaPanel" index="3"]
+anchor_left = 0.791
+anchor_top = 0.781
+anchor_right = 0.791
+anchor_bottom = 0.781
+offset_left = 0.106995
+offset_top = 0.0119934
+offset_right = 0.106995
+offset_bottom = 0.0119934
+
 [node name="TimerScroll" type="Timer" parent="FoodTruck/StateMachine/Juego/Contenido"]
 wait_time = 0.2
 one_shot = true
@@ -1377,12 +1690,13 @@ z_index = 1
 script = ExtResource("15_tqyfo")
 Pos = NodePath("../../Mesada/CortinaPos")
 StateMachine = NodePath("../../../..")
+limitGesture = 100.0
 
 [node name="fade" type="CanvasLayer" parent="FoodTruck/StateMachine/Juego/Contenido/Cordon/Cortina"]
 
 [node name="cordon" type="Sprite2D" parent="FoodTruck/StateMachine/Juego/Contenido/Cordon/Cortina"]
 visible = false
-position = Vector2(0, -26)
+position = Vector2(-2.2769, -14.3946)
 rotation = -1.5708
 scale = Vector2(0.75, 0.75)
 texture = ExtResource("16_73qbv")
@@ -1398,10 +1712,30 @@ position = Vector2(0, -556)
 scale = Vector2(0.746099, 0.785838)
 texture = ExtResource("15_8s50t")
 
+[node name="fadeToBlack" type="ColorRect" parent="FoodTruck/StateMachine/Juego/Contenido/Cordon/Cortina/cortina"]
+z_index = 2
+anchors_preset = -1
+anchor_left = 0.514
+anchor_top = 1.0
+anchor_right = 0.514
+anchor_bottom = 1.0
+offset_left = -1494.74
+offset_top = -2358.4
+offset_right = 84.26
+offset_bottom = -702.398
+color = Color(0, 0, 0, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="FoodTruck/StateMachine/Juego/Contenido/Cordon/Cortina/cortina/fadeToBlack"]
+libraries = {
+"": SubResource("AnimationLibrary_4vbvs")
+}
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="FoodTruck/StateMachine/Juego/Contenido/Cordon/Cortina"]
 libraries = {
 "": SubResource("AnimationLibrary_so3tm")
 }
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="FoodTruck/StateMachine/Juego/Contenido/Cordon/Cortina/AnimationPlayer"]
 
 [node name="Button" type="Button" parent="FoodTruck/StateMachine/Juego/Contenido/Cordon/Cortina"]
 visible = false
@@ -1414,6 +1748,17 @@ script = ExtResource("17_7dvpr")
 threshold = 50.0
 
 [node name="Timer" type="Timer" parent="FoodTruck/StateMachine/Juego/Contenido/Cordon/Cortina/Button"]
+
+[node name="Timer" type="Timer" parent="FoodTruck/StateMachine/Juego/Contenido/Cordon/Cortina"]
+wait_time = 0.3
+one_shot = true
+
+[node name="CordonSounds" type="Node" parent="FoodTruck/StateMachine/Juego/Contenido/Cordon/Cortina"]
+
+[node name="SoundBank" type="Node" parent="FoodTruck/StateMachine/Juego/Contenido/Cordon/Cortina/CordonSounds"]
+script = ExtResource("45_vkjsw")
+label = "cordon"
+events = Array[ExtResource("46_ocuar")]([SubResource("Resource_0olqq"), SubResource("Resource_b13o4"), SubResource("Resource_s0ge1")])
 
 [node name="PaperController" parent="FoodTruck/StateMachine/Juego/Contenido" instance=ExtResource("27_iymen")]
 layout_mode = 1
@@ -1445,6 +1790,14 @@ Icon = ExtResource("43_101i6")
 
 [node name="TextureRect" parent="FoodTruck/StateMachine/Juego/Contenido/PaperController/pivot/Button" index="0"]
 texture = ExtResource("43_101i6")
+
+[node name="LevelSound" type="Node" parent="FoodTruck/StateMachine/Juego/Contenido"]
+script = ExtResource("59_t38pt")
+
+[node name="SoundBank" type="Node" parent="FoodTruck/StateMachine/Juego/Contenido/LevelSound"]
+script = ExtResource("45_vkjsw")
+label = "level"
+events = Array[ExtResource("46_ocuar")]([SubResource("Resource_wbpwt"), SubResource("Resource_2tb6s")])
 
 [node name="btnVolver" parent="FoodTruck/StateMachine/Juego" instance=ExtResource("32_qpeuc")]
 
@@ -2075,6 +2428,10 @@ animation = "recomendation"
 [connection signal="object_realese_Wrong_Place" from="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer/food4/DragObject" to="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer" method="DetectMouseRelease"]
 [connection signal="ButtonPress" from="FoodTruck/StateMachine/Juego/Contenido/FinalPanel/Panel(1) Btn(rigth)" to="FoodTruck" method="Set_Complete"]
 [connection signal="ButtonPress" from="FoodTruck/StateMachine/Juego/Contenido/FinalPanel/Panel(1) Btn(rigth)" to="FoodTruck/StateMachine/Juego/Contenido/Cordon/Cortina/AnimationPlayer" method="play" binds= ["cordon_anim"]]
+[connection signal="Closing" from="FoodTruck/StateMachine/Juego/Contenido/Cordon/Cortina" to="FoodTruck/StateMachine/Juego/Contenido/Mesada/fadeToBlack/AnimationPlayer" method="play" binds= ["fadeOut"]]
+[connection signal="Closing" from="FoodTruck/StateMachine/Juego/Contenido/Cordon/Cortina" to="FoodTruck/StateMachine/Juego/Contenido/Cordon/Cortina/cortina/fadeToBlack/AnimationPlayer" method="play" binds= ["fadeOut"]]
+[connection signal="ExitFuerzaaa" from="FoodTruck/StateMachine/Juego/Contenido/Cordon/Cortina" to="FoodTruck/StateMachine/Juego/Contenido/FuerzaPanel" method="ExitPanel"]
+[connection signal="Fuerzaaa" from="FoodTruck/StateMachine/Juego/Contenido/Cordon/Cortina" to="FoodTruck/StateMachine/Juego/Contenido/FuerzaPanel" method="EnterPanel"]
 [connection signal="timeout" from="FoodTruck/StateMachine/Moraleja/Contenido/Timer" to="FoodTruck/StateMachine/Moraleja" method="TimeOut"]
 [connection signal="pressed" from="FoodTruck/StateMachine/Moraleja/Contenido/Instancia1/Button" to="FoodTruck/StateMachine/Moraleja/Contenido/Instancia1/Button" method="_on_pressed"]
 [connection signal="Transitioned" from="FoodTruck/StateMachine/Fin" to="FoodTruck/StateMachine/Fin/Contenido/Control/OutroPanel" method="EnterPanel"]
@@ -2098,5 +2455,8 @@ animation = "recomendation"
 [editable path="FoodTruck/StateMachine/Juego/Contenido/FinalPanel"]
 [editable path="FoodTruck/StateMachine/Juego/Contenido/FinalPanel/btnIzqAnchor/btnIzq/SquigglingSprite"]
 [editable path="FoodTruck/StateMachine/Juego/Contenido/FinalPanel/btnCentralAnchor/btnCentral/SquigglingSprite"]
+[editable path="FoodTruck/StateMachine/Juego/Contenido/FuerzaPanel"]
+[editable path="FoodTruck/StateMachine/Juego/Contenido/FuerzaPanel/btnIzqAnchor/btnIzq/SquigglingSprite"]
+[editable path="FoodTruck/StateMachine/Juego/Contenido/FuerzaPanel/btnCentralAnchor/btnCentral/SquigglingSprite"]
 [editable path="FoodTruck/StateMachine/Juego/Contenido/PaperController"]
 [editable path="FoodTruck/StateMachine/Juego/Contenido/PaperController/pivot/Button"]

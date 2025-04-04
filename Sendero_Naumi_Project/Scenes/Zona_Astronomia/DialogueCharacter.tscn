@@ -1,7 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://blcdo5n6nfd6h"]
+[gd_scene load_steps=10 format=3 uid="uid://blcdo5n6nfd6h"]
 
 [ext_resource type="Script" path="res://_Scripts/MinG_Astronauta/ProximityDialogue.gd" id="1_80e3r"]
 [ext_resource type="Texture2D" uid="uid://do3f5jjo24370" path="res://Sprites/ZonaAstronomia/otronauta relax - astronauta.png" id="2_uplvp"]
+[ext_resource type="Script" path="res://_Scripts/SoundEventTrigger.gd" id="3_ni3t6"]
+[ext_resource type="Script" path="res://addons/resonate/sound_manager/sound_bank.gd" id="4_8adfx"]
+[ext_resource type="Script" path="res://addons/resonate/sound_manager/sound_event_resource.gd" id="5_vwo8a"]
+[ext_resource type="AudioStream" uid="uid://cogkfgbcowdnp" path="res://Sounds/Astronauta/Astronauta - Otros Astronautas.ogg" id="6_ovwrl"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_oliqe"]
 resource_local_to_scene = true
@@ -13,6 +17,15 @@ corner_radius_top_left = 16
 corner_radius_top_right = 16
 corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
+
+[sub_resource type="Resource" id="Resource_di5eu"]
+script = ExtResource("5_vwo8a")
+name = "dialogo"
+bus = "otrosAstronautas"
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([ExtResource("6_ovwrl")])
 
 [node name="TheGuy" type="Node2D"]
 script = ExtResource("1_80e3r")
@@ -64,3 +77,11 @@ autowrap_mode = 2
 [node name="Polygon2D" type="Polygon2D" parent="Panel"]
 color = Color(0.859375, 0.859375, 0.859375, 1)
 polygon = PackedVector2Array(17, 74, 0, 86, 0, 53)
+
+[node name="soundEmitter" type="Node" parent="."]
+script = ExtResource("3_ni3t6")
+
+[node name="SoundBank" type="Node" parent="soundEmitter"]
+script = ExtResource("4_8adfx")
+label = "guy"
+events = Array[ExtResource("5_vwo8a")]([SubResource("Resource_di5eu")])

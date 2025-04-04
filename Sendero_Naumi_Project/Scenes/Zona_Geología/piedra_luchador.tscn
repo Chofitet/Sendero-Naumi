@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cm3bhrmlsfqxm"]
+[gd_scene load_steps=16 format=3 uid="uid://cm3bhrmlsfqxm"]
 
 [ext_resource type="Script" path="res://_Scripts/MinG_RockFigther/RockSpriteController.gd" id="1_0fan5"]
 [ext_resource type="SpriteFrames" uid="uid://d4kgmngixgmvj" path="res://Resources/FigthterPartesFrames/BrazoDerechoSprite.tres" id="2_hfbyb"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://byauyjvexvbuc" path="res://Scenes/Experiments/ShardEmitter.tscn" id="4_1kf35"]
 [ext_resource type="Script" path="res://_Scripts/PlayAnimation.gd" id="5_x25mk"]
 [ext_resource type="SpriteFrames" uid="uid://dkhdkh1muoigh" path="res://Resources/FigthterPartesFrames/BrazoIzquierdoSprite.tres" id="7_050uu"]
+[ext_resource type="AudioStream" uid="uid://cku3l8i4tte4c" path="res://Sounds/Fighter/Fighter - Eleccion.ogg" id="8_gh2ji"]
 
 [sub_resource type="Animation" id="Animation_74hn4"]
 resource_name = "EnterAnim"
@@ -66,7 +67,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_6y1ib"]
 resource_name = "Rock_Block"
-length = 2.7
+length = 6.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -91,6 +92,21 @@ tracks/1/keys = {
 "update": 1,
 "values": [0.0, 0.0, 0.0, 0.253073, 0.253073, 0.169297, 0.197222, 0.169297]
 }
+tracks/2/type = "audio"
+tracks/2/imported = false
+tracks/2/enabled = false
+tracks/2/path = NodePath("../../AudioStreamPlayer")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("8_gh2ji")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/2/use_blend = true
 
 [sub_resource type="Animation" id="Animation_82n62"]
 resource_name = "Rock_Idle"
@@ -209,7 +225,7 @@ sprite_frames = ExtResource("7_050uu")
 animation = &"Rock_Punch"
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 3.2
+wait_time = 4.0
 one_shot = true
 
 [node name="AnimPiedra" type="AnimationPlayer" parent="."]
@@ -219,3 +235,5 @@ libraries = {
 }
 script = ExtResource("5_x25mk")
 preloadAnim = "Rock_Idle"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

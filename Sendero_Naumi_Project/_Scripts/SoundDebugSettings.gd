@@ -45,5 +45,15 @@ class_name VolumeSettings
 	"botaCae": 0,
 	"reloj": 0,
 	"cucarachaPiso": 0,
-	"cucarachaPuerta": 0
+	"cucarachaPuerta": 0,
+	"VolumenAstronauta": 0,
+	"jetPack": 0,
+	"pedo": 0,
+	"astronautaRespiracion": 0,
+	"agarrar":0,
+	"otrosAstronautas":0,
+	"salidaCueva":0,
+	"CHIPA":0,
+	"choqueMeteoro" : 0,
+	"golpe":0
 	}

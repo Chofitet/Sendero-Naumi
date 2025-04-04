@@ -1,0 +1,573 @@
+[gd_scene load_steps=33 format=3 uid="uid://cllkkw8ba7sml"]
+
+[ext_resource type="Texture2D" uid="uid://q7ghlhn1wgxr" path="res://Sprites/ZonaMegafauna/fondo - piso.png" id="1_30kde"]
+[ext_resource type="Script" path="res://_Scripts/MinG_MegaFood/CortinaController.gd" id="1_pqnvh"]
+[ext_resource type="Texture2D" uid="uid://cim4y7e0dimdy" path="res://Sprites/ZonaMegafauna/cordon - foodtruck.png" id="2_lo2v8"]
+[ext_resource type="Texture2D" uid="uid://cwdp1unrbqued" path="res://Sprites/ZonaMegafauna/fondo - encimera.png" id="2_q322g"]
+[ext_resource type="Texture2D" uid="uid://c5wq5araxs8l7" path="res://Sprites/ZonaMegafauna/fondo - mesada.png" id="3_dudrl"]
+[ext_resource type="PackedScene" uid="uid://cw3ok8v4p620b" path="res://Scenes/Experiments/squiggling_sprite.tscn" id="3_opy0r"]
+[ext_resource type="Texture2D" uid="uid://qbfds1k6hut4" path="res://Sprites/ZonaGeología/SquigglingFoodtruck/cordonSQUIG - foodtruck.png" id="4_lg7pp"]
+[ext_resource type="PackedScene" uid="uid://chcp24toqisaw" path="res://Scenes/Experiments/GenericPanel/GenericPanel.tscn" id="5_bqre2"]
+[ext_resource type="Texture2D" uid="uid://0rvummp53ce" path="res://Sprites/ZonaMegafauna/cortina - foodtruck.png" id="5_c7ycf"]
+[ext_resource type="Theme" uid="uid://dxbgpuuiuxxto" path="res://Resources/UI_Resources/shoutPanel.tres" id="6_1s18u"]
+[ext_resource type="AudioStream" uid="uid://cjeal1bpcjk1l" path="res://Sounds/Foodtruck/FoodTruck - Piolin aparece.ogg" id="6_wagah"]
+[ext_resource type="Script" path="res://Scenes/Experiments/GenericPanel/TextFieldData.gd" id="7_ijq6e"]
+[ext_resource type="StyleBox" uid="uid://b3tjes2hcm3wx" path="res://Resources/UI_Resources/StyleBoxTrasparent.tres" id="7_ri1qb"]
+[ext_resource type="LabelSettings" uid="uid://dplv12ok5d6a5" path="res://Resources/UI_Resources/ShoutLabel.tres" id="8_hp6tg"]
+[ext_resource type="Script" path="res://_Scripts/DetectTexture.gd" id="8_pohbf"]
+[ext_resource type="PackedScene" uid="uid://djhg7jvxtexyl" path="res://Scenes/UI_Scenes/btn_Change_Scene.tscn" id="9_d4ni0"]
+[ext_resource type="Script" path="res://addons/resonate/sound_manager/sound_bank.gd" id="12_w0avj"]
+[ext_resource type="Script" path="res://addons/resonate/sound_manager/sound_event_resource.gd" id="13_yav5k"]
+[ext_resource type="AudioStream" uid="uid://qnecavl47443" path="res://Sounds/Foodtruck/FoodTruck - Tocar Piolin para cerrar.ogg" id="14_10sl4"]
+[ext_resource type="AudioStream" uid="uid://5h0jaalw26fx" path="res://Sounds/Foodtruck/FoodTruck - Cierra el Foodtruck.ogg" id="15_l3d4f"]
+[ext_resource type="AudioStream" uid="uid://nipmvc6o585y" path="res://Sounds/Foodtruck/FoodTruck - Intento de Cerrar.ogg" id="16_57hui"]
+
+[sub_resource type="Animation" id="Animation_vus76"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_g0kn5"]
+resource_name = "fadeOut"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 0.886275)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4vbvs"]
+_data = {
+"RESET": SubResource("Animation_vus76"),
+"fadeOut": SubResource("Animation_g0kn5")
+}
+
+[sub_resource type="Animation" id="Animation_t84p4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("cordon:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-1.5708]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../FinalPanel:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Button:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("cordon:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("cordon:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.75, 0.75)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("cordon:skew")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("cordon:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-2.2769, -14.3946)]
+}
+
+[sub_resource type="Animation" id="Animation_2tckf"]
+resource_name = "cordon_anim"
+length = 2.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("cordon:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.7, 1, 1.2, 1.4),
+"transitions": PackedFloat32Array(1, 1, -2, -2, -2),
+"update": 0,
+"values": [-1.76627, -1.76627, 0.523599, -0.261799, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../FinalPanel:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Button:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1.4),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.7, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 103)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("cordon:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("cordon/SquigglingSprite")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(1.6),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"ActiveSquiggling"
+}]
+}
+tracks/6/type = "audio"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("AnimationPlayer/AudioStreamPlayer")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("6_wagah")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/6/use_blend = true
+tracks/7/type = "method"
+tracks/7/imported = false
+tracks/7/enabled = false
+tracks/7/path = NodePath("../../LevelSound")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["aparecePiolin", 0.0, false],
+"method": &"PlayEvent"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_hgw1a"]
+resource_name = "cordon_try"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3),
+"transitions": PackedFloat32Array(1, 2, 1),
+"update": 0,
+"values": [Vector2(0, 103), Vector2(0, 131), Vector2(0, 103)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("cordon:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.4, 0.6, 0.7),
+"transitions": PackedFloat32Array(2, -2, -2, -2, 1),
+"update": 0,
+"values": [0.0, 0.193732, -0.129154, 0.0174533, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = false
+tracks/2/path = NodePath("cordon:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.4, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0.75, 0.75), Vector2(0.75, 0.676083), Vector2(0.75, 0.6904), Vector2(0.75, 0.75)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = false
+tracks/3/path = NodePath("cordon:skew")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.4, 0.7),
+"transitions": PackedFloat32Array(2, -2, -2, 1),
+"update": 0,
+"values": [0.0, 0.258309, -0.0959931, 0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = false
+tracks/4/path = NodePath("cordon:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.4, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -26), Vector2(-2.2769, -14.3946), Vector2(1.2282, -16.5434), Vector2(0, -26)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_so3tm"]
+_data = {
+"RESET": SubResource("Animation_t84p4"),
+"cordon_anim": SubResource("Animation_2tckf"),
+"cordon_try": SubResource("Animation_hgw1a")
+}
+
+[sub_resource type="Resource" id="Resource_0olqq"]
+script = ExtResource("13_yav5k")
+name = "tap"
+bus = ""
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([ExtResource("14_10sl4")])
+
+[sub_resource type="Resource" id="Resource_b13o4"]
+script = ExtResource("13_yav5k")
+name = "close"
+bus = ""
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([ExtResource("15_l3d4f")])
+
+[sub_resource type="Resource" id="Resource_s0ge1"]
+script = ExtResource("13_yav5k")
+name = "tryClose"
+bus = ""
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([ExtResource("16_57hui")])
+
+[sub_resource type="Resource" id="Resource_pex78"]
+script = ExtResource("7_ijq6e")
+Text = "¡DE UN TIRÓN!
+¡CON FUERZA!"
+SizePanel = Vector2(0, 0)
+Position = Vector2(0, 0)
+buttons = Array[Resource("res://Scenes/Experiments/GenericPanel/ButtonPanelData.gd")]([])
+NumOfContent = 0
+
+[node name="cordon" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Fondo" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+grow_horizontal = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Fondo"]
+position = Vector2(17.9053, 204.823)
+scale = Vector2(0.658768, 0.741646)
+texture = ExtResource("1_30kde")
+
+[node name="Encimera" type="Control" parent="."]
+layout_mode = 1
+anchor_left = 0.501
+anchor_top = 1.0
+anchor_right = 0.501
+anchor_bottom = 1.0
+offset_left = 0.0649414
+offset_top = -272.465
+offset_right = 0.0649414
+offset_bottom = -272.465
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Encimera"]
+position = Vector2(-6.78497, -105.535)
+scale = Vector2(0.861079, 0.904707)
+texture = ExtResource("2_q322g")
+
+[node name="Mesada" type="Control" parent="."]
+layout_mode = 1
+anchor_left = 0.5
+anchor_top = 0.398
+anchor_right = 0.5
+anchor_bottom = 0.398
+offset_top = -0.440033
+offset_bottom = -0.440033
+
+[node name="Mesada" type="Sprite2D" parent="Mesada"]
+position = Vector2(0, 39)
+scale = Vector2(0.672098, 0.668025)
+texture = ExtResource("3_dudrl")
+
+[node name="CortinaPos" type="Marker2D" parent="Mesada"]
+position = Vector2(0, 302)
+
+[node name="fadeToBlack" type="ColorRect" parent="Mesada"]
+layout_mode = 1
+offset_left = -789.5
+offset_top = 291.0
+offset_right = 789.5
+offset_bottom = 1947.0
+color = Color(0, 0, 0, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Mesada/fadeToBlack"]
+libraries = {
+"": SubResource("AnimationLibrary_4vbvs")
+}
+
+[node name="Cordon" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+grow_horizontal = 2
+
+[node name="Cortina" type="Node2D" parent="Cordon" node_paths=PackedStringArray("Pos")]
+z_index = 1
+script = ExtResource("1_pqnvh")
+Pos = NodePath("../../Mesada/CortinaPos")
+limitGesture = 100.0
+
+[node name="fade" type="CanvasLayer" parent="Cordon/Cortina"]
+
+[node name="cordon" type="Sprite2D" parent="Cordon/Cortina"]
+visible = false
+position = Vector2(-2.2769, -14.3946)
+rotation = -1.5708
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("2_lo2v8")
+offset = Vector2(0, 160)
+
+[node name="SquigglingSprite" parent="Cordon/Cortina/cordon" instance=ExtResource("3_opy0r")]
+position = Vector2(1.33334, 154.667)
+texture = ExtResource("4_lg7pp")
+ActiveInBegining = false
+
+[node name="cortina" type="Sprite2D" parent="Cordon/Cortina"]
+position = Vector2(0, -556)
+scale = Vector2(0.746099, 0.785838)
+texture = ExtResource("5_c7ycf")
+
+[node name="fadeToBlack" type="ColorRect" parent="Cordon/Cortina/cortina"]
+anchors_preset = -1
+anchor_left = 0.514
+anchor_top = 1.0
+anchor_right = 0.514
+anchor_bottom = 1.0
+offset_left = -1494.74
+offset_top = -2358.4
+offset_right = 84.26
+offset_bottom = -702.398
+color = Color(0, 0, 0, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Cordon/Cortina/cortina/fadeToBlack"]
+libraries = {
+"": SubResource("AnimationLibrary_4vbvs")
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Cordon/Cortina"]
+autoplay = "cordon_anim"
+libraries = {
+"": SubResource("AnimationLibrary_so3tm")
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Cordon/Cortina/AnimationPlayer"]
+
+[node name="Button" type="Button" parent="Cordon/Cortina"]
+visible = false
+offset_left = -197.0
+offset_right = 205.0
+offset_bottom = 441.0
+theme_override_styles/focus = ExtResource("7_ri1qb")
+script = ExtResource("8_pohbf")
+threshold = 50.0
+
+[node name="Timer" type="Timer" parent="Cordon/Cortina/Button"]
+
+[node name="Timer" type="Timer" parent="Cordon/Cortina"]
+wait_time = 0.3
+one_shot = true
+
+[node name="CordonSounds" type="Node" parent="Cordon/Cortina"]
+
+[node name="SoundBank" type="Node" parent="Cordon/Cortina/CordonSounds"]
+script = ExtResource("12_w0avj")
+label = "cordon"
+events = Array[ExtResource("13_yav5k")]([SubResource("Resource_0olqq"), SubResource("Resource_b13o4"), SubResource("Resource_s0ge1")])
+
+[node name="ButtonChangeScene" parent="." instance=ExtResource("9_d4ni0")]
+layout_mode = 1
+anchors_preset = 2
+anchor_left = 0.0
+anchor_right = 0.0
+offset_left = 23.0
+offset_top = -73.0
+offset_right = 109.0
+offset_bottom = -22.0
+grow_horizontal = 1
+text = "map"
+NextScene = "Map_Screen"
+
+[node name="FuerzaPanel" parent="." instance=ExtResource("5_bqre2")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.503
+anchor_top = 0.388
+anchor_right = 0.503
+anchor_bottom = 0.388
+offset_left = -363.32
+offset_top = -261.64
+offset_right = 359.68
+offset_bottom = 286.36
+pivot_offset = Vector2(361.5, 274)
+theme = ExtResource("6_1s18u")
+AppearInBeginning = false
+Texts = Array[ExtResource("7_ijq6e")]([SubResource("Resource_pex78")])
+
+[node name="label" parent="FuerzaPanel" index="0"]
+text = "¡DE UN TIRÓN!
+¡CON FUERZA!"
+label_settings = ExtResource("8_hp6tg")
+
+[node name="BtnDerAnchor" parent="FuerzaPanel" index="3"]
+anchor_left = 0.791
+anchor_top = 0.781
+anchor_right = 0.791
+anchor_bottom = 0.781
+offset_left = 0.106995
+offset_top = 0.0119934
+offset_right = 0.106995
+offset_bottom = 0.0119934
+
+[connection signal="Closing" from="Cordon/Cortina" to="Mesada/fadeToBlack/AnimationPlayer" method="play" binds= ["fadeOut"]]
+[connection signal="Closing" from="Cordon/Cortina" to="Cordon/Cortina/cortina/fadeToBlack/AnimationPlayer" method="play" binds= ["fadeOut"]]
+[connection signal="ExitFuerzaaa" from="Cordon/Cortina" to="FuerzaPanel" method="ExitPanel"]
+[connection signal="Fuerzaaa" from="Cordon/Cortina" to="FuerzaPanel" method="EnterPanel"]
+
+[editable path="FuerzaPanel"]
+[editable path="FuerzaPanel/btnIzqAnchor/btnIzq/SquigglingSprite"]
+[editable path="FuerzaPanel/btnCentralAnchor/btnCentral/SquigglingSprite"]

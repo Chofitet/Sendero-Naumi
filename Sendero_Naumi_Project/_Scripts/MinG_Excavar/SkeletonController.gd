@@ -23,6 +23,7 @@ func DoDiscoverAnim(x):
 	topoController.ConnectBook(instance)
 	instance.DrawFinish.connect(EmitAppearIconSignal)
 	x.get_node("particles").Emit()
+	SoundManager.play("fosil","explota")
 	x.self_modulate = Color.WHITE
 	x.z_index = 2
 	var initScale = x.scale

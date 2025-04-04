@@ -1,4 +1,4 @@
-[gd_scene load_steps=134 format=3 uid="uid://buth5gc88nt3j"]
+[gd_scene load_steps=142 format=3 uid="uid://buth5gc88nt3j"]
 
 [ext_resource type="Texture2D" uid="uid://cjjoaemhep814" path="res://Sprites/mapa-detalle.png" id="1_kw7ma"]
 [ext_resource type="Texture2D" uid="uid://hf5y4ic16cqj" path="res://Sprites/Intro/intro - background.jpg" id="1_un13t"]
@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://05mdqsdsbuqm" path="res://Sprites/Mapa/geologia_mapa.png" id="11_tirda"]
 [ext_resource type="Texture2D" uid="uid://lvhlr8303o1m" path="res://Sprites/Mapa/megafauna_mapa.png" id="12_4oixe"]
 [ext_resource type="SpriteFrames" uid="uid://vahks4sl257e" path="res://Resources/NaumiSpriteFrames/N0.tres" id="12_dirag"]
+[ext_resource type="AudioStream" uid="uid://cdrg0wy6og1eg" path="res://Sounds/Intro/Mapa de Intro - Toco Naumi.ogg" id="14_lf5ql"]
 [ext_resource type="PackedScene" uid="uid://bac1ysj2c0bok" path="res://Scenes/Experiments/hand_ui.tscn" id="15_2xluc"]
 [ext_resource type="Script" path="res://_Scripts/PlayAnimation.gd" id="15_4c0kx"]
 [ext_resource type="PackedScene" uid="uid://djhg7jvxtexyl" path="res://Scenes/UI_Scenes/btn_Change_Scene.tscn" id="16_0ow6t"]
@@ -40,6 +41,11 @@
 [ext_resource type="Texture2D" uid="uid://b4mb0fyar87n4" path="res://Sprites/Mapa/universo_mapa.png" id="36_hins2"]
 [ext_resource type="Texture2D" uid="uid://8e4j1255vh8b" path="res://Sprites/Mapa/camino - mapa.png" id="36_k1vcc"]
 [ext_resource type="Script" path="res://Scenes/Experiments/GenericPanel/IntermediateData.gd" id="37_aloy4"]
+[ext_resource type="AudioStream" uid="uid://dcht440kayc04" path="res://Sounds/Intro/Mapa de Intro - Wait.ogg" id="37_f3c5j"]
+[ext_resource type="AudioStream" uid="uid://c4uhq617w2irv" path="res://Sounds/Intro/Mapa de Intro - Desciendo en Navidad.ogg" id="37_v32se"]
+[ext_resource type="Script" path="res://_Scripts/SoundEventTrigger.gd" id="38_w1dlu"]
+[ext_resource type="Script" path="res://addons/resonate/sound_manager/sound_bank.gd" id="39_ulxrw"]
+[ext_resource type="Script" path="res://addons/resonate/sound_manager/sound_event_resource.gd" id="40_4y0vi"]
 [ext_resource type="Script" path="res://_Scripts/SkipLogic.gd" id="41_1pukf"]
 [ext_resource type="PackedScene" uid="uid://nmuyip31gkq5" path="res://Scenes/UI_Scenes/generic_button.tscn" id="42_82gy6"]
 [ext_resource type="Texture2D" uid="uid://kb7ixs5ala8" path="res://Sprites/UI/arrowIcon - UI.png" id="43_381d8"]
@@ -410,6 +416,15 @@ _data = {
 "RESET": SubResource("Animation_nd4le"),
 "tap_naumi": SubResource("Animation_pe6oj")
 }
+
+[sub_resource type="Resource" id="Resource_6hwmy"]
+script = ExtResource("40_4y0vi")
+name = "tap"
+bus = ""
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([ExtResource("14_lf5ql")])
 
 [sub_resource type="LabelSettings" id="LabelSettings_uexs6"]
 font_size = 180
@@ -889,6 +904,21 @@ tracks/3/keys = {
 "method": &"EnterPanel"
 }]
 }
+tracks/4/type = "audio"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("MegafaunaAnimator/AudioStreamPlayer")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("37_f3c5j")
+}],
+"times": PackedFloat32Array(0.2)
+}
+tracks/4/use_blend = true
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_fh205"]
 _data = {
@@ -958,6 +988,38 @@ tracks/4/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+tracks/5/type = "audio"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("FadeAnimation/AudioStreamPlayer")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("37_v32se")
+}],
+"times": PackedFloat32Array(0.1)
+}
+tracks/5/use_blend = true
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("MapSound")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"StopSoundsInCuttableQueue"
+}, {
+"args": ["swipe", 0.0, true],
+"method": &"PlayEvent"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_0giqn"]
@@ -1058,6 +1120,23 @@ tracks/7/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/8/type = "method"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("MapSound")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"StopSoundsInCuttableQueue"
+}, {
+"args": ["swipe", 0.0, true],
+"method": &"PlayEvent"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_1x3ux"]
 resource_name = "3erFade"
@@ -1156,6 +1235,23 @@ tracks/7/keys = {
 "transitions": PackedFloat32Array(1, -2, 1),
 "update": 0,
 "values": [Vector2(1582, -316), Vector2(1582, -266), Vector2(1582, -2099)]
+}
+tracks/8/type = "method"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("MapSound")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"StopSoundsInCuttableQueue"
+}, {
+"args": ["swipe", 0.0, true],
+"method": &"PlayEvent"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_4i7sj"]
@@ -1324,6 +1420,15 @@ _data = {
 "3erFade": SubResource("Animation_1x3ux"),
 "RESET": SubResource("Animation_4i7sj")
 }
+
+[sub_resource type="Resource" id="Resource_bme0e"]
+script = ExtResource("40_4y0vi")
+name = "swipe"
+bus = ""
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([ExtResource("37_v32se")])
 
 [sub_resource type="Resource" id="Resource_2er3h"]
 script = ExtResource("33_xvgkx")
@@ -1567,7 +1672,7 @@ libraries = {
 position = Vector2(0, -287)
 scale = Vector2(0.972, 0.972)
 sprite_frames = ExtResource("12_dirag")
-animation = &"tapped"
+animation = &"call"
 autoplay = "sleeping"
 
 [node name="Button" type="Button" parent="Naumi_Intro/Control/NaumiController/pivot"]
@@ -1617,6 +1722,14 @@ AnimToPlay = "idle_anim"
 wait_time = 1e+06
 one_shot = true
 autostart = true
+
+[node name="NaumiSounds" type="Node" parent="Naumi_Intro/Control/NaumiController"]
+script = ExtResource("38_w1dlu")
+
+[node name="SoundBank" type="Node" parent="Naumi_Intro/Control/NaumiController/NaumiSounds"]
+script = ExtResource("39_ulxrw")
+label = "naumi"
+events = Array[ExtResource("40_4y0vi")]([SubResource("Resource_6hwmy")])
 
 [node name="LabelNaumi" type="Label" parent="Naumi_Intro/Control"]
 layout_mode = 0
@@ -2223,6 +2336,8 @@ libraries = {
 script = ExtResource("15_4c0kx")
 animation = "Zone_anim"
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Map_Scroll/CenterAnchor/Piso1/ExpandingCoteiner/MegafaunaZone/MegafaunaAnimator"]
+
 [node name="Button" type="Button" parent="Map_Scroll/CenterAnchor/Piso1/ExpandingCoteiner/MegafaunaZone"]
 visible = false
 self_modulate = Color(1, 1, 1, 0)
@@ -2251,6 +2366,16 @@ round_precision = 32
 libraries = {
 "": SubResource("AnimationLibrary_0aep1")
 }
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Map_Scroll/CenterAnchor/FadeAnimation"]
+
+[node name="MapSound" type="Node" parent="Map_Scroll/CenterAnchor"]
+script = ExtResource("38_w1dlu")
+
+[node name="SoundBank" type="Node" parent="Map_Scroll/CenterAnchor/MapSound"]
+script = ExtResource("39_ulxrw")
+label = "map"
+events = Array[ExtResource("40_4y0vi")]([SubResource("Resource_bme0e")])
 
 [node name="fakeMap" type="Control" parent="Map_Scroll"]
 visible = false
