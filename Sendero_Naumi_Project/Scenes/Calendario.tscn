@@ -1,4 +1,4 @@
-[gd_scene load_steps=141 format=3 uid="uid://cmv5m3ynk4o5y"]
+[gd_scene load_steps=142 format=3 uid="uid://cmv5m3ynk4o5y"]
 
 [ext_resource type="Script" path="res://_Scripts/Minigame_Save_Controller.gd" id="1_jl73q"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/StateMachineMinigames.gd" id="2_7aqcq"]
@@ -85,6 +85,7 @@
 [ext_resource type="AudioStream" uid="uid://caq6thevy5375" path="res://Sounds/Calendario/Calendario - Incorrecto 2.ogg" id="68_7n0qr"]
 [ext_resource type="AudioStream" uid="uid://ci8e1utlu80us" path="res://Sounds/Calendario/Calendario - Incorrecto.ogg" id="69_8hnyl"]
 [ext_resource type="AudioStream" uid="uid://uewu4yxhihea" path="res://Sounds/Calendario/Calendario - Swipe Opcion.ogg" id="77_nx0l5"]
+[ext_resource type="PackedScene" uid="uid://c8dodmo3saxdr" path="res://Scenes/Experiments/sound_debug.tscn" id="86_iwtdq"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xwgrb"]
 shader = ExtResource("9_ppfba")
@@ -456,7 +457,7 @@ Place = 0
 [sub_resource type="Resource" id="Resource_3oukl"]
 script = ExtResource("27_wt5n4")
 name = "calendarioAparece"
-bus = ""
+bus = "apareceMemoria"
 volume = 0.0
 pitch = 1.0
 RandomPitch = Vector2(1, 1)
@@ -465,7 +466,7 @@ streams = Array[AudioStream]([ExtResource("13_qj55s")])
 [sub_resource type="Resource" id="Resource_ld0fi"]
 script = ExtResource("27_wt5n4")
 name = "fotoAparece"
-bus = ""
+bus = "apareceFoto"
 volume = 0.0
 pitch = 1.0
 RandomPitch = Vector2(1, 1)
@@ -499,7 +500,7 @@ shader_parameter/yOffset = null
 [sub_resource type="Resource" id="Resource_vpric"]
 script = ExtResource("27_wt5n4")
 name = "zoomIn"
-bus = ""
+bus = "zoomIn"
 volume = 0.0
 pitch = 1.0
 RandomPitch = Vector2(1, 1)
@@ -508,7 +509,7 @@ streams = Array[AudioStream]([ExtResource("41_iuypg")])
 [sub_resource type="Resource" id="Resource_fgife"]
 script = ExtResource("27_wt5n4")
 name = "zoomOut"
-bus = ""
+bus = "zoomOut"
 volume = 0.0
 pitch = 1.0
 RandomPitch = Vector2(1, 1)
@@ -517,7 +518,7 @@ streams = Array[AudioStream]([ExtResource("42_guvpf")])
 [sub_resource type="Resource" id="Resource_bappy"]
 script = ExtResource("27_wt5n4")
 name = "tapQuestion"
-bus = ""
+bus = "tocarOpcion"
 volume = 0.0
 pitch = 1.0
 RandomPitch = Vector2(1, 1)
@@ -526,7 +527,7 @@ streams = Array[AudioStream]([ExtResource("42_deofg")])
 [sub_resource type="Resource" id="Resource_nru6v"]
 script = ExtResource("27_wt5n4")
 name = "finalZoomOut"
-bus = ""
+bus = "zoomOutOutro"
 volume = 0.0
 pitch = 1.0
 RandomPitch = Vector2(1, 1)
@@ -931,7 +932,7 @@ _data = {
 [sub_resource type="Resource" id="Resource_rfq4e"]
 script = ExtResource("27_wt5n4")
 name = "rigthAnswer"
-bus = ""
+bus = "opcionCorrecta"
 volume = 0.0
 pitch = 1.0
 RandomPitch = Vector2(1, 1)
@@ -940,7 +941,7 @@ streams = Array[AudioStream]([ExtResource("67_ukgat")])
 [sub_resource type="Resource" id="Resource_kbel6"]
 script = ExtResource("27_wt5n4")
 name = "wrongAnswer1"
-bus = ""
+bus = "incorrecto1"
 volume = 0.0
 pitch = 1.0
 RandomPitch = Vector2(1, 1.2)
@@ -949,7 +950,7 @@ streams = Array[AudioStream]([ExtResource("68_7n0qr")])
 [sub_resource type="Resource" id="Resource_ggkcw"]
 script = ExtResource("27_wt5n4")
 name = "wrongAnswer2"
-bus = ""
+bus = "incorrecto2"
 volume = 0.0
 pitch = 1.0
 RandomPitch = Vector2(1, 1.2)
@@ -975,19 +976,19 @@ NumOfContent = 0
 [sub_resource type="Resource" id="Resource_mjrs7"]
 script = ExtResource("27_wt5n4")
 name = "tap"
-bus = ""
+bus = "tocarOpcion"
 volume = 0.0
 pitch = 1.0
-RandomPitch = Vector2(1, 1)
+RandomPitch = Vector2(0.9, 1.3)
 streams = Array[AudioStream]([ExtResource("42_deofg")])
 
 [sub_resource type="Resource" id="Resource_esdlq"]
 script = ExtResource("27_wt5n4")
 name = "swipe"
-bus = ""
+bus = "swipeOpcion"
 volume = 0.0
 pitch = 1.0
-RandomPitch = Vector2(1, 1)
+RandomPitch = Vector2(0.9, 1.3)
 streams = Array[AudioStream]([ExtResource("77_nx0l5")])
 
 [sub_resource type="Resource" id="Resource_0ny5c"]
@@ -1227,12 +1228,12 @@ Data = SubResource("Resource_hfs58")
 [node name="PanelIntro2" parent="Calendario/StateMachine/Consigna/Contenido" instance=ExtResource("15_1ptxs")]
 layout_mode = 1
 anchors_preset = -1
-anchor_top = 0.362
-anchor_bottom = 0.362
-offset_left = -341.0
-offset_top = -379.36
-offset_right = 341.0
-offset_bottom = -151.36
+anchor_top = 0.351
+anchor_bottom = 0.351
+offset_left = 25.0
+offset_top = 86.0
+offset_right = 707.0
+offset_bottom = 314.0
 grow_vertical = 2
 pivot_offset = Vector2(341, 114)
 AppearInBeginning = false
@@ -1628,15 +1629,16 @@ events = Array[ExtResource("27_wt5n4")]([SubResource("Resource_rfq4e"), SubResou
 [node name="PanelConsigna" parent="Calendario/StateMachine/Juego/Contenido" instance=ExtResource("15_1ptxs")]
 layout_mode = 1
 anchors_preset = -1
-anchor_top = 0.377
-anchor_bottom = 0.377
-offset_left = -463.0
-offset_top = -398.56
-offset_right = 463.0
-offset_bottom = -172.56
+anchor_top = 0.379
+anchor_bottom = 0.379
+offset_left = -103.0
+offset_top = 85.0
+offset_right = 823.0
+offset_bottom = 311.0
 grow_vertical = 2
 pivot_offset = Vector2(463, 113)
 theme = ExtResource("55_7pksd")
+AppearSound = ""
 Texts = Array[ExtResource("18_66s5d")]([SubResource("Resource_v2ur4")])
 
 [node name="PanelPreguntas" parent="Calendario/StateMachine/Juego/Contenido" instance=ExtResource("15_1ptxs")]
@@ -1652,6 +1654,7 @@ grow_vertical = 2
 pivot_offset = Vector2(465, 114)
 theme = ExtResource("55_7pksd")
 AppearInBeginning = false
+AppearSound = ""
 Texts = Array[ExtResource("18_66s5d")]([SubResource("Resource_uthvg")])
 
 [node name="labelRich" parent="Calendario/StateMachine/Juego/Contenido/PanelPreguntas" index="1"]
@@ -2018,6 +2021,9 @@ NextScene = "Map_Screen"
 fade_time = 0.6
 texture = "vertical"
 smoothness = 0.2
+
+[node name="Sound Debug" parent="Calendario" instance=ExtResource("86_iwtdq")]
+AudioBuses = Array[String](["CalendarioVolumen", "apareceMemoria", "apareceFoto", "signoPregunta", "zoomIn", "zoomOut", "tocarOpcion", "swipeOpcion", "opcionCorrecta", "incorrecto1", "incorrecto2", "zoomOutOutro"])
 
 [connection signal="ButtonPress" from="Calendario/StateMachine/Consigna/Contenido/PanelIntro1/Panel(1) Btn(rigth)" to="Calendario/StateMachine/Consigna/Contenido/PanelIntro2" method="EnterPanel"]
 [connection signal="ButtonPress" from="Calendario/StateMachine/Consigna/Contenido/PanelIntro1/Panel(1) Btn(rigth)" to="Calendario/StateMachine/Consigna/Contenido/AnimationPlayer" method="play" binds= ["fadeMemoria"]]

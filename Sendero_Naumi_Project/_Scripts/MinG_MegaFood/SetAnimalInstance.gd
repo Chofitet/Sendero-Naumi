@@ -112,6 +112,7 @@ func SetResultEvent():
 	papercontroller.get_node("Button").button_down.connect(EndResultEvent)
 	var  PaperAnim = $PaperController/AnimationPlayer
 	PaperAnim.play("paper")
+	SoundManager.play("level","takePaper")
 	await  get_tree().create_timer(5).timeout
 	papercontroller.get_node("Button").EnterAnim()
 	EnterResultDelay.emit()

@@ -22,6 +22,7 @@ func _ready():
 		get_node(m).EnterInLevel.connect(DisapearButton)
 
 func DisapearButton(btn):
+	get_parent().get_node("ButtonBack").ExitAnim(true)
 	for m in Minigames:
 		var M = get_node(m)
 		if btn != M:

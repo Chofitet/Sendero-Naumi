@@ -35,6 +35,7 @@ func CompleteMision():
 	$PanelInventory/HBoxContainer.visible = false
 	PanelInventory.ChangeToNextText()
 	computer.Setface("talk")
+	
 
 
 ## llamarlo con boton 

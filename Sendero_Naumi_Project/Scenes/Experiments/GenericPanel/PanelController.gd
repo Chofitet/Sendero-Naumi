@@ -10,6 +10,7 @@ extends Panel
 @export var TimeToAppear : float
 @export var SetEnterOnce: bool
 @export var RepitingPanel : bool
+@export var AppearSound  : String = "basic"
 var isAlternetiveTheme
 var EnterOnce
 @onready var label = $label
@@ -148,8 +149,6 @@ func _ready():
 	_BotonIzquierda.visible = false
 	_BotonCentral.visible = false
 	
-	
-
 	pivot_offset =  Vector2(size.x/2,size.y/2)
 	if !Engine.is_editor_hint(): label.visible_ratio = 0
 	refreshData(1)
@@ -171,6 +170,7 @@ func _ready():
 		label.visible_ratio = 1
 		label.visible = true
 		AppearButtonAnim()
+	
 
 func EnterPanel():
 	ResetButtonAnimation(_BotonDerecho)
@@ -181,11 +181,13 @@ func EnterPanel():
 		EnterOnce = true
 	await  get_tree().create_timer(TimeToAppear).timeout
 	anim.play("enter_panel")
+	SoundManager.play("appear",AppearSound)
 	await anim.animation_finished
 	typingAnim()
 
 var tweenWritting : Tween
 func typingAnim():
+	SoundManager.play("typing",AppearSound)
 	var text_length = label.text.length()
 	var duration = text_length / Characters_per_second
 	label.visible_ratio = 0
@@ -250,6 +252,7 @@ func ChangeToNextText():
 	anim.play("change_panel")
 	await anim.animation_finished
 	label.visible = true
+	SoundManager.play("appear",AppearSound)
 	typingAnim()
 
 func RefreshToActualPanel():

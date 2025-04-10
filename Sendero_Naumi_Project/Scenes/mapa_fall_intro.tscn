@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://b00ok4g2p2vql"]
+[gd_scene load_steps=40 format=3 uid="uid://b00ok4g2p2vql"]
 
 [ext_resource type="Texture2D" uid="uid://hf5y4ic16cqj" path="res://Sprites/Intro/intro - background.jpg" id="1_xm8pn"]
 [ext_resource type="Texture2D" uid="uid://jd6systmhxf1" path="res://Sprites/Intro/intro - suelo.png" id="2_2edvn"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://cjjoaemhep814" path="res://Sprites/mapa-detalle.png" id="4_q3m1c"]
 [ext_resource type="Script" path="res://_Scripts/mapArriveSpot.gd" id="4_u6txa"]
 [ext_resource type="Script" path="res://_Scripts/PlayAnimation.gd" id="5_3difv"]
+[ext_resource type="AudioStream" uid="uid://ld03uqijpb6v" path="res://Sounds/Intro/Mapa de Intro - Mapa gira a nosotros.ogg" id="7_lrji5"]
 [ext_resource type="Texture2D" uid="uid://bue1ojwaaxod4" path="res://Sprites/logoCircleColor.png" id="8_2lckt"]
 [ext_resource type="AudioStream" uid="uid://b2e77owefmr5h" path="res://Sounds/Intro/Intro - Viento aparece al mapa.ogg" id="9_e031n"]
 [ext_resource type="Material" uid="uid://cr1nivdu20csy" path="res://shaders/Laser.tres" id="9_sv66f"]
@@ -24,6 +25,7 @@
 [ext_resource type="Script" path="res://addons/resonate/sound_manager/sound_bank.gd" id="15_gq267"]
 [ext_resource type="Texture2D" uid="uid://kb7ixs5ala8" path="res://Sprites/UI/arrowIcon - UI.png" id="16_bsblw"]
 [ext_resource type="Script" path="res://addons/resonate/sound_manager/sound_event_resource.gd" id="16_ds0ye"]
+[ext_resource type="PackedScene" uid="uid://c8dodmo3saxdr" path="res://Scenes/Experiments/sound_debug.tscn" id="26_7deic"]
 
 [sub_resource type="Animation" id="Animation_klold"]
 length = 0.001
@@ -66,7 +68,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_e8t3g"]
 resource_name = "map_enter"
-length = 2.0
+length = 2.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -117,6 +119,21 @@ tracks/3/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/4/type = "audio"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("AnimationPlayer/AudioStreamPlayer")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("7_lrji5")
+}],
+"times": PackedFloat32Array(0.4)
+}
+tracks/4/use_blend = true
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_smvwa"]
 _data = {
@@ -239,7 +256,7 @@ tracks/7/path = NodePath("SoundEmitter")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(1.7),
+"times": PackedFloat32Array(1.2),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": ["mapa", 0.0, false],
@@ -320,7 +337,7 @@ _data = {
 [sub_resource type="Resource" id="Resource_o1rb5"]
 script = ExtResource("16_ds0ye")
 name = "mapa"
-bus = ""
+bus = "mapaYviento"
 volume = 0.0
 pitch = 1.0
 RandomPitch = Vector2(1, 1)
@@ -527,6 +544,9 @@ libraries = {
 script = ExtResource("5_3difv")
 animation = "map_enter"
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="mapArriveSpot/Mapa/AnimationPlayer"]
+bus = &"mapaGira"
+
 [node name="LOGO" type="Sprite2D" parent="mapArriveSpot"]
 clip_children = 2
 position = Vector2(0, -607)
@@ -540,6 +560,7 @@ libraries = {
 }
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="mapArriveSpot/LOGO/AnimationPlayer"]
+bus = &"mapaGira"
 
 [node name="ShaderPreLoad" type="Line2D" parent="mapArriveSpot/LOGO"]
 z_index = 1
@@ -729,13 +750,24 @@ script = ExtResource("14_6a3v3")
 
 [node name="GenericButton" parent="ButtonSkip" instance=ExtResource("15_cg38x")]
 layout_mode = 0
-offset_left = 15.0
-offset_top = 10.0
-offset_right = 105.0
-offset_bottom = 100.0
+offset_left = 17.0
+offset_top = 11.0
+offset_right = 107.0
+offset_bottom = 101.0
 rotation = 3.14159
+noSway = true
+noSquiggling = true
 Icon = ExtResource("16_bsblw")
+
+[node name="Sound Debug" parent="." instance=ExtResource("26_7deic")]
+AudioBuses = Array[String](["mapaYviento", "mapaGira"])
+
+[node name="Button" parent="Sound Debug" index="1"]
+offset_left = 303.0
+offset_right = 415.0
 
 [connection signal="button_down" from="mapArriveSpot/Button" to="mapArriveSpot/MapAnim" method="play" binds= ["agarrado"]]
 [connection signal="button_down" from="mapArriveSpot/Button" to="mapArriveSpot/LOGO/AnimationPlayer" method="play" binds= ["DisappearPresenta"]]
 [connection signal="pressed" from="ButtonSkip/GenericButton" to="ButtonChangeScene" method="_on_pressed"]
+
+[editable path="Sound Debug"]

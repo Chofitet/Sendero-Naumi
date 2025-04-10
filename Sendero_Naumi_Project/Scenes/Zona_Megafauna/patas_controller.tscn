@@ -1,4 +1,4 @@
-[gd_scene load_steps=133 format=3 uid="uid://dcredgeon3w2q"]
+[gd_scene load_steps=143 format=3 uid="uid://dcredgeon3w2q"]
 
 [ext_resource type="Script" path="res://_Scripts/MinG_MegaFood/PatasController.gd" id="1_g46fd"]
 [ext_resource type="Texture2D" uid="uid://gbi1vckfb2af" path="res://Sprites/ZonaMegafauna/bandeja.png" id="2_15wck"]
@@ -49,10 +49,14 @@
 [ext_resource type="AudioStream" uid="uid://rw068n82ucdt" path="res://Sounds/Foodtruck/FoodTruck - Megaterio Correcto.ogg" id="45_dfy1j"]
 [ext_resource type="AudioStream" uid="uid://bi2ibnaanmy5h" path="res://Sounds/Foodtruck/FoodTruck - Megaterio Uñas.ogg" id="47_8va3s"]
 [ext_resource type="AudioStream" uid="uid://cnuhj4m2v7up0" path="res://Sounds/Foodtruck/FoodTruck- Plato Incorrecto.ogg" id="48_p28v7"]
+[ext_resource type="AudioStream" uid="uid://hrs2y16trhhr" path="res://Sounds/Foodtruck/FoodTruck - Smilodonte Llega.ogg" id="49_6nflj"]
 [ext_resource type="AudioStream" uid="uid://cr150uo5hrpsw" path="res://Sounds/Foodtruck/FoodTruck - Agarro Propina.ogg" id="49_xggah"]
+[ext_resource type="AudioStream" uid="uid://dfupvwa4crdbh" path="res://Sounds/Foodtruck/FoodTruck - Megaterio.ogg" id="50_08egd"]
 [ext_resource type="AudioStream" uid="uid://b0aus6mqusjrc" path="res://Sounds/Foodtruck/FoodTruck - Dejan Propina.ogg" id="50_o6h40"]
-[ext_resource type="AudioStream" uid="uid://crx8h1nwmjeii" path="res://Sounds/Foodtruck/FoodTruck - Dejo de Leer Servilleta.ogg" id="51_lpgh8"]
+[ext_resource type="AudioStream" uid="uid://c4xbwd2nxtma3" path="res://Sounds/Foodtruck/FoodTruck - Macrauquenia.ogg" id="51_2k8tr"]
 [ext_resource type="AudioStream" uid="uid://ctg73h4axew5u" path="res://Sounds/Foodtruck/FoodTruck - Se llevan la comida.ogg" id="52_dr6eg"]
+[ext_resource type="AudioStream" uid="uid://brtlrcxwv6h6r" path="res://Sounds/Foodtruck/FoodTruck - Macrauquenia Golpes.ogg" id="56_kptmw"]
+[ext_resource type="AudioStream" uid="uid://cc2rr3q8s3chx" path="res://Sounds/Foodtruck/FoodTruck - Mensaje Cierro.ogg" id="57_d3png"]
 
 [sub_resource type="Animation" id="Animation_jfp8t"]
 resource_name = "AngryAnim"
@@ -123,7 +127,7 @@ tracks/0/keys = {
 }
 tracks/1/type = "audio"
 tracks/1/imported = false
-tracks/1/enabled = true
+tracks/1/enabled = false
 tracks/1/path = NodePath("AudioStreamPlayer")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
@@ -138,7 +142,7 @@ tracks/1/keys = {
 tracks/1/use_blend = true
 tracks/2/type = "method"
 tracks/2/imported = false
-tracks/2/enabled = false
+tracks/2/enabled = true
 tracks/2/path = NodePath("GeneralSounds")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
@@ -384,7 +388,7 @@ tracks/0/keys = {
 }
 tracks/1/type = "audio"
 tracks/1/imported = false
-tracks/1/enabled = true
+tracks/1/enabled = false
 tracks/1/path = NodePath("AudioStreamPlayer")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
@@ -397,6 +401,20 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0.3)
 }
 tracks/1/use_blend = true
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("GeneralSounds")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["bandejaEntra", 0.0, false],
+"method": &"PlayEvent"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_rm5b2"]
 resource_name = "result"
@@ -1246,10 +1264,46 @@ script = ExtResource("40_yu7sk")
 NumberOfPanel = 1
 Place = 0
 
+[sub_resource type="Resource" id="Resource_c5u25"]
+script = ExtResource("42_lforj")
+name = "Smilodon"
+bus = "smilodonteEntra"
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([ExtResource("49_6nflj")])
+
+[sub_resource type="Resource" id="Resource_6morc"]
+script = ExtResource("42_lforj")
+name = "Gliptodonte"
+bus = "gliptodonteEntra"
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([])
+
+[sub_resource type="Resource" id="Resource_fi1sb"]
+script = ExtResource("42_lforj")
+name = "Megaterio"
+bus = "megaterioEntra"
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([ExtResource("50_08egd")])
+
+[sub_resource type="Resource" id="Resource_8a46o"]
+script = ExtResource("42_lforj")
+name = "Macrauquenia"
+bus = "macrauqueniaEntra"
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([ExtResource("51_2k8tr")])
+
 [sub_resource type="Resource" id="Resource_u4css"]
 script = ExtResource("42_lforj")
 name = "Smilodon"
-bus = ""
+bus = "smilodonteCorrecto"
 volume = 0.0
 pitch = 1.0
 RandomPitch = Vector2(1, 1)
@@ -1258,7 +1312,7 @@ streams = Array[AudioStream]([ExtResource("43_oxbml")])
 [sub_resource type="Resource" id="Resource_u4bee"]
 script = ExtResource("42_lforj")
 name = "Megaterio"
-bus = ""
+bus = "megaterioCorrecto"
 volume = 0.0
 pitch = 1.0
 RandomPitch = Vector2(1, 1)
@@ -1267,7 +1321,7 @@ streams = Array[AudioStream]([ExtResource("45_dfy1j")])
 [sub_resource type="Resource" id="Resource_na3j6"]
 script = ExtResource("42_lforj")
 name = "Gliptodon"
-bus = ""
+bus = "gliptodonteReclamo"
 volume = 0.0
 pitch = 1.0
 RandomPitch = Vector2(1, 1)
@@ -1276,16 +1330,25 @@ streams = Array[AudioStream]([ExtResource("33_bb367")])
 [sub_resource type="Resource" id="Resource_gycy8"]
 script = ExtResource("42_lforj")
 name = "Megaterio"
-bus = ""
+bus = "megaterioReclamo"
 volume = 0.0
 pitch = 1.0
 RandomPitch = Vector2(1, 1)
 streams = Array[AudioStream]([ExtResource("47_8va3s")])
 
+[sub_resource type="Resource" id="Resource_o7hug"]
+script = ExtResource("42_lforj")
+name = "Macrauquenia"
+bus = "macrauqueniaReclamo"
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([ExtResource("56_kptmw")])
+
 [sub_resource type="Resource" id="Resource_4jxxp"]
 script = ExtResource("42_lforj")
 name = "incorrecto"
-bus = ""
+bus = "platoIncorrecto"
 volume = 0.0
 pitch = 1.0
 RandomPitch = Vector2(1, 1)
@@ -1294,7 +1357,7 @@ streams = Array[AudioStream]([ExtResource("48_p28v7")])
 [sub_resource type="Resource" id="Resource_tbtw6"]
 script = ExtResource("42_lforj")
 name = "agarroPropina"
-bus = ""
+bus = "agarroPropina"
 volume = 0.0
 pitch = 1.0
 RandomPitch = Vector2(1, 1)
@@ -1303,7 +1366,7 @@ streams = Array[AudioStream]([ExtResource("49_xggah")])
 [sub_resource type="Resource" id="Resource_vuied"]
 script = ExtResource("42_lforj")
 name = "dejanPropina"
-bus = ""
+bus = "dejanPropina"
 volume = 0.0
 pitch = 1.0
 RandomPitch = Vector2(1, 1)
@@ -1312,20 +1375,29 @@ streams = Array[AudioStream]([ExtResource("50_o6h40")])
 [sub_resource type="Resource" id="Resource_aohlb"]
 script = ExtResource("42_lforj")
 name = "dejoServilleta"
-bus = ""
+bus = "servilleta"
 volume = 0.0
 pitch = 1.0
 RandomPitch = Vector2(1, 1)
-streams = Array[AudioStream]([ExtResource("51_lpgh8")])
+streams = Array[AudioStream]([ExtResource("57_d3png")])
 
 [sub_resource type="Resource" id="Resource_hhprv"]
 script = ExtResource("42_lforj")
 name = "bandejaSeVa"
-bus = ""
+bus = "bandejaSale"
 volume = 0.0
 pitch = 1.0
 RandomPitch = Vector2(1, 1)
 streams = Array[AudioStream]([ExtResource("52_dr6eg")])
+
+[sub_resource type="Resource" id="Resource_u6bp7"]
+script = ExtResource("42_lforj")
+name = "bandejaEntra"
+bus = "bandejaEntra"
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([])
 
 [node name="PatasController" type="Control" node_paths=PackedStringArray("Panels")]
 layout_mode = 3
@@ -1442,7 +1514,7 @@ visible = false
 position = Vector2(13, -554)
 scale = Vector2(0.629047, 0.629047)
 sprite_frames = SubResource("SpriteFrames_1rk3b")
-animation = &"idle"
+animation = &"call"
 autoplay = "idle"
 
 [node name="pata" type="Sprite2D" parent="pivot/Macrauquenia"]
@@ -1499,6 +1571,7 @@ grow_horizontal = 1
 pivot_offset = Vector2(361.5, 284)
 theme = ExtResource("34_rsd4j")
 AppearInBeginning = false
+AppearSound = "talk1"
 Texts = Array[ExtResource("33_7bjpl")]([SubResource("Resource_1e5mh"), SubResource("Resource_spwe1")])
 
 [node name="label" parent="TextoPedido" index="0"]
@@ -1531,6 +1604,7 @@ offset_bottom = 266.0
 pivot_offset = Vector2(350, 293)
 theme = ExtResource("34_rsd4j")
 AppearInBeginning = false
+AppearSound = "talk2"
 Texts = Array[ExtResource("33_7bjpl")]([SubResource("Resource_h10mq")])
 
 [node name="label" parent="PedidoGliptodonte" index="0"]
@@ -1564,6 +1638,7 @@ offset_bottom = 264.0
 pivot_offset = Vector2(347.5, 292.5)
 theme = ExtResource("34_rsd4j")
 AppearInBeginning = false
+AppearSound = "talk3"
 Texts = Array[ExtResource("33_7bjpl")]([SubResource("Resource_6po01")])
 
 [node name="label" parent="PedidoMegaterio" index="0"]
@@ -1597,6 +1672,7 @@ offset_bottom = 263.0
 pivot_offset = Vector2(346.5, 290)
 theme = ExtResource("34_rsd4j")
 AppearInBeginning = false
+AppearSound = "talk4"
 Texts = Array[ExtResource("33_7bjpl")]([SubResource("Resource_es3gq")])
 
 [node name="label" parent="PedidoMacrauquenia" index="0"]
@@ -1619,6 +1695,13 @@ visible = true
 [node name="Panel(1) Btn(rigth)" parent="PedidoMacrauquenia" instance=ExtResource("38_1xuog")]
 Data = SubResource("Resource_jly2k")
 
+[node name="LlegadaSounds" type="Node" parent="."]
+
+[node name="SoundBank" type="Node" parent="LlegadaSounds"]
+script = ExtResource("41_ysn4k")
+label = "llegada"
+events = Array[ExtResource("42_lforj")]([SubResource("Resource_c5u25"), SubResource("Resource_6morc"), SubResource("Resource_fi1sb"), SubResource("Resource_8a46o")])
+
 [node name="SoundsCorrecto" type="Node" parent="."]
 script = ExtResource("41_ysn4k")
 label = "correcto"
@@ -1630,7 +1713,7 @@ script = ExtResource("45_ct7gc")
 [node name="SoundsReclamo" type="Node" parent="ReclamoTriggerSound"]
 script = ExtResource("41_ysn4k")
 label = "reclamo"
-events = Array[ExtResource("42_lforj")]([SubResource("Resource_na3j6"), SubResource("Resource_gycy8")])
+events = Array[ExtResource("42_lforj")]([SubResource("Resource_na3j6"), SubResource("Resource_gycy8"), SubResource("Resource_o7hug")])
 
 [node name="GeneralSounds" type="Node" parent="."]
 script = ExtResource("45_ct7gc")
@@ -1638,9 +1721,10 @@ script = ExtResource("45_ct7gc")
 [node name="SoundBank" type="Node" parent="GeneralSounds"]
 script = ExtResource("41_ysn4k")
 label = "generales"
-events = Array[ExtResource("42_lforj")]([SubResource("Resource_4jxxp"), SubResource("Resource_tbtw6"), SubResource("Resource_vuied"), SubResource("Resource_aohlb"), SubResource("Resource_hhprv")])
+events = Array[ExtResource("42_lforj")]([SubResource("Resource_4jxxp"), SubResource("Resource_tbtw6"), SubResource("Resource_vuied"), SubResource("Resource_aohlb"), SubResource("Resource_hhprv"), SubResource("Resource_u6bp7")])
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+bus = &"estrellas"
 
 [connection signal="ButtonPress" from="TextoPedido/Panel(2) Btn(rigth)" to="." method="passNextInstance"]
 [connection signal="ButtonPress" from="PedidoGliptodonte/Panel(1) Btn(rigth)" to="." method="passNextInstance"]

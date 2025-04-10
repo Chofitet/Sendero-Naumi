@@ -27,11 +27,14 @@ func PlayEvent(eventName : String, delay : float = 0, isCuttable = false):
 
 func PlayLoopEvent(loopEventName : String):
 	if isMute: return
+	if instance != null : return
 	instance = SoundManager.instance_poly(soundBank.label, loopEventName)
 	instance.trigger()
 
 func StopLoopSound():
+	if instance ==null: return
 	instance.release()
+	instance = null
 
 func SetMute(x:bool):
 	isMute = x

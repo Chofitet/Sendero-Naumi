@@ -31,7 +31,7 @@ func SetAnimalInstance(x):
 	animalsArray[inx_animal].visible = true
 	animalsArray[inx_animal].animation_finished.connect(BackToIdle)
 	anim.play("RESET")
-	timer.wait_time = 1
+	timer.wait_time = 1.7
 	isInGame = true
 	CommandAppear()
 	$papel.visible = false
@@ -43,12 +43,20 @@ func PlayEnterAnim():
 	timer.start()
 	animalsArray[inx_animal].play("idle")
 	anim.play("enterAnim")
+	await get_tree().create_timer(0.6).timeout
+	SoundManager.play("llegada", animalsArray[inx_animal].name)
 
 func PlayCallAnim():
 	if stopCall: return
 	buttonTouchAnimal.visible = false
 	animalsArray[inx_animal].play("call")
-	$ReclamoTriggerSound.PlayEvent(animalsArray[inx_animal].name, 0.1,true)
+	var delay 
+	match inx_animal:  
+		0: delay = 0
+		1: delay = 0.1
+		2: delay = 0.2
+		3: delay = 0.8
+	$ReclamoTriggerSound.PlayEvent(animalsArray[inx_animal].name, delay,true)
 	#SoundManager.play("reclamo",animalsArray[inx_animal].name)
 	timer.wait_time = randf_range(4.5,5)
 	timer.stop()

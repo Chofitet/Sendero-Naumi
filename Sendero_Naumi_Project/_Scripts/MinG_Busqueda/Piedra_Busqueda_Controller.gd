@@ -116,7 +116,7 @@ func PlayAnimatedSprite(x):
 
 func ResetRock():
 	timerLoopLook.timeout.connect(LookAnim)
-	timerLoopLook.wait_time=6
+	timerLoopLook.wait_time= 6.5
 	timerLoopLook.start()
 	if $Piedra/AnimPiedra1:
 		animationSprite = $Piedra/AnimPiedra1
@@ -126,6 +126,8 @@ func ResetRock():
 	isFlip = false
 	isnextAnim = false
 	anim.play("RESET")
+	await  get_tree().create_timer(0.1).timeout
+	anim.play("rock_idle")
 	await  get_tree().create_timer(0.1).timeout
 	anim.play("rock_look")
 	

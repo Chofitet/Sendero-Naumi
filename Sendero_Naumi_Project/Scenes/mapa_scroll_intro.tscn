@@ -1,4 +1,4 @@
-[gd_scene load_steps=142 format=3 uid="uid://buth5gc88nt3j"]
+[gd_scene load_steps=148 format=3 uid="uid://buth5gc88nt3j"]
 
 [ext_resource type="Texture2D" uid="uid://cjjoaemhep814" path="res://Sprites/mapa-detalle.png" id="1_kw7ma"]
 [ext_resource type="Texture2D" uid="uid://hf5y4ic16cqj" path="res://Sprites/Intro/intro - background.jpg" id="1_un13t"]
@@ -47,8 +47,12 @@
 [ext_resource type="Script" path="res://addons/resonate/sound_manager/sound_bank.gd" id="39_ulxrw"]
 [ext_resource type="Script" path="res://addons/resonate/sound_manager/sound_event_resource.gd" id="40_4y0vi"]
 [ext_resource type="Script" path="res://_Scripts/SkipLogic.gd" id="41_1pukf"]
+[ext_resource type="AudioStream" uid="uid://d0tcvir846av5" path="res://Sounds/Intro/Mapa de Intro - Pointers aparecen.ogg" id="41_d0q3l"]
 [ext_resource type="PackedScene" uid="uid://nmuyip31gkq5" path="res://Scenes/UI_Scenes/generic_button.tscn" id="42_82gy6"]
+[ext_resource type="AudioStream" uid="uid://bt0wa8uhl2aoj" path="res://Sounds/Intro/Mapa de Intro - Isla Se acerca.ogg" id="42_ykg2w"]
 [ext_resource type="Texture2D" uid="uid://kb7ixs5ala8" path="res://Sprites/UI/arrowIcon - UI.png" id="43_381d8"]
+[ext_resource type="AudioStream" uid="uid://b54gl6v7dgebn" path="res://Sounds/Intro/Mapa de Intro - Corremos mapa para ver naumi.ogg" id="48_d8pn5"]
+[ext_resource type="PackedScene" uid="uid://c8dodmo3saxdr" path="res://Scenes/Experiments/sound_debug.tscn" id="50_0da8f"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6ap07"]
 atlas = ExtResource("10_q4dk5")
@@ -420,7 +424,7 @@ _data = {
 [sub_resource type="Resource" id="Resource_6hwmy"]
 script = ExtResource("40_4y0vi")
 name = "tap"
-bus = ""
+bus = "tocarNaumi"
 volume = 0.0
 pitch = 1.0
 RandomPitch = Vector2(1, 1)
@@ -787,7 +791,7 @@ tracks/6/keys = {
 
 [sub_resource type="Animation" id="Animation_1vwuu"]
 resource_name = "Zone_anim"
-length = 2.0
+length = 3.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -848,6 +852,36 @@ tracks/4/keys = {
 "update": 1,
 "values": [false, true]
 }
+tracks/5/type = "audio"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("MegafaunaAnimator/pointers")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("41_d0q3l")
+}],
+"times": PackedFloat32Array(1)
+}
+tracks/5/use_blend = true
+tracks/6/type = "audio"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("MegafaunaAnimator/seAcerca")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("42_ykg2w")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/6/use_blend = true
 
 [sub_resource type="Animation" id="Animation_hch7n"]
 resource_name = "chan_anim"
@@ -991,7 +1025,7 @@ tracks/4/keys = {
 }
 tracks/5/type = "audio"
 tracks/5/imported = false
-tracks/5/enabled = true
+tracks/5/enabled = false
 tracks/5/path = NodePath("FadeAnimation/AudioStreamPlayer")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
@@ -1424,10 +1458,10 @@ _data = {
 [sub_resource type="Resource" id="Resource_bme0e"]
 script = ExtResource("40_4y0vi")
 name = "swipe"
-bus = ""
-volume = 0.0
+bus = "swipeIslas"
+volume = -10.0
 pitch = 1.0
-RandomPitch = Vector2(1, 1)
+RandomPitch = Vector2(0.8, 1.3)
 streams = Array[AudioStream]([ExtResource("37_v32se")])
 
 [sub_resource type="Resource" id="Resource_2er3h"]
@@ -1590,6 +1624,24 @@ _data = {
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wbaqp"]
 texture = ExtResource("26_4d43e")
+
+[sub_resource type="Resource" id="Resource_ct21j"]
+script = ExtResource("40_4y0vi")
+name = "slice"
+bus = "correrMapa"
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([ExtResource("48_d8pn5")])
+
+[sub_resource type="Resource" id="Resource_vtm46"]
+script = ExtResource("40_4y0vi")
+name = "sliceBack"
+bus = "correrMapa"
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(0.9, 0.9)
+streams = Array[AudioStream]([ExtResource("48_d8pn5")])
 
 [node name="Mapa_Scroll_Intro" type="Control"]
 layout_mode = 3
@@ -1793,6 +1845,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = 1440.0
+offset_bottom = 2560.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -2337,6 +2391,13 @@ script = ExtResource("15_4c0kx")
 animation = "Zone_anim"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Map_Scroll/CenterAnchor/Piso1/ExpandingCoteiner/MegafaunaZone/MegafaunaAnimator"]
+bus = &"chan"
+
+[node name="pointers" type="AudioStreamPlayer" parent="Map_Scroll/CenterAnchor/Piso1/ExpandingCoteiner/MegafaunaZone/MegafaunaAnimator"]
+bus = &"pointersAparecen"
+
+[node name="seAcerca" type="AudioStreamPlayer" parent="Map_Scroll/CenterAnchor/Piso1/ExpandingCoteiner/MegafaunaZone/MegafaunaAnimator"]
+bus = &"islaAcerca"
 
 [node name="Button" type="Button" parent="Map_Scroll/CenterAnchor/Piso1/ExpandingCoteiner/MegafaunaZone"]
 visible = false
@@ -2553,6 +2614,14 @@ texture = ExtResource("22_c1o0u")
 script = ExtResource("29_imofv")
 vibrate = 300.0
 
+[node name="GeneralSounds" type="Node" parent="Map_Scroll"]
+script = ExtResource("38_w1dlu")
+
+[node name="SoundBank" type="Node" parent="Map_Scroll/GeneralSounds"]
+script = ExtResource("39_ulxrw")
+label = "general"
+events = Array[ExtResource("40_4y0vi")]([SubResource("Resource_ct21j"), SubResource("Resource_vtm46")])
+
 [node name="ButtonSkip" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
@@ -2568,6 +2637,9 @@ offset_bottom = 100.0
 rotation = 3.14159
 Icon = ExtResource("43_381d8")
 
+[node name="Sound Debug" parent="." instance=ExtResource("50_0da8f")]
+AudioBuses = Array[String](["VolumenIntroScroll", "swipeIslas", "chan", "tocarNaumi", "correrMapa", "pointersAparecen"])
+
 [connection signal="buttonPressedOnce" from="Naumi_Intro/Control/NaumiController" to="Naumi_Intro/PanelNaumi1" method="EnterPanel"]
 [connection signal="pressed" from="Naumi_Intro/Control/NaumiController/pivot/Button" to="Naumi_Intro/Control/NaumiController" method="ButtonPressed" flags=18]
 [connection signal="pressed" from="Naumi_Intro/Control/NaumiController/pivot/Button" to="Naumi_Intro/Control/NaumiController" method="ButtonPressedOnce"]
@@ -2579,12 +2651,14 @@ Icon = ExtResource("43_381d8")
 [connection signal="ButtonPress" from="Naumi_Intro/PanelNaumi1/Panel(2) Btn(rigth)" to="Map_Scroll/CenterAnchor/FadeAnimation" method="play" binds= ["RESET"]]
 [connection signal="ButtonPress" from="Naumi_Intro/PanelNaumi1/Panel(2) Btn(rigth)" to="Map_Scroll/fakeMap" method="set_visible" binds= [true]]
 [connection signal="ButtonPress" from="Naumi_Intro/PanelNaumi1/Panel(2) Btn(rigth)" to="Map_Scroll/AnimationPlayer" method="play_backwards" binds= ["Map_Slice"]]
+[connection signal="ButtonPress" from="Naumi_Intro/PanelNaumi1/Panel(2) Btn(rigth)" to="Map_Scroll/GeneralSounds" method="PlayEvent" binds= ["sliceBack"]]
 [connection signal="ButtonPress" from="Naumi_Intro/PanelNaumi1/Panel(2) Btn(left)" to="Naumi_Intro/SaveFirstPlay" method="FirstPlay"]
 [connection signal="ButtonPress" from="Naumi_Intro/PanelNaumi1/Panel(2) Btn(left)" to="Map_Scroll/PanelSuerte" method="EnterPanel"]
 [connection signal="ButtonPress" from="Naumi_Intro/PanelNaumi1/Panel(2) Btn(left)" to="Map_Scroll/CenterAnchor" method="set_visible" binds= [false]]
 [connection signal="ButtonPress" from="Naumi_Intro/PanelNaumi1/Panel(2) Btn(left)" to="Map_Scroll/CenterAnchor/FadeAnimation" method="play" binds= ["RESET"]]
 [connection signal="ButtonPress" from="Naumi_Intro/PanelNaumi1/Panel(2) Btn(left)" to="Map_Scroll/fakeMap" method="set_visible" binds= [true]]
 [connection signal="ButtonPress" from="Naumi_Intro/PanelNaumi1/Panel(2) Btn(left)" to="Map_Scroll/AnimationPlayer" method="play_backwards" binds= ["Map_Slice"]]
+[connection signal="ButtonPress" from="Naumi_Intro/PanelNaumi1/Panel(2) Btn(left)" to="Map_Scroll/GeneralSounds" method="PlayEvent" binds= ["sliceBack"]]
 [connection signal="ButtonPress" from="Naumi_Intro/PanelNaumi1/Panel(2) Btn(rigth)2" to="Map_Scroll/ButtonChangeScene" method="_on_pressed"]
 [connection signal="ButtonPress" from="Naumi_Intro/PanelNaumi1/Panel(2) Btn(left)2" to="Map_Scroll/ButtonChangeScene" method="_on_pressed"]
 [connection signal="ButtonPress" from="Map_Scroll/CenterAnchor/Title/ExpandingConteiner/TextureRect/Control/Panel/Panel(2) Btn(rigth)" to="Map_Scroll/PanelIntro1" method="EnterPanel"]
@@ -2597,6 +2671,7 @@ Icon = ExtResource("43_381d8")
 [connection signal="ButtonPress" from="Map_Scroll/PanelIntro2/Panel(1) Btn(rigth)" to="Map_Scroll/CenterAnchor/FadeAnimation" method="play" binds= ["3erFade"]]
 [connection signal="ButtonPress" from="Map_Scroll/PanelIntro3/Panel(1) Btn(rigth)" to="Map_Scroll/CenterAnchor/Piso1/ExpandingCoteiner/MegafaunaZone/MegafaunaAnimator" method="play" binds= ["Zone_anim"]]
 [connection signal="ButtonPress" from="Map_Scroll/PanelIntro4/Panel(1) Btn(rigth)" to="Map_Scroll/AnimationPlayer" method="PlayAnim" binds= ["Map_Slice"]]
+[connection signal="ButtonPress" from="Map_Scroll/PanelIntro4/Panel(1) Btn(rigth)" to="Map_Scroll/GeneralSounds" method="PlayEvent" binds= ["slice"]]
 [connection signal="ButtonPress" from="Map_Scroll/PanelIntro4/Panel(1) Btn(rigth)2" to="Naumi_Intro/Control/LabelNaumi/AnimationPlayer" method="PlayAnim" binds= ["enter"]]
 [connection signal="ButtonPress" from="Map_Scroll/PanelIntro4/Panel(1) Btn(rigth)2" to="Map_Scroll/CenterAnchor" method="set_visible" binds= [false]]
 [connection signal="ButtonPress" from="Map_Scroll/PanelSuerte/Panel(1) Btn(rigth)" to="Map_Scroll/ButtonChangeScene" method="_on_pressed"]

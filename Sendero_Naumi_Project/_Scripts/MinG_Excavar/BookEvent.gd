@@ -25,7 +25,7 @@ var megaterio = preload("res://Scenes/Zona_Megafauna/Megaterio_Draw.tscn")
 
 var DrawaScenes : Dictionary = {
 	"smilodonte": smilodonte,
-	"glyptodon" : gliptodonte,
+	"gliptodonte" : gliptodonte,
 	"macrauquenia" : macrauquenia,
 	"megaterio": megaterio
 }
@@ -57,6 +57,7 @@ func Draw():
 	anim.play("pencil_anim")
 	$libroSounds.PlayEvent(label + "Exit",2.5)
 	SoundManager.play("libro", label)
+	SoundManager.play("libro", label + "2")
 	if isPencil: skeleton.StartFadeBone()
 	else: skeleton.StartFadeLive()
 	await anim.animation_finished

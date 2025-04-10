@@ -55,6 +55,8 @@ func FinalState():
 	ToFinal.emit()
 	$ButtonFinal.visible = false
 	$DragObject.mouse_realese.disconnect(MouseRealese)
+	$DragObject.isDraggin.disconnect(InDraggin)
+	$over.visible = true
 	anim.play("to_final")
 	z_index = 1
 	rotation = 0

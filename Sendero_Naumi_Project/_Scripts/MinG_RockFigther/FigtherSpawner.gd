@@ -57,6 +57,8 @@ func Figth(btnLeftPressed):
 	Overlay1.Anim()
 	Overlay2.Anim()
 	AnimatorUI.play_backwards("EnterAnim")
+	await get_tree().create_timer(4.1).timeout
+	SoundManager.play("level","explosion")
 	
 
 func RetryLevel():

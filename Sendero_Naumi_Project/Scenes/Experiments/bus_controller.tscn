@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dhmif0sk5egw6"]
+[gd_scene load_steps=3 format=3 uid="uid://dhmif0sk5egw6"]
 
 [ext_resource type="Script" path="res://_Scripts/BusController.gd" id="1_tcj4l"]
+[ext_resource type="Texture2D" uid="uid://dbo1d47e1yahr" path="res://Sprites/UI/thoughtBubbleD - UI.png" id="2_eouk5"]
 
 [node name="BusController" type="Control"]
 custom_minimum_size = Vector2(400, 90)
@@ -29,22 +30,31 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = -68.7
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
+theme_override_icons/grabber = ExtResource("2_eouk5")
+theme_override_icons/grabber_highlight = ExtResource("2_eouk5")
+theme_override_icons/grabber_disabled = ExtResource("2_eouk5")
+theme_override_icons/tick = ExtResource("2_eouk5")
 min_value = -80.0
 max_value = 6.0
+value = -1.0
+allow_greater = true
 
 [node name="Label2" type="Label" parent="."]
 layout_mode = 1
-anchors_preset = 3
+anchors_preset = 6
 anchor_left = 1.0
-anchor_top = 1.0
+anchor_top = 0.5
 anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_bottom = 0.5
 offset_left = -40.0
-offset_top = -23.0
+offset_top = -11.5
+offset_bottom = 11.5
 grow_horizontal = 0
-grow_vertical = 0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 25
 
 [connection signal="value_changed" from="HSlider" to="." method="changeVolume"]

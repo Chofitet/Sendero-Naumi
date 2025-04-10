@@ -19,6 +19,7 @@ var _speed
 @export var labelDebug : Label
 var collision_line = preload("res://Scenes/Zona_Megafauna/line_collider.tscn")
 @onready var timer = $Timer
+var topoExcavandoSound
 var relative_position 
 var isStoped
 
@@ -36,7 +37,8 @@ func _input(event: InputEvent) -> void:
 		timer.start()
 		line.add_point(global_position - line.global_position)
 		if isStoped: return
-		SoundManager.play("topo","dirijoTopo")
+		$LoopTopoSound.PlayLoopEvent("loopTopo")
+		#SoundManager.play("topo","dirijoTopo")
 		particles.emitting = true
 		topo.get_node("topo").play("move")
 	if Input.is_action_pressed("TouchScreen"):
@@ -45,6 +47,7 @@ func _input(event: InputEvent) -> void:
 		timer.stop()
 		isMoving = false
 		particles.emitting = false
+		$LoopTopoSound.StopLoopSound()
 		topo.get_node("topo").play("idle")
 
 func _physics_process(delta):
@@ -88,6 +91,7 @@ func EnableDisaneable(state,resetInstance:bool = false):
 		particles.emitting = false
 		isStoped = true
 		_speed = 0
+		$LoopTopoSound.StopLoopSound()
 	else :
 		isStoped = false
 		_speed = speed
