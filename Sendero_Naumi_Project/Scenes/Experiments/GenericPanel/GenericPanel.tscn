@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://chcp24toqisaw"]
+[gd_scene load_steps=60 format=3 uid="uid://chcp24toqisaw"]
 
 [ext_resource type="Theme" uid="uid://dhu6swisjlh4w" path="res://Resources/UI_Resources/BlueBubblePanel.tres" id="1_v6n5n"]
 [ext_resource type="Script" path="res://Scenes/Experiments/GenericPanel/PanelController.gd" id="2_33xng"]
@@ -17,7 +17,9 @@
 [ext_resource type="AudioStream" uid="uid://8tmcfck7ujhd" path="res://Sounds/UI/UI - Azul Aparece.ogg" id="15_bifn7"]
 [ext_resource type="AudioStream" uid="uid://cxosuhsatmnji" path="res://Sounds/Foodtruck/FoodTruck  - Habla Buen Trabajo.ogg" id="15_gyjum"]
 [ext_resource type="AudioStream" uid="uid://b7ko1imh4pkj7" path="res://Sounds/Foodtruck/FoodTruck - Habla En Fila.ogg" id="16_0g2sy"]
+[ext_resource type="AudioStream" uid="uid://16mfoqf1ni1e" path="res://Sounds/Fighter/Fighter - UPS.ogg" id="16_4u8vo"]
 [ext_resource type="AudioStream" uid="uid://cttb75keu0ymp" path="res://Sounds/Foodtruck/FoodTruck - Habla Sig 3.ogg" id="17_paip8"]
+[ext_resource type="AudioStream" uid="uid://b124uupcec5in" path="res://Sounds/UI/Zona Completada - Yey.ogg" id="17_vdain"]
 [ext_resource type="AudioStream" uid="uid://de3oe2x56dxv7" path="res://Sounds/Foodtruck/FoodTruck - Habla Sig Otro.ogg" id="18_3jpi3"]
 [ext_resource type="AudioStream" uid="uid://0siiwipjbp42" path="res://Sounds/Astronauta/Astronauta - CHIPA Habla 1.ogg" id="19_ala78"]
 [ext_resource type="AudioStream" uid="uid://c8lt321gvmo4c" path="res://Sounds/Astronauta/Astronauta - CHIPA Habla 2.ogg" id="20_ybu3n"]
@@ -492,6 +494,24 @@ pitch = 1.0
 RandomPitch = Vector2(1, 1)
 streams = Array[AudioStream]([ExtResource("15_bifn7")])
 
+[sub_resource type="Resource" id="Resource_ud1i2"]
+script = ExtResource("13_p34bg")
+name = "ups"
+bus = "ups"
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([ExtResource("16_4u8vo")])
+
+[sub_resource type="Resource" id="Resource_7fh2y"]
+script = ExtResource("13_p34bg")
+name = "yey"
+bus = ""
+volume = -25.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([ExtResource("17_vdain")])
+
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_gpnkv"]
 streams_count = 3
 stream_0/stream = ExtResource("22_yywwb")
@@ -940,7 +960,7 @@ events = Array[ExtResource("13_p34bg")]([SubResource("Resource_3w43a"), SubResou
 [node name="SoundBank" type="Node" parent="AppearSound"]
 script = ExtResource("12_1qk3k")
 label = "appear"
-events = Array[ExtResource("13_p34bg")]([SubResource("Resource_613n4")])
+events = Array[ExtResource("13_p34bg")]([SubResource("Resource_613n4"), SubResource("Resource_ud1i2"), SubResource("Resource_7fh2y")])
 
 [node name="TypingSounds" type="Node" parent="."]
 

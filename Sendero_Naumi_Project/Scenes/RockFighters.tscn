@@ -1,4 +1,4 @@
-[gd_scene load_steps=127 format=3 uid="uid://lv8sdofmjhf3"]
+[gd_scene load_steps=130 format=3 uid="uid://lv8sdofmjhf3"]
 
 [ext_resource type="Script" path="res://_Scripts/Minigame_Save_Controller.gd" id="1_f0fiw"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/StateMachineMinigames.gd" id="2_12384"]
@@ -69,6 +69,8 @@
 [ext_resource type="AudioStream" uid="uid://dnsa77gvsqv8f" path="res://Sounds/Fighter/Fighter - Pantalla Finalll.ogg" id="54_q0khs"]
 [ext_resource type="AudioStream" uid="uid://cku3l8i4tte4c" path="res://Sounds/Fighter/Fighter - Eleccion.ogg" id="55_n66i7"]
 [ext_resource type="AudioStream" uid="uid://baxdmntxi3jh2" path="res://Sounds/Fighter/Fighter - Explosion.ogg" id="56_ujskq"]
+[ext_resource type="AudioStream" uid="uid://6a06vo7bvtux" path="res://Sounds/Fighter/Fighter - Publico.ogg" id="58_bqvmn"]
+[ext_resource type="Script" path="res://_Scripts/VolumeBusController.gd" id="60_8mngt"]
 [ext_resource type="PackedScene" uid="uid://c8dodmo3saxdr" path="res://Scenes/Experiments/sound_debug.tscn" id="68_pvhr8"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_01r1e"]
@@ -865,6 +867,37 @@ tracks/5/keys = {
 "update": 1,
 "values": [false, true]
 }
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../LevelSound")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["publico"],
+"method": &"PlayLoopEvent"
+}]
+}
+tracks/7/type = "method"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../../volumeController")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [0.0, 0.0],
+"method": &"SetVolume"
+}, {
+"args": [-80.0, 10.0],
+"method": &"SetVolume"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_e24mv"]
 resource_name = "EnterLeft"
@@ -1136,6 +1169,15 @@ volume = 0.0
 pitch = 1.0
 RandomPitch = Vector2(1, 1)
 streams = Array[AudioStream]([ExtResource("47_gcpj1")])
+
+[sub_resource type="Resource" id="Resource_v0t7g"]
+script = ExtResource("15_ddtfa")
+name = "publico"
+bus = "publico"
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([ExtResource("58_bqvmn")])
 
 [sub_resource type="Animation" id="Animation_yo27a"]
 length = 0.001
@@ -1962,6 +2004,7 @@ offset_bottom = 404.0
 pivot_offset = Vector2(326, 170.5)
 AppearInBeginning = false
 RepitingPanel = true
+AppearSound = "ups"
 Texts = Array[ExtResource("23_5rold")]([SubResource("Resource_k5nkg")])
 
 [node name="Panel(1) Btn(center)" parent="RockFighters/StateMachine/Juego/Contenido/Instancia1/Control/RetryPanel" instance=ExtResource("24_0aurr")]
@@ -2026,6 +2069,7 @@ offset_bottom = 413.0
 pivot_offset = Vector2(326, 172.5)
 AppearInBeginning = false
 RepitingPanel = true
+AppearSound = "ups"
 Texts = Array[ExtResource("23_5rold")]([SubResource("Resource_k5nkg")])
 
 [node name="Panel(1) Btn(center)" parent="RockFighters/StateMachine/Juego/Contenido/Instancia2/Control/RetryPanel" instance=ExtResource("24_0aurr")]
@@ -2091,6 +2135,7 @@ offset_bottom = 411.0
 pivot_offset = Vector2(326, 172.5)
 AppearInBeginning = false
 RepitingPanel = true
+AppearSound = "ups"
 Texts = Array[ExtResource("23_5rold")]([SubResource("Resource_k5nkg")])
 
 [node name="Panel(1) Btn(center)" parent="RockFighters/StateMachine/Juego/Contenido/Instancia3/Control2/RetryPanel" instance=ExtResource("24_0aurr")]
@@ -2348,9 +2393,13 @@ script = ExtResource("13_jihfb")
 [node name="SoundBank" type="Node" parent="RockFighters/StateMachine/Juego/Contenido/LevelSound"]
 script = ExtResource("14_klu0k")
 label = "level"
-events = Array[ExtResource("15_ddtfa")]([SubResource("Resource_rqmad"), SubResource("Resource_3tlr2"), SubResource("Resource_1eccu"), SubResource("Resource_gg0um"), SubResource("Resource_ctms1"), SubResource("Resource_fmgu6"), SubResource("Resource_8fj67")])
+events = Array[ExtResource("15_ddtfa")]([SubResource("Resource_rqmad"), SubResource("Resource_3tlr2"), SubResource("Resource_1eccu"), SubResource("Resource_gg0um"), SubResource("Resource_ctms1"), SubResource("Resource_fmgu6"), SubResource("Resource_8fj67"), SubResource("Resource_v0t7g")])
 
 [node name="btnVolver" parent="RockFighters/StateMachine/Juego" instance=ExtResource("33_l1u1j")]
+
+[node name="volumeController" type="Node" parent="RockFighters/StateMachine/Juego"]
+script = ExtResource("60_8mngt")
+BusName = "publico"
 
 [node name="Moraleja" type="Node" parent="RockFighters/StateMachine"]
 script = ExtResource("34_rssk2")
@@ -2759,7 +2808,7 @@ scale = Vector2(0.65992, 0.65992)
 texture = ExtResource("43_xay53")
 
 [node name="Sound Debug" parent="RockFighters" instance=ExtResource("68_pvhr8")]
-AudioBuses = Array[String](["FigtherVolumen", "luzEnciende", "nombreAparece", "eleccion", "ups", "peleaCorrecta", "finalFigthter", "explosionPiedra"])
+AudioBuses = Array[String](["FigtherVolumen", "luzEnciende", "nombreAparece", "eleccion", "ups", "peleaCorrecta", "finalFigthter", "explosionPiedra", "publico"])
 
 [connection signal="timeout" from="RockFighters/StateMachine/Consigna/Contenido/Timer" to="RockFighters/StateMachine/Consigna" method="TimeOut" flags=18]
 [connection signal="pressed" from="RockFighters/StateMachine/Consigna/Contenido/Control/Button" to="RockFighters/StateMachine/Consigna/Contenido/Control/AnimationPlayer" method="SkipActualAnim"]

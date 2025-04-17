@@ -1,4 +1,4 @@
-[gd_scene load_steps=148 format=3 uid="uid://buth5gc88nt3j"]
+[gd_scene load_steps=160 format=3 uid="uid://buth5gc88nt3j"]
 
 [ext_resource type="Texture2D" uid="uid://cjjoaemhep814" path="res://Sprites/mapa-detalle.png" id="1_kw7ma"]
 [ext_resource type="Texture2D" uid="uid://hf5y4ic16cqj" path="res://Sprites/Intro/intro - background.jpg" id="1_un13t"]
@@ -19,13 +19,20 @@
 [ext_resource type="AudioStream" uid="uid://cdrg0wy6og1eg" path="res://Sounds/Intro/Mapa de Intro - Toco Naumi.ogg" id="14_lf5ql"]
 [ext_resource type="PackedScene" uid="uid://bac1ysj2c0bok" path="res://Scenes/Experiments/hand_ui.tscn" id="15_2xluc"]
 [ext_resource type="Script" path="res://_Scripts/PlayAnimation.gd" id="15_4c0kx"]
+[ext_resource type="AudioStream" uid="uid://dqger4rv1d3kd" path="res://Sounds/Naumi 1/Naumi - zzz 1.ogg" id="15_hflm7"]
 [ext_resource type="PackedScene" uid="uid://djhg7jvxtexyl" path="res://Scenes/UI_Scenes/btn_Change_Scene.tscn" id="16_0ow6t"]
+[ext_resource type="AudioStream" uid="uid://beeskghvn8w42" path="res://Sounds/Naumi 1/Naumi - zzz 2.ogg" id="16_pevg4"]
 [ext_resource type="StyleBox" uid="uid://b3tjes2hcm3wx" path="res://Resources/UI_Resources/StyleBoxTrasparent.tres" id="17_2a5jd"]
+[ext_resource type="AudioStream" uid="uid://byucp1aej04w5" path="res://Sounds/Naumi 1/Naumi - zzz 3.ogg" id="17_vyhfh"]
 [ext_resource type="Script" path="res://SetFirstPlay.gd" id="18_6lysc"]
+[ext_resource type="AudioStream" uid="uid://cdiks73rwf3gf" path="res://Sounds/Naumi 1/Naumi - zzz 4.ogg" id="18_jon8j"]
 [ext_resource type="Material" uid="uid://muj2sfgakm5s" path="res://shaders/GalaxyWiggle.tres" id="19_e2cgu"]
+[ext_resource type="AudioStream" uid="uid://bix1r24kwhg2e" path="res://Sounds/Naumi 1/Naumi 1 - Pidiendo Salir 1 golpe.ogg" id="19_j5q0y"]
+[ext_resource type="AudioStream" uid="uid://6wmywambfehx" path="res://Sounds/Naumi 1/Naumi 1 - Pidiendo Salir 3 Golpes.ogg" id="20_c4wwr"]
 [ext_resource type="Material" uid="uid://cr1nivdu20csy" path="res://shaders/Laser.tres" id="20_dqymo"]
 [ext_resource type="Texture2D" uid="uid://c5225cmvtpnmy" path="res://Sprites/Mapa/pin - mapa.png" id="20_fn5ys"]
 [ext_resource type="Script" path="res://_Scripts/MadeLineWithPath.gd" id="21_ae70t"]
+[ext_resource type="AudioStream" uid="uid://j3uy21oyry8c" path="res://Sounds/Naumi 1/Naumi 1 - Rompe.ogg" id="21_l4xwo"]
 [ext_resource type="Texture2D" uid="uid://bq38efwktyuua" path="res://Sprites/UI/exclamacion2.png" id="22_c1o0u"]
 [ext_resource type="Texture2D" uid="uid://dyc6lr4k2lmfp" path="res://Sprites/UI/BotonAceptarGenerico.png" id="26_4d43e"]
 [ext_resource type="Script" path="res://_Scripts/Vibration_Button.gd" id="29_imofv"]
@@ -424,11 +431,61 @@ _data = {
 [sub_resource type="Resource" id="Resource_6hwmy"]
 script = ExtResource("40_4y0vi")
 name = "tap"
-bus = "tocarNaumi"
+bus = "naumiTap"
 volume = 0.0
 pitch = 1.0
 RandomPitch = Vector2(1, 1)
 streams = Array[AudioStream]([ExtResource("14_lf5ql")])
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_jw5p1"]
+streams_count = 4
+playback_mode = 2
+random_pitch = 1.0
+random_volume_offset_db = 0.0
+stream_0/stream = ExtResource("15_hflm7")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("16_pevg4")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("17_vyhfh")
+stream_2/weight = 1.0
+stream_3/stream = ExtResource("18_jon8j")
+stream_3/weight = 1.0
+
+[sub_resource type="Resource" id="Resource_jlh0w"]
+script = ExtResource("40_4y0vi")
+name = "zzz"
+bus = "naumiZZZ"
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([SubResource("AudioStreamRandomizer_jw5p1")])
+
+[sub_resource type="Resource" id="Resource_rvfp8"]
+script = ExtResource("40_4y0vi")
+name = "golpe1"
+bus = "golpeNaumi1"
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([ExtResource("19_j5q0y")])
+
+[sub_resource type="Resource" id="Resource_0crou"]
+script = ExtResource("40_4y0vi")
+name = "golpe2"
+bus = "golpe2Naumi1"
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([ExtResource("20_c4wwr")])
+
+[sub_resource type="Resource" id="Resource_ft1xy"]
+script = ExtResource("40_4y0vi")
+name = "rompe"
+bus = "rompeNaumi1"
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([ExtResource("21_l4xwo")])
 
 [sub_resource type="LabelSettings" id="LabelSettings_uexs6"]
 font_size = 180
@@ -513,9 +570,9 @@ exitPanel = false
 
 [sub_resource type="Resource" id="Resource_ecmyo"]
 script = ExtResource("32_xf8jp")
-Text = "¿ESTO? 
-ESTO ES UN NAUMI"
-SizePanel = Vector2(0, 0)
+Text = "[center]¿ESTO?
+ESTO ES UN [color=#abc70c]N[/color][color=#d8b423]A[/color][color=#f47237]U[/color][color=#d8b423]M[/color][color=#abc70c]I[/color][b]"
+SizePanel = Vector2(652, 228)
 Position = Vector2(0, 0)
 buttons = Array[ExtResource("33_xvgkx")]([SubResource("Resource_1pchg")])
 NumOfContent = 0
@@ -536,8 +593,10 @@ exitPanel = false
 
 [sub_resource type="Resource" id="Resource_lds2q"]
 script = ExtResource("32_xf8jp")
-Text = "DICEN QUE LOS NAUMIS SON CRIATURAS MUY CURIOSAS Y RESPONDEN A DESCUBRIMIENTOS ¿PODRIAS LLEVARLO EN TU VIAJE?"
-SizePanel = Vector2(0, 0)
+Text = "[center]DICEN QUE LOS [color=#abc70c]N[/color][color=#d8b423]A[/color][color=#f47237]U[/color][color=#d8b423]M[/color][color=#abc70c]I[/color][color=#f47237]S[/color] SON CRIATURAS MUY
+CURIOSAS Y RESPONDEN A DESCUBRIMIENTOS
+¿PODRÍAS LLEVARLO EN TU VIAJE?[b]"
+SizePanel = Vector2(652, 256)
 Position = Vector2(0, 0)
 buttons = Array[ExtResource("33_xvgkx")]([SubResource("Resource_o4ta4"), SubResource("Resource_q33wl")])
 NumOfContent = 0
@@ -639,7 +698,8 @@ exitPanel = false
 
 [sub_resource type="Resource" id="Resource_mew4v"]
 script = ExtResource("32_xf8jp")
-Text = "ESTO ES SENDERO NAUMI"
+Text = "
+[center]ESTO ES [color=#e3e6c9]SENDERO[/color] [color=#abc70c]N[/color][color=#d8b423]A[/color][color=#f47237]U[/color][color=#d8b423]M[/color][color=#abc70c]I[/color][b]"
 SizePanel = Vector2(646, 255)
 Position = Vector2(-332.39, -127)
 buttons = Array[ExtResource("33_xvgkx")]([SubResource("Resource_w7lws")])
@@ -1559,7 +1619,8 @@ Place = 0
 
 [sub_resource type="Resource" id="Resource_pn1me"]
 script = ExtResource("32_xf8jp")
-Text = "SUERTE EN TU AVENTURA"
+Text = "
+[center][b][font_size=40]SUERTE EN TU AVENTURA[/font_size]"
 SizePanel = Vector2(0, 0)
 Position = Vector2(0, 0)
 buttons = Array[ExtResource("33_xvgkx")]([])
@@ -1775,13 +1836,21 @@ wait_time = 1e+06
 one_shot = true
 autostart = true
 
-[node name="NaumiSounds" type="Node" parent="Naumi_Intro/Control/NaumiController"]
+[node name="GeneralNaumiSounds" type="Node" parent="Naumi_Intro/Control/NaumiController"]
 script = ExtResource("38_w1dlu")
 
-[node name="SoundBank" type="Node" parent="Naumi_Intro/Control/NaumiController/NaumiSounds"]
+[node name="SoundBank" type="Node" parent="Naumi_Intro/Control/NaumiController/GeneralNaumiSounds"]
 script = ExtResource("39_ulxrw")
 label = "naumi"
-events = Array[ExtResource("40_4y0vi")]([SubResource("Resource_6hwmy")])
+events = Array[ExtResource("40_4y0vi")]([SubResource("Resource_6hwmy"), SubResource("Resource_jlh0w")])
+
+[node name="NaumiSounds0" type="Node" parent="Naumi_Intro/Control/NaumiController"]
+script = ExtResource("38_w1dlu")
+
+[node name="SoundBank" type="Node" parent="Naumi_Intro/Control/NaumiController/NaumiSounds0"]
+script = ExtResource("39_ulxrw")
+label = "Naumi0"
+events = Array[ExtResource("40_4y0vi")]([SubResource("Resource_rvfp8"), SubResource("Resource_0crou"), SubResource("Resource_ft1xy")])
 
 [node name="LabelNaumi" type="Label" parent="Naumi_Intro/Control"]
 layout_mode = 0
@@ -1809,9 +1878,11 @@ AppearInBeginning = false
 SetEnterOnce = true
 Texts = Array[ExtResource("32_xf8jp")]([SubResource("Resource_ecmyo"), SubResource("Resource_lds2q")])
 
-[node name="label" parent="Naumi_Intro/PanelNaumi1" index="0"]
-text = "¿ESTO? 
-ESTO ES UN NAUMI"
+[node name="labelRich" parent="Naumi_Intro/PanelNaumi1" index="1"]
+offset_top = 75.0
+offset_bottom = -71.0
+text = "[center]¿ESTO?
+ESTO ES UN [color=#abc70c]N[/color][color=#d8b423]A[/color][color=#f47237]U[/color][color=#d8b423]M[/color][color=#abc70c]I[/color][b]"
 
 [node name="btnDer" parent="Naumi_Intro/PanelNaumi1/BtnDerAnchor" index="0"]
 visible = true
@@ -1845,8 +1916,6 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 1440.0
-offset_bottom = 2560.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -2029,6 +2098,15 @@ offset_right = 75.0
 offset_bottom = 7.5
 scale = Vector2(1.667, 1.667)
 text = "HOLA!  :)"
+
+[node name="labelRich" parent="Map_Scroll/CenterAnchor/Title/ExpandingConteiner/TextureRect/Control/Panel" index="1"]
+offset_left = -188.488
+offset_top = 36.0007
+offset_right = -188.16
+offset_bottom = -75.9993
+scale = Vector2(1.665, 1.665)
+text = "
+[center]ESTO ES SENDERO [color=#abc70c]N[/color]AUM[color=#abc70c]I[/color][b]"
 
 [node name="BtnDerAnchor" parent="Map_Scroll/CenterAnchor/Title/ExpandingConteiner/TextureRect/Control/Panel" index="3"]
 scale = Vector2(1.667, 1.667)
@@ -2638,6 +2716,7 @@ rotation = 3.14159
 Icon = ExtResource("43_381d8")
 
 [node name="Sound Debug" parent="." instance=ExtResource("50_0da8f")]
+layout_mode = 1
 AudioBuses = Array[String](["VolumenIntroScroll", "swipeIslas", "chan", "tocarNaumi", "correrMapa", "pointersAparecen"])
 
 [connection signal="buttonPressedOnce" from="Naumi_Intro/Control/NaumiController" to="Naumi_Intro/PanelNaumi1" method="EnterPanel"]

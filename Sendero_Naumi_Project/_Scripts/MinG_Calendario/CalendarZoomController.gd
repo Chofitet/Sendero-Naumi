@@ -43,7 +43,7 @@ func ZoomToPos(index = 0):
 		QButtons[index-1].visible = false
 		QButtons[index].get_node("anim").play("blink")
 	FocusCircle(index)
-	await get_tree().create_timer(1).timeout
+	await get_tree().create_timer(0.3).timeout
 	if index == 0 :
 		$overlay.visible = false
 		if !gamefinished:SoundManager.play("zooms","zoomOut")

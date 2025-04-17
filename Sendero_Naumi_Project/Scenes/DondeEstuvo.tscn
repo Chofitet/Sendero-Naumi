@@ -1,4 +1,4 @@
-[gd_scene load_steps=202 format=3 uid="uid://b017ojh8vtsd6"]
+[gd_scene load_steps=225 format=3 uid="uid://b017ojh8vtsd6"]
 
 [ext_resource type="Script" path="res://_Scripts/Minigame_Save_Controller.gd" id="1_ouwf6"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/StateMachineMinigames.gd" id="2_5wf26"]
@@ -53,6 +53,7 @@
 [ext_resource type="AudioStream" uid="uid://b5lu8ihjgywol" path="res://Sounds/Donde Estuvo/Donde Estuvo - Puerta.ogg" id="22_gbsl0"]
 [ext_resource type="Script" path="res://Scenes/Experiments/GenericPanel/IntermediateData.gd" id="22_i5khy"]
 [ext_resource type="Texture2D" uid="uid://gkmnxt7668y2" path="res://Sprites/ZonaAstronomia/locker estante - donde.png" id="22_ymh0l"]
+[ext_resource type="AudioStream" uid="uid://dogukosif12bu" path="res://Sounds/Donde Estuvo/Donde Estuvo - Timido.ogg" id="23_xdpjw"]
 [ext_resource type="Texture2D" uid="uid://cnd3vkysc48do" path="res://Sprites/ZonaAstronomia/guante izq XL- donde.png" id="24_7duko"]
 [ext_resource type="Texture2D" uid="uid://72pujrds5a3v" path="res://Sprites/ZonaAstronomia/guante der XL- donde.png" id="25_tiqyx"]
 [ext_resource type="Texture2D" uid="uid://cblrnswvrtyh7" path="res://Sprites/ZonaAstronomia/jetpack XL- donde.png" id="26_h5quh"]
@@ -105,6 +106,13 @@
 [ext_resource type="Texture2D" uid="uid://lm8q60lp72dv" path="res://Sprites/ZonaAstronomia/urano - donde.png" id="75_h52fe"]
 [ext_resource type="AudioStream" uid="uid://b5vnl01rlssd8" path="res://Sounds/Donde Estuvo/Donde Estuvo - Cucaracha Puerta.ogg" id="79_h31ey"]
 [ext_resource type="AudioStream" uid="uid://b14uc1slt0ia8" path="res://Sounds/Donde Estuvo/Donde Estuvo - Cucaracha Piso.ogg" id="80_lrhg8"]
+[ext_resource type="AudioStream" uid="uid://bo4c6o0mdb64y" path="res://Sounds/Donde Estuvo/Donde Estuvov - encontrado.ogg" id="84_xtd0u"]
+[ext_resource type="AudioStream" uid="uid://b6xftsexmv2n2" path="res://Sounds/Donde Estuvo/Donde Estuvov - encontrado 2.ogg" id="85_sapcq"]
+[ext_resource type="AudioStream" uid="uid://btx6a6e5v0s5o" path="res://Sounds/Donde Estuvo/Donde Estuvov - encontrado 3.ogg" id="86_qryqt"]
+[ext_resource type="AudioStream" uid="uid://bnct352pjoae0" path="res://Sounds/Donde Estuvo/Donde Estuvo - Trinidad.ogg" id="87_d7inb"]
+[ext_resource type="AudioStream" uid="uid://ddgfep2tdyty6" path="res://Sounds/Donde Estuvo/Donde Estuvo - Aparecen los planetas.ogg" id="99_d4amc"]
+[ext_resource type="AudioStream" uid="uid://dcesxb557ytrd" path="res://Sounds/Donde Estuvo/Donde Estuvo - Unidos acomodandose.ogg" id="100_50xw5"]
+[ext_resource type="AudioStream" uid="uid://b0aus6mqusjrc" path="res://Sounds/Foodtruck/FoodTruck - Dejan Propina.ogg" id="101_cpwx3"]
 [ext_resource type="PackedScene" uid="uid://c8dodmo3saxdr" path="res://Scenes/Experiments/sound_debug.tscn" id="106_h6qvq"]
 
 [sub_resource type="Shader" id="Shader_a3sab"]
@@ -194,10 +202,13 @@ tracks/2/path = NodePath("../IntroSounds")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
 "values": [{
 "args": ["door", 0.0],
+"method": &"PlayEvent"
+}, {
+"args": ["timido", 0.6, false],
 "method": &"PlayEvent"
 }]
 }
@@ -294,6 +305,15 @@ volume = 0.0
 pitch = 1.0
 RandomPitch = Vector2(1, 1)
 streams = Array[AudioStream]([ExtResource("22_gbsl0")])
+
+[sub_resource type="Resource" id="Resource_3vjct"]
+script = ExtResource("21_2k2rl")
+name = "timido"
+bus = ""
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([ExtResource("23_xdpjw")])
 
 [sub_resource type="Curve2D" id="Curve2D_m5pj6"]
 _data = {
@@ -925,6 +945,36 @@ pitch = 1.0
 RandomPitch = Vector2(1, 1)
 streams = Array[AudioStream]([ExtResource("38_t7d1t")])
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_j4uoi"]
+streams_count = 3
+playback_mode = 2
+random_pitch = 1.0
+random_volume_offset_db = 0.0
+stream_0/stream = ExtResource("84_xtd0u")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("85_sapcq")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("86_qryqt")
+stream_2/weight = 1.0
+
+[sub_resource type="Resource" id="Resource_fvaox"]
+script = ExtResource("21_2k2rl")
+name = "Clue"
+bus = "pistaEncontrada"
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([SubResource("AudioStreamRandomizer_j4uoi")])
+
+[sub_resource type="Resource" id="Resource_l38kq"]
+script = ExtResource("21_2k2rl")
+name = "trinidad"
+bus = "trinidad"
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([ExtResource("87_d7inb")])
+
 [sub_resource type="Animation" id="Animation_yogp1"]
 length = 0.001
 tracks/0/type = "value"
@@ -1063,6 +1113,35 @@ tracks/2/keys = {
 "update": 0,
 "values": [Vector2(1e-05, 1e-05), Vector2(1.2, 1.2), Vector2(1.02, 1.02)]
 }
+tracks/3/type = "audio"
+tracks/3/imported = false
+tracks/3/enabled = false
+tracks/3/path = NodePath("AnimationPlayer/AudioStreamPlayer")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("87_d7inb")
+}],
+"times": PackedFloat32Array(0.3)
+}
+tracks/3/use_blend = true
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../ScreenCenter/SoundsEmitter")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["trinidad", 0.0, false],
+"method": &"PlayEvent"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_8rmco"]
 resource_name = "inPlace"
@@ -1135,29 +1214,68 @@ _data = {
 "inPlace": SubResource("Animation_8rmco")
 }
 
+[sub_resource type="Resource" id="Resource_sc721"]
+script = ExtResource("17_25bdu")
+Place = 0
+texture = ExtResource("18_3gknl")
+label = ""
+dontPassPanel = false
+exitPanel = false
+
 [sub_resource type="Resource" id="Resource_bi8fh"]
 script = ExtResource("19_5u4uq")
 Text = "UN RELOJ CON ARENA ROJA?"
 SizePanel = Vector2(0, 0)
 Position = Vector2(0, 0)
-buttons = Array[ExtResource("17_25bdu")]([])
+buttons = Array[ExtResource("17_25bdu")]([SubResource("Resource_sc721")])
 NumOfContent = 0
+
+[sub_resource type="Resource" id="Resource_auygu"]
+script = ExtResource("22_i5khy")
+NumberOfPanel = 1
+Place = 0
+
+[sub_resource type="Resource" id="Resource_ybiw2"]
+script = ExtResource("17_25bdu")
+Place = 0
+texture = ExtResource("18_3gknl")
+label = ""
+dontPassPanel = false
+exitPanel = false
 
 [sub_resource type="Resource" id="Resource_75u4j"]
 script = ExtResource("19_5u4uq")
 Text = "UN GLOBO CON NIEVE?"
 SizePanel = Vector2(0, 0)
 Position = Vector2(0, 0)
-buttons = Array[ExtResource("17_25bdu")]([])
+buttons = Array[ExtResource("17_25bdu")]([SubResource("Resource_ybiw2")])
 NumOfContent = 0
+
+[sub_resource type="Resource" id="Resource_4n3c5"]
+script = ExtResource("22_i5khy")
+NumberOfPanel = 1
+Place = 0
+
+[sub_resource type="Resource" id="Resource_meqr4"]
+script = ExtResource("17_25bdu")
+Place = 0
+texture = ExtResource("18_3gknl")
+label = ""
+dontPassPanel = false
+exitPanel = false
 
 [sub_resource type="Resource" id="Resource_88vby"]
 script = ExtResource("19_5u4uq")
 Text = "UNA BOTA CON POLVO?"
 SizePanel = Vector2(0, 0)
 Position = Vector2(0, 0)
-buttons = Array[ExtResource("17_25bdu")]([])
+buttons = Array[ExtResource("17_25bdu")]([SubResource("Resource_meqr4")])
 NumOfContent = 0
+
+[sub_resource type="Resource" id="Resource_10vev"]
+script = ExtResource("22_i5khy")
+NumberOfPanel = 1
+Place = 0
 
 [sub_resource type="Resource" id="Resource_pn6ba"]
 script = ExtResource("17_25bdu")
@@ -1232,18 +1350,18 @@ noise = SubResource("FastNoiseLite_nnt2y")
 seamless = true
 noise = SubResource("FastNoiseLite_y2l0o")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_reufe"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_f1ca8"]
 resource_local_to_scene = true
 shader = ExtResource("57_dbv4y")
 shader_parameter/scroll1 = Vector2(-1.02, 0.4)
 shader_parameter/scroll2 = Vector2(0.38, 1.4)
-shader_parameter/speed = 0.02
-shader_parameter/xStretch = 0.21
-shader_parameter/yStretch = 0.225
-shader_parameter/laserSize = 0.736
+shader_parameter/speed = 0.172
+shader_parameter/xStretch = -0.125
+shader_parameter/yStretch = 0.1
+shader_parameter/laserSize = 0.699
 shader_parameter/wobbliness = 0.472
-shader_parameter/color1 = Color(0.511719, 0.425781, 0.511719, 1)
-shader_parameter/color2 = Color(0.5, 0.5, 0.609375, 1)
+shader_parameter/color1 = Color(0.453125, 0.382813, 0.410156, 1)
+shader_parameter/color2 = Color(0.453125, 0.382813, 0.410156, 1)
 shader_parameter/colorMixFactor = 5.253
 shader_parameter/glowFactor = 1.0
 shader_parameter/minAlpha = 1.0
@@ -1252,6 +1370,14 @@ shader_parameter/GlowColor = Color(1, 1, 1, 0.968627)
 shader_parameter/NOISE_PATTERN1 = SubResource("NoiseTexture2D_6a6ct")
 shader_parameter/NOISE_PATTERN2 = SubResource("NoiseTexture2D_sd6mx")
 shader_parameter/TRANSPARENCY_VARIATION = SubResource("NoiseTexture2D_xy7uj")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_24mta"]
+resource_local_to_scene = true
+bg_color = Color(0.305882, 0.164706, 0.219608, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
 
 [sub_resource type="LabelSettings" id="LabelSettings_qq4pc"]
 resource_local_to_scene = true
@@ -1269,26 +1395,13 @@ point_count = 4
 offsets = PackedFloat32Array(0.0141844, 0.269504)
 colors = PackedColorArray(0.777162, 0.920445, 1, 1, 1, 1, 1, 1)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_jdlqd"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ashsy"]
 resource_local_to_scene = true
-shader = ExtResource("57_dbv4y")
-shader_parameter/scroll1 = Vector2(-1.02, 0.4)
-shader_parameter/scroll2 = Vector2(0.38, 1.4)
-shader_parameter/speed = 0.02
-shader_parameter/xStretch = 0.21
-shader_parameter/yStretch = 0.225
-shader_parameter/laserSize = 0.736
-shader_parameter/wobbliness = 0.472
-shader_parameter/color1 = Color(0.511719, 0.425781, 0.511719, 1)
-shader_parameter/color2 = Color(0.5, 0.5, 0.609375, 1)
-shader_parameter/colorMixFactor = 5.253
-shader_parameter/glowFactor = 1.0
-shader_parameter/minAlpha = 1.0
-shader_parameter/glowArea = 0.0
-shader_parameter/GlowColor = Color(1, 1, 1, 0.968627)
-shader_parameter/NOISE_PATTERN1 = SubResource("NoiseTexture2D_6a6ct")
-shader_parameter/NOISE_PATTERN2 = SubResource("NoiseTexture2D_sd6mx")
-shader_parameter/TRANSPARENCY_VARIATION = SubResource("NoiseTexture2D_xy7uj")
+bg_color = Color(0.305882, 0.164706, 0.219608, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
 
 [sub_resource type="LabelSettings" id="LabelSettings_f5xxe"]
 resource_local_to_scene = true
@@ -1305,26 +1418,13 @@ point_count = 2
 [sub_resource type="Gradient" id="Gradient_kxyq1"]
 colors = PackedColorArray(0.419813, 0.419813, 0.419813, 1, 1, 1, 1, 1)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_iecp7"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vcbv4"]
 resource_local_to_scene = true
-shader = ExtResource("57_dbv4y")
-shader_parameter/scroll1 = Vector2(-1.02, 0.4)
-shader_parameter/scroll2 = Vector2(0.38, 1.4)
-shader_parameter/speed = 0.02
-shader_parameter/xStretch = 0.21
-shader_parameter/yStretch = 0.225
-shader_parameter/laserSize = 0.736
-shader_parameter/wobbliness = 0.472
-shader_parameter/color1 = Color(0.511719, 0.425781, 0.511719, 1)
-shader_parameter/color2 = Color(0.5, 0.5, 0.609375, 1)
-shader_parameter/colorMixFactor = 5.253
-shader_parameter/glowFactor = 1.0
-shader_parameter/minAlpha = 1.0
-shader_parameter/glowArea = 0.0
-shader_parameter/GlowColor = Color(1, 1, 1, 0.968627)
-shader_parameter/NOISE_PATTERN1 = SubResource("NoiseTexture2D_6a6ct")
-shader_parameter/NOISE_PATTERN2 = SubResource("NoiseTexture2D_sd6mx")
-shader_parameter/TRANSPARENCY_VARIATION = SubResource("NoiseTexture2D_xy7uj")
+bg_color = Color(0.305882, 0.164706, 0.219608, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
 
 [sub_resource type="LabelSettings" id="LabelSettings_lcsvr"]
 resource_local_to_scene = true
@@ -1334,6 +1434,14 @@ shadow_size = 4
 shadow_color = Color(0, 0, 0, 1)
 shadow_offset = Vector2(-0.06, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2tfsf"]
+resource_local_to_scene = true
+bg_color = Color(0.305882, 0.164706, 0.219608, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
 [sub_resource type="LabelSettings" id="LabelSettings_xkx0v"]
 resource_local_to_scene = true
 font_size = 25
@@ -1341,6 +1449,14 @@ outline_color = Color(0, 0, 0, 1)
 shadow_size = 4
 shadow_color = Color(0, 0, 0, 1)
 shadow_offset = Vector2(-0.06, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6lcrx"]
+resource_local_to_scene = true
+bg_color = Color(0.305882, 0.164706, 0.219608, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
 
 [sub_resource type="LabelSettings" id="LabelSettings_t73i7"]
 resource_local_to_scene = true
@@ -1377,6 +1493,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_nhelu"]
 resource_name = "planetEnter"
+length = 1.3
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -1403,6 +1520,21 @@ tracks/1/keys = {
 "method": &"EnterPanel"
 }]
 }
+tracks/2/type = "audio"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimationPlayer/AudioStreamPlayer")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("99_d4amc")
+}],
+"times": PackedFloat32Array(0.4)
+}
+tracks/2/use_blend = true
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_i7dih"]
 _data = {
@@ -1491,6 +1623,24 @@ NumOfContent = 0
 script = ExtResource("22_i5khy")
 NumberOfPanel = 1
 Place = 0
+
+[sub_resource type="Resource" id="Resource_unefm"]
+script = ExtResource("21_2k2rl")
+name = "planetasUnidos"
+bus = "planetasUnidosSeAcomodan"
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([ExtResource("100_50xw5")])
+
+[sub_resource type="Resource" id="Resource_hjnnn"]
+script = ExtResource("21_2k2rl")
+name = "planetasAfuera"
+bus = "planetasSeVan"
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([ExtResource("101_cpwx3")])
 
 [sub_resource type="Resource" id="Resource_s16ue"]
 script = ExtResource("17_25bdu")
@@ -1762,7 +1912,7 @@ script = ExtResource("19_cddff")
 [node name="SoundBank" type="Node" parent="DondeEstuvo/StateMachine/Consigna/Contenido/IntroSounds"]
 script = ExtResource("20_kk2vv")
 label = "intro"
-events = Array[ExtResource("21_2k2rl")]([SubResource("Resource_a573f")])
+events = Array[ExtResource("21_2k2rl")]([SubResource("Resource_a573f"), SubResource("Resource_3vjct")])
 
 [node name="Juego" type="Node" parent="DondeEstuvo/StateMachine" node_paths=PackedStringArray("NextState", "StateMachine")]
 script = ExtResource("5_8uhx2")
@@ -2069,6 +2219,7 @@ texture = ExtResource("12_ly1ac")
 flip_h = true
 HighQualityTexture = ExtResource("15_lqru8")
 angleInCenter = -30.0
+ObjectName = "Boot1"
 
 [node name="SquigglingSprite" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/ScreenCenter/Clues/Clue_bota_izq" instance=ExtResource("31_uhkxy")]
 position = Vector2(0.0852571, 1.11102)
@@ -2260,6 +2411,7 @@ texture = ExtResource("17_k3lcg")
 HighQualityTexture = ExtResource("24_7duko")
 AnimatedSpeed = 0.4
 angleInCenter = 230.0
+ObjectName = "Glove2"
 inactiveInReady = true
 EditableButton = true
 
@@ -2372,7 +2524,7 @@ script = ExtResource("19_cddff")
 [node name="SoundBank" type="Node" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/ScreenCenter/SoundsEmitter"]
 script = ExtResource("20_kk2vv")
 label = "instance1"
-events = Array[ExtResource("21_2k2rl")]([SubResource("Resource_k56xx"), SubResource("Resource_watgg"), SubResource("Resource_pa5ot"), SubResource("Resource_0m5hg")])
+events = Array[ExtResource("21_2k2rl")]([SubResource("Resource_k56xx"), SubResource("Resource_watgg"), SubResource("Resource_pa5ot"), SubResource("Resource_0m5hg"), SubResource("Resource_fvaox"), SubResource("Resource_l38kq")])
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/ScreenCenter/SoundsEmitter"]
 
@@ -2523,13 +2675,19 @@ libraries = {
 "": SubResource("AnimationLibrary_yuq6j")
 }
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/CenterClues/AnimationPlayer"]
+
 [node name="PanelRelojArena" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/CenterClues" instance=ExtResource("16_aupkq")]
 visible = false
 layout_mode = 1
 offset_top = 324.0
 offset_bottom = 552.0
 AppearInBeginning = false
+RepitingPanel = true
 Texts = Array[ExtResource("19_5u4uq")]([SubResource("Resource_bi8fh")])
+
+[node name="Panel(1) Btn(rigth)" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/CenterClues/PanelRelojArena" instance=ExtResource("20_q3u46")]
+Data = SubResource("Resource_auygu")
 
 [node name="PanelGloboDeNieve" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/CenterClues" instance=ExtResource("16_aupkq")]
 visible = false
@@ -2537,7 +2695,11 @@ layout_mode = 1
 offset_top = 326.0
 offset_bottom = 554.0
 AppearInBeginning = false
+RepitingPanel = true
 Texts = Array[ExtResource("19_5u4uq")]([SubResource("Resource_75u4j")])
+
+[node name="Panel(1) Btn(rigth)" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/CenterClues/PanelGloboDeNieve" instance=ExtResource("20_q3u46")]
+Data = SubResource("Resource_4n3c5")
 
 [node name="PanelBota" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/CenterClues" instance=ExtResource("16_aupkq")]
 visible = false
@@ -2545,7 +2707,11 @@ layout_mode = 1
 offset_top = 326.0
 offset_bottom = 554.0
 AppearInBeginning = false
+RepitingPanel = true
 Texts = Array[ExtResource("19_5u4uq")]([SubResource("Resource_88vby")])
+
+[node name="Panel(1) Btn(rigth)" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/CenterClues/PanelBota" instance=ExtResource("20_q3u46")]
+Data = SubResource("Resource_10vev")
 
 [node name="CamperaXl-Donde" type="Sprite2D" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1"]
 visible = false
@@ -2658,14 +2824,18 @@ correctSpot = NodePath("../../../pivotPlanets/VBoxContainer2/SpotUnir5")
 colorShader = Color(0.496094, 0.628906, 0.59375, 1)
 
 [node name="LaserRay" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/center/CheckTrue/ItemUnir2" index="0"]
-material = SubResource("ShaderMaterial_reufe")
-points = PackedVector2Array(57, 1.00002, 1, 0)
+material = SubResource("ShaderMaterial_f1ca8")
+points = PackedVector2Array(72.85, -0.5, 1, 0)
 
 [node name="Sprite2D" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/center/CheckTrue/ItemUnir2" index="1"]
 self_modulate = Color(0.454902, 0.384314, 0.411765, 1)
 scale = Vector2(0.1817, 0.1817)
 
-[node name="Panel" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/center/CheckTrue/ItemUnir2" index="4"]
+[node name="SquigglingSprite" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/center/CheckTrue/ItemUnir2" index="2"]
+self_modulate = Color(0.304688, 0.164063, 0.21875, 1)
+scale = Vector2(1.26351, 1.26351)
+
+[node name="Panel" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/center/CheckTrue/ItemUnir2" index="5"]
 anchors_preset = -1
 anchor_left = 0.526
 anchor_top = 0.5
@@ -2675,6 +2845,7 @@ offset_left = -183.536
 offset_top = 9.0
 offset_right = 47.464
 offset_bottom = 57.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_24mta")
 
 [node name="Label" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/center/CheckTrue/ItemUnir2/Panel" index="0"]
 label_settings = SubResource("LabelSettings_qq4pc")
@@ -2707,14 +2878,19 @@ correctSpot = NodePath("../../../pivotPlanets/VBoxContainer2/SpotUnir4")
 colorShader = Color(0.597656, 0.582031, 0.558594, 1)
 
 [node name="LaserRay" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/center/CheckTrue/ItemUnir" index="0"]
-material = SubResource("ShaderMaterial_jdlqd")
+material = SubResource("ShaderMaterial_f1ca8")
 scale = Vector2(1.35, 1.35)
+points = PackedVector2Array(57.3016, 6.10352e-05, 1, 0)
 
 [node name="Sprite2D" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/center/CheckTrue/ItemUnir" index="1"]
 self_modulate = Color(0.454902, 0.384314, 0.411765, 1)
 scale = Vector2(0.259571, 0.259571)
 
-[node name="Button" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/center/CheckTrue/ItemUnir" index="3"]
+[node name="SquigglingSprite" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/center/CheckTrue/ItemUnir" index="2"]
+self_modulate = Color(0.304688, 0.164063, 0.21875, 1)
+scale = Vector2(1.84363, 1.84363)
+
+[node name="Button" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/center/CheckTrue/ItemUnir" index="4"]
 anchor_left = -0.101
 anchor_top = -0.117
 anchor_right = 1.116
@@ -2724,7 +2900,7 @@ offset_top = -87.525
 offset_right = -98.968
 offset_bottom = -87.45
 
-[node name="Panel" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/center/CheckTrue/ItemUnir" index="4"]
+[node name="Panel" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/center/CheckTrue/ItemUnir" index="5"]
 z_index = 1
 anchors_preset = -1
 anchor_left = 0.489
@@ -2736,6 +2912,7 @@ offset_top = 13.2144
 offset_right = -11.822
 offset_bottom = 63.2144
 scale = Vector2(1.35, 1.35)
+theme_override_styles/panel = SubResource("StyleBoxFlat_ashsy")
 
 [node name="Label" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/center/CheckTrue/ItemUnir/Panel" index="0"]
 text = "POLVO BLANCO"
@@ -2790,14 +2967,18 @@ correctSpot = NodePath("../../../pivotPlanets/VBoxContainer2/SpotUnir")
 colorShader = Color(0.703125, 0.296875, 0.167969, 1)
 
 [node name="LaserRay" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/center/CheckTrue/ItemUnir3" index="0"]
-material = SubResource("ShaderMaterial_iecp7")
+material = SubResource("ShaderMaterial_f1ca8")
 scale = Vector2(1.15, 1.15)
 
 [node name="Sprite2D" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/center/CheckTrue/ItemUnir3" index="1"]
 self_modulate = Color(0.454902, 0.384314, 0.411765, 1)
 scale = Vector2(0.213043, 0.213043)
 
-[node name="Panel" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/center/CheckTrue/ItemUnir3" index="4"]
+[node name="SquigglingSprite" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/center/CheckTrue/ItemUnir3" index="2"]
+self_modulate = Color(0.304688, 0.164063, 0.21875, 1)
+scale = Vector2(1.49485, 1.49485)
+
+[node name="Panel" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/center/CheckTrue/ItemUnir3" index="5"]
 z_index = 1
 anchors_preset = -1
 anchor_left = 0.542
@@ -2811,6 +2992,7 @@ offset_bottom = 59.5367
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1.1, 1.1)
+theme_override_styles/panel = SubResource("StyleBoxFlat_vcbv4")
 
 [node name="Label" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/center/CheckTrue/ItemUnir3/Panel" index="0"]
 text = "RELOJ DE ARENA"
@@ -2849,6 +3031,7 @@ grow_horizontal = 2
 layout_mode = 2
 offset_right = 160.0
 offset_bottom = 160.0
+colorShader = Color(0.703125, 0.296875, 0.167969, 1)
 nombre = "MARTE"
 item = NodePath("../../../center/CheckTrue/ItemUnir3")
 
@@ -2860,6 +3043,7 @@ offset_right = 225.0
 offset_bottom = 410.0
 texture = ExtResource("54_48nd8")
 expand_mode = 1
+colorShader = Color(0, 0, 0, 1)
 nombre = "SATURNO"
 
 [node name="Area2D" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/pivotPlanets/VBoxContainer2/SpotUnir2" index="0"]
@@ -2868,9 +3052,10 @@ position = Vector2(135, 74)
 [node name="unionSpot" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/pivotPlanets/VBoxContainer2/SpotUnir2" index="1"]
 position = Vector2(65, 73)
 
-[node name="Panel" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/pivotPlanets/VBoxContainer2/SpotUnir2" index="2"]
+[node name="Panel" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/pivotPlanets/VBoxContainer2/SpotUnir2" index="3"]
 offset_left = 69.0
 offset_right = 222.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_2tfsf")
 
 [node name="Label" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/pivotPlanets/VBoxContainer2/SpotUnir2/Panel" index="0"]
 text = "SATURNO"
@@ -2893,6 +3078,7 @@ offset_right = 179.0
 offset_bottom = 672.0
 texture = ExtResource("55_ucjwp")
 expand_mode = 1
+colorShader = Color(0, 0, 0, 1)
 nombre = "SOL"
 
 [node name="Area2D" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/pivotPlanets/VBoxContainer2/SpotUnir3" index="0"]
@@ -2902,11 +3088,12 @@ position = Vector2(95, 87)
 [node name="unionSpot" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/pivotPlanets/VBoxContainer2/SpotUnir3" index="1"]
 position = Vector2(27, 95)
 
-[node name="Panel" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/pivotPlanets/VBoxContainer2/SpotUnir3" index="2"]
+[node name="Panel" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/pivotPlanets/VBoxContainer2/SpotUnir3" index="3"]
 offset_left = 17.0
 offset_top = 172.0
 offset_right = 170.0
 offset_bottom = 212.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_6lcrx")
 
 [node name="Label" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/pivotPlanets/VBoxContainer2/SpotUnir3/Panel" index="0"]
 text = "SOL"
@@ -2935,6 +3122,7 @@ offset_top = 750.0
 offset_right = 160.0
 offset_bottom = 910.0
 texture = ExtResource("56_7ph33")
+colorShader = Color(0.597656, 0.582031, 0.558594, 1)
 nombre = "LUNA"
 item = NodePath("../../../center/CheckTrue/ItemUnir")
 
@@ -2944,6 +3132,7 @@ offset_top = 1000.0
 offset_right = 160.0
 offset_bottom = 1160.0
 texture = ExtResource("75_h52fe")
+colorShader = Color(0.496094, 0.628906, 0.59375, 1)
 nombre = "URANO"
 item = NodePath("../../../center/CheckTrue/ItemUnir2")
 
@@ -2953,6 +3142,9 @@ libraries = {
 }
 script = ExtResource("13_ukv5b")
 animation = "planetEnter"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/pivotPlanets/AnimationPlayer"]
+bus = &"planetasAparecen"
 
 [node name="Panels" type="Control" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2"]
 z_index = 1
@@ -3087,6 +3279,13 @@ visible = true
 
 [node name="Panel(1) Btn(rigth)" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/Panels/PanelPivot1/Panel" instance=ExtResource("20_q3u46")]
 Data = SubResource("Resource_i811h")
+
+[node name="GeneralSounds" type="Node" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2"]
+
+[node name="SoundBank" type="Node" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/GeneralSounds"]
+script = ExtResource("20_kk2vv")
+label = "instance2"
+events = Array[ExtResource("21_2k2rl")]([SubResource("Resource_unefm"), SubResource("Resource_hjnnn")])
 
 [node name="btnVolver" parent="DondeEstuvo/StateMachine/Juego" instance=ExtResource("65_lsfn2")]
 
@@ -3295,7 +3494,7 @@ Texts = Array[ExtResource("19_5u4uq")]([SubResource("Resource_37a5n"), SubResour
 Data = SubResource("Resource_82hdo")
 
 [node name="Sound Debug" parent="DondeEstuvo" instance=ExtResource("106_h6qvq")]
-AudioBuses = Array[String](["VolumenDondeEstuvo", "puerta", "casco", "guante1", "guante2", "guanteCae", "globoNieve", "jetpack", "campera", "pantalon", "bota2", "botaCae", "reloj", "cucarachaPiso", "cucarachaPuerta"])
+AudioBuses = Array[String](["VolumenDondeEstuvo", "puerta", "casco", "guante1", "guante2", "guanteCae", "globoNieve", "jetpack", "campera", "pantalon", "bota1", "bota2", "botaCae", "reloj", "cucarachaPiso", "cucarachaPuerta", "laserLoop", "laserCorrecto", "laserIncorrecto", "pistaEncontrada", "noPista", "planetasAparecen", "planetasSeVan", "planetasUnidosSeAcomodan"])
 
 [connection signal="ButtonPress" from="DondeEstuvo/StateMachine/Consigna/Contenido/PanelIntro1/Panel(1) Btn(rigth)" to="DondeEstuvo/StateMachine/Consigna/Contenido/AnimationPlayer" method="PlayAnim" binds= ["open_Door"]]
 [connection signal="ButtonPress" from="DondeEstuvo/StateMachine/Consigna/Contenido/PanelIntro2/Panel(1) Btn(rigth)" to="DondeEstuvo/StateMachine/Consigna/Contenido" method="PassSecondPanel"]
@@ -3319,6 +3518,12 @@ AudioBuses = Array[String](["VolumenDondeEstuvo", "puerta", "casco", "guante1", 
 [connection signal="ToCenter" from="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/ScreenCenter/Clues/Clue_guante_izq" to="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/ScreenCenter/Clues/Clue_guante_der/AnimationPlayer" method="PlayAnim" binds= ["fall"]]
 [connection signal="pressed" from="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/ScreenCenter/cucaracha/Button" to="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/ScreenCenter/cucaracha/AnimationPlayer" method="Play"]
 [connection signal="pressed" from="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/ScreenCenter/cucaracha/Button" to="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/ScreenCenter/cucaracha/Button" method="set_disabled" binds= [true]]
+[connection signal="ButtonPress" from="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/CenterClues/PanelRelojArena/Panel(1) Btn(rigth)" to="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/ScreenCenter/Clues/Clue_reloj" method="BtnPress"]
+[connection signal="ButtonPress" from="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/CenterClues/PanelRelojArena/Panel(1) Btn(rigth)" to="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/ScreenCenter/Clues/Clue_reloj" method="BlockButton" binds= [true]]
+[connection signal="ButtonPress" from="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/CenterClues/PanelGloboDeNieve/Panel(1) Btn(rigth)" to="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/ScreenCenter/Clues/Clue_globo" method="BtnPress"]
+[connection signal="ButtonPress" from="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/CenterClues/PanelGloboDeNieve/Panel(1) Btn(rigth)" to="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/ScreenCenter/Clues/Clue_globo" method="BlockButton" binds= [true]]
+[connection signal="ButtonPress" from="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/CenterClues/PanelBota/Panel(1) Btn(rigth)" to="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/ScreenCenter/Clues/Clue_bota_der" method="BtnPress"]
+[connection signal="ButtonPress" from="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/CenterClues/PanelBota/Panel(1) Btn(rigth)" to="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/ScreenCenter/Clues/Clue_bota_der" method="BlockButton" binds= [true]]
 [connection signal="ButtonPress" from="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/PanelConsigna/Panel(1) Btn(rigth)" to="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/EnableInput" method="set_visible" binds= [false]]
 [connection signal="ButtonPress" from="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/Encontrado/Panel(1) Btn(rigth)" to="DondeEstuvo/StateMachine/Juego/Contenido/Instancia1/Inventary" method="PassStateTransition"]
 [connection signal="InstanceTrue" from="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2" to="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/pivotPlanets/AnimationPlayer" method="Play"]

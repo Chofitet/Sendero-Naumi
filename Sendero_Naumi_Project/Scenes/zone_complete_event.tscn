@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://dqyb2b0ey8ckp"]
+[gd_scene load_steps=68 format=3 uid="uid://dqyb2b0ey8ckp"]
 
 [ext_resource type="Material" uid="uid://muj2sfgakm5s" path="res://shaders/GalaxyWiggle.tres" id="1_s0bb2"]
 [ext_resource type="Texture2D" uid="uid://nuybqhitpej1" path="res://Sprites/Mapa/fondo_mapa.png" id="1_tohrf"]
@@ -27,6 +27,21 @@
 [ext_resource type="Script" path="res://Scenes/Experiments/GenericPanel/IntermediateData.gd" id="19_n7ev0"]
 [ext_resource type="Texture2D" uid="uid://6c8ohwgh1g2j" path="res://Sprites/UI/backIcon - UI.png" id="19_pq350"]
 [ext_resource type="Texture2D" uid="uid://c87cim2trecu1" path="res://Sprites/UI/SquigglingUI/botonesRedondosBSQUIG - UI.png" id="20_21x5c"]
+[ext_resource type="Script" path="res://addons/resonate/sound_manager/sound_bank.gd" id="28_ndjk3"]
+[ext_resource type="Script" path="res://_Scripts/SoundEventTrigger.gd" id="28_wovoc"]
+[ext_resource type="Script" path="res://addons/resonate/sound_manager/sound_event_resource.gd" id="29_ol1mw"]
+[ext_resource type="AudioStream" uid="uid://8tmcfck7ujhd" path="res://Sounds/UI/UI - Azul Aparece.ogg" id="30_l4fua"]
+[ext_resource type="AudioStream" uid="uid://baf806hg8wm2b" path="res://Sounds/UI/UI -Aparece Tilde Verde en Pointer.ogg" id="30_mdlsu"]
+[ext_resource type="AudioStream" uid="uid://16mfoqf1ni1e" path="res://Sounds/Fighter/Fighter - UPS.ogg" id="31_m1xj1"]
+[ext_resource type="AudioStream" uid="uid://bf053o26cjalu" path="res://Sounds/UI/Zona Completada - C.ogg" id="32_gtk4x"]
+[ext_resource type="AudioStream" uid="uid://b124uupcec5in" path="res://Sounds/UI/Zona Completada - Yey.ogg" id="32_yljm0"]
+[ext_resource type="AudioStream" uid="uid://n2lx0na741xq" path="res://Sounds/UI/Zona Completada  - E.ogg" id="33_iorun"]
+[ext_resource type="AudioStream" uid="uid://bcj2pr0yef8ac" path="res://Sounds/UI/Zona Completada - D.ogg" id="34_v8ru0"]
+[ext_resource type="AudioStream" uid="uid://60hathrnicc3" path="res://Sounds/UI/Zona Completada - D#.ogg" id="35_rlont"]
+
+[sub_resource type="Curve" id="Curve_dkj71"]
+_data = [Vector2(0.517906, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
 
 [sub_resource type="Animation" id="Animation_6r765"]
 length = 0.001
@@ -94,6 +109,20 @@ tracks/3/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = false
+tracks/4/path = NodePath("../../../sounds")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["pointer", 0.0, false],
+"method": &"PlayEvent"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rfs4y"]
 _data = {
@@ -107,6 +136,7 @@ Place = 1
 texture = ExtResource("13_h38ty")
 label = ""
 dontPassPanel = false
+exitPanel = false
 
 [sub_resource type="Resource" id="Resource_w7u63"]
 script = ExtResource("14_xro7r")
@@ -538,7 +568,7 @@ Place = 1
 
 [sub_resource type="Animation" id="Animation_kulwn"]
 resource_name = "content"
-length = 1.4
+length = 0.6
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -546,7 +576,7 @@ tracks/0/path = NodePath("estrellas:emitting")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(1.4),
+"times": PackedFloat32Array(0.6),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
@@ -558,7 +588,7 @@ tracks/1/path = NodePath("estrellas2:emitting")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(1.4),
+"times": PackedFloat32Array(0.6),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
@@ -570,7 +600,7 @@ tracks/2/path = NodePath("estrellas3:emitting")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(1.4),
+"times": PackedFloat32Array(0.6),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
@@ -580,6 +610,105 @@ tracks/2/keys = {
 _data = {
 "content": SubResource("Animation_kulwn")
 }
+
+[sub_resource type="Resource" id="Resource_613n4"]
+script = ExtResource("29_ol1mw")
+name = "basic"
+bus = ""
+volume = 2.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([ExtResource("30_l4fua")])
+
+[sub_resource type="Resource" id="Resource_ud1i2"]
+script = ExtResource("29_ol1mw")
+name = "ups"
+bus = "ups"
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([ExtResource("31_m1xj1")])
+
+[sub_resource type="Resource" id="Resource_7fh2y"]
+script = ExtResource("29_ol1mw")
+name = "yey"
+bus = ""
+volume = -25.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([ExtResource("32_yljm0")])
+
+[sub_resource type="Resource" id="Resource_u0n1u"]
+script = ExtResource("29_ol1mw")
+name = "pointer"
+bus = ""
+volume = -25.5
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([ExtResource("30_mdlsu")])
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_7lx7b"]
+streams_count = 2
+playback_mode = 2
+random_pitch = 1.0
+random_volume_offset_db = 0.0
+stream_0/stream = ExtResource("32_gtk4x")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("33_iorun")
+stream_1/weight = 1.0
+
+[sub_resource type="Resource" id="Resource_dkam6"]
+script = ExtResource("29_ol1mw")
+name = "MegafaunaZone"
+bus = ""
+volume = -25.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([SubResource("AudioStreamRandomizer_7lx7b")])
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_4bgju"]
+streams_count = 3
+playback_mode = 2
+random_pitch = 1.0
+random_volume_offset_db = 0.0
+stream_0/stream = ExtResource("32_gtk4x")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("34_v8ru0")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("33_iorun")
+stream_2/weight = 1.0
+
+[sub_resource type="Resource" id="Resource_7bfeb"]
+script = ExtResource("29_ol1mw")
+name = "AstronomiaZone"
+bus = ""
+volume = -25.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([SubResource("AudioStreamRandomizer_4bgju")])
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_aeow2"]
+streams_count = 4
+playback_mode = 2
+random_pitch = 1.0
+random_volume_offset_db = 0.0
+stream_0/stream = ExtResource("32_gtk4x")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("34_v8ru0")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("35_rlont")
+stream_2/weight = 1.0
+stream_3/stream = ExtResource("33_iorun")
+stream_3/weight = 1.0
+
+[sub_resource type="Resource" id="Resource_06pif"]
+script = ExtResource("29_ol1mw")
+name = "GeologiaZone"
+bus = ""
+volume = -25.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([SubResource("AudioStreamRandomizer_aeow2")])
 
 [node name="Zone_Complete_Event" type="Control"]
 layout_mode = 3
@@ -618,6 +747,7 @@ texture = ExtResource("2_4r0kt")
 expand_mode = 1
 stretch_mode = 4
 script = ExtResource("3_f0n8u")
+debugTest = true
 
 [node name="btnVolver" type="Button" parent="Zone"]
 layout_mode = 1
@@ -663,17 +793,17 @@ position = Vector2(-45.5391, -14.1329)
 rotation = 0.0262622
 emitting = false
 amount = 6
-lifetime = 1.5
+lifetime = 0.4
 one_shot = true
 explosiveness = 1.0
 texture = ExtResource("10_hg27i")
 emission_shape = 0
 spread = 45.0
-gravity = Vector2(0, 1000)
-initial_velocity_min = 578.19
-initial_velocity_max = 684.6
+initial_velocity_min = 288.37
+initial_velocity_max = 481.78
 scale_amount_min = 0.1
 scale_amount_max = 0.2
+scale_amount_curve = SubResource("Curve_dkj71")
 color = Color(1, 1, 1, 1)
 
 [node name="estrellas2" parent="Zone/Pines/MegafaunaZone/pin1/particles" instance=ExtResource("9_orh31")]
@@ -681,17 +811,17 @@ position = Vector2(0.968811, -64.9532)
 rotation = 1.51493
 emitting = false
 amount = 6
-lifetime = 1.5
+lifetime = 0.4
 one_shot = true
 explosiveness = 1.0
 texture = ExtResource("10_hg27i")
 emission_shape = 0
 spread = 60.0
-gravity = Vector2(0, 1000)
-initial_velocity_min = 578.19
-initial_velocity_max = 684.6
+initial_velocity_min = 288.37
+initial_velocity_max = 481.78
 scale_amount_min = 0.1
 scale_amount_max = 0.2
+scale_amount_curve = SubResource("Curve_dkj71")
 color = Color(1, 1, 1, 1)
 
 [node name="estrellas3" parent="Zone/Pines/MegafaunaZone/pin1/particles" instance=ExtResource("9_orh31")]
@@ -699,17 +829,17 @@ position = Vector2(45.5389, -14.1328)
 rotation = 3.74823
 emitting = false
 amount = 6
-lifetime = 1.5
+lifetime = 0.4
 one_shot = true
 explosiveness = 1.0
 texture = ExtResource("10_hg27i")
 emission_shape = 0
 spread = 45.0
-gravity = Vector2(0, 1000)
-initial_velocity_min = 578.19
-initial_velocity_max = 684.6
+initial_velocity_min = 288.37
+initial_velocity_max = 481.78
 scale_amount_min = 0.1
 scale_amount_max = 0.2
+scale_amount_curve = SubResource("Curve_dkj71")
 color = Color(1, 1, 1, 1)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Zone/Pines/MegafaunaZone/pin1"]
@@ -732,17 +862,17 @@ position = Vector2(-45.5391, -14.1329)
 rotation = 0.0262622
 emitting = false
 amount = 6
-lifetime = 1.5
+lifetime = 0.4
 one_shot = true
 explosiveness = 1.0
 texture = ExtResource("10_hg27i")
 emission_shape = 0
 spread = 45.0
-gravity = Vector2(0, 1000)
-initial_velocity_min = 578.19
-initial_velocity_max = 684.6
+initial_velocity_min = 288.37
+initial_velocity_max = 481.78
 scale_amount_min = 0.1
 scale_amount_max = 0.2
+scale_amount_curve = SubResource("Curve_dkj71")
 color = Color(1, 1, 1, 1)
 
 [node name="estrellas2" parent="Zone/Pines/MegafaunaZone/pin2/particles" instance=ExtResource("9_orh31")]
@@ -750,17 +880,17 @@ position = Vector2(0.968811, -64.9532)
 rotation = 1.51493
 emitting = false
 amount = 6
-lifetime = 1.5
+lifetime = 0.4
 one_shot = true
 explosiveness = 1.0
 texture = ExtResource("10_hg27i")
 emission_shape = 0
 spread = 60.0
-gravity = Vector2(0, 1000)
-initial_velocity_min = 578.19
-initial_velocity_max = 684.6
+initial_velocity_min = 288.37
+initial_velocity_max = 481.78
 scale_amount_min = 0.1
 scale_amount_max = 0.2
+scale_amount_curve = SubResource("Curve_dkj71")
 color = Color(1, 1, 1, 1)
 
 [node name="estrellas3" parent="Zone/Pines/MegafaunaZone/pin2/particles" instance=ExtResource("9_orh31")]
@@ -768,17 +898,17 @@ position = Vector2(45.5389, -14.1328)
 rotation = 3.74823
 emitting = false
 amount = 6
-lifetime = 1.5
+lifetime = 0.4
 one_shot = true
 explosiveness = 1.0
 texture = ExtResource("10_hg27i")
 emission_shape = 0
 spread = 45.0
-gravity = Vector2(0, 1000)
-initial_velocity_min = 578.19
-initial_velocity_max = 684.6
+initial_velocity_min = 288.37
+initial_velocity_max = 481.78
 scale_amount_min = 0.1
 scale_amount_max = 0.2
+scale_amount_curve = SubResource("Curve_dkj71")
 color = Color(1, 1, 1, 1)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Zone/Pines/MegafaunaZone/pin2"]
@@ -803,17 +933,17 @@ position = Vector2(-45.5391, -14.1329)
 rotation = 0.0262622
 emitting = false
 amount = 6
-lifetime = 1.5
+lifetime = 0.4
 one_shot = true
 explosiveness = 1.0
 texture = ExtResource("10_hg27i")
 emission_shape = 0
 spread = 45.0
-gravity = Vector2(0, 1000)
-initial_velocity_min = 578.19
-initial_velocity_max = 684.6
+initial_velocity_min = 288.37
+initial_velocity_max = 481.78
 scale_amount_min = 0.1
 scale_amount_max = 0.2
+scale_amount_curve = SubResource("Curve_dkj71")
 color = Color(1, 1, 1, 1)
 
 [node name="estrellas2" parent="Zone/Pines/AstronomiaZone/pin1/particles" instance=ExtResource("9_orh31")]
@@ -821,17 +951,17 @@ position = Vector2(0.968811, -64.9532)
 rotation = 1.51493
 emitting = false
 amount = 6
-lifetime = 1.5
+lifetime = 0.4
 one_shot = true
 explosiveness = 1.0
 texture = ExtResource("10_hg27i")
 emission_shape = 0
 spread = 60.0
-gravity = Vector2(0, 1000)
-initial_velocity_min = 578.19
-initial_velocity_max = 684.6
+initial_velocity_min = 288.37
+initial_velocity_max = 481.78
 scale_amount_min = 0.1
 scale_amount_max = 0.2
+scale_amount_curve = SubResource("Curve_dkj71")
 color = Color(1, 1, 1, 1)
 
 [node name="estrellas3" parent="Zone/Pines/AstronomiaZone/pin1/particles" instance=ExtResource("9_orh31")]
@@ -839,17 +969,17 @@ position = Vector2(45.5389, -14.1328)
 rotation = 3.74823
 emitting = false
 amount = 6
-lifetime = 1.5
+lifetime = 0.4
 one_shot = true
 explosiveness = 1.0
 texture = ExtResource("10_hg27i")
 emission_shape = 0
 spread = 45.0
-gravity = Vector2(0, 1000)
-initial_velocity_min = 578.19
-initial_velocity_max = 684.6
+initial_velocity_min = 288.37
+initial_velocity_max = 481.78
 scale_amount_min = 0.1
 scale_amount_max = 0.2
+scale_amount_curve = SubResource("Curve_dkj71")
 color = Color(1, 1, 1, 1)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Zone/Pines/AstronomiaZone/pin1"]
@@ -872,17 +1002,17 @@ position = Vector2(-45.5391, -14.1329)
 rotation = 0.0262622
 emitting = false
 amount = 6
-lifetime = 1.5
+lifetime = 0.4
 one_shot = true
 explosiveness = 1.0
 texture = ExtResource("10_hg27i")
 emission_shape = 0
 spread = 45.0
-gravity = Vector2(0, 1000)
-initial_velocity_min = 578.19
-initial_velocity_max = 684.6
+initial_velocity_min = 288.37
+initial_velocity_max = 481.78
 scale_amount_min = 0.1
 scale_amount_max = 0.2
+scale_amount_curve = SubResource("Curve_dkj71")
 color = Color(1, 1, 1, 1)
 
 [node name="estrellas2" parent="Zone/Pines/AstronomiaZone/pin2/particles" instance=ExtResource("9_orh31")]
@@ -890,17 +1020,17 @@ position = Vector2(0.968811, -64.9532)
 rotation = 1.51493
 emitting = false
 amount = 6
-lifetime = 1.5
+lifetime = 0.4
 one_shot = true
 explosiveness = 1.0
 texture = ExtResource("10_hg27i")
 emission_shape = 0
 spread = 60.0
-gravity = Vector2(0, 1000)
-initial_velocity_min = 578.19
-initial_velocity_max = 684.6
+initial_velocity_min = 288.37
+initial_velocity_max = 481.78
 scale_amount_min = 0.1
 scale_amount_max = 0.2
+scale_amount_curve = SubResource("Curve_dkj71")
 color = Color(1, 1, 1, 1)
 
 [node name="estrellas3" parent="Zone/Pines/AstronomiaZone/pin2/particles" instance=ExtResource("9_orh31")]
@@ -908,17 +1038,17 @@ position = Vector2(45.5389, -14.1328)
 rotation = 3.74823
 emitting = false
 amount = 6
-lifetime = 1.5
+lifetime = 0.4
 one_shot = true
 explosiveness = 1.0
 texture = ExtResource("10_hg27i")
 emission_shape = 0
 spread = 45.0
-gravity = Vector2(0, 1000)
-initial_velocity_min = 578.19
-initial_velocity_max = 684.6
+initial_velocity_min = 288.37
+initial_velocity_max = 481.78
 scale_amount_min = 0.1
 scale_amount_max = 0.2
+scale_amount_curve = SubResource("Curve_dkj71")
 color = Color(1, 1, 1, 1)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Zone/Pines/AstronomiaZone/pin2"]
@@ -941,17 +1071,17 @@ position = Vector2(-45.5391, -14.1329)
 rotation = 0.0262622
 emitting = false
 amount = 6
-lifetime = 1.5
+lifetime = 0.4
 one_shot = true
 explosiveness = 1.0
 texture = ExtResource("10_hg27i")
 emission_shape = 0
 spread = 45.0
-gravity = Vector2(0, 1000)
-initial_velocity_min = 578.19
-initial_velocity_max = 684.6
+initial_velocity_min = 288.37
+initial_velocity_max = 481.78
 scale_amount_min = 0.1
 scale_amount_max = 0.2
+scale_amount_curve = SubResource("Curve_dkj71")
 color = Color(1, 1, 1, 1)
 
 [node name="estrellas2" parent="Zone/Pines/AstronomiaZone/pin3/particles" instance=ExtResource("9_orh31")]
@@ -959,17 +1089,17 @@ position = Vector2(0.968811, -64.9532)
 rotation = 1.51493
 emitting = false
 amount = 6
-lifetime = 1.5
+lifetime = 0.4
 one_shot = true
 explosiveness = 1.0
 texture = ExtResource("10_hg27i")
 emission_shape = 0
 spread = 60.0
-gravity = Vector2(0, 1000)
-initial_velocity_min = 578.19
-initial_velocity_max = 684.6
+initial_velocity_min = 288.37
+initial_velocity_max = 481.78
 scale_amount_min = 0.1
 scale_amount_max = 0.2
+scale_amount_curve = SubResource("Curve_dkj71")
 color = Color(1, 1, 1, 1)
 
 [node name="estrellas3" parent="Zone/Pines/AstronomiaZone/pin3/particles" instance=ExtResource("9_orh31")]
@@ -977,17 +1107,17 @@ position = Vector2(45.5389, -14.1328)
 rotation = 3.74823
 emitting = false
 amount = 6
-lifetime = 1.5
+lifetime = 0.4
 one_shot = true
 explosiveness = 1.0
 texture = ExtResource("10_hg27i")
 emission_shape = 0
 spread = 45.0
-gravity = Vector2(0, 1000)
-initial_velocity_min = 578.19
-initial_velocity_max = 684.6
+initial_velocity_min = 288.37
+initial_velocity_max = 481.78
 scale_amount_min = 0.1
 scale_amount_max = 0.2
+scale_amount_curve = SubResource("Curve_dkj71")
 color = Color(1, 1, 1, 1)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Zone/Pines/AstronomiaZone/pin3"]
@@ -1010,17 +1140,17 @@ position = Vector2(-45.5391, -14.1329)
 rotation = 0.0262622
 emitting = false
 amount = 6
-lifetime = 1.5
+lifetime = 0.4
 one_shot = true
 explosiveness = 1.0
 texture = ExtResource("10_hg27i")
 emission_shape = 0
 spread = 45.0
-gravity = Vector2(0, 1000)
-initial_velocity_min = 578.19
-initial_velocity_max = 684.6
+initial_velocity_min = 288.37
+initial_velocity_max = 481.78
 scale_amount_min = 0.1
 scale_amount_max = 0.2
+scale_amount_curve = SubResource("Curve_dkj71")
 color = Color(1, 1, 1, 1)
 
 [node name="estrellas2" parent="Zone/Pines/AstronomiaZone/pin4/particles" instance=ExtResource("9_orh31")]
@@ -1028,17 +1158,17 @@ position = Vector2(0.968811, -64.9532)
 rotation = 1.51493
 emitting = false
 amount = 6
-lifetime = 1.5
+lifetime = 0.4
 one_shot = true
 explosiveness = 1.0
 texture = ExtResource("10_hg27i")
 emission_shape = 0
 spread = 60.0
-gravity = Vector2(0, 1000)
-initial_velocity_min = 578.19
-initial_velocity_max = 684.6
+initial_velocity_min = 288.37
+initial_velocity_max = 481.78
 scale_amount_min = 0.1
 scale_amount_max = 0.2
+scale_amount_curve = SubResource("Curve_dkj71")
 color = Color(1, 1, 1, 1)
 
 [node name="estrellas3" parent="Zone/Pines/AstronomiaZone/pin4/particles" instance=ExtResource("9_orh31")]
@@ -1046,17 +1176,17 @@ position = Vector2(45.5389, -14.1328)
 rotation = 3.74823
 emitting = false
 amount = 6
-lifetime = 1.5
+lifetime = 0.4
 one_shot = true
 explosiveness = 1.0
 texture = ExtResource("10_hg27i")
 emission_shape = 0
 spread = 45.0
-gravity = Vector2(0, 1000)
-initial_velocity_min = 578.19
-initial_velocity_max = 684.6
+initial_velocity_min = 288.37
+initial_velocity_max = 481.78
 scale_amount_min = 0.1
 scale_amount_max = 0.2
+scale_amount_curve = SubResource("Curve_dkj71")
 color = Color(1, 1, 1, 1)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Zone/Pines/AstronomiaZone/pin4"]
@@ -1081,17 +1211,17 @@ position = Vector2(-45.5391, -14.1329)
 rotation = 0.0262622
 emitting = false
 amount = 6
-lifetime = 1.5
+lifetime = 0.4
 one_shot = true
 explosiveness = 1.0
 texture = ExtResource("10_hg27i")
 emission_shape = 0
 spread = 45.0
-gravity = Vector2(0, 1000)
-initial_velocity_min = 578.19
-initial_velocity_max = 684.6
+initial_velocity_min = 288.37
+initial_velocity_max = 481.78
 scale_amount_min = 0.1
 scale_amount_max = 0.2
+scale_amount_curve = SubResource("Curve_dkj71")
 color = Color(1, 1, 1, 1)
 
 [node name="estrellas2" parent="Zone/Pines/GeologiaZone/pin1/particles" instance=ExtResource("9_orh31")]
@@ -1099,17 +1229,17 @@ position = Vector2(0.968811, -64.9532)
 rotation = 1.51493
 emitting = false
 amount = 6
-lifetime = 1.5
+lifetime = 0.4
 one_shot = true
 explosiveness = 1.0
 texture = ExtResource("10_hg27i")
 emission_shape = 0
 spread = 60.0
-gravity = Vector2(0, 1000)
-initial_velocity_min = 578.19
-initial_velocity_max = 684.6
+initial_velocity_min = 288.37
+initial_velocity_max = 481.78
 scale_amount_min = 0.1
 scale_amount_max = 0.2
+scale_amount_curve = SubResource("Curve_dkj71")
 color = Color(1, 1, 1, 1)
 
 [node name="estrellas3" parent="Zone/Pines/GeologiaZone/pin1/particles" instance=ExtResource("9_orh31")]
@@ -1117,17 +1247,17 @@ position = Vector2(45.5389, -14.1328)
 rotation = 3.74823
 emitting = false
 amount = 6
-lifetime = 1.5
+lifetime = 0.4
 one_shot = true
 explosiveness = 1.0
 texture = ExtResource("10_hg27i")
 emission_shape = 0
 spread = 45.0
-gravity = Vector2(0, 1000)
-initial_velocity_min = 578.19
-initial_velocity_max = 684.6
+initial_velocity_min = 288.37
+initial_velocity_max = 481.78
 scale_amount_min = 0.1
 scale_amount_max = 0.2
+scale_amount_curve = SubResource("Curve_dkj71")
 color = Color(1, 1, 1, 1)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Zone/Pines/GeologiaZone/pin1"]
@@ -1150,17 +1280,17 @@ position = Vector2(-45.5391, -14.1329)
 rotation = 0.0262622
 emitting = false
 amount = 6
-lifetime = 1.5
+lifetime = 0.4
 one_shot = true
 explosiveness = 1.0
 texture = ExtResource("10_hg27i")
 emission_shape = 0
 spread = 45.0
-gravity = Vector2(0, 1000)
-initial_velocity_min = 578.19
-initial_velocity_max = 684.6
+initial_velocity_min = 288.37
+initial_velocity_max = 481.78
 scale_amount_min = 0.1
 scale_amount_max = 0.2
+scale_amount_curve = SubResource("Curve_dkj71")
 color = Color(1, 1, 1, 1)
 
 [node name="estrellas2" parent="Zone/Pines/GeologiaZone/pin2/particles" instance=ExtResource("9_orh31")]
@@ -1168,17 +1298,17 @@ position = Vector2(0.968811, -64.9532)
 rotation = 1.51493
 emitting = false
 amount = 6
-lifetime = 1.5
+lifetime = 0.4
 one_shot = true
 explosiveness = 1.0
 texture = ExtResource("10_hg27i")
 emission_shape = 0
 spread = 60.0
-gravity = Vector2(0, 1000)
-initial_velocity_min = 578.19
-initial_velocity_max = 684.6
+initial_velocity_min = 288.37
+initial_velocity_max = 481.78
 scale_amount_min = 0.1
 scale_amount_max = 0.2
+scale_amount_curve = SubResource("Curve_dkj71")
 color = Color(1, 1, 1, 1)
 
 [node name="estrellas3" parent="Zone/Pines/GeologiaZone/pin2/particles" instance=ExtResource("9_orh31")]
@@ -1186,17 +1316,17 @@ position = Vector2(45.5389, -14.1328)
 rotation = 3.74823
 emitting = false
 amount = 6
-lifetime = 1.5
+lifetime = 0.4
 one_shot = true
 explosiveness = 1.0
 texture = ExtResource("10_hg27i")
 emission_shape = 0
 spread = 45.0
-gravity = Vector2(0, 1000)
-initial_velocity_min = 578.19
-initial_velocity_max = 684.6
+initial_velocity_min = 288.37
+initial_velocity_max = 481.78
 scale_amount_min = 0.1
 scale_amount_max = 0.2
+scale_amount_curve = SubResource("Curve_dkj71")
 color = Color(1, 1, 1, 1)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Zone/Pines/GeologiaZone/pin2"]
@@ -1219,17 +1349,17 @@ position = Vector2(-45.5391, -14.1329)
 rotation = 0.0262622
 emitting = false
 amount = 6
-lifetime = 1.5
+lifetime = 0.4
 one_shot = true
 explosiveness = 1.0
 texture = ExtResource("10_hg27i")
 emission_shape = 0
 spread = 45.0
-gravity = Vector2(0, 1000)
-initial_velocity_min = 578.19
-initial_velocity_max = 684.6
+initial_velocity_min = 288.37
+initial_velocity_max = 481.78
 scale_amount_min = 0.1
 scale_amount_max = 0.2
+scale_amount_curve = SubResource("Curve_dkj71")
 color = Color(1, 1, 1, 1)
 
 [node name="estrellas2" parent="Zone/Pines/GeologiaZone/pin3/particles" instance=ExtResource("9_orh31")]
@@ -1237,17 +1367,17 @@ position = Vector2(0.968811, -64.9532)
 rotation = 1.51493
 emitting = false
 amount = 6
-lifetime = 1.5
+lifetime = 0.4
 one_shot = true
 explosiveness = 1.0
 texture = ExtResource("10_hg27i")
 emission_shape = 0
 spread = 60.0
-gravity = Vector2(0, 1000)
-initial_velocity_min = 578.19
-initial_velocity_max = 684.6
+initial_velocity_min = 288.37
+initial_velocity_max = 481.78
 scale_amount_min = 0.1
 scale_amount_max = 0.2
+scale_amount_curve = SubResource("Curve_dkj71")
 color = Color(1, 1, 1, 1)
 
 [node name="estrellas3" parent="Zone/Pines/GeologiaZone/pin3/particles" instance=ExtResource("9_orh31")]
@@ -1255,17 +1385,17 @@ position = Vector2(45.5389, -14.1328)
 rotation = 3.74823
 emitting = false
 amount = 6
-lifetime = 1.5
+lifetime = 0.4
 one_shot = true
 explosiveness = 1.0
 texture = ExtResource("10_hg27i")
 emission_shape = 0
 spread = 45.0
-gravity = Vector2(0, 1000)
-initial_velocity_min = 578.19
-initial_velocity_max = 684.6
+initial_velocity_min = 288.37
+initial_velocity_max = 481.78
 scale_amount_min = 0.1
 scale_amount_max = 0.2
+scale_amount_curve = SubResource("Curve_dkj71")
 color = Color(1, 1, 1, 1)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Zone/Pines/GeologiaZone/pin3"]
@@ -1322,6 +1452,8 @@ grow_horizontal = 2
 pivot_offset = Vector2(332, 114)
 theme = ExtResource("11_twlej")
 script = ExtResource("12_v4jlj")
+AppearSound = "yey"
+NoSkipWiting = true
 Texts = Array[ExtResource("14_xro7r")]([SubResource("Resource_w7u63")])
 
 [node name="label" type="Label" parent="Zone/PanelCompletada"]
@@ -1634,17 +1766,17 @@ position = Vector2(-45.5391, -14.1329)
 rotation = 0.0262622
 emitting = false
 amount = 6
-lifetime = 1.5
+lifetime = 0.4
 one_shot = true
 explosiveness = 1.0
 texture = ExtResource("10_hg27i")
 emission_shape = 0
 spread = 45.0
-gravity = Vector2(0, 1000)
-initial_velocity_min = 578.19
-initial_velocity_max = 684.6
+initial_velocity_min = 255.35
+initial_velocity_max = 269.51
 scale_amount_min = 0.1
 scale_amount_max = 0.2
+scale_amount_curve = SubResource("Curve_dkj71")
 color = Color(1, 1, 1, 1)
 
 [node name="estrellas2" parent="Zone/PanelCompletada/content1" instance=ExtResource("9_orh31")]
@@ -1652,17 +1784,17 @@ position = Vector2(0.968811, -64.9532)
 rotation = 1.51493
 emitting = false
 amount = 6
-lifetime = 1.5
+lifetime = 0.4
 one_shot = true
 explosiveness = 1.0
 texture = ExtResource("10_hg27i")
 emission_shape = 0
 spread = 60.0
-gravity = Vector2(0, 1000)
-initial_velocity_min = 578.19
-initial_velocity_max = 684.6
+initial_velocity_min = 255.35
+initial_velocity_max = 269.51
 scale_amount_min = 0.1
 scale_amount_max = 0.2
+scale_amount_curve = SubResource("Curve_dkj71")
 color = Color(1, 1, 1, 1)
 
 [node name="estrellas3" parent="Zone/PanelCompletada/content1" instance=ExtResource("9_orh31")]
@@ -1670,23 +1802,46 @@ position = Vector2(45.5389, -14.1328)
 rotation = 3.74823
 emitting = false
 amount = 6
-lifetime = 1.5
+lifetime = 0.4
 one_shot = true
 explosiveness = 1.0
 texture = ExtResource("10_hg27i")
 emission_shape = 0
 spread = 45.0
-gravity = Vector2(0, 1000)
-initial_velocity_min = 578.19
-initial_velocity_max = 684.6
+initial_velocity_min = 255.35
+initial_velocity_max = 269.51
 scale_amount_min = 0.1
 scale_amount_max = 0.2
+scale_amount_curve = SubResource("Curve_dkj71")
 color = Color(1, 1, 1, 1)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Zone/PanelCompletada/content1"]
 libraries = {
 "": SubResource("AnimationLibrary_dnw2j")
 }
+
+[node name="AppearSound" type="Node" parent="Zone/PanelCompletada"]
+
+[node name="SoundBank" type="Node" parent="Zone/PanelCompletada/AppearSound"]
+script = ExtResource("28_ndjk3")
+label = "appear"
+events = Array[ExtResource("29_ol1mw")]([SubResource("Resource_613n4"), SubResource("Resource_ud1i2"), SubResource("Resource_7fh2y")])
+
+[node name="sounds" type="Node" parent="Zone"]
+script = ExtResource("28_wovoc")
+
+[node name="SoundBank" type="Node" parent="Zone/sounds"]
+script = ExtResource("28_ndjk3")
+label = "general"
+events = Array[ExtResource("29_ol1mw")]([SubResource("Resource_u0n1u")])
+
+[node name="soundsSecuencias" type="Node" parent="Zone"]
+script = ExtResource("28_wovoc")
+
+[node name="SoundBank" type="Node" parent="Zone/soundsSecuencias"]
+script = ExtResource("28_ndjk3")
+label = "secuencias"
+events = Array[ExtResource("29_ol1mw")]([SubResource("Resource_dkam6"), SubResource("Resource_7bfeb"), SubResource("Resource_06pif")])
 
 [connection signal="pressed" from="Zone/btnVolver" to="Zone/btnVolver" method="_on_pressed"]
 [connection signal="pressed" from="Zone/PanelCompletada/BtnDerAnchor/btnDer" to="Zone/PanelCompletada" method="rigthBTNConnect" flags=18]

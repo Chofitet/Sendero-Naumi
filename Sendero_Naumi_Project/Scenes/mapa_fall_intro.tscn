@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://b00ok4g2p2vql"]
+[gd_scene load_steps=42 format=3 uid="uid://b00ok4g2p2vql"]
 
 [ext_resource type="Texture2D" uid="uid://hf5y4ic16cqj" path="res://Sprites/Intro/intro - background.jpg" id="1_xm8pn"]
 [ext_resource type="Texture2D" uid="uid://jd6systmhxf1" path="res://Sprites/Intro/intro - suelo.png" id="2_2edvn"]
@@ -25,6 +25,7 @@
 [ext_resource type="Script" path="res://addons/resonate/sound_manager/sound_bank.gd" id="15_gq267"]
 [ext_resource type="Texture2D" uid="uid://kb7ixs5ala8" path="res://Sprites/UI/arrowIcon - UI.png" id="16_bsblw"]
 [ext_resource type="Script" path="res://addons/resonate/sound_manager/sound_event_resource.gd" id="16_ds0ye"]
+[ext_resource type="AudioStream" uid="uid://bqtn2wvbrbh0s" path="res://Sounds/Intro/Mapa de Intro - Agarro Mapa.ogg" id="18_mj880"]
 [ext_resource type="PackedScene" uid="uid://c8dodmo3saxdr" path="res://Scenes/Experiments/sound_debug.tscn" id="26_7deic"]
 
 [sub_resource type="Animation" id="Animation_klold"]
@@ -121,7 +122,7 @@ tracks/3/keys = {
 }
 tracks/4/type = "audio"
 tracks/4/imported = false
-tracks/4/enabled = true
+tracks/4/enabled = false
 tracks/4/path = NodePath("AnimationPlayer/AudioStreamPlayer")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
@@ -259,7 +260,7 @@ tracks/7/keys = {
 "times": PackedFloat32Array(1.2),
 "transitions": PackedFloat32Array(1),
 "values": [{
-"args": ["mapa", 0.0, false],
+"args": ["mapa", 0.0, true],
 "method": &"PlayEvent"
 }]
 }
@@ -342,6 +343,15 @@ volume = 0.0
 pitch = 1.0
 RandomPitch = Vector2(1, 1)
 streams = Array[AudioStream]([ExtResource("9_e031n")])
+
+[sub_resource type="Resource" id="Resource_we3ln"]
+script = ExtResource("16_ds0ye")
+name = "agarroMapa"
+bus = "mapaGira"
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([ExtResource("18_mj880")])
 
 [sub_resource type="LabelSettings" id="LabelSettings_m04ay"]
 font_size = 50
@@ -593,7 +603,7 @@ script = ExtResource("14_7wfau")
 [node name="SoundBank" type="Node" parent="mapArriveSpot/LOGO/SoundEmitter"]
 script = ExtResource("15_gq267")
 label = "intro"
-events = Array[ExtResource("16_ds0ye")]([SubResource("Resource_o1rb5")])
+events = Array[ExtResource("16_ds0ye")]([SubResource("Resource_o1rb5"), SubResource("Resource_we3ln")])
 
 [node name="Label" type="Label" parent="mapArriveSpot"]
 layout_mode = 1
@@ -768,6 +778,7 @@ offset_right = 415.0
 
 [connection signal="button_down" from="mapArriveSpot/Button" to="mapArriveSpot/MapAnim" method="play" binds= ["agarrado"]]
 [connection signal="button_down" from="mapArriveSpot/Button" to="mapArriveSpot/LOGO/AnimationPlayer" method="play" binds= ["DisappearPresenta"]]
+[connection signal="button_down" from="mapArriveSpot/Button" to="mapArriveSpot/LOGO/SoundEmitter" method="PlayEvent" binds= ["agarroMapa"]]
 [connection signal="pressed" from="ButtonSkip/GenericButton" to="ButtonChangeScene" method="_on_pressed"]
 
 [editable path="Sound Debug"]

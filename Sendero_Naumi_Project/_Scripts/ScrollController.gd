@@ -127,6 +127,7 @@ func SetisInputBlock(x):
 
 func SetFloorWithAnchor(num):
 	i = num
-	$FloorDetector.SetActualFloor(num)
 	PlayerVariables.SaveLastPiso(num + 1)
 	actualAnchor = anchors[i]
+	await get_tree().create_timer(0.2).timeout
+	$FloorDetector.SetActualFloor(num)

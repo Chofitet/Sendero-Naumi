@@ -1,4 +1,4 @@
-[gd_scene load_steps=106 format=3 uid="uid://ck4m8k46bmha1"]
+[gd_scene load_steps=110 format=3 uid="uid://ck4m8k46bmha1"]
 
 [ext_resource type="Material" uid="uid://muj2sfgakm5s" path="res://shaders/GalaxyWiggle.tres" id="1_2gsu4"]
 [ext_resource type="Script" path="res://_Scripts/AdjustSeparationWithScreenSize.gd" id="2_1v6rf"]
@@ -77,12 +77,15 @@
 [ext_resource type="Texture2D" uid="uid://bjvyukuc37c4h" path="res://Sprites/Mapa/check - mapa.png" id="50_flo3f"]
 [ext_resource type="Texture2D" uid="uid://kb7ixs5ala8" path="res://Sprites/UI/arrowIcon - UI.png" id="50_otgwf"]
 [ext_resource type="Script" path="res://Scenes/Experiments/GenericPanel/TextFieldData.gd" id="50_qkjuw"]
+[ext_resource type="Script" path="res://_Scripts/SoundEventTrigger.gd" id="59_5q8v3"]
 [ext_resource type="Script" path="res://addons/resonate/sound_manager/sound_bank.gd" id="59_wglh2"]
 [ext_resource type="Script" path="res://addons/resonate/sound_manager/sound_event_resource.gd" id="60_d01d2"]
 [ext_resource type="AudioStream" uid="uid://byhx1y3p51u5" path="res://Sounds/UI/Mapa - Swipe.ogg" id="61_1rw8h"]
+[ext_resource type="AudioStream" uid="uid://gv5vngvbywwy" path="res://Sounds/UI/Islas Desbloqueadas - Eso.ogg" id="63_5ooy7"]
 [ext_resource type="Script" path="res://_Scripts/AdventurePanelController.gd" id="75_5k3eb"]
 [ext_resource type="Script" path="res://Scenes/Experiments/GenericPanel/ButtonPanelData.gd" id="76_rcnta"]
 [ext_resource type="Texture2D" uid="uid://c2p5torstrtqm" path="res://Sprites/UI/checkIcon - UI.png" id="77_05pnt"]
+[ext_resource type="Script" path="res://Scenes/NaumiTestTrigger.gd" id="79_ic5mq"]
 [ext_resource type="PackedScene" uid="uid://d1jys63xrvxpo" path="res://Scenes/Experiments/GenericPanel/IntermediateSignal.tscn" id="80_b1np3"]
 [ext_resource type="Script" path="res://Scenes/Experiments/GenericPanel/IntermediateData.gd" id="82_ce12o"]
 
@@ -190,6 +193,20 @@ tracks/1/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.333333), Color(1, 1, 1, 1)]
 }
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../../../SoundMap")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["unlockIslands", 0.0, false],
+"method": &"PlayEvent"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_m18um"]
 _data = {
@@ -253,6 +270,15 @@ pitch = 1.0
 RandomPitch = Vector2(0.9, 0.7)
 streams = Array[AudioStream]([ExtResource("61_1rw8h")])
 
+[sub_resource type="Resource" id="Resource_0xd7y"]
+script = ExtResource("60_d01d2")
+name = "unlockIslands"
+bus = ""
+volume = -16.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([ExtResource("63_5ooy7")])
+
 [sub_resource type="Resource" id="Resource_1pujf"]
 script = ExtResource("76_rcnta")
 Place = 0
@@ -263,7 +289,8 @@ exitPanel = false
 
 [sub_resource type="Resource" id="Resource_fr8qp"]
 script = ExtResource("50_qkjuw")
-Text = "SUERTE EN TU AVENTURA"
+Text = "
+[center][b][font_size=40]SUERTE EN TU AVENTURA[/font_size]"
 SizePanel = Vector2(0, 0)
 Position = Vector2(0, 0)
 buttons = Array[ExtResource("76_rcnta")]([SubResource("Resource_1pujf")])
@@ -1733,11 +1760,12 @@ layout_mode = 2
 script = ExtResource("20_o2y56")
 
 [node name="SoundMap" type="Node" parent="ScrollContainer"]
+script = ExtResource("59_5q8v3")
 
 [node name="SoundBank" type="Node" parent="ScrollContainer/SoundMap"]
 script = ExtResource("59_wglh2")
 label = "map"
-events = Array[ExtResource("60_d01d2")]([SubResource("Resource_44t7i"), SubResource("Resource_lb0ga")])
+events = Array[ExtResource("60_d01d2")]([SubResource("Resource_44t7i"), SubResource("Resource_lb0ga"), SubResource("Resource_0xd7y")])
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="."]
 visible = false
@@ -2075,6 +2103,89 @@ offset_bottom = 318.266
 grow_horizontal = 0
 text = "CREDITOS"
 NextScene = "Credits"
+fade_time = 0.0
+smoothness = 0.0
+
+[node name="Panel" type="Panel" parent="StateMachine/NoZone/PanelDebug"]
+layout_mode = 0
+offset_left = 279.0
+offset_top = 544.0
+offset_right = 450.0
+offset_bottom = 630.0
+script = ExtResource("79_ic5mq")
+
+[node name="Label" type="Label" parent="StateMachine/NoZone/PanelDebug/Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -45.0
+offset_right = 45.0
+offset_bottom = 26.0
+grow_horizontal = 2
+text = "level naumi"
+
+[node name="num" type="Label" parent="StateMachine/NoZone/PanelDebug/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -45.0
+offset_top = -13.0
+offset_right = 45.0
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="rigth" type="Button" parent="StateMachine/NoZone/PanelDebug/Panel"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -58.0
+offset_top = -38.0
+offset_right = -4.0
+offset_bottom = 39.0
+grow_horizontal = 0
+grow_vertical = 2
+text = ">"
+flat = true
+alignment = 2
+
+[node name="left" type="Button" parent="StateMachine/NoZone/PanelDebug/Panel"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -41.0
+offset_right = 54.0
+offset_bottom = 39.0
+grow_vertical = 2
+text = "<"
+flat = true
+alignment = 0
+
+[node name="ButtonChangeScene3" parent="StateMachine/NoZone/PanelDebug/Panel" instance=ExtResource("7_1v7i5")]
+z_index = 4
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.222
+anchor_bottom = 0.222
+offset_left = -305.5
+offset_top = -19.092
+offset_right = -91.5
+offset_bottom = 64.908
+grow_horizontal = 0
+text = "Naumi Test
+"
+NextScene = "zone_complete_event"
 fade_time = 0.0
 smoothness = 0.0
 

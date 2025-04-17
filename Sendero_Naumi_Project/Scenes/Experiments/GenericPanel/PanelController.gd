@@ -18,6 +18,7 @@ var EnterOnce
 @onready var _BotonIzquierda = $btnIzqAnchor/btnIzq
 @onready var _BotonCentral = $btnCentralAnchor/btnCentral
 @onready var SkipButton = $ButtonSkipWritting
+@export var NoSkipWiting : bool = false
 var btnDontPassPanel
 var content =[]
 
@@ -188,17 +189,21 @@ func EnterPanel():
 var tweenWritting : Tween
 func typingAnim():
 	SoundManager.play("typing",AppearSound)
-	var text_length = label.text.length()
+	var text_length = get_visible_text_length(label.text)
 	var duration = text_length / Characters_per_second
 	label.visible_ratio = 0
-	SkipButton.visible = true
+	if !NoSkipWiting: SkipButton.visible = true
 	tweenWritting = get_tree().create_tween()
 	tweenWritting.tween_property(label,"visible_ratio",1,duration)
 	
 	await tweenWritting.finished
 	AppearButtonAnim()
 	SkipButton.visible = false
-	
+
+func get_visible_text_length(text: String) -> int:
+	var regex = RegEx.new()
+	regex.compile("\\[/?\\w+(=[^\\]]+)?\\]")
+	return regex.sub(text, "", true).length()
 
 func AppearButtonAnim():
 	if BotonDerecho: PlayAnimation(_BotonDerecho)
@@ -281,7 +286,8 @@ func DetectBoldText(numPanel):
 	if  Texts[numPanel -1].Text.contains("[b]"):
 		label.text = ""
 		label = $labelRich
-	else: label = $label
+	else: 
+		label = $label
 		
 
 func SkipWritting():

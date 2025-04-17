@@ -6,11 +6,12 @@ var CuttableQueue : = []
 @export var poolOfSounds : Array[String]
 var numOfSounds
 var _timer
+@export var stopInChangeScene : bool = true
 
 func _ready():
+	tree_exiting.connect(CutSoundsInExitScene)
 	soundBank = get_child(0)
 	numOfSounds = poolOfSounds.size()
-
 
 func PlayEvent(eventName : String, delay : float = 0, isCuttable = false):
 	if isMute: return
@@ -21,7 +22,7 @@ func PlayEvent(eventName : String, delay : float = 0, isCuttable = false):
 		var instanceSound = SoundManager.instance_poly(soundBank.label, eventName)
 		instanceSound.trigger()
 		CuttableQueue.append(instanceSound)
-		_timer = get_tree().create_timer(5)
+		_timer = get_tree().create_timer(20)
 		_timer.timeout.connect(StopInSoundTime.bind(instanceSound))
 
 
@@ -40,7 +41,8 @@ func SetMute(x:bool):
 	isMute = x
 
 func StopSoundsInCuttableQueue():
-	if _timer != null: _timer.timeout.disconnect(StopInSoundTime)
+	if _timer != null: 
+		_timer.timeout.disconnect(StopInSoundTime)
 	for s in CuttableQueue:
 		s.release()
 
@@ -58,3 +60,6 @@ func EmitPoolOfSound():
 	if numOfSounds == 0: numOfSounds = poolOfSounds.size()
 	await get_tree().create_timer(0.3).timeout
 	once = false
+
+func CutSoundsInExitScene():
+	if stopInChangeScene: StopSoundsInCuttableQueue()

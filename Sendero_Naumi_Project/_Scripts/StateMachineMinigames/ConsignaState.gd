@@ -15,7 +15,7 @@ func Enter():
 
 func Exit(incruiseLevel = false):
 	Content.visible = false
-	Transitioned.emit()
+	#Transitioned.emit()
 
 func SetConsigna():
 	var textConsigna = Consignas[GetFixedIndex(Consignas)]

@@ -52,7 +52,7 @@ func PlayCallAnim():
 	animalsArray[inx_animal].play("call")
 	var delay 
 	match inx_animal:  
-		0: delay = 0
+		0: delay = 0.7
 		1: delay = 0.1
 		2: delay = 0.2
 		3: delay = 0.8

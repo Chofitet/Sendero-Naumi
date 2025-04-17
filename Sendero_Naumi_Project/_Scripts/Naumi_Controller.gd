@@ -17,7 +17,10 @@ var zoneResource = ZoneResource.new()
 signal ButtonPress
 signal ToContinue
 var  isIdleOncePlayed
-@onready var soundTrigger = $NaumiSounds
+@onready var GeneralsoundTrigger = $GeneralNaumiSounds
+@onready var soundAnim = $soundsCallAnimation
+@onready var ActualNaumiSounds = $NaumiSounds0
+var delayNaumiEvolveSound = 0
 
 func load_file():
 	zoneResource  = ResourceLoader.load(save_file_path  + save_file_name_Zone)
@@ -49,10 +52,13 @@ func ToLevelUp():
 	$pivot/Parts.visible = false
 	$pivot/handUI.SetVisibility(true)
 	NaumiAnim.play("call")
+	soundAnim.play("Naumi" + str(NaumiState()))
 	btn.pressed.connect(Evolve)
 	
 func Evolve():
+	soundAnim.stop()
 	btn.pressed.disconnect(Evolve)
+	ActualNaumiSounds.PlayEvent("rompe",delayNaumiEvolveSound)
 	$pivot/handUI.SetVisibility(false)
 	NaumiAnim.play("evolve")
 	await NaumiAnim.animation_finished
@@ -70,8 +76,9 @@ func Sleeping():
 	NaumiAnim.play("tapped")
 	timer.timeout.disconnect(PlayRandomIdleAnim)
 	$pivot/Parts/partsAnimator.play("tap")
-	soundTrigger.StopSoundsInCuttableQueue()
-	soundTrigger.PlayEvent("tap",0,true)
+	if !IntroNaumi : ActualNaumiSounds.StopSoundsInCuttableQueue()
+	GeneralsoundTrigger.StopSoundsInCuttableQueue()
+	GeneralsoundTrigger.PlayEvent("tap",0,true)
 	#$pivot/Parts/eye.play("tap")
 	#$pivot/Parts/ear.play("tap")
 	#$pivot/Parts/wing.play("tap")
@@ -79,6 +86,7 @@ func Sleeping():
 	await Anim.animation_finished
 	$pivot/Parts/zzz.play("tap")
 	$pivot/Parts/partsAnimator.play("idle")
+	if NaumiState() > 0: GeneralsoundTrigger.PlayEvent("zzz",0,true)
 	NaumiAnim.play("sleeping")
 	btn.visible = true
 	
@@ -91,9 +99,11 @@ func SetNaumi(num):
 		0:
 			NaumiAnim.sprite_frames = load("res://Resources/NaumiSpriteFrames/N0.tres")
 		1:
+			delayNaumiEvolveSound = 1
 			debris[0].visible = true
 			NaumiAnim.sprite_frames = load("res://Resources/NaumiSpriteFrames/N1.tres")
 		2:
+			delayNaumiEvolveSound = 1.2
 			debris[0].visible = true
 			debris[1].visible = true
 			NaumiAnim.sprite_frames = load("res://Resources/NaumiSpriteFrames/N2.tres")
@@ -106,14 +116,21 @@ func SetNaumi(num):
 			$pivot/Parts/ear.visible = true
 			$pivot/Parts/wing.visible = true
 			$pivot/CanvasLayer/Button.NextScene = "Credits"
+			await get_tree().create_timer(0.1).timeout
 			minigameResourseFile = ResourceLoader.load(save_file_path+save_file_name)
 			if minigameResourseFile.StateMinigames["PassCredits"] : 
 				ToContinue.emit()
 				minigameResourseFile.StateMinigames["PassCredits"] = false
 				save()
+	
+	if num + 1 > 3 : return
+	var naumiToGet = "NaumiSounds" + str(num + 1)
+	ActualNaumiSounds = get_node(naumiToGet)
+	pass
 
 func NaumiState() -> int:
 	var num = 0
+	if PlayerVariables.DebugMode : return PlayerVariables.NaumiDebugNum
 	load_file()
 	for z in zoneResource.StateZones.keys():
 		if zoneResource.StateZones[z]:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=143 format=3 uid="uid://dcredgeon3w2q"]
+[gd_scene load_steps=145 format=3 uid="uid://dcredgeon3w2q"]
 
 [ext_resource type="Script" path="res://_Scripts/MinG_MegaFood/PatasController.gd" id="1_g46fd"]
 [ext_resource type="Texture2D" uid="uid://gbi1vckfb2af" path="res://Sprites/ZonaMegafauna/bandeja.png" id="2_15wck"]
@@ -55,6 +55,7 @@
 [ext_resource type="AudioStream" uid="uid://b0aus6mqusjrc" path="res://Sounds/Foodtruck/FoodTruck - Dejan Propina.ogg" id="50_o6h40"]
 [ext_resource type="AudioStream" uid="uid://c4xbwd2nxtma3" path="res://Sounds/Foodtruck/FoodTruck - Macrauquenia.ogg" id="51_2k8tr"]
 [ext_resource type="AudioStream" uid="uid://ctg73h4axew5u" path="res://Sounds/Foodtruck/FoodTruck - Se llevan la comida.ogg" id="52_dr6eg"]
+[ext_resource type="AudioStream" uid="uid://bsk67ho1tsfg5" path="res://Sounds/Foodtruck/FoodTruck - Smilodonte Pide.ogg" id="55_gbtgj"]
 [ext_resource type="AudioStream" uid="uid://brtlrcxwv6h6r" path="res://Sounds/Foodtruck/FoodTruck - Macrauquenia Golpes.ogg" id="56_kptmw"]
 [ext_resource type="AudioStream" uid="uid://cc2rr3q8s3chx" path="res://Sounds/Foodtruck/FoodTruck - Mensaje Cierro.ogg" id="57_d3png"]
 
@@ -1171,7 +1172,7 @@ exitPanel = false
 
 [sub_resource type="Resource" id="Resource_1e5mh"]
 script = ExtResource("33_7bjpl")
-Text = "En fila por favor"
+Text = "EN FILA POR FAVOR"
 SizePanel = Vector2(0, 0)
 Position = Vector2(0, 0)
 buttons = Array[ExtResource("35_r4fek")]([SubResource("Resource_jebus")])
@@ -1317,6 +1318,15 @@ volume = 0.0
 pitch = 1.0
 RandomPitch = Vector2(1, 1)
 streams = Array[AudioStream]([ExtResource("45_dfy1j")])
+
+[sub_resource type="Resource" id="Resource_rxkmj"]
+script = ExtResource("42_lforj")
+name = "Smilodon"
+bus = "smilodonteReclama"
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([ExtResource("55_gbtgj")])
 
 [sub_resource type="Resource" id="Resource_na3j6"]
 script = ExtResource("42_lforj")
@@ -1713,7 +1723,7 @@ script = ExtResource("45_ct7gc")
 [node name="SoundsReclamo" type="Node" parent="ReclamoTriggerSound"]
 script = ExtResource("41_ysn4k")
 label = "reclamo"
-events = Array[ExtResource("42_lforj")]([SubResource("Resource_na3j6"), SubResource("Resource_gycy8"), SubResource("Resource_o7hug")])
+events = Array[ExtResource("42_lforj")]([SubResource("Resource_rxkmj"), SubResource("Resource_na3j6"), SubResource("Resource_gycy8"), SubResource("Resource_o7hug")])
 
 [node name="GeneralSounds" type="Node" parent="."]
 script = ExtResource("45_ct7gc")

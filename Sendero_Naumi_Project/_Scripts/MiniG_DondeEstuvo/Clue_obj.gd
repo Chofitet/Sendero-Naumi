@@ -13,6 +13,7 @@ var initRotation
 @export var hasClue : bool
 @export var angleInCenter : float
 @export var ObjectName : String
+var foundIt 
 var ToPosition : Vector2 = Vector2.ONE
 var isInCenter : bool = false
 @export var extra_scale : Vector2 = Vector2(1,1)
@@ -41,8 +42,6 @@ func _ready():
 		BlockButton(false)
 	if EditableButton : return
 	adjustRect(true)
-	
-	
 
 func adjustRect(isexpand = false):
 	button.set_size(rect.size)
@@ -63,10 +62,14 @@ func BtnPress():
 		makeSound("take")
 		SquigglingSprite.visible = false
 		await get_tree().create_timer(0.4).timeout
+		if !hasClue: SoundManager.play("clue","noClue")
 		SquigglingSpriteBig.visible = true
 		get_parent().FinalAnim()
 		get_parent().BlockOthersClues(self,false)
 		adjustRect()
+		await get_tree().create_timer(0.2).timeout
+		if hasClue and !foundIt:  SoundManager.play("instance1","Clue")
+		foundIt = true
 	elif isInCenter and !hasClue:
 		get_parent().BlockOthersClues(self,true)
 		SquigglingSpriteBig.visible = false
@@ -115,7 +118,7 @@ func MakeAnim(pos, _texture, extra_scale : Vector2 = Vector2(1,1), rotateAngle :
 		var tween4 = get_tree().create_tween()
 		tween4.tween_property(self,"global_position",pos,AnimatedSpeed).set_ease(Tween.EASE_OUT)
 	await tween.finished
-	button.visible = true
+	if !hasClue: button.visible = true
 	z_index = index
 	if AppearChild:
 		ShowChild(isChildVisible)

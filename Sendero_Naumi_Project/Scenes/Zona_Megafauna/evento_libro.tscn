@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://cctger1fmyno1"]
+[gd_scene load_steps=38 format=3 uid="uid://cctger1fmyno1"]
 
 [ext_resource type="Script" path="res://_Scripts/MinG_Excavar/BookEvent.gd" id="1_nc5t3"]
 [ext_resource type="Texture2D" uid="uid://cgxynxv4wy7yi" path="res://Sprites/ZonaMegafauna/libro 1- excavacion.png" id="2_30xwc"]
@@ -15,9 +15,11 @@
 [ext_resource type="PackedScene" uid="uid://cw3ok8v4p620b" path="res://Scenes/Experiments/squiggling_sprite.tscn" id="17_g1jyu"]
 [ext_resource type="AudioStream" uid="uid://c4gex2u125b7s" path="res://Sounds/Topo/Topo - Pintando .ogg" id="17_w4k36"]
 [ext_resource type="Texture2D" uid="uid://dhh1mhpbooeku" path="res://Sprites/ZonaMegafauna/squigglingExcavando/pencilSQUIG - excavando.png" id="18_46d1n"]
+[ext_resource type="AudioStream" uid="uid://cupdj1is4ln20" path="res://Sounds/Topo/Topo - Pintando 1.ogg" id="18_iuikn"]
+[ext_resource type="AudioStream" uid="uid://bgt2g3xkswae2" path="res://Sounds/Topo/Topo - Pintando 2.ogg" id="19_g3pg8"]
 [ext_resource type="PackedScene" uid="uid://nmuyip31gkq5" path="res://Scenes/UI_Scenes/generic_button.tscn" id="19_spq1h"]
 [ext_resource type="Texture2D" uid="uid://kb7ixs5ala8" path="res://Sprites/UI/arrowIcon - UI.png" id="20_4d4f5"]
-[ext_resource type="AudioStream" uid="uid://bg6whpkngr0ko" path="res://Sounds/Topo/Topo - Pintando Tambien.ogg" id="20_6mre1"]
+[ext_resource type="AudioStream" uid="uid://dgimk6og5wsec" path="res://Sounds/Topo/Topo - Pintando 3.ogg" id="20_wevg5"]
 
 [sub_resource type="Animation" id="Animation_uyb4u"]
 resource_name = "Pencil_enter"
@@ -256,6 +258,16 @@ pitch = 1.0
 RandomPitch = Vector2(1, 1)
 streams = Array[AudioStream]([ExtResource("17_w4k36")])
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_oo3rw"]
+streams_count = 3
+playback_mode = 2
+stream_0/stream = ExtResource("18_iuikn")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("19_g3pg8")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("20_wevg5")
+stream_2/weight = 1.0
+
 [sub_resource type="Resource" id="Resource_bkp2u"]
 script = ExtResource("13_kss8h")
 name = "brush2"
@@ -263,7 +275,7 @@ bus = "pintando2"
 volume = 0.0
 pitch = 1.0
 RandomPitch = Vector2(1, 1)
-streams = Array[AudioStream]([ExtResource("20_6mre1")])
+streams = Array[AudioStream]([SubResource("AudioStreamRandomizer_oo3rw")])
 
 [node name="EventoLibro" type="Node2D"]
 z_index = 2

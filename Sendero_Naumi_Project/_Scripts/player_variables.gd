@@ -7,6 +7,8 @@ var MinigameStage = 1
 var lastState = "NoZone"
 var ToLevelNaumi = false
 var NumPiso = 0
+var DebugMode = false
+var NaumiDebugNum : float = 0
 
 var save_file_path = "user://"
 var save_file_name = "MiniGameResource.tres"
@@ -62,3 +64,9 @@ func EmitInactivePause():
 	
 func EmitActivePause():
 	ActivePause.emit()
+
+func SetDebugMode(x):
+	DebugMode = x
+
+func SetNaumiDebugNum(x:float):
+	NaumiDebugNum = x

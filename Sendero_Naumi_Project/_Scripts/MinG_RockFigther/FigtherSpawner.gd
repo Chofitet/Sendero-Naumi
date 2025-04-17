@@ -18,6 +18,7 @@ var RigthRock
 var instance = preload("res://Scenes/Zona_Geología/piedra_luchador.tscn")
 var playerWinner 
 signal PlayerLost
+signal fight
 
 func _ready():
 	get_parent().InstanceTrue.connect(SpawnFighters.bind(true))
