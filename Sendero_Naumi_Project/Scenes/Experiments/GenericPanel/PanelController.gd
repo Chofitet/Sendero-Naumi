@@ -48,7 +48,7 @@ signal CenterBTNPress
 
 func refreshData(numPanel : int):
 	
-	
+	print("refresh data")
 	btnDontPassPanel = false
 	
 	DetectBoldText(numOfPanel)

@@ -61,7 +61,7 @@ func ToLevelUp():
 
 var extraAnim = ""
 func ReapetCall():
-	if NaumiState() == 0:
+	if NaumiState() == 0 or NaumiState() == 1:
 		if extraAnim != "":
 			extraAnim = ""
 		else:

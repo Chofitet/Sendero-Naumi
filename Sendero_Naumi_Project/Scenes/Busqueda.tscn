@@ -2552,6 +2552,11 @@ events = Array[ExtResource("23_kdx6n")]([SubResource("Resource_7elh8")])
 script = ExtResource("25_1mkst")
 BusName = "hinchada"
 
+[node name="TimeToLowerVolume" type="Timer" parent="StateMachine/Consigna/Contenido"]
+wait_time = 4.0
+one_shot = true
+autostart = true
+
 [node name="Juego" type="Node" parent="StateMachine" node_paths=PackedStringArray("NextState", "StateMachine")]
 script = ExtResource("5_kwitp")
 NextState = NodePath(".")
@@ -5964,11 +5969,11 @@ AudioBuses = Array[String](["BusquedaVolume", "hinchada", "patitaEspera", "pensa
 [node name="Fade" parent="StateMachine" instance=ExtResource("80_l8xfv")]
 
 [connection signal="Transitioned" from="StateMachine/Consigna" to="StateMachine/Consigna/Contenido/introSound" method="PlayLoopEvent" binds= ["hinchada"]]
-[connection signal="Transitioned" from="StateMachine/Consigna" to="StateMachine/Consigna/Contenido/volumeControl" method="SetVolume" binds= [-80.0, 6.0]]
 [connection signal="timeout" from="StateMachine/Consigna/Contenido/Timer" to="StateMachine/Consigna" method="TimeOut"]
 [connection signal="pressed" from="StateMachine/Consigna/Contenido/Control/Panel/GenericButton" to="StateMachine" method="Trigger_On_Child_Transition" binds= ["juego"]]
 [connection signal="ButtonPress" from="StateMachine/Consigna/Contenido/PanelIntro/Panel(2) Btn(rigth)" to="StateMachine/Consigna/Contenido/introSound" method="StopLoopSound"]
 [connection signal="ButtonPress" from="StateMachine/Consigna/Contenido/PanelIntro/Panel(2) Btn(rigth)" to="StateMachine" method="Trigger_On_Child_Transition" binds= ["juego"]]
+[connection signal="timeout" from="StateMachine/Consigna/Contenido/TimeToLowerVolume" to="StateMachine/Consigna/Contenido/volumeControl" method="SetVolume" binds= [-80.0, 6.0]]
 [connection signal="Transitioned" from="StateMachine/Juego" to="StateMachine/Juego/Contenido/Instancia1/Consigna" method="StartTimer"]
 [connection signal="Transitioned" from="StateMachine/Juego" to="StateMachine/Juego/Contenido/Instancia2/Consigna" method="StartTimer"]
 [connection signal="Transitioned" from="StateMachine/Juego" to="StateMachine/Juego/Contenido/Instancia2/NubeController/AnimationPlayer" method="Reset"]
