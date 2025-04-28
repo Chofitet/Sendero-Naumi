@@ -1,4 +1,4 @@
-[gd_scene load_steps=116 format=3 uid="uid://bpo2q2rb4or0"]
+[gd_scene load_steps=119 format=3 uid="uid://bpo2q2rb4or0"]
 
 [ext_resource type="Material" uid="uid://muj2sfgakm5s" path="res://shaders/GalaxyWiggle.tres" id="1_0whhm"]
 [ext_resource type="Texture2D" uid="uid://nuybqhitpej1" path="res://Sprites/Mapa/fondo_mapa.png" id="2_fossm"]
@@ -98,6 +98,7 @@
 [ext_resource type="Texture2D" uid="uid://df6rnlhlhm5b2" path="res://Sprites/ZonaMegafauna/foodtruck - foodtruck.png" id="88_n7lbp"]
 [ext_resource type="Texture2D" uid="uid://dxaarmhhcx5q8" path="res://Sprites/Logo_Museo.png" id="89_uv4dt"]
 [ext_resource type="Texture2D" uid="uid://bdu2ssuthqhuo" path="res://Sprites/manito topinho tiras - excavacion.png" id="90_030tb"]
+[ext_resource type="Theme" uid="uid://dhu6swisjlh4w" path="res://Resources/UI_Resources/BlueBubblePanel.tres" id="92_224v7"]
 [ext_resource type="PackedScene" uid="uid://djhg7jvxtexyl" path="res://Scenes/UI_Scenes/btn_Change_Scene.tscn" id="95_misfv"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_yw7ae"]
@@ -129,6 +130,16 @@ font_size = 17
 font_color = Color(0, 0, 0, 1)
 outline_size = 3
 outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="FontVariation" id="FontVariation_dfuxw"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_o0qfc"]
+line_spacing = -3.0
+font = SubResource("FontVariation_dfuxw")
+font_size = 20
+shadow_size = 0
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(2, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_e5yye"]
 atlas = ExtResource("90_030tb")
@@ -163,7 +174,7 @@ exitPanel = false
 [sub_resource type="Resource" id="Resource_4bf60"]
 script = ExtResource("6_7rehl")
 Text = "
-[center][font_size={40}]¡FELICITACIONES![b]"
+[center][font_size={40}][color=#dab21e]¡FELICITACIONES![b]"
 SizePanel = Vector2(652, 230)
 Position = Vector2(0, 0)
 buttons = Array[ExtResource("4_jfmrn")]([SubResource("Resource_tmt3t")])
@@ -179,9 +190,11 @@ exitPanel = false
 
 [sub_resource type="Resource" id="Resource_gj75s"]
 script = ExtResource("6_7rehl")
-Text = "ESTO NO ES TODO,
-PERO ES TODO POR AHORA."
-SizePanel = Vector2(652, 300)
+Text = "
+[center][color=#dab21e]ESTO NO ES TODO,[/color]
+PERO ES TODO POR AHORA.[b]
+"
+SizePanel = Vector2(652, 257)
 Position = Vector2(0, 0)
 buttons = Array[ExtResource("4_jfmrn")]([SubResource("Resource_vaj64")])
 NumOfContent = 0
@@ -196,10 +209,11 @@ exitPanel = false
 
 [sub_resource type="Resource" id="Resource_wj6ka"]
 script = ExtResource("6_7rehl")
-Text = "TE ESPERAMOS PRONTO
-PARA LA SEGUNDA PARTE
-Y EL GRAN FINAL"
-SizePanel = Vector2(652, 300)
+Text = "
+[center][b]TE ESPERAMOS PRONTO[/b]
+[color=#dab21e]PARA LA SEGUNDA PARTE
+Y EL GRAN FINAL[/color]"
+SizePanel = Vector2(652, 290)
 Position = Vector2(0, 0)
 buttons = Array[ExtResource("4_jfmrn")]([SubResource("Resource_gokth")])
 NumOfContent = 0
@@ -254,7 +268,7 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_bottom = 16640.0
+offset_bottom = 17830.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("7_mhboh")
@@ -267,6 +281,7 @@ size_flags_vertical = 3
 [node name="Separador" type="Control" parent="CreditsScroll/Pantalla1"]
 layout_mode = 2
 size_flags_vertical = 3
+size_flags_stretch_ratio = 0.81
 
 [node name="Control" type="Control" parent="CreditsScroll/Pantalla1"]
 layout_mode = 2
@@ -799,7 +814,7 @@ theme_override_font_sizes/normal_font_size = 29
 theme_override_font_sizes/bold_font_size = 29
 bbcode_enabled = true
 text = "[center]- [b]NINO AMO[/b] -
-EL ASTRONAUTA TIMIDO"
+EL ASTRONAUTA TÍMIDO"
 scroll_active = false
 
 [node name="Content3" type="Control" parent="CreditsScroll/Pantalla4"]
@@ -1369,9 +1384,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 6.0
+offset_left = 15.0
 offset_top = -23.0
-offset_right = 6.0
+offset_right = 15.0
 offset_bottom = -23.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -2901,7 +2916,7 @@ offset_right = 201.0
 offset_bottom = 212.5
 grow_horizontal = 2
 grow_vertical = 2
-text = "TODAS LAS LOMBRISES"
+text = "TODAS LAS LOMBRICES"
 label_settings = ExtResource("35_8b8op")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -2954,7 +2969,7 @@ autowrap_mode = 3
 [node name="Content2" type="Control" parent="CreditsScroll/Pantalla11"]
 layout_mode = 2
 size_flags_vertical = 3
-size_flags_stretch_ratio = 0.92
+size_flags_stretch_ratio = 0.72
 
 [node name="Control" type="Control" parent="CreditsScroll/Pantalla11/Content2"]
 layout_mode = 1
@@ -3023,8 +3038,26 @@ grow_vertical = 2
 theme_override_font_sizes/normal_font_size = 29
 theme_override_font_sizes/bold_font_size = 29
 bbcode_enabled = true
-text = "[center]- [b]ANIMATRONICS[/b] -
-FAUNATRONICS SOLUTIONS"
+text = "[center]FAUNATRONICS SOLUTIONS"
+scroll_active = false
+
+[node name="Label3" type="RichTextLabel" parent="CreditsScroll/Pantalla11/Content2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -268.0
+offset_top = -291.0
+offset_right = 268.0
+offset_bottom = -198.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 29
+theme_override_font_sizes/bold_font_size = 29
+bbcode_enabled = true
+text = "[center]- [b]ANIMATRONICS[/b] -"
 scroll_active = false
 
 [node name="Separador3" type="Control" parent="CreditsScroll/Pantalla11"]
@@ -3039,7 +3072,7 @@ size_flags_vertical = 3
 [node name="Separador" type="Control" parent="CreditsScroll/Pantalla12"]
 layout_mode = 2
 size_flags_vertical = 3
-size_flags_stretch_ratio = 0.26
+size_flags_stretch_ratio = 0.36
 
 [node name="Content" type="Control" parent="CreditsScroll/Pantalla12"]
 layout_mode = 2
@@ -3138,14 +3171,73 @@ grow_vertical = 2
 theme_override_font_sizes/normal_font_size = 29
 theme_override_font_sizes/bold_font_size = 29
 bbcode_enabled = true
-text = "[center]- [b]CATERING[/b] -
-MEGA FAUNATRUCK"
+text = "[center]MEGA FAUNATRUCK"
 scroll_active = false
 
 [node name="Content2" type="Control" parent="CreditsScroll/Pantalla12"]
 layout_mode = 2
 size_flags_vertical = 3
-size_flags_stretch_ratio = 0.92
+size_flags_stretch_ratio = 0.54
+
+[node name="Pantalla15" type="VBoxContainer" parent="CreditsScroll"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Content" type="Control" parent="CreditsScroll/Pantalla15"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.13
+
+[node name="Label" type="RichTextLabel" parent="CreditsScroll/Pantalla15/Content"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -294.0
+offset_top = -82.0
+offset_right = 294.0
+offset_bottom = 84.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 35
+theme_override_font_sizes/bold_font_size = 35
+bbcode_enabled = true
+text = "[center]-----------------------------------------------------
+[b]AGRADECEMOS SONORAMENTE A[/b]
+-----------------------------------------------------"
+
+[node name="Label2" type="RichTextLabel" parent="CreditsScroll/Pantalla15"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.1
+theme_override_font_sizes/normal_font_size = 29
+theme_override_font_sizes/bold_font_size = 29
+bbcode_enabled = true
+text = "[center][b]- COMUNIDAD FREESOUND -[/b]"
+scroll_active = false
+
+[node name="Content1" type="Control" parent="CreditsScroll/Pantalla15"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.72
+
+[node name="Label" type="Label" parent="CreditsScroll/Pantalla15/Content1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 42.0
+offset_top = -53.0
+offset_right = -42.0
+offset_bottom = -53.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Jofae - kakaist - ThompsonMan - Edsto - esperar - Zabuhailo - parkersenk - Lightnessko - Mrthenoronha - username12125 - iedurodrigues - Leszek_Szary - monotraum - AlaskaRobotics - MarcusGraham325 - MicktheMicGuy - ninebilly - Hammy01 - benagain28 - u_88mxldp72k - Agaxly - Wagna - jtnewlin13 - sarthakraj_308 - breadparticles - floraphonic - SoundsForYou - MATRIXXX_ - Defaultv - BrendanSound12 - BeeProductive - Lucas_lesc - JuandreSound - ZoviPoland - qubodup - Alex_Jauk - mickdow - maurolupo - SpliceSound - dynamique - TRP - thepodcastdoctor - quedicemipez - Sandermotions - Freesound Community - DavidDumaisAudio - Saya13 - ScratchnSniff - ryansitz - blukotek - tramppa34 - JCI-21 - zybil - Audioflow - billgrip - storegraphic - TanwerAman - Kinoton - hinzebeat - Woodstokk - marcaronni - dffdv - Rodzuz - beetpro - FairhavenCollection - CapsLok - jedg - deifandubs - KenRT - Universfield - BlenderTimer - Brother Barrabas - u_asyndf203n - Tim_Verberne - SamuelGremaud - mikewest - UpdatePelgo - RasoolAsaad - Worldmaxter - u_m9b3aw9s3j - cpick - DJARTMUSIC - Notification_Message - Trading_Nation - se2001 - gyzhor - Zodoz - Niedec - Tombombadil1988 - IMALUIGI - Reitanna - KomradeJack - ty66kill - MattLeschuck - bittermelonheart - LinaManjarrez - acrober - Q.K. - adamgryu - SSPsurvival - steaq - FreeSoundsxx - spookymodem - rolle Andersson - casiba842 - Bertsz - olver - Cunningar0807 - manchesterprod2 - Foreman_Griller - thegreatbelow - Slowmote - humanoide9000 - gmodeath - Fission9 - crooner - earlcash05 - j1987 - oldedgar - JPBILLINGSLEYJR - starplatinums - VoiceBosch - utsuru - Sslc2022 - bunguren - StormBat - nc3studios08 - Gogglecrab - donaldcady - opticaillusions - laribum - deoking - EiK - Mickael_Leroi - ryanharding95"
+label_settings = SubResource("LabelSettings_o0qfc")
+horizontal_alignment = 1
+autowrap_mode = 3
 
 [node name="Pantalla13" type="VBoxContainer" parent="CreditsScroll"]
 layout_mode = 2
@@ -3154,7 +3246,7 @@ size_flags_vertical = 3
 [node name="Content1" type="Control" parent="CreditsScroll/Pantalla13"]
 layout_mode = 2
 size_flags_vertical = 3
-size_flags_stretch_ratio = 0.72
+size_flags_stretch_ratio = 1.21
 
 [node name="TextureRect" type="TextureRect" parent="CreditsScroll/Pantalla13/Content1"]
 layout_mode = 1
@@ -3171,7 +3263,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("89_uv4dt")
 
-[node name="Label" type="Label" parent="CreditsScroll/Pantalla13/Content1"]
+[node name="Label" type="RichTextLabel" parent="CreditsScroll/Pantalla13/Content1"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -3179,16 +3271,14 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -328.0
-offset_top = -301.0
+offset_top = -273.0
 offset_right = 328.0
-offset_bottom = -177.0
+offset_bottom = -149.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "GRACIAS AL MUSEO"
-label_settings = ExtResource("35_8b8op")
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 3
+theme = ExtResource("92_224v7")
+bbcode_enabled = true
+text = "[center][b]¡¡MUCHAS GRACIAS AL MUSEO!!"
 
 [node name="Content2" type="Control" parent="CreditsScroll/Pantalla13"]
 layout_mode = 2
@@ -3290,10 +3380,10 @@ layout_mode = 1
 anchors_preset = 8
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_left = -326.0
-offset_top = -115.0
-offset_right = 326.0
-offset_bottom = 115.0
+offset_left = 34.0
+offset_top = 487.0
+offset_right = 686.0
+offset_bottom = 717.0
 grow_vertical = 2
 pivot_offset = Vector2(326, 115)
 Texts = Array[ExtResource("6_7rehl")]([SubResource("Resource_4bf60"), SubResource("Resource_gj75s"), SubResource("Resource_wj6ka")])

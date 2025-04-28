@@ -1,5 +1,6 @@
 @tool
 extends Panel
+signal BtnAppear
 
 @export var RefreshData : bool:
 	set(new_value):
@@ -174,6 +175,7 @@ func _ready():
 	
 
 func EnterPanel():
+	print("enter panel: " + name)
 	ResetButtonAnimation(_BotonDerecho)
 	ResetButtonAnimation(_BotonIzquierda)
 	ResetButtonAnimation(_BotonCentral)
@@ -209,6 +211,7 @@ func AppearButtonAnim():
 	if BotonDerecho: PlayAnimation(_BotonDerecho)
 	if BotonIzquierdo: PlayAnimation(_BotonIzquierda)
 	if BotonCentral: PlayAnimation(_BotonCentral)
+	BtnAppear.emit()
 
 func PlayAnimation(btn):
 	var path : String = btn.get_path()

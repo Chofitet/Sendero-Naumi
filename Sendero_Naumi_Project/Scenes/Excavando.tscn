@@ -1,4 +1,4 @@
-[gd_scene load_steps=132 format=3 uid="uid://m3gbb64llbqn"]
+[gd_scene load_steps=135 format=3 uid="uid://m3gbb64llbqn"]
 
 [ext_resource type="Script" path="res://_Scripts/Minigame_Save_Controller.gd" id="1_6uc2r"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/StateMachineMinigames.gd" id="2_4ogka"]
@@ -75,6 +75,7 @@
 [ext_resource type="Texture2D" uid="uid://crr3nfu1l6ip5" path="res://Sprites/ZonaMegafauna/objetivoGliptodonte - excavacion.png" id="61_wfhth"]
 [ext_resource type="Texture2D" uid="uid://bvnkyhp7hpv3g" path="res://Sprites/ZonaMegafauna/objetivoMacrauquenia - excavacion.png" id="62_2qkqq"]
 [ext_resource type="Texture2D" uid="uid://2n5igtsrrrbj" path="res://Sprites/ZonaMegafauna/objetivoMegaterio - excavacion.png" id="63_uwvpi"]
+[ext_resource type="PackedScene" uid="uid://dlnoa0yt8sbqs" path="res://Scenes/Experiments/fade.tscn" id="77_afo6p"]
 [ext_resource type="PackedScene" uid="uid://c8dodmo3saxdr" path="res://Scenes/Experiments/sound_debug.tscn" id="78_qhisb"]
 
 [sub_resource type="Gradient" id="Gradient_wwaor"]
@@ -112,8 +113,10 @@ exitPanel = false
 
 [sub_resource type="Resource" id="Resource_8nn8v"]
 script = ExtResource("51_1rgrp")
-Text = "AYUDA A ROCO TOPO A COMPLETAR SU 
-ENCICLOPEDIA DE LA MEGAFAUNA"
+Text = "
+[center][color=#dab21e]AYUDA A ROCO TOPO A ENCONTRAR FÓSILES[/color]
+PARA SU ENCICLOPEDIA DE LA MEGAFAUNA[b]
+"
 SizePanel = Vector2(0, 0)
 Position = Vector2(0, 0)
 buttons = Array[ExtResource("14_g3h66")]([SubResource("Resource_yswdt")])
@@ -427,12 +430,26 @@ exitPanel = false
 
 [sub_resource type="Resource" id="Resource_nftsl"]
 script = ExtResource("51_1rgrp")
-Text = "EL MUNDO ESTÁ LLENO DE SECRETOS 
-POR DESCUBRIR.
-AHORA LES TOCA A USTEDES."
+Text = "“...EL MUNDO TENÍA AÚN MÁS POR DESCUBRIR...”"
 SizePanel = Vector2(0, 0)
 Position = Vector2(0, 0)
 buttons = Array[ExtResource("14_g3h66")]([SubResource("Resource_hn4ky")])
+NumOfContent = 0
+
+[sub_resource type="Resource" id="Resource_ciqes"]
+script = ExtResource("14_g3h66")
+Place = 0
+texture = ExtResource("15_nl7ad")
+label = ""
+dontPassPanel = false
+exitPanel = false
+
+[sub_resource type="Resource" id="Resource_dsg4g"]
+script = ExtResource("51_1rgrp")
+Text = "”…PERO AHORA LES TOCA A USTEDES.”"
+SizePanel = Vector2(0, 0)
+Position = Vector2(0, 0)
+buttons = Array[ExtResource("14_g3h66")]([SubResource("Resource_ciqes")])
 NumOfContent = 0
 
 [sub_resource type="Resource" id="Resource_e7dtv"]
@@ -445,7 +462,8 @@ exitPanel = false
 
 [sub_resource type="Resource" id="Resource_lp4n5"]
 script = ExtResource("51_1rgrp")
-Text = "¿QUÉ MEJOR QUE COMPARTIR LA AVENTURA?"
+Text = "
+[center][color=#dab21e]”¿QUÉ MEJOR QUE COMPARTIR LA AVENTURA?”[/color] [b]"
 SizePanel = Vector2(0, 0)
 Position = Vector2(0, 0)
 buttons = Array[ExtResource("14_g3h66")]([SubResource("Resource_e7dtv")])
@@ -453,7 +471,7 @@ NumOfContent = 0
 
 [sub_resource type="Resource" id="Resource_x17eo"]
 script = ExtResource("16_upu2w")
-NumberOfPanel = 2
+NumberOfPanel = 3
 Place = 0
 
 [node name="Excavando" type="Control"]
@@ -496,6 +514,7 @@ topo = NodePath("../Juego/Contenido/background/CanvasGroup/TopoController/topo/t
 [node name="Consigna" type="Node" parent="Excavando/StateMachine"]
 script = ExtResource("3_nk4vw")
 Consignas = ["Guiá al topo para encontrar los fósiles"]
+FadeInTrasitioned = true
 
 [node name="Contenido" type="Control" parent="Excavando/StateMachine/Consigna"]
 visible = false
@@ -672,6 +691,8 @@ script = ExtResource("5_nqckt")
 NextState = NodePath(".")
 StateMachine = NodePath("..")
 InstanciasMinijuego = [NodePath("Contenido/Instancia1"), NodePath("Contenido/Instancia2")]
+FadeInConsigna = true
+FadeInBeteewnInstance = true
 
 [node name="Contenido" type="Control" parent="Excavando/StateMachine/Juego"]
 layout_mode = 3
@@ -848,9 +869,10 @@ offset_right = -12.343
 offset_bottom = -135.22
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 45
-text = "YO TE SIGO
-VOS SEÑALÁ
-(no hace falta que sea cerca)"
+text = "VOS SEÑALA CON EL DEDO,
+YO TE SIGO.
+(podes señalar lejos de mi)
+"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
@@ -4575,6 +4597,7 @@ state_machine = NodePath("../../../..")
 
 [node name="Fin" type="Node" parent="Excavando/StateMachine"]
 script = ExtResource("19_uslqa")
+FadeInFin = true
 
 [node name="Contenido" type="Control" parent="Excavando/StateMachine/Fin"]
 visible = false
@@ -4637,16 +4660,16 @@ layout_mode = 1
 anchors_preset = 8
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_left = -326.0
+offset_left = -347.0
 offset_top = -535.0
-offset_right = 326.0
-offset_bottom = -295.0
+offset_right = 347.0
+offset_bottom = -316.0
 grow_vertical = 2
-pivot_offset = Vector2(326, 120)
+pivot_offset = Vector2(347, 120)
 AppearInBeginning = false
-Texts = Array[ExtResource("51_1rgrp")]([SubResource("Resource_nftsl"), SubResource("Resource_lp4n5")])
+Texts = Array[ExtResource("51_1rgrp")]([SubResource("Resource_nftsl"), SubResource("Resource_dsg4g"), SubResource("Resource_lp4n5")])
 
-[node name="Panel(2) Btn(rigth)" parent="Excavando/StateMachine/Fin/Contenido/OutroPanel" instance=ExtResource("14_f234f")]
+[node name="Panel(3) Btn(rigth)" parent="Excavando/StateMachine/Fin/Contenido/OutroPanel" instance=ExtResource("14_f234f")]
 Data = SubResource("Resource_x17eo")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Excavando/StateMachine"]
@@ -4654,6 +4677,8 @@ Data = SubResource("Resource_x17eo")
 [node name="Sound Debug" parent="Excavando/StateMachine/CanvasLayer" instance=ExtResource("78_qhisb")]
 z_index = 1
 AudioBuses = Array[String](["TopoNivelVolumen", "topoGuia", "tocoTopo", "topoLoop", "explosionFosil", "explosionObjeto", "enciclopedia", "pincel", "lapiz", "dibujando", "pintando", "pintando2"])
+
+[node name="Fade" parent="Excavando/StateMachine" instance=ExtResource("77_afo6p")]
 
 [connection signal="StateToUpdate" from="Excavando/StateMachine" to="Excavando/StateMachine/Juego/Contenido/Tutorial/Inventary" method="Disanable"]
 [connection signal="pressed" from="Excavando/StateMachine/Consigna/Contenido/Button" to="Excavando/StateMachine/Consigna/Contenido/Button" method="_on_pressed" flags=18]
@@ -4693,7 +4718,8 @@ AudioBuses = Array[String](["TopoNivelVolumen", "topoGuia", "tocoTopo", "topoLoo
 [connection signal="timeout" from="Excavando/StateMachine/Moraleja/Contenido/Timer" to="Excavando/StateMachine/Moraleja" method="TimeOut" flags=18]
 [connection signal="pressed" from="Excavando/StateMachine/Moraleja/Contenido/Instancia1/Button" to="Excavando/StateMachine/Moraleja/Contenido/Instancia1/Button" method="_on_pressed" flags=18]
 [connection signal="Transitioned" from="Excavando/StateMachine/Fin" to="Excavando/StateMachine/Camera2D" method="RestartPos"]
+[connection signal="Transitioned" from="Excavando/StateMachine/Fin" to="Excavando/StateMachine/Juego/Contenido/background/CanvasGroup/TopoController" method="queue_free"]
 [connection signal="Transitioned" from="Excavando/StateMachine/Fin" to="Excavando/StateMachine/Fin/Contenido/OutroPanel" method="EnterPanel"]
 [connection signal="pressed" from="Excavando/StateMachine/Fin/Contenido/ButtonChangeScene" to="Excavando" method="Set_Complete"]
-[connection signal="ButtonPress" from="Excavando/StateMachine/Fin/Contenido/OutroPanel/Panel(2) Btn(rigth)" to="Excavando" method="Set_Complete"]
-[connection signal="ButtonPress" from="Excavando/StateMachine/Fin/Contenido/OutroPanel/Panel(2) Btn(rigth)" to="Excavando/StateMachine/Fin/Contenido/ButtonChangeScene" method="_on_pressed"]
+[connection signal="ButtonPress" from="Excavando/StateMachine/Fin/Contenido/OutroPanel/Panel(3) Btn(rigth)" to="Excavando" method="Set_Complete"]
+[connection signal="ButtonPress" from="Excavando/StateMachine/Fin/Contenido/OutroPanel/Panel(3) Btn(rigth)" to="Excavando/StateMachine/Fin/Contenido/ButtonChangeScene" method="_on_pressed"]

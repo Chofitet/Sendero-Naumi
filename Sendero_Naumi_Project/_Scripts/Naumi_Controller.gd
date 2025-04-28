@@ -14,6 +14,7 @@ var save_file_name_Zone = "ZoneResource.tres"
 var minigameResourseFile = MiniGameResource.new()
 var zoneResource = ZoneResource.new()
 @onready var timer = $Timer
+@onready var call_timer = $CallTimer
 signal ButtonPress
 signal ToContinue
 var  isIdleOncePlayed
@@ -53,10 +54,29 @@ func ToLevelUp():
 	$pivot/handUI.SetVisibility(true)
 	NaumiAnim.play("call")
 	soundAnim.play("Naumi" + str(NaumiState()))
+	call_timer.start()
+	extraAnim = ""
+	call_timer.timeout.connect(ReapetCall)
 	btn.pressed.connect(Evolve)
-	
+
+var extraAnim = ""
+func ReapetCall():
+	if NaumiState() == 0:
+		if extraAnim != "":
+			extraAnim = ""
+		else:
+			extraAnim = ".1"
+	NaumiAnim.play("call" + extraAnim)
+	soundAnim.play("Naumi" + str(NaumiState()) + extraAnim)
+	var range = randf_range(1.5,2.7)
+	call_timer.wait_time =  range
+	pass
+
+
 func Evolve():
 	soundAnim.stop()
+	call_timer.timeout.disconnect(ReapetCall)
+	call_timer.stop()
 	btn.pressed.disconnect(Evolve)
 	ActualNaumiSounds.PlayEvent("rompe",delayNaumiEvolveSound)
 	$pivot/handUI.SetVisibility(false)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=142 format=3 uid="uid://cmv5m3ynk4o5y"]
+[gd_scene load_steps=145 format=3 uid="uid://cmv5m3ynk4o5y"]
 
 [ext_resource type="Script" path="res://_Scripts/Minigame_Save_Controller.gd" id="1_jl73q"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/StateMachineMinigames.gd" id="2_7aqcq"]
@@ -40,6 +40,7 @@
 [ext_resource type="Texture2D" uid="uid://dy4chia2rl1hi" path="res://Sprites/ZonaAstronomia/Respuestas_Calendar/enero opcion 1 - calendario.png" id="20_jeje6"]
 [ext_resource type="Texture2D" uid="uid://dj57ce5tt06yj" path="res://Sprites/UI/bubble brown.png" id="21_ewehw"]
 [ext_resource type="Script" path="res://_Scripts/MinG_MegaFood/FoodMenuController.gd" id="22_xt0by"]
+[ext_resource type="Theme" uid="uid://dhu6swisjlh4w" path="res://Resources/UI_Resources/BlueBubblePanel.tres" id="23_3pfro"]
 [ext_resource type="PackedScene" uid="uid://ci3c3pocxiywq" path="res://Scenes/Experiments/drag_object.tscn" id="24_2ql8s"]
 [ext_resource type="Texture2D" uid="uid://by0ctb1h2pxn5" path="res://Sprites/ZonaAstronomia/Respuestas_Calendar/agosto opcion 1 - calendario.png" id="24_j2bdy"]
 [ext_resource type="Texture2D" uid="uid://cgxynxv4wy7yi" path="res://Sprites/ZonaMegafauna/libro 1- excavacion.png" id="25_657eo"]
@@ -76,6 +77,7 @@
 [ext_resource type="Texture2D" uid="uid://de3qh4wtql7nl" path="res://Sprites/ZonaAstronomia/cinta2.png" id="43_7u4sv"]
 [ext_resource type="AudioStream" uid="uid://c6v77hyhgouw8" path="res://Sounds/Calendario/Calendario - Volviendo por ultima vez - Final.ogg" id="44_i0m3o"]
 [ext_resource type="Texture2D" uid="uid://dnqum7v0x7hy0" path="res://Sprites/ZonaAstronomia/cintas.png" id="44_oc650"]
+[ext_resource type="AudioStream" uid="uid://lk2m3u3q1q43" path="res://Sounds/Calendario/Calendario - Circulito.ogg" id="46_gbvoo"]
 [ext_resource type="PackedScene" uid="uid://cw3ok8v4p620b" path="res://Scenes/Experiments/squiggling_sprite.tscn" id="51_mweh1"]
 [ext_resource type="Texture2D" uid="uid://cy825erdd8i5o" path="res://Sprites/ZonaAstronomia/squigglingCalendario/respuestaASQUIG - calendario.png" id="52_og33l"]
 [ext_resource type="Texture2D" uid="uid://ced0cvvahqlq4" path="res://Sprites/ZonaAstronomia/squigglingCalendario/respuestaBSQUIG - calendario.png" id="53_k35md"]
@@ -393,11 +395,13 @@ exitPanel = false
 
 [sub_resource type="Resource" id="Resource_fkmvq"]
 script = ExtResource("18_66s5d")
-Text = "MUESTRA CUÁNDO PASARÍA CADA EVENTO
+Text = "[center]MUESTRA CUÁNDO PASARÍA CADA EVENTO
 DE LA HISTORIA DEL UNIVERSO
-SI TODO HUBIERA SUCEDIDO EN UN MISMO AÑO."
-SizePanel = Vector2(682, 228)
+[color=#dab21e]SI TODO HUBIERA SUCEDIDO EN UN MISMO AÑO[/color] [b]
+"
+SizePanel = Vector2(697, 228)
 Position = Vector2(0, 0)
+PanelTheme = ExtResource("23_3pfro")
 buttons = Array[ExtResource("16_nigs6")]([SubResource("Resource_gqjk5")])
 NumOfContent = 0
 
@@ -411,9 +415,11 @@ exitPanel = false
 
 [sub_resource type="Resource" id="Resource_y64rv"]
 script = ExtResource("18_66s5d")
-Text = "EN NUESTRA ÚLTIMA VISITA
-LE SACAMOS UNA FOTO"
-SizePanel = Vector2(682, 228)
+Text = "
+[center]EN NUESTRA ÚLTIMA VISITA
+[color=#dab21e]LE SACAMOS UNA FOTO…[/color] [b]
+"
+SizePanel = Vector2(697, 253)
 Position = Vector2(0, 0)
 buttons = Array[ExtResource("16_nigs6")]([SubResource("Resource_tubvr")])
 NumOfContent = 0
@@ -428,7 +434,8 @@ exitPanel = false
 
 [sub_resource type="Resource" id="Resource_81ob6"]
 script = ExtResource("18_66s5d")
-Text = "PERO SALIÓ MEDIO TAPADA."
+Text = "
+[center][color=#dab21e]...PERO SALIÓ MEDIO TAPADA…[/color][b]"
 SizePanel = Vector2(682, 228)
 Position = Vector2(0, 0)
 buttons = Array[ExtResource("16_nigs6")]([SubResource("Resource_hjq0o")])
@@ -436,9 +443,10 @@ NumOfContent = 0
 
 [sub_resource type="Resource" id="Resource_b5efl"]
 script = ExtResource("18_66s5d")
-Text = "AYUDANOS A CORREGIR
-LAS PARTES QUE NO SE VEN!"
-SizePanel = Vector2(930, 228)
+Text = "[center][color=#dab21e] AYUDANOS A CORREGIR[/color]
+LAS PARTES QUE NO SE VEN[b]
+"
+SizePanel = Vector2(930, 195)
 Position = Vector2(-103, 0)
 PanelTheme = ExtResource("55_7pksd")
 buttons = Array[ExtResource("16_nigs6")]([])
@@ -532,6 +540,15 @@ volume = 0.0
 pitch = 1.0
 RandomPitch = Vector2(1, 1)
 streams = Array[AudioStream]([ExtResource("44_i0m3o")])
+
+[sub_resource type="Resource" id="Resource_f0mp7"]
+script = ExtResource("27_wt5n4")
+name = "cierreCirculo"
+bus = "cierreCirculo"
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([ExtResource("46_gbvoo")])
 
 [sub_resource type="Animation" id="Animation_2dhle"]
 length = 0.001
@@ -958,8 +975,8 @@ streams = Array[AudioStream]([ExtResource("69_8hnyl")])
 
 [sub_resource type="Resource" id="Resource_v2ur4"]
 script = ExtResource("18_66s5d")
-Text = "AYUDANOS A CORREGIR
-LAS PARTES QUE NO SE VEN!"
+Text = "[center][color=#dab21e] AYUDANOS A CORREGIR[/color]
+LAS PARTES QUE NO SE VEN[b]"
 SizePanel = Vector2(0, 0)
 Position = Vector2(-103, 0)
 buttons = Array[ExtResource("16_nigs6")]([])
@@ -1001,8 +1018,8 @@ exitPanel = false
 
 [sub_resource type="Resource" id="Resource_47d2i"]
 script = ExtResource("18_66s5d")
-Text = "LOS SERES HUMANOS SON MUY NUEVOS
-EN LA HISTORIA DEL UNIVERSO"
+Text = "LOS SERES HUMANOS
+SON DE LO MÁS NUEVO EN EL UNIVERSO"
 SizePanel = Vector2(0, 0)
 Position = Vector2(0, 0)
 buttons = Array[ExtResource("16_nigs6")]([SubResource("Resource_0ny5c")])
@@ -1018,8 +1035,7 @@ exitPanel = false
 
 [sub_resource type="Resource" id="Resource_nlviq"]
 script = ExtResource("18_66s5d")
-Text = "SOLO HAN EXISTIDO POR UNOS MINUTOS
-HASTA AHORA"
+Text = "SOLO HAN EXISTIDO POR MINUTOS HASTA AHORA"
 SizePanel = Vector2(0, 0)
 Position = Vector2(0, 0)
 buttons = Array[ExtResource("16_nigs6")]([SubResource("Resource_jfjub")])
@@ -1035,8 +1051,10 @@ exitPanel = false
 
 [sub_resource type="Resource" id="Resource_qup6w"]
 script = ExtResource("18_66s5d")
-Text = "PENSÁ CUÁNTO LOGRARON
-EN TAN POCO TIEMPO"
+Text = "
+[center][color=#dab21e]PENSÁ CUÁNTO LOGRARON EN TAN POCO TIEMPO
+[/color][b]
+"
 SizePanel = Vector2(0, 0)
 Position = Vector2(0, 0)
 buttons = Array[ExtResource("16_nigs6")]([SubResource("Resource_u38vq")])
@@ -1228,14 +1246,14 @@ Data = SubResource("Resource_hfs58")
 [node name="PanelIntro2" parent="Calendario/StateMachine/Consigna/Contenido" instance=ExtResource("15_1ptxs")]
 layout_mode = 1
 anchors_preset = -1
-anchor_top = 0.361
-anchor_bottom = 0.361
-offset_left = -341.0
-offset_top = -380.08
-offset_right = 341.0
-offset_bottom = -152.08
+anchor_top = 0.387
+anchor_bottom = 0.387
+offset_left = 15.0
+offset_top = 77.0
+offset_right = 712.0
+offset_bottom = 305.0
 grow_vertical = 2
-pivot_offset = Vector2(341, 114)
+pivot_offset = Vector2(348.5, 114)
 AppearInBeginning = false
 Texts = Array[ExtResource("18_66s5d")]([SubResource("Resource_fkmvq"), SubResource("Resource_y64rv"), SubResource("Resource_81ob6"), SubResource("Resource_b5efl")])
 
@@ -1496,6 +1514,22 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("17_gchn0")
 
+[node name="Circulo2" type="TextureRect" parent="Calendario/StateMachine/Juego/Contenido/CenterPivot/CalendarZoom/calendarPivot/Calendar"]
+visible = false
+material = SubResource("ShaderMaterial_rtru6")
+anchors_preset = -1
+anchor_left = 0.488
+anchor_top = 0.306
+anchor_right = 0.488
+anchor_bottom = 0.306
+offset_left = -3762.38
+offset_top = -3370.21
+offset_right = 1872.62
+offset_bottom = 2264.79
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("17_gchn0")
+
 [node name="background" type="Sprite2D" parent="Calendario/StateMachine/Juego/Contenido/CenterPivot/CalendarZoom/calendarPivot/Calendar"]
 self_modulate = Color(0.0823529, 0.0823529, 0.0823529, 1)
 show_behind_parent = true
@@ -1531,7 +1565,7 @@ position = Vector2(135.58, -66.9831)
 [node name="SoundBank" type="Node" parent="Calendario/StateMachine/Juego/Contenido/CenterPivot/CalendarZoom/ZoomsSounds"]
 script = ExtResource("26_mk0kq")
 label = "zooms"
-events = Array[ExtResource("27_wt5n4")]([SubResource("Resource_vpric"), SubResource("Resource_fgife"), SubResource("Resource_bappy"), SubResource("Resource_nru6v")])
+events = Array[ExtResource("27_wt5n4")]([SubResource("Resource_vpric"), SubResource("Resource_fgife"), SubResource("Resource_bappy"), SubResource("Resource_nru6v"), SubResource("Resource_f0mp7")])
 
 [node name="OutroAnim" type="AnimationPlayer" parent="Calendario/StateMachine/Juego/Contenido/CenterPivot"]
 libraries = {
@@ -1629,19 +1663,20 @@ events = Array[ExtResource("27_wt5n4")]([SubResource("Resource_rfq4e"), SubResou
 [node name="PanelConsigna" parent="Calendario/StateMachine/Juego/Contenido" instance=ExtResource("15_1ptxs")]
 layout_mode = 1
 anchors_preset = -1
-anchor_top = 0.396
-anchor_bottom = 0.396
-offset_left = -463.0
-offset_top = -420.88
-offset_right = 463.0
-offset_bottom = -194.88
+anchor_top = 0.386
+anchor_bottom = 0.386
+offset_left = -103.0
+offset_top = 83.0
+offset_right = 827.0
+offset_bottom = 278.0
 grow_vertical = 2
-pivot_offset = Vector2(463, 113)
+pivot_offset = Vector2(465, 97.5)
 theme = ExtResource("55_7pksd")
 AppearSound = ""
 Texts = Array[ExtResource("18_66s5d")]([SubResource("Resource_v2ur4")])
 
 [node name="PanelPreguntas" parent="Calendario/StateMachine/Juego/Contenido" instance=ExtResource("15_1ptxs")]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 0.348
@@ -1819,6 +1854,7 @@ texture = "vertical"
 smoothness = 0.2
 
 [node name="PanelOutro" parent="Calendario/StateMachine/Juego/Contenido" instance=ExtResource("15_1ptxs")]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.508
@@ -1828,8 +1864,8 @@ anchor_bottom = 0.36
 offset_left = -325.76
 offset_top = -376.8
 offset_right = 326.24
-offset_bottom = -148.8
-pivot_offset = Vector2(326, 114)
+offset_bottom = -137.8
+pivot_offset = Vector2(326, 119.5)
 AppearInBeginning = false
 Texts = Array[ExtResource("18_66s5d")]([SubResource("Resource_47d2i"), SubResource("Resource_nlviq"), SubResource("Resource_qup6w")])
 
@@ -2023,7 +2059,7 @@ texture = "vertical"
 smoothness = 0.2
 
 [node name="Sound Debug" parent="Calendario" instance=ExtResource("86_iwtdq")]
-AudioBuses = Array[String](["CalendarioVolumen", "apareceMemoria", "apareceFoto", "signoPregunta", "zoomIn", "zoomOut", "tocarOpcion", "swipeOpcion", "opcionCorrecta", "incorrecto1", "incorrecto2", "zoomOutOutro"])
+AudioBuses = Array[String](["CalendarioVolumen", "apareceMemoria", "apareceFoto", "signoPregunta", "zoomIn", "zoomOut", "tocarOpcion", "swipeOpcion", "opcionCorrecta", "incorrecto1", "incorrecto2", "zoomOutOutro", "cierreCirculo"])
 
 [connection signal="ButtonPress" from="Calendario/StateMachine/Consigna/Contenido/PanelIntro1/Panel(1) Btn(rigth)" to="Calendario/StateMachine/Consigna/Contenido/PanelIntro2" method="EnterPanel"]
 [connection signal="ButtonPress" from="Calendario/StateMachine/Consigna/Contenido/PanelIntro1/Panel(1) Btn(rigth)" to="Calendario/StateMachine/Consigna/Contenido/AnimationPlayer" method="play" binds= ["fadeMemoria"]]

@@ -141,17 +141,18 @@ func restartAll():
 
 func InstanceTransition():
 	PlayerVariables.EmitInactivePause()
-	var instance = Fade.instantiate()
-	get_parent().get_parent().add_child(instance)
-	instance.init(fadeTexture,2,true)
-	await get_tree().create_timer(2).timeout
+#	var instance = Fade.instantiate()
+#	get_parent().get_parent().add_child(instance)
+#	instance.init(fadeTexture,2,true)
+#	await get_tree().create_timer(2).timeout
 	ChangeInstanceMinigame()
+	await get_tree().create_timer(1).timeout
 	Restart.emit(true,true)
-	var instance2 = Fade.instantiate()
-	get_parent().get_parent().add_child(instance2)
-	instance2.init(fadeTexture,2,false,false)
-	queue_free()
+#	var instance2 = Fade.instantiate()
+#	get_parent().get_parent().add_child(instance2)
+#	instance2.init(fadeTexture,2,false,false)
 	PlayerVariables.EmitActivePause()
+	queue_free()
 
 func ToRestart():
 	skeleton.queue_free()

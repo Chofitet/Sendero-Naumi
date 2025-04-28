@@ -45,9 +45,11 @@ func PassInstance():
 		RetryPanel.EnterPanel()
 		SoundManager.play("level", "ups")
 		return
+	
+	stateMachine.Trigger_On_Child_Transition("Moraleja")
+	await get_tree().create_timer(0.6).timeout
 	LeftRock.queue_free()
 	RigthRock.queue_free()
-	stateMachine.Trigger_On_Child_Transition("Moraleja")
 	SoundManager.play("level", "correct")
 
 func Figth(btnLeftPressed):
@@ -64,6 +66,8 @@ func Figth(btnLeftPressed):
 
 func RetryLevel():
 	if LeftRock == null : return
+	stateMachine.Trigger_On_Child_Transition("Juego", true)
+	await get_tree().create_timer(0.4).timeout
 	LeftRock.queue_free()
 	RigthRock.queue_free()
-	stateMachine.Trigger_On_Child_Transition("Juego", true)
+	

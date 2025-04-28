@@ -25,7 +25,7 @@ func AppearMenu():
 		btn.ExitAnim()
 		get_tree().paused = true
 	else: 
-		btn.visible = true
+		#btn.visible = true
 		ispause = false
 		menu.visible = false
 		btn.EnterAnim()

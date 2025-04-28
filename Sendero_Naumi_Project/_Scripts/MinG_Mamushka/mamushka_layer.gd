@@ -39,9 +39,7 @@ extends Node2D
 @export var NumOfLayer : int
 var panel = load("res://Scenes/Zona_Astronomia/panelMamushka.tscn")
 @export var color : Color
-@export var panelText : String
-@export var panelText1  : String = ""
-@export var panelText2  : String = ""
+@export_multiline var panelText : String
 @export var offsetPanel : Vector2
 var isInArea
 var MamushkaController
@@ -159,9 +157,7 @@ func SpawnPanel():
 	newStylebox.bg_color = color
 	instancePanel.add_theme_stylebox_override("panel", newStylebox)
 	
-	instancePanel.get_node("RichTextLabel").text = panelText + "
-	" + panelText1 + "
-	"+ panelText2
+	instancePanel.get_node("RichTextLabel").text = panelText 
 
 func SetEmotion(emotion, time = 0):
 	emotions.play(emotion)

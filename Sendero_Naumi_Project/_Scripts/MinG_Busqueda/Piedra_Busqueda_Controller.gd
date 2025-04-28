@@ -127,6 +127,7 @@ func PlayAnimatedSprite(x):
 
 func ResetRock():
 	if !get_parent().visible : return
+	await get_tree().create_timer(0.5).timeout
 	timerLoopLook.timeout.connect(LookAnim)
 	timerLoopLook.wait_time= 3.5
 	timerLoopLook.start()

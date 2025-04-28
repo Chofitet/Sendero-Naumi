@@ -1,4 +1,4 @@
-[gd_scene load_steps=105 format=3 uid="uid://b77gk1g1ulal5"]
+[gd_scene load_steps=106 format=3 uid="uid://b77gk1g1ulal5"]
 
 [ext_resource type="Script" path="res://_Scripts/Naumi_Controller.gd" id="1_mwu8k"]
 [ext_resource type="Texture2D" uid="uid://cpm5a413kke7u" path="res://Sprites/Naumi/N2 - idle.png" id="2_3ucl7"]
@@ -699,8 +699,43 @@ streams = Array[AudioStream]([ExtResource("23_meaiv")])
 
 [sub_resource type="Animation" id="Animation_oau18"]
 resource_name = "Naumi0"
+step = 0.166667
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("NaumiSounds0")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.333333),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["golpe1", 0.0, true],
+"method": &"PlayEvent"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_xghv8"]
+resource_name = "Naumi0.1"
+step = 0.166667
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("NaumiSounds0")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.5001),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["golpe2", 0.0, true],
+"method": &"PlayEvent"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_63d63"]
+resource_name = "Naumi1"
 length = 2.33335
-loop_mode = 1
 step = 0.166667
 tracks/0/type = "method"
 tracks/0/imported = false
@@ -723,7 +758,6 @@ tracks/0/keys = {
 [sub_resource type="Animation" id="Animation_1fjyu"]
 resource_name = "Naumi1"
 length = 2.33335
-loop_mode = 1
 step = 0.166667
 tracks/0/type = "method"
 tracks/0/imported = false
@@ -743,7 +777,6 @@ tracks/0/keys = {
 [sub_resource type="Animation" id="Animation_137gm"]
 resource_name = "Naumi3"
 length = 2.66668
-loop_mode = 1
 step = 0.166667
 tracks/0/type = "method"
 tracks/0/imported = false
@@ -760,32 +793,10 @@ tracks/0/keys = {
 }]
 }
 
-[sub_resource type="Animation" id="Animation_63d63"]
-resource_name = "Naumi1"
-length = 2.33335
-loop_mode = 1
-step = 0.166667
-tracks/0/type = "method"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("NaumiSounds0")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.333333, 1.33333),
-"transitions": PackedFloat32Array(1, 1),
-"values": [{
-"args": ["golpe1", 0.0, true],
-"method": &"PlayEvent"
-}, {
-"args": ["golpe2", 0.0, true],
-"method": &"PlayEvent"
-}]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_upixu"]
 _data = {
 "Naumi0": SubResource("Animation_oau18"),
+"Naumi0.1": SubResource("Animation_xghv8"),
 "Naumi1": SubResource("Animation_63d63"),
 "Naumi2": SubResource("Animation_1fjyu"),
 "Naumi3": SubResource("Animation_137gm")
@@ -873,7 +884,7 @@ libraries = {
 position = Vector2(0, -287)
 scale = Vector2(0.972, 0.972)
 sprite_frames = ExtResource("6_jo345")
-animation = &"sleeping"
+animation = &"call.1"
 autoplay = "sleeping"
 
 [node name="Button" type="Button" parent="pivot"]
@@ -976,6 +987,9 @@ texture = ExtResource("10_hdr2s")
 position = Vector2(0, -287)
 scale = Vector2(0.972, 0.972)
 texture = ExtResource("11_3d4e8")
+
+[node name="CallTimer" type="Timer" parent="."]
+wait_time = 3.0
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 6.0

@@ -4,6 +4,10 @@ var states : Dictionary = {}
 signal StateUpdate
 signal StateToUpdate
 @export var initial_state : StateMinigame
+signal fadeInFinish
+signal fadeOutStart
+var lastState
+var nextState
 
 func _ready():
 	self.StateUpdate.connect(Trigger_On_Child_Transition)
@@ -23,7 +27,7 @@ func _physics_process(delta):
 		if current_state:
 			current_state.Update(delta)
 
-func On_Child_Transition(state, new_state_name, incruiseLevel = false):
+func On_Child_Transition(state, new_state_name, incruiseLevel = false, isFade : bool = false):
 	if state != current_state:
 		return
 	
@@ -31,13 +35,33 @@ func On_Child_Transition(state, new_state_name, incruiseLevel = false):
 	if !new_state: 
 		return
 	
+	nextState = new_state_name.to_lower()
+	lastState = states.find_key(current_state) 
+	
 	if current_state:
 		current_state.Exit(incruiseLevel)
 		
-	new_state.Enter()
 	current_state = new_state
+	new_state.Enter()
+	
 
-func Trigger_On_Child_Transition(new_state_name, incruiseLevel = false):
-	On_Child_Transition(current_state, new_state_name, incruiseLevel)
+func Trigger_On_Child_Transition(new_state_name, incruiseLevel = false,isFade : bool = false):
+	On_Child_Transition(current_state, new_state_name, incruiseLevel,isFade)
 	StateToUpdate.emit(new_state_name)
+
+var isTransitioned = false
+
+func MakeFade():
+	isTransitioned = true
+	var fade = $Fade
+	fade.InstanciateFade()
+	fade.fadeInFinish.connect(EmitfadeInFinish)
+	fade.fadeOutStart.connect(EmitfadeOutStart)
+	
+
+func EmitfadeInFinish():
+	fadeInFinish.emit()
+
+func EmitfadeOutStart():
+	fadeOutStart.emit()
 

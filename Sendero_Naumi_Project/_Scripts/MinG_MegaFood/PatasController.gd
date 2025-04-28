@@ -84,6 +84,8 @@ func BackToIdle():
 
 func WrongAns():
 	$ReclamoTriggerSound.StopSoundsInCuttableQueue()
+	timer.timeout.disconnect(PlayCallAnim)
+	timer.stop()
 	buttonTouchAnimal.visible = false
 	pataSuelta.visible = true
 	animalsArray[inx_animal].self_modulate = Color(0,0,0,0)
@@ -94,6 +96,8 @@ func WrongAns():
 	anim.play("AngryAnim")
 	await anim.animation_finished
 	RestartAfterWrong()
+	timer.timeout.connect(PlayCallAnim)
+	timer.start()
 
 func RestartAfterWrong():
 	ReorganizePlates.emit()

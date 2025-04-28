@@ -56,7 +56,7 @@ func SetSkeletonFind(skeleton):
 		
 		match skeleton.name:
 			"smilodonte": Icons[i].texture = SmilodonteTexture
-			"glyptodon": Icons[i].texture = GliptodonteTexture
+			"gliptodonte": Icons[i].texture = GliptodonteTexture
 			"macrauquenia": Icons[i].texture = MacrauqueniaTexture
 			"megaterio": Icons[i].texture = MegaterioTexture
 	

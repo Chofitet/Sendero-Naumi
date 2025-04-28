@@ -22,10 +22,14 @@ var minigameResourseFile = MiniGameResource.new()
 var instance = InstanceResource.new()
 var button
 signal EnterInLevel
+signal CompleteLevelAnim
+var iscompleteLevel : bool = false
 @export var NumOfLevel : int
 var pop = preload(\"res://Scenes/UI_Scenes/pop.tscn\")
 @onready var squigglyObject = $SquigglingSprite
 var isWaitingForAnimComplete
+@onready var animation_player = $AnimationPlayer
+
 
 func _ready():
 	button = get_node(\"ButtonChangeScene\")
@@ -56,6 +60,8 @@ func OnZone():
 	if isWaitingForAnimComplete:
 		isWaitingForAnimComplete = false
 		minigameResourseFile.Set_Last_Minigame(\"\")
+		iscompleteLevel = true
+		CompleteLevelAnim.emit()
 		get_node(\"AnimationPlayer\").play(\"completed\")
 		save()
 
@@ -74,6 +80,14 @@ func CheckComplete():
 		ResourceSaver.save(instance, save_file_path + \"InstanceResource.tres\")
 		$Sprite2D/Label.visible = false
 		$Sprite2D/SquigglingSprite.visible = false
+
+func stopAnim():
+	if iscompleteLevel : return
+	animation_player.play(\"RESET\")
+
+func resumeAnim():
+	if iscompleteLevel : return
+	animation_player.play(\"Scale-bounce\")
 "
 
 [sub_resource type="Animation" id="Animation_67m84"]
@@ -229,7 +243,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0.5, 1, 1.1),
 "transitions": PackedFloat32Array(2, -2, 1),
 "update": 0,
-"values": [Vector2(0, -1800.39), Vector2(0, -27.385), Vector2(0, -105.385)]
+"values": [Vector2(0, -2513.38), Vector2(0, -27.385), Vector2(0, -105.385)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false

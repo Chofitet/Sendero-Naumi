@@ -1,4 +1,4 @@
-[gd_scene load_steps=139 format=3 uid="uid://hbmgu1q1d7os"]
+[gd_scene load_steps=142 format=3 uid="uid://hbmgu1q1d7os"]
 
 [ext_resource type="Script" path="res://_Scripts/Minigame_Save_Controller.gd" id="1_dk1kn"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/StateMachineMinigames.gd" id="2_445ba"]
@@ -92,6 +92,7 @@
 [ext_resource type="Texture2D" uid="uid://24bku0gubpew" path="res://Sprites/ZonaMegafauna/Estrella Hueco.png" id="85_j31vl"]
 [ext_resource type="AudioStream" uid="uid://dy5sg4tfyfep6" path="res://Sounds/Foodtruck/FoodTruck - Final Estrellitas.ogg" id="90_ej3yp"]
 [ext_resource type="PackedScene" uid="uid://c8dodmo3saxdr" path="res://Scenes/Experiments/sound_debug.tscn" id="91_l3px4"]
+[ext_resource type="PackedScene" uid="uid://dlnoa0yt8sbqs" path="res://Scenes/Experiments/fade.tscn" id="92_3fa7n"]
 
 [sub_resource type="Gradient" id="Gradient_crw6p"]
 offsets = PackedFloat32Array(0, 0.51751, 1)
@@ -250,8 +251,9 @@ exitPanel = false
 
 [sub_resource type="Resource" id="Resource_4rfxl"]
 script = ExtResource("16_g0euh")
-Text = "LOS ANIMALES SON SERES MUY CURIOSOS  
-PERO NO SE COMEN CUALQUIERA"
+Text = "
+[center][color=#dab21e]LOS ANIMALES SON SERES MUY CURIOSOS,[/color]
+PERO NO SE COMEN CUALQUIERA[b]"
 SizePanel = Vector2(0, 0)
 Position = Vector2(0, 0)
 buttons = Array[ExtResource("14_g877f")]([SubResource("Resource_v6d2t")])
@@ -277,8 +279,9 @@ exitPanel = false
 
 [sub_resource type="Resource" id="Resource_f6tx0"]
 script = ExtResource("16_g0euh")
-Text = "AYÚDANOS A SERVIR
-SUS COMIDAS FAVORITAS"
+Text = "
+[center][color=#dab21e]AYUDANOS A DARLES DE COMER[/color]
+SUS COMIDAS FAVORITAS[b]"
 SizePanel = Vector2(0, 0)
 Position = Vector2(0, 0)
 buttons = Array[ExtResource("14_g877f")]([SubResource("Resource_diw31")])
@@ -336,8 +339,10 @@ _data = {
 
 [sub_resource type="Resource" id="Resource_0xsgl"]
 script = ExtResource("16_g0euh")
-Text = "DESLIZA LOS PLATOS HACIA LOS COSTADOS
-PARA BUSCAR EL MENÚ CORRECTO."
+Text = "
+[center][color=#dab21e]DESLIZA LOS PLATOS HACIA LOS COSTADOS[/color]
+PARA BUSCAR EL MENÚ CORRECTO[b]
+"
 SizePanel = Vector2(0, 0)
 Position = Vector2(0, 0)
 buttons = Array[ExtResource("14_g877f")]([])
@@ -345,8 +350,10 @@ NumOfContent = 0
 
 [sub_resource type="Resource" id="Resource_vcjaj"]
 script = ExtResource("16_g0euh")
-Text = "DESLIZA EL PLATO ELEGIDO A LA BANDEJA
-PARA ENTREGARLO."
+Text = "
+[center][color=#dab21e]DESLIZA EL PLATO ELEGIDO HACIA LA BANDEJA[/color]
+PARA ENTREGARLO[b]
+"
 SizePanel = Vector2(0, 0)
 Position = Vector2(0, 0)
 buttons = Array[ExtResource("14_g877f")]([])
@@ -763,7 +770,7 @@ exitPanel = false
 [sub_resource type="Resource" id="Resource_4oo6c"]
 script = ExtResource("16_g0euh")
 Text = "
-[center][b][font_size={40}]¡BUEN TRABAJO!"
+[center][b][font_size={40}][color=#dab21e]¡BUEN TRABAJO!"
 SizePanel = Vector2(0, 0)
 Position = Vector2(0, 0)
 buttons = Array[ExtResource("14_g877f")]([SubResource("Resource_rivg6")])
@@ -779,20 +786,35 @@ exitPanel = false
 
 [sub_resource type="Resource" id="Resource_sq0sj"]
 script = ExtResource("16_g0euh")
-Text = "CUANDO UN ANIMAL ENCUENTRA UNA FUENTE DE ALIMENTO
-TRATA DE NO AGOTARLO
-PARA PODER SEGUIR COMIENDO ALLÍ,
-SOLO O CON SU FAMILIA
-
-AUNQUE NO NOS VEAMOS LA CARA, TODOS COMPARTIMOS LA MESA"
-SizePanel = Vector2(652, 440)
+Text = "NO SIEMPRE ES CUESTIÓN DE GUSTOS.
+CADA ANIMAL TIENE UN MENÚ PROPIO."
+SizePanel = Vector2(0, 0)
 Position = Vector2(0, 0)
 buttons = Array[ExtResource("14_g877f")]([SubResource("Resource_pje03")])
 NumOfContent = 0
 
+[sub_resource type="Resource" id="Resource_4gm8t"]
+script = ExtResource("14_g877f")
+Place = 0
+texture = ExtResource("15_x6a0g")
+label = ""
+dontPassPanel = false
+exitPanel = false
+
+[sub_resource type="Resource" id="Resource_q5kvs"]
+script = ExtResource("16_g0euh")
+Text = "
+[center][color=#dab21e]AUNQUE NO NOS VEAMOS LA CARA,
+TODOS COMPARTIMOS LA MISMA MESA.[/color][b]
+"
+SizePanel = Vector2(0, 0)
+Position = Vector2(0, 0)
+buttons = Array[ExtResource("14_g877f")]([SubResource("Resource_4gm8t")])
+NumOfContent = 0
+
 [sub_resource type="Resource" id="Resource_irand"]
 script = ExtResource("19_43356")
-NumberOfPanel = 2
+NumberOfPanel = 3
 Place = 0
 
 [sub_resource type="Animation" id="Animation_7pshy"]
@@ -1074,9 +1096,9 @@ initial_state = NodePath("Consigna")
 [node name="Consigna" type="Node" parent="FoodTruck/StateMachine"]
 script = ExtResource("3_snobg")
 Consignas = ["Dale a cada animal la comida correspondiente a su dieta", "Dale a cada animal la comida correspondiente a su dieta"]
+FadeInTrasitioned = true
 
 [node name="Contenido" type="Control" parent="FoodTruck/StateMachine/Consigna"]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -1285,7 +1307,8 @@ anchor_bottom = 0.347
 offset_left = -325.76
 offset_top = -326.16
 offset_right = 326.24
-offset_bottom = -98.16
+offset_bottom = -71.16
+pivot_offset = Vector2(326, 127.5)
 Texts = Array[ExtResource("16_g0euh")]([SubResource("Resource_4rfxl")])
 
 [node name="Panel(1) Btn(rigth)" parent="FoodTruck/StateMachine/Consigna/Contenido/Intro1" instance=ExtResource("17_6stp3")]
@@ -1296,12 +1319,14 @@ Data = SubResource("Resource_2uewc")
 Delay = 1.6
 
 [node name="Intro2" parent="FoodTruck/StateMachine/Consigna/Contenido" instance=ExtResource("13_3lngq")]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 0.359
 anchor_bottom = 0.359
 offset_top = -340.52
-offset_bottom = -112.52
+offset_bottom = -85.52
+pivot_offset = Vector2(326, 127.5)
 AppearInBeginning = false
 Texts = Array[ExtResource("16_g0euh")]([SubResource("Resource_f6tx0")])
 
@@ -1321,8 +1346,11 @@ script = ExtResource("5_ykya6")
 NextState = NodePath(".")
 StateMachine = NodePath("..")
 InstanciasMinijuego = [NodePath("Contenido/Instancia1"), NodePath("Contenido/Instancia2"), NodePath("Contenido/Instancia3"), NodePath("Contenido/Instancia4"), NodePath("Contenido/Instancia5"), NodePath("Contenido/Instancia6")]
+FadeInConsigna = true
+FadeInToFin = true
 
 [node name="Contenido" type="Control" parent="FoodTruck/StateMachine/Juego"]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -1460,9 +1488,6 @@ offset_left = -0.160004
 offset_right = -0.160004
 grow_horizontal = 1
 
-[node name="label" parent="FoodTruck/StateMachine/Juego/Contenido/PatasController/TextoPedido" index="0"]
-text = "EN FILA POR FAVOR"
-
 [node name="Tutorial" type="Control" parent="FoodTruck/StateMachine/Juego/Contenido" node_paths=PackedStringArray("JuegoState", "StateMachine")]
 layout_mode = 1
 anchor_left = 0.5
@@ -1482,8 +1507,8 @@ layout_mode = 1
 offset_left = -560.0
 offset_top = -723.0
 offset_right = 578.0
-offset_bottom = -495.0
-pivot_offset = Vector2(569, 114)
+offset_bottom = -470.0
+pivot_offset = Vector2(569, 126.5)
 theme = ExtResource("22_pwu5t")
 AppearInBeginning = false
 AppearSound = ""
@@ -1494,8 +1519,8 @@ layout_mode = 1
 offset_left = -572.0
 offset_top = -1015.0
 offset_right = 576.0
-offset_bottom = -787.0
-pivot_offset = Vector2(574, 114)
+offset_bottom = -768.0
+pivot_offset = Vector2(574, 123.5)
 theme = ExtResource("22_pwu5t")
 AppearInBeginning = false
 AppearSound = ""
@@ -1666,6 +1691,7 @@ visible = true
 Data = SubResource("Resource_hb5v7")
 
 [node name="FuerzaPanel" parent="FoodTruck/StateMachine/Juego/Contenido" instance=ExtResource("13_3lngq")]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.503
@@ -1924,6 +1950,7 @@ script = ExtResource("4_oxiwq")
 
 [node name="Fin" type="Node" parent="FoodTruck/StateMachine"]
 script = ExtResource("30_7lvq3")
+FadeInFin = true
 
 [node name="Contenido" type="Control" parent="FoodTruck/StateMachine/Fin"]
 visible = false
@@ -2421,13 +2448,13 @@ anchors_preset = -1
 anchor_top = 0.211
 anchor_bottom = 0.211
 offset_top = -7.032
-offset_bottom = 233.968
-pivot_offset = Vector2(326, 120.5)
+offset_bottom = 245.968
+pivot_offset = Vector2(326, 126.5)
 AppearInBeginning = false
 TimeToAppear = 5.0
-Texts = Array[ExtResource("16_g0euh")]([SubResource("Resource_4oo6c"), SubResource("Resource_sq0sj")])
+Texts = Array[ExtResource("16_g0euh")]([SubResource("Resource_4oo6c"), SubResource("Resource_sq0sj"), SubResource("Resource_q5kvs")])
 
-[node name="Panel(2) Btn(rigth)" parent="FoodTruck/StateMachine/Fin/Contenido/Control/OutroPanel" instance=ExtResource("17_6stp3")]
+[node name="Panel(3) Btn(rigth)" parent="FoodTruck/StateMachine/Fin/Contenido/Control/OutroPanel" instance=ExtResource("17_6stp3")]
 Data = SubResource("Resource_irand")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="FoodTruck/StateMachine/Fin/Contenido/Control"]
@@ -2439,6 +2466,8 @@ animation = "recomendation"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="FoodTruck/StateMachine/Fin/Contenido/Control"]
 bus = &"estrellas"
+
+[node name="Fade" parent="FoodTruck/StateMachine" instance=ExtResource("92_3fa7n")]
 
 [node name="Sound Debug" parent="FoodTruck" instance=ExtResource("91_l3px4")]
 AudioBuses = Array[String](["FoodtruckVolumen", "arbustos", "burbujaHabla", "bandejaEntra", "bandejaSale", "tocoPlato", "dejoPlato", "deslizoPlato", "smilodonteEntra", "smilodonteReclama", "smilodonteCorrecto", "gliptodonteEntra", "gliptodonteReclamo", "gliptodonteCorrecto", "megaterioEntra", "megaterioReclamo", "megaterioCorrecto", "macrauqueniaEntra", "macrauqueniaReclamo", "macrauqueniaCorrecto", "platoIncorrecto", "dejanPropina", "agarroPropina", "servilleta", "estrellas", "aparecePiolin", "tapPiolin", "intentoCerrarReja", "cerrarReja"])
@@ -2523,8 +2552,8 @@ AudioBuses = Array[String](["FoodtruckVolumen", "arbustos", "burbujaHabla", "ban
 [connection signal="pressed" from="FoodTruck/StateMachine/Moraleja/Contenido/Instancia1/Button" to="FoodTruck/StateMachine/Moraleja/Contenido/Instancia1/Button" method="_on_pressed"]
 [connection signal="Transitioned" from="FoodTruck/StateMachine/Fin" to="FoodTruck/StateMachine/Fin/Contenido/Control/OutroPanel" method="EnterPanel"]
 [connection signal="Transitioned" from="FoodTruck/StateMachine/Fin" to="FoodTruck/StateMachine/Fin/Contenido/Control/AnimationPlayer" method="Play"]
-[connection signal="ButtonPress" from="FoodTruck/StateMachine/Fin/Contenido/Control/OutroPanel/Panel(2) Btn(rigth)" to="FoodTruck" method="Set_Complete"]
-[connection signal="ButtonPress" from="FoodTruck/StateMachine/Fin/Contenido/Control/OutroPanel/Panel(2) Btn(rigth)" to="FoodTruck/StateMachine/Fin/Contenido/ButtonChangeScene" method="_on_pressed"]
+[connection signal="ButtonPress" from="FoodTruck/StateMachine/Fin/Contenido/Control/OutroPanel/Panel(3) Btn(rigth)" to="FoodTruck" method="Set_Complete"]
+[connection signal="ButtonPress" from="FoodTruck/StateMachine/Fin/Contenido/Control/OutroPanel/Panel(3) Btn(rigth)" to="FoodTruck/StateMachine/Fin/Contenido/ButtonChangeScene" method="_on_pressed"]
 
 [editable path="FoodTruck/StateMachine/Juego/Contenido/PatasController"]
 [editable path="FoodTruck/StateMachine/Juego/Contenido/PatasController/TextoPedido"]

@@ -3,6 +3,7 @@ var _ShaderMaterial
 var isFading
 var fadeFactor
 var isbackwards
+var timeFactor
 
 func init(_texture,time : float = 2, backwards : bool = false, inverted : bool = true,_smoothness : float = 0.2, color : Color = Color(0,0,0,1)):
 	_ShaderMaterial = get_material()
@@ -13,20 +14,26 @@ func init(_texture,time : float = 2, backwards : bool = false, inverted : bool =
 	_ShaderMaterial.set_shader_parameter("linear_fade", false)
 	_ShaderMaterial.set_shader_parameter("smoothness", _smoothness)
 	isbackwards = backwards
+	timeFactor = time
 	if isbackwards: fadeFactor = 1
 	else : fadeFactor = 0
 	await get_tree().create_timer(time).timeout
 	queue_free()
 
-
+var elapsedTime : float = 0
 func _process(delta):
 	if isFading:
+		
+		elapsedTime += delta  
+		
+		var progress = elapsedTime / timeFactor
+		
 		if !isbackwards:
-			fadeFactor += delta * 1.2
+			fadeFactor = progress
 			if fadeFactor >= 1:
 				isFading = false
 		else:
-			fadeFactor -= delta * 1.2
+			fadeFactor = 1 - progress
 			if fadeFactor <= 0:
 				isFading = false
 

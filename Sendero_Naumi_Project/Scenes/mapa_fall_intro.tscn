@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://b00ok4g2p2vql"]
+[gd_scene load_steps=44 format=3 uid="uid://b00ok4g2p2vql"]
 
 [ext_resource type="Texture2D" uid="uid://hf5y4ic16cqj" path="res://Sprites/Intro/intro - background.jpg" id="1_xm8pn"]
 [ext_resource type="Texture2D" uid="uid://jd6systmhxf1" path="res://Sprites/Intro/intro - suelo.png" id="2_2edvn"]
@@ -26,6 +26,7 @@
 [ext_resource type="Texture2D" uid="uid://kb7ixs5ala8" path="res://Sprites/UI/arrowIcon - UI.png" id="16_bsblw"]
 [ext_resource type="Script" path="res://addons/resonate/sound_manager/sound_event_resource.gd" id="16_ds0ye"]
 [ext_resource type="AudioStream" uid="uid://bqtn2wvbrbh0s" path="res://Sounds/Intro/Mapa de Intro - Agarro Mapa.ogg" id="18_mj880"]
+[ext_resource type="AudioStream" uid="uid://d1buhnrbpwvkd" path="res://Sounds/Intro/Intro Y Mapa - viento loop.ogg" id="19_jut3g"]
 [ext_resource type="PackedScene" uid="uid://c8dodmo3saxdr" path="res://Scenes/Experiments/sound_debug.tscn" id="26_7deic"]
 
 [sub_resource type="Animation" id="Animation_klold"]
@@ -257,7 +258,7 @@ tracks/7/path = NodePath("SoundEmitter")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(1.2),
+"times": PackedFloat32Array(1),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": ["mapa", 0.0, true],
@@ -474,6 +475,15 @@ _data = {
 "RESET": SubResource("Animation_vbmic"),
 "dot_wave": SubResource("Animation_3yrlo")
 }
+
+[sub_resource type="Resource" id="Resource_vl53s"]
+script = ExtResource("16_ds0ye")
+name = "vientoLoop"
+bus = "vientoLoop"
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([ExtResource("19_jut3g")])
 
 [node name="Mapa_Fall_Intro" type="Control"]
 layout_mode = 3
@@ -733,6 +743,14 @@ scale = Vector2(0.753623, 0.753623)
 texture = ExtResource("13_q1dat")
 ActiveInBegining = false
 
+[node name="SoundMapLoop" type="Node" parent="mapArriveSpot"]
+script = ExtResource("14_7wfau")
+
+[node name="SoundBank" type="Node" parent="mapArriveSpot/SoundMapLoop"]
+script = ExtResource("15_gq267")
+label = "viento"
+events = Array[ExtResource("16_ds0ye")]([SubResource("Resource_vl53s")])
+
 [node name="ButtonChangeScene" parent="." instance=ExtResource("12_n3dw3")]
 visible = false
 layout_mode = 1
@@ -770,15 +788,18 @@ noSquiggling = true
 Icon = ExtResource("16_bsblw")
 
 [node name="Sound Debug" parent="." instance=ExtResource("26_7deic")]
-AudioBuses = Array[String](["mapaYviento", "mapaGira"])
+AudioBuses = Array[String](["mapaYviento", "mapaGira", "vientoLoop"])
 
 [node name="Button" parent="Sound Debug" index="1"]
 offset_left = 303.0
 offset_right = 415.0
 
+[connection signal="timeout" from="SkipSceen" to="mapArriveSpot/SoundMapLoop" method="StopLoopSound"]
 [connection signal="button_down" from="mapArriveSpot/Button" to="mapArriveSpot/MapAnim" method="play" binds= ["agarrado"]]
 [connection signal="button_down" from="mapArriveSpot/Button" to="mapArriveSpot/LOGO/AnimationPlayer" method="play" binds= ["DisappearPresenta"]]
 [connection signal="button_down" from="mapArriveSpot/Button" to="mapArriveSpot/LOGO/SoundEmitter" method="PlayEvent" binds= ["agarroMapa"]]
 [connection signal="pressed" from="ButtonSkip/GenericButton" to="ButtonChangeScene" method="_on_pressed"]
+[connection signal="pressedDelay" from="ButtonSkip/GenericButton" to="mapArriveSpot/LOGO/SoundEmitter" method="StopSoundsInCuttableQueue"]
+[connection signal="pressedDelay" from="ButtonSkip/GenericButton" to="mapArriveSpot/SoundMapLoop" method="StopLoopSound"]
 
 [editable path="Sound Debug"]

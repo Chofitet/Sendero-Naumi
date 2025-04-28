@@ -20,6 +20,7 @@ func _ready():
 	$Timer.timeout.connect(calculateGesture)
 	$Timer.timeout.connect(TryHold)
 	$Button.button_down.connect(SetInButton)
+	$Button.button_up.connect(pulse)
 	pass
 	#$Button.Down.connect(AnimatedToPos)
 
@@ -29,6 +30,14 @@ func SetInButton():
 	hold = true
 	inGesture = true
 	SoundManager.play("cordon","tap")
+
+func pulse():
+	if hold: return
+	if abs(pressedPos.y - target_position.y) <= 500 :
+		if numTry == 2:
+			Fuerzaaa.emit()
+		numTry +=1
+	
 
 func AnimatedToPos():
 	if once: return
@@ -45,17 +54,17 @@ func AnimatedToPos():
 
 func instanciateFade():
 	arrive.emit()
-	var fadeInstance = load("res://Scenes/Experiments/IndividualFade.tscn")
-	var texture = load("res://addons/scene_manager/shader_patterns/diagonal.png")
-	var instance = fadeInstance.instantiate()
-	PlayerVariables.EmitInactivePause()
-	$fade.add_child(instance)
-	instance.init(texture,2,true)
-	await get_tree().create_timer(2).timeout
+#	var fadeInstance = load("res://Scenes/Experiments/IndividualFade.tscn")
+#	var texture = load("res://addons/scene_manager/shader_patterns/diagonal.png")
+#	var instance = fadeInstance.instantiate()
+#	PlayerVariables.EmitInactivePause()
+#	$fade.add_child(instance)
+#	instance.init(texture,2,true)
+#	await get_tree().create_timer(2).timeout
 	StateMachine.Trigger_On_Child_Transition("Fin")
-	var instance2 = fadeInstance.instantiate()
-	$fade.add_child(instance2)
-	instance2.init(texture,2,false,false)
+#	var instance2 = fadeInstance.instantiate()
+#	$fade.add_child(instance2)
+#	instance2.init(texture,2,false,false)
 
 func PlayCordonAppear():
 	$AnimationPlayer.play("cordon_anim")

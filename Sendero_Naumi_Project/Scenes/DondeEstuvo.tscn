@@ -1,4 +1,4 @@
-[gd_scene load_steps=225 format=3 uid="uid://b017ojh8vtsd6"]
+[gd_scene load_steps=227 format=3 uid="uid://b017ojh8vtsd6"]
 
 [ext_resource type="Script" path="res://_Scripts/Minigame_Save_Controller.gd" id="1_ouwf6"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/StateMachineMinigames.gd" id="2_5wf26"]
@@ -110,10 +110,12 @@
 [ext_resource type="AudioStream" uid="uid://b6xftsexmv2n2" path="res://Sounds/Donde Estuvo/Donde Estuvov - encontrado 2.ogg" id="85_sapcq"]
 [ext_resource type="AudioStream" uid="uid://btx6a6e5v0s5o" path="res://Sounds/Donde Estuvo/Donde Estuvov - encontrado 3.ogg" id="86_qryqt"]
 [ext_resource type="AudioStream" uid="uid://bnct352pjoae0" path="res://Sounds/Donde Estuvo/Donde Estuvo - Trinidad.ogg" id="87_d7inb"]
+[ext_resource type="Theme" uid="uid://dhu6swisjlh4w" path="res://Resources/UI_Resources/BlueBubblePanel.tres" id="90_tvj1l"]
 [ext_resource type="AudioStream" uid="uid://ddgfep2tdyty6" path="res://Sounds/Donde Estuvo/Donde Estuvo - Aparecen los planetas.ogg" id="99_d4amc"]
 [ext_resource type="AudioStream" uid="uid://dcesxb557ytrd" path="res://Sounds/Donde Estuvo/Donde Estuvo - Unidos acomodandose.ogg" id="100_50xw5"]
 [ext_resource type="AudioStream" uid="uid://b0aus6mqusjrc" path="res://Sounds/Foodtruck/FoodTruck - Dejan Propina.ogg" id="101_cpwx3"]
 [ext_resource type="PackedScene" uid="uid://c8dodmo3saxdr" path="res://Scenes/Experiments/sound_debug.tscn" id="106_h6qvq"]
+[ext_resource type="PackedScene" uid="uid://dlnoa0yt8sbqs" path="res://Scenes/Experiments/fade.tscn" id="114_6si06"]
 
 [sub_resource type="Shader" id="Shader_a3sab"]
 code = "shader_type canvas_item;
@@ -258,8 +260,9 @@ exitPanel = false
 
 [sub_resource type="Resource" id="Resource_4jmx8"]
 script = ExtResource("19_5u4uq")
-Text = "ASTRONAVE 0451 HA REGRESADO
-LUEGO DE VISITAR 3 ASTROS"
+Text = "
+[center][color=#dab21e]LUEGO DE VISITAR 3 ASTROS,
+[/color]ASTRONAVE 0451 HA REGRESADO[b]"
 SizePanel = Vector2(0, 0)
 Position = Vector2(0, 0)
 buttons = Array[ExtResource("17_25bdu")]([SubResource("Resource_ad1kp")])
@@ -280,8 +283,10 @@ exitPanel = false
 
 [sub_resource type="Resource" id="Resource_abwqa"]
 script = ExtResource("19_5u4uq")
-Text = "PERO SU PILOTO ES MUY TÍMIDO
-¡Y NO NOS CUENTA NADA DEL VIAJE!"
+Text = "
+[center][color=#dab21e] PERO SU PILOTO ES [b]MUY TÍMIDO[/b][/color]
+¡Y NO NOS CUENTA NADA DEL VIAJE!
+"
 SizePanel = Vector2(0, 0)
 Position = Vector2(0, 0)
 buttons = Array[ExtResource("17_25bdu")]([SubResource("Resource_akncx")])
@@ -1287,8 +1292,9 @@ exitPanel = false
 
 [sub_resource type="Resource" id="Resource_spwmp"]
 script = ExtResource("19_5u4uq")
-Text = "AYUDANOS ENCONTRANDO PISTAS
-PARA DESCUBRIR POR DONDE ESTUVO"
+Text = "
+[center][color=#dab21e]AYUDANOS A ENCONTRAR PISTAS[/color]
+QUE REVELEN POR DÓNDE ESTUVO[b]"
 SizePanel = Vector2(0, 0)
 Position = Vector2(0, 0)
 buttons = Array[ExtResource("17_25bdu")]([SubResource("Resource_pn6ba")])
@@ -1309,8 +1315,10 @@ exitPanel = false
 
 [sub_resource type="Resource" id="Resource_pgadv"]
 script = ExtResource("19_5u4uq")
-Text = "CREO QUE CON ESTO
-PODEMOS DEDUCIR POR DÓNDE ESTUVO"
+Text = "
+[center]CREO QUE CON ESTO
+[color=#dab21e]PODEMOS DEDUCIR POR DÓNDE ESTUVO[/color][b]
+"
 SizePanel = Vector2(0, 0)
 Position = Vector2(0, 0)
 buttons = Array[ExtResource("17_25bdu")]([SubResource("Resource_n3di6")])
@@ -1327,6 +1335,7 @@ Text = "UNÍ CADA OBJETO CON EL
 PLANETA DEL QUE PROVIENE"
 SizePanel = Vector2(0, 0)
 Position = Vector2(0, 0)
+PanelTheme = ExtResource("90_tvj1l")
 buttons = Array[ExtResource("17_25bdu")]([])
 NumOfContent = 0
 
@@ -1579,14 +1588,14 @@ exitPanel = false
 
 [sub_resource type="Resource" id="Resource_st847"]
 script = ExtResource("19_5u4uq")
-Text = "LA LUNA ES UN SATÉLITE
-CON UNA FUERZA DE GRAVEDAD MUY DÉBIL,
+Text = "HACE BILLONES DE AÑOS
+UNA ROCA CHOCÓ CON LA TIERRA
+Y FORMÓ  AL SATÉLITE: LA LUNA.
+SU FUERZA DE GRAVEDAD
+ES MUY DÉBIL.
 POR ESO LOS ASTRONAUTAS
 PARECEN REBOTAR EN ELLA
-Y LEVANTAN TANTO POLVO.
-HACE BILLONES DE AÑOS
-UNA ROCA CHOCO CONTRA
-LA TIERRA Y FORMÓ LA LUNA."
+Y LEVANTAN TANTO POLVO."
 SizePanel = Vector2(0, 0)
 Position = Vector2(0, 0)
 buttons = Array[ExtResource("17_25bdu")]([SubResource("Resource_lw670")])
@@ -1608,12 +1617,11 @@ exitPanel = false
 [sub_resource type="Resource" id="Resource_05oto"]
 script = ExtResource("19_5u4uq")
 Text = "400 VECES MÁS GRANDE QUE
-LA TIERRA Y CON -218 C
+LA TIERRA Y CON -218 C,
 A URANO LE DICEN:
 “EL GIGANTE DE HIELO”.
-UN AÑO ALLÍ DURA
-84 AÑOS EN LA TIERRA
-¡PERO UN DÍA DURA SOLO 17 HS!"
+UN AÑO ALLÍ DURA 84 AQUÍ,
+PERO UN DÍA: SÓLO 17 HORAS."
 SizePanel = Vector2(0, 0)
 Position = Vector2(0, 0)
 buttons = Array[ExtResource("17_25bdu")]([SubResource("Resource_xs5qs")])
@@ -1671,8 +1679,9 @@ exitPanel = false
 
 [sub_resource type="Resource" id="Resource_n36gw"]
 script = ExtResource("19_5u4uq")
-Text = "¡ANÍMATE A DESCUBRIR MÁS
-RECORRIENDO EL MUSEO!"
+Text = "
+[center][color=#dab21e]ANIMATE A DESCUBRIR MÁS[/color]
+RECORRIENDO EL MUSEO[b]"
 SizePanel = Vector2(0, 0)
 Position = Vector2(0, 0)
 buttons = Array[ExtResource("17_25bdu")]([SubResource("Resource_n4yfy")])
@@ -1722,6 +1731,7 @@ initial_state = NodePath("Consigna")
 [node name="Consigna" type="Node" parent="DondeEstuvo/StateMachine"]
 script = ExtResource("3_74cva")
 Consignas = ["Hey esto es una consigna"]
+FadeInTrasitioned = true
 
 [node name="Contenido" type="Control" parent="DondeEstuvo/StateMachine/Consigna" node_paths=PackedStringArray("StateMachine")]
 visible = false
@@ -1882,7 +1892,8 @@ anchors_preset = -1
 anchor_top = 0.18
 anchor_bottom = 0.18
 offset_top = 31.6
-offset_bottom = 259.6
+offset_bottom = 279.6
+pivot_offset = Vector2(326, 124)
 TimeToAppear = 2.0
 Texts = Array[ExtResource("19_5u4uq")]([SubResource("Resource_4jmx8")])
 
@@ -1895,7 +1906,8 @@ anchors_preset = -1
 anchor_top = 0.185
 anchor_bottom = 0.185
 offset_top = -113.8
-offset_bottom = 114.2
+offset_bottom = 136.2
+pivot_offset = Vector2(326, 125)
 AppearInBeginning = false
 Texts = Array[ExtResource("19_5u4uq")]([SubResource("Resource_abwqa")])
 
@@ -1919,6 +1931,8 @@ script = ExtResource("5_8uhx2")
 NextState = NodePath(".")
 StateMachine = NodePath("..")
 InstanciasMinijuego = [NodePath("Contenido/Instancia1"), NodePath("Contenido/Instancia2")]
+FadeInConsigna = true
+FadeInToFin = true
 
 [node name="Contenido" type="Control" parent="DondeEstuvo/StateMachine/Juego"]
 layout_mode = 3
@@ -2740,7 +2754,8 @@ anchors_preset = -1
 anchor_top = 0.17
 anchor_bottom = 0.17
 offset_top = -114.6
-offset_bottom = 113.4
+offset_bottom = 137.4
+pivot_offset = Vector2(326, 126)
 AppearInBeginning = false
 Texts = Array[ExtResource("19_5u4uq")]([SubResource("Resource_spwmp")])
 
@@ -2752,7 +2767,8 @@ visible = false
 z_index = 2
 layout_mode = 1
 offset_top = 104.0
-offset_bottom = 332.0
+offset_bottom = 362.0
+pivot_offset = Vector2(326, 129)
 AppearInBeginning = false
 Texts = Array[ExtResource("19_5u4uq")]([SubResource("Resource_pgadv")])
 
@@ -2785,16 +2801,17 @@ grow_vertical = 2
 scale = Vector2(0.84, 0.84)
 
 [node name="PanelConsigna" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/consigna" instance=ExtResource("16_aupkq")]
+self_modulate = Color(0, 0, 0, 1)
 layout_mode = 1
 anchors_preset = 8
 anchor_top = 0.5
 anchor_bottom = 0.5
 offset_left = -267.0
-offset_top = -111.0
+offset_top = -106.0
 offset_right = 267.0
-offset_bottom = 112.0
+offset_bottom = 110.0
 grow_vertical = 2
-pivot_offset = Vector2(267, 111.5)
+pivot_offset = Vector2(267, 108)
 AppearInBeginning = false
 Texts = Array[ExtResource("19_5u4uq")]([SubResource("Resource_wl7ba")])
 
@@ -2803,6 +2820,12 @@ scale = Vector2(1.14, 1.14)
 pivot_offset = Vector2(230, 55)
 text = "UNÍ CADA OBJETO CON EL 
 PLANETA DEL QUE PROVIENE"
+
+[node name="labelRich" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/consigna/PanelConsigna" index="1"]
+offset_top = 68.3333
+offset_bottom = -43.6667
+text = "[center][color=#abc70e]UNÍ CADA OBJETO CON EL 
+PLANETA DEL QUE PROVIENE[b]"
 
 [node name="center" type="Control" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2"]
 layout_mode = 1
@@ -3226,14 +3249,14 @@ Texts = Array[ExtResource("19_5u4uq")]([SubResource("Resource_st847")])
 [node name="label" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/Panels/PanelPivot2/Panel" index="0"]
 scale = Vector2(1.13, 1.13)
 pivot_offset = Vector2(214, 135)
-text = "LA LUNA ES UN SATÉLITE
-CON UNA FUERZA DE GRAVEDAD MUY DÉBIL,
+text = "HACE BILLONES DE AÑOS
+UNA ROCA CHOCÓ CON LA TIERRA
+Y FORMÓ  AL SATÉLITE: LA LUNA.
+SU FUERZA DE GRAVEDAD
+ES MUY DÉBIL.
 POR ESO LOS ASTRONAUTAS
 PARECEN REBOTAR EN ELLA
-Y LEVANTAN TANTO POLVO.
-HACE BILLONES DE AÑOS
-UNA ROCA CHOCO CONTRA
-LA TIERRA Y FORMÓ LA LUNA."
+Y LEVANTAN TANTO POLVO."
 
 [node name="btnDer" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/Panels/PanelPivot2/Panel/BtnDerAnchor" index="0"]
 visible = true
@@ -3267,12 +3290,11 @@ Texts = Array[ExtResource("19_5u4uq")]([SubResource("Resource_05oto")])
 scale = Vector2(1.13, 1.13)
 pivot_offset = Vector2(214, 135)
 text = "400 VECES MÁS GRANDE QUE
-LA TIERRA Y CON -218 C
+LA TIERRA Y CON -218 C,
 A URANO LE DICEN:
 “EL GIGANTE DE HIELO”.
-UN AÑO ALLÍ DURA
-84 AÑOS EN LA TIERRA
-¡PERO UN DÍA DURA SOLO 17 HS!"
+UN AÑO ALLÍ DURA 84 AQUÍ,
+PERO UN DÍA: SÓLO 17 HORAS."
 
 [node name="btnDer" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/Panels/PanelPivot1/Panel/BtnDerAnchor" index="0"]
 visible = true
@@ -3320,6 +3342,7 @@ NextScene = "Map_Screen"
 
 [node name="Fin" type="Node" parent="DondeEstuvo/StateMachine"]
 script = ExtResource("58_x5nop")
+FadeInFin = true
 
 [node name="Contenido" type="Control" parent="DondeEstuvo/StateMachine/Fin"]
 visible = false
@@ -3492,6 +3515,8 @@ Texts = Array[ExtResource("19_5u4uq")]([SubResource("Resource_37a5n"), SubResour
 
 [node name="Panel(2) Btn(rigth)" parent="DondeEstuvo/StateMachine/Fin/Contenido/center/PanelOutro" instance=ExtResource("20_q3u46")]
 Data = SubResource("Resource_82hdo")
+
+[node name="Fade" parent="DondeEstuvo/StateMachine" instance=ExtResource("114_6si06")]
 
 [node name="Sound Debug" parent="DondeEstuvo" instance=ExtResource("106_h6qvq")]
 AudioBuses = Array[String](["VolumenDondeEstuvo", "puerta", "casco", "guante1", "guante2", "guanteCae", "globoNieve", "jetpack", "campera", "pantalon", "bota1", "bota2", "botaCae", "reloj", "cucarachaPiso", "cucarachaPuerta", "laserLoop", "laserCorrecto", "laserIncorrecto", "pistaEncontrada", "noPista", "planetasAparecen", "planetasSeVan", "planetasUnidosSeAcomodan"])

@@ -62,8 +62,9 @@ func DoMoraleja(x):
 		Moraleja3.emit()
 
 func RetryInstance():
-	Reset()
 	StateMachine.Trigger_On_Child_Transition("Juego", true)
+	await get_tree().create_timer(0.5).timeout
+	Reset()
 	
 
 func Reset():

@@ -1,4 +1,4 @@
-[gd_scene load_steps=130 format=3 uid="uid://lv8sdofmjhf3"]
+[gd_scene load_steps=131 format=3 uid="uid://lv8sdofmjhf3"]
 
 [ext_resource type="Script" path="res://_Scripts/Minigame_Save_Controller.gd" id="1_f0fiw"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/StateMachineMinigames.gd" id="2_12384"]
@@ -72,6 +72,7 @@
 [ext_resource type="AudioStream" uid="uid://6a06vo7bvtux" path="res://Sounds/Fighter/Fighter - Publico.ogg" id="58_bqvmn"]
 [ext_resource type="Script" path="res://_Scripts/VolumeBusController.gd" id="60_8mngt"]
 [ext_resource type="PackedScene" uid="uid://c8dodmo3saxdr" path="res://Scenes/Experiments/sound_debug.tscn" id="68_pvhr8"]
+[ext_resource type="PackedScene" uid="uid://dlnoa0yt8sbqs" path="res://Scenes/Experiments/fade.tscn" id="72_cq3vc"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_01r1e"]
 texture = ExtResource("4_d7p6d")
@@ -1348,17 +1349,17 @@ exitPanel = false
 [sub_resource type="Resource" id="Resource_ux77t"]
 script = ExtResource("23_5rold")
 Text = "
-[center][b]EL CUARZO
-ES MÁS DURO QUE LA FLUORITA [/b] 
+[center][b]EL CUARZO[/b]
+[color=#dab21e]ES MÁS DURO QUE LA FLUORITA[/color]
 
-ES EL SEGUNDO MINERAL MÁS
-ABUNDANTE DEL PLANETA 
+[b]ES EL 2.º  MINERAL MÁS ABUNDANTE[/b]
+EN TODO EL PLANETA.
 
-Y ESTÁ EN EL PUESTO NÚMERO 7
-DE [b]LA ESCALA DE MOHS[/b],
-LA ESCALA QUE MIDE LA DUREZA 
-DE LOS MINERALES
- [/center]"
+Y OCUPA EL PUESTO NÚMERO 7
+[b][color=#dab21e]EN LA ESCALA DE MOHS[/color][/b]
+LA ESCALA QUE MIDE
+LA DUREZA DE LOS MINERALES.
+"
 SizePanel = Vector2(0, 0)
 Position = Vector2(0, 0)
 buttons = Array[ExtResource("21_w17j0")]([SubResource("Resource_ylsmf")])
@@ -1381,16 +1382,16 @@ exitPanel = false
 script = ExtResource("23_5rold")
 Text = "
 
-[center][b]EL DIAMANTE 
-ES LA SUSTANCIA NATURAL MÁS DURA 
-DEL PLANETA TIERRA[/b] 
+[center][b]EL DIAMANTE[/b]
+[color=#dab21e]ES LA SUSTANCIA NATURAL MÁS DURA[/color]
+DEL PLANETA TIERRA
 
-SU GRADO DE DUREZA ES 10,
-EL MÁS ALTO EN [b]LA ESCALA DE MOHS[/b]
+SU GRADO DE DUREZA ES [b]10[/b]
+[b][color=#dab21e]EL MÁS ALTO LA ESCALA DE MOHS[/color][/b].
 
-SÓLO ALGO TAN DURO COMO UN DIAMANTE
-PUEDE RAYAR A OTRO DIAMANTE
-[/center]"
+“SOLO ALGO TAN DURO COMO UN DIAMANTE
+ PUEDE RAYAR A OTRO DIAMANTE.”
+"
 SizePanel = Vector2(0, 0)
 Position = Vector2(0, 0)
 buttons = Array[ExtResource("21_w17j0")]([SubResource("Resource_xeibc")])
@@ -1414,14 +1415,14 @@ script = ExtResource("23_5rold")
 Text = "
 
 [center][b]EL TOPACIO
-SE ENCUENTRA EN EL PUESTO 8[/b]
+[color=#dab21e]SE ENCUENTRA EN EL PUESTO 8[/color][/b]
 
-ES UNA DE LAS [b]PIEDRAS PRECIOSAS[/b]
-Y SE USA EN MAYOR PARTE PARA
-HACER JOYERÍA
+ES UNA DE LAS PIEDRAS PRECIOSAS
+[color=#dab21e]Y SE USA EN MAYOR PARTE PARA HACER JOYERÍA.[/color]
 
-LOS DE COLOR NARANJA, ROJO Y ROSA
-SON LOS MÁS RAROS Y VALIOSOS[center]"
+LOS DE COLOR [color=#e98400]NARANJA,[/color][color=#ff1233] ROJO[/color] [color=#f864b8]Y ROSA[/color]
+SON LOS MÁS RAROS Y VALIOSOS.
+"
 SizePanel = Vector2(0, 0)
 Position = Vector2(0, 0)
 buttons = Array[ExtResource("21_w17j0")]([SubResource("Resource_anyup")])
@@ -1450,13 +1451,12 @@ exitPanel = false
 
 [sub_resource type="Resource" id="Resource_xkqfr"]
 script = ExtResource("23_5rold")
-Text = "[center][b]¿ENCONTRASTE LA ESCALA DE MOHS
- EN LA VITRINA DE GEOLOGÍA?[/b]
+Text = "[center][b][color=#dab21e]¿ENCONTRASTE LA ESCALA DE MOHS
+EN LA VITRINA DE GEOLOGÍA?[/color][/b]
 
-ALLÍ PODÉS VER LOS 10 INTEGRANTES 
-DE LA ESCALA DE DUREZA
-
-[b]PISTA:[/b] A LA IZQUIERDA Y ATRÁS [/center]"
+ALLÍ PODÉS VER A LOS 10 INTEGRANTES
+DE LA ESCALA DE DUREZA.
+"
 SizePanel = Vector2(0, 0)
 Position = Vector2(0, 0)
 buttons = Array[ExtResource("21_w17j0")]([SubResource("Resource_i2gy7")])
@@ -1502,6 +1502,7 @@ initial_state = NodePath("Consigna")
 [node name="Consigna" type="Node" parent="RockFighters/StateMachine"]
 script = ExtResource("3_cy1k7")
 Consignas = ["Hey esto es una consigna"]
+FadeInTrasitioned = true
 
 [node name="Contenido" type="Control" parent="RockFighters/StateMachine/Consigna"]
 layout_mode = 3
@@ -1641,7 +1642,7 @@ theme_override_constants/shadow_outline_size = 2
 theme_override_font_sizes/normal_font_size = 25
 theme_override_font_sizes/bold_font_size = 25
 bbcode_enabled = true
-text = "[center]SON MÁS [b]DUROS[/b] QUE OTROS"
+text = "[center][b]SON MÁS DUROS QUE OTROS...[/b]"
 
 [node name="PointLight2D6" type="Sprite2D" parent="RockFighters/StateMachine/Consigna/Contenido/Control/2Luz"]
 modulate = Color(1, 0.827451, 0.631373, 0.137255)
@@ -1661,7 +1662,7 @@ offset_top = -149.0
 offset_right = 288.0
 offset_bottom = -75.0
 theme_override_font_sizes/font_size = 25
-text = "SÓLO HAY UNA FORMA DE COMPROBARLO"
+text = "SOLO HAY UNA FORMA DE COMPROBARLO."
 label_settings = ExtResource("9_7ccl3")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -1722,6 +1723,8 @@ script = ExtResource("5_ks8gw")
 NextState = NodePath(".")
 StateMachine = NodePath("..")
 InstanciasMinijuego = [NodePath("Contenido/Instancia1"), NodePath("Contenido/Instancia2"), NodePath("Contenido/Instancia3")]
+FadeInConsigna = true
+FadeInBeteewnInstance = true
 
 [node name="Contenido" type="Control" parent="RockFighters/StateMachine/Juego"]
 layout_mode = 3
@@ -2405,6 +2408,7 @@ BusName = "publico"
 script = ExtResource("34_rssk2")
 Instancias = [null, NodePath("Contenido/Instancia1"), NodePath("Contenido/Instancia2"), NodePath("Contenido/Instancia3")]
 buttons = []
+FadeInBeteewnInstance = true
 
 [node name="Contenido" type="Control" parent="RockFighters/StateMachine/Moraleja"]
 visible = false
@@ -2433,6 +2437,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("15_ypyq6")
 
 [node name="Control" type="Control" parent="RockFighters/StateMachine/Moraleja/Contenido/Instancia1"]
 layout_mode = 1
@@ -2525,6 +2530,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("15_ypyq6")
 
 [node name="Control" type="Control" parent="RockFighters/StateMachine/Moraleja/Contenido/Instancia2"]
 layout_mode = 1
@@ -2620,6 +2626,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("15_ypyq6")
 
 [node name="Control" type="Control" parent="RockFighters/StateMachine/Moraleja/Contenido/Instancia3"]
 layout_mode = 1
@@ -2706,6 +2713,7 @@ Data = SubResource("Resource_xc0s5")
 
 [node name="Fin" type="Node" parent="RockFighters/StateMachine"]
 script = ExtResource("38_m5sey")
+FadeInFin = true
 
 [node name="Contenido" type="Control" parent="RockFighters/StateMachine/Fin"]
 visible = false
@@ -2754,21 +2762,20 @@ anchors_preset = -1
 anchor_top = 0.363
 anchor_bottom = 0.363
 offset_top = -180.64
-offset_bottom = 206.36
-pivot_offset = Vector2(326, 193.5)
+offset_bottom = 151.36
+pivot_offset = Vector2(326, 166)
 AppearInBeginning = false
 Texts = Array[ExtResource("23_5rold")]([SubResource("Resource_xkqfr")])
 
 [node name="labelRich" parent="RockFighters/StateMachine/Fin/Contenido/PanelOutro" index="1"]
 offset_top = 71.0
 offset_bottom = -71.0
-text = "[center][b]¿ENCONTRASTE LA ESCALA DE MOHS
- EN LA VITRINA DE GEOLOGÍA?[/b]
+text = "[center][b][color=#dab21e]¿ENCONTRASTE LA ESCALA DE MOHS
+EN LA VITRINA DE GEOLOGÍA?[/color][/b]
 
-ALLÍ PODÉS VER LOS 10 INTEGRANTES 
-DE LA ESCALA DE DUREZA
-
-[b]PISTA:[/b] A LA IZQUIERDA Y ATRÁS [/center]"
+ALLÍ PODÉS VER A LOS 10 INTEGRANTES
+DE LA ESCALA DE DUREZA.
+"
 
 [node name="btnCentral" parent="RockFighters/StateMachine/Fin/Contenido/PanelOutro/btnCentralAnchor" index="0"]
 visible = true
@@ -2797,15 +2804,17 @@ scale = Vector2(0.587922, 0.587922)
 texture = ExtResource("41_d5ulm")
 
 [node name="Sprite2D3" type="Sprite2D" parent="RockFighters/StateMachine/Fin/Contenido/Control"]
-position = Vector2(69, 546.5)
+position = Vector2(69, 445.738)
 scale = Vector2(0.49609, 0.49609)
 texture = ExtResource("42_wqo4t")
 
 [node name="Sprite2D2" type="Sprite2D" parent="RockFighters/StateMachine/Fin/Contenido/Control"]
-position = Vector2(-70, 462.5)
+position = Vector2(-70, 361.738)
 rotation = -0.156286
 scale = Vector2(0.65992, 0.65992)
 texture = ExtResource("43_xay53")
+
+[node name="Fade" parent="RockFighters/StateMachine" instance=ExtResource("72_cq3vc")]
 
 [node name="Sound Debug" parent="RockFighters" instance=ExtResource("68_pvhr8")]
 AudioBuses = Array[String](["FigtherVolumen", "luzEnciende", "nombreAparece", "eleccion", "ups", "peleaCorrecta", "finalFigthter", "explosionPiedra", "publico"])
@@ -2828,11 +2837,11 @@ AudioBuses = Array[String](["FigtherVolumen", "luzEnciende", "nombreAparece", "e
 [connection signal="pressed" from="RockFighters/StateMachine/Juego/Contenido/Consigna/LeftBtn/BigButton" to="RockFighters/StateMachine/Juego/Contenido/Consigna/LeftBtn/button/SquigglingSprite" method="InactiveSquiggling"]
 [connection signal="pressed" from="RockFighters/StateMachine/Juego/Contenido/Consigna/LeftBtn/BigButton" to="RockFighters/StateMachine/Juego/Contenido/Consigna/RightBtn/BigButton" method="set_visible" binds= [false]]
 [connection signal="pressed" from="RockFighters/StateMachine/Juego/Contenido/Consigna/LeftBtn/BigButton" to="RockFighters/StateMachine/Juego/Contenido/Consigna/LeftBtn/BigButton" method="set_visible" binds= [false]]
-[connection signal="visibility_changed" from="RockFighters/StateMachine/Moraleja/Contenido/Instancia1" to="RockFighters/StateMachine/Moraleja/Contenido/Instancia1/PanelMoraleja1" method="EnterPanel"]
+[connection signal="InstanceTrue" from="RockFighters/StateMachine/Moraleja/Contenido/Instancia1" to="RockFighters/StateMachine/Moraleja/Contenido/Instancia1/PanelMoraleja1" method="EnterPanel"]
 [connection signal="ButtonPress" from="RockFighters/StateMachine/Moraleja/Contenido/Instancia1/PanelMoraleja1/Panel(1) Btn(center)" to="RockFighters/StateMachine" method="Trigger_On_Child_Transition" binds= ["juego"]]
-[connection signal="visibility_changed" from="RockFighters/StateMachine/Moraleja/Contenido/Instancia2" to="RockFighters/StateMachine/Moraleja/Contenido/Instancia2/PanelMoraleja2" method="EnterPanel"]
+[connection signal="InstanceTrue" from="RockFighters/StateMachine/Moraleja/Contenido/Instancia2" to="RockFighters/StateMachine/Moraleja/Contenido/Instancia2/PanelMoraleja2" method="EnterPanel"]
 [connection signal="ButtonPress" from="RockFighters/StateMachine/Moraleja/Contenido/Instancia2/PanelMoraleja2/Panel(1) Btn(center)" to="RockFighters/StateMachine" method="Trigger_On_Child_Transition" binds= ["juego"]]
-[connection signal="visibility_changed" from="RockFighters/StateMachine/Moraleja/Contenido/Instancia3" to="RockFighters/StateMachine/Moraleja/Contenido/Instancia3/PanelMoraleja3" method="EnterPanel"]
+[connection signal="InstanceTrue" from="RockFighters/StateMachine/Moraleja/Contenido/Instancia3" to="RockFighters/StateMachine/Moraleja/Contenido/Instancia3/PanelMoraleja3" method="EnterPanel"]
 [connection signal="ButtonPress" from="RockFighters/StateMachine/Moraleja/Contenido/Instancia3/PanelMoraleja3/Panel(1) Btn(center)" to="RockFighters" method="Set_Complete"]
 [connection signal="ButtonPress" from="RockFighters/StateMachine/Moraleja/Contenido/Instancia3/PanelMoraleja3/Panel(1) Btn(center)" to="RockFighters/StateMachine" method="Trigger_On_Child_Transition" binds= ["fin"]]
 [connection signal="Transitioned" from="RockFighters/StateMachine/Fin" to="RockFighters/StateMachine/Fin/Contenido/PanelOutro" method="EnterPanel"]

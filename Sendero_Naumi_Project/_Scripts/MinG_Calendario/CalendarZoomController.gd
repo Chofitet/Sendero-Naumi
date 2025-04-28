@@ -46,19 +46,26 @@ func ZoomToPos(index = 0):
 	await get_tree().create_timer(0.3).timeout
 	if index == 0 :
 		$overlay.visible = false
-		if !gamefinished:SoundManager.play("zooms","zoomOut")
-		else: SoundManager.play("zooms","finalZoomOut")
+		
 		$calendarPivot/Calendar.material.set_shader_parameter("focus_radius", 2)
 	Circle.visible = false
 	if index != 0 :
 		$overlay.visible = true
-		SoundManager.play("zooms","zoomIn")
+		SoundManager.play("zooms","cierreCirculo")
 		$calendarPivot/Calendar.material.set_shader_parameter("focus_point", get_Circle_Offset2(index))
 		$calendarPivot/Calendar.material.set_shader_parameter("focus_radius", 0.034)
 	if index == 6: $calendarPivot/Calendar.material.set_shader_parameter("focus_radius", 0.077)
 	await get_tree().create_timer(0.3).timeout
+	
 	if index == 0 : if gamefinished: 
 		OutroAnim.emit()
+		
+		
+	if index !=0: SoundManager.play("zooms","zoomIn")
+	else:
+		if !gamefinished:SoundManager.play("zooms","zoomOut")
+		else: SoundManager.play("zooms","finalZoomOut")
+		
 		
 	var posToMove = Positions[index].position 
 	var tween = get_tree().create_tween()

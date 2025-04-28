@@ -34,7 +34,7 @@ func RigthAnswer():
 #		get_parent().TofinScreen(StateMachine)
 #		return
 	RigthAnswere.emit()
-	await get_tree().create_timer(1).timeout
+	await get_tree().create_timer(0.65).timeout
 	panel.ExitPanel()
 	
 	visible = false

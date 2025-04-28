@@ -1,4 +1,4 @@
-[gd_scene load_steps=213 format=3 uid="uid://ca6b1xkwwj7rp"]
+[gd_scene load_steps=216 format=3 uid="uid://ca6b1xkwwj7rp"]
 
 [ext_resource type="Script" path="res://_Scripts/Minigame_Save_Controller.gd" id="1_kdw84"]
 [ext_resource type="Texture2D" uid="uid://dbv6rcnmmb8db" path="res://Sprites/ZonaGeología/fondo_geografia.png" id="2_5bgsq"]
@@ -79,6 +79,7 @@
 [ext_resource type="AudioStream" uid="uid://djq08rr4ddin5" path="res://Sounds/Buscando/Busqueda - Pensamiento Aparece.ogg" id="67_o644v"]
 [ext_resource type="AudioStream" uid="uid://bpk7j64oxllma" path="res://Sounds/Buscando/Busqueda - Patita de espera.ogg" id="72_yjmtp"]
 [ext_resource type="PackedScene" uid="uid://c8dodmo3saxdr" path="res://Scenes/Experiments/sound_debug.tscn" id="78_ftv3y"]
+[ext_resource type="PackedScene" uid="uid://dlnoa0yt8sbqs" path="res://Scenes/Experiments/fade.tscn" id="80_l8xfv"]
 
 [sub_resource type="Resource" id="Resource_rb360"]
 script = ExtResource("27_ntp00")
@@ -90,8 +91,10 @@ exitPanel = false
 
 [sub_resource type="Resource" id="Resource_uk4p0"]
 script = ExtResource("29_gmr1k")
-Text = "ALGUNAS ROCAS 
-LLEGARON TARDE A LA CANCHA"
+Text = "
+[center]ALGUNAS ROCAS[color=#dab21e]
+LLEGARON TARDE A LA CANCHA HOY.[/color] [b]
+"
 SizePanel = Vector2(0, 0)
 Position = Vector2(0, 0)
 buttons = Array[ExtResource("27_ntp00")]([SubResource("Resource_rb360")])
@@ -107,8 +110,11 @@ exitPanel = false
 
 [sub_resource type="Resource" id="Resource_3c0ty"]
 script = ExtResource("29_gmr1k")
-Text = "AYUDALAS A ENCONTRAR LA TRIBUNA
-DONDE ESTÁN SUS FAMILIAS"
+Text = "
+[center][color=#dab21e]AYUDALAS A ENCONTRAR LAS TRIBUNAS[/color]
+DONDE ESTÁN SUS FAMILIAS[b]
+
+"
 SizePanel = Vector2(0, 0)
 Position = Vector2(0, 0)
 buttons = Array[ExtResource("27_ntp00")]([SubResource("Resource_jqsas")])
@@ -2037,16 +2043,18 @@ script = ExtResource("29_gmr1k")
 Text = "
 
 
-[center][b]LA ZOISITA 
+[center][b]LA ZOISITA
 PERTENECE AL GRUPO DE LOS SILICATOS[/b]
 
-[b]CONSTITUYEN EL 95%[/b]
-DE LA CORTEZA TERRESTRE
+[color=#dab21e]CONSTITUYEN EL 95%[/color]
+DE LA CORTEZA TERRESTRE.
 
 ES UN GRUPO [b]PETROGÉNICO[/b],
 ES DECIR QUE
-[b]SON LOS MINERALES
-QUE FORMAN A LAS ROCAS[/b]"
+[color=#dab21e]SON LOS MINERALES
+QUE FORMAN LAS ROCAS.[/color]
+
+"
 SizePanel = Vector2(0, 0)
 Position = Vector2(0, 0)
 buttons = Array[ExtResource("27_ntp00")]([SubResource("Resource_bncoi")])
@@ -2070,15 +2078,16 @@ script = ExtResource("29_gmr1k")
 Text = "
 
 
-[center][b]LAS HALITAS 
-PERTENCEN AL GRUPO HALOGENURO[/b]
+[center][b]LAS ALITAS
+PERTENECEN AL GRUPO HALOGENURO[/b]
 
 NO TIENEN ASPECTO METÁLICO,
-POSEEN POCA DUREZA
+[color=#dab21e]POSEEN POCA DUREZA[/color]
 Y MUCHOS SON SOLUBLES EN AGUA
 
-[b]LA MAYORÍA SON INCOLOROS[/b]
-[/center]"
+[color=#dab21e]LA MAYORÍA ES INCOLORA.[/color]
+
+"
 SizePanel = Vector2(0, 0)
 Position = Vector2(0, 0)
 buttons = Array[ExtResource("27_ntp00")]([SubResource("Resource_vdwqr")])
@@ -2105,13 +2114,14 @@ Text = "
 [center][b]LOS ESPATOS DE ISLANDIA
 PERTENECEN A LOS CARBONATOS[/b]
 
- [b]SUELEN ENCONTRARSE EN ZONAS ÁRIDAS[/b]
-DE LA CORTEZA TERRESTRE
+[color=#dab21e]SUELEN ENCONTRARSE EN ZONAS ÁRIDAS.[/color]
 
 [b]SON MINERALES DE POCA DUREZA[/b]
-Y COLORES MUY DIVERSOS
-[b] SE DISUELVEN FACILMENTE[/b]
-EN AMBIENTES ACUOSOS ÁCIDOS [/center]"
+[color=#d55614]Y[/color] [color=#f6ac29]CO[/color][color=#010101]LO[/color][color=#95d3d5]RES[/color] [color=#bdc9e5]MUY[/color] [color=#ed9a2a]DI[/color][color=#e9c66f]VER[/color][color=#2aa38a]SOS[/color]
+SE DISUELVEN FÁCILMENTE
+EN AMBIENTES ACUOSOS ÁCIDOS.
+
+"
 SizePanel = Vector2(0, 0)
 Position = Vector2(0, 0)
 buttons = Array[ExtResource("27_ntp00")]([SubResource("Resource_h4dbo")])
@@ -2274,24 +2284,38 @@ exitPanel = false
 
 [sub_resource type="Resource" id="Resource_qibnl"]
 script = ExtResource("29_gmr1k")
-Text = "[center][b]LOS MINERALES SE AGRUPAN
+Text = "
+[center][b]LOS MINERALES SE AGRUPAN
 SEGÚN SU COMPOSICIÓN QUÍMICA 
-Y SU ESTRUCTURA INTERNA[/b]
-
-¿VISTE EN LA VITRINA
-LO DIVERSAS QUE PUEDEN SER 
-LAS DISTINTAS FAMILIAS
-DE MINERALES?
-
-[/center]"
+Y SU ESTRUCTURA INTERNA[/b]"
 SizePanel = Vector2(0, 0)
 Position = Vector2(0, 0)
 buttons = Array[ExtResource("27_ntp00")]([SubResource("Resource_tsbe1")])
 NumOfContent = 0
 
+[sub_resource type="Resource" id="Resource_ksarm"]
+script = ExtResource("27_ntp00")
+Place = 0
+texture = ExtResource("12_71ymj")
+label = ""
+dontPassPanel = false
+exitPanel = false
+
+[sub_resource type="Resource" id="Resource_6vwo1"]
+script = ExtResource("29_gmr1k")
+Text = "
+[center][color=#dab21e]¿VISTE EN LA VITRINA
+LO DIVERSAS QUE SON
+LAS FAMILIAS DE MINERALES?[/color][b]
+"
+SizePanel = Vector2(0, 0)
+Position = Vector2(0, 0)
+buttons = Array[ExtResource("27_ntp00")]([SubResource("Resource_ksarm")])
+NumOfContent = 0
+
 [sub_resource type="Resource" id="Resource_ed0gt"]
 script = ExtResource("49_jaepl")
-NumberOfPanel = 1
+NumberOfPanel = 2
 Place = 0
 
 [node name="Busqueda" type="Node"]
@@ -2332,6 +2356,7 @@ initial_state = NodePath("Consigna")
 [node name="Consigna" type="Node" parent="StateMachine"]
 script = ExtResource("3_6yx8d")
 Consignas = ["Hey esto es una consigna"]
+FadeInTrasitioned = true
 
 [node name="Contenido" type="Control" parent="StateMachine/Consigna"]
 visible = false
@@ -2507,8 +2532,8 @@ anchors_preset = -1
 anchor_top = 0.266
 anchor_bottom = 0.266
 offset_top = -112.48
-offset_bottom = 113.52
-pivot_offset = Vector2(326, 113)
+offset_bottom = 143.52
+pivot_offset = Vector2(326, 128)
 Texts = Array[ExtResource("29_gmr1k")]([SubResource("Resource_uk4p0"), SubResource("Resource_3c0ty")])
 
 [node name="Panel(2) Btn(rigth)" parent="StateMachine/Consigna/Contenido/PanelIntro" instance=ExtResource("47_d1q7o")]
@@ -2532,6 +2557,8 @@ script = ExtResource("5_kwitp")
 NextState = NodePath(".")
 StateMachine = NodePath("..")
 InstanciasMinijuego = [NodePath("Contenido/Instancia1"), NodePath("Contenido/Instancia2"), NodePath("Contenido/Instancia3")]
+FadeInConsigna = true
+FadeInBeteewnInstance = true
 
 [node name="Contenido" type="Control" parent="StateMachine/Juego"]
 layout_mode = 3
@@ -5688,25 +5715,24 @@ Texts = Array[ExtResource("29_gmr1k")]([SubResource("Resource_w63vb")])
 Data = SubResource("Resource_i27h6")
 Delay = 0.3
 
-[node name="Label" type="Label" parent="StateMachine/Juego/Contenido/Moraleja/PanelMoraleja1"]
+[node name="Label" type="RichTextLabel" parent="StateMachine/Juego/Contenido/Moraleja/PanelMoraleja1"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -156.5
-offset_top = -244.5
-offset_right = 156.5
-offset_bottom = -158.5
+offset_left = -256.0
+offset_top = -252.0
+offset_right = 260.0
+offset_bottom = -150.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 50
-text = "¡¡CORRECTO!!"
-label_settings = ExtResource("22_3rqpf")
-horizontal_alignment = 1
-vertical_alignment = 1
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/shadow_outline_size = 10
+bbcode_enabled = true
+text = "[center][font_size=70][b][color=#59a9bc]¡[/color]¡[color=#59a9bc]C[/color]O[color=#59a9bc]RR[/color]E[color=#59a9bc]C[/color]T[color=#59a9bc]O[/color]![color=#59a9bc]![/color][/b][/font_size]"
 
 [node name="PanelMoraleja2" parent="StateMachine/Juego/Contenido/Moraleja" instance=ExtResource("26_1lb4u")]
 visible = false
@@ -5723,25 +5749,24 @@ Texts = Array[ExtResource("29_gmr1k")]([SubResource("Resource_dhi2j")])
 Data = SubResource("Resource_2w83k")
 Delay = 0.3
 
-[node name="Label" type="Label" parent="StateMachine/Juego/Contenido/Moraleja/PanelMoraleja2"]
+[node name="Label" type="RichTextLabel" parent="StateMachine/Juego/Contenido/Moraleja/PanelMoraleja2"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -156.5
-offset_top = -212.5
-offset_right = 156.5
-offset_bottom = -126.5
+offset_left = -256.0
+offset_top = -206.0
+offset_right = 260.0
+offset_bottom = -104.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 50
-text = "¡¡CORRECTO!!"
-label_settings = ExtResource("22_3rqpf")
-horizontal_alignment = 1
-vertical_alignment = 1
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/shadow_outline_size = 10
+bbcode_enabled = true
+text = "[center][font_size=70][b][color=#59a9bc]¡[/color]¡[color=#59a9bc]C[/color]O[color=#59a9bc]RR[/color]E[color=#59a9bc]C[/color]T[color=#59a9bc]O[/color]![color=#59a9bc]![/color][/b][/font_size]"
 
 [node name="PanelMoraleja3" parent="StateMachine/Juego/Contenido/Moraleja" instance=ExtResource("26_1lb4u")]
 visible = false
@@ -5758,25 +5783,24 @@ Texts = Array[ExtResource("29_gmr1k")]([SubResource("Resource_6fb35")])
 Data = SubResource("Resource_8u17p")
 Delay = 0.3
 
-[node name="Label" type="Label" parent="StateMachine/Juego/Contenido/Moraleja/PanelMoraleja3"]
+[node name="Label" type="RichTextLabel" parent="StateMachine/Juego/Contenido/Moraleja/PanelMoraleja3"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -156.5
-offset_top = -240.5
-offset_right = 156.5
-offset_bottom = -154.5
+offset_left = -256.0
+offset_top = -243.5
+offset_right = 260.0
+offset_bottom = -141.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 50
-text = "¡¡CORRECTO!!"
-label_settings = ExtResource("22_3rqpf")
-horizontal_alignment = 1
-vertical_alignment = 1
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/shadow_outline_size = 10
+bbcode_enabled = true
+text = "[center][font_size=70][b][color=#59a9bc]¡[/color]¡[color=#59a9bc]C[/color]O[color=#59a9bc]RR[/color]E[color=#59a9bc]C[/color]T[color=#59a9bc]O[/color]![color=#59a9bc]![/color][/b][/font_size]"
 
 [node name="RetryPanel" parent="StateMachine/Juego/Contenido" instance=ExtResource("26_1lb4u")]
 visible = false
@@ -5824,6 +5848,7 @@ events = Array[ExtResource("23_kdx6n")]([SubResource("Resource_r1hiw"), SubResou
 
 [node name="Moraleja" type="Node" parent="StateMachine"]
 script = ExtResource("34_n3f0f")
+FadeInBeteewnInstance = true
 
 [node name="Contenido" type="Control" parent="StateMachine/Moraleja"]
 visible = false
@@ -5924,17 +5949,19 @@ layout_mode = 1
 anchors_preset = -1
 anchor_top = 0.288
 anchor_bottom = 0.288
-offset_top = -213.64
-offset_bottom = 214.36
-pivot_offset = Vector2(326, 214)
+offset_top = -144.64
+offset_bottom = 145.36
+pivot_offset = Vector2(326, 145)
 AppearInBeginning = false
-Texts = Array[ExtResource("29_gmr1k")]([SubResource("Resource_qibnl")])
+Texts = Array[ExtResource("29_gmr1k")]([SubResource("Resource_qibnl"), SubResource("Resource_6vwo1")])
 
-[node name="Panel(1) Btn(rigth)" parent="StateMachine/Moraleja/Contenido/PanelOutro" instance=ExtResource("47_d1q7o")]
+[node name="Panel(2) Btn(rigth)" parent="StateMachine/Moraleja/Contenido/PanelOutro" instance=ExtResource("47_d1q7o")]
 Data = SubResource("Resource_ed0gt")
 
 [node name="Sound Debug" parent="StateMachine" instance=ExtResource("78_ftv3y")]
 AudioBuses = Array[String](["BusquedaVolume", "hinchada", "patitaEspera", "pensamientoAparece", "pensando", "elijo", "tribunaCorrecto", "tribunaIncorrecta"])
+
+[node name="Fade" parent="StateMachine" instance=ExtResource("80_l8xfv")]
 
 [connection signal="Transitioned" from="StateMachine/Consigna" to="StateMachine/Consigna/Contenido/introSound" method="PlayLoopEvent" binds= ["hinchada"]]
 [connection signal="Transitioned" from="StateMachine/Consigna" to="StateMachine/Consigna/Contenido/volumeControl" method="SetVolume" binds= [-80.0, 6.0]]
@@ -5963,14 +5990,14 @@ AudioBuses = Array[String](["BusquedaVolume", "hinchada", "patitaEspera", "pensa
 [connection signal="timeout" from="StateMachine/Juego/Contenido/Instancia1/Consigna/Timer" to="StateMachine/Juego/Contenido/Instancia1/NubeController2/AnimationPlayer" method="Play"]
 [connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia1/NubeController/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia1/Consigna/consignaPanel" method="ExitPanel"]
 [connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia1/NubeController/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia1/NubeController2/DisappearParticles/DisappearAnimator" method="Play"]
-[connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia1/NubeController/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia1/Piedra_Busqueda" method="SetNextAnimBool" binds= [false]]
 [connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia1/NubeController/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia1/Piedra_Busqueda" method="SetScale" binds= [false]]
+[connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia1/NubeController/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia1/Piedra_Busqueda" method="SetNextAnimBool" binds= [false]]
 [connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia1/NubeController/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia1/NubeController/AnimationPlayer" method="play" binds= ["Nube_Disappear_Delay"]]
 [connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia1/NubeController/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia1/NubeController2/AnimationPlayer" method="PlayAnim" binds= ["Nube_Disappear"]]
 [connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia1/NubeController2/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia1/Consigna/consignaPanel" method="ExitPanel"]
 [connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia1/NubeController2/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia1/NubeController/DisappearParticles/DisappearAnimator" method="Play"]
-[connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia1/NubeController2/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia1/Piedra_Busqueda" method="SetNextAnimBool" binds= [true]]
 [connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia1/NubeController2/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia1/Piedra_Busqueda" method="SetScale" binds= [true]]
+[connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia1/NubeController2/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia1/Piedra_Busqueda" method="SetNextAnimBool" binds= [true]]
 [connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia1/NubeController2/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia1/NubeController/AnimationPlayer" method="PlayAnim" binds= ["Nube_Disappear"]]
 [connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia1/NubeController2/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia1/NubeController2/AnimationPlayer" method="play" binds= ["Nube_Disappear_Delay"]]
 [connection signal="InstanceTrue" from="StateMachine/Juego/Contenido/Instancia2" to="StateMachine/Juego/Contenido/Tribunas/BackgroundPivot/CartelDer/Label" method="set_text" binds= ["ÓXIDOS"]]
@@ -5984,14 +6011,14 @@ AudioBuses = Array[String](["BusquedaVolume", "hinchada", "patitaEspera", "pensa
 [connection signal="timeout" from="StateMachine/Juego/Contenido/Instancia2/Consigna/Timer" to="StateMachine/Juego/Contenido/Instancia2/NubeController2/AnimationPlayer" method="Play"]
 [connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia2/NubeController/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia2/Consigna/consignaPanel" method="ExitPanel"]
 [connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia2/NubeController/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia2/NubeController2/DisappearParticles/DisappearAnimator" method="Play"]
-[connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia2/NubeController/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia2/Piedra_Busqueda" method="SetNextAnimBool" binds= [false]]
 [connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia2/NubeController/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia2/Piedra_Busqueda" method="SetScale" binds= [false]]
+[connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia2/NubeController/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia2/Piedra_Busqueda" method="SetNextAnimBool" binds= [false]]
 [connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia2/NubeController/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia2/NubeController/AnimationPlayer" method="PlayAnim" binds= ["Nube_Disappear_Delay"]]
 [connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia2/NubeController/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia2/NubeController2/AnimationPlayer" method="PlayAnim" binds= ["Nube_Disappear"]]
 [connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia2/NubeController2/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia2/Consigna/consignaPanel" method="ExitPanel"]
 [connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia2/NubeController2/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia2/NubeController/DisappearParticles/DisappearAnimator" method="Play"]
-[connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia2/NubeController2/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia2/Piedra_Busqueda" method="SetNextAnimBool" binds= [true]]
 [connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia2/NubeController2/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia2/Piedra_Busqueda" method="SetScale" binds= [true]]
+[connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia2/NubeController2/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia2/Piedra_Busqueda" method="SetNextAnimBool" binds= [true]]
 [connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia2/NubeController2/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia2/NubeController/AnimationPlayer" method="PlayAnim" binds= ["Nube_Disappear"]]
 [connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia2/NubeController2/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia2/NubeController2/AnimationPlayer" method="PlayAnim" binds= ["Nube_Disappear_Delay"]]
 [connection signal="InstanceTrue" from="StateMachine/Juego/Contenido/Instancia3" to="StateMachine/Juego/Contenido/Tribunas/BackgroundPivot/CartelDer/Label" method="set_text" binds= ["SULFUROS"]]
@@ -6005,14 +6032,14 @@ AudioBuses = Array[String](["BusquedaVolume", "hinchada", "patitaEspera", "pensa
 [connection signal="timeout" from="StateMachine/Juego/Contenido/Instancia3/Consigna/Timer" to="StateMachine/Juego/Contenido/Instancia3/NubeController2/AnimationPlayer" method="Play"]
 [connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia3/NubeController/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia3/Consigna/consignaPanel" method="ExitPanel"]
 [connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia3/NubeController/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia3/NubeController2/DisappearParticles/DisappearAnimator" method="Play"]
-[connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia3/NubeController/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia3/Piedra_Busqueda" method="SetNextAnimBool" binds= [false]]
 [connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia3/NubeController/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia3/Piedra_Busqueda" method="SetScale" binds= [false]]
+[connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia3/NubeController/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia3/Piedra_Busqueda" method="SetNextAnimBool" binds= [false]]
 [connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia3/NubeController/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia3/NubeController/AnimationPlayer" method="PlayAnim" binds= ["Nube_Disappear_Delay"]]
 [connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia3/NubeController/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia3/NubeController2/AnimationPlayer" method="PlayAnim" binds= ["Nube_Disappear"]]
 [connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia3/NubeController2/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia3/Consigna/consignaPanel" method="ExitPanel"]
 [connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia3/NubeController2/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia3/NubeController/DisappearParticles/DisappearAnimator" method="Play"]
-[connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia3/NubeController2/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia3/Piedra_Busqueda" method="SetNextAnimBool" binds= [true]]
 [connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia3/NubeController2/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia3/Piedra_Busqueda" method="SetScale" binds= [true]]
+[connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia3/NubeController2/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia3/Piedra_Busqueda" method="SetNextAnimBool" binds= [true]]
 [connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia3/NubeController2/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia3/NubeController/AnimationPlayer" method="PlayAnim" binds= ["Nube_Disappear"]]
 [connection signal="pressed" from="StateMachine/Juego/Contenido/Instancia3/NubeController2/nube/ButtonGanador" to="StateMachine/Juego/Contenido/Instancia3/NubeController2/AnimationPlayer" method="PlayAnim" binds= ["Nube_Disappear_Delay"]]
 [connection signal="ButtonPress" from="StateMachine/Juego/Contenido/Moraleja/PanelMoraleja1/Panel(1) Btn(center)" to="StateMachine" method="Trigger_On_Child_Transition" binds= ["juego"]]
@@ -6024,7 +6051,7 @@ AudioBuses = Array[String](["BusquedaVolume", "hinchada", "patitaEspera", "pensa
 [connection signal="ButtonPress" from="StateMachine/Juego/Contenido/RetryPanel/Panel(1) Btn(center)" to="StateMachine/Juego/Contenido/Instancia1/Piedra_Busqueda" method="ResetRock"]
 [connection signal="ButtonPress" from="StateMachine/Juego/Contenido/RetryPanel/Panel(1) Btn(center)" to="StateMachine/Juego/Contenido/Instancia2/Piedra_Busqueda" method="ResetRock"]
 [connection signal="ButtonPress" from="StateMachine/Juego/Contenido/RetryPanel/Panel(1) Btn(center)" to="StateMachine/Juego/Contenido/Instancia3/Piedra_Busqueda" method="ResetRock"]
-[connection signal="ButtonPress" from="StateMachine/Moraleja/Contenido/PanelOutro/Panel(1) Btn(rigth)" to="StateMachine/Moraleja/Contenido/ButtonChangeScene" method="_on_pressed"]
+[connection signal="ButtonPress" from="StateMachine/Moraleja/Contenido/PanelOutro/Panel(2) Btn(rigth)" to="StateMachine/Moraleja/Contenido/ButtonChangeScene" method="_on_pressed"]
 
 [editable path="StateMachine/Juego/Contenido/Instancia1/Consigna/consignaPanel"]
 [editable path="StateMachine/Juego/Contenido/Instancia1/Consigna/consignaPanel/btnIzqAnchor/btnIzq/SquigglingSprite"]
