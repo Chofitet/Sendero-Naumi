@@ -53,6 +53,7 @@ func PassInstance():
 	SoundManager.play("level", "correct")
 
 func Figth(btnLeftPressed):
+	if LeftRock == null: return
 	PlayerVariables.EmitInactivePause()
 	SoundManager.play("level","eleccion")
 	if btnLeftPressed == isLeftWinner: playerWinner = true

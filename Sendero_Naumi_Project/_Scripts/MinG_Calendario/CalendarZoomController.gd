@@ -55,16 +55,16 @@ func ZoomToPos(index = 0):
 		$calendarPivot/Calendar.material.set_shader_parameter("focus_point", get_Circle_Offset2(index))
 		$calendarPivot/Calendar.material.set_shader_parameter("focus_radius", 0.034)
 	if index == 6: $calendarPivot/Calendar.material.set_shader_parameter("focus_radius", 0.077)
-	await get_tree().create_timer(0.3).timeout
-	
-	if index == 0 : if gamefinished: 
-		OutroAnim.emit()
-		
-		
+	await get_tree().create_timer(0.25).timeout
 	if index !=0: SoundManager.play("zooms","zoomIn")
 	else:
 		if !gamefinished:SoundManager.play("zooms","zoomOut")
 		else: SoundManager.play("zooms","finalZoomOut")
+	
+	await get_tree().create_timer(0.05).timeout
+	
+	if index == 0 : if gamefinished: 
+		OutroAnim.emit()
 		
 		
 	var posToMove = Positions[index].position 

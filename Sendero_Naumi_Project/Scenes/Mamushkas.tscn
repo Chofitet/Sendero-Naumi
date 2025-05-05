@@ -349,6 +349,7 @@ Text = "
 [center][color=#dab21e]LA TIERRA[/color]
 ESTÁ COMPUESTA POR VARIAS CAPAS[b]
 "
+writingSpeed = 0.0
 SizePanel = Vector2(0, 0)
 Position = Vector2(0, 0)
 buttons = Array[ExtResource("35_875yy")]([SubResource("Resource_87imy")])
@@ -373,6 +374,7 @@ Text = "[center]5000 KM DENTRO
 Y GIRANDO A OTRA VELOCIDAD
 [color=#dab21e]ESTÁ EL NÚCLEO INTERNO[/color][b]
 "
+writingSpeed = 0.0
 SizePanel = Vector2(0, 0)
 Position = Vector2(0, 0)
 buttons = Array[ExtResource("35_875yy")]([SubResource("Resource_62sg5")])
@@ -397,6 +399,7 @@ Text = "
 [center][color=#dab21e]SI IMAGINAMOS[/color]
 CADA CAPA COMO UNA MAMUSHKA[b]
 "
+writingSpeed = 0.0
 SizePanel = Vector2(0, 0)
 Position = Vector2(0, 0)
 buttons = Array[ExtResource("35_875yy")]([SubResource("Resource_yx1ha")])
@@ -418,9 +421,11 @@ exitPanel = false
 [sub_resource type="Resource" id="Resource_e0isu"]
 script = ExtResource("37_m4uql")
 Text = "
-[center][color=#dab21e]DE MENOR A MAYOR
-¿EN QUÉ ORDEN TE PARECE QUE VAN?[/color][b]
+[center]DE MENOR A MAYOR
+[color=#dab21e]¿EN QUÉ ORDEN TE PARECE QUE VAN?[/color][b]
+
 "
+writingSpeed = 0.0
 SizePanel = Vector2(0, 0)
 Position = Vector2(0, 0)
 buttons = Array[ExtResource("35_875yy")]([SubResource("Resource_wh0xv")])
@@ -694,6 +699,7 @@ script = ExtResource("37_m4uql")
 Text = "LA TIERRA TIENE MÁS DE
 6 MIL KM DE PROFUNDIDAD
 Y MÁS DE 12 MIL KM DE DIÁMETRO"
+writingSpeed = 0.0
 SizePanel = Vector2(0, 0)
 Position = Vector2(0, 0)
 buttons = Array[ExtResource("35_875yy")]([SubResource("Resource_qcaun")])
@@ -711,6 +717,7 @@ exitPanel = false
 script = ExtResource("37_m4uql")
 Text = "
 [center][color=#dab21e]¿CUÁNTO PENSÁS RECORRER?[/color][b]"
+writingSpeed = 0.0
 SizePanel = Vector2(0, 0)
 Position = Vector2(0, 0)
 buttons = Array[ExtResource("35_875yy")]([SubResource("Resource_cvg2o")])
@@ -885,7 +892,9 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
+offset_left = -14.0
 offset_top = 374.0
+offset_right = -14.0
 offset_bottom = 457.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -960,7 +969,7 @@ autoplay = "idle"
 texture = ExtResource("19_7eqns")
 
 [node name="mamushkaInitPos" type="Marker2D" parent="Mamushkas/StateMachine/Consigna/Contenido/Intro/MamushkasDown"]
-position = Vector2(163, -295)
+position = Vector2(174, -295)
 
 [node name="Mamushka" type="Node2D" parent="Mamushkas/StateMachine/Consigna/Contenido/Intro/MamushkasDown" node_paths=PackedStringArray("initPos")]
 position = Vector2(574, 119)
@@ -1100,7 +1109,6 @@ StateMachine = NodePath("..")
 InstanciasMinijuego = [NodePath("Contenido/Instancia1")]
 
 [node name="Contenido" type="Control" parent="Mamushkas/StateMachine/Juego"]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -1149,10 +1157,11 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
+offset_left = -14.0
 offset_top = 374.0
+offset_right = -14.0
 offset_bottom = 457.0
 grow_horizontal = 2
-grow_vertical = 2
 
 [node name="mamushkaInitPos3" type="Marker2D" parent="Mamushkas/StateMachine/Juego/Contenido/Instancia1/MamushkasUp"]
 position = Vector2(187, -15)
@@ -1167,12 +1176,12 @@ ParteAbajo = ExtResource("27_pn83x")
 ParteAbajoS = ExtResource("14_e8nsy")
 EmotionsSpriteFrames = ExtResource("29_s2x2d")
 color = Color(0.796875, 0.492188, 0.285156, 1)
-panelText = "[center][b]EL NÚCLEO EXTERNO[/b]
+panelText = "[center][b][color=#dab21e]EL NÚCLEO EXTERNO[/color][/b]
 ES LÍQUIDO, TIENE
 2.100 KM DE GROSOR,
 UNA TEMPERATURA DE 
 HASTA 6.100 GRADOS.
-Y JUNTO AL NÚCLEO
+[b]Y JUNTO AL NÚCLEO
 INTERNO GENERAN EL 
 CAMPO MAGNÉTICO DE
  LA TIERRA."
@@ -1210,10 +1219,10 @@ ParteAbajoS = ExtResource("16_0awb4")
 EmotionsSpriteFrames = ExtResource("30_5j55l")
 NumOfLayer = 2
 color = Color(0.429688, 0.269531, 0.222656, 1)
-panelText = "[center][b]EL MANTO SUPERIOR[/b]
+panelText = "[center][b][color=#dab21e]EL MANTO SUPERIOR[/color]
 SE ENCARGA DE QUE
 LAS PLACAS TECTÓNICAS
-SE MUEVAN.
+SE MUEVAN.[/b]
 CUANDO CHOCAN
 ENTRE ELLAS
 OCURREN TERREMOTOS."
@@ -1241,21 +1250,22 @@ ParteAbajoS = ExtResource("18_vqmf8")
 EmotionsSpriteFrames = ExtResource("33_6noqd")
 NumOfLayer = 1
 color = Color(0.367188, 0.5625, 0.445313, 1)
-panelText = "[center][b]EL MANTO INFERIOR[/b]
+panelText = "[center][b][color=#dab21e]EL MANTO INFERIOR[/color][/b]
 ES LA CAPA MÁS GRANDE.
-ABARCA EL 56% DEL
-VOLUMEN DEL PLANETA
+[b]ABARCA EL 56% DEL
+VOLUMEN DEL PLANETA[/b]
 Y SU TEMPERATURA
 PUEDE ALCANZAR 
 LOS 2.360°C.
+
 "
 mamu = NodePath("../../MamushkaCenter/mamushkaController")
 
 [node name="mamushkaInitPos" type="Marker2D" parent="Mamushkas/StateMachine/Juego/Contenido/Instancia1/MamushkasDown"]
-position = Vector2(163, -295)
+position = Vector2(174, -295)
 
 [node name="Mamushka_Layer" parent="Mamushkas/StateMachine/Juego/Contenido/Instancia1/MamushkasDown" node_paths=PackedStringArray("mamu") instance=ExtResource("21_au4ea")]
-position = Vector2(163, -295)
+position = Vector2(174, -295)
 rotation = -3.14159
 scale = Vector2(1, -1)
 Colortxt = "Blue"
@@ -1268,12 +1278,14 @@ NumOfLayer = 3
 color = Color(0.246094, 0.550781, 0.617188, 1)
 panelText = "[center]EN REALIDAD...
 ¡HAY DOS CORTEZAS!
-[b]LA CORTEZA OCEÁNICA[/b],
+[b][color=#dab21e]LA CORTEZA OCEÁNICA[/color][/b],
 QUE ABARCA EL FONDO
 DEL MAR.
-Y [b]LA CONTINENTAL[/b]
+Y [b][color=#dab21e]LA CONTINENTAL[/color][/b]
 QUE ES LA CORTEZA
 DONDE HABITAMOS.
+
+
 "
 offsetPanel = Vector2(0, 75)
 mamu = NodePath("../../MamushkaCenter/mamushkaController")

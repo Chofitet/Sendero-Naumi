@@ -35,7 +35,9 @@ func _physics_process(delta):
 
 func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("TouchScreen"):
-		if isBlock: return
+		if isBlock: 
+			particles.emitting = false
+			return
 		sprite.texture = texturePropulsion
 		particles.emitting = true
 		SoundManager.play("astronauta","fart")
@@ -47,14 +49,21 @@ func _input(event: InputEvent) -> void:
 		particleInstance.rotation = direction.angle()
 		particleInstance.emitting = true
 	if Input.is_action_pressed("TouchScreen"):
-		if isBlock: return
+		if isBlock:
+			particles.emitting = false
+			if SoundJP != null: 
+				SoundJP.release()
+				SoundJP = null
+			return
 		target_position= event.position
 		isPressing = true
 	if  Input.is_action_just_released("TouchScreen"):
 		if SoundJP != null: 
 			SoundJP.release()
 			SoundJP = null
-		if isBlock: return
+		if isBlock: 
+			particles.emitting = false
+			return
 		sprite.texture = textureIdle
 		particles.emitting = false
 		isPressing = false
@@ -144,6 +153,11 @@ func GetMeteoroIndex(x)->int:
 
 func BlockMove(x):
 	isBlock = x
+	if isPressing and isBlock == false:
+		particles.emitting = true
+		if SoundJP == null :
+			SoundJP = SoundManager.instance_poly("astronauta", "jetpack")
+			SoundJP.trigger()
 
 func SetSelfCamFollow(x):
 	if x.is_in_group("FollowCam"):

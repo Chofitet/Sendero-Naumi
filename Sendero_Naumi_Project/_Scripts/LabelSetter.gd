@@ -1,4 +1,4 @@
-extends Label
+extends RichTextLabel
 
 @export_multiline var Texts : Array[String]
 
@@ -11,7 +11,7 @@ func SetLabel(string : String, lineNum : int = 0):
 	
 
 func SetCombinedText():
-	var combinedText = ""
+	var combinedText = "[center]"
 	for t in Texts:
 		combinedText += t + " "
 	text = combinedText

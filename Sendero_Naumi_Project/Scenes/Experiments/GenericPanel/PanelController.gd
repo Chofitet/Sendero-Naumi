@@ -71,6 +71,10 @@ func refreshData(numPanel : int):
 	else:
 		textData = Texts[numPanel -1]
 	
+	if textData.writingSpeed != 0:
+		Characters_per_second = textData.writingSpeed
+	else : Characters_per_second = 72
+	
 	if textData.PanelTheme != null:
 		set_theme(textData.PanelTheme)
 	
@@ -256,6 +260,8 @@ func ExitPanel():
 
 func ChangeToNextText():
 	numOfPanel += 1
+	for c in content:
+		c.visible = false
 	var anim = $AnimationPlayer
 	anim.play("change_panel")
 	await anim.animation_finished

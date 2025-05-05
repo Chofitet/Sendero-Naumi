@@ -33,7 +33,7 @@ func _ready():
 	if IntroNaumi:
 		btn.pressed.connect(Sleeping)
 		return
-	timer.timeout.connect(PlayRandomIdleAnim)
+	#timer.timeout.connect(PlayRandomIdleAnim)
 	for d in $Debris.get_children():
 		debris.append(d)
 		d.visible = false
@@ -94,7 +94,7 @@ func Sleeping():
 	btn.visible = false
 	$pivot/Parts/zzz.stop()
 	NaumiAnim.play("tapped")
-	timer.timeout.disconnect(PlayRandomIdleAnim)
+	#timer.timeout.disconnect(PlayRandomIdleAnim)
 	$pivot/Parts/partsAnimator.play("tap")
 	if !IntroNaumi : ActualNaumiSounds.StopSoundsInCuttableQueue()
 	GeneralsoundTrigger.StopSoundsInCuttableQueue()
@@ -110,9 +110,9 @@ func Sleeping():
 	NaumiAnim.play("sleeping")
 	btn.visible = true
 	
-	if !isIdleOncePlayed:
-		timer.start()
-		timer.timeout.connect(PlayRandomIdleAnim)
+#	if !isIdleOncePlayed:
+#		timer.start()
+#		timer.timeout.connect(PlayRandomIdleAnim)
 
 func SetNaumi(num):
 	match num:

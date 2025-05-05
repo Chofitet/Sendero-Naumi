@@ -1,4 +1,4 @@
-[gd_scene load_steps=217 format=3 uid="uid://dk066mi38cvh7"]
+[gd_scene load_steps=222 format=3 uid="uid://dk066mi38cvh7"]
 
 [ext_resource type="Script" path="res://_Scripts/Minigame_Save_Controller.gd" id="1_th4gl"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/StateMachineMinigames.gd" id="2_fl1ab"]
@@ -58,6 +58,7 @@
 [ext_resource type="Texture2D" uid="uid://blvtoxf6sl7ty" path="res://Sprites/glow.png" id="29_j1bju"]
 [ext_resource type="Texture2D" uid="uid://dv4a24ah52onn" path="res://Sprites/ZonaAstronomia/capsulaInterior.png" id="30_8apus"]
 [ext_resource type="Texture2D" uid="uid://crmswjnqpyndl" path="res://Sprites/ZonaAstronomia/debris taza - astronauta.png" id="30_b0oq7"]
+[ext_resource type="AudioStream" uid="uid://cogkfgbcowdnp" path="res://Sounds/Astronauta/Astronauta - Otros Astronautas.ogg" id="30_lxkij"]
 [ext_resource type="Texture2D" uid="uid://cuxmrylkxaqhq" path="res://Sprites/ZonaAstronomia/papita 1.png" id="31_mbt3u"]
 [ext_resource type="Script" path="res://_Scripts/MinG_Astronauta/pcInventary.gd" id="31_x60lp"]
 [ext_resource type="Texture2D" uid="uid://bw2dfuisvcdib" path="res://Sprites/ZonaAstronomia/planeta estrellado - astronauta.png" id="32_0xfyy"]
@@ -355,6 +356,22 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_drp5q"]
 size = Vector2(723.794, 576.004)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pjxkq"]
+bg_color = Color(0.862745, 0.862745, 0.862745, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="Resource" id="Resource_di5eu"]
+script = ExtResource("91_abtif")
+name = "dialogo"
+bus = "otrosAstronautas"
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([ExtResource("30_lxkij")])
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_27igt"]
 size = Vector2(106.262, 478.009)
 
@@ -435,7 +452,7 @@ fill_to = Vector2(0.769231, 0.0950226)
 resource_local_to_scene = true
 radius = 354.593
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pjxkq"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mm74i"]
 bg_color = Color(0.862745, 0.862745, 0.862745, 1)
 corner_radius_top_left = 16
 corner_radius_top_right = 16
@@ -482,6 +499,7 @@ Text = "
 [center][b]BUEN DÍA, CADETE.[/b]
 REPASEMOS LA MISIÓN.
 "
+writingSpeed = 0.0
 SizePanel = Vector2(540, 251)
 Position = Vector2(-270, -124)
 PanelTheme = ExtResource("77_hmdp2")
@@ -510,6 +528,7 @@ METEOROIDE   METEORO    METEORITO
  
 
 "
+writingSpeed = 0.0
 SizePanel = Vector2(540, 354)
 Position = Vector2(-270, -197)
 PanelTheme = ExtResource("77_hmdp2")
@@ -528,6 +547,7 @@ exitPanel = false
 script = ExtResource("80_drq41")
 Text = "¡SUERTE CON LA MISIÓN!
 Y GUARDA LA CABEZA"
+writingSpeed = 0.0
 SizePanel = Vector2(540, 251)
 Position = Vector2(-270, -124)
 PanelTheme = ExtResource("77_hmdp2")
@@ -543,6 +563,7 @@ PARA MOVERTE CON TU PROPULSOR
 
 
 "
+writingSpeed = 0.0
 SizePanel = Vector2(798, 280)
 Position = Vector2(-395, -157)
 PanelTheme = ExtResource("78_8hd3f")
@@ -611,6 +632,7 @@ ease = 2
 [sub_resource type="Resource" id="Resource_k0t8t"]
 script = ExtResource("80_drq41")
 Text = ""
+writingSpeed = 0.0
 SizePanel = Vector2(497, 199)
 Position = Vector2(0, 0)
 buttons = Array[ExtResource("78_a7col")]([])
@@ -625,13 +647,14 @@ exitPanel = false
 
 [sub_resource type="Resource" id="Resource_hiuv8"]
 script = ExtResource("80_drq41")
-Text = "¡MISIÓN CUMPLIDA!
+Text = "
 ¿QUIÉN QUIERE 
 PURURÚ ESPACIAL?"
+writingSpeed = 0.0
 SizePanel = Vector2(489, 220)
 Position = Vector2(0, 0)
 buttons = Array[ExtResource("78_a7col")]([SubResource("Resource_qy4jd")])
-NumOfContent = 0
+NumOfContent = 1
 
 [sub_resource type="Animation" id="Animation_ax162"]
 length = 0.001
@@ -746,6 +769,16 @@ script = ExtResource("83_qqo8u")
 NumberOfPanel = 2
 Place = 0
 
+[sub_resource type="LabelSettings" id="LabelSettings_f1s84"]
+line_spacing = -3.0
+font_size = 40
+font_color = Color(0.046875, 0.917969, 0.410156, 1)
+outline_size = 3
+outline_color = Color(0.167969, 0.90625, 0.476563, 1)
+shadow_size = 2
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(2, 1)
+
 [sub_resource type="Resource" id="Resource_t43a6"]
 script = ExtResource("34_cy5l0")
 duration = 1.0
@@ -796,6 +829,7 @@ exitPanel = false
 [sub_resource type="Resource" id="Resource_sn0ra"]
 script = ExtResource("80_drq41")
 Text = "[center][b]HAY 3 TIPOS DE ROCAS ESPACIALES[/b]"
+writingSpeed = 0.0
 SizePanel = Vector2(677, 148)
 Position = Vector2(-350, -167)
 buttons = Array[ExtResource("78_a7col")]([SubResource("Resource_52pth")])
@@ -822,6 +856,7 @@ ESTÉ FLOTANDO EN EL ESPACIO.
 PUEDE SER UN PEDAZO DE UN PLANETA,
 DE UN COMETA O DE UN SATÉLITE.
 "
+writingSpeed = 144.0
 SizePanel = Vector2(677, 474)
 Position = Vector2(-350, -461)
 buttons = Array[ExtResource("78_a7col")]([SubResource("Resource_k8jp4")])
@@ -848,6 +883,7 @@ AL ENTRAR CON GRAN VELOCIDAD
 EN LA ATMÓSFERA DE UN PLANETA 
 [b]DESPRENDE UNA LARGA COLA DE LUZ 
 AL QUEMARSE EN SU CAÍDA.[/b]"
+writingSpeed = 144.0
 SizePanel = Vector2(677, 500)
 Position = Vector2(-350, -517)
 buttons = Array[ExtResource("78_a7col")]([SubResource("Resource_riqk4")])
@@ -875,6 +911,7 @@ SE GANA EL NOMBRE DE: [b]METEORITO.[/b]
 
 SE DICE QUE HAY 190 CRÁTERES
 DE METEORITOS EN LA TIERRA."
+writingSpeed = 144.0
 SizePanel = Vector2(677, 579)
 Position = Vector2(-350, -593)
 buttons = Array[ExtResource("78_a7col")]([SubResource("Resource_vi21d")])
@@ -893,6 +930,7 @@ script = ExtResource("80_drq41")
 Text = "
 [center]LAS ROCAS ESPACIALES NOS AYUDAN A
 INVESTIGAR OTROS MUNDOS[b]"
+writingSpeed = 0.0
 SizePanel = Vector2(677, 255)
 Position = Vector2(-350, -273)
 buttons = Array[ExtResource("78_a7col")]([SubResource("Resource_xl068")])
@@ -911,6 +949,7 @@ script = ExtResource("80_drq41")
 Text = "
 [center][b]¡PODÉS APRENDER A
 RECONOCERLAS EN EL MUSEO![/b]"
+writingSpeed = 0.0
 SizePanel = Vector2(0, 0)
 Position = Vector2(0, 0)
 buttons = Array[ExtResource("78_a7col")]([SubResource("Resource_x62li")])
@@ -1029,6 +1068,11 @@ Place = 0
 [sub_resource type="Resource" id="Resource_sd3j4"]
 script = ExtResource("83_qqo8u")
 NumberOfPanel = 5
+Place = 0
+
+[sub_resource type="Resource" id="Resource_62fpr"]
+script = ExtResource("83_qqo8u")
+NumberOfPanel = 4
 Place = 0
 
 [sub_resource type="Resource" id="Resource_qxjao"]
@@ -1713,7 +1757,7 @@ _textureLine = ExtResource("9_fd6y6")
 
 [node name="Meteoroide" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide" instance=ExtResource("11_i2vqs")]
 position = Vector2(976, -1362)
-rotation = 450050.0
+rotation = 471502.0
 scale = Vector2(2.975, 2.975)
 _texture = ExtResource("11_x4hhq")
 
@@ -1750,49 +1794,84 @@ libraries = {
 script = ExtResource("13_ikt7k")
 animation = "move"
 
-[node name="TheGuy2" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/GuyWall/Path2D/PathFollow2D" instance=ExtResource("35_frqpj")]
+[node name="TheGuy2" type="Node2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/GuyWall/Path2D/PathFollow2D"]
 position = Vector2(-3.9292, -1.60059)
 rotation = -0.270157
+script = ExtResource("61_dn7t5")
 player = NodePath("../../../../../../../Astronauta")
 isInactiveDialogue = true
+ScaleFactorDialogue = 1.0
+DialogueDistance = Vector2(55.005, -160.26)
+AstronautAngle = -1.66
 
-[node name="sprite" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/GuyWall/Path2D/PathFollow2D/TheGuy2" index="0"]
+[node name="sprite" type="Sprite2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/GuyWall/Path2D/PathFollow2D/TheGuy2"]
 rotation = 1.63014
+scale = Vector2(1.05979, 1.05979)
+texture = ExtResource("62_t3ec7")
 
-[node name="CollisionShape2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/GuyWall/Path2D/PathFollow2D/TheGuy2/Area2D" index="0"]
+[node name="Area2D" type="Area2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/GuyWall/Path2D/PathFollow2D/TheGuy2"]
+rotation = -1.5708
+scale = Vector2(2.13559, 2.13559)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/GuyWall/Path2D/PathFollow2D/TheGuy2/Area2D"]
 position = Vector2(-71.6609, -81.0613)
 rotation = -0.130287
 scale = Vector2(0.999999, 0.999999)
 shape = SubResource("RectangleShape2D_drp5q")
 disabled = true
 
-[node name="Panel" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/GuyWall/Path2D/PathFollow2D/TheGuy2" index="2"]
+[node name="Panel" type="Panel" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/GuyWall/Path2D/PathFollow2D/TheGuy2"]
 offset_left = -238.958
 offset_top = -3.07324
 offset_right = 95.0422
 offset_bottom = 159.927
 rotation = -2.53122
 scale = Vector2(-1, 1)
+pivot_offset = Vector2(0, 84.58)
+theme_override_styles/panel = SubResource("StyleBoxFlat_pjxkq")
 
-[node name="Label" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/GuyWall/Path2D/PathFollow2D/TheGuy2/Panel" index="0"]
-offset_left = 190.0
-offset_top = -78.5
-offset_right = 570.0
-offset_bottom = 73.5
+[node name="Label" type="RichTextLabel" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/GuyWall/Path2D/PathFollow2D/TheGuy2/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 192.092
+offset_top = -53.7228
+offset_right = 572.092
+offset_bottom = 57.2772
+grow_horizontal = 2
+grow_vertical = 2
 scale = Vector2(-1, 1)
-text = "SOLO CHOCASTE
-0 VECES?
-MEJORASTE BASTANTE!"
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 25
+theme_override_font_sizes/bold_font_size = 25
+bbcode_enabled = true
+text = "[center]ce..[b]!!¿¿CERO GOLPES?!![/b]
+…NO SOY DIGNO.
+¡ENSEÑAME, MAESTRO!
+"
+autowrap_mode = 2
 script = ExtResource("24_rfcp7")
 Texts = Array[String](["SOLO CHOCASTE
 ", "0", "VECES? 
 MEJORASTE BASTANTE!"])
 
-[node name="Polygon2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/GuyWall/Path2D/PathFollow2D/TheGuy2/Panel" index="1"]
+[node name="Polygon2D" type="Polygon2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/GuyWall/Path2D/PathFollow2D/TheGuy2/Panel"]
 position = Vector2(40.1494, 155.943)
 rotation = -1.23634
 scale = Vector2(1.11733, 0.954294)
+color = Color(0.859375, 0.859375, 0.859375, 1)
 polygon = PackedVector2Array(16.6599, 69.304, -8.4939, 97.3525, 10.2185, 45.2139)
+
+[node name="soundEmitter" type="Node" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/GuyWall/Path2D/PathFollow2D/TheGuy2"]
+script = ExtResource("101_14e4n")
+
+[node name="SoundBank" type="Node" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/GuyWall/Path2D/PathFollow2D/TheGuy2/soundEmitter"]
+script = ExtResource("90_h0bcv")
+label = "guy"
+events = Array[ExtResource("91_abtif")]([SubResource("Resource_di5eu")])
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/GuyWall/Path2D/PathFollow2D/TheGuy2"]
 
@@ -2493,7 +2572,7 @@ Max_Size = 60.0
 
 [node name="meteoro" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoro/Meteoro1" node_paths=PackedStringArray("MeteoritoTarget") instance=ExtResource("11_i2vqs")]
 z_index = 1
-rotation = 596991.0
+rotation = 626885.0
 scale = Vector2(2.595, 2.595)
 MeteoritoTarget = NodePath("../../../Meteorito/MeteoritoAppear/targetMeteorito")
 _texture = ExtResource("17_uxw0q")
@@ -2542,7 +2621,7 @@ z_index = 1
 
 [node name="meteoro" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoro/Meteoro3" node_paths=PackedStringArray("MeteoritoTarget") instance=ExtResource("11_i2vqs")]
 z_index = 1
-rotation = 598692.0
+rotation = 628586.0
 scale = Vector2(2.595, 2.595)
 MeteoritoTarget = NodePath("../../../Meteorito/MeteoritoAppear/targetMeteorito")
 _texture = ExtResource("17_uxw0q")
@@ -2646,7 +2725,7 @@ offset_right = 235.0
 offset_bottom = -110.0
 scale = Vector2(-5, 5)
 pivot_offset = Vector2(0, 84.58)
-theme_override_styles/panel = SubResource("StyleBoxFlat_pjxkq")
+theme_override_styles/panel = SubResource("StyleBoxFlat_mm74i")
 
 [node name="LabelMeteoro" type="Label" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoro/TheGuy2/Panel"]
 layout_mode = 1
@@ -3346,6 +3425,7 @@ position = Vector2(621, 159)
 scale = Vector2(0.672, 0.672)
 
 [node name="PanelInventory" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/PCInventary/pcInventary" instance=ExtResource("76_xvlec")]
+visible = false
 use_parent_material = true
 layout_mode = 1
 anchors_preset = 0
@@ -3363,6 +3443,8 @@ AppearSound = "CHIPA2"
 Texts = Array[ExtResource("80_drq41")]([SubResource("Resource_k0t8t"), SubResource("Resource_hiuv8")])
 
 [node name="label" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/PCInventary/pcInventary/PanelInventory" index="0"]
+offset_top = 65.0
+offset_bottom = -47.0
 label_settings = ExtResource("74_d02uo")
 
 [node name="labelRich" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/PCInventary/pcInventary/PanelInventory" index="1"]
@@ -3371,9 +3453,6 @@ theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 25
 theme_override_font_sizes/bold_font_size = 25
-text = "[center][b]¡MISIÓN CUMPLIDA![/b]
-¿QUIÉN QUIERE 
-PURURÚ ESPACIAL?"
 
 [node name="Icon" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/PCInventary/pcInventary/PanelInventory/BtnDerAnchor/btnDer" index="0"]
 texture = null
@@ -3726,6 +3805,27 @@ texture = ExtResource("18_ms2d6")
 [node name="Panel(2) Btn(rigth)" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/PCInventary/pcInventary/PanelInventory" instance=ExtResource("81_mw337")]
 Data = SubResource("Resource_a5apv")
 
+[node name="content1" type="Label" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/PCInventary/pcInventary/PanelInventory"]
+visible = false
+modulate = Color(1, 1, 1, 0)
+use_parent_material = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 37.0
+offset_top = 43.0
+offset_right = -37.0
+offset_bottom = -122.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "¡MISIÓN CUMPLIDA!"
+label_settings = SubResource("LabelSettings_f1s84")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+visible_characters_behavior = 1
+
 [node name="PhantomCamera2D2" type="Node2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1"]
 position = Vector2(914, -8420)
 script = ExtResource("10_ex8uo")
@@ -3791,6 +3891,7 @@ script = ExtResource("8_82fk8")
 FadeInFin = true
 
 [node name="Contenido" type="Control" parent="Astronauta/StateMachine/Fin"]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -3833,6 +3934,9 @@ texture = ExtResource("30_8apus")
 position = Vector2(105, 127)
 isPerspective = true
 
+[node name="screen" parent="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/Computer/Perspectiva" index="0"]
+polygon = PackedVector2Array(-111, -78, -34, -67, 54, -54, 123.035, -43.3704, 120, 48, 119, 76, 118, 87, -111, 37)
+
 [node name="faceAnim" parent="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/Computer" index="2"]
 position = Vector2(0, -8)
 
@@ -3873,10 +3977,10 @@ anchor_left = 0.483
 anchor_top = 0.083
 anchor_right = 0.483
 anchor_bottom = 0.083
-offset_left = -668.297
-offset_top = -238.712
-offset_right = 8.703
-offset_bottom = -90.712
+offset_left = -350.0
+offset_top = -167.0
+offset_right = 327.0
+offset_bottom = -19.0
 grow_vertical = 2
 pivot_offset = Vector2(338.5, 74)
 theme = ExtResource("77_hmdp2")
@@ -4198,6 +4302,9 @@ Data = SubResource("Resource_o5v4k")
 
 [node name="Panel(5) Btn(rigth)2" parent="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/PanelOutro" instance=ExtResource("81_mw337")]
 Data = SubResource("Resource_sd3j4")
+
+[node name="Panel(4) Btn(rigth)" parent="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/PanelOutro" instance=ExtResource("81_mw337")]
+Data = SubResource("Resource_62fpr")
 
 [node name="outroSound" type="Node" parent="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior"]
 script = ExtResource("101_14e4n")
@@ -4999,7 +5106,7 @@ smoothness = 0.2
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Sound Debug" parent="CanvasLayer" instance=ExtResource("120_avde6")]
-AudioBuses = Array[String](["VolumenAstronauta", "jetPack", "pedo", "astronautaRespiracion", "agarrar", "golpe", "salidaCueva", "otrosAstronautas", "CHIPA", "choqueMeteoro"])
+AudioBuses = Array[String](["VolumenAstronauta", "jetPack", "pedo", "astronautaRespiracion", "agarrar", "golpe", "salidaCueva", "otrosAstronautas", "CHIPA", "choqueMeteoro", "CHIPAPrende"])
 
 [connection signal="pressed" from="Astronauta/StateMachine/Consigna/Contenido/Button" to="Astronauta/StateMachine/Consigna/Contenido/Button" method="_on_pressed" flags=18]
 [connection signal="Transitioned" from="Astronauta/StateMachine/Juego" to="Astronauta/StateMachine/Juego/Contenido/Instancia1/Camera2D" method="Enable" binds= [true]]
@@ -5061,9 +5168,9 @@ AudioBuses = Array[String](["VolumenAstronauta", "jetPack", "pedo", "astronautaR
 [connection signal="ButtonPress" from="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/PanelOutro/Panel(2) Btn(rigth)" to="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/Computer" method="SetTalkInfinity"]
 [connection signal="ButtonPress" from="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/PanelOutro/Panel(3) Btn(rigth)" to="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/Computer" method="SetTalkInfinity"]
 [connection signal="ButtonPress" from="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/PanelOutro/Panel(5) Btn(rigth)2" to="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/Computer" method="SetTalkInfinity"]
+[connection signal="ButtonPress" from="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/PanelOutro/Panel(4) Btn(rigth)" to="Astronauta/StateMachine/Fin/Contenido/Center/Nave/interior/Computer" method="SetTalkInfinity"]
 
 [editable path="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/TheGuy"]
-[editable path="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/GuyWall/Path2D/PathFollow2D/TheGuy2"]
 [editable path="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/RocasEmpujables/CollisionObject43"]
 [editable path="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/RocasEmpujables/CollisionObject6"]
 [editable path="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/RocasEmpujables/CollisionObject8"]

@@ -254,6 +254,7 @@ script = ExtResource("16_g0euh")
 Text = "
 [center][color=#dab21e]LOS ANIMALES SON SERES MUY CURIOSOS,[/color]
 PERO NO SE COMEN CUALQUIERA[b]"
+writingSpeed = 0.0
 SizePanel = Vector2(0, 0)
 Position = Vector2(0, 0)
 buttons = Array[ExtResource("14_g877f")]([SubResource("Resource_v6d2t")])
@@ -282,6 +283,7 @@ script = ExtResource("16_g0euh")
 Text = "
 [center][color=#dab21e]AYUDANOS A DARLES DE COMER[/color]
 SUS COMIDAS FAVORITAS[b]"
+writingSpeed = 0.0
 SizePanel = Vector2(0, 0)
 Position = Vector2(0, 0)
 buttons = Array[ExtResource("14_g877f")]([SubResource("Resource_diw31")])
@@ -343,6 +345,7 @@ Text = "
 [center][color=#dab21e]DESLIZA LOS PLATOS HACIA LOS COSTADOS[/color]
 PARA BUSCAR EL MENÚ CORRECTO[b]
 "
+writingSpeed = 0.0
 SizePanel = Vector2(0, 0)
 Position = Vector2(0, 0)
 buttons = Array[ExtResource("14_g877f")]([])
@@ -354,6 +357,7 @@ Text = "
 [center][color=#dab21e]DESLIZA EL PLATO ELEGIDO HACIA LA BANDEJA[/color]
 PARA ENTREGARLO[b]
 "
+writingSpeed = 0.0
 SizePanel = Vector2(0, 0)
 Position = Vector2(0, 0)
 buttons = Array[ExtResource("14_g877f")]([])
@@ -401,6 +405,7 @@ exitPanel = false
 script = ExtResource("16_g0euh")
 Text = "¡LISTO POR HOY!
 ¿QUE LES PARECE SI CERRAMOS TEMPRANO?"
+writingSpeed = 0.0
 SizePanel = Vector2(0, 0)
 Position = Vector2(0, 0)
 buttons = Array[ExtResource("14_g877f")]([SubResource("Resource_7vpae")])
@@ -415,6 +420,7 @@ Place = 0
 script = ExtResource("16_g0euh")
 Text = "¡DE UN TIRÓN!
 ¡CON FUERZA!"
+writingSpeed = 0.0
 SizePanel = Vector2(0, 0)
 Position = Vector2(0, 0)
 buttons = Array[ExtResource("14_g877f")]([])
@@ -771,6 +777,7 @@ exitPanel = false
 script = ExtResource("16_g0euh")
 Text = "
 [center][b][font_size={40}][color=#dab21e]¡BUEN TRABAJO!"
+writingSpeed = 0.0
 SizePanel = Vector2(0, 0)
 Position = Vector2(0, 0)
 buttons = Array[ExtResource("14_g877f")]([SubResource("Resource_rivg6")])
@@ -788,6 +795,7 @@ exitPanel = false
 script = ExtResource("16_g0euh")
 Text = "NO SIEMPRE ES CUESTIÓN DE GUSTOS.
 CADA ANIMAL TIENE UN MENÚ PROPIO."
+writingSpeed = 0.0
 SizePanel = Vector2(0, 0)
 Position = Vector2(0, 0)
 buttons = Array[ExtResource("14_g877f")]([SubResource("Resource_pje03")])
@@ -807,6 +815,7 @@ Text = "
 [center][color=#dab21e]AUNQUE NO NOS VEAMOS LA CARA,
 TODOS COMPARTIMOS LA MISMA MESA.[/color][b]
 "
+writingSpeed = 0.0
 SizePanel = Vector2(0, 0)
 Position = Vector2(0, 0)
 buttons = Array[ExtResource("14_g877f")]([SubResource("Resource_4gm8t")])
@@ -1099,6 +1108,7 @@ Consignas = ["Dale a cada animal la comida correspondiente a su dieta", "Dale a 
 FadeInTrasitioned = true
 
 [node name="Contenido" type="Control" parent="FoodTruck/StateMachine/Consigna"]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -1350,7 +1360,6 @@ FadeInConsigna = true
 FadeInToFin = true
 
 [node name="Contenido" type="Control" parent="FoodTruck/StateMachine/Juego"]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -2530,15 +2539,27 @@ AudioBuses = Array[String](["FoodtruckVolumen", "arbustos", "burbujaHabla", "ban
 [connection signal="isScrolling" from="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer" to="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer/food2/DragObject" method="CancelDrag"]
 [connection signal="isScrolling" from="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer" to="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer/food3/DragObject" method="CancelDrag"]
 [connection signal="isScrolling" from="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer" to="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer/food4/DragObject" method="CancelDrag"]
+[connection signal="ArriveToSpot" from="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer/food1/DragObject" to="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer/food2/SquigglingSprite" method="InactiveSquiggling"]
+[connection signal="ArriveToSpot" from="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer/food1/DragObject" to="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer/food3/SquigglingSprite" method="InactiveSquiggling"]
+[connection signal="ArriveToSpot" from="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer/food1/DragObject" to="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer/food4/SquigglingSprite" method="InactiveSquiggling"]
 [connection signal="isDraggin" from="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer/food1/DragObject" to="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer" method="DetectDraggingPlate"]
 [connection signal="isDraggin" from="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer/food1/DragObject" to="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer/food1/SquigglingSprite" method="ActiveSquiggling"]
 [connection signal="object_realese_Wrong_Place" from="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer/food1/DragObject" to="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer" method="DetectMouseRelease"]
+[connection signal="ArriveToSpot" from="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer/food2/DragObject" to="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer/food1/SquigglingSprite" method="InactiveSquiggling"]
+[connection signal="ArriveToSpot" from="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer/food2/DragObject" to="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer/food3/SquigglingSprite" method="InactiveSquiggling"]
+[connection signal="ArriveToSpot" from="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer/food2/DragObject" to="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer/food4/SquigglingSprite" method="InactiveSquiggling"]
 [connection signal="isDraggin" from="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer/food2/DragObject" to="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer" method="DetectDraggingPlate"]
 [connection signal="isDraggin" from="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer/food2/DragObject" to="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer/food2/SquigglingSprite" method="ActiveSquiggling"]
 [connection signal="object_realese_Wrong_Place" from="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer/food2/DragObject" to="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer" method="DetectMouseRelease"]
+[connection signal="ArriveToSpot" from="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer/food3/DragObject" to="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer/food1/SquigglingSprite" method="InactiveSquiggling"]
+[connection signal="ArriveToSpot" from="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer/food3/DragObject" to="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer/food2/SquigglingSprite" method="InactiveSquiggling"]
+[connection signal="ArriveToSpot" from="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer/food3/DragObject" to="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer/food4/SquigglingSprite" method="InactiveSquiggling"]
 [connection signal="isDraggin" from="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer/food3/DragObject" to="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer" method="DetectDraggingPlate"]
 [connection signal="isDraggin" from="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer/food3/DragObject" to="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer/food3/SquigglingSprite" method="ActiveSquiggling"]
 [connection signal="object_realese_Wrong_Place" from="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer/food3/DragObject" to="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer" method="DetectMouseRelease"]
+[connection signal="ArriveToSpot" from="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer/food4/DragObject" to="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer/food1/SquigglingSprite" method="InactiveSquiggling"]
+[connection signal="ArriveToSpot" from="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer/food4/DragObject" to="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer/food2/SquigglingSprite" method="InactiveSquiggling"]
+[connection signal="ArriveToSpot" from="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer/food4/DragObject" to="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer/food3/SquigglingSprite" method="InactiveSquiggling"]
 [connection signal="isDraggin" from="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer/food4/DragObject" to="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer" method="DetectDraggingPlate"]
 [connection signal="isDraggin" from="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer/food4/DragObject" to="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer/food4/SquigglingSprite" method="ActiveSquiggling"]
 [connection signal="object_realese_Wrong_Place" from="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer/food4/DragObject" to="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer" method="DetectMouseRelease"]

@@ -20,7 +20,6 @@ var save_file_path = \"user://\"
 var save_file_name = \"MiniGameResource.tres\"
 var minigameResourseFile = MiniGameResource.new()
 var instance = InstanceResource.new()
-var button
 signal EnterInLevel
 signal CompleteLevelAnim
 var iscompleteLevel : bool = false
@@ -29,10 +28,10 @@ var pop = preload(\"res://Scenes/UI_Scenes/pop.tscn\")
 @onready var squigglyObject = $SquigglingSprite
 var isWaitingForAnimComplete
 @onready var animation_player = $AnimationPlayer
+@onready var button = $ButtonChangeScene
 
 
 func _ready():
-	button = get_node(\"ButtonChangeScene\")
 	button.pressed.connect(CheckComplete)
 	button.NextScene = name
 	$ButtonChangeScene.delay = 1
@@ -60,7 +59,6 @@ func OnZone():
 	if isWaitingForAnimComplete:
 		isWaitingForAnimComplete = false
 		minigameResourseFile.Set_Last_Minigame(\"\")
-		iscompleteLevel = true
 		CompleteLevelAnim.emit()
 		get_node(\"AnimationPlayer\").play(\"completed\")
 		save()
@@ -69,6 +67,7 @@ func OnZone():
 func CheckComplete():
 	##var instancepop = pop.instantiate()
 	$AnimationPlayer.play(\"tap\")
+	button.disabled = true
 	SoundManager.play(\"ui\",\"pop\")
 	#instancepop.modulate = Color.CORAL
 	##$Sprite2D.add_child(instancepop) 
@@ -82,11 +81,11 @@ func CheckComplete():
 		$Sprite2D/SquigglingSprite.visible = false
 
 func stopAnim():
-	if iscompleteLevel : return
+	if minigameResourseFile.StateMinigames[self.name] : return
 	animation_player.play(\"RESET\")
 
 func resumeAnim():
-	if iscompleteLevel : return
+	if minigameResourseFile.StateMinigames[self.name] : return
 	animation_player.play(\"Scale-bounce\")
 "
 
@@ -409,6 +408,18 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ButtonChangeScene:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8t5hd"]

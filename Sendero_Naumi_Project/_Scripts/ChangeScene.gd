@@ -22,7 +22,9 @@ func _ready():
 	
 func _on_pressed():
 	await get_tree().create_timer(delay).timeout
+	SoundManager.remove_all_sounds()
 	SceneManager.change_scene(NextScene, Fade_in , Fade_out, General_Option )
+	
 
 func SetVisibility(x):
 	visible = x
