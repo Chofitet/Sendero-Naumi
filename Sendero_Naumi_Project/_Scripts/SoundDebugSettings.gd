@@ -162,6 +162,6 @@ class_name VolumeSettings
 	"aparicionBubble":2,
 	"TypingBubble":2,
 	"swipeRapido":0,
-	"swipeLento":0,
-	"unlockIslands":0
+	"swipeLento":-6,
+	"unlockIslands":-16
 	}
