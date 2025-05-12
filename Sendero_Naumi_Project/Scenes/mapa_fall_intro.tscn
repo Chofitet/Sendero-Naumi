@@ -773,20 +773,41 @@ smoothness = 0.4
 
 [node name="ButtonSkip" type="Control" parent="."]
 layout_mode = 1
-anchors_preset = 0
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(0.69, 0.69)
 script = ExtResource("14_6a3v3")
 
 [node name="GenericButton" parent="ButtonSkip" instance=ExtResource("15_cg38x")]
 visible = false
+self_modulate = Color(1, 1, 1, 0)
 layout_mode = 0
-offset_left = 17.0
-offset_top = 11.0
-offset_right = 107.0
-offset_bottom = 101.0
+offset_left = -130.435
+offset_top = -119.493
+offset_right = -40.4348
+offset_bottom = -29.4927
 rotation = 3.14159
 noSway = true
-noSquiggling = true
 Icon = ExtResource("16_bsblw")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ButtonSkip/GenericButton"]
+offset_left = 113.421
+offset_top = 144.014
+offset_right = 281.421
+offset_bottom = 206.014
+rotation = -3.14159
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_outline_size = 3
+theme_override_font_sizes/normal_font_size = 33
+text = "SALTEAR"
+scroll_active = false
 
 [node name="Sound Debug" parent="." instance=ExtResource("26_7deic")]
 AudioBuses = Array[String](["mapaYviento", "mapaGira", "vientoLoop"])

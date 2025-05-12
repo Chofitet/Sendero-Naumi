@@ -698,7 +698,7 @@ tracks/2/keys = {
 "start_offset": 0.0,
 "stream": ExtResource("36_qqhse")
 }],
-"times": PackedFloat32Array(0.3)
+"times": PackedFloat32Array(0)
 }
 tracks/2/use_blend = true
 
@@ -2883,19 +2883,51 @@ libraries = {
 }
 
 [node name="ButtonSkip" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(0.69, 0.69)
 script = ExtResource("41_1pukf")
 
 [node name="GenericButton" parent="ButtonSkip" instance=ExtResource("42_82gy6")]
 visible = false
+self_modulate = Color(1, 1, 1, 0)
 layout_mode = 0
-offset_left = 15.0
-offset_top = 10.0
-offset_right = 105.0
-offset_bottom = 100.0
-rotation = 3.14159
+offset_left = -130.435
+offset_top = -119.493
+offset_right = -40.4348
+offset_bottom = -29.4927
+rotation = -3.13926
 Icon = ExtResource("43_381d8")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ButtonSkip/GenericButton"]
+layout_mode = 0
+offset_left = 113.421
+offset_top = 144.014
+offset_right = 281.421
+offset_bottom = 206.014
+rotation = -3.14159
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_outline_size = 3
+theme_override_font_sizes/normal_font_size = 33
+text = "SALTEAR"
+scroll_active = false
+
+[node name="ButtonChangeScene" parent="ButtonSkip" instance=ExtResource("16_0ow6t")]
+visible = false
+layout_mode = 0
+anchors_preset = 0
+NextScene = "Map_Screen"
+fade_time = 0.6
+texture = "vertical"
+smoothness = 0.2
 
 [node name="Sound Debug" parent="." instance=ExtResource("50_0da8f")]
 layout_mode = 1
@@ -2941,6 +2973,7 @@ AudioBuses = Array[String](["VolumenIntroScroll", "swipeIslas", "chan", "tocarNa
 [connection signal="ButtonPress" from="Map_Scroll/PanelIntro4/Panel(1) Btn(rigth)2" to="Map_Scroll/Music/MusicAnim" method="play" binds= ["back_Music"]]
 [connection signal="ButtonPress" from="Map_Scroll/PanelSuerte/Panel(1) Btn(rigth)" to="Map_Scroll/ButtonChangeScene" method="_on_pressed"]
 [connection signal="pressed" from="Map_Scroll/ButtonChangeScene" to="Naumi_Intro/SaveFirstPlay" method="FirstPlay"]
+[connection signal="pressedDelay" from="ButtonSkip/GenericButton" to="ButtonSkip/ButtonChangeScene" method="_on_pressed"]
 
 [editable path="Naumi_Intro/PanelNaumi1"]
 [editable path="Naumi_Intro/PanelNaumi1/btnIzqAnchor/btnIzq/SquigglingSprite"]
