@@ -63,3 +63,7 @@ func EmitPoolOfSound():
 
 func CutSoundsInExitScene():
 	if stopInChangeScene: StopSoundsInCuttableQueue()
+
+func PauseSound(x : bool):
+	if instance ==null: return
+	SoundManager.pause_Sound(x)

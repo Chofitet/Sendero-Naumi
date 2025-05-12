@@ -58,6 +58,8 @@ func SaveLastPiso(num = 5):
 			NumPiso = 2
 		"GeologiaZone": 
 			NumPiso = 2
+		"NoZone":
+			NumPiso = 1
 
 func EmitInactivePause():
 	InactivePause.emit()

@@ -14,4 +14,3 @@ func SetVolume(volume_level: float, timeToSet : float =1):
 
 func set_bus_volume(value: float):
 	AudioServer.set_bus_volume_db(bus, value)
-

@@ -1,4 +1,4 @@
-[gd_scene load_steps=160 format=3 uid="uid://buth5gc88nt3j"]
+[gd_scene load_steps=169 format=3 uid="uid://buth5gc88nt3j"]
 
 [ext_resource type="Texture2D" uid="uid://cjjoaemhep814" path="res://Sprites/mapa-detalle.png" id="1_kw7ma"]
 [ext_resource type="Texture2D" uid="uid://hf5y4ic16cqj" path="res://Sprites/Intro/intro - background.jpg" id="1_un13t"]
@@ -47,6 +47,7 @@
 [ext_resource type="Texture2D" uid="uid://d1oee8aqfpvio" path="res://Sprites/Mapa/megafaunaDos_mapa.png" id="35_w34gu"]
 [ext_resource type="Texture2D" uid="uid://b4mb0fyar87n4" path="res://Sprites/Mapa/universo_mapa.png" id="36_hins2"]
 [ext_resource type="Texture2D" uid="uid://8e4j1255vh8b" path="res://Sprites/Mapa/camino - mapa.png" id="36_k1vcc"]
+[ext_resource type="AudioStream" uid="uid://d2efchwer4qx0" path="res://Sounds/Intro/Mapa de Intro - Viento a titulo.ogg" id="36_qqhse"]
 [ext_resource type="Script" path="res://Scenes/Experiments/GenericPanel/IntermediateData.gd" id="37_aloy4"]
 [ext_resource type="AudioStream" uid="uid://dcht440kayc04" path="res://Sounds/Intro/Mapa de Intro - Wait.ogg" id="37_f3c5j"]
 [ext_resource type="AudioStream" uid="uid://c4uhq617w2irv" path="res://Sounds/Intro/Mapa de Intro - Desciendo en Navidad.ogg" id="37_v32se"]
@@ -60,6 +61,9 @@
 [ext_resource type="Texture2D" uid="uid://kb7ixs5ala8" path="res://Sprites/UI/arrowIcon - UI.png" id="43_381d8"]
 [ext_resource type="AudioStream" uid="uid://b54gl6v7dgebn" path="res://Sounds/Intro/Mapa de Intro - Corremos mapa para ver naumi.ogg" id="48_d8pn5"]
 [ext_resource type="PackedScene" uid="uid://c8dodmo3saxdr" path="res://Scenes/Experiments/sound_debug.tscn" id="50_0da8f"]
+[ext_resource type="AudioStream" uid="uid://ck0bqyax1ryj1" path="res://Music/SN - Introo.ogg" id="57_nii8y"]
+[ext_resource type="AudioStream" uid="uid://53mg2hv33sbi" path="res://Music/SN - Tema.ogg" id="58_33v0n"]
+[ext_resource type="Script" path="res://_Scripts/VolumeBusController.gd" id="60_a73ub"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6ap07"]
 atlas = ExtResource("10_q4dk5")
@@ -655,7 +659,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_pimfn"]
 resource_name = "Title_enter"
-length = 0.8
+length = 2.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -668,6 +672,35 @@ tracks/0/keys = {
 "update": 0,
 "values": [1.5708, -0.0872665, 0.0872665, 0.0]
 }
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../../../Music/MusicAnim")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["startMusic", -1, 1.0, false],
+"method": &"play"
+}]
+}
+tracks/2/type = "audio"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimationPlayer/AudioStreamPlayer")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("36_qqhse")
+}],
+"times": PackedFloat32Array(0.3)
+}
+tracks/2/use_blend = true
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_p6ptu"]
 _data = {
@@ -1719,6 +1752,108 @@ pitch = 1.0
 RandomPitch = Vector2(0.9, 0.9)
 streams = Array[AudioStream]([ExtResource("48_d8pn5")])
 
+[sub_resource type="Resource" id="Resource_kgg8i"]
+script = ExtResource("40_4y0vi")
+name = "intro"
+bus = "musicIntro"
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([ExtResource("57_nii8y")])
+
+[sub_resource type="Resource" id="Resource_1ukro"]
+script = ExtResource("40_4y0vi")
+name = "music"
+bus = "musicLoop"
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([ExtResource("58_33v0n")])
+
+[sub_resource type="Animation" id="Animation_hh616"]
+resource_name = "back_Music"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MusicController")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [false],
+"method": &"PauseSound"
+}]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MusicVolume")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [-80.0, 0.1],
+"method": &"SetVolume"
+}, {
+"args": [-20.0, 0.3],
+"method": &"SetVolume"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_cwgy0"]
+resource_name = "startMusic"
+length = 6.0
+tracks/0/type = "audio"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AudioStreamPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("57_nii8y")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/0/use_blend = true
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MusicController")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(5.4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["music"],
+"method": &"PlayLoopEvent"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MusicVolume")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"values": []
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rhh6y"]
+_data = {
+"back_Music": SubResource("Animation_hh616"),
+"startMusic": SubResource("Animation_cwgy0")
+}
+
 [node name="Mapa_Scroll_Intro" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -1887,9 +2022,9 @@ animation = "idle"
 
 [node name="PanelNaumi1" parent="Naumi_Intro" instance=ExtResource("34_kpbhv")]
 layout_mode = 1
-offset_left = -322.0
+offset_left = -328.0
 offset_top = 65.0
-offset_right = 330.0
+offset_right = 324.0
 offset_bottom = 293.0
 AppearInBeginning = false
 SetEnterOnce = true
@@ -2061,6 +2196,9 @@ libraries = {
 "": SubResource("AnimationLibrary_p6ptu")
 }
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Map_Scroll/CenterAnchor/Title/ExpandingConteiner/TextureRect/AnimationPlayer"]
+bus = &"entraTitulo"
+
 [node name="LOGO" type="Sprite2D" parent="Map_Scroll/CenterAnchor/Title/ExpandingConteiner/TextureRect"]
 visible = false
 position = Vector2(337, 454.5)
@@ -2101,7 +2239,7 @@ offset_right = 200.943
 offset_bottom = 128.0
 grow_vertical = 2
 pivot_offset = Vector2(205, 127.5)
-TimeToAppear = 3.0
+TimeToAppear = 5.4
 Texts = Array[ExtResource("32_xf8jp")]([SubResource("Resource_b4vf1"), SubResource("Resource_mew4v")])
 
 [node name="label" parent="Map_Scroll/CenterAnchor/Title/ExpandingConteiner/TextureRect/Control/Panel" index="0"]
@@ -2181,8 +2319,9 @@ anchors_preset = -1
 anchor_top = -0.034
 anchor_right = 1.046
 anchor_bottom = 1.0
-offset_top = 61.093
-offset_right = -45.4939
+offset_top = 229.669
+offset_right = -44.494
+offset_bottom = -69.4286
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("35_w34gu")
@@ -2721,6 +2860,28 @@ script = ExtResource("39_ulxrw")
 label = "general"
 events = Array[ExtResource("40_4y0vi")]([SubResource("Resource_ct21j"), SubResource("Resource_vtm46")])
 
+[node name="Music" type="Node" parent="Map_Scroll"]
+
+[node name="MusicController" type="Node" parent="Map_Scroll/Music"]
+script = ExtResource("38_w1dlu")
+
+[node name="SoundBank" type="Node" parent="Map_Scroll/Music/MusicController"]
+script = ExtResource("39_ulxrw")
+label = "music"
+events = Array[ExtResource("40_4y0vi")]([SubResource("Resource_kgg8i"), SubResource("Resource_1ukro")])
+
+[node name="MusicVolume" type="Node" parent="Map_Scroll/Music"]
+script = ExtResource("60_a73ub")
+BusName = "musicLoop"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Map_Scroll/Music"]
+bus = &"musicIntro"
+
+[node name="MusicAnim" type="AnimationPlayer" parent="Map_Scroll/Music"]
+libraries = {
+"": SubResource("AnimationLibrary_rhh6y")
+}
+
 [node name="ButtonSkip" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
@@ -2738,7 +2899,7 @@ Icon = ExtResource("43_381d8")
 
 [node name="Sound Debug" parent="." instance=ExtResource("50_0da8f")]
 layout_mode = 1
-AudioBuses = Array[String](["VolumenIntroScroll", "swipeIslas", "chan", "tocarNaumi", "correrMapa", "pointersAparecen", "islaAcerca"])
+AudioBuses = Array[String](["VolumenIntroScroll", "swipeIslas", "chan", "tocarNaumi", "correrMapa", "pointersAparecen", "islaAcerca", "musicLoop", "musicIntro", "entraTitulo"])
 
 [connection signal="buttonPressedOnce" from="Naumi_Intro/Control/NaumiController" to="Naumi_Intro/PanelNaumi1" method="EnterPanel"]
 [connection signal="pressed" from="Naumi_Intro/Control/NaumiController/pivot/Button" to="Naumi_Intro/Control/NaumiController" method="ButtonPressed" flags=18]
@@ -2752,6 +2913,7 @@ AudioBuses = Array[String](["VolumenIntroScroll", "swipeIslas", "chan", "tocarNa
 [connection signal="ButtonPress" from="Naumi_Intro/PanelNaumi1/Panel(2) Btn(rigth)" to="Map_Scroll/fakeMap" method="set_visible" binds= [true]]
 [connection signal="ButtonPress" from="Naumi_Intro/PanelNaumi1/Panel(2) Btn(rigth)" to="Map_Scroll/AnimationPlayer" method="play_backwards" binds= ["Map_Slice"]]
 [connection signal="ButtonPress" from="Naumi_Intro/PanelNaumi1/Panel(2) Btn(rigth)" to="Map_Scroll/GeneralSounds" method="PlayEvent" binds= ["sliceBack"]]
+[connection signal="ButtonPress" from="Naumi_Intro/PanelNaumi1/Panel(2) Btn(rigth)" to="Map_Scroll/Music/MusicVolume" method="SetVolume" binds= [-80.0, 4.0]]
 [connection signal="ButtonPress" from="Naumi_Intro/PanelNaumi1/Panel(2) Btn(left)" to="Naumi_Intro/SaveFirstPlay" method="FirstPlay"]
 [connection signal="ButtonPress" from="Naumi_Intro/PanelNaumi1/Panel(2) Btn(left)" to="Map_Scroll/PanelSuerte" method="EnterPanel"]
 [connection signal="ButtonPress" from="Naumi_Intro/PanelNaumi1/Panel(2) Btn(left)" to="Map_Scroll/CenterAnchor" method="set_visible" binds= [false]]
@@ -2759,12 +2921,14 @@ AudioBuses = Array[String](["VolumenIntroScroll", "swipeIslas", "chan", "tocarNa
 [connection signal="ButtonPress" from="Naumi_Intro/PanelNaumi1/Panel(2) Btn(left)" to="Map_Scroll/fakeMap" method="set_visible" binds= [true]]
 [connection signal="ButtonPress" from="Naumi_Intro/PanelNaumi1/Panel(2) Btn(left)" to="Map_Scroll/AnimationPlayer" method="play_backwards" binds= ["Map_Slice"]]
 [connection signal="ButtonPress" from="Naumi_Intro/PanelNaumi1/Panel(2) Btn(left)" to="Map_Scroll/GeneralSounds" method="PlayEvent" binds= ["sliceBack"]]
+[connection signal="ButtonPress" from="Naumi_Intro/PanelNaumi1/Panel(2) Btn(left)" to="Map_Scroll/Music/MusicVolume" method="SetVolume" binds= [-80.0, 4.0]]
 [connection signal="ButtonPress" from="Naumi_Intro/PanelNaumi1/Panel(2) Btn(rigth)2" to="Map_Scroll/ButtonChangeScene" method="_on_pressed"]
 [connection signal="ButtonPress" from="Naumi_Intro/PanelNaumi1/Panel(2) Btn(left)2" to="Map_Scroll/ButtonChangeScene" method="_on_pressed"]
 [connection signal="ButtonPress" from="Map_Scroll/CenterAnchor/Title/ExpandingConteiner/TextureRect/Control/Panel/Panel(2) Btn(rigth)" to="Map_Scroll/PanelIntro1" method="EnterPanel"]
 [connection signal="ButtonPress" from="Map_Scroll/CenterAnchor/Title/ExpandingConteiner/TextureRect/Control/Panel/Panel(2) Btn(rigth)" to="Map_Scroll/CenterAnchor/FadeAnimation" method="play" binds= ["1erFade"]]
 [connection signal="pressed" from="Map_Scroll/CenterAnchor/Piso1/ExpandingCoteiner/MegafaunaZone/Button" to="Map_Scroll/CenterAnchor/Piso1/ExpandingCoteiner/MegafaunaZone/MegafaunaAnimator" method="play" binds= ["chan_anim"]]
 [connection signal="pressed" from="Map_Scroll/CenterAnchor/Piso1/ExpandingCoteiner/MegafaunaZone/Button" to="Map_Scroll/CenterAnchor/Piso1/ExpandingCoteiner/MegafaunaZone/Button" method="set_visible" binds= [false]]
+[connection signal="pressed" from="Map_Scroll/CenterAnchor/Piso1/ExpandingCoteiner/MegafaunaZone/Button" to="Map_Scroll/Music/MusicController" method="PauseSound" binds= [true]]
 [connection signal="ButtonPress" from="Map_Scroll/PanelIntro1/Panel(1) Btn(rigth)" to="Map_Scroll/PanelIntro2" method="EnterPanel"]
 [connection signal="ButtonPress" from="Map_Scroll/PanelIntro1/Panel(1) Btn(rigth)" to="Map_Scroll/CenterAnchor/FadeAnimation" method="play" binds= ["2doFade"]]
 [connection signal="ButtonPress" from="Map_Scroll/PanelIntro2/Panel(1) Btn(rigth)" to="Map_Scroll/PanelIntro3" method="EnterPanel"]
@@ -2774,6 +2938,7 @@ AudioBuses = Array[String](["VolumenIntroScroll", "swipeIslas", "chan", "tocarNa
 [connection signal="ButtonPress" from="Map_Scroll/PanelIntro4/Panel(1) Btn(rigth)" to="Map_Scroll/GeneralSounds" method="PlayEvent" binds= ["slice"]]
 [connection signal="ButtonPress" from="Map_Scroll/PanelIntro4/Panel(1) Btn(rigth)2" to="Naumi_Intro/Control/LabelNaumi/AnimationPlayer" method="PlayAnim" binds= ["enter"]]
 [connection signal="ButtonPress" from="Map_Scroll/PanelIntro4/Panel(1) Btn(rigth)2" to="Map_Scroll/CenterAnchor" method="set_visible" binds= [false]]
+[connection signal="ButtonPress" from="Map_Scroll/PanelIntro4/Panel(1) Btn(rigth)2" to="Map_Scroll/Music/MusicAnim" method="play" binds= ["back_Music"]]
 [connection signal="ButtonPress" from="Map_Scroll/PanelSuerte/Panel(1) Btn(rigth)" to="Map_Scroll/ButtonChangeScene" method="_on_pressed"]
 [connection signal="pressed" from="Map_Scroll/ButtonChangeScene" to="Naumi_Intro/SaveFirstPlay" method="FirstPlay"]
 

@@ -89,6 +89,9 @@ class_name VolumeSettings
 	"incorrecto2":0,
 	"zoomOutOutro":-10,
 	"VolumenIntroScroll": 0,
+	"musicLoop":-10,
+	"musicIntro":-10,
+	"entraTitulo":0,
 	"islaAcerca":6,
 	"swipeIslas": 0,
 	"chan": -8,
@@ -155,5 +158,10 @@ class_name VolumeSettings
 	"golpeNaumi2":0,
 	"rompeNaumi2":0,
 	"golpeNaumi3":0,
-	"rompeNaumi3":0
+	"rompeNaumi3":0,
+	"aparicionBubble":2,
+	"TypingBubble":2,
+	"swipeRapido":0,
+	"swipeLento":0,
+	"unlockIslands":0
 	}

@@ -3,6 +3,7 @@ extends VBoxContainer
 var screenSize
 var childNum
 signal ScrollEnds
+signal PreScrollEnds
 var minigamesResource : MiniGameResource
 
 func _ready():
@@ -21,6 +22,7 @@ func StartScroll():
 	var tween : Tween = get_tree().create_tween()
 	tween.tween_property(self,"position",PositionToTween, secondOnOneScreen * childNum)
 	await tween.finished
+	PreScrollEnds.emit()
 	await  get_tree().create_timer(2).timeout
 	minigamesResource = ResourceLoader.load("user://MiniGameResource.tres")
 	minigamesResource.StateMinigames["PassCredits"] = true
