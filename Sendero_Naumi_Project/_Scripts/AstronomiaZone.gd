@@ -3,6 +3,13 @@ class_name AstronomiaZone
 @export var Minigames := []
 @export var ButtonBack : SubViewportContainer
 
+func _ready():
+	CheckAllTrue(Minigames)
+	
+	for m in Minigames:
+		get_node(m).EnterInLevel.connect(DisapearButton)
+		get_node(m).CompleteLevelAnim.connect(BlockScreen)
+
 func Enter():
 	get_parent().get_node("ButtonBack").EnterAnim()
 	#guarda cuál fue la última zona clikeada para que sea esta la que aparezca cuando se vuelva de algún minijuego
@@ -15,8 +22,14 @@ func Exit():
 	get_node("ZoomingZone").visible = false
 	backZone.emit()
 
-func _ready():
-	CheckAllTrue(Minigames)
+
+func DisapearButton(btn):
+	get_parent().get_node("ButtonBack").ExitAnim(true)
+	for m in Minigames:
+		var M = get_node(m)
+		if btn != M:
+			var tween = get_tree().create_tween()
+			tween.tween_property(M,"modulate",Color.TRANSPARENT,0.01)
 
 #Setea qué botones de minijuegos deben aparecer dependiendo de la zona
 func ShowMiniGamesButtons():
@@ -28,3 +41,14 @@ func ShowMiniGamesButtons():
 func ZoomingZone():
 	ChangeButtonBackVisibility(true, ButtonBack)
 	get_node("ZoomingZone").visible = true
+
+func BlockScreen():
+	$BlockScreen.visible = true
+	for m in Minigames:
+		var M = get_node(m)
+		M.stopAnim()
+	await get_tree().create_timer(2).timeout
+	$BlockScreen.visible = false
+	for m in Minigames:
+		var M = get_node(m)
+		M.resumeAnim()

@@ -18,6 +18,7 @@ var RigthRock
 var instance = preload("res://Scenes/Zona_Geología/piedra_luchador.tscn")
 var playerWinner 
 signal PlayerLost
+signal fight
 
 func _ready():
 	get_parent().InstanceTrue.connect(SpawnFighters.bind(true))
@@ -32,6 +33,7 @@ func SpawnFighters(playEnterAnim):
 	LeftRock.position.x = 0
 	LeftRock.init(LeftTexture,-1,LeftBtn.get_child(1),isLeftWinner,RigthRock,playEnterAnim)
 	LeftBtn.get_child(0).get_child(0).text = LeftName
+	await  get_tree().create_timer(1.1).timeout
 	add_child(RigthRock)
 	RigthRock.position.x = 0
 	RigthRock.init(RigthTexture,1,RigthBtn.get_child(1),!isLeftWinner,LeftRock,playEnterAnim,PiedraScale,PiedraOffset)
@@ -41,22 +43,32 @@ func PassInstance():
 	if !playerWinner:
 		PlayerVariables.EmitActivePause()
 		RetryPanel.EnterPanel()
+		SoundManager.play("level", "ups")
 		return
+	
+	stateMachine.Trigger_On_Child_Transition("Moraleja")
+	await get_tree().create_timer(0.6).timeout
 	LeftRock.queue_free()
 	RigthRock.queue_free()
-	stateMachine.Trigger_On_Child_Transition("Moraleja")
+	SoundManager.play("level", "correct")
 
 func Figth(btnLeftPressed):
+	if LeftRock == null: return
 	PlayerVariables.EmitInactivePause()
+	SoundManager.play("level","eleccion")
 	if btnLeftPressed == isLeftWinner: playerWinner = true
 	else: playerWinner = false
 	Overlay1.Anim()
 	Overlay2.Anim()
 	AnimatorUI.play_backwards("EnterAnim")
+	await get_tree().create_timer(4.1).timeout
+	SoundManager.play("level","explosion")
 	
 
 func RetryLevel():
 	if LeftRock == null : return
+	stateMachine.Trigger_On_Child_Transition("Juego", true)
+	await get_tree().create_timer(0.4).timeout
 	LeftRock.queue_free()
 	RigthRock.queue_free()
-	stateMachine.Trigger_On_Child_Transition("Juego", true)
+	

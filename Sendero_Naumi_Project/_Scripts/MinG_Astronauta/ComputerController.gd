@@ -20,10 +20,11 @@ func Setface(anim):
 	await face.animation_finished
 	face.play(anim)
 	if anim == "talk":
+		#$SoundEmitter.PlayEvent("talk")
 		if auxTimer != null:
-			auxTimer.set_time_left(6)
+			auxTimer.set_time_left(1.6)
 		else:
-			auxTimer = get_tree().create_timer(6)
+			auxTimer = get_tree().create_timer(1.6)
 		await auxTimer.timeout
 		face.play("idle")
 
@@ -35,9 +36,12 @@ func IdleAnim():
 	face.play("idle")
 
 func SetTalkInfinity():
-	face.play("idle")
-	await face.animation_finished
+	#face.play("idle")
+	#await face.animation_finished
 	face.play("talk")
+	#SoundManager.play("CHIPA","talk")
 
 func PlayOnScreen():
 	anim.play("on_screen")
+
+	

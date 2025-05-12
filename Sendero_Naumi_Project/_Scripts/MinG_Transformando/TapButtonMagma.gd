@@ -17,6 +17,7 @@ var NumOfPart = 0
 var PartsOfPath := []
 var NumOfTouch = 0
 
+
 func _ready():
 	#initScale = lavaFace.get_parent().scale
 	#nextLavaFace.visible = false
@@ -36,10 +37,13 @@ func Tap():
 		ActiveDesquebrajado(NumOfTouch)
 		NumOfTouch += 1
 		HitLavaFace(0.6, "idle")
+		#var StringTap = "terremoto" + str(tapBTN)
+		SoundManager.play("earthquakes", "terremotoCorto")
 		return
 	NumOfTap = 3
 	disabled = true
 	timer.start()
+	SoundManager.play("earthquakes", "explosion")
 	HitLavaFace(1.5, "out")
 	$Bloqueo.visible = false
 	$patch.visible = false
@@ -66,6 +70,8 @@ func ActiveDesquebrajado(numTouch):
 func EmitEarthquake():
 	lavaFace.get_node("AnimationPlayer").play("lava_face_anim")
 	Earthquake.emit()
+	
+	
 
 func ChangeLavaFace():
 	nextLavaFace.visible = true

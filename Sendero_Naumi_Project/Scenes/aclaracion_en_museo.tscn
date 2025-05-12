@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://n1l6rp24qq43"]
+[gd_scene load_steps=5 format=3 uid="uid://n1l6rp24qq43"]
 
 [ext_resource type="Script" path="res://_Scripts/Permissions.gd" id="1_1ifmf"]
 [ext_resource type="PackedScene" uid="uid://biluutecl1cej" path="res://Scenes/Experiments/skip_sceen.tscn" id="1_kvjrp"]
+[ext_resource type="Texture2D" uid="uid://e6ly8r5exeuq" path="res://Sprites/UI/Mute1.png" id="3_7v1u5"]
+[ext_resource type="Theme" uid="uid://dhu6swisjlh4w" path="res://Resources/UI_Resources/BlueBubblePanel.tres" id="4_r2cqj"]
 
 [node name="Aclaracion_En_Museo" type="Control"]
 layout_mode = 3
@@ -21,32 +23,44 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Label" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 0.438
-anchor_right = 0.5
-anchor_bottom = 0.438
-offset_left = -315.0
-offset_top = -173.64
-offset_right = 315.0
-offset_bottom = 174.36
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 25
-text = "Este juego fué diseñado para
-el Museo Dr.  Arturo Umberto Illia.
-
-Por respeto al paseo de todos sus visitantes:
-el juego no posee sonido.
-
-DISFRUTA DE TU VISITA!"
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 3
-
 [node name="SkipSceen" parent="." instance=ExtResource("1_kvjrp")]
 wait_time = 7.0
 autostart = true
 NextScene = "mapa_fall_intro"
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 1
+anchor_left = 0.5
+anchor_top = 0.44
+anchor_right = 0.5
+anchor_bottom = 0.44
+offset_top = -155.2
+offset_bottom = -155.2
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SoundIcon" type="Sprite2D" parent="Control"]
+position = Vector2(0, -81)
+texture = ExtResource("3_7v1u5")
+
+[node name="Label" type="RichTextLabel" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -315.0
+offset_top = 67.0
+offset_right = 315.0
+offset_bottom = 292.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_r2cqj")
+bbcode_enabled = true
+text = "[center]SI TE ENCUENTRAS EN
+[color=#8e3f2b]MUSEO[/color] [color=#f79433]DR.[/color] [color=#c4122f]ARTURO[/color] [color=#0061a4]UMBERTO[/color] [color=#aed477]ILLIA:[/color]
+
+[color=#dab21e]NO PONGAS EL SONIDO MUY FUERTE.[/color]
+[color=#fed0f4]¡RESPETEMOS EL PASEO DE TODOS![/color][b]
+"

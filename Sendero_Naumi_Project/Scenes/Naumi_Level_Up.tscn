@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://64xstt2k74wh"]
+[gd_scene load_steps=5 format=3 uid="uid://64xstt2k74wh"]
 
 [ext_resource type="Texture2D" uid="uid://hf5y4ic16cqj" path="res://Sprites/Intro/intro - background.jpg" id="1_xkuy1"]
 [ext_resource type="Texture2D" uid="uid://jd6systmhxf1" path="res://Sprites/Intro/intro - suelo.png" id="2_vkn0r"]
 [ext_resource type="PackedScene" uid="uid://b77gk1g1ulal5" path="res://Scenes/UI_Scenes/naumi_controller.tscn" id="3_s5cdb"]
+[ext_resource type="PackedScene" uid="uid://c8dodmo3saxdr" path="res://Scenes/Experiments/sound_debug.tscn" id="4_uend7"]
 
 [node name="Naumi_Level_Up" type="Control"]
 layout_mode = 3
@@ -73,3 +74,6 @@ color = Color(0.230469, 0.359375, 0.25, 1)
 [node name="NaumiController" parent="Control" instance=ExtResource("3_s5cdb")]
 position = Vector2(-3.00006, 172)
 isEvolving = true
+
+[node name="Sound Debug" parent="." instance=ExtResource("4_uend7")]
+AudioBuses = Array[String](["naumiTap", "naumiZZZ", "golpeNaumi1", "golpe2Naumi1", "rompeNaumi1", "golpeNaumi2", "rompeNaumi2", "golpeNaumi3", "rompeNaumi3"])

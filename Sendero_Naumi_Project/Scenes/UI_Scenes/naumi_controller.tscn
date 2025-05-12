@@ -1,4 +1,4 @@
-[gd_scene load_steps=75 format=3 uid="uid://b77gk1g1ulal5"]
+[gd_scene load_steps=107 format=3 uid="uid://b77gk1g1ulal5"]
 
 [ext_resource type="Script" path="res://_Scripts/Naumi_Controller.gd" id="1_mwu8k"]
 [ext_resource type="Texture2D" uid="uid://cpm5a413kke7u" path="res://Sprites/Naumi/N2 - idle.png" id="2_3ucl7"]
@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://djhg7jvxtexyl" path="res://Scenes/UI_Scenes/btn_Change_Scene.tscn" id="4_sgwwh"]
 [ext_resource type="Script" path="res://_Scripts/PlayAnimation.gd" id="4_x4acu"]
 [ext_resource type="Texture2D" uid="uid://dnpt3mo8vtigw" path="res://Sprites/Naumi/ZZZ - idle.png" id="5_1noc2"]
-[ext_resource type="SpriteFrames" uid="uid://vahks4sl257e" path="res://Resources/NaumiSpriteFrames/N0.tres" id="5_mnr06"]
+[ext_resource type="SpriteFrames" uid="uid://vahks4sl257e" path="res://Resources/NaumiSpriteFrames/N0.tres" id="6_jo345"]
 [ext_resource type="Texture2D" uid="uid://dowufrhlgpfe" path="res://Sprites/UI/Boton_Volver.png" id="6_obt1x"]
 [ext_resource type="PackedScene" uid="uid://bac1ysj2c0bok" path="res://Scenes/Experiments/hand_ui.tscn" id="7_r1x77"]
 [ext_resource type="Texture2D" uid="uid://gc6xbaet3xpu" path="res://Sprites/Naumi/debris N0.png" id="9_3q1n3"]
@@ -16,6 +16,21 @@
 [ext_resource type="Texture2D" uid="uid://bhfi82lo718ud" path="res://Sprites/Naumi/debris N2.png" id="11_3d4e8"]
 [ext_resource type="PackedScene" uid="uid://nmuyip31gkq5" path="res://Scenes/UI_Scenes/generic_button.tscn" id="11_j8x1v"]
 [ext_resource type="Texture2D" uid="uid://kb7ixs5ala8" path="res://Sprites/UI/arrowIcon - UI.png" id="12_ojujq"]
+[ext_resource type="Script" path="res://_Scripts/SoundEventTrigger.gd" id="17_s846q"]
+[ext_resource type="Script" path="res://addons/resonate/sound_manager/sound_bank.gd" id="18_51gl5"]
+[ext_resource type="Script" path="res://addons/resonate/sound_manager/sound_event_resource.gd" id="19_a0ibf"]
+[ext_resource type="AudioStream" uid="uid://cdrg0wy6og1eg" path="res://Sounds/Intro/Mapa de Intro - Toco Naumi.ogg" id="20_yyqnf"]
+[ext_resource type="AudioStream" uid="uid://dqger4rv1d3kd" path="res://Sounds/Naumi 1/Naumi - zzz 1.ogg" id="21_3v5jr"]
+[ext_resource type="AudioStream" uid="uid://bix1r24kwhg2e" path="res://Sounds/Naumi 1/Naumi 1 - Pidiendo Salir 1 golpe.ogg" id="21_ckq7s"]
+[ext_resource type="AudioStream" uid="uid://6wmywambfehx" path="res://Sounds/Naumi 1/Naumi 1 - Pidiendo Salir 3 Golpes.ogg" id="22_36icy"]
+[ext_resource type="AudioStream" uid="uid://beeskghvn8w42" path="res://Sounds/Naumi 1/Naumi - zzz 2.ogg" id="22_e6r1o"]
+[ext_resource type="AudioStream" uid="uid://byucp1aej04w5" path="res://Sounds/Naumi 1/Naumi - zzz 3.ogg" id="23_54a2v"]
+[ext_resource type="AudioStream" uid="uid://j3uy21oyry8c" path="res://Sounds/Naumi 1/Naumi 1 - Rompe.ogg" id="23_meaiv"]
+[ext_resource type="AudioStream" uid="uid://btffonmfdihmr" path="res://Sounds/Naumi 2/Naumi 2 - Rompe hue.ogg" id="24_gls6q"]
+[ext_resource type="AudioStream" uid="uid://cdiks73rwf3gf" path="res://Sounds/Naumi 1/Naumi - zzz 4.ogg" id="24_wnk2n"]
+[ext_resource type="AudioStream" uid="uid://by0t4g873qyw5" path="res://Sounds/Naumi 2/Naumi 2 - Golpe.ogg" id="25_l3gt2"]
+[ext_resource type="AudioStream" uid="uid://cbmcenitk47b4" path="res://Sounds/Naumi 3/Naumi 3 - Del Hue.ogg" id="26_iyidq"]
+[ext_resource type="AudioStream" uid="uid://cexp54ireced6" path="res://Sounds/Naumi 3/Naumi 3 - Golpe.ogg" id="27_5nlxl"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yuks3"]
 atlas = ExtResource("3_kjpwh")
@@ -623,6 +638,221 @@ _data = {
 "tap_naumi": SubResource("Animation_pe6oj")
 }
 
+[sub_resource type="Resource" id="Resource_6hwmy"]
+script = ExtResource("19_a0ibf")
+name = "tap"
+bus = "naumiTap"
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([ExtResource("20_yyqnf")])
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_jw5p1"]
+streams_count = 4
+playback_mode = 2
+random_pitch = 1.0
+random_volume_offset_db = 0.0
+stream_0/stream = ExtResource("21_3v5jr")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("22_e6r1o")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("23_54a2v")
+stream_2/weight = 1.0
+stream_3/stream = ExtResource("24_wnk2n")
+stream_3/weight = 1.0
+
+[sub_resource type="Resource" id="Resource_jlh0w"]
+script = ExtResource("19_a0ibf")
+name = "zzz"
+bus = "naumiZZZ"
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([SubResource("AudioStreamRandomizer_jw5p1")])
+
+[sub_resource type="Resource" id="Resource_rvfp8"]
+script = ExtResource("19_a0ibf")
+name = "golpe1"
+bus = "golpeNaumi1"
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([ExtResource("21_ckq7s")])
+
+[sub_resource type="Resource" id="Resource_0crou"]
+script = ExtResource("19_a0ibf")
+name = "golpe2"
+bus = "golpe2Naumi1"
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([ExtResource("22_36icy")])
+
+[sub_resource type="Resource" id="Resource_ft1xy"]
+script = ExtResource("19_a0ibf")
+name = "rompe"
+bus = "rompeNaumi1"
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([ExtResource("23_meaiv")])
+
+[sub_resource type="Animation" id="Animation_oau18"]
+resource_name = "Naumi0"
+step = 0.166667
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("NaumiSounds0")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.333333),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["golpe1", 0.0, true],
+"method": &"PlayEvent"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_xghv8"]
+resource_name = "Naumi0.1"
+step = 0.166667
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("NaumiSounds0")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.5001),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["golpe2", 0.0, true],
+"method": &"PlayEvent"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_63d63"]
+resource_name = "Naumi1"
+step = 0.166667
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("NaumiSounds0")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.5001),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["golpe1", 0.0, true],
+"method": &"PlayEvent"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_dwrbu"]
+resource_name = "Naumi1.1"
+step = 0.166667
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("NaumiSounds0")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.5001),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["golpe2", 0.0, true],
+"method": &"PlayEvent"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_1fjyu"]
+resource_name = "Naumi1"
+length = 2.33335
+step = 0.166667
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("NaumiSounds2")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.833333),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["golpe", 0.0, true],
+"method": &"PlayEvent"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_137gm"]
+resource_name = "Naumi3"
+length = 2.66668
+step = 0.166667
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("NaumiSounds3")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["golpe", 0.0, true],
+"method": &"PlayEvent"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_upixu"]
+_data = {
+"Naumi0": SubResource("Animation_oau18"),
+"Naumi0.1": SubResource("Animation_xghv8"),
+"Naumi1": SubResource("Animation_63d63"),
+"Naumi1.1": SubResource("Animation_dwrbu"),
+"Naumi2": SubResource("Animation_1fjyu"),
+"Naumi3": SubResource("Animation_137gm")
+}
+
+[sub_resource type="Resource" id="Resource_l328f"]
+script = ExtResource("19_a0ibf")
+name = "rompe"
+bus = "rompeNaumi2"
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([ExtResource("24_gls6q")])
+
+[sub_resource type="Resource" id="Resource_gc06g"]
+script = ExtResource("19_a0ibf")
+name = "golpe"
+bus = "golpeNaumi2"
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([ExtResource("25_l3gt2")])
+
+[sub_resource type="Resource" id="Resource_7tgwm"]
+script = ExtResource("19_a0ibf")
+name = "rompe"
+bus = "rompeNaumi3"
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([ExtResource("26_iyidq")])
+
+[sub_resource type="Resource" id="Resource_yse7t"]
+script = ExtResource("19_a0ibf")
+name = "golpe"
+bus = "golpeNaumi3"
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([ExtResource("27_5nlxl")])
+
 [node name="NaumiController" type="Node2D"]
 script = ExtResource("1_mwu8k")
 
@@ -632,14 +862,13 @@ script = ExtResource("1_mwu8k")
 position = Vector2(0, -287)
 
 [node name="eye" type="AnimatedSprite2D" parent="pivot/Parts"]
-position = Vector2(2, -4.8)
 sprite_frames = SubResource("SpriteFrames_undpa")
 animation = &"static"
 
 [node name="ear" type="AnimatedSprite2D" parent="pivot/Parts"]
 visible = false
 position = Vector2(47, -97)
-rotation = 0.02618
+rotation = -0.0320571
 sprite_frames = SubResource("SpriteFrames_4keiw")
 animation = &"tap"
 autoplay = "static"
@@ -648,7 +877,7 @@ offset = Vector2(-47.155, 96.75)
 [node name="wing" type="AnimatedSprite2D" parent="pivot/Parts"]
 visible = false
 position = Vector2(-124, 46)
-rotation = 0.0338799
+rotation = -0.0523599
 sprite_frames = SubResource("SpriteFrames_hyunu")
 animation = &"tap"
 autoplay = "static"
@@ -669,8 +898,8 @@ libraries = {
 [node name="naumiAnim" type="AnimatedSprite2D" parent="pivot"]
 position = Vector2(0, -287)
 scale = Vector2(0.972, 0.972)
-sprite_frames = ExtResource("5_mnr06")
-animation = &"tapped"
+sprite_frames = ExtResource("6_jo345")
+animation = &"call.1"
 autoplay = "sleeping"
 
 [node name="Button" type="Button" parent="pivot"]
@@ -774,12 +1003,61 @@ position = Vector2(0, -287)
 scale = Vector2(0.972, 0.972)
 texture = ExtResource("11_3d4e8")
 
+[node name="CallTimer" type="Timer" parent="."]
+wait_time = 3.0
+
 [node name="Timer" type="Timer" parent="."]
 wait_time = 6.0
 one_shot = true
 autostart = true
 
+[node name="GeneralNaumiSounds" type="Node" parent="."]
+script = ExtResource("17_s846q")
+
+[node name="SoundBank" type="Node" parent="GeneralNaumiSounds"]
+script = ExtResource("18_51gl5")
+label = "naumi"
+events = Array[ExtResource("19_a0ibf")]([SubResource("Resource_6hwmy"), SubResource("Resource_jlh0w")])
+
+[node name="NaumiSounds0" type="Node" parent="."]
+script = ExtResource("17_s846q")
+
+[node name="SoundBank" type="Node" parent="NaumiSounds0"]
+script = ExtResource("18_51gl5")
+label = "Naumi0"
+events = Array[ExtResource("19_a0ibf")]([SubResource("Resource_rvfp8"), SubResource("Resource_0crou"), SubResource("Resource_ft1xy")])
+
+[node name="NaumiSounds1" type="Node" parent="."]
+script = ExtResource("17_s846q")
+
+[node name="SoundBank" type="Node" parent="NaumiSounds1"]
+script = ExtResource("18_51gl5")
+label = "Naumi1"
+events = Array[ExtResource("19_a0ibf")]([SubResource("Resource_rvfp8"), SubResource("Resource_0crou"), SubResource("Resource_ft1xy")])
+
+[node name="soundsCallAnimation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_upixu")
+}
+
+[node name="NaumiSounds2" type="Node" parent="."]
+script = ExtResource("17_s846q")
+
+[node name="SoundBank" type="Node" parent="NaumiSounds2"]
+script = ExtResource("18_51gl5")
+label = "Naumi2"
+events = Array[ExtResource("19_a0ibf")]([SubResource("Resource_l328f"), SubResource("Resource_gc06g")])
+
+[node name="NaumiSounds3" type="Node" parent="."]
+script = ExtResource("17_s846q")
+
+[node name="SoundBank" type="Node" parent="NaumiSounds3"]
+script = ExtResource("18_51gl5")
+label = "Naumi3"
+events = Array[ExtResource("19_a0ibf")]([SubResource("Resource_7tgwm"), SubResource("Resource_yse7t")])
+
 [connection signal="pressed" from="pivot/Button" to="." method="ButtonPressed"]
+[connection signal="pressed" from="pivot/Button" to="." method="ButtonPressedOnce"]
 [connection signal="pressed" from="pivot/CanvasLayer/ButtonChangeScene" to="pivot/CanvasLayer/Button" method="_on_pressed"]
 
 [editable path="pivot/CanvasLayer/ButtonChangeScene"]

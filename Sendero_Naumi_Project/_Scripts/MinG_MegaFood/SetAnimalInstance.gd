@@ -73,7 +73,7 @@ A LOS MEGATERIOS
 NOS ENCANTAN LOS VEGETALES 
 Y LA CARROÑA 
 (LAS SOBRAS DE OTROS ANIMALES)
-¿CÓMO SABÍAS?
+CÓMO SABÍAS????
 
 PD: 
 	LAS GARRAS SOLO LAS USAMOS
@@ -112,12 +112,14 @@ func SetResultEvent():
 	papercontroller.get_node("Button").button_down.connect(EndResultEvent)
 	var  PaperAnim = $PaperController/AnimationPlayer
 	PaperAnim.play("paper")
+	SoundManager.play("level","takePaper")
 	await  get_tree().create_timer(5).timeout
 	papercontroller.get_node("Button").EnterAnim()
 	EnterResultDelay.emit()
 	
 
 func EndResultEvent():
+	SoundManager.play("level","leavePaper")
 	$PaperController/AnimationPlayer.play_backwards("paper")
 	$BlockScreen.SetVisibility(true)
 	if get_node(Instances[3]).visible:

@@ -1,0 +1,95 @@
+[gd_scene load_steps=8 format=3 uid="uid://c8dodmo3saxdr"]
+
+[ext_resource type="Script" path="res://_Scripts/sound_debug.gd" id="1_h2385"]
+[ext_resource type="Script" path="res://_Scripts/InpedirScroll.gd" id="2_auvt0"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s8kxg"]
+bg_color = Color(0.694118, 0.694118, 0.694118, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7hbwx"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 4
+border_width_right = 4
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+corner_detail = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yv0xp"]
+bg_color = Color(0.160784, 0.160784, 0.160784, 1)
+border_width_left = 45
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_15sk8"]
+bg_color = Color(0.0784314, 0.0784314, 0.0784314, 1)
+
+[sub_resource type="Theme" id="Theme_rbc6w"]
+HSlider/styles/grabber_area = SubResource("StyleBoxFlat_s8kxg")
+VScrollBar/styles/grabber = SubResource("StyleBoxFlat_7hbwx")
+VScrollBar/styles/scroll = SubResource("StyleBoxFlat_yv0xp")
+VScrollBar/styles/scroll_focus = SubResource("StyleBoxFlat_15sk8")
+
+[node name="Sound Debug" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_h2385")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -244.0
+offset_top = -496.0
+offset_right = 244.0
+offset_bottom = 496.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.415686)
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/Control/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_rbc6w")
+script = ExtResource("2_auvt0")
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control/ColorRect/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/ColorRect/ScrollContainer/MarginContainer"]
+clip_contents = true
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 27.0
+offset_top = 22.0
+offset_right = 139.0
+offset_bottom = 53.0
+text = "Sound Debug"
+
+[connection signal="pressed" from="Button" to="." method="AppearMenu"]

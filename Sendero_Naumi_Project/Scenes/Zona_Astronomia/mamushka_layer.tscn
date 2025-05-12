@@ -1,10 +1,26 @@
-[gd_scene load_steps=15 format=3 uid="uid://y2uavtfxilcv"]
+[gd_scene load_steps=46 format=3 uid="uid://y2uavtfxilcv"]
 
 [ext_resource type="Script" path="res://_Scripts/MinG_Mamushka/mamushka_layer.gd" id="1_77ket"]
 [ext_resource type="Texture2D" uid="uid://b1atlx1ra4nev" path="res://Sprites/ZonaAstronomia/manto superior traste - matryoshka.png" id="2_2qsk2"]
 [ext_resource type="Texture2D" uid="uid://bawvtie0lnxa6" path="res://Sprites/ZonaAstronomia/manto superior cadera - matryoshka.png" id="3_7hiys"]
 [ext_resource type="Texture2D" uid="uid://c0nbss33gavx8" path="res://Sprites/ZonaAstronomia/manto superior cabeza - matryoshka.png" id="4_07f1d"]
 [ext_resource type="SpriteFrames" uid="uid://du6ewcx4aeo10" path="res://Resources/mamushkasAnimatedEmotions/mamushka_Manto_Superior_anim.tres" id="5_xjvax"]
+[ext_resource type="Script" path="res://addons/resonate/sound_manager/sound_bank.gd" id="6_j4q66"]
+[ext_resource type="Script" path="res://addons/resonate/sound_manager/sound_event_resource.gd" id="7_tcba8"]
+[ext_resource type="AudioStream" uid="uid://bafnpmntgrxdc" path="res://Sounds/Mamushka/Mamushka - Naranja Abre.ogg" id="8_0spnl"]
+[ext_resource type="AudioStream" uid="uid://1roaxq2jvlll" path="res://Sounds/Mamushka/Mamushka - Naranja Cierre Correcto.ogg" id="9_im8ss"]
+[ext_resource type="AudioStream" uid="uid://b611ftcoyckvo" path="res://Sounds/Mamushka/Mamushka - Naranja Cierre Vacia.ogg" id="9_lvkom"]
+[ext_resource type="AudioStream" uid="uid://bbpbu4nj0wehs" path="res://Sounds/Mamushka/Mamushka - Verde Abre.ogg" id="10_050nv"]
+[ext_resource type="AudioStream" uid="uid://bl3u88hhgkssk" path="res://Sounds/Mamushka/Mamushka - Verde Cierre Correcto.ogg" id="11_3qkpf"]
+[ext_resource type="AudioStream" uid="uid://bwqlghrgx81qf" path="res://Sounds/Mamushka/Mamushka - Marron Abre.ogg" id="12_b32dw"]
+[ext_resource type="AudioStream" uid="uid://d1et8e4y0e460" path="res://Sounds/Mamushka/Mamushka - Verde Cierre Vacia.ogg" id="12_l07ld"]
+[ext_resource type="AudioStream" uid="uid://wqvq1u0q6im7" path="res://Sounds/Mamushka/Mamushka - Marron Cierre Correcto.ogg" id="13_ldkp6"]
+[ext_resource type="AudioStream" uid="uid://b3v7vncdjjekf" path="res://Sounds/Mamushka/Mamushka - Marron Equivocada.ogg" id="14_hk6pp"]
+[ext_resource type="AudioStream" uid="uid://c3g00mtr4aphp" path="res://Sounds/Mamushka/Mamushka - Azul Abre.ogg" id="15_8vdhd"]
+[ext_resource type="AudioStream" uid="uid://brlkv2wnmymh2" path="res://Sounds/Mamushka/Mamushka - Marron Cierre Vacia.ogg" id="16_lg8m5"]
+[ext_resource type="AudioStream" uid="uid://snjwlq86pxkp" path="res://Sounds/Mamushka/Mamushka - Azul Cierre Incorrecto.ogg" id="16_p4m13"]
+[ext_resource type="AudioStream" uid="uid://c2dyiv10vdj7x" path="res://Sounds/Mamushka/Mamushka - Azul Cierre Vacia.ogg" id="20_28mg2"]
+[ext_resource type="AudioStream" uid="uid://b415c4qll8j58" path="res://Sounds/Mamushka/Mamushka - Azul Cierre Correcto.ogg" id="21_onr8f"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8f5q3"]
 radius = 40.0
@@ -327,6 +343,141 @@ _data = {
 "spit": SubResource("Animation_h3455")
 }
 
+[sub_resource type="Resource" id="Resource_uovbr"]
+script = ExtResource("7_tcba8")
+name = "OrangeOpen"
+bus = "abrirMamushka"
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1.5)
+streams = Array[AudioStream]([ExtResource("8_0spnl")])
+
+[sub_resource type="Resource" id="Resource_avprv"]
+script = ExtResource("7_tcba8")
+name = "OrangeCloseEmpy"
+bus = "cerrarVacioMamuska"
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1.5)
+streams = Array[AudioStream]([ExtResource("9_lvkom")])
+
+[sub_resource type="Resource" id="Resource_y6vwu"]
+script = ExtResource("7_tcba8")
+name = "OrangeCloseRight"
+bus = "naranjaCorrecto"
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([ExtResource("9_im8ss")])
+
+[sub_resource type="Resource" id="Resource_35gav"]
+script = ExtResource("7_tcba8")
+name = "GreenOpen"
+bus = "abrirMamushka"
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1.5)
+streams = Array[AudioStream]([ExtResource("10_050nv")])
+
+[sub_resource type="Resource" id="Resource_7mo0j"]
+script = ExtResource("7_tcba8")
+name = "GreenCloseEmpy"
+bus = "cerrarVacioMamuska"
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1.5)
+streams = Array[AudioStream]([ExtResource("12_l07ld")])
+
+[sub_resource type="Resource" id="Resource_anij8"]
+script = ExtResource("7_tcba8")
+name = "GreenCloseRight"
+bus = "verdeCorrecto"
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([ExtResource("11_3qkpf")])
+
+[sub_resource type="Resource" id="Resource_dn2vf"]
+script = ExtResource("7_tcba8")
+name = "BrownOpen"
+bus = "abrirMamushka"
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1.5)
+streams = Array[AudioStream]([ExtResource("12_b32dw")])
+
+[sub_resource type="Resource" id="Resource_gyj2i"]
+script = ExtResource("7_tcba8")
+name = "GreenCloseWrong"
+bus = "cerrarIncorrectoMamushka"
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1.5)
+streams = Array[AudioStream]([ExtResource("16_p4m13")])
+
+[sub_resource type="Resource" id="Resource_yxmrv"]
+script = ExtResource("7_tcba8")
+name = "BrownCloseEmpy"
+bus = "cerrarVacioMamuska"
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1.5)
+streams = Array[AudioStream]([ExtResource("16_lg8m5")])
+
+[sub_resource type="Resource" id="Resource_klrch"]
+script = ExtResource("7_tcba8")
+name = "BrownCloseRight"
+bus = "marronCorrecto"
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([ExtResource("13_ldkp6")])
+
+[sub_resource type="Resource" id="Resource_lyqol"]
+script = ExtResource("7_tcba8")
+name = "BrownCloseWrong"
+bus = "cerrarIncorrectoMamushka"
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1.5)
+streams = Array[AudioStream]([ExtResource("14_hk6pp")])
+
+[sub_resource type="Resource" id="Resource_2qbbh"]
+script = ExtResource("7_tcba8")
+name = "BlueOpen"
+bus = "abrirMamushka"
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1.5)
+streams = Array[AudioStream]([ExtResource("15_8vdhd")])
+
+[sub_resource type="Resource" id="Resource_xfpg2"]
+script = ExtResource("7_tcba8")
+name = "BlueCloseEmpy"
+bus = "cerrarVacioMamuska"
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1.5)
+streams = Array[AudioStream]([ExtResource("20_28mg2")])
+
+[sub_resource type="Resource" id="Resource_qn7kl"]
+script = ExtResource("7_tcba8")
+name = "BlueCloseRight"
+bus = "azulCorrecto"
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([ExtResource("21_onr8f")])
+
+[sub_resource type="Resource" id="Resource_hsxt5"]
+script = ExtResource("7_tcba8")
+name = "BlueCloseWrong"
+bus = "cerrarIncorrectoMamushka"
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1.5)
+streams = Array[AudioStream]([ExtResource("16_p4m13")])
+
 [node name="Mamushka_Layer" type="Node2D"]
 script = ExtResource("1_77ket")
 
@@ -407,3 +558,8 @@ speed_scale = 4.0
 libraries = {
 "": SubResource("AnimationLibrary_gdt3o")
 }
+
+[node name="SoundBank" type="Node" parent="."]
+script = ExtResource("6_j4q66")
+label = "MamushkaLayer"
+events = Array[ExtResource("7_tcba8")]([SubResource("Resource_uovbr"), SubResource("Resource_avprv"), SubResource("Resource_y6vwu"), SubResource("Resource_35gav"), SubResource("Resource_7mo0j"), SubResource("Resource_anij8"), SubResource("Resource_dn2vf"), SubResource("Resource_gyj2i"), SubResource("Resource_yxmrv"), SubResource("Resource_klrch"), SubResource("Resource_lyqol"), SubResource("Resource_2qbbh"), SubResource("Resource_xfpg2"), SubResource("Resource_qn7kl"), SubResource("Resource_hsxt5")])

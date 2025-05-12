@@ -9,14 +9,16 @@ signal Crash
 		_texture = new_value
 @export var rotation_speed : float
 var isMeteorito
-
+var GrabSound = "agarrar"
 func _ready():
 	$Sprite2D.texture = _texture
 	area_entered.connect(PickObject)
 
 func PickObject(x):
 	if x.is_in_group("Player"):
-		if !isMeteorito: 
+		SoundManager.play("general",GrabSound)
+		if !isMeteorito:
+			
 			Picked.emit()
 			return
 		Crash.emit()
@@ -39,3 +41,4 @@ func _process(delta):
 
 func ConvertToMeteorito():
 	isMeteorito = true
+	GrabSound = "chocar"

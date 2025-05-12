@@ -35,20 +35,21 @@ func CompleteMision():
 	$PanelInventory/HBoxContainer.visible = false
 	PanelInventory.ChangeToNextText()
 	computer.Setface("talk")
+	
 
 
 ## llamarlo con boton 
 func MakeFade():
-	var instantiateFade = fade.instantiate()
-	get_parent().add_child(instantiateFade)
-	instantiateFade.init(fadeTexture,2,true)
-	await get_tree().create_timer(2).timeout
-	phantomCam.set_priority(0)
+#	var instantiateFade = fade.instantiate()
+#	get_parent().add_child(instantiateFade)
+#	instantiateFade.init(fadeTexture,2,true)
 	StateMachine.Trigger_On_Child_Transition("Fin")
+	await get_tree().create_timer(0.7).timeout
 	visible = false
-	var instantiateFade2 = fade.instantiate()
-	get_parent().add_child(instantiateFade2)
-	instantiateFade2.init(fadeTexture,2,false,false)
+	phantomCam.set_priority(0)
+#	var instantiateFade2 = fade.instantiate()
+#	get_parent().add_child(instantiateFade2)
+#	instantiateFade2.init(fadeTexture,2,false,false)
 	
 func MisionComplete():
 	_misionComplete = true

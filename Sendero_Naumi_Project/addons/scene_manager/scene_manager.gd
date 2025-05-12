@@ -138,6 +138,7 @@ func _refresh() -> bool:
 # checks different states of scene and make actual transitions happen
 func _change_scene(scene, add_to_back: bool) -> bool:
 	if scene is PackedScene:
+		SoundManager.remove_all_sounds()
 		get_tree().change_scene_to_packed(scene)
 		var path: String = scene.resource_path
 		var found_key: String = ""
@@ -336,6 +337,7 @@ func change_scene(scene, fade_out_options: Options, fade_in_options: Options, ge
 		_set_clickable(general_options.clickable)
 		_set_pattern(fade_out_options, general_options)
 		if _fade_out(fade_out_options.fade_speed):
+			SoundManager.play("fade", fade_out_options.fade_pattern + "Out")
 			await _animation_player.animation_finished
 			fade_out_finished.emit()
 		if _change_scene(scene, general_options.add_to_back):
@@ -346,8 +348,10 @@ func change_scene(scene, fade_out_options: Options, fade_in_options: Options, ge
 		if _timeout(general_options.timeout):
 			await get_tree().create_timer(general_options.timeout).timeout
 		_animation_player.play(NO_COLOR, -1, 1, false)
+		
 		_set_pattern(fade_in_options, general_options)
 		if _fade_in(fade_in_options.fade_speed):
+			SoundManager.play("fade", fade_out_options.fade_pattern + "In")
 			await _animation_player.animation_finished
 			fade_in_finished.emit()
 		blockInput.queue_free()

@@ -22,6 +22,7 @@ func Outsite(x):
 
 func OpenCapsula(x):
 	if !x.is_in_group("Player"): return
+	SoundManager.play("nave","open")
 	var tween = get_tree().create_tween()
 	tween.tween_property(pivot,"rotation",deg_to_rad(144),0.2).set_ease(Tween.EASE_IN_OUT)
 	$TriggerInside.queue_free()

@@ -1,6 +1,7 @@
 @tool
 extends Node2D
 @onready var initRot = rotation
+@export var Colortxt : String
 @export var ParteArriba : Texture: 
 	set(new_value):
 		ParteArriba = new_value
@@ -38,9 +39,7 @@ extends Node2D
 @export var NumOfLayer : int
 var panel = load("res://Scenes/Zona_Astronomia/panelMamushka.tscn")
 @export var color : Color
-@export var panelText : String
-@export var panelText1  : String = ""
-@export var panelText2  : String = ""
+@export_multiline var panelText : String
 @export var offsetPanel : Vector2
 var isInArea
 var MamushkaController
@@ -61,12 +60,14 @@ func MamushkaControllerEnter(x):
 	isInArea = true
 	anim.play("Open")
 	MamushkaController = x.get_parent()
+	SoundManager.play("MamushkaLayer", Colortxt + "Open")
 
 func MamushkaControllerExit(x):
 	x.mouse_realese.disconnect(MouseRealese)
 	isInArea = false
 	MamushkaController = null
 	anim.play("Close")
+	SoundManager.play("MamushkaLayer", Colortxt + "CloseEmpy")
 	await anim.animation_finished
 	if ismouse:
 		anim.play("idle")
@@ -77,8 +78,10 @@ func MouseRealese():
 func CheckRigthIsLayer(x) :
 	x.z_index = -1
 	x.OnSpot(false)
+	x.NotDropInAir()
 	if x.CheckRight() == NumOfLayer:
 		anim.play("Close")
+		SoundManager.play("MamushkaLayer", Colortxt + "CloseRight")
 		await anim.animation_finished
 		x.z_index = 0
 		AddToMamushkaController(x)
@@ -92,6 +95,7 @@ func CheckRigthIsLayer(x) :
 		x.visible = false
 		await tween.finished
 		x.get_node("DragObject").CancelDrag()
+		SoundManager.play("MamushkaLayer", Colortxt + "CloseWrong")
 		anim.play("spit")
 		x.visible = true
 		area2D.get_node("CollisionShape2D").disabled = false
@@ -153,9 +157,7 @@ func SpawnPanel():
 	newStylebox.bg_color = color
 	instancePanel.add_theme_stylebox_override("panel", newStylebox)
 	
-	instancePanel.get_node("RichTextLabel").text = panelText + "
-	" + panelText1 + "
-	"+ panelText2
+	instancePanel.get_node("RichTextLabel").text = panelText 
 
 func SetEmotion(emotion, time = 0):
 	emotions.play(emotion)

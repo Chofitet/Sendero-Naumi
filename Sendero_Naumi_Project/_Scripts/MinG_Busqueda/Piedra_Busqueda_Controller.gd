@@ -20,23 +20,31 @@ var animFlip = "Anim_rigth"
 var background
 @export var SetVisibility := []
 var animationSprite
+signal wasAnswered
+signal wasWinner
 
 func _ready():
 	$Piedra/Piedra.texture = piedraTexture
 	timerLoopLook = get_node("LoopLookAnim")
 	timerLoopLook.timeout.connect(LookAnim)
-	timerLoopLook.wait_time=6
-	timerLoopLook.start()
+	timerLoopLook.wait_time = 3.5
+	get_parent().InstanceTrue.connect(startInstance)
 	#anim.animation_started.connect()
 	piedra = get_node("Piedra/Piedra")
-	anim.play("rock_look")
 	background = get_node("BackgroundPivot/Background")
 	if $Piedra/AnimPiedra1:
 		animationSprite = $Piedra/AnimPiedra1
 		anim.animation_started.connect(PlayAnimatedSprite)
 
+func startInstance():
+	anim.play("rock_idle")
+	timerLoopLook.start()
+
 func LookAnim():
+	timerLoopLook.stop()
 	if !isnextAnim:
+		timerLoopLook.wait_time = 6
+		timerLoopLook.start()
 		anim.play("rock_look")
 	if isLose:
 		anim.play("rock_lose_3")
@@ -49,10 +57,12 @@ func vuvuzelaAnim():
 		anim.play("anim_vuvuzela_up")
 
 func JumpAnim():
+	if isWinner: wasWinner.emit()
 	anim.play("rock_jump")
 
 func SetNextAnimBool(Bool):
 	PlayerVariables.EmitInactivePause()
+	wasAnswered.emit()
 	for v in SetVisibility:
 		#get_node(v).visible = false
 		pass
@@ -60,6 +70,7 @@ func SetNextAnimBool(Bool):
 	isnextAnim = true
 	anim.stop()
 	anim.play("anim_vuvuzela_up")
+	
 
 func EndAnim():
 	if isWinner:
@@ -115,8 +126,10 @@ func PlayAnimatedSprite(x):
 	animationSprite.play(x)
 
 func ResetRock():
+	if !get_parent().visible : return
+	await get_tree().create_timer(0.5).timeout
 	timerLoopLook.timeout.connect(LookAnim)
-	timerLoopLook.wait_time=6
+	timerLoopLook.wait_time= 3.5
 	timerLoopLook.start()
 	if $Piedra/AnimPiedra1:
 		animationSprite = $Piedra/AnimPiedra1
@@ -127,5 +140,5 @@ func ResetRock():
 	isnextAnim = false
 	anim.play("RESET")
 	await  get_tree().create_timer(0.1).timeout
-	anim.play("rock_look")
+	anim.play("rock_idle")
 	

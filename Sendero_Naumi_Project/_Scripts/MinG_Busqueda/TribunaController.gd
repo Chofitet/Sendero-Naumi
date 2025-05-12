@@ -28,10 +28,12 @@ func ChangeTextureRocks():
 	for r in $BackgroundPivot/TribunaLeft.get_children():
 		if r.has_method("ChangeTexture"):
 			r.ChangeTexture(GetRocktexture())
+			r.setAnim("waiting")
 	
 	for r in $BackgroundPivot/TribunaRigth.get_children():
 		if r.has_method("ChangeTexture"):
 			r.ChangeTexture(GetRocktexture())
+			r.setAnim("waiting")
 
 func DoMask(x):
 	if x == "RESET": return
@@ -40,6 +42,10 @@ func DoMask(x):
 		isPlayerWin = true
 	else : 
 		isPlayerWin = false
+	await animMask.animation_finished
+	for r in $BackgroundPivot/TribunaLeft.get_children():
+		if r.has_method("setAnim"):
+			r.setAnim("idle")
 
 func DoMoraleja(x):
 	if x == "RESET": return
@@ -56,8 +62,9 @@ func DoMoraleja(x):
 		Moraleja3.emit()
 
 func RetryInstance():
-	Reset()
 	StateMachine.Trigger_On_Child_Transition("Juego", true)
+	await get_tree().create_timer(0.5).timeout
+	Reset()
 	
 
 func Reset():

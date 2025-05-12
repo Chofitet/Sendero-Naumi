@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://b00ok4g2p2vql"]
+[gd_scene load_steps=44 format=3 uid="uid://b00ok4g2p2vql"]
 
 [ext_resource type="Texture2D" uid="uid://hf5y4ic16cqj" path="res://Sprites/Intro/intro - background.jpg" id="1_xm8pn"]
 [ext_resource type="Texture2D" uid="uid://jd6systmhxf1" path="res://Sprites/Intro/intro - suelo.png" id="2_2edvn"]
@@ -8,14 +8,26 @@
 [ext_resource type="Texture2D" uid="uid://cjjoaemhep814" path="res://Sprites/mapa-detalle.png" id="4_q3m1c"]
 [ext_resource type="Script" path="res://_Scripts/mapArriveSpot.gd" id="4_u6txa"]
 [ext_resource type="Script" path="res://_Scripts/PlayAnimation.gd" id="5_3difv"]
+[ext_resource type="AudioStream" uid="uid://ld03uqijpb6v" path="res://Sounds/Intro/Mapa de Intro - Mapa gira a nosotros.ogg" id="7_lrji5"]
 [ext_resource type="Texture2D" uid="uid://bue1ojwaaxod4" path="res://Sprites/logoCircleColor.png" id="8_2lckt"]
+[ext_resource type="AudioStream" uid="uid://b2e77owefmr5h" path="res://Sounds/Intro/Intro - Viento aparece al mapa.ogg" id="9_e031n"]
+[ext_resource type="Material" uid="uid://cr1nivdu20csy" path="res://shaders/Laser.tres" id="9_sv66f"]
+[ext_resource type="Texture2D" uid="uid://8e4j1255vh8b" path="res://Sprites/Mapa/camino - mapa.png" id="10_6c7y3"]
+[ext_resource type="Material" uid="uid://muj2sfgakm5s" path="res://shaders/GalaxyWiggle.tres" id="11_h70y8"]
 [ext_resource type="PackedScene" uid="uid://cw3ok8v4p620b" path="res://Scenes/Experiments/squiggling_sprite.tscn" id="12_bs1t8"]
 [ext_resource type="PackedScene" uid="uid://bac1ysj2c0bok" path="res://Scenes/Experiments/hand_ui.tscn" id="12_lhlbh"]
 [ext_resource type="PackedScene" uid="uid://djhg7jvxtexyl" path="res://Scenes/UI_Scenes/btn_Change_Scene.tscn" id="12_n3dw3"]
+[ext_resource type="Texture2D" uid="uid://nuybqhitpej1" path="res://Sprites/Mapa/fondo_mapa.png" id="12_omqom"]
 [ext_resource type="Texture2D" uid="uid://chilh432yan4s" path="res://Sprites/Intro/squigglingIntro/mapaIntroSQUIG - UI.png" id="13_q1dat"]
 [ext_resource type="Script" path="res://_Scripts/SkipLogic.gd" id="14_6a3v3"]
+[ext_resource type="Script" path="res://_Scripts/SoundEventTrigger.gd" id="14_7wfau"]
 [ext_resource type="PackedScene" uid="uid://nmuyip31gkq5" path="res://Scenes/UI_Scenes/generic_button.tscn" id="15_cg38x"]
+[ext_resource type="Script" path="res://addons/resonate/sound_manager/sound_bank.gd" id="15_gq267"]
 [ext_resource type="Texture2D" uid="uid://kb7ixs5ala8" path="res://Sprites/UI/arrowIcon - UI.png" id="16_bsblw"]
+[ext_resource type="Script" path="res://addons/resonate/sound_manager/sound_event_resource.gd" id="16_ds0ye"]
+[ext_resource type="AudioStream" uid="uid://bqtn2wvbrbh0s" path="res://Sounds/Intro/Mapa de Intro - Agarro Mapa.ogg" id="18_mj880"]
+[ext_resource type="AudioStream" uid="uid://d1buhnrbpwvkd" path="res://Sounds/Intro/Intro Y Mapa - viento loop.ogg" id="19_jut3g"]
+[ext_resource type="PackedScene" uid="uid://c8dodmo3saxdr" path="res://Scenes/Experiments/sound_debug.tscn" id="26_7deic"]
 
 [sub_resource type="Animation" id="Animation_klold"]
 length = 0.001
@@ -58,7 +70,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_e8t3g"]
 resource_name = "map_enter"
-length = 2.0
+length = 2.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -109,6 +121,21 @@ tracks/3/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/4/type = "audio"
+tracks/4/imported = false
+tracks/4/enabled = false
+tracks/4/path = NodePath("AnimationPlayer/AudioStreamPlayer")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("7_lrji5")
+}],
+"times": PackedFloat32Array(0.4)
+}
+tracks/4/use_blend = true
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_smvwa"]
 _data = {
@@ -185,6 +212,59 @@ tracks/3/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ShaderPreLoad:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("TextureRect2:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "audio"
+tracks/6/imported = false
+tracks/6/enabled = false
+tracks/6/path = NodePath("AnimationPlayer/AudioStreamPlayer")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("9_e031n")
+}],
+"times": PackedFloat32Array(2.9)
+}
+tracks/6/use_blend = true
+tracks/7/type = "method"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("SoundEmitter")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["mapa", 0.0, true],
+"method": &"PlayEvent"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_7m1eg"]
 length = 0.001
@@ -224,6 +304,30 @@ tracks/2/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ShaderPreLoad:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("TextureRect2:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_edlyj"]
 _data = {
@@ -231,6 +335,24 @@ _data = {
 "Fade_out_logo": SubResource("Animation_eyv2g"),
 "RESET": SubResource("Animation_7m1eg")
 }
+
+[sub_resource type="Resource" id="Resource_o1rb5"]
+script = ExtResource("16_ds0ye")
+name = "mapa"
+bus = "mapaYviento"
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([ExtResource("9_e031n")])
+
+[sub_resource type="Resource" id="Resource_we3ln"]
+script = ExtResource("16_ds0ye")
+name = "agarroMapa"
+bus = "mapaGira"
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([ExtResource("18_mj880")])
 
 [sub_resource type="LabelSettings" id="LabelSettings_m04ay"]
 font_size = 50
@@ -354,6 +476,15 @@ _data = {
 "dot_wave": SubResource("Animation_3yrlo")
 }
 
+[sub_resource type="Resource" id="Resource_vl53s"]
+script = ExtResource("16_ds0ye")
+name = "vientoLoop"
+bus = "vientoLoop"
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([ExtResource("19_jut3g")])
+
 [node name="Mapa_Fall_Intro" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -433,6 +564,9 @@ libraries = {
 script = ExtResource("5_3difv")
 animation = "map_enter"
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="mapArriveSpot/Mapa/AnimationPlayer"]
+bus = &"mapaGira"
+
 [node name="LOGO" type="Sprite2D" parent="mapArriveSpot"]
 clip_children = 2
 position = Vector2(0, -607)
@@ -444,6 +578,42 @@ autoplay = "Fade_out_logo"
 libraries = {
 "": SubResource("AnimationLibrary_edlyj")
 }
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="mapArriveSpot/LOGO/AnimationPlayer"]
+bus = &"mapaGira"
+
+[node name="ShaderPreLoad" type="Line2D" parent="mapArriveSpot/LOGO"]
+z_index = 1
+material = ExtResource("9_sv66f")
+position = Vector2(2770.42, 4909.44)
+rotation = 0.000517607
+scale = Vector2(4.29522, 4.29522)
+points = PackedVector2Array(-301, -575, 309, -585)
+texture = ExtResource("10_6c7y3")
+texture_mode = 1
+
+[node name="TextureRect2" type="TextureRect" parent="mapArriveSpot/LOGO"]
+material = ExtResource("11_h70y8")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -790.32
+offset_top = 751.664
+offset_right = -790.32
+offset_bottom = 751.664
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("12_omqom")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="SoundEmitter" type="Node" parent="mapArriveSpot/LOGO"]
+script = ExtResource("14_7wfau")
+
+[node name="SoundBank" type="Node" parent="mapArriveSpot/LOGO/SoundEmitter"]
+script = ExtResource("15_gq267")
+label = "intro"
+events = Array[ExtResource("16_ds0ye")]([SubResource("Resource_o1rb5"), SubResource("Resource_we3ln")])
 
 [node name="Label" type="Label" parent="mapArriveSpot"]
 layout_mode = 1
@@ -505,8 +675,9 @@ layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_top = -52.0
+offset_top = -12.0
 offset_right = 40.0
+offset_bottom = 40.0
 grow_vertical = 0
 text = "."
 label_settings = SubResource("LabelSettings_qf1bv")
@@ -518,9 +689,9 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -20.0
-offset_top = -52.0
-offset_right = 20.0
+offset_top = -12.0
+offset_right = 40.0
+offset_bottom = 40.0
 grow_horizontal = 2
 grow_vertical = 0
 text = "."
@@ -534,8 +705,9 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -40.0
-offset_top = -52.0
+offset_top = -12.0
+offset_right = 40.0
+offset_bottom = 40.0
 grow_horizontal = 0
 grow_vertical = 0
 text = "."
@@ -571,6 +743,14 @@ scale = Vector2(0.753623, 0.753623)
 texture = ExtResource("13_q1dat")
 ActiveInBegining = false
 
+[node name="SoundMapLoop" type="Node" parent="mapArriveSpot"]
+script = ExtResource("14_7wfau")
+
+[node name="SoundBank" type="Node" parent="mapArriveSpot/SoundMapLoop"]
+script = ExtResource("15_gq267")
+label = "viento"
+events = Array[ExtResource("16_ds0ye")]([SubResource("Resource_vl53s")])
+
 [node name="ButtonChangeScene" parent="." instance=ExtResource("12_n3dw3")]
 visible = false
 layout_mode = 1
@@ -599,13 +779,28 @@ script = ExtResource("14_6a3v3")
 [node name="GenericButton" parent="ButtonSkip" instance=ExtResource("15_cg38x")]
 visible = false
 layout_mode = 0
-offset_left = 15.0
-offset_top = 10.0
-offset_right = 105.0
-offset_bottom = 100.0
+offset_left = 17.0
+offset_top = 11.0
+offset_right = 107.0
+offset_bottom = 101.0
 rotation = 3.14159
+noSway = true
+noSquiggling = true
 Icon = ExtResource("16_bsblw")
 
+[node name="Sound Debug" parent="." instance=ExtResource("26_7deic")]
+AudioBuses = Array[String](["mapaYviento", "mapaGira", "vientoLoop"])
+
+[node name="Button" parent="Sound Debug" index="1"]
+offset_left = 303.0
+offset_right = 415.0
+
+[connection signal="timeout" from="SkipSceen" to="mapArriveSpot/SoundMapLoop" method="StopLoopSound"]
 [connection signal="button_down" from="mapArriveSpot/Button" to="mapArriveSpot/MapAnim" method="play" binds= ["agarrado"]]
 [connection signal="button_down" from="mapArriveSpot/Button" to="mapArriveSpot/LOGO/AnimationPlayer" method="play" binds= ["DisappearPresenta"]]
+[connection signal="button_down" from="mapArriveSpot/Button" to="mapArriveSpot/LOGO/SoundEmitter" method="PlayEvent" binds= ["agarroMapa"]]
 [connection signal="pressed" from="ButtonSkip/GenericButton" to="ButtonChangeScene" method="_on_pressed"]
+[connection signal="pressedDelay" from="ButtonSkip/GenericButton" to="mapArriveSpot/LOGO/SoundEmitter" method="StopSoundsInCuttableQueue"]
+[connection signal="pressedDelay" from="ButtonSkip/GenericButton" to="mapArriveSpot/SoundMapLoop" method="StopLoopSound"]
+
+[editable path="Sound Debug"]

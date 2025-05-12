@@ -16,7 +16,7 @@ static func create(p_base) -> Variant:
 
 
 ## Configure a PooledAudioStreamPlayer*.
-static func configure(p_base, p_streams: Array, p_reserved: bool, p_bus: String, p_poly: bool, p_volume: float, p_pitch: float, p_mode: Node.ProcessMode) -> void:
+static func configure(p_base, p_streams: Array, p_reserved: bool, p_bus: String, p_poly: bool, p_volume: float, p_pitch: float, p_mode: Node.ProcessMode, to_position : float = 0) -> void:
 	p_base.streams = p_streams
 	p_base.poly = p_poly
 	p_base.bus = p_bus

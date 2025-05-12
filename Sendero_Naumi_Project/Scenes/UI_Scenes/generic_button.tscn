@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://c87cim2trecu1" path="res://Sprites/UI/SquigglingUI/botonesRedondosBSQUIG - UI.png" id="5_22fcx"]
 [ext_resource type="Script" path="res://addons/resonate/sound_manager/sound_bank.gd" id="6_npa0r"]
 [ext_resource type="Script" path="res://addons/resonate/sound_manager/sound_event_resource.gd" id="7_7yq3c"]
-[ext_resource type="AudioStream" uid="uid://bhiapiyn32b0e" path="res://Sounds/UI/UI_mixdown2.ogg" id="7_yv1pf"]
+[ext_resource type="AudioStream" uid="uid://cto8hsabquh3o" path="res://Sounds/UI/UI - POP.ogg" id="7_x86va"]
 
 [sub_resource type="Animation" id="Animation_jf27c"]
 resource_name = "EnterButton"
@@ -90,11 +90,13 @@ _data = {
 script = ExtResource("7_7yq3c")
 name = "touch"
 bus = ""
-volume = 0.0
+volume = -4.0
 pitch = 1.0
-streams = Array[AudioStream]([ExtResource("7_yv1pf")])
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([ExtResource("7_x86va")])
 
 [node name="GenericButton" type="Button"]
+process_mode = 3
 offset_left = -45.0
 offset_top = -45.0
 offset_right = 45.0
@@ -104,6 +106,7 @@ theme = ExtResource("1_6n3p0")
 script = ExtResource("2_3pdmx")
 
 [node name="TextureRect" type="TextureRect" parent="."]
+process_mode = 3
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -120,16 +123,22 @@ pivot_offset = Vector2(22, 22)
 expand_mode = 1
 
 [node name="SquigglingSprite" parent="." instance=ExtResource("4_qc20q")]
+process_mode = 3
 position = Vector2(45, 45)
 scale = Vector2(1.07843, 1.05769)
 texture = ExtResource("5_22fcx")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+process_mode = 3
 libraries = {
 "": SubResource("AnimationLibrary_fekk8")
 }
 
+[node name="centerPosition" type="Marker2D" parent="."]
+position = Vector2(45, 45)
+
 [node name="SoundBank" type="Node" parent="."]
+process_mode = 3
 script = ExtResource("6_npa0r")
 label = "UI"
 events = Array[ExtResource("7_7yq3c")]([SubResource("Resource_3w43a")])

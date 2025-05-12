@@ -34,7 +34,6 @@ var follow_target: Node
 ## When the player should sync its transform when following a target.
 var follow_type: PoolEntity.FollowType
 
-
 # ------------------------------------------------------------------------------
 # Lifecycle methods
 # ------------------------------------------------------------------------------
@@ -49,7 +48,7 @@ func _process(_p_delta) -> void:
 	PoolEntity.update_poly_playback_state(self)
 	
 
-func _physics_process(_p_delta) -> void:
+func _physics_process(delta) -> void:
 	PoolEntity.sync_physics_process(self)
 
 

@@ -4,8 +4,10 @@ var i = 0.6
 var e = 0
 var heateffect
 var initPosition
+var initrotation
 @export var overlay : ColorRect
 @export var nubeAnim : AnimationPlayer
+@export var spot : TextureRect
 var anim
 var time = 1
 signal PanelAppear
@@ -14,6 +16,7 @@ var wasTransformed
 
 func _ready():
 	initPosition = position
+	initrotation = rotation
 	heateffect = get_node("PiedraHeat1")
 	heateffect.self_modulate = Color(0.6,0.6,0.6,0)
 	anim = get_node("AnimCalor/AnimationPlayer")
@@ -51,20 +54,34 @@ func buttonpress():
 	
 	time = 0
 	overlay.visible = false
-	nubeAnim.play("RESET")
-	get_parent().get_node("metamorficaSpot").visible = true
+	
 	get_parent().get_node("ButtonsInfoController").ActiveButtons()
-	RestartAll()
-	if wasTransformed : return
+	#RestartAll()
+	if wasTransformed : 
+		nubeAnim.play("disappear")
+		RestartAll()
+		return
 	wasTransformed = true
+	
+	MoveToSpot()
 	TriggerNextTransformation.emit()
 	PlayerVariables.EmitActivePause()
+
+func MoveToSpot():
+	var tween = get_tree().create_tween()
+	tween.tween_property(self,"global_position",spot.global_position + Vector2(44,44), 0.3)
+	var tween2 = get_tree().create_tween()
+	tween2.tween_property(self,"scale",Vector2(0.15,0.15),0.3)
+	await tween.finished
+	get_parent().get_node("metamorficaSpot").visible = true
+	RestartAll()
 
 func AnimLoop():
 	anim.play("anim_calor2")
 
 func RestartAll():
 	position = initPosition
+	rotation = initrotation
 	visible = false
 	get_node("AnimationPlayer").play("RESET")
 	get_node("Anim/AnimationPlayer").play("RESET")

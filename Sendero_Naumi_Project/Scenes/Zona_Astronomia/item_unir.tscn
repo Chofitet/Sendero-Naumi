@@ -1,12 +1,61 @@
-[gd_scene load_steps=12 format=3 uid="uid://cc3lcmyec2iso"]
+[gd_scene load_steps=31 format=3 uid="uid://cc3lcmyec2iso"]
 
 [ext_resource type="Texture2D" uid="uid://c63e52omky0ra" path="res://Sprites/ZonaAstronomia/globo - donde.png" id="1_rfk3q"]
 [ext_resource type="Script" path="res://_Scripts/MiniG_DondeEstuvo/ItemUnir.gd" id="2_ndw4w"]
 [ext_resource type="Texture2D" uid="uid://chqivoetkgkoj" path="res://Sprites/UI/circulo.png" id="3_08m0k"]
-[ext_resource type="Material" uid="uid://cr1nivdu20csy" path="res://shaders/Laser.tres" id="3_52s1r"]
+[ext_resource type="Shader" path="res://shaders/Laser.gdshader" id="3_ltdcx"]
 [ext_resource type="StyleBox" uid="uid://b3tjes2hcm3wx" path="res://Resources/UI_Resources/StyleBoxTrasparent.tres" id="4_6lddk"]
+[ext_resource type="PackedScene" uid="uid://cw3ok8v4p620b" path="res://Scenes/Experiments/squiggling_sprite.tscn" id="5_2tn68"]
 [ext_resource type="StyleBox" uid="uid://5oga2arj2sv0" path="res://Resources/UI_Resources/PanelSimple.tres" id="5_gwjch"]
 [ext_resource type="LabelSettings" uid="uid://bd2jj8jlh3vp2" path="res://Themes/Geología/LabelSetting_Generic.tres" id="6_5nnsy"]
+[ext_resource type="Texture2D" uid="uid://dcsex7g5alo57" path="res://Sprites/ZonaAstronomia/SquigglingDondeEstuvo/circuloPistaSQUIG.png" id="6_6u3pw"]
+[ext_resource type="AudioStream" uid="uid://cya2lwfls3ls4" path="res://Sounds/Donde Estuvo/Donde Estuvo - Correcto.ogg" id="8_tlts4"]
+[ext_resource type="Script" path="res://_Scripts/SoundEventTrigger.gd" id="9_3nq2f"]
+[ext_resource type="Script" path="res://addons/resonate/sound_manager/sound_bank.gd" id="10_ii3y1"]
+[ext_resource type="Script" path="res://addons/resonate/sound_manager/sound_event_resource.gd" id="11_jtx1y"]
+[ext_resource type="AudioStream" uid="uid://bcnnjpspdfcls" path="res://Sounds/Donde Estuvo/Donde Estuvo - Incorrecto.ogg" id="12_fdese"]
+[ext_resource type="AudioStream" uid="uid://pb3avcbokhpm" path="res://Sounds/Donde Estuvo/Donde Estuvo - Rayoo Loop.ogg" id="13_32t8b"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_wohvs"]
+fractal_octaves = 10
+fractal_gain = 1.05
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_6a6ct"]
+seamless = true
+noise = SubResource("FastNoiseLite_wohvs")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_nnt2y"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_sd6mx"]
+seamless = true
+noise = SubResource("FastNoiseLite_nnt2y")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_y2l0o"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_xy7uj"]
+seamless = true
+noise = SubResource("FastNoiseLite_y2l0o")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_crjyh"]
+resource_local_to_scene = true
+shader = ExtResource("3_ltdcx")
+shader_parameter/scroll1 = Vector2(-1.02, 0.4)
+shader_parameter/scroll2 = Vector2(0.38, 1.4)
+shader_parameter/speed = 0.172
+shader_parameter/xStretch = -0.125
+shader_parameter/yStretch = 0.1
+shader_parameter/laserSize = 0.699
+shader_parameter/wobbliness = 0.472
+shader_parameter/color1 = Color(0.453125, 0.382813, 0.410156, 1)
+shader_parameter/color2 = Color(0.453125, 0.382813, 0.410156, 1)
+shader_parameter/colorMixFactor = 5.253
+shader_parameter/glowFactor = 1.0
+shader_parameter/minAlpha = 1.0
+shader_parameter/glowArea = 0.0
+shader_parameter/GlowColor = Color(1, 1, 1, 0.968627)
+shader_parameter/NOISE_PATTERN1 = SubResource("NoiseTexture2D_6a6ct")
+shader_parameter/NOISE_PATTERN2 = SubResource("NoiseTexture2D_sd6mx")
+shader_parameter/TRANSPARENCY_VARIATION = SubResource("NoiseTexture2D_xy7uj")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gn8hy"]
 radius = 6.08276
@@ -17,38 +66,67 @@ length = 2.3
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("LaserRay:material:shader_parameter/wobbliness")
+tracks/0/path = NodePath("LaserRay:width")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.8),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(1.1, 2.3),
+"transitions": PackedFloat32Array(2, 1),
 "update": 0,
-"values": [0.472, 0.05]
+"values": [30.0, 20.0]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("LaserRay:material:shader_parameter/colorMixFactor")
+tracks/1/path = NodePath("LaserRay:material:shader_parameter/wobbliness")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0, 1.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [5.253, 1.0]
+"values": [0.472, 0.05]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("LaserRay:width")
+tracks/2/path = NodePath("LaserRay:material:shader_parameter/colorMixFactor")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0.8, 2.3),
-"transitions": PackedFloat32Array(2, 1),
+"times": PackedFloat32Array(0, 1.8),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [40.0, 20.0]
+"values": [5.253, 1.0]
+}
+tracks/3/type = "audio"
+tracks/3/imported = false
+tracks/3/enabled = false
+tracks/3/path = NodePath("AudioStreamPlayer")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("8_tlts4")
+}],
+"times": PackedFloat32Array(0.2)
+}
+tracks/3/use_blend = true
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("unirSound")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["correcto", 0.0, false],
+"method": &"PlayEvent"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_k3jv3"]
@@ -56,45 +134,176 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("LaserRay:material:shader_parameter/wobbliness")
+tracks/0/path = NodePath("LaserRay:width")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [0.472]
+"values": [30.0]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("LaserRay:material:shader_parameter/colorMixFactor")
+tracks/1/path = NodePath("LaserRay:material:shader_parameter/wobbliness")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [5.253]
+"values": [0.472]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("LaserRay:width")
+tracks/2/path = NodePath("LaserRay:material:shader_parameter/colorMixFactor")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [40.0]
+"values": [5.253]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("LaserRay:material:shader_parameter/color1")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.453125, 0.382813, 0.410156, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("LaserRay:material:shader_parameter/color2")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.453125, 0.382813, 0.410156, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("LaserRay:material:shader_parameter/laserSize")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.699]
+}
+
+[sub_resource type="Animation" id="Animation_6der0"]
+resource_name = "laser_incorrecto"
+length = 1.1
+tracks/0/type = "audio"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AudioStreamPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("12_fdese")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/0/use_blend = true
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LaserRay:material:shader_parameter/color1")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.815686, 0.0823529, 0.121569, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("LaserRay:material:shader_parameter/color2")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.815686, 0.0823529, 0.121569, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = false
+tracks/3/path = NodePath("LaserRay:material:shader_parameter/wobbliness")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.472, 0.791]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("LaserRay:material:shader_parameter/laserSize")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [0.699, 0.386]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1jle8"]
 _data = {
 "Laser_Complete": SubResource("Animation_spwis"),
-"RESET": SubResource("Animation_k3jv3")
+"RESET": SubResource("Animation_k3jv3"),
+"laser_incorrecto": SubResource("Animation_6der0")
 }
+
+[sub_resource type="Resource" id="Resource_bibpy"]
+script = ExtResource("11_jtx1y")
+name = "correcto"
+bus = "laserCorrecto"
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([ExtResource("8_tlts4")])
+
+[sub_resource type="Resource" id="Resource_gjwyf"]
+script = ExtResource("11_jtx1y")
+name = "incorrecto"
+bus = "laserIncorrecto"
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([ExtResource("12_fdese")])
+
+[sub_resource type="Resource" id="Resource_pu1ra"]
+script = ExtResource("11_jtx1y")
+name = "laserLoop"
+bus = "laserLoop"
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([ExtResource("13_32t8b")])
 
 [node name="ItemUnir" type="Sprite2D"]
 z_index = 1
@@ -104,10 +313,10 @@ script = ExtResource("2_ndw4w")
 [node name="LaserRay" type="Line2D" parent="."]
 modulate = Color(0.9, 0.9, 0.9, 1)
 show_behind_parent = true
-material = ExtResource("3_52s1r")
+material = SubResource("ShaderMaterial_crjyh")
 position = Vector2(1, 5)
-points = PackedVector2Array(51, -2, 1, 0)
-width = 40.0
+points = PackedVector2Array(74, -2, 1, 0)
+width = 30.0
 default_color = Color(0.698039, 1, 1, 0)
 texture_mode = 1
 joint_mode = 2
@@ -119,6 +328,11 @@ self_modulate = Color(0.478431, 1, 0.470588, 1)
 show_behind_parent = true
 scale = Vector2(0.222, 0.222)
 texture = ExtResource("3_08m0k")
+
+[node name="SquigglingSprite" parent="." instance=ExtResource("5_2tn68")]
+position = Vector2(-2, 0)
+scale = Vector2(1.55405, 1.55405)
+texture = ExtResource("6_6u3pw")
 
 [node name="Area2D" type="Area2D" parent="." groups=["item"]]
 position = Vector2(12, 0)
@@ -164,6 +378,18 @@ autowrap_mode = 2
 justification_flags = 162
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+speed_scale = 2.5
 libraries = {
 "": SubResource("AnimationLibrary_1jle8")
 }
+
+[node name="unirSound" type="Node" parent="."]
+script = ExtResource("9_3nq2f")
+
+[node name="SoundBank" type="Node" parent="unirSound"]
+script = ExtResource("10_ii3y1")
+label = "unir"
+events = Array[ExtResource("11_jtx1y")]([SubResource("Resource_bibpy"), SubResource("Resource_gjwyf"), SubResource("Resource_pu1ra")])
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+bus = &"laserIncorrecto"

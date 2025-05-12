@@ -7,6 +7,7 @@ var isFinalInstance
 var SpriteFade
 var isInstancing
 var isPencil = true
+var label = "pencil"
 var topo
 signal Restart
 signal BookEvent
@@ -24,7 +25,7 @@ var megaterio = preload("res://Scenes/Zona_Megafauna/Megaterio_Draw.tscn")
 
 var DrawaScenes : Dictionary = {
 	"smilodonte": smilodonte,
-	"glyptodon" : gliptodonte,
+	"gliptodonte" : gliptodonte,
 	"macrauquenia" : macrauquenia,
 	"megaterio": megaterio
 }
@@ -54,6 +55,9 @@ func Draw():
 	$Button.visible = false
 	$pencil/SquigglingSprite.InactiveSquiggling()
 	anim.play("pencil_anim")
+	$libroSounds.PlayEvent(label + "Exit",2.5)
+	SoundManager.play("libro", label)
+	SoundManager.play("libro", label + "2")
 	if isPencil: skeleton.StartFadeBone()
 	else: skeleton.StartFadeLive()
 	await anim.animation_finished
@@ -65,6 +69,7 @@ func Draw():
 	$pencil/Sprite2D.texture = SelectTexture()
 	$pencil/SquigglingSprite.texture = SelectSquiggling()
 	anim.play("Pencil_enter")
+	$libroSounds.PlayEvent(label + "Enter",0.1)
 	$Button.visible = true
 	await anim.animation_finished
 	$pencil/SquigglingSprite.ActiveSquiggling()
@@ -79,7 +84,9 @@ func InstanceDraw(setCompleted = false):
 func SelectTexture() -> Texture:
 	if isPencil:
 		return SpritePencil
-	else: return SpriteBrush
+	else:
+		label = "brush"
+		return SpriteBrush
 
 func SelectSquiggling() -> Texture:
 	if isPencil:
@@ -97,8 +104,10 @@ func DoAnim(_topo, time = 1.5):
 	Restart.emit(false)
 	await get_tree().create_timer(time).timeout
 	anim.play("book_enter")
+	$libroSounds.PlayEvent("bookEnter",0.5)
 	await anim.animation_finished
 	anim.play("Pencil_enter")
+	$libroSounds.PlayEvent(label + "Enter",0.1)
 	await anim.animation_finished
 	InstanceDraw()
 	anim.play("pencil_idle")
@@ -111,15 +120,18 @@ func ShowCompletedAnimal(_topo):
 	BookEvent.emit(false)
 	Restart.emit(false)
 	anim.play("book_enter")
+	$libroSounds.PlayEvent("bookEnter",0.5)
 	await anim.animation_finished
 	$btnContinue.EnterAnim()
 	
 
 func restartAll():
+	label = "pencil"
 	topo.EnableDisaneable(true)
 	$btnContinue.visible = false
 	if isInstancing: InstanceTransition()
 	anim.play_backwards("book_enter")
+	$libroSounds.PlayEvent("bookExit",0.6)
 	await anim.animation_finished
 	ToRestart()
 	if !isInstancing:
@@ -129,17 +141,18 @@ func restartAll():
 
 func InstanceTransition():
 	PlayerVariables.EmitInactivePause()
-	var instance = Fade.instantiate()
-	get_parent().get_parent().add_child(instance)
-	instance.init(fadeTexture,2,true)
-	await get_tree().create_timer(2).timeout
+#	var instance = Fade.instantiate()
+#	get_parent().get_parent().add_child(instance)
+#	instance.init(fadeTexture,2,true)
+#	await get_tree().create_timer(2).timeout
 	ChangeInstanceMinigame()
+	await get_tree().create_timer(1).timeout
 	Restart.emit(true,true)
-	var instance2 = Fade.instantiate()
-	get_parent().get_parent().add_child(instance2)
-	instance2.init(fadeTexture,2,false,false)
-	queue_free()
+#	var instance2 = Fade.instantiate()
+#	get_parent().get_parent().add_child(instance2)
+#	instance2.init(fadeTexture,2,false,false)
 	PlayerVariables.EmitActivePause()
+	queue_free()
 
 func ToRestart():
 	skeleton.queue_free()

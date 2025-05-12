@@ -10,6 +10,7 @@ var gamefinished
 signal ZoomFinished
 signal ZoomOutFinished
 signal OutroAnim
+var pop = preload("res://Scenes/UI_Scenes/pop.tscn")
 
 func _ready():
 	for p in $calendarPivot/Calendar.get_children():
@@ -28,25 +29,50 @@ func SetQuestionWithInstance():
 	QButtons[InstanceController.get_num_instance()].get_node("anim").play("blink")
 
 func ZoomToPos(index = 0):
-	$Buttons.visible = false
 	if index != 0:
+		for q in $Buttons.get_children():
+			if q != QButtons[index-1]: 
+				q.visible = false
+				continue
+			q.get_node("anim").play("tap")
+		SoundManager.play("zooms","tapQuestion")
+		await get_tree().create_timer(0.5).timeout
+		$Buttons.visible = false
+		for q in $Buttons.get_children():
+			q.visible = true
 		QButtons[index-1].visible = false
 		QButtons[index].get_node("anim").play("blink")
 	FocusCircle(index)
-	await get_tree().create_timer(1).timeout
-	if index == 0 : $calendarPivot/Calendar.material.set_shader_parameter("focus_radius", 2)
+	await get_tree().create_timer(0.3).timeout
+	if index == 0 :
+		$overlay.visible = false
+		
+		$calendarPivot/Calendar.material.set_shader_parameter("focus_radius", 2)
 	Circle.visible = false
 	if index != 0 :
+		$overlay.visible = true
+		SoundManager.play("zooms","cierreCirculo")
 		$calendarPivot/Calendar.material.set_shader_parameter("focus_point", get_Circle_Offset2(index))
 		$calendarPivot/Calendar.material.set_shader_parameter("focus_radius", 0.034)
 	if index == 6: $calendarPivot/Calendar.material.set_shader_parameter("focus_radius", 0.077)
-	await get_tree().create_timer(0.3).timeout
-	if index == 0 : if gamefinished: OutroAnim.emit()
+	await get_tree().create_timer(0.25).timeout
+	if index !=0: SoundManager.play("zooms","zoomIn")
+	else:
+		if !gamefinished:SoundManager.play("zooms","zoomOut")
+		else: SoundManager.play("zooms","finalZoomOut")
+	
+	await get_tree().create_timer(0.05).timeout
+	
+	if index == 0 : if gamefinished: 
+		OutroAnim.emit()
+		
+		
 	var posToMove = Positions[index].position 
 	var tween = get_tree().create_tween()
 	tween.tween_property(CalendarPivot.get_node("Calendar"), "offset", -posToMove,1).set_ease(Tween.EASE_IN)
 	var ZoomTween = get_tree().create_tween()
 	if index != 0:
+		
 		PanelConsigna.ExitPanel()
 		if index != 6:
 			ZoomTween.tween_property(CalendarPivot.get_node("Calendar"),"scale", Vector2(12,12),1).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_EXPO)
@@ -60,6 +86,7 @@ func ZoomToPos(index = 0):
 	if index == 0 : 
 		$Buttons.visible = true
 		if gamefinished: 
+			$Buttons.visible = false
 			ZoomOutFinished.emit()
 			PlayerVariables.EmitInactivePause()
 	else: 
@@ -69,14 +96,15 @@ func ZoomToPos(index = 0):
 func FocusCircle(index):
 	var tween = get_tree().create_tween()
 	if index == 0 : 
-		tween.tween_method(TweenInsedeFocusCircle,0.012,0.3,0.95)
+		tween.tween_method(TweenInsedeFocusCircle,0.012,0.3,0.2)
+		
 	else:
 		Circle.visible = true
 		Circle.material.set_shader_parameter("focus_point", get_Circle_Offset(index))
 		if index == 6:
-			tween.tween_method(TweenFocusParameter,0.6,0.027,1).set_ease(Tween.EASE_IN)
+			tween.tween_method(TweenFocusParameter,0.6,0.027,0.2).set_ease(Tween.EASE_IN)
 		else:
-			tween.tween_method(TweenFocusParameter,0.6,0.01,1).set_ease(Tween.EASE_IN)
+			tween.tween_method(TweenFocusParameter,0.6,0.01,0.2).set_ease(Tween.EASE_IN)
 		await tween.finished
 	
 

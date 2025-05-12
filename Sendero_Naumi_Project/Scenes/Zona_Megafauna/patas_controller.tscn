@@ -1,4 +1,4 @@
-[gd_scene load_steps=104 format=3 uid="uid://dcredgeon3w2q"]
+[gd_scene load_steps=145 format=3 uid="uid://dcredgeon3w2q"]
 
 [ext_resource type="Script" path="res://_Scripts/MinG_MegaFood/PatasController.gd" id="1_g46fd"]
 [ext_resource type="Texture2D" uid="uid://gbi1vckfb2af" path="res://Sprites/ZonaMegafauna/bandeja.png" id="2_15wck"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://b4fjgta8xopxn" path="res://Sprites/ZonaMegafauna/pata smilodon.png" id="6_nqg1u"]
 [ext_resource type="PackedScene" uid="uid://cw3ok8v4p620b" path="res://Scenes/Experiments/squiggling_sprite.tscn" id="7_47rn0"]
 [ext_resource type="Texture2D" uid="uid://o00lvwkrmxos" path="res://Sprites/ZonaMegafauna/coraza glipto.png" id="7_bkdyf"]
+[ext_resource type="AudioStream" uid="uid://cvkkev4qx8sh3" path="res://Sounds/Foodtruck/FoodTruck - Bandeja LLega.ogg" id="7_y08d2"]
 [ext_resource type="Texture2D" uid="uid://cmaw828mxsv1i" path="res://Sprites/ZonaGeología/SquigglingFoodtruck/notitaPagoSQUIG - foodtruck.png" id="8_p4wob"]
 [ext_resource type="Texture2D" uid="uid://dtnlxun7i0pay" path="res://Sprites/ZonaMegafauna/pata megaterio.png" id="8_pus57"]
 [ext_resource type="Texture2D" uid="uid://cm61ouygk6w2g" path="res://Sprites/ZonaMegafauna/smilo frames2.png" id="9_npf50"]
@@ -34,12 +35,29 @@
 [ext_resource type="StyleBox" uid="uid://b3tjes2hcm3wx" path="res://Resources/UI_Resources/StyleBoxTrasparent.tres" id="32_ixble"]
 [ext_resource type="PackedScene" uid="uid://chcp24toqisaw" path="res://Scenes/Experiments/GenericPanel/GenericPanel.tscn" id="32_lcdwh"]
 [ext_resource type="Script" path="res://Scenes/Experiments/GenericPanel/TextFieldData.gd" id="33_7bjpl"]
+[ext_resource type="AudioStream" uid="uid://bxqfl8khd757t" path="res://Sounds/Foodtruck/FoodTruck - Gliptotapa Tapita.ogg" id="33_bb367"]
 [ext_resource type="Theme" uid="uid://dxbgpuuiuxxto" path="res://Resources/UI_Resources/shoutPanel.tres" id="34_rsd4j"]
 [ext_resource type="Script" path="res://Scenes/Experiments/GenericPanel/ButtonPanelData.gd" id="35_r4fek"]
 [ext_resource type="Texture2D" uid="uid://c2p5torstrtqm" path="res://Sprites/UI/checkIcon - UI.png" id="36_swmk1"]
 [ext_resource type="PackedScene" uid="uid://d1jys63xrvxpo" path="res://Scenes/Experiments/GenericPanel/IntermediateSignal.tscn" id="38_1xuog"]
 [ext_resource type="LabelSettings" uid="uid://dplv12ok5d6a5" path="res://Resources/UI_Resources/ShoutLabel.tres" id="38_mtoec"]
 [ext_resource type="Script" path="res://Scenes/Experiments/GenericPanel/IntermediateData.gd" id="40_yu7sk"]
+[ext_resource type="Script" path="res://addons/resonate/sound_manager/sound_bank.gd" id="41_ysn4k"]
+[ext_resource type="Script" path="res://addons/resonate/sound_manager/sound_event_resource.gd" id="42_lforj"]
+[ext_resource type="AudioStream" uid="uid://d0fid7tr6unly" path="res://Sounds/Foodtruck/FoodTruck - Smilo Comida.ogg" id="43_oxbml"]
+[ext_resource type="Script" path="res://_Scripts/SoundEventTrigger.gd" id="45_ct7gc"]
+[ext_resource type="AudioStream" uid="uid://rw068n82ucdt" path="res://Sounds/Foodtruck/FoodTruck - Megaterio Correcto.ogg" id="45_dfy1j"]
+[ext_resource type="AudioStream" uid="uid://bi2ibnaanmy5h" path="res://Sounds/Foodtruck/FoodTruck - Megaterio Uñas.ogg" id="47_8va3s"]
+[ext_resource type="AudioStream" uid="uid://cnuhj4m2v7up0" path="res://Sounds/Foodtruck/FoodTruck- Plato Incorrecto.ogg" id="48_p28v7"]
+[ext_resource type="AudioStream" uid="uid://hrs2y16trhhr" path="res://Sounds/Foodtruck/FoodTruck - Smilodonte Llega.ogg" id="49_6nflj"]
+[ext_resource type="AudioStream" uid="uid://cr150uo5hrpsw" path="res://Sounds/Foodtruck/FoodTruck - Agarro Propina.ogg" id="49_xggah"]
+[ext_resource type="AudioStream" uid="uid://dfupvwa4crdbh" path="res://Sounds/Foodtruck/FoodTruck - Megaterio.ogg" id="50_08egd"]
+[ext_resource type="AudioStream" uid="uid://b0aus6mqusjrc" path="res://Sounds/Foodtruck/FoodTruck - Dejan Propina.ogg" id="50_o6h40"]
+[ext_resource type="AudioStream" uid="uid://c4xbwd2nxtma3" path="res://Sounds/Foodtruck/FoodTruck - Macrauquenia.ogg" id="51_2k8tr"]
+[ext_resource type="AudioStream" uid="uid://ctg73h4axew5u" path="res://Sounds/Foodtruck/FoodTruck - Se llevan la comida.ogg" id="52_dr6eg"]
+[ext_resource type="AudioStream" uid="uid://bsk67ho1tsfg5" path="res://Sounds/Foodtruck/FoodTruck - Smilodonte Pide.ogg" id="55_gbtgj"]
+[ext_resource type="AudioStream" uid="uid://brtlrcxwv6h6r" path="res://Sounds/Foodtruck/FoodTruck - Macrauquenia Golpes.ogg" id="56_kptmw"]
+[ext_resource type="AudioStream" uid="uid://cc2rr3q8s3chx" path="res://Sounds/Foodtruck/FoodTruck - Mensaje Cierro.ogg" id="57_d3png"]
 
 [sub_resource type="Animation" id="Animation_jfp8t"]
 resource_name = "AngryAnim"
@@ -91,6 +109,51 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(5, 7), Vector2(5, 3)]
+}
+
+[sub_resource type="Animation" id="Animation_qhfem"]
+resource_name = "ExitAnim"
+length = 2.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("pivot:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1.5, 1.7, 2.3),
+"transitions": PackedFloat32Array(2, -0.5, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 100), Vector2(0, -1000)]
+}
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/path = NodePath("AudioStreamPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("52_dr6eg")
+}],
+"times": PackedFloat32Array(1.5)
+}
+tracks/1/use_blend = true
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("GeneralSounds")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["bandejaSeVa", 0.0, false],
+"method": &"PlayEvent"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_wvc11"]
@@ -279,6 +342,35 @@ tracks/4/keys = {
 "update": 1,
 "values": [null]
 }
+tracks/5/type = "audio"
+tracks/5/imported = false
+tracks/5/enabled = false
+tracks/5/path = NodePath("AudioStreamPlayer")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("48_p28v7")
+}],
+"times": PackedFloat32Array(0.4)
+}
+tracks/5/use_blend = true
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("GeneralSounds")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["incorrecto", 0.0, false],
+"method": &"PlayEvent"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_rvryq"]
 resource_name = "enterAnim"
@@ -294,6 +386,35 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, -0.5, 2),
 "update": 0,
 "values": [Vector2(0, -1000), Vector2(0, 100), Vector2(0, 0)]
+}
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/path = NodePath("AudioStreamPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("7_y08d2")
+}],
+"times": PackedFloat32Array(0.3)
+}
+tracks/1/use_blend = true
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("GeneralSounds")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["bandejaEntra", 0.0, false],
+"method": &"PlayEvent"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_rm5b2"]
@@ -337,6 +458,35 @@ tracks/2/keys = {
 "method": &"ActiveSquiggling"
 }]
 }
+tracks/3/type = "audio"
+tracks/3/imported = false
+tracks/3/enabled = false
+tracks/3/path = NodePath("AudioStreamPlayer")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("50_o6h40")
+}],
+"times": PackedFloat32Array(0.2)
+}
+tracks/3/use_blend = true
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("GeneralSounds")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["dejanPropina", 0.0, false],
+"method": &"PlayEvent"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_sy63e"]
 resource_name = "take"
@@ -366,10 +516,40 @@ tracks/1/keys = {
 "method": &"InactiveSquiggling"
 }]
 }
+tracks/2/type = "audio"
+tracks/2/imported = false
+tracks/2/enabled = false
+tracks/2/path = NodePath("AudioStreamPlayer")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("49_xggah")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/2/use_blend = true
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = false
+tracks/3/path = NodePath("GeneralSounds")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["agarroPropina", 0.0, false],
+"method": &"PlayEvent"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_tj4kr"]
 _data = {
 "AngryAnim": SubResource("Animation_jfp8t"),
+"ExitAnim": SubResource("Animation_qhfem"),
 "RESET": SubResource("Animation_wvc11"),
 "WrongAnim": SubResource("Animation_7wajt"),
 "enterAnim": SubResource("Animation_rvryq"),
@@ -519,6 +699,18 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_v7kak"]
+atlas = ExtResource("14_ecf4w")
+region = Rect2(1499, 0, 1499, 1319)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y3tgi"]
+atlas = ExtResource("14_ecf4w")
+region = Rect2(0, 0, 1499, 1319)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uc32v"]
+atlas = ExtResource("15_ybf6q")
+region = Rect2(1499, 0, 1499, 1319)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_fpmcc"]
 atlas = ExtResource("14_ecf4w")
 region = Rect2(0, 0, 1499, 1319)
@@ -546,6 +738,38 @@ region = Rect2(1499, 0, 1499, 1319)
 [sub_resource type="SpriteFrames" id="SpriteFrames_s0yl6"]
 animations = [{
 "frames": [{
+"duration": 10.0,
+"texture": SubResource("AtlasTexture_v7kak")
+}, {
+"duration": 10.0,
+"texture": SubResource("AtlasTexture_y3tgi")
+}, {
+"duration": 10.0,
+"texture": SubResource("AtlasTexture_uc32v")
+}, {
+"duration": 4.0,
+"texture": SubResource("AtlasTexture_y3tgi")
+}, {
+"duration": 9.0,
+"texture": SubResource("AtlasTexture_v7kak")
+}, {
+"duration": 10.0,
+"texture": SubResource("AtlasTexture_uc32v")
+}, {
+"duration": 20.0,
+"texture": SubResource("AtlasTexture_y3tgi")
+}, {
+"duration": 10.0,
+"texture": SubResource("AtlasTexture_v7kak")
+}, {
+"duration": 5.0,
+"texture": SubResource("AtlasTexture_y3tgi")
+}],
+"loop": false,
+"name": &"call",
+"speed": 64.0
+}, {
+"frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_fpmcc")
 }, {
@@ -571,7 +795,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_rd874")
 }],
 "loop": false,
-"name": &"call",
+"name": &"callOriginal",
 "speed": 6.0
 }, {
 "frames": [{
@@ -813,19 +1037,147 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Animation" id="Animation_86hps"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("frames2:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("frames2:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("frames3:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("frames3:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_jceq1"]
+resource_name = "tapa_tapita"
+length = 3.33334
+step = 0.015625
+tracks/0/type = "audio"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AudioStreamPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("33_bb367")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/0/use_blend = true
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("frames2:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.171875, 0.546875, 0.6875, 1.03125, 1.17188),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [1, 0, 1, 1, 1, 0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("frames2:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.328125, 0.546875, 0.6875, 0.84375, 1.04688),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, false, true, false, true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("frames3:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.328125, 0.546875, 0.6875, 0.84375, 1.04688),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true, false, true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("frames3:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.328125, 0.484375, 0.6875, 1.03125, 1.17188),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [1, 0, 1, 1, 0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tm30l"]
+_data = {
+"RESET": SubResource("Animation_86hps"),
+"tapa_tapita": SubResource("Animation_jceq1")
+}
+
 [sub_resource type="Resource" id="Resource_jebus"]
 script = ExtResource("35_r4fek")
 Place = 0
 texture = ExtResource("36_swmk1")
 label = ""
 dontPassPanel = false
+exitPanel = false
 
 [sub_resource type="Resource" id="Resource_1e5mh"]
 script = ExtResource("33_7bjpl")
-Text = "En fila por favor"
+Text = "EN FILA POR FAVOR"
+writingSpeed = 0.0
 SizePanel = Vector2(0, 0)
 Position = Vector2(0, 0)
 buttons = Array[ExtResource("35_r4fek")]([SubResource("Resource_jebus")])
+NumOfContent = 0
 
 [sub_resource type="Resource" id="Resource_a15rw"]
 script = ExtResource("35_r4fek")
@@ -833,14 +1185,17 @@ Place = 0
 texture = ExtResource("36_swmk1")
 label = ""
 dontPassPanel = false
+exitPanel = false
 
 [sub_resource type="Resource" id="Resource_spwe1"]
 script = ExtResource("33_7bjpl")
-Text = "SIGUIENTE!
-SMILODONTE!"
+Text = "          SIGUIENTE! 
+             [b]SMILIDONTE!![/b]"
+writingSpeed = 0.0
 SizePanel = Vector2(0, 0)
 Position = Vector2(0, 0)
 buttons = Array[ExtResource("35_r4fek")]([SubResource("Resource_a15rw")])
+NumOfContent = 0
 
 [sub_resource type="Resource" id="Resource_jxgso"]
 script = ExtResource("40_yu7sk")
@@ -853,14 +1208,17 @@ Place = 0
 texture = ExtResource("36_swmk1")
 label = ""
 dontPassPanel = false
+exitPanel = false
 
 [sub_resource type="Resource" id="Resource_h10mq"]
 script = ExtResource("33_7bjpl")
-Text = "SIGUIENTE! 
-GLIPTODONTE!"
+Text = "          SIGUIENTE! 
+             [b]GLIPTODONTE!![/b]"
+writingSpeed = 0.0
 SizePanel = Vector2(0, 0)
 Position = Vector2(0, 0)
 buttons = Array[ExtResource("35_r4fek")]([SubResource("Resource_mieyc")])
+NumOfContent = 0
 
 [sub_resource type="Resource" id="Resource_s0txn"]
 script = ExtResource("40_yu7sk")
@@ -873,14 +1231,17 @@ Place = 0
 texture = ExtResource("36_swmk1")
 label = ""
 dontPassPanel = false
+exitPanel = false
 
 [sub_resource type="Resource" id="Resource_6po01"]
 script = ExtResource("33_7bjpl")
-Text = "SIGUIENTE!
-MEGATERIO!"
+Text = "          SIGUIENTE! 
+             [b]MEGATERIO!![/b]"
+writingSpeed = 0.0
 SizePanel = Vector2(0, 0)
 Position = Vector2(0, 0)
 buttons = Array[ExtResource("35_r4fek")]([SubResource("Resource_schp7")])
+NumOfContent = 0
 
 [sub_resource type="Resource" id="Resource_bw25d"]
 script = ExtResource("40_yu7sk")
@@ -893,18 +1254,166 @@ Place = 0
 texture = ExtResource("36_swmk1")
 label = ""
 dontPassPanel = false
+exitPanel = false
 
 [sub_resource type="Resource" id="Resource_es3gq"]
 script = ExtResource("33_7bjpl")
-Text = "SIGUIENTE! MACRAUQUENIA!"
+Text = "          SIGUIENTE! 
+             [b]MACRAUQUENIA!![/b]"
+writingSpeed = 0.0
 SizePanel = Vector2(0, 0)
 Position = Vector2(0, 0)
 buttons = Array[ExtResource("35_r4fek")]([SubResource("Resource_ionm1")])
+NumOfContent = 0
 
 [sub_resource type="Resource" id="Resource_jly2k"]
 script = ExtResource("40_yu7sk")
 NumberOfPanel = 1
 Place = 0
+
+[sub_resource type="Resource" id="Resource_c5u25"]
+script = ExtResource("42_lforj")
+name = "Smilodon"
+bus = "smilodonteEntra"
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([ExtResource("49_6nflj")])
+
+[sub_resource type="Resource" id="Resource_6morc"]
+script = ExtResource("42_lforj")
+name = "Gliptodonte"
+bus = "gliptodonteEntra"
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([])
+
+[sub_resource type="Resource" id="Resource_fi1sb"]
+script = ExtResource("42_lforj")
+name = "Megaterio"
+bus = "megaterioEntra"
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([ExtResource("50_08egd")])
+
+[sub_resource type="Resource" id="Resource_8a46o"]
+script = ExtResource("42_lforj")
+name = "Macrauquenia"
+bus = "macrauqueniaEntra"
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([ExtResource("51_2k8tr")])
+
+[sub_resource type="Resource" id="Resource_u4css"]
+script = ExtResource("42_lforj")
+name = "Smilodon"
+bus = "smilodonteCorrecto"
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([ExtResource("43_oxbml")])
+
+[sub_resource type="Resource" id="Resource_u4bee"]
+script = ExtResource("42_lforj")
+name = "Megaterio"
+bus = "megaterioCorrecto"
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([ExtResource("45_dfy1j")])
+
+[sub_resource type="Resource" id="Resource_rxkmj"]
+script = ExtResource("42_lforj")
+name = "Smilodon"
+bus = "smilodonteReclama"
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([ExtResource("55_gbtgj")])
+
+[sub_resource type="Resource" id="Resource_na3j6"]
+script = ExtResource("42_lforj")
+name = "Gliptodon"
+bus = "gliptodonteReclamo"
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([ExtResource("33_bb367")])
+
+[sub_resource type="Resource" id="Resource_gycy8"]
+script = ExtResource("42_lforj")
+name = "Megaterio"
+bus = "megaterioReclamo"
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([ExtResource("47_8va3s")])
+
+[sub_resource type="Resource" id="Resource_o7hug"]
+script = ExtResource("42_lforj")
+name = "Macrauquenia"
+bus = "macrauqueniaReclamo"
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([ExtResource("56_kptmw")])
+
+[sub_resource type="Resource" id="Resource_4jxxp"]
+script = ExtResource("42_lforj")
+name = "incorrecto"
+bus = "platoIncorrecto"
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([ExtResource("48_p28v7")])
+
+[sub_resource type="Resource" id="Resource_tbtw6"]
+script = ExtResource("42_lforj")
+name = "agarroPropina"
+bus = "agarroPropina"
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([ExtResource("49_xggah")])
+
+[sub_resource type="Resource" id="Resource_vuied"]
+script = ExtResource("42_lforj")
+name = "dejanPropina"
+bus = "dejanPropina"
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([ExtResource("50_o6h40")])
+
+[sub_resource type="Resource" id="Resource_aohlb"]
+script = ExtResource("42_lforj")
+name = "dejoServilleta"
+bus = "servilleta"
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([ExtResource("57_d3png")])
+
+[sub_resource type="Resource" id="Resource_hhprv"]
+script = ExtResource("42_lforj")
+name = "bandejaSeVa"
+bus = "bandejaSale"
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([ExtResource("52_dr6eg")])
+
+[sub_resource type="Resource" id="Resource_u6bp7"]
+script = ExtResource("42_lforj")
+name = "bandejaEntra"
+bus = "bandejaEntra"
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([])
 
 [node name="PatasController" type="Control" node_paths=PackedStringArray("Panels")]
 layout_mode = 3
@@ -983,12 +1492,13 @@ scale = Vector2(0.998083, 1.00264)
 texture = ExtResource("11_p56iy")
 
 [node name="Gliptodon" type="AnimatedSprite2D" parent="pivot"]
-visible = false
 position = Vector2(-14, -522)
 scale = Vector2(0.629047, 0.629047)
 sprite_frames = SubResource("SpriteFrames_s0yl6")
 animation = &"call"
 autoplay = "idle"
+frame = 8
+frame_progress = 1.0
 
 [node name="pata" type="Sprite2D" parent="pivot/Gliptodon"]
 visible = false
@@ -1002,6 +1512,7 @@ scale = Vector2(0.94, 0.94)
 texture = ExtResource("7_bkdyf")
 
 [node name="Megaterio" type="AnimatedSprite2D" parent="pivot"]
+visible = false
 position = Vector2(13, -565)
 scale = Vector2(0.629047, 0.629047)
 sprite_frames = SubResource("SpriteFrames_lcn4g")
@@ -1019,7 +1530,7 @@ visible = false
 position = Vector2(13, -554)
 scale = Vector2(0.629047, 0.629047)
 sprite_frames = SubResource("SpriteFrames_1rk3b")
-animation = &"idle"
+animation = &"call"
 autoplay = "idle"
 
 [node name="pata" type="Sprite2D" parent="pivot/Macrauquenia"]
@@ -1040,11 +1551,29 @@ theme_override_styles/disabled = ExtResource("32_ixble")
 theme_override_styles/focus = ExtResource("32_ixble")
 flat = true
 
+[node name="GliptoAnimTiming" type="Node2D" parent="pivot"]
+visible = false
+
+[node name="frames2" type="Sprite2D" parent="pivot/GliptoAnimTiming"]
+texture = ExtResource("14_ecf4w")
+hframes = 2
+
+[node name="frames3" type="Sprite2D" parent="pivot/GliptoAnimTiming"]
+texture = ExtResource("15_ybf6q")
+hframes = 2
+frame = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="pivot/GliptoAnimTiming"]
+libraries = {
+"": SubResource("AnimationLibrary_tm30l")
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="pivot/GliptoAnimTiming"]
+
 [node name="Timer" type="Timer" parent="."]
 wait_time = 1.5
 
 [node name="TextoPedido" parent="." instance=ExtResource("32_lcdwh")]
-visible = false
 layout_mode = 1
 anchors_preset = 0
 anchor_left = 0.0
@@ -1057,11 +1586,24 @@ grow_horizontal = 1
 pivot_offset = Vector2(361.5, 284)
 theme = ExtResource("34_rsd4j")
 AppearInBeginning = false
+AppearSound = "talk1"
 Texts = Array[ExtResource("33_7bjpl")]([SubResource("Resource_1e5mh"), SubResource("Resource_spwe1")])
 
 [node name="label" parent="TextoPedido" index="0"]
-text = "En fila por favor"
+text = "EN FILA POR FAVOR"
 label_settings = ExtResource("38_mtoec")
+
+[node name="labelRich" parent="TextoPedido" index="1"]
+offset_left = -0.210999
+offset_top = 219.0
+offset_right = 0.210999
+offset_bottom = -219.0
+theme = null
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 45
+theme_override_font_sizes/bold_font_size = 50
+text = "          SIGUIENTE! 
+             [b]SMILIDONTE!![/b]"
 
 [node name="BtnDerAnchor" parent="TextoPedido" index="3"]
 anchor_left = 0.788
@@ -1089,12 +1631,24 @@ offset_bottom = 266.0
 pivot_offset = Vector2(350, 293)
 theme = ExtResource("34_rsd4j")
 AppearInBeginning = false
+AppearSound = "talk2"
 Texts = Array[ExtResource("33_7bjpl")]([SubResource("Resource_h10mq")])
 
 [node name="label" parent="PedidoGliptodonte" index="0"]
-text = "SIGUIENTE! 
-GLIPTODONTE!"
 label_settings = ExtResource("38_mtoec")
+
+[node name="labelRich" parent="PedidoGliptodonte" index="1"]
+offset_left = -20.9
+offset_top = 231.0
+offset_right = 52.9
+offset_bottom = -219.0
+theme = null
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_colors/font_selected_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 45
+theme_override_font_sizes/bold_font_size = 50
+text = "          SIGUIENTE! 
+             [b]GLIPTODONTE!![/b]"
 
 [node name="BtnDerAnchor" parent="PedidoGliptodonte" index="3"]
 anchor_left = 0.786
@@ -1122,12 +1676,24 @@ offset_bottom = 264.0
 pivot_offset = Vector2(347.5, 292.5)
 theme = ExtResource("34_rsd4j")
 AppearInBeginning = false
+AppearSound = "talk3"
 Texts = Array[ExtResource("33_7bjpl")]([SubResource("Resource_6po01")])
 
 [node name="label" parent="PedidoMegaterio" index="0"]
-text = "SIGUIENTE!
-MEGATERIO!"
 label_settings = ExtResource("38_mtoec")
+
+[node name="labelRich" parent="PedidoMegaterio" index="1"]
+offset_left = -0.615002
+offset_top = 231.0
+offset_right = -0.38501
+offset_bottom = -231.0
+theme = null
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_colors/font_selected_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 45
+theme_override_font_sizes/bold_font_size = 50
+text = "          SIGUIENTE! 
+             [b]MEGATERIO!![/b]"
 
 [node name="BtnDerAnchor" parent="PedidoMegaterio" index="3"]
 anchor_left = 0.793
@@ -1155,11 +1721,24 @@ offset_bottom = 263.0
 pivot_offset = Vector2(346.5, 290)
 theme = ExtResource("34_rsd4j")
 AppearInBeginning = false
+AppearSound = "talk4"
 Texts = Array[ExtResource("33_7bjpl")]([SubResource("Resource_es3gq")])
 
 [node name="label" parent="PedidoMacrauquenia" index="0"]
-text = "SIGUIENTE! MACRAUQUENIA!"
 label_settings = ExtResource("38_mtoec")
+
+[node name="labelRich" parent="PedidoMacrauquenia" index="1"]
+offset_left = -52.501
+offset_top = 224.0
+offset_right = -52.499
+offset_bottom = -224.0
+theme = null
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_colors/font_selected_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 45
+theme_override_font_sizes/bold_font_size = 50
+text = "          SIGUIENTE! 
+             [b]MACRAUQUENIA!![/b]"
 
 [node name="BtnDerAnchor" parent="PedidoMacrauquenia" index="3"]
 anchor_left = 0.788
@@ -1176,6 +1755,37 @@ visible = true
 
 [node name="Panel(1) Btn(rigth)" parent="PedidoMacrauquenia" instance=ExtResource("38_1xuog")]
 Data = SubResource("Resource_jly2k")
+
+[node name="LlegadaSounds" type="Node" parent="."]
+
+[node name="SoundBank" type="Node" parent="LlegadaSounds"]
+script = ExtResource("41_ysn4k")
+label = "llegada"
+events = Array[ExtResource("42_lforj")]([SubResource("Resource_c5u25"), SubResource("Resource_6morc"), SubResource("Resource_fi1sb"), SubResource("Resource_8a46o")])
+
+[node name="SoundsCorrecto" type="Node" parent="."]
+script = ExtResource("41_ysn4k")
+label = "correcto"
+events = Array[ExtResource("42_lforj")]([SubResource("Resource_u4css"), SubResource("Resource_u4bee")])
+
+[node name="ReclamoTriggerSound" type="Node" parent="."]
+script = ExtResource("45_ct7gc")
+
+[node name="SoundsReclamo" type="Node" parent="ReclamoTriggerSound"]
+script = ExtResource("41_ysn4k")
+label = "reclamo"
+events = Array[ExtResource("42_lforj")]([SubResource("Resource_rxkmj"), SubResource("Resource_na3j6"), SubResource("Resource_gycy8"), SubResource("Resource_o7hug")])
+
+[node name="GeneralSounds" type="Node" parent="."]
+script = ExtResource("45_ct7gc")
+
+[node name="SoundBank" type="Node" parent="GeneralSounds"]
+script = ExtResource("41_ysn4k")
+label = "generales"
+events = Array[ExtResource("42_lforj")]([SubResource("Resource_4jxxp"), SubResource("Resource_tbtw6"), SubResource("Resource_vuied"), SubResource("Resource_aohlb"), SubResource("Resource_hhprv"), SubResource("Resource_u6bp7")])
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+bus = &"estrellas"
 
 [connection signal="ButtonPress" from="TextoPedido/Panel(2) Btn(rigth)" to="." method="passNextInstance"]
 [connection signal="ButtonPress" from="PedidoGliptodonte/Panel(1) Btn(rigth)" to="." method="passNextInstance"]

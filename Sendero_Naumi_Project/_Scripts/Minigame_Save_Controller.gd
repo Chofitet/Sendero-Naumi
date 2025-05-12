@@ -21,4 +21,3 @@ func Set_Complete():
 	minigameResourseFile.Set_State_Minigame(self.name)
 	minigameResourseFile.Set_Last_Minigame(self.name)
 	save()
-	

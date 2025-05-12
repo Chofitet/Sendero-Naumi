@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://chcp24toqisaw"]
+[gd_scene load_steps=62 format=3 uid="uid://chcp24toqisaw"]
 
 [ext_resource type="Theme" uid="uid://dhu6swisjlh4w" path="res://Resources/UI_Resources/BlueBubblePanel.tres" id="1_v6n5n"]
 [ext_resource type="Script" path="res://Scenes/Experiments/GenericPanel/PanelController.gd" id="2_33xng"]
@@ -11,8 +11,24 @@
 [ext_resource type="Texture2D" uid="uid://c87cim2trecu1" path="res://Sprites/UI/SquigglingUI/botonesRedondosBSQUIG - UI.png" id="7_1swfx"]
 [ext_resource type="StyleBox" uid="uid://b3tjes2hcm3wx" path="res://Resources/UI_Resources/StyleBoxTrasparent.tres" id="10_gqd6s"]
 [ext_resource type="Script" path="res://addons/resonate/sound_manager/sound_bank.gd" id="12_1qk3k"]
+[ext_resource type="AudioStream" uid="uid://cto8hsabquh3o" path="res://Sounds/UI/UI - POP.ogg" id="13_h2o53"]
 [ext_resource type="Script" path="res://addons/resonate/sound_manager/sound_event_resource.gd" id="13_p34bg"]
-[ext_resource type="AudioStream" uid="uid://bhiapiyn32b0e" path="res://Sounds/UI/UI_mixdown2.ogg" id="13_u7usf"]
+[ext_resource type="AudioStream" uid="uid://drymu55ahayc6" path="res://Sounds/Foodtruck/FoodTruck - Habla Sig Smilo.ogg" id="14_ucyf8"]
+[ext_resource type="AudioStream" uid="uid://8tmcfck7ujhd" path="res://Sounds/UI/UI - Azul Aparece.ogg" id="15_bifn7"]
+[ext_resource type="AudioStream" uid="uid://cxosuhsatmnji" path="res://Sounds/Foodtruck/FoodTruck  - Habla Buen Trabajo.ogg" id="15_gyjum"]
+[ext_resource type="AudioStream" uid="uid://b7ko1imh4pkj7" path="res://Sounds/Foodtruck/FoodTruck - Habla En Fila.ogg" id="16_0g2sy"]
+[ext_resource type="AudioStream" uid="uid://16mfoqf1ni1e" path="res://Sounds/Fighter/Fighter - UPS.ogg" id="16_4u8vo"]
+[ext_resource type="AudioStream" uid="uid://cttb75keu0ymp" path="res://Sounds/Foodtruck/FoodTruck - Habla Sig 3.ogg" id="17_paip8"]
+[ext_resource type="AudioStream" uid="uid://b124uupcec5in" path="res://Sounds/UI/Zona Completada - Yey.ogg" id="17_vdain"]
+[ext_resource type="AudioStream" uid="uid://de3oe2x56dxv7" path="res://Sounds/Foodtruck/FoodTruck - Habla Sig Otro.ogg" id="18_3jpi3"]
+[ext_resource type="AudioStream" uid="uid://0siiwipjbp42" path="res://Sounds/Astronauta/Astronauta - CHIPA Habla 1.ogg" id="19_ala78"]
+[ext_resource type="AudioStream" uid="uid://c8lt321gvmo4c" path="res://Sounds/Astronauta/Astronauta - CHIPA Habla 2.ogg" id="20_ybu3n"]
+[ext_resource type="AudioStream" uid="uid://dx5jqftn3113h" path="res://Sounds/UI/UI - Azul Habla.ogg" id="22_yywwb"]
+[ext_resource type="AudioStream" uid="uid://cjxc7nyvv8l2s" path="res://Sounds/UI/UI - Azul Habla 3.ogg" id="23_a51j4"]
+[ext_resource type="AudioStream" uid="uid://bi0bvcy53hbia" path="res://Sounds/UI/UI - Azul Habla 2.ogg" id="24_idj5h"]
+[ext_resource type="AudioStream" uid="uid://gs0fjxj0osk3" path="res://Sounds/Vacio - Vacio.ogg" id="25_incry"]
+[ext_resource type="AudioStream" uid="uid://frrmiuklccr4" path="res://Sounds/Vacio1 - Vacio.ogg" id="28_x5nng"]
+[ext_resource type="AudioStream" uid="uid://biywwdhgqtva5" path="res://Sounds/Vacio2 - Vacio.ogg" id="29_m5gfc"]
 
 [sub_resource type="Animation" id="Animation_jxxgf"]
 length = 0.001
@@ -99,10 +115,10 @@ tracks/1/path = NodePath("label:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [true, false, false]
+"values": [false, false]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -111,10 +127,10 @@ tracks/2/path = NodePath("labelRich:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [true, false, false]
+"values": [false, false]
 }
 tracks/3/type = "method"
 tracks/3/imported = false
@@ -225,7 +241,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-45, -45)]
+"values": [Vector2(0, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -237,7 +253,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(90, 90)]
+"values": [Vector2(0, 0)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -273,7 +289,7 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(44, 44)]
+"values": [Vector2(0, 0)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -298,6 +314,18 @@ tracks/6/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(0, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("SquigglingSprite:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_phw3d"]
@@ -404,6 +432,18 @@ tracks/7/keys = {
 "update": 0,
 "values": [Vector2(0, 0), Vector2(44, 44)]
 }
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("SquigglingSprite:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_jahtv"]
 resource_name = "idle"
@@ -432,9 +472,195 @@ _data = {
 script = ExtResource("13_p34bg")
 name = "touch"
 bus = ""
+volume = -6.0
+pitch = 1.0
+RandomPitch = Vector2(0.8, 1)
+streams = Array[AudioStream]([ExtResource("13_h2o53")])
+
+[sub_resource type="Resource" id="Resource_fb1w7"]
+resource_local_to_scene = true
+script = ExtResource("13_p34bg")
+name = "panelAppear"
+bus = ""
 volume = 0.0
 pitch = 1.0
-streams = Array[AudioStream]([ExtResource("13_u7usf")])
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([ExtResource("14_ucyf8")])
+
+[sub_resource type="Resource" id="Resource_613n4"]
+script = ExtResource("13_p34bg")
+name = "basic"
+bus = "aparicionBubble"
+volume = 2.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([ExtResource("15_bifn7")])
+
+[sub_resource type="Resource" id="Resource_ud1i2"]
+script = ExtResource("13_p34bg")
+name = "ups"
+bus = "ups"
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([ExtResource("16_4u8vo")])
+
+[sub_resource type="Resource" id="Resource_7fh2y"]
+script = ExtResource("13_p34bg")
+name = "yey"
+bus = ""
+volume = -25.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([ExtResource("17_vdain")])
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_gpnkv"]
+streams_count = 3
+stream_0/stream = ExtResource("22_yywwb")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("23_a51j4")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("24_idj5h")
+stream_2/weight = 1.0
+
+[sub_resource type="Resource" id="Resource_u2amy"]
+script = ExtResource("13_p34bg")
+name = "basic"
+bus = "TypingBubble"
+volume = 2.0
+pitch = 1.0
+RandomPitch = Vector2(0.9, 1.2)
+streams = Array[AudioStream]([SubResource("AudioStreamRandomizer_gpnkv")])
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_j2ljn"]
+streams_count = 2
+playback_mode = 2
+stream_0/stream = ExtResource("15_gyjum")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("18_3jpi3")
+stream_1/weight = 1.0
+
+[sub_resource type="Resource" id="Resource_cryfx"]
+script = ExtResource("13_p34bg")
+name = "talk1"
+bus = "burbujaHabla"
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([SubResource("AudioStreamRandomizer_j2ljn")])
+
+[sub_resource type="Resource" id="Resource_4tqyh"]
+script = ExtResource("13_p34bg")
+name = "talk2"
+bus = "burbujaHabla"
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([ExtResource("16_0g2sy")])
+
+[sub_resource type="Resource" id="Resource_8p4kf"]
+script = ExtResource("13_p34bg")
+name = "talk3"
+bus = "burbujaHabla"
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([ExtResource("17_paip8")])
+
+[sub_resource type="Resource" id="Resource_nrlv5"]
+script = ExtResource("13_p34bg")
+name = "talk4"
+bus = "burbujaHabla"
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([ExtResource("18_3jpi3")])
+
+[sub_resource type="Resource" id="Resource_i1vr5"]
+script = ExtResource("13_p34bg")
+name = "talk5"
+bus = "burbujaHabla"
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([ExtResource("14_ucyf8")])
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_t6p82"]
+streams_count = 2
+stream_0/stream = ExtResource("20_ybu3n")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("19_ala78")
+stream_1/weight = 1.0
+
+[sub_resource type="Resource" id="Resource_0pxy2"]
+script = ExtResource("13_p34bg")
+name = "CHIPA"
+bus = "CHIPA"
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([SubResource("AudioStreamRandomizer_t6p82")])
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_4glbs"]
+streams_count = 1
+random_pitch = 1.0
+stream_0/stream = ExtResource("19_ala78")
+stream_0/weight = 1.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ilyys"]
+streams_count = 1
+random_pitch = 1.0
+stream_0/stream = ExtResource("20_ybu3n")
+stream_0/weight = 1.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_jdjsd"]
+streams_count = 1
+random_pitch = 1.0
+stream_0/stream = ExtResource("19_ala78")
+stream_0/weight = 1.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_wrpas"]
+streams_count = 4
+playback_mode = 2
+random_pitch = 1.0
+stream_0/stream = SubResource("AudioStreamRandomizer_4glbs")
+stream_0/weight = 1.0
+stream_1/stream = SubResource("AudioStreamRandomizer_ilyys")
+stream_1/weight = 1.0
+stream_2/stream = SubResource("AudioStreamRandomizer_jdjsd")
+stream_2/weight = 1.0
+stream_3/stream = ExtResource("25_incry")
+stream_3/weight = 1.0
+
+[sub_resource type="Resource" id="Resource_81dmr"]
+script = ExtResource("13_p34bg")
+name = "CHIPA1"
+bus = "CHIPA"
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([SubResource("AudioStreamRandomizer_wrpas")])
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_54u0i"]
+streams_count = 4
+playback_mode = 2
+stream_0/stream = ExtResource("25_incry")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("28_x5nng")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("29_m5gfc")
+stream_2/weight = 1.0
+stream_3/stream = ExtResource("19_ala78")
+stream_3/weight = 1.0
+
+[sub_resource type="Resource" id="Resource_d6qu2"]
+script = ExtResource("13_p34bg")
+name = "CHIPA2"
+bus = "CHIPA"
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([SubResource("AudioStreamRandomizer_54u0i")])
 
 [node name="Panel" type="Panel"]
 anchors_preset = 5
@@ -516,10 +742,6 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -45.0
-offset_top = -45.0
-offset_right = 45.0
-offset_bottom = 45.0
 grow_horizontal = 0
 grow_vertical = 0
 pivot_offset = Vector2(45, 45)
@@ -534,8 +756,8 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = 23.0
 offset_top = 23.0
-offset_right = 67.0
-offset_bottom = 67.0
+offset_right = 23.0
+offset_bottom = 23.0
 grow_horizontal = 2
 grow_vertical = 2
 rotation = 0.174533
@@ -561,6 +783,7 @@ libraries = {
 }
 
 [node name="SquigglingSprite" parent="BtnDerAnchor/btnDer" instance=ExtResource("5_3iga4")]
+visible = false
 use_parent_material = true
 position = Vector2(44, 44)
 scale = Vector2(1.05882, 1.05882)
@@ -592,10 +815,6 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -45.0
-offset_top = -45.0
-offset_right = 45.0
-offset_bottom = 45.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(45, 45)
@@ -610,8 +829,8 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = 23.0
 offset_top = 23.0
-offset_right = 67.0
-offset_bottom = 67.0
+offset_right = 23.0
+offset_bottom = 23.0
 grow_horizontal = 2
 grow_vertical = 2
 rotation = 0.174533
@@ -638,6 +857,7 @@ libraries = {
 }
 
 [node name="SquigglingSprite" parent="btnIzqAnchor/btnIzq" instance=ExtResource("5_3iga4")]
+visible = false
 use_parent_material = true
 position = Vector2(-1.76471, -0.798077)
 scale = Vector2(1.03922, 1.02885)
@@ -668,10 +888,6 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -45.0
-offset_top = -45.0
-offset_right = 45.0
-offset_bottom = 45.0
 grow_horizontal = 2
 grow_vertical = 0
 
@@ -683,8 +899,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 23.0
 offset_top = 23.0
-offset_right = 67.0
-offset_bottom = 67.0
+offset_right = 23.0
+offset_bottom = 23.0
 grow_horizontal = 2
 grow_vertical = 2
 rotation = 0.174533
@@ -710,6 +926,7 @@ libraries = {
 }
 
 [node name="SquigglingSprite" parent="btnCentralAnchor/btnCentral" instance=ExtResource("5_3iga4")]
+visible = false
 use_parent_material = true
 position = Vector2(-1.76471, -2.5547)
 scale = Vector2(1.03922, 1.03922)
@@ -738,7 +955,21 @@ flat = true
 [node name="SoundBank" type="Node" parent="."]
 script = ExtResource("12_1qk3k")
 label = "UI"
-events = Array[ExtResource("13_p34bg")]([SubResource("Resource_3w43a")])
+events = Array[ExtResource("13_p34bg")]([SubResource("Resource_3w43a"), SubResource("Resource_fb1w7")])
+
+[node name="AppearSound" type="Node" parent="."]
+
+[node name="SoundBank" type="Node" parent="AppearSound"]
+script = ExtResource("12_1qk3k")
+label = "appear"
+events = Array[ExtResource("13_p34bg")]([SubResource("Resource_613n4"), SubResource("Resource_ud1i2"), SubResource("Resource_7fh2y")])
+
+[node name="TypingSounds" type="Node" parent="."]
+
+[node name="SoundBank" type="Node" parent="TypingSounds"]
+script = ExtResource("12_1qk3k")
+label = "typing"
+events = Array[ExtResource("13_p34bg")]([SubResource("Resource_u2amy"), SubResource("Resource_cryfx"), SubResource("Resource_4tqyh"), SubResource("Resource_8p4kf"), SubResource("Resource_nrlv5"), SubResource("Resource_i1vr5"), SubResource("Resource_0pxy2"), SubResource("Resource_81dmr"), SubResource("Resource_d6qu2")])
 
 [connection signal="pressed" from="BtnDerAnchor/btnDer" to="." method="rigthBTNConnect"]
 [connection signal="pressed" from="BtnDerAnchor/btnDer" to="." method="ButtonPress" binds= [0]]

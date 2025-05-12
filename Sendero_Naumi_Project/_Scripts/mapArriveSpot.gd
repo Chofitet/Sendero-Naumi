@@ -15,6 +15,7 @@ func playAnimMap():
 	await  animMap.animation_finished
 	await  get_tree().create_timer(0.7).timeout
 	squiggling.ActiveSquiggling()
+	$SoundMapLoop.PlayLoopEvent("vientoLoop")
 	btn.visible = true
 	await  get_tree().create_timer(1).timeout
 	handUI.SetVisibility(true)
@@ -29,3 +30,5 @@ func TakeMap():
 	animMapBig.play("map_enter")
 	await  get_tree().create_timer(0.1).timeout
 	animMap.visible = false
+	await  get_tree().create_timer(2.3).timeout
+	$SoundMapLoop.StopLoopSound()

@@ -1,5 +1,6 @@
 @tool
 extends Panel
+signal BtnAppear
 
 @export var RefreshData : bool:
 	set(new_value):
@@ -10,6 +11,7 @@ extends Panel
 @export var TimeToAppear : float
 @export var SetEnterOnce: bool
 @export var RepitingPanel : bool
+@export var AppearSound  : String = "basic"
 var isAlternetiveTheme
 var EnterOnce
 @onready var label = $label
@@ -17,6 +19,7 @@ var EnterOnce
 @onready var _BotonIzquierda = $btnIzqAnchor/btnIzq
 @onready var _BotonCentral = $btnCentralAnchor/btnCentral
 @onready var SkipButton = $ButtonSkipWritting
+@export var NoSkipWiting : bool = false
 var btnDontPassPanel
 var content =[]
 
@@ -26,6 +29,7 @@ var BotonDerecho
 var BotonIzquierdo
 var BotonCentral
 var anim : AnimationPlayer 
+@export var instanceAndButtonExit : Vector2
 
 @export var Texts : Array[TextField] 
 
@@ -44,7 +48,7 @@ signal CenterBTNPress
 
 func refreshData(numPanel : int):
 	
-	
+	print("refresh data")
 	btnDontPassPanel = false
 	
 	DetectBoldText(numOfPanel)
@@ -54,6 +58,9 @@ func refreshData(numPanel : int):
 	_BotonDerecho.visible = false
 	_BotonCentral.visible = false
 	_BotonIzquierda.visible = false
+	ResetButtonAnimation(_BotonDerecho)
+	ResetButtonAnimation(_BotonIzquierda)
+	ResetButtonAnimation(_BotonCentral)
 	BotonDerecho = false
 	BotonCentral = false
 	BotonIzquierdo = false
@@ -63,6 +70,10 @@ func refreshData(numPanel : int):
 		textData = Texts[0]
 	else:
 		textData = Texts[numPanel -1]
+	
+	if textData.writingSpeed != 0:
+		Characters_per_second = textData.writingSpeed
+	else : Characters_per_second = 72
 	
 	if textData.PanelTheme != null:
 		set_theme(textData.PanelTheme)
@@ -112,9 +123,12 @@ func refreshData(numPanel : int):
 			cont.modulate.a = 0
 	
 	if textData.NumOfContent != 0:
+		var cont = content[textData.NumOfContent - 1]
 		var tween = get_tree().create_tween()
-		tween.tween_property(content[textData.NumOfContent - 1],"modulate",Color.WHITE,0.5)
-		content[textData.NumOfContent - 1].visible = true
+		tween.tween_property(cont,"modulate",Color.WHITE,0.5)
+		cont.visible = true
+		for contchild in cont.get_children():
+			if contchild is AnimationPlayer: contchild.play("content")
 	
 	if Engine.is_editor_hint(): label.visible_ratio = true
 
@@ -141,8 +155,6 @@ func _ready():
 	_BotonIzquierda.visible = false
 	_BotonCentral.visible = false
 	
-	
-
 	pivot_offset =  Vector2(size.x/2,size.y/2)
 	if !Engine.is_editor_hint(): label.visible_ratio = 0
 	refreshData(1)
@@ -164,34 +176,46 @@ func _ready():
 		label.visible_ratio = 1
 		label.visible = true
 		AppearButtonAnim()
+	
 
 func EnterPanel():
+	print("enter panel: " + name)
+	ResetButtonAnimation(_BotonDerecho)
+	ResetButtonAnimation(_BotonIzquierda)
+	ResetButtonAnimation(_BotonCentral)
 	if SetEnterOnce:
 		if EnterOnce: return
 		EnterOnce = true
 	await  get_tree().create_timer(TimeToAppear).timeout
 	anim.play("enter_panel")
+	SoundManager.play("appear",AppearSound)
 	await anim.animation_finished
 	typingAnim()
 
 var tweenWritting : Tween
 func typingAnim():
-	var text_length = label.text.length()
+	SoundManager.play("typing",AppearSound)
+	var text_length = get_visible_text_length(label.text)
 	var duration = text_length / Characters_per_second
 	label.visible_ratio = 0
-	SkipButton.visible = true
+	if !NoSkipWiting: SkipButton.visible = true
 	tweenWritting = get_tree().create_tween()
 	tweenWritting.tween_property(label,"visible_ratio",1,duration)
 	
 	await tweenWritting.finished
 	AppearButtonAnim()
 	SkipButton.visible = false
-	
+
+func get_visible_text_length(text: String) -> int:
+	var regex = RegEx.new()
+	regex.compile("\\[/?\\w+(=[^\\]]+)?\\]")
+	return regex.sub(text, "", true).length()
 
 func AppearButtonAnim():
 	if BotonDerecho: PlayAnimation(_BotonDerecho)
 	if BotonIzquierdo: PlayAnimation(_BotonIzquierda)
 	if BotonCentral: PlayAnimation(_BotonCentral)
+	BtnAppear.emit()
 
 func PlayAnimation(btn):
 	var path : String = btn.get_path()
@@ -201,10 +225,17 @@ func PlayAnimation(btn):
 	await animator.animation_finished
 	animator.play("idle")
 
+func ResetButtonAnimation(btn):
+	var path : String = btn.get_path()
+	path = path + "/AnimationPlayer"
+	var animator = get_node(path)
+	animator.play("RESET")
+
 var once = false 
 func ButtonPress(btn):
 	SoundManager.play("UI","touch")
 	InstanciateButtonPOP(_btns[btn])
+	
 	
 	_BotonDerecho.visible = false
 	_BotonCentral.visible = false
@@ -217,6 +248,9 @@ func ButtonPress(btn):
 		if once : return
 		if RepitingPanel: once = true
 		numOfPanel += 1
+	elif instanceAndButtonExit == Vector2(numOfPanel,btn): 
+		numOfPanel += 1
+		ExitPanel()
 	else:ChangeToNextText()
 	
 
@@ -226,10 +260,13 @@ func ExitPanel():
 
 func ChangeToNextText():
 	numOfPanel += 1
+	for c in content:
+		c.visible = false
 	var anim = $AnimationPlayer
 	anim.play("change_panel")
 	await anim.animation_finished
 	label.visible = true
+	SoundManager.play("appear",AppearSound)
 	typingAnim()
 
 func RefreshToActualPanel():
@@ -258,7 +295,8 @@ func DetectBoldText(numPanel):
 	if  Texts[numPanel -1].Text.contains("[b]"):
 		label.text = ""
 		label = $labelRich
-	else: label = $label
+	else: 
+		label = $label
 		
 
 func SkipWritting():
@@ -266,3 +304,7 @@ func SkipWritting():
 	label.visible_ratio = 1
 	AppearButtonAnim()
 	SkipButton.visible = false
+
+var toExitPanel
+func HoldExitPanel():
+	toExitPanel = true

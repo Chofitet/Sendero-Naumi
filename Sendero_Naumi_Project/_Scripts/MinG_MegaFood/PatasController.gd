@@ -31,7 +31,7 @@ func SetAnimalInstance(x):
 	animalsArray[inx_animal].visible = true
 	animalsArray[inx_animal].animation_finished.connect(BackToIdle)
 	anim.play("RESET")
-	timer.wait_time = 1
+	timer.wait_time = 1.7
 	isInGame = true
 	CommandAppear()
 	$papel.visible = false
@@ -43,11 +43,21 @@ func PlayEnterAnim():
 	timer.start()
 	animalsArray[inx_animal].play("idle")
 	anim.play("enterAnim")
+	await get_tree().create_timer(0.6).timeout
+	SoundManager.play("llegada", animalsArray[inx_animal].name)
 
 func PlayCallAnim():
 	if stopCall: return
 	buttonTouchAnimal.visible = false
 	animalsArray[inx_animal].play("call")
+	var delay 
+	match inx_animal:  
+		0: delay = 0.7
+		1: delay = 0.1
+		2: delay = 0.2
+		3: delay = 0.8
+	$ReclamoTriggerSound.PlayEvent(animalsArray[inx_animal].name, delay,true)
+	#SoundManager.play("reclamo",animalsArray[inx_animal].name)
 	timer.wait_time = randf_range(4.5,5)
 	timer.stop()
 
@@ -56,10 +66,12 @@ func StopCallAnim(x):
 
 func PlayOutAnim():
 	if !isInGame : return
+	$ReclamoTriggerSound.StopSoundsInCuttableQueue()
+	SoundManager.play("correcto",animalsArray[inx_animal].name)
 	buttonTouchAnimal.visible = false
 	animalsArray[inx_animal].play("idle")
 	timer.timeout.disconnect(PlayCallAnim)
-	anim.play_backwards("enterAnim")
+	anim.play("ExitAnim")
 	await anim.animation_finished
 	anim.play("RESET")
 	isInGame = false
@@ -71,6 +83,9 @@ func BackToIdle():
 	timer.start()
 
 func WrongAns():
+	$ReclamoTriggerSound.StopSoundsInCuttableQueue()
+	timer.timeout.disconnect(PlayCallAnim)
+	timer.stop()
 	buttonTouchAnimal.visible = false
 	pataSuelta.visible = true
 	animalsArray[inx_animal].self_modulate = Color(0,0,0,0)
@@ -81,6 +96,8 @@ func WrongAns():
 	anim.play("AngryAnim")
 	await anim.animation_finished
 	RestartAfterWrong()
+	timer.timeout.connect(PlayCallAnim)
+	timer.start()
 
 func RestartAfterWrong():
 	ReorganizePlates.emit()
@@ -110,6 +127,7 @@ func AddPlateAtPivot(plate):
 func PlayTakeAnim():
 	if !AnimResultFinish : return
 	var animPaper = $AnimPaper
+	SoundManager.play("generales","agarroPropina")
 	animPaper.play("take")
 	AnimResultFinish = false
 	await  animPaper.animation_finished

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cfh60c3rkhyh"]
+[gd_scene load_steps=10 format=3 uid="uid://cfh60c3rkhyh"]
 
 [ext_resource type="Script" path="res://_Scripts/Minigame_Save_Controller.gd" id="1_47fcp"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/StateMachineMinigames.gd" id="2_ad0ja"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/MoralejaState.gd" id="6_6vnen"]
 [ext_resource type="PackedScene" uid="uid://djhg7jvxtexyl" path="res://Scenes/UI_Scenes/btn_Change_Scene.tscn" id="7_s8n6b"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/FinState.gd" id="8_evu6q"]
+[ext_resource type="PackedScene" uid="uid://dlnoa0yt8sbqs" path="res://Scenes/Experiments/fade.tscn" id="9_ls1ik"]
 
 [node name="minigame1" type="Node"]
 script = ExtResource("1_47fcp")
@@ -242,6 +243,8 @@ offset_right = 207.0
 offset_bottom = -51.0
 text = "Continue"
 NextScene = "Map_Screen"
+
+[node name="Fade" parent="StateMachine" instance=ExtResource("9_ls1ik")]
 
 [connection signal="pressed" from="StateMachine/Consigna/Contenido/Button" to="StateMachine/Consigna/Contenido/Button" method="_on_pressed"]
 [connection signal="timeout" from="StateMachine/Consigna/Contenido/Timer" to="StateMachine/Consigna" method="TimeOut"]

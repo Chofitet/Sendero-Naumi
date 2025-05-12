@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://dqyb2b0ey8ckp"]
+[gd_scene load_steps=99 format=3 uid="uid://dqyb2b0ey8ckp"]
 
 [ext_resource type="Material" uid="uid://muj2sfgakm5s" path="res://shaders/GalaxyWiggle.tres" id="1_s0bb2"]
 [ext_resource type="Texture2D" uid="uid://nuybqhitpej1" path="res://Sprites/Mapa/fondo_mapa.png" id="1_tohrf"]
@@ -11,6 +11,8 @@
 [ext_resource type="Texture2D" uid="uid://btclh5i3dqhfm" path="res://Sprites/UI/Icono Naumi.png" id="8_1usuw"]
 [ext_resource type="Texture2D" uid="uid://bpcc2ljyhkxfl" path="res://Sprites/Mapa/pin check - mapa.png" id="8_6ftc5"]
 [ext_resource type="StyleBox" uid="uid://b3tjes2hcm3wx" path="res://Resources/UI_Resources/StyleBoxTrasparent.tres" id="8_v4xy8"]
+[ext_resource type="PackedScene" uid="uid://3rvhy3nlrjxy" path="res://Scenes/Zona_Megafauna/mole_particles.tscn" id="9_orh31"]
+[ext_resource type="Texture2D" uid="uid://bgxpoofwqbfdx" path="res://Sprites/ZonaMegafauna/estrella - foodtruck.png" id="10_hg27i"]
 [ext_resource type="Texture2D" uid="uid://blvtoxf6sl7ty" path="res://Sprites/glow.png" id="11_iajsr"]
 [ext_resource type="Theme" uid="uid://dhu6swisjlh4w" path="res://Resources/UI_Resources/BlueBubblePanel.tres" id="11_twlej"]
 [ext_resource type="Script" path="res://Scenes/Experiments/GenericPanel/ButtonPanelData.gd" id="12_fai1k"]
@@ -25,6 +27,120 @@
 [ext_resource type="Script" path="res://Scenes/Experiments/GenericPanel/IntermediateData.gd" id="19_n7ev0"]
 [ext_resource type="Texture2D" uid="uid://6c8ohwgh1g2j" path="res://Sprites/UI/backIcon - UI.png" id="19_pq350"]
 [ext_resource type="Texture2D" uid="uid://c87cim2trecu1" path="res://Sprites/UI/SquigglingUI/botonesRedondosBSQUIG - UI.png" id="20_21x5c"]
+[ext_resource type="Script" path="res://addons/resonate/sound_manager/sound_bank.gd" id="28_ndjk3"]
+[ext_resource type="Script" path="res://_Scripts/SoundEventTrigger.gd" id="28_wovoc"]
+[ext_resource type="Script" path="res://addons/resonate/sound_manager/sound_event_resource.gd" id="29_ol1mw"]
+[ext_resource type="AudioStream" uid="uid://8tmcfck7ujhd" path="res://Sounds/UI/UI - Azul Aparece.ogg" id="30_l4fua"]
+[ext_resource type="AudioStream" uid="uid://baf806hg8wm2b" path="res://Sounds/UI/UI -Aparece Tilde Verde en Pointer.ogg" id="30_mdlsu"]
+[ext_resource type="AudioStream" uid="uid://16mfoqf1ni1e" path="res://Sounds/Fighter/Fighter - UPS.ogg" id="31_m1xj1"]
+[ext_resource type="AudioStream" uid="uid://bf053o26cjalu" path="res://Sounds/UI/Zona Completada - C.ogg" id="32_gtk4x"]
+[ext_resource type="AudioStream" uid="uid://b124uupcec5in" path="res://Sounds/UI/Zona Completada - Yey.ogg" id="32_yljm0"]
+[ext_resource type="AudioStream" uid="uid://n2lx0na741xq" path="res://Sounds/UI/Zona Completada  - E.ogg" id="33_iorun"]
+[ext_resource type="AudioStream" uid="uid://cto8hsabquh3o" path="res://Sounds/UI/UI - POP.ogg" id="33_wbo7i"]
+[ext_resource type="AudioStream" uid="uid://drymu55ahayc6" path="res://Sounds/Foodtruck/FoodTruck - Habla Sig Smilo.ogg" id="34_d4jqg"]
+[ext_resource type="AudioStream" uid="uid://bcj2pr0yef8ac" path="res://Sounds/UI/Zona Completada - D.ogg" id="34_v8ru0"]
+[ext_resource type="AudioStream" uid="uid://dx5jqftn3113h" path="res://Sounds/UI/UI - Azul Habla.ogg" id="35_paifx"]
+[ext_resource type="AudioStream" uid="uid://60hathrnicc3" path="res://Sounds/UI/Zona Completada - D#.ogg" id="35_rlont"]
+[ext_resource type="AudioStream" uid="uid://cjxc7nyvv8l2s" path="res://Sounds/UI/UI - Azul Habla 3.ogg" id="36_0ncni"]
+[ext_resource type="AudioStream" uid="uid://bi0bvcy53hbia" path="res://Sounds/UI/UI - Azul Habla 2.ogg" id="37_fdkrn"]
+[ext_resource type="AudioStream" uid="uid://cxosuhsatmnji" path="res://Sounds/Foodtruck/FoodTruck  - Habla Buen Trabajo.ogg" id="38_p1yiq"]
+[ext_resource type="AudioStream" uid="uid://de3oe2x56dxv7" path="res://Sounds/Foodtruck/FoodTruck - Habla Sig Otro.ogg" id="39_3ptey"]
+[ext_resource type="AudioStream" uid="uid://b7ko1imh4pkj7" path="res://Sounds/Foodtruck/FoodTruck - Habla En Fila.ogg" id="40_0rxej"]
+[ext_resource type="AudioStream" uid="uid://cttb75keu0ymp" path="res://Sounds/Foodtruck/FoodTruck - Habla Sig 3.ogg" id="41_bp55k"]
+[ext_resource type="AudioStream" uid="uid://c8lt321gvmo4c" path="res://Sounds/Astronauta/Astronauta - CHIPA Habla 2.ogg" id="42_owypd"]
+[ext_resource type="AudioStream" uid="uid://0siiwipjbp42" path="res://Sounds/Astronauta/Astronauta - CHIPA Habla 1.ogg" id="43_0j3gc"]
+[ext_resource type="AudioStream" uid="uid://gs0fjxj0osk3" path="res://Sounds/Vacio - Vacio.ogg" id="44_yy1je"]
+
+[sub_resource type="Curve" id="Curve_dkj71"]
+_data = [Vector2(0.517906, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Animation" id="Animation_6r765"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("check:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_k5p6v"]
+resource_name = "aparicion"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("check:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.4),
+"transitions": PackedFloat32Array(2, 1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(1.2, 1.2), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("particles/estrellas:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("particles/estrellas2:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("particles/estrellas3:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = false
+tracks/4/path = NodePath("../../../sounds")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["pointer", 0.0, false],
+"method": &"PlayEvent"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rfs4y"]
+_data = {
+"RESET": SubResource("Animation_6r765"),
+"aparicion": SubResource("Animation_k5p6v")
+}
 
 [sub_resource type="Resource" id="Resource_giep5"]
 script = ExtResource("12_fai1k")
@@ -32,14 +148,17 @@ Place = 1
 texture = ExtResource("13_h38ty")
 label = ""
 dontPassPanel = false
+exitPanel = false
 
 [sub_resource type="Resource" id="Resource_w7u63"]
 script = ExtResource("14_xro7r")
 Text = "
 [center][font_size={40}][b]ZONA COMPLETADA[/b][/font_size]"
+writingSpeed = 0.0
 SizePanel = Vector2(0, 0)
 Position = Vector2(0, 0)
 buttons = Array[ExtResource("12_fai1k")]([SubResource("Resource_giep5")])
+NumOfContent = 0
 
 [sub_resource type="Animation" id="Animation_jxxgf"]
 length = 0.001
@@ -460,6 +579,317 @@ script = ExtResource("19_n7ev0")
 NumberOfPanel = 1
 Place = 1
 
+[sub_resource type="Animation" id="Animation_kulwn"]
+resource_name = "content"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("estrellas:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("estrellas2:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("estrellas3:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dnw2j"]
+_data = {
+"content": SubResource("Animation_kulwn")
+}
+
+[sub_resource type="Resource" id="Resource_613n4"]
+script = ExtResource("29_ol1mw")
+name = "basic"
+bus = ""
+volume = 2.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([ExtResource("30_l4fua")])
+
+[sub_resource type="Resource" id="Resource_ud1i2"]
+script = ExtResource("29_ol1mw")
+name = "ups"
+bus = "ups"
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([ExtResource("31_m1xj1")])
+
+[sub_resource type="Resource" id="Resource_7fh2y"]
+script = ExtResource("29_ol1mw")
+name = "yey"
+bus = ""
+volume = -25.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([ExtResource("32_yljm0")])
+
+[sub_resource type="Resource" id="Resource_3w43a"]
+script = ExtResource("29_ol1mw")
+name = "touch"
+bus = ""
+volume = -6.0
+pitch = 1.0
+RandomPitch = Vector2(0.8, 1)
+streams = Array[AudioStream]([ExtResource("33_wbo7i")])
+
+[sub_resource type="Resource" id="Resource_fb1w7"]
+resource_local_to_scene = true
+script = ExtResource("29_ol1mw")
+name = "panelAppear"
+bus = ""
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([ExtResource("34_d4jqg")])
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_gpnkv"]
+streams_count = 3
+stream_0/stream = ExtResource("35_paifx")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("36_0ncni")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("37_fdkrn")
+stream_2/weight = 1.0
+
+[sub_resource type="Resource" id="Resource_u2amy"]
+script = ExtResource("29_ol1mw")
+name = "basic"
+bus = ""
+volume = 2.0
+pitch = 1.0
+RandomPitch = Vector2(0.9, 1.2)
+streams = Array[AudioStream]([SubResource("AudioStreamRandomizer_gpnkv")])
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_j2ljn"]
+streams_count = 2
+playback_mode = 2
+stream_0/stream = ExtResource("38_p1yiq")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("39_3ptey")
+stream_1/weight = 1.0
+
+[sub_resource type="Resource" id="Resource_cryfx"]
+script = ExtResource("29_ol1mw")
+name = "talk1"
+bus = "burbujaHabla"
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([SubResource("AudioStreamRandomizer_j2ljn")])
+
+[sub_resource type="Resource" id="Resource_4tqyh"]
+script = ExtResource("29_ol1mw")
+name = "talk2"
+bus = "burbujaHabla"
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([ExtResource("40_0rxej")])
+
+[sub_resource type="Resource" id="Resource_8p4kf"]
+script = ExtResource("29_ol1mw")
+name = "talk3"
+bus = "burbujaHabla"
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([ExtResource("41_bp55k")])
+
+[sub_resource type="Resource" id="Resource_nrlv5"]
+script = ExtResource("29_ol1mw")
+name = "talk4"
+bus = "burbujaHabla"
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([ExtResource("39_3ptey")])
+
+[sub_resource type="Resource" id="Resource_i1vr5"]
+script = ExtResource("29_ol1mw")
+name = "talk5"
+bus = "burbujaHabla"
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([ExtResource("34_d4jqg")])
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_t6p82"]
+streams_count = 2
+stream_0/stream = ExtResource("42_owypd")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("43_0j3gc")
+stream_1/weight = 1.0
+
+[sub_resource type="Resource" id="Resource_0pxy2"]
+script = ExtResource("29_ol1mw")
+name = "CHIPA"
+bus = "CHIPA"
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([SubResource("AudioStreamRandomizer_t6p82")])
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_4glbs"]
+streams_count = 1
+random_pitch = 1.0
+stream_0/stream = ExtResource("43_0j3gc")
+stream_0/weight = 1.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ilyys"]
+streams_count = 1
+random_pitch = 1.0
+stream_0/stream = ExtResource("42_owypd")
+stream_0/weight = 1.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_jdjsd"]
+streams_count = 1
+random_pitch = 1.0
+stream_0/stream = ExtResource("43_0j3gc")
+stream_0/weight = 1.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_wrpas"]
+streams_count = 4
+playback_mode = 2
+random_pitch = 1.0
+stream_0/stream = SubResource("AudioStreamRandomizer_4glbs")
+stream_0/weight = 1.0
+stream_1/stream = SubResource("AudioStreamRandomizer_ilyys")
+stream_1/weight = 1.0
+stream_2/stream = SubResource("AudioStreamRandomizer_jdjsd")
+stream_2/weight = 1.0
+stream_3/stream = ExtResource("44_yy1je")
+stream_3/weight = 1.0
+
+[sub_resource type="Resource" id="Resource_81dmr"]
+script = ExtResource("29_ol1mw")
+name = "CHIPA1"
+bus = "CHIPA"
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([SubResource("AudioStreamRandomizer_wrpas")])
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_54u0i"]
+streams_count = 4
+playback_mode = 2
+stream_0/stream = ExtResource("44_yy1je")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("44_yy1je")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("44_yy1je")
+stream_2/weight = 1.0
+stream_3/stream = ExtResource("43_0j3gc")
+stream_3/weight = 1.0
+
+[sub_resource type="Resource" id="Resource_d6qu2"]
+script = ExtResource("29_ol1mw")
+name = "CHIPA2"
+bus = "CHIPA"
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([SubResource("AudioStreamRandomizer_54u0i")])
+
+[sub_resource type="Resource" id="Resource_u0n1u"]
+script = ExtResource("29_ol1mw")
+name = "pointer"
+bus = ""
+volume = -15.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([ExtResource("30_mdlsu")])
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_7lx7b"]
+streams_count = 2
+playback_mode = 2
+random_pitch = 1.0
+random_volume_offset_db = 0.0
+stream_0/stream = ExtResource("32_gtk4x")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("33_iorun")
+stream_1/weight = 1.0
+
+[sub_resource type="Resource" id="Resource_dkam6"]
+script = ExtResource("29_ol1mw")
+name = "MegafaunaZone"
+bus = ""
+volume = -15.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([SubResource("AudioStreamRandomizer_7lx7b")])
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_4bgju"]
+streams_count = 3
+playback_mode = 2
+random_pitch = 1.0
+random_volume_offset_db = 0.0
+stream_0/stream = ExtResource("32_gtk4x")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("34_v8ru0")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("33_iorun")
+stream_2/weight = 1.0
+
+[sub_resource type="Resource" id="Resource_7bfeb"]
+script = ExtResource("29_ol1mw")
+name = "AstronomiaZone"
+bus = ""
+volume = -15.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([SubResource("AudioStreamRandomizer_4bgju")])
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_aeow2"]
+streams_count = 4
+playback_mode = 2
+random_pitch = 1.0
+random_volume_offset_db = 0.0
+stream_0/stream = ExtResource("32_gtk4x")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("34_v8ru0")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("35_rlont")
+stream_2/weight = 1.0
+stream_3/stream = ExtResource("33_iorun")
+stream_3/weight = 1.0
+
+[sub_resource type="Resource" id="Resource_06pif"]
+script = ExtResource("29_ol1mw")
+name = "GeologiaZone"
+bus = ""
+volume = -15.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([SubResource("AudioStreamRandomizer_aeow2")])
+
 [node name="Zone_Complete_Event" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -527,63 +957,630 @@ smoothness = 0.2
 
 [node name="MegafaunaZone" type="Node2D" parent="Zone/Pines"]
 
-[node name="Sprite2D" type="Sprite2D" parent="Zone/Pines/MegafaunaZone"]
-visible = false
+[node name="pin1" type="Sprite2D" parent="Zone/Pines/MegafaunaZone"]
 position = Vector2(273.5, 108)
 scale = Vector2(0.636816, 0.636816)
+
+[node name="check" type="Sprite2D" parent="Zone/Pines/MegafaunaZone/pin1"]
+scale = Vector2(1e-05, 1e-05)
 texture = ExtResource("8_6ftc5")
 
-[node name="Sprite2D2" type="Sprite2D" parent="Zone/Pines/MegafaunaZone"]
-visible = false
+[node name="particles" type="Node2D" parent="Zone/Pines/MegafaunaZone/pin1"]
+
+[node name="estrellas" parent="Zone/Pines/MegafaunaZone/pin1/particles" instance=ExtResource("9_orh31")]
+position = Vector2(-45.5391, -14.1329)
+rotation = 0.0262622
+emitting = false
+amount = 6
+lifetime = 0.4
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("10_hg27i")
+emission_shape = 0
+spread = 45.0
+initial_velocity_min = 288.37
+initial_velocity_max = 481.78
+scale_amount_min = 0.1
+scale_amount_max = 0.2
+scale_amount_curve = SubResource("Curve_dkj71")
+color = Color(1, 1, 1, 1)
+
+[node name="estrellas2" parent="Zone/Pines/MegafaunaZone/pin1/particles" instance=ExtResource("9_orh31")]
+position = Vector2(0.968811, -64.9532)
+rotation = 1.51493
+emitting = false
+amount = 6
+lifetime = 0.4
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("10_hg27i")
+emission_shape = 0
+spread = 60.0
+initial_velocity_min = 288.37
+initial_velocity_max = 481.78
+scale_amount_min = 0.1
+scale_amount_max = 0.2
+scale_amount_curve = SubResource("Curve_dkj71")
+color = Color(1, 1, 1, 1)
+
+[node name="estrellas3" parent="Zone/Pines/MegafaunaZone/pin1/particles" instance=ExtResource("9_orh31")]
+position = Vector2(45.5389, -14.1328)
+rotation = 3.74823
+emitting = false
+amount = 6
+lifetime = 0.4
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("10_hg27i")
+emission_shape = 0
+spread = 45.0
+initial_velocity_min = 288.37
+initial_velocity_max = 481.78
+scale_amount_min = 0.1
+scale_amount_max = 0.2
+scale_amount_curve = SubResource("Curve_dkj71")
+color = Color(1, 1, 1, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Zone/Pines/MegafaunaZone/pin1"]
+libraries = {
+"": SubResource("AnimationLibrary_rfs4y")
+}
+
+[node name="pin2" type="Sprite2D" parent="Zone/Pines/MegafaunaZone"]
 position = Vector2(227.5, 500)
 scale = Vector2(0.636816, 0.636816)
+
+[node name="check" type="Sprite2D" parent="Zone/Pines/MegafaunaZone/pin2"]
+scale = Vector2(1e-05, 1e-05)
 texture = ExtResource("8_6ftc5")
+
+[node name="particles" type="Node2D" parent="Zone/Pines/MegafaunaZone/pin2"]
+
+[node name="estrellas" parent="Zone/Pines/MegafaunaZone/pin2/particles" instance=ExtResource("9_orh31")]
+position = Vector2(-45.5391, -14.1329)
+rotation = 0.0262622
+emitting = false
+amount = 6
+lifetime = 0.4
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("10_hg27i")
+emission_shape = 0
+spread = 45.0
+initial_velocity_min = 288.37
+initial_velocity_max = 481.78
+scale_amount_min = 0.1
+scale_amount_max = 0.2
+scale_amount_curve = SubResource("Curve_dkj71")
+color = Color(1, 1, 1, 1)
+
+[node name="estrellas2" parent="Zone/Pines/MegafaunaZone/pin2/particles" instance=ExtResource("9_orh31")]
+position = Vector2(0.968811, -64.9532)
+rotation = 1.51493
+emitting = false
+amount = 6
+lifetime = 0.4
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("10_hg27i")
+emission_shape = 0
+spread = 60.0
+initial_velocity_min = 288.37
+initial_velocity_max = 481.78
+scale_amount_min = 0.1
+scale_amount_max = 0.2
+scale_amount_curve = SubResource("Curve_dkj71")
+color = Color(1, 1, 1, 1)
+
+[node name="estrellas3" parent="Zone/Pines/MegafaunaZone/pin2/particles" instance=ExtResource("9_orh31")]
+position = Vector2(45.5389, -14.1328)
+rotation = 3.74823
+emitting = false
+amount = 6
+lifetime = 0.4
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("10_hg27i")
+emission_shape = 0
+spread = 45.0
+initial_velocity_min = 288.37
+initial_velocity_max = 481.78
+scale_amount_min = 0.1
+scale_amount_max = 0.2
+scale_amount_curve = SubResource("Curve_dkj71")
+color = Color(1, 1, 1, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Zone/Pines/MegafaunaZone/pin2"]
+libraries = {
+"": SubResource("AnimationLibrary_rfs4y")
+}
 
 [node name="AstronomiaZone" type="Node2D" parent="Zone/Pines"]
 
-[node name="Sprite2D" type="Sprite2D" parent="Zone/Pines/AstronomiaZone"]
-visible = false
+[node name="pin1" type="Sprite2D" parent="Zone/Pines/AstronomiaZone"]
 position = Vector2(151.5, -65)
 scale = Vector2(0.636816, 0.636816)
+
+[node name="check" type="Sprite2D" parent="Zone/Pines/AstronomiaZone/pin1"]
+scale = Vector2(1e-05, 1e-05)
 texture = ExtResource("8_6ftc5")
 
-[node name="Sprite2D2" type="Sprite2D" parent="Zone/Pines/AstronomiaZone"]
-visible = false
+[node name="particles" type="Node2D" parent="Zone/Pines/AstronomiaZone/pin1"]
+
+[node name="estrellas" parent="Zone/Pines/AstronomiaZone/pin1/particles" instance=ExtResource("9_orh31")]
+position = Vector2(-45.5391, -14.1329)
+rotation = 0.0262622
+emitting = false
+amount = 6
+lifetime = 0.4
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("10_hg27i")
+emission_shape = 0
+spread = 45.0
+initial_velocity_min = 288.37
+initial_velocity_max = 481.78
+scale_amount_min = 0.1
+scale_amount_max = 0.2
+scale_amount_curve = SubResource("Curve_dkj71")
+color = Color(1, 1, 1, 1)
+
+[node name="estrellas2" parent="Zone/Pines/AstronomiaZone/pin1/particles" instance=ExtResource("9_orh31")]
+position = Vector2(0.968811, -64.9532)
+rotation = 1.51493
+emitting = false
+amount = 6
+lifetime = 0.4
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("10_hg27i")
+emission_shape = 0
+spread = 60.0
+initial_velocity_min = 288.37
+initial_velocity_max = 481.78
+scale_amount_min = 0.1
+scale_amount_max = 0.2
+scale_amount_curve = SubResource("Curve_dkj71")
+color = Color(1, 1, 1, 1)
+
+[node name="estrellas3" parent="Zone/Pines/AstronomiaZone/pin1/particles" instance=ExtResource("9_orh31")]
+position = Vector2(45.5389, -14.1328)
+rotation = 3.74823
+emitting = false
+amount = 6
+lifetime = 0.4
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("10_hg27i")
+emission_shape = 0
+spread = 45.0
+initial_velocity_min = 288.37
+initial_velocity_max = 481.78
+scale_amount_min = 0.1
+scale_amount_max = 0.2
+scale_amount_curve = SubResource("Curve_dkj71")
+color = Color(1, 1, 1, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Zone/Pines/AstronomiaZone/pin1"]
+libraries = {
+"": SubResource("AnimationLibrary_rfs4y")
+}
+
+[node name="pin2" type="Sprite2D" parent="Zone/Pines/AstronomiaZone"]
 position = Vector2(484.5, 77)
 scale = Vector2(0.636816, 0.636816)
+
+[node name="check" type="Sprite2D" parent="Zone/Pines/AstronomiaZone/pin2"]
+scale = Vector2(1e-05, 1e-05)
 texture = ExtResource("8_6ftc5")
 
-[node name="Sprite2D3" type="Sprite2D" parent="Zone/Pines/AstronomiaZone"]
-visible = false
+[node name="particles" type="Node2D" parent="Zone/Pines/AstronomiaZone/pin2"]
+
+[node name="estrellas" parent="Zone/Pines/AstronomiaZone/pin2/particles" instance=ExtResource("9_orh31")]
+position = Vector2(-45.5391, -14.1329)
+rotation = 0.0262622
+emitting = false
+amount = 6
+lifetime = 0.4
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("10_hg27i")
+emission_shape = 0
+spread = 45.0
+initial_velocity_min = 288.37
+initial_velocity_max = 481.78
+scale_amount_min = 0.1
+scale_amount_max = 0.2
+scale_amount_curve = SubResource("Curve_dkj71")
+color = Color(1, 1, 1, 1)
+
+[node name="estrellas2" parent="Zone/Pines/AstronomiaZone/pin2/particles" instance=ExtResource("9_orh31")]
+position = Vector2(0.968811, -64.9532)
+rotation = 1.51493
+emitting = false
+amount = 6
+lifetime = 0.4
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("10_hg27i")
+emission_shape = 0
+spread = 60.0
+initial_velocity_min = 288.37
+initial_velocity_max = 481.78
+scale_amount_min = 0.1
+scale_amount_max = 0.2
+scale_amount_curve = SubResource("Curve_dkj71")
+color = Color(1, 1, 1, 1)
+
+[node name="estrellas3" parent="Zone/Pines/AstronomiaZone/pin2/particles" instance=ExtResource("9_orh31")]
+position = Vector2(45.5389, -14.1328)
+rotation = 3.74823
+emitting = false
+amount = 6
+lifetime = 0.4
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("10_hg27i")
+emission_shape = 0
+spread = 45.0
+initial_velocity_min = 288.37
+initial_velocity_max = 481.78
+scale_amount_min = 0.1
+scale_amount_max = 0.2
+scale_amount_curve = SubResource("Curve_dkj71")
+color = Color(1, 1, 1, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Zone/Pines/AstronomiaZone/pin2"]
+libraries = {
+"": SubResource("AnimationLibrary_rfs4y")
+}
+
+[node name="pin3" type="Sprite2D" parent="Zone/Pines/AstronomiaZone"]
 position = Vector2(398.5, 686)
 scale = Vector2(0.636816, 0.636816)
+
+[node name="check" type="Sprite2D" parent="Zone/Pines/AstronomiaZone/pin3"]
+scale = Vector2(1e-05, 1e-05)
 texture = ExtResource("8_6ftc5")
 
-[node name="Sprite2D4" type="Sprite2D" parent="Zone/Pines/AstronomiaZone"]
-visible = false
+[node name="particles" type="Node2D" parent="Zone/Pines/AstronomiaZone/pin3"]
+
+[node name="estrellas" parent="Zone/Pines/AstronomiaZone/pin3/particles" instance=ExtResource("9_orh31")]
+position = Vector2(-45.5391, -14.1329)
+rotation = 0.0262622
+emitting = false
+amount = 6
+lifetime = 0.4
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("10_hg27i")
+emission_shape = 0
+spread = 45.0
+initial_velocity_min = 288.37
+initial_velocity_max = 481.78
+scale_amount_min = 0.1
+scale_amount_max = 0.2
+scale_amount_curve = SubResource("Curve_dkj71")
+color = Color(1, 1, 1, 1)
+
+[node name="estrellas2" parent="Zone/Pines/AstronomiaZone/pin3/particles" instance=ExtResource("9_orh31")]
+position = Vector2(0.968811, -64.9532)
+rotation = 1.51493
+emitting = false
+amount = 6
+lifetime = 0.4
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("10_hg27i")
+emission_shape = 0
+spread = 60.0
+initial_velocity_min = 288.37
+initial_velocity_max = 481.78
+scale_amount_min = 0.1
+scale_amount_max = 0.2
+scale_amount_curve = SubResource("Curve_dkj71")
+color = Color(1, 1, 1, 1)
+
+[node name="estrellas3" parent="Zone/Pines/AstronomiaZone/pin3/particles" instance=ExtResource("9_orh31")]
+position = Vector2(45.5389, -14.1328)
+rotation = 3.74823
+emitting = false
+amount = 6
+lifetime = 0.4
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("10_hg27i")
+emission_shape = 0
+spread = 45.0
+initial_velocity_min = 288.37
+initial_velocity_max = 481.78
+scale_amount_min = 0.1
+scale_amount_max = 0.2
+scale_amount_curve = SubResource("Curve_dkj71")
+color = Color(1, 1, 1, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Zone/Pines/AstronomiaZone/pin3"]
+libraries = {
+"": SubResource("AnimationLibrary_rfs4y")
+}
+
+[node name="pin4" type="Sprite2D" parent="Zone/Pines/AstronomiaZone"]
 position = Vector2(96.5, 467)
 scale = Vector2(0.636816, 0.636816)
+
+[node name="check" type="Sprite2D" parent="Zone/Pines/AstronomiaZone/pin4"]
+scale = Vector2(1e-05, 1e-05)
 texture = ExtResource("8_6ftc5")
+
+[node name="particles" type="Node2D" parent="Zone/Pines/AstronomiaZone/pin4"]
+
+[node name="estrellas" parent="Zone/Pines/AstronomiaZone/pin4/particles" instance=ExtResource("9_orh31")]
+position = Vector2(-45.5391, -14.1329)
+rotation = 0.0262622
+emitting = false
+amount = 6
+lifetime = 0.4
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("10_hg27i")
+emission_shape = 0
+spread = 45.0
+initial_velocity_min = 288.37
+initial_velocity_max = 481.78
+scale_amount_min = 0.1
+scale_amount_max = 0.2
+scale_amount_curve = SubResource("Curve_dkj71")
+color = Color(1, 1, 1, 1)
+
+[node name="estrellas2" parent="Zone/Pines/AstronomiaZone/pin4/particles" instance=ExtResource("9_orh31")]
+position = Vector2(0.968811, -64.9532)
+rotation = 1.51493
+emitting = false
+amount = 6
+lifetime = 0.4
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("10_hg27i")
+emission_shape = 0
+spread = 60.0
+initial_velocity_min = 288.37
+initial_velocity_max = 481.78
+scale_amount_min = 0.1
+scale_amount_max = 0.2
+scale_amount_curve = SubResource("Curve_dkj71")
+color = Color(1, 1, 1, 1)
+
+[node name="estrellas3" parent="Zone/Pines/AstronomiaZone/pin4/particles" instance=ExtResource("9_orh31")]
+position = Vector2(45.5389, -14.1328)
+rotation = 3.74823
+emitting = false
+amount = 6
+lifetime = 0.4
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("10_hg27i")
+emission_shape = 0
+spread = 45.0
+initial_velocity_min = 288.37
+initial_velocity_max = 481.78
+scale_amount_min = 0.1
+scale_amount_max = 0.2
+scale_amount_curve = SubResource("Curve_dkj71")
+color = Color(1, 1, 1, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Zone/Pines/AstronomiaZone/pin4"]
+libraries = {
+"": SubResource("AnimationLibrary_rfs4y")
+}
 
 [node name="GeologiaZone" type="Node2D" parent="Zone/Pines"]
 
-[node name="Sprite2D" type="Sprite2D" parent="Zone/Pines/GeologiaZone"]
-visible = false
+[node name="pin1" type="Sprite2D" parent="Zone/Pines/GeologiaZone"]
 position = Vector2(155.5, 86.9999)
 scale = Vector2(0.636816, 0.636816)
+
+[node name="check" type="Sprite2D" parent="Zone/Pines/GeologiaZone/pin1"]
+scale = Vector2(1e-05, 1e-05)
 texture = ExtResource("8_6ftc5")
 
-[node name="Sprite2D2" type="Sprite2D" parent="Zone/Pines/GeologiaZone"]
-visible = false
+[node name="particles" type="Node2D" parent="Zone/Pines/GeologiaZone/pin1"]
+
+[node name="estrellas" parent="Zone/Pines/GeologiaZone/pin1/particles" instance=ExtResource("9_orh31")]
+position = Vector2(-45.5391, -14.1329)
+rotation = 0.0262622
+emitting = false
+amount = 6
+lifetime = 0.4
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("10_hg27i")
+emission_shape = 0
+spread = 45.0
+initial_velocity_min = 288.37
+initial_velocity_max = 481.78
+scale_amount_min = 0.1
+scale_amount_max = 0.2
+scale_amount_curve = SubResource("Curve_dkj71")
+color = Color(1, 1, 1, 1)
+
+[node name="estrellas2" parent="Zone/Pines/GeologiaZone/pin1/particles" instance=ExtResource("9_orh31")]
+position = Vector2(0.968811, -64.9532)
+rotation = 1.51493
+emitting = false
+amount = 6
+lifetime = 0.4
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("10_hg27i")
+emission_shape = 0
+spread = 60.0
+initial_velocity_min = 288.37
+initial_velocity_max = 481.78
+scale_amount_min = 0.1
+scale_amount_max = 0.2
+scale_amount_curve = SubResource("Curve_dkj71")
+color = Color(1, 1, 1, 1)
+
+[node name="estrellas3" parent="Zone/Pines/GeologiaZone/pin1/particles" instance=ExtResource("9_orh31")]
+position = Vector2(45.5389, -14.1328)
+rotation = 3.74823
+emitting = false
+amount = 6
+lifetime = 0.4
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("10_hg27i")
+emission_shape = 0
+spread = 45.0
+initial_velocity_min = 288.37
+initial_velocity_max = 481.78
+scale_amount_min = 0.1
+scale_amount_max = 0.2
+scale_amount_curve = SubResource("Curve_dkj71")
+color = Color(1, 1, 1, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Zone/Pines/GeologiaZone/pin1"]
+libraries = {
+"": SubResource("AnimationLibrary_rfs4y")
+}
+
+[node name="pin2" type="Sprite2D" parent="Zone/Pines/GeologiaZone"]
 position = Vector2(344.5, -74)
 scale = Vector2(0.636816, 0.636816)
+
+[node name="check" type="Sprite2D" parent="Zone/Pines/GeologiaZone/pin2"]
+scale = Vector2(1e-05, 1e-05)
 texture = ExtResource("8_6ftc5")
 
-[node name="Sprite2D3" type="Sprite2D" parent="Zone/Pines/GeologiaZone"]
-visible = false
+[node name="particles" type="Node2D" parent="Zone/Pines/GeologiaZone/pin2"]
+
+[node name="estrellas" parent="Zone/Pines/GeologiaZone/pin2/particles" instance=ExtResource("9_orh31")]
+position = Vector2(-45.5391, -14.1329)
+rotation = 0.0262622
+emitting = false
+amount = 6
+lifetime = 0.4
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("10_hg27i")
+emission_shape = 0
+spread = 45.0
+initial_velocity_min = 288.37
+initial_velocity_max = 481.78
+scale_amount_min = 0.1
+scale_amount_max = 0.2
+scale_amount_curve = SubResource("Curve_dkj71")
+color = Color(1, 1, 1, 1)
+
+[node name="estrellas2" parent="Zone/Pines/GeologiaZone/pin2/particles" instance=ExtResource("9_orh31")]
+position = Vector2(0.968811, -64.9532)
+rotation = 1.51493
+emitting = false
+amount = 6
+lifetime = 0.4
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("10_hg27i")
+emission_shape = 0
+spread = 60.0
+initial_velocity_min = 288.37
+initial_velocity_max = 481.78
+scale_amount_min = 0.1
+scale_amount_max = 0.2
+scale_amount_curve = SubResource("Curve_dkj71")
+color = Color(1, 1, 1, 1)
+
+[node name="estrellas3" parent="Zone/Pines/GeologiaZone/pin2/particles" instance=ExtResource("9_orh31")]
+position = Vector2(45.5389, -14.1328)
+rotation = 3.74823
+emitting = false
+amount = 6
+lifetime = 0.4
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("10_hg27i")
+emission_shape = 0
+spread = 45.0
+initial_velocity_min = 288.37
+initial_velocity_max = 481.78
+scale_amount_min = 0.1
+scale_amount_max = 0.2
+scale_amount_curve = SubResource("Curve_dkj71")
+color = Color(1, 1, 1, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Zone/Pines/GeologiaZone/pin2"]
+libraries = {
+"": SubResource("AnimationLibrary_rfs4y")
+}
+
+[node name="pin3" type="Sprite2D" parent="Zone/Pines/GeologiaZone"]
 position = Vector2(289.5, 523)
 scale = Vector2(0.636816, 0.636816)
+
+[node name="check" type="Sprite2D" parent="Zone/Pines/GeologiaZone/pin3"]
+scale = Vector2(1e-05, 1e-05)
 texture = ExtResource("8_6ftc5")
+
+[node name="particles" type="Node2D" parent="Zone/Pines/GeologiaZone/pin3"]
+
+[node name="estrellas" parent="Zone/Pines/GeologiaZone/pin3/particles" instance=ExtResource("9_orh31")]
+position = Vector2(-45.5391, -14.1329)
+rotation = 0.0262622
+emitting = false
+amount = 6
+lifetime = 0.4
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("10_hg27i")
+emission_shape = 0
+spread = 45.0
+initial_velocity_min = 288.37
+initial_velocity_max = 481.78
+scale_amount_min = 0.1
+scale_amount_max = 0.2
+scale_amount_curve = SubResource("Curve_dkj71")
+color = Color(1, 1, 1, 1)
+
+[node name="estrellas2" parent="Zone/Pines/GeologiaZone/pin3/particles" instance=ExtResource("9_orh31")]
+position = Vector2(0.968811, -64.9532)
+rotation = 1.51493
+emitting = false
+amount = 6
+lifetime = 0.4
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("10_hg27i")
+emission_shape = 0
+spread = 60.0
+initial_velocity_min = 288.37
+initial_velocity_max = 481.78
+scale_amount_min = 0.1
+scale_amount_max = 0.2
+scale_amount_curve = SubResource("Curve_dkj71")
+color = Color(1, 1, 1, 1)
+
+[node name="estrellas3" parent="Zone/Pines/GeologiaZone/pin3/particles" instance=ExtResource("9_orh31")]
+position = Vector2(45.5389, -14.1328)
+rotation = 3.74823
+emitting = false
+amount = 6
+lifetime = 0.4
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("10_hg27i")
+emission_shape = 0
+spread = 45.0
+initial_velocity_min = 288.37
+initial_velocity_max = 481.78
+scale_amount_min = 0.1
+scale_amount_max = 0.2
+scale_amount_curve = SubResource("Curve_dkj71")
+color = Color(1, 1, 1, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Zone/Pines/GeologiaZone/pin3"]
+libraries = {
+"": SubResource("AnimationLibrary_rfs4y")
+}
 
 [node name="Panel" type="Panel" parent="Zone"]
 layout_mode = 1
@@ -634,6 +1631,8 @@ grow_horizontal = 2
 pivot_offset = Vector2(332, 114)
 theme = ExtResource("11_twlej")
 script = ExtResource("12_v4jlj")
+AppearSound = "yey"
+NoSkipWiting = true
 Texts = Array[ExtResource("14_xro7r")]([SubResource("Resource_w7u63")])
 
 [node name="label" type="Label" parent="Zone/PanelCompletada"]
@@ -718,10 +1717,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 23.0
-offset_top = 23.0
-offset_right = 67.0
-offset_bottom = 67.0
+offset_left = -22.0
+offset_top = -22.0
+offset_right = 22.0
+offset_bottom = 22.0
 grow_horizontal = 2
 grow_vertical = 2
 rotation = 0.174533
@@ -794,10 +1793,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 23.0
-offset_top = 23.0
-offset_right = 67.0
-offset_bottom = 67.0
+offset_left = -22.0
+offset_top = -22.0
+offset_right = 22.0
+offset_bottom = 22.0
 grow_horizontal = 2
 grow_vertical = 2
 rotation = 0.174533
@@ -868,8 +1867,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 23.0
 offset_top = 23.0
-offset_right = 67.0
-offset_bottom = 67.0
+offset_right = -23.0
+offset_bottom = -23.0
 grow_horizontal = 2
 grow_vertical = 2
 rotation = 0.174533
@@ -938,7 +1937,105 @@ flat = true
 [node name="Panel(1) Btn(center)" parent="Zone/PanelCompletada" instance=ExtResource("17_u304q")]
 Data = SubResource("Resource_407o8")
 
+[node name="Estrellas" type="Node2D" parent="Zone/PanelCompletada"]
+position = Vector2(332.5, 252)
+
+[node name="estrellas" parent="Zone/PanelCompletada/Estrellas" instance=ExtResource("9_orh31")]
+position = Vector2(-45.5391, -14.1329)
+rotation = 0.0262622
+emitting = false
+amount = 6
+lifetime = 0.4
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("10_hg27i")
+emission_shape = 0
+spread = 45.0
+initial_velocity_min = 255.35
+initial_velocity_max = 269.51
+scale_amount_min = 0.1
+scale_amount_max = 0.2
+scale_amount_curve = SubResource("Curve_dkj71")
+color = Color(1, 1, 1, 1)
+
+[node name="estrellas2" parent="Zone/PanelCompletada/Estrellas" instance=ExtResource("9_orh31")]
+position = Vector2(0.968811, -64.9532)
+rotation = 1.51493
+emitting = false
+amount = 6
+lifetime = 0.4
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("10_hg27i")
+emission_shape = 0
+spread = 60.0
+initial_velocity_min = 255.35
+initial_velocity_max = 269.51
+scale_amount_min = 0.1
+scale_amount_max = 0.2
+scale_amount_curve = SubResource("Curve_dkj71")
+color = Color(1, 1, 1, 1)
+
+[node name="estrellas3" parent="Zone/PanelCompletada/Estrellas" instance=ExtResource("9_orh31")]
+position = Vector2(45.5389, -14.1328)
+rotation = 3.74823
+emitting = false
+amount = 6
+lifetime = 0.4
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("10_hg27i")
+emission_shape = 0
+spread = 45.0
+initial_velocity_min = 255.35
+initial_velocity_max = 269.51
+scale_amount_min = 0.1
+scale_amount_max = 0.2
+scale_amount_curve = SubResource("Curve_dkj71")
+color = Color(1, 1, 1, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Zone/PanelCompletada/Estrellas"]
+libraries = {
+"": SubResource("AnimationLibrary_dnw2j")
+}
+
+[node name="AppearSound" type="Node" parent="Zone/PanelCompletada"]
+
+[node name="SoundBank" type="Node" parent="Zone/PanelCompletada/AppearSound"]
+script = ExtResource("28_ndjk3")
+label = "appear"
+events = Array[ExtResource("29_ol1mw")]([SubResource("Resource_613n4"), SubResource("Resource_ud1i2"), SubResource("Resource_7fh2y")])
+
+[node name="SoundBank" type="Node" parent="Zone/PanelCompletada"]
+script = ExtResource("28_ndjk3")
+label = "UI"
+events = Array[ExtResource("29_ol1mw")]([SubResource("Resource_3w43a"), SubResource("Resource_fb1w7")])
+
+[node name="TypingSounds" type="Node" parent="Zone/PanelCompletada"]
+
+[node name="SoundBank" type="Node" parent="Zone/PanelCompletada/TypingSounds"]
+script = ExtResource("28_ndjk3")
+label = "typing"
+events = Array[ExtResource("29_ol1mw")]([SubResource("Resource_u2amy"), SubResource("Resource_cryfx"), SubResource("Resource_4tqyh"), SubResource("Resource_8p4kf"), SubResource("Resource_nrlv5"), SubResource("Resource_i1vr5"), SubResource("Resource_0pxy2"), SubResource("Resource_81dmr"), SubResource("Resource_d6qu2")])
+
+[node name="sounds" type="Node" parent="Zone"]
+script = ExtResource("28_wovoc")
+
+[node name="SoundBank" type="Node" parent="Zone/sounds"]
+script = ExtResource("28_ndjk3")
+label = "general"
+events = Array[ExtResource("29_ol1mw")]([SubResource("Resource_u0n1u")])
+
+[node name="soundsSecuencias" type="Node" parent="Zone"]
+script = ExtResource("28_wovoc")
+
+[node name="SoundBank" type="Node" parent="Zone/soundsSecuencias"]
+script = ExtResource("28_ndjk3")
+label = "secuencias"
+events = Array[ExtResource("29_ol1mw")]([SubResource("Resource_dkam6"), SubResource("Resource_7bfeb"), SubResource("Resource_06pif")])
+
 [connection signal="pressed" from="Zone/btnVolver" to="Zone/btnVolver" method="_on_pressed"]
+[connection signal="BtnAppear" from="Zone/PanelCompletada" to="Zone/PanelCompletada/Estrellas/AnimationPlayer" method="play" binds= ["content"]]
 [connection signal="pressed" from="Zone/PanelCompletada/BtnDerAnchor/btnDer" to="Zone/PanelCompletada" method="rigthBTNConnect" flags=18]
 [connection signal="pressed" from="Zone/PanelCompletada/BtnDerAnchor/btnDer" to="Zone/PanelCompletada" method="ButtonPress" flags=18 binds= [0]]
 [connection signal="pressed" from="Zone/PanelCompletada/btnIzqAnchor/btnIzq" to="Zone/PanelCompletada" method="leftBTNConnect" flags=18]

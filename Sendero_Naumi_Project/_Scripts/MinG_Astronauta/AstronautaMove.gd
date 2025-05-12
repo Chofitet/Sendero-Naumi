@@ -22,6 +22,8 @@ signal AllCollect
 var isBlock = true
 signal collision
 @onready var Collision_Timer : Timer = $Timer
+var SoundJP
+var breatheSound
 
 func _ready():
 	$Area2D.area_entered.connect(GetPickUpObjects)
@@ -33,19 +35,35 @@ func _physics_process(delta):
 
 func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("TouchScreen"):
-		if isBlock: return
+		if isBlock: 
+			particles.emitting = false
+			return
 		sprite.texture = texturePropulsion
 		particles.emitting = true
+		SoundManager.play("astronauta","fart")
+		if SoundJP == null :
+			SoundJP = SoundManager.instance_poly("astronauta", "jetpack")
+			SoundJP.trigger()
 		var particleInstance = particleCircle.instantiate()
 		sprite.add_child(particleInstance)
 		particleInstance.rotation = direction.angle()
 		particleInstance.emitting = true
 	if Input.is_action_pressed("TouchScreen"):
-		if isBlock: return
+		if isBlock:
+			particles.emitting = false
+			if SoundJP != null: 
+				SoundJP.release()
+				SoundJP = null
+			return
 		target_position= event.position
 		isPressing = true
 	if  Input.is_action_just_released("TouchScreen"):
-		if isBlock: return
+		if SoundJP != null: 
+			SoundJP.release()
+			SoundJP = null
+		if isBlock: 
+			particles.emitting = false
+			return
 		sprite.texture = textureIdle
 		particles.emitting = false
 		isPressing = false
@@ -82,6 +100,7 @@ func Move(delta):
 				if last_collider == null:
 					Collision_Timer.start()
 					last_collider = c.get_collider()
+					SoundManager.play("astronauta","hit")
 					collision_count += 1
 					collision.emit(str(collision_count),1)
 					print(collision_count)
@@ -110,7 +129,7 @@ var collision_count = 0
 
 func GetPickUpObjects(x):
 	if x.is_in_group("meteoro"):
-		
+		#SoundManager.play("astronauta","pickUp")
 		if Meteoros.find(x.name) == -1:
 			Meteoros.append(x.name)
 			pcInventary.CheckMeteoro(GetMeteoroIndex(x))
@@ -134,6 +153,11 @@ func GetMeteoroIndex(x)->int:
 
 func BlockMove(x):
 	isBlock = x
+	if isPressing and isBlock == false:
+		particles.emitting = true
+		if SoundJP == null :
+			SoundJP = SoundManager.instance_poly("astronauta", "jetpack")
+			SoundJP.trigger()
 
 func SetSelfCamFollow(x):
 	if x.is_in_group("FollowCam"):

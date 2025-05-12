@@ -7,6 +7,7 @@ var time = 1
 var wasTransformed
 signal PanelAppear
 signal TriggerNextTransformation
+@export var spot : Sprite2D
 func _ready():
 	initPosition = position
 
@@ -25,18 +26,31 @@ func buttonpress():
 	time = 0
 	z_index = 1
 	overlay.visible = false
-	get_parent().get_node("plutonicaSpot").visible = true
-	NubeAnim.play("RESET")
 	get_parent().get_node("ButtonsInfoController").ActiveButtons()
-	RestartAll()
+	#RestartAll()
 	
-	if wasTransformed : return
+	if wasTransformed : 
+		NubeAnim.play("RESET")
+		NubeAnim.play("disappear")
+		RestartAll()
+		return
+	
+	MoveToSpot()
 	wasTransformed = true
 	TriggerNextTransformation.emit()
 	PlayerVariables.EmitActivePause()
 
 func panelAppear():
 	PanelAppear.emit()
+
+func MoveToSpot():
+	var tween = get_tree().create_tween()
+	tween.tween_property(self,"global_position",spot.global_position, 0.3)
+	var tween2 = get_tree().create_tween()
+	tween2.tween_property(self,"scale",Vector2(0.157,0.157),0.3)
+	await tween.finished
+	get_parent().get_node("plutonicaSpot").visible = true
+	RestartAll()
 
 func RestartAll():
 	
