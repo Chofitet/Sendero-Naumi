@@ -1,4 +1,4 @@
-[gd_scene load_steps=169 format=3 uid="uid://buth5gc88nt3j"]
+[gd_scene load_steps=171 format=3 uid="uid://buth5gc88nt3j"]
 
 [ext_resource type="Texture2D" uid="uid://cjjoaemhep814" path="res://Sprites/mapa-detalle.png" id="1_kw7ma"]
 [ext_resource type="Texture2D" uid="uid://hf5y4ic16cqj" path="res://Sprites/Intro/intro - background.jpg" id="1_un13t"]
@@ -1563,6 +1563,43 @@ pitch = 1.0
 RandomPitch = Vector2(0.8, 1.3)
 streams = Array[AudioStream]([ExtResource("37_v32se")])
 
+[sub_resource type="Shader" id="Shader_bxyru"]
+code = "shader_type canvas_item;
+
+uniform float squiggle_intensity : hint_range(0.0, 10.0) = 1.0; // Intensidad del efecto
+uniform float speed : hint_range(0.0, 5.0) = 1.0; // Velocidad del efecto
+uniform float frequency : hint_range(0.0, 20.0) = 10.0; // Frecuencia de las ondulaciones
+
+uniform vec2 motion = vec2(0.0);
+uniform float scale = 1.0;
+uniform vec2 offset = vec2(0.0);
+
+void vertex(){
+	UV = (VERTEX + offset + TIME * motion) * TEXTURE_PIXEL_SIZE * (1.0/scale);
+}
+
+void fragment() {
+    vec2 uv = UV;
+
+    // Añade una ondulación basada en el tiempo
+    float time = TIME * speed;
+    uv.x += sin(uv.y * frequency + time) * squiggle_intensity * 0.01;
+    uv.y += cos(uv.x * frequency + time) * squiggle_intensity * 0.01;
+
+    // Muestra la textura del sprite con las ondulaciones aplicadas
+    COLOR = texture(TEXTURE, uv) * texture(TEXTURE, UV).a;
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pf8ts"]
+shader = SubResource("Shader_bxyru")
+shader_parameter/squiggle_intensity = 0.108
+shader_parameter/speed = 0.892
+shader_parameter/frequency = 20.0
+shader_parameter/motion = Vector2(0, 0)
+shader_parameter/scale = 1.0
+shader_parameter/offset = Vector2(0, 0)
+
 [sub_resource type="Resource" id="Resource_2er3h"]
 script = ExtResource("33_xvgkx")
 Place = 0
@@ -2022,9 +2059,9 @@ animation = "idle"
 
 [node name="PanelNaumi1" parent="Naumi_Intro" instance=ExtResource("34_kpbhv")]
 layout_mode = 1
-offset_left = -312.0
+offset_left = -321.0
 offset_top = 65.0
-offset_right = 340.0
+offset_right = 331.0
 offset_bottom = 293.0
 AppearInBeginning = false
 SetEnterOnce = true
@@ -2684,6 +2721,18 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="TextureRect2" type="TextureRect" parent="Map_Scroll/fakeMap"]
+material = SubResource("ShaderMaterial_pf8ts")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_wa0ye")
+expand_mode = 1
+stretch_mode = 1
+
 [node name="MegafaunaZone" type="TextureRect" parent="Map_Scroll/fakeMap"]
 layout_mode = 1
 anchors_preset = 8
@@ -2709,13 +2758,6 @@ texture = ExtResource("36_k1vcc")
 texture_mode = 1
 sharp_limit = 49.96
 round_precision = 32
-
-[node name="MovingIsland" type="AnimationPlayer" parent="Map_Scroll/fakeMap/MegafaunaZone"]
-autoplay = "floating"
-speed_scale = 0.1
-libraries = {
-"": SubResource("AnimationLibrary_00mo8")
-}
 
 [node name="TextureRect" type="TextureRect" parent="Map_Scroll/fakeMap/MegafaunaZone"]
 layout_mode = 1
@@ -2829,9 +2871,9 @@ theme_override_styles/hover = SubResource("StyleBoxTexture_wbaqp")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_wbaqp")
 theme_override_styles/disabled = SubResource("StyleBoxTexture_wbaqp")
 text = "SI"
-NextScene = "Map_Screen"
+NextScene = "load_scene_Map_Screen"
 fade_time = 0.0
-texture = ""
+texture = "transparent"
 color = Color(0, 0, 0, 0)
 
 [node name="Control" type="Control" parent="Map_Scroll"]
@@ -2924,12 +2966,23 @@ scroll_active = false
 visible = false
 layout_mode = 0
 anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 404.0
+offset_bottom = 135.0
+grow_horizontal = 1
+grow_vertical = 1
 NextScene = "Map_Screen"
 fade_time = 0.6
 texture = "vertical"
 smoothness = 0.2
 
 [node name="Sound Debug" parent="." instance=ExtResource("50_0da8f")]
+visible = false
 layout_mode = 1
 AudioBuses = Array[String](["VolumenIntroScroll", "swipeIslas", "chan", "tocarNaumi", "correrMapa", "pointersAparecen", "islaAcerca", "musicLoop", "musicIntro", "entraTitulo"])
 
@@ -2954,8 +3007,8 @@ AudioBuses = Array[String](["VolumenIntroScroll", "swipeIslas", "chan", "tocarNa
 [connection signal="ButtonPress" from="Naumi_Intro/PanelNaumi1/Panel(2) Btn(left)" to="Map_Scroll/AnimationPlayer" method="play_backwards" binds= ["Map_Slice"]]
 [connection signal="ButtonPress" from="Naumi_Intro/PanelNaumi1/Panel(2) Btn(left)" to="Map_Scroll/GeneralSounds" method="PlayEvent" binds= ["sliceBack"]]
 [connection signal="ButtonPress" from="Naumi_Intro/PanelNaumi1/Panel(2) Btn(left)" to="Map_Scroll/Music/MusicVolume" method="SetVolume" binds= [-80.0, 4.0]]
-[connection signal="ButtonPress" from="Naumi_Intro/PanelNaumi1/Panel(2) Btn(rigth)2" to="Map_Scroll/ButtonChangeScene" method="_on_pressed"]
-[connection signal="ButtonPress" from="Naumi_Intro/PanelNaumi1/Panel(2) Btn(left)2" to="Map_Scroll/ButtonChangeScene" method="_on_pressed"]
+[connection signal="ButtonPress" from="Naumi_Intro/PanelNaumi1/Panel(2) Btn(rigth)2" to="Map_Scroll/ButtonChangeScene" method="StandarChangeScene"]
+[connection signal="ButtonPress" from="Naumi_Intro/PanelNaumi1/Panel(2) Btn(left)2" to="Map_Scroll/ButtonChangeScene" method="StandarChangeScene"]
 [connection signal="ButtonPress" from="Map_Scroll/CenterAnchor/Title/ExpandingConteiner/TextureRect/Control/Panel/Panel(2) Btn(rigth)" to="Map_Scroll/PanelIntro1" method="EnterPanel"]
 [connection signal="ButtonPress" from="Map_Scroll/CenterAnchor/Title/ExpandingConteiner/TextureRect/Control/Panel/Panel(2) Btn(rigth)" to="Map_Scroll/CenterAnchor/FadeAnimation" method="play" binds= ["1erFade"]]
 [connection signal="pressed" from="Map_Scroll/CenterAnchor/Piso1/ExpandingCoteiner/MegafaunaZone/Button" to="Map_Scroll/CenterAnchor/Piso1/ExpandingCoteiner/MegafaunaZone/MegafaunaAnimator" method="play" binds= ["chan_anim"]]

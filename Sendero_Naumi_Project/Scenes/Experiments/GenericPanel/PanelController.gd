@@ -175,6 +175,8 @@ func _ready():
 		await get_tree().create_timer(0.001).timeout
 		label.visible_ratio = 1
 		label.visible = true
+		$labelRich.visible_ratio = 1
+		$labelRich.visible_ratio = 1
 		AppearButtonAnim()
 	
 

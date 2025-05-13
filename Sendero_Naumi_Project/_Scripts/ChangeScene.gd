@@ -6,6 +6,7 @@ extends Button
 @export var smoothness : float
 @export var is_inverted : bool
 @export var color : Color
+@export var isTransparent : bool = false
 
 var Fade_in
 var Fade_out
@@ -28,3 +29,7 @@ func _on_pressed():
 
 func SetVisibility(x):
 	visible = x
+
+func StandarChangeScene():
+	SoundManager.remove_all_sounds()
+	get_tree().change_scene_to_file("res://Scenes/" + NextScene + ".tscn")
