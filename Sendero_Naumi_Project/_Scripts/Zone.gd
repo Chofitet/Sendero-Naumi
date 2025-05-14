@@ -10,6 +10,7 @@ var ZoneResourseFile = ZoneResource.new()
 @export var ZonesForTriggerUnlock: Array[String] = []
 var AreUnlocked: bool
 signal ZoneComplete
+@export var isSizeAdjusted : bool = true
 
 func load_file():
 		ZoneResourseFile  = ResourceLoader.load(save_file_path  + save_file_name)
@@ -20,7 +21,13 @@ func  _ready():
 	Set_Complete()
 	UnlockZone()
 	StartFlotingAnim()
+	if isSizeAdjusted: AdjustSize()
 	
+
+func AdjustSize():
+	if get_viewport_rect().size.y < 1500:
+		$TextureRect.scale = Vector2(0.95,0.95)
+		if $LockIland !=null: $LockIland.scale = Vector2(0.95,0.95)
 
 func Set_Complete():
 	for z in ZoneResourseFile.StateZones.keys():
