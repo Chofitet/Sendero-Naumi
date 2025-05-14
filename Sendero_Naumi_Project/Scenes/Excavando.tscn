@@ -221,67 +221,6 @@ pitch = 1.0
 RandomPitch = Vector2(0.95, 1.1)
 streams = Array[AudioStream]([ExtResource("29_bbmdx")])
 
-[sub_resource type="Animation" id="Animation_21eaa"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Nube2:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0.437037, 0.437037)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Nube:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0.641509, 0.641509)]
-}
-
-[sub_resource type="Animation" id="Animation_52wgi"]
-resource_name = "out_Nube"
-length = 0.4
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Nube2:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0.437037, 0.437037), Vector2(1e-05, 1e-05)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Nube:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.2, 0.4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0.641509, 0.641509), Vector2(0, 0)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_xrjey"]
-_data = {
-"RESET": SubResource("Animation_21eaa"),
-"out_Nube": SubResource("Animation_52wgi")
-}
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_x16bw"]
 radius = 1.5
 
@@ -412,6 +351,67 @@ _data = {
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4wmuv"]
 size = Vector2(580, 120)
+
+[sub_resource type="Animation" id="Animation_21eaa"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Nube2:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.437037, 0.437037)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Nube:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.641509, 0.641509)]
+}
+
+[sub_resource type="Animation" id="Animation_52wgi"]
+resource_name = "out_Nube"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Nube2:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.437037, 0.437037), Vector2(1e-05, 1e-05)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Nube:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.641509, 0.641509), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xrjey"]
+_data = {
+"RESET": SubResource("Animation_21eaa"),
+"out_Nube": SubResource("Animation_52wgi")
+}
 
 [sub_resource type="Gradient" id="Gradient_gx12n"]
 offsets = PackedFloat32Array(0.538012, 0.672515)
@@ -845,49 +845,6 @@ script = ExtResource("24_deahb")
 script = ExtResource("25_vt8k4")
 label = "loop"
 events = Array[ExtResource("26_1d07x")]([SubResource("Resource_wrx85")])
-
-[node name="BurbujaPensamiento" type="Node2D" parent="Excavando/StateMachine/Juego/Contenido/background/CanvasGroup" node_paths=PackedStringArray("target")]
-z_index = 1
-position = Vector2(179, 529)
-script = ExtResource("24_ldq5q")
-target = NodePath("../TopoController")
-
-[node name="Nube" type="Sprite2D" parent="Excavando/StateMachine/Juego/Contenido/background/CanvasGroup/BurbujaPensamiento"]
-position = Vector2(80, -51)
-scale = Vector2(0.641509, 0.641509)
-texture = ExtResource("25_ic6bn")
-
-[node name="Nube2" type="Sprite2D" parent="Excavando/StateMachine/Juego/Contenido/background/CanvasGroup/BurbujaPensamiento"]
-position = Vector2(212, -178)
-scale = Vector2(0.437037, 0.437037)
-texture = ExtResource("26_kmnqk")
-
-[node name="Label" type="Label" parent="Excavando/StateMachine/Juego/Contenido/background/CanvasGroup/BurbujaPensamiento/Nube2"]
-anchors_preset = -1
-anchor_left = 0.497
-anchor_top = 0.543
-anchor_right = 0.497
-anchor_bottom = 0.543
-offset_left = -712.343
-offset_top = -396.22
-offset_right = -12.343
-offset_bottom = -135.22
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 45
-text = "VOS SEÑALA CON EL DEDO,
-YO TE SIGO.
-(podes señalar lejos de mi)
-"
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 3
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Excavando/StateMachine/Juego/Contenido/background/CanvasGroup/BurbujaPensamiento"]
-libraries = {
-"": SubResource("AnimationLibrary_xrjey")
-}
-script = ExtResource("27_giwlu")
-GroupOfCollision = "topo"
 
 [node name="Instancia1" type="Control" parent="Excavando/StateMachine/Juego/Contenido"]
 visible = false
@@ -4510,6 +4467,53 @@ offset_bottom = 0.639893
 grow_horizontal = 2
 grow_vertical = 0
 
+[node name="TutorialBurbuja" type="CanvasLayer" parent="Excavando/StateMachine/Juego/Contenido"]
+visible = false
+
+[node name="BurbujaPensamiento" type="Node2D" parent="Excavando/StateMachine/Juego/Contenido/TutorialBurbuja" node_paths=PackedStringArray("target")]
+visible = false
+z_index = 4
+position = Vector2(179, 529)
+script = ExtResource("24_ldq5q")
+target = NodePath("../../background/CanvasGroup/TopoController")
+
+[node name="Nube" type="Sprite2D" parent="Excavando/StateMachine/Juego/Contenido/TutorialBurbuja/BurbujaPensamiento"]
+position = Vector2(80, -51)
+scale = Vector2(0.641509, 0.641509)
+texture = ExtResource("25_ic6bn")
+
+[node name="Nube2" type="Sprite2D" parent="Excavando/StateMachine/Juego/Contenido/TutorialBurbuja/BurbujaPensamiento"]
+position = Vector2(212, -178)
+scale = Vector2(0.437037, 0.437037)
+texture = ExtResource("26_kmnqk")
+
+[node name="Label" type="Label" parent="Excavando/StateMachine/Juego/Contenido/TutorialBurbuja/BurbujaPensamiento/Nube2"]
+anchors_preset = -1
+anchor_left = 0.497
+anchor_top = 0.543
+anchor_right = 0.497
+anchor_bottom = 0.543
+offset_left = -712.343
+offset_top = -396.22
+offset_right = -12.343
+offset_bottom = -135.22
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 45
+text = "VOS SEÑALA CON EL DEDO,
+YO TE SIGO.
+(podes señalar lejos de mi)
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Excavando/StateMachine/Juego/Contenido/TutorialBurbuja/BurbujaPensamiento"]
+libraries = {
+"": SubResource("AnimationLibrary_xrjey")
+}
+script = ExtResource("27_giwlu")
+GroupOfCollision = "topo"
+
 [node name="btnVolver" parent="Excavando/StateMachine/Juego" instance=ExtResource("38_0b8dm")]
 
 [node name="Moraleja" type="Node" parent="Excavando/StateMachine"]
@@ -4691,9 +4695,10 @@ AudioBuses = Array[String](["TopoNivelVolumen", "topoGuia", "tocoTopo", "topoLoo
 [connection signal="timeout" from="Excavando/StateMachine/Consigna/Contenido/Timer" to="Excavando/StateMachine/Consigna" method="TimeOut" flags=18]
 [connection signal="ButtonPress" from="Excavando/StateMachine/Consigna/Contenido/Intro1/Panel(2) Btn(rigth)" to="Excavando/StateMachine" method="Trigger_On_Child_Transition" binds= ["juego"]]
 [connection signal="Transitioned" from="Excavando/StateMachine/Juego" to="Excavando/StateMachine/Juego/Contenido/background/CanvasGroup/TopoController" method="EnableDisaneable" binds= [true, true]]
-[connection signal="Transitioned" from="Excavando/StateMachine/Juego" to="Excavando/StateMachine/Juego/Contenido/background/CanvasGroup/BurbujaPensamiento" method="set_visible" binds= [false]]
-[connection signal="InstanceTrue" from="Excavando/StateMachine/Juego/Contenido/Instancia1" to="Excavando/StateMachine/Juego/Contenido/background/CanvasGroup/BurbujaPensamiento" method="set_visible" binds= [true]]
+[connection signal="Transitioned" from="Excavando/StateMachine/Juego" to="Excavando/StateMachine/Juego/Contenido/TutorialBurbuja/BurbujaPensamiento" method="set_visible" binds= [false]]
 [connection signal="InstanceTrue" from="Excavando/StateMachine/Juego/Contenido/Instancia1" to="Excavando/StateMachine/Juego/Contenido/Tutorial/Inventary" method="SetInstance" binds= [0]]
+[connection signal="InstanceTrue" from="Excavando/StateMachine/Juego/Contenido/Instancia1" to="Excavando/StateMachine/Juego/Contenido/TutorialBurbuja" method="set_visible" binds= [true]]
+[connection signal="InstanceTrue" from="Excavando/StateMachine/Juego/Contenido/Instancia1" to="Excavando/StateMachine/Juego/Contenido/TutorialBurbuja/BurbujaPensamiento" method="set_visible" binds= [true]]
 [connection signal="AllSpots" from="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Objetos/cajaFuerte" to="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Objetos/cajaFuerte/particles" method="Emit"]
 [connection signal="AllSpots" from="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Objetos/cajaFuerte" to="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Objetos/cajaFuerte" method="set_self_modulate" binds= [Color(1, 1, 1, 1)]]
 [connection signal="AllSpots" from="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Objetos/cajaFuerte" to="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Objetos/ObjectExploteSound" method="PlayEvent" binds= ["explosion"]]
@@ -4720,7 +4725,7 @@ AudioBuses = Array[String](["TopoNivelVolumen", "topoGuia", "tocoTopo", "topoLoo
 [connection signal="ConnectInventaryBTN" from="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController" to="Excavando/StateMachine/Juego/Contenido/Tutorial/Inventary" method="SetSkeletonFind"]
 [connection signal="area_entered" from="Excavando/StateMachine/Juego/Contenido/Instancia2/center/AreaMoveCam" to="Excavando/StateMachine/Camera2D" method="SetOnAreaDown" binds= [true]]
 [connection signal="area_exited" from="Excavando/StateMachine/Juego/Contenido/Instancia2/center/AreaMoveCam" to="Excavando/StateMachine/Camera2D" method="SetOnAreaDown" binds= [false]]
-[connection signal="area_entered" from="Excavando/StateMachine/Juego/Contenido/Tutorial/Control/TutorialTrigger" to="Excavando/StateMachine/Juego/Contenido/background/CanvasGroup/BurbujaPensamiento" method="OutAnim"]
+[connection signal="area_entered" from="Excavando/StateMachine/Juego/Contenido/Tutorial/Control/TutorialTrigger" to="Excavando/StateMachine/Juego/Contenido/TutorialBurbuja/BurbujaPensamiento" method="OutAnim"]
 [connection signal="timeout" from="Excavando/StateMachine/Moraleja/Contenido/Timer" to="Excavando/StateMachine/Moraleja" method="TimeOut" flags=18]
 [connection signal="pressed" from="Excavando/StateMachine/Moraleja/Contenido/Instancia1/Button" to="Excavando/StateMachine/Moraleja/Contenido/Instancia1/Button" method="_on_pressed" flags=18]
 [connection signal="Transitioned" from="Excavando/StateMachine/Fin" to="Excavando/StateMachine/Camera2D" method="RestartPos"]

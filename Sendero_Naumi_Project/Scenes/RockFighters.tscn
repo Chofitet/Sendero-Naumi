@@ -439,6 +439,20 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector2(-577, -2064), Vector2(-568, -1302)]
 }
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../Consigna/AnimationPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["RESET", -1, 1.0, false],
+"method": &"play"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ptcyw"]
 _data = {
@@ -789,6 +803,18 @@ tracks/8/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("VS:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_j21c2"]
 resource_name = "consigna"
@@ -1097,6 +1123,18 @@ tracks/1/keys = {
 "args": ["enterRigth"],
 "method": &"PlayAnim"
 }]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("VS:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_nyamy"]
@@ -2236,10 +2274,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 974.0
-offset_top = 279.0
-offset_right = 974.0
-offset_bottom = 279.0
+offset_left = 627.5
+offset_top = 189.0
+offset_right = 627.5
+offset_bottom = 189.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -2304,10 +2342,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -274.0
-offset_top = 279.0
-offset_right = -274.0
-offset_bottom = 279.0
+offset_left = -620.5
+offset_top = 189.0
+offset_right = -620.5
+offset_bottom = 189.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -2371,6 +2409,7 @@ button_group = ExtResource("43_p1yif")
 flat = true
 
 [node name="VS" type="TextureRect" parent="RockFighters/StateMachine/Juego/Contenido/Consigna"]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5

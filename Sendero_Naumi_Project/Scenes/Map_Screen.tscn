@@ -1,8 +1,9 @@
-[gd_scene load_steps=165 format=3 uid="uid://ck4m8k46bmha1"]
+[gd_scene load_steps=168 format=3 uid="uid://ck4m8k46bmha1"]
 
 [ext_resource type="Material" uid="uid://muj2sfgakm5s" path="res://shaders/GalaxyWiggle.tres" id="1_2gsu4"]
 [ext_resource type="Script" path="res://_Scripts/AdjustSeparationWithScreenSize.gd" id="2_1v6rf"]
 [ext_resource type="Script" path="res://_Scripts/ScrollController.gd" id="2_es768"]
+[ext_resource type="Script" path="res://_Scripts/SpaceTexture.gd" id="3_ejpsx"]
 [ext_resource type="Texture2D" uid="uid://05mdqsdsbuqm" path="res://Sprites/Mapa/geologia_mapa.png" id="4_jbstj"]
 [ext_resource type="Material" uid="uid://cr1nivdu20csy" path="res://shaders/Laser.tres" id="4_pj2xj"]
 [ext_resource type="Texture2D" uid="uid://gn0tmol3agtp" path="res://Sprites/Mapa/ciencias_mapa.png" id="5_isoyh"]
@@ -111,6 +112,43 @@
 [ext_resource type="AudioStream" uid="uid://gs0fjxj0osk3" path="res://Sounds/Vacio - Vacio.ogg" id="108_fdesn"]
 [ext_resource type="AudioStream" uid="uid://frrmiuklccr4" path="res://Sounds/Vacio1 - Vacio.ogg" id="109_okcqa"]
 [ext_resource type="AudioStream" uid="uid://biywwdhgqtva5" path="res://Sounds/Vacio2 - Vacio.ogg" id="110_2adlv"]
+
+[sub_resource type="Shader" id="Shader_gd7ie"]
+code = "shader_type canvas_item;
+
+uniform float squiggle_intensity : hint_range(0.0, 10.0) = 1.0; // Intensidad del efecto
+uniform float speed : hint_range(0.0, 5.0) = 1.0; // Velocidad del efecto
+uniform float frequency : hint_range(0.0, 20.0) = 10.0; // Frecuencia de las ondulaciones
+
+uniform vec2 motion = vec2(0.0);
+uniform float scale = 1.0;
+uniform vec2 offset = vec2(0.0);
+
+void vertex(){
+	UV = (VERTEX + offset + TIME * motion) * TEXTURE_PIXEL_SIZE * (1.0/scale);
+}
+
+void fragment() {
+    vec2 uv = UV;
+
+    // Añade una ondulación basada en el tiempo
+    float time = TIME * speed;
+    uv.x += sin(uv.y * frequency + time) * squiggle_intensity * 0.01;
+    uv.y += cos(uv.x * frequency + time) * squiggle_intensity * 0.01;
+
+    // Muestra la textura del sprite con las ondulaciones aplicadas
+    COLOR = texture(TEXTURE, uv) * texture(TEXTURE, UV).a;
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_x1k70"]
+shader = SubResource("Shader_gd7ie")
+shader_parameter/squiggle_intensity = 0.108
+shader_parameter/speed = 0.892
+shader_parameter/frequency = 20.0
+shader_parameter/motion = Vector2(0, 0)
+shader_parameter/scale = 1.0
+shader_parameter/offset = Vector2(0, 0)
 
 [sub_resource type="Curve2D" id="Curve2D_8o4yl"]
 bake_interval = 0.01
@@ -977,7 +1015,7 @@ grow_vertical = 2
 color = Color(0.65098, 0.784314, 1, 1)
 
 [node name="SpaceTexture" type="TextureRect" parent="."]
-material = ExtResource("1_2gsu4")
+material = SubResource("ShaderMaterial_x1k70")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -987,6 +1025,7 @@ grow_vertical = 2
 texture = ExtResource("21_ti06q")
 expand_mode = 1
 stretch_mode = 1
+script = ExtResource("3_ejpsx")
 
 [node name="TimerScroll" type="Timer" parent="."]
 wait_time = 0.2
@@ -3429,13 +3468,17 @@ AudioBuses = Array[String](["aparicionBubble", "TypingBubble", "swipeRapido", "s
 [connection signal="inZone" from="StateMachine/MegafaunaZone" to="ScrollContainer" method="SetisInputBlock" binds= [false]]
 [connection signal="pressed" from="StateMachine/ButtonNaumi" to="StateMachine/ButtonChangeScene" method="_on_pressed"]
 [connection signal="pressed" from="StateMachine/ButtonBack" to="StateMachine" method="Trigger_On_Child_Transition" binds= ["NoZone"]]
+[connection signal="ShowPanel" from="AdventurePanel/AdventurePanel" to="ScrollContainer/VBoxContainer/Piso1/Piso1/MegafaunaZone" method="StopFloating"]
 [connection signal="ShowPanel" from="AdventurePanel/AdventurePanel" to="ScrollContainer" method="SetisInputBlock" binds= [false]]
+[connection signal="ShowPanel" from="AdventurePanel/AdventurePanel" to="StateMachine/ButtonNaumi" method="set_visible" binds= [false]]
 [connection signal="pressed" from="AdventurePanel/AdventurePanel/PanelSuerte/BtnDerAnchor/btnDer" to="AdventurePanel/AdventurePanel/PanelSuerte" method="rigthBTNConnect" flags=18]
 [connection signal="pressed" from="AdventurePanel/AdventurePanel/PanelSuerte/BtnDerAnchor/btnDer" to="AdventurePanel/AdventurePanel/PanelSuerte" method="ButtonPress" flags=18 binds= [0]]
 [connection signal="pressed" from="AdventurePanel/AdventurePanel/PanelSuerte/btnIzqAnchor/btnIzq" to="AdventurePanel/AdventurePanel/PanelSuerte" method="leftBTNConnect" flags=18]
 [connection signal="pressed" from="AdventurePanel/AdventurePanel/PanelSuerte/btnIzqAnchor/btnIzq" to="AdventurePanel/AdventurePanel/PanelSuerte" method="ButtonPress" flags=18 binds= [1]]
 [connection signal="pressed" from="AdventurePanel/AdventurePanel/PanelSuerte/btnCentralAnchor/btnCentral" to="AdventurePanel/AdventurePanel/PanelSuerte" method="centerBTNConnect" flags=18]
 [connection signal="pressed" from="AdventurePanel/AdventurePanel/PanelSuerte/btnCentralAnchor/btnCentral" to="AdventurePanel/AdventurePanel/PanelSuerte" method="ButtonPress" flags=18 binds= [2]]
+[connection signal="ButtonPress" from="AdventurePanel/AdventurePanel/PanelSuerte/Panel(1) Btn(rigth)" to="ScrollContainer/VBoxContainer/Piso1/Piso1/MegafaunaZone" method="StartFlotingAnim"]
+[connection signal="ButtonPress" from="AdventurePanel/AdventurePanel/PanelSuerte/Panel(1) Btn(rigth)" to="StateMachine/ButtonNaumi" method="EnterAnim"]
 [connection signal="ButtonPress" from="AdventurePanel/AdventurePanel/PanelSuerte/Panel(1) Btn(rigth)" to="ScrollContainer" method="SetisInputBlock" binds= [true]]
 [connection signal="ButtonPress" from="AdventurePanel/AdventurePanel/PanelSuerte/Panel(1) Btn(rigth)" to="AdventurePanel" method="set_visible" binds= [false]]
 

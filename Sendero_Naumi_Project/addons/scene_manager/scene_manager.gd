@@ -5,7 +5,6 @@ const FADE: String = "fade"
 const COLOR: String = "color"
 const NO_COLOR: String = "no_color"
 const BLACK: Color = Color(0, 0, 0)
-
 # variables
 @onready var _fade_color_rect: ColorRect = find_child("fade")
 @onready var _animation_player: AnimationPlayer = find_child("animation_player")
@@ -36,7 +35,6 @@ class Options:
 	var fade_pattern: String = "fade"
 	var smoothness: float = 0.1
 	var inverted: bool = false
-	var isTransparent : bool = false
 
 class GeneralOptions:
 	var color: Color = Color(0, 0, 0)
@@ -81,25 +79,19 @@ func _ready() -> void:
 	_get_patterns()
 
 # `speed` unit is in seconds
-func _fade_in(speed: float,isTransparent : bool = false) -> bool:
+func _fade_in(speed: float) -> bool:
 	if speed == 0:
 		return false
 	fade_in_started.emit()
-	if !isTransparent:
-		_animation_player.play(FADE, -1, -1 / speed, false)
-	else:
-		_animation_player.play("transparent", -1, -1 / speed, false)
+	_animation_player.play(FADE, -1, 1 / speed, false)
 	return true
 
 # `speed` unit is in seconds
-func _fade_out(speed: float, isTransparent : bool = false) -> bool:
+func _fade_out(speed: float) -> bool:
 	if speed == 0:
 		return false
 	fade_out_started.emit()
-	if !isTransparent:
-		_animation_player.play(FADE, -1, -1 / speed, true)
-	else:
-		_animation_player.play("transparent", -1, -1 / speed, true)
+	_animation_player.play(FADE, -1, -1 / speed, true)
 	return true
 
 # activates `in_transition` mode
@@ -216,8 +208,6 @@ func _set_pattern(options: Options, general_options: GeneralOptions) -> void:
 		_fade_color_rect.material.set_shader_parameter("linear_fade", true)
 		_fade_color_rect.material.set_shader_parameter("color", Vector3(general_options.color.r, general_options.color.g, general_options.color.b))
 		_fade_color_rect.material.set_shader_parameter("custom_texture", null)
-	elif options.fade_pattern == "transparent":
-		pass
 	else:
 		_fade_color_rect.material.set_shader_parameter("linear_fade", false)
 		_fade_color_rect.material.set_shader_parameter("custom_texture", _patterns[options.fade_pattern])
@@ -266,13 +256,12 @@ func reset_scene_manager() -> void:
 	_stack.clear()
 
 # creates options for fade_out or fade_in transition
-func create_options(fade_speed: float = 1.0, fade_pattern: String = "fade", smoothness: float = 0.1, inverted: bool = false, isTransparent : bool = false) -> Options:
+func create_options(fade_speed: float = 1.0, fade_pattern: String = "fade", smoothness: float = 0.1, inverted: bool = false) -> Options:
 	var options: Options = Options.new()
 	options.fade_speed = fade_speed
 	options.fade_pattern = fade_pattern
 	options.smoothness = smoothness
 	options.inverted = inverted
-	options.isTransparent = isTransparent
 	return options
 
 # creates options for common properties in transition
@@ -338,8 +327,14 @@ func get_scene(key: String) -> PackedScene:
 	ResourceLoader.load_threaded_request(address, "", true, ResourceLoader.CACHE_MODE_REUSE)
 	return ResourceLoader.load_threaded_get(address)
 
+
+func PreloadScene(_nextScene : String):
+	ResourceLoader.load_threaded_request("res://Scenes/" + _nextScene + ".tscn")
+
 # changes current scene to the next scene
-func change_scene(scene, fade_out_options: Options, fade_in_options: Options, general_options: GeneralOptions) -> void:
+func change_scene(scene, fade_out_options: Options, fade_in_options: Options, general_options: GeneralOptions, preloadScene : String = "") -> void:
+	if preloadScene != "":
+		scene = ResourceLoader.load_threaded_get("res://Scenes/" + preloadScene + ".tscn")
 	if (scene is PackedScene || scene is Node || (typeof(scene) == TYPE_STRING && safe_validate_scene(scene) && !_in_transition)):
 		var blockInput = BlockInput.instantiate()
 		get_tree().root.add_child(blockInput)
@@ -347,7 +342,7 @@ func change_scene(scene, fade_out_options: Options, fade_in_options: Options, ge
 		_set_in_transition()
 		_set_clickable(general_options.clickable)
 		_set_pattern(fade_out_options, general_options)
-		if _fade_out(fade_out_options.fade_speed,fade_out_options.isTransparent):
+		if _fade_out(fade_out_options.fade_speed):
 			SoundManager.play("fade", fade_out_options.fade_pattern + "Out")
 			await _animation_player.animation_finished
 			fade_out_finished.emit()
@@ -361,7 +356,7 @@ func change_scene(scene, fade_out_options: Options, fade_in_options: Options, ge
 		_animation_player.play(NO_COLOR, -1, 1, false)
 		
 		_set_pattern(fade_in_options, general_options)
-		if _fade_in(fade_in_options.fade_speed,fade_in_options.isTransparent):
+		if _fade_in(fade_in_options.fade_speed):
 			SoundManager.play("fade", fade_out_options.fade_pattern + "In")
 			await _animation_player.animation_finished
 			fade_in_finished.emit()
