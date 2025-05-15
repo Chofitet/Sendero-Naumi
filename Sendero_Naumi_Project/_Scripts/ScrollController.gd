@@ -19,9 +19,10 @@ func _ready():
 	timer.timeout.connect(calculateGesture)
 	set_deferred("scroll_vertical",next_anchor)
 	var y = get_node(anchors[i]).global_position.y 
+	stopHold.connect(HoldingClick)
+	await get_tree().create_timer(0.01).timeout
 	next_anchor = getAnchorInBackScreen()
 	set_deferred("scroll_vertical",next_anchor)
-	stopHold.connect(HoldingClick)
 
 func _input(event: InputEvent) -> void:
 	if isInputBlock: return
@@ -113,10 +114,10 @@ func getAnchorInBackScreen() -> float:
 		return get_viewport_rect().size.y * 4
 	if NumPiso == 2:
 		SetFloorWithAnchor(1)
-		return get_viewport_rect().size.y * 2 - get_viewport_rect().size.y/3
+		return get_node(anchors[1]).global_position.y - global_position.y - get_viewport_rect().size.y/2
 	if NumPiso == 3:
 		SetFloorWithAnchor(2)
-		return get_viewport_rect().size.y - get_viewport_rect().size.y/5
+		return get_node(anchors[2]).global_position.y - global_position.y - get_viewport_rect().size.y/2
 	if NumPiso == 4:
 		SetFloorWithAnchor(3)
 		return 0
@@ -131,3 +132,4 @@ func SetFloorWithAnchor(num):
 	actualAnchor = anchors[i]
 	await get_tree().create_timer(0.2).timeout
 	$FloorDetector.SetActualFloor(num)
+

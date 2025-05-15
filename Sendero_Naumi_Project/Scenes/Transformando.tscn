@@ -5063,6 +5063,7 @@ scale = Vector2(0.999843, 0.999843)
 skew = -0.00138235
 rest = Transform2D(1, 0, 0, 1, 32, 0)
 editor_settings/show_bone_gizmo = false
+metadata/_local_pose_override_enabled_ = true
 
 [node name="Bone3" type="Bone2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Lava_Fall/PathFollow2D/Node2D/Lava snake/Skeleton2D/Bone1/Bone2"]
 position = Vector2(28.2843, -0.121915)
@@ -5070,6 +5071,7 @@ rotation = -0.00147328
 scale = Vector2(0.999829, 0.999829)
 rest = Transform2D(1, 0, 0, 1, 32, 0)
 editor_settings/show_bone_gizmo = false
+metadata/_local_pose_override_enabled_ = true
 
 [node name="ColorRect" type="ColorRect" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Lava_Fall/PathFollow2D/Node2D/Lava snake/Skeleton2D/Bone1/Bone2/Bone3"]
 offset_left = 5.0
@@ -5194,6 +5196,7 @@ scale = Vector2(0.999843, 0.999843)
 skew = -0.00134373
 rest = Transform2D(1, 0, 0, 1, 32, 0)
 editor_settings/show_bone_gizmo = false
+metadata/_local_pose_override_enabled_ = true
 
 [node name="Bone3" type="Bone2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/LavaFallVolcanica/PathFollow2D/Node2D/Lava snake/Skeleton2D/Bone1/Bone2"]
 position = Vector2(28.2843, -0.121915)
@@ -5201,6 +5204,7 @@ rotation = -0.00283671
 scale = Vector2(0.999829, 0.999829)
 rest = Transform2D(1, 0, 0, 1, 32, 0)
 editor_settings/show_bone_gizmo = false
+metadata/_local_pose_override_enabled_ = true
 
 [node name="ColorRect" type="ColorRect" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/LavaFallVolcanica/PathFollow2D/Node2D/Lava snake/Skeleton2D/Bone1/Bone2/Bone3"]
 offset_left = 5.0
@@ -9409,8 +9413,8 @@ AudioBuses = Array[String](["VolumenTransformaciones", "avalancha", "sedimentari
 [connection signal="PanelAppear" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Metamorfica" to="Transformando/StateMachine/Juego/Contenido/Instancia1/Paneles/PanelMetamorfica" method="EnterPanel"]
 [connection signal="TriggerNextTransformation" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Metamorfica" to="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton2" method="ChangeLavaFace"]
 [connection signal="TriggerNextTransformation" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Metamorfica" to="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton3" method="SetTrueVisibility"]
-[connection signal="TriggerNextTransformation" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Metamorfica" to="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/LavaSounds" method="PlayEvent" binds= ["lavaAparece", 1.1]]
 [connection signal="TriggerNextTransformation" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Metamorfica" to="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/LavaSounds" method="PlayLoopEvent" binds= ["lavaLoop"]]
+[connection signal="TriggerNextTransformation" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Metamorfica" to="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/LavaSounds" method="PlayEvent" binds= ["lavaAparece", 1.1]]
 [connection signal="pressed" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/metamorficaSpot/Button" to="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Nube/AnimationNube" method="PlayAnim" binds= ["Nube_metamorfica"]]
 [connection signal="PanelAppear" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Sedimentaria" to="Transformando/StateMachine/Juego/Contenido/Instancia1/Paneles/PanelSedimentaria" method="EnterPanel"]
 [connection signal="TriggerNextTransformation" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Sedimentaria" to="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Cueva/AnimationPlayer" method="Play"]
@@ -9424,8 +9428,8 @@ AudioBuses = Array[String](["VolumenTransformaciones", "avalancha", "sedimentari
 [connection signal="PanelAppear" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Preplutonica" to="Transformando/StateMachine/Juego/Contenido/Instancia1/Paneles/PanelPlutonica" method="EnterPanel"]
 [connection signal="TriggerNextTransformation" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Preplutonica" to="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton3" method="ChangeLavaFace"]
 [connection signal="TriggerNextTransformation" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Preplutonica" to="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton4" method="SetTrueVisibility"]
-[connection signal="TriggerNextTransformation" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Preplutonica" to="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/LavaSounds" method="PlayEvent" binds= ["lavaAparece", 1.1]]
 [connection signal="TriggerNextTransformation" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Preplutonica" to="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/LavaSounds" method="PlayLoopEvent" binds= ["lavaLoop"]]
+[connection signal="TriggerNextTransformation" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Preplutonica" to="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/LavaSounds" method="PlayEvent" binds= ["lavaAparece", 1.1]]
 [connection signal="pressed" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/plutonicaSpot/Button" to="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Nube/AnimationNube" method="PlayAnim" binds= ["Nube_Plutonica"]]
 [connection signal="PanelAppear" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Volcanica" to="Transformando/StateMachine/Juego/Contenido/Instancia1/Paneles/PanelVolcanica" method="EnterPanel"]
 [connection signal="TriggerNextTransformation" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Volcanica" to="Transformando/StateMachine/Juego/Contenido/Instancia1/PanelEnd" method="EnterPanel"]
