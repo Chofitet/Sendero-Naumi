@@ -14,16 +14,18 @@ var isInputBlock
 var actualAnchor
 
 func _ready():
+	call_deferred("_post_ready")
+
+func _post_ready():
 	actualAnchor = anchors[0]
 	timer = get_parent().get_node("TimerScroll")
 	timer.timeout.connect(calculateGesture)
-	set_deferred("scroll_vertical",next_anchor)
-	var y = get_node(anchors[i]).global_position.y 
 	stopHold.connect(HoldingClick)
-	await get_tree().create_timer(0.01).timeout
-	next_anchor = getAnchorInBackScreen()
-	set_deferred("scroll_vertical",next_anchor)
 
+	next_anchor = getAnchorInBackScreen()
+	scroll_vertical = next_anchor
+
+	
 func _input(event: InputEvent) -> void:
 	if isInputBlock: return
 	if Input.is_action_just_pressed("TouchScreen"):

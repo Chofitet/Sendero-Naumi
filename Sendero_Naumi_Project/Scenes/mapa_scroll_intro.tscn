@@ -2794,6 +2794,15 @@ grow_vertical = 2
 texture = ExtResource("54_a7ib2")
 expand_mode = 1
 
+[node name="ButtonChangeScene" parent="Map_Scroll/fakeMap" instance=ExtResource("16_0ow6t")]
+visible = false
+layout_mode = 0
+anchors_preset = 0
+NextScene = "Map_Screen"
+doPreloadScene = true
+fade_time = 0.0
+smoothness = 0.0
+
 [node name="PanelIntro1" parent="Map_Scroll" instance=ExtResource("34_kpbhv")]
 visible = false
 layout_mode = 1
@@ -3011,7 +3020,7 @@ texture = ExtResource("68_mkxei")
 [connection signal="ButtonPress" from="Naumi_Intro/PanelNaumi1/Panel(2) Btn(rigth)" to="Map_Scroll/fakeMap" method="set_visible" binds= [true]]
 [connection signal="ButtonPress" from="Naumi_Intro/PanelNaumi1/Panel(2) Btn(rigth)" to="Map_Scroll/AnimationPlayer" method="play_backwards" binds= ["Map_Slice"]]
 [connection signal="ButtonPress" from="Naumi_Intro/PanelNaumi1/Panel(2) Btn(rigth)" to="Map_Scroll/GeneralSounds" method="PlayEvent" binds= ["sliceBack"]]
-[connection signal="ButtonPress" from="Naumi_Intro/PanelNaumi1/Panel(2) Btn(rigth)" to="Map_Scroll/Music/MusicVolume" method="SetVolume" binds= [-80.0, 4.0]]
+[connection signal="ButtonPress" from="Naumi_Intro/PanelNaumi1/Panel(2) Btn(rigth)" to="Map_Scroll/Music/MusicVolume" method="SetVolume" binds= [-80.0, 3.0]]
 [connection signal="ButtonPress" from="Naumi_Intro/PanelNaumi1/Panel(2) Btn(left)" to="Naumi_Intro/SaveFirstPlay" method="FirstPlay"]
 [connection signal="ButtonPress" from="Naumi_Intro/PanelNaumi1/Panel(2) Btn(left)" to="Map_Scroll/PanelSuerte" method="EnterPanel"]
 [connection signal="ButtonPress" from="Naumi_Intro/PanelNaumi1/Panel(2) Btn(left)" to="Map_Scroll/CenterAnchor" method="set_visible" binds= [false]]
@@ -3019,9 +3028,9 @@ texture = ExtResource("68_mkxei")
 [connection signal="ButtonPress" from="Naumi_Intro/PanelNaumi1/Panel(2) Btn(left)" to="Map_Scroll/fakeMap" method="set_visible" binds= [true]]
 [connection signal="ButtonPress" from="Naumi_Intro/PanelNaumi1/Panel(2) Btn(left)" to="Map_Scroll/AnimationPlayer" method="play_backwards" binds= ["Map_Slice"]]
 [connection signal="ButtonPress" from="Naumi_Intro/PanelNaumi1/Panel(2) Btn(left)" to="Map_Scroll/GeneralSounds" method="PlayEvent" binds= ["sliceBack"]]
-[connection signal="ButtonPress" from="Naumi_Intro/PanelNaumi1/Panel(2) Btn(left)" to="Map_Scroll/Music/MusicVolume" method="SetVolume" binds= [-80.0, 4.0]]
-[connection signal="ButtonPress" from="Naumi_Intro/PanelNaumi1/Panel(2) Btn(rigth)2" to="Map_Scroll/fakeMap" method="StartLoad"]
-[connection signal="ButtonPress" from="Naumi_Intro/PanelNaumi1/Panel(2) Btn(left)2" to="Map_Scroll/fakeMap" method="StartLoad"]
+[connection signal="ButtonPress" from="Naumi_Intro/PanelNaumi1/Panel(2) Btn(left)" to="Map_Scroll/Music/MusicVolume" method="SetVolume" binds= [-80.0, 3.0]]
+[connection signal="ButtonPress" from="Naumi_Intro/PanelNaumi1/Panel(2) Btn(rigth)2" to="Map_Scroll/fakeMap/ButtonChangeScene" method="PreloadScene"]
+[connection signal="ButtonPress" from="Naumi_Intro/PanelNaumi1/Panel(2) Btn(left)2" to="Map_Scroll/fakeMap/ButtonChangeScene" method="PreloadScene"]
 [connection signal="ButtonPress" from="Map_Scroll/CenterAnchor/Title/ExpandingConteiner/TextureRect/Control/Panel/Panel(2) Btn(rigth)" to="Map_Scroll/PanelIntro1" method="EnterPanel"]
 [connection signal="ButtonPress" from="Map_Scroll/CenterAnchor/Title/ExpandingConteiner/TextureRect/Control/Panel/Panel(2) Btn(rigth)" to="Map_Scroll/CenterAnchor/FadeAnimation" method="play" binds= ["1erFade"]]
 [connection signal="pressed" from="Map_Scroll/CenterAnchor/Piso1/ExpandingCoteiner/MegafaunaZone/Button" to="Map_Scroll/CenterAnchor/Piso1/ExpandingCoteiner/MegafaunaZone/MegafaunaAnimator" method="play" binds= ["chan_anim"]]

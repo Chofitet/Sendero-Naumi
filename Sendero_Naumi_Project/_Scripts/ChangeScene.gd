@@ -2,12 +2,14 @@ extends Button
 
 @export var NextScene : String
 @export var doPreloadScene : bool
+@export var doChangeSceneInstantly : bool
 @export var fade_time : float
 @export var texture = "fade"
 @export var smoothness : float
 @export var is_inverted : bool
 @export var color : Color
 var preloadScene = ""
+
 
 var Fade_in
 var Fade_out
@@ -39,3 +41,10 @@ func SetVisibility(x):
 func StandarChangeScene():
 	SoundManager.remove_all_sounds()
 	get_tree().change_scene_to_file("res://Scenes/" + NextScene + ".tscn")
+
+func _process(delta):
+	var progress = []
+	ResourceLoader.load_threaded_get_status("res://Scenes/" + NextScene + ".tscn",progress)
+	
+	if progress[0] == 1:
+		if doChangeSceneInstantly: _on_pressed()
