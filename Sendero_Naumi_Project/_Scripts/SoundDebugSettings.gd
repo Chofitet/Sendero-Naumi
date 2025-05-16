@@ -159,8 +159,8 @@ class_name VolumeSettings
 	"rompeNaumi2":0,
 	"golpeNaumi3":0,
 	"rompeNaumi3":0,
-	"aparicionBubble":2,
-	"TypingBubble":2,
+	"aparicionBubble":6,
+	"TypingBubble":6,
 	"swipeRapido":0,
 	"swipeLento":-6,
 	"unlockIslands":-16

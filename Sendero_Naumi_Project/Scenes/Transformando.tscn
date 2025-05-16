@@ -9094,10 +9094,10 @@ layout_mode = 1
 anchors_preset = -1
 anchor_top = 0.773
 anchor_bottom = 0.773
-offset_left = -340.0
-offset_top = -108.44
-offset_right = 338.0
-offset_bottom = 113.56
+offset_left = -339.0
+offset_top = -114.44
+offset_right = 339.0
+offset_bottom = 107.56
 grow_vertical = 2
 pivot_offset = Vector2(339, 111)
 AppearInBeginning = false
@@ -9338,6 +9338,7 @@ Data = SubResource("Resource_b6ori")
 [node name="Fade" parent="Transformando/StateMachine" instance=ExtResource("114_undn2")]
 
 [node name="Sound Debug" parent="Transformando" instance=ExtResource("99_xn3vd")]
+visible = false
 AudioBuses = Array[String](["VolumenTransformaciones", "avalancha", "sedimentaria", "lavaAparece", "lavaLoop", "terremotos", "explosion", "tramo1", "metamorfica", "caraAparece", "plutonica", "volcanica", "nubeRecuerdo"])
 
 [connection signal="timeout" from="Transformando/StateMachine/Consigna/Contenido/Timer" to="Transformando/StateMachine/Consigna" method="TimeOut" flags=18]
@@ -9412,8 +9413,8 @@ AudioBuses = Array[String](["VolumenTransformaciones", "avalancha", "sedimentari
 [connection signal="PanelAppear" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Metamorfica" to="Transformando/StateMachine/Juego/Contenido/Instancia1/Paneles/PanelMetamorfica" method="EnterPanel"]
 [connection signal="TriggerNextTransformation" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Metamorfica" to="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton2" method="ChangeLavaFace"]
 [connection signal="TriggerNextTransformation" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Metamorfica" to="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton3" method="SetTrueVisibility"]
-[connection signal="TriggerNextTransformation" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Metamorfica" to="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/LavaSounds" method="PlayEvent" binds= ["lavaAparece", 1.1]]
 [connection signal="TriggerNextTransformation" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Metamorfica" to="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/LavaSounds" method="PlayLoopEvent" binds= ["lavaLoop"]]
+[connection signal="TriggerNextTransformation" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Metamorfica" to="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/LavaSounds" method="PlayEvent" binds= ["lavaAparece", 1.1]]
 [connection signal="pressed" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/metamorficaSpot/Button" to="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Nube/AnimationNube" method="PlayAnim" binds= ["Nube_metamorfica"]]
 [connection signal="PanelAppear" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Sedimentaria" to="Transformando/StateMachine/Juego/Contenido/Instancia1/Paneles/PanelSedimentaria" method="EnterPanel"]
 [connection signal="TriggerNextTransformation" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Sedimentaria" to="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Cueva/AnimationPlayer" method="Play"]
@@ -9427,12 +9428,14 @@ AudioBuses = Array[String](["VolumenTransformaciones", "avalancha", "sedimentari
 [connection signal="PanelAppear" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Preplutonica" to="Transformando/StateMachine/Juego/Contenido/Instancia1/Paneles/PanelPlutonica" method="EnterPanel"]
 [connection signal="TriggerNextTransformation" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Preplutonica" to="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton3" method="ChangeLavaFace"]
 [connection signal="TriggerNextTransformation" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Preplutonica" to="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/TapButton4" method="SetTrueVisibility"]
-[connection signal="TriggerNextTransformation" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Preplutonica" to="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/LavaSounds" method="PlayEvent" binds= ["lavaAparece", 1.1]]
 [connection signal="TriggerNextTransformation" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Preplutonica" to="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/LavaSounds" method="PlayLoopEvent" binds= ["lavaLoop"]]
+[connection signal="TriggerNextTransformation" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Preplutonica" to="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/LavaSounds" method="PlayEvent" binds= ["lavaAparece", 1.1]]
 [connection signal="pressed" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/plutonicaSpot/Button" to="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Nube/AnimationNube" method="PlayAnim" binds= ["Nube_Plutonica"]]
 [connection signal="PanelAppear" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Volcanica" to="Transformando/StateMachine/Juego/Contenido/Instancia1/Paneles/PanelVolcanica" method="EnterPanel"]
 [connection signal="TriggerNextTransformation" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Volcanica" to="Transformando/StateMachine/Juego/Contenido/Instancia1/PanelEnd" method="EnterPanel"]
 [connection signal="pressed" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/VulcanicaSpot/Button" to="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Nube/AnimationNube" method="PlayAnim" binds= ["Nube_Volcanica"]]
+[connection signal="DisableBtn" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/ButtonsInfoController" to="Transformando/StateMachine/Juego/Contenido/Instancia1/buttonSalir/GenericButton" method="set_visible" binds= [false]]
+[connection signal="EnableBtn" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/ButtonsInfoController" to="Transformando/StateMachine/Juego/Contenido/Instancia1/buttonSalir/GenericButton" method="EnterAnim"]
 [connection signal="pressed" from="Transformando/StateMachine/Juego/Contenido/Instancia1/buttonSalir/GenericButton" to="Transformando/StateMachine/Juego/Contenido/Instancia1/InstanciateFade" method="InstanciateFade"]
 [connection signal="ButtonPress" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Paneles/PanelSedimentaria/Panel(1) Btn(center)" to="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Sedimentaria" method="buttonpress"]
 [connection signal="ButtonPress" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Paneles/PanelSedimentaria/Panel(1) Btn(center)" to="Transformando/StateMachine/Juego/Contenido/rockParent" method="reparentToEarthquakePivot"]
@@ -9441,6 +9444,7 @@ AudioBuses = Array[String](["VolumenTransformaciones", "avalancha", "sedimentari
 [connection signal="ButtonPress" from="Transformando/StateMachine/Juego/Contenido/Instancia1/Paneles/PanelVolcanica/Panel(1) Btn(center)" to="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Volcanica" method="buttonpress"]
 [connection signal="ButtonPress" from="Transformando/StateMachine/Juego/Contenido/Instancia1/PanelEnd/Panel(1) Btn(rigth)" to="Transformando" method="Set_Complete"]
 [connection signal="ButtonPress" from="Transformando/StateMachine/Juego/Contenido/Instancia1/PanelEnd/Panel(1) Btn(rigth)" to="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/ButtonsInfoController" method="lastRock"]
+[connection signal="ButtonPress" from="Transformando/StateMachine/Juego/Contenido/Instancia1/PanelEnd/Panel(3) Btn(rigth)" to="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/ButtonsInfoController" method="ExitBtnTrue"]
 [connection signal="ButtonPress" from="Transformando/StateMachine/Juego/Contenido/Instancia1/PanelEnd/Panel(3) Btn(rigth)" to="Transformando/StateMachine/Juego/Contenido/Instancia1/buttonSalir/GenericButton" method="EnterAnim"]
 [connection signal="ButtonPress" from="Transformando/StateMachine/Juego/Contenido/Instancia1/PanelEnd/Panel(3) Btn(rigth)2" to="Transformando/StateMachine/Juego/Contenido/Instancia1/PanelEnd" method="queue_free"]
 [connection signal="changeState" from="Transformando/StateMachine/Juego/Contenido/Instancia1/InstanciateFade" to="Transformando/StateMachine/Fin/Contenido/PanelOutro" method="EnterPanel"]

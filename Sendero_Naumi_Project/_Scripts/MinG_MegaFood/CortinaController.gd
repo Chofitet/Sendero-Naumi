@@ -41,6 +41,7 @@ func pulse():
 
 func AnimatedToPos():
 	if once: return
+	$Button.button_up.disconnect(pulse)
 	SoundManager.play("cordon","close")
 	Closing.emit()
 	if numTry >=2: ExitFuerzaaa.emit()

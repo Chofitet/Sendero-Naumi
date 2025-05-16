@@ -327,8 +327,14 @@ func get_scene(key: String) -> PackedScene:
 	ResourceLoader.load_threaded_request(address, "", true, ResourceLoader.CACHE_MODE_REUSE)
 	return ResourceLoader.load_threaded_get(address)
 
+
+func PreloadScene(_nextScene : String):
+	ResourceLoader.load_threaded_request("res://Scenes/" + _nextScene + ".tscn")
+
 # changes current scene to the next scene
-func change_scene(scene, fade_out_options: Options, fade_in_options: Options, general_options: GeneralOptions) -> void:
+func change_scene(scene, fade_out_options: Options, fade_in_options: Options, general_options: GeneralOptions, preloadScene : String = "") -> void:
+	if preloadScene != "":
+		scene = ResourceLoader.load_threaded_get("res://Scenes/" + preloadScene + ".tscn")
 	if (scene is PackedScene || scene is Node || (typeof(scene) == TYPE_STRING && safe_validate_scene(scene) && !_in_transition)):
 		var blockInput = BlockInput.instantiate()
 		get_tree().root.add_child(blockInput)

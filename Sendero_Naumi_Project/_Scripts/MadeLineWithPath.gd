@@ -8,6 +8,7 @@ var verticalValue
 @export var NumOfPoint  = [0,3,4,6,11,12,13] 
 
 func _ready():
+	if !HasAnchors : return
 	if Engine.is_editor_hint() : return
 	verticalValue = get_parent().get_parent().size.y + get_viewport_rect().size.y/2
 	get_parent().position.y = verticalValue

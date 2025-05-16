@@ -26,6 +26,7 @@ func TakeMap():
 	squiggling.InactiveSquiggling()
 	handUI.SetVisibility(false)
 	animMap.play("agarrado")
+	btn.visible = false
 	await animMap.animation_finished
 	animMapBig.play("map_enter")
 	await  get_tree().create_timer(0.1).timeout

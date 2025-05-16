@@ -46,6 +46,7 @@ var MamushkaController
 @export var mamu : Node2D
 var ismouse
 var isAngry
+@export var isUp : bool
 
 
 func _ready():
