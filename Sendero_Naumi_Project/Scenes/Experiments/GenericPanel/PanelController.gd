@@ -18,10 +18,11 @@ var EnterOnce
 @onready var _BotonDerecho = $BtnDerAnchor/btnDer
 @onready var _BotonIzquierda = $btnIzqAnchor/btnIzq
 @onready var _BotonCentral = $btnCentralAnchor/btnCentral
-@onready var SkipButton = $ButtonSkipWritting
+#@onready var SkipButton = $ButtonSkipWritting
 @export var NoSkipWiting : bool = false
 var btnDontPassPanel
 var content =[]
+var isSkiping = false
 
 var _btns =[]
 var Characters_per_second : float = 78
@@ -155,6 +156,7 @@ func _ready():
 	_BotonIzquierda.visible = false
 	_BotonCentral.visible = false
 	
+
 	pivot_offset =  Vector2(size.x/2,size.y/2)
 	if !Engine.is_editor_hint(): label.visible_ratio = 0
 	refreshData(1)
@@ -163,22 +165,15 @@ func _ready():
 		if !Engine.is_editor_hint(): visible= false
 	else : if !Engine.is_editor_hint(): visible= false
 	
-	SkipButton.pressed.connect(SkipWritting)
+	#SkipButton.pressed.connect(SkipWritting)
 	
 	for child in get_children():
 		if child.has_method("ConnectSignal"):
 			child.ConnectSignal()
 	
 	if ExistingInBeginning:
-		anim.play("enter_panel")
-		anim.seek(0.4)
-		await get_tree().create_timer(0.001).timeout
-		label.visible_ratio = 1
-		label.visible = true
-		$labelRich.visible_ratio = 1
-		$labelRich.visible_ratio = 1
+		anim.play("beggining")
 		AppearButtonAnim()
-	
 
 func EnterPanel():
 	print("enter panel: " + name)
@@ -200,13 +195,17 @@ func typingAnim():
 	var text_length = get_visible_text_length(label.text)
 	var duration = text_length / Characters_per_second
 	label.visible_ratio = 0
-	if !NoSkipWiting: SkipButton.visible = true
+	if !NoSkipWiting: isSkiping = true
 	tweenWritting = get_tree().create_tween()
 	tweenWritting.tween_property(label,"visible_ratio",1,duration)
 	
 	await tweenWritting.finished
 	AppearButtonAnim()
-	SkipButton.visible = false
+	isSkiping = false
+
+func _input(event: InputEvent) -> void:
+	if Input.is_action_just_pressed("TouchScreen"):
+		if isSkiping: SkipWritting()
 
 func get_visible_text_length(text: String) -> int:
 	var regex = RegEx.new()
@@ -305,7 +304,7 @@ func SkipWritting():
 	tweenWritting.kill()
 	label.visible_ratio = 1
 	AppearButtonAnim()
-	SkipButton.visible = false
+	isSkiping = false
 
 var toExitPanel
 func HoldExitPanel():

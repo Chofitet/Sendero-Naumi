@@ -23,6 +23,7 @@ func _ready():
 		get_node(m).CompleteLevelAnim.connect(BlockScreen)
 
 func DisapearButton(btn):
+	get_parent().get_node("ButtonNaumi").ExitAnim(true)
 	get_parent().get_node("ButtonBack").ExitAnim(true)
 	for m in Minigames:
 		var M = get_node(m)

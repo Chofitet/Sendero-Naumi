@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://b00ok4g2p2vql"]
+[gd_scene load_steps=47 format=3 uid="uid://b00ok4g2p2vql"]
 
 [ext_resource type="Texture2D" uid="uid://hf5y4ic16cqj" path="res://Sprites/Intro/intro - background.jpg" id="1_xm8pn"]
 [ext_resource type="Texture2D" uid="uid://jd6systmhxf1" path="res://Sprites/Intro/intro - suelo.png" id="2_2edvn"]
@@ -208,7 +208,7 @@ tracks/0/path = NodePath(".:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 2.5, 4.5),
+"times": PackedFloat32Array(0, 2, 4),
 "transitions": PackedFloat32Array(1.3, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
@@ -220,7 +220,7 @@ tracks/1/path = NodePath("../Label:self_modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 2.5, 4.5),
+"times": PackedFloat32Array(0, 2, 4),
 "transitions": PackedFloat32Array(1.3, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
@@ -232,7 +232,7 @@ tracks/2/path = NodePath("..")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(2.9),
+"times": PackedFloat32Array(2.4),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
@@ -246,7 +246,7 @@ tracks/3/path = NodePath("../presenta:modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(6.5, 7.2),
+"times": PackedFloat32Array(6, 6.7),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
@@ -287,7 +287,7 @@ tracks/6/keys = {
 "start_offset": 0.0,
 "stream": ExtResource("9_e031n")
 }],
-"times": PackedFloat32Array(2.9)
+"times": PackedFloat32Array(2.4)
 }
 tracks/6/use_blend = true
 tracks/7/type = "method"
@@ -297,7 +297,7 @@ tracks/7/path = NodePath("SoundEmitter")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(1),
+"times": PackedFloat32Array(0.5),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": ["mapa", 0.0, true],
@@ -306,7 +306,7 @@ tracks/7/keys = {
 }
 tracks/8/type = "method"
 tracks/8/imported = false
-tracks/8/enabled = true
+tracks/8/enabled = false
 tracks/8/path = NodePath("../map_transition")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
@@ -355,7 +355,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 1)]
+"values": [Color(1, 1, 1, 0)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -382,11 +382,40 @@ tracks/4/keys = {
 "values": [true]
 }
 
+[sub_resource type="Animation" id="Animation_urmok"]
+resource_name = "start_Load"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ShaderPreLoad:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TextureRect2:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_edlyj"]
 _data = {
 "DisappearPresenta": SubResource("Animation_5xlrt"),
 "Fade_out_logo": SubResource("Animation_eyv2g"),
-"RESET": SubResource("Animation_7m1eg")
+"RESET": SubResource("Animation_7m1eg"),
+"start_Load": SubResource("Animation_urmok")
 }
 
 [sub_resource type="Resource" id="Resource_o1rb5"]
@@ -645,7 +674,7 @@ scale = Vector2(0.232817, 0.232817)
 texture = ExtResource("8_2lckt")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="mapArriveSpot/LOGO"]
-autoplay = "Fade_out_logo"
+autoplay = "start_Load"
 libraries = {
 "": SubResource("AnimationLibrary_edlyj")
 }
@@ -669,9 +698,9 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -790.32
-offset_top = 751.664
+offset_top = -2413.91
 offset_right = -790.32
-offset_bottom = 751.664
+offset_bottom = -2413.91
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("12_omqom")
@@ -716,6 +745,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="presenta" type="Label" parent="mapArriveSpot"]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -834,8 +864,6 @@ events = Array[ExtResource("16_ds0ye")]([SubResource("Resource_vl53s")])
 [node name="SceneLoader" type="Control" parent="mapArriveSpot"]
 anchors_preset = 0
 script = ExtResource("24_bxf4s")
-SceneToLoad = "mapa_scroll_intro"
-HoldChangeScene = true
 
 [node name="ButtonChangeScene" parent="mapArriveSpot" instance=ExtResource("12_n3dw3")]
 visible = false
@@ -873,6 +901,7 @@ grow_horizontal = 1
 grow_vertical = 1
 NextScene = "mapa_scroll_intro"
 doPreloadScene = true
+PreLoadInBeggining = true
 fade_time = 0.5
 smoothness = 0.2
 color = Color(0.0862745, 0.0901961, 0.145098, 1)
@@ -899,6 +928,7 @@ offset_right = -40.4348
 offset_bottom = -29.4927
 rotation = 3.14159
 noSway = true
+noPop = false
 Icon = ExtResource("16_bsblw")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="ButtonSkip/GenericButton"]
@@ -928,6 +958,7 @@ offset_right = 415.0
 [connection signal="button_down" from="mapArriveSpot/Button" to="mapArriveSpot/MapAnim" method="play" binds= ["agarrado"]]
 [connection signal="button_down" from="mapArriveSpot/Button" to="mapArriveSpot/LOGO/AnimationPlayer" method="play" binds= ["DisappearPresenta"]]
 [connection signal="button_down" from="mapArriveSpot/Button" to="mapArriveSpot/LOGO/MapaGiraSound" method="PlayLoopEvent" binds= ["agarroMapa"]]
+[connection signal="SceneLoaded" from="mapArriveSpot/map_transition" to="mapArriveSpot/LOGO/AnimationPlayer" method="play" binds= ["Fade_out_logo"]]
 [connection signal="pressed" from="ButtonSkip/GenericButton" to="mapArriveSpot/ButtonChangeScene" method="_on_pressed"]
 [connection signal="pressedDelay" from="ButtonSkip/GenericButton" to="mapArriveSpot/LOGO/SoundEmitter" method="StopSoundsInCuttableQueue"]
 [connection signal="pressedDelay" from="ButtonSkip/GenericButton" to="mapArriveSpot/SoundMapLoop" method="StopLoopSound"]

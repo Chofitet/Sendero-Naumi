@@ -21,3 +21,6 @@ func _process(delta):
 func SineFunction(delta):
 	_time += delta
 	position = _origin_position + Vector2(0, sin(_time * frequency * TAU) * amplitude)
+
+func Stop():
+	set_process(false)

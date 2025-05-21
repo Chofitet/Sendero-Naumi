@@ -1,4 +1,4 @@
-[gd_scene load_steps=173 format=3 uid="uid://buth5gc88nt3j"]
+[gd_scene load_steps=175 format=3 uid="uid://buth5gc88nt3j"]
 
 [ext_resource type="Texture2D" uid="uid://cjjoaemhep814" path="res://Sprites/mapa-detalle.png" id="1_kw7ma"]
 [ext_resource type="Texture2D" uid="uid://hf5y4ic16cqj" path="res://Sprites/Intro/intro - background.jpg" id="1_un13t"]
@@ -63,7 +63,9 @@
 [ext_resource type="PackedScene" uid="uid://c8dodmo3saxdr" path="res://Scenes/Experiments/sound_debug.tscn" id="50_0da8f"]
 [ext_resource type="Script" path="res://_Scripts/load_scene_Map_Screen.gd" id="53_1lp0y"]
 [ext_resource type="Texture2D" uid="uid://bvv6dbsx4464s" path="res://Sprites/Screenshot_3.png" id="54_a7ib2"]
+[ext_resource type="LabelSettings" uid="uid://dce4drsatgdve" path="res://Resources/UI_Resources/ComputerLabel.tres" id="57_2q6an"]
 [ext_resource type="AudioStream" uid="uid://ck0bqyax1ryj1" path="res://Music/SN - Introo.ogg" id="57_nii8y"]
+[ext_resource type="Theme" uid="uid://dhu6swisjlh4w" path="res://Resources/UI_Resources/BlueBubblePanel.tres" id="57_sw6w6"]
 [ext_resource type="AudioStream" uid="uid://53mg2hv33sbi" path="res://Music/SN - Tema.ogg" id="58_33v0n"]
 [ext_resource type="Script" path="res://_Scripts/VolumeBusController.gd" id="60_a73ub"]
 [ext_resource type="Texture2D" uid="uid://c0vtyn0xlv715" path="res://Sprites/019105e0-6de7-4194-b80c-3c614affaee3.jpg" id="68_mkxei"]
@@ -1615,7 +1617,8 @@ exitPanel = false
 script = ExtResource("32_xf8jp")
 Text = "
 [center][color=#dab21e] AQUÍ CADA EXPOSICIÓN DEL MUSEO[/color] 
-ES UNA ISLA POR CONOCER[b]
+ES UNA [b]ISLA[/b] POR CONOCER[b]
+
 "
 writingSpeed = 0.0
 SizePanel = Vector2(0, 0)
@@ -1663,7 +1666,8 @@ exitPanel = false
 script = ExtResource("32_xf8jp")
 Text = "
 [center][color=#dab21e]CUANDO ESTÉS FRENTE A UNA EXPOSICIÓN[/color]
-TOCA SU ISLA EN ESTE MAPA PARA COMENZAR[b]"
+TOCA SU [b]ISLA[/b] PARA EXPLORARLA[b]
+"
 writingSpeed = 0.0
 SizePanel = Vector2(0, 0)
 Position = Vector2(0, 0)
@@ -1687,7 +1691,8 @@ exitPanel = false
 script = ExtResource("32_xf8jp")
 Text = "[center][b]¡UN MOMENTO![/b]
 ANTES QUE EMPIECES:
-[color=#dab21e]TENEMOS ALGO PARA VOS[/color] [b]"
+[b][color=#dab21e]TENEMOS ALGO PARA VOS[/color][/b]
+"
 writingSpeed = 0.0
 SizePanel = Vector2(0, 0)
 Position = Vector2(0, 0)
@@ -1836,7 +1841,7 @@ tracks/1/keys = {
 "args": [-80.0, 0.1],
 "method": &"SetVolume"
 }, {
-"args": [-20.0, 0.3],
+"args": [-10.0, 0.4],
 "method": &"SetVolume"
 }]
 }
@@ -2059,9 +2064,9 @@ animation = "idle"
 
 [node name="PanelNaumi1" parent="Naumi_Intro" instance=ExtResource("34_kpbhv")]
 layout_mode = 1
-offset_left = -325.0
+offset_left = -328.0
 offset_top = 65.0
-offset_right = 327.0
+offset_right = 324.0
 offset_bottom = 293.0
 AppearInBeginning = false
 SetEnterOnce = true
@@ -2095,11 +2100,11 @@ Data = SubResource("Resource_vt584")
 
 [node name="Panel(2) Btn(rigth)2" parent="Naumi_Intro/PanelNaumi1" instance=ExtResource("35_s6ot8")]
 Data = SubResource("Resource_yqxqo")
-Delay = 3.0
+Delay = 1.83
 
 [node name="Panel(2) Btn(left)2" parent="Naumi_Intro/PanelNaumi1" instance=ExtResource("35_s6ot8")]
 Data = SubResource("Resource_y741g")
-Delay = 3.0
+Delay = 1.83
 
 [node name="Map_Scroll" type="Control" parent="."]
 layout_mode = 1
@@ -2733,7 +2738,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("53_1lp0y")
-SceneToLoad = "Map_Screen"
 
 [node name="TextureRect2" type="TextureRect" parent="Map_Scroll/fakeMap"]
 material = SubResource("ShaderMaterial_pf8ts")
@@ -2794,7 +2798,7 @@ grow_vertical = 2
 texture = ExtResource("54_a7ib2")
 expand_mode = 1
 
-[node name="ButtonChangeScene" parent="Map_Scroll/fakeMap" instance=ExtResource("16_0ow6t")]
+[node name="ButtonChangeScene" parent="Map_Scroll/fakeMap" node_paths=PackedStringArray("progressBar") instance=ExtResource("16_0ow6t")]
 visible = false
 layout_mode = 0
 anchors_preset = 0
@@ -2812,6 +2816,42 @@ NextScene = "Map_Screen"
 doPreloadScene = true
 fade_time = 0.0
 smoothness = 0.0
+progressBar = NodePath("../ProgressBar")
+
+[node name="Label" type="Label" parent="Map_Scroll/fakeMap"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -46.0
+offset_top = 486.0
+offset_right = 46.0
+offset_bottom = 521.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "carga"
+label_settings = ExtResource("57_2q6an")
+
+[node name="ProgressBar" type="ProgressBar" parent="Map_Scroll/fakeMap"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.453
+anchor_right = 0.5
+anchor_bottom = 0.453
+offset_left = -238.0
+offset_top = 154.16
+offset_right = 252.0
+offset_bottom = 191.16
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("57_sw6w6")
+step = 1.0
+show_percentage = false
 
 [node name="PanelIntro1" parent="Map_Scroll" instance=ExtResource("34_kpbhv")]
 visible = false
@@ -2968,6 +3008,7 @@ offset_top = -119.493
 offset_right = -40.4348
 offset_bottom = -29.4927
 rotation = -3.13926
+noPop = false
 Icon = ExtResource("43_381d8")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="ButtonSkip/GenericButton"]
@@ -3043,6 +3084,8 @@ texture = ExtResource("68_mkxei")
 [connection signal="ButtonPress" from="Naumi_Intro/PanelNaumi1/Panel(2) Btn(left)2" to="Map_Scroll/fakeMap/ButtonChangeScene" method="PreloadScene"]
 [connection signal="ButtonPress" from="Map_Scroll/CenterAnchor/Title/ExpandingConteiner/TextureRect/Control/Panel/Panel(2) Btn(rigth)" to="Map_Scroll/PanelIntro1" method="EnterPanel"]
 [connection signal="ButtonPress" from="Map_Scroll/CenterAnchor/Title/ExpandingConteiner/TextureRect/Control/Panel/Panel(2) Btn(rigth)" to="Map_Scroll/CenterAnchor/FadeAnimation" method="play" binds= ["1erFade"]]
+[connection signal="pressed" from="Map_Scroll/CenterAnchor/Piso1/ExpandingCoteiner/MegafaunaZone/Button" to="Map_Scroll/CenterAnchor/Piso1/ExpandingCoteiner/MegafaunaZone/animal spot" method="Stop"]
+[connection signal="pressed" from="Map_Scroll/CenterAnchor/Piso1/ExpandingCoteiner/MegafaunaZone/Button" to="Map_Scroll/CenterAnchor/Piso1/ExpandingCoteiner/MegafaunaZone/animal spot2" method="Stop"]
 [connection signal="pressed" from="Map_Scroll/CenterAnchor/Piso1/ExpandingCoteiner/MegafaunaZone/Button" to="Map_Scroll/CenterAnchor/Piso1/ExpandingCoteiner/MegafaunaZone/MegafaunaAnimator" method="play" binds= ["chan_anim"]]
 [connection signal="pressed" from="Map_Scroll/CenterAnchor/Piso1/ExpandingCoteiner/MegafaunaZone/Button" to="Map_Scroll/CenterAnchor/Piso1/ExpandingCoteiner/MegafaunaZone/Button" method="set_visible" binds= [false]]
 [connection signal="pressed" from="Map_Scroll/CenterAnchor/Piso1/ExpandingCoteiner/MegafaunaZone/Button" to="Map_Scroll/Music/MusicController" method="PauseSound" binds= [true]]
