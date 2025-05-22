@@ -1,6 +1,5 @@
-[gd_scene load_steps=15 format=3 uid="uid://n1l6rp24qq43"]
+[gd_scene load_steps=12 format=3 uid="uid://n1l6rp24qq43"]
 
-[ext_resource type="Script" path="res://_Scripts/Permissions.gd" id="1_1ifmf"]
 [ext_resource type="Texture2D" uid="uid://e6ly8r5exeuq" path="res://Sprites/UI/Mute1.png" id="3_7v1u5"]
 [ext_resource type="Theme" uid="uid://dhu6swisjlh4w" path="res://Resources/UI_Resources/BlueBubblePanel.tres" id="4_r2cqj"]
 [ext_resource type="AudioStream" uid="uid://cto8hsabquh3o" path="res://Sounds/UI/UI - POP.ogg" id="4_y3ard"]
@@ -8,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://cw3ok8v4p620b" path="res://Scenes/Experiments/squiggling_sprite.tscn" id="5_xk0nw"]
 [ext_resource type="Texture2D" uid="uid://bonm5jt23witd" path="res://Sprites/UI/SquigglingUI/botonRectangularASQUIG - UI.png" id="6_j6clt"]
 [ext_resource type="PackedScene" uid="uid://djhg7jvxtexyl" path="res://Scenes/UI_Scenes/btn_Change_Scene.tscn" id="7_h7gnh"]
-[ext_resource type="Script" path="res://_Scripts/ProgressBarController.gd" id="9_x2c2h"]
 
 [sub_resource type="Animation" id="Animation_xklsn"]
 length = 0.001
@@ -93,10 +91,6 @@ _data = {
 "btnDisappear": SubResource("Animation_6aur0")
 }
 
-[sub_resource type="Curve" id="Curve_8uglo"]
-_data = [Vector2(0, 0), 0.0, 25.7353, 0, 1, Vector2(0.0175879, 0.452632), 25.7353, 0.230191, 1, 1, Vector2(0.246231, 0.505263), 0.230191, 0.481549, 1, 1, Vector2(0.464824, 0.610526), 0.481549, 1.06063, 1, 1, Vector2(0.663317, 0.821053), 1.06063, 0.605146, 1, 1, Vector2(0.889447, 0.957895), 0.605146, 0.380862, 1, 1, Vector2(1, 1), 0.380862, 0.0, 1, 0]
-point_count = 7
-
 [node name="Aclaracion_En_Museo" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -104,7 +98,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_1ifmf")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -205,6 +198,11 @@ text = "[center]¡POR SUPUESTO!"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Control/btnPivot"]
 
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
 [node name="ButtonChangeScene" parent="." instance=ExtResource("7_h7gnh")]
 visible = false
 layout_mode = 0
@@ -219,37 +217,8 @@ offset_right = 404.0
 offset_bottom = 135.0
 grow_horizontal = 1
 grow_vertical = 1
-NextScene = "mapa_fall_intro"
-doPreloadScene = true
-smoothness = 0.0
+NextScene = "Map_Screen"
+smoothness = 0.2
 
-[node name="ProgressBar" type="ProgressBar" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 0.453
-anchor_right = 0.5
-anchor_bottom = 0.453
-offset_left = -238.0
-offset_top = 154.16
-offset_right = 252.0
-offset_bottom = 191.16
-grow_horizontal = 2
-grow_vertical = 0
-theme = ExtResource("4_r2cqj")
-step = 1.0
-show_percentage = false
-script = ExtResource("9_x2c2h")
-curveCharge = SubResource("Curve_8uglo")
-TimeToDoCharge = 7.0
-
-[node name="TimerPreLoad" type="Timer" parent="."]
-wait_time = 0.1
-one_shot = true
-autostart = true
-
-[connection signal="StartCharge" from="." to="ProgressBar" method="StartLoad"]
 [connection signal="pressed" from="Control/btnPivot/ButtonSkip" to="Control/AnimationPlayer" method="play" binds= ["btnDisappear"]]
-[connection signal="SceneLoaded" from="ButtonChangeScene" to="." method="chargeFiles"]
-[connection signal="finishCharge" from="ProgressBar" to="Control/AnimationPlayer" method="play" binds= ["btnAppear"]]
-[connection signal="timeout" from="TimerPreLoad" to="ButtonChangeScene" method="PreloadScene"]
+[connection signal="timeout" from="Timer" to="Control/AnimationPlayer" method="play" binds= ["btnAppear"]]

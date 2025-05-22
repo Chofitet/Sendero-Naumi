@@ -842,7 +842,6 @@ pivot_offset = Vector2(505, 779)
 texture = ExtResource("10_xuo8m")
 
 [node name="CartelZonaConstruccion" type="Sprite2D" parent="ScrollContainer/VBoxContainer/Piso3/CuaternarioZone/TextureRect"]
-visible = false
 position = Vector2(575.714, 777.857)
 scale = Vector2(0.554649, 0.554649)
 texture = ExtResource("11_8r70k")
@@ -1003,7 +1002,6 @@ state_to_change = NodePath("../../../../../../StateMachine/AstronomiaZone")
 state_machine = NodePath("../../../../../../StateMachine")
 
 [node name="CartelZonaConstruccion" type="Sprite2D" parent="ScrollContainer/VBoxContainer/Piso3/AmbientesZone/TextureRect"]
-visible = false
 position = Vector2(472.727, 884.848)
 scale = Vector2(0.74151, 0.74151)
 texture = ExtResource("11_8r70k")
@@ -1190,7 +1188,6 @@ state_to_change = NodePath("../../../../../../StateMachine/GeologiaZone")
 state_machine = NodePath("../../../../../../StateMachine")
 
 [node name="CartelZonaConstruccion" type="Sprite2D" parent="ScrollContainer/VBoxContainer/Piso3/ErasGeologicasZone/TextureRect"]
-visible = false
 position = Vector2(448.363, 810.151)
 scale = Vector2(0.701963, 0.701963)
 texture = ExtResource("11_8r70k")
@@ -1369,7 +1366,6 @@ texture = ExtResource("5_isoyh")
 expand_mode = 1
 
 [node name="CartelZonaConstruccion" type="Sprite2D" parent="ScrollContainer/VBoxContainer/Piso2/MuseoHistoryZone/TextureRect"]
-visible = false
 position = Vector2(328.571, 805.714)
 scale = Vector2(0.783033, 0.807021)
 texture = ExtResource("11_8r70k")
@@ -2094,6 +2090,7 @@ ButtonBack = NodePath("../../SubViewportContainer")
 ButtonNaumi = NodePath("../ButtonNaumi")
 
 [node name="Debug" type="Button" parent="StateMachine/NoZone"]
+visible = false
 z_index = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -2525,8 +2522,8 @@ AudioBuses = Array[String](["aparicionBubble", "TypingBubble", "swipeRapido", "s
 [connection signal="ShowPanel" from="AdventurePanel/AdventurePanel" to="StateMachine/ButtonNaumi" method="set_visible" binds= [false]]
 [connection signal="ButtonPress" from="AdventurePanel/AdventurePanel/PanelSuerte/Panel(1) Btn(rigth)" to="ScrollContainer/VBoxContainer/Piso1/Piso1/MegafaunaZone" method="StartFlotingAnim"]
 [connection signal="ButtonPress" from="AdventurePanel/AdventurePanel/PanelSuerte/Panel(1) Btn(rigth)" to="StateMachine/ButtonNaumi" method="EnterAnim"]
-[connection signal="ButtonPress" from="AdventurePanel/AdventurePanel/PanelSuerte/Panel(1) Btn(rigth)" to="AdventurePanel/AdventurePanel/block" method="set_visible" binds= [false]]
 [connection signal="ButtonPress" from="AdventurePanel/AdventurePanel/PanelSuerte/Panel(1) Btn(rigth)" to="ScrollContainer" method="SetisInputBlock" binds= [true]]
+[connection signal="ButtonPress" from="AdventurePanel/AdventurePanel/PanelSuerte/Panel(1) Btn(rigth)" to="AdventurePanel/AdventurePanel/block" method="set_visible" binds= [false]]
 
 [editable path="ScrollContainer/VBoxContainer/Piso4/Piso4/VBoxContainer/separacion3/GenericButton"]
 [editable path="ScrollContainer/VBoxContainer/Piso3/CuaternarioZone/TextureRect/PanelProximamente/Panel"]
