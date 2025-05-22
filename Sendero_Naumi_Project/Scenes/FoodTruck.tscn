@@ -1108,7 +1108,6 @@ Consignas = ["Dale a cada animal la comida correspondiente a su dieta", "Dale a 
 FadeInTrasitioned = true
 
 [node name="Contenido" type="Control" parent="FoodTruck/StateMachine/Consigna"]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -1308,6 +1307,7 @@ autowrap_mode = 2
 wait_time = 3.0
 
 [node name="Intro1" parent="FoodTruck/StateMachine/Consigna/Contenido" instance=ExtResource("13_3lngq")]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.508
@@ -1315,11 +1315,21 @@ anchor_top = 0.347
 anchor_right = 0.508
 anchor_bottom = 0.347
 offset_left = -325.76
-offset_top = -326.16
+offset_top = -353.16
 offset_right = 326.24
-offset_bottom = -71.16
+offset_bottom = -132.16
 pivot_offset = Vector2(326, 127.5)
 Texts = Array[ExtResource("16_g0euh")]([SubResource("Resource_4rfxl")])
+
+[node name="labelRich" parent="FoodTruck/StateMachine/Consigna/Contenido/Intro1" index="1"]
+offset_top = 45.0
+offset_bottom = -67.0
+text = "
+[center][color=#dab21e]LOS ANIMALES SON SERES MUY CURIOSOS,[/color]
+PERO NO SE COMEN CUALQUIERA[b]"
+
+[node name="btnDer" parent="FoodTruck/StateMachine/Consigna/Contenido/Intro1/BtnDerAnchor" index="0"]
+visible = true
 
 [node name="Panel(1) Btn(rigth)" parent="FoodTruck/StateMachine/Consigna/Contenido/Intro1" instance=ExtResource("17_6stp3")]
 Data = SubResource("Resource_imruc")
@@ -1334,11 +1344,21 @@ layout_mode = 1
 anchors_preset = -1
 anchor_top = 0.359
 anchor_bottom = 0.359
-offset_top = -340.52
-offset_bottom = -85.52
+offset_top = -368.52
+offset_bottom = -145.52
 pivot_offset = Vector2(326, 127.5)
 AppearInBeginning = false
 Texts = Array[ExtResource("16_g0euh")]([SubResource("Resource_f6tx0")])
+
+[node name="labelRich" parent="FoodTruck/StateMachine/Consigna/Contenido/Intro2" index="1"]
+offset_top = 47.0
+offset_bottom = -65.0
+text = "
+[center][color=#dab21e]AYUDANOS A DARLES DE COMER[/color]
+SUS COMIDAS FAVORITAS[b]"
+
+[node name="btnDer" parent="FoodTruck/StateMachine/Consigna/Contenido/Intro2/BtnDerAnchor" index="0"]
+visible = true
 
 [node name="Panel(1) Btn(rigth)" parent="FoodTruck/StateMachine/Consigna/Contenido/Intro2" instance=ExtResource("17_6stp3")]
 Data = SubResource("Resource_q6kte")
@@ -1360,6 +1380,7 @@ FadeInConsigna = true
 FadeInToFin = true
 
 [node name="Contenido" type="Control" parent="FoodTruck/StateMachine/Juego"]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -1868,6 +1889,7 @@ offset_top = -392.0
 offset_right = 39.0
 offset_bottom = -301.0
 rotation = -1.5541
+noPop = false
 Icon = ExtResource("43_101i6")
 
 [node name="TextureRect" parent="FoodTruck/StateMachine/Juego/Contenido/PaperController/pivot/Button" index="0"]
@@ -2588,6 +2610,12 @@ AudioBuses = Array[String](["FoodtruckVolumen", "arbustos", "burbujaHabla", "ban
 [connection signal="ButtonPress" from="FoodTruck/StateMachine/Fin/Contenido/Control/OutroPanel/Panel(3) Btn(rigth)" to="FoodTruck" method="Set_Complete"]
 [connection signal="ButtonPress" from="FoodTruck/StateMachine/Fin/Contenido/Control/OutroPanel/Panel(3) Btn(rigth)" to="FoodTruck/StateMachine/Fin/Contenido/ButtonChangeScene" method="_on_pressed"]
 
+[editable path="FoodTruck/StateMachine/Consigna/Contenido/Intro1"]
+[editable path="FoodTruck/StateMachine/Consigna/Contenido/Intro1/btnIzqAnchor/btnIzq/SquigglingSprite"]
+[editable path="FoodTruck/StateMachine/Consigna/Contenido/Intro1/btnCentralAnchor/btnCentral/SquigglingSprite"]
+[editable path="FoodTruck/StateMachine/Consigna/Contenido/Intro2"]
+[editable path="FoodTruck/StateMachine/Consigna/Contenido/Intro2/btnIzqAnchor/btnIzq/SquigglingSprite"]
+[editable path="FoodTruck/StateMachine/Consigna/Contenido/Intro2/btnCentralAnchor/btnCentral/SquigglingSprite"]
 [editable path="FoodTruck/StateMachine/Juego/Contenido/PatasController"]
 [editable path="FoodTruck/StateMachine/Juego/Contenido/PatasController/TextoPedido"]
 [editable path="FoodTruck/StateMachine/Juego/Contenido/PatasController/TextoPedido/btnIzqAnchor/btnIzq/SquigglingSprite"]
