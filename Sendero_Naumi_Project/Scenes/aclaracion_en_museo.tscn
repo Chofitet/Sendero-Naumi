@@ -1,9 +1,95 @@
-[gd_scene load_steps=5 format=3 uid="uid://n1l6rp24qq43"]
+[gd_scene load_steps=12 format=3 uid="uid://n1l6rp24qq43"]
 
-[ext_resource type="Script" path="res://_Scripts/Permissions.gd" id="1_1ifmf"]
-[ext_resource type="PackedScene" uid="uid://biluutecl1cej" path="res://Scenes/Experiments/skip_sceen.tscn" id="1_kvjrp"]
 [ext_resource type="Texture2D" uid="uid://e6ly8r5exeuq" path="res://Sprites/UI/Mute1.png" id="3_7v1u5"]
 [ext_resource type="Theme" uid="uid://dhu6swisjlh4w" path="res://Resources/UI_Resources/BlueBubblePanel.tres" id="4_r2cqj"]
+[ext_resource type="AudioStream" uid="uid://cto8hsabquh3o" path="res://Sounds/UI/UI - POP.ogg" id="4_y3ard"]
+[ext_resource type="StyleBox" uid="uid://b3tjes2hcm3wx" path="res://Resources/UI_Resources/StyleBoxTrasparent.tres" id="5_1p0tt"]
+[ext_resource type="PackedScene" uid="uid://cw3ok8v4p620b" path="res://Scenes/Experiments/squiggling_sprite.tscn" id="5_xk0nw"]
+[ext_resource type="Texture2D" uid="uid://bonm5jt23witd" path="res://Sprites/UI/SquigglingUI/botonRectangularASQUIG - UI.png" id="6_j6clt"]
+[ext_resource type="PackedScene" uid="uid://djhg7jvxtexyl" path="res://Scenes/UI_Scenes/btn_Change_Scene.tscn" id="7_h7gnh"]
+
+[sub_resource type="Animation" id="Animation_xklsn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("btnPivot:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_d78yh"]
+resource_name = "btnAppear"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("btnPivot:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(1.1, 1.1), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_6aur0"]
+resource_name = "btnDisappear"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("btnPivot:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.1, 1.1), Vector2(1e-05, 1e-05)]
+}
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("btnPivot/AudioStreamPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("4_y3ard")
+}],
+"times": PackedFloat32Array(0.1)
+}
+tracks/1/use_blend = true
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../ButtonChangeScene")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_on_pressed"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bb445"]
+_data = {
+"RESET": SubResource("Animation_xklsn"),
+"btnAppear": SubResource("Animation_d78yh"),
+"btnDisappear": SubResource("Animation_6aur0")
+}
 
 [node name="Aclaracion_En_Museo" type="Control"]
 layout_mode = 3
@@ -12,7 +98,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_1ifmf")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -22,11 +107,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
-
-[node name="SkipSceen" parent="." instance=ExtResource("1_kvjrp")]
-wait_time = 7.0
-autostart = true
-NextScene = "mapa_fall_intro"
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 1
@@ -64,3 +144,81 @@ text = "[center]SI TE ENCUENTRAS EN
 [color=#dab21e]NO PONGAS EL SONIDO MUY FUERTE.[/color]
 [color=#fed0f4]¡RESPETEMOS EL PASEO DE TODOS![/color][b]
 "
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Control"]
+libraries = {
+"": SubResource("AnimationLibrary_bb445")
+}
+
+[node name="btnPivot" type="Control" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = 375.0
+offset_bottom = 375.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1e-05, 1e-05)
+
+[node name="ButtonSkip" type="Button" parent="Control/btnPivot"]
+layout_mode = 0
+offset_left = -186.0
+offset_top = -35.0
+offset_right = 189.0
+offset_bottom = 38.0
+theme_override_styles/hover = ExtResource("5_1p0tt")
+theme_override_styles/pressed = ExtResource("5_1p0tt")
+theme_override_styles/disabled = ExtResource("5_1p0tt")
+theme_override_styles/focus = ExtResource("5_1p0tt")
+flat = true
+
+[node name="SquigglingSprite" parent="Control/btnPivot/ButtonSkip" instance=ExtResource("5_xk0nw")]
+position = Vector2(188, 36)
+scale = Vector2(0.578947, 0.578947)
+texture = ExtResource("6_j6clt")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control/btnPivot/ButtonSkip"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = 19.0
+offset_right = 1.0
+offset_bottom = -15.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+text = "[center]¡POR SUPUESTO!"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Control/btnPivot"]
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[node name="ButtonChangeScene" parent="." instance=ExtResource("7_h7gnh")]
+visible = false
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 404.0
+offset_bottom = 135.0
+grow_horizontal = 1
+grow_vertical = 1
+NextScene = "Map_Screen"
+smoothness = 0.2
+
+[connection signal="pressed" from="Control/btnPivot/ButtonSkip" to="Control/AnimationPlayer" method="play" binds= ["btnDisappear"]]
+[connection signal="timeout" from="Timer" to="Control/AnimationPlayer" method="play" binds= ["btnAppear"]]

@@ -22,4 +22,4 @@ func set_bus_volume(value: float):
 		AudioServer.set_bus_volume_db(bus, value)
 
 func _exit_tree():
-		volume_tween.kill()
+		if volume_tween != null: volume_tween.kill()

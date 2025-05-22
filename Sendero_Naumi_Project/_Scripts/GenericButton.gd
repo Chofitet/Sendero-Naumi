@@ -11,6 +11,8 @@ signal pressedDelay
 
 @export var noSquiggling : bool
 
+@export var noPop : bool = false
+
 var pop = preload("res://Scenes/UI_Scenes/pop.tscn")
 
 
@@ -22,7 +24,7 @@ var pop = preload("res://Scenes/UI_Scenes/pop.tscn")
 
 func _ready():
 	if enterInBeggining: EnterAnim()
-	pressed.connect(ExitAnim)
+	pressed.connect(ExitAnim.bind(noPop))
 	$TextureRect.texture = Icon
 	if noSquiggling: $SquigglingSprite.queue_free()
 

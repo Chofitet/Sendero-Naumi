@@ -16,9 +16,8 @@ func _ready():
 	if minigameResourseFile.StateMinigames["FirstTimeInMap"]:
 		get_parent().visible = true
 		ShowPanel.emit()
-		
+	else:
+		get_parent().visible = false
 		
 	minigameResourseFile.Set_FirstTimeInMap(false)
 	save()
-	await get_tree().create_timer(0.1).timeout
-	$PanelSuerte/labelRich.visible_ratio = 1

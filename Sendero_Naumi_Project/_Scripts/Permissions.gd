@@ -9,6 +9,9 @@ var minigameResourceFile = MiniGameResource.new()
 var zoneResourceFile = ZoneResource.new()
 var instanceResource = InstanceResource.new()
 var volumeSettings = VolumeSettings.new()
+@export var InstroScene: PackedScene
+@export var DisclaimerScene: PackedScene
+signal ChargeNextLevel
 
 func load_file(file, path):
 	file  = ResourceLoader.load(save_file_path  + path)
@@ -16,11 +19,27 @@ func load_file(file, path):
 func save(file, path):
 	ResourceSaver.save(file,save_file_path+path)
 
+
 func _ready():
+	if ResourceLoader.exists(save_file_path + save_file_name_minigame):
+		#Files allready exist
+		chargeFiles()
+		if CheckFirsPlayTime():
+			GoToDisclaimer()
+		else:
+			GoToIntroScene()
+	else:
+		#Files need to be created
+		chargeFiles()
+		StartCharge()
+	
+
+func chargeFiles():
 	if ResourceLoader.exists(save_file_path + save_file_name_minigame):
 		load_file(minigameResourceFile,save_file_name_minigame)
 	else:
 		save(minigameResourceFile,save_file_name_minigame)
+		
 	if ResourceLoader.exists(save_file_path + save_file_name_zone):
 		load_file(zoneResourceFile,save_file_name_zone)
 	else:
@@ -36,12 +55,17 @@ func _ready():
 		save(volumeSettings,save_file_name_Volume_Settings)
 	
 	PlayerVariables.SetLastZoneBeforeQuit()
-	CheckFirsPlayTime()
 
-func CheckFirsPlayTime():
-	
+func CheckFirsPlayTime() -> bool:
 	minigameResourceFile = ResourceLoader.load("user://" + "MiniGameResource.tres")
-	
-	if minigameResourceFile.StateMinigames["noFirstTimePlay"]:
-		get_node("SkipSceen").NextScene = "Map_Screen"
-		var f = get_node("SkipSceen").NextScene
+	return minigameResourceFile.StateMinigames["noFirstTimePlay"]
+
+func StartCharge():
+	$BlackScreen.visible = false
+	$ProgressBar/ProgressBar.StartLoad()
+
+func GoToIntroScene():
+	get_tree().change_scene_to_packed(InstroScene)
+
+func GoToDisclaimer():
+	get_tree().change_scene_to_packed(DisclaimerScene)

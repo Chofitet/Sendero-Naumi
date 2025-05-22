@@ -24,10 +24,10 @@ var macrauquenia = preload("res://Scenes/Zona_Megafauna/Macrauquenia_Draw.tscn")
 var megaterio = preload("res://Scenes/Zona_Megafauna/Megaterio_Draw.tscn")
 
 var DrawaScenes : Dictionary = {
-	"smilodonte": smilodonte,
-	"gliptodonte" : gliptodonte,
-	"macrauquenia" : macrauquenia,
-	"megaterio": megaterio
+	"smilodon": smilodonte,
+	"glyptodon" : gliptodonte,
+	"macrauchenia" : macrauquenia,
+	"megatherium": megaterio
 }
 var NextInstance
 
@@ -35,7 +35,7 @@ func SetSkeleton(sk):
 	for i in DrawaScenes:
 		if i == sk:
 			NextInstance = DrawaScenes[sk]
-			if sk == "megaterio":
+			if sk == "megatherium":
 				isInstancing = true
 				isFinalInstance = true
 	$LibroController/libro/Label.text = sk

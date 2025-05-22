@@ -55,10 +55,10 @@ func SetSkeletonFind(skeleton):
 		btns[i].disabled = false
 		
 		match skeleton.name:
-			"smilodonte": Icons[i].texture = SmilodonteTexture
-			"gliptodonte": Icons[i].texture = GliptodonteTexture
-			"macrauquenia": Icons[i].texture = MacrauqueniaTexture
-			"megaterio": Icons[i].texture = MegaterioTexture
+			"smilodon": Icons[i].texture = SmilodonteTexture
+			"glyptodon": Icons[i].texture = GliptodonteTexture
+			"macrauchenia": Icons[i].texture = MacrauqueniaTexture
+			"megatherium": Icons[i].texture = MegaterioTexture
 	
 		i += 1
 
