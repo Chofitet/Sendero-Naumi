@@ -24,3 +24,6 @@ func StartAnim():
 
 func IdleAnim():
 	anim.play(AnimToPlay)
+
+func SetTimerTime(time : float = 0.1):
+	timer.wait_time = time
