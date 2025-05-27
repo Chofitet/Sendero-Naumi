@@ -1759,6 +1759,7 @@ offset_top = -44.8
 offset_right = 44.64
 offset_bottom = 45.2
 rotation = 3.13639
+noPop = false
 Icon = ExtResource("14_wkaoh")
 
 [node name="Juego" type="Node" parent="RockFighters/StateMachine" node_paths=PackedStringArray("NextState", "StateMachine")]
@@ -2886,8 +2887,8 @@ AudioBuses = Array[String](["FigtherVolumen", "luzEnciende", "nombreAparece", "e
 [connection signal="ButtonPress" from="RockFighters/StateMachine/Moraleja/Contenido/Instancia1/PanelMoraleja1/Panel(1) Btn(center)" to="RockFighters/StateMachine" method="Trigger_On_Child_Transition" binds= ["juego"]]
 [connection signal="InstanceTrue" from="RockFighters/StateMachine/Moraleja/Contenido/Instancia2" to="RockFighters/StateMachine/Moraleja/Contenido/Instancia2/PanelMoraleja2" method="EnterPanel"]
 [connection signal="ButtonPress" from="RockFighters/StateMachine/Moraleja/Contenido/Instancia2/PanelMoraleja2/Panel(1) Btn(center)" to="RockFighters/StateMachine" method="Trigger_On_Child_Transition" binds= ["juego"]]
+[connection signal="InstanceTrue" from="RockFighters/StateMachine/Moraleja/Contenido/Instancia3" to="RockFighters" method="Set_Complete"]
 [connection signal="InstanceTrue" from="RockFighters/StateMachine/Moraleja/Contenido/Instancia3" to="RockFighters/StateMachine/Moraleja/Contenido/Instancia3/PanelMoraleja3" method="EnterPanel"]
-[connection signal="ButtonPress" from="RockFighters/StateMachine/Moraleja/Contenido/Instancia3/PanelMoraleja3/Panel(1) Btn(center)" to="RockFighters" method="Set_Complete"]
 [connection signal="ButtonPress" from="RockFighters/StateMachine/Moraleja/Contenido/Instancia3/PanelMoraleja3/Panel(1) Btn(center)" to="RockFighters/StateMachine" method="Trigger_On_Child_Transition" binds= ["fin"]]
 [connection signal="Transitioned" from="RockFighters/StateMachine/Fin" to="RockFighters/StateMachine/Fin/Contenido/PanelOutro" method="EnterPanel"]
 [connection signal="Transitioned" from="RockFighters/StateMachine/Fin" to="RockFighters/StateMachine/Juego/Contenido/LevelSound" method="PlayEvent" binds= ["final"]]

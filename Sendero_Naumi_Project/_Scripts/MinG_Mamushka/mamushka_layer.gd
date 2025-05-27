@@ -57,6 +57,7 @@ func _ready():
 	SetEmotion("idle")
 
 func MamushkaControllerEnter(x):
+	if inSplitAnim : return
 	x.mouse_realese.connect(MouseRealese)
 	isInArea = true
 	anim.play("Open")
@@ -64,6 +65,7 @@ func MamushkaControllerEnter(x):
 	SoundManager.play("MamushkaLayer", Colortxt + "Open")
 
 func MamushkaControllerExit(x):
+	if inSplitAnim : return
 	x.mouse_realese.disconnect(MouseRealese)
 	isInArea = false
 	MamushkaController = null
@@ -74,7 +76,9 @@ func MamushkaControllerExit(x):
 		anim.play("idle")
 
 func MouseRealese():
-	CheckRigthIsLayer(MamushkaController)
+	if MamushkaController != null: CheckRigthIsLayer(MamushkaController)
+
+var inSplitAnim
 
 func CheckRigthIsLayer(x) :
 	x.z_index = -1
@@ -87,12 +91,16 @@ func CheckRigthIsLayer(x) :
 		x.z_index = 0
 		AddToMamushkaController(x)
 	else: 
+		inSplitAnim = true
 		area2D.get_node("CollisionShape2D").disabled = true
 		anim.play("Close")
 		await anim.animation_finished
 		var direc = get_viewport_rect().get_center() - global_position
+		var target_angle = atan2(direc.y, direc.x)
+		var angle_diff1 = abs(wrapf(target_angle - rotation, -PI, PI))
+		var durationAngle = max(0.1, angle_diff1 / PI * 0.3)
 		var tween = get_tree().create_tween()
-		tween.tween_property(self,"rotation",atan2(direc.y, direc.x),0.2).set_ease(Tween.EASE_IN_OUT)
+		tween.tween_property(self,"rotation",atan2(direc.y, direc.x),durationAngle).set_ease(Tween.EASE_IN_OUT)
 		x.visible = false
 		await tween.finished
 		x.get_node("DragObject").CancelDrag()
@@ -102,11 +110,16 @@ func CheckRigthIsLayer(x) :
 		area2D.get_node("CollisionShape2D").disabled = false
 		await anim.animation_finished
 		x.z_index = 0
+		var angle_diff = abs(rotation - initRot)
+		var rotationDuration = max(0.1, angle_diff / PI * 0.3)
 		var tween2 = get_tree().create_tween()
-		tween2.tween_property(self,"rotation",initRot,0.1).set_ease(Tween.EASE_IN_OUT)
+		tween2.tween_property(self,"rotation",initRot,rotationDuration).set_ease(Tween.EASE_IN_OUT)
 		await tween2.finished
+		$pivot/Arriba/pivotRot.rotation = 0
+		$pivot/Abajo/pivotRot.rotation = 0
 		x.OnSpot(true)
 		isAngry = true
+		inSplitAnim = false
 		await get_tree().create_timer(2).timeout
 		isAngry=false
 		SetEmotion("idle")
@@ -144,7 +157,6 @@ func RealeseController():
 func _process(delta):
 	if !MamushkaController : return
 	if MamushkaController.get_node("DragObject").AskSpot != area2D:
-		print("fuera")
 		MamushkaControllerExit(MamushkaController.get_node("DragObject"))
 		area2D.area_exited.disconnect(MamushkaControllerExit)
 		MamushkaController = null

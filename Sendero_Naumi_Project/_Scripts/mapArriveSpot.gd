@@ -18,6 +18,7 @@ func playAnimMap():
 	$SoundMapLoop.PlayLoopEvent("vientoLoop")
 	btn.visible = true
 	await  get_tree().create_timer(1).timeout
+	handUI.SetTimerTime(1.8)
 	handUI.SetVisibility(true)
 	$presenta/DotsAnim/AnimationPlayer.play("dot_wave")
 	

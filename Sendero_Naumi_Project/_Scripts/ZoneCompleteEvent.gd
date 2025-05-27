@@ -8,6 +8,7 @@ var texturas = {"GeologiaZone" : geologia,
 "MegafaunaZone": megafauna}
 
 func _ready():
+	PlayerVariables.SetLastZoneBeforeQuit()
 	checkZone()
 	if PlayerVariables.DebugMode or debugTest: DebugTest()
 	else: ShowPines()

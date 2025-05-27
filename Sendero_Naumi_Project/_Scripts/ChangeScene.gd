@@ -53,7 +53,7 @@ func _process(delta):
 	var progress = []
 	ResourceLoader.load_threaded_get_status("res://Scenes/" + NextScene + ".tscn",progress)
 	var statusProgress = ResourceLoader.load_threaded_get_status("res://Scenes/" + NextScene + ".tscn")
-	print(progress[0])
+	
 	if progressBar != null and firstBarCharge:
 		if progress[0] > 0.85:
 			ChargeBar(progress[0], statusProgress)

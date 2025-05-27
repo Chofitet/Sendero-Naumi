@@ -60,6 +60,7 @@ func ToLevelUp():
 	$pivot/Parts/partsAnimator.play("RESET")
 	#await get_tree().create_timer(2).timeout
 	$pivot/Parts.visible = false
+	$pivot/handUI.SetTimerTime(6)
 	$pivot/handUI.SetVisibility(true)
 	NaumiAnim.play("call")
 	if soundAnim :soundAnim.play("Naumi" + str(NaumiState()))
