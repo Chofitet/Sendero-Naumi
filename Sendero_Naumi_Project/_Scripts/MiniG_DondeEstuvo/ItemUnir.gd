@@ -12,6 +12,7 @@ var line
 var posClick
 var ClickInButton : bool = false
 var isComplete : bool = false
+var markComplete : bool = false
 var onHold : bool = false
 var OnRigthSpot
 var laserSound
@@ -50,7 +51,11 @@ func _input(event):
 				ReaplaceShaderComplete()
 				OnRigthSpot = true
 				$SquigglingSprite.InactiveSquiggling()
+				if markComplete : 
+					isComplete = true
+					get_parent().CheckTrue()
 				return
+			
 			ReplaceShaderWrong()
 			return
 		posClick = Vector2.ZERO
@@ -134,23 +139,26 @@ func _process(delta):
 func OnArea(x):
 	if !x.is_in_group("Spot"): return
 	isInArea = x 
+	print("enter")
 	if x == correctSpot.get_node("Area2D"):
 		CorrectArea()
 	
 func OutArea(x):
 	isInArea = null
-	isComplete = false
+	markComplete = false
+	print("exit")
 	button.button_down.connect(OnButton)
 
 func resetAll():
 	isInArea = null
-	isComplete = false
+	markComplete = false
 	posClick = Vector2.ZERO
 	area.position = Vector2.ZERO
 	line.set_point_position(1,posClick)
 
 func CorrectArea():
-	isComplete = true
+	markComplete = true
 	button.button_down.disconnect(OnButton)
+	
 	
 

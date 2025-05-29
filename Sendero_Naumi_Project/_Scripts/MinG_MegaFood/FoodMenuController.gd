@@ -15,7 +15,7 @@ var hold
 var actualDrag : Vector2
 var inputTouch
 var multitouch
-var StopDrag
+var StopDrag = true
 var isverticalGesture
 var isHorizontalGesture
 signal isScrolling
@@ -27,15 +27,16 @@ signal aPlateWasDrop
 signal ServePlate
 var TouchBegginInArea
 var isInTutorial
-
+var isFirstTouch = false
+var stopScroll = false
 func _ready():
 	AddPlatesOnAnchor()
 	inputTouch = InputEventScreenTouch.new()
 	timer = get_parent().get_node("TimerScroll")
-	timer.timeout.connect(calculateGesture)
 	timer.timeout.connect(CalculateVerticalGesture)
+	timer.timeout.connect(calculateGesture)
 	position.x = position.x + (get_viewport_rect().size.x/2 - anchors[i].global_position.x)
-	enableInteraction()
+
 
 func AddPlatesOnAnchor():
 	anchors.clear()
@@ -61,6 +62,7 @@ func _input(event: InputEvent) -> void:
 		if not get_global_rect().has_point(event.position):return
 		if multitouch : return
 		pressedPos = event.position
+		isFirstTouch = true
 		actualDrag = pressedPos
 		timer.start()
 		inGesture = true
@@ -79,22 +81,32 @@ func _input(event: InputEvent) -> void:
 		if multitouch : return
 		var d 
 		if pressedPos == null : return
+		if !hold : return
 		d = pressedPos - event.position
 		if not get_global_rect().has_point(event.position) : inGesture = false
 		if abs(d.x) < abs(d.y):
 			isverticalGesture = true
-			return
+			if isFirstTouch: return
 		elif abs(d.x) > abs(d.y):
 			isHorizontalGesture = true
 		if isDraggingAPplate: return
+		if stopScroll: return
 		if actualDrag.x != event.position.x:
+			var delta_x = event.position.x - actualDrag.x
+			if is_at_left_limit and delta_x < 0:
+				return
+			if is_at_right_limit and delta_x > 0:
+				return
+
 			isScrolling.emit()
-			position.x = position.x + (event.position.x - actualDrag.x)
+			position.x += delta_x
 			actualDrag.x = event.position.x
 
 func calculateGesture() -> void:
+	isFirstTouch = false
 	if isverticalGesture : return
 	if !inGesture : return 
+	if isVerticalSwipe: return
 	inGesture = false
 	if hold : return
 	isScrolling.emit()
@@ -103,25 +115,30 @@ func calculateGesture() -> void:
 	if (abs(d.x) < limitGesture) :
 		next_anchor = position.x + (get_viewport_rect().size.x/2 - anchors[i].global_position.x)
 		var tween = get_tree().create_tween()
-		tween.tween_property(self,"position", Vector2(next_anchor,position.y),0.15).set_ease(Tween.EASE_OUT)
+		tween.tween_property(self,"position", Vector2(next_anchor,position.y),0.15).set_ease(Tween.EASE_IN_OUT)
 		return
 	if abs(d.x) > abs(d.y):
 		if d.x < 0:
 			var tween = get_tree().create_tween()
-			tween.tween_property(self,"position", Vector2(set_next_anchor("rigth"),position.y),0.2).set_ease(Tween.EASE_OUT)
+			tween.tween_property(self,"position", Vector2(set_next_anchor("rigth"),position.y),0.2).set_ease(Tween.EASE_IN_OUT)
 		else:
 			var tween = get_tree().create_tween()
-			tween.tween_property(self,"position", Vector2(set_next_anchor("left"),position.y),0.2).set_ease(Tween.EASE_OUT)
+			tween.tween_property(self,"position", Vector2(set_next_anchor("left"),position.y),0.2).set_ease(Tween.EASE_IN_OUT)
+
+var isVerticalSwipe = false
 
 func CalculateVerticalGesture():
+	isFirstTouch = false
 	if isInTutorial : return
 	if isHorizontalGesture : return
 	if hold : return
 	var d 
 	d= releasePos - pressedPos
 	print(d)
-	if abs(d.x) < abs(d.y):
+	if abs(d.x) < abs(d.y) and abs(d.x) < 200:
 		if d.y < 0:
+			isVerticalSwipe = true
+			stopDrag()
 			SoundManager.play("DragObject","swipe") 
 			anchors[i].get_node("DragObject").PlaceInRightSpot(true)
 
@@ -155,22 +172,29 @@ func set_next_anchor(direction):
 			next_anchor = position.x + (get_viewport_rect().size.x/2 - anchors[i].global_position.x)
 			SoundManager.play("DragObject", "swipe")
 	enableInteraction()
+	disableDetectors()
 	CompleteSwipe.emit()
 	SetTutorial(false)
 	return next_anchor
 
 func enableInteraction():
 	for b in anchors[i].get_children():
-		if b is Area2D:
+		if b.has_method("isEnableButton"):
 			b.isEnableButton(true)
 	if (i < (anchors.size() - 1)):
 		for b in anchors[1 + i].get_children():
-			if b is Area2D:
+			if b.has_method("isEnableButton"):
 				b.isEnableButton(false)
 	if (i > 0):
 		for b in anchors[i - 1].get_children():
-			if b is Area2D:
+			if b.has_method("isEnableButton"):
 				b.isEnableButton(false)
+
+func disableDetectors():
+	for d in anchors:
+		d.get_node("detector").get_child(0).disabled = true
+		
+	anchors[i].get_node("detector").get_child(0).disabled = false
 
 func stopDrag(x = true):
 	StopDrag = x
@@ -181,6 +205,8 @@ func Reset():
 		f.get_node("DragObject").ResetPosition()
 	AddPlatesOnAnchor()
 	StopDrag = false
+	stopScroll = false
+	isVerticalSwipe = false
 	if ResetPlatesIndex:
 		i = 1
 		plateRef = anchors[1]
@@ -193,6 +219,8 @@ func LockUnklockGragObjects(x):
 	
 var plateRef
 func ReOrganizePlates():
+	stopDrag(false)
+	isVerticalSwipe = false
 	var ismiddleplate = false
 	var indexToRemove
 	LockUnklockGragObjects(true)
@@ -203,7 +231,6 @@ func ReOrganizePlates():
 			var target_x = plate.position.x - abs(anchors[0].position.x - anchors[1].position.x)
 			tween.tween_property(plate,"position", Vector2(target_x,plate.position.y),0.2).set_ease(Tween.EASE_OUT)
 			ChangeInitPos(plate,Vector2(target_x,plate.position.y))
-			print(plate.name)
 		else:
 			if plate == plateRef:
 				if indexp == anchors.size()-1:
@@ -214,6 +241,7 @@ func ReOrganizePlates():
 				indexToRemove = indexp
 	if indexToRemove == null : return
 	anchors.remove_at(indexToRemove)
+	if anchors.size() == 1 : stopScroll = true
 	enableInteraction()
 	PlatesReset.emit()
 	StopDrag = false
@@ -237,3 +265,11 @@ func DetectMouseRelease():
 func SetTutorial(x):
 	isInTutorial = x
 
+var is_at_left_limit = false
+var is_at_right_limit = false
+
+func ClampRightLimit(x):
+	is_at_right_limit = x
+
+func ClampLeftLimit(x):
+	is_at_left_limit = x

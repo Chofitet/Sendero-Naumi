@@ -1,9 +1,11 @@
-[gd_scene load_steps=129 format=3 uid="uid://bpo2q2rb4or0"]
+[gd_scene load_steps=131 format=3 uid="uid://bpo2q2rb4or0"]
 
 [ext_resource type="Material" uid="uid://muj2sfgakm5s" path="res://shaders/GalaxyWiggle.tres" id="1_0whhm"]
 [ext_resource type="Texture2D" uid="uid://nuybqhitpej1" path="res://Sprites/Mapa/fondo_mapa.png" id="2_fossm"]
+[ext_resource type="PackedScene" uid="uid://nmuyip31gkq5" path="res://Scenes/UI_Scenes/generic_button.tscn" id="3_4ylal"]
 [ext_resource type="PackedScene" uid="uid://chcp24toqisaw" path="res://Scenes/Experiments/GenericPanel/GenericPanel.tscn" id="3_b8gop"]
 [ext_resource type="Script" path="res://Scenes/Experiments/GenericPanel/ButtonPanelData.gd" id="4_jfmrn"]
+[ext_resource type="Texture2D" uid="uid://kb7ixs5ala8" path="res://Sprites/UI/arrowIcon - UI.png" id="4_jrau3"]
 [ext_resource type="Texture2D" uid="uid://c2p5torstrtqm" path="res://Sprites/UI/checkIcon - UI.png" id="5_0aq24"]
 [ext_resource type="Script" path="res://Scenes/Experiments/GenericPanel/TextFieldData.gd" id="6_7rehl"]
 [ext_resource type="PackedScene" uid="uid://d1jys63xrvxpo" path="res://Scenes/Experiments/GenericPanel/IntermediateSignal.tscn" id="7_c1qai"]
@@ -220,7 +222,7 @@ script = ExtResource("6_7rehl")
 Text = "
 [center][b]TE ESPERAMOS PRONTO[/b]
 [color=#dab21e]PARA LA SEGUNDA PARTE
-Y EL GRAN FINAL[/color]"
+[b]Y EL GRAN FINAL[/b][/color]"
 writingSpeed = 0.0
 SizePanel = Vector2(652, 290)
 Position = Vector2(0, 0)
@@ -351,7 +353,7 @@ offset_bottom = 17830.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("7_mhboh")
-secondOnOneScreen = 9.0
+secondOnOneScreen = 9.5
 
 [node name="Pantalla1" type="VBoxContainer" parent="CreditsScroll"]
 layout_mode = 2
@@ -766,7 +768,7 @@ theme_override_font_sizes/normal_font_size = 29
 theme_override_font_sizes/bold_font_size = 29
 bbcode_enabled = true
 text = "[center]- [b]SATURNO[/b] -
-COMO EL MISMO"
+COMO ÉL MISMO"
 
 [node name="Content3" type="Control" parent="CreditsScroll/Pantalla3"]
 layout_mode = 2
@@ -3039,7 +3041,7 @@ offset_right = 328.0
 offset_bottom = 270.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "A QUIEN DE CON EL PARADERO DE ESTE NIÑO"
+text = "A QUIEN DÉ CON EL PARADERO DE ESTE NIÑO"
 label_settings = ExtResource("35_8b8op")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -3117,7 +3119,7 @@ grow_vertical = 2
 theme_override_font_sizes/normal_font_size = 29
 theme_override_font_sizes/bold_font_size = 29
 bbcode_enabled = true
-text = "[center]FAUNATRONICS SOLUTIONS"
+text = "[center]FAUNATRONIC SOLUTIONS"
 scroll_active = false
 
 [node name="Label3" type="RichTextLabel" parent="CreditsScroll/Pantalla11/Content2"]
@@ -3325,7 +3327,9 @@ size_flags_stretch_ratio = 0.1
 theme_override_font_sizes/normal_font_size = 29
 theme_override_font_sizes/bold_font_size = 29
 bbcode_enabled = true
-text = "[center][b]Y A JAVIER MONTENEGRO POR SU MÚSICA[/b]"
+text = "[center][b]  
+Y A  [font_size={40}]JAVIER MONTENEGRO[/font_size] 
+POR SU MÚSICA[/b]"
 scroll_active = false
 
 [node name="Pantalla13" type="VBoxContainer" parent="CreditsScroll"]
@@ -3431,7 +3435,7 @@ layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.72
 
-[node name="Label" type="Label" parent="CreditsScroll/Pantalla14/Content1"]
+[node name="Label" type="RichTextLabel" parent="CreditsScroll/Pantalla14/Content1"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -3439,16 +3443,14 @@ anchor_top = 0.406
 anchor_right = 0.5
 anchor_bottom = 0.406
 offset_left = -328.0
-offset_top = -123.462
+offset_top = -110.026
 offset_right = 328.0
-offset_bottom = 0.537964
+offset_bottom = -39.026
 grow_horizontal = 2
 grow_vertical = 2
-text = "GRACIAS POR JUGAR"
-label_settings = ExtResource("35_8b8op")
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 3
+theme = ExtResource("92_224v7")
+bbcode_enabled = true
+text = "[font_size=40][center][b]GRACIAS POR JUGAR[/b]"
 
 [node name="Control" type="Control" parent="CreditsScroll/Pantalla14/Content1"]
 layout_mode = 1
@@ -3469,15 +3471,65 @@ sprite_frames = SubResource("SpriteFrames_q0bsi")
 autoplay = "default"
 frame_progress = 0.31103
 
+[node name="Button" type="Button" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+
+[node name="ButtonSkip" type="Control" parent="Button"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(0.69, 0.69)
+
+[node name="GenericButton" parent="Button/ButtonSkip" instance=ExtResource("3_4ylal")]
+visible = false
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = -130.435
+offset_top = -119.493
+offset_right = -40.4348
+offset_bottom = -29.4927
+rotation = 3.14159
+noSway = true
+noPop = false
+NumClicksToActive = 3
+Icon = ExtResource("4_jrau3")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Button/ButtonSkip/GenericButton"]
+layout_mode = 0
+offset_left = 113.421
+offset_top = 144.014
+offset_right = 281.421
+offset_bottom = 206.014
+rotation = -3.14159
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_outline_size = 3
+theme_override_font_sizes/normal_font_size = 33
+text = "SALTEAR"
+scroll_active = false
+
 [node name="Panel" parent="." instance=ExtResource("3_b8gop")]
 layout_mode = 1
 anchors_preset = 8
 anchor_top = 0.5
 anchor_bottom = 0.5
 offset_left = -326.0
-offset_top = -153.0
+offset_top = -160.0
 offset_right = 326.0
-offset_bottom = 77.0
+offset_bottom = 70.0
 grow_vertical = 2
 pivot_offset = Vector2(326, 115)
 Texts = Array[ExtResource("6_7rehl")]([SubResource("Resource_4bf60"), SubResource("Resource_gj75s"), SubResource("Resource_wj6ka")])
@@ -3526,5 +3578,9 @@ bus = &"musicLoop"
 
 [connection signal="PreScrollEnds" from="CreditsScroll" to="MusicVolume" method="SetVolume" binds= [-80.0, 2.0]]
 [connection signal="ScrollEnds" from="CreditsScroll" to="ButtonChangeScene" method="_on_pressed"]
+[connection signal="pressed" from="Button" to="Button/ButtonSkip/GenericButton" method="ClickCounter"]
+[connection signal="pressed" from="Button/ButtonSkip/GenericButton" to="CreditsScroll" method="SetCreditPass"]
+[connection signal="pressed" from="Button/ButtonSkip/GenericButton" to="ButtonChangeScene" method="_on_pressed"]
 [connection signal="ButtonPress" from="Panel/Panel(3) Btn(rigth)" to="CreditsScroll" method="StartScroll"]
+[connection signal="ButtonPress" from="Panel/Panel(3) Btn(rigth)" to="Button" method="set_visible" binds= [true]]
 [connection signal="ButtonPress" from="Panel/Panel(3) Btn(rigth)" to="MusicAnim" method="play" binds= ["startMusic"]]

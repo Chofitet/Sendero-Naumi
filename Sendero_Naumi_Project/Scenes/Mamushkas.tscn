@@ -697,8 +697,8 @@ exitPanel = false
 [sub_resource type="Resource" id="Resource_akuin"]
 script = ExtResource("37_m4uql")
 Text = "[center]DESDE LA SUPERFICIE DE LA TIERRA
-HASTA SU CENTRO: [color=#dab21e]HAY MÁS DE 6.000 km.[/color]
-Y SU DIÁMETRO ES MAYOR A 12.000 km![b]
+HASTA SU CENTRO [color=#dab21e]HAY MÁS DE 6.000 km[/color]
+¡Y SU DIÁMETRO ES MAYOR A 12.000 km![b]
 "
 writingSpeed = 0.0
 SizePanel = Vector2(0, 0)
@@ -1104,6 +1104,9 @@ script = ExtResource("39_s2xyb")
 label = "intro"
 events = Array[ExtResource("40_lfekj")]([SubResource("Resource_bq2wj"), SubResource("Resource_t1hqo"), SubResource("Resource_uwkv7"), SubResource("Resource_l75i6"), SubResource("Resource_rmq10")])
 
+[node name="btnVolver" parent="Mamushkas/StateMachine/Consigna/Contenido" instance=ExtResource("27_e3ccu")]
+visible = false
+
 [node name="Juego" type="Node" parent="Mamushkas/StateMachine" node_paths=PackedStringArray("NextState", "StateMachine")]
 script = ExtResource("20_mbp0a")
 NextState = NodePath(".")
@@ -1181,8 +1184,8 @@ color = Color(0.796875, 0.492188, 0.285156, 1)
 panelText = "[center][b][color=#dab21e]EL NÚCLEO EXTERNO[/color][/b]
 ES LÍQUIDO, TIENE
 2.100 km DE ESPESOR,
-UNA TEMPERATURA DE 
-HASTA 6.100 GRADOS.
+Y UNA TEMPERATURA DE 
+HASTA 6.100°C,
 [b]Y JUNTO AL NÚCLEO
 INTERNO GENERAN EL 
 CAMPO MAGNÉTICO DE
@@ -1291,6 +1294,25 @@ DONDE HABITAMOS.
 "
 offsetPanel = Vector2(0, 75)
 mamu = NodePath("../../MamushkaCenter/mamushkaController")
+
+[node name="Sprite2D" parent="Mamushkas/StateMachine/Juego/Contenido/Instancia1/MamushkasDown/Mamushka_Layer/pivot/Abajo/pivotRot" index="0"]
+texture = ExtResource("30_lnyp6")
+
+[node name="Sprite2D2" parent="Mamushkas/StateMachine/Juego/Contenido/Instancia1/MamushkasDown/Mamushka_Layer/pivot/Abajo/pivotRot" index="1"]
+texture = ExtResource("20_e7hqk")
+
+[node name="pivotRot" parent="Mamushkas/StateMachine/Juego/Contenido/Instancia1/MamushkasDown/Mamushka_Layer/pivot/Arriba" index="0"]
+position = Vector2(-227, 59.4)
+
+[node name="Sprite2D" parent="Mamushkas/StateMachine/Juego/Contenido/Instancia1/MamushkasDown/Mamushka_Layer/pivot/Arriba/pivotRot" index="0"]
+position = Vector2(227, -59.4)
+texture = ExtResource("21_b44a8")
+
+[node name="parte2" parent="Mamushkas/StateMachine/Juego/Contenido/Instancia1/MamushkasDown/Mamushka_Layer/pivot/Arriba/pivotRot/Sprite2D" index="0"]
+texture = ExtResource("25_dyfdr")
+
+[node name="emociones" parent="Mamushkas/StateMachine/Juego/Contenido/Instancia1/MamushkasDown/Mamushka_Layer/pivot/Arriba/pivotRot/Sprite2D" index="1"]
+sprite_frames = ExtResource("33_y54pp")
 
 [node name="MamushkaCenter" type="Control" parent="Mamushkas/StateMachine/Juego/Contenido/Instancia1"]
 layout_mode = 1
@@ -1514,6 +1536,7 @@ Data = SubResource("Resource_rw5tw")
 Data = SubResource("Resource_ub5i3")
 
 [node name="btnVolver" parent="Mamushkas/StateMachine/Juego" instance=ExtResource("27_e3ccu")]
+visible = false
 
 [node name="Moraleja" type="Node" parent="Mamushkas/StateMachine"]
 script = ExtResource("27_i6a7j")
@@ -1632,5 +1655,6 @@ AudioBuses = Array[String](["intro1Mamushka", "intro2Mamushka", "intro3Mamushka"
 [editable path="Mamushkas/StateMachine/Consigna/Contenido/Intro/PanelIntro2/btnIzqAnchor/btnIzq/SquigglingSprite"]
 [editable path="Mamushkas/StateMachine/Consigna/Contenido/Intro/PanelIntro2/btnCentralAnchor/btnCentral/SquigglingSprite"]
 [editable path="Mamushkas/StateMachine/Juego/Contenido/Instancia1/MamushkasUp/Mamushka_Layer3"]
+[editable path="Mamushkas/StateMachine/Juego/Contenido/Instancia1/MamushkasDown/Mamushka_Layer"]
 [editable path="Mamushkas/StateMachine/Juego/Contenido/Instancia1/MamushkaCenter/mamushkaController"]
 [editable path="Mamushkas/StateMachine/Juego/Contenido/Instancia1/MamushkaCenter/mamushkaController/DragObject"]

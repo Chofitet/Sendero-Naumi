@@ -522,7 +522,6 @@ Consignas = ["Guiá al topo para encontrar los fósiles"]
 FadeInTrasitioned = true
 
 [node name="Contenido" type="Control" parent="Excavando/StateMachine/Consigna"]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -691,6 +690,8 @@ Texts = Array[ExtResource("51_1rgrp")]([SubResource("Resource_bo72e"), SubResour
 [node name="Panel(2) Btn(rigth)" parent="Excavando/StateMachine/Consigna/Contenido/Intro1" instance=ExtResource("14_f234f")]
 Data = SubResource("Resource_3dgjk")
 
+[node name="btnVolver" parent="Excavando/StateMachine/Consigna/Contenido" instance=ExtResource("38_0b8dm")]
+
 [node name="Juego" type="Node" parent="Excavando/StateMachine" node_paths=PackedStringArray("NextState", "StateMachine")]
 script = ExtResource("5_nqckt")
 NextState = NodePath(".")
@@ -700,6 +701,7 @@ FadeInConsigna = true
 FadeInBeteewnInstance = true
 
 [node name="Contenido" type="Control" parent="Excavando/StateMachine/Juego"]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -1731,6 +1733,7 @@ scale = Vector2(0.472511, 0.472511)
 texture = ExtResource("16_txmq6")
 flip_h = true
 script = ExtResource("9_113nf")
+complete_percent = 0.9
 
 [node name="hotspot" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/HuesoController/CheckAllTrue/smilodon"]
 position = Vector2(278.982, -252.289)
@@ -1878,7 +1881,7 @@ shape = SubResource("CircleShape2D_x16bw")
 
 [node name="contorno" type="Sprite2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/HuesoController/CheckAllTrue/smilodon"]
 self_modulate = Color(0.82606, 0.82606, 0.82606, 1)
-z_index = -1
+show_behind_parent = true
 position = Vector2(-17.0881, 27.3334)
 scale = Vector2(1.00064, 1.00064)
 texture = ExtResource("20_sj1tm")
@@ -2125,6 +2128,7 @@ position = Vector2(-170, 374)
 scale = Vector2(0.455852, 0.455852)
 texture = ExtResource("19_ryw8i")
 script = ExtResource("9_113nf")
+complete_percent = 0.85
 
 [node name="hotspot" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/HuesoController/CheckAllTrue/glyptodon"]
 position = Vector2(-311.504, 68.0044)
@@ -2269,7 +2273,7 @@ shape = SubResource("CircleShape2D_x16bw")
 
 [node name="contorno" type="Sprite2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/HuesoController/CheckAllTrue/glyptodon"]
 self_modulate = Color(0.815686, 0.815686, 0.815686, 1)
-z_index = -1
+show_behind_parent = true
 position = Vector2(-6.58112, -6.98145)
 scale = Vector2(1.00064, 1.00064)
 texture = ExtResource("23_snvhs")
@@ -2487,6 +2491,7 @@ position = Vector2(-61, 1389)
 scale = Vector2(0.585677, 0.585677)
 texture = ExtResource("22_8jam6")
 script = ExtResource("9_113nf")
+complete_percent = 0.9
 
 [node name="hotspot" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/HuesoController/CheckAllTrue/macrauchenia"]
 position = Vector2(262.944, 117.813)
@@ -2730,7 +2735,7 @@ shape = SubResource("CircleShape2D_x16bw")
 
 [node name="contorno" type="Sprite2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/HuesoController/CheckAllTrue/macrauchenia"]
 self_modulate = Color(0.815686, 0.815686, 0.815686, 1)
-z_index = -1
+show_behind_parent = true
 position = Vector2(-1.4588, -15.5186)
 scale = Vector2(1.00064, 1.00064)
 texture = ExtResource("25_wsswo")
@@ -3361,6 +3366,7 @@ position = Vector2(-78, -17)
 scale = Vector2(0.57963, 0.57963)
 texture = ExtResource("14_0qvux")
 script = ExtResource("9_113nf")
+complete_percent = 0.93
 
 [node name="hotspot3" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/megatherium"]
 position = Vector2(-6.90088, -417.508)
@@ -3764,7 +3770,7 @@ shape = SubResource("CircleShape2D_q2guk")
 
 [node name="contorno" type="Sprite2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/megatherium"]
 self_modulate = Color(0.815686, 0.815686, 0.815686, 1)
-z_index = -1
+show_behind_parent = true
 position = Vector2(-10.3513, 122.492)
 scale = Vector2(1.00064, 1.00064)
 texture = ExtResource("19_ksyc2")
@@ -4499,9 +4505,9 @@ offset_right = -12.343
 offset_bottom = -135.22
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 45
-text = "VOS SEÑALA CON EL DEDO,
+text = "VOS SEÑALÁ CON EL DEDO,
 YO TE SIGO.
-(podes señalar lejos de mi)
+(podés señalar lejos de mí)
 "
 horizontal_alignment = 1
 vertical_alignment = 1

@@ -50,22 +50,28 @@ func _ready():
 	if Engine.is_editor_hint(): return
 	$Panel.visible = false
 	$Area2D.area_entered.connect(ShowDialogue)
-	$Area2D.area_exited.connect(HideDialogue)
+	$Area2D.area_exited.connect(StartHideDialogue)
 
 func ShowDialogue(x):
 	if isInactiveDialogue: return
 	if x.is_in_group("Player"):
-		SoundManager.play("guy","dialogo")
+		if $Panel.visible == false : SoundManager.play("guy","dialogo")
 		$Panel.visible = true
+		if timerDialogue != null: timerDialogue.timeout.disconnect(HideDialogue)
 		if RotateInEnter:
 			isRotating = true
 
-func HideDialogue(x):
+var timerDialogue = null
+
+func StartHideDialogue(x):
 	if x.is_in_group("Player"):
-		$Panel.visible = false
-#		if RotateInEnter:
-#			isRotating = false
-	
+		timerDialogue = get_tree().create_timer(2)
+		timerDialogue.timeout.connect(HideDialogue)
+
+func HideDialogue():
+	$Panel.visible = false
+	timerDialogue = null
+
 var incruse = 0
 @export var increment : float
 func _process(delta):

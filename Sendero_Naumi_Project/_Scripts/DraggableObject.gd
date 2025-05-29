@@ -113,7 +113,7 @@ func deleteSpot(x):
 	AskSpot = null
 
 func CheckRightSpot():
-	if (AskSpot == spot):
+	if spot and spot.overlaps_area(self):
 		is_in_spot = true
 	else: is_in_spot = false
 

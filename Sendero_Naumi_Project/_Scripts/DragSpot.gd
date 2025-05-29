@@ -18,9 +18,13 @@ func _input(event: InputEvent) -> void:
 		CheckAnswer()
 	
 func CheckRigthArea(x):
+	print("enter")
+	if x.is_in_group("dragObject"): return
 	objectInArea = x
 
 func DeletArea(x):
+	print("exit")
+	if x.is_in_group("dragObject"): return
 	objectInArea = null
 
 func Reset():
@@ -34,11 +38,9 @@ func CheckAnswer():
 	if objectInArea == RigthObject:
 		RightAns.emit()
 		once = true
-		print("r")
 	elif objectInArea != RigthObject:
 		WrongAns.emit()
 		once = true
-		print("w")
 
 func ObjectArriveToSpot():
 	ObjectArriveSpot.emit(objectInArea.get_parent())

@@ -11,7 +11,7 @@ var isexit
 		$Panel/Label.text = nombre
 
 @export var item : Sprite2D
-
+var wasAnswered = false
 
 func _ready():
 	$Area2D.area_entered.connect(CheckUnion)
@@ -47,7 +47,7 @@ func Exit(x):
 		lastEnter = null
 
 func Disconnect():
-	$Area2D.queue_free()
+	wasAnswered = true
 
 func AnimToRigth():
 	await get_tree().create_timer(1).timeout

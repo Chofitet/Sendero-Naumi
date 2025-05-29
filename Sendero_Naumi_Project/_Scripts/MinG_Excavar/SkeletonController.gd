@@ -25,7 +25,7 @@ func DoDiscoverAnim(x):
 	x.get_node("particles").Emit()
 	SoundManager.play("fosil","explota")
 	x.self_modulate = Color.WHITE
-	x.z_index = 2
+	x.z_index = 1
 	var initScale = x.scale
 	var tween = get_tree().create_tween()
 	tween.tween_property(x,"scale",initScale*1.15,0.3).set_ease(Tween.EASE_IN_OUT)

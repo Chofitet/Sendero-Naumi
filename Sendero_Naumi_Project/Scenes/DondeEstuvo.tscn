@@ -105,7 +105,7 @@
 [ext_resource type="Texture2D" uid="uid://b74axmot14bj8" path="res://Sprites/ZonaAstronomia/jupiter - donde.png" id="74_2orhi"]
 [ext_resource type="Texture2D" uid="uid://lm8q60lp72dv" path="res://Sprites/ZonaAstronomia/urano - donde.png" id="75_h52fe"]
 [ext_resource type="AudioStream" uid="uid://b5vnl01rlssd8" path="res://Sounds/Donde Estuvo/Donde Estuvo - Cucaracha Puerta.ogg" id="79_h31ey"]
-[ext_resource type="AudioStream" uid="uid://b14uc1slt0ia8" path="res://Sounds/Donde Estuvo/Donde Estuvo - Cucaracha Piso.ogg" id="80_lrhg8"]
+[ext_resource type="AudioStream" uid="uid://56hw0p4f1m65" path="res://Sounds/Donde Estuvo/Donde Estuvo Cucaracha 2.ogg" id="83_4jb4x"]
 [ext_resource type="AudioStream" uid="uid://bo4c6o0mdb64y" path="res://Sounds/Donde Estuvo/Donde Estuvov - encontrado.ogg" id="84_xtd0u"]
 [ext_resource type="AudioStream" uid="uid://b6xftsexmv2n2" path="res://Sounds/Donde Estuvo/Donde Estuvov - encontrado 2.ogg" id="85_sapcq"]
 [ext_resource type="AudioStream" uid="uid://btx6a6e5v0s5o" path="res://Sounds/Donde Estuvo/Donde Estuvov - encontrado 3.ogg" id="86_qryqt"]
@@ -932,7 +932,7 @@ bus = "cucarachaPiso"
 volume = 0.0
 pitch = 1.0
 RandomPitch = Vector2(1, 1)
-streams = Array[AudioStream]([ExtResource("80_lrhg8")])
+streams = Array[AudioStream]([ExtResource("83_4jb4x")])
 
 [sub_resource type="Resource" id="Resource_pa5ot"]
 script = ExtResource("21_2k2rl")
@@ -1574,7 +1574,7 @@ PERO ES MUY FRÍO.
 [color=#dab21e]SUS TORMENTAS DE ARENA
 PUEDEN DURAR MESES[/color] 
 Y ENVOLVERLO POR COMPLETO.
-[b]UN DIA EN MARTE DURA[/b]
+[b]UN DÍA EN MARTE DURA[/b]
 37 MINUTOS MÁS QUE AQUÍ.
 "
 writingSpeed = 144.0
@@ -1598,9 +1598,9 @@ exitPanel = false
 
 [sub_resource type="Resource" id="Resource_st847"]
 script = ExtResource("19_5u4uq")
-Text = "[center][b]HACE 4.533.000.000 AÑOS[/b]
+Text = "[center][b]HACE 4.533 MILLONES DE AÑOS[/b]
 UNA ROCA CHOCÓ CON LA TIERRA
-Y FORMÓ AL SATÉLITE: [b][color=#a29c97]LA LUNA[/color][/b].
+Y FORMÓ UN SATÉLITE: [b][color=#a29c97]LA LUNA[/color][/b].
 [color=#dab21e]SU FUERZA DE GRAVEDAD
 ES MUY DÉBIL.[/color]
 POR ESO LOS ASTRONAUTAS
@@ -1628,7 +1628,7 @@ exitPanel = false
 [sub_resource type="Resource" id="Resource_05oto"]
 script = ExtResource("19_5u4uq")
 Text = "[center]400 VECES MÁS GRANDE QUE
-LA TIERRA Y CON -218 C,
+LA TIERRA Y CON -218°C,
 A [b][color=#8accbb]URANO[/color][/b] LE DICEN:
 [b]“EL GIGANTE DE HIELO”[/b].
 [color=#dab21e]UN AÑO ALLÍ DURA 84 AQUÍ,[/color]
@@ -1940,6 +1940,8 @@ script = ExtResource("19_cddff")
 script = ExtResource("20_kk2vv")
 label = "intro"
 events = Array[ExtResource("21_2k2rl")]([SubResource("Resource_a573f"), SubResource("Resource_3vjct")])
+
+[node name="btnVolver" parent="DondeEstuvo/StateMachine/Consigna/Contenido" instance=ExtResource("65_lsfn2")]
 
 [node name="Juego" type="Node" parent="DondeEstuvo/StateMachine" node_paths=PackedStringArray("NextState", "StateMachine")]
 script = ExtResource("5_8uhx2")
@@ -3136,7 +3138,6 @@ colorShader = Color(0, 0, 0, 1)
 nombre = "SOL"
 
 [node name="Area2D" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/pivotPlanets/VBoxContainer2/SpotUnir3" index="0"]
-visible = false
 position = Vector2(95, 87)
 
 [node name="unionSpot" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/pivotPlanets/VBoxContainer2/SpotUnir3" index="1"]
@@ -3248,7 +3249,7 @@ PERO ES MUY FRÍO.
 [color=#dab21e]SUS TORMENTAS DE ARENA
 PUEDEN DURAR MESES[/color] 
 Y ENVOLVERLO POR COMPLETO.
-[b]UN DIA EN MARTE DURA[/b]
+[b]UN DÍA EN MARTE DURA[/b]
 37 MINUTOS MÁS QUE AQUÍ.
 "
 
@@ -3281,7 +3282,7 @@ offset_top = -206.0
 offset_right = 256.0
 offset_bottom = 207.0
 grow_horizontal = 1
-pivot_offset = Vector2(251, 206.5)
+pivot_offset = Vector2(256, 206.5)
 AppearInBeginning = false
 Texts = Array[ExtResource("19_5u4uq")]([SubResource("Resource_st847")])
 
@@ -3290,14 +3291,14 @@ scale = Vector2(1.13, 1.13)
 pivot_offset = Vector2(214, 135)
 
 [node name="labelRich" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/Panels/PanelPivot2/Panel" index="1"]
-offset_left = -31.2199
-offset_top = 46.0621
-offset_right = -30.8919
-offset_bottom = -65.9379
+offset_left = -46.184
+offset_top = 46.0
+offset_right = -19.816
+offset_bottom = -57.0
 scale = Vector2(1.13, 1.13)
-text = "[center][b]HACE 4.533.000.000 AÑOS[/b]
+text = "[center][b]HACE 4.533 MILLONES DE AÑOS[/b]
 UNA ROCA CHOCÓ CON LA TIERRA
-Y FORMÓ AL SATÉLITE: [b][color=#a29c97]LA LUNA[/color][/b].
+Y FORMÓ UN SATÉLITE: [b][color=#a29c97]LA LUNA[/color][/b].
 [color=#dab21e]SU FUERZA DE GRAVEDAD
 ES MUY DÉBIL.[/color]
 POR ESO LOS ASTRONAUTAS
@@ -3341,7 +3342,7 @@ offset_left = -32.3034
 offset_right = -31.9754
 scale = Vector2(1.13, 1.13)
 text = "[center]400 VECES MÁS GRANDE QUE
-LA TIERRA Y CON -218 C,
+LA TIERRA Y CON -218°C,
 A [b][color=#8accbb]URANO[/color][/b] LE DICEN:
 [b]“EL GIGANTE DE HIELO”[/b].
 [color=#dab21e]UN AÑO ALLÍ DURA 84 AQUÍ,[/color]

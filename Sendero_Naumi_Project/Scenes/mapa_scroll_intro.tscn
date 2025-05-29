@@ -1,4 +1,4 @@
-[gd_scene load_steps=175 format=3 uid="uid://buth5gc88nt3j"]
+[gd_scene load_steps=177 format=3 uid="uid://buth5gc88nt3j"]
 
 [ext_resource type="Texture2D" uid="uid://cjjoaemhep814" path="res://Sprites/mapa-detalle.png" id="1_kw7ma"]
 [ext_resource type="Texture2D" uid="uid://hf5y4ic16cqj" path="res://Sprites/Intro/intro - background.jpg" id="1_un13t"]
@@ -583,9 +583,29 @@ Text = "[center]¿ESTO?
 [center]ESTO ES UN [color=#abc70c]N[/color][color=#d8b423]A[/color][color=#f47237]U[/color][color=#d8b423]M[/color][color=#abc70c]I[/color][b]
 "
 writingSpeed = 0.0
-SizePanel = Vector2(652, 228)
+SizePanel = Vector2(652, 229)
 Position = Vector2(0, 0)
 buttons = Array[ExtResource("33_xvgkx")]([SubResource("Resource_1pchg")])
+NumOfContent = 0
+
+[sub_resource type="Resource" id="Resource_iuqli"]
+script = ExtResource("33_xvgkx")
+Place = 0
+texture = ExtResource("34_rt28l")
+label = ""
+dontPassPanel = false
+exitPanel = false
+
+[sub_resource type="Resource" id="Resource_pkm6b"]
+script = ExtResource("32_xf8jp")
+Text = "[center]AÚN NO HA DESPERTADO,
+PERO DICEN QUE LOS [color=#abc70c]N[/color][color=#d8b423]A[/color][color=#f47237]U[/color][color=#d8b423]M[/color][color=#abc70c]I[/color][color=#f47237]S[/color]
+[b]REACCIONAN AL RECORRER ESTE SENDERO[/b]
+"
+writingSpeed = 0.0
+SizePanel = Vector2(652, 256)
+Position = Vector2(0, 0)
+buttons = Array[ExtResource("33_xvgkx")]([SubResource("Resource_iuqli")])
 NumOfContent = 0
 
 [sub_resource type="Resource" id="Resource_o4ta4"]
@@ -604,34 +624,42 @@ exitPanel = false
 
 [sub_resource type="Resource" id="Resource_lds2q"]
 script = ExtResource("32_xf8jp")
-Text = "[center]DICEN QUE LOS [color=#abc70c]N[/color][color=#d8b423]A[/color][color=#f47237]U[/color][color=#d8b423]M[/color][color=#abc70c]I[/color][color=#f47237]S[/color] SON CRIATURAS MUY
-CURIOSAS Y RESPONDEN A DESCUBRIMIENTOS
-[color=#dab21e]¿PODRÍAS LLEVARLO EN TU VIAJE?[/color][b]"
+Text = "
+[center] [b][color=#dab21e]¿PODRÍAS LLEVARLO EN TU VIAJE?[/color][/b]"
 writingSpeed = 0.0
-SizePanel = Vector2(652, 256)
+SizePanel = Vector2(652, 247)
 Position = Vector2(0, 0)
 buttons = Array[ExtResource("33_xvgkx")]([SubResource("Resource_o4ta4"), SubResource("Resource_q33wl")])
 NumOfContent = 0
 
+[sub_resource type="Resource" id="Resource_xmn88"]
+script = ExtResource("33_xvgkx")
+Place = 0
+texture = ExtResource("34_rt28l")
+label = ""
+dontPassPanel = false
+exitPanel = false
+
+[sub_resource type="Resource" id="Resource_1srj4"]
+script = ExtResource("32_xf8jp")
+Text = "[center][b]¡¡MUCHAS GRACIAS!!
+[color=#dab21e]SEGURO PODRÁS AYUDARLO A DESPERTAR[/color][/b]
+"
+writingSpeed = 0.0
+SizePanel = Vector2(652, 228)
+Position = Vector2(0, 0)
+buttons = Array[ExtResource("33_xvgkx")]([SubResource("Resource_xmn88")])
+NumOfContent = 0
+
 [sub_resource type="Resource" id="Resource_m3hqb"]
 script = ExtResource("37_aloy4")
-NumberOfPanel = 2
+NumberOfPanel = 4
 Place = 0
-
-[sub_resource type="Resource" id="Resource_vt584"]
-script = ExtResource("37_aloy4")
-NumberOfPanel = 2
-Place = 2
 
 [sub_resource type="Resource" id="Resource_yqxqo"]
 script = ExtResource("37_aloy4")
-NumberOfPanel = 2
+NumberOfPanel = 4
 Place = 0
-
-[sub_resource type="Resource" id="Resource_y741g"]
-script = ExtResource("37_aloy4")
-NumberOfPanel = 2
-Place = 2
 
 [sub_resource type="Curve2D" id="Curve2D_c0quu"]
 bake_interval = 0.01
@@ -724,7 +752,7 @@ exitPanel = false
 [sub_resource type="Resource" id="Resource_b4vf1"]
 script = ExtResource("32_xf8jp")
 Text = "
-[center][color=#dab21e]            HOLA!  :)[/color][b]"
+[center][color=#dab21e]            [b]¡HOLA!  :)[/b][/color]"
 writingSpeed = 0.0
 SizePanel = Vector2(410, 255)
 Position = Vector2(-209.057, -127)
@@ -989,7 +1017,7 @@ tracks/6/use_blend = true
 
 [sub_resource type="Animation" id="Animation_hch7n"]
 resource_name = "chan_anim"
-length = 2.0
+length = 2.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -1057,6 +1085,54 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0.2)
 }
 tracks/4/use_blend = true
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(1.2, 2.2),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector2(-284, -444), Vector2(-256, -366)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath(".:size")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(1.2, 2.2),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector2(1778, 2921), Vector2(1541, 2532)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("animal spot:scale")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(1, 1.2, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1.8, 1.8), Vector2(2.2, 2.2), Vector2(1e-05, 1e-05)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("animal spot2:scale")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(1, 1.2, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1.8, 1.8), Vector2(2.2, 2.2), Vector2(1e-05, 1e-05)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_fh205"]
 _data = {
@@ -1642,7 +1718,7 @@ exitPanel = false
 [sub_resource type="Resource" id="Resource_valvm"]
 script = ExtResource("32_xf8jp")
 Text = "
-[center]COMO VERÁS HAY[color=#dab21e] MUCHO POR RECORRER.[/color][b]"
+[center]COMO VERÁS HAY[color=#dab21e] MUCHO POR RECORRER[/color][b]"
 writingSpeed = 0.0
 SizePanel = Vector2(0, 0)
 Position = Vector2(0, 0)
@@ -2064,13 +2140,14 @@ animation = "idle"
 
 [node name="PanelNaumi1" parent="Naumi_Intro" instance=ExtResource("34_kpbhv")]
 layout_mode = 1
-offset_left = 36.0
+offset_left = -326.0
 offset_top = 65.0
-offset_right = 688.0
-offset_bottom = 293.0
+offset_right = 326.0
+offset_bottom = 294.0
+pivot_offset = Vector2(326, 114.5)
 AppearInBeginning = false
 SetEnterOnce = true
-Texts = Array[ExtResource("32_xf8jp")]([SubResource("Resource_ecmyo"), SubResource("Resource_lds2q")])
+Texts = Array[ExtResource("32_xf8jp")]([SubResource("Resource_ecmyo"), SubResource("Resource_pkm6b"), SubResource("Resource_lds2q"), SubResource("Resource_1srj4")])
 
 [node name="labelRich" parent="Naumi_Intro/PanelNaumi1" index="1"]
 offset_top = 75.0
@@ -2092,18 +2169,11 @@ texture = null
 [node name="Label" parent="Naumi_Intro/PanelNaumi1/btnIzqAnchor/btnIzq/Icon" index="0"]
 text = "SI"
 
-[node name="Panel(2) Btn(rigth)" parent="Naumi_Intro/PanelNaumi1" instance=ExtResource("35_s6ot8")]
+[node name="Panel(4) Btn(rigth)" parent="Naumi_Intro/PanelNaumi1" instance=ExtResource("35_s6ot8")]
 Data = SubResource("Resource_m3hqb")
 
-[node name="Panel(2) Btn(left)" parent="Naumi_Intro/PanelNaumi1" instance=ExtResource("35_s6ot8")]
-Data = SubResource("Resource_vt584")
-
-[node name="Panel(2) Btn(rigth)2" parent="Naumi_Intro/PanelNaumi1" instance=ExtResource("35_s6ot8")]
+[node name="Panel(4) Btn(rigth)2" parent="Naumi_Intro/PanelNaumi1" instance=ExtResource("35_s6ot8")]
 Data = SubResource("Resource_yqxqo")
-Delay = 1.83
-
-[node name="Panel(2) Btn(left)2" parent="Naumi_Intro/PanelNaumi1" instance=ExtResource("35_s6ot8")]
-Data = SubResource("Resource_y741g")
 Delay = 1.83
 
 [node name="Map_Scroll" type="Control" parent="."]
@@ -2111,8 +2181,6 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 1440.0
-offset_bottom = 2560.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -2305,7 +2373,7 @@ offset_right = -188.16
 offset_bottom = -75.9993
 scale = Vector2(1.665, 1.665)
 text = "
-[center][color=#dab21e]            HOLA!  :)[/color][b]"
+[center][color=#dab21e]            [b]¡HOLA!  :)[/b][/color]"
 
 [node name="BtnDerAnchor" parent="Map_Scroll/CenterAnchor/Title/ExpandingConteiner/TextureRect/Control/Panel" index="3"]
 scale = Vector2(1.667, 1.667)
@@ -3067,24 +3135,15 @@ texture = ExtResource("68_mkxei")
 [connection signal="pressed" from="Naumi_Intro/Control/NaumiController/pivot/Button" to="Naumi_Intro/Control/NaumiController" method="ButtonPressedOnce"]
 [connection signal="pressed" from="Naumi_Intro/Control/NaumiController/pivot/Button" to="Naumi_Intro/Control/LabelNaumi" method="set_visible" binds= [false]]
 [connection signal="tree_exiting" from="Naumi_Intro/Control/NaumiController/pivot/Button" to="Naumi_Intro/Control/NaumiController/pivot/Button/Label" method="set_visible" binds= [false]]
-[connection signal="ButtonPress" from="Naumi_Intro/PanelNaumi1/Panel(2) Btn(rigth)" to="Naumi_Intro/SaveFirstPlay" method="FirstPlay"]
-[connection signal="ButtonPress" from="Naumi_Intro/PanelNaumi1/Panel(2) Btn(rigth)" to="Map_Scroll/PanelSuerte" method="EnterPanel"]
-[connection signal="ButtonPress" from="Naumi_Intro/PanelNaumi1/Panel(2) Btn(rigth)" to="Map_Scroll/CenterAnchor" method="set_visible" binds= [false]]
-[connection signal="ButtonPress" from="Naumi_Intro/PanelNaumi1/Panel(2) Btn(rigth)" to="Map_Scroll/CenterAnchor/FadeAnimation" method="play" binds= ["RESET"]]
-[connection signal="ButtonPress" from="Naumi_Intro/PanelNaumi1/Panel(2) Btn(rigth)" to="Map_Scroll/fakeMap" method="set_visible" binds= [true]]
-[connection signal="ButtonPress" from="Naumi_Intro/PanelNaumi1/Panel(2) Btn(rigth)" to="Map_Scroll/AnimationPlayer" method="play_backwards" binds= ["Map_Slice"]]
-[connection signal="ButtonPress" from="Naumi_Intro/PanelNaumi1/Panel(2) Btn(rigth)" to="Map_Scroll/GeneralSounds" method="PlayEvent" binds= ["sliceBack"]]
-[connection signal="ButtonPress" from="Naumi_Intro/PanelNaumi1/Panel(2) Btn(rigth)" to="Map_Scroll/Music/MusicVolume" method="SetVolume" binds= [-80.0, 3.0]]
-[connection signal="ButtonPress" from="Naumi_Intro/PanelNaumi1/Panel(2) Btn(left)" to="Naumi_Intro/SaveFirstPlay" method="FirstPlay"]
-[connection signal="ButtonPress" from="Naumi_Intro/PanelNaumi1/Panel(2) Btn(left)" to="Map_Scroll/PanelSuerte" method="EnterPanel"]
-[connection signal="ButtonPress" from="Naumi_Intro/PanelNaumi1/Panel(2) Btn(left)" to="Map_Scroll/CenterAnchor" method="set_visible" binds= [false]]
-[connection signal="ButtonPress" from="Naumi_Intro/PanelNaumi1/Panel(2) Btn(left)" to="Map_Scroll/CenterAnchor/FadeAnimation" method="play" binds= ["RESET"]]
-[connection signal="ButtonPress" from="Naumi_Intro/PanelNaumi1/Panel(2) Btn(left)" to="Map_Scroll/fakeMap" method="set_visible" binds= [true]]
-[connection signal="ButtonPress" from="Naumi_Intro/PanelNaumi1/Panel(2) Btn(left)" to="Map_Scroll/AnimationPlayer" method="play_backwards" binds= ["Map_Slice"]]
-[connection signal="ButtonPress" from="Naumi_Intro/PanelNaumi1/Panel(2) Btn(left)" to="Map_Scroll/GeneralSounds" method="PlayEvent" binds= ["sliceBack"]]
-[connection signal="ButtonPress" from="Naumi_Intro/PanelNaumi1/Panel(2) Btn(left)" to="Map_Scroll/Music/MusicVolume" method="SetVolume" binds= [-80.0, 3.0]]
-[connection signal="ButtonPress" from="Naumi_Intro/PanelNaumi1/Panel(2) Btn(rigth)2" to="Map_Scroll/fakeMap/ButtonChangeScene" method="PreloadScene"]
-[connection signal="ButtonPress" from="Naumi_Intro/PanelNaumi1/Panel(2) Btn(left)2" to="Map_Scroll/fakeMap/ButtonChangeScene" method="PreloadScene"]
+[connection signal="ButtonPress" from="Naumi_Intro/PanelNaumi1/Panel(4) Btn(rigth)" to="Naumi_Intro/SaveFirstPlay" method="FirstPlay"]
+[connection signal="ButtonPress" from="Naumi_Intro/PanelNaumi1/Panel(4) Btn(rigth)" to="Map_Scroll/PanelSuerte" method="EnterPanel"]
+[connection signal="ButtonPress" from="Naumi_Intro/PanelNaumi1/Panel(4) Btn(rigth)" to="Map_Scroll/CenterAnchor" method="set_visible" binds= [false]]
+[connection signal="ButtonPress" from="Naumi_Intro/PanelNaumi1/Panel(4) Btn(rigth)" to="Map_Scroll/CenterAnchor/FadeAnimation" method="play" binds= ["RESET"]]
+[connection signal="ButtonPress" from="Naumi_Intro/PanelNaumi1/Panel(4) Btn(rigth)" to="Map_Scroll/fakeMap" method="set_visible" binds= [true]]
+[connection signal="ButtonPress" from="Naumi_Intro/PanelNaumi1/Panel(4) Btn(rigth)" to="Map_Scroll/AnimationPlayer" method="play_backwards" binds= ["Map_Slice"]]
+[connection signal="ButtonPress" from="Naumi_Intro/PanelNaumi1/Panel(4) Btn(rigth)" to="Map_Scroll/GeneralSounds" method="PlayEvent" binds= ["sliceBack"]]
+[connection signal="ButtonPress" from="Naumi_Intro/PanelNaumi1/Panel(4) Btn(rigth)" to="Map_Scroll/Music/MusicVolume" method="SetVolume" binds= [-80.0, 3.0]]
+[connection signal="ButtonPress" from="Naumi_Intro/PanelNaumi1/Panel(4) Btn(rigth)2" to="Map_Scroll/fakeMap/ButtonChangeScene" method="PreloadScene"]
 [connection signal="ButtonPress" from="Map_Scroll/CenterAnchor/Title/ExpandingConteiner/TextureRect/Control/Panel/Panel(2) Btn(rigth)" to="Map_Scroll/PanelIntro1" method="EnterPanel"]
 [connection signal="ButtonPress" from="Map_Scroll/CenterAnchor/Title/ExpandingConteiner/TextureRect/Control/Panel/Panel(2) Btn(rigth)" to="Map_Scroll/CenterAnchor/FadeAnimation" method="play" binds= ["1erFade"]]
 [connection signal="pressed" from="Map_Scroll/CenterAnchor/Piso1/ExpandingCoteiner/MegafaunaZone/Button" to="Map_Scroll/CenterAnchor/Piso1/ExpandingCoteiner/MegafaunaZone/animal spot" method="Stop"]

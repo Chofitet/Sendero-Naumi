@@ -1395,7 +1395,7 @@ Text = "
 EN TODO EL PLANETA.
 
 Y OCUPA EL PUESTO NÚMERO 7
-[b][color=#dab21e]EN LA ESCALA DE MOHS[/color][/b]
+[b][color=#dab21e]EN LA ESCALA DE MOHS,[/color][/b]
 LA ESCALA QUE MIDE
 LA DUREZA DE LOS MINERALES.
 "
@@ -1426,8 +1426,8 @@ Text = "
 [color=#dab21e]ES LA SUSTANCIA NATURAL MÁS DURA[/color]
 DEL PLANETA TIERRA
 
-SU GRADO DE DUREZA ES [b]10[/b]
-[b][color=#dab21e]EL MÁS ALTO LA ESCALA DE MOHS[/color][/b].
+SU GRADO DE DUREZA ES [b]10[/b],
+[b][color=#dab21e]EL MÁS ALTO DE LA ESCALA DE MOHS[/color][/b].
 
 “SOLO ALGO TAN DURO COMO UN DIAMANTE
  PUEDE RAYAR A OTRO DIAMANTE.”
@@ -1458,8 +1458,8 @@ Text = "
 [center][b]EL TOPACIO
 [color=#dab21e]SE ENCUENTRA EN EL PUESTO 8[/color][/b]
 
-ES UNA DE LAS PIEDRAS PRECIOSAS
-[color=#dab21e]Y SE USA EN MAYOR PARTE PARA HACER JOYERÍA.[/color]
+ES CONSIDERADO [b]UNA PIEDRA PRECIOSA[/b]
+[color=#dab21e]Y SE USA MUCHO PARA HACER [b]JOYERÍA[/b].[/color]
 
 LOS DE COLOR [color=#e98400]NARANJA,[/color][color=#ff1233] ROJO[/color] [color=#f864b8]Y ROSA[/color]
 SON LOS MÁS RAROS Y VALIOSOS.
@@ -1761,6 +1761,9 @@ offset_bottom = 45.2
 rotation = 3.13639
 noPop = false
 Icon = ExtResource("14_wkaoh")
+
+[node name="btnVolver" parent="RockFighters/StateMachine/Consigna/Contenido" instance=ExtResource("33_l1u1j")]
+visible = false
 
 [node name="Juego" type="Node" parent="RockFighters/StateMachine" node_paths=PackedStringArray("NextState", "StateMachine")]
 script = ExtResource("5_ks8gw")
@@ -2257,6 +2260,12 @@ label_settings = SubResource("LabelSettings_h74ab")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Polygon2D" type="Polygon2D" parent="RockFighters/StateMachine/Juego/Contenido/Consigna/ConsignaTexture"]
+position = Vector2(468.534, 74.1715)
+scale = Vector2(0.335691, 0.33569)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(0.00012207, 0, 8.83447, -13.9163, 17.7712, -13.9163, 5.17883, 0.978455)
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="RockFighters/StateMachine/Juego/Contenido/Consigna"]
 libraries = {
 "": SubResource("AnimationLibrary_nyamy")
@@ -2314,8 +2323,9 @@ vertical_alignment = 1
 autowrap_mode = 2
 
 [node name="SquigglingSprite" parent="RockFighters/StateMachine/Juego/Contenido/Consigna/RightBtn/button" instance=ExtResource("29_gfydn")]
-position = Vector2(155.627, 74.679)
-scale = Vector2(0.967688, 0.917465)
+self_modulate = Color(100, 100, 100, 1)
+position = Vector2(155.864, 74.679)
+scale = Vector2(0.997952, 0.979172)
 texture = ExtResource("30_w5i6x")
 
 [node name="BigButton" type="Button" parent="RockFighters/StateMachine/Juego/Contenido/Consigna/RightBtn"]
@@ -2388,8 +2398,9 @@ vertical_alignment = 1
 autowrap_mode = 2
 
 [node name="SquigglingSprite" parent="RockFighters/StateMachine/Juego/Contenido/Consigna/LeftBtn/button" instance=ExtResource("29_gfydn")]
-position = Vector2(152.85, 72.9966)
-scale = Vector2(0.951819, 0.906124)
+self_modulate = Color(100, 100, 100, 1)
+position = Vector2(153.357, 74.1179)
+scale = Vector2(0.979847, 0.951319)
 texture = ExtResource("30_w5i6x")
 
 [node name="BigButton" type="Button" parent="RockFighters/StateMachine/Juego/Contenido/Consigna/LeftBtn"]
@@ -2444,6 +2455,7 @@ label = "level"
 events = Array[ExtResource("15_ddtfa")]([SubResource("Resource_rqmad"), SubResource("Resource_3tlr2"), SubResource("Resource_1eccu"), SubResource("Resource_gg0um"), SubResource("Resource_ctms1"), SubResource("Resource_fmgu6"), SubResource("Resource_8fj67"), SubResource("Resource_v0t7g")])
 
 [node name="btnVolver" parent="RockFighters/StateMachine/Juego" instance=ExtResource("33_l1u1j")]
+visible = false
 
 [node name="volumeController" type="Node" parent="RockFighters/StateMachine/Juego"]
 script = ExtResource("60_8mngt")

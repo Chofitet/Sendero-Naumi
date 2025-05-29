@@ -13,6 +13,8 @@ signal pressedDelay
 
 @export var noPop : bool = false
 
+@export var NumClicksToActive : int
+
 var pop = preload("res://Scenes/UI_Scenes/pop.tscn")
 
 
@@ -48,3 +50,9 @@ func InstanciateButtonPOP():
 	SoundManager.play("UI","touch")
 	await  get_tree().create_timer(2).timeout
 	
+
+var numClicks = 0
+func ClickCounter():
+	numClicks += 1
+	if numClicks == NumClicksToActive:
+		EnterAnim()
