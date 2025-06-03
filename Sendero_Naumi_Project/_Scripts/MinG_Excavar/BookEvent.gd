@@ -12,6 +12,7 @@ var topo
 signal Restart
 signal BookEvent
 signal DrawFinish
+signal ShutBook
 var SpritePencil = preload("res://Sprites/ZonaMegafauna/pencil.png")
 var SpriteBrush = preload("res://Sprites/ZonaMegafauna/brush - excavando.png")
 var SquigglingBrush = preload("res://Sprites/ZonaMegafauna/squigglingExcavando/brushSQUIG - excavando.png")
@@ -35,19 +36,17 @@ func SetSkeleton(sk):
 	for i in DrawaScenes:
 		if i == sk:
 			NextInstance = DrawaScenes[sk]
-			if sk == "megatherium":
-				isInstancing = true
-				isFinalInstance = true
 	$LibroController/libro/Label.text = sk
 
-func IsPassingInstance(statemachine):
+func IsPassingInstance(statemachine, final = false):
 	isInstancing = true
+	isFinalInstance = final
 	StateMachine = statemachine
 	
 
 func _ready():
 	anim = $AnimationPlayer
-	$btnContinue.pressed.connect(restartAll)
+	$btnContinue.pressed.connect(restartAll.bind(true))
 	$Button.button_down.connect(Draw)
 	$Button.visible = false
 
@@ -123,21 +122,31 @@ func ShowCompletedAnimal(_topo):
 	$libroSounds.PlayEvent("bookEnter",0.5)
 	await anim.animation_finished
 	$btnContinue.EnterAnim()
-	
 
-func restartAll():
+
+func restartAll(isButton = false):
 	label = "pencil"
-	topo.EnableDisaneable(true)
+	if isButton: 
+		topo.EnableDisaneable(true)
 	$btnContinue.visible = false
-	if isInstancing: InstanceTransition()
+	if isInstancing and isButton: InstanceTransition()
 	anim.play_backwards("book_enter")
 	$libroSounds.PlayEvent("bookExit",0.6)
+	if isButton: ShutBook.emit()
 	await anim.animation_finished
-	ToRestart()
-	if !isInstancing:
-		queue_free()
-		return
-	
+	ToRestart(isButton)
+	if _signalAux != null: ConnectSignal(_signalAux,false)
+	queue_free()
+	return
+
+var _signalAux
+func ConnectSignal(_signal, x):
+	if x: 
+		_signal.connect(restartAll)
+		_signalAux = _signal
+	else: 
+		_signal.disconnect(restartAll)
+		_signalAux = null
 
 func InstanceTransition():
 	PlayerVariables.EmitInactivePause()
@@ -154,12 +163,12 @@ func InstanceTransition():
 	PlayerVariables.EmitActivePause()
 	queue_free()
 
-func ToRestart():
+func ToRestart(isButton = false):
 	skeleton.queue_free()
 	isPencil = true
 	$pencil/Sprite2D.texture = SelectTexture()
 	$pencil/SquigglingSprite.texture = SelectSquiggling()
-	BookEvent.emit(true)
+	BookEvent.emit(isButton)
 	
 func ChangeInstanceMinigame():
 	if isFinalInstance:

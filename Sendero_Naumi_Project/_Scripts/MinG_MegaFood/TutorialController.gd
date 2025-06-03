@@ -27,12 +27,14 @@ func FirstSwipe():
 	DeslizaPlatosUI.ExitPanel()
 	OnceSwipe = true
 	await get_tree().create_timer(1).timeout
-	LlevaloBandejaUI.EnterPanel()
+	if !inSpot :LlevaloBandejaUI.EnterPanel()
 	HboxConteiner.LockUnklockGragObjects(true,true)
 
+var inSpot = false
 func OnSpot(x):
 	if !isInTutorial: return
 	LlevaloBandejaUI.ExitPanel()
+	inSpot = true
 #	plate.visible = true
 #	plate.texture = x.texture
 	await  get_tree().create_timer(3).timeout

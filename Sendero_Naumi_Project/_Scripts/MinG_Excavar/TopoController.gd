@@ -85,6 +85,7 @@ func CheckIsInLine():
 	else:
 		particles.color = Color1
 
+var once = false
 func EnableDisaneable(state,resetInstance:bool = false):
 	if !state:
 		topo.get_node("topo").play("idle")
@@ -92,7 +93,7 @@ func EnableDisaneable(state,resetInstance:bool = false):
 		isStoped = true
 		_speed = 0
 		$LoopTopoSound.StopLoopSound()
-	else :
+	else:
 		isStoped = false
 		_speed = speed
 	

@@ -580,7 +580,8 @@ exitPanel = false
 [sub_resource type="Resource" id="Resource_ecmyo"]
 script = ExtResource("32_xf8jp")
 Text = "[center]¿ESTO?
-[center]ESTO ES UN [color=#abc70c]N[/color][color=#d8b423]A[/color][color=#f47237]U[/color][color=#d8b423]M[/color][color=#abc70c]I[/color][b]
+[center]ESTO ES UN [b][color=#abc70c]N[/color][color=#d8b423]A[/color][color=#f47237]U[/color][color=#d8b423]M[/color][color=#abc70c]I[/color][/b]
+
 "
 writingSpeed = 0.0
 SizePanel = Vector2(652, 229)
@@ -599,8 +600,9 @@ exitPanel = false
 [sub_resource type="Resource" id="Resource_pkm6b"]
 script = ExtResource("32_xf8jp")
 Text = "[center]AÚN NO HA DESPERTADO,
-PERO DICEN QUE LOS [color=#abc70c]N[/color][color=#d8b423]A[/color][color=#f47237]U[/color][color=#d8b423]M[/color][color=#abc70c]I[/color][color=#f47237]S[/color]
+PERO DICEN QUE LOS [b][color=#abc70c]N[/color][color=#d8b423]A[/color][color=#f47237]U[/color][color=#d8b423]M[/color][color=#abc70c]I[/color][color=#f47237]S[/color][/b]
 [b]REACCIONAN AL RECORRER ESTE SENDERO[/b]
+
 "
 writingSpeed = 0.0
 SizePanel = Vector2(652, 256)
@@ -770,7 +772,8 @@ exitPanel = false
 [sub_resource type="Resource" id="Resource_mew4v"]
 script = ExtResource("32_xf8jp")
 Text = "
-[center]ESTO ES [color=#e3e6c9]SENDERO[/color] [color=#abc70c]N[/color][color=#d8b423]A[/color][color=#f47237]U[/color][color=#d8b423]M[/color][color=#abc70c]I[/color][b]"
+[center]ESTO ES [b][color=#e3e6c9]SENDERO[/color] [color=#abc70c]N[/color][color=#d8b423]A[/color][color=#f47237]U[/color][color=#d8b423]M[/color][color=#abc70c]I[/color][/b]
+"
 writingSpeed = 0.0
 SizePanel = Vector2(646, 255)
 Position = Vector2(-332.39, -127)
@@ -1999,6 +2002,7 @@ texture = ExtResource("1_un13t")
 expand_mode = 1
 
 [node name="ColorRect" type="TextureRect" parent="Naumi_Intro"]
+texture_repeat = 1
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.501
@@ -2140,9 +2144,9 @@ animation = "idle"
 
 [node name="PanelNaumi1" parent="Naumi_Intro" instance=ExtResource("34_kpbhv")]
 layout_mode = 1
-offset_left = -322.0
+offset_left = -330.0
 offset_top = 65.0
-offset_right = 330.0
+offset_right = 322.0
 offset_bottom = 294.0
 pivot_offset = Vector2(326, 114.5)
 AppearInBeginning = false
@@ -2153,7 +2157,8 @@ Texts = Array[ExtResource("32_xf8jp")]([SubResource("Resource_ecmyo"), SubResour
 offset_top = 75.0
 offset_bottom = -71.0
 text = "[center]¿ESTO?
-[center]ESTO ES UN [color=#abc70c]N[/color][color=#d8b423]A[/color][color=#f47237]U[/color][color=#d8b423]M[/color][color=#abc70c]I[/color][b]
+[center]ESTO ES UN [b][color=#abc70c]N[/color][color=#d8b423]A[/color][color=#f47237]U[/color][color=#d8b423]M[/color][color=#abc70c]I[/color][/b]
+
 "
 
 [node name="btnDer" parent="Naumi_Intro/PanelNaumi1/BtnDerAnchor" index="0"]
@@ -2177,10 +2182,13 @@ Data = SubResource("Resource_yqxqo")
 Delay = 1.83
 
 [node name="Map_Scroll" type="Control" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = 720.0
+offset_bottom = 1280.0
 grow_horizontal = 2
 grow_vertical = 2
 

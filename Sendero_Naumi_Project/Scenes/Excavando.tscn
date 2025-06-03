@@ -1,4 +1,4 @@
-[gd_scene load_steps=136 format=3 uid="uid://m3gbb64llbqn"]
+[gd_scene load_steps=138 format=3 uid="uid://m3gbb64llbqn"]
 
 [ext_resource type="Script" path="res://_Scripts/Minigame_Save_Controller.gd" id="1_6uc2r"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/StateMachineMinigames.gd" id="2_4ogka"]
@@ -327,6 +327,30 @@ tracks/0/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 0)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Icon:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.537255, 0.537255, 0.537255, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Button:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_2p5jn"]
 resource_name = "appearIcon"
@@ -343,11 +367,93 @@ tracks/0/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Icon:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.537255, 0.537255, 0.537255, 1), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Button:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_ta0dg"]
+resource_name = "disabled"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Icon:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.537255, 0.537255, 0.537255, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Button:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_ah3gf"]
+resource_name = "enabled"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Icon:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Button:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_g6tsi"]
 _data = {
 "RESET": SubResource("Animation_8rj0q"),
-"appearIcon": SubResource("Animation_2p5jn")
+"appearIcon": SubResource("Animation_2p5jn"),
+"disabled": SubResource("Animation_ta0dg"),
+"enabled": SubResource("Animation_ah3gf")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4wmuv"]
@@ -1732,13 +1838,15 @@ script = ExtResource("25_vt8k4")
 label = "objeto"
 events = Array[ExtResource("26_1d07x")]([SubResource("Resource_1obas")])
 
-[node name="HuesoController" type="Node2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center" node_paths=PackedStringArray("ParentBook", "Statemachine", "topoController")]
+[node name="HuesoController" type="Node2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center" node_paths=PackedStringArray("ParentBook", "Statemachine", "topoController", "Inventary", "Overlay")]
 position = Vector2(74, 241)
 script = ExtResource("8_osvhx")
 ParentBook = NodePath("../../../LibroCanvas/animLibro")
 Statemachine = NodePath("../../../../..")
 topoController = NodePath("../../../background/CanvasGroup/TopoController")
 VibrationIntencity = 300.0
+Inventary = NodePath("../../../Tutorial/Inventary")
+Overlay = NodePath("../../../LibroCanvas/overlay")
 
 [node name="CheckAllTrue" type="Node2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/HuesoController"]
 script = ExtResource("7_io4up")
@@ -3381,13 +3489,16 @@ hue_variation_max = 1.0
 [node name="vibration" type="Node" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/Objetos"]
 script = ExtResource("50_yrx6f")
 
-[node name="HuesoController" type="Node2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center" node_paths=PackedStringArray("ParentBook", "Statemachine", "topoController")]
+[node name="HuesoController" type="Node2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center" node_paths=PackedStringArray("ParentBook", "Statemachine", "topoController", "Inventary", "Overlay")]
 position = Vector2(74, 1526.04)
 script = ExtResource("8_osvhx")
 ParentBook = NodePath("../../../LibroCanvas/animLibro")
 Statemachine = NodePath("../../../../..")
+isLastSkeleton = true
 topoController = NodePath("../../../background/CanvasGroup/TopoController")
 VibrationIntencity = 300.0
+Inventary = NodePath("../../../Tutorial/Inventary")
+Overlay = NodePath("../../../LibroCanvas/overlay")
 
 [node name="CheckAllTrue" type="Node2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController"]
 script = ExtResource("7_io4up")
@@ -4342,9 +4453,33 @@ position = Vector2(0, 905)
 position = Vector2(0, 179)
 shape = SubResource("RectangleShape2D_phcit")
 
+[node name="LibroCanvas" type="CanvasLayer" parent="Excavando/StateMachine/Juego/Contenido"]
+
+[node name="overlay" type="ColorRect" parent="Excavando/StateMachine/Juego/Contenido/LibroCanvas"]
+visible = false
+self_modulate = Color(1, 1, 1, 0.521569)
+z_index = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="animLibro" type="Control" parent="Excavando/StateMachine/Juego/Contenido/LibroCanvas"]
+layout_mode = 3
+anchor_left = 0.5
+anchor_top = 0.787
+anchor_right = 0.5
+anchor_bottom = 0.787
+offset_top = 0.639893
+offset_bottom = 0.639893
+grow_horizontal = 2
+grow_vertical = 0
+
 [node name="Tutorial" type="CanvasLayer" parent="Excavando/StateMachine/Juego/Contenido"]
 
-[node name="Inventary" type="Control" parent="Excavando/StateMachine/Juego/Contenido/Tutorial" node_paths=PackedStringArray("ParentBook", "topoController")]
+[node name="Inventary" type="Control" parent="Excavando/StateMachine/Juego/Contenido/Tutorial" node_paths=PackedStringArray("ParentBook", "topoController", "Overlay", "SmilodonSkeleton", "GlyptodonSkeleton", "MacraucheniaSkeleton", "MegaterioSkeleton", "Statemachine")]
 z_index = 1
 layout_mode = 3
 anchor_top = 0.133
@@ -4356,19 +4491,26 @@ offset_bottom = -32.24
 script = ExtResource("55_yyx2g")
 ParentBook = NodePath("../../LibroCanvas/animLibro")
 topoController = NodePath("../../background/CanvasGroup/TopoController")
+Overlay = NodePath("../../LibroCanvas/overlay")
 SmilodonteTexture = ExtResource("60_r568v")
 GliptodonteTexture = ExtResource("61_wfhth")
 MacrauqueniaTexture = ExtResource("62_2qkqq")
 MegaterioTexture = ExtResource("63_uwvpi")
+SmilodonSkeleton = NodePath("../../Instancia1/center/HuesoController/CheckAllTrue/smilodon")
+GlyptodonSkeleton = NodePath("../../Instancia1/center/HuesoController/CheckAllTrue/glyptodon")
+MacraucheniaSkeleton = NodePath("../../Instancia1/center/HuesoController/CheckAllTrue/macrauchenia")
+MegaterioSkeleton = NodePath("../../Instancia2/center/HuesoController/CheckAllTrue/megatherium")
+Statemachine = NodePath("../../../..")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Excavando/StateMachine/Juego/Contenido/Tutorial/Inventary"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = 135.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 32
+theme_override_constants/separation = 25
 
 [node name="obj1" type="TextureRect" parent="Excavando/StateMachine/Juego/Contenido/Tutorial/Inventary/HBoxContainer"]
 visible = false
@@ -4378,12 +4520,14 @@ expand_mode = 3
 
 [node name="Icon" type="TextureRect" parent="Excavando/StateMachine/Juego/Contenido/Tutorial/Inventary/HBoxContainer/obj1"]
 modulate = Color(1, 1, 1, 0)
+self_modulate = Color(0.537255, 0.537255, 0.537255, 1)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("62_2qkqq")
 expand_mode = 1
 
 [node name="Button" type="Button" parent="Excavando/StateMachine/Juego/Contenido/Tutorial/Inventary/HBoxContainer/obj1"]
@@ -4414,6 +4558,7 @@ expand_mode = 3
 
 [node name="Icon" type="TextureRect" parent="Excavando/StateMachine/Juego/Contenido/Tutorial/Inventary/HBoxContainer/obj2"]
 modulate = Color(1, 1, 1, 0)
+self_modulate = Color(0.537255, 0.537255, 0.537255, 1)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -4450,6 +4595,7 @@ expand_mode = 3
 
 [node name="Icon" type="TextureRect" parent="Excavando/StateMachine/Juego/Contenido/Tutorial/Inventary/HBoxContainer/obj3"]
 modulate = Color(1, 1, 1, 0)
+self_modulate = Color(0.537255, 0.537255, 0.537255, 1)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -4478,6 +4624,43 @@ libraries = {
 "": SubResource("AnimationLibrary_g6tsi")
 }
 
+[node name="obj4" type="TextureRect" parent="Excavando/StateMachine/Juego/Contenido/Tutorial/Inventary/HBoxContainer"]
+visible = false
+layout_mode = 2
+texture = ExtResource("56_3m8dj")
+expand_mode = 3
+
+[node name="Icon" type="TextureRect" parent="Excavando/StateMachine/Juego/Contenido/Tutorial/Inventary/HBoxContainer/obj4"]
+modulate = Color(1, 1, 1, 0)
+self_modulate = Color(0.537255, 0.537255, 0.537255, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+
+[node name="Button" type="Button" parent="Excavando/StateMachine/Juego/Contenido/Tutorial/Inventary/HBoxContainer/obj4"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = ExtResource("58_agxcw")
+theme_override_styles/hover = ExtResource("58_agxcw")
+theme_override_styles/pressed = ExtResource("58_agxcw")
+theme_override_styles/disabled = ExtResource("58_agxcw")
+theme_override_styles/focus = ExtResource("58_agxcw")
+disabled = true
+flat = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Excavando/StateMachine/Juego/Contenido/Tutorial/Inventary/HBoxContainer/obj4"]
+libraries = {
+"": SubResource("AnimationLibrary_g6tsi")
+}
+
 [node name="Control" type="Control" parent="Excavando/StateMachine/Juego/Contenido/Tutorial"]
 layout_mode = 3
 anchors_preset = 8
@@ -4494,19 +4677,6 @@ position = Vector2(-275, 45)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Tutorial/Control/TutorialTrigger"]
 position = Vector2(280, 50)
 shape = SubResource("RectangleShape2D_4wmuv")
-
-[node name="LibroCanvas" type="CanvasLayer" parent="Excavando/StateMachine/Juego/Contenido"]
-
-[node name="animLibro" type="Control" parent="Excavando/StateMachine/Juego/Contenido/LibroCanvas"]
-layout_mode = 3
-anchor_left = 0.5
-anchor_top = 0.787
-anchor_right = 0.5
-anchor_bottom = 0.787
-offset_top = 0.639893
-offset_bottom = 0.639893
-grow_horizontal = 2
-grow_vertical = 0
 
 [node name="TutorialBurbuja" type="CanvasLayer" parent="Excavando/StateMachine/Juego/Contenido"]
 visible = false
@@ -4770,6 +4940,7 @@ AudioBuses = Array[String](["TopoNivelVolumen", "topoGuia", "tocoTopo", "topoLoo
 [connection signal="ConnectInventaryBTN" from="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController" to="Excavando/StateMachine/Juego/Contenido/Tutorial/Inventary" method="SetSkeletonFind"]
 [connection signal="area_entered" from="Excavando/StateMachine/Juego/Contenido/Instancia2/center/AreaMoveCam" to="Excavando/StateMachine/Camera2D" method="SetOnAreaDown" binds= [true]]
 [connection signal="area_exited" from="Excavando/StateMachine/Juego/Contenido/Instancia2/center/AreaMoveCam" to="Excavando/StateMachine/Camera2D" method="SetOnAreaDown" binds= [false]]
+[connection signal="newBook" from="Excavando/StateMachine/Juego/Contenido/Tutorial/Inventary" to="Excavando/StateMachine/Juego/Contenido/LibroCanvas/overlay" method="set_visible" binds= [true]]
 [connection signal="area_entered" from="Excavando/StateMachine/Juego/Contenido/Tutorial/Control/TutorialTrigger" to="Excavando/StateMachine/Juego/Contenido/TutorialBurbuja/BurbujaPensamiento" method="OutAnim"]
 [connection signal="timeout" from="Excavando/StateMachine/Moraleja/Contenido/Timer" to="Excavando/StateMachine/Moraleja" method="TimeOut" flags=18]
 [connection signal="pressed" from="Excavando/StateMachine/Moraleja/Contenido/Instancia1/Button" to="Excavando/StateMachine/Moraleja/Contenido/Instancia1/Button" method="_on_pressed" flags=18]

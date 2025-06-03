@@ -2508,6 +2508,8 @@ AudioBuses = Array[String](["aparicionBubble", "TypingBubble", "swipeRapido", "s
 [connection signal="onFloor3" from="ScrollContainer/FloorDetector" to="ScrollContainer/VBoxContainer/Piso3/CuaternarioZone" method="inFloor"]
 [connection signal="onFloor3" from="ScrollContainer/FloorDetector" to="ScrollContainer/VBoxContainer/Piso3/AmbientesZone" method="inFloor"]
 [connection signal="onFloor3" from="ScrollContainer/FloorDetector" to="ScrollContainer/VBoxContainer/Piso3/ErasGeologicasZone" method="inFloor"]
+[connection signal="onFloor3" from="ScrollContainer/FloorDetector" to="StateMachine/ButtonNaumi" method="EnterAnim"]
+[connection signal="toFloor4" from="ScrollContainer/FloorDetector" to="StateMachine/ButtonNaumi" method="ExitAnim" binds= [true]]
 [connection signal="backZone" from="StateMachine/AstronomiaZone" to="ScrollContainer" method="SetisInputBlock" binds= [true]]
 [connection signal="inZone" from="StateMachine/AstronomiaZone" to="ScrollContainer" method="SetisInputBlock" binds= [false]]
 [connection signal="backZone" from="StateMachine/GeologiaZone" to="ScrollContainer" method="SetisInputBlock" binds= [true]]
