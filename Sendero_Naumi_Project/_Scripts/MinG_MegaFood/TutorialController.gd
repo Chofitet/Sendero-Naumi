@@ -28,7 +28,7 @@ func FirstSwipe():
 	OnceSwipe = true
 	await get_tree().create_timer(1).timeout
 	LlevaloBandejaUI.EnterPanel()
-	HboxConteiner.LockUnklockGragObjects(true)
+	HboxConteiner.LockUnklockGragObjects(true,true)
 
 func OnSpot(x):
 	if !isInTutorial: return

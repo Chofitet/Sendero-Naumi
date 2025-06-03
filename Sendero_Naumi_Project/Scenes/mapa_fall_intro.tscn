@@ -1063,7 +1063,6 @@ offset_bottom = -29.4927
 rotation = 3.14159
 noSway = true
 noPop = false
-NumClicksToActive = null
 Icon = ExtResource("16_bsblw")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="ButtonSkip/GenericButton"]
@@ -1214,6 +1213,7 @@ autostart = true
 [connection signal="pressedDelay" from="ButtonSkip/GenericButton" to="mapArriveSpot/SoundMapLoop" method="StopLoopSound"]
 [connection signal="pressed" from="Disclaimer/Control/btnPivot/ButtonSkip" to="mapArriveSpot/LOGO/AnimationPlayer" method="play" binds= ["Fade_out_logo"]]
 [connection signal="pressed" from="Disclaimer/Control/btnPivot/ButtonSkip" to="Disclaimer/Control/AnimationPlayer" method="play" binds= ["btnDisappear"]]
+[connection signal="pressed" from="Disclaimer/Control/btnPivot/ButtonSkip" to="Disclaimer/Control/btnPivot/ButtonSkip" method="set_disabled" binds= [true]]
 [connection signal="timeout" from="Disclaimer/Timer" to="Disclaimer/Control/AnimationPlayer" method="play" binds= ["btnAppear"]]
 
 [editable path="Sound Debug"]

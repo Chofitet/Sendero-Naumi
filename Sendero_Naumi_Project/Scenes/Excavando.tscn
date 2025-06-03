@@ -1,4 +1,4 @@
-[gd_scene load_steps=135 format=3 uid="uid://m3gbb64llbqn"]
+[gd_scene load_steps=136 format=3 uid="uid://m3gbb64llbqn"]
 
 [ext_resource type="Script" path="res://_Scripts/Minigame_Save_Controller.gd" id="1_6uc2r"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/StateMachineMinigames.gd" id="2_4ogka"]
@@ -62,6 +62,7 @@
 [ext_resource type="Texture2D" uid="uid://crqlxim1mi1uo" path="res://Sprites/ZonaMegafauna/outro topitos - excavacion.png" id="49_s5641"]
 [ext_resource type="Texture2D" uid="uid://gdqy5o83iegu" path="res://Sprites/ZonaMegafauna/lombrizio 1 - excavacion.png" id="50_m33c2"]
 [ext_resource type="PackedScene" uid="uid://chcp24toqisaw" path="res://Scenes/Experiments/GenericPanel/GenericPanel.tscn" id="50_vtwbx"]
+[ext_resource type="Script" path="res://_Scripts/Vibration.gd" id="50_yrx6f"]
 [ext_resource type="Script" path="res://Scenes/Experiments/GenericPanel/TextFieldData.gd" id="51_1rgrp"]
 [ext_resource type="Texture2D" uid="uid://drgxlowhaek75" path="res://Sprites/ZonaMegafauna/lombrizio 2 - excavacion.png" id="51_aotho"]
 [ext_resource type="Texture2D" uid="uid://rnjgjadd154s" path="res://Sprites/ZonaMegafauna/lombrizio 3 - excavacion.png" id="52_m5ot8"]
@@ -522,6 +523,7 @@ Consignas = ["Guiá al topo para encontrar los fósiles"]
 FadeInTrasitioned = true
 
 [node name="Contenido" type="Control" parent="Excavando/StateMachine/Consigna"]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -701,7 +703,6 @@ FadeInConsigna = true
 FadeInBeteewnInstance = true
 
 [node name="Contenido" type="Control" parent="Excavando/StateMachine/Juego"]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -901,6 +902,7 @@ scale = Vector2(0.467, 0.467)
 texture = ExtResource("22_ldkqy")
 flip_h = true
 script = ExtResource("9_113nf")
+complete_percent = 0.8
 change_z_index = 1.0
 
 [node name="hotspot4" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Objetos/cajaFuerte"]
@@ -1084,6 +1086,7 @@ position = Vector2(21, 1061)
 scale = Vector2(0.538654, 0.538654)
 texture = ExtResource("23_gvrd4")
 script = ExtResource("9_113nf")
+complete_percent = 0.8
 change_z_index = 1.0
 
 [node name="hotspot4" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Objetos/telefono"]
@@ -1105,12 +1108,21 @@ group = "topo"
 shape = SubResource("CircleShape2D_x16bw")
 
 [node name="hotspot6" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Objetos/telefono"]
-position = Vector2(-410.282, 131.81)
+position = Vector2(-371.296, 105.819)
 scale = Vector2(7.40101, 7.40103)
 script = ExtResource("10_s5h5i")
 group = "topo"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Objetos/telefono/hotspot6"]
+shape = SubResource("CircleShape2D_x16bw")
+
+[node name="hotspot7" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Objetos/telefono"]
+position = Vector2(-438.129, 174.509)
+scale = Vector2(7.40101, 7.40103)
+script = ExtResource("10_s5h5i")
+group = "topo"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Objetos/telefono/hotspot7"]
 shape = SubResource("CircleShape2D_x16bw")
 
 [node name="particles" type="Node2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Objetos/telefono"]
@@ -1304,6 +1316,7 @@ rotation = 0.0436332
 scale = Vector2(0.434, 0.434)
 texture = ExtResource("24_t2do4")
 script = ExtResource("9_113nf")
+complete_percent = 0.8
 change_z_index = 1.0
 
 [node name="hotspot4" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Objetos/tele"]
@@ -1496,6 +1509,7 @@ rotation = 0.398021
 scale = Vector2(0.448484, 0.448484)
 texture = ExtResource("25_35po4")
 script = ExtResource("9_113nf")
+complete_percent = 0.8
 change_z_index = 1.0
 
 [node name="hotspot4" type="Area2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Objetos/silla"]
@@ -1707,6 +1721,9 @@ rotation = 0.917959
 scale = Vector2(1.18691, 1.18691)
 texture = ExtResource("54_q5j0d")
 
+[node name="vibration" type="Node" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Objetos"]
+script = ExtResource("50_yrx6f")
+
 [node name="ObjectExploteSound" type="Node" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Objetos"]
 script = ExtResource("24_deahb")
 
@@ -1721,6 +1738,7 @@ script = ExtResource("8_osvhx")
 ParentBook = NodePath("../../../LibroCanvas/animLibro")
 Statemachine = NodePath("../../../../..")
 topoController = NodePath("../../../background/CanvasGroup/TopoController")
+VibrationIntencity = 300.0
 
 [node name="CheckAllTrue" type="Node2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/HuesoController"]
 script = ExtResource("7_io4up")
@@ -2122,6 +2140,9 @@ color_ramp = SubResource("Gradient_0d6p6")
 hue_variation_min = 0.45
 hue_variation_max = 1.0
 
+[node name="vibration" type="Node" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/HuesoController/CheckAllTrue/smilodon"]
+script = ExtResource("50_yrx6f")
+
 [node name="glyptodon" type="Sprite2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/HuesoController/CheckAllTrue"]
 self_modulate = Color(0.36, 0.36, 0.36, 1)
 position = Vector2(-170, 374)
@@ -2484,6 +2505,9 @@ color = Color(0.498039, 0.333333, 0.262745, 1)
 color_ramp = SubResource("Gradient_0d6p6")
 hue_variation_min = 0.45
 hue_variation_max = 1.0
+
+[node name="vibration" type="Node" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/HuesoController/CheckAllTrue/glyptodon"]
+script = ExtResource("50_yrx6f")
 
 [node name="macrauchenia" type="Sprite2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/HuesoController/CheckAllTrue"]
 self_modulate = Color(0.36, 0.36, 0.36, 1)
@@ -2947,6 +2971,9 @@ color_ramp = SubResource("Gradient_0d6p6")
 hue_variation_min = 0.45
 hue_variation_max = 1.0
 
+[node name="vibration" type="Node" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/HuesoController/CheckAllTrue/macrauchenia"]
+script = ExtResource("50_yrx6f")
+
 [node name="fosilSound" type="Node" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/HuesoController"]
 
 [node name="SoundBank" type="Node" parent="Excavando/StateMachine/Juego/Contenido/Instancia1/center/HuesoController/fosilSound"]
@@ -3150,6 +3177,7 @@ flip_v = true
 [node name="steve" type="Sprite2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/Objetos"]
 position = Vector2(490, 2816)
 script = ExtResource("9_113nf")
+complete_percent = 0.9
 change_z_index = 1.0
 
 [node name="tele2" type="Sprite2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/Objetos/steve"]
@@ -3350,12 +3378,16 @@ color_ramp = SubResource("Gradient_0d6p6")
 hue_variation_min = 0.45
 hue_variation_max = 1.0
 
+[node name="vibration" type="Node" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/Objetos"]
+script = ExtResource("50_yrx6f")
+
 [node name="HuesoController" type="Node2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center" node_paths=PackedStringArray("ParentBook", "Statemachine", "topoController")]
 position = Vector2(74, 1526.04)
 script = ExtResource("8_osvhx")
 ParentBook = NodePath("../../../LibroCanvas/animLibro")
 Statemachine = NodePath("../../../../..")
 topoController = NodePath("../../../background/CanvasGroup/TopoController")
+VibrationIntencity = 300.0
 
 [node name="CheckAllTrue" type="Node2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController"]
 script = ExtResource("7_io4up")
@@ -4121,6 +4153,9 @@ color_ramp = SubResource("Gradient_0d6p6")
 hue_variation_min = 0.45
 hue_variation_max = 1.0
 
+[node name="vibration" type="Node" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center/HuesoController/CheckAllTrue/megatherium"]
+script = ExtResource("50_yrx6f")
+
 [node name="Rocas" type="Node2D" parent="Excavando/StateMachine/Juego/Contenido/Instancia2/center"]
 z_index = 1
 position = Vector2(0, 1552.04)
@@ -4707,15 +4742,19 @@ AudioBuses = Array[String](["TopoNivelVolumen", "topoGuia", "tocoTopo", "topoLoo
 [connection signal="InstanceTrue" from="Excavando/StateMachine/Juego/Contenido/Instancia1" to="Excavando/StateMachine/Juego/Contenido/TutorialBurbuja/BurbujaPensamiento" method="set_visible" binds= [true]]
 [connection signal="AllSpots" from="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Objetos/cajaFuerte" to="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Objetos/cajaFuerte/particles" method="Emit"]
 [connection signal="AllSpots" from="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Objetos/cajaFuerte" to="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Objetos/cajaFuerte" method="set_self_modulate" binds= [Color(1, 1, 1, 1)]]
+[connection signal="AllSpots" from="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Objetos/cajaFuerte" to="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Objetos/vibration" method="doVibrate" binds= [100.0]]
 [connection signal="AllSpots" from="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Objetos/cajaFuerte" to="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Objetos/ObjectExploteSound" method="PlayEvent" binds= ["explosion"]]
 [connection signal="AllSpots" from="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Objetos/telefono" to="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Objetos/telefono/particles" method="Emit"]
 [connection signal="AllSpots" from="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Objetos/telefono" to="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Objetos/telefono" method="set_self_modulate" binds= [Color(1, 1, 1, 1)]]
+[connection signal="AllSpots" from="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Objetos/telefono" to="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Objetos/vibration" method="doVibrate" binds= [100.0]]
 [connection signal="AllSpots" from="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Objetos/telefono" to="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Objetos/ObjectExploteSound" method="PlayEvent" binds= ["explosion"]]
 [connection signal="AllSpots" from="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Objetos/tele" to="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Objetos/tele/particles" method="Emit"]
 [connection signal="AllSpots" from="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Objetos/tele" to="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Objetos/tele" method="set_self_modulate" binds= [Color(1, 1, 1, 1)]]
+[connection signal="AllSpots" from="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Objetos/tele" to="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Objetos/vibration" method="doVibrate" binds= [100.0]]
 [connection signal="AllSpots" from="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Objetos/tele" to="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Objetos/ObjectExploteSound" method="PlayEvent" binds= ["explosion"]]
 [connection signal="AllSpots" from="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Objetos/silla" to="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Objetos/silla/particles" method="Emit"]
 [connection signal="AllSpots" from="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Objetos/silla" to="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Objetos/silla" method="set_self_modulate" binds= [Color(1, 1, 1, 1)]]
+[connection signal="AllSpots" from="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Objetos/silla" to="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Objetos/vibration" method="doVibrate" binds= [100.0]]
 [connection signal="AllSpots" from="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Objetos/silla" to="Excavando/StateMachine/Juego/Contenido/Instancia1/center/Objetos/ObjectExploteSound" method="PlayEvent" binds= ["explosion"]]
 [connection signal="AppearIcon" from="Excavando/StateMachine/Juego/Contenido/Instancia1/center/HuesoController" to="Excavando/StateMachine/Juego/Contenido/Tutorial/Inventary" method="AppearIcon"]
 [connection signal="ConnectInventaryBTN" from="Excavando/StateMachine/Juego/Contenido/Instancia1/center/HuesoController" to="Excavando/StateMachine/Juego/Contenido/Tutorial/Inventary" method="SetSkeletonFind"]

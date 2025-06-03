@@ -46,8 +46,12 @@ func AddPlatesOnAnchor():
 
 var last_touch_pos = Vector2()
 
+var realInput : Vector2
+
 func _input(event: InputEvent) -> void:
 	if StopDrag : return
+	
+	if event != null: realInput = event.position
 	
 	if event is InputEventScreenTouch:
 		if event.index != 0:
@@ -97,19 +101,23 @@ func _input(event: InputEvent) -> void:
 				return
 			if is_at_right_limit and delta_x > 0:
 				return
-
+			var target_x = position.x + delta_x
+			if isFirstTouch: position.x = lerp(position.x, target_x, 0.15)
+			else: position.x = target_x
 			isScrolling.emit()
-			position.x += delta_x
+			
+			
 			actualDrag.x = event.position.x
 
 func calculateGesture() -> void:
 	isFirstTouch = false
 	if isverticalGesture : return
-	if !inGesture : return 
+	if !inGesture : return
 	if isVerticalSwipe: return
 	inGesture = false
 	if hold : return
 	isScrolling.emit()
+	print("horizontalSwipe")
 	var d 
 	d= releasePos - pressedPos
 	if (abs(d.x) < limitGesture) :
@@ -120,12 +128,20 @@ func calculateGesture() -> void:
 	if abs(d.x) > abs(d.y):
 		if d.x < 0:
 			var tween = get_tree().create_tween()
-			tween.tween_property(self,"position", Vector2(set_next_anchor("rigth"),position.y),0.2).set_ease(Tween.EASE_IN_OUT)
+			tween.tween_property(self,"position", Vector2(set_next_anchor("rigth"),position.y),0.2).set_ease(Tween.EASE_OUT)
 		else:
 			var tween = get_tree().create_tween()
-			tween.tween_property(self,"position", Vector2(set_next_anchor("left"),position.y),0.2).set_ease(Tween.EASE_IN_OUT)
+			tween.tween_property(self,"position", Vector2(set_next_anchor("left"),position.y),0.2).set_ease(Tween.EASE_OUT)
 
 var isVerticalSwipe = false
+
+var last_real_input := Vector2.ZERO
+var velocity_input := 0.0
+
+func _process(delta):
+	var delta_input = abs(realInput - last_real_input)
+	velocity_input = delta_input.length() / delta
+	last_real_input = realInput
 
 func CalculateVerticalGesture():
 	isFirstTouch = false
@@ -134,9 +150,9 @@ func CalculateVerticalGesture():
 	if hold : return
 	var d 
 	d= releasePos - pressedPos
-	print(d)
-	if abs(d.x) < abs(d.y) and abs(d.x) < 200:
+	if abs(d.x) < abs(d.y):
 		if d.y < 0:
+			print("verticalSwipe")
 			isVerticalSwipe = true
 			stopDrag()
 			SoundManager.play("DragObject","swipe") 
@@ -146,15 +162,18 @@ func inHold():
 	if !hold: return
 	if inGesture : return
 	if isDraggingAPplate : return
+	if isVerticalSwipe : return
+	print("hold")
 	var holdVector
 	holdVector = pressedPos.x - releasePos.x
+	if abs(holdVector) < abs(pressedPos.y - releasePos.y) and isFirstTouch: return
 	if (abs(holdVector) > limitHold):
 		if (holdVector > 0):
 			var tween = get_tree().create_tween()
-			tween.tween_property(self,"position", Vector2(set_next_anchor("rigth"),position.y),0.2).set_ease(Tween.EASE_OUT)
+			tween.tween_property(self,"position", Vector2(set_next_anchor("rigth"),position.y),0.25).set_ease(Tween.EASE_OUT)
 		elif (holdVector < 0):
 			var tween = get_tree().create_tween()
-			tween.tween_property(self,"position", Vector2(set_next_anchor("left"),position.y),0.2).set_ease(Tween.EASE_OUT)
+			tween.tween_property(self,"position", Vector2(set_next_anchor("left"),position.y),0.25).set_ease(Tween.EASE_OUT)
 	else :
 		next_anchor = position.x + (get_viewport_rect().size.x/2 - anchors[i].global_position.x)
 		var tween = get_tree().create_tween()
@@ -213,10 +232,13 @@ func Reset():
 	DetectMouseRelease()
 	enableInteraction()
 
-func LockUnklockGragObjects(x):
+func LockUnklockGragObjects(x,justActualPlate = false):
 	for f in get_children():
+		if justActualPlate:
+			anchors[i].get_node("DragObject").isEnableButton(x)
+			return
 		f.get_node("DragObject").isEnableButton(x)
-	
+		
 var plateRef
 func ReOrganizePlates():
 	stopDrag(false)

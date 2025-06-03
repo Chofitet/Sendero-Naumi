@@ -1,4 +1,4 @@
-[gd_scene load_steps=227 format=3 uid="uid://b017ojh8vtsd6"]
+[gd_scene load_steps=233 format=3 uid="uid://b017ojh8vtsd6"]
 
 [ext_resource type="Script" path="res://_Scripts/Minigame_Save_Controller.gd" id="1_ouwf6"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/StateMachineMinigames.gd" id="2_5wf26"]
@@ -1451,6 +1451,25 @@ shadow_size = 4
 shadow_color = Color(0, 0, 0, 1)
 shadow_offset = Vector2(-0.06, 1)
 
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_5rij4"]
+points = PackedVector2Array(87.635, -120.635, -108.905, -86.56, -106.355, 25.255, 84.18, 91.69)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_imgxl"]
+resource_local_to_scene = true
+bg_color = Color(0.305882, 0.164706, 0.219608, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="LabelSettings" id="LabelSettings_72jpv"]
+resource_local_to_scene = true
+font_size = 25
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 4
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(-0.06, 1)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2tfsf"]
 resource_local_to_scene = true
 bg_color = Color(0.305882, 0.164706, 0.219608, 1)
@@ -1492,6 +1511,25 @@ gradient = SubResource("Gradient_kukdc")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.82967, 0.307692)
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_nx3b8"]
+points = PackedVector2Array(87.635, -120.635, -108.905, -86.56, -106.355, 25.255, 84.18, 91.69)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x3wnp"]
+resource_local_to_scene = true
+bg_color = Color(0.305882, 0.164706, 0.219608, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="LabelSettings" id="LabelSettings_l3m4q"]
+resource_local_to_scene = true
+font_size = 25
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 4
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(-0.06, 1)
 
 [sub_resource type="Animation" id="Animation_diea1"]
 length = 0.001
@@ -3091,6 +3129,15 @@ colorShader = Color(0.703125, 0.296875, 0.167969, 1)
 nombre = "MARTE"
 item = NodePath("../../../center/CheckTrue/ItemUnir3")
 
+[node name="CollisionShape2D" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/pivotPlanets/VBoxContainer2/SpotUnir/Area2D" index="0"]
+shape = SubResource("ConvexPolygonShape2D_5rij4")
+
+[node name="Panel" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/pivotPlanets/VBoxContainer2/SpotUnir" index="3"]
+theme_override_styles/panel = SubResource("StyleBoxFlat_imgxl")
+
+[node name="Label" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/pivotPlanets/VBoxContainer2/SpotUnir/Panel" index="0"]
+label_settings = SubResource("LabelSettings_72jpv")
+
 [node name="SpotUnir2" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/pivotPlanets/VBoxContainer2" instance=ExtResource("19_8egw1")]
 layout_mode = 2
 offset_left = -65.0
@@ -3099,7 +3146,6 @@ offset_right = 225.0
 offset_bottom = 410.0
 texture = ExtResource("54_48nd8")
 expand_mode = 1
-colorShader = Color(0, 0, 0, 1)
 nombre = "SATURNO"
 
 [node name="Area2D" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/pivotPlanets/VBoxContainer2/SpotUnir2" index="0"]
@@ -3134,7 +3180,6 @@ offset_right = 179.0
 offset_bottom = 672.0
 texture = ExtResource("55_ucjwp")
 expand_mode = 1
-colorShader = Color(0, 0, 0, 1)
 nombre = "SOL"
 
 [node name="Area2D" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/pivotPlanets/VBoxContainer2/SpotUnir3" index="0"]
@@ -3187,9 +3232,19 @@ offset_top = 1000.0
 offset_right = 160.0
 offset_bottom = 1160.0
 texture = ExtResource("75_h52fe")
-colorShader = Color(0.496094, 0.628906, 0.59375, 1)
+colorShader = Color(0.498039, 0.627451, 0.592157, 1)
 nombre = "URANO"
 item = NodePath("../../../center/CheckTrue/ItemUnir2")
+
+[node name="CollisionShape2D" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/pivotPlanets/VBoxContainer2/SpotUnir5/Area2D" index="0"]
+shape = SubResource("ConvexPolygonShape2D_nx3b8")
+
+[node name="Panel" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/pivotPlanets/VBoxContainer2/SpotUnir5" index="3"]
+theme_override_styles/panel = SubResource("StyleBoxFlat_x3wnp")
+
+[node name="Label" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/pivotPlanets/VBoxContainer2/SpotUnir5/Panel" index="0"]
+text = "URANO"
+label_settings = SubResource("LabelSettings_l3m4q")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/pivotPlanets"]
 libraries = {
@@ -3630,8 +3685,10 @@ AudioBuses = Array[String](["VolumenDondeEstuvo", "puerta", "casco", "guante1", 
 [editable path="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/center/CheckTrue/ItemUnir2"]
 [editable path="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/center/CheckTrue/ItemUnir"]
 [editable path="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/center/CheckTrue/ItemUnir3"]
+[editable path="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/pivotPlanets/VBoxContainer2/SpotUnir"]
 [editable path="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/pivotPlanets/VBoxContainer2/SpotUnir2"]
 [editable path="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/pivotPlanets/VBoxContainer2/SpotUnir3"]
+[editable path="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/pivotPlanets/VBoxContainer2/SpotUnir5"]
 [editable path="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/Panels/PanelPivot3/Panel"]
 [editable path="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/Panels/PanelPivot3/Panel/btnIzqAnchor/btnIzq/SquigglingSprite"]
 [editable path="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/Panels/PanelPivot3/Panel/btnCentralAnchor/btnCentral/SquigglingSprite"]

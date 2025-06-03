@@ -1,6 +1,8 @@
 @tool
 extends Node2D
 
+@onready var areaPanel = $Panel/AreaPanel
+
 @export var player : NodePath
 
 @export var RotateInEnter : bool
@@ -51,6 +53,9 @@ func _ready():
 	$Panel.visible = false
 	$Area2D.area_entered.connect(ShowDialogue)
 	$Area2D.area_exited.connect(StartHideDialogue)
+	if areaPanel != null:
+		areaPanel.area_entered.connect(TransparentDialogue.bind(true))
+		areaPanel.area_exited.connect(TransparentDialogue.bind(false))
 
 func ShowDialogue(x):
 	if isInactiveDialogue: return
@@ -101,3 +106,16 @@ func InactiveDialogue():
 
 func ActiveDialogue():
 	isInactiveDialogue = false
+
+func TransparentDialogue(body,x):
+	if !body.is_in_group("Player"):return
+	var transparentColor = Color(1,1,1,0.4)
+	var fullColor = Color(1,1,1,1)
+	var tween = get_tree().create_tween()
+	var tween2 = get_tree().create_tween()
+	if x:
+		tween.tween_property($Panel,"self_modulate",transparentColor,0.2)
+		tween2.tween_property($Panel/Polygon2D,"self_modulate",transparentColor,0.2)
+	else:
+		tween.tween_property($Panel,"self_modulate",fullColor,0.2)
+		tween2.tween_property($Panel/Polygon2D,"self_modulate",fullColor,0.2)

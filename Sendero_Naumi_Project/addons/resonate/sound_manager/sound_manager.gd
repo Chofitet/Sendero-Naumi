@@ -406,7 +406,7 @@ func _instance_manual(p_bank_label: String, p_event_name: String, p_reserved: bo
 
 
 func _is_player_free(p_player) -> bool:
-	return not p_player.playing and not p_player.reserved
+	return not p_player.playing and not p_player.reserved and not p_player.stream_paused
 
 
 func _get_player_from_pool(p_pool: Array) -> Variant:

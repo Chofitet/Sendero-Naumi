@@ -1,4 +1,4 @@
-[gd_scene load_steps=222 format=3 uid="uid://dk066mi38cvh7"]
+[gd_scene load_steps=224 format=3 uid="uid://dk066mi38cvh7"]
 
 [ext_resource type="Script" path="res://_Scripts/Minigame_Save_Controller.gd" id="1_th4gl"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/StateMachineMinigames.gd" id="2_fl1ab"]
@@ -456,6 +456,9 @@ corner_radius_top_right = 16
 corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_14b55"]
+size = Vector2(290.8, 79.6001)
+
 [sub_resource type="Gradient" id="Gradient_fkwkk"]
 offsets = PackedFloat32Array(0, 0.437247, 0.611336, 0.938272, 1)
 colors = PackedColorArray(0, 0, 0, 1, 0.3008, 0.611733, 0.64, 0.603922, 0.5628, 0.63, 0.4284, 0.498039, 0.937255, 0.94902, 0.917647, 0, 1, 1, 1, 0)
@@ -469,6 +472,9 @@ fill_to = Vector2(0.879121, 0.263736)
 [sub_resource type="CircleShape2D" id="CircleShape2D_ye8in"]
 resource_local_to_scene = true
 radius = 354.593
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_anqrh"]
+size = Vector2(422.4, 227.2)
 
 [sub_resource type="Curve" id="Curve_vuutm"]
 _data = [Vector2(0, 0.505263), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
@@ -542,7 +548,8 @@ exitPanel = false
 
 [sub_resource type="Resource" id="Resource_mq3wk"]
 script = ExtResource("80_drq41")
-Text = "¡SUERTE CON LA MISIÓN!
+Text = "
+[center][b]¡SUERTE CON LA MISIÓN![/b]
 Y GUARDA LA CABEZA"
 writingSpeed = 0.0
 SizePanel = Vector2(540, 251)
@@ -591,7 +598,7 @@ NumberOfPanel = 3
 Place = 0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_48pma"]
-size = Vector2(544, 40.1443)
+size = Vector2(583, 40.1443)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ohny0"]
 size = Vector2(491, 67)
@@ -1762,7 +1769,7 @@ _textureLine = ExtResource("9_fd6y6")
 
 [node name="Meteoroide" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide" instance=ExtResource("11_i2vqs")]
 position = Vector2(976, -1362)
-rotation = 483731.0
+rotation = 505498.0
 scale = Vector2(2.975, 2.975)
 _texture = ExtResource("11_x4hhq")
 
@@ -2570,7 +2577,7 @@ Max_Size = 60.0
 
 [node name="meteoro" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoro/Meteoro1" node_paths=PackedStringArray("MeteoritoTarget") instance=ExtResource("11_i2vqs")]
 z_index = 1
-rotation = 644483.0
+rotation = 669228.0
 scale = Vector2(2.595, 2.595)
 MeteoritoTarget = NodePath("../../../Meteorito/MeteoritoAppear/targetMeteorito")
 _texture = ExtResource("17_uxw0q")
@@ -2619,7 +2626,7 @@ z_index = 1
 
 [node name="meteoro" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoro/Meteoro3" node_paths=PackedStringArray("MeteoritoTarget") instance=ExtResource("11_i2vqs")]
 z_index = 1
-rotation = 646184.0
+rotation = 670929.0
 scale = Vector2(2.595, 2.595)
 MeteoritoTarget = NodePath("../../../Meteorito/MeteoritoAppear/targetMeteorito")
 _texture = ExtResource("17_uxw0q")
@@ -2750,7 +2757,13 @@ autowrap_mode = 2
 [node name="Polygon2D" type="Polygon2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoro/TheGuy2/Panel"]
 position = Vector2(0, 7.06396)
 color = Color(0.859375, 0.859375, 0.859375, 1)
-polygon = PackedVector2Array(17, 74, 0, 86, 0, 53)
+polygon = PackedVector2Array(17, 75.4, 0, 86, 0.399994, 58.4, 1.39999, 64.8, 4.59998, 70.2001, 8.19998, 73.2001, 13, 75.2001)
+
+[node name="AreaPanel" type="Area2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoro/TheGuy2/Panel"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoro/TheGuy2/Panel/AreaPanel"]
+position = Vector2(146.2, 42.064)
+shape = SubResource("RectangleShape2D_14b55")
 
 [node name="VolumeController" type="Node" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoro"]
 script = ExtResource("64_a3qlb")
@@ -2825,7 +2838,11 @@ Y BOOM!!!! EXPLOTÓ TODO! "
 [node name="Polygon2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteorito/TheGuy3/Panel" index="1"]
 position = Vector2(262.175, 288.771)
 rotation = -2.56517
-polygon = PackedVector2Array(30.7764, 55.4622, 16.2885, 65.8345, 11.0807, 41.3101)
+polygon = PackedVector2Array(29.1415, 52.9473, 13.6056, 62.8081, 11.0807, 41.3101)
+
+[node name="CollisionShape2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteorito/TheGuy3/Panel/AreaPanel" index="0"]
+position = Vector2(215.2, 115.096)
+shape = SubResource("RectangleShape2D_anqrh")
 
 [node name="MeteoritoAppear" type="Sprite2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteorito"]
 position = Vector2(1739, -19331)
@@ -2967,9 +2984,8 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 25
 theme_override_font_sizes/bold_font_size = 25
 text = "
-[center][b]BUEN DÍA, CADETE.[/b]
-REPASEMOS LA MISIÓN.
-"
+[center][b]¡SUERTE CON LA MISIÓN![/b]
+Y GUARDA LA CABEZA"
 
 [node name="btnDer" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro/PanelIntro/BtnDerAnchor" index="0"]
 visible = true
@@ -3294,7 +3310,7 @@ script = ExtResource("10_fm36a")
 position = Vector2(-168, 28)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Capsula/Collider"]
-polygon = PackedVector2Array(-309, 2, -231, -227, -73, -341, 90, -216, 167, 8)
+polygon = PackedVector2Array(-309, 2, -231, -227, -74, -327, 90, -216, 167, 8)
 one_way_collision = true
 
 [node name="TriggerOutside" type="Area2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Capsula"]
@@ -3302,16 +3318,16 @@ position = Vector2(-176, -273)
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Capsula/TriggerOutside"]
-position = Vector2(-62, -99)
+position = Vector2(-27.5, -154)
 shape = SubResource("RectangleShape2D_48pma")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Capsula/TriggerOutside"]
-position = Vector2(224, 140)
+position = Vector2(296, 149)
 rotation = 1.47368
 shape = SubResource("RectangleShape2D_48pma")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Capsula/TriggerOutside"]
-position = Vector2(-357, 134)
+position = Vector2(-418, 134)
 rotation = -1.33009
 shape = SubResource("RectangleShape2D_48pma")
 
