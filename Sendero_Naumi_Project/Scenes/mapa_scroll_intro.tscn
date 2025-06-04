@@ -2144,9 +2144,9 @@ animation = "idle"
 
 [node name="PanelNaumi1" parent="Naumi_Intro" instance=ExtResource("34_kpbhv")]
 layout_mode = 1
-offset_left = -330.0
+offset_left = -329.0
 offset_top = 65.0
-offset_right = 322.0
+offset_right = 323.0
 offset_bottom = 294.0
 pivot_offset = Vector2(326, 114.5)
 AppearInBeginning = false
@@ -2182,13 +2182,10 @@ Data = SubResource("Resource_yqxqo")
 Delay = 1.83
 
 [node name="Map_Scroll" type="Control" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 720.0
-offset_bottom = 1280.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -3139,8 +3136,8 @@ offset_bottom = 1439.0
 texture = ExtResource("68_mkxei")
 
 [connection signal="buttonPressedOnce" from="Naumi_Intro/Control/NaumiController" to="Naumi_Intro/PanelNaumi1" method="EnterPanel"]
-[connection signal="pressed" from="Naumi_Intro/Control/NaumiController/pivot/Button" to="Naumi_Intro/Control/NaumiController" method="ButtonPressed" flags=18]
 [connection signal="pressed" from="Naumi_Intro/Control/NaumiController/pivot/Button" to="Naumi_Intro/Control/NaumiController" method="ButtonPressedOnce"]
+[connection signal="pressed" from="Naumi_Intro/Control/NaumiController/pivot/Button" to="Naumi_Intro/Control/NaumiController" method="ButtonPressed" flags=18]
 [connection signal="pressed" from="Naumi_Intro/Control/NaumiController/pivot/Button" to="Naumi_Intro/Control/LabelNaumi" method="set_visible" binds= [false]]
 [connection signal="tree_exiting" from="Naumi_Intro/Control/NaumiController/pivot/Button" to="Naumi_Intro/Control/NaumiController/pivot/Button/Label" method="set_visible" binds= [false]]
 [connection signal="ButtonPress" from="Naumi_Intro/PanelNaumi1/Panel(4) Btn(rigth)" to="Naumi_Intro/SaveFirstPlay" method="FirstPlay"]

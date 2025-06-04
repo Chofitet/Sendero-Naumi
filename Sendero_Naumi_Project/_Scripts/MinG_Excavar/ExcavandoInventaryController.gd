@@ -100,14 +100,17 @@ func DoBookAnim(skeleton, btn):
 	var sk = skeleton.name
 	if isBookOutIn == skeleton.name : return
 	newBook.emit()
-	if isBookOutIn != "":
-		for A in Anims:
-			var AIndex = Anims.find(A)
-			var inventaryIndex = InventaryItems.find_key(skeleton)
-			if AIndex != inventaryIndex:
-				A.play("disabled")
-			else: btn.disabled = true
-		await  get_tree().create_timer(0.6).timeout
+	for A in Anims:
+		var AIndex = Anims.find(A)
+		var inventaryIndex = InventaryItems.find_key(skeleton)
+		if AIndex != inventaryIndex:
+			if A.current_animation == "appearIcon":
+				await A.animation_finished
+			A.play("disabled")
+		else: btn.disabled = true
+	
+	if isBookOutIn != "" :await  get_tree().create_timer(0.6).timeout
+	
 	var instance = Book.instantiate()
 	ParentBook.add_child(instance)
 	topoController.ConnectBook(instance)
@@ -126,6 +129,9 @@ func DoBookAnim(skeleton, btn):
 
 func DisableAllIcons():
 	for A in Anims:
+		print(A.current_animation)
+		if A.current_animation == "appearIcon":
+			await A.animation_finished
 		A.play("disabled")
 
 func EnabledAllIcons():
@@ -133,9 +139,10 @@ func EnabledAllIcons():
 		A.play("enabled")
 
 func CleanInventarySlot():
+	DisableAllIcons()
 	isBookOutIn = ""
-	EnabledAllIcons()
 	await get_tree().create_timer(0.6).timeout
+	EnabledAllIcons()
 	Overlay.visible = false
 
 func Disanable(state):

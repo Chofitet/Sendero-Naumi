@@ -66,6 +66,8 @@ func PreInstanceShader():
 	add_child(instance)
 
 func CleanInventarySlot():
+	Inventary.DisableAllIcons()
 	Inventary.isBookOutIn = ""
 	await get_tree().create_timer(0.6).timeout
+	Inventary.EnabledAllIcons()
 	Overlay.visible = false

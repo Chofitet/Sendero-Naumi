@@ -1,4 +1,4 @@
-[gd_scene load_steps=131 format=3 uid="uid://bpo2q2rb4or0"]
+[gd_scene load_steps=139 format=3 uid="uid://bpo2q2rb4or0"]
 
 [ext_resource type="Material" uid="uid://muj2sfgakm5s" path="res://shaders/GalaxyWiggle.tres" id="1_0whhm"]
 [ext_resource type="Texture2D" uid="uid://nuybqhitpej1" path="res://Sprites/Mapa/fondo_mapa.png" id="2_fossm"]
@@ -108,6 +108,13 @@
 [ext_resource type="AudioStream" uid="uid://ck0bqyax1ryj1" path="res://Music/SN - Introo.ogg" id="104_q7uh2"]
 [ext_resource type="AudioStream" uid="uid://53mg2hv33sbi" path="res://Music/SN - Tema.ogg" id="105_skj4v"]
 [ext_resource type="Script" path="res://_Scripts/VolumeBusController.gd" id="106_wki37"]
+[ext_resource type="Script" path="res://_Scripts/btnVolverController.gd" id="107_hg3ej"]
+[ext_resource type="Texture2D" uid="uid://5e5nmwm24r3d" path="res://Sprites/UI/mapaIcon - UI.png" id="108_ft1w7"]
+[ext_resource type="Theme" uid="uid://cd3f88gy4eowg" path="res://Resources/UI_Resources/Pause.tres" id="111_r4sno"]
+[ext_resource type="PackedScene" uid="uid://cw3ok8v4p620b" path="res://Scenes/Experiments/squiggling_sprite.tscn" id="112_i2hik"]
+[ext_resource type="Texture2D" uid="uid://y1kn22pdq20d" path="res://Sprites/UI/SquigglingUI/botonRectangularBSQUIG - UI.png" id="113_e1y7a"]
+[ext_resource type="Script" path="res://_Scripts/ChangeScene.gd" id="114_6funi"]
+[ext_resource type="Texture2D" uid="uid://bv3281qs1eia2" path="res://Sprites/ZonaGeología/squigglingFighter/cartelNombreSQUIG - fighter.png" id="115_5ouch"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_yw7ae"]
 font_size = 18
@@ -303,6 +310,14 @@ tracks/2/keys = {
 _data = {
 "startMusic": SubResource("Animation_cwgy0")
 }
+
+[sub_resource type="LabelSettings" id="LabelSettings_ad27i"]
+resource_local_to_scene = true
+font_size = 25
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 4
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(-0.06, 1)
 
 [node name="Credits" type="Control"]
 layout_mode = 3
@@ -3492,44 +3507,15 @@ grow_horizontal = 0
 grow_vertical = 0
 scale = Vector2(0.69, 0.69)
 
-[node name="GenericButton" parent="Button/ButtonSkip" instance=ExtResource("3_4ylal")]
-visible = false
-self_modulate = Color(1, 1, 1, 0)
-layout_mode = 0
-offset_left = -130.435
-offset_top = -119.493
-offset_right = -40.4348
-offset_bottom = -29.4927
-rotation = 3.14159
-noSway = true
-noPop = false
-NumClicksToActive = 3
-Icon = ExtResource("4_jrau3")
-
-[node name="RichTextLabel" type="RichTextLabel" parent="Button/ButtonSkip/GenericButton"]
-layout_mode = 0
-offset_left = 113.421
-offset_top = 144.014
-offset_right = 281.421
-offset_bottom = 206.014
-rotation = -3.14159
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_constants/shadow_offset_x = 2
-theme_override_constants/shadow_offset_y = 2
-theme_override_constants/shadow_outline_size = 3
-theme_override_font_sizes/normal_font_size = 33
-text = "SALTEAR"
-scroll_active = false
-
 [node name="Panel" parent="." instance=ExtResource("3_b8gop")]
 layout_mode = 1
 anchors_preset = 8
 anchor_top = 0.5
 anchor_bottom = 0.5
 offset_left = -326.0
-offset_top = -153.0
+offset_top = -158.0
 offset_right = 326.0
-offset_bottom = 77.0
+offset_bottom = 72.0
 grow_vertical = 2
 pivot_offset = Vector2(326, 115)
 Texts = Array[ExtResource("6_7rehl")]([SubResource("Resource_4bf60"), SubResource("Resource_gj75s"), SubResource("Resource_wj6ka")])
@@ -3576,11 +3562,199 @@ libraries = {
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 bus = &"musicLoop"
 
+[node name="btnVolver" type="CanvasLayer" parent="."]
+layer = 3
+script = ExtResource("107_hg3ej")
+
+[node name="Sprite2D" type="Sprite2D" parent="btnVolver"]
+visible = false
+z_index = 1
+texture_repeat = 1
+position = Vector2(661, 49)
+scale = Vector2(0.777778, 0.777778)
+texture = ExtResource("108_ft1w7")
+
+[node name="GenericButton" parent="btnVolver" instance=ExtResource("3_4ylal")]
+visible = false
+self_modulate = Color(1, 1, 1, 0)
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -129.0
+offset_top = -111.0
+offset_right = -38.9999
+offset_bottom = -20.9998
+grow_horizontal = 0
+grow_vertical = 0
+rotation = 3.14159
+noSway = true
+noPop = false
+NumClicksToActive = 3
+Icon = ExtResource("4_jrau3")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="btnVolver/GenericButton"]
+layout_mode = 0
+offset_left = 113.421
+offset_top = 144.014
+offset_right = 281.421
+offset_bottom = 206.014
+rotation = -3.14159
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_outline_size = 3
+theme_override_font_sizes/normal_font_size = 33
+text = "SALTEAR"
+scroll_active = false
+
+[node name="Menu" type="Control" parent="btnVolver"]
+visible = false
+z_index = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="btnVolver/Menu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.466667)
+
+[node name="outside" type="Button" parent="btnVolver/Menu"]
+process_mode = 3
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+
+[node name="Panel" type="Panel" parent="btnVolver/Menu"]
+process_mode = 3
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -323.0
+offset_top = -189.5
+offset_right = 323.0
+offset_bottom = 189.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("111_r4sno")
+
+[node name="continuar" type="Button" parent="btnVolver/Menu/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.717
+anchor_top = 1.0
+anchor_right = 0.717
+anchor_bottom = 1.0
+offset_left = -89.182
+offset_top = -167.0
+offset_right = 88.818
+offset_bottom = -61.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Label" type="Label" parent="btnVolver/Menu/Panel/continuar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -23.4614
+offset_top = -18.5385
+offset_right = 16.5386
+offset_bottom = 19.4615
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.655, 1.655)
+pivot_offset = Vector2(11, 19)
+text = "NO"
+label_settings = SubResource("LabelSettings_ad27i")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SquigglingSprite" parent="btnVolver/Menu/Panel/continuar" instance=ExtResource("112_i2hik")]
+visible = false
+self_modulate = Color(1, 1, 1, 0)
+position = Vector2(53.6154, 52.6154)
+scale = Vector2(1.22323, 1.20281)
+texture = ExtResource("113_e1y7a")
+
+[node name="VolverMapa" type="Button" parent="btnVolver/Menu/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.286
+anchor_top = 1.0
+anchor_right = 0.286
+anchor_bottom = 1.0
+offset_left = -88.756
+offset_top = -167.0
+offset_right = 89.244
+offset_bottom = -61.0
+grow_vertical = 0
+script = ExtResource("114_6funi")
+NextScene = "Map_Screen"
+fade_time = 0.6
+texture = "vertical"
+smoothness = 0.2
+
+[node name="Label" type="Label" parent="btnVolver/Menu/Panel/VolverMapa"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -17.0
+offset_top = -30.0
+offset_right = 5.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.655, 1.655)
+text = "SI"
+label_settings = SubResource("LabelSettings_ad27i")
+
+[node name="SquigglingSprite" parent="btnVolver/Menu/Panel/VolverMapa" instance=ExtResource("112_i2hik")]
+visible = false
+self_modulate = Color(1, 1, 1, 0)
+position = Vector2(88, 52)
+scale = Vector2(0.550898, 0.626316)
+texture = ExtResource("115_5ouch")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="btnVolver/Menu/Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -286.0
+offset_top = 98.0
+offset_right = 286.0
+offset_bottom = 160.0
+grow_horizontal = 2
+theme = ExtResource("92_224v7")
+bbcode_enabled = true
+text = "[center][b][font_size=40]¿QUERÉS VOLVER AL MAPA?"
+
 [connection signal="PreScrollEnds" from="CreditsScroll" to="MusicVolume" method="SetVolume" binds= [-80.0, 2.0]]
 [connection signal="ScrollEnds" from="CreditsScroll" to="ButtonChangeScene" method="_on_pressed"]
-[connection signal="pressed" from="Button" to="Button/ButtonSkip/GenericButton" method="ClickCounter"]
-[connection signal="pressed" from="Button/ButtonSkip/GenericButton" to="CreditsScroll" method="SetCreditPass"]
-[connection signal="pressed" from="Button/ButtonSkip/GenericButton" to="ButtonChangeScene" method="_on_pressed"]
+[connection signal="pressed" from="Button" to="btnVolver/GenericButton" method="ClickCounter"]
 [connection signal="ButtonPress" from="Panel/Panel(3) Btn(rigth)" to="CreditsScroll" method="StartScroll"]
 [connection signal="ButtonPress" from="Panel/Panel(3) Btn(rigth)" to="Button" method="set_visible" binds= [true]]
 [connection signal="ButtonPress" from="Panel/Panel(3) Btn(rigth)" to="MusicAnim" method="play" binds= ["startMusic"]]
+[connection signal="pressed" from="btnVolver/Menu/Panel/VolverMapa" to="CreditsScroll" method="SetCreditPass"]
