@@ -1,4 +1,4 @@
-[gd_scene load_steps=131 format=3 uid="uid://lv8sdofmjhf3"]
+[gd_scene load_steps=132 format=3 uid="uid://lv8sdofmjhf3"]
 
 [ext_resource type="Script" path="res://_Scripts/Minigame_Save_Controller.gd" id="1_f0fiw"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/StateMachineMinigames.gd" id="2_12384"]
@@ -1219,6 +1219,14 @@ pitch = 1.0
 RandomPitch = Vector2(1, 1)
 streams = Array[AudioStream]([ExtResource("58_bqvmn")])
 
+[sub_resource type="LabelSettings" id="LabelSettings_cwpan"]
+resource_local_to_scene = true
+font_size = 25
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 4
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(-0.06, 1)
+
 [sub_resource type="Animation" id="Animation_yo27a"]
 length = 0.001
 tracks/0/type = "value"
@@ -2283,10 +2291,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 627.5
-offset_top = 189.0
-offset_right = 627.5
-offset_bottom = 189.0
+offset_left = 974.0
+offset_top = 279.0
+offset_right = 974.0
+offset_bottom = 279.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -2352,10 +2360,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -620.5
-offset_top = 189.0
-offset_right = -620.5
-offset_bottom = 189.0
+offset_left = -274.0
+offset_top = 279.0
+offset_right = -274.0
+offset_bottom = 279.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -2454,6 +2462,12 @@ label = "level"
 events = Array[ExtResource("15_ddtfa")]([SubResource("Resource_rqmad"), SubResource("Resource_3tlr2"), SubResource("Resource_1eccu"), SubResource("Resource_gg0um"), SubResource("Resource_ctms1"), SubResource("Resource_fmgu6"), SubResource("Resource_8fj67"), SubResource("Resource_v0t7g")])
 
 [node name="btnVolver" parent="RockFighters/StateMachine/Juego" instance=ExtResource("33_l1u1j")]
+
+[node name="Label" parent="RockFighters/StateMachine/Juego/btnVolver/Menu/Panel/continuar" index="0"]
+label_settings = SubResource("LabelSettings_cwpan")
+
+[node name="Label" parent="RockFighters/StateMachine/Juego/btnVolver/Menu/Panel/VolverMapa" index="0"]
+label_settings = SubResource("LabelSettings_cwpan")
 
 [node name="volumeController" type="Node" parent="RockFighters/StateMachine/Juego"]
 script = ExtResource("60_8mngt")
@@ -2910,6 +2924,8 @@ AudioBuses = Array[String](["FigtherVolumen", "luzEnciende", "nombreAparece", "e
 [editable path="RockFighters/StateMachine/Juego/Contenido/Control/hinchada/Rock13"]
 [editable path="RockFighters/StateMachine/Juego/Contenido/Control/hinchada/Rock3"]
 [editable path="RockFighters/StateMachine/Juego/Contenido/Control/hinchada/Rock10"]
+[editable path="RockFighters/StateMachine/Juego/btnVolver"]
+[editable path="RockFighters/StateMachine/Juego/btnVolver/GenericButton"]
 [editable path="RockFighters/StateMachine/Fin/Contenido/PanelOutro"]
 [editable path="RockFighters/StateMachine/Fin/Contenido/PanelOutro/btnIzqAnchor/btnIzq/SquigglingSprite"]
 [editable path="RockFighters/StateMachine/Fin/Contenido/PanelOutro/btnCentralAnchor/btnCentral/SquigglingSprite"]
