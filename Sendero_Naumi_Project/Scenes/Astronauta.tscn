@@ -1769,7 +1769,7 @@ _textureLine = ExtResource("9_fd6y6")
 
 [node name="Meteoroide" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide" instance=ExtResource("11_i2vqs")]
 position = Vector2(976, -1362)
-rotation = 506746.0
+rotation = 513334.0
 scale = Vector2(2.975, 2.975)
 _texture = ExtResource("11_x4hhq")
 
@@ -1800,6 +1800,7 @@ script = ExtResource("13_ikt7k")
 animation = "move"
 
 [node name="TheGuy2" type="Node2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoroide/GuyWall/Path2D/PathFollow2D"]
+visible = false
 position = Vector2(-3.9292, -1.60059)
 rotation = -0.270157
 script = ExtResource("61_dn7t5")
@@ -2577,7 +2578,7 @@ Max_Size = 60.0
 
 [node name="meteoro" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoro/Meteoro1" node_paths=PackedStringArray("MeteoritoTarget") instance=ExtResource("11_i2vqs")]
 z_index = 1
-rotation = 670586.0
+rotation = 680043.0
 scale = Vector2(2.595, 2.595)
 MeteoritoTarget = NodePath("../../../Meteorito/MeteoritoAppear/targetMeteorito")
 _texture = ExtResource("17_uxw0q")
@@ -2626,7 +2627,7 @@ z_index = 1
 
 [node name="meteoro" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteoro/Meteoro3" node_paths=PackedStringArray("MeteoritoTarget") instance=ExtResource("11_i2vqs")]
 z_index = 1
-rotation = 672287.0
+rotation = 681744.0
 scale = Vector2(2.595, 2.595)
 MeteoritoTarget = NodePath("../../../Meteorito/MeteoritoAppear/targetMeteorito")
 _texture = ExtResource("17_uxw0q")
@@ -3199,7 +3200,7 @@ Data = SubResource("Resource_1w122")
 
 [node name="Panel(3) Btn(rigth)" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro/PanelIntro" instance=ExtResource("81_mw337")]
 Data = SubResource("Resource_x5oxa")
-Delay = 0.4
+Delay = 0.6
 
 [node name="content2" type="Node2D" parent="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro/PanelIntro"]
 visible = false
@@ -5172,7 +5173,7 @@ AudioBuses = Array[String](["VolumenAstronauta", "jetPack", "pedo", "astronautaR
 [connection signal="Picked" from="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteorito/MeteoritoAppear/meteorito" to="Astronauta/StateMachine/Juego/Contenido/Instancia1/level/RocasEspaciales/Meteorito/MeteoritoAppear/particle" method="StopEmit"]
 [connection signal="ButtonPress" from="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro/PanelIntro/Panel(1) Btn(rigth)2" to="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/interior/Computer" method="Setface" binds= ["talk"]]
 [connection signal="ButtonPress" from="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro/PanelIntro/Panel(2) Btn(rigth)" to="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/interior/Computer" method="Setface" binds= ["talk"]]
-[connection signal="ButtonPress" from="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro/PanelIntro/Panel(3) Btn(rigth)" to="Astronauta/StateMachine/Juego/Contenido/Instancia1/Astronauta" method="BlockMove" binds= [false]]
+[connection signal="ButtonPress" from="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro/PanelIntro/Panel(3) Btn(rigth)" to="Astronauta/StateMachine/Juego/Contenido/Instancia1/Astronauta" method="BlockMove" binds= [false, true]]
 [connection signal="openCapsula" from="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Capsula" to="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/interior/Computer" method="IdleAnim"]
 [connection signal="openCapsula" from="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Capsula" to="Astronauta/StateMachine/Juego/Contenido/Instancia1/NaveController/Intro/PanelIntro" method="ExitPanel"]
 [connection signal="AllCollect" from="Astronauta/StateMachine/Juego/Contenido/Instancia1/Astronauta" to="Astronauta/StateMachine/Juego/Contenido/Instancia1/PCInventary/pcInventary" method="MisionComplete"]

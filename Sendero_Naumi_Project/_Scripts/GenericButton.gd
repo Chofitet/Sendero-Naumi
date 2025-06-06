@@ -43,6 +43,11 @@ func ExitAnim(noPOP : bool = false):
 	await  get_tree().create_timer(0.3).timeout
 	pressedDelay.emit()
 
+func BackEnterAnim():
+	anim.play_backwards("EnterButton")
+	await anim.animation_finished
+	visible = false
+
 func InstanciateButtonPOP():
 	var POPInstance = pop.instantiate()
 	get_parent().add_child(POPInstance)

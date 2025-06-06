@@ -12,14 +12,14 @@
 
 [sub_resource type="Resource" id="Resource_a4m6p"]
 script = ExtResource("4_d7eu2")
-Place = 0
+Place = 2
 label = "SI"
 dontPassPanel = false
 exitPanel = false
 
 [sub_resource type="Resource" id="Resource_328bl"]
 script = ExtResource("4_d7eu2")
-Place = 2
+Place = 0
 label = "NO"
 dontPassPanel = false
 exitPanel = false
@@ -38,14 +38,14 @@ NumOfContent = 0
 
 [sub_resource type="Resource" id="Resource_ixu48"]
 script = ExtResource("4_d7eu2")
-Place = 0
+Place = 2
 label = "SI"
 dontPassPanel = false
 exitPanel = false
 
 [sub_resource type="Resource" id="Resource_mcdw8"]
 script = ExtResource("4_d7eu2")
-Place = 2
+Place = 0
 label = "NO"
 dontPassPanel = false
 exitPanel = false
@@ -63,17 +63,17 @@ NumOfContent = 0
 [sub_resource type="Resource" id="Resource_18ii2"]
 script = ExtResource("10_k0cnr")
 NumberOfPanel = 1
-Place = 2
+Place = 0
 
 [sub_resource type="Resource" id="Resource_n2foa"]
 script = ExtResource("10_k0cnr")
 NumberOfPanel = 2
-Place = 0
+Place = 2
 
 [sub_resource type="Resource" id="Resource_y1piy"]
 script = ExtResource("10_k0cnr")
 NumberOfPanel = 2
-Place = 2
+Place = 0
 
 [node name="ResetScreen" type="Control"]
 layout_mode = 3
@@ -97,6 +97,7 @@ expand_mode = 1
 stretch_mode = 1
 
 [node name="PanelReset" parent="." instance=ExtResource("3_o2upc")]
+self_modulate = Color(7.69, 0.1, 0, 1)
 layout_mode = 1
 anchors_preset = 8
 anchor_top = 0.5
@@ -107,7 +108,7 @@ offset_right = 350.0
 offset_bottom = 141.0
 grow_vertical = 2
 pivot_offset = Vector2(350, 168)
-instanceAndButtonExit = Vector2(1, 1)
+instanceAndButtonExit = Vector2(1, 0)
 Texts = Array[ExtResource("7_o6yq5")]([SubResource("Resource_g8ivg"), SubResource("Resource_p7elo")])
 
 [node name="labelRich" parent="PanelReset" index="1"]
@@ -123,7 +124,7 @@ visible = true
 texture = null
 
 [node name="Label" parent="PanelReset/BtnDerAnchor/btnDer/Icon" index="0"]
-text = "SI"
+text = "NO"
 
 [node name="btnIzq" parent="PanelReset/btnIzqAnchor" index="0"]
 visible = true
@@ -132,15 +133,15 @@ visible = true
 texture = null
 
 [node name="Label" parent="PanelReset/btnIzqAnchor/btnIzq/Icon" index="0"]
-text = "NO"
+text = "SI"
 
-[node name="Panel(1) Btn(left)" parent="PanelReset" instance=ExtResource("8_cm7s2")]
+[node name="Panel(1) Btn(rigth)" parent="PanelReset" instance=ExtResource("8_cm7s2")]
 Data = SubResource("Resource_18ii2")
 
-[node name="Panel(2) Btn(rigth)" parent="PanelReset" instance=ExtResource("8_cm7s2")]
+[node name="Panel(2) Btn(left)" parent="PanelReset" instance=ExtResource("8_cm7s2")]
 Data = SubResource("Resource_n2foa")
 
-[node name="Panel(2) Btn(left)" parent="PanelReset" instance=ExtResource("8_cm7s2")]
+[node name="Panel(2) Btn(right)" parent="PanelReset" instance=ExtResource("8_cm7s2")]
 Data = SubResource("Resource_y1piy")
 
 [node name="ButtonChangeScene" parent="." instance=ExtResource("11_046uo")]
@@ -181,10 +182,10 @@ fade_time = 0.6
 texture = "vertical"
 smoothness = 0.2
 
-[connection signal="ButtonPress" from="PanelReset/Panel(1) Btn(left)" to="ButtonChangeScene" method="_on_pressed"]
-[connection signal="ButtonPress" from="PanelReset/Panel(2) Btn(rigth)" to="." method="ResetAll"]
-[connection signal="ButtonPress" from="PanelReset/Panel(2) Btn(rigth)" to="ButtonChangeSceneIntro" method="_on_pressed"]
-[connection signal="ButtonPress" from="PanelReset/Panel(2) Btn(left)" to="ButtonChangeScene" method="_on_pressed"]
+[connection signal="ButtonPress" from="PanelReset/Panel(1) Btn(rigth)" to="ButtonChangeScene" method="_on_pressed"]
+[connection signal="ButtonPress" from="PanelReset/Panel(2) Btn(left)" to="." method="ResetAll"]
+[connection signal="ButtonPress" from="PanelReset/Panel(2) Btn(left)" to="ButtonChangeSceneIntro" method="_on_pressed"]
+[connection signal="ButtonPress" from="PanelReset/Panel(2) Btn(right)" to="ButtonChangeScene" method="_on_pressed"]
 
 [editable path="PanelReset"]
 [editable path="PanelReset/btnIzqAnchor/btnIzq/SquigglingSprite"]

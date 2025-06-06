@@ -139,9 +139,11 @@ func EnabledAllIcons():
 		A.play("enabled")
 
 func CleanInventarySlot():
+	topoController.EnableDisaneable(false)
 	DisableAllIcons()
 	isBookOutIn = ""
 	await get_tree().create_timer(0.6).timeout
+	topoController.EnableDisaneable(true)
 	EnabledAllIcons()
 	Overlay.visible = false
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=112 format=3 uid="uid://ck4m8k46bmha1"]
+[gd_scene load_steps=118 format=3 uid="uid://ck4m8k46bmha1"]
 
 [ext_resource type="Material" uid="uid://muj2sfgakm5s" path="res://shaders/GalaxyWiggle.tres" id="1_2gsu4"]
 [ext_resource type="Script" path="res://_Scripts/AdjustSeparationWithScreenSize.gd" id="2_1v6rf"]
@@ -25,6 +25,7 @@
 [ext_resource type="Script" path="res://_Scripts/Zone.gd" id="11_n2pjm"]
 [ext_resource type="Texture2D" uid="uid://b4mb0fyar87n4" path="res://Sprites/Mapa/universo_mapa.png" id="11_r0n4l"]
 [ext_resource type="Script" path="res://_Scripts/StateMachine/State_Machine.gd" id="12_2rk75"]
+[ext_resource type="Texture2D" uid="uid://dud76rociep8t" path="res://Sprites/UI/3points - UI.png" id="12_7mbhm"]
 [ext_resource type="Texture2D" uid="uid://cakw5ub13ddym" path="res://Sprites/UI/thoughtBubbleB - UI.png" id="12_28ebg"]
 [ext_resource type="Texture2D" uid="uid://f71rhgotbkf3" path="res://Sprites/UI/reloadIcon - UI.png" id="12_su1kk"]
 [ext_resource type="Texture2D" uid="uid://cdqxx6yqex8vo" path="res://Sprites/UI/thoughtBubbleA - UI.png" id="13_i8u20"]
@@ -90,6 +91,11 @@
 [ext_resource type="PackedScene" uid="uid://d1jys63xrvxpo" path="res://Scenes/Experiments/GenericPanel/IntermediateSignal.tscn" id="80_b1np3"]
 [ext_resource type="Script" path="res://Scenes/Experiments/GenericPanel/IntermediateData.gd" id="82_ce12o"]
 [ext_resource type="PackedScene" uid="uid://c8dodmo3saxdr" path="res://Scenes/Experiments/sound_debug.tscn" id="89_3q2y0"]
+[ext_resource type="Script" path="res://_Scripts/OptionsBtn.gd" id="91_sf3q5"]
+[ext_resource type="Theme" uid="uid://cd3f88gy4eowg" path="res://Resources/UI_Resources/Pause.tres" id="92_fca8f"]
+[ext_resource type="Texture2D" uid="uid://6c8ohwgh1g2j" path="res://Sprites/UI/backIcon - UI.png" id="93_hbvwe"]
+[ext_resource type="Texture2D" uid="uid://u4h0xv61ktyj" path="res://Sprites/UI/exitIcon - UI.png" id="93_qj8wi"]
+[ext_resource type="Texture2D" uid="uid://bpkbouxhh55el" path="res://Sprites/UI/eyeIcon - UI.png" id="94_rjqst"]
 
 [sub_resource type="Curve2D" id="Curve2D_8o4yl"]
 bake_interval = 0.01
@@ -99,7 +105,7 @@ _data = {
 point_count = 18
 
 [sub_resource type="LabelSettings" id="LabelSettings_2wfc2"]
-font_size = 18
+font_size = 25
 
 [sub_resource type="LabelSettings" id="LabelSettings_oq00k"]
 font_size = 18
@@ -408,38 +414,20 @@ layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.1
 
-[node name="ButtonChangeScene" parent="ScrollContainer/VBoxContainer/Piso4/Piso4/VBoxContainer/separacion3" instance=ExtResource("7_1v7i5")]
-visible = false
-layout_mode = 0
-anchors_preset = 0
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 404.0
-offset_bottom = 135.0
-grow_horizontal = 1
-grow_vertical = 1
-NextScene = "ResetScreen"
-fade_time = 0.6
-texture = "vertical"
-smoothness = 0.2
-
-[node name="GenericButton" parent="ScrollContainer/VBoxContainer/Piso4/Piso4/VBoxContainer/separacion3" instance=ExtResource("49_5dgeg")]
+[node name="OptionsBtn" parent="ScrollContainer/VBoxContainer/Piso4/Piso4/VBoxContainer/separacion3" instance=ExtResource("49_5dgeg")]
 layout_mode = 1
 offset_left = 21.0
 offset_top = 23.0
 offset_right = 111.0
 offset_bottom = 113.0
 enterInBeggining = true
+noSway = true
 noSquiggling = true
 noPop = false
-Icon = ExtResource("12_su1kk")
+Icon = ExtResource("12_7mbhm")
 
-[node name="TextureRect" parent="ScrollContainer/VBoxContainer/Piso4/Piso4/VBoxContainer/separacion3/GenericButton" index="0"]
-texture = ExtResource("12_su1kk")
+[node name="TextureRect" parent="ScrollContainer/VBoxContainer/Piso4/Piso4/VBoxContainer/separacion3/OptionsBtn" index="0"]
+texture = ExtResource("12_7mbhm")
 
 [node name="Logo" type="Control" parent="ScrollContainer/VBoxContainer/Piso4/Piso4/VBoxContainer"]
 layout_mode = 2
@@ -462,9 +450,9 @@ anchor_top = 0.421
 anchor_right = 0.503
 anchor_bottom = 0.421
 offset_left = -120.5
-offset_top = -134.024
+offset_top = -108.0
 offset_right = 117.5
-offset_bottom = 103.976
+offset_bottom = 130.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("9_1w3bh")
@@ -477,9 +465,9 @@ anchor_top = 0.447
 anchor_right = 0.5
 anchor_bottom = 0.447
 offset_left = -44.0
-offset_top = 133.332
+offset_top = 159.356
 offset_right = 45.0
-offset_bottom = 162.332
+offset_bottom = 188.356
 grow_horizontal = 2
 grow_vertical = 0
 text = "PRESENTA"
@@ -1861,17 +1849,16 @@ render_target_update_mode = 0
 
 [node name="Control" type="Control" parent="StateMachine/AstronomiaZone/ZoomingZone/SubViewport"]
 layout_mode = 3
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -20.0
-offset_right = 20.0
-offset_bottom = 40.0
-grow_horizontal = 2
+anchor_top = 0.38
+anchor_bottom = 0.5
+offset_top = -20.0
+offset_right = 40.0
+offset_bottom = 20.0
+grow_vertical = 2
 
 [node name="Título" type="Sprite2D" parent="StateMachine/AstronomiaZone/ZoomingZone/SubViewport/Control"]
-position = Vector2(32.989, 160.95)
-scale = Vector2(0.675, 0.675)
+position = Vector2(352.349, -346.545)
+scale = Vector2(0.65, 0.65)
 texture = ExtResource("28_x3np3")
 
 [node name="ZoomingZone" type="TextureRect" parent="StateMachine/AstronomiaZone/ZoomingZone/SubViewport"]
@@ -2290,12 +2277,15 @@ render_target_update_mode = 0
 
 [node name="Control" type="Control" parent="StateMachine/MegafaunaZone/ZoomingZone/SubViewport"]
 layout_mode = 3
-anchors_preset = 0
+anchor_top = 0.45
+anchor_bottom = 0.45
+offset_top = -20.0
 offset_right = 40.0
-offset_bottom = 40.0
+offset_bottom = 20.0
+grow_vertical = 2
 
 [node name="Título" type="Sprite2D" parent="StateMachine/MegafaunaZone/ZoomingZone/SubViewport/Control"]
-position = Vector2(380.384, 199.937)
+position = Vector2(378.864, -418.568)
 scale = Vector2(0.62, 0.62)
 texture = ExtResource("42_ngqib")
 
@@ -2381,6 +2371,7 @@ texture = "vertical"
 smoothness = 0.2
 
 [node name="ButtonNaumi" parent="StateMachine" instance=ExtResource("49_5dgeg")]
+visible = false
 z_index = 2
 anchors_preset = 1
 anchor_left = 1.0
@@ -2419,6 +2410,7 @@ Icon = ExtResource("50_otgwf")
 
 [node name="AdventurePanel" type="CanvasLayer" parent="."]
 layer = 2
+visible = false
 
 [node name="AdventurePanel" type="Control" parent="AdventurePanel"]
 layout_mode = 3
@@ -2481,7 +2473,259 @@ offset_left = 270.0
 offset_right = 270.0
 AudioBuses = Array[String](["aparicionBubble", "TypingBubble", "swipeRapido", "swipeLento", "unlockIslands"])
 
-[connection signal="pressed" from="ScrollContainer/VBoxContainer/Piso4/Piso4/VBoxContainer/separacion3/GenericButton" to="ScrollContainer/VBoxContainer/Piso4/Piso4/VBoxContainer/separacion3/ButtonChangeScene" method="_on_pressed"]
+[node name="OptionsBtn" type="Control" parent="."]
+visible = false
+z_index = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("91_sf3q5")
+
+[node name="ColorRect" type="ColorRect" parent="OptionsBtn"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.372549)
+
+[node name="ClickOutside" type="Button" parent="OptionsBtn"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+
+[node name="Panel" type="PanelContainer" parent="OptionsBtn"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -329.0
+offset_top = -314.0
+offset_right = 397.0
+offset_bottom = 325.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.9, 0.9)
+theme = ExtResource("92_fca8f")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="OptionsBtn/Panel"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 13
+
+[node name="volver" type="Button" parent="OptionsBtn/Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 131)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="OptionsBtn/Panel/VBoxContainer/volver"]
+texture_repeat = 2
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 38.0
+offset_top = -26.0
+offset_right = 94.0
+offset_bottom = 28.0
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("93_hbvwe")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="OptionsBtn/Panel/VBoxContainer/volver"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -417.0
+offset_top = -28.0
+offset_right = -28.0
+offset_bottom = 28.0
+grow_horizontal = 0
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("33_7s2qj")
+bbcode_enabled = true
+text = "[center] [font_size=38]SEGUIR PASEANDO"
+
+[node name="salir" type="Button" parent="OptionsBtn/Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 131)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="OptionsBtn/Panel/VBoxContainer/salir"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 38.0
+offset_top = -26.0
+offset_right = 94.0
+offset_bottom = 28.0
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("93_qj8wi")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="OptionsBtn/Panel/VBoxContainer/salir"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -417.0
+offset_top = -28.0
+offset_right = -28.0
+offset_bottom = 28.0
+grow_horizontal = 0
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("33_7s2qj")
+bbcode_enabled = true
+text = "[center] [font_size=38]SALIR DEL JUEGO"
+
+[node name="verCreditos" type="Button" parent="OptionsBtn/Panel/VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(0, 131)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="OptionsBtn/Panel/VBoxContainer/verCreditos"]
+texture_repeat = 1
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 35.0
+offset_top = -31.0
+offset_right = 103.0
+offset_bottom = 25.0
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("94_rjqst")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="OptionsBtn/Panel/VBoxContainer/verCreditos"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -417.0
+offset_top = -28.0
+offset_right = -28.0
+offset_bottom = 28.0
+grow_horizontal = 0
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("33_7s2qj")
+bbcode_enabled = true
+text = "[center] [font_size=38]VER CRÉDITOS"
+
+[node name="ResetProgreso" type="Button" parent="OptionsBtn/Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 131)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="OptionsBtn/Panel/VBoxContainer/ResetProgreso"]
+texture_repeat = 1
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 38.0
+offset_top = 19.0
+offset_right = 83.0
+offset_bottom = 64.0
+grow_vertical = 2
+rotation = -1.30791
+mouse_filter = 2
+texture = ExtResource("12_su1kk")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="OptionsBtn/Panel/VBoxContainer/ResetProgreso"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -417.0
+offset_top = -28.0
+offset_right = -28.0
+offset_bottom = 28.0
+grow_horizontal = 0
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("33_7s2qj")
+bbcode_enabled = true
+text = "[center] [font_size=38]BORRAR PROGRESO"
+
+[node name="ButtonChangeSceneSalir" parent="OptionsBtn" instance=ExtResource("7_1v7i5")]
+visible = false
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 404.0
+offset_bottom = 135.0
+grow_horizontal = 1
+grow_vertical = 1
+NextScene = "quit_game"
+fade_time = 0.6
+texture = "vertical"
+smoothness = 0.2
+
+[node name="ButtonChangeSceneCredits" parent="OptionsBtn" instance=ExtResource("7_1v7i5")]
+visible = false
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 404.0
+offset_bottom = 135.0
+grow_horizontal = 1
+grow_vertical = 1
+NextScene = "Credits"
+fade_time = 0.6
+texture = "vertical"
+smoothness = 0.2
+
+[node name="ButtonChangeSceneRestart" parent="OptionsBtn" instance=ExtResource("7_1v7i5")]
+visible = false
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 404.0
+offset_bottom = 135.0
+grow_horizontal = 1
+grow_vertical = 1
+NextScene = "ResetScreen"
+fade_time = 0.6
+texture = "vertical"
+smoothness = 0.2
+
+[connection signal="pressed" from="ScrollContainer/VBoxContainer/Piso4/Piso4/VBoxContainer/separacion3/OptionsBtn" to="OptionsBtn" method="ActivateDesactivateMenu"]
 [connection signal="pressed" from="ScrollContainer/VBoxContainer/Piso3/CuaternarioZone/TextureRect/btnProximamente" to="ScrollContainer/VBoxContainer/Piso3/CuaternarioZone/TextureRect/PanelProximamente/Panel" method="EnterPanel"]
 [connection signal="pressed" from="ScrollContainer/VBoxContainer/Piso3/CuaternarioZone/TextureRect/btnProximamente" to="ScrollContainer/VBoxContainer/Piso3/CuaternarioZone/TextureRect/btnProximamente" method="set_visible" binds= [false]]
 [connection signal="ButtonPress" from="ScrollContainer/VBoxContainer/Piso3/CuaternarioZone/TextureRect/PanelProximamente/Panel/Panel(1) Btn(rigth)" to="ScrollContainer/VBoxContainer/Piso3/CuaternarioZone/TextureRect/btnProximamente" method="set_visible" binds= [true]]
@@ -2509,7 +2753,7 @@ AudioBuses = Array[String](["aparicionBubble", "TypingBubble", "swipeRapido", "s
 [connection signal="onFloor3" from="ScrollContainer/FloorDetector" to="ScrollContainer/VBoxContainer/Piso3/AmbientesZone" method="inFloor"]
 [connection signal="onFloor3" from="ScrollContainer/FloorDetector" to="ScrollContainer/VBoxContainer/Piso3/ErasGeologicasZone" method="inFloor"]
 [connection signal="onFloor3" from="ScrollContainer/FloorDetector" to="StateMachine/ButtonNaumi" method="EnterAnim"]
-[connection signal="toFloor4" from="ScrollContainer/FloorDetector" to="StateMachine/ButtonNaumi" method="ExitAnim" binds= [true]]
+[connection signal="toFloor4" from="ScrollContainer/FloorDetector" to="StateMachine/ButtonNaumi" method="BackEnterAnim"]
 [connection signal="backZone" from="StateMachine/AstronomiaZone" to="ScrollContainer" method="SetisInputBlock" binds= [true]]
 [connection signal="inZone" from="StateMachine/AstronomiaZone" to="ScrollContainer" method="SetisInputBlock" binds= [false]]
 [connection signal="backZone" from="StateMachine/GeologiaZone" to="ScrollContainer" method="SetisInputBlock" binds= [true]]
@@ -2535,8 +2779,11 @@ AudioBuses = Array[String](["aparicionBubble", "TypingBubble", "swipeRapido", "s
 [connection signal="ButtonPress" from="AdventurePanel/AdventurePanel/PanelSuerte/Panel(1) Btn(rigth)" to="StateMachine/ButtonNaumi" method="EnterAnim"]
 [connection signal="ButtonPress" from="AdventurePanel/AdventurePanel/PanelSuerte/Panel(1) Btn(rigth)" to="ScrollContainer" method="SetisInputBlock" binds= [true]]
 [connection signal="ButtonPress" from="AdventurePanel/AdventurePanel/PanelSuerte/Panel(1) Btn(rigth)" to="AdventurePanel/AdventurePanel/block" method="set_visible" binds= [false]]
+[connection signal="MenuOptionActive" from="OptionsBtn" to="ScrollContainer" method="SetisInputBlock" binds= [false]]
+[connection signal="MenuOptionDesactive" from="OptionsBtn" to="ScrollContainer/VBoxContainer/Piso4/Piso4/VBoxContainer/separacion3/OptionsBtn" method="EnterAnim"]
+[connection signal="MenuOptionDesactive" from="OptionsBtn" to="ScrollContainer" method="SetisInputBlock" binds= [true]]
 
-[editable path="ScrollContainer/VBoxContainer/Piso4/Piso4/VBoxContainer/separacion3/GenericButton"]
+[editable path="ScrollContainer/VBoxContainer/Piso4/Piso4/VBoxContainer/separacion3/OptionsBtn"]
 [editable path="ScrollContainer/VBoxContainer/Piso3/CuaternarioZone/TextureRect/PanelProximamente/Panel"]
 [editable path="ScrollContainer/VBoxContainer/Piso3/CuaternarioZone/TextureRect/PanelProximamente/Panel/btnIzqAnchor/btnIzq/SquigglingSprite"]
 [editable path="ScrollContainer/VBoxContainer/Piso3/CuaternarioZone/TextureRect/PanelProximamente/Panel/btnCentralAnchor/btnCentral/SquigglingSprite"]

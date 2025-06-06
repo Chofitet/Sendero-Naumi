@@ -5110,8 +5110,9 @@ position = Vector2(51, 31)
 curve = SubResource("Curve2D_jcrho")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Lava_Fall"]
-position = Vector2(81, 376)
-rotation = 0.0165274
+position = Vector2(205.79, 454.606)
+rotation = 1.15729
+progress = 204.648
 
 [node name="Node2D" type="Node2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Lava_Fall/PathFollow2D"]
 rotation = 0.71733
@@ -5127,14 +5128,14 @@ modification_stack = SubResource("SkeletonModificationStack2D_opoja")
 
 [node name="Bone1" type="Bone2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Lava_Fall/PathFollow2D/Node2D/Lava snake/Skeleton2D"]
 position = Vector2(-96, -6)
-scale = Vector2(0.999827, 0.999831)
-skew = -0.000194907
+scale = Vector2(0.999828, 0.999831)
+skew = -0.000195265
 rest = Transform2D(1, 0, 0, 1, 0, 0)
 editor_settings/show_bone_gizmo = false
 
 [node name="Bone2" type="Bone2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Lava_Fall/PathFollow2D/Node2D/Lava snake/Skeleton2D/Bone1"]
 position = Vector2(32, 0)
-rotation = -0.00656238
+rotation = -0.380248
 scale = Vector2(0.999843, 0.999843)
 rest = Transform2D(1, 0, 0, 1, 32, 0)
 editor_settings/show_bone_gizmo = false
@@ -5260,16 +5261,20 @@ modification_stack = SubResource("SkeletonModificationStack2D_cc7e6")
 [node name="Bone1" type="Bone2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/LavaFallVolcanica/PathFollow2D/Node2D/Lava snake/Skeleton2D"]
 position = Vector2(-95.79, -6)
 scale = Vector2(0.999837, 0.999811)
-skew = -0.000292897
+skew = -0.000310063
 rest = Transform2D(1, 0, 0, 1, 0, 0)
-editor_settings/show_bone_gizmo = false
+auto_calculate_length_and_angle = false
+length = 32.0
+bone_angle = 0.0
 
 [node name="Bone2" type="Bone2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/LavaFallVolcanica/PathFollow2D/Node2D/Lava snake/Skeleton2D/Bone1"]
 position = Vector2(32, 0)
 rotation = 1.35678
 scale = Vector2(0.999831, 0.999829)
 rest = Transform2D(1, 0, 0, 1, 32, 0)
-editor_settings/show_bone_gizmo = false
+auto_calculate_length_and_angle = false
+length = 28.2846
+bone_angle = -0.246953
 metadata/_local_pose_override_enabled_ = true
 
 [node name="Bone3" type="Bone2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/LavaFallVolcanica/PathFollow2D/Node2D/Lava snake/Skeleton2D/Bone1/Bone2"]
@@ -5277,7 +5282,9 @@ position = Vector2(28.2843, -0.121915)
 rotation = -0.00283671
 scale = Vector2(0.999829, 0.999829)
 rest = Transform2D(1, 0, 0, 1, 32, 0)
-editor_settings/show_bone_gizmo = false
+auto_calculate_length_and_angle = false
+length = 16.0
+bone_angle = -0.162532
 metadata/_local_pose_override_enabled_ = true
 
 [node name="ColorRect" type="ColorRect" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/LavaFallVolcanica/PathFollow2D/Node2D/Lava snake/Skeleton2D/Bone1/Bone2/Bone3"]
@@ -5314,9 +5321,11 @@ color = Color(0.832031, 0, 0, 1)
 [node name="Polygon2D" type="Polygon2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/LavaFallVolcanica/PathFollow2D/Node2D/Lava snake/Skeleton2D/polygons"]
 z_index = 1
 position = Vector2(31, -8)
+rotation = -0.0015907
 scale = Vector2(1.0625, 1)
 texture = ExtResource("27_tqoby")
 skeleton = NodePath("../..")
+invert_border = 204.4
 polygon = PackedVector2Array(0, 0, 32, 0, 32, 16, 0, 16, 8, 0, 8, 16, 24, 0, 24, 16)
 uv = PackedVector2Array(0, 0, 32, 0, 32, 16, 0, 16, 8, 0, 8, 16, 24, 0, 24, 16)
 polygons = [PackedInt32Array(0, 4, 5, 3), PackedInt32Array(4, 6, 7, 5), PackedInt32Array(1, 6, 7, 2)]
@@ -5661,6 +5670,7 @@ script = ExtResource("7_78yff")
 rockParent = NodePath("../../../rockParent")
 
 [node name="PhysicsRock" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/rockInstances2" groups=["BreakingTrigger"] instance=ExtResource("6_ywrk8")]
+visible = false
 position = Vector2(-343, -300)
 rotation = -0.151844
 scale = Vector2(1.105, 1.105)
@@ -9183,10 +9193,10 @@ layout_mode = 1
 anchors_preset = -1
 anchor_top = 0.773
 anchor_bottom = 0.773
-offset_left = -341.0
-offset_top = -110.44
-offset_right = 337.0
-offset_bottom = 111.56
+offset_left = -337.0
+offset_top = -111.44
+offset_right = 341.0
+offset_bottom = 110.56
 grow_vertical = 2
 pivot_offset = Vector2(339, 111)
 AppearInBeginning = false

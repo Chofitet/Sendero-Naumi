@@ -96,6 +96,11 @@ func EnableDisaneable(state,resetInstance:bool = false):
 	else:
 		isStoped = false
 		_speed = speed
+		if isMoving:
+			$LoopTopoSound.PlayLoopEvent("loopTopo")
+			particles.emitting = true
+			topo.get_node("topo").play("move")
+			
 	
 	if resetInstance:
 		position = SelectInscancePosition()
