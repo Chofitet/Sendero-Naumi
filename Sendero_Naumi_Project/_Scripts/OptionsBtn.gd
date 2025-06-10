@@ -41,7 +41,7 @@ func PressButton(btn, btnChange):
 
 func CheckCredits():
 	load_file()
-	if minigameResourseFile.StateMinigames["PassCredits"] : 
+	if PlayerVariables.GetNaumiState() == 3: 
 		ver_creditos.visible = true
 		save()
 

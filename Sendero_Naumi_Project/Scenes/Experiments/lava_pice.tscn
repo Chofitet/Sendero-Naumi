@@ -1,0 +1,113 @@
+[gd_scene load_steps=8 format=3 uid="uid://dhau0fvh0xq1k"]
+
+[ext_resource type="Texture2D" uid="uid://bp0htfixseccf" path="res://Sprites/ZonaAstronomia/sol - donde.png" id="1_jv2vq"]
+
+[sub_resource type="Curve" id="Curve_1ndwf"]
+min_value = -200.0
+max_value = 200.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.946429, 2.10526), 0.0, 0.0, 0, 0, Vector2(1, -56.8421), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_epxyo"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.418367, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.778947), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_3siem"]
+offsets = PackedFloat32Array(0, 0.542936, 1)
+colors = PackedColorArray(2, 0, 1, 1, 24.2588, 1.50196, 0.168627, 0.752941, 0.847059, 0.67451, 0.14902, 0.266667)
+
+[sub_resource type="Animation" id="Animation_63hq1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("pivot:skew")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.0523599]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("pivot:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_21tu2"]
+resource_name = "idle"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("pivot:skew")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, -2),
+"update": 0,
+"values": [-0.174533, 0.174533]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("pivot:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-1, -4)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xxl3r"]
+_data = {
+"RESET": SubResource("Animation_63hq1"),
+"idle": SubResource("Animation_21tu2")
+}
+
+[node name="LavaExperiment" type="Node2D"]
+
+[node name="pivot" type="Node2D" parent="."]
+skew = -0.0523599
+
+[node name="CPUParticles2D2" type="CPUParticles2D" parent="pivot"]
+position = Vector2(0.349004, 0)
+amount = 120
+lifetime = 5.0
+preprocess = 4.0
+local_coords = true
+texture = ExtResource("1_jv2vq")
+emission_shape = 3
+emission_rect_extents = Vector2(10, 1)
+direction = Vector2(0, -1)
+spread = 0.0
+gravity = Vector2(0, 3)
+initial_velocity_min = 7.0
+initial_velocity_max = 7.0
+linear_accel_min = 1.0
+linear_accel_max = 1.0
+linear_accel_curve = SubResource("Curve_1ndwf")
+scale_amount_min = 0.05
+scale_amount_max = 0.08
+scale_amount_curve = SubResource("Curve_epxyo")
+color_ramp = SubResource("Gradient_3siem")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "idle"
+speed_scale = 0.1
+libraries = {
+"": SubResource("AnimationLibrary_xxl3r")
+}

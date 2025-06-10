@@ -14,6 +14,8 @@ func _ready():
 	AnimationPreCarga()
 
 func Play():
+	if animation == null or animation == "": return
+	print("animation" + str(animation))
 	play(animation)
 	pass
 

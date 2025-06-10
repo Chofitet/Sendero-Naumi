@@ -156,7 +156,7 @@ func SetNaumi(num):
 			minigameResourseFile = ResourceLoader.load(save_file_path+save_file_name)
 			if minigameResourseFile.StateMinigames["PassCredits"] : 
 				ToContinue.emit()
-				#minigameResourseFile.StateMinigames["PassCredits"] = false
+				minigameResourseFile.StateMinigames["PassCredits"] = false
 				NaumiComplete = true
 				save()
 	

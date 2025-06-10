@@ -13,11 +13,11 @@ func _physics_process(delta):
 		progressRatio += speed * delta
 		progressRatio = clamp(progressRatio, 0.0, 1.0) 
 		set_progress_ratio(progressRatio)
+	
 	if get_progress_ratio() == 1:
 		if !once:
 			get_parent().get_parent().get_node("LavaLine").isDrawing= false
 			CompletePath.emit()
-			
 			once = true
 
 func ActivateLava():
