@@ -1,9 +1,72 @@
-[gd_scene load_steps=5 format=3 uid="uid://64xstt2k74wh"]
+[gd_scene load_steps=15 format=3 uid="uid://64xstt2k74wh"]
 
 [ext_resource type="Texture2D" uid="uid://hf5y4ic16cqj" path="res://Sprites/Intro/intro - background.jpg" id="1_xkuy1"]
 [ext_resource type="Texture2D" uid="uid://jd6systmhxf1" path="res://Sprites/Intro/intro - suelo.png" id="2_vkn0r"]
 [ext_resource type="PackedScene" uid="uid://b77gk1g1ulal5" path="res://Scenes/UI_Scenes/naumi_controller.tscn" id="3_s5cdb"]
 [ext_resource type="PackedScene" uid="uid://c8dodmo3saxdr" path="res://Scenes/Experiments/sound_debug.tscn" id="4_uend7"]
+[ext_resource type="PackedScene" uid="uid://chcp24toqisaw" path="res://Scenes/Experiments/GenericPanel/GenericPanel.tscn" id="5_ytrgj"]
+[ext_resource type="Script" path="res://Scenes/Experiments/GenericPanel/ButtonPanelData.gd" id="6_vtniu"]
+[ext_resource type="Texture2D" uid="uid://c2p5torstrtqm" path="res://Sprites/UI/checkIcon - UI.png" id="7_vj8lb"]
+[ext_resource type="Script" path="res://Scenes/Experiments/GenericPanel/TextFieldData.gd" id="8_0ln0m"]
+
+[sub_resource type="Resource" id="Resource_1f1w7"]
+script = ExtResource("6_vtniu")
+Place = 0
+texture = ExtResource("7_vj8lb")
+label = ""
+dontPassPanel = false
+exitPanel = true
+
+[sub_resource type="Resource" id="Resource_dr3cr"]
+script = ExtResource("8_0ln0m")
+Text = "
+[center]TU [b][color=#abc70c]N[/color][color=#d8b423]A[/color][color=#f47237]U[/color][color=#d8b423]M[/color][color=#abc70c]I[/color][/b] SIGUE EN SUEÑOS,
+[b]QUIZÁS SI RECORREMOS EL SENDERO…[/b]
+"
+writingSpeed = 0.0
+SizePanel = Vector2(652, 251)
+Position = Vector2(0, 0)
+buttons = Array[ExtResource("6_vtniu")]([SubResource("Resource_1f1w7")])
+NumOfContent = 0
+
+[sub_resource type="Resource" id="Resource_d7cil"]
+script = ExtResource("6_vtniu")
+Place = 0
+texture = ExtResource("7_vj8lb")
+label = ""
+dontPassPanel = false
+exitPanel = true
+
+[sub_resource type="Resource" id="Resource_wm5gf"]
+script = ExtResource("8_0ln0m")
+Text = "
+[center]¡DUERME OTRA VEZ!
+[b]TAL VEZ SI RECORREMOS MÁS…[/b]
+"
+writingSpeed = 0.0
+SizePanel = Vector2(652, 251)
+Position = Vector2(0, 0)
+buttons = Array[ExtResource("6_vtniu")]([SubResource("Resource_d7cil")])
+NumOfContent = 0
+
+[sub_resource type="Resource" id="Resource_6md5c"]
+script = ExtResource("6_vtniu")
+Place = 0
+texture = ExtResource("7_vj8lb")
+label = ""
+dontPassPanel = false
+exitPanel = true
+
+[sub_resource type="Resource" id="Resource_r2qjx"]
+script = ExtResource("8_0ln0m")
+Text = "[center]EL RESTO DEL SENDERO ESTÁ EN CONSTRUCCIÓN,
+¡TE ESPERAMOS PRONTO PARA CONTINUAR![b]
+"
+writingSpeed = 0.0
+SizePanel = Vector2(652, 228)
+Position = Vector2(0, 0)
+buttons = Array[ExtResource("6_vtniu")]([SubResource("Resource_6md5c")])
+NumOfContent = 0
 
 [node name="Naumi_Level_Up" type="Control"]
 layout_mode = 3
@@ -41,6 +104,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="ColorRect2" type="TextureRect" parent="Control"]
+texture_repeat = 1
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.501
@@ -71,10 +135,45 @@ grow_horizontal = 2
 grow_vertical = 0
 color = Color(0.230469, 0.359375, 0.25, 1)
 
-[node name="NaumiController" parent="Control" instance=ExtResource("3_s5cdb")]
+[node name="NaumiController" parent="Control" node_paths=PackedStringArray("PanelNaumi0", "PanelNaumiEvolve", "PanelNaumiFinal") instance=ExtResource("3_s5cdb")]
 position = Vector2(-3.00006, 172)
 isEvolving = true
+PanelNaumi0 = NodePath("../../PanelNaumi0")
+PanelNaumiEvolve = NodePath("../../PanelNaumiEvolve")
+PanelNaumiFinal = NodePath("../../PanelNaumiFinal")
 
 [node name="Sound Debug" parent="." instance=ExtResource("4_uend7")]
 visible = false
 AudioBuses = Array[String](["naumiTap", "naumiZZZ", "golpeNaumi1", "golpe2Naumi1", "rompeNaumi1", "golpeNaumi2", "rompeNaumi2", "golpeNaumi3", "rompeNaumi3"])
+
+[node name="PanelNaumi0" parent="." instance=ExtResource("5_ytrgj")]
+layout_mode = 1
+offset_left = -322.0
+offset_top = 104.0
+offset_right = 330.0
+offset_bottom = 355.0
+pivot_offset = Vector2(326, 125.5)
+AppearInBeginning = false
+RepitingPanel = true
+Texts = Array[ExtResource("8_0ln0m")]([SubResource("Resource_dr3cr")])
+
+[node name="PanelNaumiEvolve" parent="." instance=ExtResource("5_ytrgj")]
+layout_mode = 1
+offset_left = -322.0
+offset_top = 104.0
+offset_right = 330.0
+offset_bottom = 355.0
+pivot_offset = Vector2(326, 125.5)
+AppearInBeginning = false
+RepitingPanel = true
+Texts = Array[ExtResource("8_0ln0m")]([SubResource("Resource_wm5gf")])
+
+[node name="PanelNaumiFinal" parent="." instance=ExtResource("5_ytrgj")]
+layout_mode = 1
+offset_left = -322.0
+offset_top = 104.0
+offset_right = 330.0
+offset_bottom = 332.0
+AppearInBeginning = false
+RepitingPanel = true
+Texts = Array[ExtResource("8_0ln0m")]([SubResource("Resource_r2qjx")])

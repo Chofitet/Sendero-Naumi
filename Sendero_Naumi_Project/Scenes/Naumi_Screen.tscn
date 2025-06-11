@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://chjfb4dxiy0js"]
+[gd_scene load_steps=23 format=3 uid="uid://chjfb4dxiy0js"]
 
 [ext_resource type="Texture2D" uid="uid://hf5y4ic16cqj" path="res://Sprites/Intro/intro - background.jpg" id="1_xw6ny"]
 [ext_resource type="Texture2D" uid="uid://jd6systmhxf1" path="res://Sprites/Intro/intro - suelo.png" id="2_5xcj6"]
@@ -37,6 +37,68 @@ script = ExtResource("14_l4mu4")
 NumberOfPanel = 1
 Place = 0
 
+[sub_resource type="Resource" id="Resource_1f1w7"]
+script = ExtResource("9_fn7ld")
+Place = 0
+texture = ExtResource("10_s8q8h")
+label = ""
+dontPassPanel = false
+exitPanel = true
+
+[sub_resource type="Resource" id="Resource_dr3cr"]
+script = ExtResource("11_17owp")
+Text = "
+[center]TU [b][color=#abc70c]N[/color][color=#d8b423]A[/color][color=#f47237]U[/color][color=#d8b423]M[/color][color=#abc70c]I[/color][/b] SIGUE EN SUEÑOS,
+[b]QUIZÁS SI RECORREMOS EL SENDERO…[/b]
+
+"
+writingSpeed = 0.0
+SizePanel = Vector2(652, 251)
+Position = Vector2(0, 0)
+buttons = Array[ExtResource("9_fn7ld")]([SubResource("Resource_1f1w7")])
+NumOfContent = 0
+
+[sub_resource type="Resource" id="Resource_d7cil"]
+script = ExtResource("9_fn7ld")
+Place = 0
+texture = ExtResource("10_s8q8h")
+label = ""
+dontPassPanel = false
+exitPanel = true
+
+[sub_resource type="Resource" id="Resource_wm5gf"]
+script = ExtResource("11_17owp")
+Text = "
+[center]¡TU [b][color=#abc70c]N[/color][color=#d8b423]A[/color][color=#f47237]U[/color][color=#d8b423]M[/color][color=#abc70c]I[/color][/b] DUERME OTRA VEZ!
+[b]TAL VEZ SI RECORREMOS MÁS…[/b]
+
+"
+writingSpeed = 0.0
+SizePanel = Vector2(652, 251)
+Position = Vector2(0, 0)
+buttons = Array[ExtResource("9_fn7ld")]([SubResource("Resource_d7cil")])
+NumOfContent = 0
+
+[sub_resource type="Resource" id="Resource_6md5c"]
+script = ExtResource("9_fn7ld")
+Place = 0
+texture = ExtResource("10_s8q8h")
+label = ""
+dontPassPanel = false
+exitPanel = true
+
+[sub_resource type="Resource" id="Resource_r2qjx"]
+script = ExtResource("11_17owp")
+Text = "[center]EL RESTO DEL SENDERO ESTÁ EN CONSTRUCCIÓN,
+¡TE ESPERAMOS PRONTO PARA CONTINUAR![b]
+
+"
+writingSpeed = 0.0
+SizePanel = Vector2(652, 228)
+Position = Vector2(0, 0)
+buttons = Array[ExtResource("9_fn7ld")]([SubResource("Resource_6md5c")])
+NumOfContent = 0
+
 [node name="Naumi_Screen" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -62,42 +124,62 @@ anchor_top = 0.387
 anchor_right = 0.5
 anchor_bottom = 0.387
 offset_left = -451.0
-offset_top = -802.36
+offset_top = -994.36
 offset_right = 451.0
-offset_bottom = 801.64
+offset_bottom = 609.64
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_xw6ny")
 expand_mode = 1
 
-[node name="ColorRect2" type="TextureRect" parent="."]
+[node name="Control" type="Control" parent="."]
+layout_mode = 1
+anchor_left = 0.5
+anchor_top = 0.537
+anchor_right = 0.5
+anchor_bottom = 0.537
+offset_top = 0.640015
+offset_bottom = 0.640015
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect2" type="TextureRect" parent="Control"]
+texture_repeat = 1
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.501
 anchor_top = 0.654
 anchor_right = 0.501
 anchor_bottom = 0.654
-offset_left = -585.72
-offset_top = -552.12
-offset_right = 584.28
-offset_bottom = 602.88
+offset_left = -589.0
+offset_top = -492.0
+offset_right = 581.0
+offset_bottom = 663.0
 grow_horizontal = 2
 grow_vertical = 0
 texture = ExtResource("2_5xcj6")
 expand_mode = 1
 
-[node name="Control" type="Control" parent="."]
+[node name="ColorRect" type="ColorRect" parent="Control/ColorRect2"]
 layout_mode = 1
-anchor_left = 0.497
-anchor_top = 0.723
-anchor_right = 0.497
-anchor_bottom = 0.723
-offset_left = 0.160004
-offset_top = 0.559998
-offset_right = 0.160004
-offset_bottom = 0.559998
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -589.0
+offset_top = -12.0
+offset_right = 589.0
+offset_bottom = 229.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(0.230469, 0.359375, 0.25, 1)
 
-[node name="NaumiController" parent="Control" instance=ExtResource("3_fn0c6")]
+[node name="NaumiController" parent="Control" node_paths=PackedStringArray("PanelNaumi0", "PanelNaumiEvolve", "PanelNaumiFinal") instance=ExtResource("3_fn0c6")]
+position = Vector2(-3.00006, 172)
+PanelNaumi0 = NodePath("../../PanelNaumi0")
+PanelNaumiEvolve = NodePath("../../PanelNaumiEvolve")
+PanelNaumiFinal = NodePath("../../PanelNaumiFinal")
 
 [node name="ButtonChangeScene" parent="." instance=ExtResource("4_s5wmx")]
 visible = false
@@ -134,6 +216,7 @@ offset_bottom = 104.0
 grow_horizontal = 0
 enterInBeggining = true
 noSquiggling = true
+noPop = false
 Icon = ExtResource("7_yiukw")
 
 [node name="ToContinue" type="Control" parent="."]
@@ -163,6 +246,38 @@ Texts = Array[ExtResource("11_17owp")]([SubResource("Resource_3alfx")])
 [node name="Panel(1) Btn(rigth)" parent="ToContinue/Panel" instance=ExtResource("12_wivqn")]
 Data = SubResource("Resource_fk4pf")
 Delay = 0.2
+
+[node name="PanelNaumi0" parent="." instance=ExtResource("8_qbqxm")]
+layout_mode = 1
+offset_left = -332.0
+offset_top = 101.0
+offset_right = 320.0
+offset_bottom = 352.0
+pivot_offset = Vector2(326, 125.5)
+AppearInBeginning = false
+RepitingPanel = true
+Texts = Array[ExtResource("11_17owp")]([SubResource("Resource_dr3cr")])
+
+[node name="PanelNaumiEvolve" parent="." instance=ExtResource("8_qbqxm")]
+layout_mode = 1
+offset_left = -332.0
+offset_top = 101.0
+offset_right = 320.0
+offset_bottom = 352.0
+pivot_offset = Vector2(326, 125.5)
+AppearInBeginning = false
+RepitingPanel = true
+Texts = Array[ExtResource("11_17owp")]([SubResource("Resource_wm5gf")])
+
+[node name="PanelNaumiFinal" parent="." instance=ExtResource("8_qbqxm")]
+layout_mode = 1
+offset_left = -332.0
+offset_top = 101.0
+offset_right = 320.0
+offset_bottom = 329.0
+AppearInBeginning = false
+RepitingPanel = true
+Texts = Array[ExtResource("11_17owp")]([SubResource("Resource_r2qjx")])
 
 [connection signal="ToContinue" from="Control/NaumiController" to="ToContinue/Panel" method="EnterPanel"]
 [connection signal="ToContinue" from="Control/NaumiController" to="ToContinue" method="set_visible" binds= [true]]

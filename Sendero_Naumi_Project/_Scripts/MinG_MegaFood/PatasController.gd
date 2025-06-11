@@ -47,6 +47,7 @@ func PlayEnterAnim():
 	SoundManager.play("llegada", animalsArray[inx_animal].name)
 
 func PlayCallAnim():
+	if onceWrongAnswere: return
 	if stopCall: return
 	buttonTouchAnimal.visible = false
 	animalsArray[inx_animal].play("call")
@@ -82,8 +83,13 @@ func BackToIdle():
 	animalsArray[inx_animal].play("idle")
 	timer.start()
 
+var onceWrongAnswere = false
+
 func WrongAns():
+	if onceWrongAnswere : return
+	onceWrongAnswere = true
 	$ReclamoTriggerSound.StopSoundsInCuttableQueue()
+	print("reclamo")
 	timer.timeout.disconnect(PlayCallAnim)
 	timer.stop()
 	buttonTouchAnimal.visible = false
@@ -98,6 +104,7 @@ func WrongAns():
 	RestartAfterWrong()
 	timer.timeout.connect(PlayCallAnim)
 	timer.start()
+	onceWrongAnswere = false
 
 func RestartAfterWrong():
 	ReorganizePlates.emit()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=142 format=3 uid="uid://hbmgu1q1d7os"]
+[gd_scene load_steps=144 format=3 uid="uid://hbmgu1q1d7os"]
 
 [ext_resource type="Script" path="res://_Scripts/Minigame_Save_Controller.gd" id="1_dk1kn"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/StateMachineMinigames.gd" id="2_445ba"]
@@ -57,6 +57,7 @@
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/FinState.gd" id="30_7lvq3"]
 [ext_resource type="Texture2D" uid="uid://cmgsgj2rngq6u" path="res://Sprites/ZonaGeología/SquigglingFoodtruck/plato carrognivoroSQUIG - foodtruck.png" id="31_j8vvo"]
 [ext_resource type="PackedScene" uid="uid://dlwmbps456ind" path="res://Scenes/Experiments/btnVolver.tscn" id="32_qpeuc"]
+[ext_resource type="PackedScene" uid="uid://c323s3uandu0t" path="res://Scenes/Zona_Megafauna/colliders_detector.tscn" id="32_xsr2q"]
 [ext_resource type="Texture2D" uid="uid://nef70gqfgp4n" path="res://Sprites/ZonaMegafauna/pata megaterio der.png" id="35_5wb20"]
 [ext_resource type="Texture2D" uid="uid://bn0ma3jsj556o" path="res://Sprites/ZonaMegafauna/pulgar - foodtruck.png" id="36_1p62h"]
 [ext_resource type="Texture2D" uid="uid://xvar6mq8kbud" path="res://Sprites/ZonaMegafauna/pata smilodon der.png" id="36_52pby"]
@@ -363,8 +364,11 @@ Position = Vector2(0, 0)
 buttons = Array[ExtResource("14_g877f")]([])
 NumOfContent = 0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_pj3pu"]
-size = Vector2(140, 130)
+[sub_resource type="CircleShape2D" id="CircleShape2D_r7x67"]
+radius = 158.028
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3mggm"]
+radius = 22.557
 
 [sub_resource type="Resource" id="Resource_f440k"]
 script = ExtResource("46_ocuar")
@@ -404,7 +408,7 @@ exitPanel = false
 [sub_resource type="Resource" id="Resource_kvod2"]
 script = ExtResource("16_g0euh")
 Text = "¡LISTO POR HOY!
-¿QUE LES PARECE SI CERRAMOS TEMPRANO?"
+¿QUÉ LES PARECE SI CERRAMOS TEMPRANO?"
 writingSpeed = 0.0
 SizePanel = Vector2(0, 0)
 Position = Vector2(0, 0)
@@ -1108,6 +1112,7 @@ Consignas = ["Dale a cada animal la comida correspondiente a su dieta", "Dale a 
 FadeInTrasitioned = true
 
 [node name="Contenido" type="Control" parent="FoodTruck/StateMachine/Consigna"]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -1370,6 +1375,8 @@ script = ExtResource("45_vkjsw")
 label = "intro"
 events = Array[ExtResource("46_ocuar")]([SubResource("Resource_s76v7")])
 
+[node name="btnVolver" parent="FoodTruck/StateMachine/Consigna/Contenido" instance=ExtResource("32_qpeuc")]
+
 [node name="Juego" type="Node" parent="FoodTruck/StateMachine" node_paths=PackedStringArray("NextState", "StateMachine")]
 script = ExtResource("5_ykya6")
 NextState = NodePath(".")
@@ -1379,7 +1386,6 @@ FadeInConsigna = true
 FadeInToFin = true
 
 [node name="Contenido" type="Control" parent="FoodTruck/StateMachine/Juego"]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -1506,6 +1512,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="collidersDetector" parent="FoodTruck/StateMachine/Juego/Contenido" instance=ExtResource("32_xsr2q")]
+layout_mode = 1
+
 [node name="PatasController" parent="FoodTruck/StateMachine/Juego/Contenido" instance=ExtResource("6_t8dfd")]
 layout_mode = 1
 anchors_preset = -1
@@ -1577,12 +1586,13 @@ grow_vertical = 2
 
 [node name="Spot" type="Area2D" parent="FoodTruck/StateMachine/Juego/Contenido/AnchorSpot" node_paths=PackedStringArray("RigthObject") groups=["spot"]]
 modulate = Color(1, 1, 1, 0)
+z_index = 1
 position = Vector2(-3, 0)
 script = ExtResource("6_ym134")
 RigthObject = NodePath("../../HBoxContainer/food1/DragObject")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FoodTruck/StateMachine/Juego/Contenido/AnchorSpot/Spot"]
-shape = SubResource("RectangleShape2D_pj3pu")
+shape = SubResource("CircleShape2D_r7x67")
 
 [node name="Sprite2D" type="Sprite2D" parent="FoodTruck/StateMachine/Juego/Contenido/AnchorSpot/Spot"]
 scale = Vector2(0.46729, 1)
@@ -1611,14 +1621,21 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.705, 0.705)
 script = ExtResource("8_25wym")
-limitGesture = 100.0
-limitHold = 300.0
+limitGesture = 75.0
+limitHold = 150.0
 limitunderHolf = 20.0
 
 [node name="food1" type="Sprite2D" parent="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer"]
 position = Vector2(57.1429, 329)
 scale = Vector2(0.945, 0.945)
 texture = ExtResource("9_1mktl")
+
+[node name="detector" type="Area2D" parent="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer/food1" groups=["dragObject"]]
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer/food1/detector"]
+shape = SubResource("CircleShape2D_3mggm")
+disabled = true
 
 [node name="DragObject" parent="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer/food1" node_paths=PackedStringArray("spot") instance=ExtResource("10_etwym")]
 spot = NodePath("../../../AnchorSpot/Spot")
@@ -1636,6 +1653,12 @@ position = Vector2(776.5, 324.823)
 scale = Vector2(0.945, 0.945)
 texture = ExtResource("11_ty4hw")
 
+[node name="detector" type="Area2D" parent="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer/food2" groups=["dragObject"]]
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer/food2/detector"]
+shape = SubResource("CircleShape2D_3mggm")
+
 [node name="DragObject" parent="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer/food2" node_paths=PackedStringArray("spot") instance=ExtResource("10_etwym")]
 spot = NodePath("../../../AnchorSpot/Spot")
 holdTime = 0.2
@@ -1652,6 +1675,13 @@ position = Vector2(1494.5, 328.143)
 scale = Vector2(0.945, 0.945)
 texture = ExtResource("12_yqdj4")
 
+[node name="detector" type="Area2D" parent="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer/food3" groups=["dragObject"]]
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer/food3/detector"]
+shape = SubResource("CircleShape2D_3mggm")
+disabled = true
+
 [node name="DragObject" parent="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer/food3" node_paths=PackedStringArray("spot") instance=ExtResource("10_etwym")]
 spot = NodePath("../../../AnchorSpot/Spot")
 holdTime = 0.2
@@ -1667,6 +1697,13 @@ ActiveInBegining = false
 position = Vector2(2224.5, 326.429)
 scale = Vector2(0.945, 0.945)
 texture = ExtResource("13_o6dmd")
+
+[node name="detector" type="Area2D" parent="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer/food4" groups=["dragObject"]]
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer/food4/detector"]
+shape = SubResource("CircleShape2D_3mggm")
+disabled = true
 
 [node name="DragObject" parent="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer/food4" node_paths=PackedStringArray("spot") instance=ExtResource("10_etwym")]
 spot = NodePath("../../../AnchorSpot/Spot")
@@ -1706,7 +1743,7 @@ Texts = Array[ExtResource("16_g0euh")]([SubResource("Resource_kvod2")])
 
 [node name="label" parent="FoodTruck/StateMachine/Juego/Contenido/FinalPanel" index="0"]
 text = "¡LISTO POR HOY!
-¿QUE LES PARECE SI CERRAMOS TEMPRANO?"
+¿QUÉ LES PARECE SI CERRAMOS TEMPRANO?"
 label_settings = ExtResource("25_agxub")
 
 [node name="BtnDerAnchor" parent="FoodTruck/StateMachine/Juego/Contenido/FinalPanel" index="3"]
@@ -2294,9 +2331,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -295.0
-offset_top = -111.0
+offset_top = -66.0
 offset_right = 310.0
-offset_bottom = -14.0
+offset_bottom = 31.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_constants/separation = 25
@@ -2339,8 +2376,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -308.0
-offset_top = -119.0
+offset_top = -72.0
 offset_right = 340.0
+offset_bottom = 47.0
 grow_horizontal = 2
 grow_vertical = 0
 
@@ -2456,10 +2494,10 @@ anchor_left = 0.5
 anchor_top = 0.693
 anchor_right = 0.5
 anchor_bottom = 0.693
-offset_left = -292.5
-offset_top = -42.816
-offset_right = 292.5
-offset_bottom = 43.184
+offset_left = -340.5
+offset_top = -2.31601
+offset_right = 340.5
+offset_bottom = 96.684
 grow_horizontal = 2
 grow_vertical = 2
 text = "MEGAFAUNA TRUCK"
@@ -2473,10 +2511,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -233.0
-offset_top = 10.0
-offset_right = 233.0
-offset_bottom = 96.0
+offset_left = -272.5
+offset_top = 44.0
+offset_right = 272.5
+offset_bottom = 143.0
 grow_horizontal = 2
 grow_vertical = 0
 pivot_offset = Vector2(233, 43)
@@ -2522,6 +2560,8 @@ AudioBuses = Array[String](["FoodtruckVolumen", "arbustos", "burbujaHabla", "ban
 [connection signal="Transitioned" from="FoodTruck/StateMachine/Juego" to="FoodTruck/StateMachine/Juego/Contenido/BlockScreen" method="SetVisibility" binds= [false]]
 [connection signal="EnterResult" from="FoodTruck/StateMachine/Juego/Contenido" to="FoodTruck/StateMachine/Juego/Contenido/PaperController/ButtonAppearButton" method="set_visible" binds= [true]]
 [connection signal="EnterResultDelay" from="FoodTruck/StateMachine/Juego/Contenido" to="FoodTruck/StateMachine/Juego/Contenido/PaperController/ButtonAppearButton" method="set_visible" binds= [false]]
+[connection signal="leftCollision" from="FoodTruck/StateMachine/Juego/Contenido/collidersDetector" to="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer" method="ClampLeftLimit"]
+[connection signal="rightCollision" from="FoodTruck/StateMachine/Juego/Contenido/collidersDetector" to="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer" method="ClampRightLimit"]
 [connection signal="EndComand" from="FoodTruck/StateMachine/Juego/Contenido/PatasController" to="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer/food1/SquigglingSprite" method="ActiveSquiggling"]
 [connection signal="EndComand" from="FoodTruck/StateMachine/Juego/Contenido/PatasController" to="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer/food2/SquigglingSprite" method="ActiveSquiggling"]
 [connection signal="EndComand" from="FoodTruck/StateMachine/Juego/Contenido/PatasController" to="FoodTruck/StateMachine/Juego/Contenido/HBoxContainer/food3/SquigglingSprite" method="ActiveSquiggling"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=278 format=3 uid="uid://cndqno434rnuu"]
+[gd_scene load_steps=277 format=3 uid="uid://cndqno434rnuu"]
 
 [ext_resource type="Script" path="res://_Scripts/Minigame_Save_Controller.gd" id="1_aaeor"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/StateMachineMinigames.gd" id="2_0bmn1"]
@@ -43,9 +43,10 @@
 [ext_resource type="AudioStream" uid="uid://b7x5jfqvpmjt6" path="res://Sounds/Transformaciones/Transformaciones - Avalancha v1.ogg" id="23_ndxcf"]
 [ext_resource type="AudioStream" uid="uid://do7fip63nqjic" path="res://Sounds/Transformaciones/Transformaciones - Terremoto1.ogg" id="24_knbh6"]
 [ext_resource type="AudioStream" uid="uid://bfwrpvikoybr4" path="res://Sounds/Transformaciones/Transformaciones - Terremoto3.ogg" id="25_fa4gl"]
+[ext_resource type="PackedScene" uid="uid://dhau0fvh0xq1k" path="res://Scenes/Experiments/lava_pice.tscn" id="25_k0nv8"]
 [ext_resource type="AudioStream" uid="uid://xk7sk0tjowhw" path="res://Sounds/Transformaciones/Transformaciones - Terremoto4.ogg" id="26_n347u"]
+[ext_resource type="Texture2D" uid="uid://bp0htfixseccf" path="res://Sprites/ZonaAstronomia/sol - donde.png" id="27_2ywfg"]
 [ext_resource type="Texture2D" uid="uid://cdl5qu2rw387c" path="res://Sprites/ZonaGeología/animacion chiquita - transformaciones.png" id="27_bw70x"]
-[ext_resource type="Texture2D" uid="uid://brkdgcwu7gjxg" path="res://Animations/lava_drop_anim_texture.tres" id="27_tqoby"]
 [ext_resource type="Script" path="res://_Scripts/PlayAnimation.gd" id="28_glfmw"]
 [ext_resource type="Script" path="res://_Scripts/MinG_Transformando/PlutonicaController.gd" id="29_n256j"]
 [ext_resource type="Texture2D" uid="uid://winge8sgodj3" path="res://Sprites/ZonaGeología/Piedras/plutonica - transformaciones.png" id="30_4817p"]
@@ -284,25 +285,21 @@ _data = {
 
 [sub_resource type="Curve2D" id="Curve2D_jcrho"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 81, 376, 0, 0, 11.785, 0.85, 202, 378, -4.09474, -23.9385, 4.09474, 23.9385, 192, 416, 0, 0, 0, 0, 230, 505, -22.6759, -39.0445, 22.6759, 39.0445, 247, 535, -14.3975, -1.05101, 14.3975, 1.05101, 329, 590, 0, 0, 0, 0, 447, 598)
+"points": PackedVector2Array(0, 0, 0, 0, 81, 376, 0, 0, 11.785, 0.85, 202, 378, -4.09474, -23.9385, 4.09474, 23.9385, 192, 416, 0, 0, 0, 0, 230, 505, -22.6759, -39.0445, 22.6759, 39.0445, 247, 535, -83.6692, 18.4997, 83.6692, -18.4997, 428, 591)
 }
-point_count = 7
-
-[sub_resource type="SkeletonModification2DTwoBoneIK" id="SkeletonModification2DTwoBoneIK_mbmh3"]
-target_nodepath = NodePath("../Targets/punta")
-joint_one_bone_idx = 1
-joint_one_bone2d_node = NodePath("Bone1/Bone2")
-joint_two_bone_idx = 2
-joint_two_bone2d_node = NodePath("Bone1/Bone2/Bone3")
-
-[sub_resource type="SkeletonModificationStack2D" id="SkeletonModificationStack2D_opoja"]
-enabled = true
-modification_count = 1
-modifications/0 = SubResource("SkeletonModification2DTwoBoneIK_mbmh3")
+point_count = 6
 
 [sub_resource type="Gradient" id="Gradient_66ce5"]
 offsets = PackedFloat32Array(0, 0.921739, 0.982609)
 colors = PackedColorArray(1, 1, 1, 0.53, 0.666667, 0.666667, 0.666667, 0.278431, 0.301961, 0.301961, 0.301961, 0)
+
+[sub_resource type="Curve" id="Curve_g84f3"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.543716, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.347368), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_gydxv"]
+offsets = PackedFloat32Array(0, 0.542936, 1)
+colors = PackedColorArray(2, 1, 1, 1, 24.2588, 1.50196, 0.168627, 0.752941, 0.847059, 0.67451, 0.14902, 0.266667)
 
 [sub_resource type="Animation" id="Animation_c6llx"]
 resource_name = "Lava_fall"
@@ -314,144 +311,190 @@ tracks/0/path = NodePath("PathFollow2D:progress_ratio")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(3.1, 4.7, 5.9, 9.4, 10),
-"transitions": PackedFloat32Array(1, 1, 0.757858, 1, 1),
+"times": PackedFloat32Array(2.9, 4.4, 7.8),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [0.0, 0.3972, 0.589818, 0.85, 0.87]
+"values": [0.589818, 0.63, 1.0]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("PathFollow2D/Node2D/Lava snake/Targets/punta:position")
+tracks/1/path = NodePath("../TapButton3/patch2:self_modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(3.1, 3.4, 4, 4.6, 5.1, 5.5, 5.9, 6.4, 7.5, 7.9, 8, 8.2, 9.4, 10),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(0.513062, -11.2644), Vector2(-50.9352, 27.2551), Vector2(-50.5394, 30.2564), Vector2(-14.1891, -18.3407), Vector2(-18.0676, -25.135), Vector2(-16.6169, -45.0754), Vector2(-34.3125, -65.5672), Vector2(-13.5067, -66.8607), Vector2(-20.9609, -39.3316), Vector2(-31.6098, -19.1912), Vector2(-31.8692, -19.0813), Vector2(-35.9861, -14.0377), Vector2(-51.1422, -12.5705), Vector2(-54.9209, -13.2973)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("PathFollow2D/Node2D/Lava snake/Skeleton2D/Bone1/Bone2:scale")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(9.4),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0.999843, 0.999843)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("PathFollow2D/Node2D/Lava snake/Skeleton2D/Bone1:rotation")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(4.6, 5.5, 6.4, 7.5, 8.1, 9.4, 10),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [0.0, 0.0, -0.0750492, -0.0837758, 0.0, 0.0, -0.413643]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("PathFollow2D/Node2D/Lava snake/Skeleton2D/Bone1/ColorRect:size")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(3.1, 6.4, 7.4, 8, 8.1, 8.2, 8.3, 9.5, 9.6, 9.7, 9.8, 9.9, 10),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [Vector2(42, 39), Vector2(71, 39), Vector2(50, 39), Vector2(65, 39), Vector2(68, 39), Vector2(68, 39), Vector2(59, 39), Vector2(49, 39), Vector2(46, 39), Vector2(43, 38), Vector2(41, 38), Vector2(39, 38), Vector2(31, 39)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("PathFollow2D/Node2D/Lava snake:modulate")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(3.1, 4.5, 4.6, 10, 11.7),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-tracks/6/type = "method"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("../Bloqueo4")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(6.1),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [true],
-"method": &"Setvisivility"
-}]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("../Preplutonica:self_modulate")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(3.1, 10, 11.7),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Color(2.00392, 1, 1, 0), Color(2.00392, 1, 1, 0), Color(2.00392, 1, 1, 1)]
-}
-tracks/8/type = "value"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("../TapButton3/patch2:self_modulate")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
 "times": PackedFloat32Array(3.1, 4.1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(0.564706, 0.564706, 0.564706, 0)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PathFollow2D/Lava/pivot:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(4.1, 4.4, 7.3),
+"transitions": PackedFloat32Array(1, 1, 2),
+"update": 0,
+"values": [Vector2(-22.1805, 19.4004), Vector2(0, 0), Vector2(0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PathFollow2D/Lava/pivot/body/LavaExperiment3:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(7.4),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-4.85431, 23.3101)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PathFollow2D/Lava/pivot/body/LavaExperiment3:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(7.4),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-1.29833]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("PathFollow2D/Lava/lavaExplosion:emitting")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(4.1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("PathFollow2D/Lava/pivot:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(4.1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("PathFollow2D/Lava/HumoParticulasAdelante:emitting")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(4.1, 10.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("PathFollow2D/Lava/pivot:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(9.8, 10.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("PathFollow2D/Node2D/Lava snake/Skeleton2D/polygons/Polygon2D:modulate")
+tracks/9/path = NodePath("../Preplutonica:self_modulate")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
-"times": PackedFloat32Array(4.8, 10, 11.7),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(9.8, 10.5),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 1), Color(0.9, 0.9, 0.9, 1), Color(0.8, 0.8, 0.8, 1)]
+"values": [Color(2.00392, 1, 1, 0), Color(2.00392, 1, 1, 1)]
 }
 tracks/10/type = "value"
 tracks/10/imported = false
 tracks/10/enabled = true
-tracks/10/path = NodePath("PathFollow2D/Node2D/Lava snake/Skeleton2D/polygons/Polygon2D2:modulate")
+tracks/10/path = NodePath("../Bloqueo4:self_modulate")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
-"times": PackedFloat32Array(4.8, 9.9, 11.7),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(4.1, 4.8),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 1), Color(0.849275, 0.849275, 0.849275, 1), Color(0.8, 0.8, 0.8, 1)]
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 tracks/11/type = "value"
 tracks/11/imported = false
 tracks/11/enabled = true
-tracks/11/path = NodePath("PathFollow2D/Node2D/Lava snake/Skeleton2D/polygons/Polygon2D3:modulate")
+tracks/11/path = NodePath("PathFollow2D/Lava/pivot/cola:position")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
-"times": PackedFloat32Array(4.8, 9.9, 11.7),
+"times": PackedFloat32Array(5.7, 7.8, 9.8),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 1), Color(0.849275, 0.849275, 0.849275, 1), Color(0.8, 0.8, 0.8, 1)]
+"values": [Vector2(-8.30219, 30.6398), Vector2(-8.30219, 30.6398), Vector2(-31.3845, -11.2833)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("PathFollow2D/Lava/pivot/cola:rotation")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(4.1, 5, 6.6, 7.8, 9.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.67266, 0.637464, 0.555341, 0.373141, -0.372108]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("PathFollow2D/Lava/pivot/body:position")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(7.8, 9.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-3.2749, -26.1106)]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("PathFollow2D/Lava/pivot/body:rotation")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(7.8, 9.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [2.98023e-08, 0.787567]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("PathFollow2D/Lava/pivot/body/LavaExperiment6:position")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(9.8),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-1.07123, 28.8246)]
 }
 
 [sub_resource type="Animation" id="Animation_k2klx"]
@@ -471,79 +514,79 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("PathFollow2D/Node2D/Lava snake/Targets/punta:position")
+tracks/1/path = NodePath("PathFollow2D/Lava/pivot:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0.513062, -11.2644)]
+"values": [Vector2(0, 0)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("PathFollow2D/Node2D/Lava snake/Skeleton2D/Bone1/Bone2:scale")
+tracks/2/path = NodePath("PathFollow2D/Lava/pivot/body/LavaExperiment3:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0.999843, 0.999843)]
+"values": [Vector2(-4.85431, 23.3101)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("PathFollow2D/Node2D/Lava snake/Skeleton2D/Bone1:rotation")
+tracks/3/path = NodePath("PathFollow2D/Lava/pivot/body/LavaExperiment3:rotation")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [0.0]
+"values": [-1.29833]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("PathFollow2D/Node2D/Lava snake/Skeleton2D/Bone1/ColorRect:size")
+tracks/4/path = NodePath("PathFollow2D/Lava/lavaExplosion:emitting")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(73, 39)]
+"update": 1,
+"values": [false]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("PathFollow2D/Node2D/Lava snake:modulate")
+tracks/5/path = NodePath("PathFollow2D/Lava/pivot:visible")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
+"update": 1,
+"values": [false]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("../Preplutonica:self_modulate")
+tracks/6/path = NodePath("PathFollow2D/Lava/HumoParticulasAdelante:emitting")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(2.00392, 1, 1, 0)]
+"update": 1,
+"values": [false]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("../TapButton3/patch2:self_modulate")
+tracks/7/path = NodePath("PathFollow2D/Lava/pivot:modulate")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
@@ -555,19 +598,19 @@ tracks/7/keys = {
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("PathFollow2D/Node2D/Lava snake/Skeleton2D/polygons/Polygon2D:modulate")
+tracks/8/path = NodePath("../Preplutonica:self_modulate")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 1)]
+"values": [Color(2.00392, 1, 1, 0)]
 }
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("PathFollow2D/Node2D/Lava snake/Skeleton2D/polygons/Polygon2D2:modulate")
+tracks/9/path = NodePath("../TapButton3/patch2:self_modulate")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
@@ -579,14 +622,74 @@ tracks/9/keys = {
 tracks/10/type = "value"
 tracks/10/imported = false
 tracks/10/enabled = true
-tracks/10/path = NodePath("PathFollow2D/Node2D/Lava snake/Skeleton2D/polygons/Polygon2D3:modulate")
+tracks/10/path = NodePath("../Bloqueo4:self_modulate")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 1)]
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("PathFollow2D/Lava/pivot/cola:position")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-8.30219, 30.6398)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("PathFollow2D/Lava/pivot/cola:rotation")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("PathFollow2D/Lava/pivot/body:position")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("PathFollow2D/Lava/pivot/body:rotation")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [2.98023e-08]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("PathFollow2D/Lava/pivot/body/LavaExperiment6:position")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-1.07123, 28.8246)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7abuo"]
@@ -597,29 +700,9 @@ _data = {
 
 [sub_resource type="Curve2D" id="Curve2D_f3wbe"]
 _data = {
-"points": PackedVector2Array(-40.1268, 7.60443, 40.1268, -7.60443, -27, 171, -39.25, 7, 39.25, -7, 97, 142, -58.5331, -75.2465, 58.5331, 75.2465, 208, 285, 0, 0, 0, 0, 280, 259)
+"points": PackedVector2Array(-21.0647, 129.862, 21.0647, -129.862, 75, 183, -79.2854, -39.6427, 79.2854, 39.6427, 257, 280)
 }
-point_count = 4
-
-[sub_resource type="SkeletonModification2DTwoBoneIK" id="SkeletonModification2DTwoBoneIK_1v47h"]
-target_nodepath = NodePath("../Targets/punta")
-joint_one_bone_idx = 1
-joint_one_bone2d_node = NodePath("Bone1/Bone2")
-joint_two_bone_idx = 2
-joint_two_bone2d_node = NodePath("Bone1/Bone2/Bone3")
-
-[sub_resource type="SkeletonModificationStack2D" id="SkeletonModificationStack2D_cc7e6"]
-enabled = true
-modification_count = 1
-modifications/0 = SubResource("SkeletonModification2DTwoBoneIK_1v47h")
-
-[sub_resource type="Curve" id="Curve_1byn1"]
-_data = [Vector2(0, 0.505263), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
-
-[sub_resource type="Gradient" id="Gradient_vn7px"]
-offsets = PackedFloat32Array(0, 0.921739, 0.982609)
-colors = PackedColorArray(1, 1, 1, 1, 0.301961, 0.301961, 0.301961, 0.172549, 0.301961, 0.301961, 0.301961, 0)
 
 [sub_resource type="Animation" id="Animation_dck0v"]
 length = 0.001
@@ -638,103 +721,103 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("PathFollow2D/Node2D/Lava snake/Targets/punta:position")
+tracks/1/path = NodePath("../Volcanica:self_modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-32.0682, -9.26387)]
+"values": [Color(1, 1, 1, 0)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("PathFollow2D/Node2D/Lava snake/Skeleton2D/Bone1:rotation")
+tracks/2/path = NodePath("../Volcanica:rotation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [0.0]
+"values": [1.06465]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("PathFollow2D/Node2D/Lava snake:modulate")
+tracks/3/path = NodePath("PathFollow2D/lava:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 0)]
+"values": [Vector2(0, 0)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("../Volcanica:self_modulate")
+tracks/4/path = NodePath("PathFollow2D/lava/pivot:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 0)]
+"values": [Vector2(0, 0)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("../Volcanica:rotation")
+tracks/5/path = NodePath("PathFollow2D/lava/pivot:rotation")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [1.06465]
+"values": [0.0]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("PathFollow2D/Node2D/Lava snake/Skeleton2D/polygons/HumoParticulasAtras:emitting")
+tracks/6/path = NodePath("PathFollow2D/lava/pivot/LavaExperiment9:position")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"update": 0,
+"values": [Vector2(-6.96146, 37.4305)]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("PathFollow2D/Node2D/Lava snake/Skeleton2D/polygons/HumoParticulasAdelante:emitting")
+tracks/7/path = NodePath("PathFollow2D/lava/pivot/LavaExperiment9:rotation")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"update": 0,
+"values": [-1.37175]
 }
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("HumoVolcan:emitting")
+tracks/8/path = NodePath("PathFollow2D/lava/pivot:modulate")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
 }
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("MoleParticles:emitting")
+tracks/9/path = NodePath("PathFollow2D/lava/pivot:visible")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
@@ -743,10 +826,142 @@ tracks/9/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("HumoVolcan:emitting")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("MoleParticles:emitting")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("lavaExplosion:emitting")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("PathFollow2D/lava/HumoParticulasAdelante:emitting")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("PathFollow2D/lava/pivot/LavaExperiment12:position")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-4.40572, 31.5975)]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("PathFollow2D/lava/pivot/LavaExperiment12:rotation")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-1.59449]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("PathFollow2D/lava/pivot/cola:position")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-11.4933, 28.8484)]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("PathFollow2D/lava/pivot/cola:rotation")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-1.93038]
+}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("PathFollow2D/lava/pivot/LavaExperiment13:position")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-13.2885, 27.0071)]
+}
+tracks/19/type = "value"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("PathFollow2D/lava/pivot/LavaExperiment13:rotation")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [2.09349]
+}
+tracks/20/type = "value"
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/path = NodePath("lavaExplosion2:emitting")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_rju6l"]
 resource_name = "lava_fall"
-length = 8.0
+length = 6.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -754,102 +969,234 @@ tracks/0/path = NodePath("PathFollow2D:progress_ratio")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 5),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0.2, 4.5),
+"transitions": PackedFloat32Array(0.784584, 1),
 "update": 0,
-"values": [0.0, 0.7]
+"values": [0.25, 0.847561]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("PathFollow2D/Node2D/Lava snake/Targets/punta:position")
+tracks/1/path = NodePath("../Volcanica:self_modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.6, 1.2, 1.7, 1.8, 2, 2.1, 2.2, 2.3, 2.6, 3.4, 3.8, 4.1, 5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(-32.0682, -9.26387), Vector2(-35.4465, -6.84004), Vector2(-46.0187, 13.0491), Vector2(-55.9465, 34.1764), Vector2(-58.3804, 37.2222), Vector2(-64.6842, 42.4671), Vector2(-68.7284, 45.6881), Vector2(-55.1718, 41.7611), Vector2(-45.2781, 26.4609), Vector2(-29.7303, -17.3783), Vector2(-33.5179, -51.6219), Vector2(-39.8546, -51.2098), Vector2(-52.9607, -68.8078), Vector2(-89.6001, -73.4)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("PathFollow2D/Node2D/Lava snake/Skeleton2D/Bone1:rotation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 2.6, 3.4, 3.8, 5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 0,
-"values": [0.0, 0.0, -0.200713, -0.200713, -1.58825]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("PathFollow2D/Node2D/Lava snake:modulate")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.1, 5, 6.8),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("../Volcanica:self_modulate")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 5, 6.8),
+"times": PackedFloat32Array(0, 4.6, 5.4),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(2.01, 1, 1, 1)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PathFollow2D/lava:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(3.9),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PathFollow2D/lava/pivot:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2, 2.4, 3.9, 4.5),
+"transitions": PackedFloat32Array(1, 1, 2, 1, 1),
+"update": 0,
+"values": [Vector2(11.922, 15.4356), Vector2(0, 0), Vector2(0, 0), Vector2(1.95909, -23.2516), Vector2(-1.68962, -24.3383)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PathFollow2D/lava/pivot:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.2, 2.4, 3.9, 4.5),
+"transitions": PackedFloat32Array(1, 1, 2, 1, 1),
+"update": 0,
+"values": [-1.16307, 0.0, 0.0, 0.58294, 0.232402]
+}
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("PathFollow2D/Node2D/Lava snake/Skeleton2D/polygons/HumoParticulasAtras:emitting")
+tracks/5/path = NodePath("PathFollow2D/lava/pivot/LavaExperiment9:position")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0.4),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
+"times": PackedFloat32Array(0, 1.8, 3.5, 4.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-12.3401, 19.3535), Vector2(-19.3725, 29.6906), Vector2(-10.6471, 20.7193), Vector2(2.39482, 22.1732)]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("PathFollow2D/Node2D/Lava snake/Skeleton2D/polygons/HumoParticulasAdelante:emitting")
+tracks/6/path = NodePath("PathFollow2D/lava/pivot/LavaExperiment9:rotation")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0.4),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
+"times": PackedFloat32Array(0, 1.8, 3.5, 4.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [-2.36082, -1.24903, -1.87325, -3.2662]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("HumoVolcan:emitting")
+tracks/7/path = NodePath("PathFollow2D/lava/pivot:modulate")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
+"times": PackedFloat32Array(4.6, 5.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("PathFollow2D/lava/pivot:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
 }
-tracks/8/type = "value"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("MoleParticles:emitting")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("HumoVolcan:emitting")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("MoleParticles:emitting")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("lavaExplosion:emitting")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("PathFollow2D/lava/HumoParticulasAdelante:emitting")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0.1, 5.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("PathFollow2D/lava/pivot/LavaExperiment12:position")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(2.6, 4.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(6.22433, 24.0475), Vector2(-11.4918, 15.8397)]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("PathFollow2D/lava/pivot/LavaExperiment12:rotation")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(2.6, 4.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-2.06923, -2.41445]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("PathFollow2D/lava/pivot/cola:position")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(1.8, 2.8, 4.1),
+"transitions": PackedFloat32Array(1, 2, 1),
+"update": 0,
+"values": [Vector2(-19.7136, 32.8344), Vector2(-11.4933, 28.8484), Vector2(49.5547, 16.9883)]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("PathFollow2D/lava/pivot/cola:rotation")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0, 1.8, 2.6, 3.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [-1.93038, -0.356341, -0.0378677, -0.283648]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("PathFollow2D/lava/pivot/LavaExperiment13:position")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(2.3, 4.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-13.2885, 27.0071), Vector2(-1.79482, 18.0728)]
+}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("PathFollow2D/lava/pivot/LavaExperiment13:rotation")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(2.3, 4.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [2.09349, 0.716716]
+}
+tracks/19/type = "value"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("lavaExplosion2:emitting")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -862,15 +1209,23 @@ _data = {
 "lava_fall": SubResource("Animation_rju6l")
 }
 
+[sub_resource type="Curve" id="Curve_1byn1"]
+_data = [Vector2(0, 0.505263), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_vn7px"]
+offsets = PackedFloat32Array(0, 0.921739, 0.982609)
+colors = PackedColorArray(1, 1, 1, 1, 0.301961, 0.301961, 0.301961, 0.172549, 0.301961, 0.301961, 0.301961, 0)
+
 [sub_resource type="Gradient" id="Gradient_ngxtp"]
 offsets = PackedFloat32Array(0, 0.504425, 1)
 colors = PackedColorArray(0.34902, 0.152941, 0, 1, 0.35, 0.35, 0.35, 1, 0.640625, 0.5625, 0.441406, 1)
 
 [sub_resource type="Curve2D" id="Curve2D_0sshs"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 354.89, 828, 5.46198, 101.535, -5.46198, -101.535, 352.066, 727, 11.4205, 5.77429, -11.4205, -5.77429, 316.295, 618, 55.286, -61.5017, -55.286, 61.5017, 204.274, 654, 82.397, -131.133, -82.397, 131.133, 44.2436, 789, 11.4928, 31.4799, -11.4928, -31.4799, -116.728, 834, 6.48267, 38.7873, -6.48267, -38.7873, -132.731, 771, 1.58316, 61.8059, -1.58316, -61.8059, -144.027, 665)
+"points": PackedVector2Array(-12.6796, 276.126, 12.6796, -276.126, 354.89, 828, 57.3993, -59.2568, -57.3993, 59.2568, 204.274, 654, 113.568, -127.766, -113.568, 127.766, 44.2436, 789, 19.5459, 203.236, -19.5459, -203.236, -144.027, 665)
 }
-point_count = 8
+point_count = 4
 
 [sub_resource type="Animation" id="Animation_mll3o"]
 length = 0.001
@@ -976,13 +1331,13 @@ point_count = 3
 
 [sub_resource type="Curve2D" id="Curve2D_66iyj"]
 _data = {
-"points": PackedVector2Array(3, 21.6914, -3, -21.6914, 90, 355.125, 0, 0, 0, 0, 73, 300.9, -24.6342, 49.7098, 24.6342, -49.7098, 86, 165.368)
+"points": PackedVector2Array(3, 21.6914, -3, -21.6914, 95, 356.088, 0, 0, 0, 0, 73, 300.9, -24.6342, 49.7098, 24.6342, -49.7098, 86, 165.368)
 }
 point_count = 3
 
 [sub_resource type="Curve2D" id="Curve2D_y5qc3"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 125, 762, 1.63781, 55.9659, -1.63781, -55.9659, 115, 550, 0, 0, 0, 0, 89, 345)
+"points": PackedVector2Array(0, 0, 0, 0, 125, 762, 8.03795, 54.8416, -8.03795, -54.8416, 115, 550, -0.287549, 17.9539, 0.287549, -17.9539, 94, 346)
 }
 point_count = 3
 
@@ -1135,6 +1490,30 @@ tracks/5/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("lavaExplosion2:emitting")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath(".:self_modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_ksyny"]
 resource_name = "cueva_appear"
@@ -1280,6 +1659,42 @@ tracks/10/loop_wrap = true
 tracks/10/keys = {
 "clips": PackedStringArray("lava_face_anim_back"),
 "times": PackedFloat32Array(3.9)
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("lavaExplosion2:emitting")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath(".:visible")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath(".:self_modulate")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kub00"]
@@ -4335,16 +4750,16 @@ script = ExtResource("13_r3rxi")
 Text = "
 [center][b]CUANDO UNA ROCA SE ROMPE[/b]
 LLAMAMOS AL CONJUNTO DE SUS PEDAZOS:
-[b]SEDIMENTOS[/b].
+[b]SEDIMENTOS[/b]
 
 SI RECIBEN MUCHA PRESIÓN
 [color=#dab21e]ESTOS PUEDEN ENDURECERSE[/color]
-¡E INCLUIR HUESOS EN SU COMPOSICIÓN!
+[b]¡E INCLUIR HUESOS EN SU COMPOSICIÓN![/b]
 
 ESTE PROCESO PUEDE TARDAR
-ENTRE HORAS A UN MILLÓN DE AÑOS
+DESDE HORAS HASTA UN MILLÓN DE AÑOS
 
-ASÍ NACEN LAS:
+ASÍ NACEN LAS
 [font_size={40}][b][color=#dab21e]ROCAS SEDIMENTARIAS[/color][/b]
 
 
@@ -4371,13 +4786,13 @@ exitPanel = false
 [sub_resource type="Resource" id="Resource_aw4l0"]
 script = ExtResource("13_r3rxi")
 Text = "
-[center][b]ANTE GRAN CALOR O PRESIÓN[/b]
+[center][b]ANTE GRAN CALOR O PRESIÓN,[/b]
 UNA ROCA PUEDE MODIFICAR
-SU [font_size={33}]F[/font_size][font_size={19}]o[/font_size][font_size={25}]R[/font_size][font_size={50}]m[/font_size][font_size={31}]a[/font_size] Y SUS [color=#f28787]C[/color][color=#e89ce4]O[/color][color=#c8ea76]L[/color][color=#70e8ef]O[/color][color=#e9d1d1]R[/color][color=#d8bc66]E[/color][color=#81ef27]S[/color]
+SU [font_size={33}]F[/font_size][font_size={19}]o[/font_size][font_size={25}]R[/font_size][font_size={50}]m[/font_size][font_size={60}]a[/font_size] Y SUS [color=#f28787]C[/color][color=#e89ce4]O[/color][color=#c8ea76]L[/color][color=#70e8ef]O[/color][color=#e9d1d1]R[/color][color=#d8bc66]E[/color][color=#81ef27]S[/color]
 
 SI DURANTE ESE CAMBIO
 [color=#dab21e]LA ROCA NO ES DESTRUIDA POR COMPLETO[/color]
-SE CONVIERTE EN UNA:
+SE CONVIERTE EN UNA
 [font_size={40}][b][color=#dab21e]ROCA METAMÓRFICA[/color][/b]
 
 
@@ -4407,11 +4822,11 @@ Text = "[center][b][color=#dab21e]EL MAGMA ES ROCA FUNDIDA
 QUE SE ENCUENTRA DENTRO DE LA TIERRA[/color][/b]
 
 ¡PUEDE TENER UNA TEMPERATURA DE 
-ENTRE 850 A 1200 GRADOS!
+ENTRE 850 Y 1200°C!
 
-[color=#dab21e]CUANDO EL MAGMA SE ENFRÍA[/color]
+[color=#dab21e]CUANDO EL MAGMA SE ENFRÍA,[/color]
 MUY LENTAMENTE [b]SE PONE SÓLIDO[b]
-Y SE CONVIERTE EN UNA:
+Y SE CONVIERTE EN UNA
 [font_size={40}][b][color=#dab21e]ROCA ÍGNEA PLUTÓNICA[/color][/b]
 
 "
@@ -4436,8 +4851,8 @@ exitPanel = false
 
 [sub_resource type="Resource" id="Resource_dyytj"]
 script = ExtResource("13_r3rxi")
-Text = "[center][b]SI EL MAGMA SALE A LA SUPERFICIE 
-[color=#dab21e]SE LO LLAMA LAVA[/color][/b]
+Text = "[center][b]SI EL MAGMA SALE A LA SUPERFICIE, 
+[color=#dab21e]SE LE LLAMA LAVA[/color][/b]
 
 ESTA [b]SE ENFRÍA MUCHO MÁS RÁPIDO[/b] 
 AL ESTAR EN LA SUPERFICIE
@@ -4487,7 +4902,7 @@ exitPanel = false
 [sub_resource type="Resource" id="Resource_emx5b"]
 script = ExtResource("13_r3rxi")
 Text = "
-[center]PODES TOCARLAS PARA 
+[center]PODÉS TOCARLAS PARA 
 VER SUS TRANSFORMACIONES OTRA VEZ[b]"
 writingSpeed = 0.0
 SizePanel = Vector2(678, 254)
@@ -4871,6 +5286,18 @@ position = Vector2(-177, 874)
 rotation = -2.18931
 texture = ExtResource("32_bldxx")
 
+[node name="sssss" type="Sprite2D" parent="Transformando/StateMachine/Consigna/Contenido/Control"]
+clip_children = 2
+position = Vector2(-343, -60)
+rotation = 1.82466
+texture = ExtResource("11_d535g")
+
+[node name="lavaDerretida" type="Sprite2D" parent="Transformando/StateMachine/Consigna/Contenido/Control/sssss"]
+position = Vector2(11, -9.00003)
+rotation = -1.55975
+scale = Vector2(1.27112, 1.27112)
+texture = ExtResource("21_13nxm")
+
 [node name="PanelIntro1" parent="Transformando/StateMachine/Consigna/Contenido" instance=ExtResource("10_2d6bp")]
 modulate = Color(0.85, 0.85, 0.85, 1)
 layout_mode = 1
@@ -4969,6 +5396,8 @@ Data = SubResource("Resource_cg5yw")
 Data = SubResource("Resource_r05t1")
 Delay = 0.2
 
+[node name="btnVolver" parent="Transformando/StateMachine/Consigna/Contenido" instance=ExtResource("52_ke02p")]
+
 [node name="Juego" type="Node" parent="Transformando/StateMachine" node_paths=PackedStringArray("NextState", "StateMachine")]
 script = ExtResource("5_twmif")
 NextState = NodePath(".")
@@ -5033,118 +5462,123 @@ expand_mode = 1
 
 [node name="Lava_Fall" type="Path2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control"]
 position = Vector2(51, 31)
+rotation = -0.000770245
 curve = SubResource("Curve2D_jcrho")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Lava_Fall"]
 position = Vector2(81, 376)
 rotation = 0.0165274
 
-[node name="Node2D" type="Node2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Lava_Fall/PathFollow2D"]
+[node name="Lava" type="Node2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Lava_Fall/PathFollow2D"]
 rotation = 0.71733
 
-[node name="Lava snake" type="Node2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Lava_Fall/PathFollow2D/Node2D"]
-modulate = Color(1, 1, 1, 0)
-position = Vector2(102.817, -83.6465)
-rotation = -0.752077
+[node name="pivot" type="Node2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Lava_Fall/PathFollow2D/Lava"]
+visible = false
+rotation = 0.407856
 
-[node name="Skeleton2D" type="Skeleton2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Lava_Fall/PathFollow2D/Node2D/Lava snake"]
-scale = Vector2(1.705, 1.705)
-modification_stack = SubResource("SkeletonModificationStack2D_opoja")
+[node name="body" type="Node2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Lava_Fall/PathFollow2D/Lava/pivot"]
 
-[node name="Bone1" type="Bone2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Lava_Fall/PathFollow2D/Node2D/Lava snake/Skeleton2D"]
-position = Vector2(-96, -6)
-scale = Vector2(0.999827, 0.999831)
-skew = -0.000194311
-rest = Transform2D(1, 0, 0, 1, 0, 0)
-editor_settings/show_bone_gizmo = false
+[node name="LavaExperiment6" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Lava_Fall/PathFollow2D/Lava/pivot/body" instance=ExtResource("25_k0nv8")]
+position = Vector2(-1.07123, 28.8246)
+rotation = -2.47091
 
-[node name="Bone2" type="Bone2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Lava_Fall/PathFollow2D/Node2D/Lava snake/Skeleton2D/Bone1"]
-position = Vector2(32, 0)
-rotation = 0.0811144
-scale = Vector2(0.999843, 0.999843)
-skew = -0.00138235
-rest = Transform2D(1, 0, 0, 1, 32, 0)
-editor_settings/show_bone_gizmo = false
-metadata/_local_pose_override_enabled_ = true
+[node name="LavaExperiment2" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Lava_Fall/PathFollow2D/Lava/pivot/body" instance=ExtResource("25_k0nv8")]
+position = Vector2(12.5198, -11.6671)
+rotation = -0.602951
 
-[node name="Bone3" type="Bone2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Lava_Fall/PathFollow2D/Node2D/Lava snake/Skeleton2D/Bone1/Bone2"]
-position = Vector2(28.2843, -0.121915)
-rotation = -0.00147328
-scale = Vector2(0.999829, 0.999829)
-rest = Transform2D(1, 0, 0, 1, 32, 0)
-editor_settings/show_bone_gizmo = false
-metadata/_local_pose_override_enabled_ = true
+[node name="LavaExperiment" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Lava_Fall/PathFollow2D/Lava/pivot/body" instance=ExtResource("25_k0nv8")]
+position = Vector2(2.05377, 0.153351)
+rotation = -1.15317
 
-[node name="ColorRect" type="ColorRect" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Lava_Fall/PathFollow2D/Node2D/Lava snake/Skeleton2D/Bone1/Bone2/Bone3"]
-offset_left = 5.0
-offset_top = 8.0
-offset_right = 20.0
-offset_bottom = 21.0
-rotation = 0.00174533
-color = Color(0.832031, 0, 0, 1)
+[node name="LavaExperiment4" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Lava_Fall/PathFollow2D/Lava/pivot/body" instance=ExtResource("25_k0nv8")]
+modulate = Color(0.996094, 0.113281, 0.109375, 1)
+position = Vector2(7.30261, 2.72327)
+rotation = 2.06402
 
-[node name="ColorRect" type="ColorRect" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Lava_Fall/PathFollow2D/Node2D/Lava snake/Skeleton2D/Bone1/Bone2"]
-offset_left = 5.0
-offset_top = 7.0
-offset_right = 27.0
-offset_bottom = 16.0
-rotation = 0.00174533
-color = Color(0.832031, 0, 0, 1)
+[node name="LavaExperiment9" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Lava_Fall/PathFollow2D/Lava/pivot/body" instance=ExtResource("25_k0nv8")]
+position = Vector2(18.4891, 21.3343)
+rotation = 2.06402
 
-[node name="ColorRect" type="ColorRect" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Lava_Fall/PathFollow2D/Node2D/Lava snake/Skeleton2D/Bone1"]
-offset_top = 8.0
-offset_right = 73.0
-offset_bottom = 47.0
-rotation = -0.267035
-color = Color(0.832031, 0, 0, 1)
+[node name="LavaExperiment10" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Lava_Fall/PathFollow2D/Lava/pivot/body" instance=ExtResource("25_k0nv8")]
+position = Vector2(29.1002, 4.26361)
+rotation = 1.79429
 
-[node name="polygons" type="Node2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Lava_Fall/PathFollow2D/Node2D/Lava snake/Skeleton2D"]
+[node name="LavaExperiment11" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Lava_Fall/PathFollow2D/Lava/pivot/body" instance=ExtResource("25_k0nv8")]
+modulate = Color(0.996094, 0.113281, 0.109375, 1)
+position = Vector2(28.499, -17.1989)
+rotation = 1.79429
 
-[node name="Polygon2D" type="Polygon2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Lava_Fall/PathFollow2D/Node2D/Lava snake/Skeleton2D/polygons"]
-position = Vector2(31, -8)
-scale = Vector2(1.0625, 1)
-color = Color(1.18, 2, 2, 1)
-texture = ExtResource("27_tqoby")
-skeleton = NodePath("../..")
-polygon = PackedVector2Array(0, 0, 32, 0, 32, 16, 0, 16, 8, 0, 8, 16, 24, 0, 24, 16)
-uv = PackedVector2Array(0, 0, 32, 0, 32, 16, 0, 16, 8, 0, 8, 16, 24, 0, 24, 16)
-polygons = [PackedInt32Array(0, 4, 5, 3), PackedInt32Array(4, 6, 7, 5), PackedInt32Array(1, 6, 7, 2)]
-bones = ["Bone1", PackedFloat32Array(1, 0, 0, 1, 0, 0, 0, 0), "Bone1/Bone2", PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1), "Bone1/Bone2/Bone3", PackedFloat32Array(0, 0.51, 0.51, 0, 0, 0, 0, 0)]
-internal_vertex_count = 4
+[node name="LavaExperiment5" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Lava_Fall/PathFollow2D/Lava/pivot/body" instance=ExtResource("25_k0nv8")]
+modulate = Color(0.996094, 0.113281, 0.109375, 1)
+position = Vector2(-2.74963, 26.1928)
+rotation = 2.08581
 
-[node name="Polygon2D2" type="Polygon2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Lava_Fall/PathFollow2D/Node2D/Lava snake/Skeleton2D/polygons"]
-position = Vector2(64, -8)
-color = Color(10, 10, 10, 1)
-texture = ExtResource("27_tqoby")
-skeleton = NodePath("../..")
-polygon = PackedVector2Array(0, 0, 0, 16, 24, 16, 28, 12.4375, 29.25, 8.0625, 27.75, 3.25, 24, 0, 8, 0, 8, 16, 16, 0, 16, 16)
-uv = PackedVector2Array(0, 0, 0, 16, 24, 16, 28, 12.4375, 29.25, 8.0625, 27.75, 3.25, 24, 0, 8, 0, 8, 16, 16, 0, 16, 16)
-polygons = [PackedInt32Array(0, 1, 8, 7), PackedInt32Array(7, 9, 10, 8), PackedInt32Array(9, 6, 5, 4, 3, 2, 10)]
-bones = ["Bone1", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Bone1/Bone2", PackedFloat32Array(1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Bone1/Bone2/Bone3", PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1)]
-internal_vertex_count = 4
+[node name="LavaExperiment13" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Lava_Fall/PathFollow2D/Lava/pivot/body" instance=ExtResource("25_k0nv8")]
+modulate = Color(0.996094, 0.113281, 0.109375, 1)
+position = Vector2(1.64355, 3.79166)
+rotation = 2.08581
 
-[node name="Polygon2D3" type="Polygon2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Lava_Fall/PathFollow2D/Node2D/Lava snake/Skeleton2D/polygons"]
-position = Vector2(0, -8)
-texture = ExtResource("27_tqoby")
-skeleton = NodePath("../..")
-polygon = PackedVector2Array(24, 0, 32, 0, 32, 16, 24, 16, 8, 16, 0, 16, 16, 8, 18.1631, 3.28992)
-uv = PackedVector2Array(24, 0, 32, 0, 32, 16, 24, 16, 8, 16, 0, 16, 16, 8, 18.1631, 3.28992)
-polygons = [PackedInt32Array(5, 3, 0, 7, 6), PackedInt32Array(3, 2, 1, 0)]
-bones = ["Bone1", PackedFloat32Array(1, 1, 1, 1, 1, 1, 0.56, 1), "Bone1/Bone2", PackedFloat32Array(0, 1, 1, 0, 0, 0, 0, 0), "Bone1/Bone2/Bone3", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0)]
+[node name="LavaExperiment8" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Lava_Fall/PathFollow2D/Lava/pivot/body" instance=ExtResource("25_k0nv8")]
+modulate = Color(0.996094, 0.113281, 0.109375, 1)
+position = Vector2(18.0001, 15.5238)
+rotation = -2.18062
 
-[node name="Targets" type="Node2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Lava_Fall/PathFollow2D/Node2D/Lava snake"]
-position = Vector2(-3.27245, 9.22012)
+[node name="LavaExperiment14" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Lava_Fall/PathFollow2D/Lava/pivot/body" instance=ExtResource("25_k0nv8")]
+modulate = Color(0.996094, 0.113281, 0.109375, 1)
+position = Vector2(14.8185, 8.39099)
+rotation = -0.177659
 
-[node name="punta" type="Node2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Lava_Fall/PathFollow2D/Node2D/Lava snake/Targets"]
-position = Vector2(0.513062, -11.2644)
+[node name="LavaExperiment3" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Lava_Fall/PathFollow2D/Lava/pivot/body" instance=ExtResource("25_k0nv8")]
+position = Vector2(-4.85431, 23.3101)
+rotation = -1.29833
 
-[node name="HumoParticulasAdelante" type="CPUParticles2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Lava_Fall/PathFollow2D/Node2D/Lava snake"]
-position = Vector2(-76.5913, -21.7503)
-rotation = 2.73892
-scale = Vector2(12.7104, 12.7104)
+[node name="LavaExperiment7" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Lava_Fall/PathFollow2D/Lava/pivot/body" instance=ExtResource("25_k0nv8")]
+position = Vector2(26.0205, -14.6835)
+rotation = -0.00553152
+
+[node name="cola" type="Node2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Lava_Fall/PathFollow2D/Lava/pivot"]
+position = Vector2(-8.30219, 30.6398)
+
+[node name="LavaExperiment12" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Lava_Fall/PathFollow2D/Lava/pivot/cola" instance=ExtResource("25_k0nv8")]
+position = Vector2(-4.27795, 35.2802)
+rotation = -1.34697
+
+[node name="LavaExperiment13" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Lava_Fall/PathFollow2D/Lava/pivot/cola" instance=ExtResource("25_k0nv8")]
+position = Vector2(-6.00519, 57.0696)
+rotation = -1.5714
+
+[node name="LavaExperiment17" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Lava_Fall/PathFollow2D/Lava/pivot/cola" instance=ExtResource("25_k0nv8")]
+position = Vector2(-6.53217, 81.3293)
+rotation = -1.5203
+
+[node name="LavaExperiment14" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Lava_Fall/PathFollow2D/Lava/pivot/cola" instance=ExtResource("25_k0nv8")]
+modulate = Color(0.996094, 0.0546875, 0, 1)
+position = Vector2(5.66437, 49.0807)
+rotation = -1.5714
+
+[node name="LavaExperiment15" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Lava_Fall/PathFollow2D/Lava/pivot/cola" instance=ExtResource("25_k0nv8")]
+modulate = Color(0.996094, 0.0546875, 0, 1)
+position = Vector2(16.5236, 20.8181)
+rotation = -1.5714
+
+[node name="LavaExperiment16" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Lava_Fall/PathFollow2D/Lava/pivot/cola" instance=ExtResource("25_k0nv8")]
+modulate = Color(0.996094, 0.0546875, 0, 1)
+position = Vector2(23.8409, 42.6889)
+rotation = -0.780173
+
+[node name="LavaExperiment6" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Lava_Fall/PathFollow2D/Lava/pivot/cola" instance=ExtResource("25_k0nv8")]
+position = Vector2(-0.814758, 16.1334)
+rotation = -1.29833
+
+[node name="HumoParticulasAdelante" type="CPUParticles2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Lava_Fall/PathFollow2D/Lava"]
+position = Vector2(-0.559387, 6.85132)
+rotation = 2.4491
+scale = Vector2(21.6712, 21.6712)
+emitting = false
+amount = 16
 texture = ExtResource("64_iikat")
 emission_shape = 3
-emission_rect_extents = Vector2(3.205, 1)
+emission_rect_extents = Vector2(2, 1)
 direction = Vector2(0, 1)
 spread = 1.0
 gravity = Vector2(0, 0)
@@ -5155,6 +5589,24 @@ radial_accel_max = 44.45
 damping_min = 61.523
 damping_max = 100.0
 color_ramp = SubResource("Gradient_66ce5")
+
+[node name="lavaExplosion" type="CPUParticles2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Lava_Fall/PathFollow2D/Lava"]
+position = Vector2(3.36655, -1.67706)
+rotation = -1.642
+emitting = false
+amount = 64
+lifetime = 1.5
+one_shot = true
+explosiveness = 0.72
+texture = ExtResource("27_2ywfg")
+spread = 30.0
+gravity = Vector2(0, 90)
+initial_velocity_min = 90.0
+initial_velocity_max = 110.0
+scale_amount_min = 0.05
+scale_amount_max = 0.1
+scale_amount_curve = SubResource("Curve_g84f3")
+color_ramp = SubResource("Gradient_gydxv")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Lava_Fall"]
 speed_scale = 1.3
@@ -5169,150 +5621,126 @@ z_index = -1
 curve = SubResource("Curve2D_f3wbe")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/LavaFallVolcanica"]
-position = Vector2(-27, 171)
-rotation = -0.187289
+position = Vector2(75, 183)
+rotation = -1.40999
 
-[node name="Node2D" type="Node2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/LavaFallVolcanica/PathFollow2D"]
-rotation = 0.71733
+[node name="lava" type="Node2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/LavaFallVolcanica/PathFollow2D"]
+rotation = 0.869851
 
-[node name="Lava snake" type="Node2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/LavaFallVolcanica/PathFollow2D/Node2D"]
-modulate = Color(1, 1, 1, 0)
-position = Vector2(102.817, -83.6465)
-rotation = -0.752077
+[node name="pivot" type="Node2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/LavaFallVolcanica/PathFollow2D/lava"]
+visible = false
 
-[node name="Skeleton2D" type="Skeleton2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/LavaFallVolcanica/PathFollow2D/Node2D/Lava snake"]
-scale = Vector2(1.705, 1.705)
-modification_stack = SubResource("SkeletonModificationStack2D_cc7e6")
+[node name="LavaExperiment5" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/LavaFallVolcanica/PathFollow2D/lava/pivot" instance=ExtResource("25_k0nv8")]
+modulate = Color(0.996094, 0, 0, 1)
+position = Vector2(-14.6105, 12.6745)
+rotation = -4.95845
 
-[node name="Bone1" type="Bone2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/LavaFallVolcanica/PathFollow2D/Node2D/Lava snake/Skeleton2D"]
-position = Vector2(-95.79, -6)
-scale = Vector2(0.999837, 0.99981)
-skew = -0.000262856
-rest = Transform2D(1, 0, 0, 1, 0, 0)
-editor_settings/show_bone_gizmo = false
+[node name="LavaExperiment12" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/LavaFallVolcanica/PathFollow2D/lava/pivot" instance=ExtResource("25_k0nv8")]
+position = Vector2(-4.40572, 31.5975)
+rotation = -1.59449
+scale = Vector2(0.999999, 0.999999)
 
-[node name="Bone2" type="Bone2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/LavaFallVolcanica/PathFollow2D/Node2D/Lava snake/Skeleton2D/Bone1"]
-position = Vector2(32, 0)
-rotation = 0.0811148
-scale = Vector2(0.999843, 0.999843)
-skew = -0.00134373
-rest = Transform2D(1, 0, 0, 1, 32, 0)
-editor_settings/show_bone_gizmo = false
-metadata/_local_pose_override_enabled_ = true
+[node name="cola" type="Node2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/LavaFallVolcanica/PathFollow2D/lava/pivot"]
+position = Vector2(-11.4933, 28.8484)
+rotation = -1.93038
 
-[node name="Bone3" type="Bone2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/LavaFallVolcanica/PathFollow2D/Node2D/Lava snake/Skeleton2D/Bone1/Bone2"]
-position = Vector2(28.2843, -0.121915)
-rotation = -0.00283671
-scale = Vector2(0.999829, 0.999829)
-rest = Transform2D(1, 0, 0, 1, 32, 0)
-editor_settings/show_bone_gizmo = false
-metadata/_local_pose_override_enabled_ = true
+[node name="LavaExperiment14" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/LavaFallVolcanica/PathFollow2D/lava/pivot/cola" instance=ExtResource("25_k0nv8")]
+position = Vector2(-14.8287, 34.4796)
+rotation = -1.4202
 
-[node name="ColorRect" type="ColorRect" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/LavaFallVolcanica/PathFollow2D/Node2D/Lava snake/Skeleton2D/Bone1/Bone2/Bone3"]
-offset_left = 5.0
-offset_top = 8.0
-offset_right = 20.0
-offset_bottom = 21.0
-rotation = 0.00174533
-color = Color(0.832031, 0, 0, 1)
+[node name="LavaExperiment13" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/LavaFallVolcanica/PathFollow2D/lava/pivot/cola" instance=ExtResource("25_k0nv8")]
+position = Vector2(-9.1712, 15.6119)
+rotation = -1.12617
 
-[node name="ColorRect" type="ColorRect" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/LavaFallVolcanica/PathFollow2D/Node2D/Lava snake/Skeleton2D/Bone1/Bone2"]
-offset_top = 7.0
-offset_right = 30.0
-offset_bottom = 23.0
-rotation = 0.00174533
-color = Color(0.832031, 0, 0, 1)
+[node name="LavaExperiment16" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/LavaFallVolcanica/PathFollow2D/lava/pivot/cola" instance=ExtResource("25_k0nv8")]
+modulate = Color(0.996094, 0.113281, 0.109375, 1)
+position = Vector2(-7.95047, 13.6736)
+rotation = 2.07654
 
-[node name="ColorRect" type="ColorRect" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/LavaFallVolcanica/PathFollow2D/Node2D/Lava snake/Skeleton2D/Bone1"]
-offset_left = -5.58846
-offset_top = 7.72884
-offset_right = 29.4115
-offset_bottom = 40.7288
-rotation = -0.267035
-color = Color(0.832031, 0, 0, 1)
+[node name="LavaExperiment17" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/LavaFallVolcanica/PathFollow2D/lava/pivot/cola" instance=ExtResource("25_k0nv8")]
+modulate = Color(0.996094, 0.113281, 0.109375, 1)
+position = Vector2(-16.1626, 32.0465)
+rotation = 1.94371
 
-[node name="polygons" type="Node2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/LavaFallVolcanica/PathFollow2D/Node2D/Lava snake/Skeleton2D"]
+[node name="LavaExperiment8" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/LavaFallVolcanica/PathFollow2D/lava/pivot" instance=ExtResource("25_k0nv8")]
+position = Vector2(4.21729, 23.335)
+rotation = -3.89056
 
-[node name="Polygon2D" type="Polygon2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/LavaFallVolcanica/PathFollow2D/Node2D/Lava snake/Skeleton2D/polygons"]
-position = Vector2(31, -8)
-scale = Vector2(1.0625, 1)
-texture = ExtResource("27_tqoby")
-skeleton = NodePath("../..")
-polygon = PackedVector2Array(0, 0, 32, 0, 32, 16, 0, 16, 8, 0, 8, 16, 24, 0, 24, 16)
-uv = PackedVector2Array(0, 0, 32, 0, 32, 16, 0, 16, 8, 0, 8, 16, 24, 0, 24, 16)
-polygons = [PackedInt32Array(0, 4, 5, 3), PackedInt32Array(4, 6, 7, 5), PackedInt32Array(1, 6, 7, 2)]
-bones = ["Bone1", PackedFloat32Array(1, 0, 0, 1, 0, 0, 0, 0), "Bone1/Bone2", PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1), "Bone1/Bone2/Bone3", PackedFloat32Array(0, 0.51, 0.51, 0, 0, 0, 0, 0)]
-internal_vertex_count = 4
+[node name="LavaExperiment10" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/LavaFallVolcanica/PathFollow2D/lava/pivot" instance=ExtResource("25_k0nv8")]
+position = Vector2(15.432, 26.0858)
+rotation = -3.99627
 
-[node name="Polygon2D2" type="Polygon2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/LavaFallVolcanica/PathFollow2D/Node2D/Lava snake/Skeleton2D/polygons"]
-position = Vector2(64, -8)
-texture = ExtResource("27_tqoby")
-skeleton = NodePath("../..")
-polygon = PackedVector2Array(0, 0, 0, 16, 24, 16, 28, 12.4375, 29.25, 8.0625, 27.75, 3.25, 24, 0, 8, 0, 8, 16, 16, 0, 16, 16)
-uv = PackedVector2Array(0, 0, 0, 16, 24, 16, 28, 12.4375, 29.25, 8.0625, 27.75, 3.25, 24, 0, 8, 0, 8, 16, 16, 0, 16, 16)
-polygons = [PackedInt32Array(0, 1, 8, 7), PackedInt32Array(7, 9, 10, 8), PackedInt32Array(9, 6, 5, 4, 3, 2, 10)]
-bones = ["Bone1", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Bone1/Bone2", PackedFloat32Array(1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Bone1/Bone2/Bone3", PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1)]
-internal_vertex_count = 4
+[node name="LavaExperiment11" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/LavaFallVolcanica/PathFollow2D/lava/pivot" instance=ExtResource("25_k0nv8")]
+position = Vector2(22.9216, 14.563)
+rotation = -3.99627
 
-[node name="Polygon2D3" type="Polygon2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/LavaFallVolcanica/PathFollow2D/Node2D/Lava snake/Skeleton2D/polygons"]
-position = Vector2(0, -8)
-texture = ExtResource("27_tqoby")
-skeleton = NodePath("../..")
-polygon = PackedVector2Array(24, 0, 32, 0, 32, 16, 24, 16, 8, 16, 0, 16, 16, 8, 18.1631, 3.28992)
-uv = PackedVector2Array(24, 0, 32, 0, 32, 16, 24, 16, 8, 16, 0, 16, 16, 8, 18.1631, 3.28992)
-polygons = [PackedInt32Array(5, 3, 0, 7, 6), PackedInt32Array(3, 2, 1, 0)]
-bones = ["Bone1", PackedFloat32Array(1, 1, 1, 1, 1, 1, 0.56, 1), "Bone1/Bone2", PackedFloat32Array(0, 1, 1, 0, 0, 0, 0, 0), "Bone1/Bone2/Bone3", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0)]
+[node name="LavaExperiment6" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/LavaFallVolcanica/PathFollow2D/lava/pivot" instance=ExtResource("25_k0nv8")]
+modulate = Color(0.996094, 0.113281, 0.109375, 1)
+position = Vector2(-4.30862, -9.3934)
+rotation = 2.09349
 
-[node name="HumoParticulasAtras" type="CPUParticles2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/LavaFallVolcanica/PathFollow2D/Node2D/Lava snake/Skeleton2D/polygons"]
-show_behind_parent = true
-position = Vector2(-39.617, -1.0156)
-rotation = 4.92872
-scale = Vector2(12.7104, 12.7104)
+[node name="LavaExperiment13" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/LavaFallVolcanica/PathFollow2D/lava/pivot" instance=ExtResource("25_k0nv8")]
+modulate = Color(0.996094, 0.113281, 0.109375, 1)
+position = Vector2(-13.2885, 27.0071)
+rotation = 2.09349
+
+[node name="LavaExperiment7" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/LavaFallVolcanica/PathFollow2D/lava/pivot" instance=ExtResource("25_k0nv8")]
+modulate = Color(0.996094, 0.113281, 0.109375, 1)
+position = Vector2(14.4268, 1.11209)
+rotation = 2.09349
+
+[node name="LavaExperiment14" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/LavaFallVolcanica/PathFollow2D/lava/pivot" instance=ExtResource("25_k0nv8")]
+modulate = Color(0.996094, 0.113281, 0.109375, 1)
+position = Vector2(3.44662, 1.20041)
+rotation = 2.09349
+
+[node name="LavaExperiment15" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/LavaFallVolcanica/PathFollow2D/lava/pivot" instance=ExtResource("25_k0nv8")]
+modulate = Color(0.996094, 0.113281, 0.109375, 1)
+position = Vector2(-5.91669, 13.7036)
+rotation = 2.09349
+
+[node name="LavaExperiment9" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/LavaFallVolcanica/PathFollow2D/lava/pivot" instance=ExtResource("25_k0nv8")]
+position = Vector2(-6.96146, 37.4305)
+rotation = -1.37175
+
+[node name="LavaExperiment" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/LavaFallVolcanica/PathFollow2D/lava/pivot" instance=ExtResource("25_k0nv8")]
+position = Vector2(-3.44438, -6.70631)
+rotation = -0.939367
+
+[node name="LavaExperiment3" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/LavaFallVolcanica/PathFollow2D/lava/pivot" instance=ExtResource("25_k0nv8")]
+position = Vector2(-12.7193, 9.99628)
+rotation = -1.13017
+
+[node name="LavaExperiment2" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/LavaFallVolcanica/PathFollow2D/lava/pivot" instance=ExtResource("25_k0nv8")]
+position = Vector2(3.85964, -14.6845)
+rotation = -0.356598
+
+[node name="LavaExperiment4" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/LavaFallVolcanica/PathFollow2D/lava/pivot" instance=ExtResource("25_k0nv8")]
+position = Vector2(10.8812, -11.2644)
+rotation = 0.641235
+
+[node name="HumoParticulasAdelante" type="CPUParticles2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/LavaFallVolcanica/PathFollow2D/lava"]
+position = Vector2(-0.559387, 6.85132)
+rotation = 2.4491
+scale = Vector2(21.6712, 21.6712)
 emitting = false
-amount = 80
-lifetime = 2.5
+amount = 16
 texture = ExtResource("64_iikat")
 emission_shape = 3
-emission_rect_extents = Vector2(0, 1)
-direction = Vector2(1.505, 0)
-spread = 37.75
+emission_rect_extents = Vector2(1, 1)
+direction = Vector2(0, 1)
+spread = 1.0
 gravity = Vector2(0, 0)
-initial_velocity_min = 1.0
-initial_velocity_max = 1.0
+initial_velocity_min = 5.0
+initial_velocity_max = 7.0
 radial_accel_min = -27.16
 radial_accel_max = 44.45
-scale_amount_min = 1.5
-scale_amount_max = 1.5
-scale_amount_curve = SubResource("Curve_1byn1")
-color_ramp = SubResource("Gradient_vn7px")
-
-[node name="HumoParticulasAdelante" type="CPUParticles2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/LavaFallVolcanica/PathFollow2D/Node2D/Lava snake/Skeleton2D/polygons"]
-position = Vector2(-39.9373, -7.48747)
-rotation = -7.7131
-scale = Vector2(12.7104, 12.7104)
-emitting = false
-amount = 5
-texture = ExtResource("64_iikat")
-emission_shape = 3
-emission_rect_extents = Vector2(0, 2)
-spread = 0.0
-gravity = Vector2(0, 0)
-initial_velocity_min = 1.0
-initial_velocity_max = 1.0
-radial_accel_min = -27.16
-radial_accel_max = 44.45
-scale_amount_min = 1.5
-scale_amount_max = 1.5
+damping_min = 61.523
+damping_max = 100.0
 color_ramp = SubResource("Gradient_66ce5")
 
-[node name="Targets" type="Node2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/LavaFallVolcanica/PathFollow2D/Node2D/Lava snake"]
-position = Vector2(-3.27245, 9.22012)
-
-[node name="punta" type="Node2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/LavaFallVolcanica/PathFollow2D/Node2D/Lava snake/Targets"]
-position = Vector2(-32.0682, -9.26387)
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/LavaFallVolcanica"]
-speed_scale = 1.3
+speed_scale = 1.1
 libraries = {
 "": SubResource("AnimationLibrary_72bd3")
 }
@@ -5360,6 +5788,46 @@ color = Color(1, 1, 1, 1)
 color_initial_ramp = SubResource("Gradient_ngxtp")
 metadata/_edit_group_ = true
 
+[node name="lavaExplosion" type="CPUParticles2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/LavaFallVolcanica"]
+position = Vector2(95, 142)
+rotation = -1.22767
+emitting = false
+amount = 84
+lifetime = 1.5
+one_shot = true
+explosiveness = 0.84
+texture = ExtResource("27_2ywfg")
+emission_shape = 3
+emission_rect_extents = Vector2(20, 1)
+spread = 40.0
+gravity = Vector2(0, 90)
+initial_velocity_min = 130.0
+initial_velocity_max = 160.0
+scale_amount_min = 0.05
+scale_amount_max = 0.1
+scale_amount_curve = SubResource("Curve_g84f3")
+color_ramp = SubResource("Gradient_gydxv")
+
+[node name="lavaExplosion2" type="CPUParticles2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/LavaFallVolcanica"]
+position = Vector2(91, 133)
+rotation = -0.17201
+emitting = false
+amount = 64
+lifetime = 1.5
+one_shot = true
+explosiveness = 0.84
+texture = ExtResource("27_2ywfg")
+emission_shape = 3
+emission_rect_extents = Vector2(20, 1)
+spread = 20.0
+gravity = Vector2(0, 90)
+initial_velocity_min = 90.0
+initial_velocity_max = 110.0
+scale_amount_min = 0.05
+scale_amount_max = 0.1
+scale_amount_curve = SubResource("Curve_g84f3")
+color_ramp = SubResource("Gradient_gydxv")
+
 [node name="Tramo2" type="Control" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control"]
 z_index = -1
 layout_mode = 1
@@ -5384,7 +5852,7 @@ curve = SubResource("Curve2D_0sshs")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Tramo2/Path2D"]
 position = Vector2(354.89, 828)
-rotation = -1.59875
+rotation = -1.52491
 script = ExtResource("23_k410u")
 speed = 0.1
 
@@ -5403,6 +5871,24 @@ reset_on_save = false
 libraries = {
 "": SubResource("AnimationLibrary_54qsn")
 }
+
+[node name="lavaExplosion" type="CPUParticles2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Tramo2/Path2D/PathFollow2D/Lava"]
+position = Vector2(-33.5588, -145.926)
+rotation = 0.0184655
+amount = 12
+lifetime = 1.5
+local_coords = true
+texture = ExtResource("27_2ywfg")
+emission_shape = 3
+emission_rect_extents = Vector2(400, 1)
+direction = Vector2(0, -1)
+spread = 20.0
+gravity = Vector2(0, 440)
+initial_velocity_min = 148.08
+initial_velocity_max = 216.71
+scale_amount_min = 0.3
+scale_amount_max = 0.4
+color_ramp = SubResource("Gradient_gydxv")
 
 [node name="ColorRect3" type="ColorRect" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control"]
 z_index = -1
@@ -6066,15 +6552,34 @@ self_modulate = Color(0.9, 1, 1, 1)
 texture_filter = 1
 position = Vector2(-2.72894, -7.02303)
 rotation = 1.5708
-scale = Vector2(0.0878604, 0.0684721)
+scale = Vector2(0.071015, 0.0553439)
 texture = ExtResource("8_rq7xm")
 hframes = 5
+frame = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Tramo6/Path2D/PathFollow2D/Lava"]
 reset_on_save = false
 libraries = {
 "": SubResource("AnimationLibrary_54qsn")
 }
+
+[node name="lavaExplosion" type="CPUParticles2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Tramo6/Path2D/PathFollow2D/Lava"]
+position = Vector2(-52.2168, -158.906)
+rotation = 0.0184655
+amount = 12
+lifetime = 1.5
+local_coords = true
+texture = ExtResource("27_2ywfg")
+emission_shape = 3
+emission_rect_extents = Vector2(400, 1)
+direction = Vector2(0, -1)
+spread = 20.0
+gravity = Vector2(0, 440)
+initial_velocity_min = 148.08
+initial_velocity_max = 216.71
+scale_amount_min = 0.3
+scale_amount_max = 0.4
+color_ramp = SubResource("Gradient_gydxv")
 
 [node name="Tramo5" type="Control" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control"]
 z_index = -1
@@ -6099,8 +6604,9 @@ scale = Vector2(1, 1.03817)
 curve = SubResource("Curve2D_66iyj")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Tramo5/Path2D"]
-position = Vector2(90, 355.125)
+position = Vector2(95, 356.088)
 rotation = -1.70823
+scale = Vector2(0.46, 0.46)
 loop = false
 script = ExtResource("23_k410u")
 speed = 0.4
@@ -6110,7 +6616,7 @@ visible = false
 self_modulate = Color(0.901961, 1, 1, 1)
 texture_filter = 1
 rotation = 1.5708
-scale = Vector2(0.0910628, 0.0709678)
+scale = Vector2(0.20936, 0.16316)
 texture = ExtResource("8_rq7xm")
 hframes = 5
 
@@ -6119,6 +6625,23 @@ reset_on_save = false
 libraries = {
 "": SubResource("AnimationLibrary_54qsn")
 }
+
+[node name="lavaExplosion" type="CPUParticles2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Tramo5/Path2D/PathFollow2D/Lava"]
+position = Vector2(-32.5569, -148.393)
+rotation = 0.0184655
+lifetime = 1.5
+local_coords = true
+texture = ExtResource("27_2ywfg")
+emission_shape = 3
+emission_rect_extents = Vector2(100, 1)
+direction = Vector2(0, -1)
+spread = 20.0
+gravity = Vector2(0, 440)
+initial_velocity_min = 148.08
+initial_velocity_max = 216.71
+scale_amount_min = 0.35
+scale_amount_max = 0.5
+color_ramp = SubResource("Gradient_gydxv")
 
 [node name="Tramo4" type="Control" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control"]
 z_index = -1
@@ -6161,6 +6684,24 @@ reset_on_save = false
 libraries = {
 "": SubResource("AnimationLibrary_54qsn")
 }
+
+[node name="lavaExplosion" type="CPUParticles2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Tramo4/Path2D/PathFollow2D/Lava"]
+position = Vector2(-30.3004, -129.134)
+rotation = 0.0184655
+amount = 12
+lifetime = 1.5
+local_coords = true
+texture = ExtResource("27_2ywfg")
+emission_shape = 3
+emission_rect_extents = Vector2(400, 1)
+direction = Vector2(0, -1)
+spread = 20.0
+gravity = Vector2(0, 440)
+initial_velocity_min = 148.08
+initial_velocity_max = 216.71
+scale_amount_min = 0.3
+scale_amount_max = 0.4
+color_ramp = SubResource("Gradient_gydxv")
 
 [node name="Tramo1" type="Control" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control"]
 z_index = -1
@@ -6209,6 +6750,24 @@ reset_on_save = false
 libraries = {
 "": SubResource("AnimationLibrary_54qsn")
 }
+
+[node name="lavaExplosion" type="CPUParticles2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Tramo1/Path2D/PathFollow2D/Lava"]
+position = Vector2(-23.0547, -140.782)
+rotation = 0.0184655
+amount = 12
+lifetime = 1.5
+local_coords = true
+texture = ExtResource("27_2ywfg")
+emission_shape = 3
+emission_rect_extents = Vector2(400, 1)
+direction = Vector2(0, -1)
+spread = 20.0
+gravity = Vector2(0, 440)
+initial_velocity_min = 148.08
+initial_velocity_max = 216.71
+scale_amount_min = 0.3
+scale_amount_max = 0.4
+color_ramp = SubResource("Gradient_gydxv")
 
 [node name="LavaSounds" type="Node" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control"]
 script = ExtResource("20_4tllw")
@@ -6267,6 +6826,7 @@ texture = ExtResource("8_g2roo")
 expand_mode = 1
 
 [node name="Cueva" type="Node2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control"]
+self_modulate = Color(1, 1, 1, 0)
 z_index = -1
 position = Vector2(200, 1572)
 
@@ -6411,6 +6971,25 @@ libraries = {
 }
 script = ExtResource("28_glfmw")
 animation = "move_lava"
+
+[node name="lavaExplosion2" type="CPUParticles2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Cueva"]
+position = Vector2(45, -60)
+rotation = 0.0277655
+emitting = false
+amount = 32
+lifetime = 0.7
+local_coords = true
+texture = ExtResource("27_2ywfg")
+emission_shape = 3
+emission_rect_extents = Vector2(300, 1)
+direction = Vector2(0, -1)
+spread = 20.0
+gravity = Vector2(0, 440)
+initial_velocity_min = 74.55
+initial_velocity_max = 189.55
+scale_amount_min = 0.05
+scale_amount_max = 0.1
+color_ramp = SubResource("Gradient_gydxv")
 
 [node name="Glow" type="Sprite2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/Cueva"]
 modulate = Color(1, 0, 0, 1)
@@ -7597,7 +8176,7 @@ label = "earthquakes"
 events = Array[ExtResource("22_rdltr")]([SubResource("Resource_wkeix"), SubResource("Resource_35ex0"), SubResource("Resource_b7xlk")])
 
 [node name="Bloqueo4" type="Sprite2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control"]
-visible = false
+self_modulate = Color(1, 1, 1, 0)
 position = Vector2(247, 471)
 scale = Vector2(0.753363, 0.697298)
 texture = ExtResource("21_j21vj")
@@ -8541,7 +9120,8 @@ texture = ExtResource("21_tqyrq")
 [node name="Preplutonica" type="Sprite2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control" node_paths=PackedStringArray("overlay", "NubeAnim", "spot")]
 self_modulate = Color(2.00392, 1, 1, 0)
 z_index = 1
-position = Vector2(464, 610)
+texture_repeat = 1
+position = Vector2(471, 610)
 scale = Vector2(0.156566, 0.156566)
 texture = ExtResource("31_4ma1n")
 script = ExtResource("29_n256j")
@@ -8686,7 +9266,7 @@ texture = ExtResource("30_4817p")
 [node name="Volcanica" type="Sprite2D" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Control" node_paths=PackedStringArray("overlay", "NubeAnim", "spot")]
 self_modulate = Color(2.00392, 1, 1, 0)
 z_index = 1
-position = Vector2(237, 241)
+position = Vector2(245, 248)
 rotation = 1.06465
 scale = Vector2(0.156566, 0.156566)
 texture = ExtResource("33_t4nqu")
@@ -8966,16 +9546,16 @@ Texts = Array[ExtResource("13_r3rxi")]([SubResource("Resource_7uqoc")])
 text = "
 [center][b]CUANDO UNA ROCA SE ROMPE[/b]
 LLAMAMOS AL CONJUNTO DE SUS PEDAZOS:
-[b]SEDIMENTOS[/b].
+[b]SEDIMENTOS[/b]
 
 SI RECIBEN MUCHA PRESIÓN
 [color=#dab21e]ESTOS PUEDEN ENDURECERSE[/color]
-¡E INCLUIR HUESOS EN SU COMPOSICIÓN!
+[b]¡E INCLUIR HUESOS EN SU COMPOSICIÓN![/b]
 
 ESTE PROCESO PUEDE TARDAR
-ENTRE HORAS A UN MILLÓN DE AÑOS
+DESDE HORAS HASTA UN MILLÓN DE AÑOS
 
-ASÍ NACEN LAS:
+ASÍ NACEN LAS
 [font_size={40}][b][color=#dab21e]ROCAS SEDIMENTARIAS[/color][/b]
 
 
@@ -9004,13 +9584,13 @@ Texts = Array[ExtResource("13_r3rxi")]([SubResource("Resource_aw4l0")])
 
 [node name="labelRich" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Paneles/PanelMetamorfica" index="1"]
 text = "
-[center][b]ANTE GRAN CALOR O PRESIÓN[/b]
+[center][b]ANTE GRAN CALOR O PRESIÓN,[/b]
 UNA ROCA PUEDE MODIFICAR
-SU [font_size={33}]F[/font_size][font_size={19}]o[/font_size][font_size={25}]R[/font_size][font_size={50}]m[/font_size][font_size={31}]a[/font_size] Y SUS [color=#f28787]C[/color][color=#e89ce4]O[/color][color=#c8ea76]L[/color][color=#70e8ef]O[/color][color=#e9d1d1]R[/color][color=#d8bc66]E[/color][color=#81ef27]S[/color]
+SU [font_size={33}]F[/font_size][font_size={19}]o[/font_size][font_size={25}]R[/font_size][font_size={50}]m[/font_size][font_size={60}]a[/font_size] Y SUS [color=#f28787]C[/color][color=#e89ce4]O[/color][color=#c8ea76]L[/color][color=#70e8ef]O[/color][color=#e9d1d1]R[/color][color=#d8bc66]E[/color][color=#81ef27]S[/color]
 
 SI DURANTE ESE CAMBIO
 [color=#dab21e]LA ROCA NO ES DESTRUIDA POR COMPLETO[/color]
-SE CONVIERTE EN UNA:
+SE CONVIERTE EN UNA
 [font_size={40}][b][color=#dab21e]ROCA METAMÓRFICA[/color][/b]
 
 
@@ -9042,11 +9622,11 @@ text = "[center][b][color=#dab21e]EL MAGMA ES ROCA FUNDIDA
 QUE SE ENCUENTRA DENTRO DE LA TIERRA[/color][/b]
 
 ¡PUEDE TENER UNA TEMPERATURA DE 
-ENTRE 850 A 1200 GRADOS!
+ENTRE 850 Y 1200°C!
 
-[color=#dab21e]CUANDO EL MAGMA SE ENFRÍA[/color]
+[color=#dab21e]CUANDO EL MAGMA SE ENFRÍA,[/color]
 MUY LENTAMENTE [b]SE PONE SÓLIDO[b]
-Y SE CONVIERTE EN UNA:
+Y SE CONVIERTE EN UNA
 [font_size={40}][b][color=#dab21e]ROCA ÍGNEA PLUTÓNICA[/color][/b]
 
 "
@@ -9073,8 +9653,8 @@ RepitingPanel = true
 Texts = Array[ExtResource("13_r3rxi")]([SubResource("Resource_dyytj")])
 
 [node name="labelRich" parent="Transformando/StateMachine/Juego/Contenido/Instancia1/Paneles/PanelVolcanica" index="1"]
-text = "[center][b]SI EL MAGMA SALE A LA SUPERFICIE 
-[color=#dab21e]SE LO LLAMA LAVA[/color][/b]
+text = "[center][b]SI EL MAGMA SALE A LA SUPERFICIE, 
+[color=#dab21e]SE LE LLAMA LAVA[/color][/b]
 
 ESTA [b]SE ENFRÍA MUCHO MÁS RÁPIDO[/b] 
 AL ESTAR EN LA SUPERFICIE
@@ -9100,10 +9680,10 @@ layout_mode = 1
 anchors_preset = -1
 anchor_top = 0.773
 anchor_bottom = 0.773
-offset_left = -336.0
-offset_top = -108.44
-offset_right = 342.0
-offset_bottom = 113.56
+offset_left = -341.0
+offset_top = -116.44
+offset_right = 337.0
+offset_bottom = 105.56
 grow_vertical = 2
 pivot_offset = Vector2(339, 111)
 AppearInBeginning = false
@@ -9347,6 +9927,8 @@ Data = SubResource("Resource_b6ori")
 visible = false
 AudioBuses = Array[String](["VolumenTransformaciones", "avalancha", "sedimentaria", "lavaAparece", "lavaLoop", "terremotos", "explosion", "tramo1", "metamorfica", "caraAparece", "plutonica", "volcanica", "nubeRecuerdo"])
 
+[node name="ResourcePreloader" type="ResourcePreloader" parent="Transformando"]
+
 [connection signal="timeout" from="Transformando/StateMachine/Consigna/Contenido/Timer" to="Transformando/StateMachine/Consigna" method="TimeOut" flags=18]
 [connection signal="ButtonPress" from="Transformando/StateMachine/Consigna/Contenido/PanelIntro1/Panel(1) Btn(rigth)" to="Transformando/StateMachine/Consigna/Contenido/PanelIntro2" method="EnterPanel"]
 [connection signal="ButtonPress" from="Transformando/StateMachine/Consigna/Contenido/PanelIntro2/Panel(1) Btn(rigth)" to="Transformando/StateMachine/Consigna/Contenido/PanelIntro3" method="EnterPanel"]
@@ -9457,6 +10039,25 @@ AudioBuses = Array[String](["VolumenTransformaciones", "avalancha", "sedimentari
 [connection signal="Transitioned" from="Transformando/StateMachine/Moraleja" to="Transformando/StateMachine/Fin/Contenido/PanelOutro" method="EnterPanel"]
 [connection signal="ButtonPress" from="Transformando/StateMachine/Fin/Contenido/PanelOutro/Panel(1) Btn(center)" to="Transformando/StateMachine/Fin/Contenido/ButtonChangeScene" method="_on_pressed"]
 
+[editable path="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/LavaFallVolcanica/PathFollow2D/lava/pivot/LavaExperiment5"]
+[editable path="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/LavaFallVolcanica/PathFollow2D/lava/pivot/LavaExperiment12"]
+[editable path="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/LavaFallVolcanica/PathFollow2D/lava/pivot/cola/LavaExperiment14"]
+[editable path="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/LavaFallVolcanica/PathFollow2D/lava/pivot/cola/LavaExperiment13"]
+[editable path="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/LavaFallVolcanica/PathFollow2D/lava/pivot/cola/LavaExperiment16"]
+[editable path="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/LavaFallVolcanica/PathFollow2D/lava/pivot/cola/LavaExperiment17"]
+[editable path="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/LavaFallVolcanica/PathFollow2D/lava/pivot/LavaExperiment8"]
+[editable path="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/LavaFallVolcanica/PathFollow2D/lava/pivot/LavaExperiment10"]
+[editable path="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/LavaFallVolcanica/PathFollow2D/lava/pivot/LavaExperiment11"]
+[editable path="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/LavaFallVolcanica/PathFollow2D/lava/pivot/LavaExperiment6"]
+[editable path="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/LavaFallVolcanica/PathFollow2D/lava/pivot/LavaExperiment13"]
+[editable path="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/LavaFallVolcanica/PathFollow2D/lava/pivot/LavaExperiment7"]
+[editable path="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/LavaFallVolcanica/PathFollow2D/lava/pivot/LavaExperiment14"]
+[editable path="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/LavaFallVolcanica/PathFollow2D/lava/pivot/LavaExperiment15"]
+[editable path="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/LavaFallVolcanica/PathFollow2D/lava/pivot/LavaExperiment9"]
+[editable path="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/LavaFallVolcanica/PathFollow2D/lava/pivot/LavaExperiment"]
+[editable path="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/LavaFallVolcanica/PathFollow2D/lava/pivot/LavaExperiment3"]
+[editable path="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/LavaFallVolcanica/PathFollow2D/lava/pivot/LavaExperiment2"]
+[editable path="Transformando/StateMachine/Juego/Contenido/Instancia1/Control/LavaFallVolcanica/PathFollow2D/lava/pivot/LavaExperiment4"]
 [editable path="Transformando/StateMachine/Juego/Contenido/Instancia1/Paneles/PanelSedimentaria"]
 [editable path="Transformando/StateMachine/Juego/Contenido/Instancia1/Paneles/PanelSedimentaria/btnIzqAnchor/btnIzq/SquigglingSprite"]
 [editable path="Transformando/StateMachine/Juego/Contenido/Instancia1/Paneles/PanelSedimentaria/btnCentralAnchor/btnCentral/SquigglingSprite"]

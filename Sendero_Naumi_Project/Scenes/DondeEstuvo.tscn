@@ -1,4 +1,4 @@
-[gd_scene load_steps=227 format=3 uid="uid://b017ojh8vtsd6"]
+[gd_scene load_steps=232 format=3 uid="uid://b017ojh8vtsd6"]
 
 [ext_resource type="Script" path="res://_Scripts/Minigame_Save_Controller.gd" id="1_ouwf6"]
 [ext_resource type="Script" path="res://_Scripts/StateMachineMinigames/StateMachineMinigames.gd" id="2_5wf26"]
@@ -105,7 +105,7 @@
 [ext_resource type="Texture2D" uid="uid://b74axmot14bj8" path="res://Sprites/ZonaAstronomia/jupiter - donde.png" id="74_2orhi"]
 [ext_resource type="Texture2D" uid="uid://lm8q60lp72dv" path="res://Sprites/ZonaAstronomia/urano - donde.png" id="75_h52fe"]
 [ext_resource type="AudioStream" uid="uid://b5vnl01rlssd8" path="res://Sounds/Donde Estuvo/Donde Estuvo - Cucaracha Puerta.ogg" id="79_h31ey"]
-[ext_resource type="AudioStream" uid="uid://b14uc1slt0ia8" path="res://Sounds/Donde Estuvo/Donde Estuvo - Cucaracha Piso.ogg" id="80_lrhg8"]
+[ext_resource type="AudioStream" uid="uid://56hw0p4f1m65" path="res://Sounds/Donde Estuvo/Donde Estuvo Cucaracha 2.ogg" id="83_4jb4x"]
 [ext_resource type="AudioStream" uid="uid://bo4c6o0mdb64y" path="res://Sounds/Donde Estuvo/Donde Estuvov - encontrado.ogg" id="84_xtd0u"]
 [ext_resource type="AudioStream" uid="uid://b6xftsexmv2n2" path="res://Sounds/Donde Estuvo/Donde Estuvov - encontrado 2.ogg" id="85_sapcq"]
 [ext_resource type="AudioStream" uid="uid://btx6a6e5v0s5o" path="res://Sounds/Donde Estuvo/Donde Estuvov - encontrado 3.ogg" id="86_qryqt"]
@@ -932,7 +932,7 @@ bus = "cucarachaPiso"
 volume = 0.0
 pitch = 1.0
 RandomPitch = Vector2(1, 1)
-streams = Array[AudioStream]([ExtResource("80_lrhg8")])
+streams = Array[AudioStream]([ExtResource("83_4jb4x")])
 
 [sub_resource type="Resource" id="Resource_pa5ot"]
 script = ExtResource("21_2k2rl")
@@ -1231,7 +1231,7 @@ exitPanel = false
 
 [sub_resource type="Resource" id="Resource_bi8fh"]
 script = ExtResource("19_5u4uq")
-Text = "UN RELOJ CON ARENA ROJA?"
+Text = "¿UN RELOJ CON ARENA ROJA?"
 writingSpeed = 0.0
 SizePanel = Vector2(0, 0)
 Position = Vector2(0, 0)
@@ -1253,7 +1253,7 @@ exitPanel = false
 
 [sub_resource type="Resource" id="Resource_75u4j"]
 script = ExtResource("19_5u4uq")
-Text = "UN GLOBO CON NIEVE?"
+Text = "¿UN GLOBO CON NIEVE?"
 writingSpeed = 0.0
 SizePanel = Vector2(0, 0)
 Position = Vector2(0, 0)
@@ -1275,7 +1275,7 @@ exitPanel = false
 
 [sub_resource type="Resource" id="Resource_88vby"]
 script = ExtResource("19_5u4uq")
-Text = "UNA BOTA CON POLVO?"
+Text = "¿UNA BOTA CON POLVO?"
 writingSpeed = 0.0
 SizePanel = Vector2(0, 0)
 Position = Vector2(0, 0)
@@ -1451,6 +1451,25 @@ shadow_size = 4
 shadow_color = Color(0, 0, 0, 1)
 shadow_offset = Vector2(-0.06, 1)
 
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_5rij4"]
+points = PackedVector2Array(-66.035, -116.265, -114.6, -72.84, -111.44, 25.255, -76.195, 64.5, 84.925, 91.69, 87.175, -119.79)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_imgxl"]
+resource_local_to_scene = true
+bg_color = Color(0.305882, 0.164706, 0.219608, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="LabelSettings" id="LabelSettings_72jpv"]
+resource_local_to_scene = true
+font_size = 25
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 4
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(-0.06, 1)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2tfsf"]
 resource_local_to_scene = true
 bg_color = Color(0.305882, 0.164706, 0.219608, 1)
@@ -1492,6 +1511,22 @@ gradient = SubResource("Gradient_kukdc")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.82967, 0.307692)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x3wnp"]
+resource_local_to_scene = true
+bg_color = Color(0.305882, 0.164706, 0.219608, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="LabelSettings" id="LabelSettings_l3m4q"]
+resource_local_to_scene = true
+font_size = 25
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 4
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(-0.06, 1)
 
 [sub_resource type="Animation" id="Animation_diea1"]
 length = 0.001
@@ -1574,7 +1609,7 @@ PERO ES MUY FRÍO.
 [color=#dab21e]SUS TORMENTAS DE ARENA
 PUEDEN DURAR MESES[/color] 
 Y ENVOLVERLO POR COMPLETO.
-[b]UN DIA EN MARTE DURA[/b]
+[b]UN DÍA EN MARTE DURA[/b]
 37 MINUTOS MÁS QUE AQUÍ.
 "
 writingSpeed = 144.0
@@ -1598,9 +1633,9 @@ exitPanel = false
 
 [sub_resource type="Resource" id="Resource_st847"]
 script = ExtResource("19_5u4uq")
-Text = "[center][b]HACE 4.533.000.000 AÑOS[/b]
+Text = "[center][b]HACE 4.533 MILLONES DE AÑOS[/b]
 UNA ROCA CHOCÓ CON LA TIERRA
-Y FORMÓ AL SATÉLITE: [b][color=#a29c97]LA LUNA[/color][/b].
+Y FORMÓ UN SATÉLITE: [b][color=#a29c97]LA LUNA[/color][/b].
 [color=#dab21e]SU FUERZA DE GRAVEDAD
 ES MUY DÉBIL.[/color]
 POR ESO LOS ASTRONAUTAS
@@ -1628,7 +1663,7 @@ exitPanel = false
 [sub_resource type="Resource" id="Resource_05oto"]
 script = ExtResource("19_5u4uq")
 Text = "[center]400 VECES MÁS GRANDE QUE
-LA TIERRA Y CON -218 C,
+LA TIERRA Y CON -218°C,
 A [b][color=#8accbb]URANO[/color][/b] LE DICEN:
 [b]“EL GIGANTE DE HIELO”[/b].
 [color=#dab21e]UN AÑO ALLÍ DURA 84 AQUÍ,[/color]
@@ -1714,6 +1749,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+metadata/_edit_vertical_guides_ = [678.0, 523.0]
 
 [node name="DondeEstuvo" type="Node" parent="."]
 script = ExtResource("1_ouwf6")
@@ -1940,6 +1976,8 @@ script = ExtResource("19_cddff")
 script = ExtResource("20_kk2vv")
 label = "intro"
 events = Array[ExtResource("21_2k2rl")]([SubResource("Resource_a573f"), SubResource("Resource_3vjct")])
+
+[node name="btnVolver" parent="DondeEstuvo/StateMachine/Consigna/Contenido" instance=ExtResource("65_lsfn2")]
 
 [node name="Juego" type="Node" parent="DondeEstuvo/StateMachine" node_paths=PackedStringArray("NextState", "StateMachine")]
 script = ExtResource("5_8uhx2")
@@ -3089,15 +3127,23 @@ colorShader = Color(0.703125, 0.296875, 0.167969, 1)
 nombre = "MARTE"
 item = NodePath("../../../center/CheckTrue/ItemUnir3")
 
+[node name="CollisionShape2D" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/pivotPlanets/VBoxContainer2/SpotUnir/Area2D" index="0"]
+shape = SubResource("ConvexPolygonShape2D_5rij4")
+
+[node name="Panel" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/pivotPlanets/VBoxContainer2/SpotUnir" index="3"]
+theme_override_styles/panel = SubResource("StyleBoxFlat_imgxl")
+
+[node name="Label" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/pivotPlanets/VBoxContainer2/SpotUnir/Panel" index="0"]
+label_settings = SubResource("LabelSettings_72jpv")
+
 [node name="SpotUnir2" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/pivotPlanets/VBoxContainer2" instance=ExtResource("19_8egw1")]
 layout_mode = 2
-offset_left = -65.0
-offset_top = 250.0
-offset_right = 225.0
+offset_left = -68.0
+offset_top = 249.0
+offset_right = 232.0
 offset_bottom = 410.0
 texture = ExtResource("54_48nd8")
 expand_mode = 1
-colorShader = Color(0, 0, 0, 1)
 nombre = "SATURNO"
 
 [node name="Area2D" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/pivotPlanets/VBoxContainer2/SpotUnir2" index="0"]
@@ -3132,11 +3178,9 @@ offset_right = 179.0
 offset_bottom = 672.0
 texture = ExtResource("55_ucjwp")
 expand_mode = 1
-colorShader = Color(0, 0, 0, 1)
 nombre = "SOL"
 
 [node name="Area2D" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/pivotPlanets/VBoxContainer2/SpotUnir3" index="0"]
-visible = false
 position = Vector2(95, 87)
 
 [node name="unionSpot" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/pivotPlanets/VBoxContainer2/SpotUnir3" index="1"]
@@ -3186,9 +3230,19 @@ offset_top = 1000.0
 offset_right = 160.0
 offset_bottom = 1160.0
 texture = ExtResource("75_h52fe")
-colorShader = Color(0.496094, 0.628906, 0.59375, 1)
+colorShader = Color(0.498039, 0.627451, 0.592157, 1)
 nombre = "URANO"
 item = NodePath("../../../center/CheckTrue/ItemUnir2")
+
+[node name="CollisionShape2D" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/pivotPlanets/VBoxContainer2/SpotUnir5/Area2D" index="0"]
+shape = SubResource("ConvexPolygonShape2D_5rij4")
+
+[node name="Panel" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/pivotPlanets/VBoxContainer2/SpotUnir5" index="3"]
+theme_override_styles/panel = SubResource("StyleBoxFlat_x3wnp")
+
+[node name="Label" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/pivotPlanets/VBoxContainer2/SpotUnir5/Panel" index="0"]
+text = "URANO"
+label_settings = SubResource("LabelSettings_l3m4q")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/pivotPlanets"]
 libraries = {
@@ -3248,7 +3302,7 @@ PERO ES MUY FRÍO.
 [color=#dab21e]SUS TORMENTAS DE ARENA
 PUEDEN DURAR MESES[/color] 
 Y ENVOLVERLO POR COMPLETO.
-[b]UN DIA EN MARTE DURA[/b]
+[b]UN DÍA EN MARTE DURA[/b]
 37 MINUTOS MÁS QUE AQUÍ.
 "
 
@@ -3281,7 +3335,7 @@ offset_top = -206.0
 offset_right = 256.0
 offset_bottom = 207.0
 grow_horizontal = 1
-pivot_offset = Vector2(251, 206.5)
+pivot_offset = Vector2(256, 206.5)
 AppearInBeginning = false
 Texts = Array[ExtResource("19_5u4uq")]([SubResource("Resource_st847")])
 
@@ -3290,14 +3344,14 @@ scale = Vector2(1.13, 1.13)
 pivot_offset = Vector2(214, 135)
 
 [node name="labelRich" parent="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/Panels/PanelPivot2/Panel" index="1"]
-offset_left = -31.2199
-offset_top = 46.0621
-offset_right = -30.8919
-offset_bottom = -65.9379
+offset_left = -46.184
+offset_top = 46.0
+offset_right = -19.816
+offset_bottom = -57.0
 scale = Vector2(1.13, 1.13)
-text = "[center][b]HACE 4.533.000.000 AÑOS[/b]
+text = "[center][b]HACE 4.533 MILLONES DE AÑOS[/b]
 UNA ROCA CHOCÓ CON LA TIERRA
-Y FORMÓ AL SATÉLITE: [b][color=#a29c97]LA LUNA[/color][/b].
+Y FORMÓ UN SATÉLITE: [b][color=#a29c97]LA LUNA[/color][/b].
 [color=#dab21e]SU FUERZA DE GRAVEDAD
 ES MUY DÉBIL.[/color]
 POR ESO LOS ASTRONAUTAS
@@ -3341,7 +3395,7 @@ offset_left = -32.3034
 offset_right = -31.9754
 scale = Vector2(1.13, 1.13)
 text = "[center]400 VECES MÁS GRANDE QUE
-LA TIERRA Y CON -218 C,
+LA TIERRA Y CON -218°C,
 A [b][color=#8accbb]URANO[/color][/b] LE DICEN:
 [b]“EL GIGANTE DE HIELO”[/b].
 [color=#dab21e]UN AÑO ALLÍ DURA 84 AQUÍ,[/color]
@@ -3629,8 +3683,10 @@ AudioBuses = Array[String](["VolumenDondeEstuvo", "puerta", "casco", "guante1", 
 [editable path="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/center/CheckTrue/ItemUnir2"]
 [editable path="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/center/CheckTrue/ItemUnir"]
 [editable path="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/center/CheckTrue/ItemUnir3"]
+[editable path="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/pivotPlanets/VBoxContainer2/SpotUnir"]
 [editable path="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/pivotPlanets/VBoxContainer2/SpotUnir2"]
 [editable path="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/pivotPlanets/VBoxContainer2/SpotUnir3"]
+[editable path="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/pivotPlanets/VBoxContainer2/SpotUnir5"]
 [editable path="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/Panels/PanelPivot3/Panel"]
 [editable path="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/Panels/PanelPivot3/Panel/btnIzqAnchor/btnIzq/SquigglingSprite"]
 [editable path="DondeEstuvo/StateMachine/Juego/Contenido/Instancia2/Panels/PanelPivot3/Panel/btnCentralAnchor/btnCentral/SquigglingSprite"]

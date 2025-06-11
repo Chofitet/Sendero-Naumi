@@ -23,7 +23,7 @@ var EnterOnce
 var btnDontPassPanel
 var content =[]
 var isSkiping = false
-
+var isOn = false
 var _btns =[]
 var Characters_per_second : float = 78
 var BotonDerecho
@@ -180,6 +180,7 @@ func EnterPanel():
 	ResetButtonAnimation(_BotonDerecho)
 	ResetButtonAnimation(_BotonIzquierda)
 	ResetButtonAnimation(_BotonCentral)
+	isOn = true
 	if SetEnterOnce:
 		if EnterOnce: return
 		EnterOnce = true
@@ -258,6 +259,7 @@ func ButtonPress(btn):
 
 func ExitPanel():
 	$AnimationPlayer.play("exit_panel")
+	isOn = false
 
 func ChangeToNextText():
 	numOfPanel += 1

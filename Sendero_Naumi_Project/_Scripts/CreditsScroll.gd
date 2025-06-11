@@ -24,7 +24,10 @@ func StartScroll():
 	await tween.finished
 	PreScrollEnds.emit()
 	await  get_tree().create_timer(2).timeout
+	SetCreditPass()
+	ScrollEnds.emit()
+
+func SetCreditPass():
 	minigamesResource = ResourceLoader.load("user://MiniGameResource.tres")
 	minigamesResource.StateMinigames["PassCredits"] = true
 	ResourceSaver.save(minigamesResource, "user://MiniGameResource.tres")
-	ScrollEnds.emit()

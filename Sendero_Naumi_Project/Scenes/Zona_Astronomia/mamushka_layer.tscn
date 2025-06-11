@@ -23,8 +23,8 @@
 [ext_resource type="AudioStream" uid="uid://b415c4qll8j58" path="res://Sounds/Mamushka/Mamushka - Azul Cierre Correcto.ogg" id="21_onr8f"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8f5q3"]
-radius = 40.0
-height = 102.0
+radius = 74.0
+height = 198.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ncs2b"]
 bg_color = Color(0.359375, 0.855469, 0.960938, 1)
@@ -481,11 +481,6 @@ streams = Array[AudioStream]([ExtResource("16_p4m13")])
 [node name="Mamushka_Layer" type="Node2D"]
 script = ExtResource("1_77ket")
 
-[node name="Spot" type="Area2D" parent="." groups=["spot"]]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Spot"]
-shape = SubResource("CapsuleShape2D_8f5q3")
-
 [node name="pivot" type="Node2D" parent="."]
 
 [node name="Abajo" type="Node2D" parent="pivot"]
@@ -518,6 +513,11 @@ show_behind_parent = true
 show_behind_parent = true
 sprite_frames = ExtResource("5_xjvax")
 animation = &"idle"
+
+[node name="Spot" type="Area2D" parent="." groups=["spot"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spot"]
+shape = SubResource("CapsuleShape2D_8f5q3")
 
 [node name="Label" type="Node2D" parent="."]
 visible = false

@@ -12,6 +12,7 @@ var NaumiDebugNum : float = 0
 
 var save_file_path = "user://"
 var save_file_name = "MiniGameResource.tres"
+var zoneResource = ZoneResource.new()
 var minigameResourseFile = MiniGameResource.new()
 
 func IncreaseNaumiLevel():
@@ -72,3 +73,11 @@ func SetDebugMode(x):
 
 func SetNaumiDebugNum(x:float):
 	NaumiDebugNum = x
+
+func GetNaumiState() -> int:
+	var num = 0
+	zoneResource = ResourceLoader.load(save_file_path + "ZoneResource.tres")
+	for z in zoneResource.StateZones.keys():
+		if zoneResource.StateZones[z]:
+			if not "Unlocked" in z: num += 1
+	return num

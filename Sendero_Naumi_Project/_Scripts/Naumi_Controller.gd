@@ -22,6 +22,10 @@ var  isIdleOncePlayed
 var soundAnim 
 @onready var ActualNaumiSounds = $NaumiSounds0
 var delayNaumiEvolveSound = 0
+var NaumiComplete = false
+@export var PanelNaumi0 : Panel
+@export var PanelNaumiEvolve : Panel
+@export var PanelNaumiFinal : Panel
 
 
 func load_file():
@@ -115,6 +119,7 @@ func Sleeping():
 	#$pivot/Parts/wing.play("tap")
 	Anim.play("tap_naumi")
 	await Anim.animation_finished
+	ShowPanel()
 	$pivot/Parts/zzz.play("tap")
 	$pivot/Parts/partsAnimator.play("idle")
 	if NaumiState() > 0: GeneralsoundTrigger.PlayEvent("zzz",0,true)
@@ -152,6 +157,7 @@ func SetNaumi(num):
 			if minigameResourseFile.StateMinigames["PassCredits"] : 
 				ToContinue.emit()
 				minigameResourseFile.StateMinigames["PassCredits"] = false
+				NaumiComplete = true
 				save()
 	
 	if num + 1 > 3 : return
@@ -202,3 +208,17 @@ var once
 func ButtonPressedOnce():
 	if !once: buttonPressedOnce.emit()
 	once = true
+
+func ShowPanel():
+	if IntroNaumi: return
+	if NaumiComplete:
+		if PanelNaumiFinal.isOn: return
+		PanelNaumiFinal.EnterPanel()
+		return
+	if NaumiState() == 0:
+		if PanelNaumi0.isOn: return
+		PanelNaumi0.EnterPanel()
+	else:
+		if PanelNaumiEvolve.isOn: return
+		PanelNaumiEvolve.EnterPanel()
+	

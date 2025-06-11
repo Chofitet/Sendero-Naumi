@@ -34,3 +34,6 @@ func _on_tree_entered():
 
 func _on_draggeable_system_is_correct():
 	StartTimer()
+
+func QuitApplication():
+	get_tree().quit()

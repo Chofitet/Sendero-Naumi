@@ -34,7 +34,7 @@ func UpdateWithInstance():
 		anim.play("Answer_Enter")
 	elif InstanceManager.get_instance(4).visible:
 		$AnswerController.Set_Slot("[center]
-¿EN QUE [b]FECHA DE DICIEMBRE[/b]
+¿EN QUÉ [b]FECHA DE DICIEMBRE[/b]
 SE EXTINGUIERON LOS DINOSAURIOS?",textures_Answers5,2)
 		anim.play("Answer_Enter")
 	elif InstanceManager.get_instance(5).visible:

@@ -132,6 +132,7 @@ func SetFloorWithAnchor(num):
 	i = num
 	PlayerVariables.SaveLastPiso(num + 1)
 	actualAnchor = anchors[i]
+	$FloorDetector.ChangingToFlor(i)
 	await get_tree().create_timer(0.2).timeout
-	$FloorDetector.SetActualFloor(num)
+	$FloorDetector.SetActualFloor(i)
 

@@ -1,6 +1,8 @@
 @tool
 extends Node2D
 
+@onready var areaPanel = $Panel/AreaPanel
+
 @export var player : NodePath
 
 @export var RotateInEnter : bool
@@ -50,22 +52,31 @@ func _ready():
 	if Engine.is_editor_hint(): return
 	$Panel.visible = false
 	$Area2D.area_entered.connect(ShowDialogue)
-	$Area2D.area_exited.connect(HideDialogue)
+	$Area2D.area_exited.connect(StartHideDialogue)
+	if areaPanel != null:
+		areaPanel.area_entered.connect(TransparentDialogue.bind(true))
+		areaPanel.area_exited.connect(TransparentDialogue.bind(false))
 
 func ShowDialogue(x):
 	if isInactiveDialogue: return
 	if x.is_in_group("Player"):
-		SoundManager.play("guy","dialogo")
+		if $Panel.visible == false : SoundManager.play("guy","dialogo")
 		$Panel.visible = true
+		if timerDialogue != null: timerDialogue.timeout.disconnect(HideDialogue)
 		if RotateInEnter:
 			isRotating = true
 
-func HideDialogue(x):
+var timerDialogue = null
+
+func StartHideDialogue(x):
 	if x.is_in_group("Player"):
-		$Panel.visible = false
-#		if RotateInEnter:
-#			isRotating = false
-	
+		timerDialogue = get_tree().create_timer(2)
+		timerDialogue.timeout.connect(HideDialogue)
+
+func HideDialogue():
+	$Panel.visible = false
+	timerDialogue = null
+
 var incruse = 0
 @export var increment : float
 func _process(delta):
@@ -95,3 +106,16 @@ func InactiveDialogue():
 
 func ActiveDialogue():
 	isInactiveDialogue = false
+
+func TransparentDialogue(body,x):
+	if !body.is_in_group("Player"):return
+	var transparentColor = Color(1,1,1,0.4)
+	var fullColor = Color(1,1,1,1)
+	var tween = get_tree().create_tween()
+	var tween2 = get_tree().create_tween()
+	if x:
+		tween.tween_property($Panel,"self_modulate",transparentColor,0.2)
+		tween2.tween_property($Panel/Polygon2D,"self_modulate",transparentColor,0.2)
+	else:
+		tween.tween_property($Panel,"self_modulate",fullColor,0.2)
+		tween2.tween_property($Panel/Polygon2D,"self_modulate",fullColor,0.2)

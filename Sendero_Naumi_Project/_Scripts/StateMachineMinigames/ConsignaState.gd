@@ -6,16 +6,17 @@ class_name Consigna
 var Content 
 
 func _ready():
-	
 	Content = get_node("Contenido")
 	Content.visible = false
 
 func Enter():
+	$Contenido/btnVolver.visible = true
 	Content.visible = true
 	Transitioned.emit()
 	SetConsigna()
 
 func Exit(incruiseLevel = false):
+	$Contenido/btnVolver.visible = false
 	if FadeInTrasitioned : 
 		get_parent().MakeFade()
 		get_parent().fadeInFinish.connect(SetVisibleInEndTransition.bind(false))

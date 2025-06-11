@@ -24,6 +24,7 @@ signal collision
 @onready var Collision_Timer : Timer = $Timer
 var SoundJP
 var breatheSound
+var Pressed = false
 
 func _ready():
 	$Area2D.area_entered.connect(GetPickUpObjects)
@@ -35,6 +36,7 @@ func _physics_process(delta):
 
 func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("TouchScreen"):
+		Pressed = true
 		if isBlock: 
 			particles.emitting = false
 			return
@@ -58,6 +60,7 @@ func _input(event: InputEvent) -> void:
 		target_position= event.position
 		isPressing = true
 	if  Input.is_action_just_released("TouchScreen"):
+		Pressed = false
 		if SoundJP != null: 
 			SoundJP.release()
 			SoundJP = null
@@ -151,9 +154,11 @@ func GetMeteoroIndex(x)->int:
 		return 2
 	else: return 0
 
-func BlockMove(x):
+func BlockMove(x,SetPressing = false):
 	isBlock = x
-	if isPressing and isBlock == false:
+	if !Pressed : return
+	if (isPressing and isBlock == false) or SetPressing:
+		if !wasPressing: isPressing = true
 		particles.emitting = true
 		if SoundJP == null :
 			SoundJP = SoundManager.instance_poly("astronauta", "jetpack")
@@ -164,11 +169,17 @@ func SetSelfCamFollow(x):
 		PhantomCam.set_follow_target_node(self)
 		
 
+var wasPressing = false
 func DoCrash():
 	BlockMove(true)
+	if isPressing: wasPressing = true
+	isPressing = false
 	isCrash = true
 	var tween = get_tree().create_tween()
 	tween.tween_property(sprite,"rotation_degrees", sprite.rotation_degrees + 360*3,2)
 	await tween.finished
+	if wasPressing:
+		isPressing = true
+		wasPressing = false
 	isCrash = false
 	BlockMove(false)

@@ -24,7 +24,7 @@ var _selected_camera: Node
 var _active_pcam_camera
 var pcam_host_group: Array[Node]
 
-var editor_interface: EditorInterface
+var editor_interface
 
 #endregion
 
@@ -137,11 +137,13 @@ func _process(_delta: float):
 
 
 func _node_added(node: Node) -> void:
+	if !Engine.is_editor_hint(): return
 	if editor_interface == null: return
 	_visibility_check()
 
 
 func _visibility_check():
+	if !Engine.is_editor_hint(): return
 	if not editor_interface or not visible: return
 
 	if not is_instance_valid(editor_interface):
@@ -184,6 +186,7 @@ func _visibility_check():
 
 
 func _get_camera_2D() -> Camera2D:
+	if !Engine.is_editor_hint(): return
 	var camerasGroupName = "__cameras_%d" % editor_interface.get_edited_scene_root().get_viewport().get_viewport_rid().get_id()
 	var cameras = get_tree().get_nodes_in_group(camerasGroupName)
 
@@ -296,6 +299,7 @@ func _set_empty_viewfinder_state(text: String, icon: CompressedTexture2D) -> voi
 
 
 func _add_node(node_type: String) -> void:
+	if !Engine.is_editor_hint(): return
 	if not editor_interface: return
 
 	var root: Node = editor_interface.get_edited_scene_root()
@@ -418,6 +422,7 @@ func _on_update_editor_viewfinder(pcam_host: PhantomCameraHost) -> void:
 		_priority_override_button.set_visible(false)
 
 func _select_override_pcam() -> void:
+	if !Engine.is_editor_hint(): return
 	editor_interface.get_selection().clear()
 	editor_interface.get_selection().add_node(_active_pcam_camera)
 

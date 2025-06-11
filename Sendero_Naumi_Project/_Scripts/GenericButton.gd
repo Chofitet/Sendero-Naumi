@@ -13,6 +13,8 @@ signal pressedDelay
 
 @export var noPop : bool = false
 
+@export var NumClicksToActive : int
+
 var pop = preload("res://Scenes/UI_Scenes/pop.tscn")
 
 
@@ -41,6 +43,11 @@ func ExitAnim(noPOP : bool = false):
 	await  get_tree().create_timer(0.3).timeout
 	pressedDelay.emit()
 
+func BackEnterAnim():
+	anim.play_backwards("EnterButton")
+	await anim.animation_finished
+	visible = false
+
 func InstanciateButtonPOP():
 	var POPInstance = pop.instantiate()
 	get_parent().add_child(POPInstance)
@@ -48,3 +55,9 @@ func InstanciateButtonPOP():
 	SoundManager.play("UI","touch")
 	await  get_tree().create_timer(2).timeout
 	
+
+var numClicks = 0
+func ClickCounter():
+	numClicks += 1
+	if numClicks == NumClicksToActive:
+		EnterAnim()

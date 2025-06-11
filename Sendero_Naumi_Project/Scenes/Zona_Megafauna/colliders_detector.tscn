@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://c323s3uandu0t"]
+
+[ext_resource type="Script" path="res://Scenes/HBoxCollidersDetector.gd" id="1_qa1s3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wmwmi"]
+size = Vector2(229.92, 487)
+
+[node name="collidersDetector" type="Control"]
+layout_mode = 3
+anchor_left = 0.5
+anchor_top = 0.639
+anchor_right = 0.5
+anchor_bottom = 0.639
+offset_left = 0.0800171
+offset_top = 0.079895
+offset_right = 0.0800171
+offset_bottom = 0.079895
+script = ExtResource("1_qa1s3")
+
+[node name="LeftDetector" type="Area2D" parent="."]
+position = Vector2(-363.08, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftDetector"]
+position = Vector2(-113.04, 233.5)
+shape = SubResource("RectangleShape2D_wmwmi")
+
+[node name="RightDetector" type="Area2D" parent="."]
+position = Vector2(468.92, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightDetector"]
+position = Vector2(5.95999, 233.5)
+shape = SubResource("RectangleShape2D_wmwmi")
