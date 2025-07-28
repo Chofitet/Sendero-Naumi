@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dlwmbps456ind"]
+[gd_scene load_steps=17 format=3 uid="uid://dlwmbps456ind"]
 
 [ext_resource type="Script" path="res://_Scripts/btnVolverController.gd" id="1_5jx21"]
 [ext_resource type="Texture2D" uid="uid://5e5nmwm24r3d" path="res://Sprites/UI/mapaIcon - UI.png" id="2_6ddn4"]
@@ -11,6 +11,19 @@
 [ext_resource type="PackedScene" uid="uid://cw3ok8v4p620b" path="res://Scenes/Experiments/squiggling_sprite.tscn" id="7_f062i"]
 [ext_resource type="Texture2D" uid="uid://y1kn22pdq20d" path="res://Sprites/UI/SquigglingUI/botonRectangularBSQUIG - UI.png" id="7_x3msu"]
 [ext_resource type="Texture2D" uid="uid://bv3281qs1eia2" path="res://Sprites/ZonaGeología/squigglingFighter/cartelNombreSQUIG - fighter.png" id="9_7tdlj"]
+[ext_resource type="Script" path="res://_Scripts/SoundEventTrigger.gd" id="12_f0nex"]
+[ext_resource type="Script" path="res://addons/resonate/sound_manager/sound_bank.gd" id="13_varr6"]
+[ext_resource type="Script" path="res://addons/resonate/sound_manager/sound_event_resource.gd" id="14_ec3cl"]
+[ext_resource type="AudioStream" uid="uid://cto8hsabquh3o" path="res://Sounds/UI/UI - POP.ogg" id="15_w45xs"]
+
+[sub_resource type="Resource" id="Resource_bao8l"]
+script = ExtResource("14_ec3cl")
+name = "touch"
+bus = ""
+volume = -4.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([ExtResource("15_w45xs")])
 
 [node name="btnVolver" type="CanvasLayer"]
 layer = 3
@@ -36,7 +49,6 @@ offset_bottom = 103.0
 grow_horizontal = 0
 noSway = true
 noSquiggling = true
-noPop = false
 
 [node name="TextureRect" parent="GenericButton" index="0"]
 texture_repeat = 1
@@ -206,5 +218,17 @@ grow_horizontal = 2
 theme = ExtResource("2_rybix")
 bbcode_enabled = true
 text = "[center][b][font_size=40]¿QUERÉS SALIR AL MAPA?"
+
+[node name="buttonSound" type="Node" parent="."]
+script = ExtResource("12_f0nex")
+stopInChangeScene = false
+
+[node name="SoundBank" type="Node" parent="buttonSound"]
+script = ExtResource("13_varr6")
+label = "button"
+events = Array[ExtResource("14_ec3cl")]([SubResource("Resource_bao8l")])
+
+[connection signal="pressed" from="Menu/Panel/continuar" to="buttonSound" method="PlayEvent" binds= ["touch", 0.1]]
+[connection signal="pressed" from="Menu/Panel/VolverMapa" to="buttonSound" method="PlayEvent" binds= ["touch", 0.1]]
 
 [editable path="GenericButton"]

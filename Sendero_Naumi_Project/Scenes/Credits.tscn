@@ -1,4 +1,4 @@
-[gd_scene load_steps=139 format=3 uid="uid://bpo2q2rb4or0"]
+[gd_scene load_steps=151 format=3 uid="uid://bpo2q2rb4or0"]
 
 [ext_resource type="Material" uid="uid://muj2sfgakm5s" path="res://shaders/GalaxyWiggle.tres" id="1_0whhm"]
 [ext_resource type="Texture2D" uid="uid://nuybqhitpej1" path="res://Sprites/Mapa/fondo_mapa.png" id="2_fossm"]
@@ -100,8 +100,19 @@
 [ext_resource type="Texture2D" uid="uid://df6rnlhlhm5b2" path="res://Sprites/ZonaMegafauna/foodtruck - foodtruck.png" id="88_n7lbp"]
 [ext_resource type="Texture2D" uid="uid://dxaarmhhcx5q8" path="res://Sprites/Logo_Museo.png" id="89_uv4dt"]
 [ext_resource type="Texture2D" uid="uid://bdu2ssuthqhuo" path="res://Sprites/manito topinho tiras - excavacion.png" id="90_030tb"]
+[ext_resource type="Texture2D" uid="uid://cbthtf3gisf3y" path="res://Sprites/UI/cocheas.png" id="91_4txw1"]
 [ext_resource type="Theme" uid="uid://dhu6swisjlh4w" path="res://Resources/UI_Resources/BlueBubblePanel.tres" id="92_224v7"]
+[ext_resource type="Texture2D" uid="uid://bndymv58l6ero" path="res://Sprites/UI/clave sol.png" id="92_akv21"]
+[ext_resource type="Texture2D" uid="uid://bnkqoam0trvwk" path="res://Sprites/UI/corchea.png" id="93_vorsr"]
+[ext_resource type="Texture2D" uid="uid://pos0t38rdlww" path="res://Sprites/UI/silencio corchea.png" id="94_lgcmt"]
 [ext_resource type="PackedScene" uid="uid://djhg7jvxtexyl" path="res://Scenes/UI_Scenes/btn_Change_Scene.tscn" id="95_misfv"]
+[ext_resource type="Texture2D" uid="uid://bmvoyuburb0ol" path="res://Sprites/UI/negrita.png" id="95_ubweb"]
+[ext_resource type="Texture2D" uid="uid://uqrlgy4ka455" path="res://Sprites/UI/bemol.png" id="96_mdovv"]
+[ext_resource type="Texture2D" uid="uid://tx6lhg7b8to1" path="res://Sprites/UI/semis y corchea.png" id="97_rhksl"]
+[ext_resource type="Texture2D" uid="uid://deb2fq6wnt47m" path="res://Sprites/UI/semicorchea.png" id="98_s77tx"]
+[ext_resource type="Texture2D" uid="uid://oave6banhnfd" path="res://Sprites/UI/sostenido.png" id="99_lvupo"]
+[ext_resource type="Texture2D" uid="uid://dlgerprym1eac" path="res://Sprites/UI/redonda.png" id="100_l3owk"]
+[ext_resource type="Texture2D" uid="uid://d3i30v1b4plae" path="res://Sprites/UI/corcheas y semi.png" id="101_cjdd6"]
 [ext_resource type="Script" path="res://_Scripts/SoundEventTrigger.gd" id="101_mp1s1"]
 [ext_resource type="Script" path="res://addons/resonate/sound_manager/sound_bank.gd" id="102_flh5x"]
 [ext_resource type="Script" path="res://addons/resonate/sound_manager/sound_event_resource.gd" id="103_lmsvx"]
@@ -147,6 +158,14 @@ outline_size = 3
 outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="FontVariation" id="FontVariation_dfuxw"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_je4rc"]
+line_spacing = 0.0
+font = SubResource("FontVariation_dfuxw")
+font_size = 30
+shadow_size = 0
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(2, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_o0qfc"]
 line_spacing = -3.0
@@ -3275,6 +3294,101 @@ layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.45
 
+[node name="Pantalla16" type="VBoxContainer" parent="CreditsScroll"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Content" type="Control" parent="CreditsScroll/Pantalla16"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.13
+
+[node name="Label" type="RichTextLabel" parent="CreditsScroll/Pantalla16/Content"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -294.0
+offset_top = -284.0
+offset_right = 294.0
+offset_bottom = -118.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 35
+theme_override_font_sizes/bold_font_size = 35
+bbcode_enabled = true
+text = "[center]-----------------------------------------------------
+[b]MENCIÓN HONORÍFICA A[/b]
+-----------------------------------------------------"
+
+[node name="Label2" type="RichTextLabel" parent="CreditsScroll/Pantalla16/Content"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -360.0
+offset_top = -131.0
+offset_right = 360.0
+offset_bottom = 22.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.1
+theme_override_font_sizes/normal_font_size = 29
+theme_override_font_sizes/bold_font_size = 29
+bbcode_enabled = true
+text = "[center][b]- NUESTROS [color=#abc70c]N[/color][color=#d8b423]A[/color][color=#f47237]U[/color][color=#d8b423]M[/color][color=#abc70c]I[/color][color=#50b1bd]TESTERS[/color] -[/b]"
+scroll_active = false
+
+[node name="Content1" type="Control" parent="CreditsScroll/Pantalla16"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.44
+
+[node name="Label" type="Label" parent="CreditsScroll/Pantalla16/Content1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 42.0
+offset_top = -183.0
+offset_right = -42.0
+offset_bottom = -275.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Lucía Barsce
+Javier Montenegro
+Guillermo Pedraza
+Martina Tetzlaff
+Itatí
+Iván
+Nico Martino
+Joaquín Argentino Paz Cortés
+Facu Robles
+Juan Pablo Andrada
+Alan
+Laura
+Rogelio
+Juan Cruz Verdugo Diaz Peralta
+Agustín Sartor
+Mai"
+label_settings = SubResource("LabelSettings_je4rc")
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Label3" type="RichTextLabel" parent="CreditsScroll/Pantalla16"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.1
+theme_override_font_sizes/normal_font_size = 29
+theme_override_font_sizes/bold_font_size = 29
+bbcode_enabled = true
+scroll_active = false
+
 [node name="Pantalla15" type="VBoxContainer" parent="CreditsScroll"]
 layout_mode = 2
 size_flags_vertical = 3
@@ -3286,15 +3400,15 @@ size_flags_stretch_ratio = 0.13
 
 [node name="Label" type="RichTextLabel" parent="CreditsScroll/Pantalla15/Content"]
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = -1
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -294.0
-offset_top = -82.0
+offset_top = -609.012
 offset_right = 294.0
-offset_bottom = 84.0
+offset_bottom = -443.012
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/normal_font_size = 35
@@ -3304,8 +3418,17 @@ text = "[center]-----------------------------------------------------
 [b]AGRADECEMOS SONORAMENTE A[/b]
 -----------------------------------------------------"
 
-[node name="Label2" type="RichTextLabel" parent="CreditsScroll/Pantalla15"]
+[node name="Content2" type="Control" parent="CreditsScroll/Pantalla15"]
 layout_mode = 2
+
+[node name="Label2" type="RichTextLabel" parent="CreditsScroll/Pantalla15/Content2"]
+layout_mode = 2
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -360.0
+offset_top = -598.0
+offset_right = 360.0
+offset_bottom = -446.0
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.1
 theme_override_font_sizes/normal_font_size = 29
@@ -3321,13 +3444,15 @@ size_flags_stretch_ratio = 0.44
 
 [node name="Label" type="Label" parent="CreditsScroll/Pantalla15/Content1"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 42.0
-offset_top = -88.0
-offset_right = -42.0
-offset_bottom = -57.0
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = -0.034
+anchor_right = 0.5
+anchor_bottom = -0.034
+offset_left = -318.0
+offset_top = -499.666
+offset_right = 318.0
+offset_bottom = 499.334
 grow_horizontal = 2
 grow_vertical = 2
 text = "Jofae - kakaist - ThompsonMan - Edsto - esperar - Zabuhailo - parkersenk - Lightnessko - Mrthenoronha - username12125 - iedurodrigues - Leszek_Szary - monotraum - AlaskaRobotics - MarcusGraham325 - MicktheMicGuy - ninebilly - Hammy01 - benagain28 - u_88mxldp72k - Agaxly - Wagna - jtnewlin13 - sarthakraj_308 - breadparticles - floraphonic - SoundsForYou - MATRIXXX_ - Defaultv - BrendanSound12 - BeeProductive - Lucas_lesc - JuandreSound - ZoviPoland - qubodup - Alex_Jauk - mickdow - maurolupo - SpliceSound - dynamique - TRP - thepodcastdoctor - quedicemipez - Sandermotions - Freesound Community - DavidDumaisAudio - Saya13 - ScratchnSniff - ryansitz - blukotek - tramppa34 - JCI-21 - zybil - Audioflow - billgrip - storegraphic - TanwerAman - Kinoton - hinzebeat - Woodstokk - marcaronni - dffdv - Rodzuz - beetpro - FairhavenCollection - CapsLok - jedg - deifandubs - KenRT - Universfield - BlenderTimer - Brother Barrabas - u_asyndf203n - Tim_Verberne - SamuelGremaud - mikewest - UpdatePelgo - RasoolAsaad - Worldmaxter - u_m9b3aw9s3j - cpick - DJARTMUSIC - Notification_Message - Trading_Nation - se2001 - gyzhor - Zodoz - Niedec - Tombombadil1988 - IMALUIGI - Reitanna - KomradeJack - ty66kill - MattLeschuck - bittermelonheart - LinaManjarrez - acrober - Q.K. - adamgryu - SSPsurvival - steaq - FreeSoundsxx - spookymodem - rolle Andersson - casiba842 - Bertsz - olver - Cunningar0807 - manchesterprod2 - Foreman_Griller - thegreatbelow - Slowmote - humanoide9000 - gmodeath - Fission9 - crooner - earlcash05 - j1987 - oldedgar - JPBILLINGSLEYJR - starplatinums - VoiceBosch - utsuru - Sslc2022 - bunguren - StormBat - nc3studios08 - Gogglecrab - donaldcady - opticaillusions - laribum - deoking - EiK - Mickael_Leroi - ryanharding95"
@@ -3335,33 +3460,176 @@ label_settings = SubResource("LabelSettings_o0qfc")
 horizontal_alignment = 1
 autowrap_mode = 3
 
-[node name="Label3" type="RichTextLabel" parent="CreditsScroll/Pantalla15"]
+[node name="Content3" type="Control" parent="CreditsScroll/Pantalla15"]
 layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.01
+
+[node name="Label3" type="RichTextLabel" parent="CreditsScroll/Pantalla15/Content3"]
+layout_mode = 2
+anchor_left = 0.499
+anchor_top = -26.556
+anchor_right = 0.499
+anchor_bottom = -26.556
+offset_left = -360.28
+offset_top = -114.768
+offset_right = 359.72
+offset_bottom = 131.232
+grow_horizontal = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.1
 theme_override_font_sizes/normal_font_size = 29
 theme_override_font_sizes/bold_font_size = 29
 bbcode_enabled = true
-text = "[center][b]  
+text = "
+[center][b]  
 Y A  [font_size={40}]JAVIER MONTENEGRO[/font_size] 
 POR SU MÚSICA[/b]"
 scroll_active = false
 
-[node name="Pantalla13" type="VBoxContainer" parent="CreditsScroll"]
+[node name="nota1" type="Sprite2D" parent="CreditsScroll/Pantalla15/Content3/Label3"]
+position = Vector2(513, 165.766)
+rotation = 0.385038
+scale = Vector2(0.277778, 0.277778)
+texture = ExtResource("91_4txw1")
+
+[node name="nota7" type="Sprite2D" parent="CreditsScroll/Pantalla15/Content3/Label3"]
+position = Vector2(189, 180.766)
+rotation = -0.076005
+scale = Vector2(0.277778, 0.277778)
+texture = ExtResource("92_akv21")
+
+[node name="nota4" type="Sprite2D" parent="CreditsScroll/Pantalla15/Content3/Label3"]
+position = Vector2(347, 210.766)
+rotation = 0.135066
+scale = Vector2(0.277778, 0.277778)
+texture = ExtResource("91_4txw1")
+flip_v = true
+
+[node name="nota15" type="Sprite2D" parent="CreditsScroll/Pantalla15/Content3/Label3"]
+position = Vector2(433, 45.7656)
+rotation = 0.135066
+scale = Vector2(0.277778, 0.277778)
+texture = ExtResource("91_4txw1")
+flip_v = true
+
+[node name="nota2" type="Sprite2D" parent="CreditsScroll/Pantalla15/Content3/Label3"]
+position = Vector2(452, 208.766)
+rotation = -0.279297
+scale = Vector2(0.309522, 0.309522)
+texture = ExtResource("93_vorsr")
+
+[node name="nota11" type="Sprite2D" parent="CreditsScroll/Pantalla15/Content3/Label3/nota2"]
+position = Vector2(89.6035, 39.1445)
+rotation = -0.0849197
+scale = Vector2(0.985067, 0.985067)
+texture = ExtResource("94_lgcmt")
+
+[node name="nota6" type="Sprite2D" parent="CreditsScroll/Pantalla15/Content3/Label3"]
+position = Vector2(230, 202.766)
+rotation = 0.312998
+scale = Vector2(0.309522, 0.309522)
+texture = ExtResource("93_vorsr")
+flip_v = true
+
+[node name="nota11" type="Sprite2D" parent="CreditsScroll/Pantalla15/Content3/Label3/nota6"]
+position = Vector2(65.7227, -38.2461)
+rotation = -0.0849257
+scale = Vector2(0.985067, 0.985067)
+texture = ExtResource("94_lgcmt")
+
+[node name="nota3" type="Sprite2D" parent="CreditsScroll/Pantalla15/Content3/Label3"]
+position = Vector2(406, 199.766)
+rotation = 0.182063
+scale = Vector2(0.346784, 0.346784)
+texture = ExtResource("95_ubweb")
+
+[node name="nota5" type="Sprite2D" parent="CreditsScroll/Pantalla15/Content3/Label3"]
+position = Vector2(292, 208.766)
+rotation = 0.182063
+scale = Vector2(0.346784, 0.346784)
+texture = ExtResource("95_ubweb")
+
+[node name="Sprite2D" type="Sprite2D" parent="CreditsScroll/Pantalla15/Content3/Label3/nota5"]
+position = Vector2(-51.498, 38.8008)
+texture = ExtResource("96_mdovv")
+
+[node name="nota8" type="Sprite2D" parent="CreditsScroll/Pantalla15/Content3/Label3"]
+position = Vector2(132, 49.7617)
+rotation = 0.00514111
+scale = Vector2(0.309522, 0.309522)
+texture = ExtResource("93_vorsr")
+
+[node name="nota9" type="Sprite2D" parent="CreditsScroll/Pantalla15/Content3/Label3"]
+position = Vector2(177, 49.7695)
+rotation = 0.00514111
+scale = Vector2(0.309522, 0.309522)
+texture = ExtResource("91_4txw1")
+
+[node name="Sprite2D" type="Sprite2D" parent="CreditsScroll/Pantalla15/Content3/Label3/nota9"]
+position = Vector2(19.4176, 6.35938)
+texture = ExtResource("96_mdovv")
+
+[node name="nota10" type="Sprite2D" parent="CreditsScroll/Pantalla15/Content3/Label3"]
+position = Vector2(244, 45.7617)
+rotation = 0.002043
+scale = Vector2(0.309522, 0.309522)
+texture = ExtResource("97_rhksl")
+
+[node name="nota11" type="Sprite2D" parent="CreditsScroll/Pantalla15/Content3/Label3"]
+position = Vector2(293, 59.7695)
+rotation = 0.1999
+scale = Vector2(0.309522, 0.309522)
+texture = ExtResource("94_lgcmt")
+
+[node name="nota12" type="Sprite2D" parent="CreditsScroll/Pantalla15/Content3/Label3"]
+position = Vector2(332, 45.7617)
+rotation = 0.1999
+scale = Vector2(0.309522, 0.309522)
+texture = ExtResource("91_4txw1")
+
+[node name="nota13" type="Sprite2D" parent="CreditsScroll/Pantalla15/Content3/Label3"]
+position = Vector2(389, 46.7656)
+rotation = -0.0736278
+scale = Vector2(0.309522, 0.309522)
+texture = ExtResource("98_s77tx")
+
+[node name="nota14" type="Sprite2D" parent="CreditsScroll/Pantalla15/Content3/Label3"]
+position = Vector2(376, 49.7656)
+rotation = -0.0736278
+scale = Vector2(0.309522, 0.309522)
+texture = ExtResource("99_lvupo")
+
+[node name="nota16" type="Sprite2D" parent="CreditsScroll/Pantalla15/Content3/Label3"]
+position = Vector2(482, 49.7656)
+rotation = -0.0736278
+scale = Vector2(0.309522, 0.309522)
+texture = ExtResource("100_l3owk")
+
+[node name="nota18" type="Sprite2D" parent="CreditsScroll/Pantalla15/Content3/Label3"]
+position = Vector2(523, 47.7617)
+rotation = -0.0720885
+scale = Vector2(0.309522, 0.309522)
+texture = ExtResource("95_ubweb")
+
+[node name="nota14" type="Sprite2D" parent="CreditsScroll/Pantalla15/Content3/Label3/nota18"]
+position = Vector2(-22.5566, -1.62891)
+rotation = -0.0736278
+scale = Vector2(0.834248, 0.834248)
+texture = ExtResource("99_lvupo")
+
+[node name="nota17" type="Sprite2D" parent="CreditsScroll/Pantalla15/Content3/Label3"]
+position = Vector2(579.398, 47.7656)
+rotation = -0.0736278
+scale = Vector2(0.309522, 0.309522)
+texture = ExtResource("101_cjdd6")
+
+[node name="Content4" type="Control" parent="CreditsScroll/Pantalla15"]
 layout_mode = 2
 size_flags_vertical = 3
+size_flags_stretch_ratio = 0.0
 
-[node name="Content4" type="Control" parent="CreditsScroll/Pantalla13"]
-layout_mode = 2
-size_flags_vertical = 3
-size_flags_stretch_ratio = 0.66
-
-[node name="Content1" type="Control" parent="CreditsScroll/Pantalla13"]
-layout_mode = 2
-size_flags_vertical = 3
-size_flags_stretch_ratio = 1.21
-
-[node name="TextureRect" type="TextureRect" parent="CreditsScroll/Pantalla13/Content1"]
+[node name="TextureRect" type="TextureRect" parent="CreditsScroll/Pantalla15/Content4"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -3369,14 +3637,14 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -292.0
-offset_top = -196.5
+offset_top = -330.0
 offset_right = 308.0
-offset_bottom = 103.5
+offset_bottom = -30.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("89_uv4dt")
 
-[node name="Label" type="RichTextLabel" parent="CreditsScroll/Pantalla13/Content1"]
+[node name="Label" type="RichTextLabel" parent="CreditsScroll/Pantalla15/Content4"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -3384,62 +3652,14 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -328.0
-offset_top = -273.0
+offset_top = -406.5
 offset_right = 328.0
-offset_bottom = -149.0
+offset_bottom = -282.5
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("92_224v7")
 bbcode_enabled = true
 text = "[center][b]¡¡MUCHAS GRACIAS AL MUSEO!!"
-
-[node name="Content2" type="Control" parent="CreditsScroll/Pantalla13"]
-layout_mode = 2
-size_flags_vertical = 3
-size_flags_stretch_ratio = 0.72
-
-[node name="Label" type="Label" parent="CreditsScroll/Pantalla13/Content2"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -328.0
-offset_top = -61.5
-offset_right = 328.0
-offset_bottom = 62.5
-grow_horizontal = 2
-grow_vertical = 2
-text = "GRACIAS A LOS QUE ENTENDIERON"
-label_settings = ExtResource("35_8b8op")
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 3
-
-[node name="Content3" type="Control" parent="CreditsScroll/Pantalla13"]
-layout_mode = 2
-size_flags_vertical = 3
-size_flags_stretch_ratio = 0.72
-
-[node name="Label" type="Label" parent="CreditsScroll/Pantalla13/Content3"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -328.0
-offset_top = -61.5
-offset_right = 328.0
-offset_bottom = 62.5
-grow_horizontal = 2
-grow_vertical = 2
-text = "GRACIAS A LOS QUE TARDARON EN ENTENDER"
-label_settings = ExtResource("35_8b8op")
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 3
 
 [node name="Pantalla14" type="VBoxContainer" parent="CreditsScroll"]
 layout_mode = 2
@@ -3462,7 +3682,6 @@ offset_top = -110.026
 offset_right = 328.0
 offset_bottom = -39.026
 grow_horizontal = 2
-grow_vertical = 2
 theme = ExtResource("92_224v7")
 bbcode_enabled = true
 text = "[font_size=40][center][b]GRACIAS POR JUGAR[/b]"
@@ -3512,10 +3731,10 @@ layout_mode = 1
 anchors_preset = 8
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_left = -325.0
-offset_top = -147.0
-offset_right = 327.0
-offset_bottom = 83.0
+offset_left = -326.0
+offset_top = -146.0
+offset_right = 326.0
+offset_bottom = 84.0
 grow_vertical = 2
 pivot_offset = Vector2(326, 115)
 Texts = Array[ExtResource("6_7rehl")]([SubResource("Resource_4bf60"), SubResource("Resource_gj75s"), SubResource("Resource_wj6ka")])
@@ -3590,7 +3809,6 @@ grow_horizontal = 0
 grow_vertical = 0
 rotation = 3.14159
 noSway = true
-noPop = false
 NumClicksToActive = 3
 Icon = ExtResource("4_jrau3")
 

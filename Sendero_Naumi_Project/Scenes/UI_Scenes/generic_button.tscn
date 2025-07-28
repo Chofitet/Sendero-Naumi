@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://nmuyip31gkq5"]
+[gd_scene load_steps=15 format=3 uid="uid://nmuyip31gkq5"]
 
 [ext_resource type="Theme" uid="uid://dhu6swisjlh4w" path="res://Resources/UI_Resources/BlueBubblePanel.tres" id="1_6n3p0"]
 [ext_resource type="Script" path="res://_Scripts/GenericButton.gd" id="2_3pdmx"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://addons/resonate/sound_manager/sound_bank.gd" id="6_npa0r"]
 [ext_resource type="Script" path="res://addons/resonate/sound_manager/sound_event_resource.gd" id="7_7yq3c"]
 [ext_resource type="AudioStream" uid="uid://cto8hsabquh3o" path="res://Sounds/UI/UI - POP.ogg" id="7_x86va"]
+[ext_resource type="Script" path="res://_Scripts/SoundEventTrigger.gd" id="8_kdekb"]
 
 [sub_resource type="Animation" id="Animation_jf27c"]
 resource_name = "EnterButton"
@@ -95,6 +96,15 @@ pitch = 1.0
 RandomPitch = Vector2(1, 1)
 streams = Array[AudioStream]([ExtResource("7_x86va")])
 
+[sub_resource type="Resource" id="Resource_jyks7"]
+script = ExtResource("7_7yq3c")
+name = "touch"
+bus = ""
+volume = -4.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([ExtResource("7_x86va")])
+
 [node name="GenericButton" type="Button"]
 process_mode = 3
 offset_left = -45.0
@@ -104,7 +114,6 @@ offset_bottom = 45.0
 pivot_offset = Vector2(45, 45)
 theme = ExtResource("1_6n3p0")
 script = ExtResource("2_3pdmx")
-noPop = null
 
 [node name="TextureRect" type="TextureRect" parent="."]
 process_mode = 3
@@ -143,3 +152,12 @@ process_mode = 3
 script = ExtResource("6_npa0r")
 label = "UI"
 events = Array[ExtResource("7_7yq3c")]([SubResource("Resource_3w43a")])
+
+[node name="ButtonSound" type="Node" parent="."]
+script = ExtResource("8_kdekb")
+stopInChangeScene = false
+
+[node name="SoundBank" type="Node" parent="ButtonSound"]
+script = ExtResource("6_npa0r")
+label = "button"
+events = Array[ExtResource("7_7yq3c")]([SubResource("Resource_jyks7")])

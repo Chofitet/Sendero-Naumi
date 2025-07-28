@@ -52,7 +52,7 @@ func InstanciateButtonPOP():
 	var POPInstance = pop.instantiate()
 	get_parent().add_child(POPInstance)
 	POPInstance.global_position = $centerPosition.global_position
-	SoundManager.play("UI","touch")
+	$ButtonSound.PlayEvent("touch")
 	await  get_tree().create_timer(2).timeout
 	
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=118 format=3 uid="uid://ck4m8k46bmha1"]
+[gd_scene load_steps=120 format=3 uid="uid://ck4m8k46bmha1"]
 
 [ext_resource type="Material" uid="uid://muj2sfgakm5s" path="res://shaders/GalaxyWiggle.tres" id="1_2gsu4"]
 [ext_resource type="Script" path="res://_Scripts/AdjustSeparationWithScreenSize.gd" id="2_1v6rf"]
@@ -96,6 +96,7 @@
 [ext_resource type="Texture2D" uid="uid://6c8ohwgh1g2j" path="res://Sprites/UI/backIcon - UI.png" id="93_hbvwe"]
 [ext_resource type="Texture2D" uid="uid://u4h0xv61ktyj" path="res://Sprites/UI/exitIcon - UI.png" id="93_qj8wi"]
 [ext_resource type="Texture2D" uid="uid://bpkbouxhh55el" path="res://Sprites/UI/eyeIcon - UI.png" id="94_rjqst"]
+[ext_resource type="AudioStream" uid="uid://cto8hsabquh3o" path="res://Sounds/UI/UI - POP.ogg" id="97_gqjgb"]
 
 [sub_resource type="Curve2D" id="Curve2D_8o4yl"]
 bake_interval = 0.01
@@ -311,6 +312,15 @@ script = ExtResource("82_ce12o")
 NumberOfPanel = 1
 Place = 0
 
+[sub_resource type="Resource" id="Resource_tajne"]
+script = ExtResource("60_d01d2")
+name = "touch"
+bus = ""
+volume = 0.0
+pitch = 1.0
+RandomPitch = Vector2(1, 1)
+streams = Array[AudioStream]([ExtResource("97_gqjgb")])
+
 [node name="Map_Screen" type="Control"]
 z_index = 1
 layout_mode = 3
@@ -423,7 +433,6 @@ offset_bottom = 113.0
 enterInBeggining = true
 noSway = true
 noSquiggling = true
-noPop = false
 Icon = ExtResource("12_7mbhm")
 
 [node name="TextureRect" parent="ScrollContainer/VBoxContainer/Piso4/Piso4/VBoxContainer/separacion3/OptionsBtn" index="0"]
@@ -1880,6 +1889,7 @@ texture = ExtResource("11_r0n4l")
 [node name="Astronauta" parent="StateMachine/AstronomiaZone/ZoomingZone/SubViewport/ZoomingZone" instance=ExtResource("6_wq3mc")]
 position = Vector2(877.415, 339.635)
 NumOfLevel = 3
+inside_Color = Color(0.384314, 0.423529, 0.890196, 1)
 
 [node name="Label2" type="Label" parent="StateMachine/AstronomiaZone/ZoomingZone/SubViewport/ZoomingZone/Astronauta"]
 visible = false
@@ -1898,6 +1908,7 @@ texture = ExtResource("32_opqms")
 [node name="Calendario" parent="StateMachine/AstronomiaZone/ZoomingZone/SubViewport/ZoomingZone" instance=ExtResource("6_wq3mc")]
 position = Vector2(838.145, 1384.06)
 NumOfLevel = 1
+inside_Color = Color(0.384314, 0.423529, 0.890196, 1)
 
 [node name="Label2" type="Label" parent="StateMachine/AstronomiaZone/ZoomingZone/SubViewport/ZoomingZone/Calendario"]
 visible = false
@@ -1916,6 +1927,7 @@ texture = ExtResource("33_bfyu4")
 [node name="DondeEstuvo" parent="StateMachine/AstronomiaZone/ZoomingZone/SubViewport/ZoomingZone" instance=ExtResource("6_wq3mc")]
 position = Vector2(255.845, 1057.17)
 NumOfLevel = 2
+inside_Color = Color(0.384314, 0.423529, 0.890196, 1)
 
 [node name="Label2" type="Label" parent="StateMachine/AstronomiaZone/ZoomingZone/SubViewport/ZoomingZone/DondeEstuvo"]
 visible = false
@@ -1934,6 +1946,7 @@ texture = ExtResource("34_sfh6v")
 [node name="Mamushkas" parent="StateMachine/AstronomiaZone/ZoomingZone/SubViewport/ZoomingZone" instance=ExtResource("6_wq3mc")]
 position = Vector2(172.655, 104.015)
 NumOfLevel = 4
+inside_Color = Color(0.384314, 0.423529, 0.890196, 1)
 
 [node name="Label2" type="Label" parent="StateMachine/AstronomiaZone/ZoomingZone/SubViewport/ZoomingZone/Mamushkas"]
 visible = false
@@ -2010,6 +2023,7 @@ texture = ExtResource("4_jbstj")
 [node name="RockFighters" parent="StateMachine/GeologiaZone/ZoomingZone/SubViewport/ZoomingZone" instance=ExtResource("6_wq3mc")]
 position = Vector2(299.524, 278.73)
 NumOfLevel = 1
+inside_Color = Color(0, 0, 0, 0)
 
 [node name="Label2" type="Label" parent="StateMachine/GeologiaZone/ZoomingZone/SubViewport/ZoomingZone/RockFighters"]
 visible = false
@@ -2029,6 +2043,7 @@ texture = ExtResource("31_ceq68")
 [node name="Transformando" parent="StateMachine/GeologiaZone/ZoomingZone/SubViewport/ZoomingZone" instance=ExtResource("6_wq3mc")]
 position = Vector2(514.845, 1105.81)
 NumOfLevel = 3
+inside_Color = Color(0, 0, 0, 0)
 
 [node name="Label2" type="Label" parent="StateMachine/GeologiaZone/ZoomingZone/SubViewport/ZoomingZone/Transformando"]
 visible = false
@@ -2047,6 +2062,7 @@ texture = ExtResource("32_5k6rn")
 [node name="Busqueda" parent="StateMachine/GeologiaZone/ZoomingZone/SubViewport/ZoomingZone" instance=ExtResource("6_wq3mc")]
 position = Vector2(617.4, 11.995)
 NumOfLevel = 2
+inside_Color = Color(0, 0, 0, 0)
 
 [node name="Label2" type="Label" parent="StateMachine/GeologiaZone/ZoomingZone/SubViewport/ZoomingZone/Busqueda"]
 visible = false
@@ -2309,6 +2325,7 @@ expand_mode = 3
 [node name="FoodTruck" parent="StateMachine/MegafaunaZone/ZoomingZone/SubViewport/ZoomingZone" instance=ExtResource("6_wq3mc")]
 position = Vector2(623.954, 412.38)
 NumOfLevel = 2
+inside_Color = Color(0.356863, 0.941176, 0.435294, 1)
 
 [node name="Label2" type="Label" parent="StateMachine/MegafaunaZone/ZoomingZone/SubViewport/ZoomingZone/FoodTruck"]
 visible = false
@@ -2327,6 +2344,7 @@ texture = ExtResource("38_nd2o0")
 [node name="Excavando" parent="StateMachine/MegafaunaZone/ZoomingZone/SubViewport/ZoomingZone" instance=ExtResource("6_wq3mc")]
 position = Vector2(497.08, 1310.83)
 NumOfLevel = 1
+inside_Color = Color(0.356863, 0.941176, 0.435294, 1)
 
 [node name="Label2" type="Label" parent="StateMachine/MegafaunaZone/ZoomingZone/SubViewport/ZoomingZone/Excavando"]
 visible = false
@@ -2382,7 +2400,6 @@ offset_right = -33.0
 offset_bottom = 116.0
 grow_horizontal = 0
 noSquiggling = true
-noPop = false
 Icon = ExtResource("49_wt3wo")
 
 [node name="TextureRect" parent="StateMachine/ButtonNaumi" index="0"]
@@ -2405,7 +2422,6 @@ offset_right = -33.0
 offset_bottom = 113.0
 grow_horizontal = 0
 noSquiggling = true
-noPop = false
 Icon = ExtResource("50_otgwf")
 
 [node name="AdventurePanel" type="CanvasLayer" parent="."]
@@ -2668,6 +2684,15 @@ theme = ExtResource("33_7s2qj")
 bbcode_enabled = true
 text = "[center] [font_size=38]BORRAR PROGRESO"
 
+[node name="buttonSound" type="Node" parent="OptionsBtn/Panel/VBoxContainer"]
+script = ExtResource("59_5q8v3")
+stopInChangeScene = false
+
+[node name="SoundBank" type="Node" parent="OptionsBtn/Panel/VBoxContainer/buttonSound"]
+script = ExtResource("59_wglh2")
+label = "button"
+events = Array[ExtResource("60_d01d2")]([SubResource("Resource_tajne")])
+
 [node name="ButtonChangeSceneSalir" parent="OptionsBtn" instance=ExtResource("7_1v7i5")]
 visible = false
 layout_mode = 0
@@ -2782,6 +2807,10 @@ smoothness = 0.2
 [connection signal="MenuOptionActive" from="OptionsBtn" to="ScrollContainer" method="SetisInputBlock" binds= [false]]
 [connection signal="MenuOptionDesactive" from="OptionsBtn" to="ScrollContainer/VBoxContainer/Piso4/Piso4/VBoxContainer/separacion3/OptionsBtn" method="EnterAnim"]
 [connection signal="MenuOptionDesactive" from="OptionsBtn" to="ScrollContainer" method="SetisInputBlock" binds= [true]]
+[connection signal="pressed" from="OptionsBtn/Panel/VBoxContainer/volver" to="OptionsBtn/Panel/VBoxContainer/buttonSound" method="PlayEvent" binds= ["touch", 0.1]]
+[connection signal="pressed" from="OptionsBtn/Panel/VBoxContainer/salir" to="OptionsBtn/Panel/VBoxContainer/buttonSound" method="PlayEvent" binds= ["touch", 0.1]]
+[connection signal="pressed" from="OptionsBtn/Panel/VBoxContainer/verCreditos" to="OptionsBtn/Panel/VBoxContainer/buttonSound" method="PlayEvent" binds= ["touch", 0.1]]
+[connection signal="pressed" from="OptionsBtn/Panel/VBoxContainer/ResetProgreso" to="OptionsBtn/Panel/VBoxContainer/buttonSound" method="PlayEvent" binds= ["touch", 0.1]]
 
 [editable path="ScrollContainer/VBoxContainer/Piso4/Piso4/VBoxContainer/separacion3/OptionsBtn"]
 [editable path="ScrollContainer/VBoxContainer/Piso3/CuaternarioZone/TextureRect/PanelProximamente/Panel"]

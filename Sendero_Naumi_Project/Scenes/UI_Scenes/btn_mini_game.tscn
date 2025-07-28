@@ -1,6 +1,7 @@
-[gd_scene load_steps=21 format=3 uid="uid://bc062m81xnnpx"]
+[gd_scene load_steps=22 format=3 uid="uid://bc062m81xnnpx"]
 
 [ext_resource type="Texture2D" uid="uid://c5225cmvtpnmy" path="res://Sprites/Mapa/pin - mapa.png" id="1_xlje6"]
+[ext_resource type="Texture2D" uid="uid://df7tsppd7f4u8" path="res://Sprites/UI/CircleSoftEdge.png" id="2_bjyt2"]
 [ext_resource type="PackedScene" uid="uid://cw3ok8v4p620b" path="res://Scenes/Experiments/squiggling_sprite.tscn" id="3_ajxde"]
 [ext_resource type="PackedScene" uid="uid://djhg7jvxtexyl" path="res://Scenes/UI_Scenes/btn_Change_Scene.tscn" id="3_j744p"]
 [ext_resource type="Texture2D" uid="uid://ctlc3c44ynrd0" path="res://Sprites/Mapa/squigglingMap/indicadorMapaSQUI - UI.png" id="4_4p5q1"]
@@ -29,7 +30,7 @@ var pop = preload(\"res://Scenes/UI_Scenes/pop.tscn\")
 var isWaitingForAnimComplete
 @onready var animation_player = $AnimationPlayer
 @onready var button = $ButtonChangeScene
-
+@export var inside_Color : Color
 
 func _ready():
 	button.pressed.connect(CheckComplete)
@@ -37,15 +38,17 @@ func _ready():
 	$ButtonChangeScene.delay = 1
 	$Sprite2D/Label.text = str(NumOfLevel)
 	load_file()
+	$Sprite2D/circle.self_modulate = inside_Color
 	if !minigameResourseFile.StateMinigames[self.name]:
 		get_node(\"AnimationPlayer\").play(\"Scale-bounce\")
 	elif minigameResourseFile.StateMinigames[self.name]:
 		if minigameResourseFile.StateMinigames[\"LastMiniGameComplete\"]== self.name:
 			isWaitingForAnimComplete = true
 		else:
-			$Sprite2D.texture = load(\"res://Sprites/Mapa/pin check - mapa.png\")
+			#$Sprite2D.texture = load(\"res://Sprites/Mapa/pin check - mapa.png\")
 			var lb = $Sprite2D/Label
 			if lb != null:lb.visible = false
+			$Sprite2D/tilde.visible = true
 		$Sprite2D/SquigglingSprite.visible = false
 		if squigglyObject != null : squigglyObject.InactiveSquiggling()
 
@@ -457,6 +460,13 @@ script = SubResource("GDScript_pfah2")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -105.385)
 texture = ExtResource("1_xlje6")
+
+[node name="circle" type="Sprite2D" parent="Sprite2D"]
+visible = false
+self_modulate = Color(0.709804, 0.678431, 0.647059, 1)
+position = Vector2(0.424972, -30.5)
+scale = Vector2(0.131429, 0.132857)
+texture = ExtResource("2_bjyt2")
 
 [node name="SquigglingSprite" parent="Sprite2D" instance=ExtResource("3_ajxde")]
 texture = ExtResource("4_4p5q1")
